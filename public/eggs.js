@@ -1442,11 +1442,21 @@ function setCoconStats() {
         if (!coconStats.nextColo) {
             let sortedAliens = _.sortBy(aliens,'creaTurn');
             sortedAliens.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.type === 'Coque' && !bat.tags.includes('colo') && !coconStats.nextColo) {
-                    bat.tags.push('colo');
-                    coconStats.nextColo = true;
+                if (bat.loc === "zone" && bat.type === 'Coque' && !bat.tags.includes('colo') && !bat.tags.includes('morph') && !coconStats.nextColo) {
+                    if (rand.rand(1,2) === 1) {
+                        bat.tags.push('colo');
+                        coconStats.nextColo = true;
+                    }
                 }
             });
+            if (!coconStats.nextColo) {
+                sortedAliens.forEach(function(bat) {
+                    if (bat.loc === "zone" && bat.type === 'Coque' && !bat.tags.includes('colo') && !bat.tags.includes('morph') && !coconStats.nextColo) {
+                        bat.tags.push('colo');
+                        coconStats.nextColo = true;
+                    }
+                });
+            }
         }
     }
     console.log('COCON STATS');
@@ -1705,7 +1715,11 @@ function eggSpawn(bat,fromEgg) {
                 }
             } else {
                 if (playerInfos.comp.det >= 1 && playerInfos.comp.ca >= 1) {
-                    warning('Tranformation imminante','Une Coque va devenir un Volcan!',false,bat.tileId);
+                    if (bat.tags.includes('colo')) {
+                        warning('Tranformation imminante','Une Coque va devenir une Colonie!',false,bat.tileId);
+                    } else {
+                        warning('Tranformation imminante','Une Coque va devenir un Volcan!',false,bat.tileId);
+                    }
                 }
             }
         }

@@ -534,7 +534,7 @@ function addStressFlag(bat,emoType) {
                 stressCost = 1;
             }
         }
-        if (stressCost >= 1) {
+        if (stressCost >= 1 && !bat.tags.includes('octiron') && !bat.tags.includes('bliss')) {
             if (bat.emo != undefined) {
                 bat.emo = bat.emo+stressCost;
             } else {

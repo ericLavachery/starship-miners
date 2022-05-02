@@ -678,14 +678,18 @@ function debarquement(debId) {
 };
 
 function checkBatTeleport(podBat,teleBat,tileId) {
+    console.log('checkBatTeleport');
+    console.log(podBat);
+    console.log(teleBat);
     let teleStats = {};
     teleStats.ok = false;
     teleStats.tag = false;
     teleStats.message = '';
     if (playerInfos.comp.tele >= 2) {
         if (!podBat.tags.includes('podcd')) {
-            let inBat = getBatByTileId(tileId);
+            let inBat = getZoneBatByTileId(tileId);
             let inBatType = getBatType(inBat);
+            console.log(inBat);
             let podBatType = getBatType(podBat);
             let teleBatType = getBatType(teleBat);
             if (podBat.eq === 'lifepod' || podBat.eq === 'e-lifepod' || podBat.eq === 'w1-lifepod' || podBat.eq === 'w2-lifepod') {

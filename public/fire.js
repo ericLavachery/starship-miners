@@ -629,12 +629,12 @@ function attack(melee,init) {
         apDamage = apDamage+webDamage;
     }
     // marquage
-    if (selectedWeap.ammo.includes('marquage') && totalHits >= 10 && !targetBat.tags.includes('fluo')) {
+    if (selectedWeap.ammo.includes('marquage') && totalHits >= 5 && !targetBat.tags.includes('fluo')) {
         targetBat.tags.push('fluo');
         $('#report').append('<span class="report rose">Bataillon marqué<br></span>');
     }
     // guidage
-    if (selectedWeap.ammo.includes('guidage') && totalHits >= 20 && !targetBat.tags.includes('guide')) {
+    if (selectedWeap.ammo.includes('guidage') && totalHits >= 10 && !targetBat.tags.includes('guide')) {
         targetBat.tags.push('guide');
         $('#report').append('<span class="report rose">Guidage laser<br></span>');
     }

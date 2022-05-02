@@ -15,7 +15,7 @@
     {
         "name": "marquage",
         "range": 1,
-        "rof": 1,
+        "rof": 1.2,
         "power": 0,
         "powermult": 0,
         "armors": 1,
@@ -23,6 +23,8 @@
         "apdamage": 0,
         "aoe": "",
         "info": "Marquage",
+        "deploy":{"Fer":1,"Silicium":1,"Mercure":1},
+        "batch":200,
         "noList": true
     },
     {
@@ -36,9 +38,10 @@
         "apdamage": 0,
         "aoe": "brochette",
         "info": "Marquage",
-        "compReq":{"mat":1},
-        "deploy":{"Fer":3,"Carbone":1,"Cobalt":1,"Silicium":1},
-        "batch":300,
+        "bldReq":["Atelier"],
+        "compReq":{"det":2,"mat":1,"bal":1},
+        "deploy":{"Fer":3,"Munitions":1,"Carbone":1,"Cobalt":1,"Silicium":1,"Mercure":1},
+        "batch":200,
         "sound":{"paint":"paint_spike","fragger_throw":"paint_spike"},
         "noList": true
     },
@@ -54,9 +57,10 @@
         "apweb": true,
         "aoe": "",
         "info": "Marquage",
+        "bldReq":["Laboratoire"],
         "compReq":{"det":3,"energ":1,"pyro":1},
-        "deploy":{"Fer":2,"Potassium":1,"Carbone":1,"Soufre":1,"Oxygène":3,"Azote":1,"Chlore":1},
-        "batch":300,
+        "deploy":{"Fer":2,"Potassium":1,"Carbone":1,"Soufre":1,"Oxygène":3,"Azote":1,"Chlore":1,"Mercure":1},
+        "batch":200,
         "sound":{"paint":"paint_flash","fragger_throw":"paint_flash"},
         "noList": true
     },

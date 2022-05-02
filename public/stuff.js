@@ -741,6 +741,15 @@ function getBatByTileId(tileId) {
     return bat;
 };
 
+function getZoneBatByTileId(tileId) {
+    let bat = {};
+    let index = bataillons.findIndex((obj => obj.tileId === tileId && obj.loc === 'zone'));
+    if (index > -1) {
+        bat = bataillons[index];
+    }
+    return bat;
+};
+
 function getBatByName(name) {
     let bat = {};
     let index = bataillons.findIndex((obj => obj.type == name));

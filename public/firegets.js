@@ -534,7 +534,7 @@ function batDeathEffect(bat,quiet,title,body) {
     if (bat.team != 'aliens') {
         let batType = getBatType(bat);
         addBodies(bat,batType,0);
-        if (batType.crew >= 1 && !batType.skills.includes('robot') && !batType.skills.includes('clone') || !batType.skills.includes('dog') && !batType.skills.includes('brigands') && !bat.tags.includes('outsider') && batType.name != 'Citoyens' && batType.name != 'Criminels') {
+        if (batType.crew >= 1 && !batType.skills.includes('robot') && !batType.skills.includes('clone') && !batType.skills.includes('dog') && !batType.skills.includes('brigands') && !bat.tags.includes('outsider') && batType.name != 'Citoyens' && batType.name != 'Criminels') {
             deathStress();
         }
     }

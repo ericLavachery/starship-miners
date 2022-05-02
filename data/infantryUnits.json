@@ -683,7 +683,7 @@
             "power":0,
             "aoe":"unit",
             "sound":"paint",
-            "ammo":["marquage","marquage-stop"]
+            "ammo":["marquage","marquage-spike","marquage-stop"]
         },
         "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1","silencieux","camkit","e-phare","repel"],
         "log3eq":["repel"],
@@ -3998,7 +3998,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","camo","regeneration","embuscade","mutant","ranger","fastguet","guerrilla","baddef","brigands","escape","herorange","lowstress","w3range"],
+        "skills":["fouille","fortif","camo","regeneration","embuscade","cible","mutant","ranger","fastguet","guerrilla","baddef","brigands","escape","herorange","lowstress","w3range"],
         "fuzz":0,
         "deathFx":"137036__pyrocamancer__beast-death"
     },
@@ -4977,7 +4977,7 @@
             "power":0,
             "aoe":"unit",
             "sound":"paint",
-            "ammo":["marquage","marquage-stop"]
+            "ammo":["marquage","marquage-spike","marquage-stop"]
         },
         "protection":["aucun","chobham","iso","tisal","nano","duneg","soap","swing"],
         "equip":["aucun","e-flash","e-camo","lunette","chargeur1","silencieux","waterproof","detector","g2ai"],
