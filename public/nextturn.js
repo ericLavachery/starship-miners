@@ -66,7 +66,7 @@ function nextTurn() {
                 if (batType.skills.includes('hide')) {
                     hasHide = true;
                 }
-                if (batType.kind === 'larve' && larveHIDE) {
+                if (batType.kind === 'larve' && !batType.skills.includes('fly') && larveHIDE) {
                     hasHide = true;
                 }
                 if (hasHide && bat.salvoLeft >= 1) {

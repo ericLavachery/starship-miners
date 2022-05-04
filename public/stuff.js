@@ -929,7 +929,7 @@ function getRescueByName(rescueName) {
 function tileNaming(tile,withUnit,fromTileId) {
     let tileName = '';
     if (withUnit) {
-        let bat = getBatByTileId(tile.id);
+        let bat = getZoneBatByTileId(tile.id);
         tileName = bat.type+' &middot; ';
     }
     let terName = getTileTerrainFullName(tile.id);

@@ -591,7 +591,7 @@ function checkRuinsRes(tile) {
     if (rand.rand(1,100) <= resChance) {
         conselTriche = true;
         putBatAround(tile.id,false,'noWater',239,0,'go');
-        let coffre = getBatByTileId(coffreTileId);
+        let coffre = getZoneBatByTileId(coffreTileId);
         playerOccupiedTileList();
         let totalRes = 0;
         let thatResChance = 0;
@@ -605,9 +605,9 @@ function checkRuinsRes(tile) {
                 resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
                 if (res.name === 'Corps') {
                     if (ruinsEmpty) {
-                        thatResChance = Math.ceil(resFactor*1*res.batch/3);
+                        thatResChance = Math.ceil(resFactor*1*res.batch/5);
                     } else {
-                        thatResChance = Math.ceil(resFactor*0.5*res.batch/3);
+                        thatResChance = Math.ceil(resFactor*0.5*res.batch/5);
                     }
                 } else if (res.name == 'Nourriture') {
                     if (ruinsEmpty) {

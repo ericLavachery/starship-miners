@@ -32,7 +32,7 @@ function loadRes(retour) {
                 $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeLandersTrans(false)" title="Cacher les vaisseaux">Cacher les vaisseaux</span></span><br>');
             } else {
                 $('#conUnitList').append('<span class="constIcon vert"><i class="fas fa-space-shuttle"></i></span>');
-                $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeLandersTrans(true)" title="Voir les vaisseaux">Voir les vaisseaux</span></span><br>');
+                $('#conUnitList').append('<span class="constName vert"><span class="klik" onclick="seeLandersTrans(true)" title="Voir les vaisseaux et les télépods">Voir Vaisseaux et Pods</span></span><br>');
             }
         }
         if (selectedBatType.skills.includes('dumper')) {
@@ -70,7 +70,7 @@ function loadRes(retour) {
                     if (distance > 1) {
                         teleOK = checkResTeleport(selectedBat,bat);
                     }
-                    if (distance <= 1 || selectedBatType.name === 'Soute' || teleOK) {
+                    if (distance <= 1 || selectedBatType.name === 'Soute' || (teleOK && seeLandersFret)) {
                         let seeMe = true;
                         if (batType.skills.includes('transorbital') && !seeLandersFret && !playerInfos.onShip) {
                             seeMe = false;
@@ -154,7 +154,7 @@ function loadRes(retour) {
             }
         });
         let teleCostOK = checkCost(teleStationCost);
-        if (selectedBatType.skills.includes('teleport')) {
+        if (selectedBatType.skills.includes('teleport') && seeLandersFret) {
             $('#conUnitList').append('<hr>');
             $('#conUnitList').append('<span class="unitPic"><img src="/static/img/units/buildings/station.png" width="48"></span><br>');
             $('#conUnitList').append('<span class="constName cy">Station <span class="gf"> &mdash; (Téléportation)</span></span><br>');

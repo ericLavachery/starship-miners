@@ -123,13 +123,13 @@ function recupPrefabFret(bat,batType,tileId,autoDec,landerBat) {
                 coffreTileId = -1;
                 conselTriche = true;
                 putBatAround(tileId,false,'inPlace',239,0);
-                coffre = getBatByTileId(coffreTileId);
+                coffre = getZoneBatByTileId(coffreTileId);
             }
         } else {
             coffreTileId = -1;
             conselTriche = true;
             putBatAround(tileId,false,'near',239,0);
-            coffre = getBatByTileId(coffreTileId);
+            coffre = getZoneBatByTileId(coffreTileId);
         }
         putFretInChest(bat,batType,coffre);
         bat.transRes = {};

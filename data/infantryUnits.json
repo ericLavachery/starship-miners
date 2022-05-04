@@ -5928,7 +5928,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","camo","clone","nodeathcount","lowmed","lowstress","recupcorps"],
+        "skills":["fouille","fortif","datt","camo","clone","nodeathcount","lowmed","lowstress"],
         "fuzz":-1
     },
     {
@@ -5984,7 +5984,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","clone","lowmed","nodeathcount","lowstress","recupcorps"],
+        "skills":["fouille","fortif","datt","clone","lowmed","nodeathcount","lowstress"],
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -6042,7 +6042,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","datt","clone","lowmed","strong","lowstress","recupcorps"],
+        "skills":["fouille","fortif","datt","clone","lowmed","strong","lowstress"],
         "fuzz":1.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -6098,7 +6098,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fouille","fortif","cible","clone","lowmed","lowstress","recupcorps"],
+        "skills":["fouille","fortif","cible","clone","lowmed","lowstress"],
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
     },

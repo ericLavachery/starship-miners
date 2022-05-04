@@ -1,5 +1,5 @@
 function fouissage() {
-    if (selectedBatType.skills.includes('fouisseur')) {
+    if (selectedBatType.skills.includes('fouisseur') && !selectedBat.tags.includes('freeze') && !selectedBat.tags.includes('stun')) {
         let jumpOK = false;
         let pdmDistance = calcDistance(pointDeMire,selectedBat.tileId);
         if (pdmDistance >= 4) {

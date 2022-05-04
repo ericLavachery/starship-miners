@@ -258,7 +258,7 @@ function putNeighbour(neiBatType) {
         conselTriche = true;
         conselAmmos = checkNeighbourGear(neiBatType);
         putBat(vTileId,cit,xp,'outsider',false);
-        let transBat = getBatByTileId(vTileId);
+        let transBat = getZoneBatByTileId(vTileId);
         lastNeiTileId = vTileId;
         let transVol = neiBatType.transUnits;
         if (transVol >= 180) {

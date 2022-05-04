@@ -1413,6 +1413,7 @@ function setCoconStats() {
     coconStats.turns = 31-Math.floor((zone[0].mapDiff*1.25)+(playerInfos.fuzzTotal/150));
     if (hasUnit('Dôme')) {
         coconStats.dome = true;
+        playerInfos.eggPause = false;
         if (playerInfos.mapTurn >= 35 && coconStats.level < 9) {
             coconStats.level = 9;
         }
@@ -1443,12 +1444,23 @@ function setCoconStats() {
             let sortedAliens = _.sortBy(aliens,'creaTurn');
             sortedAliens.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.type === 'Coque' && !bat.tags.includes('colo') && !bat.tags.includes('morph') && !coconStats.nextColo) {
-                    if (rand.rand(1,2) === 1) {
+                    let batAge = playerInfos.mapTurn-bat.creaTurn;
+                    if (batAge <= 6) {
                         bat.tags.push('colo');
                         coconStats.nextColo = true;
                     }
                 }
             });
+            if (!coconStats.nextColo) {
+                sortedAliens.forEach(function(bat) {
+                    if (bat.loc === "zone" && bat.type === 'Coque' && !bat.tags.includes('colo') && !bat.tags.includes('morph') && !coconStats.nextColo) {
+                        if (rand.rand(1,3) === 1) {
+                            bat.tags.push('colo');
+                            coconStats.nextColo = true;
+                        }
+                    }
+                });
+            }
             if (!coconStats.nextColo) {
                 sortedAliens.forEach(function(bat) {
                     if (bat.loc === "zone" && bat.type === 'Coque' && !bat.tags.includes('colo') && !bat.tags.includes('morph') && !coconStats.nextColo) {
@@ -1656,12 +1668,36 @@ function newEggCat() {
     return eggCat;
 };
 
+function checkAlienBoss(eggCat) {
+    let alienBoss = false;
+    if (eggCat === 'swarm') {
+        if (hasAlien('Homards')) {
+            alienBoss = true;
+        }
+    } else if (eggCat === 'larve') {
+        if (hasAlien('Liches')) {
+            alienBoss = true;
+        }
+    } else if (eggCat === 'spider') {
+        if (hasAlien('Uberspinne')) {
+            alienBoss = true;
+        }
+    } else if (eggCat === 'bug') {
+        if (hasAlien('Overbugs')) {
+            alienBoss = true;
+        }
+    }
+    return alienBoss;
+};
+
 function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
     let overSaturation = false;
     if (playerInfos.alienSat >= coconSatLimit-1 && playerInfos.mapTurn >= 76) {
         overSaturation = true;
     }
+    let eggCat = checkputEggKind(bat);
+    let alienBoss = checkAlienBoss(eggCat);
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     let eggModTurn = eggTurn+Math.ceil((zone[0].mapDiff*2)-6);
     if (coconStats.dome) {
@@ -1765,6 +1801,8 @@ function eggSpawn(bat,fromEgg) {
                     classes.push('A');
                     if (zoneInfos.as) {
                         classes.push('S');
+                    } else if (coconStats.dome && eggModTurn >= 21 && playerInfos.mapTurn >= 40 && !alienBoss) {
+                        classes.push('S');
                     }
                     if (eggModTurn >= 21 && playerInfos.mapTurn >= minTurnA && fromEgg) {
                         const index = classes.indexOf('C');
@@ -1775,7 +1813,6 @@ function eggSpawn(bat,fromEgg) {
                 }
             }
             console.log(classes);
-            let eggCat = checkputEggKind(bat);
             console.log('eggCat: '+eggCat);
             let checkDiceMax = 0;
             let checkDice;

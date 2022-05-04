@@ -1604,7 +1604,7 @@ function recupBodies(bat,batType) {
         coffreTileId = -1;
         conselTriche = true;
         putBatAround(bat.tileId,false,'near',239,0);
-        coffre = getBatByTileId(coffreTileId);
+        coffre = getZoneBatByTileId(coffreTileId);
     }
     let numBodies = 0;
     if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
@@ -1637,7 +1637,7 @@ function recupRes(bat,batType) {
         coffreTileId = -1;
         conselTriche = true;
         putBatAround(bat.tileId,false,'near',239,0);
-        coffre = getBatByTileId(coffreTileId);
+        coffre = getZoneBatByTileId(coffreTileId);
     }
     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
         let resRecup = getResRecup(bat,batType);
@@ -1805,7 +1805,7 @@ function recupInfraRes(tile,infra) {
     coffreTileId = -1;
     conselTriche = true;
     putBatAround(tile.id,false,'near',239,0);
-    let coffre = getBatByTileId(coffreTileId);
+    let coffre = getZoneBatByTileId(coffreTileId);
     let recupFactor = 47;
     let bldFactor = 0;
     let index;
