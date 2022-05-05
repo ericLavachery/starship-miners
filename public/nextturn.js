@@ -880,19 +880,21 @@ function turnInfo() {
             // dropchance
             let dropChance = getDropChance(playerInfos.mapTurn);
             // pause
-            if (playerInfos.droppedEggs < maxDroppedEggs+1 && realNumberOfEggs < maxEggsInPlay && dropChance >= 10 && !playerInfos.eggPause) {
-                if (allCoconTurns[playerInfos.cocons] <= playerInfos.mapTurn || playerInfos.alienSat >= coconSatLimit-1) {
-                    $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Cocon en approche</span><br>');
+            if (!domeProtect) {
+                if (playerInfos.droppedEggs < maxDroppedEggs+1 && realNumberOfEggs < maxEggsInPlay && dropChance >= 10 && !playerInfos.eggPause) {
+                    if (allCoconTurns[playerInfos.cocons] <= playerInfos.mapTurn || playerInfos.alienSat >= coconSatLimit-1) {
+                        $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Cocon en approche</span><br>');
+                    } else {
+                        $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Oeufs en approche</span><br>');
+                    }
                 } else {
-                    $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Oeufs en approche</span><br>');
+                    $('#tour').append('<span class="neutre" title="Aucun oeuf en approche">Aucun oeuf en vue</span><br>');
+                    turnCol = 'neutre';
                 }
-            } else {
-                $('#tour').append('<span class="neutre" title="Aucun oeuf en approche">Aucun oeuf en vue</span><br>');
-                turnCol = 'neutre';
-            }
-            if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2 && allCoconTurns[playerInfos.cocons]-10 <= playerInfos.mapTurn) {
-                let approxTurn = Math.round(allCoconTurns[playerInfos.cocons]/5)*5;
-                $('#tour').append('<span class="'+turnCol+'" title="Cocon prévu aux alentours du tour '+approxTurn+'">Cocon en approche</span><br>');
+                if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2 && allCoconTurns[playerInfos.cocons]-10 <= playerInfos.mapTurn) {
+                    let approxTurn = Math.round(allCoconTurns[playerInfos.cocons]/5)*5;
+                    $('#tour').append('<span class="'+turnCol+'" title="Cocon prévu aux alentours du tour '+approxTurn+'">Cocon en approche</span><br>');
+                }
             }
         }
         let sconvNear = false;

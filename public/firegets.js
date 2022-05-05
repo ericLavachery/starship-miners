@@ -1390,7 +1390,7 @@ function checkInvisibleTarget(bat,weap,alien,alienType,guideTarget) {
     let hiddenOK = true;
     if (alienType.skills.includes('invisible') || alien.tags.includes('invisible')) {
         if (!guideTarget && !alien.tags.includes('fluo')) {
-            if (weap.name != 'Pointage' || (alien.damage === 0 && alienType.skills.includes('invisible'))) {
+            if (!weap.vision || (alien.damage === 0 && alienType.skills.includes('invisible'))) {
                 let zeroRange = sideBySideTiles(bat.tileId,alien.tileId,false);
                 if (!zeroRange) {
                     hiddenOK = false;
@@ -1745,6 +1745,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.isPrec = false;
     } else {
         thisWeapon.isPrec = weapon.isPrec;
+    }
+    if (weapon.vision === undefined) {
+        thisWeapon.vision = false;
+    } else {
+        thisWeapon.vision = weapon.vision;
     }
     if (weapon.isBow === undefined) {
         thisWeapon.isBow = false;
@@ -2639,7 +2644,9 @@ function getEggProtect(eggBat,eggBatType,weap) {
     if (eggBatType.skills.includes('eggprotect')) {
         eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1.25)*3.5)));
         if (eggBatType.skills.includes('turnprotect')) {
-            eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.65));
+            if (!domeProtect) {
+                eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.65));
+            }
             if (eggBat.tags.includes('morph')) {
                 eggProt = Math.round(eggProt/1.1);
             }
@@ -2648,7 +2655,7 @@ function getEggProtect(eggBat,eggBatType,weap) {
             eggProt = Math.round(eggProt/1.5);
         }
     }
-    if (coconStats.dome && eggBatType.name != 'Colonie') {
+    if (!domeProtect && coconStats.dome && eggBatType.name != 'Colonie') {
         eggProt = eggProt+10;
     }
     if (eggProt > 100) {eggProt = 100;}

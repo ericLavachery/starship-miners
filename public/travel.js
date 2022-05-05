@@ -309,6 +309,12 @@ function healEverything() {
                 bat.autoLoad = [];
             }
         }
+        // MINING -------------------------------------------
+        if (bat.extracted != undefined) {
+            if (bat.extracted.length >= 1) {
+                bat.extracted = [];
+            }
+        }
         // AP -------------------------------------------
         bat.apLeft = bat.ap;
         bat.oldapLeft = bat.ap;

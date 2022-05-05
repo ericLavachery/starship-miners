@@ -339,7 +339,9 @@ function goRavitDrug(apCost) {
         });
         if (Object.keys(ravitBat).length >= 1) {
             selectedBat.apLeft = selectedBat.apLeft-apCost;
-            selectedBat.salvoLeft = 0;
+            if (playerInfos.comp.log < 3) {
+                selectedBat.salvoLeft = 0;
+            }
             let i = 1;
             while (i <= 120) {
                 if (selectedBat.tags.includes('dU')) {
@@ -404,7 +406,9 @@ function goStock(apCost) {
         });
         if (stockOK) {
             selectedBat.apLeft = selectedBat.apLeft-apCost;
-            selectedBat.salvoLeft = 0;
+            if (playerInfos.comp.log < 3) {
+                selectedBat.salvoLeft = 0;
+            }
             let i = 1;
             while (i <= 50) {
                 if (selectedBat.tags.includes('sU')) {

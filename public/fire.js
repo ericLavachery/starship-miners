@@ -260,9 +260,6 @@ function combat(melee) {
         if (!stayHidden) {
             camoOut();
         }
-        // if (rand.rand(1,100) > calcTirFurtif(selectedWeap,selectedBat)) {
-        //     camoOut();
-        // }
     }
 };
 
@@ -1201,7 +1198,9 @@ function attack(melee,init) {
     if (targetBat.squadsLeft <= 0) {
         if ((targetBatType.skills.includes('survivor') || targetBat.eq === 'permakirin' || targetBat.logeq === 'permakirin' || targetBat.vet === 4 || targetBat.tags.includes('survivor')) && !targetBat.tags.includes('lucky')) {
             targetBat.squadsLeft = 1;
-            targetBat.apLeft = targetBat.ap;
+            if (targetBat.apLeft < 4) {
+                targetBat.apLeft = 4;
+            }
             targetBat.tags.push('lucky');
             tagDelete(targetBat,'survivor');
             $('#report').append('<span class="report rose">Survivant!<br></span>');
@@ -1998,7 +1997,9 @@ function defense(melee,init) {
         // console.log('dead');
         if (!selectedBat.tags.includes('lucky') && (selectedBatType.skills.includes('survivor') || selectedBat.eq === 'permakirin' || selectedBat.logeq === 'permakirin' || selectedBat.vet === 4 || selectedBat.tags.includes('survivor'))) {
             selectedBat.squadsLeft = 1;
-            selectedBat.apLeft = selectedBat.ap;
+            if (selectedBat.apLeft < 4) {
+                selectedBat.apLeft = 4;
+            }
             selectedBat.tags.push('lucky');
             tagDelete(selectedBat,'survivor');
             $('#report').append('<span class="report rose">Survivant!<br></span>');

@@ -2323,7 +2323,7 @@
         "skills":["invisible","chancre","larvehide","fastreg","minaccu","terror","okwater","nolaser","sentinelle","flee"],
         "deathFx":"death2",
         "spawnFx":"spawn-lich",
-        "fxPriority":9,
+        "fxPriority":12,
         "killRes":{"Bugium":7,"Blendium":63,"Larvium":16,"Germium":16,"Bossium":33},
         "killXP":75,
         "flavText":"Les liches rendent toutes les larves invisible."

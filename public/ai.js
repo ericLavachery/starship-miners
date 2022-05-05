@@ -156,7 +156,7 @@ function checkAlienFlyTarget(weapon,bat) {
                 isFlying = true;
             }
         }
-        if (bat.tags.includes('camo') || bat.tags.includes('fortif')) {
+        if (bat.tags.includes('camo') || bat.tags.includes('fortif') || bat.tags.includes('mining')) {
             isTarget = true;
         } else if (isFlying) {
             if (selectedBat.tileId === selectedBat.oldTileId && bat.tileId === bat.oldTileId && selectedBat.creaTurn < playerInfos.mapTurn) {

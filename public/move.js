@@ -656,21 +656,15 @@ function calcMoveCost(targetTileId,diag) {
             baseMoveCost = baseMoveCost-0.5;
         }
     }
+    if (selectedBat.tags.includes('zombie')) {
+        baseMoveCost = baseMoveCost*1.5;
+    }
     if (playerInfos.comp.trans === 3 && selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot') && !selectedBatType.skills.includes('cyber') && selectedBatType.moveCost < 90) {
         baseMoveCost = baseMoveCost*0.9;
     }
     let moveCost;
     if (tile.rd && !selectedBatType.skills.includes('hover')) {
         moveCost = baseMoveCost+terrain.roadmc;
-        // if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'e-ranger' || selectedBat.logeq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitlu' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitto') {
-        //     if (terrain.roadmc > terrain.rangermc) {
-        //         if (terrain.rangermc >= 2) {
-        //             moveCost = baseMoveCost+terrain.rangermc-0.5;
-        //         } else {
-        //             moveCost = baseMoveCost+terrain.rangermc;
-        //         }
-        //     }
-        // }
         if (baseMoveCost >= 4 && selectedBat.team != 'aliens') {
             moveCost = moveCost-((baseMoveCost-3)/2);
         }
