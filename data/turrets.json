@@ -657,7 +657,7 @@
             "noise":2,
             "noDef":true,
             "kit":true,
-            "rof":12,
+            "rof":20,
             "accuracy":50,
             "power":0,
             "aoe":"unit",

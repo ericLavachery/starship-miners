@@ -159,7 +159,7 @@ function checkAlienFlyTarget(weapon,bat) {
         if (bat.tags.includes('camo') || bat.tags.includes('fortif') || bat.tags.includes('mining')) {
             isTarget = true;
         } else if (isFlying) {
-            if (selectedBat.tileId === selectedBat.oldTileId && bat.tileId === bat.oldTileId && selectedBat.creaTurn < playerInfos.mapTurn) {
+            if (selectedBat.tileId === selectedBat.oldTileId && bat.tileId === bat.oldTileId && selectedBat.creaTurn+1 < playerInfos.mapTurn) {
                 let distance = calcDistance(selectedBat.tileId,bat.tileId);
                 if (distance === 0) {
                     isTarget = true;
@@ -295,18 +295,34 @@ function checkPDM() {
             }
         });
     } else {
-        shufBats.forEach(function(bat) {
-            if (bat.loc === "zone" && bat.fuzz >= 4) {
-                batType = getBatType(bat);
-                if (!batType.skills.includes('fly')) {
-                    distance = calcDistance(selectedBat.tileId,bat.tileId);
-                    if (distance < lePlusProche) {
-                        pointDeMire = bat.tileId;
-                        lePlusProche = distance;
+        if (selectedBatType.skills.includes('aimcfo')) {
+            shufBats.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.fuzz >= 4) {
+                    batType = getBatType(bat);
+                    if (batType.skills.includes('cfo') || batType.skills.includes('pilone') || batType.skills.includes('dome')) {
+                        distance = calcDistance(selectedBat.tileId,bat.tileId);
+                        if (distance < lePlusProche) {
+                            pointDeMire = bat.tileId;
+                            lePlusProche = distance;
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
+        if (pointDeMire < 0) {
+            shufBats.forEach(function(bat) {
+                if (bat.loc === "zone" && bat.fuzz >= 4) {
+                    batType = getBatType(bat);
+                    if (!batType.skills.includes('fly')) {
+                        distance = calcDistance(selectedBat.tileId,bat.tileId);
+                        if (distance < lePlusProche) {
+                            pointDeMire = bat.tileId;
+                            lePlusProche = distance;
+                        }
+                    }
+                }
+            });
+        }
         if (pointDeMire < 0) {
             // se rabat sur une autre cible
             shufBats.forEach(function(bat) {
@@ -450,6 +466,13 @@ function targetLogic(bat) {
     }
     if (tFuzz < -95) {
         tFuzz = -95;
+    }
+    if (selectedBatType.skills.includes('aimcfo')) {
+        if (batType.skills.includes('dome')) {
+            tFuzz = 999;
+        } else if (batType.skills.includes('pilone') || batType.skills.includes('cfo')) {
+            tFuzz = 777;
+        }
     }
     return Math.round(tFuzz);
 };

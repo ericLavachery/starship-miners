@@ -179,6 +179,7 @@ let landingNoise = 6;
 let upkeepVM = 1.333 // upkeep/1.33
 let prodVM = 1.333 // prod/1.33
 let gangsBonus = false;
+let gangFacts = getGangFactors();
 let sondeCount = 'cy';
 let homeCount = 'cy';
 let apoCount = 400; // 435

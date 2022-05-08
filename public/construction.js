@@ -720,7 +720,7 @@ function checkUnitCompReq(unit,forGangList) {
         }
     }
     // Taupes/Blades
-    if (unit.name === 'Taupes' && (playerInfos.gang === 'blades' || playerInfos.gang === 'brasier' || playerInfos.gang === 'drogmulojs' || playerInfos.gang === 'rednecks')) {
+    if (unit.name === 'Taupes' && gangFacts.taupe) {
         if (playerInfos.comp.aero < 1 || playerInfos.comp.cyber < 1) {
             compReqOK = false;
         }
@@ -1001,6 +1001,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             newBat.typeId = conselUnit.id;
             newBat.team = team;
             newBat.creaTurn = playerInfos.mapTurn;
+            if (conselUnit.cat === 'aliens' && conselUnit.name != 'Cocon') {
+                newBat.creaTurn = newBat.creaTurn+rand.rand(0,2)-1;
+            }
             newBat.loc = 'zone';
             newBat.locId = 0;
             newBat.tileId = tileId;

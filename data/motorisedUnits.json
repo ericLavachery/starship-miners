@@ -3499,7 +3499,7 @@
             "elevation":3,
             "noise":2,
             "noDef":true,
-            "rof":9,
+            "rof":12,
             "accuracy":50,
             "power":0,
             "aoe":"unit",

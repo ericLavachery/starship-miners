@@ -692,6 +692,7 @@ function turnInfo() {
     let numClassA = 0;
     let numClassS = 0;
     let realNumberOfEggs = 0;
+    let isLarveHide = hasAlien('Liches');
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
@@ -700,6 +701,15 @@ function turnInfo() {
             }
             if (batType.class === 'S') {
                 numClassS++;
+            }
+            if (!isLarveHide) {
+                if (batType.kind === 'larve' && !batType.skills.includes('dive') && !batType.skills.includes('hide') && bat.tags.includes('invisible')) {
+                    tagDelete(bat,'invisible');
+                }
+            } else {
+                if (batType.kind === 'larve' && batType.skills.includes('fly') && bat.tags.includes('invisible')) {
+                    tagDelete(bat,'invisible');
+                }
             }
             if (bat.type == 'Oeuf' || bat.type == 'Coque' || bat.type === 'Cocon' || bat.type === 'Colonie') {
                 let isVisible = true;

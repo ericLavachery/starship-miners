@@ -5224,7 +5224,7 @@
         "hp":2,
         "armor":1,
         "size":2,
-        "stealth":8,
+        "stealth":1,
         "speed":2,
         "ap":11,
         "maxSalvo":1,
@@ -5259,13 +5259,13 @@
             "ammo":["autodes","autodes-incendiaire","autodes-napalm","autodes-gaz","autodes-jello","autodes-nanite","autodes-uridium","autodes-deluge"]
         },
         "protection":["aucun","chobham","iso","tisal","nano","duneg","soap","swing"],
-        "equip":["aucun","e-flash","e-camo","e-ranger","g2motor","waterproof","detector"],
+        "equip":["aucun","e-flash","e-ranger","g2motor","waterproof","detector"],
         "log3eq":["detector"],
         "moveCost":2,
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["camo","datt","robot","crange","nodeathcount"],
+        "skills":["datt","robot","crange","nodeathcount"],
         "fuzz":0,
         "deathFx":"505751__thehorriblejoke__computer-breaking-sound"
     },
@@ -5649,7 +5649,7 @@
             "elevation":4,
             "noise":1,
             "noDef":true,
-            "rof":8,
+            "rof":4,
             "accuracy":50,
             "power":0,
             "aoe":"unit",
@@ -5878,6 +5878,7 @@
         "maxVeg":3,
         "skills":["dog","lowmed","lowstress","noblub","escape","ranger","genhab2","guerrilla","tirailleur","recupcorps"],
         "fuzz":1,
+        "cloneSlot":2,
         "deathFx":"dog_death"
     },
     {
@@ -5932,7 +5933,8 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["fouille","fortif","datt","camo","clone","nodeathcount","lowmed","lowstress"],
-        "fuzz":-1
+        "fuzz":-1,
+        "cloneSlot":1
     },
     {
         "id":138,
@@ -5989,6 +5991,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","clone","lowmed","nodeathcount","lowstress"],
         "fuzz":1,
+        "cloneSlot":2,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
     {
@@ -6047,6 +6050,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","datt","clone","lowmed","strong","lowstress"],
         "fuzz":1.5,
+        "cloneSlot":3,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
     {
@@ -6103,6 +6107,7 @@
         "maxVeg":3,
         "skills":["fouille","fortif","cible","clone","lowmed","lowstress"],
         "fuzz":1,
+        "cloneSlot":3,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
     {

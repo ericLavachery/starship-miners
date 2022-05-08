@@ -539,11 +539,14 @@ function dropEgg(alienUnit,theArea) {
 
 function hasAlien(unitName) {
     let youHaveIt = false;
-    aliens.forEach(function(bat) {
-        if (bat.type === unitName) {
-            youHaveIt = true;
-        }
-    });
+    if (aliens.some(e => e.type === unitName)) {
+        youHaveIt = true;
+    }
+    // aliens.forEach(function(bat) {
+    //     if (bat.type === unitName) {
+    //         youHaveIt = true;
+    //     }
+    // });
     return youHaveIt;
 };
 
@@ -1801,7 +1804,7 @@ function eggSpawn(bat,fromEgg) {
                     classes.push('A');
                     if (zoneInfos.as) {
                         classes.push('S');
-                    } else if (coconStats.dome && eggModTurn >= 21 && playerInfos.mapTurn >= 40 && !alienBoss) {
+                    } else if (coconStats.dome && eggModTurn >= 21 && playerInfos.mapTurn >= 40 && !alienBoss && fromEgg && bat.type != 'Oeuf voilé') {
                         classes.push('S');
                     }
                     if (eggModTurn >= 21 && playerInfos.mapTurn >= minTurnA && fromEgg) {

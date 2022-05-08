@@ -599,7 +599,7 @@ function checkRuinsRes(tile) {
         let mapFactor = Math.round(((Math.sqrt(zone[0].mapDiff+2)*10)+zone[0].mapDiff)/8);
         let resFactor;
         resTypes.forEach(function(res) {
-            if (res.name != 'Magma' && res.name != 'Scrap' && res.cat != 'alien') {
+            if (res.name != 'Magma' && res.name != 'Scrap' && res.name != 'Corps' && res.cat != 'alien') {
                 thatResChance = 0;
                 thatResNum = 0;
                 resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
@@ -663,11 +663,17 @@ function checkRuinsRes(tile) {
         if (totalRes <= 0) {
             resTypes.forEach(function(res) {
                 if (totalRes <= 0) {
-                    if (res.name != 'Magma' && res.name != 'Scrap' && res.cat != 'alien') {
+                    if (res.name != 'Magma' && res.name != 'Scrap' && res.name != 'Corps' && res.cat != 'alien') {
                         thatResChance = 0;
                         thatResNum = 0;
                         resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
-                        if (res.name == 'Nourriture') {
+                        if (res.name === 'Corps') {
+                            if (ruinsEmpty) {
+                                thatResChance = Math.ceil(resFactor*1*res.batch/5);
+                            } else {
+                                thatResChance = Math.ceil(resFactor*0.5*res.batch/5);
+                            }
+                        } else if (res.name == 'Nourriture') {
                             if (ruinsEmpty) {
                                 thatResChance = Math.ceil(resFactor*res.batch/3);
                             } else {

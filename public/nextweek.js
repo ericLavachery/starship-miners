@@ -17,6 +17,7 @@ function events(afterMission,time,sim,quiet) {
         repos(time);
     }
     eventCitoyens(time,sim,quiet);
+    eventBodies(time,sim,quiet);
     eventProduction(afterMission,time,sim,quiet); // remove 'return' tag !!!
     eventBouffe(time,sim,quiet);
     eventCrime(time,sim,quiet);
@@ -451,8 +452,9 @@ function showResBallance(quiet) {
 
 function eventCitoyens(time,sim,quiet) {
     let citNeed = getCitNeed();
+    // let gangFacts = getGangFactors();
     console.log('$$$$$$$$$$$$$$$$$$$$$ citNeed = '+citNeed);
-    let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,20)/10);
+    let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,20)*gangFacts.cit*(playerInfos.comp.med+30)*(playerInfos.comp.vsp+30)/9000);
     let citId = 126;
     let citName = 'Citoyens';
     if (rand.rand(1,ruinsCrimChance) === 1) {
@@ -464,7 +466,20 @@ function eventCitoyens(time,sim,quiet) {
         playerInfos.allCits = playerInfos.allCits+newCitsNumber;
     }
     if (!quiet) {
-        warning('Nouveaux citoyens','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont débarqué dans la station.<br>',true);
+        warning('Navette de secours','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont été récupérés par la navette de secours.<br>',true);
+    }
+};
+
+function eventBodies(time,sim,quiet) {
+    // let gangFacts = getGangFactors();
+    let bodyCount = Math.floor(time*rand.rand(1,19)*gangFacts.bod*(playerInfos.comp.med+6)/140);
+    if (bodyCount >= 5) {
+        if (!sim) {
+            resAdd('Corps',bodyCount);
+        }
+        if (!quiet) {
+            warning('Navette de secours','<span class="vert">'+bodyCount+' corps</span> ont été récupérés par la navette de secours.<br>',true);
+        }
     }
 };
 

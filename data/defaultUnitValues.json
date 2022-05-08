@@ -70,5 +70,6 @@
     "transUnits":0,
     "transRes":0,
     "fuzz": 0,
+    "cloneSlot":0,
     "deathFx":"xplode"
 }

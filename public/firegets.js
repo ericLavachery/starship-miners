@@ -556,19 +556,26 @@ function addBodies(bat,batType,cits) {
         unitCits = cits;
     } else {
         unitCits = batType.squads*batType.crew*batType.squadSize;
-        if (batType.skills.includes('clone') || batType.skills.includes('dog') || bat.tags.includes('nomove')) {
+        if (batType.skills.includes('dog') || bat.tags.includes('nomove')) {
             unitCits = 0;
         }
         if (batType.id === 126 || batType.id === 225) {
             unitCits = batType.citoyens;
         }
     }
-    let bodyFactor = 50+(playerInfos.comp.gen*10)+(playerInfos.comp.med*5);
-    if (playerInfos.gang === 'brasier') {
-        bodyFactor = bodyFactor+20;
-    }
+    let bodyFactor = 45+(playerInfos.comp.gen*10)+(playerInfos.comp.med*5)+(gangFacts.bod*100)-100+rand.rand(0,10);
     let bodyRecup = Math.ceil(unitCits*bodyFactor/100);
-    resAdd('Corps',bodyRecup);
+    if (bodyRecup >= 1) {
+        resAdd('Corps',bodyRecup);
+    }
+    if (batType.skills.includes('dog')) {
+        unitCits = batType.squads*batType.crew*batType.squadSize;
+        bodyFactor = 40+(playerInfos.comp.ca*5)+(gangFacts.cit*300)-300+rand.rand(0,10);
+        let bidocheRecup = Math.ceil(unitCits*bodyFactor/100);
+        if (bidocheRecup >= 1) {
+            resAdd('Gibier',bidocheRecup);
+        }
+    }
 };
 
 function newAlienKilled(batType,tileId) {
@@ -2075,13 +2082,17 @@ function weaponAdj(weapon,bat,wn) {
     if (bat.range < thisWeapon.range) {
         bat.range = thisWeapon.range;
     }
-    // RANGE ADJUSTMENTS
+    // ERUPTIONS
+    if (thisWeapon.name === 'Eruption') {
+        thisWeapon.power = thisWeapon.power+Math.floor((zone[0].mapDiff-1)/1.8/22*thisWeapon.power);
+    }
     if (batType.name === 'Ruche') {
         if (colonyTiles.includes(bat.tileId)) {
             thisWeapon.range = thisWeapon.range+5;
-            thisWeapon.power = thisWeapon.power+5;
+            thisWeapon.power = thisWeapon.power+zone[0].mapDiff-5;
         }
     }
+    // RANGE ADJUSTMENTS
     // Elevation
     let infra = '';
     if (batType.cat != 'aliens') {

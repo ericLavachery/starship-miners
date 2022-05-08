@@ -193,6 +193,25 @@ function targetBatArrayUpdate() {
     }
 };
 
+function getGangFactors() {
+    let gangFacts = {};
+    gangFacts.cit = 1;
+    gangFacts.bod = 1;
+    gangFacts.taupe = false;
+    if (playerInfos.gang != undefined) {
+        if (playerInfos.gang === 'rednecks') {
+            gangFacts.cit = 1.1;
+        }
+        if (playerInfos.gang === 'brasier') {
+            gangFacts.bod = 1.2;
+        }
+        if (playerInfos.gang === 'blades' || playerInfos.gang === 'brasier' || playerInfos.gang === 'drogmulojs' || playerInfos.gang === 'rednecks') {
+            gangFacts.taupe = true;
+        }
+    }
+    return gangFacts;
+};
+
 function levelUp(bat,batType) {
     let oldGrade = getGrade(bat,batType);
     bat.xp = bat.xp.toFixedNumber(2);
@@ -534,11 +553,14 @@ function getStartPack(gang) {
 
 function hasUnit(unitName) {
     let youHaveIt = false;
-    bataillons.forEach(function(bat) {
-        if (bat.type === unitName) {
-            youHaveIt = true;
-        }
-    });
+    if (bataillons.some(e => e.type === unitName)) {
+        youHaveIt = true;
+    }
+    // bataillons.forEach(function(bat) {
+    //     if (bat.type === unitName) {
+    //         youHaveIt = true;
+    //     }
+    // });
     return youHaveIt;
 }
 

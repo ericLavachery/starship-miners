@@ -459,7 +459,9 @@ function playerSkillsUTChanges() {
         }
         if (playerInfos.comp.const >= 1) {
             if (unit.cat === 'buildings' || unit.cat === 'devices') {
-                unit.fabTime = unit.fabTime/(playerInfos.comp.const+3)*3;
+                if (!unit.skills.includes('cfo') && !unit.skills.includes('dome') && !unit.skills.includes('pilone')) {
+                    unit.fabTime = unit.fabTime/(playerInfos.comp.const+3)*3;
+                }
             }
         }
         if (playerInfos.comp.const >= 1 && unit.cat === 'buildings') {
@@ -808,6 +810,11 @@ function playerSkillsUTChanges() {
                     unit.weapon2.vision = true;
                 }
             }
+        }
+        // DÔMES
+        if (unit.skills.includes('cfo') || unit.skills.includes('dome') || unit.skills.includes('pilone')) {
+            let domeBonus = (playerInfos.comp.const+playerInfos.comp.energ+playerInfos.comp.def)/3;
+            unit.fabTime = unit.fabTime/(domeBonus+3)*3;
         }
         // GANGS
         if (playerInfos.gang === 'brasier') {
