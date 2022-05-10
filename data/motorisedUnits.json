@@ -224,7 +224,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","caterp","guerrilla","inflammable","selfbadmecano","fret","light","crewsave","recupcit","recupres"],
+        "skills":["fortif","caterp","guerrilla","selfbadmecano","fret","light","crewsave","recupcit","recupres"],
         "mecanoCost":15,
         "transRes":120,
         "fuzz":2.5,
@@ -1180,7 +1180,7 @@
             "power":40,
             "aoe":"squad",
             "sound":"miss",
-            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-jello","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
+            "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-jello","missile-heatseeker","missile-uridium","missile-nanite","missile-plastanium","missile-deluge"],
             "maxAmmo":6,
             "ravitBld":"Arsenal"
         },
@@ -2997,7 +2997,7 @@
             "ravitBld":"Atelier"
         },
         "protection":["aucun","scrap","kanchan","chobham","rhodu","autorep","tisal","iso","soap","swag","adamantite"],
-        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","e-flash","theeye","e-mecano","repel"],
+        "equip":["aucun","chargeur1","g2motor","arrosoir","chenilles","snorkel","e-flash","theeye","e-mecano","repel"],
         "log3eq":["chenilles"],
         "moveCost":2,
         "maxFlood":0,

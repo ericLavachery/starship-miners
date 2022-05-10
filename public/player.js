@@ -810,6 +810,9 @@ function playerSkillsUTChanges() {
                     unit.weapon2.vision = true;
                 }
             }
+            if (unit.skills.includes('detsalvo')) {
+                unit.maxSalvo = playerInfos.comp.det;
+            }
         }
         // DÔMES
         if (unit.skills.includes('cfo') || unit.skills.includes('dome') || unit.skills.includes('pilone')) {

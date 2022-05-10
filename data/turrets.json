@@ -683,7 +683,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","longshot","prefab","noshow","transport","fret","ravitaillement","routes","phare","recupcit","badcrewsave","recupres","lurange"],
+        "skills":["fouille","longshot","prefab","noshow","transport","fret","ravitaillement","routes","phare","recupcit","badcrewsave","recupres","lurange","detsalvo"],
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":250,

@@ -66,16 +66,16 @@ function nextTurn() {
                 if (batType.skills.includes('hide')) {
                     hasHide = true;
                 }
-                if (batType.kind === 'larve' && !batType.skills.includes('fly') && larveHIDE) {
+                if (batType.kind === 'larve' && !batType.skills.includes('fly') && !batType.skills.includes('invisible') && larveHIDE) {
                     hasHide = true;
                 }
-                if (hasHide && bat.salvoLeft >= 1) {
+                if (hasHide && bat.salvoLeft >= 1 && !bat.tags.includes('fluo')) {
                     bat.tags.push('invisible');
                 }
             }
             if (batType.skills.includes('healhide')) {
                 if (bat.squadsLeft <= 3) {
-                    if (!bat.tags.includes('invisible')) {
+                    if (!bat.tags.includes('invisible') && !bat.tags.includes('fluo')) {
                         bat.tags.push('invisible');
                     }
                 } else {
@@ -167,13 +167,20 @@ function nextTurn() {
 };
 
 function alienTurnEnd() {
+    deadAliensList = [];
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             let batType = getBatType(bat);
+            if (bat.tags.includes('suicide')) {
+                bat.squadsLeft = bat.squadsLeft-1;
+                if (bat.squadsLeft <= 0) {
+                    deadAliensList.push(bat.id);
+                }
+            }
             if (batType.skills.includes('lurk') || batType.skills.includes('dive') || batType.skills.includes('creep')) {
                 let tile = getTile(bat);
                 let hideTerrains = [];
-                if (batType.skills.includes('lurk') && bat.salvoLeft >= 1) {
+                if (batType.skills.includes('lurk') && bat.salvoLeft >= 1 && !bat.tags.includes('fluo')) {
                     hideTerrains.push('F');
                 }
                 if (batType.skills.includes('dive')) {
@@ -182,7 +189,7 @@ function alienTurnEnd() {
                     hideTerrains.push('W');
                     hideTerrains.push('S');
                 }
-                if (batType.skills.includes('creep') && bat.salvoLeft >= 1) {
+                if (batType.skills.includes('creep') && bat.salvoLeft >= 1 && !bat.tags.includes('fluo')) {
                     hideTerrains.push('F');
                     hideTerrains.push('B');
                     hideTerrains.push('M');
@@ -200,6 +207,7 @@ function alienTurnEnd() {
             }
         }
     });
+    killAlienList();
 }
 
 function nextTurnEnd() {
@@ -693,6 +701,7 @@ function turnInfo() {
     let numClassS = 0;
     let realNumberOfEggs = 0;
     let isLarveHide = hasAlien('Liches');
+    let hasLarveOV = hasAlienWithTag('Oeuf voilé','larve');
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
@@ -702,13 +711,21 @@ function turnInfo() {
             if (batType.class === 'S') {
                 numClassS++;
             }
-            if (!isLarveHide) {
-                if (batType.kind === 'larve' && !batType.skills.includes('dive') && !batType.skills.includes('hide') && bat.tags.includes('invisible')) {
+            if (bat.tags.includes('invisible')) {
+                if (bat.tags.includes('fluo')) {
                     tagDelete(bat,'invisible');
-                }
-            } else {
-                if (batType.kind === 'larve' && batType.skills.includes('fly') && bat.tags.includes('invisible')) {
-                    tagDelete(bat,'invisible');
+                } else {
+                    if (!isLarveHide) {
+                        if (batType.kind === 'larve' && !batType.skills.includes('dive') && !batType.skills.includes('hide')) {
+                            tagDelete(bat,'invisible');
+                        }
+                    } else {
+                        if (batType.kind === 'larve' && !hasLarveOV) {
+                            if (batType.skills.includes('fly')) {
+                                tagDelete(bat,'invisible');
+                            }
+                        }
+                    }
                 }
             }
             if (bat.type == 'Oeuf' || bat.type == 'Coque' || bat.type === 'Cocon' || bat.type === 'Colonie') {
@@ -808,6 +825,14 @@ function turnInfo() {
     });
     if (nDom >= 1 && nPil >= 4) {
         domeProtect = true;
+        let domeBat = getBatTypeByName('Dôme');
+        if (domeBat.opTurn != undefined) {
+            if (domeBat.opTurn <= 0) {
+                domeBat.opTurn = playerInfos.mapTurn;
+            }
+        } else {
+            domeBat.opTurn = playerInfos.mapTurn;
+        }
     }
     console.log('landingNoise = '+landingNoise);
     playerInfos.fuzzTotal = fuzzTotal;

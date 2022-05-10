@@ -559,6 +559,27 @@
         "costs":{"Aluminium":6,"Carbone":18,"Titane":6,"Silicium":6}
     },
     {
+        "name":"arrosoir",
+        "cat":"equip",
+        "skills":[],
+        "info":"Canon à essence",
+        "bldReq":["Atelier"],
+        "compReq":{"pyro":1},
+        "factor":"crew",
+        "costs":{"Carbone":6,"Aluminium":12,"Moteurs":2}
+    },
+    {
+        "name":"kit-pompiste",
+        "cat":"equip",
+        "skills":[],
+        "info":"Canon à essence / Résistance feu",
+        "bldReq":["Atelier"],
+        "compReq":{"def":1,"pyro":1},
+        "factor":"crew",
+        "costs":{"Carbone":6,"Scrap":24,"Aluminium":24,"Moteurs":2,"Nickel":6},
+        "deploy":{"Energie":3,"Fuel":10}
+    },
+    {
         "name":"e-ranger",
         "cat":"equip",
         "skills":[],

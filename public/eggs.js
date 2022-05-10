@@ -550,6 +550,16 @@ function hasAlien(unitName) {
     return youHaveIt;
 };
 
+function hasAlienWithTag(unitName,tag) {
+    let youHaveIt = false;
+    aliens.forEach(function(bat) {
+        if (bat.type === unitName && bat.tags.includes(tag)) {
+            youHaveIt = true;
+        }
+    });
+    return youHaveIt;
+};
+
 function checkPiloneTiles() {
     let piloneTiles = [];
     bataillons.forEach(function(bat) {

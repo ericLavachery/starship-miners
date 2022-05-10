@@ -648,7 +648,8 @@ function transDestroy(deadId,tileId) {
     alienOccupiedTileList();
     let savedBats = 0;
     let crashBats = [];
-    let batIndex;
+    let deadTransBat = getBatById(deadId);
+    let deadTransBatType = getBatType(deadTransBat);
     bataillons.forEach(function(bat) {
         if (bat.loc === "trans" && bat.locId === deadId) {
             crashBats.push(bat);
@@ -661,12 +662,18 @@ function transDestroy(deadId,tileId) {
             bat.loc = 'zone';
             bat.tileId = crashEscapeTile;
             bat.oldTileId = crashEscapeTile;
+            if (deadTransBatType.skills.includes('fly')) {
+                bat.squadsLeft = bat.squadsLeft-2;
+                if (bat.squadsLeft < 1) {
+                    bat.squadsLeft = 1;
+                }
+            }
             savedBats++;
         } else {
             let batType = getBatType(bat);
             addBodies(bat,batType,0);
             warning('RIP',batType.name+' sont morts dans l\'accident');
-            batIndex = bataillons.findIndex((obj => obj.id == bat.id));
+            let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
             bataillons.splice(batIndex,1);
             if (!batType.skills.includes('nodeathcount')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
@@ -1504,6 +1511,9 @@ function checkGuidage(weapon,alien) {
             if (!weapon.name.includes('Comet') && !weapon.name.includes('Thunder')) {
                 guideTarget = true;
             }
+            if (weapon.ammo === 'missile-homing') {
+                guideTarget = true;
+            }
         }
     }
     return guideTarget;
@@ -1923,6 +1933,23 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.maxAmmo = 16;
         }
     }
+    if (bat.eq === 'arrosoir') {
+        if (thisWeapon.name.includes('Lance-flammes')) {
+            thisWeapon.name = 'Arrosoir';
+            thisWeapon.range = 1;
+            thisWeapon.elevation = 1;
+            thisWeapon.accuracy = thisWeapon.accuracy-10;
+            thisWeapon.noDef = true;
+            thisWeapon.rof = 6;
+            thisWeapon.power = 0;
+            thisWeapon.sound = 'hose';
+            if (wn == 'w2') {
+                bat.ammo = 'fuel';
+            } else {
+                bat.ammo = 'fuel';
+            }
+        }
+    }
     if (bat.eq === 'arcpoulie' || bat.logeq === 'arcpoulie') {
         if (thisWeapon.name.includes('Arc')) {
             thisWeapon.name = 'Arc à poulies';
@@ -2000,6 +2027,11 @@ function weaponAdj(weapon,bat,wn) {
     if (wn == 'w2') {
         myAmmo = bat.ammo2;
     }
+    // if (bat.eq === 'arrosoir') {
+    //     if (thisWeapon.name.includes('Lance-flammes')) {
+    //         myAmmo = 'fuel';
+    //     }
+    // }
     let ammoIndex = ammoTypes.findIndex((obj => obj.name == myAmmo));
     let ammo = ammoTypes[ammoIndex];
     thisWeapon.ammo = myAmmo;
@@ -2085,6 +2117,22 @@ function weaponAdj(weapon,bat,wn) {
     // ERUPTIONS
     if (thisWeapon.name === 'Eruption') {
         thisWeapon.power = thisWeapon.power+Math.floor((zone[0].mapDiff-1)/1.8/22*thisWeapon.power);
+        if (batType.skills.includes('aimcfo')) {
+            if (domeProtect) {
+                if (hasUnit('Dôme')) {
+                    let domeBat = getBatTypeByName('Dôme');
+                    if (domeBat.opTurn != undefined) {
+                        if (playerInfos.mapTurn-15 >= domeBat.opTurn) {
+                            thisWeapon.range = thisWeapon.range+17;
+                            thisWeapon.elevation = 4;
+                            if (!bat.tags.includes('suicide')) {
+                                bat.tags.push('suicide');
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     if (batType.name === 'Ruche') {
         if (colonyTiles.includes(bat.tileId)) {
