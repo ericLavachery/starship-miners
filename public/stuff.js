@@ -193,6 +193,18 @@ function targetBatArrayUpdate() {
     }
 };
 
+function getDoom(floor) {
+    let doom = ((playerInfos.allTurns-125)/apoCount)+1;
+    if (doom < 1) {
+        doom = 1;
+    }
+    doom = doom.toFixedNumber(2);
+    if (floor) {
+        doom = Math.floor(doom);
+    }
+    return doom;
+};
+
 function getGangFactors() {
     let gangFacts = {};
     gangFacts.cit = 1;

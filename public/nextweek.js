@@ -487,6 +487,9 @@ function getCitNeed() {
     let citNeed = 1;
     let mesCitoyens = calcTotalCitoyens(true);
     citNeed = citNeed*playerInfos.allCits/mesCitoyens.real;
+    if (citNeed > 1.7) {
+        citNeed = 1.7;
+    }
     citNeed = citNeed.toFixedNumber(3);
     playerInfos.cNeed = citNeed;
     return citNeed;

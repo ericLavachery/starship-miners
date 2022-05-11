@@ -197,8 +197,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.volMu === undefined) {
         playerInfos.volMu = 0.4;
     }
-    if (playerInfos.sondeDanger < Math.floor(playerInfos.allTurns/apoCount)+1) {
-        playerInfos.sondeDanger = Math.floor(playerInfos.allTurns/apoCount)+1;
+    let doom = getDoom(true);
+    if (playerInfos.sondeDanger < doom) {
+        playerInfos.sondeDanger = doom;
     }
 });
 // Terrains

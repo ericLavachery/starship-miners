@@ -1338,7 +1338,7 @@
         "bldReq":["Infirmerie","Garage"],
         "compReq":{"med":1},
         "costs":{"Fer":60,"Scrap":432,"Carbone":60,"Moteurs":40,"Electros":12,"Batteries":24,"Compo2":72,"Silicium":60,"Drogues":130,"Chlore":60,"Zinc":60,"Titane":15,"Tissus":30},
-        "deploy":{"Fuel":40,"Drogues":40,"Chlore":20,"Zinc":20,"Tissus":20},
+        "deploy":{"Fuel":50,"Drogues":40,"Chlore":20,"Zinc":20,"Tissus":20},
         "fabTime":80,
         "inRuin":4
     },
@@ -1684,11 +1684,21 @@
     {
         "id":140,
         "name":"Tacots",
-        "levels":{"rednecks":4,"blades":4,"bulbos":4,"drogmulojs":4,"tiradores":4,"detruas":5,"brasier":4},
+        "levels":{"rednecks":3,"blades":3,"bulbos":3,"drogmulojs":3,"tiradores":3,"detruas":3,"brasier":3},
         "bldReq":[],
         "costs":{"Fer":16,"Scrap":224,"Carbone":32,"Moteurs":16,"Batteries":8},
         "deploy":{"Fuel":30},
         "fabTime":20,
+        "inRuin":2
+    },
+    {
+        "id":164,
+        "name":"Bus",
+        "levels":{"rednecks":4,"blades":4,"bulbos":4,"drogmulojs":4,"tiradores":4,"detruas":4,"brasier":4},
+        "bldReq":["Garage"],
+        "costs":{"Fer":90,"Scrap":450,"Carbone":60,"Moteurs":36,"Batteries":9,"Compo2":45},
+        "deploy":{"Fuel":60},
+        "fabTime":40,
         "inRuin":2
     },
     {

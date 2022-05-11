@@ -145,7 +145,7 @@ function landingList() {
             }
             createStormsLists(true);
             checkUndark();
-            let minDiff = Math.floor(playerInfos.allTurns/apoCount)+1;
+            let minDiff = getDoom(true);
             console.log('minDiff='+minDiff);
             if (zone[0].mapDiff < minDiff) {
                 zone[0].mapDiff = minDiff;
@@ -447,7 +447,7 @@ function editSonde() {
     // PRESENCE ALIEN
     $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`sondeDanger`,`sonde`)" title="Présence Alien"></select>');
     $('#theZone').empty().append('<option value="">Pr.Alien</option>');
-    let prAMin = Math.floor(playerInfos.allTurns/apoCount)+1;
+    let prAMin = getDoom(true);
     let prAMax = Math.floor(playerInfos.allTurns/apoCount*1.25)+2;
     if (prAMax >= 10) {
         prAMax = 10;

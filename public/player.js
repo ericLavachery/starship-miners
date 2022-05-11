@@ -1761,11 +1761,6 @@ function addStartPack() {
     addFreeBat(1707,'Dortoirs');
     addFreeBat(1767,'Dortoirs');
     addFreeBat(1827,'Dortoirs');
-    addFreeBat(1647,'Sonde');
-    addFreeBat(1648,'Sonde');
-    addFreeBat(1649,'Sonde');
-    addFreeBat(1650,'Sonde');
-    addFreeBat(1651,'Sonde');
     addFreeBat(2007,'Sonde');
     addFreeBat(2008,'Sonde');
     addFreeBat(2009,'Sonde');

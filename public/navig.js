@@ -201,8 +201,7 @@ function getMaxMaps(impact) {
 function viewPop() {
     if (playerInfos.onShip && !modeSonde) {
         if (bataillons.length >= 1) {
-            let doomsday = (playerInfos.allTurns/apoCount)+1;
-            doomsday = doomsday.toFixedNumber(2);
+            let doomsday = getDoom(false);
             let mesCitoyens = calcTotalCitoyens(false);
             let population = mesCitoyens.crim+mesCitoyens.cit;
             let crimeRate = calcCrimeRate(mesCitoyens);

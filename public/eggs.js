@@ -350,9 +350,7 @@ function checkEggsDrop() {
     }
     if (playerInfos.mapTurn >= 15 && !domeProtect) {
         let adjFuzz = playerInfos.fuzzTotal-150;
-        if (adjFuzz < 1) {
-            adjFuzz = 1;
-        }
+        if (adjFuzz < 1) {adjFuzz = 1;}
         let rucheBord = Math.ceil(adjFuzz*adjFuzz/30000*Math.sqrt(zone[0].mapDiff)/3);
         if (rand.rand(1,100) <= rucheBord) {
             dropEgg('Vomissure','edge');

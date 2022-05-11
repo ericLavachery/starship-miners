@@ -202,8 +202,8 @@ function souteList() {
         souteBatList('vehicles','zero-','','robot',landersIds,-1);
     }
     if (souteFilter === 'all' || souteFilter === 'prefabs') {
-        souteBatList('devices','','prefab','robot',landersIds,-1);
         souteBatList('buildings','','prefab','robot',landersIds,-1);
+        souteBatList('devices','','prefab','robot',landersIds,-1);
     }
     if (souteFilter === 'army') {
         souteArmyList(landersIds,-1);
