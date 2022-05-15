@@ -799,6 +799,18 @@ function playerSkillsUTChanges() {
             }
         }
         // DETECTION
+        if (playerInfos.comp.det >= 2) {
+            if (Object.keys(unit.weapon).length >= 3) {
+                if (unit.weapon.spot) {
+                    unit.weapon.vision = true;
+                }
+            }
+            if (Object.keys(unit.weapon2).length >= 3) {
+                if (unit.weapon2.spot) {
+                    unit.weapon2.vision = true;
+                }
+            }
+        }
         if (playerInfos.comp.det >= 3) {
             if (Object.keys(unit.weapon).length >= 3) {
                 if (unit.weapon.name.includes('Marquage') || unit.weapon.name.includes('Guidage')) {
@@ -1592,6 +1604,9 @@ function calcEndRes(onlyLanders) {
 
 function missionResults(onlyLanders,sCount,hCount) {
     selectMode();
+    if (zone[0].number >= 16) {
+        sondeCount = 'cy';
+    }
     if (sCount != undefined) {
         sondeCount = sCount;
     }

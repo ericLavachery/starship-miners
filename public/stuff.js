@@ -2,7 +2,7 @@ function canIHit(bat,weap,alien,batInMelee) {
     let iCanHit = false;
     let alienType = getBatType(alien);
     let guideTarget = checkGuidage(weap,alien);
-    let inRange = isInRange(bat,alien.tileId,weap);
+    let inRange = isInRange(bat,alien.tileId,weap,alien);
     let realmOK = checkFlyTarget(weap,alien,alienType);
     let hiddenOK = checkInvisibleTarget(bat,weap,alien,alienType,guideTarget);
 
@@ -194,7 +194,7 @@ function targetBatArrayUpdate() {
 };
 
 function getDoom(floor) {
-    let doom = ((playerInfos.allTurns-125)/apoCount)+1;
+    let doom = ((playerInfos.allTurns)/apoCount)+1;
     if (doom < 1) {
         doom = 1;
     }
@@ -643,7 +643,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('maxordre')) {
-        if (numOf[unit.name] >= playerInfos.comp.ordre) {
+        if (numOf[unit.name] >= playerInfos.comp.ordre && numOf[unit.name] >= 1) {
             isMax = true;
         }
     }

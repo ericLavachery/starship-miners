@@ -171,6 +171,16 @@
         "costs":{"Scrap":6,"Carbone":12,"Azote":6}
     },
     {
+        "name":"composite",
+        "cat":"armor",
+        "armor":2,
+        "ap":-2,
+        "skills":[],
+        "bldReq":["Armurerie"],
+        "factor":"thp",
+        "costs":{"Scrap":9,"Fer":6}
+    },
+    {
         "name":"acier",
         "cat":"armor",
         "armor":3,
@@ -934,7 +944,7 @@
         "bldReq":["Atelier"],
         "compReq":{"def":1,"pyro":1},
         "factor":"crew",
-        "costs":{"Carbone":6,"Scrap":24,"Aluminium":24,"Moteurs":2,"Nickel":6},
+        "costs":{"Carbone":6,"Scrap":24,"Aluminium":24,"Moteurs":2,"Nickel":6,"Silicium":6},
         "deploy":{"Energie":3,"Fuel":10}
     },
     {
@@ -943,9 +953,9 @@
         "skills":[],
         "info":"Mitrailleuse",
         "bldReq":["Armurerie"],
-        "compReq":{"def":1,"det":1,"bal":1},
+        "compReq":{"def":1,"bal":1},
         "factor":"crew",
-        "costs":{"Carbone":12,"Scrap":12,"Fer":48,"Aluminium":24,"Tungstène":12},
+        "costs":{"Carbone":12,"Scrap":12,"Fer":48,"Aluminium":24,"Tungstène":12,"Silicium":6},
         "deploy":{"Energie":12}
     },
     {
@@ -967,7 +977,7 @@
         "bldReq":["Armurerie"],
         "compReq":{"def":1,"explo":2},
         "factor":"crew",
-        "costs":{"Carbone":12,"Scrap":12,"Fer":36,"Tungstène":12,"Aluminium":24},
+        "costs":{"Carbone":12,"Scrap":12,"Fer":36,"Tungstène":12,"Aluminium":24,"Silicium":6},
         "deploy":{"Energie":12}
     },
     {

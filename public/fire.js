@@ -44,7 +44,7 @@ function clickFire(tileId) {
             if (Object.keys(targetBat).length >= 1) {
                 guidageOK = checkGuidage(selectedWeap,targetBat);
             }
-            if (isInRange(selectedBat,tileId,selectedWeap) || guidageOK) {
+            if (isInRange(selectedBat,tileId,selectedWeap,targetBat) || guidageOK) {
                 let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,targetBat,targetBatType,guidageOK);
                 if (alienBatHere && checkFlyTarget(selectedWeap,targetBat,targetBatType) && hiddenOK) {
                     // console.log(targetBat);

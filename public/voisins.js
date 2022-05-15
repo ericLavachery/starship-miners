@@ -221,13 +221,13 @@ function lesVoisins() {
         let neiBatType = getBatTypeById(vehBatTypeId);
         putNeighbour(neiBatType);
     }
-    if (lastNeiTileId >= 0) {
-        warning('Convoi de survivants en vue','Attirés par le bruit, des survivants sont venus à votre rencontre.',false,lastNeiTileId);
-        lastNeiTileId = -1;
-    }
     if (neiRoad[0] && !neiRoad[1]) {
         let neiBatType = getBatTypeById(112);
         putNeighbour(neiBatType);
+    }
+    if (lastNeiTileId >= 0) {
+        warning('Convoi de survivants en vue','Attirés par le bruit, des survivants sont venus à votre rencontre.',false,lastNeiTileId);
+        lastNeiTileId = -1;
     }
     neiRoad = [true,false];
 };

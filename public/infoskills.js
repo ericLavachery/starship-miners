@@ -158,6 +158,12 @@ function skillsInfos(bat,batType,near) {
         } else if (batType.skills.includes('baddef')) {
             apCost = apCost+2;
         }
+        if (bat.salvoLeft >= batType.maxSalvo && bat.tileId === bat.oldTileId) {
+            apReq = apReq-2;
+        }
+        if (apReq < 1) {
+            apReq = 1;
+        }
         apReqGuet = apReq;
         let bouton = 'boutonBrun';
         if (bat.tags.includes('mining')) {
@@ -911,7 +917,7 @@ function skillsInfos(bat,batType,near) {
         }
     }
     // TREUIL
-    if (!playerInfos.onShip && bat.apLeft <= 0 && !bat.tags.includes('construction')) {
+    if (!playerInfos.onShip && bat.apLeft < 2 && !bat.tags.includes('construction')) {
         if (batType.cat === 'vehicles' && batType.moveCost < 90 && !batType.skills.includes('cyber') && !batType.skills.includes('robot') && !batType.skills.includes('fly')) {
             let leTreuil = checkTreuil(bat);
             if (leTreuil.ok) {

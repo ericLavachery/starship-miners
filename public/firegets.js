@@ -1305,12 +1305,16 @@ function calcDistanceSquare(myTileIndex,thatTileIndex) {
     }
 };
 
-function isInRange(myBat,thatTileId,myWeapon) {
+function isInRange(myBat,thatTileId,myWeapon,alien) {
     let myBatType = getBatType(myBat);
     let inRange = false;
+    let fluoBonus = 0;
     let range = myWeapon.range;
+    if (alien.tags.includes('fluo') && myWeapon.range >= 1 && !myWeapon.isMelee) {
+        fluoBonus = 1;
+    }
     let distance = calcDistance(myBat.tileId,thatTileId);
-    if (distance > range) {
+    if (distance > range+fluoBonus) {
         // nothing
     } else {
         inRange = true;
@@ -1327,7 +1331,7 @@ function anyAlienInRange(myBat,weapon) {
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             let guidageOK = checkGuidage(weapon,bat);
-            if (isInRange(myBat,bat.tileId,weapon) || guidageOK) {
+            if (isInRange(myBat,bat.tileId,weapon,bat) || guidageOK) {
                 batType = getBatType(bat);
                 console.log(batType.name);
                 if (weapon.ammo === 'marquage' && bat.tags.includes('fluo')) {
@@ -1479,7 +1483,7 @@ function fireInfos(bat) {
             alien = alienHere(tile.id);
             if (Object.keys(alien).length >= 1) {
                 guideTarget = checkGuidage(selectedWeap,alien);
-                if (isInRange(selectedBat,tile.id,selectedWeap) || guideTarget) {
+                if (isInRange(selectedBat,tile.id,selectedWeap,alien) || guideTarget) {
                     alienType = getBatType(alien);
                     let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,alien,alienType,guideTarget);
                     if (checkFlyTarget(selectedWeap,alien,alienType) && hiddenOK) {
@@ -1944,7 +1948,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.power = 0;
             thisWeapon.sound = 'hose';
             if (wn == 'w2') {
-                bat.ammo = 'fuel';
+                bat.ammo2 = 'fuel';
             } else {
                 bat.ammo = 'fuel';
             }
@@ -2514,7 +2518,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
     if (batType.skills.includes('bastion') && (weap.num === 1 || !weap.noBis)) {
         brideDef = brideDef*2;
     } else if (batType.skills.includes('defense') && (weap.num === 1 || !weap.noBis)) {
-        brideDef = brideDef*1.5;
+        brideDef = brideDef*1.35;
     }
     // baddef
     if (batType.skills.includes('baddef')) {

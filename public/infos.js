@@ -682,7 +682,7 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Cadence de tir seulement 85% en mode guet. Moins de bonus pour la fortification.">Seconde ligne</span>'+sepa;
     }
     if (batType.skills.includes('defense')) {
-        allSkills = allSkills+'<span class="paramValue" title="Cadence de tir 150% en défense">Défense</span>'+sepa;
+        allSkills = allSkills+'<span class="paramValue" title="Cadence de tir 135% en défense">Défense</span>'+sepa;
     }
     if (batType.skills.includes('bastion')) {
         allSkills = allSkills+'<span class="paramValue" title="Cadence de tir 200% en défense">Bastion</span>'+sepa;
