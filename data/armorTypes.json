@@ -9,7 +9,7 @@
     {
         "name":"Palissades",
         "cat":"infra",
-        "fabTime":12,
+        "fabTime":11,
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "costs":{"Compo1":125}
     },

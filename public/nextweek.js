@@ -486,12 +486,18 @@ function eventBodies(time,sim,quiet) {
 function getCitNeed() {
     let citNeed = 1;
     let mesCitoyens = calcTotalCitoyens(true);
-    citNeed = citNeed*playerInfos.allCits/mesCitoyens.real;
+    let citNorm = ((playerInfos.gLevel-4)*450)+2500;
+    citNeed = citNeed*citNorm/mesCitoyens.real;
+    citNeed = (citNeed+0.35)/1.35;
     if (citNeed > 1.7) {
         citNeed = 1.7;
     }
     citNeed = citNeed.toFixedNumber(3);
     playerInfos.cNeed = citNeed;
+    console.log('CITOYENS');
+    console.log('real='+mesCitoyens.real);
+    console.log('norm='+citNorm);
+    console.log('need='+citNeed);
     return citNeed;
 };
 

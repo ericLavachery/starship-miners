@@ -587,6 +587,14 @@ function playerSkillsUTChanges() {
             }
         }
         // EXPLOSIFS
+        if (unit.name === 'Champ de mines') {
+            if (playerInfos.comp.explo >= 2) {
+                unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-((playerInfos.comp.explo-1)*2);
+                if (unit.levels[playerInfos.gang] < 1) {
+                    unit.levels[playerInfos.gang] = 1;
+                }
+            }
+        }
         if (playerInfos.comp.explo === 3) {
             if (Object.keys(unit.weapon).length >= 3) {
                 if (unit.weapon.ammo.includes('obus') || unit.weapon.ammo.includes('missile') || unit.weapon.ammo.includes('missile-sunburst') || unit.weapon.ammo.includes('missile-vanguard') || unit.weapon.ammo.includes('missile-wildfire') || unit.weapon.ammo.includes('dynamite') || unit.weapon.ammo.includes('grenade') || unit.weapon.ammo.includes('boulet')) {

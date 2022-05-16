@@ -402,6 +402,7 @@
         "name":"Lovushkas",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":3,"brasier":99},
         "bldReq":["Armurerie","Poudrière"],
+        "compReq":{"explo":1},
         "costs":{"Fer":108,"Scrap":72,"Bois":36,"Tungstène":18,"Végétaux":144},
         "fabTime":15
     },
@@ -2133,8 +2134,9 @@
     {
         "id":43,
         "name":"Champ de mines",
-        "levels":{"rednecks":12,"blades":13,"bulbos":10,"drogmulojs":13,"tiradores":18,"detruas":1,"brasier":10},
+        "levels":{"rednecks":11,"blades":13,"bulbos":10,"drogmulojs":12,"tiradores":13,"detruas":1,"brasier":12},
         "bldReq":["Atelier"],
+        "compReq":{"explo":1},
         "costs":{"Explosifs":12,"Fer":12,"Plomb":4,"Titane":4,"Azote":6,"Cuivre":6,"Electros":1},
         "fabTime":35
     },
