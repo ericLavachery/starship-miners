@@ -353,13 +353,19 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
         noMining = true;
     }
     let batRate = getMiningRate(bat,fullRate,noMining);
+    let miningLevel = batType.mining.level;
+    if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
+        if (miningLevel < 2) {
+            miningLevel = 2;
+        }
+    }
     let multiExtractAdj = 1;
     if (!forInfos) {
         if (bat.extracted.length >= 2) {
             multiExtractAdj = 1-((bat.extracted.length-1)/12);
         }
         let maxAdjBonus = extComp/33;
-        if (batType.mining.level >= 4) {
+        if (miningLevel >= 4) {
             if (multiExtractAdj < 0.75+maxAdjBonus) {
                 multiExtractAdj = 0.75+maxAdjBonus;
             }
@@ -388,7 +394,7 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
         }
     }
     if (batType.mining.types[0] != res.bld) {
-        if (res.level > batType.mining.level) {
+        if (res.level > miningLevel) {
             resRate = 0;
         } else if (res.level >= 3) {
             resRate = Math.ceil(resRate/2);
