@@ -220,6 +220,9 @@ function batInfos(bat,batType,pop) {
             armure = armure+2;
         } else if (batType.skills.includes('bigfortif')) {
             armure = armure+2;
+            if (batType.skills.includes('cage')) {
+                armure = armure+2;
+            }
         } else if (armure < 2) {
             armure = armure+1;
         }

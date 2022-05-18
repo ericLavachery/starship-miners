@@ -1358,6 +1358,51 @@ function skillsInfos(bat,batType,near) {
                     }
                 }
             }
+            // SUDU
+            if (batType.cat === 'vehicles' && !batType.skills.includes('cyber') && !batType.skills.includes('robot') && !batType.skills.includes('emoteur')) {
+                if (allDrugs.includes('sudu') || bat.tags.includes('sudu')) {
+                    drug = getDrugByName('sudu');
+                    drugCompOK = checkCompReq(drug);
+                    drugBldOK = true;
+                    if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                        drugBldOK = false;
+                    }
+                    drugBldVMOK = true;
+                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                        drugBldVMOK = false;
+                    }
+                    drugCostsOK = checkCost(drug.costs);
+                    balise = 'h4';
+                    boutonNope = 'boutonGris';
+                    colorNope = 'gf';
+                    if (bat.tags.includes('sudu')) {
+                        balise = 'h3';
+                        boutonNope = 'boutonOK';
+                        colorNope = 'cy';
+                    }
+                    apCost = drug.apCost;
+                    if (drugCompOK) {
+                        if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('sudu') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vitesse 115% '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`sudu`)"><i class="fas fa-tachometer-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sudu</'+balise+'></span>');
+                        } else {
+                            if (bat.tags.includes('sudu')) {
+                                skillMessage = "Déjà sous l'effet de cette drogue";
+                            } else if (!drugCompOK) {
+                                skillMessage = "Vous n'avez pas les compétences requises";
+                            } else if (!drugBldVMOK) {
+                                skillMessage = "Vous n'avez pas le bâtiment requis (sur la station ou dans la  zone): "+drug.bldVMReq[0];
+                            } else if (!drugBldOK) {
+                                skillMessage = "Vous n'avez pas le bâtiment requis (dans la  zone): "+drug.bldReq[0];
+                            } else if (!drugCostsOK) {
+                                skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                            } else {
+                                skillMessage = "Pas assez de PA";
+                            }
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-tachometer-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Sudu</'+balise+'></span>');
+                        }
+                    }
+                }
+            }
             if (batType.crew >= 1 && !batType.skills.includes('clone') && batType.cat != 'infantry' && !batType.skills.includes('dome') && !batType.skills.includes('pilone') && !batType.skills.includes('cfo')) {
                 // OCTIRON (véhicules)
                 if (allDrugs.includes('octiron') || bat.tags.includes('octiron')) {

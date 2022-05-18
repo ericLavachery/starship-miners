@@ -722,7 +722,7 @@
     {
         "id":269,
         "name":"Kuristos",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":14,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":13,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Centre de recherches"],
         "compReq":{"cyber":1,"train":1},
         "costs":{"Fer":192,"Scrap":160,"Bois":32,"Carbone":32,"Aluminium":64,"Moteurs":32,"Tungstène":16,"Titane":113,"Electros":32,"Batteries":32,"Cuivre":51,"Silicium":32,"Végétaux":64,"Soufre":32,"Plomb":32,"Oxygène":64,"Chlore":10,"Tissus":5},
@@ -1304,7 +1304,7 @@
     {
         "id":265,
         "name":"Thopters",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":11,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":10,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire","Atelier"],
         "compReq":{"robo":1},
         "costs":{"Scrap":40,"Carbone":80,"Moteurs":15,"Aluminium":20,"Silicium":60,"Cuivre":20,"Electros":70,"Batteries":50,"Nickel":5,"Cobalt":20},
@@ -1510,7 +1510,7 @@
     {
         "id":92,
         "name":"Shelltrucks",
-        "levels":{"rednecks":9,"blades":12,"bulbos":11,"drogmulojs":10,"tiradores":10,"detruas":99,"brasier":9},
+        "levels":{"rednecks":9,"blades":12,"bulbos":11,"drogmulojs":10,"tiradores":11,"detruas":6,"brasier":9},
         "bldEquiv":["Poudrière"],
         "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":60,"Scrap":444,"Carbone":120,"Aluminium":48,"Moteurs":60,"Cuivre":24,"Batteries":12,"Compo2":168,"Huile":10},
@@ -1521,7 +1521,7 @@
     {
         "id":93,
         "name":"Taxis",
-        "levels":{"rednecks":12,"blades":99,"bulbos":12,"drogmulojs":13,"tiradores":12,"detruas":12,"brasier":13},
+        "levels":{"rednecks":12,"blades":99,"bulbos":12,"drogmulojs":13,"tiradores":11,"detruas":12,"brasier":13},
         "bldReq":["Armurerie","Chaîne de montage"],
         "compReq":{"tank":1,"trans":1},
         "costs":{"Fer":140,"Scrap":225,"Carbone":165,"Aluminium":30,"Moteurs":65,"Tungstène":200,"Cuivre":15,"Batteries":15,"Compo2":210,"Compo3":45,"Huile":10},
@@ -1600,6 +1600,7 @@
         "bldReq":["Centre de recherches","Usine"],
         "compReq":{"ext":3},
         "compPass":["rednecks"],
+        "compHardReq":{"ext":1,"ind":1},
         "costs":{"Fer":129,"Scrap":111,"Carbone":159,"Aluminium":18,"Moteurs":90,"Cuivre":53,"Electros":156,"Batteries":88,"Compo2":284,"Huile":36,"Cobalt":30,"Hélium":60,"Eau":584,"Silicium":80,"Zinc":33},
         "deploy":{"Fuel":115,"Energie":60,"Huile":15,"Eau":320,"Silicium":40},
         "fabTime":130,
@@ -2132,9 +2133,18 @@
         "fabTime":35
     },
     {
+        "id":288,
+        "name":"Mines volcano",
+        "levels":{"rednecks":13,"blades":15,"bulbos":13,"drogmulojs":13,"tiradores":15,"detruas":10,"brasier":12},
+        "bldReq":["Atelier"],
+        "compReq":{"explo":2,"pyro":1},
+        "costs":{"Explosifs":20,"Phosphore":90,"Pyratol":45,"Nanite":45,"Fer":12,"Plomb":6,"Titane":6,"Azote":9,"Cuivre":9,"Electros":6},
+        "fabTime":70
+    },
+    {
         "id":43,
         "name":"Champ de mines",
-        "levels":{"rednecks":11,"blades":13,"bulbos":10,"drogmulojs":12,"tiradores":13,"detruas":1,"brasier":12},
+        "levels":{"rednecks":11,"blades":13,"bulbos":10,"drogmulojs":12,"tiradores":13,"detruas":1,"brasier":11},
         "bldReq":["Atelier"],
         "compReq":{"explo":1},
         "costs":{"Explosifs":12,"Fer":12,"Plomb":4,"Titane":4,"Azote":6,"Cuivre":6,"Electros":1},

@@ -833,11 +833,11 @@
     {
         "id":106,
         "result":"Explosifs",
-        "cost":{"Nanite":1,"Carbone":2},
-        "compReq":{"explo":3},
+        "cost":{"Nanite":1,"Carbone":1},
+        "compReq":{"explo":1},
         "bldReq":["Armurerie"],
         "batch":3,
-        "creaNum":80,
+        "creaNum":240,
         "bg":"#000000"
     },
     {

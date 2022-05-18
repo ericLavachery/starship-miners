@@ -2147,6 +2147,18 @@
         "noList": true
     },
     {
+        "name": "suicide-deluge",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "armors": 0.5,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "noList": true
+    },
+    {
         "name": "mine",
         "range": 1,
         "rof": 1,
@@ -2213,7 +2225,7 @@
         "apdamage": 0,
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
-        "compReq":{"explo":3},
+        "compReq":{"explo":2},
         "costs":{"Cuivre":2,"Aluminium":1,"Titane":1,"Azote":1,"Potassium":1,"Nanite":3},
         "batch":50
     },
@@ -2244,7 +2256,7 @@
         "aoe": "bat",
         "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"explo":3,"pyro":3},
-        "costs":{"Cuivre":2,"Aluminium":3,"Titane":1,"Plutonium":1,"Explosifs":4,"Phosphore":9},
+        "costs":{"Cuivre":2,"Aluminium":3,"Titane":1,"Plutonium":1,"Explosifs":4,"Phosphore":9,"Pyratol":3},
         "batch":50
     },
     {
@@ -2317,7 +2329,7 @@
         "apdamage": 0,
         "aoe": "squad",
         "bldReq":["Laboratoire"],
-        "compReq":{"explo":3},
+        "compReq":{"explo":2},
         "deploy":{"Carbone":1,"Scrap":1,"Explosifs":3,"Végétaux":2,"Potassium":2,"Nanite":3},
         "batch":100
     },
@@ -2529,7 +2541,7 @@
         "aoe": "bat",
         "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"bal":1,"explo":3,"pyro":3,"arti":1},
-        "deploy":{"Carbone":1,"Fer":2,"Cuivre":2,"Aluminium":3,"Titane":1,"Plutonium":1,"Explosifs":7,"Phosphore":9},
+        "deploy":{"Carbone":1,"Fer":2,"Cuivre":2,"Aluminium":3,"Titane":1,"Plutonium":1,"Explosifs":7,"Phosphore":9,"Pyratol":3},
         "batch":100
     },
     {
@@ -2608,7 +2620,7 @@
         "aoe": "bat",
         "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"bal":2,"explo":3,"pyro":3,"arti":1},
-        "deploy":{"Fer":3,"Aluminium":3,"Titane":1,"Nickel":1,"Plutonium":1,"Explosifs":7,"Phosphore":9,"Electros":3,"Batteries":1},
+        "deploy":{"Fer":3,"Aluminium":3,"Titane":1,"Nickel":1,"Plutonium":1,"Explosifs":7,"Phosphore":9,"Pyratol":3,"Electros":3,"Batteries":1},
         "batch":100
     },
     {
@@ -3300,9 +3312,9 @@
     {
         "name": "fireglue",
         "range": 1,
-        "rof": 1,
+        "rof": 0.85,
         "power": 0,
-        "powermult": 1.7,
+        "powermult": 2,
         "armors": 0.35,
         "accuracy": 1,
         "apdamage": 0,
@@ -3311,6 +3323,22 @@
         "bldReq":["Atelier"],
         "compReq":{"pyro":1,"explo":1},
         "deploy":{"Explosifs":1,"Huile":4,"Végétaux":2,"Tissus":1,"Larvium":1},
+        "batch":100
+    },
+    {
+        "name": "firemarq",
+        "range": 1,
+        "rof": 0.7,
+        "power": 0,
+        "powermult": 2,
+        "armors": 0.35,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "brochette",
+        "info": "Incendiaire",
+        "bldReq":["Laboratoire"],
+        "compReq":{"pyro":1,"explo":1,"det":2},
+        "deploy":{"Explosifs":1,"Huile":4,"Végétaux":2,"Tissus":1,"Larvium":1,"Mercure":1},
         "batch":100
     },
     {

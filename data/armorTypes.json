@@ -123,6 +123,15 @@
         "costs":{"Huile":1,"Hydrogène":2,"Azote":2,"Slime":5}
     },
     {
+        "name":"sudu",
+        "cat":"drogue",
+        "apCost":0,
+        "bldReq":[],
+        "bldVMReq":["Laboratoire"],
+        "compReq":{"pyro":1,"trans":1},
+        "costs":{"Huile":5,"Pyratol":20,"Plomb":2}
+    },
+    {
         "name":"aucune",
         "cat":"armor",
         "armor":0,

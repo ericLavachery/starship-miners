@@ -1722,6 +1722,9 @@ function getResRecup(bat,batType) {
                 if (playerInfos.comp.const >= 3 && key === 'Compo3') {
                     value = Math.floor(value*9/6);
                 }
+                if (key === 'Energie') {
+                    value = 0;
+                }
                 if (key != 'Transorb') {
                     value = Math.ceil(value/100*recupFactor);
                 } else {
@@ -1739,7 +1742,9 @@ function getResRecup(bat,batType) {
         }
         // TRANSORB
         if (batType.skills.includes('transorbital') || batType.skills.includes('isvsp')) {
-            resRecup['Transorb'] = batType.toNum;
+            if (batType.toNum >= 1) {
+                resRecup['Transorb'] = batType.toNum;
+            }
         }
         // BAT DEPLOY x/2%
         if (batType.deploy != undefined) {

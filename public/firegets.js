@@ -110,6 +110,12 @@ function delugeDamage(weap,bat,batType) {
     // console.log('numUnits='+numUnits);
     let baseDmg = Math.ceil((weap.power+15)*numUnits/75);
     let stormDmg = rand.rand(10*baseDmg,16*baseDmg);
+    if (weap.ammo.includes('suicide')) {
+        stormDmg = stormDmg*4;
+    }
+    if (weap.ammo.includes('missile')) {
+        stormDmg = stormDmg*2;
+    }
     // let stormDmg = 13*baseDmg;
     // console.log('stormDmg='+stormDmg);
     stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
@@ -720,7 +726,10 @@ function calcDamage(weapon,power,armor,defBat) {
             armor = armor+2;
         } else if (defBatType.skills.includes('bigfortif')) {
             armor = armor+2;
-        } else if (armor < 3 && !defBatType.skills.includes('baddef')) {
+            if (defBatType.skills.includes('cage')) {
+                armor = armor+2;
+            }
+        } else if (armor < 2 && !defBatType.skills.includes('baddef')) {
             armor = armor+1;
         }
         if (playerInfos.comp.def >= 2) {
@@ -805,7 +814,7 @@ function calcDamage(weapon,power,armor,defBat) {
         }
     }
     if (defBatType.cat === 'aliens') {
-        if (weapon.ammo === 'suicide') {
+        if (weapon.ammo === 'suicide' || weapon.ammo === 'suicide-deluge') {
             if (calculatedDmg < 10) {
                 calculatedDmg = rand.rand(8,12);
             }
@@ -2073,7 +2082,7 @@ function weaponAdj(weapon,bat,wn) {
     if (ammo.aoe != '' && thisWeapon.aoe != 'bat') {
         thisWeapon.aoe = ammo.aoe;
     }
-    if (ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit' || ammo.name.includes('web') || ammo.name.includes('marquage')) {
+    if (ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit' || ammo.name.includes('web') || ammo.name.includes('marq')) {
         thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
         thisWeapon.rof = thisWeapon.rof*ammo.rof;
     } else {
@@ -2278,7 +2287,7 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.isElec = false;
     }
-    if (thisWeapon.ammo.includes('nanite') || thisWeapon.ammo === 'suicide' || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('autodes') || thisWeapon.ammo.includes('dynamite') || thisWeapon.ammo.includes('bombe') || thisWeapon.ammo.includes('explosif') || thisWeapon.ammo.includes('obus') || thisWeapon.ammo.includes('missile') || thisWeapon.ammo.includes('grenade') || thisWeapon.ammo.includes('disco')) {
+    if (thisWeapon.ammo.includes('nanite') || thisWeapon.ammo === 'suicide' || thisWeapon.ammo === 'suicide-deluge' || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('autodes') || thisWeapon.ammo.includes('dynamite') || thisWeapon.ammo.includes('bombe') || thisWeapon.ammo.includes('explosif') || thisWeapon.ammo.includes('obus') || thisWeapon.ammo.includes('missile') || thisWeapon.ammo.includes('grenade') || thisWeapon.ammo.includes('disco')) {
         if (!thisWeapon.ammo.includes('gaz') && !thisWeapon.ammo.includes('incendiaire') && !thisWeapon.ammo.includes('napalm')) {
             thisWeapon.isBlast = true;
         } else {
@@ -2571,7 +2580,7 @@ function mirDestruction(weap,bat,batType,tile,teamOnMir,infraName) {
         power = 0;
     }
     let damage = Math.round(weap.rof*power*bat.squadsLeft);
-    if (weap.ammo.includes('feu') || weap.ammo.includes('napalm') || weap.ammo.includes('fire') || weap.ammo.includes('pyratol') || weap.ammo.includes('lf-') || weap.ammo.includes('molotov') || weap.ammo.includes('nanite') || weap.ammo === 'suicide' || weap.ammo.includes('mine') || weap.ammo.includes('autodes') || weap.ammo.includes('dynamite') || weap.ammo.includes('bombe') || weap.ammo.includes('explosif') || weap.ammo.includes('obus') || weap.ammo.includes('missile') || weap.ammo.includes('glair') || weap.ammo.includes('ruche') || weap.ammo.includes('bfg')) {
+    if (weap.ammo.includes('feu') || weap.ammo.includes('napalm') || weap.ammo.includes('fire') || weap.ammo.includes('pyratol') || weap.ammo.includes('lf-') || weap.ammo.includes('molotov') || weap.ammo.includes('nanite') || weap.ammo === 'suicide' || weap.ammo === 'suicide-deluge' || weap.ammo.includes('mine') || weap.ammo.includes('autodes') || weap.ammo.includes('dynamite') || weap.ammo.includes('bombe') || weap.ammo.includes('explosif') || weap.ammo.includes('obus') || weap.ammo.includes('missile') || weap.ammo.includes('glair') || weap.ammo.includes('ruche') || weap.ammo.includes('bfg')) {
         if (batType.cat === 'aliens') {
             damage = damage*3;
         } else {
@@ -2714,7 +2723,7 @@ function getEggProtect(eggBat,eggBatType,weap) {
                 eggProt = Math.round(eggProt/1.1);
             }
         }
-        if (weap.ammo === 'suicide' && eggProt < 110) {
+        if ((weap.ammo === 'suicide' || weap.ammo === 'suicide-deluge') && eggProt < 110) {
             eggProt = Math.round(eggProt/1.5);
         }
     }

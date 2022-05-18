@@ -57,6 +57,9 @@ function clickMove(tileId) {
         if (selectedBat.tags.includes('genslow')) {
             jmc = jmc*1.33;
         }
+        if (selectedBat.tags.includes('sudu')) {
+            jmc = jmc/1.15;
+        }
         jmc = jmc*moveTuning;
         if (Math.floor(distance) <= Math.floor(selectedBat.apLeft/jmc) && selectedBat.tileId != tileId) {
             moveOK = true;
@@ -228,6 +231,9 @@ function moveInfos(bat,jump) {
             if (selectedBat.tags.includes('genslow')) {
                 jmc = jmc*1.33;
             }
+            if (selectedBat.tags.includes('sudu')) {
+                jmc = jmc/1.15;
+            }
             jmc = jmc*moveTuning;
             if (Math.floor(distance) <= Math.floor(selectedBat.apLeft/jmc)) {
                 if (tile.y == myTileY && tile.x == myTileX) {
@@ -264,9 +270,9 @@ function deleteMoveInfos() {
 
 function moveSelectedBat(tileId,free,jump) {
     // play sound
-    if (selectedBatType.cat != 'alien') {
-        // playMove(true);
-    }
+    // if (selectedBatType.cat != 'alien') {
+    //     playMove(true);
+    // }
     let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
     // remove unit and redraw old tile
     tileUnselect();
@@ -299,6 +305,9 @@ function moveSelectedBat(tileId,free,jump) {
             }
             if (selectedBat.tags.includes('genslow')) {
                 jmc = jmc*1.33;
+            }
+            if (selectedBat.tags.includes('sudu')) {
+                jmc = jmc/1.15;
             }
             jmc = jmc*moveTuning;
             apLost = distance*jmc;
@@ -658,6 +667,12 @@ function calcMoveCost(targetTileId,diag) {
     }
     if (selectedBat.tags.includes('zombie')) {
         baseMoveCost = baseMoveCost*1.5;
+    }
+    if (selectedBat.eq === 'helper' || selectedBat.logeq === 'helper') {
+        baseMoveCost = baseMoveCost*0.85;
+    }
+    if (selectedBat.tags.includes('sudu')) {
+        baseMoveCost = baseMoveCost/1.15;
     }
     if (playerInfos.comp.trans === 3 && selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot') && !selectedBatType.skills.includes('cyber') && selectedBatType.moveCost < 90) {
         baseMoveCost = baseMoveCost*0.9;

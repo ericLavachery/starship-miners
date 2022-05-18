@@ -1032,23 +1032,47 @@ function getAP(bat,batType) {
         newAP = newAP+Math.floor((batType.moveCost+1.5)*(playerInfos.comp.trans-1.25)/2.6);
     }
     if (batType.skills.includes('fastempty')) {
-        emptyBonus = 0;
-        if (batType.skills.includes('ravitaillement')) {
-            ravitNum = calcRavit(bat);
-            if (ravitNum < batType.maxSkill) {
-                emptyBonus = emptyBonus+((batType.maxSkill-ravitNum)/batType.maxSkill*2.5);
-            }
-        }
-        if (batType.skills.includes('fret')) {
-            resLoaded = checkResLoad(bat);
-            if (resLoaded < batType.transRes) {
-                emptyBonus = emptyBonus+((batType.transRes-resLoaded)/batType.transRes*2.5);
-            }
-        }
+        emptyBonus = fastEmptyBonus(bat,batType);
+        // if (batType.skills.includes('ravitaillement')) {
+        //     ravitNum = calcRavit(bat);
+        //     if (ravitNum < batType.maxSkill) {
+        //         emptyBonus = emptyBonus+((batType.maxSkill-ravitNum)/batType.maxSkill*2.5);
+        //     }
+        // }
+        // if (batType.skills.includes('fret')) {
+        //     resLoaded = checkResLoad(bat);
+        //     if (resLoaded < batType.transRes) {
+        //         emptyBonus = emptyBonus+((batType.transRes-resLoaded)/batType.transRes*2.5);
+        //     }
+        // }
         newAP = newAP+Math.round(emptyBonus);
     }
     newAP = newAP+Math.round(bat.vet*vetBonus.ap);
     return newAP;
+};
+
+function fastEmptyBonus(bat,batType) {
+    let apBonus = 0;
+    if (batType.skills.includes('fastempty')) {
+        if (batType.skills.includes('ravitaillement')) {
+            let ravitNum = calcRavit(bat);
+            if (ravitNum < batType.maxSkill) {
+                apBonus = apBonus+((batType.maxSkill-ravitNum)/batType.maxSkill*2.5);
+            }
+        }
+        if (batType.skills.includes('fret') && batType.transRes > batType.transUnits) {
+            let resLoaded = checkResLoad(bat);
+            if (resLoaded < batType.transRes) {
+                apBonus = apBonus+((batType.transRes-resLoaded)/batType.transRes*2.5);
+            }
+        }
+        if (batType.skills.includes('transport') && batType.transRes <= batType.transUnits) {
+            let transLeft = calcTransUnitsLeft(bat,batType);
+            apBonus = apBonus+(transLeft/batType.transUnits*2.5);
+        }
+    }
+    // apBonus = apBonus.toFixedNumber(1);
+    return apBonus;
 };
 
 function calcUnitResist() {

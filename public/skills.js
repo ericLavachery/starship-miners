@@ -800,7 +800,9 @@ function checkDrugs(myBat) {
                     }
                     if (batType.skills.includes('nitro')) {
                         allDrugs.push('nitro');
-                        // console.log(bat);
+                    }
+                    if (batType.skills.includes('sudu')) {
+                        allDrugs.push('sudu');
                     }
                 }
             }
