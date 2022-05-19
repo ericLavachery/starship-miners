@@ -120,15 +120,17 @@ function delugeDamage(weap,bat,batType) {
     // console.log('stormDmg='+stormDmg);
     stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
     // console.log('stormDmg(a)='+stormDmg);
-    if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
-        if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
-            stormDmg = Math.ceil(stormDmg/1.25);
+    if (!weap.ammo.includes('suicide')) {
+        if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
+            if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
+                stormDmg = Math.ceil(stormDmg/1.25);
+            } else {
+                stormDmg = Math.ceil(stormDmg/1.67);
+            }
         } else {
-            stormDmg = Math.ceil(stormDmg/1.67);
-        }
-    } else {
-        if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
-            stormDmg = Math.ceil(stormDmg*2);
+            if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
+                stormDmg = Math.ceil(stormDmg*2);
+            }
         }
     }
     if (batType.skills.includes('resistall') || bat.tags.includes('resistall')) {
@@ -146,7 +148,11 @@ function delugeDamage(weap,bat,batType) {
     bat.squadsLeft = bat.squadsLeft-squadsOut;
     bat.damage = totalDamage-(squadsOut*squadHP);
     if (bat.squadsLeft <= 0) {
-        batDeathEffect(bat,true,'Bataillon détruit',bat.type+' brûlé.');
+        if (weap.ammo.includes('suicide')) {
+            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' volatilisé.');
+        } else {
+            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' brûlé.');
+        }
         checkDeath(bat,batType);
     }
 }
@@ -446,6 +452,10 @@ function batDeath(bat,count) {
     let deadId = bat.id;
     let tileId = bat.tileId;
     let batType = getBatType(bat);
+    let isFlying = false;
+    if (batType.skills.includes('fly')) {
+        isFlying = true;
+    }
     if (bat.team == 'player') {
         if (bat.tags.includes('nomove')) {
             removeNoMoves(bat);
@@ -457,7 +467,7 @@ function batDeath(bat,count) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 playMusic('rip',false);
             }
-            transDestroy(deadId,tileId);
+            transDestroy(tileId,isFlying);
             saveCrew(batType,deadId,tileId);
         }
         batIndex = batList.findIndex((obj => obj.id == bat.id));
@@ -650,12 +660,10 @@ function saveCrew(deadBatType,deadId,tileId) {
     }
 };
 
-function transDestroy(deadId,tileId) {
+function transDestroy(tileId,isFlying) {
     alienOccupiedTileList();
     let savedBats = 0;
     let crashBats = [];
-    let deadTransBat = getBatById(deadId);
-    let deadTransBatType = getBatType(deadTransBat);
     bataillons.forEach(function(bat) {
         if (bat.loc === "trans" && bat.locId === deadId) {
             crashBats.push(bat);
@@ -668,7 +676,7 @@ function transDestroy(deadId,tileId) {
             bat.loc = 'zone';
             bat.tileId = crashEscapeTile;
             bat.oldTileId = crashEscapeTile;
-            if (deadTransBatType.skills.includes('fly')) {
+            if (isFlying) {
                 bat.squadsLeft = bat.squadsLeft-2;
                 if (bat.squadsLeft < 1) {
                     bat.squadsLeft = 1;

@@ -62,7 +62,7 @@
     {
         "name":"kirin",
         "cat":"drogue",
-        "apCost":2,
+        "apCost":1,
         "bldReq":["Infirmerie"],
         "bldVMReq":["Laboratoire"],
         "compReq":{"ca":2,"med":1},
@@ -125,7 +125,7 @@
     {
         "name":"sudu",
         "cat":"drogue",
-        "apCost":0,
+        "apCost":3,
         "bldReq":[],
         "bldVMReq":["Laboratoire"],
         "compReq":{"pyro":1,"trans":1},

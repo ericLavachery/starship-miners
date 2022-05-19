@@ -966,7 +966,7 @@ function skillsInfos(bat,batType,near) {
                     drugBldOK = false;
                 }
                 drugBldVMOK = true;
-                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                     drugBldVMOK = false;
                 }
                 drugCostsOK = checkCost(drug.costs);
@@ -1015,7 +1015,7 @@ function skillsInfos(bat,batType,near) {
                         drugBldOK = false;
                     }
                     drugBldVMOK = true;
-                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                         drugBldVMOK = false;
                     }
                     drugCostsOK = checkCost(drug.costs);
@@ -1059,7 +1059,7 @@ function skillsInfos(bat,batType,near) {
                     drugBldOK = false;
                 }
                 drugBldVMOK = true;
-                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                     drugBldVMOK = false;
                 }
                 drugCostsOK = checkCost(drug.costs);
@@ -1102,7 +1102,7 @@ function skillsInfos(bat,batType,near) {
                     drugBldOK = false;
                 }
                 drugBldVMOK = true;
-                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                     drugBldVMOK = false;
                 }
                 drugCostsOK = checkCost(drug.costs);
@@ -1147,7 +1147,7 @@ function skillsInfos(bat,batType,near) {
                     drugBldOK = false;
                 }
                 drugBldVMOK = true;
-                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                     drugBldVMOK = false;
                 }
                 drugCostsOK = checkCost(drug.costs);
@@ -1190,7 +1190,7 @@ function skillsInfos(bat,batType,near) {
                     drugBldOK = false;
                 }
                 drugBldVMOK = true;
-                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                     drugBldVMOK = false;
                 }
                 drugCostsOK = checkCost(drug.costs);
@@ -1233,7 +1233,7 @@ function skillsInfos(bat,batType,near) {
                     drugBldOK = false;
                 }
                 drugBldVMOK = true;
-                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                     drugBldVMOK = false;
                 }
                 drugCostsOK = checkCost(drug.costs);
@@ -1276,7 +1276,7 @@ function skillsInfos(bat,batType,near) {
                     drugBldOK = false;
                 }
                 drugBldVMOK = true;
-                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                     drugBldVMOK = false;
                 }
                 drugCostsOK = checkCost(drug.costs);
@@ -1322,7 +1322,7 @@ function skillsInfos(bat,batType,near) {
                         drugBldOK = false;
                     }
                     drugBldVMOK = true;
-                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                         drugBldVMOK = false;
                     }
                     drugCostsOK = checkCost(drug.costs);
@@ -1368,7 +1368,7 @@ function skillsInfos(bat,batType,near) {
                         drugBldOK = false;
                     }
                     drugBldVMOK = true;
-                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                         drugBldVMOK = false;
                     }
                     drugCostsOK = checkCost(drug.costs);
@@ -1413,7 +1413,7 @@ function skillsInfos(bat,batType,near) {
                         drugBldOK = false;
                     }
                     drugBldVMOK = true;
-                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                         drugBldVMOK = false;
                     }
                     drugCostsOK = checkCost(drug.costs);
@@ -1457,7 +1457,7 @@ function skillsInfos(bat,batType,near) {
                             drugBldOK = false;
                         }
                         drugBldVMOK = true;
-                        if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                        if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                             drugBldVMOK = false;
                         }
                         drugCostsOK = checkCost(drug.costs);
@@ -1503,7 +1503,7 @@ function skillsInfos(bat,batType,near) {
                         drugBldOK = false;
                     }
                     drugBldVMOK = true;
-                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0])) {
+                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
                         drugBldVMOK = false;
                     }
                     drugCostsOK = checkCost(drug.costs);
