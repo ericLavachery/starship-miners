@@ -37,6 +37,9 @@ function encounterCheck() {
                 playerInfos.encz.push('xx');
                 if (zone[0].planet === 'Sarak' || zone[0].planet === 'Dom') {
                     playerInfos.enc = playerInfos.enc-10;
+                    if (rand.rand(1,2) === 1) {
+                        madCitizens(false);
+                    }
                 }
             }
         }

@@ -15,6 +15,7 @@ body {
     display: block;
     position: absolute;
     z-index: 2;
+    pointer-events:none;
     /* margin-left: 0px; */
     /* margin-top: 0px; */
 }

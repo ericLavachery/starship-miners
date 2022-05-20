@@ -80,7 +80,7 @@ function stormDamage(bat,batType,storm,inMov) {
                     batDeathEffect(bat,true,'Bataillon détruit',bat.type+' brûlé.');
                     isDead = true;
                     if (inMov) {
-                        batDeath(bat,true);
+                        batDeath(bat,true,false);
                     } else {
                         checkDeath(bat,batType);
                     }
@@ -121,7 +121,7 @@ function stormDamage(bat,batType,storm,inMov) {
             batDeathEffect(bat,true,'Bataillon détruit',bat.type+' brûlé.');
             isDead = true;
             if (inMov) {
-                batDeath(bat,true);
+                batDeath(bat,true,false);
             } else {
                 checkDeath(bat,batType);
             }

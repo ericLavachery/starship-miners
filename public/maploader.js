@@ -112,16 +112,22 @@ function showMap(wmap,justMoved) {
 function toggleMapEffect() {
     if (playerInfos.clouds) {
         playerInfos.clouds = false;
+        // mapEffectOut();
     } else {
         playerInfos.clouds = true;
+        // mapEffectIn();
     }
     showMap(zone,false);
 };
 
 function mapEffect() {
     $('#zone_effect').empty();
-    if (!playerInfos.onShip && playerInfos.clouds) {
-        $('#zone_effect').append('<span onmouseover="mapEffectOut()"><img src="/static/img/cloudz1.png"></span>');
+    if (!playerInfos.onShip) {
+        if (!playerInfos.clouds) {
+            // $('#zone_effect').append('<span onmouseover="mapEffectOut()"><img src="/static/img/cloudz1.png"></span>');
+        } else {
+            $('#zone_effect').append('<span><img src="/static/img/cloudz1.png"></span>');
+        }
     }
 };
 

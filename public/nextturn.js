@@ -1604,7 +1604,7 @@ function checkDeath(bat,batType) {
                 }
             }
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
-            addAlienRes(bat);
+            addAlienRes(bat,false);
             deadAliensList.push(bat.id);
         }
     }

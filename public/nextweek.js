@@ -454,7 +454,7 @@ function eventCitoyens(time,sim,quiet) {
     let citNeed = getCitNeed();
     // let gangFacts = getGangFactors();
     console.log('$$$$$$$$$$$$$$$$$$$$$ citNeed = '+citNeed);
-    let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,20)*gangFacts.cit*(playerInfos.comp.med+30)*(playerInfos.comp.vsp+30)/9000);
+    let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,20)*gangFacts.cit*(playerInfos.comp.med+30)*(playerInfos.comp.vsp+30)/9500);
     let citId = 126;
     let citName = 'Citoyens';
     if (rand.rand(1,ruinsCrimChance) === 1) {

@@ -446,7 +446,7 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
     return result;
 };
 
-function batDeath(bat,count) {
+function batDeath(bat,count,isWiped) {
     console.log('DEATH');
     console.log(bat);
     let deadId = bat.id;
@@ -488,7 +488,7 @@ function batDeath(bat,count) {
                 playMusic('eggKill',false);
             }
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
-            addAlienRes(bat);
+            addAlienRes(bat,isWiped);
         }
         if (!playerInfos.knownAliens.includes(batType.name)) {
             newAlienKilled(batType,tileId);
@@ -1558,6 +1558,7 @@ function weaponSelect(weapon) {
     }
     // bonus veterancy & ammo
     selectedWeap = weaponAdj(selectedWeap,selectedBat,weapon);
+    sWipe = selectedWeap.isBlast;
 };
 
 function weaponSelectRiposte(distance) {
@@ -1620,6 +1621,7 @@ function weaponSelectRiposte(distance) {
             }
         }
     }
+    tWipe = targetWeap.isBlast;
 };
 
 function ammoFired(batId) {

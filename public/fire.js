@@ -1238,7 +1238,7 @@ function attack(melee,init) {
     // add xp & remove life :)
     if (targetBat.squadsLeft <= 0) {
         defAlive = false;
-        batDeath(targetBat,true);
+        batDeath(targetBat,true,sWipe);
         $('#report').append('<br><span class="report cy">Bataillon ('+targetBatName+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
@@ -1259,7 +1259,7 @@ function attack(melee,init) {
     }
     if (selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('autodes')) {
         attAlive = false;
-        batDeath(selectedBat,true);
+        batDeath(selectedBat,true,true);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBatName+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
@@ -2027,7 +2027,7 @@ function defense(melee,init) {
     selectedBatArrayUpdate();
     if (selectedBat.squadsLeft <= 0) {
         attAlive = false;
-        batDeath(selectedBat,true);
+        batDeath(selectedBat,true,false);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBatName+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){

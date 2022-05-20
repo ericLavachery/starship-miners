@@ -785,7 +785,7 @@ function markMap(tileId) {
     voirRessources();
 };
 
-function addAlienRes(bat) {
+function addAlienRes(bat,isWiped) {
     let batType = getBatType(bat);
     let killRes = 0;
     let caComp = (playerInfos.comp.ca+3)*(playerInfos.comp.ca+3)/25;
@@ -795,6 +795,9 @@ function addAlienRes(bat) {
                 killRes = batType.killRes[prop];
                 if (prop != 'Gibier') {
                     killRes = killRes*caComp;
+                }
+                if (isWiped && prop === 'Gibier') {
+                    killRes = killRes/4;
                 }
                 if (prop === 'Germium' || prop === 'Mephitis') {
                     killRes = killRes*(playerInfos.comp.exo+7)*(playerInfos.comp.exo+7)/49;
