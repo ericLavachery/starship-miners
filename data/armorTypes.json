@@ -57,6 +57,7 @@
         "bldReq":[],
         "bldVMReq":["Infirmerie"],
         "compReq":{"ca":1},
+        "altCompReq":{"med":1},
         "costs":{"Drogues":1,"Zinc":1,"Swarmine":1}
     },
     {
@@ -120,6 +121,7 @@
         "bldReq":[],
         "bldVMReq":["Garage"],
         "compReq":{"energ":1},
+        "altCompReq":{"trans":2},
         "costs":{"Huile":1,"Hydrogène":2,"Azote":2,"Slime":5}
     },
     {
@@ -675,6 +677,7 @@
         "info":"IA seconde génération",
         "bldReq":["Centre de recherches"],
         "compReq":{"det":4,"ind":1},
+        "altCompReq":{"det":3,"ind":2,"robo":2},
         "autoComp":["det",5],
         "factor":"crew",
         "costs":{"Cuivre":6,"Electros":18,"Silicium":6,"Cobalt":12}
@@ -886,6 +889,7 @@
         "info":"Camouflage+ Déplacement+ Cadence++",
         "bldReq":["Atelier"],
         "compReq":{"log":1,"ordre":2},
+        "altCompReq":{"log":1,"train":2},
         "autoComp":[],
         "factor":"crew",
         "costs":{"Blendium":8,"Tissus":12,"Scrap":6,"Carbone":6,"Fer":3}
@@ -897,6 +901,7 @@
         "info":"Camouflage+ Déplacement+ Précision++ Elévation+",
         "bldReq":["Atelier"],
         "compReq":{"log":1,"ordre":2},
+        "altCompReq":{"log":1,"train":2},
         "autoComp":[],
         "factor":"crew",
         "costs":{"Blendium":8,"Tissus":12,"Scrap":3,"Silicium":6,"Carbone":6}
@@ -908,6 +913,7 @@
         "info":"Camouflage+ Déplacement+ Munitions+ Puissance+",
         "bldReq":["Atelier"],
         "compReq":{"log":1,"ordre":2},
+        "altCompReq":{"log":1,"train":2},
         "autoComp":[],
         "factor":"crew",
         "costs":{"Blendium":8,"Tissus":15,"Scrap":6,"Carbone":6,"Fer":3}
@@ -919,6 +925,7 @@
         "info":"Déplacement+ Cadence++ / Résistance feu",
         "bldReq":["Atelier"],
         "compReq":{"log":1,"ordre":2},
+        "altCompReq":{"log":1,"train":2},
         "autoComp":[],
         "factor":"crew",
         "costs":{"Scrap":6,"Carbone":6,"Fer":3}

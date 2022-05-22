@@ -730,6 +730,7 @@ function checkUnitCompReq(unit,forGangList) {
 
 function checkCompReq(stuff) {
     let compReqOK = true;
+    // compReq
     if (stuff.compReq != undefined) {
         if (Object.keys(stuff.compReq).length >= 1) {
             Object.entries(stuff.compReq).map(entry => {
@@ -741,6 +742,22 @@ function checkCompReq(stuff) {
             });
         }
     }
+    // altCompReq
+    if (!compReqOK) {
+        if (stuff.altCompReq != undefined) {
+            if (Object.keys(stuff.altCompReq).length >= 1) {
+                compReqOK = true;
+                Object.entries(stuff.altCompReq).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (playerInfos.comp[key] < value) {
+                        compReqOK = false;
+                    }
+                });
+            }
+        }
+    }
+    // gangReq
     if (stuff.gangReq != undefined) {
         if (!stuff.gangReq.includes(playerInfos.gang)) {
             compReqOK = false;

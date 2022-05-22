@@ -10,13 +10,20 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     if (cat != 'infantry') {
         denom = 'Réparations';
     }
+    let real = false;
     washReports(false);
     if (!inBld) {
         $('#report').append('<span class="report or">'+selectedBat.type+' ('+denom+')</span><br>');
+        if ((selectedBatType.skills.includes('realmed') && playerInfos.comp.med >= 2) || selectedBatType.skills.includes('medtrans')) {
+            real = true;
+        }
     } else {
         medicBat = getBatById(medicBatId);
         medicBatType = getBatType(medicBat);
         $('#report').append('<span class="report or">'+medicBat.type+' ('+denom+')</span><br>');
+        if ((medicBatType.skills.includes('realmed') && playerInfos.comp.med >= 2) || medicBatType.skills.includes('medtrans')) {
+            real = true;
+        }
     }
     let unitIndex;
     let batType;
@@ -175,7 +182,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         bat.apLeft = bat.apLeft-medicPatientAP;
                                         addHealFlag(bat);
                                         doneAction(bat);
-                                    } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && bat.tags.includes('maladie') && deep) {
+                                    } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && bat.tags.includes('maladie') && deep && real) {
                                         tagDelete(bat,'maladie');
                                         totalAPCost = totalAPCost+apCost;
                                         console.log('maladie');
@@ -330,7 +337,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                     totalAPCost = totalAPCost+apCost;
                     addHealFlag(selectedBat);
                     $('#report').append('<span class="report">parasite tué<br></span>');
-                } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('maladie') && deep) {
+                } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('maladie') && deep && real) {
                     tagDelete(selectedBat,'maladie');
                     totalAPCost = totalAPCost+apCost;
                     addHealFlag(selectedBat);
@@ -412,6 +419,10 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
     let batHP;
     let batHPLeft;
     let fullBat;
+    let real = false;
+    if ((myBatType.skills.includes('realmed') && playerInfos.comp.med >= 2) || myBatType.skills.includes('medtrans')) {
+        real = true;
+    }
     if (!around) {
         let effSoins = checkEffSoins(myBat);
         if (effSoins >= 50) {
@@ -419,7 +430,7 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
                 if ((deep || playerInfos.comp.med >= 2) && myBat.tags.includes('venin')) {
                     numTargets = numTargets+1;
                 } else if (deep) {
-                    if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || myBat.tags.includes('maladie') || myBat.tags.includes('parasite') || myBat.tags.includes('trou')) {
+                    if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || (myBat.tags.includes('maladie') && real) || myBat.tags.includes('parasite') || myBat.tags.includes('trou')) {
                         numTargets = numTargets+1;
                     }
                 } else {
@@ -462,7 +473,7 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
                     let effSoins = checkEffSoins(bat);
                     if (catOK && !batType.skills.includes('norepair') && effSoins >= 50) {
                         if (deep) {
-                            if ((bat.damage > 0 && !fullBat) || (bat.squadsLeft < batType.squads && !fullBat) || bat.tags.includes('poison') || bat.tags.includes('venin') || bat.tags.includes('maladie') || bat.tags.includes('parasite') || bat.tags.includes('trou')) {
+                            if ((bat.damage > 0 && !fullBat) || (bat.squadsLeft < batType.squads && !fullBat) || bat.tags.includes('poison') || bat.tags.includes('venin') || (bat.tags.includes('maladie') && real) || bat.tags.includes('parasite') || bat.tags.includes('trou')) {
                                 numTargets = numTargets+1;
                             }
                         } else if (playerInfos.comp.med >= 2 && bat.tags.includes('venin')) {
