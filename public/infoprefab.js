@@ -146,35 +146,37 @@ function refabInfos(myBat,myBatUnitType) {
         sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'id'),'type'),'army');
         sortedBats.reverse();
         sortedBats.forEach(function(bat) {
-            if (bat.loc === "trans" && bat.locId == landerBat.id) {
+            if (bat.loc === "trans") {
                 batType = getBatType(bat);
-                let depliOK = true;
-                if (myBatUnitType.cat === 'infantry') {
-                    if (batType.fabTime >= 35 && !batType.skills.includes('clicput')) {
+                if (batType.skills.includes('prefab')) {
+                    let depliOK = true;
+                    if (myBatUnitType.cat === 'infantry') {
+                        if (batType.fabTime >= 35 && !batType.skills.includes('clicput')) {
+                            depliOK = false;
+                        }
+                    }
+                    if (bat.apLeft <= 0) {
                         depliOK = false;
                     }
-                }
-                if (bat.apLeft <= 0) {
-                    depliOK = false;
-                }
-                if (batType.skills.includes('prefab') && depliOK) {
-                    apCost = prefabCost(myBatUnitType,batType,false);
-                    if (myBat.apLeft >= 4 || myBat.apLeft >= apCost) {
-                        balise = 'h4';
-                        if (Object.keys(batDebarq).length >= 1) {
-                            if (batDebarq.id === bat.id) {
-                                balise = 'h1';
+                    if (depliOK) {
+                        apCost = prefabCost(myBatUnitType,batType,false);
+                        if (myBat.apLeft >= 4 || myBat.apLeft >= apCost) {
+                            balise = 'h4';
+                            if (Object.keys(batDebarq).length >= 1) {
+                                if (batDebarq.id === bat.id) {
+                                    balise = 'h1';
+                                }
                             }
-                        }
-                        let mayOut = checkMayOut(batType,true,bat);
-                        if (mayOut) {
-                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Reconstruire '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') ('+bat.eq+'/'+batType.logeq+')" class="boutonGris skillButtons" onclick="reconstruction('+bat.id+','+apCost+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</'+balise+'></span>');
+                            let mayOut = checkMayOut(batType,true,bat);
+                            if (mayOut) {
+                                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Reconstruire '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') ('+bat.eq+'/'+batType.logeq+')" class="boutonGris skillButtons" onclick="reconstruction('+bat.id+','+apCost+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</'+balise+'></span>');
+                            } else {
+                                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Vous ne pouvez pas débarquer ce bataillon sur cette planète" class="boutonGris skillButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</h4></span>');
+                            }
                         } else {
-                            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Vous ne pouvez pas débarquer ce bataillon sur cette planète" class="boutonGris skillButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</h4></span>');
+                            skillMessage = "PA épuisés";
+                            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</h4></span>');
                         }
-                    } else {
-                        skillMessage = "PA épuisés";
-                        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</h4></span>');
                     }
                 }
             }

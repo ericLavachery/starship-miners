@@ -181,7 +181,7 @@
     {
         "id":154,
         "name":"Adeptes",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":4},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":3},
         "bldReq":["Chapelle","Infirmerie"],
         "unitUp":"Gurus",
         "costs":{"Zinc":25,"Chlore":25,"Carbone":10,"Aluminium":10,"Titane":16,"Fer":20,"Scrap":20,"Bois":20,"Silicium":12,"Drogues":47,"Tissus":30},
@@ -257,7 +257,7 @@
     {
         "id":143,
         "name":"Piquiers",
-        "levels":{"rednecks":99,"blades":3,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":4,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
         "costs":{"Fer":30,"Carbone":60,"Bois":120,"Végétaux":140,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
@@ -337,7 +337,7 @@
     {
         "id":25,
         "name":"Rainmen",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":4,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":3,"brasier":99},
         "bldReq":["Armurerie","Poudrière"],
         "unitUp":"Alphas",
         "costs":{"Fer":60,"Scrap":72,"Aluminium":96,"Tungstène":24},
@@ -355,7 +355,7 @@
     {
         "id":26,
         "name":"Hot girls",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":3},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":2},
         "bldReq":["Atelier"],
         "compHardReq":{"pyro":1},
         "costs":{"Fer":112,"Scrap":210,"Carbone":14,"Plomb":56,"Aluminium":112,"Tungstène":70,"Végétaux":20,"Chlore":10,"Tissus":5},
@@ -400,7 +400,7 @@
     {
         "id":153,
         "name":"Lovushkas",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":3,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":4,"brasier":99},
         "bldReq":["Armurerie","Poudrière"],
         "compReq":{"explo":1},
         "costs":{"Fer":108,"Scrap":72,"Bois":36,"Tungstène":18,"Végétaux":144},
@@ -428,7 +428,7 @@
     {
         "id":41,
         "name":"Scalpels",
-        "levels":{"rednecks":99,"blades":4,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":3,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Infirmerie"],
         "costs":{"Scrap":32,"Bois":32,"Végétaux":32,"Drogues":43,"Silicium":18,"Végétaux":32,"Chlore":25,"Zinc":25,"Titane":6,"Tissus":12},
         "deploy":{"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
@@ -925,7 +925,7 @@
     {
         "id":97,
         "name":"Slings",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":2},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":4},
         "bldReq":["Atelier"],
         "unitUp":"Light knights",
         "costs":{"Fer":90,"Scrap":180,"Aluminium":30,"Huile":30,"Végétaux":20,"Chlore":10,"Tissus":5},
