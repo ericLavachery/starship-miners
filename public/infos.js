@@ -507,7 +507,7 @@ function batInfos(bat,batType,pop) {
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
         $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">'+trapName+'</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
     }
-    if (batType.skills.includes('constructeur')) {
+    if (batType.skills.includes('barbs')) {
         let ravitNum = calcRavit(bat);
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
         $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Barbelés</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');

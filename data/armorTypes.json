@@ -1650,7 +1650,7 @@
         "skills":[],
         "info":"Arme 2",
         "bldReq":["Arsenal"],
-        "compReq":{"def":2,"bal":2,"explo":2},
+        "compReq":{"def":2,"bal":2,"explo":1},
         "factor":"rofpow",
         "costs":{"Scrap":10,"Fer":70,"Carbone":20,"Titane":10,"Tungstène":20}
     },

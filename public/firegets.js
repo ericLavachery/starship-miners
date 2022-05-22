@@ -467,7 +467,9 @@ function batDeath(bat,count,isWiped) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 playMusic('rip',false);
             }
-            transDestroy(tileId,isFlying);
+            if (batType.skills.includes('transport')) {
+                transDestroy(tileId,deadId,isFlying);
+            }
             saveCrew(batType,deadId,tileId);
         }
         batIndex = batList.findIndex((obj => obj.id == bat.id));
@@ -660,7 +662,7 @@ function saveCrew(deadBatType,deadId,tileId) {
     }
 };
 
-function transDestroy(tileId,isFlying) {
+function transDestroy(tileId,deadId,isFlying) {
     alienOccupiedTileList();
     let savedBats = 0;
     let crashBats = [];

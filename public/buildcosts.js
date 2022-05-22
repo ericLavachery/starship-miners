@@ -430,8 +430,8 @@ function getDeployCosts(unit,ammo,weapNum,type) {
             deployFactor = Math.ceil(unit.squads*unit.weapon.rof*pauer/5*deploySalvos);
             let weapRange = unit.weapon.range+(unit.weapon.elevation/2);
             if (unit.moveCost > 90) {
-                if (weapRange < 5) {
-                    deployFactor = deployFactor*(weapRange+2)/7;
+                if (weapRange < 6) {
+                    deployFactor = deployFactor*(weapRange+1)/7;
                 }
             }
             if (!unit.weapon.noBis) {
@@ -452,8 +452,8 @@ function getDeployCosts(unit,ammo,weapNum,type) {
             deployFactor = Math.ceil(unit.squads*unit.weapon2.rof*pauer/5*deploySalvos);
             let weapRange = unit.weapon2.range+(unit.weapon2.elevation/2);
             if (unit.moveCost > 90) {
-                if (weapRange < 5) {
-                    deployFactor = deployFactor*(weapRange+2)/7;
+                if (weapRange < 6) {
+                    deployFactor = deployFactor*(weapRange+1)/7;
                 }
             } else if (unit.weapon2.range < 2 && !unit.weapon.noMelee && !unit.weapon.noDef) {
                 deployFactor = deployFactor/1.65;

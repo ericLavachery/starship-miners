@@ -150,7 +150,7 @@ function checkTreuil(myBat) {
     let myBatType = getBatType(myBat);
     let bestEffect = 0;
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone" && bat.tileId != myBat.tileId && bat.apLeft >= 1) {
+        if (bat.tileId != myBat.tileId && bat.apLeft >= 1) {
             let distance = calcDistance(bat.tileId,myBat.tileId);
             if (distance <= 1) {
                 let batType = getBatType(bat);
