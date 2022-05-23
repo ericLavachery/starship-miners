@@ -436,7 +436,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":1},
+        "compReq":{"bal":2,"mat":1},
         "deploy":{"Munitions":1,"Titane":2},
         "batch":100
     },

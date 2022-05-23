@@ -1610,7 +1610,7 @@
         },
         "protection":["aucun","scrap","composite","acier","bugium","titane","bulk","kanchan","chobham","rhodu","autorep","tisal","iso","soap","swag","bonibo","adamantite"],
         "equip":["aucun","lunette","chargeur","g2motor","chenilles","snorkel","w2-2ch","e-flash","theeye","e-mecano","e-road"],
-        "log3eq":["chargeur"],
+        "log3eq":["chenilles"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,

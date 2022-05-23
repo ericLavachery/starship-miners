@@ -972,6 +972,15 @@
         "fabTime":40
     },
     {
+        "id":289,
+        "name":"Pets",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Station"],
+        "compReq":{"train":1},
+        "costs":{},
+        "fabTime":15
+    },
+    {
         "id":264,
         "name":"Wardogs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
@@ -1869,7 +1878,7 @@
     {
         "id":165,
         "name":"Shuttle",
-        "levels":{"rednecks":7,"blades":7,"bulbos":7,"drogmulojs":7,"tiradores":7,"detruas":7,"brasier":7},
+        "levels":{"rednecks":8,"blades":8,"bulbos":8,"drogmulojs":8,"tiradores":8,"detruas":8,"brasier":8},
         "bldReq":["Soute"],
         "bldUp":"Dropship",
         "bldCost":"Lander",
@@ -1880,7 +1889,7 @@
     {
         "id":103,
         "name":"Dropship",
-        "levels":{"rednecks":10,"blades":10,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":10,"brasier":10},
+        "levels":{"rednecks":11,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":11,"brasier":11},
         "bldReq":["Soute","Chaîne de montage"],
         "bldUp":"Minotaur",
         "bldCost":"Shuttle",
@@ -1891,11 +1900,10 @@
     {
         "id":105,
         "name":"Minotaur",
-        "levels":{"rednecks":13,"blades":13,"bulbos":13,"drogmulojs":13,"tiradores":13,"detruas":13,"brasier":13},
+        "levels":{"rednecks":14,"blades":14,"bulbos":14,"drogmulojs":14,"tiradores":14,"detruas":14,"brasier":14},
         "bldReq":["Soute","Usine"],
         "bldUp":"Hercules",
         "bldCost":"Dropship",
-        "compReq":{"vsp":1},
         "toNum":3,
         "costs":{"Eau":4000,"Energie":6000,"Huile":375,"Scrap":1000,"Tissus":150,"Carbone":300,"Titane":3700,"Aluminium":8700,"Calcium":30,"Rhodium":350,"Nickel":950,"Cuivre":4000,"Or":1050,"Silicium":650,"Bore":750,"Plutonium":1100,"Oxygène":1700,"Hydrogène":1700,"Azote":850,"Chlore":100,"Electros":750,"Batteries":500},
         "deploy":{"Energie":600,"Huile":40,"Drogues":30,"Chlore":15,"Zinc":15,"Tissus":15,"Plutonium":270,"Hydrogène":180}

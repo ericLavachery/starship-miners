@@ -1869,7 +1869,7 @@ function weaponAdj(weapon,bat,wn) {
         if (bat.eq === 'longtom' || bat.eq === 'longtom1' || bat.logeq === 'longtom' || bat.logeq === 'longtom1') {
             thisWeapon.range = thisWeapon.range+1;
         }
-        if (bat.eq === 'chargeur' || bat.eq === 'chargeur1' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur1' || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
+        if (bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.eq === 'chargeur1' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur1' || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
             if (thisWeapon.cost < 6 && playerInfos.comp.train < 1) {
                 thisWeapon.accuracy = thisWeapon.accuracy-1;
                 if (thisWeapon.cost >= 3) {
@@ -1923,7 +1923,7 @@ function weaponAdj(weapon,bat,wn) {
         if (bat.eq === 'longtom' || bat.eq === 'longtom2' || bat.logeq === 'longtom' || bat.logeq === 'longtom2') {
             thisWeapon.range = thisWeapon.range+1;
         }
-        if (bat.eq === 'chargeur' || bat.eq === 'chargeur2' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur2') {
+        if (bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.eq === 'chargeur2' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur2') {
             if (thisWeapon.cost < 6 && playerInfos.comp.train < 1) {
                 thisWeapon.accuracy = thisWeapon.accuracy-1;
                 if (thisWeapon.cost >= 3) {
@@ -2531,13 +2531,13 @@ function chargeurAdj(bat,shots,weap) {
     if (bat.eq.includes('kit-chouf')) {
         mult = 2;
     }
-    if (bat.eq.includes('chargeur') || bat.logeq.includes('chargeur') || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
+    if (bat.eq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.logeq.includes('chargeur') || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
         if (weap.num === 1) {
-            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.logeq === 'chargeur1' || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
+            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.logeq === 'chargeur1' || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
                 newShots = Math.round(newShots*mult);
             }
         } else {
-            if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.logeq === 'chargeur2' || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitto') {
+            if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.logeq === 'chargeur2' || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitto') {
                 newShots = Math.round(newShots*mult);
             }
         }

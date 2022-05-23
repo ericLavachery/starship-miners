@@ -606,7 +606,7 @@ function checkSpecialEquip(equip,batType) {
         if (!nope) {
             if (Object.keys(batType.weapon2).length >= 3) {
                 if (batType.weapon2.name.includes('plasma') || batType.weapon2.name.includes('laser') || batType.weapon2.name.includes('BFG')) {
-                    if (equip.name === 'chargeur' || equip.name === 'chargeur1') {
+                    if (equip.name === 'chargeur' || equip.name === 'chargeur2') {
                         if (!playerInfos.bldList.includes('Centre de recherches')) {
                             nope = true;
                         }

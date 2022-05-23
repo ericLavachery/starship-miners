@@ -2903,7 +2903,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["gamecap","flee","regeneration","initmelee","ricoface","resistall","nojello"],
+        "skills":["gamecap","flee","okwater","regeneration","initmelee","ricoface","resistall","nojello"],
         "deathFx":"death2",
         "killRes":{"Gibier":500},
         "killXP":5
@@ -2988,7 +2988,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["gamecap","flee","creep","maladie","sentinelle","nojello"],
+        "skills":["gamecap","flee","okwater","creep","maladie","sentinelle","nojello"],
         "deathFx":"death1",
         "killRes":{"Gibier":150},
         "killXP":2
@@ -3030,7 +3030,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["gamecap","flee","dive","creep","okwater","tirailleur","escape","sentinelle","nojello"],
+        "skills":["gamecap","flee","okwater","dive","creep","okwater","tirailleur","escape","sentinelle","nojello"],
         "deathFx":"death1",
         "killRes":{"Gibier":70},
         "killXP":2

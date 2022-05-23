@@ -376,6 +376,14 @@ function playerSkillsUTChanges() {
             if (unit.hySpeed != undefined) {
                 unit.hySpeed = Math.ceil(unit.hySpeed/(playerInfos.comp.vsp+4)*5);
             }
+            if (playerInfos.comp.vsp >= 1) {
+                if (unit.compReq === undefined && unit.compHardReq === undefined) {
+                    unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.vsp);
+                    if (unit.levels[playerInfos.gang] < 1) {
+                        unit.levels[playerInfos.gang] = 1;
+                    }
+                }
+            }
             if (playerInfos.comp.vsp >= 3) {
                 let vspDiv = (playerInfos.comp.vsp+4)*(playerInfos.comp.vsp+4);
                 if (unit.deploy != undefined) {

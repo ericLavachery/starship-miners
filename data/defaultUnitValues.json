@@ -44,7 +44,7 @@
         "ammo": [ "standard" ],
         "maxAmmo": 99
     },
-    "protection":["aucune","scrap","bugium","kevlar","acier","combo","duneg","kapton","wendium","titane","tisal","nano","soap","swing","adamantite","aegis","battlesuit"],
+    "protection":["aucune","scrap","bugium","kevlar","composite","acier","combo","duneg","kapton","wendium","titane","tisal","nano","soap","swing","adamantite","aegis","battlesuit"],
     "equip":["aucun"],
     "moveCost": 3,
     "maxFlood": 4,
