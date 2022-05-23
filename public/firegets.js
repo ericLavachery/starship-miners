@@ -1327,14 +1327,57 @@ function calcDistanceSquare(myTileIndex,thatTileIndex) {
 function isInRange(myBat,thatTileId,myWeapon,alien) {
     let myBatType = getBatType(myBat);
     let inRange = false;
-    let fluoBonus = 0;
     let range = myWeapon.range;
-    if (alien.tags.includes('fluo') && myWeapon.range >= 1 && !myWeapon.isMelee) {
-        fluoBonus = 1;
+    let rangeBonus = 0;
+    if (alien.tags.includes('fluo')) {
+        if (myWeapon.range >= 1 && !myWeapon.isMelee) {
+            rangeBonus = rangeBonus+1;
+        }
+    }
+    if (rangeTerAdj) {
+        if (myWeapon.aoe === 'unit' || myWeapon.aoe === 'brochette') {
+            let terrainAdj = 0;
+            let terrain = getTerrainById(thatTileId);
+            let alienType = getBatType(alien);
+            if (!alienType.skills.includes('fly') && !alien.tags.includes('fluo')) {
+                if (terrain.scarp >= 3 && alienType.size <= 2) {
+                    terrainAdj = terrainAdj-1;
+                }
+                if (terrain.veg > alienType.size) {
+                    terrainAdj = terrainAdj-terrain.veg+alienType.size;
+                }
+                if (myWeapon.range >= 1 && !myWeapon.isMelee) {
+                    rangeBonus = rangeBonus+terrainAdj;
+                }
+            }
+            let alienAdjSize = alienType.size;
+            if (terrain.scarp >= 3) {
+                alienAdjSize = alienAdjSize-30;
+            } else if (terrain.scarp >= 2) {
+                alienAdjSize = alienAdjSize-10;
+            }
+            if (alienAdjSize > 50) {
+                rangeBonus = rangeBonus+2;
+            } else if (alienAdjSize > 20) {
+                rangeBonus = rangeBonus+1;
+            }
+        }
+    }
+    let halfRange = Math.floor(range/2);
+    if (halfRange = 0) {
+        halfRange = 1;
+    }
+    if (rangeBonus > halfRange) {
+        range = range+halfRange;
+    } else {
+        range = range+rangeBonus;
+    }
+    if (myWeapon.range >= 1 && !myWeapon.isMelee && range < 1) {
+        range = 1;
     }
     let distance = calcDistance(myBat.tileId,thatTileId);
-    if (distance > range+fluoBonus) {
-        // nothing
+    if (distance > range) {
+        // out of range
     } else {
         inRange = true;
     }

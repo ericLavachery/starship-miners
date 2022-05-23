@@ -138,6 +138,7 @@ let hitBase = 9; // bonus to hit général (aliens et humains)
 let alienHitBase = 2; // bonus précision aliens
 let alienHPBase = 1; // hp x1
 let alienMeleeROF = 1.25;  // bonus rof aliens en mêlée
+let rangeTerAdj = true; // ajustements de range selon le terrain et la taille de la cible
 let meleeROF = 1; // bonus rof players en mêlée
 let alienInitiative = -15;
 let initiativeDice = 15 // ajoute 0-15

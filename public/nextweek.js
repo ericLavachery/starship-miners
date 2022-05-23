@@ -454,7 +454,7 @@ function eventCitoyens(time,sim,quiet) {
     let citNeed = getCitNeed();
     // let gangFacts = getGangFactors();
     console.log('$$$$$$$$$$$$$$$$$$$$$ citNeed = '+citNeed);
-    let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,20)*gangFacts.cit*(playerInfos.comp.med+30)*(playerInfos.comp.vsp+30)/9500);
+    let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,20)*gangFacts.cit*(playerInfos.comp.med+30)*(playerInfos.comp.vsp+30)/10000);
     let citId = 126;
     let citName = 'Citoyens';
     if (rand.rand(1,ruinsCrimChance) === 1) {
@@ -466,7 +466,7 @@ function eventCitoyens(time,sim,quiet) {
         playerInfos.allCits = playerInfos.allCits+newCitsNumber;
     }
     if (!quiet) {
-        warning('Navette de secours','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont été récupérés par la navette de secours.<br>',true);
+        warning('Navette de secours','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont été récupérés par la navette de secours.<br>',false);
     }
 };
 

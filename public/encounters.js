@@ -185,7 +185,7 @@ function madCitizens(hard) {
     if (centreTileId >= 0) {
         // CITOYENS
         let dropTile;
-        let citDice = 6-Math.floor(zone[0].mapDiff/3);
+        let citDice = 4;
         if (hard) {
             citDice = citDice-2;
         }
@@ -206,10 +206,8 @@ function madCitizens(hard) {
         // CITOYENS
         if (rand.rand(1,citDice) === 1) {
             citId = 126;
-            if (zone[0].mapDiff < 5) {
-                if (rand.rand(1,ruinsCrimChance) === 1) {
-                    citId = 225;
-                }
+            if (rand.rand(1,ruinsCrimChance) === 1) {
+                citId = 225;
             }
             numCit = rand.rand(minCit,maxCit)*6;
             dropTile = checkDropSafe(centreTileId);
@@ -222,8 +220,11 @@ function madCitizens(hard) {
             playerOccupiedTiles.push(dropTile);
         }
         // CITOYENS
-        if (rand.rand(1,citDice) === 1 && zone[0].mapDiff >= 5) {
+        if (rand.rand(1,citDice) === 1) {
             citId = 126;
+            if (rand.rand(1,ruinsCrimChance) === 1) {
+                citId = 225;
+            }
             numCit = rand.rand(minCit,maxCit)*6;
             dropTile = checkDropSafe(centreTileId);
             unitIndex = unitTypes.findIndex((obj => obj.id == citId));
@@ -232,6 +233,30 @@ function madCitizens(hard) {
             conselPut = false;
             conselTriche = true;
             putBat(dropTile,numCit,0,'',false);
+            playerOccupiedTiles.push(dropTile);
+        }
+        // SURVIVANTS
+        if (hard) {
+            citId = 287;
+            dropTile = checkDropSafe(centreTileId);
+            unitIndex = unitTypes.findIndex((obj => obj.id == citId));
+            conselUnit = unitTypes[unitIndex];
+            conselAmmos = ['standard','lame','scrap','aucun'];
+            conselPut = false;
+            conselTriche = true;
+            putBat(dropTile,0,0,'',false);
+            playerOccupiedTiles.push(dropTile);
+        }
+        // SURVIVANTS
+        if (rand.rand(1,citDice) === 1) {
+            citId = 287;
+            dropTile = checkDropSafe(centreTileId);
+            unitIndex = unitTypes.findIndex((obj => obj.id == citId));
+            conselUnit = unitTypes[unitIndex];
+            conselAmmos = ['standard','lame','scrap','aucun'];
+            conselPut = false;
+            conselTriche = true;
+            putBat(dropTile,0,0,'',false);
             playerOccupiedTiles.push(dropTile);
         }
         if (hard) {
