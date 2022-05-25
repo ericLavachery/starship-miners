@@ -1615,7 +1615,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["fortif","selfbadmecano","maycamo","fret","hscarpmove","light","crewsave","recupcit","recupres"],
+        "skills":["fortif","selfbadmecano","longshot","maycamo","fret","hscarpmove","light","crewsave","recupcit","recupres"],
         "mecanoCost":20,
         "transRes":120,
         "fuzz":3,

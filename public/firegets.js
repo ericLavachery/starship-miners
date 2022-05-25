@@ -2509,8 +2509,10 @@ function apCostRiposte(bat,batType,weap) {
             apCost = 0;
         } else if (weap.cost === 2) {
             apCost = 1;
-        } else {
+        } else if (weap.cost <= 5) {
             apCost = 2;
+        } else {
+            apCost = 3;
         }
     }
     return apCost;

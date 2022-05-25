@@ -996,7 +996,7 @@
         "bldReq":["Chenil","Laboratoire"],
         "compReq":{"gen":1},
         "costs":{"Creatite":180,"Gibier":225,"Calcium":90,"Azote":90,"Mercure":36,"Drogues":72},
-        "fabTime":25
+        "fabTime":40
     },
     {
         "id":16,

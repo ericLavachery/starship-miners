@@ -1863,7 +1863,9 @@ function recupInfraRes(tile,infra) {
 function demolition(apCost) {
     let tile = getTile(selectedBat);
     let infra = getInfraByName(tile.infra);
-    recupInfraRes(tile,infra);
+    if (infra.name != 'Terriers') {
+        recupInfraRes(tile,infra);
+    }
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     tagDelete(selectedBat,'guet');
     doneAction(selectedBat);
@@ -1977,10 +1979,12 @@ function putRoad(apCost) {
 function putRoadsAround() {
     zone.forEach(function(tile) {
         let distance = calcDistance(selectedBat.tileId,tile.id);
-        if (distance <= 1 && tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
-            tile.rd = true;
-            if (tile.qs != undefined) {
-                delete tile.qs;
+        if (distance <= 1) {
+            if ((tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') || tile.id === selectedBat.tileId) {
+                tile.rd = true;
+                if (tile.qs != undefined) {
+                    delete tile.qs;
+                }
             }
         }
     });

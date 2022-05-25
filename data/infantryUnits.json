@@ -2058,7 +2058,9 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"mit_mid",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"],
+            "maxAmmo":30,
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Mitrailleuse",
@@ -2073,7 +2075,9 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"mit_mid",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"],
+            "maxAmmo":30,
+            "ravitBld":"Poudrière"
         },
         "protection":["aucune","scrap","composite","bugium","kevlar","kapton","wendium","combo","titane","tisal","nano","duneg","soap","swing","adamantite","battlesuit"],
         "equip":["aucun","e-flash","e-ranger","e-camo","e-medic","lunette","chargeur","w2-2ch","theeye","helper","waterproof","repel"],
@@ -2116,7 +2120,7 @@
             "aoe":"unit",
             "sound":"mit_minigun",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"],
-            "maxAmmo":20,
+            "maxAmmo":25,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -2132,7 +2136,7 @@
             "aoe":"unit",
             "sound":"mit_minigun",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"],
-            "maxAmmo":20,
+            "maxAmmo":25,
             "ravitBld":"Poudrière"
         },
         "protection":["aucune","scrap","composite","bugium","kevlar","kapton","wendium","combo","titane","tisal","nano","duneg","soap","swing","adamantite","battlesuit"],

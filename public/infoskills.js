@@ -2048,7 +2048,7 @@ function skillsInfos(bat,batType,near) {
     // DEMENTELEMENT INFRA
     if (batType.skills.includes('constructeur') && !playerInfos.onShip) {
         if (tile.infra != undefined) {
-            if (tile.infra === 'Miradors' || tile.infra === 'Palissades' || tile.infra === 'Remparts' || tile.infra === 'Murailles') {
+            if (tile.infra === 'Miradors' || tile.infra === 'Palissades' || tile.infra === 'Remparts' || tile.infra === 'Murailles' || tile.infra === 'Terriers') {
                 let infra = getInfraByName(tile.infra);
                 apCost = Math.round(Math.sqrt(batType.mecanoCost)*infra.fabTime/5.1);
                 apReq = getConstAPReq(bat,batType);
