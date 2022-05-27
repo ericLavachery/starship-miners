@@ -2253,7 +2253,7 @@
             "power":18,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium","obus-deluge"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium","obus-deluge"],
             "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
@@ -4065,7 +4065,7 @@
             "power":22,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
             "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
@@ -5052,7 +5052,7 @@
             "power":21,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
             "maxAmmo":7,
             "ravitBld":"Poudrière"
         },
@@ -5428,7 +5428,7 @@
             "power":20,
             "aoe":"squad",
             "sound":"canon_flak_x3",
-            "ammo":["obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":18,
             "ravitBld":"Poudrière"
         },
@@ -5443,7 +5443,7 @@
             "power":20,
             "aoe":"squad",
             "sound":"canon_flak_x3",
-            "ammo":["obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":18,
             "ravitBld":"Poudrière"
         },

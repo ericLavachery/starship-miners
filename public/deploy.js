@@ -328,6 +328,24 @@ function checkHasWeapon(num,batType,eq) {
     return hasWeapon;
 }
 
+function checkAmmoReqs(bat,batType) {
+    if (playerInfos.onShip) {
+        let ammo = getAmmoByName(bat.ammo);
+        let compReqOK = checkCompReq(ammo);
+        let bldReqOK = verifBldReq(batType,ammo.bldReq);
+        if (!compReqOK || !bldReqOK) {
+            selectedBat.ammo = batType.weapon.ammo[0];
+        }
+        ammo = getAmmoByName(bat.ammo2);
+        compReqOK = checkCompReq(ammo);
+        bldReqOK = verifBldReq(batType,ammo.bldReq);
+        if (!compReqOK || !bldReqOK) {
+            selectedBat.ammo2 = batType.weapon.ammo[0];
+        }
+        selectedBatArrayUpdate();
+    }
+};
+
 function doReEquip(batId) {
     let myBat = getBatById(batId);
     let myBatType = getBatType(myBat);
@@ -529,7 +547,7 @@ function verifBldReq(unit,bldReq) {
         if (bldReq[2] === 'Caserne') {
             bldReq[2] = 'Caserne '+capitalizeFirstLetter(playerInfos.gang);
         }
-        console.log(bldReq);
+        // console.log(bldReq);
         if (playerInfos.bldList.includes(bldReq[0]) || bldReq[0] === undefined || unit.name === bldReq[0]) {
             if (playerInfos.bldList.includes(bldReq[1]) || bldReq[1] === undefined || unit.name === bldReq[1]) {
                 if (playerInfos.bldList.includes(bldReq[2]) || bldReq[2] === undefined || unit.name === bldReq[2]) {

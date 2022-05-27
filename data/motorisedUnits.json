@@ -41,7 +41,7 @@
             "power":18,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
             "maxAmmo":8,
             "ravitBld":"Poudrière"
         },
@@ -3154,7 +3154,7 @@
             "power":20,
             "aoe":"squad",
             "sound":"bomb_mini_x3",
-            "ammo":["obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
@@ -3170,7 +3170,7 @@
             "power":20,
             "aoe":"squad",
             "sound":"bomb_mini_x3",
-            "ammo":["obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
@@ -4061,7 +4061,7 @@
             "power":18,
             "aoe":"bat",
             "sound":"bomb_mini_x1",
-            "ammo":["obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":3,
             "ravitBld":"Poudrière"
         },
@@ -4297,7 +4297,7 @@
             "power":18,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },
@@ -4354,7 +4354,7 @@
             "power":18,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },
@@ -4410,7 +4410,7 @@
             "power":40,
             "aoe":"bat",
             "sound":"bombing",
-            "ammo":["obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-nanite","obus-plastanium","obus-uridium","obus-deluge"],
+            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-nanite","obus-plastanium","obus-uridium","obus-deluge"],
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },
@@ -4568,7 +4568,7 @@
             "power":40,
             "aoe":"bat",
             "sound":"bombing",
-            "ammo":["obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-nanite","obus-uridium","obus-deluge"],
+            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-nanite","obus-uridium","obus-deluge"],
             "maxAmmo":16,
             "ravitBld":"Poudrière"
         },

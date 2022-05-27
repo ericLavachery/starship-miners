@@ -466,6 +466,7 @@ function batSouteSelect(batId) {
 function batDeploy(batId) {
     let bat = getBatById(batId);
     let batType = getBatType(bat);
+    // vérifier si les munitions sont faisables! (si non: mettre la munition de base?)
     let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq,bat.logeq]);
     let enoughRes = checkCost(deployCosts);
     if (enoughRes) {
@@ -491,14 +492,6 @@ function batUndeploy(batId) {
 
 function calcLanderDeploy(landerBatType) {
     let deployCosts = landerBatType.deploy;
-    // bataillons.forEach(function(bat) {
-    //     if (bat.loc === 'zone') {
-    //         let batType = getBatType(bat);
-    //         if (batType.skills.includes('transorbital') && batType.name != 'Soute' && bat.tags.includes('deploy')) {
-    //
-    //         }
-    //     }
-    // });
     return deployCosts;
 }
 

@@ -706,6 +706,21 @@ function checkUnitCompReq(unit,forGangList) {
                     });
                 }
             }
+            // altCompReq
+            if (!compReqOK) {
+                if (unit.altCompReq != undefined) {
+                    if (Object.keys(unit.altCompReq).length >= 1) {
+                        compReqOK = true;
+                        Object.entries(unit.altCompReq).map(entry => {
+                            let key = entry[0];
+                            let value = entry[1];
+                            if (playerInfos.comp[key] < value) {
+                                compReqOK = false;
+                            }
+                        });
+                    }
+                }
+            }
         }
         if (unit.compHardReq != undefined) {
             if (Object.keys(unit.compHardReq).length >= 1) {

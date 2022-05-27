@@ -62,6 +62,9 @@ function batInfos(bat,batType,pop) {
     }
     levelUp(bat,batType);
     doRegroup(bat,batType);
+    if (playerInfos.onShip) {
+        checkAmmoReqs(bat,batType);
+    }
     if (batType.skills.includes('transorbital')) {
         checkModules(bat,batType);
     }

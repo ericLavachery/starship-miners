@@ -1530,7 +1530,7 @@
         "cat":"equip",
         "skills":[],
         "info":"Fortifications",
-        "bldReq":["Chaîne de montage"],
+        "bldReq":["Caserne"],
         "compReq":{"const":1,"def":2,"log":2},
         "autoComp":["def",3],
         "factor":"one",
