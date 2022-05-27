@@ -1364,7 +1364,7 @@ function isInRange(myBat,thatTileId,myWeapon,alien) {
         }
     }
     let halfRange = Math.floor(range/2);
-    if (halfRange = 0) {
+    if (halfRange === 0) {
         halfRange = 1;
     }
     if (rangeBonus > halfRange) {
