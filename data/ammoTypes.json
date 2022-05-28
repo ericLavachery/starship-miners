@@ -2358,7 +2358,7 @@
         "accuracy": 0.5,
         "apdamage": 0,
         "aoe": "squad",
-        "deploy":{"Scrap":6,"Soufre":2,"Potassium":2,"Carbone":2},
+        "deploy":{"Scrap":6,"Explosifs":1},
         "batch":100
     },
     {

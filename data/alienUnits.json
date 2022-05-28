@@ -720,8 +720,8 @@
         "weapon2":{
             "name":"Glu",
             "cost":5,
-            "range":3,
-            "elevation":1,
+            "range":2,
+            "elevation":3,
             "noFly":false,
             "isMelee":false,
             "rof":4,
@@ -731,7 +731,7 @@
             "sound":"squish8",
             "ammo":["glair"]
         },
-        "w2chance":4,
+        "w2chance":5,
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -1273,7 +1273,7 @@
         },
         "weapon2":{
             "name":"Toile",
-            "cost":3,
+            "cost":1,
             "range":3,
             "noFly":false,
             "isMelee":false,
@@ -1331,7 +1331,7 @@
         },
         "weapon2":{
             "name":"Toile",
-            "cost":4,
+            "cost":2,
             "range":1,
             "noFly":false,
             "isMelee":false,
@@ -1528,7 +1528,7 @@
         },
         "weapon2":{
             "name":"Glu",
-            "cost":4,
+            "cost":1,
             "range":2,
             "elevation":2,
             "noFly":false,
@@ -2427,7 +2427,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capbld","bugshield","resistacide","regeneration","shield","minaccu","noaploss","destructeur","ricochet","initmelee","dread","smartrip","flee"],
+        "skills":["capbld","bugshield","resistacide","regeneration","shield","minaccu","noaploss","destructeur","ricochet","initmelee","dread","flee"],
         "deathFx":"death3",
         "spawnFx":"spawn-over",
         "fxPriority":11,
@@ -2754,7 +2754,7 @@
         "size":100,
         "speed":-5,
         "stealth":0,
-        "ap":20,
+        "ap":30,
         "maxSalvo":1,
         "weapon":{
             "name":"Boule de feu",

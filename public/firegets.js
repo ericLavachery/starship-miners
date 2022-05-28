@@ -2515,6 +2515,9 @@ function apCostRiposte(bat,batType,weap) {
             apCost = 3;
         }
     }
+    if (batType.cat === 'aliens' && weap.num === 2 && batType.w2chance > 2) {
+        apCost = apCost+((batType.w2chance-2)*2);
+    }
     return apCost;
 };
 
