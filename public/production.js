@@ -584,7 +584,7 @@ function upkeepNotPaid(bat,batType,resShortage) {
         }
     } else {
         if (resShortage.length >= 1) {
-            let message = 'Production stoppée. Manque de: <span class="brun">'+toNiceString(resShortage)+'</span>';
+            let message = 'Activité stoppée. Manque de: <span class="brun">'+toNiceString(resShortage)+'</span>';
             warning(batType.name,message,false);
         }
     }

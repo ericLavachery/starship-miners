@@ -160,15 +160,14 @@
         "costs":{"Scrap":18}
     },
     {
-        "name":"bugium",
+        "name":"composite",
         "cat":"armor",
-        "armor":3,
+        "armor":2,
         "ap":-2,
         "skills":[],
-        "bldReq":["Atelier"],
-        "compReq":{"ca":2},
+        "bldReq":["Armurerie"],
         "factor":"thp",
-        "costs":{"Scrap":6,"Bugium":24}
+        "costs":{"Scrap":9,"Fer":6}
     },
     {
         "name":"kevlar",
@@ -182,14 +181,15 @@
         "costs":{"Scrap":6,"Carbone":12,"Azote":6}
     },
     {
-        "name":"composite",
+        "name":"swarmine",
         "cat":"armor",
         "armor":2,
-        "ap":-2,
+        "ap":-1,
         "skills":[],
-        "bldReq":["Armurerie"],
+        "bldReq":["Atelier"],
+        "compReq":{"ca":3},
         "factor":"thp",
-        "costs":{"Scrap":9,"Fer":6}
+        "costs":{"Scrap":6,"Swarmine":18}
     },
     {
         "name":"acier",
@@ -200,6 +200,17 @@
         "bldReq":["Armurerie"],
         "factor":"thp",
         "costs":{"Scrap":2,"Fer":12}
+    },
+    {
+        "name":"bugium",
+        "cat":"armor",
+        "armor":3,
+        "ap":-2,
+        "skills":[],
+        "bldReq":["Atelier"],
+        "compReq":{"ca":2},
+        "factor":"thp",
+        "costs":{"Scrap":6,"Bugium":24}
     },
     {
         "name":"combo",

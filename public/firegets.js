@@ -2301,6 +2301,10 @@ function weaponAdj(weapon,bat,wn) {
     if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
         thisWeapon.range = 1;
     }
+    // needle max range
+    if (thisWeapon.ammo.includes('needle') && thisWeapon.range > 1) {
+        thisWeapon.range = 1;
+    }
     // hero rage
     if (bat.tags.includes('rage')) {
         if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot')) {

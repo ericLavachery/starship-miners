@@ -917,7 +917,7 @@ function skillsInfos(bat,batType,near) {
         }
     }
     // TREUIL
-    if (!playerInfos.onShip && bat.apLeft < 2 && !bat.tags.includes('construction')) {
+    if (!playerInfos.onShip && bat.apLeft < 5 && !bat.tags.includes('construction')) {
         if (batType.cat === 'vehicles' && batType.moveCost < 90 && !batType.skills.includes('cyber') && !batType.skills.includes('robot') && !batType.skills.includes('fly')) {
             let leTreuil = checkTreuil(bat);
             if (leTreuil.ok) {

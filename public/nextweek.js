@@ -636,7 +636,7 @@ function calcCrimeRate(mesCitoyens) {
             }
             if (countMe) {
                 if (bat.eq === 'camkit' && playerInfos.bldVM.includes('Salle de contrôle')) {
-                    crimeRate.fo = crimeRate.fo-1;
+                    crimeRate.fo = crimeRate.fo-1.2;
                 } else if (batType.skills.includes('fo')) {
                     crimeRate.fo = crimeRate.fo+batType.crime;
                 } else {
@@ -646,6 +646,7 @@ function calcCrimeRate(mesCitoyens) {
             }
         }
     });
+    crimeRate.fo = Math.round(crimeRate.fo);
     // centre de com
     if (playerInfos.bldList.includes('Salle de contrôle')) {
         crimeRate.fo = crimeRate.fo-1;

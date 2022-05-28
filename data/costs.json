@@ -100,7 +100,8 @@
         "levels":{"rednecks":1,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":1,"detruas":99,"brasier":99},
         "bldReq":[],
         "costs":{"Bois":24},
-        "fabTime":5
+        "fabTime":5,
+        "crime":-0.4
     },
     {
         "id":190,
@@ -108,7 +109,8 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":1,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
         "costs":{"Fer":12,"Scrap":12},
-        "fabTime":5
+        "fabTime":5,
+        "crime":-0.4
     },
     {
         "id":245,
@@ -116,7 +118,8 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":1,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
         "costs":{"Fer":12,"Scrap":12},
-        "fabTime":5
+        "fabTime":5,
+        "crime":-0.4
     },
     {
         "id":191,
@@ -124,7 +127,8 @@
         "levels":{"rednecks":99,"blades":1,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
         "costs":{"Fer":12},
-        "fabTime":5
+        "fabTime":5,
+        "crime":-0.4
     },
     {
         "id":213,
@@ -132,7 +136,8 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":1},
         "bldReq":[],
         "costs":{"Bois":12,"Huile":6},
-        "fabTime":5
+        "fabTime":5,
+        "crime":-0.4
     },
     {
         "id":214,
@@ -140,7 +145,8 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":1,"brasier":99},
         "bldReq":[],
         "costs":{"Bois":12},
-        "fabTime":5
+        "fabTime":5,
+        "crime":-0.4
     },
     {
         "id":0,

@@ -1889,7 +1889,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"magnum_x2",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{
             "name":"Dynamite",
@@ -2327,7 +2327,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"calibre_pierce_x2",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{
             "name":"Boutoir",
@@ -2937,7 +2937,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"calibre_pierce_multi",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "protection":["aucun","scrap","composite","acier","bugium","titane","bulk","kanchan","chobham","rhodu","autorep","tisal","iso","soap","swag","bonibo","adamantite"],
         "equip":["aucun","lunette2","chargeur2","g2motor","chenilles","theeye","e-mecano","e-road"],
@@ -3426,7 +3426,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"magnum_x2",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -4460,7 +4460,7 @@
             "cost":4,
             "range":3,
             "rof":100,
-            "accuracy":16,
+            "accuracy":18,
             "power":7,
             "armors":0.8,
             "aoe":"unit",
