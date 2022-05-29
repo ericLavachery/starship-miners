@@ -354,14 +354,18 @@ function moveSelectedBat(tileId,free,jump) {
         selectedBat.tags.splice(tagIndex,1);
     }
     if (selectedBat.tags.includes('camo') || selectedBat.fuzz <= -2) {
-        if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('emoteur') && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo') || !selectedBatType.skills.includes('camo') || selectedBat.eq === 'e-jetpack') {
-            if (selectedBat.eq === 'kit-chouf' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitlu') {
-                camouflage(0);
-            } else {
-                camoOut();
-            }
+        if (selectedBat.prt === 'battlesuit') {
+            camoOut();
         } else {
-            camouflage(0);
+            if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('emoteur') && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo') || !selectedBatType.skills.includes('camo') || selectedBat.eq === 'e-jetpack') {
+                if (selectedBat.eq === 'kit-chouf' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitlu') {
+                    camouflage(0);
+                } else {
+                    camoOut();
+                }
+            } else {
+                camouflage(0);
+            }
         }
     }
     if (zone[0].dark && activeTurn === 'player') {

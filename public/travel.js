@@ -225,6 +225,15 @@ function healEverything() {
     // toutes les unités sont soignées et perdent leurs tags temporaires
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
+        // RESSOURCES ---------------------------------------
+        if (batType.skills.includes('fret') && !batType.skills.includes('transorbital')) {
+            if (bat.transRes != undefined) {
+                if (Object.keys(bat.transRes).length >= 1) {
+                    resToLander(bat);
+                }
+            }
+        }
+        // TAGS -------------------------------------------------
         let gearTags = getBatGearTags(bat.prt,bat.eq,batType);
         if (bat.loc === 'trans' && bat.locId != souteId) {
             if (!bat.tags.includes('return')) {
@@ -319,6 +328,23 @@ function healEverything() {
         bat.apLeft = bat.ap;
         bat.oldapLeft = bat.ap;
         bat.salvoLeft = batType.maxSalvo;
+    });
+};
+
+function resToLander(transBat) {
+    let landerBatId = transBat.locId;
+    let landerBat = getBatById(landerBatId);
+    Object.entries(transBat.transRes).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        if (value >= 1) {
+            if (landerBat.transRes[key] === undefined) {
+                landerBat.transRes[key] = value;
+            } else {
+                landerBat.transRes[key] = landerBat.transRes[key]+value;
+            }
+        }
+        delete transBat.transRes[key];
     });
 };
 

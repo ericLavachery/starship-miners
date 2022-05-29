@@ -360,8 +360,167 @@ function alienUnitsChanges() {
     });
 };
 
+function allowedArmors(unit) {
+    let protection = [];
+    if (unit.skills.includes('a_light') || unit.skills.includes('a_mid') || unit.skills.includes('a_heavy')) {
+        protection.push('aucune');
+        protection.push('scrap');
+        protection.push('kevlar');
+        protection.push('swarmine');
+    }
+    if (unit.skills.includes('a_heavy')) {
+        protection.push('acier');
+    }
+    if (unit.skills.includes('a_mid') || unit.skills.includes('a_heavy')) {
+        protection.push('composite');
+        protection.push('bugium');
+        protection.push('titane');
+    }
+    if (unit.skills.includes('a_light') || unit.skills.includes('a_mid') || unit.skills.includes('a_heavy')) {
+        if (!unit.skills.includes('resistfeu')) {
+            protection.push('kapton');
+        }
+        if (!unit.skills.includes('resistacide')) {
+            protection.push('wendium');
+        }
+        protection.push('nano');
+        protection.push('soap');
+    }
+    if (unit.skills.includes('a_mid') || unit.skills.includes('a_heavy')) {
+        if (!unit.skills.includes('resistall')) {
+            protection.push('combo');
+        }
+    }
+    if (unit.skills.includes('a_light') || unit.skills.includes('a_mid') || unit.skills.includes('a_heavy')) {
+        protection.push('duneg');
+        protection.push('tisal');
+        protection.push('swing');
+        protection.push('adamantite');
+        if (!unit.skills.includes('fly') && !unit.skills.includes('dog')) {
+            protection.push('battlesuit');
+        }
+    }
+    if (unit.skills.includes('a_heavy')) {
+        protection.push('aegis');
+    }
+    if (unit.skills.includes('a_rob')) {
+        protection.push('aucun');
+        if (!unit.skills.includes('resistelec')) {
+            protection.push('iso');
+        }
+        protection.push('chobham');
+        protection.push('nano');
+        protection.push('soap');
+        protection.push('duneg');
+        protection.push('swing');
+        protection.push('tisal');
+    }
+    if (unit.skills.includes('a_cyb')) {
+        protection.push('aucune');
+        if (!unit.skills.includes('resistelec')) {
+            protection.push('iso');
+        }
+        protection.push('chobham');
+        protection.push('soap');
+        protection.push('duneg');
+    }
+    if (unit.skills.includes('a_elga')) {
+        protection.push('aucune');
+        protection.push('chobham');
+        protection.push('battlesuit');
+    }
+
+    if (unit.skills.includes('b_light') || unit.skills.includes('b_mid') || unit.skills.includes('b_heavy')) {
+        protection.push('aucun');
+        protection.push('scrap');
+        protection.push('kanchan');
+        protection.push('chobham');
+    }
+    if (unit.skills.includes('b_heavy')) {
+        protection.push('acier');
+    }
+    if (unit.skills.includes('b_mid') || unit.skills.includes('b_heavy')) {
+        protection.push('composite');
+        protection.push('bugium');
+        protection.push('titane');
+    }
+    if (unit.skills.includes('b_light') || unit.skills.includes('b_mid') || unit.skills.includes('b_heavy')) {
+        if (!unit.skills.includes('resistelec')) {
+            protection.push('iso');
+        }
+        protection.push('soap');
+        if (!unit.skills.includes('resistacide')) {
+            protection.push('swag');
+        }
+    }
+    if (unit.skills.includes('b_mid') || unit.skills.includes('b_heavy')) {
+        if (!unit.skills.includes('resistfeu')) {
+            protection.push('bonibo');
+        }
+    }
+    if (unit.skills.includes('b_heavy')) {
+        if (!unit.skills.includes('resistall')) {
+            protection.push('bulk');
+        }
+    }
+    if (unit.skills.includes('b_light') || unit.skills.includes('b_mid') || unit.skills.includes('b_heavy')) {
+        protection.push('tisal');
+        protection.push('rhodu');
+        protection.push('autorep');
+        protection.push('adamantite');
+    }
+    if (unit.cat === 'buildings') {
+        protection.push('aucun');
+        protection.push('bugium');
+        protection.push('acier');
+        protection.push('titane');
+        if (!unit.skills.includes('resistelec')) {
+            protection.push('iso');
+        }
+        if (!unit.skills.includes('resistall')) {
+            protection.push('bulk');
+        }
+        if (!unit.skills.includes('resistacide')) {
+            protection.push('swag');
+        }
+        if (!unit.skills.includes('resistfeu')) {
+            protection.push('bonibo');
+        }
+        protection.push('tisal');
+        protection.push('autorep');
+        protection.push('adamantite');
+    }
+    if (unit.skills.includes('b_dev')) {
+        protection.push('aucun');
+        if (!unit.skills.includes('resistelec')) {
+            protection.push('iso');
+        }
+        if (!unit.skills.includes('resistall')) {
+            protection.push('bulk');
+        }
+        if (!unit.skills.includes('resistacide')) {
+            protection.push('swag');
+        }
+        if (!unit.skills.includes('resistfeu')) {
+            protection.push('bonibo');
+        }
+        protection.push('autorep');
+        protection.push('adamantite');
+    }
+    if (unit.skills.includes('b_none')) {
+        protection.push('aucun');
+    }
+    if (unit.skills.includes('b_barb')) {
+        protection.push('aucun');
+        protection.push('acier');
+    }
+    return protection;
+};
+
 function playerSkillsUTChanges() {
     unitTypes.forEach(function(unit) {
+        // BLINDAGES / ARMURES
+        unit.protection = allowedArmors(unit);
         // TUNING FRET
         if (unit.skills.includes('fret')) {
             unit.transRes = Math.round(unit.transRes*fretTuning);
@@ -1784,6 +1943,7 @@ function addStartPack() {
     addFreeBat(1890,'Trolley');
     addFreeBat(1829,'Navette de secours');
     addFreeBat(1834,'Poste de pilotage');
+    addFreeBat(1828,'Forum');
     addFreeBat(1949,'Serres hydroponiques');
     addFreeBat(1948,'Cantine');
     addFreeBat(1893,'Aérodocks');

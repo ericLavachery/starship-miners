@@ -2715,6 +2715,14 @@
         "slots":0
     },
     {
+        "id":290,
+        "name":"Foyer",
+        "bldReq":["Station"],
+        "costs":{},
+        "fabTime":200,
+        "slots":0
+    },
+    {
         "id":228,
         "name":"Serres hydroponiques",
         "bldUp":"Jardin",

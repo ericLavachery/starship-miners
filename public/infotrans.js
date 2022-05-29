@@ -504,9 +504,9 @@ function embarquement(transId,withRes) {
         transBat.apLeft = transBat.apLeft-embarqCost[1];
         selectedBat.apLeft = selectedBat.apLeft-embarqCost[0];
     }
-    if (withRes) {
-        resTransfert(transBat);
-    }
+    // if (withRes) {
+    //     resTransfert(transBat);
+    // }
     loadBat(selectedBat.id,transBat.id);
     doneAction(transBat);
     tagDelete(selectedBat,'guet');

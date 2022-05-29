@@ -486,7 +486,7 @@ function eventBodies(time,sim,quiet) {
 function getCitNeed() {
     let citNeed = 1;
     let mesCitoyens = calcTotalCitoyens(true);
-    let citNorm = ((playerInfos.gLevel-4)*450)+2500;
+    let citNorm = ((playerInfos.gLevel-4)*450)+2730;
     citNeed = citNeed*citNorm/mesCitoyens.real;
     citNeed = (citNeed+0.35)/1.35;
     if (citNeed > 1.7) {

@@ -403,6 +403,9 @@ function conSelect(unitId,player,noRefresh) {
                     if (batArmor.skills.includes('resistacide')) {
                         armorSkills = armorSkills+' resistacide';
                     }
+                    if (batArmor.skills.includes('resistelec')) {
+                        armorSkills = armorSkills+' resistelec';
+                    }
                     if (batArmor.skills.includes('resistfeu')) {
                         armorSkills = armorSkills+' resistfeu';
                     }
