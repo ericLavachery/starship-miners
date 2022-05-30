@@ -97,9 +97,18 @@
     {
         "id":189,
         "name":"Gardes",
-        "levels":{"rednecks":1,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":1,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":1,"detruas":99,"brasier":99},
         "bldReq":[],
-        "costs":{"Bois":24},
+        "costs":{"Bois":40},
+        "fabTime":5,
+        "crime":-0.4
+    },
+    {
+        "id":291,
+        "name":"Miliciens",
+        "levels":{"rednecks":1,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":[],
+        "costs":{"Bois":40},
         "fabTime":5,
         "crime":-0.4
     },
@@ -108,7 +117,7 @@
         "name":"Choufs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":1,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
-        "costs":{"Fer":12,"Scrap":12},
+        "costs":{"Fer":20,"Scrap":20},
         "fabTime":5,
         "crime":-0.4
     },
@@ -117,7 +126,7 @@
         "name":"Guetteurs",
         "levels":{"rednecks":99,"blades":99,"bulbos":1,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
-        "costs":{"Fer":12,"Scrap":12},
+        "costs":{"Fer":20,"Scrap":20},
         "fabTime":5,
         "crime":-0.4
     },
@@ -126,7 +135,7 @@
         "name":"Sentinelles",
         "levels":{"rednecks":99,"blades":1,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
-        "costs":{"Fer":12},
+        "costs":{"Fer":20},
         "fabTime":5,
         "crime":-0.4
     },
@@ -135,7 +144,7 @@
         "name":"Pompistes",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":1},
         "bldReq":[],
-        "costs":{"Bois":12,"Huile":6},
+        "costs":{"Bois":20,"Huile":10},
         "fabTime":5,
         "crime":-0.4
     },
@@ -144,7 +153,7 @@
         "name":"Artilleurs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":1,"brasier":99},
         "bldReq":[],
-        "costs":{"Bois":12},
+        "costs":{"Bois":20},
         "fabTime":5,
         "crime":-0.4
     },
@@ -728,7 +737,7 @@
     {
         "id":269,
         "name":"Kuristos",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":13,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":11,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Centre de recherches"],
         "compReq":{"cyber":1,"train":1},
         "costs":{"Fer":192,"Scrap":160,"Bois":32,"Carbone":32,"Aluminium":64,"Moteurs":32,"Tungstène":16,"Titane":113,"Electros":32,"Batteries":32,"Cuivre":51,"Silicium":32,"Végétaux":64,"Soufre":32,"Plomb":32,"Oxygène":64,"Chlore":10,"Tissus":5},
@@ -748,7 +757,7 @@
     {
         "id":156,
         "name":"Riggers",
-        "levels":{"rednecks":12,"blades":16,"bulbos":9,"drogmulojs":14,"tiradores":16,"detruas":99,"brasier":12},
+        "levels":{"rednecks":12,"blades":16,"bulbos":9,"drogmulojs":14,"tiradores":13,"detruas":99,"brasier":12},
         "bldReq":["Atelier","Centre de recherches"],
         "compReq":{"const":2},
         "compPass":["rednecks","bulbos"],
@@ -1527,7 +1536,7 @@
     {
         "id":92,
         "name":"Shelltrucks",
-        "levels":{"rednecks":9,"blades":12,"bulbos":11,"drogmulojs":10,"tiradores":11,"detruas":6,"brasier":9},
+        "levels":{"rednecks":9,"blades":12,"bulbos":11,"drogmulojs":10,"tiradores":13,"detruas":6,"brasier":9},
         "bldEquiv":["Poudrière"],
         "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":60,"Scrap":444,"Carbone":120,"Aluminium":48,"Moteurs":60,"Cuivre":24,"Batteries":12,"Compo2":168,"Huile":10},
@@ -2128,7 +2137,7 @@
     {
         "id":185,
         "name":"Fosses",
-        "levels":{"rednecks":8,"blades":1,"bulbos":99,"drogmulojs":9,"tiradores":11,"detruas":9,"brasier":7},
+        "levels":{"rednecks":9,"blades":1,"bulbos":9,"drogmulojs":9,"tiradores":9,"detruas":9,"brasier":9},
         "bldReq":["Atelier"],
         "costs":{"Végétaux":36,"Fer":12,"Bois":36,"Tungstène":12,"Huile":4,"Calcium":12},
         "fabTime":60
@@ -2136,7 +2145,7 @@
     {
         "id":237,
         "name":"Pièges",
-        "levels":{"rednecks":9,"blades":1,"bulbos":99,"drogmulojs":9,"tiradores":99,"detruas":13,"brasier":13},
+        "levels":{"rednecks":10,"blades":1,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":10,"brasier":10},
         "bldReq":["Atelier"],
         "costs":{"Végétaux":18,"Fer":9,"Bois":18,"Scrap":9,"Huile":4,"Calcium":12},
         "fabTime":25

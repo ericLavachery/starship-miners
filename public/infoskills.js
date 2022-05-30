@@ -235,7 +235,7 @@ function skillsInfos(bat,batType,near) {
     // CAMOUFLAGE
     let camoufOK = true;
     if (!playerInfos.onShip) {
-        if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.terrain === 'F' && batType.size < 20 && !inMelee && (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'kit-sentinelle' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu' || (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 1 && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) {
+        if (batType.skills.includes('camo') || (tile.ruins && batType.size < 20) || (tile.terrain === 'F' && batType.size < 20 && !inMelee && (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (tile.infra === 'Terriers' && batType.size < 9) || bat.fuzz <= -2 || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu' || (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 1 && (bat.eq === 'g2ai' || bat.logeq === 'g2ai'))) {
             let ruinHide = false;
             if ((tile.ruins && batType.size < 20) || (tile.terrain === 'F' && batType.size < 20 && !inMelee) || (tile.infra === 'Terriers' && batType.size < 9)) {
                 ruinHide = true;
@@ -273,7 +273,7 @@ function skillsInfos(bat,batType,near) {
                     if (bat.eq === 'kit-chouf' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu') {
                         apCost = Math.floor(batType.ap/2.5);
                         apReq = 2;
-                    } else if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-guetteur') {
+                    } else if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || bat.eq === 'kit-guetteur') {
                         apCost = Math.floor(batType.ap/2);
                         apReq = 3;
                     } else {

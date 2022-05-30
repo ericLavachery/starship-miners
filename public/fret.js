@@ -553,7 +553,7 @@ function checkResSpace(bat) {
     let resLoaded = checkResLoad(bat);
     let resMax = batType.transRes;
     if (bat.eq === 'megafret') {
-        resMax = Math.round(resMax*1.2);
+        resMax = Math.round(resMax*1.33);
     }
     if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
         resMax = resMax*2;

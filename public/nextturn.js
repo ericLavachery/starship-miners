@@ -762,6 +762,7 @@ function turnInfo() {
     let numHumans = 0;
     let fuzzTotal = 0;
     let foggersTiles = [];
+    let dogTiles = [];
     let zombifiersTiles = [];
     let roboControlers = [];
     let controlRange = 3;
@@ -803,6 +804,9 @@ function turnInfo() {
             fuzzTotal = fuzzTotal+batFuzz;
             if (bat.type === 'Fog' && bat.tags.includes('fog')) {
                 foggersTiles.push(bat.tileId);
+            }
+            if (batType.skills.includes('snif')) {
+                dogTiles.push(bat.tileId);
             }
             if (bat.eq === 'e-control' || bat.logeq === 'e-control' || batType.skills.includes('control')) {
                 roboControlers.push(bat.tileId);
@@ -847,6 +851,7 @@ function turnInfo() {
     // foggedTiles
     let distance;
     foggedTiles = [];
+    doggedTiles = [];
     zombifiedTiles = [];
     roboTiles = [];
     zone.forEach(function(tile) {
@@ -855,6 +860,14 @@ function turnInfo() {
                 distance = calcDistance(tile.id,foggTile);
                 if (distance <= fogRange) {
                     foggedTiles.push(tile.id);
+                }
+            }
+        });
+        dogTiles.forEach(function(dogTile) {
+            if (!doggedTiles.includes(tile.id)) {
+                distance = calcDistance(tile.id,dogTile);
+                if (distance <= 2) {
+                    doggedTiles.push(tile.id);
                 }
             }
         });

@@ -124,7 +124,7 @@ function landerMenu() {
         let transResLeft = checkResSpace(landerBat);
         let transResMax = landerBatType.transRes;
         if (landerBat.eq === 'megafret') {
-            transResMax = Math.round(transResMax*1.2);
+            transResMax = Math.round(transResMax*1.33);
         }
         let ucol = 'cy';
         let rcol = 'brunf';
@@ -374,7 +374,11 @@ function batListElement(bat,batType,idOfLander) {
     if (bat.army >= 1) {
         army = army+'a<span class="rose" title="Armée">'+bat.army+'</span>';
     }
-    $('#be'+bat.id).append('<span class="listRes gff" title="XP">('+bxp+vetIcon+army+')</span>');
+    if (batType.name === 'Chercheurs') {
+        $('#be'+bat.id).append('<span class="listRes gff" title="Pts de recherche">('+bat.sciRech+')</span>');
+    } else {
+        $('#be'+bat.id).append('<span class="listRes gff" title="XP">('+bxp+vetIcon+army+')</span>');
+    }
     let vetStatus = '';
     if (bat.tags.includes('schef') || batType.skills.includes('leader')) {
         vetStatus = '<span class="rouge">(Chef)</span>';
@@ -643,7 +647,7 @@ function viewLanderRes() {
     let transResIn = checkResLoad(landerBat);
     let transResMax = landerBatType.transRes;
     if (landerBat.eq === 'megafret') {
-        transResMax = Math.round(transResMax*1.2);
+        transResMax = Math.round(transResMax*1.33);
     }
     let numCit = getLanderNumCit(slId,126);
     let numCrim = getLanderNumCit(slId,225);

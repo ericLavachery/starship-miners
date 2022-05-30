@@ -2292,7 +2292,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["b_light","noguet","transport","fret","selfbadmecano","hardmove","dumper","realdumper","light","crewsave","recupcit","recupres","nochef"],
-        "mecanoCost":24,
+        "mecanoCost":16,
         "transMaxSize":12,
         "transUnits":360,
         "transRes":1000,

@@ -183,7 +183,7 @@
         "info": "Portée 1 max",
         "bldReq":["Atelier"],
         "compReq":{"bal":2,"mat":1,"ca":3},
-        "deploy":{"Aluminium":1,"Soufre":2,"Tungstène":1,"Uranium":1,"Bugium":1},
+        "deploy":{"Fer":1,"Soufre":2,"Tungstène":1,"Uranium":1,"Bugium":1},
         "batch":100
     },
     {
@@ -600,14 +600,14 @@
         "rof": 2,
         "power": -1,
         "powermult": 1,
-        "armors": 0.2,
+        "armors": 0.3,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
         "info": "Portée 1 max",
         "bldReq":["Atelier"],
         "compReq":{"bal":2,"mat":1,"ca":3},
-        "deploy":{"Aluminium":1,"Soufre":2,"Tungstène":1,"Uranium":1,"Bugium":1},
+        "deploy":{"Fer":1,"Soufre":2,"Tungstène":1,"Uranium":1,"Bugium":1},
         "batch":100
     },
     {

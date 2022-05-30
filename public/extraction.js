@@ -502,8 +502,12 @@ function resSelect(resId) {
             selectedBat.extracted.splice(tagIndex,1);
         }
     } else {
+        let singleNum = 1;
+        if (playerInfos.comp.ext >= 2) {
+            singleNum = singleNum+playerInfos.comp.ext-1;
+        }
         if (!selectedBat.extracted.includes(res.name)) {
-            if (selectedBat.extracted.length <= 1) {
+            if (selectedBat.extracted.length <= singleNum) {
                 selectedBat.extracted.push(res.name);
             }
         } else {

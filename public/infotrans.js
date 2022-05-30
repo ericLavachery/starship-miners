@@ -388,7 +388,7 @@ function checkLanderResSpace(bat) {
     let resLoaded = checkResLoad(bat);
     let resMax = batType.transRes;
     if (bat.eq === 'megafret') {
-        resMax = Math.round(resMax*1.2);
+        resMax = Math.round(resMax*1.33);
     }
     if (bat.citoyens > 0) {
         resMax = bat.citoyens;

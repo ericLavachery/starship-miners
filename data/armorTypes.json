@@ -17,21 +17,21 @@
         "name":"Remparts",
         "cat":"infra",
         "fabTime":18,
-        "levels":{"rednecks":7,"blades":7,"bulbos":6,"drogmulojs":7,"tiradores":6,"detruas":6,"brasier":7},
+        "levels":{"rednecks":7,"blades":7,"bulbos":7,"drogmulojs":7,"tiradores":7,"detruas":7,"brasier":7},
         "costs":{"Compo1":50,"Compo2":150}
     },
     {
         "name":"Murailles",
         "cat":"infra",
         "fabTime":26,
-        "levels":{"rednecks":11,"blades":12,"bulbos":10,"drogmulojs":13,"tiradores":12,"detruas":11,"brasier":11},
+        "levels":{"rednecks":12,"blades":12,"bulbos":12,"drogmulojs":12,"tiradores":12,"detruas":12,"brasier":12},
         "costs":{"Compo2":200,"Compo3":60}
     },
     {
         "name":"Terriers",
         "cat":"infra",
         "fabTime":18,
-        "levels":{"rednecks":7,"blades":6,"bulbos":12,"drogmulojs":9,"tiradores":9,"detruas":8,"brasier":9},
+        "levels":{"rednecks":7,"blades":6,"bulbos":10,"drogmulojs":9,"tiradores":9,"detruas":8,"brasier":9},
         "costs":{"Compo1":75,"Compo2":25,"Végétaux":75}
     },
     {
@@ -983,6 +983,17 @@
         "compReq":{"def":1,"bal":1},
         "factor":"crew",
         "costs":{"Carbone":12,"Scrap":12,"Fer":48,"Aluminium":24,"Tungstène":12,"Silicium":6},
+        "deploy":{"Energie":12}
+    },
+    {
+        "name":"kit-milice",
+        "cat":"equip",
+        "skills":[],
+        "info":"Sniper",
+        "bldReq":["Armurerie"],
+        "compReq":{"def":1,"bal":1,"det":1},
+        "factor":"crew",
+        "costs":{"Carbone":16,"Scrap":12,"Fer":24,"Silicium":8},
         "deploy":{"Energie":12}
     },
     {

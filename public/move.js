@@ -422,12 +422,15 @@ function moveSelectedBat(tileId,free,jump) {
     showBatInfos(selectedBat);
     // update arrays
     selectedBatArrayUpdate();
+    if (selectedBatType.skills.includes('snif')) {
+        updateDogTiles(selectedBat.tileId);
+    }
     if (activeTurn === 'player') {
         if (playerInfos.follow) {
             centerMap();
         } else if (isMapViewBorder(tileId)) {
             centerMap();
-        } else if (zone[0].dark) {
+        } else if (zone[0].dark || selectedBatType.skills.includes('snif')) {
             showMap(zone,true);
         }
     }

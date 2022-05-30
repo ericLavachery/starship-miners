@@ -49,7 +49,7 @@ function events(afterMission,time,sim,quiet) {
 };
 
 function calcTurnXP(turns) {
-    let xp = Math.ceil(Math.sqrt(turns)*27);
+    let xp = Math.ceil(Math.sqrt(turns)*gangXPFactor);
     return xp;
 };
 

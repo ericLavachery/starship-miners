@@ -394,9 +394,13 @@ function showAlien(bat) {
         tagz = tagz+' (prégnant)';
     }
     if ((zone[0].dark && !undarkNow.includes(bat.tileId)) || batType.skills.includes('invisible')) {
-        $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
+        if (doggedTiles.includes(bat.tileId)) {
+            $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/invisible.png"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
+        } else {
+            $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
+        }
     } else if (bat.tags.includes('invisible')) {
-        if (playerInfos.comp.det >= 5) {
+        if (playerInfos.comp.det >= 5 || doggedTiles.includes(bat.tileId)) {
             if (degNum >= 7) {
                 $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/invisible.png"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
             } else {
@@ -409,6 +413,105 @@ function showAlien(bat) {
         $('#b'+bat.tileId).append('<div class="gUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/gvet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
     } else {
         $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
+    }
+};
+
+function updateDogTiles(tileId) {
+    let newTileId = tileId-1;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId+1;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId-1-mapSize;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId+1-mapSize;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId-mapSize;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId-1+mapSize;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId+1+mapSize;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId+mapSize;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId-mapSize-mapSize-2;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId-mapSize-mapSize-1;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId-mapSize-mapSize;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId-mapSize-mapSize+1;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId-mapSize-mapSize+2;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId+mapSize+mapSize-2;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId+mapSize+mapSize-1;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId+mapSize+mapSize;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId+mapSize+mapSize+1;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId+mapSize+mapSize+2;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId+2;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId-mapSize+2;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId+mapSize+2;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId-2;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId-mapSize-2;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
+    }
+    newTileId = tileId+mapSize-2;
+    if (!doggedTiles.includes(newTileId)) {
+        doggedTiles.push(newTileId);
     }
 };
 
