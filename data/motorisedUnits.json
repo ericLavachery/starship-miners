@@ -220,7 +220,7 @@
         "protection":[],
         "equip":["aucun","g2motor","lunette1","snorkel","e-flash","theeye","e-mecano","e-road"],
         "log3eq":["snorkel"],
-        "moveCost":2,
+        "moveCost":2.2,
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,

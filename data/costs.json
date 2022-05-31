@@ -86,7 +86,7 @@
     {
         "id":242,
         "name":"Electroguards",
-        "levels":{"rednecks":10,"blades":9,"bulbos":8,"drogmulojs":11,"tiradores":10,"detruas":10,"brasier":10},
+        "levels":{"rednecks":10,"blades":10,"bulbos":8,"drogmulojs":11,"tiradores":10,"detruas":10,"brasier":11},
         "bldReq":["Laboratoire","Générateur"],
         "compReq":{"ordre":3},
         "costs":{"Scrap":30,"Carbone":60,"Bois":60,"Aluminium":105,"Titane":45,"Cuivre":60,"Tissus":30,"Azote":30,"Mendium":30,"Silicium":30,"Electros":60,"Batteries":30},
@@ -702,7 +702,7 @@
     {
         "id":85,
         "name":"Bigman",
-        "levels":{"rednecks":99,"blades":11,"bulbos":5,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":11},
+        "levels":{"rednecks":99,"blades":11,"bulbos":5,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":9},
         "bldReq":["Chaîne de montage","Laboratoire"],
         "compReq":{"cyber":1,"const":1},
         "compPass":["brasier"],
@@ -1407,7 +1407,7 @@
     {
         "id":114,
         "name":"ULM Shakers",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":9},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":10},
         "bldReq":["Atelier"],
         "costs":{"Scrap":168,"Carbone":48,"Aluminium":54,"Titane":18,"Moteurs":24,"Huile":24,"Cuivre":8,"Batteries":24},
         "deploy":{"Fuel":45},
@@ -1599,7 +1599,7 @@
     {
         "id":101,
         "name":"Genius",
-        "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":11,"brasier":10},
+        "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":11,"brasier":11},
         "bldReq":["Armurerie","Chaîne de montage"],
         "compReq":{"tank":1},
         "costs":{"Fer":110,"Scrap":330,"Carbone":105,"Aluminium":30,"Moteurs":60,"Tungstène":65,"Cuivre":25,"Electros":25,"Batteries":25,"Compo2":100,"Silicium":15,"Huile":35},
@@ -2153,7 +2153,7 @@
     {
         "id":238,
         "name":"Dardières",
-        "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":9,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Atelier"],
         "costs":{"Végétaux":36,"Fer":6,"Bois":18,"Scrap":9,"Titane":9,"Argon":6,"Mephitis":36,"Atium":12,"Huile":9},
         "fabTime":35
