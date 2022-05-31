@@ -19,11 +19,11 @@ function getTileEnergy(tile) {
     let magmaHere = 0;
     if (tile.rs != undefined) {
         if (tile.rs.Magma >= 1) {
-            magmaHere = tile.rs.Magma;
+            magmaHere = tile.rs.Magma+100;
         }
     }
     let tileHeat = getTileHeat(tile);
-    let energyProd = Math.ceil(magmaHere/4*3)+(tileHeat*10);
+    let energyProd = Math.ceil(magmaHere/2*3)+(tileHeat*10);
     energyProd = Math.ceil(energyProd/10);
     return energyProd;
 };
@@ -95,10 +95,10 @@ function getGeoProd(tile) {
     let tileHeat = getTileHeat(tile);
     if (tile.rs != undefined) {
         if (tile.rs.Magma >= 1) {
-            magmaHere = tile.rs.Magma;
+            magmaHere = tile.rs.Magma+100;
         }
     }
-    let energyProd = Math.ceil(magmaHere/4*3)+(tileHeat*10);
+    let energyProd = Math.ceil(magmaHere/2*3)+(tileHeat*10);
     energyProd = energyCreation(energyProd);
     energyProd = Math.ceil(energyProd/10);
     return energyProd;

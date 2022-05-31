@@ -110,7 +110,7 @@ let vetBonus = {
 }
 let levelXP = [0,50,150,400,800];
 let gangLevelCit = [0,1000,1400,1800,2200,2600,3000,3400,3800,4200,4600,5000,5400,5800,6200,6600,7000,7400,7800,8200,8600,9000,9400];
-let gangXPFactor = 30;
+let gangXPFactor = 33;
 let myCompPoints = 0;
 // ACTIONS
 let allowCheat = false;
