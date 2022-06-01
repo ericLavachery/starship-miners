@@ -31,7 +31,7 @@ function checkSecretPass(bat) {
     let batType = getBatType(bat);
     let mvCost = batType.moveCost;
     if (batType.skills.includes('jetpack') || batType.skills.includes('fly') || bat.eq === 'e-jetpack') {
-        mvCost = 4;
+        mvCost = 3;
     }
     let secretPass = {};
     secretPass.ok = false;

@@ -465,7 +465,7 @@ function getBatGearStuff(armorName,equipName,batType) {
     }
     let baseAP = batType.ap;
     if (equipName === 'e-jetpack') {
-        baseAP = 17;
+        baseAP = 13;
     }
     if (batType.skills.includes('robot')) {
         gearStuff[1] = baseAP;
@@ -474,7 +474,7 @@ function getBatGearStuff(armorName,equipName,batType) {
         }
     } else {
         if ((batType.skills.includes('fly') || equipName === 'e-jetpack') && batArmor.ap < 0) {
-            gearStuff[1] = baseAP+Math.ceil(batArmor.ap*1.5);
+            gearStuff[1] = Math.ceil(baseAP+(batArmor.ap*1.5));
         } else if (equipName === 'helper' && batType.moveCost > 3) {
             gearStuff[1] = baseAP+batArmor.ap+2;
         } else if (equipName === 'helper' && (batArmor.ap < -1 || batType.ap < 13)) {

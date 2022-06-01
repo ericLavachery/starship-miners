@@ -2050,7 +2050,7 @@ function putInfra(infraName) {
     camoOut();
     selectedBatArrayUpdate();
     tile.infra = infraName;
-    tile.ruins = false;
+    // tile.ruins = false;
     // saveMap();
     showMap(zone,false);
     showBatInfos(selectedBat);
