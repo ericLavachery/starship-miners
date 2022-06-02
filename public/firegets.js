@@ -598,8 +598,11 @@ function addBodies(bat,batType,cits) {
 
 function newAlienKilled(batType,tileId) {
     playerInfos.knownAliens.push(batType.name);
-    if (batType.class === 'A' || batType.class === 'S') {
+    if (batType.class != 'C') {
         playerInfos.gangXP = playerInfos.gangXP+batType.killXP;
+        if (batType.class === 'A' || batType.class === 'S' || batType.class === 'X') {
+            playerInfos.gangXP = playerInfos.gangXP+batType.killXP;
+        }
     }
     let xpBonus = batType.killXP;
     xpBonus = Math.floor(xpBonus*(playerInfos.comp.train+2)/4);
@@ -2773,6 +2776,56 @@ function getWetness(terrain,onGround) {
         }
     }
     return wetness;
+};
+
+function checkEscape(bat,batType,weap,attBat,tile) {
+    let escapeFactor = 1;
+    let hasEscape = false;
+    let escapeSpeed = batType.speed-2;
+    if (batType.skills.includes('escape')) {
+        hasEscape = true;
+        if (batType.skills.includes('dogescape')) {
+            escapeSpeed = batType.speed+bat.vet-2;
+        }
+    }
+    if (batType.skills.includes('heroescape') && bat.tags.includes('hero')) {
+        hasEscape = true;
+        escapeSpeed = bat.vet*2;
+    }
+    if (playerInfos.comp.robo >= 2 && playerInfos.comp.det >= 4) {
+        // console.log('robo');
+        if (bat.eq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'detector' || bat.logeq === 'g2ai') {
+            // console.log('eq');
+            if (batType.speed >= 4) {
+                // console.log('speed');
+                if (batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+                    // console.log('type');
+                    hasEscape = true;
+                    escapeSpeed = batType.speed+bat.vet-2;
+                }
+            }
+        }
+    }
+    console.log('ESCAPE = '+hasEscape);
+    if (hasEscape && !weap.noEsc && !bat.tags.includes('stun') && !bat.tags.includes('freeze')) {
+        if ((tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') || batType.skills.includes('fly')) {
+            let escapeChance = Math.round(escapeSpeed*weap.cost*escapeValue);
+            if (weap.aoe != 'unit' && weap.aoe != 'brochette' && !batType.skills.includes('fly')) {
+                escapeChance = Math.round(escapeChance/3);
+            }
+            if (attBat.fuzz <= -2 && !weap.isMelee && !weap.isBow) {
+                escapeChance = Math.round(escapeChance/2);
+            }
+            console.log('escapeChance:'+escapeChance);
+            if (rand.rand(1,100) <= escapeChance) {
+                escaped = true;
+                let escapeVar = rand.rand(4,8);
+                console.log('escapeVar:'+escapeVar);
+                escapeFactor = escapeFactor*escapeVar/(weap.cost+4)/2;
+            }
+        }
+    }
+    return escapeFactor;
 };
 
 function getEggProtect(eggBat,eggBatType,weap) {

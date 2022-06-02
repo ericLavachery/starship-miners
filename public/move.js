@@ -43,7 +43,7 @@ function clickMove(tileId) {
         distance = calcJumpDistance(selectedBat.tileId,tileId);
         let jmc = selectedBatType.moveCost;
         if (selectedBat.eq === 'e-jetpack') {
-            jmc = 1.3;
+            jmc = 1.2;
         }
         if (selectedBat.team != 'aliens' && zone[0].planet === 'Kzin') {
             jmc = jmc*1.5*moveKzin;
@@ -217,7 +217,7 @@ function moveInfos(bat,jump) {
             let distance = calcJumpDistance(selectedBat.tileId,tile.id);
             let jmc = selectedBatType.moveCost;
             if (selectedBat.eq === 'e-jetpack') {
-                jmc = 1.3;
+                jmc = 1.2;
             }
             if (selectedBat.team != 'aliens' && zone[0].planet === 'Kzin') {
                 jmc = jmc*1.5*moveKzin;
@@ -292,7 +292,7 @@ function moveSelectedBat(tileId,free,jump) {
             let distance = calcJumpDistance(selectedBat.tileId,tileId);
             let jmc = selectedBatType.moveCost;
             if (selectedBat.eq === 'e-jetpack') {
-                jmc = 1.3;
+                jmc = 1.2;
             }
             if (selectedBat.team != 'aliens' && zone[0].planet === 'Kzin') {
                 jmc = jmc*1.5*moveKzin;

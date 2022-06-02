@@ -65,6 +65,9 @@ function checkNeiTurn() {
         if (reCheck > check) {
             theCheck = reCheck;
         }
+        if (zone[0].visit) {
+            theCheck = theCheck+15;
+        }
         if (zone[0].planet === 'Kzin') {
             theCheck = theCheck+15;
         }

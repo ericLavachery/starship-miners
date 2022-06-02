@@ -162,7 +162,7 @@ function saveBataillonsForReturn(zoneNum) {
         if (bat.fuzz > -2) {
             deadBatsList.push(bat.id);
         } else {
-            if (batType.cat != 'buildings' && batType.cat != 'devices' && bat.loc === 'zone') {
+            if (batType.cat != 'buildings' && batType.cat != 'devices' && bat.loc === 'zone' && batType.transUnits === 0) {
                 if (rand.rand(1,100) <= 15) {
                     deadBatsList.push(bat.id);
                 }

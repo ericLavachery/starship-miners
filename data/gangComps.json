@@ -12,7 +12,7 @@
         "id":2,
         "name":"tank",
         "fullName":"Blindés",
-        "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":9,"brasier":10},
+        "levels":{"rednecks":9,"blades":99,"bulbos":9,"drogmulojs":9,"tiradores":9,"detruas":9,"brasier":9},
         "maxLevel":2,
         "lvlCosts":[0,1,1],
         "rechCost":2
@@ -39,7 +39,7 @@
         "id":5,
         "name":"cyber",
         "fullName":"Cybernétique",
-        "levels":{"rednecks":12,"blades":11,"bulbos":3,"drogmulojs":12,"tiradores":12,"detruas":12,"brasier":8},
+        "levels":{"rednecks":11,"blades":11,"bulbos":3,"drogmulojs":12,"tiradores":11,"detruas":12,"brasier":8},
         "maxLevel":2,
         "lvlCosts":[0,1,1],
         "rechCost":2

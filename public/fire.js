@@ -455,6 +455,43 @@ function attack(melee,init) {
         shots = Math.round(shots/1.5);
         attFactor = Math.round(attFactor/1.5);
     }
+    // ESCAPE
+    escaped = false;
+    let escapeFactor = checkEscape(targetBat,targetBatType,selectedWeap,selectedBat,tile);
+    if (escapeFactor < 1) {
+        shots = Math.round(shots*escapeFactor);
+        attFactor = Math.round(attFactor*escapeFactor);
+    }
+    // let hasEscape = false;
+    // let escapeSpeed = targetBatType.speed-2;
+    // if (targetBatType.skills.includes('escape')) {
+    //     hasEscape = true;
+    //     if (targetBatType.skills.includes('dogescape')) {
+    //         escapeSpeed = targetBatType.speed+targetBat.vet-2;
+    //     }
+    // }
+    // if (targetBatType.skills.includes('heroescape') && targetBat.tags.includes('hero')) {
+    //     hasEscape = true;
+    //     escapeSpeed = targetBat.vet*2;
+    // }
+    // if (hasEscape && !selectedWeap.noEsc && !targetBat.tags.includes('stun')) {
+    //     if ((tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') || targetBatType.skills.includes('fly')) {
+    //         let escapeChance = Math.round(escapeSpeed*selectedWeap.cost*escapeValue);
+    //         if (selectedWeap.aoe != 'unit' && !targetBatType.skills.includes('fly')) {
+    //             escapeChance = Math.round(escapeChance/3);
+    //         }
+    //         if (selectedBat.fuzz <= -2 && !selectedWeap.isMelee && !selectedWeap.isBow) {
+    //             escapeChance = Math.round(escapeChance/2);
+    //         }
+    //         console.log('escapeChance:'+escapeChance);
+    //         if (rand.rand(1,100) <= escapeChance) {
+    //             escaped = true;
+    //             let escapeVar = rand.rand(4,8);
+    //             console.log('escapeVar:'+escapeVar);
+    //             shots = Math.round(shots*escapeVar/(selectedWeap.cost+4)/2);
+    //         }
+    //     }
+    // }
     // Attack %
     $('#report').append('<span class="report jaune">Attaque '+attFactor+'%<br></span>');
     // chargeur
@@ -494,38 +531,6 @@ function attack(melee,init) {
     }
     // console.log(tile.infra+'+++++++++++++++++++++++');
     // console.log('shots='+shots);
-    // ESCAPE
-    escaped = false;
-    let hasEscape = false;
-    let escapeSpeed = targetBatType.speed-2;
-    if (targetBatType.skills.includes('escape')) {
-        hasEscape = true;
-        if (targetBatType.skills.includes('dog')) {
-            escapeSpeed = targetBat.vet+6;
-        }
-    }
-    if (targetBatType.skills.includes('heroescape') && targetBat.tags.includes('hero')) {
-        hasEscape = true;
-        escapeSpeed = targetBat.vet*2;
-    }
-    if (hasEscape && !selectedWeap.noEsc && !targetBat.tags.includes('stun')) {
-        if ((tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') || targetBatType.skills.includes('fly')) {
-            let escapeChance = Math.round(escapeSpeed*selectedWeap.cost*escapeValue);
-            if (selectedWeap.aoe != 'unit' && !targetBatType.skills.includes('fly')) {
-                escapeChance = Math.round(escapeChance/3);
-            }
-            if (selectedBat.fuzz <= -2 && !selectedWeap.isMelee && !selectedWeap.isBow) {
-                escapeChance = Math.round(escapeChance/2);
-            }
-            console.log('escapeChance:'+escapeChance);
-            if (rand.rand(1,100) <= escapeChance) {
-                escaped = true;
-                let escapeVar = rand.rand(4,8);
-                console.log('escapeVar:'+escapeVar);
-                shots = Math.round(shots*escapeVar/(selectedWeap.cost+4)/2);
-            }
-        }
-    }
     // SHIELD
     let shieldValue = applyShield();
     shots = Math.ceil(shots/shieldValue);
@@ -1432,39 +1437,42 @@ function defense(melee,init) {
     }
     // ESCAPE
     escaped = false;
-    let hasEscape = false;
-    let escapeSpeed = selectedBatType.speed-2;
-    if (selectedBatType.skills.includes('escape')) {
-        hasEscape = true;
-        if (selectedBatType.skills.includes('dog')) {
-            escapeSpeed = selectedBat.vet+6;
-        }
+    let escapeFactor = checkEscape(selectedBat,selectedBatType,targetWeap,targetBat,tile);
+    if (escapeFactor < 1) {
+        shots = Math.round(shots*escapeFactor);
+        defFactor = Math.round(defFactor*escapeFactor);
     }
-    if (selectedBatType.skills.includes('heroescape') && selectedBat.tags.includes('hero')) {
-        hasEscape = true;
-        escapeSpeed = selectedBat.vet*2;
-    }
-    // console.log('ESCAPE');
-    // console.log(hasEscape);
-    if (hasEscape && !targetWeap.noEsc && !selectedBat.tags.includes('stun')) {
-        if ((tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') || selectedBatType.skills.includes('fly')) {
-            let escapeChance = Math.round(escapeSpeed*targetWeap.cost*escapeValue);
-            if (targetWeap.aoe != 'unit' && !selectedBatType.skills.includes('fly')) {
-                escapeChance = Math.round(escapeChance/3);
-            }
-            if (targetBat.fuzz <= -2 && !targetWeap.isMelee && !targetWeap.isBow) {
-                escapeChance = Math.round(escapeChance/2);
-            }
-            console.log('escapeChance:'+escapeChance);
-            if (rand.rand(1,100) <= escapeChance) {
-                escaped = true;
-                let escapeVar = rand.rand(4,8);
-                console.log('escapeVar:'+escapeVar);
-                shots = Math.round(shots*escapeVar/(targetWeap.cost+4)/2);
-                defFactor = Math.round(defFactor*escapeVar/(targetWeap.cost+4)/2);
-            }
-        }
-    }
+    // let hasEscape = false;
+    // let escapeSpeed = selectedBatType.speed-2;
+    // if (selectedBatType.skills.includes('escape')) {
+    //     hasEscape = true;
+    //     if (selectedBatType.skills.includes('dog')) {
+    //         escapeSpeed = selectedBat.vet+6;
+    //     }
+    // }
+    // if (selectedBatType.skills.includes('heroescape') && selectedBat.tags.includes('hero')) {
+    //     hasEscape = true;
+    //     escapeSpeed = selectedBat.vet*2;
+    // }
+    // if (hasEscape && !targetWeap.noEsc && !selectedBat.tags.includes('stun')) {
+    //     if ((tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') || selectedBatType.skills.includes('fly')) {
+    //         let escapeChance = Math.round(escapeSpeed*targetWeap.cost*escapeValue);
+    //         if (targetWeap.aoe != 'unit' && !selectedBatType.skills.includes('fly')) {
+    //             escapeChance = Math.round(escapeChance/3);
+    //         }
+    //         if (targetBat.fuzz <= -2 && !targetWeap.isMelee && !targetWeap.isBow) {
+    //             escapeChance = Math.round(escapeChance/2);
+    //         }
+    //         console.log('escapeChance:'+escapeChance);
+    //         if (rand.rand(1,100) <= escapeChance) {
+    //             escaped = true;
+    //             let escapeVar = rand.rand(4,8);
+    //             console.log('escapeVar:'+escapeVar);
+    //             shots = Math.round(shots*escapeVar/(targetWeap.cost+4)/2);
+    //             defFactor = Math.round(defFactor*escapeVar/(targetWeap.cost+4)/2);
+    //         }
+    //     }
+    // }
     // bugROF
     if (bugROF > 1 && targetBatType.kind === 'bug') {
         shots = Math.round(shots*bugROF);

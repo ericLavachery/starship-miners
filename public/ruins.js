@@ -38,9 +38,7 @@ function searchRuins(apCost) {
         tile.sh = -1;
         // saveMap();
         selectedBat.xp = selectedBat.xp+1;
-        if (rand.rand(1,3) === 1) {
-            playerInfos.gangXP = playerInfos.gangXP+1;
-        }
+        playerInfos.gangXP = playerInfos.gangXP+1;
         tagDelete(selectedBat,'guet');
         doneAction(selectedBat);
         selectedBatArrayUpdate();
