@@ -51,6 +51,10 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     if (inBld) {
         maxAPCost = Math.round(medicBat.ap*1.5);
     }
+    let diagMed = false;
+    if (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('transorbital') || (selectedBatType.skills.includes('medtrans') && selectedBat.tags.includes('fortif')) || inBld) {
+        diagMed = true;
+    }
     if (around) {
         // AROUND
         bataillons.forEach(function(bat) {
@@ -58,7 +62,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                 if (totalAPCost < maxAPCost) {
                     if (bat.loc === "zone" || bat.loc === "trans") {
                         distance = calcDistance(selectedBat.tileId,bat.tileId);
-                        if (distance === 0 || (distance === 1 && (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('transorbital')))) {
+                        if (distance === 0 || (distance === 1 && diagMed)) {
                             batType = getBatType(bat);
                             batUnits = bat.squadsLeft*batType.squadSize;
                             if (batType.cat === cat || (batType.cat === 'devices' && cat === 'buildings') || (batType.cat === 'devices' && cat === 'vehicles')) {
@@ -423,6 +427,10 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
     if ((myBatType.skills.includes('realmed') && playerInfos.comp.med >= 2) || myBatType.skills.includes('medtrans')) {
         real = true;
     }
+    let diagMed = false;
+    if (inBatType.cat === 'buildings' || inBatType.skills.includes('transorbital') || (inBatType.skills.includes('medtrans') && inBat.tags.includes('fortif')) || myBat.id != inBat.id) {
+        diagMed = true;
+    }
     if (!around) {
         let effSoins = checkEffSoins(myBat);
         if (effSoins >= 50) {
@@ -448,7 +456,7 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 distance = calcDistance(myBat.tileId,bat.tileId);
-                if (distance === 0 || (distance === 1 && (inBatType.cat === 'buildings' || inBatType.skills.includes('transorbital')))) {
+                if (distance === 0 || (distance === 1 && diagMed)) {
                     fullBat = false;
                     batType = getBatType(bat);
                     batHPLeft = (bat.squadsLeft*batType.squadSize*batType.hp)-bat.damage;
@@ -1083,6 +1091,28 @@ function checkMedicSkill(bat,batType) {
         }
     }
     return myMedicSkill;
+};
+
+function checkMedBld(bat,batType) {
+    let canBeMedBld = false;
+    if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
+        canBeMedBld = true;
+    } else if (batType.cat === 'vehicles' && !batType.skills.includes('fly')) {
+        if (bat.tags.includes('fortif')) {
+            if (batType.skills.includes('medtrans')) {
+                canBeMedBld = true;
+            } else if (batType.skills.includes('ouvert')) {
+                if (batType.transUnits >= 700) {
+                    canBeMedBld = true;
+                }
+            } else {
+                if (batType.transUnits >= 500) {
+                    canBeMedBld = true;
+                }
+            }
+        }
+    }
+    return canBeMedBld;
 };
 
 function checkMedTrans(bat,batType) {

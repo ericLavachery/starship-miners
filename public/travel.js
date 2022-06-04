@@ -311,6 +311,13 @@ function healEverything() {
                     bat.soins = 3;
                 }
             }
+            if (batType.skills.includes('robot') && batType.skills.includes('decay')) {
+                if (bat.soins != undefined) {
+                    bat.soins = bat.soins+9;
+                } else {
+                    bat.soins = 9;
+                }
+            }
         }
         // AUTOLOAD -------------------------------------------
         if (bat.autoLoad != undefined) {

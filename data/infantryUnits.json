@@ -1556,7 +1556,7 @@
             "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":[],
-        "equip":["aucun","e-flash","e-ranger","lunette2","silencieux2","chargeur1","e-camo","theeye","waterproof","crimekitch","repel"],
+        "equip":["aucun","e-flash","e-ranger","lunette2","silencieux2","fakit","chargeur1","e-camo","theeye","waterproof","crimekitch","repel"],
         "log3eq":["silencieux2"],
         "moveCost":3,
         "maxFlood":3,
@@ -3762,8 +3762,8 @@
             "sound":"calibre_sa",
             "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "equip":["aucun","e-flash","chargeur1","silencieux2","e-medic","e-camo","theeye","helper"],
-        "log3eq":["chargeur1"],
+        "equip":["aucun","e-flash","chargeur1","fakit","silencieux2","e-medic","e-camo","theeye","helper"],
+        "log3eq":["fakit"],
         "moveCost":7,
         "maxFlood":1,
         "maxScarp":3,
@@ -5002,13 +5002,13 @@
             "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":[],
-        "equip":["aucun","e-flash","e-camo","lunette2","chargeur1","g2motor","waterproof","g2ai"],
+        "equip":["aucun","e-flash","e-camo","lunette2","chargeur1","fakit","g2motor","waterproof","g2ai"],
         "log3eq":["g2ai"],
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","fortif","datt","sentinelle","robot","crange","unemun","aifouille"],
+        "skills":["a_rob","fortif","datt","sentinelle","robot","crange","decay","unemun","aifouille"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },
@@ -5068,7 +5068,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","fortif","robot","crange","baddef","light","aicible","aifouille","aicamo","detrange"],
+        "skills":["a_rob","fortif","robot","crange","decay","baddef","light","aicible","aifouille","aicamo","detrange"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },
@@ -5126,7 +5126,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","fortif","datt","robot","crange","light","bgun","aifouille","detrange"],
+        "skills":["a_rob","fortif","datt","robot","decay","crange","light","bgun","aifouille","detrange"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },
@@ -5180,7 +5180,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","fortif","datt","robot","crange","sentinelle","mecano","undead","survivor","resistfeu","light","aifouille","roborepair"],
+        "skills":["a_rob","fortif","datt","robot","crange","decay","sentinelle","mecano","undead","survivor","resistfeu","light","aifouille","roborepair"],
         "mecanoCost":10,
         "fuzz":2,
         "deathFx":"144469__psychedelic-hands__robot-death"
@@ -5286,7 +5286,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","fortif","undead","datt","ranger","robot","aifouille","w2mecano","detrange","longshot"],
+        "skills":["a_rob","fortif","undead","datt","ranger","robot","decay","aifouille","w2mecano","detrange","longshot"],
         "mecanoCost":9,
         "fuzz":0,
         "deathFx":"505751__thehorriblejoke__computer-breaking-sound"
@@ -5344,7 +5344,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","datt","robot","crange","nodeathcount"],
+        "skills":["a_rob","datt","robot","decay","nodeathcount"],
         "fuzz":0,
         "deathFx":"505751__thehorriblejoke__computer-breaking-sound"
     },

@@ -205,7 +205,7 @@ function reEquip(batId,noRefresh) {
     let hasW2 = checkHasWeapon(2,myBatType,myNewGear[3]);
     listNum = 1;
     if (hasW2) {
-        if (Object.keys(myBatType.weapon2).length >= 1 && !myBatType.skills.includes('unemun')) {
+        if (Object.keys(myBatType.weapon2).length >= 1 && (!myBatType.skills.includes('unemun') || myBat.eq === 'fakit' || myBat.logeq === 'fakit')) {
             if (myBatType.weapon2.ammo.length >= 1) {
                 $('#conAmmoList').append('<span class="constName or">'+myBatType.weapon2.name+'</span><br>');
                 myBatType.weapon2.ammo.forEach(function(ammo) {
@@ -564,7 +564,7 @@ function verifBldReq(unit,bldReq) {
 function deployAmmo(ammo,weapon,batId) {
     let myBat = getBatById(batId);
     let myBatType = getBatType(myBat);
-    if (myBatType.skills.includes('unemun')) {
+    if (myBatType.skills.includes('unemun') && myBat.eq != 'fakit' && myBat.logeq != 'fakit') {
         myNewGear[0] = ammo;
         myNewGear[1] = ammo;
     } else {

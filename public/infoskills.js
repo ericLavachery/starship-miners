@@ -572,7 +572,8 @@ function skillsInfos(bat,batType,near) {
     if (!playerInfos.onShip) {
         let baseskillCost;
         // MEDIC IN BLD
-        if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
+        let canBeMedBld = checkMedBld(bat,batType);
+        if (canBeMedBld) {
             let medicBat = bestMedicInBld(bat);
             let medicBatType = getBatType(medicBat);
             // console.log(medicBat);

@@ -2374,7 +2374,7 @@
         "apdamage": 0,
         "aoe": "brochette",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"explo":1},
+        "compReq":{"bal":2},
         "deploy":{"Fer":3,"Plomb":1,"Tungstène":2,"Explosifs":1},
         "batch":100
     },

@@ -467,6 +467,17 @@
         "costs":{"Silicium":4,"Carbone":4}
     },
     {
+        "name":"fakit",
+        "cat":"equip",
+        "skills":[],
+        "info":"Double chargeur",
+        "bldReq":["Arsenal"],
+        "compReq":{"bal":2,"log":2,"ind":1},
+        "autoComp":["bal",3],
+        "factor":"crew",
+        "costs":{"Titane":6,"Carbone":6,"Fer":6}
+    },
+    {
         "name":"chargeur",
         "cat":"equip",
         "skills":[],
@@ -1046,9 +1057,9 @@
         "skills":[],
         "info":"Double chargeur",
         "bldReq":["Arsenal"],
-        "compReq":{"log":2,"bal":2},
+        "compReq":{"log":2,"bal":2,"ind":1},
         "factor":"crew",
-        "costs":{"Carbone":6,"Scrap":3,"Fer":6}
+        "costs":{"Titane":6,"Carbone":6,"Fer":6}
     },
     {
         "name":"w2-canon",

@@ -164,9 +164,7 @@ function weaponsInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon '+colIcon+'"><i class="fas fa-rss"></i></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
             // chargeur
-            if (bat.eq.includes('chargeur') || bat.eq.includes('w2-2ch') || bat.eq.includes('carrousel') || bat.logeq.includes('chargeur') || bat.logeq.includes('carrousel') || bat.eq.includes('kit-chouf') || bat.eq.includes('kit-milice') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
-                attaques = chargeurAdj(bat,attaques,thisWeapon);
-            }
+            attaques = chargeurAdj(bat,attaques,thisWeapon);
             if (pop) {
                 $('#'+bodyPlace).append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
             }
@@ -409,9 +407,7 @@ function weaponsInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName" title="Elevation: '+thisWeapon.elevation+'">Portée</span><span class="paramIcon '+colIcon+'"><i class="fas fa-rss"></i></span><span class="paramValue">'+thisWeapon.range+elev+'</span><br>');
             attaques = thisWeapon.rof*bat.squadsLeft;
             // chargeur
-            if (bat.eq.includes('chargeur') || bat.eq.includes('w2-2ch') || bat.eq.includes('carrousel') || bat.logeq.includes('chargeur') || bat.logeq.includes('carrousel') || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
-                attaques = chargeurAdj(bat,attaques,thisWeapon);
-            }
+            attaques = chargeurAdj(bat,attaques,thisWeapon);
             if (pop) {
                 $('#'+bodyPlace).append('<span class="paramName">Attaques</span><span class="paramIcon"></span><span class="paramValue">'+attaques+'</span><br>');
             }

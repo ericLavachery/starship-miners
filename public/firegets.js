@@ -2530,39 +2530,41 @@ function apCostRiposte(bat,batType,weap) {
 
 function chargeurAdj(bat,shots,weap) {
     let newShots = shots;
-    let mult = 1.5;
-    if (weap.name.includes('Calibre') || weap.name.includes('verrou')) {
-        mult = 2;
-    }
-    if (weap.name.includes('Revolver') || weap.name.includes('Blaster') || weap.name.includes('pompe') || weap.name.includes('Blister pistol')) {
-        mult = 1.7;
-    }
-    if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('ulfat') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('BFG') || (weap.name.includes('Blister') && !weap.name.includes('pistol'))) {
-        mult = 1.33;
-    }
-    if (bat.eq.includes('kit-chouf')) {
-        mult = 2;
-    }
-    if (bat.eq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.logeq.includes('chargeur') || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit' || bat.eq === 'kit-milice') {
-        if (weap.num === 1) {
-            if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.logeq === 'chargeur1' || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit' || bat.eq === 'kit-milice') {
-                newShots = Math.round(newShots*mult);
-            }
-        } else {
-            if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.logeq === 'chargeur2' || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitto') {
-                newShots = Math.round(newShots*mult);
+    if (bat.eq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.eq.includes('carrousel') || bat.logeq.includes('chargeur') || bat.logeq.includes('carrousel') || bat.eq.includes('kit-chouf') || bat.eq.includes('kit-milice') || bat.eq === 'crimekitto' || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq.includes('lgkit') || bat.logeq.includes('lgkit') || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
+        let mult = 1.5;
+        if (weap.name.includes('Calibre') || weap.name.includes('verrou')) {
+            mult = 2;
+        }
+        if (weap.name.includes('Revolver') || weap.name.includes('pompe') || weap.name.includes('Blister pistol')) {
+            mult = 1.7;
+        }
+        if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('ulfat') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('BFG') || (weap.name.includes('Blister') && !weap.name.includes('pistol'))) {
+            mult = 1.33;
+        }
+        if (bat.eq.includes('kit-chouf')) {
+            mult = 2;
+        }
+        if (bat.eq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.logeq.includes('chargeur') || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq === 'crimekitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit' || bat.eq === 'kit-milice' || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
+            if (weap.num === 1) {
+                if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.logeq === 'chargeur1' || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit' || bat.eq === 'kit-milice' || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
+                    newShots = Math.round(newShots*mult);
+                }
+            } else {
+                if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.logeq === 'chargeur2' || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'crimekitto') {
+                    newShots = Math.round(newShots*mult);
+                }
             }
         }
-    }
-    mult = 1.25;
-    if (bat.eq.includes('carrousel') || bat.logeq.includes('carrousel')) {
-        if (weap.num === 1) {
-            if (bat.eq === 'carrousel1' || bat.eq === 'carrousel' || bat.logeq === 'carrousel1' || bat.logeq === 'carrousel') {
-                newShots = Math.round(newShots*mult);
-            }
-        } else {
-            if (bat.eq === 'carrousel2' || bat.eq === 'carrousel' || bat.logeq === 'carrousel2' || bat.logeq === 'carrousel') {
-                newShots = Math.round(newShots*mult);
+        mult = 1.25;
+        if (bat.eq.includes('carrousel') || bat.logeq.includes('carrousel')) {
+            if (weap.num === 1) {
+                if (bat.eq === 'carrousel1' || bat.eq === 'carrousel' || bat.logeq === 'carrousel1' || bat.logeq === 'carrousel') {
+                    newShots = Math.round(newShots*mult);
+                }
+            } else {
+                if (bat.eq === 'carrousel2' || bat.eq === 'carrousel' || bat.logeq === 'carrousel2' || bat.logeq === 'carrousel') {
+                    newShots = Math.round(newShots*mult);
+                }
             }
         }
     }
