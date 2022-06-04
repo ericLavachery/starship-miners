@@ -211,7 +211,7 @@
             "accuracy":23,
             "power":7,
             "aoe":"unit",
-            "sound":"calibre_sa",
+            "sound":"calibre_sa_multi",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
@@ -281,7 +281,7 @@
             "power":7,
             "armors":1.1,
             "aoe":"unit",
-            "sound":"calibre_carabine",
+            "sound":"calibre_carabine_multi",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
@@ -352,7 +352,7 @@
             "accuracy":23,
             "power":7,
             "aoe":"unit",
-            "sound":"calibre_sa",
+            "sound":"calibre_sa_multi",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{

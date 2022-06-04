@@ -1089,31 +1089,29 @@ function fastEmptyBonus(bat,batType) {
 };
 
 function calcUnitResist() {
-    let unitResist = 0;
-    // LABOS
-    if (playerInfos.bldList.includes('Centre de recherches')) {
-        unitResist = unitResist+1;
-    } else if (playerInfos.bldList.includes('Laboratoire')) {
-        unitResist = unitResist+0.8;
-    }
+    let unitResist = -1;
     // INFIRMERIES
     if (playerInfos.bldList.includes('Hôpital')) {
-        unitResist = unitResist+1;
+        unitResist = unitResist+1.7;
     } else if (playerInfos.bldList.includes('Infirmerie')) {
         unitResist = unitResist+0.8;
     }
-    // ENTRAINEMENT
+    // SPORT
     if (playerInfos.bldList.includes('Salle de sport')) {
-        unitResist = unitResist+0.6;
-    }
-    if (playerInfos.bldList.includes('Camp d\'entraînement')) {
-        unitResist = unitResist+0.6;
+        unitResist = unitResist+0.7;
     }
     // CANTINE
     if (playerInfos.bldList.includes('Cantine')) {
         unitResist = unitResist+0.8;
     }
+    unitResist = unitResist+(playerInfos.comp.med/4);
+    if (playerInfos.comp.med >= 3) {
+        unitResist = unitResist+0.6;
+    }
     unitResist = Math.round(unitResist);
+    if (unitResist < 0) {
+        unitResist = 1;
+    }
     return unitResist;
 };
 
@@ -1411,14 +1409,14 @@ function tagsEffect(bat,batType) {
         if (bat.tags.includes('skupiac') || bat.tags.includes('octiron') || bat.tags.includes('zombie')) {
             tagDelete(bat,'maladie');
         } else {
-            if (rand.rand(1,18) <= unitResist && bat.cat != 'aliens') {
+            if (rand.rand(1,20) <= unitResist && bat.cat != 'aliens') {
                 tagDelete(bat,'maladie');
                 warning('',bat.type+' a vaincu la maladie.',false,bat.tileId);
             } else {
                 bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
                 if (bat.squadsLeft < batType.squads || bat.damage >= 1) {
                     if (rand.rand(1,36) <= (4-unitResist) && bat.cat != 'aliens') {
-                        bat.tags.push('poison');
+                        bat.tags.push('venin');
                         if (!batType.skills.includes('resistpoison')) {
                             warning('',bat.type+' risque de succomber à la maladie.',false,bat.tileId);
                         }
@@ -1441,15 +1439,17 @@ function tagsEffect(bat,batType) {
     // NECRO
     if (bat.tags.includes('necro')) {
         if (bat.tags.includes('octiron')) {
-            if (rand.rand(1,2) === 1) {
-                tagDelete(bat,'necro');
-            }
-        } else {
-            if (rand.rand(1,16) <= unitResist) {
+            if (rand.rand(1,4) === 1) {
                 tagDelete(bat,'necro');
                 if (!bat.tags.includes('necro')) {
                     warning('',bat.type+' a éliminé la nécrotoxine.',false,bat.tileId);
                 }
+            }
+        }
+        if (rand.rand(2,24) <= unitResist) {
+            tagDelete(bat,'necro');
+            if (!bat.tags.includes('necro')) {
+                warning('',bat.type+' a éliminé la nécrotoxine.',false,bat.tileId);
             }
         }
     }
@@ -1470,7 +1470,7 @@ function tagsEffect(bat,batType) {
     }
     if (!medicalTransports.includes(bat.locId) || bat.loc != 'trans') {
         // PARASITE
-        if (bat.tags.includes('parasite')) {
+        if (bat.tags.includes('parasite') && bat.squadsLeft >= 1) {
             let parasiteDeg = Math.round(rand.rand((Math.round(parasiteDamage/3)),parasiteDamage)*batType.squads*batType.squadSize/60);
             if (bat.tags.includes('octiron')) {
                 parasiteDeg = Math.round(parasiteDeg/10);
@@ -1488,7 +1488,7 @@ function tagsEffect(bat,batType) {
             }
         }
         // SHINDA
-        if (bat.tags.includes('shinda')) {
+        if (bat.tags.includes('shinda') && bat.squadsLeft >= 1) {
             if (batType.skills.includes('nokill') && rand.rand(1,3) === 1) {
                 tagDelete(bat,'shinda');
             } else if (batType.skills.includes('resistpoison') && rand.rand(1,8) === 1) {
@@ -1512,7 +1512,7 @@ function tagsEffect(bat,batType) {
             }
         }
         // BLAZE
-        if (bat.tags.includes('blaze')) {
+        if (bat.tags.includes('blaze') && bat.squadsLeft >= 1) {
             let blazeDamage = Math.round(rand.rand((Math.round(poisonDamage/3)),poisonDamage)*batType.squads*batType.squadSize/60);
             if (playerInfos.comp.med >= 3) {
                 blazeDamage = Math.round(blazeDamage/2);
@@ -1527,7 +1527,7 @@ function tagsEffect(bat,batType) {
             }
         }
         // VENIN
-        if (bat.tags.includes('venin') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron') && !bat.tags.includes('zombie')) {
+        if (bat.tags.includes('venin') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron') && !bat.tags.includes('zombie') && bat.squadsLeft >= 1) {
             bat.apLeft = bat.apLeft-Math.floor(bat.ap/3);
             let veninDeg = Math.round(rand.rand((Math.round(venumDamage/3)),venumDamage)*batType.squads*batType.squadSize/60);
             if (playerInfos.comp.med >= 3) {
@@ -1543,7 +1543,7 @@ function tagsEffect(bat,batType) {
             }
         }
         // POISON
-        if (bat.tags.includes('poison') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron') && !bat.tags.includes('zombie')) {
+        if (bat.tags.includes('poison') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron') && !bat.tags.includes('zombie') && bat.squadsLeft >= 1) {
             let allTags = _.countBy(bat.tags);
             let poisonPower = allTags.poison*poisonDamage;
             if (bat.team === 'player') {

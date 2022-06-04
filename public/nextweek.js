@@ -304,11 +304,12 @@ function eventBouffe(time,sim,quiet) {
         recycleFactor = recycleFactor+4;
     }
     let energyFactor = playerInfos.comp.tri+8;
+    let eatFactor = playerInfos.comp.med+8;
     let numIso = checkNumUnits('Isolation');
     let isoFactor = 1+((26-numIso)/13);
-    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/537);
-    bouffeCost['Eau'] = Math.round(toutMesCitoyens*time*2/274/recycleFactor*8);
-    bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time*2/936/recycleFactor*8);
+    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/269/eatFactor*8);
+    bouffeCost['Eau'] = Math.round(toutMesCitoyens*time*2/234/recycleFactor*8);
+    bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time*2/736/recycleFactor*8);
     bouffeCost['Energie'] = Math.round(Math.sqrt(toutMesCitoyens)*50*time*2/1408/energyFactor*8*isoFactor);
     // bouffeCost['Energie'] = Math.round(toutMesCitoyens*time*2/1408/energyFactor*8);
     console.log('CONSO !!!!!!!!!!!!!!!!!!!!!!!!!!');

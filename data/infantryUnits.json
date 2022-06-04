@@ -1870,7 +1870,7 @@
         "name":"Bugmen",
         "pic":"bugman",
         "cat":"infantry",
-        "kind":"drogmulojs",
+        "kind":"zero-genetique",
         "squads":6,
         "squadSize":10,
         "crew":1,
@@ -2169,7 +2169,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Minigun",
-            "cost":5,
+            "cost":4,
             "range":2,
             "elevation":2,
             "rof":75,
@@ -2184,7 +2184,7 @@
         },
         "weapon2":{
             "name":"Minigun",
-            "cost":5,
+            "cost":4,
             "range":2,
             "elevation":2,
             "kit":true,
@@ -3084,7 +3084,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","selfbadmedic","guerrilla","datt","ranger","survivor","maycamo","herosalvo","lowstress"],
+        "skills":["a_mid","fouille","fortif","selfbadmedic","guerrilla","tirailleur","fastguet","datt","ranger","survivor","maycamo","herosalvo","lowstress"],
         "mediCost":5,
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
