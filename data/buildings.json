@@ -1753,7 +1753,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","medic","medtrans","necrocure","dealer","kirin","octiron","starka","maycamo","recupcit","crewsave","transport","routes","producteur","ravitaillement","stockmed","upkeep","updisable","prodres","longshot","cible","fret","dumper","selfbadrepair","meleehelp","prefab"],
+        "skills":["fouille","medic","medrange","medtrans","necrocure","dealer","kirin","octiron","starka","maycamo","recupcit","crewsave","transport","routes","producteur","ravitaillement","stockmed","upkeep","updisable","prodres","longshot","cible","fret","dumper","selfbadrepair","meleehelp","prefab"],
         "mecanoCost":12,
         "mediCost":4,
         "maxSkill":999,
@@ -2122,7 +2122,7 @@
             "ammo":["standard"]
         },
         "protection":[],
-        "equip":["aucun","bldkit","w1-gun","w2-explo","w2-autopistol","psol2","isophon","respod","garage","e-infra"],
+        "equip":["aucun","bldkit","w1-gun","w2-explo","w2-autopistol","psol2","isophon","respod","garage","e-infra","prodboost"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2201,7 +2201,7 @@
             "ammo":["standard"]
         },
         "protection":[],
-        "equip":["aucun","bldkit","w1-gun","w2-cmag","w2-autogun","psol2","isophon","respod","garage","e-infra"],
+        "equip":["aucun","bldkit","w1-gun","w2-cmag","w2-autogun","psol2","isophon","respod","garage","e-infra","prodboost"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
         "maxFlood":-1,

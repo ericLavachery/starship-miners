@@ -65,25 +65,13 @@ function geoProd(bat,batType) {
         }
         let energyProd = Math.ceil(magmaHere/4*3)+(tileHeat*10);
         energyProd = energyCreation(energyProd);
-        if (energyProd >= 200) {
-            energyProd = Math.ceil(energyProd/100);
-            resAddToBld('Energons',energyProd,bat,batType,false);
-            if (!playerInfos.onShip) {
-                if (minedThisTurn['Energons'] === undefined) {
-                    minedThisTurn['Energons'] = energyProd;
-                } else {
-                    minedThisTurn['Energons'] = minedThisTurn['Energons']+energyProd;
-                }
-            }
-        } else {
-            energyProd = Math.ceil(energyProd/10);
-            resAddToBld('Energie',energyProd,bat,batType,false);
-            if (!playerInfos.onShip) {
-                if (minedThisTurn['Energie'] === undefined) {
-                    minedThisTurn['Energie'] = energyProd;
-                } else {
-                    minedThisTurn['Energie'] = minedThisTurn['Energie']+energyProd;
-                }
+        energyProd = Math.ceil(energyProd/10);
+        resAddToBld('Energie',energyProd,bat,batType,false);
+        if (!playerInfos.onShip) {
+            if (minedThisTurn['Energie'] === undefined) {
+                minedThisTurn['Energie'] = energyProd;
+            } else {
+                minedThisTurn['Energie'] = minedThisTurn['Energie']+energyProd;
             }
         }
         console.log('prod = Energons:'+energyProd);
@@ -352,6 +340,9 @@ function triProd(bat,batType,time,sim,quiet) {
             let key = entry[0];
             let value = entry[1];
             let conso = value*time;
+            if (bat.eq === 'prodboost') {
+                conso = Math.round(conso*1.5);
+            }
             let dispoRes = getDispoRes(key);
             if (dispoRes < conso) {
                 upkeepPaid = false;
@@ -364,6 +355,9 @@ function triProd(bat,batType,time,sim,quiet) {
                 let key = entry[0];
                 let value = entry[1];
                 let conso = value*time;
+                if (bat.eq === 'prodboost') {
+                    conso = Math.round(conso*1.5);
+                }
                 if (playerInfos.onShip) {
                     modWeekRes(key,0-conso);
                 }
@@ -385,14 +379,14 @@ function triProd(bat,batType,time,sim,quiet) {
             let resFactor = 0;
             if (res.ctri != undefined) {
                 if (batType.name === 'Recyclab') {
-                    resFactor = Math.ceil(res.ctri*2.5);
+                    resFactor = (res.ctri+playerInfos.comp.tri-1.5)*2.5;
                 } else {
-                    resFactor = res.ctri;
+                    resFactor = res.ctri+playerInfos.comp.tri-1.5;
                 }
             } else {
                 if (res.rlab != undefined) {
                     if (batType.name === 'Recyclab') {
-                        resFactor = Math.ceil(res.rlab*2.5);
+                        resFactor = (res.rlab+playerInfos.comp.tri-1.5)*2.5;
                     }
                 }
             }
@@ -412,6 +406,9 @@ function triProd(bat,batType,time,sim,quiet) {
             }
             if (resProd >= 1) {
                 resProd = scrapRecup(resProd);
+                if (bat.eq === 'prodboost') {
+                    resProd = Math.round(resProd*1.5);
+                }
                 // resAdd(res.name,resProd);
                 if (playerInfos.onShip) {
                     modWeekRes(res.name,resProd);
@@ -440,6 +437,13 @@ function triProd(bat,batType,time,sim,quiet) {
             warning(batType.name,message,true);
         }
     }
+};
+
+function scrapRecup(resCreated) {
+    let triComp = playerInfos.comp.tri;
+    resCreated = Math.ceil(resCreated*(triComp+2)/2*rand.rand(2,6)/4);
+    // resCreated = Math.ceil(resCreated*(triComp+2)/2);
+    return resCreated;
 };
 
 function upkeepAndProd(bat,batType,time,sim,quiet) {

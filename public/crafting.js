@@ -389,13 +389,6 @@ function scrapCreation(scrapCreated) {
     return scrapCreated;
 };
 
-function scrapRecup(resCreated) {
-    let triComp = playerInfos.comp.tri;
-    resCreated = Math.ceil(resCreated*(triComp+2)/2*rand.rand(2,6)/4);
-    // resCreated = Math.ceil(resCreated*(triComp+2)/2);
-    return resCreated;
-};
-
 function cramPower(res,neededRes) {
     let energyComp = playerInfos.comp.energ;
     if (energyComp === 3) {

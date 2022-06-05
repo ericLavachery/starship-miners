@@ -411,7 +411,7 @@ function nearbyAliens(myBat) {
 function nearWhat(myBat,myBatType) {
     let myCrew = myBatType.squads*myBatType.squadSize*myBatType.crew;
     let myCat = myBatType.cat;
-    if (myBat.eq === 'g2ai' || myBat.logeq === 'g2ai') {
+    if (myBatType.equip.includes('g2ai')) {
         myCrew = myBatType.squads*myBatType.squadSize*1;
         myCat = 'infantry';
     }

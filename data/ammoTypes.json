@@ -173,7 +173,7 @@
     {
         "name": "needle",
         "range": 1,
-        "rof": 2,
+        "rof": 1.8,
         "power": 0,
         "powermult": 0.5,
         "armors": 0.2,
@@ -597,7 +597,7 @@
     {
         "name": "sm-needle",
         "range": 1,
-        "rof": 2,
+        "rof": 1.8,
         "power": -1,
         "powermult": 1,
         "armors": 0.3,
