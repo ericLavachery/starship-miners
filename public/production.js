@@ -63,7 +63,7 @@ function geoProd(bat,batType) {
                 magmaHere = tile.rs.Magma;
             }
         }
-        let energyProd = Math.ceil(magmaHere/4*3)+(tileHeat*10);
+        let energyProd = Math.ceil(magmaHere/2*3)+(tileHeat*10);
         energyProd = energyCreation(energyProd);
         energyProd = Math.ceil(energyProd/10);
         resAddToBld('Energie',energyProd,bat,batType,false);

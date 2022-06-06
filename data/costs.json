@@ -86,7 +86,7 @@
     {
         "id":242,
         "name":"Electroguards",
-        "levels":{"rednecks":10,"blades":10,"bulbos":8,"drogmulojs":11,"tiradores":10,"detruas":10,"brasier":11},
+        "levels":{"rednecks":10,"blades":10,"bulbos":8,"drogmulojs":11,"tiradores":11,"detruas":10,"brasier":11},
         "bldReq":["Laboratoire","Générateur"],
         "compReq":{"ordre":3},
         "costs":{"Scrap":30,"Carbone":60,"Bois":60,"Aluminium":105,"Titane":45,"Cuivre":60,"Tissus":30,"Azote":30,"Mendium":30,"Silicium":30,"Electros":60,"Batteries":30},
@@ -1599,13 +1599,23 @@
     {
         "id":101,
         "name":"Genius",
-        "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":11,"brasier":11},
+        "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":99,"detruas":11,"brasier":11},
         "bldReq":["Armurerie","Chaîne de montage"],
         "compReq":{"tank":1},
         "costs":{"Fer":110,"Scrap":330,"Carbone":105,"Aluminium":30,"Moteurs":60,"Tungstène":65,"Cuivre":25,"Electros":25,"Batteries":25,"Compo2":100,"Silicium":15,"Huile":35},
         "deploy":{"Fuel":75,"Energie":90,"Huile":22},
         "fabTime":70,
         "inRuin":2
+    },
+    {
+        "id":292,
+        "name":"Wizard",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":10,"detruas":99,"brasier":99},
+        "bldReq":["Armurerie","Chaîne de montage"],
+        "compReq":{"tank":1},
+        "costs":{"Fer":110,"Scrap":330,"Carbone":105,"Aluminium":30,"Moteurs":60,"Tungstène":65,"Cuivre":25,"Electros":25,"Batteries":25,"Compo2":100,"Silicium":15,"Huile":35},
+        "deploy":{"Fuel":75,"Energie":90,"Huile":22},
+        "fabTime":70
     },
     {
         "id":107,

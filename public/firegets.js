@@ -749,6 +749,15 @@ function calcDamage(weapon,power,armor,defBat) {
             armor = armor+playerInfos.comp.def-1;
         }
     }
+    if (weapon.ammo.includes('teflon')) {
+        armor = armor-3;
+    }
+    if (weapon.ammo.includes('needle')) {
+        armor = armor-5;
+    }
+    if (armor < 0) {
+        armor = 0;
+    }
     let armorModifier = weapon.armors;
     // creuseur
     if (defBat.tags.includes('trou')) {
@@ -2140,7 +2149,7 @@ function weaponAdj(weapon,bat,wn) {
     if (ammo.aoe != '' && thisWeapon.aoe != 'bat') {
         thisWeapon.aoe = ammo.aoe;
     }
-    if (ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit' || ammo.name.includes('web') || ammo.name.includes('marq')) {
+    if (ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit' || ammo.name.includes('web') || ammo.name.includes('marq') || ammo.name.includes('teflon')) {
         thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
         thisWeapon.rof = thisWeapon.rof*ammo.rof;
     } else {
