@@ -881,7 +881,7 @@ function diagRepair(repairBatId) {
     showBatInfos(selectedBat);
 }
 
-function calcBaseSkillCost(bat,batType,medik,inBld) {
+function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
     let baseskillCost;
     if (medik) {
         baseskillCost = batType.mediCost;
@@ -925,7 +925,10 @@ function calcBaseSkillCost(bat,batType,medik,inBld) {
         }
     }
     if (inBld) {
-        baseskillCost = baseskillCost-1;
+        let bldBatType = getBatType(bldBat);
+        if (bldBatType.cat === 'buildings') {
+            baseskillCost = baseskillCost-1;
+        }
     }
     if (baseskillCost < 2) {
         baseskillCost = 2;

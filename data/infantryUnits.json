@@ -2495,7 +2495,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","ravitaillement","maycamo","fastempty","fret","recupcit","conscont","nochef"],
+        "skills":["a_light","fouille","fortif","datt","ravitaillement","autoapprov","maycamo","fastempty","fret","recupcit","conscont","nochef"],
         "mecanoCost":12,
         "maxSkill":9,
         "transRes":72,

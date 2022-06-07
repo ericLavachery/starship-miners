@@ -921,13 +921,13 @@ function attack(melee,init) {
         }
     }
     let trouOK = false;
-    if (selectedWeap.ammo.includes('troueur') && totalDamage >= targetBat.armor*1.5) {
+    if (selectedWeap.ammo.includes('troueur') && totalDamage >= targetBat.armor*3) {
         trouOK = true;
     }
     if (selectedWeap.ammo.includes('acide') && totalDamage >= targetBat.armor*5) {
         trouOK = true;
     }
-    if (trouOK && catOK) {
+    if (trouOK && catOK && rand.rand(1,2) === 1) {
         if (!targetBat.tags.includes('trou')) {
             targetBat.tags.push('trou');
         }

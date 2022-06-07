@@ -579,7 +579,7 @@ function skillsInfos(bat,batType,near) {
             // console.log(medicBat);
             if (Object.keys(medicBat).length >= 1) {
                 numTargets = numMedicTargets(medicBat,'infantry',true,true,bat);
-                baseskillCost = calcBaseSkillCost(medicBat,medicBatType,true,true);
+                baseskillCost = calcBaseSkillCost(medicBat,medicBatType,true,true,bat);
                 apCost = numTargets*(baseskillCost+medicBatType.squads-medicBat.squadsLeft);
                 if (apCost === 0) {apCost = baseskillCost;}
                 if (numTargets >= 1) {
@@ -690,7 +690,7 @@ function skillsInfos(bat,batType,near) {
             // console.log(medicBat);
             if (Object.keys(medicBat).length >= 1) {
                 numTargets = numMedicTargets(medicBat,'vehicles',true,true,bat);
-                baseskillCost = calcBaseSkillCost(medicBat,medicBatType,false,true);
+                baseskillCost = calcBaseSkillCost(medicBat,medicBatType,false,true,bat);
                 apCost = numTargets*(baseskillCost+medicBatType.squads-medicBat.squadsLeft);
                 if (apCost === 0) {apCost = baseskillCost;}
                 if (numTargets >= 1) {

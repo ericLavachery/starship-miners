@@ -1364,9 +1364,7 @@ function isInRange(myBat,thatTileId,myWeapon,alien) {
             }
             let alienAdjSize = alienType.size;
             if (terrain.scarp >= 3) {
-                alienAdjSize = alienAdjSize-30;
-            } else if (terrain.scarp >= 2) {
-                alienAdjSize = alienAdjSize-10;
+                alienAdjSize = alienAdjSize-20;
             }
             if (alienAdjSize > 50) {
                 rangeBonus = rangeBonus+2;

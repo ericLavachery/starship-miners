@@ -239,6 +239,8 @@ function nextTurnEnd() {
     hasScraptruck = false;
     let barIds = [];
     let campIds = [];
+    let stockTileIds = [];
+    let ravitTileIds = [];
     let resSpace;
     let resMax;
     let resLoaded;
@@ -255,6 +257,12 @@ function nextTurnEnd() {
             }
             if (batType.name === 'Scraptrucks') {
                 hasScraptruck = true;
+            }
+            if (batType.skills.includes('stock') || (batType.skills.includes('ravitprod') && batType.skills.includes('ravitall'))) {
+                stockTileIds.push(bat.tileId);
+            }
+            if (batType.skills.includes('stock') || batType.skills.includes('ravitaillement')) {
+                ravitTileIds.push(bat.tileId);
             }
             if (batType.skills.includes('transorbital')) {
                 let centerDistance = calcDistance(bat.tileId,1830);
@@ -387,6 +395,27 @@ function nextTurnEnd() {
                         solarPanel(bat,batType);
                     }
                 }
+            }
+            // AUTORAVIT
+            if (batType.skills.includes('autoapprov') && bat.tags.includes('sU')) {
+                stockTileIds.forEach(function(tileId) {
+                    if (bat.tags.includes('sU')) {
+                        let stockDist = calcDistance(bat.tileId,tileId);
+                        if (stockDist <= 5) {
+                            bat.tags = bat.tags.filter(a => a !== 'sU');
+                        }
+                    }
+                });
+            }
+            if (bat.tags.includes('dU') && bat.apLeft >= 8) {
+                ravitTileIds.forEach(function(tileId) {
+                    if (bat.tags.includes('dU')) {
+                        let stockDist = calcDistance(bat.tileId,tileId);
+                        if (stockDist <= 3) {
+                            bat.tags = bat.tags.filter(a => a !== 'dU');
+                        }
+                    }
+                });
             }
             // AUTOLOAD
             if (bat.autoLoad != undefined && bat.loc === 'zone') {

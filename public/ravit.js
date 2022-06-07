@@ -149,16 +149,16 @@ function checkRavit(myBat) {
                 if (batType.skills.includes('ravitaillement') && !batType.skills.includes('stockmed') && ravitTypeOK) {
                     if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
                         let ravitLeft = calcRavit(bat);
-                        let ravitVolOK = false;
-                        if (batType.skills.includes('stock')) {
-                            ravitVolOK = true;
-                        }
-                        if (ravitVolume[0] <= batType.maxSkill || ravitVolume[0] <= 12 || batType.maxSkill >= 18) {
-                            ravitVolOK = true;
-                        }
-                        if (ravitVolume[0] <= 18 && (myBat.eq === 'gilet' || myBat.logeq === 'gilet' || myBat.eq === 'crimekitgi')) {
-                            ravitVolOK = true;
-                        }
+                        let ravitVolOK = true;
+                        // if (batType.skills.includes('stock')) {
+                        //     ravitVolOK = true;
+                        // }
+                        // if (ravitVolume[0] <= batType.maxSkill || ravitVolume[0] <= 12 || batType.maxSkill >= 18) {
+                        //     ravitVolOK = true;
+                        // }
+                        // if (ravitVolume[0] <= 18 && (myBat.eq === 'gilet' || myBat.logeq === 'gilet' || myBat.eq === 'crimekitgi')) {
+                        //     ravitVolOK = true;
+                        // }
                         if (ravitLeft >= 1) {
                             if (ravitVolOK) {
                                 if (ravitVolume[2] != 'missile' || batType.skills.includes('stock') || batType.name === 'Usine d\'armement') {
@@ -305,10 +305,11 @@ function checkRavitDrug(myBat) {
             batType = getBatType(bat);
             if (batType.skills.includes('ravitaillement')) {
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
-                    ravitLeft = calcRavit(bat);
-                    if (ravitLeft >= 2 || batType.skills.includes('stock')) {
-                        anyRavit = true;
-                    }
+                    anyRavit = true;
+                    // ravitLeft = calcRavit(bat);
+                    // if (ravitLeft >= 2 || batType.skills.includes('stock')) {
+                    //     anyRavit = true;
+                    // }
                 }
             }
         }
@@ -328,7 +329,7 @@ function goRavitDrug(apCost) {
                 batType = getBatType(bat);
                 if (batType.skills.includes('ravitaillement')) {
                     ravitLeft = calcRavit(bat);
-                    if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 2) {
+                    if (calcDistance(selectedBat.tileId,bat.tileId) <= 1) {
                         if (biggestRavit < ravitLeft) {
                             biggestRavit = ravitLeft;
                             ravitBat = bat;
@@ -342,26 +343,27 @@ function goRavitDrug(apCost) {
             if (playerInfos.comp.log < 3) {
                 selectedBat.salvoLeft = 0;
             }
-            let i = 1;
-            while (i <= 120) {
-                if (selectedBat.tags.includes('dU')) {
-                    tagIndex = selectedBat.tags.indexOf('dU');
-                    selectedBat.tags.splice(tagIndex,1);
-                } else {
-                    break;
-                }
-                if (i > 120) {break;}
-                i++;
-            }
-            ravitBatType = getBatType(ravitBat);
-            let maxSkill = batType.maxSkill;
-            if (ravitBatType.skills.includes('stock')) {
-                maxSkill = 999;
-            }
-            if (maxSkill < 999 && !ravitBatType.skills.includes('stockmed')) {
-                ravitBat.tags.push('sU');
-                ravitBat.tags.push('sU');
-            }
+            // let i = 1;
+            // while (i <= 120) {
+            //     if (selectedBat.tags.includes('dU')) {
+            //         tagIndex = selectedBat.tags.indexOf('dU');
+            //         selectedBat.tags.splice(tagIndex,1);
+            //     } else {
+            //         break;
+            //     }
+            //     if (i > 120) {break;}
+            //     i++;
+            // }
+            selectedBat.tags = selectedBat.tags.filter(a => a !== 'dU');
+            // ravitBatType = getBatType(ravitBat);
+            // let maxSkill = batType.maxSkill;
+            // if (ravitBatType.skills.includes('stock')) {
+            //     maxSkill = 999;
+            // }
+            // if (maxSkill < 999 && !ravitBatType.skills.includes('stockmed')) {
+            //     ravitBat.tags.push('sU');
+            //     ravitBat.tags.push('sU');
+            // }
             doneAction(ravitBat);
             tagDelete(selectedBat,'guet');
             doneAction(selectedBat);
