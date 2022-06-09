@@ -1049,7 +1049,7 @@
         "squadSize":7,
         "crew":0,
         "hp":16,
-        "armor":10,
+        "armor":12,
         "size":7,
         "speed":0,
         "stealth":2,
@@ -1439,7 +1439,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"suck2",
-            "ammo":["poison"]
+            "ammo":["creuseur"]
         },
         "w2chance":4,
         "moveCost":4,
@@ -2921,7 +2921,7 @@
         "squadSize":4,
         "crew":0,
         "hp":55,
-        "armor":10,
+        "armor":12,
         "size":14,
         "speed":0,
         "stealth":4,

@@ -183,8 +183,8 @@
         "info": "Portée 1 max",
         "bldReq":["Atelier"],
         "compReq":{"bal":2,"mat":1,"ca":3},
-        "deploy":{"Fer":1,"Soufre":2,"Tungstène":1,"Uranium":1,"Bugium":1},
-        "batch":100
+        "deploy":{"Fer":3,"Soufre":4,"Tungstène":2,"Uranium":1,"Bugium":2},
+        "batch":200
     },
     {
         "name": "tungsten",
@@ -607,8 +607,8 @@
         "info": "Portée 1 max",
         "bldReq":["Atelier"],
         "compReq":{"bal":2,"mat":1,"ca":3},
-        "deploy":{"Fer":1,"Soufre":2,"Tungstène":1,"Uranium":1,"Bugium":1},
-        "batch":100
+        "deploy":{"Fer":3,"Soufre":4,"Tungstène":2,"Uranium":1,"Bugium":2},
+        "batch":200
     },
     {
         "name": "sm-tungsten",
