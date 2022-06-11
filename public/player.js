@@ -250,6 +250,15 @@ function changePlayerInfo(dropMenuId,infoName,from) {
     } else {
         playerInfos[infoName] = +value;
     }
+    if (infoName = 'sondePlanet') {
+        if (playerInfos.sondePlanet === 1) {
+            playerInfos.sondeDanger = getDoom(true);
+        } else {
+            if (playerInfos.sondeDanger < 4) {
+                playerInfos.sondeDanger = 4;
+            }
+        }
+    }
     if (infoName === 'gang' && from === 'gangChoice') {
         playerInfos.gangDef = true;
         // savePlayerInfos();

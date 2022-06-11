@@ -1417,7 +1417,7 @@ function anyAlienInRange(myBat,weapon) {
                         if (!hiddenOK) {
                             // Alien invisible
                         } else {
-                            if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
+                            if (zone[0].dark && !undarkNow.includes(bat.tileId) && !bat.tags.includes('fluo')) {
                                 // Alien dans l'ombre
                             } else {
                                 inRange = true;
@@ -1505,6 +1505,22 @@ function isOnInfra(bat) {
     return onInfra;
 }
 
+function crossTarget(alien) {
+    let ct = '';
+    if (alien.tags.includes('shield')) {
+        ct = 'Shield';
+    } else if (alien.tags.includes('jelly')) {
+        ct = 'Jelly';
+    } else if (alien.tags.includes('inflammable')) {
+        ct = 'Fire';
+    } else if (alien.tags.includes('stun')) {
+        ct = 'Stun';
+    } else if (alien.tags.includes('fluo')) {
+        ct = 'Fluo';
+    }
+    return ct;
+};
+
 function fireInfos(bat) {
     $(".targ").remove();
     isMelee = false;
@@ -1531,17 +1547,9 @@ function fireInfos(bat) {
                     let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,alien,alienType,guideTarget);
                     if (hiddenOK) {
                         if (!alien.tags.includes('fluo') || selectedWeap.ammo != 'marquage') {
-                            if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
+                            if (!zone[0].dark || (zone[0].dark && (undarkNow.includes(tile.id) || alien.tags.includes('fluo')))) {
                                 cursorSwitch('#',tile.id,'fire');
-                                if (alien.tags.includes('shield')) {
-                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstargetShield.png"></div>');
-                                } else if (alien.tags.includes('stun')) {
-                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstargetStun.png"></div>');
-                                } else if (alien.tags.includes('fluo')) {
-                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstargetFluo.png"></div>');
-                                } else {
-                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
-                                }
+                                $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget'+crossTarget(alien)+'.png"></div>');
                             }
                         }
                     }
@@ -1560,17 +1568,9 @@ function fireInfos(bat) {
                     let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,alien,alienType,guideTarget);
                     if (checkFlyTarget(selectedWeap,alien,alienType) && hiddenOK) {
                         if (!alien.tags.includes('fluo') || selectedWeap.ammo != 'marquage') {
-                            if (!zone[0].dark || (zone[0].dark && undarkNow.includes(tile.id))) {
+                            if (!zone[0].dark || (zone[0].dark && (undarkNow.includes(tile.id) || alien.tags.includes('fluo')))) {
                                 cursorSwitch('#',tile.id,'fire');
-                                if (alien.tags.includes('shield')) {
-                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstargetShield.png"></div>');
-                                } else if (alien.tags.includes('stun')) {
-                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstargetStun.png"></div>');
-                                } else if (alien.tags.includes('fluo')) {
-                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstargetFluo.png"></div>');
-                                } else {
-                                    $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget.png"></div>');
-                                }
+                                $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget'+crossTarget(alien)+'.png"></div>');
                             }
                         }
                     }

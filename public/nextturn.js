@@ -401,7 +401,7 @@ function nextTurnEnd() {
                 stockTileIds.forEach(function(tileId) {
                     if (bat.tags.includes('sU')) {
                         let stockDist = calcDistance(bat.tileId,tileId);
-                        if (stockDist <= 5) {
+                        if (stockDist <= 6) {
                             bat.tags = bat.tags.filter(a => a !== 'sU');
                         }
                     }
@@ -759,7 +759,7 @@ function turnInfo() {
             }
             if (bat.type == 'Oeuf' || bat.type == 'Coque' || bat.type === 'Cocon' || bat.type === 'Colonie') {
                 let isVisible = true;
-                if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
+                if (zone[0].dark && !undarkNow.includes(bat.tileId) && !bat.tags.includes('fluo')) {
                     isVisible = checkEggInDark(bat.tileId);
                 }
                 if (isVisible) {

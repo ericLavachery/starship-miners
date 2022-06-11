@@ -440,55 +440,62 @@ function editSonde() {
     } else {
         $('#thePlanet').append('<option value="1">Dom</option>');
     }
-    if (playerInfos.comp.vsp >= 1 && playerInfos.bldList.includes('Poste radio') && playerInfos.sondeDanger >= 4) {
+    if (playerInfos.comp.vsp >= 1 && playerInfos.bldList.includes('Poste radio')) {
         if (2 === playerInfos.sondePlanet) {
             $('#thePlanet').append('<option value="2" selected>Sarak</option>');
         } else {
             $('#thePlanet').append('<option value="2">Sarak</option>');
         }
     } else {
-        $('#thePlanet').append('<option value="2" title="Minimum: Poste radio / Vols spatiaux 1 / Présence alien 4" disabled>Sarak</option>');
+        $('#thePlanet').append('<option value="2" title="Minimum: Poste radio / Vols spatiaux 1 / Présence alien 4+" disabled>Sarak</option>');
     }
-    if (playerInfos.bldList.includes('Centre de recherches') && playerInfos.sondeDanger >= 4) {
+    if (playerInfos.bldList.includes('Centre de recherches')) {
         if (3 === playerInfos.sondePlanet) {
             $('#thePlanet').append('<option value="3" selected>Gehenna</option>');
         } else {
             $('#thePlanet').append('<option value="3">Gehenna</option>');
         }
     } else {
-        $('#thePlanet').append('<option value="3" title="Minimum: Centre de recherches / Présence alien 4" disabled>Gehenna</option>');
+        $('#thePlanet').append('<option value="3" title="Minimum: Centre de recherches / Présence alien 4+" disabled>Gehenna</option>');
     }
-    if (playerInfos.comp.vsp >= 2 && playerInfos.bldList.includes('Sonde') && playerInfos.sondeDanger >= 4) {
+    if (playerInfos.comp.vsp >= 2 && playerInfos.bldList.includes('Sonde')) {
         if (4 === playerInfos.sondePlanet) {
             $('#thePlanet').append('<option value="4" selected>Kzin</option>');
         } else {
             $('#thePlanet').append('<option value="4">Kzin</option>');
         }
     } else {
-        $('#thePlanet').append('<option value="4" title="Minimum: Sonde / Vols spatiaux 2 / Présence alien 4" disabled>Kzin</option>');
+        $('#thePlanet').append('<option value="4" title="Minimum: Sonde / Vols spatiaux 2 / Présence alien 4+" disabled>Kzin</option>');
     }
-    if (playerInfos.comp.vsp >= 1 && playerInfos.bldList.includes('Centre de com') && playerInfos.bldList.includes('Sonde') && playerInfos.sondeDanger >= 4) {
+    if (playerInfos.comp.vsp >= 1 && playerInfos.bldList.includes('Centre de com') && playerInfos.bldList.includes('Sonde')) {
         if (5 === playerInfos.sondePlanet) {
             $('#thePlanet').append('<option value="5" selected>Horst</option>');
         } else {
             $('#thePlanet').append('<option value="5">Horst</option>');
         }
     } else {
-        $('#thePlanet').append('<option value="5" title="Minimum: Sonde / Centre de com / Vols spatiaux 1 / Présence alien 4" disabled>Horst</option>');
+        $('#thePlanet').append('<option value="5" title="Minimum: Sonde / Centre de com / Vols spatiaux 1 / Présence alien 4+" disabled>Horst</option>');
     }
     $('#conUnitList').append('<span class="butSpace"></span>');
     // PRESENCE ALIEN
     $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`sondeDanger`,`sonde`)" title="Présence Alien"></select>');
     $('#theZone').empty().append('<option value="">Pr.Alien</option>');
     let prAMin = getDoom(true);
+    if (playerInfos.sondePlanet != 1 && prAMin < 4) {
+        prAMin = 4;
+        warning('Attention!','Forte présence alien sur cette planête');
+    }
     let prAMax = Math.floor(playerInfos.allTurns/apoCount*1.25)+2;
+    if (prAMax < prAMin+1) {
+        prAMax = prAMin+1;
+    }
     if (prAMax >= 10) {
         prAMax = 10;
     }
     let i = 0;
     while (i <= 15) {
         if (i >= prAMin || i === 10) {
-            if (i === playerInfos.sondeDanger) {
+            if (i === playerInfos.sondeDanger || i === prAMin) {
                 $('#theZone').append('<option value="'+i+'" selected>PrA '+i+'</option>');
             } else {
                 $('#theZone').append('<option value="'+i+'">PrA '+i+'</option>');

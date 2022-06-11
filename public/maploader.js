@@ -359,6 +359,10 @@ function showAlien(bat) {
         let ripNum = getRipNum(bat,batType);
         tagz = tagz+' ('+ripNum+' rip)';
     }
+    if (bat.tags.includes('poison')) {
+        let allTags = _.countBy(bat.tags);
+        tagz = tagz+' (poison: '+allTags.poison+')';
+    }
     if (bat.tags.includes('shield')) {
         tagz = tagz+' (bouclier)';
     }
@@ -370,10 +374,6 @@ function showAlien(bat) {
     }
     if (bat.tags.includes('inflammable')) {
         tagz = tagz+' (arrosé)';
-    }
-    if (bat.tags.includes('poison')) {
-        let allTags = _.countBy(bat.tags);
-        tagz = tagz+' (poison: '+allTags.poison+')';
     }
     if (bat.tags.includes('shinda')) {
         tagz = tagz+' (shinda)';
@@ -393,13 +393,13 @@ function showAlien(bat) {
     if (bat.tags.includes('scion') && playerInfos.comp.ca >= 3) {
         tagz = tagz+' (prégnant)';
     }
-    if ((zone[0].dark && !undarkNow.includes(bat.tileId)) || batType.skills.includes('invisible')) {
+    if ((zone[0].dark && !undarkNow.includes(bat.tileId) && !bat.tags.includes('fluo')) || batType.skills.includes('invisible')) {
         if (doggedTiles.includes(bat.tileId)) {
             $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/invisible.png"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
         } else {
             $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
         }
-    } else if (bat.tags.includes('invisible')) {
+    } else if (bat.tags.includes('invisible') && !bat.tags.includes('fluo')) {
         if (playerInfos.comp.det >= 5 || doggedTiles.includes(bat.tileId)) {
             if (degNum >= 7) {
                 $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/invisible.png"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);

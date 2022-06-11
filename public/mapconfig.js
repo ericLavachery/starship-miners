@@ -177,7 +177,7 @@ function findEgg() {
                     if (bat.tags.includes('invisible')) {
                         isVisible = false;
                     }
-                    if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
+                    if (zone[0].dark && !undarkNow.includes(bat.tileId) && !bat.tags.includes('fluo')) {
                         isVisible = checkEggInDark(bat.tileId);
                     }
                     if (isVisible) {
@@ -199,7 +199,7 @@ function findEgg() {
                         if (bat.tags.includes('invisible')) {
                             isVisible = false;
                         }
-                        if (zone[0].dark && !undarkNow.includes(bat.tileId)) {
+                        if (zone[0].dark && !undarkNow.includes(bat.tileId) && !bat.tags.includes('fluo')) {
                             isVisible = checkEggInDark(bat.tileId);
                         }
                         if (isVisible) {

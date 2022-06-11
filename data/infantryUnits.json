@@ -2203,7 +2203,7 @@
         "protection":[],
         "equip":["aucun","e-flash","e-ranger","e-medic","gilet","e-camo","lunette","chargeur","w2-2ch","theeye","helper","waterproof","repel"],
         "log3eq":["lunette"],
-        "moveCost":5,
+        "moveCost":4,
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,

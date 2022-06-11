@@ -1613,8 +1613,8 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":10,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Chaîne de montage"],
         "compReq":{"tank":1},
-        "costs":{"Fer":110,"Scrap":330,"Carbone":105,"Aluminium":30,"Moteurs":60,"Tungstène":65,"Cuivre":25,"Electros":25,"Batteries":25,"Compo2":100,"Silicium":15,"Huile":35},
-        "deploy":{"Fuel":75,"Energie":90,"Huile":22},
+        "costs":{"Fer":110,"Scrap":330,"Carbone":105,"Aluminium":30,"Moteurs":75,"Tungstène":65,"Cuivre":25,"Electros":25,"Batteries":25,"Compo2":100,"Silicium":15,"Huile":35},
+        "deploy":{"Fuel":85,"Energie":90,"Huile":22},
         "fabTime":70
     },
     {
