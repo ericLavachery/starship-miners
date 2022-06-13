@@ -224,6 +224,14 @@
         "fabTime":15
     },
     {
+        "id":293,
+        "name":"Kaspafistos",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":9,"detruas":99,"brasier":99},
+        "bldReq":["Armurerie"],
+        "costs":{"Fer":81,"Scrap":68,"Carbone":68,"Silicium":27,"Végétaux":128},
+        "fabTime":15
+    },
+    {
         "id":66,
         "name":"Cazadores",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":4,"detruas":99,"brasier":99},
@@ -825,10 +833,9 @@
     {
         "id":82,
         "name":"Droïdes",
-        "levels":{"rednecks":99,"blades":99,"bulbos":6,"drogmulojs":99,"tiradores":9,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":6,"drogmulojs":99,"tiradores":8,"detruas":99,"brasier":99},
         "bldReq":["Chaîne de montage","Armurerie","Laboratoire"],
         "compReq":{"robo":1},
-        "compPass":["tiradores"],
         "costs":{"Fer":60,"Scrap":30,"Carbone":90,"Moteurs":130,"Titane":270,"Electros":120,"Batteries":90,"Cuivre":72,"Silicium":60,"Cobalt":60},
         "deploy":{"Energie":90},
         "fabTime":80,
@@ -1490,7 +1497,7 @@
     {
         "id":122,
         "name":"Lowboys",
-        "levels":{"rednecks":11,"blades":10,"bulbos":12,"drogmulojs":10,"tiradores":9,"detruas":7,"brasier":10},
+        "levels":{"rednecks":11,"blades":10,"bulbos":12,"drogmulojs":10,"tiradores":10,"detruas":7,"brasier":10},
         "bldReq":["Armurerie","Chaîne de montage"],
         "compReq":{"trans":2},
         "compPass":["detruas"],
@@ -1503,7 +1510,7 @@
     {
         "id":128,
         "name":"Looters",
-        "levels":{"rednecks":8,"blades":4,"bulbos":6,"drogmulojs":5,"tiradores":8,"detruas":8,"brasier":7},
+        "levels":{"rednecks":8,"blades":4,"bulbos":6,"drogmulojs":5,"tiradores":9,"detruas":8,"brasier":7},
         "bldReq":["Garage","Atelier"],
         "compReq":{"cam":1},
         "compPass":["blades"],
