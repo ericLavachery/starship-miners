@@ -225,7 +225,7 @@
     },
     {
         "id":293,
-        "name":"Kaspafistos",
+        "name":"Agujeros",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":9,"detruas":99,"brasier":99},
         "bldReq":["Armurerie"],
         "costs":{"Fer":81,"Scrap":68,"Carbone":68,"Silicium":27,"Végétaux":128},

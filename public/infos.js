@@ -540,7 +540,7 @@ function batInfos(bat,batType,pop) {
     if (!pop) {
         if (!isStacked()) {
             if (!bat.tags.includes('terror')) {
-                weaponsInfos(bat,batType,pop);
+                weaponsInfos(bat,batType,tile,pop);
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
                 skillsInfos(bat,batType,near);
             }
@@ -553,7 +553,7 @@ function batInfos(bat,batType,pop) {
             }
         }
     } else {
-        weaponsInfos(bat,batType,pop);
+        weaponsInfos(bat,batType,tile,pop);
         $('#'+bodyPlace).append('<div class="shSpace"></div>');
     }
     // ARMIES

@@ -1,4 +1,4 @@
-function weaponsInfos(bat,batType,pop) {
+function weaponsInfos(bat,batType,tile,pop) {
     let bodyPlace = 'unitInfos';
     if (pop) {
         bodyPlace = 'popbody';
@@ -10,6 +10,12 @@ function weaponsInfos(bat,batType,pop) {
     let anyTarget = false;
     batHasTarget = false;
     let inMelee = batInMelee(bat,batType);
+    let onInfra = false;
+    if (tile.infra != undefined) {
+        if (tile.infra != 'Terriers' && tile.infra != 'Débris') {
+            onInfra = true;
+        }
+    }
     let noFireMelee = false;
     let noBisOK = true;
     let baseAmmo = 99;
@@ -51,7 +57,7 @@ function weaponsInfos(bat,batType,pop) {
         if (!thisWeapon.noAtt) {
             noFireMelee = false;
             apOK = false;
-            if (inMelee && thisWeapon.noMelee) {
+            if (inMelee && thisWeapon.noMelee && !onInfra) {
                 noFireMelee = true;
             }
             let grisee = false;
@@ -65,7 +71,6 @@ function weaponsInfos(bat,batType,pop) {
                     grisee = true;
                 }
             }
-            // console.log('tileId='+bat.tileId);
             anyTarget = anyAlienInRange(bat,thisWeapon);
             if (anyTarget) {
                 batHasTarget = true;
@@ -295,7 +300,7 @@ function weaponsInfos(bat,batType,pop) {
         if (!thisWeapon.noAtt) {
             noFireMelee = false;
             apOK = false;
-            if (inMelee && thisWeapon.noMelee) {
+            if (inMelee && thisWeapon.noMelee && !onInfra) {
                 noFireMelee = true;
             }
             let grisee = false;
