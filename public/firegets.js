@@ -1911,7 +1911,7 @@ function weaponAdj(weapon,bat,wn) {
             } else {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
-            let accuBonus = Math.round((weapon.accuracy-9)/2);
+            let accuBonus = Math.floor((weapon.accuracy-13)/1.7);
             if (accuBonus > 8) {
                 accuBonus = 8;
             }
@@ -1965,7 +1965,7 @@ function weaponAdj(weapon,bat,wn) {
             } else {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
-            let accuBonus = Math.round((weapon.accuracy-9)/2);
+            let accuBonus = Math.floor((weapon.accuracy-13)/1.7);
             if (accuBonus > 8) {
                 accuBonus = 8;
             }
