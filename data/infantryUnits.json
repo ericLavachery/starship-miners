@@ -2199,8 +2199,8 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","e-flash","e-ranger","e-camo","e-medic","lunette2","chargeur2","theeye","helper","waterproof","repel"],
-        "log3eq":["lunette2"],
+        "equip":["aucun","e-flash","e-camo","e-medic","chargeur1","lunette2","chargeur2","theeye","helper","waterproof","repel"],
+        "log3eq":["e-camo"],
         "moveCost":5,
         "maxFlood":2,
         "maxScarp":3,

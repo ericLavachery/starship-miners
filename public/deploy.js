@@ -102,7 +102,7 @@ function reEquip(batId,noRefresh) {
             $('#conAmmoList').append('<span class="constName or">Equipement</span><br>');
             myBatType.equip.forEach(function(equip) {
                 batEquip = getEquipByName(equip);
-                let showEq = true;
+                let showEq = showEquip(myBatType,batEquip);
                 if (batEquip.name === 'e-flash') {
                     if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
                         showEq = false;
@@ -129,7 +129,9 @@ function reEquip(batId,noRefresh) {
                         weapName = ' ('+myBatType.weapon2.name+')';
                     }
                     if (equip.startsWith('w2-') || equip.startsWith('kit-')) {
-                        weapName = ' ('+myBatType.weapon2.name+')';
+                        if (!equip.startsWith('w2-auto')) {
+                            weapName = ' ('+myBatType.weapon2.name+')';
+                        }
                     }
                     if (equip.startsWith('w1-') && !equip.includes('auto')) {
                         weapName = ' ('+myBatType.weapon.name+')';
@@ -240,6 +242,16 @@ function reEquip(batId,noRefresh) {
     $('#conAmmoList').append('<br>');
     $('#conAmmoList').append('<span class="blockTitle"><h4><button type="button" title="Faire les changements dans les munitions, armures et équipements" class="boutonCaca iconButtons" onclick="doReEquip(`'+myBat.id+'`)"><i class="ra ra-rifle rpg"></i> &nbsp;<span class="notsosmall">Rééquiper</span></button></h4></span><br>');
     $('#conAmmoList').append('<br>');
+};
+
+function showEquip(batType,batEquip) {
+    let showEq = true;
+    if (batType.weapon2.gangs != undefined) {
+        if (batEquip.name === 'w2-explo' || batEquip.name === 'w2-arti' || batEquip.name === 'w2-lcomet') {
+            showEq = false;
+        }
+    }
+    return showEq;
 };
 
 function getBonusEq(unit) {

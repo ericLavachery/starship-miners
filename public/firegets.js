@@ -1699,6 +1699,63 @@ function ammoFired(batId) {
     }
 };
 
+function weaponEqChange(weapon,wn,bat) {
+    if (bat.eq === 'arrosoir') {
+        if (weapon.name.includes('Lance-flammes')) {
+            weapon.name = 'Arrosoir';
+            weapon.range = 1;
+            weapon.elevation = 1;
+            weapon.accuracy = weapon.accuracy-10;
+            weapon.noDef = true;
+            weapon.rof = 6;
+            weapon.power = 0;
+            weapon.sound = 'hose';
+            if (wn == 'w2') {
+                bat.ammo2 = 'fuel';
+            } else {
+                bat.ammo = 'fuel';
+            }
+        }
+    }
+    if (bat.eq === 'arcpoulie' || bat.logeq === 'arcpoulie') {
+        if (weapon.name.includes('Arc')) {
+            weapon.name = 'Arc à poulies';
+            weapon.range = 2;
+            weapon.elevation = 1;
+            weapon.hide = false;
+            weapon.power = 8;
+            if (playerInfos.comp.train < 1) {
+                weapon.cost = 4;
+            } else {
+                weapon.cost = 3;
+            }
+        }
+    }
+    if (bat.eq === 'arbalourde' || bat.logeq === 'arbalourde') {
+        if (weapon.name.includes('Arbalète')) {
+            weapon.name = 'Arbalète lourde';
+            weapon.elevation = 1;
+            weapon.hide = false;
+            weapon.power = 9;
+            weapon.armors = 0.8;
+            if (playerInfos.comp.train < 1) {
+                weapon.cost = 5;
+            } else {
+                weapon.cost = 4;
+            }
+        }
+    }
+    if (bat.eq === 'belier' || bat.logeq === 'belier') {
+        if (weapon.name === 'Boutoir') {
+            weapon.name = 'Bélier';
+            weapon.rof = weapon.rof*1.5;
+            weapon.power = Math.round(weapon.power*1.26);
+            weapon.accuracy = weapon.accuracy+2;
+        }
+    }
+    return weapon;
+};
+
 function weaponAdj(weapon,bat,wn) {
     let batType = getBatType(bat);
     let thisWeapon = {};
@@ -1709,6 +1766,8 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.num = 1;
     }
+    // Equipements qui changent l'arme
+    weapon = weaponEqChange(weapon,wn,bat);
     // bonus vet
     thisWeapon.rof = weapon.rof*(bat.vet+vetBonus.rof)/vetBonus.rof;
     // hero rof
@@ -2011,59 +2070,59 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.maxAmmo = 16;
         }
     }
-    if (bat.eq === 'arrosoir') {
-        if (thisWeapon.name.includes('Lance-flammes')) {
-            thisWeapon.name = 'Arrosoir';
-            thisWeapon.range = 1;
-            thisWeapon.elevation = 1;
-            thisWeapon.accuracy = thisWeapon.accuracy-10;
-            thisWeapon.noDef = true;
-            thisWeapon.rof = 6;
-            thisWeapon.power = 0;
-            thisWeapon.sound = 'hose';
-            if (wn == 'w2') {
-                bat.ammo2 = 'fuel';
-            } else {
-                bat.ammo = 'fuel';
-            }
-        }
-    }
-    if (bat.eq === 'arcpoulie' || bat.logeq === 'arcpoulie') {
-        if (thisWeapon.name.includes('Arc')) {
-            thisWeapon.name = 'Arc à poulies';
-            thisWeapon.range = 2;
-            thisWeapon.elevation = 1;
-            thisWeapon.hide = false;
-            thisWeapon.power = 8;
-            if (playerInfos.comp.train < 1) {
-                thisWeapon.cost = 4;
-            } else {
-                thisWeapon.cost = 3;
-            }
-        }
-    }
-    if (bat.eq === 'arbalourde' || bat.logeq === 'arbalourde') {
-        if (thisWeapon.name.includes('Arbalète')) {
-            thisWeapon.name = 'Arbalète lourde';
-            thisWeapon.elevation = 1;
-            thisWeapon.hide = false;
-            thisWeapon.power = 9;
-            thisWeapon.armors = 0.8;
-            if (playerInfos.comp.train < 1) {
-                thisWeapon.cost = 5;
-            } else {
-                thisWeapon.cost = 4;
-            }
-        }
-    }
-    if (bat.eq === 'belier' || bat.logeq === 'belier') {
-        if (thisWeapon.name === 'Boutoir') {
-            thisWeapon.rof = thisWeapon.rof*1.5;
-            thisWeapon.power = Math.round(thisWeapon.power*1.26);
-            thisWeapon.accuracy = thisWeapon.accuracy+2;
-            thisWeapon.name = 'Bélier';
-        }
-    }
+    // if (bat.eq === 'arrosoir') {
+    //     if (thisWeapon.name.includes('Lance-flammes')) {
+    //         thisWeapon.name = 'Arrosoir';
+    //         thisWeapon.range = 1;
+    //         thisWeapon.elevation = 1;
+    //         thisWeapon.accuracy = thisWeapon.accuracy-10;
+    //         thisWeapon.noDef = true;
+    //         thisWeapon.rof = 6;
+    //         thisWeapon.power = 0;
+    //         thisWeapon.sound = 'hose';
+    //         if (wn == 'w2') {
+    //             bat.ammo2 = 'fuel';
+    //         } else {
+    //             bat.ammo = 'fuel';
+    //         }
+    //     }
+    // }
+    // if (bat.eq === 'arcpoulie' || bat.logeq === 'arcpoulie') {
+    //     if (thisWeapon.name.includes('Arc')) {
+    //         thisWeapon.name = 'Arc à poulies';
+    //         thisWeapon.range = 2;
+    //         thisWeapon.elevation = 1;
+    //         thisWeapon.hide = false;
+    //         thisWeapon.power = 8;
+    //         if (playerInfos.comp.train < 1) {
+    //             thisWeapon.cost = 4;
+    //         } else {
+    //             thisWeapon.cost = 3;
+    //         }
+    //     }
+    // }
+    // if (bat.eq === 'arbalourde' || bat.logeq === 'arbalourde') {
+    //     if (thisWeapon.name.includes('Arbalète')) {
+    //         thisWeapon.name = 'Arbalète lourde';
+    //         thisWeapon.elevation = 1;
+    //         thisWeapon.hide = false;
+    //         thisWeapon.power = 9;
+    //         thisWeapon.armors = 0.8;
+    //         if (playerInfos.comp.train < 1) {
+    //             thisWeapon.cost = 5;
+    //         } else {
+    //             thisWeapon.cost = 4;
+    //         }
+    //     }
+    // }
+    // if (bat.eq === 'belier' || bat.logeq === 'belier') {
+    //     if (thisWeapon.name === 'Boutoir') {
+    //         thisWeapon.rof = thisWeapon.rof*1.5;
+    //         thisWeapon.power = Math.round(thisWeapon.power*1.26);
+    //         thisWeapon.accuracy = thisWeapon.accuracy+2;
+    //         thisWeapon.name = 'Bélier';
+    //     }
+    // }
     if (bat.eq === 'crimekitgi') {
         if (thisWeapon.num === 1) {
             thisWeapon.power = thisWeapon.power+1;

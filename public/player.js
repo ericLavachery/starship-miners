@@ -528,6 +528,18 @@ function allowedArmors(unit) {
 
 function playerSkillsUTChanges() {
     unitTypes.forEach(function(unit) {
+        // WEAPON 2 ALT
+        if (unit.weapon2alt != undefined) {
+            if (unit.weapon2alt.gangs.includes(playerInfos.gang)) {
+                unit.weapon2 = unit.weapon2alt;
+                unit.weapon2alt = {};
+            } else {
+                unit.weapon2alt = {};
+            }
+            // console.log('WEAPON 2 ALT');
+            // console.log(unit.weapon2);
+            // console.log(unit.weapon2alt);
+        }
         // BLINDAGES / ARMURES
         unit.protection = allowedArmors(unit);
         // TUNING FRET

@@ -1670,7 +1670,7 @@
         "skills":[],
         "info":"Arme 2",
         "bldReq":["Atelier"],
-        "compReq":{"def":2,"explo":1},
+        "compReq":{"def":2},
         "factor":"crew",
         "costs":{"Scrap":8,"Fer":8}
     },
@@ -1680,7 +1680,7 @@
         "skills":[],
         "info":"Arme 2",
         "bldReq":["Armurerie"],
-        "compReq":{"def":2,"explo":2},
+        "compReq":{"def":2,"explo":1},
         "factor":"rofpow",
         "costs":{"Scrap":12,"Fer":12,"Aluminium":24,"Tungstène":12}
     },
@@ -1720,7 +1720,7 @@
         "skills":[],
         "info":"Arme 2",
         "bldReq":["Arsenal"],
-        "compReq":{"def":2,"explo":2,"arti":1},
+        "compReq":{"def":2,"explo":1,"arti":1},
         "factor":"rofpow",
         "costs":{"Carbone":20,"Fer":80,"Tungstène":60,"Titane":20,"Silicium":6,"Rhodium":10,"Electros":10}
     },

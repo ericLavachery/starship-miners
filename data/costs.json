@@ -1322,7 +1322,7 @@
     {
         "id":131,
         "name":"Frogs",
-        "levels":{"rednecks":13,"blades":9,"bulbos":10,"drogmulojs":11,"tiradores":13,"detruas":10,"brasier":14},
+        "levels":{"rednecks":10,"blades":9,"bulbos":10,"drogmulojs":9,"tiradores":10,"detruas":10,"brasier":12},
         "bldReq":["Armurerie","Atelier"],
         "compReq":{"trans":2},
         "costs":{"Fer":60,"Scrap":120,"Carbone":90,"Bois":60,"Silicium":60,"Wingium":60,"Aluminium":60,"Moteurs":60,"Tungstène":15,"Cuivre":15,"Batteries":30,"Compo2":120,"Hélium":75,"Chlore":75,"Huile":10},
@@ -1507,7 +1507,7 @@
     {
         "id":122,
         "name":"Lowboys",
-        "levels":{"rednecks":11,"blades":10,"bulbos":12,"drogmulojs":10,"tiradores":10,"detruas":7,"brasier":10},
+        "levels":{"rednecks":11,"blades":10,"bulbos":12,"drogmulojs":10,"tiradores":12,"detruas":7,"brasier":10},
         "bldReq":["Armurerie","Chaîne de montage"],
         "compReq":{"trans":2},
         "compPass":["detruas"],

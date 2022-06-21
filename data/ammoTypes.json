@@ -33,7 +33,7 @@
         "rof": 1,
         "power": 2,
         "powermult": 1,
-        "armors": 0.5,
+        "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "brochette",

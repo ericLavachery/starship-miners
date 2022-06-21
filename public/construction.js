@@ -453,7 +453,7 @@ function conSelect(unitId,player,noRefresh) {
             conselUnit.equip.forEach(function(equip) {
                 equipIndex = armorTypes.findIndex((obj => obj.name == equip));
                 batEquip = armorTypes[equipIndex];
-                let showEq = true;
+                let showEq = showEquip(conselUnit,batEquip);
                 if (batEquip.name === 'e-flash') {
                     if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
                         showEq = false;
