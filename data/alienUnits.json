@@ -1906,7 +1906,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["sauteur","grip","inflammable","baddef"],
+        "skills":["sauteur","grip","baddef"],
         "deathFx":"death1",
         "killRes":{"Bugium":1,"Wingium":2},
         "killXP":3

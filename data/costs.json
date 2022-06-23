@@ -1089,6 +1089,28 @@
         "fabTime":30
     },
     {
+        "id":75,
+        "name":"Pushers",
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "bldReq":[],
+        "costs":{"Fer":162,"Scrap":270,"Carbone":27,"Moteurs":36,"Nickel":18,"Phosphore":18,"Cobalt":18,"Eau":90,"Zinc":45,"Cuivre":45},
+        "deploy":{"Fuel":20,"Energie":75,"Huile":12},
+        "fabTime":30,
+        "inRuin":2
+    },
+    {
+        "id":76,
+        "name":"Workships",
+        "levels":{"rednecks":12,"blades":12,"bulbos":12,"drogmulojs":12,"tiradores":12,"detruas":12,"brasier":12},
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"ind":1},
+        "altCompReq":{"const":2},
+        "costs":{"Fer":140,"Scrap":244,"Carbone":216,"Aluminium":40,"Moteurs":186,"Tungstène":120,"Electros":70,"Batteries":70,"Compo2":292,"Silicium":24,"Huile":84,"Mendium":104,"Azote":88,"Eau":960,"Zinc":180,"Cuivre":120},
+        "deploy":{"Fuel":130,"Energie":220,"Mendium":15,"Huile":55},
+        "fabTime":105,
+        "inRuin":3
+    },
+    {
         "id":1,
         "name":"Scouts",
         "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":13,"tiradores":99,"detruas":9,"brasier":99},
@@ -1098,6 +1120,118 @@
         "deploy":{"Fuel":70,"Electros":8,"Batteries":4},
         "fabTime":60,
         "inRuin":2
+    },
+    {
+        "id":10,
+        "name":"Buggies",
+        "levels":{"rednecks":6,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Armurerie","Garage"],
+        "costs":{"Fer":72,"Scrap":288,"Carbone":180,"Aluminium":72,"Moteurs":45,"Tungstène":24,"Batteries":12,"Compo2":24,"Plomb":24,"Soufre":24,"Fuel":24},
+        "deploy":{"Fuel":72},
+        "fabTime":50
+    },
+    {
+        "id":252,
+        "name":"Bolts",
+        "levels":{"rednecks":99,"blades":11,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Centre de recherches","Garage"],
+        "compReq":{"energ":1,"mat":1},
+        "costs":{"Fer":48,"Scrap":120,"Carbone":216,"Compo2":72,"Titane":72,"Azote":48,"Mendium":60,"Tungstène":144,"Rhodium":108,"Silicium":24,"Electros":96,"Batteries":144,"Moteurs":60,"Cuivre":48,"Huile":12,"Energie":350},
+        "deploy":{"Energie":350},
+        "fabTime":100
+    },
+    {
+        "id":99,
+        "name":"Warcars",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":5},
+        "bldReq":["Garage","Atelier"],
+        "compHardReq":{"pyro":1},
+        "costs":{"Fer":160,"Scrap":340,"Carbone":80,"Aluminium":40,"Moteurs":60,"Tungstène":40,"Batteries":20,"Nickel":30,"Compo2":40,"Fuel":100},
+        "deploy":{"Fuel":70},
+        "fabTime":50
+    },
+    {
+        "id":100,
+        "name":"Spears",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":11,"detruas":99,"brasier":99},
+        "bldReq":["Arsenal","Chaîne de montage"],
+        "compReq":{"tank":1},
+        "compHardReq":{"bal":2},
+        "costs":{"Fer":200,"Scrap":180,"Carbone":160,"Aluminium":60,"Moteurs":80,"Titane":60,"Tungstène":40,"Cuivre":35,"Batteries":20,"Compo2":120,"Huile":10,"Nickel":80,"Mendium":40,"Azote":80,"Explosifs":20,"Fuel":40},
+        "deploy":{"Fuel":95},
+        "fabTime":65
+    },
+    {
+        "id":132,
+        "name":"Raves",
+        "levels":{"rednecks":99,"blades":99,"bulbos":17,"drogmulojs":99,"tiradores":99,"detruas":16,"brasier":99},
+        "bldReq":["Arsenal","QG","Chaîne de montage"],
+        "compReq":{"arti":1,"bal":2},
+        "costs":{"Fer":288,"Scrap":120,"Carbone":120,"Aluminium":216,"Moteurs":90,"Tungstène":228,"Silicium":18,"Cuivre":33,"Electros":80,"Batteries":139,"Compo2":96,"Compo3":72,"Végétaux":180,"Blendium":180,"Huile":10,"Mendium":36,"Azote":72,"Cobalt":30,"Hélium":60},
+        "deploy":{"Energie":315},
+        "fabTime":90
+    },
+    {
+        "id":92,
+        "name":"Shelltrucks",
+        "levels":{"rednecks":9,"blades":12,"bulbos":11,"drogmulojs":10,"tiradores":13,"detruas":6,"brasier":9},
+        "bldEquiv":["Poudrière"],
+        "bldReq":["Armurerie","Garage"],
+        "costs":{"Fer":60,"Scrap":444,"Carbone":120,"Aluminium":48,"Moteurs":60,"Cuivre":24,"Batteries":12,"Compo2":168,"Huile":10},
+        "deploy":{"Fuel":100},
+        "fabTime":70,
+        "inRuin":1
+    },
+    {
+        "id":121,
+        "name":"Milkmen",
+        "levels":{"rednecks":7,"blades":8,"bulbos":7,"drogmulojs":8,"tiradores":7,"detruas":4,"brasier":4},
+        "bldReq":["Armurerie","Garage"],
+        "costs":{"Fer":14,"Scrap":207,"Carbone":36,"Moteurs":32,"Batteries":9,"Compo2":28,"Silicium":9,"Huile":9},
+        "deploy":{"Fuel":35},
+        "fabTime":25,
+        "inRuin":2
+    },
+    {
+        "id":167,
+        "name":"Mécanos",
+        "levels":{"rednecks":6,"blades":6,"bulbos":6,"drogmulojs":6,"tiradores":6,"detruas":6,"brasier":6},
+        "bldReq":["Garage"],
+        "costs":{"Fer":68,"Scrap":200,"Carbone":24,"Tungstène":8,"Moteurs":28,"Batteries":24,"Huile":60},
+        "deploy":{"Fuel":30,"Energie":75,"Huile":12},
+        "fabTime":30,
+        "inRuin":2
+    },
+    {
+        "id":101,
+        "name":"Genius",
+        "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":99,"detruas":11,"brasier":11},
+        "bldReq":["Armurerie","Chaîne de montage"],
+        "compReq":{"tank":1},
+        "costs":{"Fer":110,"Scrap":330,"Carbone":105,"Aluminium":30,"Moteurs":120,"Tungstène":65,"Cuivre":25,"Electros":25,"Batteries":25,"Compo2":100,"Silicium":15,"Huile":35},
+        "deploy":{"Fuel":75,"Energie":90,"Huile":22},
+        "fabTime":70,
+        "inRuin":2
+    },
+    {
+        "id":292,
+        "name":"Wizard",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":10,"detruas":99,"brasier":99},
+        "bldReq":["Armurerie","Chaîne de montage"],
+        "compReq":{"tank":1},
+        "costs":{"Fer":110,"Scrap":330,"Carbone":105,"Aluminium":30,"Moteurs":150,"Tungstène":65,"Cuivre":25,"Electros":25,"Batteries":25,"Compo2":100,"Silicium":15,"Huile":35},
+        "deploy":{"Fuel":85,"Energie":90,"Huile":22},
+        "fabTime":70
+    },
+    {
+        "id":36,
+        "name":"Hooks",
+        "levels":{"rednecks":13,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Arsenal","Chaîne de montage"],
+        "compReq":{"tank":1},
+        "costs":{"Fer":198,"Scrap":216,"Carbone":156,"Aluminium":24,"Moteurs":156,"Titane":12,"Tungstène":174,"Cuivre":32,"Electros":32,"Batteries":39,"Compo2":168,"Compo3":72,"Silicium":12,"Huile":32,"Mendium":20},
+        "deploy":{"Fuel":105,"Energie":120,"Huile":30},
+        "fabTime":90
     },
     {
         "id":11,
@@ -1120,6 +1254,37 @@
         "fabTime":210
     },
     {
+        "id":62,
+        "name":"Amigos",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":5,"detruas":99,"brasier":99},
+        "bldReq":["Armurerie","Garage"],
+        "costs":{"Fer":144,"Scrap":624,"Carbone":96,"Aluminium":72,"Moteurs":72,"Tungstène":36,"Batteries":12,"Compo2":48,"Huile":10},
+        "deploy":{"Fuel":65},
+        "fabTime":65
+    },
+    {
+        "id":95,
+        "name":"Technobass",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":11,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Centre de recherches","Garage"],
+        "costs":{"Fer":180,"Scrap":672,"Carbone":228,"Moteurs":72,"Cuivre":48,"Electros":84,"Batteries":118,"Compo2":96,"Compo3":96,"Mendium":96,"Azote":48,"Cobalt":30,"Hélium":60},
+        "deploy":{"Fuel":70},
+        "fabTime":90,
+        "crime":-3
+    },
+    {
+        "id":107,
+        "name":"Flaktanks",
+        "levels":{"rednecks":17,"blades":99,"bulbos":16,"drogmulojs":16,"tiradores":17,"detruas":15,"brasier":16},
+        "bldReq":["Arsenal","Chaîne de montage","Poste radio"],
+        "compReq":{"tank":1},
+        "compHardReq":{"explo":1},
+        "costs":{"Fer":189,"Scrap":349,"Carbone":270,"Aluminium":198,"Moteurs":150,"Titane":54,"Tungstène":162,"Cuivre":36,"Electros":18,"Batteries":37,"Compo2":216,"Compo3":81,"Huile":10,"Cobalt":30,"Hélium":60},
+        "deploy":{"Fuel":100},
+        "fabTime":90,
+        "inRuin":2
+    },
+    {
         "id":22,
         "name":"Trackers",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":6},
@@ -1128,6 +1293,34 @@
         "costs":{"Fer":144,"Scrap":360,"Carbone":168,"Aluminium":144,"Moteurs":120,"Tungstène":216,"Titane":48,"Cuivre":24,"Batteries":12,"Nickel":84,"Compo2":120,"Compo3":45,"Huile":10,"Fuel":120},
         "deploy":{"Fuel":120},
         "fabTime":75
+    },
+    {
+        "id":33,
+        "name":"Monster trucks",
+        "levels":{"rednecks":8,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Armurerie","Garage"],
+        "costs":{"Fer":120,"Scrap":405,"Carbone":90,"Aluminium":150,"Moteurs":60,"Tungstène":30,"Batteries":15,"Compo2":80,"Huile":10},
+        "deploy":{"Fuel":85},
+        "fabTime":65
+    },
+    {
+        "id":67,
+        "name":"Reapers",
+        "levels":{"rednecks":99,"blades":5,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Atelier","Garage"],
+        "costs":{"Fer":90,"Scrap":360,"Carbone":60,"Bois":60,"Aluminium":120,"Moteurs":50,"Batteries":15,"Compo2":60},
+        "deploy":{"Fuel":70},
+        "fabTime":60
+    },
+    {
+        "id":69,
+        "name":"Old bastards",
+        "levels":{"rednecks":11,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Arsenal","Chaîne de montage"],
+        "compReq":{"tank":1},
+        "costs":{"Fer":168,"Scrap":684,"Carbone":228,"Aluminium":24,"Moteurs":204,"Titane":12,"Tungstène":156,"Cuivre":30,"Batteries":18,"Compo2":228,"Compo3":144,"Huile":12},
+        "deploy":{"Fuel":155,"Energie":20,"Huile":5},
+        "fabTime":95
     },
     {
         "id":30,
@@ -1161,6 +1354,66 @@
         "fabTime":85
     },
     {
+        "id":147,
+        "name":"Salamandres",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":19,"detruas":99,"brasier":15},
+        "bldReq":["Usine d'armement","Chaîne de montage"],
+        "compReq":{"tank":1,"pyro":2,"bal":1},
+        "costs":{"Fer":60,"Scrap":15,"Carbone":225,"Aluminium":90,"Moteurs":140,"Titane":60,"Tungstène":165,"Rhodium":45,"Cuivre":45,"Electros":15,"Batteries":40,"Nickel":90,"Compo2":210,"Compo3":270,"Huile":10,"Cobalt":30,"Hélium":60},
+        "deploy":{"Fuel":125},
+        "fabTime":105
+    },
+    {
+        "id":139,
+        "name":"Busters",
+        "levels":{"rednecks":15,"blades":99,"bulbos":99,"drogmulojs":19,"tiradores":99,"detruas":13,"brasier":99},
+        "bldReq":["Arsenal","Chaîne de montage"],
+        "compReq":{"tank":2},
+        "costs":{"Fer":240,"Scrap":192,"Carbone":128,"Moteurs":128,"Titane":16,"Tungstène":224,"Cuivre":16,"Batteries":16,"Compo2":128,"Compo3":96,"Huile":10},
+        "deploy":{"Fuel":85},
+        "fabTime":70,
+        "inRuin":3
+    },
+    {
+        "id":38,
+        "name":"Wartrucks",
+        "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Garage","Atelier"],
+        "costs":{"Fer":140,"Scrap":564,"Carbone":156,"Bois":96,"Moteurs":108,"Tungstène":224,"Cuivre":22,"Batteries":22,"Compo2":192,"Compo3":72,"Silicium":10,"Huile":30},
+        "deploy":{"Fuel":140,"Energie":80,"Huile":20},
+        "fabTime":90
+    },
+    {
+        "id":188,
+        "name":"Juggernauts",
+        "levels":{"rednecks":99,"blades":18,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Usine"],
+        "costs":{"Fer":144,"Scrap":1266,"Carbone":444,"Bois":90,"Moteurs":354,"Tungstène":276,"Cuivre":27,"Batteries":27,"Compo2":432,"Compo3":324,"Huile":18},
+        "deploy":{"Fuel":255,"Energie":30,"Huile":9},
+        "fabTime":140
+    },
+    {
+        "id":44,
+        "name":"Spenders",
+        "levels":{"rednecks":99,"blades":99,"bulbos":11,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Arsenal","Garage","Chaîne de montage"],
+        "compReq":{"tank":1},
+        "compHardReq":{"bal":2},
+        "costs":{"Fer":202,"Scrap":195,"Carbone":150,"Aluminium":60,"Moteurs":110,"Titane":30,"Tungstène":166,"Cuivre":45,"Electros":60,"Batteries":152,"Compo2":144,"Compo3":45,"Végétaux":270,"Blendium":180,"Huile":10,"Plomb":36,"Soufre":36,"Fuel":45},
+        "deploy":{"Energie":340},
+        "fabTime":90
+    },
+    {
+        "id":79,
+        "name":"The Void",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":19,"brasier":99},
+        "bldReq":["Usine d'armement","Chaîne de montage"],
+        "compReq":{"tank":2},
+        "costs":{"Fer":192,"Scrap":40,"Carbone":504,"Aluminium":16,"Moteurs":344,"Titane":16,"Tungstène":272,"Cuivre":32,"Electros":16,"Batteries":50,"Compo2":696,"Compo3":606,"Huile":10,"Nickel":160,"Cobalt":30,"Hélium":60},
+        "deploy":{"Fuel":315},
+        "fabTime":140
+    },
+    {
         "id":32,
         "name":"Fatass",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":12,"brasier":99},
@@ -1171,33 +1424,45 @@
         "fabTime":120
     },
     {
-        "id":10,
-        "name":"Buggies",
-        "levels":{"rednecks":6,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Garage"],
-        "costs":{"Fer":72,"Scrap":288,"Carbone":180,"Aluminium":72,"Moteurs":45,"Tungstène":24,"Batteries":12,"Compo2":24,"Plomb":24,"Soufre":24,"Fuel":24},
-        "deploy":{"Fuel":72},
-        "fabTime":50
+        "id":58,
+        "name":"Hovercraft",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":10,"brasier":99},
+        "compReq":{"tank":1},
+        "bldReq":["Arsenal","Chaîne de montage"],
+        "costs":{"Fer":225,"Scrap":330,"Carbone":135,"Aluminium":30,"Moteurs":100,"Titane":45,"Tungstène":90,"Silicium":15,"Cuivre":30,"Batteries":15,"Compo2":120,"Hélium":90,"Chlore":90,"Huile":10},
+        "deploy":{"Fuel":75},
+        "fabTime":70
     },
     {
-        "id":252,
-        "name":"Bolts",
-        "levels":{"rednecks":99,"blades":11,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Centre de recherches","Garage"],
-        "compReq":{"energ":1,"mat":1},
-        "costs":{"Fer":48,"Scrap":120,"Carbone":216,"Compo2":72,"Titane":72,"Azote":48,"Mendium":60,"Tungstène":144,"Rhodium":108,"Silicium":24,"Electros":96,"Batteries":144,"Moteurs":60,"Cuivre":48,"Huile":12,"Energie":350},
-        "deploy":{"Energie":350},
+        "id":57,
+        "name":"DJ Boss",
+        "levels":{"rednecks":99,"blades":99,"bulbos":15,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Usine d'armement","Chaîne de montage","Centre de com"],
+        "compHardReq":{"arti":1,"explo":1,"bal":1,"energ":1},
+        "costs":{"Fer":120,"Carbone":135,"Aluminium":210,"Moteurs":90,"Titane":150,"Tungstène":90,"Rhodium":90,"Bore":60,"Silicium":15,"Cuivre":30,"Electros":45,"Batteries":115,"Nickel":96,"Compo2":164,"Compo3":45,"Huile":10,"Cobalt":75,"Hélium":60},
+        "deploy":{"Fuel":95},
+        "fabTime":105
+    },
+    {
+        "id":115,
+        "name":"Alphas",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":13,"brasier":99},
+        "bldReq":["Caserne Detruas","Usine d'armement","Appartements"],
+        "compHardReq":{"arti":1,"explo":1,"bal":2,"mat":2},
+        "unitCost":"Rainmen",
+        "costs":{"Fer":96,"Scrap":12,"Carbone":108,"Aluminium":120,"Moteurs":72,"Titane":48,"Tungstène":72,"Rhodium":48,"Silicium":12,"Cuivre":36,"Electros":52,"Batteries":52,"Nickel":36,"Compo2":120,"Compo3":36,"Huile":10,"Cobalt":30,"Hélium":60},
+        "deploy":{"Fuel":70},
         "fabTime":100
     },
     {
-        "id":36,
-        "name":"Hooks",
-        "levels":{"rednecks":13,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","Chaîne de montage"],
-        "compReq":{"tank":1},
-        "costs":{"Fer":198,"Scrap":216,"Carbone":156,"Aluminium":24,"Moteurs":156,"Titane":12,"Tungstène":174,"Cuivre":32,"Electros":32,"Batteries":39,"Compo2":168,"Compo3":72,"Silicium":12,"Huile":32,"Mendium":20},
-        "deploy":{"Fuel":105,"Energie":120,"Huile":30},
-        "fabTime":90
+        "id":39,
+        "name":"Avalanches",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":15,"brasier":99},
+        "bldReq":["Usine d'armement","Chaîne de montage","Centre de com"],
+        "compHardReq":{"arti":1,"explo":1,"bal":1},
+        "costs":{"Fer":324,"Carbone":144,"Aluminium":279,"Moteurs":108,"Titane":72,"Tungstène":216,"Rhodium":72,"Silicium":18,"Cuivre":30,"Electros":45,"Batteries":55,"Nickel":45,"Compo2":180,"Compo3":108,"Huile":10,"Cobalt":30,"Hélium":60},
+        "deploy":{"Fuel":100},
+        "fabTime":140
     },
     {
         "id":2,
@@ -1232,34 +1497,6 @@
         "fabTime":215
     },
     {
-        "id":38,
-        "name":"Wartrucks",
-        "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Garage","Atelier"],
-        "costs":{"Fer":140,"Scrap":564,"Carbone":156,"Bois":96,"Moteurs":108,"Tungstène":224,"Cuivre":22,"Batteries":22,"Compo2":192,"Compo3":72,"Silicium":10,"Huile":30},
-        "deploy":{"Fuel":140,"Energie":80,"Huile":20},
-        "fabTime":90
-    },
-    {
-        "id":188,
-        "name":"Juggernauts",
-        "levels":{"rednecks":99,"blades":18,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Usine"],
-        "costs":{"Fer":144,"Scrap":1266,"Carbone":444,"Bois":90,"Moteurs":354,"Tungstène":276,"Cuivre":27,"Batteries":27,"Compo2":432,"Compo3":324,"Huile":18},
-        "deploy":{"Fuel":255,"Energie":30,"Huile":9},
-        "fabTime":140
-    },
-    {
-        "id":39,
-        "name":"Avalanches",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":15,"brasier":99},
-        "bldReq":["Usine d'armement","Chaîne de montage","Centre de com"],
-        "compHardReq":{"arti":1,"explo":1,"bal":1},
-        "costs":{"Fer":324,"Carbone":144,"Aluminium":279,"Moteurs":108,"Titane":72,"Tungstène":216,"Rhodium":72,"Silicium":18,"Cuivre":30,"Electros":45,"Batteries":55,"Nickel":45,"Compo2":180,"Compo3":108,"Huile":10,"Cobalt":30,"Hélium":60},
-        "deploy":{"Fuel":100},
-        "fabTime":140
-    },
-    {
         "id":64,
         "name":"The Box",
         "levels":{"rednecks":99,"blades":99,"bulbos":4,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
@@ -1267,91 +1504,6 @@
         "costs":{"Fer":27,"Scrap":225,"Carbone":36,"Moteurs":27,"Cuivre":18,"Electros":9,"Batteries":9,"Compo2":36,"Silicium":36,"Drogues":94,"Chlore":48,"Zinc":48,"Titane":12,"Tissus":24},
         "deploy":{"Fuel":40,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":40
-    },
-    {
-        "id":44,
-        "name":"Spenders",
-        "levels":{"rednecks":99,"blades":99,"bulbos":11,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","Garage","Chaîne de montage"],
-        "compReq":{"tank":1},
-        "compHardReq":{"bal":2},
-        "costs":{"Fer":202,"Scrap":195,"Carbone":150,"Aluminium":60,"Moteurs":110,"Titane":30,"Tungstène":166,"Cuivre":45,"Electros":60,"Batteries":152,"Compo2":144,"Compo3":45,"Végétaux":270,"Blendium":180,"Huile":10,"Plomb":36,"Soufre":36,"Fuel":45},
-        "deploy":{"Energie":340},
-        "fabTime":90
-    },
-    {
-        "id":54,
-        "name":"Whizz",
-        "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Laboratoire","Garage"],
-        "costs":{"Fer":60,"Scrap":468,"Carbone":120,"Bois":48,"Moteurs":60,"Cuivre":54,"Electros":72,"Batteries":126,"Compo2":180,"Végétaux":324,"Blendium":108,"Huile":10},
-        "deploy":{"Energie":300},
-        "fabTime":85
-    },
-    {
-        "id":57,
-        "name":"DJ Boss",
-        "levels":{"rednecks":99,"blades":99,"bulbos":15,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Usine d'armement","Chaîne de montage","Centre de com"],
-        "compHardReq":{"arti":1,"explo":1,"bal":1,"energ":1},
-        "costs":{"Fer":120,"Carbone":135,"Aluminium":210,"Moteurs":90,"Titane":150,"Tungstène":90,"Rhodium":90,"Bore":60,"Silicium":15,"Cuivre":30,"Electros":45,"Batteries":115,"Nickel":96,"Compo2":164,"Compo3":45,"Huile":10,"Cobalt":75,"Hélium":60},
-        "deploy":{"Fuel":95},
-        "fabTime":105
-    },
-    {
-        "id":115,
-        "name":"Alphas",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":13,"brasier":99},
-        "bldReq":["Caserne Detruas","Usine d'armement","Appartements"],
-        "compHardReq":{"arti":1,"explo":1,"bal":2,"mat":2},
-        "unitCost":"Rainmen",
-        "costs":{"Fer":96,"Scrap":12,"Carbone":108,"Aluminium":120,"Moteurs":72,"Titane":48,"Tungstène":72,"Rhodium":48,"Silicium":12,"Cuivre":36,"Electros":52,"Batteries":52,"Nickel":36,"Compo2":120,"Compo3":36,"Huile":10,"Cobalt":30,"Hélium":60},
-        "deploy":{"Fuel":70},
-        "fabTime":100
-    },
-    {
-        "id":58,
-        "name":"Hovercraft",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":10,"brasier":99},
-        "compReq":{"tank":1},
-        "bldReq":["Arsenal","Chaîne de montage"],
-        "costs":{"Fer":225,"Scrap":330,"Carbone":135,"Aluminium":30,"Moteurs":100,"Titane":45,"Tungstène":90,"Silicium":15,"Cuivre":30,"Batteries":15,"Compo2":120,"Hélium":90,"Chlore":90,"Huile":10},
-        "deploy":{"Fuel":75},
-        "fabTime":70
-    },
-    {
-        "id":131,
-        "name":"Frogs",
-        "levels":{"rednecks":10,"blades":9,"bulbos":10,"drogmulojs":9,"tiradores":10,"detruas":10,"brasier":12},
-        "bldReq":["Armurerie","Atelier"],
-        "compReq":{"trans":2},
-        "costs":{"Fer":60,"Scrap":120,"Carbone":90,"Bois":60,"Silicium":60,"Wingium":60,"Aluminium":60,"Moteurs":60,"Tungstène":15,"Cuivre":15,"Batteries":30,"Compo2":120,"Hélium":75,"Chlore":75,"Huile":10},
-        "deploy":{"Fuel":60},
-        "fabTime":45,
-        "inRuin":2
-    },
-    {
-        "id":59,
-        "name":"Drones",
-        "levels":{"rednecks":99,"blades":99,"bulbos":5,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Laboratoire","Atelier"],
-        "compReq":{"robo":1},
-        "compPass":["bulbos"],
-        "costs":{"Scrap":24,"Carbone":60,"Moteurs":18,"Titane":96,"Bore":24,"Silicium":72,"Cuivre":24,"Electros":96,"Batteries":60,"Nickel":6,"Cobalt":24},
-        "deploy":{"Energie":60},
-        "fabTime":30,
-        "inRuin":2
-    },
-    {
-        "id":265,
-        "name":"Thopters",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":10,"detruas":99,"brasier":99},
-        "bldReq":["Laboratoire","Atelier"],
-        "compReq":{"robo":1},
-        "costs":{"Scrap":40,"Carbone":80,"Moteurs":15,"Aluminium":20,"Titane":72,"Silicium":60,"Cuivre":20,"Electros":70,"Batteries":50,"Nickel":5,"Cobalt":20},
-        "deploy":{"Energie":60},
-        "fabTime":30,
-        "inRuin":2
     },
     {
         "id":61,
@@ -1365,15 +1517,6 @@
         "fabTime":90
     },
     {
-        "id":62,
-        "name":"Amigos",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":5,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Garage"],
-        "costs":{"Fer":144,"Scrap":624,"Carbone":96,"Aluminium":72,"Moteurs":72,"Tungstène":36,"Batteries":12,"Compo2":48,"Huile":10},
-        "deploy":{"Fuel":65},
-        "fabTime":65
-    },
-    {
         "id":65,
         "name":"Hostos",
         "levels":{"rednecks":11,"blades":8,"bulbos":7,"drogmulojs":8,"tiradores":8,"detruas":8,"brasier":8},
@@ -1385,82 +1528,24 @@
         "inRuin":4
     },
     {
-        "id":33,
-        "name":"Monster trucks",
-        "levels":{"rednecks":8,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Garage"],
-        "costs":{"Fer":120,"Scrap":405,"Carbone":90,"Aluminium":150,"Moteurs":60,"Tungstène":30,"Batteries":15,"Compo2":80,"Huile":10},
-        "deploy":{"Fuel":85},
-        "fabTime":65
+        "id":54,
+        "name":"Whizz",
+        "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Laboratoire","Garage"],
+        "costs":{"Fer":60,"Scrap":468,"Carbone":120,"Bois":48,"Moteurs":60,"Cuivre":54,"Electros":72,"Batteries":126,"Compo2":180,"Végétaux":324,"Blendium":108,"Huile":10},
+        "deploy":{"Energie":300},
+        "fabTime":85
     },
     {
-        "id":67,
-        "name":"Reapers",
-        "levels":{"rednecks":99,"blades":5,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Atelier","Garage"],
-        "costs":{"Fer":90,"Scrap":360,"Carbone":60,"Bois":60,"Aluminium":120,"Moteurs":50,"Batteries":15,"Compo2":60},
-        "deploy":{"Fuel":70},
-        "fabTime":60
-    },
-    {
-        "id":69,
-        "name":"Old bastards",
-        "levels":{"rednecks":11,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","Chaîne de montage"],
-        "compReq":{"tank":1},
-        "costs":{"Fer":168,"Scrap":684,"Carbone":228,"Aluminium":24,"Moteurs":204,"Titane":12,"Tungstène":156,"Cuivre":30,"Batteries":18,"Compo2":228,"Compo3":144,"Huile":12},
-        "deploy":{"Fuel":155,"Energie":20,"Huile":5},
-        "fabTime":95
-    },
-    {
-        "id":74,
-        "name":"Autogires chicken",
-        "levels":{"rednecks":9,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Atelier"],
-        "costs":{"Scrap":144,"Carbone":48,"Aluminium":72,"Moteurs":24,"Cuivre":8,"Batteries":24,"Explosifs":8,"Fuel":48},
-        "deploy":{"Fuel":45},
-        "fabTime":30
-    },
-    {
-        "id":114,
-        "name":"ULM Shakers",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":10},
-        "bldReq":["Atelier"],
-        "costs":{"Scrap":168,"Carbone":48,"Aluminium":54,"Titane":18,"Moteurs":24,"Huile":24,"Cuivre":8,"Batteries":24},
-        "deploy":{"Fuel":45},
-        "fabTime":30
-    },
-    {
-        "id":75,
-        "name":"Pushers",
-        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
-        "bldReq":[],
-        "costs":{"Fer":162,"Scrap":270,"Carbone":27,"Moteurs":36,"Nickel":18,"Phosphore":18,"Cobalt":18,"Eau":90,"Zinc":45,"Cuivre":45},
-        "deploy":{"Fuel":20,"Energie":75,"Huile":12},
-        "fabTime":30,
+        "id":131,
+        "name":"Frogs",
+        "levels":{"rednecks":10,"blades":9,"bulbos":10,"drogmulojs":9,"tiradores":10,"detruas":10,"brasier":12},
+        "bldReq":["Armurerie","Atelier"],
+        "compReq":{"trans":2},
+        "costs":{"Fer":60,"Scrap":120,"Carbone":90,"Bois":60,"Silicium":60,"Wingium":60,"Aluminium":60,"Moteurs":60,"Tungstène":15,"Cuivre":15,"Batteries":30,"Compo2":120,"Hélium":75,"Chlore":75,"Huile":10},
+        "deploy":{"Fuel":60},
+        "fabTime":45,
         "inRuin":2
-    },
-    {
-        "id":76,
-        "name":"Workships",
-        "levels":{"rednecks":12,"blades":12,"bulbos":12,"drogmulojs":12,"tiradores":12,"detruas":12,"brasier":12},
-        "bldReq":["Chaîne de montage"],
-        "compReq":{"ind":1},
-        "altCompReq":{"const":2},
-        "costs":{"Fer":140,"Scrap":244,"Carbone":216,"Aluminium":40,"Moteurs":186,"Tungstène":120,"Electros":70,"Batteries":70,"Compo2":292,"Silicium":24,"Huile":84,"Mendium":104,"Azote":88,"Eau":960,"Zinc":180,"Cuivre":120},
-        "deploy":{"Fuel":130,"Energie":220,"Mendium":15,"Huile":55},
-        "fabTime":105,
-        "inRuin":3
-    },
-    {
-        "id":79,
-        "name":"The Void",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":19,"brasier":99},
-        "bldReq":["Usine d'armement","Chaîne de montage"],
-        "compReq":{"tank":2},
-        "costs":{"Fer":192,"Scrap":40,"Carbone":504,"Aluminium":16,"Moteurs":344,"Titane":16,"Tungstène":272,"Cuivre":32,"Electros":16,"Batteries":50,"Compo2":696,"Compo3":606,"Huile":10,"Nickel":160,"Cobalt":30,"Hélium":60},
-        "deploy":{"Fuel":315},
-        "fabTime":140
     },
     {
         "id":80,
@@ -1483,26 +1568,6 @@
         "deploy":{"Fuel":30},
         "fabTime":30,
         "inRuin":2
-    },
-    {
-        "id":173,
-        "name":"Scavengers",
-        "levels":{"rednecks":9,"blades":99,"bulbos":9,"drogmulojs":5,"tiradores":9,"detruas":10,"brasier":9},
-        "bldReq":["Armurerie","Centre de tri","Garage"],
-        "compHardReq":{"tri":1},
-        "costs":{"Fer":180,"Scrap":423,"Carbone":108,"Moteurs":36,"Batteries":14,"Compo2":28,"Huile":10,"Eau":96,"Silicium":12},
-        "deploy":{"Fuel":55},
-        "fabTime":45,
-        "inRuin":2
-    },
-    {
-        "id":177,
-        "name":"Scroungers",
-        "levels":{"rednecks":99,"blades":7,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Centre de tri","Garage"],
-        "costs":{"Fer":117,"Scrap":441,"Carbone":126,"Bois":90,"Moteurs":36,"Batteries":14,"Compo2":28,"Huile":10,"Eau":96,"Silicium":12},
-        "deploy":{"Fuel":55},
-        "fabTime":45
     },
     {
         "id":122,
@@ -1551,17 +1616,6 @@
         "fabTime":125
     },
     {
-        "id":92,
-        "name":"Shelltrucks",
-        "levels":{"rednecks":9,"blades":12,"bulbos":11,"drogmulojs":10,"tiradores":13,"detruas":6,"brasier":9},
-        "bldEquiv":["Poudrière"],
-        "bldReq":["Armurerie","Garage"],
-        "costs":{"Fer":60,"Scrap":444,"Carbone":120,"Aluminium":48,"Moteurs":60,"Cuivre":24,"Batteries":12,"Compo2":168,"Huile":10},
-        "deploy":{"Fuel":100},
-        "fabTime":70,
-        "inRuin":1
-    },
-    {
         "id":93,
         "name":"Taxis",
         "levels":{"rednecks":12,"blades":99,"bulbos":12,"drogmulojs":13,"tiradores":11,"detruas":12,"brasier":13},
@@ -1573,166 +1627,14 @@
         "inRuin":2
     },
     {
-        "id":94,
-        "name":"Scraptruck",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":9,"tiradores":99,"detruas":99,"brasier":99},
-        "bldEquiv":["Décharge"],
-        "bldReq":["Armurerie","Centre de tri","Garage"],
-        "costs":{"Fer":99,"Scrap":414,"Carbone":135,"Aluminium":108,"Moteurs":106,"Tungstène":81,"Cuivre":18,"Batteries":45,"Compo2":152,"Compo3":74,"Huile":18,"Eau":120,"Silicium":15,"Bore":36},
-        "deploy":{"Fuel":70,"Energie":60,"Huile":15},
-        "fabTime":75
-    },
-    {
-        "id":95,
-        "name":"Technobass",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":11,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Centre de recherches","Garage"],
-        "costs":{"Fer":180,"Scrap":672,"Carbone":228,"Moteurs":72,"Cuivre":48,"Electros":84,"Batteries":118,"Compo2":96,"Compo3":96,"Mendium":96,"Azote":48,"Cobalt":30,"Hélium":60},
-        "deploy":{"Fuel":70},
-        "fabTime":90,
-        "crime":-3
-    },
-    {
-        "id":99,
-        "name":"Warcars",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":5},
-        "bldReq":["Garage","Atelier"],
-        "compHardReq":{"pyro":1},
-        "costs":{"Fer":160,"Scrap":340,"Carbone":80,"Aluminium":40,"Moteurs":60,"Tungstène":40,"Batteries":20,"Nickel":30,"Compo2":40,"Fuel":100},
-        "deploy":{"Fuel":70},
-        "fabTime":50
-    },
-    {
-        "id":100,
-        "name":"Spears",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":11,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","Chaîne de montage"],
-        "compReq":{"tank":1},
-        "compHardReq":{"bal":2},
-        "costs":{"Fer":200,"Scrap":180,"Carbone":160,"Aluminium":60,"Moteurs":80,"Titane":60,"Tungstène":40,"Cuivre":35,"Batteries":20,"Compo2":120,"Huile":10,"Nickel":80,"Mendium":40,"Azote":80,"Explosifs":20,"Fuel":40},
-        "deploy":{"Fuel":95},
-        "fabTime":65
-    },
-    {
-        "id":101,
-        "name":"Genius",
-        "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":99,"detruas":11,"brasier":11},
-        "bldReq":["Armurerie","Chaîne de montage"],
-        "compReq":{"tank":1},
-        "costs":{"Fer":110,"Scrap":330,"Carbone":105,"Aluminium":30,"Moteurs":120,"Tungstène":65,"Cuivre":25,"Electros":25,"Batteries":25,"Compo2":100,"Silicium":15,"Huile":35},
-        "deploy":{"Fuel":75,"Energie":90,"Huile":22},
-        "fabTime":70,
-        "inRuin":2
-    },
-    {
-        "id":292,
-        "name":"Wizard",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":10,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Chaîne de montage"],
-        "compReq":{"tank":1},
-        "costs":{"Fer":110,"Scrap":330,"Carbone":105,"Aluminium":30,"Moteurs":150,"Tungstène":65,"Cuivre":25,"Electros":25,"Batteries":25,"Compo2":100,"Silicium":15,"Huile":35},
-        "deploy":{"Fuel":85,"Energie":90,"Huile":22},
-        "fabTime":70
-    },
-    {
-        "id":107,
-        "name":"Flaktanks",
-        "levels":{"rednecks":17,"blades":99,"bulbos":16,"drogmulojs":16,"tiradores":17,"detruas":15,"brasier":16},
-        "bldReq":["Arsenal","Chaîne de montage","Poste radio"],
-        "compReq":{"tank":1},
-        "compHardReq":{"explo":1},
-        "costs":{"Fer":189,"Scrap":349,"Carbone":270,"Aluminium":198,"Moteurs":150,"Titane":54,"Tungstène":162,"Cuivre":36,"Electros":18,"Batteries":37,"Compo2":216,"Compo3":81,"Huile":10,"Cobalt":30,"Hélium":60},
-        "deploy":{"Fuel":100},
-        "fabTime":90,
-        "inRuin":2
-    },
-    {
-        "id":118,
-        "name":"Stakhanov",
-        "levels":{"rednecks":15,"blades":18,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":17},
-        "bldReq":["Centre de recherches","Usine"],
-        "compReq":{"ext":3},
-        "compPass":["rednecks"],
-        "compHardReq":{"ext":1,"ind":1},
-        "costs":{"Fer":129,"Scrap":111,"Carbone":159,"Aluminium":18,"Moteurs":180,"Cuivre":53,"Electros":156,"Batteries":88,"Compo2":284,"Huile":36,"Cobalt":30,"Hélium":60,"Eau":584,"Silicium":80,"Zinc":33},
-        "deploy":{"Fuel":115,"Energie":60,"Huile":15,"Eau":320,"Silicium":40},
-        "fabTime":130,
-        "inRuin":1
-    },
-    {
-        "id":119,
-        "name":"Drilltrucks",
-        "levels":{"rednecks":10,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":12,"brasier":11},
-        "bldReq":["Usine","Laboratoire"],
-        "compReq":{"ext":1},
-        "costs":{"Fer":96,"Scrap":176,"Carbone":68,"Aluminium":12,"Moteurs":120,"Cuivre":48,"Electros":48,"Batteries":32,"Compo2":108,"Huile":10,"Eau":416,"Silicium":56,"Zinc":24},
-        "deploy":{"Fuel":65,"Eau":240,"Silicium":30},
-        "fabTime":90,
-        "inRuin":3
-    },
-    {
-        "id":121,
-        "name":"Milkmen",
-        "levels":{"rednecks":7,"blades":8,"bulbos":7,"drogmulojs":8,"tiradores":7,"detruas":4,"brasier":4},
-        "bldReq":["Armurerie","Garage"],
-        "costs":{"Fer":14,"Scrap":207,"Carbone":36,"Moteurs":32,"Batteries":9,"Compo2":28,"Silicium":9,"Huile":9},
-        "deploy":{"Fuel":35},
-        "fabTime":25,
-        "inRuin":2
-    },
-    {
-        "id":167,
-        "name":"Mécanos",
-        "levels":{"rednecks":6,"blades":6,"bulbos":6,"drogmulojs":6,"tiradores":6,"detruas":6,"brasier":6},
+        "id":164,
+        "name":"Bus",
+        "levels":{"rednecks":4,"blades":4,"bulbos":4,"drogmulojs":4,"tiradores":4,"detruas":4,"brasier":4},
         "bldReq":["Garage"],
-        "costs":{"Fer":68,"Scrap":200,"Carbone":24,"Tungstène":8,"Moteurs":28,"Batteries":24,"Huile":60},
-        "deploy":{"Fuel":30,"Energie":75,"Huile":12},
-        "fabTime":30,
+        "costs":{"Fer":90,"Scrap":450,"Carbone":60,"Moteurs":36,"Batteries":9,"Compo2":45},
+        "deploy":{"Fuel":60},
+        "fabTime":40,
         "inRuin":2
-    },
-    {
-        "id":132,
-        "name":"Raves",
-        "levels":{"rednecks":99,"blades":99,"bulbos":17,"drogmulojs":99,"tiradores":99,"detruas":16,"brasier":99},
-        "bldReq":["Arsenal","QG","Chaîne de montage"],
-        "compReq":{"arti":1,"bal":2},
-        "costs":{"Fer":288,"Scrap":120,"Carbone":120,"Aluminium":216,"Moteurs":90,"Tungstène":228,"Silicium":18,"Cuivre":33,"Electros":80,"Batteries":139,"Compo2":96,"Compo3":72,"Végétaux":180,"Blendium":180,"Huile":10,"Mendium":36,"Azote":72,"Cobalt":30,"Hélium":60},
-        "deploy":{"Energie":315},
-        "fabTime":90
-    },
-    {
-        "id":134,
-        "name":"Taupes",
-        "levels":{"rednecks":17,"blades":16,"bulbos":13,"drogmulojs":17,"tiradores":16,"detruas":99,"brasier":17},
-        "bldReq":["Centre de recherches","Usine"],
-        "compReq":{"robo":1},
-        "compPass":["blades","brasier","drogmulojs","rednecks"],
-        "compHardReq":{"ext":1},
-        "costs":{"Fer":72,"Scrap":90,"Carbone":72,"Moteurs":72,"Titane":156,"Silicium":48,"Cuivre":96,"Electros":120,"Batteries":198,"Huile":10,"Eau":120,"Silicium":30},
-        "deploy":{"Energie":280,"Eau":120,"Silicium":15},
-        "fabTime":90,
-        "inRuin":2
-    },
-    {
-        "id":147,
-        "name":"Salamandres",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":19,"detruas":99,"brasier":15},
-        "bldReq":["Usine d'armement","Chaîne de montage"],
-        "compReq":{"tank":1,"pyro":2,"bal":1},
-        "costs":{"Fer":60,"Scrap":15,"Carbone":225,"Aluminium":90,"Moteurs":140,"Titane":60,"Tungstène":165,"Rhodium":45,"Cuivre":45,"Electros":15,"Batteries":40,"Nickel":90,"Compo2":210,"Compo3":270,"Huile":10,"Cobalt":30,"Hélium":60},
-        "deploy":{"Fuel":125},
-        "fabTime":105
-    },
-    {
-        "id":139,
-        "name":"Busters",
-        "levels":{"rednecks":15,"blades":99,"bulbos":99,"drogmulojs":19,"tiradores":99,"detruas":13,"brasier":99},
-        "bldReq":["Arsenal","Chaîne de montage"],
-        "compReq":{"tank":2},
-        "costs":{"Fer":240,"Scrap":192,"Carbone":128,"Moteurs":128,"Titane":16,"Tungstène":224,"Cuivre":16,"Batteries":16,"Compo2":128,"Compo3":96,"Huile":10},
-        "deploy":{"Fuel":85},
-        "fabTime":70,
-        "inRuin":3
     },
     {
         "id":140,
@@ -1742,16 +1644,6 @@
         "costs":{"Fer":16,"Scrap":224,"Carbone":32,"Moteurs":16,"Batteries":8},
         "deploy":{"Fuel":30},
         "fabTime":20,
-        "inRuin":2
-    },
-    {
-        "id":164,
-        "name":"Bus",
-        "levels":{"rednecks":4,"blades":4,"bulbos":4,"drogmulojs":4,"tiradores":4,"detruas":4,"brasier":4},
-        "bldReq":["Garage"],
-        "costs":{"Fer":90,"Scrap":450,"Carbone":60,"Moteurs":36,"Batteries":9,"Compo2":45},
-        "deploy":{"Fuel":60},
-        "fabTime":40,
         "inRuin":2
     },
     {
@@ -1786,6 +1678,114 @@
         "costs":{"Fer":64,"Scrap":368,"Carbone":64,"Moteurs":32,"Silicium":24,"Batteries":16,"Compo2":64,"Huile":16,"Eau":40},
         "deploy":{"Fuel":50,"Energie":65,"Huile":16},
         "fabTime":45
+    },
+    {
+        "id":94,
+        "name":"Scraptruck",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":9,"tiradores":99,"detruas":99,"brasier":99},
+        "bldEquiv":["Décharge"],
+        "bldReq":["Armurerie","Centre de tri","Garage"],
+        "costs":{"Fer":99,"Scrap":414,"Carbone":135,"Aluminium":108,"Moteurs":106,"Tungstène":81,"Cuivre":18,"Batteries":45,"Compo2":152,"Compo3":74,"Huile":18,"Eau":120,"Silicium":15,"Bore":36},
+        "deploy":{"Fuel":70,"Energie":60,"Huile":15},
+        "fabTime":75
+    },
+    {
+        "id":173,
+        "name":"Scavengers",
+        "levels":{"rednecks":9,"blades":99,"bulbos":9,"drogmulojs":5,"tiradores":9,"detruas":10,"brasier":9},
+        "bldReq":["Armurerie","Centre de tri","Garage"],
+        "compHardReq":{"tri":1},
+        "costs":{"Fer":180,"Scrap":423,"Carbone":108,"Moteurs":36,"Batteries":14,"Compo2":28,"Huile":10,"Eau":96,"Silicium":12},
+        "deploy":{"Fuel":55},
+        "fabTime":45,
+        "inRuin":2
+    },
+    {
+        "id":177,
+        "name":"Scroungers",
+        "levels":{"rednecks":99,"blades":7,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Centre de tri","Garage"],
+        "costs":{"Fer":117,"Scrap":441,"Carbone":126,"Bois":90,"Moteurs":36,"Batteries":14,"Compo2":28,"Huile":10,"Eau":96,"Silicium":12},
+        "deploy":{"Fuel":55},
+        "fabTime":45
+    },
+    {
+        "id":119,
+        "name":"Drilltrucks",
+        "levels":{"rednecks":10,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":12,"brasier":11},
+        "bldReq":["Usine","Laboratoire"],
+        "compReq":{"ext":1},
+        "costs":{"Fer":96,"Scrap":176,"Carbone":68,"Aluminium":12,"Moteurs":120,"Cuivre":48,"Electros":48,"Batteries":32,"Compo2":108,"Huile":10,"Eau":416,"Silicium":56,"Zinc":24},
+        "deploy":{"Fuel":65,"Eau":240,"Silicium":30},
+        "fabTime":90,
+        "inRuin":3
+    },
+    {
+        "id":118,
+        "name":"Stakhanov",
+        "levels":{"rednecks":15,"blades":18,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":17},
+        "bldReq":["Centre de recherches","Usine"],
+        "compReq":{"ext":3},
+        "compPass":["rednecks"],
+        "compHardReq":{"ext":1,"ind":1},
+        "costs":{"Fer":129,"Scrap":111,"Carbone":159,"Aluminium":18,"Moteurs":180,"Cuivre":53,"Electros":156,"Batteries":88,"Compo2":284,"Huile":36,"Cobalt":30,"Hélium":60,"Eau":584,"Silicium":80,"Zinc":33},
+        "deploy":{"Fuel":115,"Energie":60,"Huile":15,"Eau":320,"Silicium":40},
+        "fabTime":130,
+        "inRuin":1
+    },
+    {
+        "id":134,
+        "name":"Taupes",
+        "levels":{"rednecks":17,"blades":16,"bulbos":13,"drogmulojs":17,"tiradores":16,"detruas":99,"brasier":17},
+        "bldReq":["Centre de recherches","Usine"],
+        "compReq":{"robo":1},
+        "compPass":["blades","brasier","drogmulojs","rednecks"],
+        "compHardReq":{"ext":1},
+        "costs":{"Fer":72,"Scrap":90,"Carbone":72,"Moteurs":72,"Titane":156,"Silicium":48,"Cuivre":96,"Electros":120,"Batteries":198,"Huile":10,"Eau":120,"Silicium":30},
+        "deploy":{"Energie":280,"Eau":120,"Silicium":15},
+        "fabTime":90,
+        "inRuin":2
+    },
+    {
+        "id":59,
+        "name":"Drones",
+        "levels":{"rednecks":99,"blades":99,"bulbos":5,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Laboratoire","Atelier"],
+        "compReq":{"robo":1},
+        "compPass":["bulbos"],
+        "costs":{"Scrap":24,"Carbone":60,"Moteurs":18,"Titane":96,"Bore":24,"Silicium":72,"Cuivre":24,"Electros":96,"Batteries":60,"Nickel":6,"Cobalt":24},
+        "deploy":{"Energie":60},
+        "fabTime":30,
+        "inRuin":2
+    },
+    {
+        "id":265,
+        "name":"Thopters",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":10,"detruas":99,"brasier":99},
+        "bldReq":["Laboratoire","Atelier"],
+        "compReq":{"robo":1},
+        "costs":{"Scrap":40,"Carbone":80,"Moteurs":15,"Aluminium":20,"Titane":72,"Silicium":60,"Cuivre":20,"Electros":70,"Batteries":50,"Nickel":5,"Cobalt":20},
+        "deploy":{"Energie":60},
+        "fabTime":30,
+        "inRuin":2
+    },
+    {
+        "id":74,
+        "name":"Autogires chicken",
+        "levels":{"rednecks":9,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Atelier"],
+        "costs":{"Scrap":144,"Carbone":48,"Aluminium":72,"Moteurs":24,"Cuivre":8,"Batteries":24,"Explosifs":8,"Fuel":48},
+        "deploy":{"Fuel":45},
+        "fabTime":30
+    },
+    {
+        "id":114,
+        "name":"ULM Shakers",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":10},
+        "bldReq":["Atelier"],
+        "costs":{"Scrap":168,"Carbone":48,"Aluminium":54,"Titane":18,"Moteurs":24,"Huile":24,"Cuivre":8,"Batteries":24},
+        "deploy":{"Fuel":45},
+        "fabTime":30
     },
     {
         "id":102,

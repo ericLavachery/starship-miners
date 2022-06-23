@@ -118,9 +118,9 @@ function createMap(size) {
                 newTile.undarkOnce = [];
             }
             newTile.mapDiff = playerInfos.sondeDanger;
-            newTile.pKind = checkMapKind('P');
-            newTile.gKind = checkMapKind('G');
-            newTile.sKind = checkMapKind('S');
+            newTile.pKind = checkMapKind('P',newTile.planet);
+            newTile.gKind = checkMapKind('G',newTile.planet);
+            newTile.sKind = checkMapKind('S',newTile.planet);
             console.log('pKind='+newTile.pKind+' gKind='+newTile.gKind+' sKind='+newTile.sKind);
         }
         newTile.x = x;
@@ -155,35 +155,59 @@ function createMap(size) {
     // console.log(zone);
 };
 
-function checkMapKind(terName) {
+function checkMapKind(terName,planetName) {
     let dice = rand.rand(1,12);
     if (terName === 'P') {
-        if (dice <= 6 || playerInfos.sondeDanger <= 1) {
-            return 'bug';
-        } else if (dice <= 8 || playerInfos.sondeDanger <= 2) {
-            return 'spider';
-        } else {
+        if (planetName === 'Gehenna') {
             return 'swarm';
+        } else if (planetName === 'Kzin') {
+            return 'bug';
+        } else if (planetName === 'Horst') {
+            return 'bug';
+        } else {
+            if (dice <= 6 || playerInfos.sondeDanger <= 1) {
+                return 'bug';
+            } else if (dice <= 8 || playerInfos.sondeDanger <= 2) {
+                return 'spider';
+            } else {
+                return 'swarm';
+            }
         }
     } else if (terName === 'G') {
-        if (dice <= 2 || playerInfos.sondeDanger <= 1) {
-            return 'bug';
-        } else if (dice <= 6 || playerInfos.sondeDanger <= 2) {
-            return 'spider';
-        } else if (dice <= 9) {
-            return 'larve';
-        } else {
+        if (planetName === 'Gehenna') {
             return 'swarm';
+        } else if (planetName === 'Kzin') {
+            return 'spider';
+        } else if (planetName === 'Horst') {
+            return 'swarm';
+        } else {
+            if (dice <= 2 || playerInfos.sondeDanger <= 1) {
+                return 'bug';
+            } else if (dice <= 6 || playerInfos.sondeDanger <= 2) {
+                return 'spider';
+            } else if (dice <= 9) {
+                return 'larve';
+            } else {
+                return 'swarm';
+            }
         }
     } else if (terName === 'S') {
-        if (dice <= 2) {
-            return 'bug';
-        } else if (dice <= 4) {
+        if (planetName === 'Gehenna') {
             return 'spider';
-        } else if (dice <= 10) {
+        } else if (planetName === 'Kzin') {
             return 'larve';
-        } else {
+        } else if (planetName === 'Horst') {
             return 'swarm';
+        } else {
+            if (dice <= 2) {
+                return 'bug';
+            } else if (dice <= 4) {
+                return 'spider';
+            } else if (dice <= 10) {
+                return 'larve';
+            } else {
+                return 'swarm';
+            }
         }
     }
 };
@@ -1778,25 +1802,48 @@ function zoneReport(myZone,quiet) {
             }
         }
         if (playerInfos.comp.ca < 3) {
-            warning('Montagnes',percM+'%',true);
-            warning('Collines',percH+'%',true);
             warning('Plaines',percP+'%',true);
             warning('Prairies',percG+'%',true);
+            warning('Collines',percH+'%',true);
+            warning('Montagnes',percM+'%',true);
             warning('Maquis',percB+'%',true);
             warning('Forêts',percF+'%',true);
-            warning('Marécages',percS+'%',true);
             warning('Etangs',percW+'%',true);
-            warning('Rivières',percR+'%');
+            warning('Rivières',percR+'%',true);
+            warning('Marécages',percS+'%');
         } else {
-            warning('Montagnes',percM+'% (bug)',true);
-            warning('Collines',percH+'% (bug)',true);
             warning('Plaines',percP+'% ('+myZone[0].pKind+')',true);
             warning('Prairies',percG+'% ('+myZone[0].gKind+')',true);
-            warning('Maquis',percB+'% (swarm)',true);
-            warning('Forêts',percF+'% (spider)',true);
-            warning('Marécages',percS+'% ('+myZone[0].sKind+')',true);
-            warning('Etangs',percW+'% (larve)',true);
-            warning('Rivières',percR+'% (larve)');
+            if (myZone[0].planet === 'Gehenna') {
+                warning('Collines',percH+'% (spider)',true);
+                warning('Montagnes',percM+'% (spider)',true);
+                warning('Maquis',percB+'% (swarm)',true);
+                warning('Forêts',percF+'% (spider)',true);
+                warning('Etangs',percW+'% (larve)',true);
+                warning('Rivières',percR+'% (larve)',true);
+            } else if (myZone[0].planet === 'Kzin') {
+                warning('Collines',percH+'% (bug)',true);
+                warning('Montagnes',percM+'% (bug)',true);
+                warning('Maquis',percB+'% (spider)',true);
+                warning('Forêts',percF+'% (spider)',true);
+                warning('Etangs',percW+'% (larve)',true);
+                warning('Rivières',percR+'% (larve)',true);
+            } else if (myZone[0].planet === 'Horst') {
+                warning('Collines',percH+'% (bug)',true);
+                warning('Montagnes',percM+'% (bug)',true);
+                warning('Maquis',percB+'% (swarm)',true);
+                warning('Forêts',percF+'% (swarm)',true);
+                warning('Etangs',percW+'% (swarm)',true);
+                warning('Rivières',percR+'% (swarm)',true);
+            } else {
+                warning('Collines',percH+'% (bug)',true);
+                warning('Montagnes',percM+'% (bug)',true);
+                warning('Maquis',percB+'% (swarm)',true);
+                warning('Forêts',percF+'% (spider)',true);
+                warning('Etangs',percW+'% (larve)',true);
+                warning('Rivières',percR+'% (larve)',true);
+            }
+            warning('Marécages',percS+'% ('+myZone[0].sKind+')');
         }
     }
     console.log('ensol');

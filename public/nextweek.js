@@ -660,6 +660,8 @@ function calcCrimeRate(mesCitoyens) {
     if (population > crimeRate.lits) {
         crimeRate.penib = crimeRate.penib+Math.floor((population-crimeRate.lits)/100);
     }
+    console.log('PENIBBBBBBBBBBBBBBBBBBBBBBBBB');
+    console.log(crimeRate.penib);
     if (crimeRate.penib < 0) {
         crimeRate.penib = 0;
     }

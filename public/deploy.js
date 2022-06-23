@@ -362,6 +362,9 @@ function doReEquip(batId) {
     let myBat = getBatById(batId);
     let myBatType = getBatType(myBat);
     let myGear = [myBat.ammo,myBat.ammo2,myBat.prt,myBat.eq];
+    console.log('DO REEQUIP');
+    console.log(myGear);
+    console.log(myNewGear);
     let payOK = true;
     let totalCosts = {};
     let flatCosts = {};
@@ -456,6 +459,7 @@ function doReEquip(batId) {
     if (batNewXP > myBat.xp) {
         myBat.xp = batNewXP;
     }
+    selectedBat = myBat;
     conOut(true);
     myNewGear = ['xxx','xxx','xxx','xxx'];
     if (inSoute) {

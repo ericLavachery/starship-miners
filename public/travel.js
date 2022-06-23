@@ -731,15 +731,38 @@ function toZoneString(zoneInfo) {
     newString = newString.replace(/swarm/g,"");
     newString = newString.replace(/spider/g,"");
     if (playerInfos.comp.ca >= 3) {
-        newString = newString.replace("pm","Montagnes (bugs)");
-        newString = newString.replace("ph","Collines (bugs)");
+        if (zoneInfo.planet === 'Gehenna') {
+            newString = newString.replace("pm","Montagnes (spiders)");
+            newString = newString.replace("ph","Collines (spiders)");
+            newString = newString.replace("pb","Maquis (swarms)");
+            newString = newString.replace("pf","Forêts (spiders)");
+            newString = newString.replace("pw","Etangs (larves)");
+            newString = newString.replace("pr","Rivières (larves)");
+        } else if (zoneInfo.planet === 'Kzin') {
+            newString = newString.replace("pm","Montagnes (bugs)");
+            newString = newString.replace("ph","Collines (bugs)");
+            newString = newString.replace("pb","Maquis (spiders)");
+            newString = newString.replace("pf","Forêts (spiders)");
+            newString = newString.replace("pw","Etangs (larves)");
+            newString = newString.replace("pr","Rivières (larves)");
+        } else if (zoneInfo.planet === 'Horst') {
+            newString = newString.replace("pm","Montagnes (bugs)");
+            newString = newString.replace("ph","Collines (bugs)");
+            newString = newString.replace("pb","Maquis (swarms)");
+            newString = newString.replace("pf","Forêts (swarms)");
+            newString = newString.replace("pw","Etangs (swarms)");
+            newString = newString.replace("pr","Rivières (swarms)");
+        } else {
+            newString = newString.replace("pm","Montagnes (bugs)");
+            newString = newString.replace("ph","Collines (bugs)");
+            newString = newString.replace("pb","Maquis (swarms)");
+            newString = newString.replace("pf","Forêts (spiders)");
+            newString = newString.replace("pw","Etangs (larves)");
+            newString = newString.replace("pr","Rivières (larves)");
+        }
         newString = newString.replace("pp","Plaines ("+zoneInfo.pKind+"s)");
         newString = newString.replace("pg","Prairies ("+zoneInfo.gKind+"s)");
-        newString = newString.replace("pb","Maquis (swarms)");
-        newString = newString.replace("pf","Forêts (spiders)");
         newString = newString.replace("ps","Marécages ("+zoneInfo.sKind+"s)");
-        newString = newString.replace("pw","Etangs (larves)");
-        newString = newString.replace("pr","Rivières (larves)");
     } else {
         newString = newString.replace("pm","Montagnes");
         newString = newString.replace("ph","Collines");

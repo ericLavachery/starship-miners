@@ -1246,26 +1246,47 @@ function coloSpawn(bat) {
     }
 }
 
-function veilSpawn(bat) {
-    let terName = getTileTerrainName(bat.tileId);
+function getAKindByTer(terName,pKind,gKind,sKind) {
     let kind = 'bug';
     if (terName === 'M' || terName === 'H') {
-        kind = 'bug';
+        if (zone[0].planet === 'Gehenna') {
+            kind = 'spider';
+        } else {
+            kind = 'bug';
+        }
     } else if (terName === 'F') {
-        kind = 'spider';
+        if (zone[0].planet === 'Horst') {
+            kind = 'swarm';
+        } else {
+            kind = 'spider';
+        }
     } else if (terName === 'W' || terName === 'R' || terName === 'L') {
-        kind = 'larve';
+        if (zone[0].planet === 'Horst') {
+            kind = 'swarm';
+        } else {
+            kind = 'larve';
+        }
     } else if (terName === 'B') {
-        kind = 'swarm';
+        if (zone[0].planet === 'Kzin') {
+            kind = 'spider';
+        } else {
+            kind = 'swarm';
+        }
     } else if (terName === 'P') {
-        kind = zoneInfos.pKind;
+        kind = pKind;
     } else if (terName === 'G') {
-        kind = zoneInfos.gKind;
+        kind = gKind;
     } else if (terName === 'S') {
-        kind = zoneInfos.sKind;
+        kind = sKind;
     } else {
         kind = 'bug';
     }
+    return kind;
+}
+
+function veilSpawn(bat) {
+    let terName = getTileTerrainName(bat.tileId);
+    let kind = getAKindByTer(terName,zoneInfos.pKind,zoneInfos.gKind,zoneInfos.sKind);
     if (kind === 'bug') {
         if (rand.rand(1,15) < zone[0].mapDiff) {
             alienSpawn(bat,'Punaises','veil');
@@ -1921,27 +1942,29 @@ function checkputEggKind(bat) {
         eggKind = checkEggKindByZoneType();
         if (eggKind === '') {
             let terName = getTileTerrainName(bat.tileId);
-            if (terName === 'M' || terName === 'H') {
-                bat.tags.push('bug');
-                eggKind = 'bug';
-            } else if (terName === 'F') {
-                bat.tags.push('spider');
-                eggKind = 'spider';
-            } else if (terName === 'R' || terName === 'W' || terName === 'L') {
-                bat.tags.push('larve');
-                eggKind = 'larve';
-            } else if (terName === 'B') {
-                bat.tags.push('swarm');
-                eggKind = 'swarm';
-            } else if (terName === 'P') {
-                eggKind = zoneInfos.pKind;
-            } else if (terName === 'G') {
-                eggKind = zoneInfos.gKind;
-            } else if (terName === 'S') {
-                eggKind = zoneInfos.sKind;
-            } else {
-                eggKind = '';
-            }
+            eggKind = getAKindByTer(terName,zoneInfos.pKind,zoneInfos.gKind,zoneInfos.sKind);
+            bat.tags.push(eggKind);
+            // if (terName === 'M' || terName === 'H') {
+            //     bat.tags.push('bug');
+            //     eggKind = 'bug';
+            // } else if (terName === 'F') {
+            //     bat.tags.push('spider');
+            //     eggKind = 'spider';
+            // } else if (terName === 'R' || terName === 'W' || terName === 'L') {
+            //     bat.tags.push('larve');
+            //     eggKind = 'larve';
+            // } else if (terName === 'B') {
+            //     bat.tags.push('swarm');
+            //     eggKind = 'swarm';
+            // } else if (terName === 'P') {
+            //     eggKind = zoneInfos.pKind;
+            // } else if (terName === 'G') {
+            //     eggKind = zoneInfos.gKind;
+            // } else if (terName === 'S') {
+            //     eggKind = zoneInfos.sKind;
+            // } else {
+            //     eggKind = '';
+            // }
         }
     }
     return eggKind;
