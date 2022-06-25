@@ -1107,6 +1107,9 @@ function getStealth(bat) {
     let tile = getTile(bat);
     let terrain = getTerrain(bat);
     let batStealth = batType.stealth;
+    if (zone[0].planet === 'Sarak') {
+        batStealth = batStealth+5;
+    }
     if (tile.infra === 'Terriers' && batType.size < 9 && batType.cat != 'aliens') {
         batStealth = batStealth+5;
     }
@@ -1122,7 +1125,7 @@ function getStealth(bat) {
             }
         }
     }
-    if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || (bat.eq === 'kit-chouf' && playerInfos.comp.train >= 1) || (bat.eq === 'kit-guetteur' && playerInfos.comp.train >= 1) || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu') {
+    if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || bat.eq === 'kit-chouf' || bat.eq === 'kit-guetteur' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu') {
         if (batType.skills.includes('camo')) {
             batStealth = batStealth+3;
         } else {

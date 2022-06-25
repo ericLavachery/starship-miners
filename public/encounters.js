@@ -62,10 +62,12 @@ function encounter() {
     let hard = false;
     let encDiceMin = 2;
     let encDiceMax = 28;
-    if (rand.rand(1,2) === 1 || zone[0].mapDiff >= 8) {
-        hard = true;
-        playerInfos.fndCits = playerInfos.fndCits+3;
-        encDiceMin = 0;
+    if (zone[0].planet != 'Sarak') {
+        if (rand.rand(1,2) === 1 || zone[0].mapDiff >= 8) {
+            hard = true;
+            playerInfos.fndCits = playerInfos.fndCits+3;
+            encDiceMin = 0;
+        }
     }
     encDiceMax = encDiceMax-5+Math.round(playerInfos.enc/10);
     checkEncDice(encDiceMin,encDiceMax,hard);

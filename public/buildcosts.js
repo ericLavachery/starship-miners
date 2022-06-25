@@ -888,6 +888,8 @@ function getDispoResStation(resName) {
     let dispoRes = 0;
     if (playerInfos.vmRes[resName] >= 1) {
         dispoRes = playerInfos.vmRes[resName];
+    } else {
+        playerInfos.vmRes[resName] = 0;
     }
     if (playerInfos.alienRes[resName] >= 1) {
         dispoRes = playerInfos.alienRes[resName];

@@ -286,7 +286,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Arsenal"],
-        "compReq":{"bal":2,"mat":2},
+        "compReq":{"bal":2,"mat":1},
         "deploy":{"Munitions":1,"Aluminium":1,"Dunium":2},
         "batch":100
     },
@@ -576,7 +576,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Arsenal"],
-        "compReq":{"bal":2,"mat":2},
+        "compReq":{"bal":2,"mat":1},
         "deploy":{"Munitions":1,"Aluminium":1,"Dunium":2},
         "batch":100
     },
@@ -680,7 +680,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Arsenal"],
-        "compReq":{"bal":2,"mat":2},
+        "compReq":{"bal":2,"mat":1},
         "deploy":{"Munitions":1,"Aluminium":1,"Dunium":2},
         "batch":100
     },
@@ -887,7 +887,7 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Arsenal"],
-        "compReq":{"bal":2,"mat":2},
+        "compReq":{"bal":2,"mat":1},
         "deploy":{"Aluminium":4,"Dunium":4,"Oxygène":1},
         "batch":200
     },

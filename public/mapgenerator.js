@@ -1363,7 +1363,14 @@ function addRes(zone) {
             }
         });
     }
-    // HUILE & FRUITS
+    // HUILE & FRUITS & CRYSTAUX
+    let crysMap = false;
+    let crysNum = 0;
+    let crysMax = 0;
+    if (zone[0].planet === 'Sarak') {
+        crysMap = true;
+        crysMax = Math.ceil((playerInfos.sondeDanger/1.5)+rand.rand(0,4)/4);
+    }
     let oilName = 'Huile';
     let oilChance = (rand.rand(2,6)*60)-Math.round(numBadTer/50)-(playerInfos.sondeDanger*5); // plus bas = plus de chances
     let oilRes = getResByName('Huile');
@@ -1380,6 +1387,15 @@ function addRes(zone) {
     if (playerInfos.sondeDanger >= 1) {
         shufZone.forEach(function(tile) {
             if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
+                if (crysMap && crysNum < crysMax) {
+                    if (tile.x < 15 || tile.x > 45 || tile.y < 15 || tile.y > 45) {
+                        tile.infra = 'Crystal';
+                        crysNum++;
+                        if (tile.terrain != 'M' && tile.terrain != 'H') {
+                            tile.terrain = 'M';
+                        }
+                    }
+                }
                 terrain = getTileTerrain(tile.id);
                 resHere = false;
                 if (tile.rq === undefined) {

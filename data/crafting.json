@@ -1542,6 +1542,76 @@
         "bg":"#200808"
     },
     {
+        "id":164,
+        "result":"Dunium",
+        "cost":{"Morphite":5,"Plomb":3},
+        "compReq":{"tri":1,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch":3,
+        "creaNum":50,
+        "bg":"#1d0f30"
+    },
+    {
+        "id":166,
+        "result":"Salite",
+        "cost":{"Morphite":5,"Aluminium":3},
+        "compReq":{"tri":1,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch":3,
+        "creaNum":50,
+        "bg":"#1d0f30"
+    },
+    {
+        "id":169,
+        "result":"Adamantium",
+        "cost":{"Morphite":5,"Titane":2},
+        "compReq":{"tri":1,"mat":1},
+        "bldReq":["Recyclab"],
+        "batch":2,
+        "creaNum":50,
+        "bg":"#1d0f30"
+    },
+    {
+        "id":165,
+        "result":"Timonium",
+        "cost":{"Morphite":5,"Uranium":2},
+        "compReq":{"tri":1,"mat":2},
+        "bldReq":["Recyclab"],
+        "batch":2,
+        "creaNum":50,
+        "bg":"#1d0f30"
+    },
+    {
+        "id":167,
+        "result":"Plastanium",
+        "cost":{"Morphite":5,"Huile":5},
+        "compReq":{"tri":1},
+        "bldReq":["Recyclab"],
+        "batch":5,
+        "creaNum":50,
+        "bg":"#1d0f30"
+    },
+    {
+        "id":168,
+        "result":"Nanite",
+        "cost":{"Morphite":5,"Phosphore":5},
+        "compReq":{"tri":1,"explo":2},
+        "bldReq":["Recyclab"],
+        "batch":4,
+        "creaNum":50,
+        "bg":"#1d0f30"
+    },
+    {
+        "id":170,
+        "result":"Pyratol",
+        "cost":{"Morphite":5,"Hydrocarbure":5},
+        "compReq":{"tri":1,"pyro":1},
+        "bldReq":["Recyclab"],
+        "batch":4,
+        "creaNum":50,
+        "bg":"#1d0f30"
+    },
+    {
         "id":124,
         "result":"Energons",
         "cost":{"Energie":11},

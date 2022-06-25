@@ -2171,6 +2171,7 @@
             "cost":2,
             "range":1,
             "isShort":true,
+            "noDatt":true,
             "noise":1,
             "rof":14,
             "accuracy":19,

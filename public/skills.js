@@ -400,6 +400,56 @@ function gloireASatan() {
     showBatInfos(selectedBat);
 };
 
+function canCamo(bat,batType,tile) {
+    let iCanCamo = false;
+    if (batType.skills.includes('camo')) {
+        iCanCamo = true;
+    }
+    if (batType.skills.includes('maycamo')) {
+        iCanCamo = true;
+    }
+    if (batType.skills.includes('aicamo')) {
+        if (playerInfos.comp.train >= 1) {
+            if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                iCanCamo = true;
+            }
+        }
+    }
+    if (tile.infra === 'Terriers') {
+        if (batType.size < 9) {
+            iCanCamo = true;
+        }
+    }
+    if (tile.ruins) {
+        if (batType.size < 20) {
+            if (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                iCanCamo = true;
+            }
+        }
+    }
+    if (tile.terrain === 'F') {
+        if (batType.size < 20) {
+            if (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                iCanCamo = true;
+            }
+        }
+    }
+    if (zone[0].planet === 'Sarak') {
+        if (batType.cat != 'buildings' && batType.size < 50) {
+            iCanCamo = true;
+        }
+    }
+    if (bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'e-camo' || bat.logeq === 'e-camo') {
+        iCanCamo = true;
+    }
+    if (bat.eq === 'kit-guetteur' || bat.eq === 'kit-chouf') {
+        if (playerInfos.comp.train >= 1) {
+            iCanCamo = true;
+        }
+    }
+    return iCanCamo;
+};
+
 function calcCamo(bat) {
     let batType = getBatType(bat);
     let stealth = getStealth(bat);
@@ -410,7 +460,9 @@ function calcCamo(bat) {
     let camChance = Math.round(Math.sqrt(stealth)*16)+(stealth*2)-40+(playerInfos.comp.ca*2);
     // sarak
     if (zone[0].planet === 'Sarak') {
-        camChance = camChance+25;
+        if (batType.cat != 'buildings' && batType.size < 50) {
+            camChance = camChance+25-Math.round(batType.size/2);
+        }
     }
     // max
     if (batType.skills.includes('underground') || batType.cat === 'buildings' || (tile.infra === 'Terriers' && batType.size < 9 && batType.cat != 'aliens')) {

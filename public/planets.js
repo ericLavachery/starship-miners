@@ -297,6 +297,11 @@ function undarkCenter() {
         if (distance <= startLander) {
             unDark(tile.id);
         }
+        if (tile.infra != undefined) {
+            if (tile.infra === 'Crystal') {
+                unDark(tile.id);
+            }
+        }
     });
 };
 

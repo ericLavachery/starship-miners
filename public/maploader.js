@@ -283,6 +283,9 @@ function showRes(tileId) {
     if (tile.infra === 'Débris' && view) {
         mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/debris.png"></div>';
     }
+    if (tile.infra === 'Crystal' && view) {
+        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/crystal.png"></div>';
+    }
     if (playerInfos.showedTiles.includes(tileId)) {
         if (tileId === 1830) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/showCenterTile.png"></div>';

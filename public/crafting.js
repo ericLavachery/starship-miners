@@ -235,10 +235,6 @@ function adjCraftFactor(craft,craftFactor) {
         noFactor = true;
     }
     if (!noFactor) {
-        // CORRUPTION
-        if (true) {
-
-        }
         craftFactor = craftFactor*(100+playerInfos.crime)/100;
         // INDUSTRIE
         if (playerInfos.comp.ind >= 1 && playerInfos.bldList.includes('Atelier')) {
@@ -258,13 +254,17 @@ function adjCraftFactor(craft,craftFactor) {
         // RECYCLAGE
         if (playerInfos.comp.tri >= 1 && playerInfos.bldList.includes('Décharge')) {
             let scrapCrafting = false;
+            let morphCrafting = false;
             if (craft.result === 'Scrap') {
                 scrapCrafting = true;
             }
             if (craft.cost['Scrap'] != undefined) {
                 scrapCrafting = true;
             }
-            if (scrapCrafting) {
+            if (craft.cost['Morphite'] != undefined) {
+                morphCrafting = true;
+            }
+            if (scrapCrafting || morphCrafting) {
                 let recupLevel = playerInfos.comp.tri;
                 if (playerInfos.bldList.includes('Recyclab') && !craft.bldReq.includes('Recyclab')) {
                     recupLevel = recupLevel+1;
@@ -273,7 +273,11 @@ function adjCraftFactor(craft,craftFactor) {
                     recupLevel = recupLevel-craft.compReq['tri'];
                 }
                 if (recupLevel >= 1) {
-                    craftFactor = craftFactor*18/(18+recupLevel);
+                    if (morphCrafting) {
+                        craftFactor = craftFactor*6/(6+recupLevel);
+                    } else {
+                        craftFactor = craftFactor*16/(16+recupLevel);
+                    }
                 }
             }
         }
