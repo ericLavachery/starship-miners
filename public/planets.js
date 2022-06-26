@@ -30,6 +30,9 @@ function planetEffects(bat,batType) {
                 if (medRoll === 1) {
                     bat.tags.push('poison');
                     bat.tags.push('poison');
+                    if (batType.squads > bat.squadsLeft) {
+                        bat.tags.push('maladie');
+                    }
                     warning('Poison',batType.name+' empoisonnés par les spores',false,bat.tileId);
                 } else if (medRoll === 2) {
                     bat.tags.push('poison');

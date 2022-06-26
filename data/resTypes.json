@@ -554,7 +554,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 3,
-        "planets":{"Dom":0,"Sarak":0,"Gehenna":0.2,"Kzin":0.5,"Horst":1.5}
+        "planets":{"Dom":0,"Sarak":0,"Gehenna":0.2,"Kzin":0.75,"Horst":1.5}
     },
     {
         "id": 40,

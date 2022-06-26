@@ -1428,7 +1428,7 @@
         "id":102,
         "result":"Plutonium",
         "cost":{"Timonium":1},
-        "compReq":{"energ":2},
+        "compReq":{"energ":1},
         "bldReq":["Laboratoire"],
         "batch":2,
         "bg":"#200808"
@@ -1437,7 +1437,7 @@
         "id":103,
         "result":"Plutonium",
         "cost":{"Uridium":1},
-        "compReq":{"energ":2},
+        "compReq":{"energ":1},
         "bldReq":["Centre de recherches"],
         "batch":3,
         "bg":"#200808"
@@ -1527,7 +1527,7 @@
         "id":104,
         "result":"Uranium",
         "cost":{"Uridium":1},
-        "compReq":{"energ":2},
+        "compReq":{"energ":1},
         "bldReq":["Centre de recherches"],
         "batch":2,
         "bg":"#200808"

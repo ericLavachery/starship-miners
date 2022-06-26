@@ -405,9 +405,9 @@ function canCamo(bat,batType,tile) {
     if (batType.skills.includes('camo')) {
         iCanCamo = true;
     }
-    if (batType.skills.includes('maycamo')) {
-        iCanCamo = true;
-    }
+    // if (batType.skills.includes('maycamo')) {
+    //     iCanCamo = true;
+    // }
     if (batType.skills.includes('aicamo')) {
         if (playerInfos.comp.train >= 1) {
             if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
