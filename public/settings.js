@@ -17,7 +17,7 @@ if (yOffset == null) {
 }
 // MAP GENERATOR
 let modeSonde = false;
-let maxMapsParDet = 4;
+let maxMapsParDet = 5;
 let impact = false;
 let zoneFiles = [];
 let terSeed = 12; // def 12 +grand = +grandes forêts etc...

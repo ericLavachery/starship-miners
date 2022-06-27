@@ -191,9 +191,12 @@ function commandes() {
 };
 
 function getMaxMaps(impact) {
-    let maxMaps = (playerInfos.comp.vsp+2)*maxMapsParDet;
+    let maxMaps = ((playerInfos.comp.vsp+1)*maxMapsParDet)+2;
     if (impact) {
-        maxMaps = Math.ceil((playerInfos.comp.vsp+0.75)*maxMapsParDet/1.1);
+        maxMaps = Math.ceil((playerInfos.comp.vsp)*(maxMapsParDet+0.5))+1;
+        if (maxMaps < 3) {
+            maxMaps = 3;
+        }
     }
     return maxMaps;
 };

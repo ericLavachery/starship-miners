@@ -131,6 +131,7 @@
         "bldReq":[],
         "bldVMReq":["Laboratoire"],
         "compReq":{"pyro":1,"trans":1},
+        "altCompReq":{"trans":2},
         "costs":{"Huile":5,"Pyratol":20,"Plomb":2}
     },
     {

@@ -2774,7 +2774,7 @@
         "bldCost":"Serres hydroponiques",
         "bldReq":["Soute"],
         "upkeep":{"Azote":2,"Phosphore":2,"Potassium":3},
-        "prod":{"Fruits":6,"Végétaux":18},
+        "prod":{"Fruits":3,"Végétaux":18},
         "costs":{"Compo1":300,"Scrap":200,"Silicium":200,"Eau":2500,"Azote":300,"Phosphore":250,"Potassium":450,"Chlore":150,"Végétaux":2500,"Energie":200,"Batteries":50},
         "fabTime":200,
         "slots":2,

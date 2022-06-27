@@ -49,6 +49,8 @@
         "cost":{"Bois":2},
         "compReq":{},
         "bldReq":["Atelier"],
+        "compOut":{"const":1,"ind":1},
+        "bldOut":["Chaîne de montage"],
         "batch":1,
         "creaNum":100,
         "bg":"#1b1510"
@@ -81,6 +83,16 @@
         "bldReq":["Atelier"],
         "batch":5,
         "creaNum":100,
+        "bg":"#1b1510"
+    },
+    {
+        "id":171,
+        "result":"Compo1",
+        "cost":{"Bois":7},
+        "compReq":{"const":1,"ind":1},
+        "bldReq":["Chaîne de montage"],
+        "batch":4,
+        "creaNum":200,
         "bg":"#1b1510"
     },
     {
