@@ -37,7 +37,11 @@ function encounterCheck() {
                 playerInfos.encz.push('xx');
                 if (zone[0].planet === 'Sarak' || zone[0].planet === 'Dom') {
                     playerInfos.enc = playerInfos.enc-10;
-                    if (rand.rand(1,2) === 1) {
+                    let citNeedDice = Math.round(18-(playerInfos.cNeed*10));
+                    if (citNeedDice < 4) {
+                        citNeedDice = 4;
+                    }
+                    if (rand.rand(1,citNeedDice) <= 3) {
                         madCitizens(false);
                     }
                 }
@@ -158,7 +162,7 @@ function putBastionAliens(hard) {
     if (zone[0].mapDiff >= 3 && zone[0].mapDiff < 8 && zone[0].planet === 'Dom') {
         dropEgg('Ruche','encounter');
     }
-    if (hard) {
+    if (hard && playerInfos.cNeed < 1.2) {
         dropEgg('Cocon','encounter');
         if (zone[0].mapDiff < 8) {
             dropEgg('Ruche','encounter');

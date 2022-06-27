@@ -69,7 +69,7 @@
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,1],
-        "rechCost":0.75
+        "rechCost":0.7
     },
     {
         "id":9,
@@ -87,7 +87,7 @@
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":5,
         "lvlCosts":[0,1,1,1,1,2],
-        "rechCost":1
+        "rechCost":0.85
     },
     {
         "id":11,
@@ -123,7 +123,7 @@
         "levels":{"rednecks":6,"blades":0,"bulbos":6,"drogmulojs":6,"tiradores":6,"detruas":6,"brasier":6},
         "maxLevel":3,
         "lvlCosts":[0,2,1,1],
-        "rechCost":0.85
+        "rechCost":0.7
     },
     {
         "id":15,

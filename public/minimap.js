@@ -61,6 +61,10 @@ function minimap() {
         ccom = true;
     }
     let alienView;
+    let sondeViewDistance = Math.ceil((playerInfos.comp.vsp+3)*(playerInfos.comp.det+8)/8);
+    if (!modeSonde) {
+        sondeViewDistance = 3;
+    }
     zone.forEach(function(tile) {
         if (zone[0].dark) {
             if (undarkNow.includes(tile.id)) {
@@ -108,7 +112,7 @@ function minimap() {
                                     } else {
                                         if (zone[0].dark) {
                                             let distance = calcDistance(tile.id,1830);
-                                            if (distance <= playerInfos.comp.det+1) {
+                                            if (distance <= sondeViewDistance) {
                                                 $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
                                             } else {
                                                 if (undarkNow.includes(tile.id)) {

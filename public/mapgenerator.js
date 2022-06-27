@@ -1363,13 +1363,13 @@ function addRes(zone) {
             }
         });
     }
-    // HUILE & FRUITS & CRYSTAUX
+    // HUILE & FRUITS & CRISTAUX
     let crysMap = false;
     let crysNum = 0;
     let crysMax = 0;
     if (zone[0].planet === 'Sarak') {
         crysMap = true;
-        crysMax = Math.ceil((playerInfos.sondeDanger/1.5)+rand.rand(0,4)/4);
+        crysMax = Math.ceil(((playerInfos.sondeDanger/1.5)+rand.rand(0,4))/4);
     }
     let oilName = 'Huile';
     let oilChance = (rand.rand(2,6)*60)-Math.round(numBadTer/50)-(playerInfos.sondeDanger*5); // plus bas = plus de chances
