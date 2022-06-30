@@ -103,7 +103,7 @@
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":[],
-        "equip":["aucun","w2-pgun","e-medic","lifepod","garage"],
+        "equip":["aucun","w2-pgun","e-medic","lifepod","garage","e-radar"],
         "log3eq":["garage"],
         "moveCost":99,
         "maxFlood":-1,
@@ -181,7 +181,7 @@
             "ammo":["lame-carbone"]
         },
         "protection":[],
-        "equip":["aucun","e-medic","g2siege","lifepod","garage"],
+        "equip":["aucun","e-medic","g2siege","lifepod","garage","e-radar"],
         "log3eq":["garage"],
         "moveCost":99,
         "maxFlood":-1,
@@ -245,7 +245,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","w2-cplasma","e-medic","e-control","lifepod","garage"],
+        "equip":["aucun","w2-cplasma","e-medic","e-control","lifepod","garage","e-radar"],
         "log3eq":["e-control"],
         "moveCost":99,
         "maxFlood":-1,
@@ -312,7 +312,7 @@
             "ravitBld":"Atelier"
         },
         "protection":[],
-        "equip":["aucun","w2-rain","e-medic","lifepod","garage"],
+        "equip":["aucun","w2-rain","e-medic","lifepod","garage","e-radar"],
         "log3eq":["garage"],
         "moveCost":99,
         "maxFlood":-1,
@@ -375,7 +375,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","w2-acanon","e-medic","e-control","lifepod","garage"],
+        "equip":["aucun","w2-acanon","e-medic","e-control","lifepod","garage","e-radar"],
         "log3eq":["garage"],
         "moveCost":99,
         "maxFlood":-1,
@@ -441,7 +441,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","w2-mortier","e-medic","e-control","lifepod","garage"],
+        "equip":["aucun","w2-mortier","e-medic","e-control","lifepod","garage","e-radar"],
         "log3eq":["garage"],
         "moveCost":99,
         "maxFlood":-1,
@@ -504,7 +504,7 @@
             "ammo":["laser","laser-g2"]
         },
         "protection":[],
-        "equip":["aucun","w2-flaser","e-medic","lifepod","garage"],
+        "equip":["aucun","w2-flaser","e-medic","lifepod","garage","e-radar"],
         "log3eq":["garage"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1402,7 +1402,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","bldkit","psol2","isophon","garage","e-infra"],
+        "equip":["aucun","bldkit","psol2","isophon","garage","e-infra","e-radar"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1862,7 +1862,7 @@
             "ammo":["standard"]
         },
         "protection":[],
-        "equip":["aucun","bldkit","w1-gun","w2-autopistol","e-medic","psol","isophon","garage"],
+        "equip":["aucun","bldkit","w1-gun","w2-autopistol","e-medic","psol","isophon","garage","e-radar"],
         "log3eq":["garage","psol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1955,7 +1955,7 @@
             "ammo":["standard"]
         },
         "protection":[],
-        "equip":["aucun","bldkit","w1-gun","w2-arti","w2-laser","w2-autogun","e-medic","psol2","isophon","garage","e-infra"],
+        "equip":["aucun","bldkit","w1-gun","w2-arti","w2-laser","w2-autogun","e-medic","psol2","isophon","garage","e-infra","e-radar"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2034,7 +2034,7 @@
             "ravitBld":"Générateur"
         },
         "protection":[],
-        "equip":["aucun","bldkit","w1-ggun","w2-arti","w2-laser","psol2","isophon","lifepod","garage"],
+        "equip":["aucun","bldkit","w1-ggun","w2-arti","w2-laser","psol2","isophon","lifepod","garage","e-radar"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
         "maxFlood":-1,
@@ -2420,7 +2420,7 @@
             "ravitBld":"Générateur"
         },
         "protection":[],
-        "equip":["aucun","bldkit","w1-plasma","w2-laser","psol2","isophon","e-control","respod","garage","prodboost","e-infra"],
+        "equip":["aucun","bldkit","w1-plasma","w2-laser","psol2","isophon","e-control","respod","garage","prodboost","e-infra","e-radar"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
         "maxFlood":-1,

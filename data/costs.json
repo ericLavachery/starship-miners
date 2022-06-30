@@ -1248,7 +1248,7 @@
         "name":"Necrotrucks",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":18,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Usine d'armement","Centre de recherches","Chaîne de montage"],
-        "compHardReq":{"gen":1,"energ":1},
+        "compHardReq":{"gen":1,"energ":1,"det":2},
         "costs":{"Moteurs":224,"Nickel":216,"Carbone":368,"Titane":128,"Tungstène":192,"Bore":96,"Silicium":96,"Cuivre":224,"Electros":128,"Batteries":202,"Huile":90,"Compo2":408,"Compo3":288,"Cobalt":30,"Hélium":60,"Or":80,"Argon":240,"Creatite":160},
         "deploy":{"Fuel":175,"Or":50,"Argon":150,"Creatite":100},
         "fabTime":210

@@ -899,11 +899,11 @@ function playerSkillsUTChanges() {
                 }
                 unit.volume = unit.volume.toFixedNumber(2);
             }
-            if (unit.skills.includes('bgun')) {
+            if (unit.skills.includes('barda')) {
                 if (playerInfos.comp.log >= 3) {
-                    unit.volume = unit.volume/1.2;
+                    unit.volume = 1;
                 } else {
-                    unit.volume = unit.volume/1.05;
+                    unit.volume = (unit.volume+2)/3;
                 }
                 unit.volume = unit.volume.toFixedNumber(2);
             }

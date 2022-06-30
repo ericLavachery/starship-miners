@@ -7,7 +7,7 @@ function getMorphite(apCost) {
             conselTriche = true;
             putBatAround(selectedBat.tileId,false,'noWater',239,0,'go');
             let coffre = getZoneBatByTileId(coffreTileId);
-            let resNum = Math.round((zone[0].mapDiff+2)*rand.rand(10,15)*((selectedBatType.mining.rate*selectedBatType.mining.level)+30)/12);
+            let resNum = Math.round((zone[0].mapDiff+2)*rand.rand(10,15)*((selectedBatType.mining.rate*(selectedBatType.mining.level+1))+30)/16);
             // let resNum = Math.round((zone[0].mapDiff+2)*12.5*((selectedBatType.mining.rate*selectedBatType.mining.level)+30)/12);
             if (coffre.transRes['Morphite'] === undefined) {
                 coffre.transRes['Morphite'] = resNum;

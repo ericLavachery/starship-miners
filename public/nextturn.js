@@ -792,6 +792,7 @@ function turnInfo() {
     let fuzzTotal = 0;
     let foggersTiles = [];
     let dogTiles = [];
+    let radarTiles = [];
     let zombifiersTiles = [];
     let roboControlers = [];
     let controlRange = 3;
@@ -837,6 +838,9 @@ function turnInfo() {
             if (batType.skills.includes('snif')) {
                 dogTiles.push(bat.tileId);
             }
+            if (batType.skills.includes('radar') || bat.eq === 'e-radar' || bat.logeq === 'e-radar') {
+                radarTiles.push(bat.tileId);
+            }
             if (bat.eq === 'e-control' || bat.logeq === 'e-control' || batType.skills.includes('control')) {
                 roboControlers.push(bat.tileId);
             }
@@ -849,8 +853,8 @@ function turnInfo() {
             if (batType.skills.includes('transorbital') && bat.eq != 'siland') {
                 landingNoise = landingNoise+Math.floor(batType.hp/75*batType.fuzz*batType.fuzz/25)+2;
             }
-            if (zone[0].dark && !bat.tags.includes('camo')) {
-                if (batType.skills.includes('phare') || batType.skills.includes('bigflash') || bat.eq === 'e-phare' || bat.logeq === 'e-phare') {
+            if (zone[0].dark) {
+                if (batType.skills.includes('phare') || batType.skills.includes('bigflash') || bat.eq === 'e-phare' || bat.logeq === 'e-phare' || batType.skills.includes('radar') || bat.eq === 'e-radar' || bat.logeq === 'e-radar') {
                     unDarkVision(bat,batType);
                 }
             }
@@ -879,6 +883,7 @@ function turnInfo() {
     setCoconStats();
     // foggedTiles
     let distance;
+    let radarDistance = 3+playerInfos.comp.det;
     foggedTiles = [];
     doggedTiles = [];
     zombifiedTiles = [];
@@ -896,6 +901,14 @@ function turnInfo() {
             if (!doggedTiles.includes(tile.id)) {
                 distance = calcDistance(tile.id,dogTile);
                 if (distance <= 2) {
+                    doggedTiles.push(tile.id);
+                }
+            }
+        });
+        radarTiles.forEach(function(radarTile) {
+            if (!doggedTiles.includes(tile.id)) {
+                distance = calcDistance(tile.id,radarTile);
+                if (distance <= radarDistance) {
                     doggedTiles.push(tile.id);
                 }
             }

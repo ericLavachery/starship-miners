@@ -895,6 +895,19 @@
         "deploy":{"Energie":54}
     },
     {
+        "name":"e-radar",
+        "cat":"equip",
+        "skills":[],
+        "info":"Vision++",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"energ":2,"log":1,"det":3},
+        "altCompReq":{"log":1,"det":4},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Silicium":30,"Electros":60,"Batteries":12},
+        "deploy":{"Energie":36}
+    },
+    {
         "name":"e-road",
         "cat":"equip",
         "skills":[],

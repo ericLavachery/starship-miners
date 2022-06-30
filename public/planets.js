@@ -474,10 +474,29 @@ function unDarkVision(bat,batType) {
             lumDistance++;
         }
     }
+    if (bat.tags.includes('camo')) {
+        hasPhare = false;
+        lumDistance = 0;
+    }
+    let radarDistance = 0;
+    let hasRadar = false;
+    if (batType.skills.includes('radar') || bat.eq === 'e-radar' || bat.logeq === 'e-radar') {
+        hasRadar = true;
+    }
+    if (hasRadar) {
+        radarDistance = radarDistance+3+playerInfos.comp.det;
+        if (batType.skills.includes('fly')) {
+            radarDistance = radarDistance+3;
+        } else {
+            let batTile = getTile(bat);
+            let batTerrain = getTerrain(tile);
+            radarDistance = radarDistance+batTerrain.scarp;
+        }
+    }
     zone.forEach(function(tile) {
         if (!undarkNow.includes(tile.id)) {
             let distance = calcDistance(bat.tileId,tile.id);
-            if (distance <= lumDistance) {
+            if (distance <= lumDistance || distance <= radarDistance) {
                 undarkNow.push(tile.id);
                 if (!zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
                     zone[0].undarkOnce.push(tile.id);

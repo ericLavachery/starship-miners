@@ -714,7 +714,7 @@
             "ammo":["standard"]
         },
         "protection":[],
-        "equip":["aucun","lunette","w2-guidage","w2-autopistol"],
+        "equip":["aucun","lunette","w2-guidage","w2-autopistol","e-radar"],
         "log3eq":["lunette"],
         "moveCost":99,
         "maxFlood":-1,
@@ -772,7 +772,7 @@
             "ravitBld":"Générateur"
         },
         "protection":[],
-        "equip":["aucun","lunette1","chargeur1"],
+        "equip":["aucun","lunette1","chargeur1","e-radar"],
         "log3eq":["lunette1"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1304,6 +1304,7 @@
         },
         "weapon2":{},
         "protection":[],
+        "equip":["e-radar"],
         "log3eq":[],
         "moveCost":99,
         "maxFlood":-1,
