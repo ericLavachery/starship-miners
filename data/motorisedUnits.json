@@ -3649,7 +3649,7 @@
         "kind":"zero-extraction",
         "squads":3,
         "squadSize":3,
-        "crew":13,
+        "crew":12,
         "hp":90,
         "armor":7,
         "size":27,
@@ -3665,7 +3665,7 @@
             "isBow":true,
             "noBis":true,
             "noise":0,
-            "rof":39,
+            "rof":36,
             "accuracy":20,
             "dca":1.25,
             "power":6,
@@ -3848,7 +3848,7 @@
         "mecanoCost":6,
         "mining":{
             "level":4,
-            "rate":32,
+            "rate":30,
             "multi":true,
             "types":["Mine","Derrick","Pompe","Comptoir","Scrap"],
             "subTypes":[]

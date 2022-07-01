@@ -236,8 +236,28 @@ function adjCraftFactor(craft,craftFactor) {
     }
     if (!noFactor) {
         craftFactor = craftFactor*(100+playerInfos.crime)/100;
+        let energyCrafting = false;
+        if (craft.result === 'Energie') {
+            energyCrafting = true;
+        }
+        let scrapCrafting = false;
+        let morphCrafting = false;
+        if (craft.result === 'Scrap') {
+            scrapCrafting = true;
+        }
+        if (craft.cost['Scrap'] != undefined) {
+            scrapCrafting = true;
+        }
+        if (craft.cost['Morphite'] != undefined) {
+            morphCrafting = true;
+        }
+        // ENERGIE
+        if (energyCrafting) {
+            let energyFactor = energyCreation(100)/100;
+            craftFactor = craftFactor/energyFactor;
+        }
         // INDUSTRIE
-        if (playerInfos.comp.ind >= 1 && playerInfos.bldList.includes('Atelier')) {
+        if (playerInfos.comp.ind >= 1 && playerInfos.bldList.includes('Atelier') && !energyCrafting && !morphCrafting) {
             let indusLevel = playerInfos.comp.ind;
             if (playerInfos.bldList.includes('Usine')) {
                 indusLevel = indusLevel+2;
@@ -253,17 +273,6 @@ function adjCraftFactor(craft,craftFactor) {
         }
         // RECYCLAGE
         if (playerInfos.comp.tri >= 1 && playerInfos.bldList.includes('Décharge')) {
-            let scrapCrafting = false;
-            let morphCrafting = false;
-            if (craft.result === 'Scrap') {
-                scrapCrafting = true;
-            }
-            if (craft.cost['Scrap'] != undefined) {
-                scrapCrafting = true;
-            }
-            if (craft.cost['Morphite'] != undefined) {
-                morphCrafting = true;
-            }
             if (scrapCrafting || morphCrafting) {
                 let recupLevel = playerInfos.comp.tri;
                 if (playerInfos.bldList.includes('Recyclab') && !craft.bldReq.includes('Recyclab')) {
@@ -283,7 +292,7 @@ function adjCraftFactor(craft,craftFactor) {
         }
         // CONSTRUCTION
         if (playerInfos.comp.const >= 1) {
-            if (craft.cost['Scrap'] === undefined) {
+            if (!scrapCrafting) {
                 if (craft.result === 'Compo1' || craft.result === 'Compo2' || craft.result === 'Compo3') {
                     let compoLevel = playerInfos.comp.const;
                     if (craft.compReq['const'] != undefined) {
@@ -369,11 +378,15 @@ function showCraftCompReqs(craft) {
 };
 
 function energyCreation(energyCreated) {
-    let energyComp = playerInfos.comp.energ;
-    if (energyComp === 3) {
-        energyComp = 4;
+    let energyComp = 0;
+    if (playerInfos.comp.energ === 1) {
+        energyComp = 2;
+    } else if (playerInfos.comp.energ === 2) {
+        energyComp = 3;
+    } else if (playerInfos.comp.energ === 3) {
+        energyComp = 5;
     }
-    energyCreated = Math.round(energyCreated*(energyComp+6)/6);
+    energyCreated = Math.round(energyCreated*(energyComp+5)/8);
     return energyCreated;
 };
 
@@ -394,23 +407,25 @@ function scrapCreation(scrapCreated) {
 };
 
 function cramPower(res,neededRes) {
-    let energyComp = playerInfos.comp.energ;
-    if (energyComp === 3) {
-        energyComp = 4;
+    let energyComp = 0;
+    if (playerInfos.comp.energ === 1) {
+        energyComp = 2;
+    } else if (playerInfos.comp.energ === 2) {
+        energyComp = 3;
+    } else if (playerInfos.comp.energ === 3) {
+        energyComp = 5;
     }
-    neededRes = Math.round(neededRes/(energyComp+13)*13);
+    neededRes = Math.round(neededRes/(energyComp+5)*8);
     if (res.name === 'Huile' || res.name === 'Fuel' || res.name === 'Pyrus' || res.name === 'Pyratol' || res.name === 'Hydrocarbure') {
-        neededRes = Math.round(neededRes/(playerInfos.comp.pyro+6)*6);
-    } else if (res.bld === 'Derrick') {
-        neededRes = Math.round(neededRes/(playerInfos.comp.explo+6)*6);
+        neededRes = Math.round(neededRes/(playerInfos.comp.pyro+7)*7);
     } else if (res.name === 'Scrap') {
-        neededRes = Math.round(neededRes/(playerInfos.comp.tri+4)*4);
+        neededRes = Math.round(neededRes/(playerInfos.comp.tri+5)*5);
     } else if (res.bld === 'Comptoir') {
-        neededRes = Math.round(neededRes/(playerInfos.comp.tri+8)*8);
+        neededRes = Math.round(neededRes/(playerInfos.comp.tri+9)*9);
     } else if (res.cat === 'alien') {
         neededRes = Math.round(neededRes/(playerInfos.comp.ca+10)*10);
     } else if (res.cat === 'transfo') {
-        neededRes = Math.round(neededRes/(playerInfos.comp.tri+8)*8);
+        neededRes = Math.round(neededRes/(playerInfos.comp.tri+9)*9);
     } else {
         neededRes = Math.round(neededRes/(energyComp+10)*10);
     }

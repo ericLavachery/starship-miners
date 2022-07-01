@@ -1578,7 +1578,7 @@ function skillsInfos(bat,batType,near) {
         }
     }
     // CRISTAUX
-    if (batType.skills.includes('extraction') && !inMelee && !playerInfos.onShip) {
+    if (batType.skills.includes('extraction') && batType.cat != 'buildings' && !inMelee && !playerInfos.onShip) {
         if (batType.mining.rate >= 10) {
             if (tile.infra != undefined) {
                 if (tile.infra === 'Crystal') {
@@ -1586,8 +1586,10 @@ function skillsInfos(bat,batType,near) {
                     if (apCost > Math.round(bat.ap*2.5)) {
                         apCost = Math.round(bat.ap*2.5);
                     }
+                    let morphMining = getMorphiteRate(bat,batType);
+                    let morphRate = Math.round(morphMining/1.87);
                     if (bat.apLeft >= 7) {
-                        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Récupérer la Morphite" class="boutonCaca skillButtons" onclick="getMorphite('+apCost+')"><i class="far fa-gem"></i> <span class="small">'+apCost+'</span></button>&nbsp; Extraction</h4></span>');
+                        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Récupérer la Morphite (Efficacité '+morphRate+'%)" class="boutonCaca skillButtons" onclick="getMorphite('+apCost+')"><i class="far fa-gem"></i> <span class="small">'+apCost+'</span></button>&nbsp; Extraction</h4></span>');
                     } else {
                         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Pas assez de PA (7 requis)" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="far fa-gem"></i> <span class="small">'+apCost+'</span></button>&nbsp; Extraction</h4></span>');
                     }

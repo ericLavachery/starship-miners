@@ -7,8 +7,16 @@ function getMorphite(apCost) {
             conselTriche = true;
             putBatAround(selectedBat.tileId,false,'noWater',239,0,'go');
             let coffre = getZoneBatByTileId(coffreTileId);
-            let resNum = Math.round((zone[0].mapDiff+2)*rand.rand(10,15)*((selectedBatType.mining.rate*(selectedBatType.mining.level+1))+30)/16);
-            // let resNum = Math.round((zone[0].mapDiff+2)*12.5*((selectedBatType.mining.rate*selectedBatType.mining.level)+30)/12);
+            // let people = selectedBatType.crew;
+            // if (people === 0) {people = 1;}
+            // let crew = selectedBatType.squads*selectedBatType.squadSize*people;
+            // let miningRate = selectedBatType.mining.rate+10;
+            // if (selectedBat.eq === 'g2tools' || selectedBat.logeq === 'g2tools') {
+            //     miningRate = miningRate+10;
+            // }
+            // let morphMining = (miningRate*(selectedBatType.mining.level+0.5))+30+(crew/2);
+            let morphMining = getMorphiteRate(selectedBat,selectedBatType);
+            let resNum = Math.round((zone[0].mapDiff+2)*rand.rand(10,15)*morphMining/30);
             if (coffre.transRes['Morphite'] === undefined) {
                 coffre.transRes['Morphite'] = resNum;
             } else {
@@ -24,7 +32,19 @@ function getMorphite(apCost) {
         }
     }
     showBatInfos(selectedBat);
-}
+};
+
+function getMorphiteRate(bat,batType) {
+    let people = batType.crew;
+    if (people === 0) {people = 1;}
+    let crew = batType.squads*batType.squadSize*people;
+    let miningRate = batType.mining.rate+10;
+    if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
+        miningRate = miningRate+10;
+    }
+    let morphMining = (miningRate*(batType.mining.level+0.5))+30+(crew/2);
+    return morphMining;
+};
 
 function extraction(apCost) {
     selectMode();
