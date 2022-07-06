@@ -468,7 +468,8 @@
         "cat": "transfo",
         "batch": 2,
         "energie": 4,
-        "equiv": 3
+        "equiv": 3,
+        "planets":{"Dom":0,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":0}
     },
     {
         "id": 33,

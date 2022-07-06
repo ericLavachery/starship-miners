@@ -1027,26 +1027,28 @@ function attack(melee,init) {
         }
     }
     // freeze
-    if (totalDamage >= 50 || totalDamage >= Math.round(targetBatType.hp*targetBatType.squadSize/2) || (totalDamage >= 1 && selectedWeap.ammo.includes('hypo-'))) {
-        if (selectedWeap.ammo.includes('freeze')) {
-            if (targetBatType.cat === 'aliens') {
-                if (!targetBat.tags.includes('freeze')) {
-                    targetBat.tags.push('freeze');
-                    targetBat.tags.push('freeze');
-                    targetBat.tags.push('freeze');
-                } else {
-                    targetBat.tags.push('freeze');
-                    targetBat.tags.push('freeze');
+    if (targetBatType.cat === 'aliens' && targetBatType.kind != 'game') {
+        if (totalDamage >= 50 || totalDamage >= Math.round(targetBatType.hp*targetBatType.squadSize/2) || (totalDamage >= 1 && selectedWeap.ammo.includes('hypo-'))) {
+            if (selectedWeap.ammo.includes('freeze')) {
+                if (targetBatType.cat === 'aliens') {
+                    if (!targetBat.tags.includes('freeze')) {
+                        targetBat.tags.push('freeze');
+                        targetBat.tags.push('freeze');
+                        targetBat.tags.push('freeze');
+                    } else {
+                        targetBat.tags.push('freeze');
+                        targetBat.tags.push('freeze');
+                    }
+                    if (selectedWeap.ammo === 'hypo-freeze') {
+                        targetBat.tags.push('freeze');
+                        targetBat.tags.push('freeze');
+                        targetBat.tags.push('freeze');
+                        targetBat.tags.push('freeze');
+                        targetBat.tags.push('freeze');
+                    }
+                    // console.log('Bossium Freeze!');
+                    $('#report').append('<span class="report rose">Freeze<br></span>');
                 }
-                if (selectedWeap.ammo === 'hypo-freeze') {
-                    targetBat.tags.push('freeze');
-                    targetBat.tags.push('freeze');
-                    targetBat.tags.push('freeze');
-                    targetBat.tags.push('freeze');
-                    targetBat.tags.push('freeze');
-                }
-                // console.log('Bossium Freeze!');
-                $('#report').append('<span class="report rose">Freeze<br></span>');
             }
         }
     }
@@ -1834,26 +1836,28 @@ function defense(melee,init) {
         }
     }
     // freeze
-    if (totalDamage >= 50 || totalDamage >= Math.round(selectedBatType.hp*selectedBatType.squadSize/2) || (totalDamage >= 1 && targetWeap.ammo.includes('hypo-'))) {
-        if (targetWeap.ammo.includes('freeze')) {
-            if (selectedBatType.cat === 'aliens') {
-                if (!selectedBat.tags.includes('freeze')) {
-                    selectedBat.tags.push('freeze');
-                    selectedBat.tags.push('freeze');
-                    selectedBat.tags.push('freeze');
-                } else {
-                    selectedBat.tags.push('freeze');
-                    selectedBat.tags.push('freeze');
+    if (selectedBatType.cat === 'aliens' && selectedBatType.kind != 'game') {
+        if (totalDamage >= 50 || totalDamage >= Math.round(selectedBatType.hp*selectedBatType.squadSize/2) || (totalDamage >= 1 && targetWeap.ammo.includes('hypo-'))) {
+            if (targetWeap.ammo.includes('freeze')) {
+                if (selectedBatType.cat === 'aliens') {
+                    if (!selectedBat.tags.includes('freeze')) {
+                        selectedBat.tags.push('freeze');
+                        selectedBat.tags.push('freeze');
+                        selectedBat.tags.push('freeze');
+                    } else {
+                        selectedBat.tags.push('freeze');
+                        selectedBat.tags.push('freeze');
+                    }
+                    if (targetWeap.ammo === 'hypo-freeze') {
+                        selectedBat.tags.push('freeze');
+                        selectedBat.tags.push('freeze');
+                        selectedBat.tags.push('freeze');
+                        selectedBat.tags.push('freeze');
+                        selectedBat.tags.push('freeze');
+                    }
+                    // console.log('Bossium Freeze!');
+                    $('#report').append('<span class="report rose">Freeze<br></span>');
                 }
-                if (targetWeap.ammo === 'hypo-freeze') {
-                    selectedBat.tags.push('freeze');
-                    selectedBat.tags.push('freeze');
-                    selectedBat.tags.push('freeze');
-                    selectedBat.tags.push('freeze');
-                    selectedBat.tags.push('freeze');
-                }
-                // console.log('Bossium Freeze!');
-                $('#report').append('<span class="report rose">Freeze<br></span>');
             }
         }
     }

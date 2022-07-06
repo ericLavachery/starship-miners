@@ -1999,7 +1999,7 @@ function addStartPack() {
     addFreeBat(1828,'Forum');
     addFreeBat(1949,'Serres hydroponiques');
     addFreeBat(1948,'Cantine');
-    addFreeBat(1893,'Aérodocks');
+    // addFreeBat(1893,'Aérodocks');
     addFreeBat(1833,'Générateur');
     addFreeBat(1773,'Crameur');
     addFreeBat(1707,'Dortoirs');

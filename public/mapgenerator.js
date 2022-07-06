@@ -1381,7 +1381,7 @@ function addRes(zone) {
     let fruChance = (rand.rand(2,6)*20); // plus bas = plus de chances
     let fruRes = getResByName('Fruits');
     fruChance = Math.round(fruChance/fruRes.planets[zone[0].planet]);
-    let fruDiv = 1.25;
+    let fruDiv = 1.75;
     let fruHere = false;
     console.log('numBadTer: '+numBadTer);
     if (playerInfos.sondeDanger >= 1) {

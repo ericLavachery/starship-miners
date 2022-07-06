@@ -1790,6 +1790,7 @@ function nextBat(removeActiveBat,removeForever) {
     } else {
         saveGame();
         batUnselect();
+        centerMap();
     }
     // console.log(batList);
 };

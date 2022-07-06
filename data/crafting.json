@@ -1037,7 +1037,7 @@
     {
         "id":136,
         "result":"Nourriture",
-        "cost":{"Fruits":10,"Viande":5,"Energie":2},
+        "cost":{"Fruits":10,"Viande":10,"Energie":2},
         "compReq":{},
         "bldReq":["Cantine"],
         "batch":4,
@@ -1047,7 +1047,7 @@
     {
         "id":73,
         "result":"Nourriture",
-        "cost":{"Fruits":8,"Viande":4,"Végétaux":5,"Energie":1},
+        "cost":{"Fruits":8,"Viande":8,"Végétaux":5,"Energie":1},
         "compReq":{"tri":1},
         "bldReq":["Cantine"],
         "batch":4,
@@ -1057,7 +1057,7 @@
     {
         "id":83,
         "result":"Nourriture",
-        "cost":{"Fruits":6,"Viande":3,"Végétaux":5,"Energie":3},
+        "cost":{"Fruits":6,"Viande":6,"Végétaux":5,"Energie":3},
         "compReq":{"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4,
@@ -1067,7 +1067,7 @@
     {
         "id":84,
         "result":"Nourriture",
-        "cost":{"Fruits":5,"Viande":2,"Végétaux":5,"Energie":4},
+        "cost":{"Fruits":5,"Viande":4,"Végétaux":5,"Energie":4},
         "compReq":{"ind":2},
         "bldReq":["Usine"],
         "batch":4,
@@ -1077,7 +1077,7 @@
     {
         "id":161,
         "result":"Nourriture",
-        "cost":{"Fruits":5,"Viande":2,"Végétaux":5,"Energie":4},
+        "cost":{"Fruits":5,"Viande":4,"Végétaux":5,"Energie":4},
         "compReq":{"ind":3},
         "bldReq":["Usine"],
         "batch":5,

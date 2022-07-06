@@ -422,7 +422,7 @@ function canCamo(bat,batType,tile) {
     }
     if (tile.ruins) {
         if (batType.size < 20) {
-            if (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+            if (!batType.skills.includes('robot') || batType.skills.includes('aicamo') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
                 iCanCamo = true;
             }
         }
@@ -436,7 +436,9 @@ function canCamo(bat,batType,tile) {
     }
     if (zone[0].planet === 'Sarak') {
         if (batType.cat != 'buildings' && batType.size < 50) {
-            iCanCamo = true;
+            if (!batType.skills.includes('robot') || batType.skills.includes('aicamo') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                iCanCamo = true;
+            }
         }
     }
     if (bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'e-camo' || bat.logeq === 'e-camo') {
