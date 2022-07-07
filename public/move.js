@@ -58,7 +58,7 @@ function clickMove(tileId) {
             jmc = jmc*1.33;
         }
         if (selectedBat.tags.includes('sudu')) {
-            jmc = jmc/1.15;
+            jmc = jmc*mcSudu;
         }
         jmc = jmc*moveTuning;
         if (Math.floor(distance) <= Math.floor(selectedBat.apLeft/jmc) && selectedBat.tileId != tileId) {
@@ -232,7 +232,7 @@ function moveInfos(bat,jump) {
                 jmc = jmc*1.33;
             }
             if (selectedBat.tags.includes('sudu')) {
-                jmc = jmc/1.15;
+                jmc = jmc*mcSudu;
             }
             jmc = jmc*moveTuning;
             if (Math.floor(distance) <= Math.floor(selectedBat.apLeft/jmc)) {
@@ -307,7 +307,7 @@ function moveSelectedBat(tileId,free,jump) {
                 jmc = jmc*1.33;
             }
             if (selectedBat.tags.includes('sudu')) {
-                jmc = jmc/1.15;
+                jmc = jmc*mcSudu;
             }
             jmc = jmc*moveTuning;
             apLost = distance*jmc;
@@ -679,7 +679,7 @@ function calcMoveCost(targetTileId,diag) {
         baseMoveCost = baseMoveCost*0.85;
     }
     if (selectedBat.tags.includes('sudu')) {
-        baseMoveCost = baseMoveCost/1.15;
+        baseMoveCost = baseMoveCost*mcSudu;
     }
     if (playerInfos.comp.trans === 3 && selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot') && !selectedBatType.skills.includes('cyber') && selectedBatType.moveCost < 90) {
         baseMoveCost = baseMoveCost*0.9;

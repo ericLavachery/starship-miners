@@ -1360,7 +1360,7 @@ function skillsInfos(bat,batType,near) {
                 }
             }
             // SUDU
-            if (batType.cat === 'vehicles' && !batType.skills.includes('cyber') && !batType.skills.includes('robot') && !batType.skills.includes('emoteur')) {
+            if (batType.cat === 'vehicles' && !batType.skills.includes('cyber') && !batType.skills.includes('robot') && !batType.skills.includes('emoteur') && batType.moveCost < 90) {
                 if (allDrugs.includes('sudu') || bat.tags.includes('sudu')) {
                     drug = getDrugByName('sudu');
                     drugCompOK = checkCompReq(drug);

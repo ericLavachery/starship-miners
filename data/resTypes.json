@@ -73,7 +73,7 @@
         "energie": -1,
         "equiv": 1,
         "ctri": 10,
-        "planets":{"Dom":1,"Sarak":2,"Gehenna":1.5,"Kzin":1,"Horst":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1.5,"Kzin":1,"Horst":1}
     },
     {
         "id": 5,
@@ -98,7 +98,8 @@
         "batch": 3,
         "energie": -1,
         "equiv": 1,
-        "ctri": 15
+        "ctri": 15,
+        "planets":{"Dom":1,"Sarak":0.5,"Gehenna":1.2,"Kzin":0.5,"Horst":0.5}
     },
     {
         "id": 7,
@@ -123,7 +124,7 @@
         "batch": 6,
         "energie": 20,
         "equiv": 0.7,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":0.5,"Kzin":1,"Horst":3}
+        "planets":{"Dom":1,"Sarak":0.5,"Gehenna":0.5,"Kzin":1,"Horst":3}
     },
     {
         "id": 9,
@@ -137,7 +138,7 @@
         "equiv": 1,
         "pter": [2,"M"],
         "rlab": 5,
-        "planets":{"Dom":1,"Sarak":2,"Gehenna":0.7,"Kzin":1,"Horst":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0.7,"Kzin":1,"Horst":1.5}
     },
     {
         "id": 10,
@@ -187,7 +188,7 @@
         "energie": -1,
         "equiv": 1.5,
         "rlab": 5,
-        "planets":{"Dom":1,"Sarak":2,"Gehenna":1.2,"Kzin":2,"Horst":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0.7,"Kzin":1,"Horst":1.5}
     },
     {
         "id": 14,
@@ -200,7 +201,7 @@
         "energie": -1,
         "equiv": 1,
         "rlab": 5,
-        "planets":{"Dom":1,"Sarak":2,"Gehenna":1,"Kzin":1,"Horst":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1.5,"Kzin":1,"Horst":1}
     },
     {
         "id": 15,
@@ -225,7 +226,7 @@
         "energie": 0.75,
         "cramBld": "Centrale nucléaire",
         "equiv": 1,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1.2,"Kzin":2,"Horst":1}
+        "planets":{"Dom":1,"Sarak":0.5,"Gehenna":1.2,"Kzin":2,"Horst":1}
     },
     {
         "id": 17,
@@ -349,7 +350,7 @@
         "batch": 5,
         "energie": -1,
         "equiv": 1,
-        "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0,"Kzin":0.7,"Horst":0}
+        "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0,"Kzin":0.5,"Horst":0}
     },
     {
         "id": 24,
@@ -386,7 +387,7 @@
         "batch": 4,
         "energie": -1,
         "equiv": 0,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":4}
+        "planets":{"Dom":1,"Sarak":2,"Gehenna":1,"Kzin":1,"Horst":5}
     },
     {
         "id": 27,
@@ -433,7 +434,8 @@
         "batch": 3,
         "energie": -1,
         "equiv": 1,
-        "rlab": 5
+        "rlab": 5,
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":3,"Kzin":1,"Horst":1}
     },
     {
         "id": 31,
@@ -466,7 +468,7 @@
         "level": 4,
         "rarity": 1,
         "cat": "transfo",
-        "batch": 2,
+        "batch": 1,
         "energie": 4,
         "equiv": 3,
         "planets":{"Dom":0,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":0}
