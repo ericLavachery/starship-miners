@@ -745,7 +745,7 @@
     {
         "id":269,
         "name":"Kuristos",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":11,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":9,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Centre de recherches"],
         "compReq":{"cyber":1,"train":1},
         "costs":{"Fer":192,"Scrap":160,"Bois":32,"Carbone":32,"Aluminium":64,"Moteurs":32,"Tungstène":16,"Titane":113,"Electros":32,"Batteries":32,"Cuivre":51,"Silicium":32,"Végétaux":64,"Soufre":32,"Plomb":32,"Oxygène":64,"Chlore":10,"Tissus":5},
@@ -800,13 +800,24 @@
     },
     {
         "id":88,
+        "name":"Seraphs",
+        "levels":{"rednecks":99,"blades":99,"bulbos":14,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Chaîne de montage","Arsenal","Centre de recherches"],
+        "compReq":{"cyber":2},
+        "compHardReq":{"energ":1},
+        "costs":{"Fer":96,"Scrap":72,"Carbone":72,"Bois":24,"Aluminium":48,"Moteurs":60,"Titane":144,"Tungstène":48,"Bore":48,"Electros":120,"Batteries":56,"Cuivre":43,"Silicium":24,"Nickel":48,"Fuel":48,"Soufre":48,"Plomb":48,"Chlore":21,"Zinc":21,"Tissus":10},
+        "deploy":{"Fuel":80,"Energie":25,"Huile":5,"Drogues":7,"Chlore":3,"Zinc":3,"Tissus":3},
+        "fabTime":80
+    },
+    {
+        "id":295,
         "name":"Noise Angels",
-        "levels":{"rednecks":16,"blades":99,"bulbos":14,"drogmulojs":99,"tiradores":14,"detruas":99,"brasier":99},
+        "levels":{"rednecks":16,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":12,"detruas":99,"brasier":99},
         "bldReq":["Chaîne de montage","Arsenal","Centre de recherches"],
         "compReq":{"cyber":2},
         "compPass":["tiradores"],
         "compHardReq":{"cyber":1,"energ":1},
-        "costs":{"Fer":96,"Scrap":72,"Carbone":72,"Bois":24,"Aluminium":48,"Moteurs":60,"Titane":144,"Tungstène":48,"Bore":24,"Electros":80,"Batteries":32,"Cuivre":43,"Silicium":24,"Nickel":48,"Fuel":48,"Soufre":48,"Plomb":48,"Chlore":21,"Zinc":21,"Tissus":10},
+        "costs":{"Fer":96,"Scrap":72,"Carbone":72,"Aluminium":48,"Moteurs":60,"Titane":72,"Tungstène":48,"Electros":96,"Batteries":32,"Cuivre":43,"Silicium":24,"Nickel":48,"Fuel":48,"Soufre":48,"Plomb":48,"Chlore":21,"Zinc":21,"Tissus":10},
         "deploy":{"Fuel":80,"Energie":25,"Huile":5,"Drogues":7,"Chlore":3,"Zinc":3,"Tissus":3},
         "fabTime":80
     },
@@ -816,7 +827,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":15},
         "bldReq":["Chaîne de montage","Arsenal","Centre de recherches"],
         "compReq":{"cyber":2},
-        "costs":{"Scrap":120,"Carbone":72,"Aluminium":144,"Moteurs":60,"Titane":96,"Tungstène":72,"Electros":80,"Batteries":32,"Cuivre":43,"Silicium":24,"Nickel":48,"Fuel":48,"Energie":96,"Chlore":10,"Tissus":5},
+        "costs":{"Scrap":120,"Carbone":72,"Aluminium":144,"Moteurs":60,"Titane":96,"Tungstène":72,"Electros":96,"Batteries":32,"Cuivre":43,"Silicium":24,"Nickel":48,"Fuel":48,"Energie":96,"Chlore":10,"Tissus":5},
         "deploy":{"Fuel":80,"Energie":25,"Drogues":3,"Tissus":2},
         "fabTime":80
     },
@@ -1585,7 +1596,7 @@
     {
         "id":128,
         "name":"Looters",
-        "levels":{"rednecks":8,"blades":4,"bulbos":6,"drogmulojs":5,"tiradores":9,"detruas":8,"brasier":7},
+        "levels":{"rednecks":8,"blades":4,"bulbos":6,"drogmulojs":5,"tiradores":7,"detruas":8,"brasier":7},
         "bldReq":["Garage","Atelier"],
         "compReq":{"cam":1},
         "compPass":["blades"],
@@ -1853,7 +1864,6 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":18,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Aérodocks","Centre de com"],
         "compReq":{"aero":1},
-        "compPass":["tiradores"],
         "costs":{"Fer":28,"Scrap":28,"Carbone":224,"Aluminium":288,"Moteurs":180,"Titane":810,"Tungstène":28,"Cuivre":110,"Electros":224,"Batteries":202,"Cobalt":30,"Hélium":60,"Plomb":42,"Soufre":42,"Fuel":70},
         "deploy":{"Fuel":390,"Electros":10,"Batteries":5},
         "fabTime":180

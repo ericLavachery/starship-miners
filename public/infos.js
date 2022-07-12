@@ -193,6 +193,11 @@ function batInfos(bat,batType,pop) {
     }
     let roundApLeft = bat.apLeft.toFixedNumber(1);
     $('#'+bodyPlace).append('<span class="paramName">Points d\'action</span><span class="paramIcon"><i class="fas fa-hourglass-'+hourglass+'"></i></span><span class="paramValue">'+roundApLeft+'/'+ap+'</span><br>');
+    let baseMoveCost = calcBaseMoveCost(bat,batType);
+    let mvmt = ap/baseMoveCost;
+    mvmt = mvmt.toFixedNumber(1);
+    if (batType.moveCost > 90) {mvmt = 0;}
+    $('#'+bodyPlace).append('<span class="paramName">Mouvement</span><span class="paramIcon"><i class="fas fa-hourglass-'+hourglass+'"></i></span><span class="paramValue">'+mvmt+'</span><br>');
     // SQUADS
     let iconCol = 'gff';
     if (bat.squadsLeft < batType.squads) {

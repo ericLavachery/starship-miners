@@ -638,52 +638,58 @@ function terrainAccess(batId,targetTileId) {
     return access;
 };
 
-function calcMoveCost(targetTileId,diag) {
-    let tile = getTileById(targetTileId);
-    let terIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
-    let terrain = terrainTypes[terIndex];
-    let baseMoveCost = selectedBatType.moveCost;
-    if (selectedBat.eq === 'kit-garde' || selectedBat.eq === 'kit-sentinelle') {
+function calcBaseMoveCost(bat,batType) {
+    let baseMoveCost = batType.moveCost;
+    if (bat.eq === 'kit-garde' || bat.eq === 'kit-sentinelle') {
         baseMoveCost = 4;
     }
-    if (selectedBat.eq === 'kit-artilleur' || selectedBat.eq === 'kit-guetteur') {
+    if (bat.eq === 'kit-artilleur' || bat.eq === 'kit-guetteur') {
         baseMoveCost = 5;
     }
-    if (selectedBat.eq === 'e-phare' && selectedBatType.cat === 'infantry') {
+    if (bat.eq === 'e-phare' && batType.cat === 'infantry') {
         baseMoveCost = 7;
     }
-    if (selectedBat.eq === 'kit-pompiste') {
+    if (bat.eq === 'kit-pompiste') {
         baseMoveCost = 4;
     }
-    if (selectedBat.eq === 'w2-canon') {
+    if (bat.eq === 'w2-canon') {
         baseMoveCost = 9;
     }
-    if (selectedBat.tags.includes('genslow')) {
-        if (selectedBatType.moveCost >= 3) {
+    if (bat.tags.includes('genslow')) {
+        if (batType.moveCost >= 3) {
             baseMoveCost = baseMoveCost+1;
         } else {
             baseMoveCost = baseMoveCost+0.5;
         }
     }
-    if (selectedBat.tags.includes('genfast')) {
-        if (selectedBatType.moveCost >= 3) {
+    if (bat.tags.includes('genfast')) {
+        if (batType.moveCost >= 3) {
             baseMoveCost = baseMoveCost-1;
         } else {
             baseMoveCost = baseMoveCost-0.5;
         }
     }
-    if (selectedBat.tags.includes('zombie')) {
+    if (bat.tags.includes('zombie')) {
         baseMoveCost = baseMoveCost*1.5;
     }
-    if (selectedBat.eq === 'helper' || selectedBat.logeq === 'helper') {
+    if (bat.eq === 'helper' || bat.logeq === 'helper') {
         baseMoveCost = baseMoveCost*0.85;
     }
-    if (selectedBat.tags.includes('sudu')) {
+    if (bat.tags.includes('sudu')) {
         baseMoveCost = baseMoveCost*mcSudu;
     }
-    if (playerInfos.comp.trans === 3 && selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot') && !selectedBatType.skills.includes('cyber') && selectedBatType.moveCost < 90) {
+    if (playerInfos.comp.trans === 3 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
         baseMoveCost = baseMoveCost*0.9;
     }
+    baseMoveCost = baseMoveCost*moveTuning;
+    return baseMoveCost;
+}
+
+function calcMoveCost(targetTileId,diag) {
+    let tile = getTileById(targetTileId);
+    let terIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
+    let terrain = terrainTypes[terIndex];
+    let baseMoveCost = calcBaseMoveCost(selectedBat,selectedBatType);
     let moveCost;
     if (tile.rd && !selectedBatType.skills.includes('hover')) {
         moveCost = baseMoveCost+terrain.roadmc;
@@ -741,7 +747,7 @@ function calcMoveCost(targetTileId,diag) {
             moveCost = moveCost*1.5;
         }
     }
-    moveCost = moveCost*moveTuning;
+    // moveCost = moveCost*moveTuning;
     moveCost = moveCost.toFixedNumber(1);
     // if (playerInfos.onShip) {
     //     moveCost = 0;
