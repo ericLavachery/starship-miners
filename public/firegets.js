@@ -1970,6 +1970,8 @@ function weaponAdj(weapon,bat,wn) {
                 let tgr = getTGuetRange();
                 thisWeapon.range = thisWeapon.range+tgr.range;
                 thisWeapon.elevation = thisWeapon.elevation+tgr.elev;
+            } else if (batType.skills.includes('fly')) {
+                thisWeapon.range = thisWeapon.range+1;
             } else {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }
@@ -2024,6 +2026,8 @@ function weaponAdj(weapon,bat,wn) {
                 let tgr = getTGuetRange();
                 thisWeapon.range = thisWeapon.range+tgr.range;
                 thisWeapon.elevation = thisWeapon.elevation+tgr.elev;
+            } else if (batType.skills.includes('fly')) {
+                thisWeapon.range = thisWeapon.range+1;
             } else {
                 thisWeapon.elevation = thisWeapon.elevation+1;
             }

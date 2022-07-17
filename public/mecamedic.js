@@ -770,15 +770,18 @@ function goFreeze(bat) {
 
 function addHealFlag(bat) {
     let batType = getBatType(bat);
-    let medComp = playerInfos.comp.med;
+    let medComp = (playerInfos.comp.med+1)*(playerInfos.comp.med+1);
     if (playerInfos.comp.med >= 3) {
-        medComp = medComp+1;
+        medComp = medComp+2;
     }
-    let healCost = 1;
+    if (playerInfos.bldList.includes('Hôpital')) {
+        medComp = medComp+3;
+    }
+    let healCost = 2;
     if (batType.skills.includes('lowmed')) {
-        healCost = 3;
+        healCost = 4;
     }
-    if (rand.rand(1,7) <= medComp) {
+    if (rand.rand(1,35) <= medComp) {
         healCost = healCost-1;
     }
     if (healCost >= 1) {
@@ -792,12 +795,9 @@ function addHealFlag(bat) {
 
 function addRepairFlag(bat) {
     let batType = getBatType(bat);
-    let indComp = playerInfos.comp.ind;
-    if (playerInfos.comp.ind >= 3) {
-        indComp = medComp+1;
-    }
-    let healCost = 1;
-    if (rand.rand(1,7) <= indComp) {
+    let indComp = (playerInfos.comp.ind+2)*(playerInfos.comp.ind+1);
+    let healCost = 2;
+    if (rand.rand(1,25) <= indComp) {
         healCost = healCost-1;
     }
     if (healCost >= 1) {

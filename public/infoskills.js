@@ -1902,15 +1902,19 @@ function skillsInfos(bat,batType,near) {
         }
     }
     // ROUTES / PONTS
-    if ((batType.skills.includes('routes') || bat.eq === 'e-road') && !playerInfos.onShip) {
+    if ((batType.skills.includes('routes') || bat.eq === 'e-road' || bat.logeq === 'e-road') && !playerInfos.onShip) {
         let roadsOK = true;
         if (batType.skills.includes('infrahelp') || bat.eq === 'e-infra' || bat.logeq === 'e-infra') {
             roadsOK = checkRoadsAround(bat);
         }
         if (!tile.rd || !roadsOK) {
             apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3);
-            if (batType.skills.includes('routes') && bat.eq === 'e-road') {
-                apCost = Math.round(apCost/1.5);
+            if (bat.eq === 'e-road' || bat.logeq === 'e-road') {
+                if (batType.skills.includes('routes')) {
+                    apCost = Math.round(apCost/1.5);
+                } else if (batType.mecanoCost < 12) {
+                    apCost = Math.round(12*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3);
+                }
             }
             apReq = Math.ceil(apCost/10);
             let roadCosts = getRoadCosts(tile);

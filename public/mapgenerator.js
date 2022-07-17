@@ -355,6 +355,25 @@ function checkFilter() {
             if (filterBase.name === 'VegFlood') {
                 filterBase = mapFilters[18];
             }
+            if (filterBase.name === 'ScarpFlood') {
+                filterBase = mapFilters[2];
+            }
+            // KZIN: moins de végétation
+            if (filterBase.name === 'VegP2') {
+                filterBase = mapFilters[19];
+            }
+            if (filterBase.name === 'ScarpVeg') {
+                filterBase = mapFilters[18];
+            }
+            if (filterBase.name === 'Mangrove') {
+                filterBase = mapFilters[6];
+            }
+            if (filterBase.name === 'BushLake') {
+                filterBase = mapFilters[18];
+            }
+            if (filterBase.name === 'BushHills') {
+                filterBase = mapFilters[19];
+            }
         }
     } else {
         mapFilters.forEach(function(filter) {

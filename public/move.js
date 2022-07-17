@@ -380,7 +380,7 @@ function moveSelectedBat(tileId,free,jump) {
         }
     }
     if (zone[0].planet === 'Kzin') {
-        if (!selectedBatType.skills.includes('fly') && selectedBat.eq != 'e-jetpack' && selectedBatType.moveCost < 90 && (!selectedBatType.skills.includes('oknitro') || selectedBatType.skills.includes('moto'))) {
+        if (!selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('hover') && selectedBat.eq != 'e-jetpack' && selectedBatType.moveCost < 90 && (!selectedBatType.skills.includes('oknitro') || selectedBatType.skills.includes('moto'))) {
             let tile = getTileById(tileId);
             if (!tile.rd) {
                 let mudChance = 0;
@@ -597,7 +597,7 @@ function terrainAccess(batId,targetTileId) {
     }
     let terVeg = terrain.veg;
     let terScarp = terrain.scarp;
-    if (batType.skills.includes('routes') || bat.eq === 'e-road') {
+    if (batType.skills.includes('routes') || bat.eq === 'e-road' || bat.logeq === 'e-road') {
         let unitTile = getTileById(bat.tileId);
         if (unitTile.rd) {
             terVeg = 0;
