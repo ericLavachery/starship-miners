@@ -1586,7 +1586,6 @@
             "cost":4,
             "range":3,
             "elevation":1,
-            "noBis":true,
             "rof":24,
             "accuracy":24,
             "power":14,
