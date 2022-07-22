@@ -811,6 +811,15 @@ function getAlienByName(name) {
     return bat;
 };
 
+function getAlienById(batId) {
+    let bat = {};
+    let index = aliens.findIndex((obj => obj.id == batId));
+    if (index > -1) {
+        bat = aliens[index];
+    }
+    return bat;
+};
+
 function getTerrain(bat) {
     let tileIndex = zone.findIndex((obj => obj.id == bat.tileId));
     let tile = zone[tileIndex];

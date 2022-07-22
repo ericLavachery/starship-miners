@@ -16,6 +16,7 @@ if (yOffset == null) {
     yOffsetForced = yOffset;
 }
 // MAP GENERATOR
+let mped = {};
 let modeSonde = false;
 let maxMapsParDet = 5;
 let impact = false;
@@ -167,7 +168,7 @@ let roadAPCost = 8;
 let bonusTransRetour = 1.25;
 let batDebarq = {};
 let medicalTransports = [];
-let medicPatientAP = 3;
+let medicPatientAP = 5;
 let landers = [];
 let fogRange = 5;
 let foggedTiles = [];

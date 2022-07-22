@@ -674,10 +674,20 @@ function attack(melee,init) {
     }
     if (targetBatType.skills.includes('resistelec') || targetBat.tags.includes('resistelec')) {
         if (selectedWeap.isElec) {
-            totalDamage = Math.round(totalDamage/2);
             apDamage = Math.round(apDamage/4);
             if (playerInfos.comp.ca >= 2) {
                 $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
+            }
+            // console.log('résistance électricité!');
+        }
+    }
+    // sensibilité électricité
+    if (targetBatType.skills.includes('reactelec') || targetBat.tags.includes('reactelec')) {
+        if (selectedWeap.isElec) {
+            totalDamage = Math.round(totalDamage*1.5);
+            apDamage = Math.round(apDamage*2);
+            if (playerInfos.comp.ca >= 2) {
+                $('#report').append('<span class="report rose">Sensibilité aux décharges<br></span>');
             }
             // console.log('résistance électricité!');
         }
@@ -689,13 +699,13 @@ function attack(melee,init) {
                 totalDamage = Math.round(totalDamage/1.34);
                 apDamage = Math.round(apDamage/1.34);
                 if (playerInfos.comp.ca >= 2) {
-                    $('#report').append('<span class="report rose">Résistance au secousses 25%<br></span>');
+                    $('#report').append('<span class="report rose">Résistance aux secousses 25%<br></span>');
                 }
             } else {
                 totalDamage = Math.round(totalDamage/2);
                 apDamage = Math.round(apDamage/2);
                 if (playerInfos.comp.ca >= 2) {
-                    $('#report').append('<span class="report rose">Résistance au secousses 50%<br></span>');
+                    $('#report').append('<span class="report rose">Résistance aux secousses 50%<br></span>');
                 }
             }
             // console.log('résistance au blast!');
@@ -708,14 +718,14 @@ function attack(melee,init) {
             totalDamage = Math.round(totalDamage*1.5);
             apDamage = Math.round(apDamage*1.5);
             if (playerInfos.comp.ca >= 3) {
-                $('#report').append('<span class="report rose">Sensibilité au secousses<br></span>');
+                $('#report').append('<span class="report rose">Sensibilité aux secousses<br></span>');
             }
             // console.log('sensibilité au blast!');
         } else if (selectedWeap.isExplo) {
             totalDamage = Math.round(totalDamage*1.25);
             apDamage = Math.round(apDamage*1.25);
             if (playerInfos.comp.ca >= 3) {
-                $('#report').append('<span class="report rose">Sensibilité au secousses<br></span>');
+                $('#report').append('<span class="report rose">Sensibilité aux secousses<br></span>');
             }
             // console.log('sensibilité au blast!');
         }
@@ -1111,6 +1121,8 @@ function attack(melee,init) {
     }
     if (targetBatType.skills.includes('noaploss')) {
         apDamage = Math.round(apDamage/5);
+    } else if (targetBatType.skills.includes('moreaploss')) {
+        apDamage = Math.ceil(apDamage*2);
     }
     if (targetBat.prt != undefined) {
         if (targetBat.prt === 'swing' || targetBat.prt === 'soap') {
@@ -1639,6 +1651,16 @@ function defense(melee,init) {
             // console.log('résistance électricité!');
         }
     }
+    // sensibilité électricité
+    if (selectedBatType.skills.includes('reactelec') || selectedBat.tags.includes('reactelec')) {
+        if (targetWeap.isElec) {
+            apDamage = Math.round(apDamage*2);
+            if (playerInfos.comp.ca >= 2) {
+                $('#report').append('<span class="report rose">Sensibilité aux décharges<br></span>');
+            }
+            // console.log('résistance électricité!');
+        }
+    }
     // résistance blast
     if (selectedBatType.skills.includes('resistblast') || selectedBat.tags.includes('resistblast')) {
         if (targetWeap.isBlast || targetWeap.isExplo) {
@@ -1920,6 +1942,8 @@ function defense(melee,init) {
     }
     if (selectedBatType.skills.includes('noaploss')) {
         apDamage = Math.round(apDamage/5);
+    } else if (selectedBatType.skills.includes('moreaploss')) {
+        apDamage = Math.ceil(apDamage*2);
     }
     if (selectedBat.prt != undefined) {
         if (selectedBat.prt === 'swing' || selectedBat.prt === 'soap') {

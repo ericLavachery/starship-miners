@@ -8,6 +8,7 @@ function selectMode() {
         tileSelect(selectedBat);
     }
     selectedWeap = {};
+    mped = {};
 };
 
 function moveMode() {
@@ -21,6 +22,7 @@ function moveMode() {
         tileSelect(selectedBat);
     }
     selectedWeap = {};
+    mped = {};
 };
 
 function fireMode(weapon) {
@@ -34,8 +36,24 @@ function fireMode(weapon) {
         fireInfos(selectedBat);
         showBatInfos(selectedBat);
         $('#report').empty('');
+        mped = {};
         // console.log(selectedWeap);
     }
+};
+
+function editMode() {
+    mode = 'edit';
+    document.title = pseudo + ' - Map Editor';
+    $('#mode').removeClass('modeMove').removeClass('modeFire').addClass('modeSelect');
+    $('#mode').empty().append('Map Editor');
+    cursorSwitch('.','grid-item','copy');
+    $('#report').empty('');
+    mped = {};
+    mped.as = false;
+    mped.ster = 'P';
+    mped.sinf = '';
+    batUnselect();
+    mapEditWindow();
 };
 
 function confirmMode() {

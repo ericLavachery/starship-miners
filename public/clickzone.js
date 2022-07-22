@@ -25,11 +25,13 @@ function clickTile(tileId) {
                 }
             }
         } else {
-            if (mode == 'select') {
+            if (mode === 'select') {
                 clickSelect(tileId);
                 toggleShowedTile(tileId);
-            } else if (mode == 'move') {
+            } else if (mode === 'move') {
                 clickMove(tileId);
+            } else if (mode === 'edit') {
+                clickEdit(tileId);
             } else {
                 clickFire(tileId);
             }

@@ -531,6 +531,7 @@ function calcTotalCitoyens(cryoOut) {
     mesCitoyens.cit = 0;
     mesCitoyens.crim = 0;
     mesCitoyens.real = 0;
+    mesCitoyens.false = 0;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (batType.name === 'Citoyens') {
@@ -552,9 +553,13 @@ function calcTotalCitoyens(cryoOut) {
             }
             if (!batType.skills.includes('dog') && !batType.skills.includes('clone')) {
                 mesCitoyens.real = mesCitoyens.real+unitCits;
+            } else {
+                mesCitoyens.false = mesCitoyens.false+unitCits;
             }
         }
     });
+    mesCitoyens.total = mesCitoyens.cit+mesCitoyens.crim;
+    playerInfos.citz = mesCitoyens;
     return mesCitoyens;
 };
 

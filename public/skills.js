@@ -301,6 +301,47 @@ function getLassoTile(alienTileId,targetTileId) {
     return lassoTileId;
 };
 
+function getTamingId(myBat,myBatType) {
+    let tamingId = -1;
+    aliens.forEach(function(alien) {
+        if (tamingId < 0) {
+            let alienType = getBatType(alien);
+            if (alienType.name === "Meatballs") {
+                if (alien.apLeft <= -7) {
+                    let distance = calcDistance(myBat.tileId,alien.tileId);
+                    if (distance === 0) {
+                        tamingId = alien.id;
+                    }
+                }
+            }
+        }
+    });
+    return tamingId;
+};
+
+function taming(tamingId) {
+    let tamedAlien = getAlienById(tamingId);
+    let petSquadsLeft = tamedAlien.squadsLeft;
+    let petDamage = tamedAlien.damage;
+    let tileId = tamedAlien.tileId;
+    deleteAlien(tamingId);
+    let meatBatType = getBatTypeById(289);
+    conselUnit = meatBatType;
+    conselPut = false;
+    conselTriche = true;
+    conselAmmos = ['dents','xxx','aucune','aucun'];
+    putBat(tileId,0,0,'',false);
+    let newPet = getBatByTileId(tileId);
+    newPet.apLeft = -7;
+    newPet.squadsLeft = petSquadsLeft;
+    newPet.damage = petDamage;
+    selectedBat.apLeft = selectedBat.apLeft-20;
+    doneAction(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+    showMap(zone,false);
+};
+
 function rush(rushAP) {
     selectedBat.apLeft = selectedBat.apLeft+rushAP;
     selectedBat.tags.push('rush');

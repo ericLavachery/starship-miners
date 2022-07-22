@@ -553,6 +553,15 @@ function skillsInfos(bat,batType,near) {
     if (bat.tags.includes('hero') && batType.skills.includes('herolasso') && !bat.tags.includes('lasso') && !playerInfos.onShip) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Attire tous aliens dans un rayon de 5 cases" class="boutonJaune skillButtons" onclick="diversion()"><i class="ra ra-aware rpg"></i> <span class="small">2</span></button>&nbsp; Diversion</h4></span>');
     }
+    // TAMING
+    if (!playerInfos.onShip) {
+        if ((bat.tags.includes('hero') && batType.skills.includes('herotame')) || batType.skills.includes('taming')) {
+            let tamingId = getTamingId(bat,batType);
+            if (tamingId >= 0) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Apprivoiser les Meatballs" class="boutonJaune skillButtons" onclick="taming('+tamingId+')"><i class="fas fa-dog"></i> <span class="small">20</span></button>&nbsp; Apprivoiser</h4></span>');
+            }
+        }
+    }
     // FOG
     if (batType.skills.includes('fog') && !playerInfos.onShip) {
         balise = 'h4';
@@ -2045,7 +2054,7 @@ function skillsInfos(bat,batType,near) {
                     $('#infraButtons').append('<button type="button" title="Murailles: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Mu</span></button>');
                 }
             }
-            if (tile.infra != 'Terriers') {
+            if (tile.infra != 'Terriers' && playerInfos.comp.const >= 1) {
                 infra = getInfraByName('Terriers');
                 if (infra.levels[playerInfos.gang] < 90) {
                     infraCostOK = checkCost(infra.costs);

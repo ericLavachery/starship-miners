@@ -449,6 +449,15 @@
         "fabTime":20
     },
     {
+        "id":55,
+        "name":"Chevaliers",
+        "levels":{"rednecks":99,"blades":6,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Garage"],
+        "costs":{"Fer":196,"Scrap":280,"Bois":56,"Moteurs":42,"Végétaux":20,"Chlore":10,"Tissus":5},
+        "deploy":{"Fuel":20,"Drogues":3,"Tissus":2},
+        "fabTime":20
+    },
+    {
         "id":41,
         "name":"Scalpels",
         "levels":{"rednecks":99,"blades":3,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
@@ -542,15 +551,6 @@
         "compHardReq":{"ca":2},
         "costs":{"Swarmine":134,"Mendium":48,"Blendium":48,"Azote":102,"Calcium":34,"Zinc":60,"Drogues":24,"Octiron":48},
         "fabTime":45
-    },
-    {
-        "id":55,
-        "name":"Chevaliers",
-        "levels":{"rednecks":99,"blades":6,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Garage"],
-        "costs":{"Fer":196,"Scrap":280,"Bois":56,"Moteurs":42,"Végétaux":20,"Chlore":10,"Tissus":5},
-        "deploy":{"Fuel":20,"Drogues":3,"Tissus":2},
-        "fabTime":20
     },
     {
         "id":56,
