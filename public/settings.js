@@ -17,6 +17,7 @@ if (yOffset == null) {
 }
 // MAP GENERATOR
 let mped = {};
+let theTileRes = {};
 let modeSonde = false;
 let maxMapsParDet = 5;
 let impact = false;

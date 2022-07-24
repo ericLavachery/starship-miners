@@ -15,28 +15,81 @@ function mapEditWindow() {
         $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="seedAuto()">Auto Seed</span> &nbsp;|&nbsp; <span class="cy klik" onclick="seedManu()">Manual Seed</span></span><br>');
     }
     $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<img src="/static/img/sntiles/V_005.png" title="Changer l\'image sans changer le terrain" onclick="selectTerrain()">');
+    let mbClass = 'mapedBut';
+    if (mped.ster === undefined && mped.sinf === '') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/sntiles/V_005.png" title="Changer l\'image sans changer le terrain" onclick="selectTerrain()">');
     terrainTypes.forEach(function(terrain) {
         if (terrain.name != 'V' && terrain.name != 'X') {
+            mbClass = 'mapedBut';
+            if (mped.ster === terrain.name && mped.sinf === '') {mbClass = 'mapedButSel';}
             let tPic = terrain.name+'_001';
-            $('#conUnitList').append('<img src="/static/img/sntiles/'+tPic+'.png" title="'+terrain.fullName+'" onclick="selectTerrain(`'+terrain.name+'`)">');
+            $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/sntiles/'+tPic+'.png" title="'+terrain.fullName+'" onclick="selectTerrain(`'+terrain.name+'`)">');
         }
     });
-    $('#conUnitList').append('<img src="/static/img/sntiles/R_004.png" title="Gué" onclick="selectTerrain(`Z`)">');
+    mbClass = 'mapedBut';
+    if (mped.ster === 'Z' && mped.sinf === '') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/sntiles/R_004.png" title="Gué" onclick="selectTerrain(`Z`)">');
     $('#conUnitList').append('<br>');
     armorTypes.forEach(function(infra) {
         if (infra.cat === 'infra') {
-            $('#conUnitList').append('<img src="/static/img/units/'+infra.pic+'.png" title="'+infra.name+'" onclick="selectInfra(`'+infra.name+'`)">');
+            mbClass = 'mapedBut';
+            if (mped.sinf === infra.name) {mbClass = 'mapedButSel';}
+            $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/'+infra.pic+'.png" title="'+infra.name+'" onclick="selectInfra(`'+infra.name+'`)">');
         }
     });
-    $('#conUnitList').append('<img src="/static/img/units/ruins.png" title="Ruines" onclick="selectInfra(`Ruines`)">');
-    $('#conUnitList').append('<img src="/static/img/units/ruinsf.png" title="Ruines vides" onclick="selectInfra(`Ruines vides`)">');
-    $('#conUnitList').append('<img src="/static/img/units/roads.png" title="Route (ou Pont)" onclick="selectInfra(`Route`)">');
-    $('#conUnitList').append('<img src="/static/img/units/res.png" title="Ajouter des ressources" onclick="selectInfra(`Res`)">');
-    $('#conUnitList').append('<img src="/static/img/units/rareres.png" title="Ajouter des ressources rares" onclick="selectInfra(`RareRes`)">');
-    $('#conUnitList').append('<img src="/static/img/units/nores.png" title="Supprimer les ressources" onclick="selectInfra(`NoRes`)">');
+    mbClass = 'mapedBut';
+    if (mped.sinf === 'Ruines') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/ruins.png" title="Ruines" onclick="selectInfra(`Ruines`)">');
+    mbClass = 'mapedBut';
+    if (mped.sinf === 'Ruines vides') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/ruinsf.png" title="Ruines vides" onclick="selectInfra(`Ruines vides`)">');
+    mbClass = 'mapedBut';
+    if (mped.sinf === 'Route') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/roads.png" title="Route (ou Pont)" onclick="selectInfra(`Route`)">');
+    mbClass = 'mapedBut';
+    if (mped.sinf === 'Res') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/res.png" title="Ajouter des ressources" onclick="selectInfra(`Res`)">');
+    mbClass = 'mapedBut';
+    if (mped.sinf === 'RareRes') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/rareres.png" title="Ajouter des ressources rares" onclick="selectInfra(`RareRes`)">');
+    mbClass = 'mapedBut';
+    if (mped.sinf === 'NoRes') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/nores.png" title="Supprimer les ressources" onclick="selectInfra(`NoRes`)">');
     $('#conUnitList').append('<br><br>');
-    // $("#conUnitList").animate({scrollTop:0},"fast");
+    if (mped.sinf === 'RareRes' || mped.sinf === 'Res') {
+        mapResAddList();
+    } else {
+        theTileRes = {};
+    }
+};
+
+function mapResAddList() {
+    let sortedResTypes = _.sortBy(resTypes,'name');
+    sortedResTypes.forEach(function(res) {
+        if (res.cat === 'white' || (res.cat.includes('sky') && mped.sinf === 'RareRes')) {
+            let resIcon = getResIcon(res);
+            let dispoRes = theTileRes[res.name];
+            if (dispoRes === undefined) {
+                dispoRes = 0;
+            }
+            if (dispoRes < 0) {
+                dispoRes = 0;
+            }
+            $('#conUnitList').append('<span class="paramResName klik" onclick="mapResAdd(`'+res.name+'`)">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span>');
+        }
+    });
+    console.log(theTileRes);
+};
+
+function mapResAdd(resName) {
+    let letsAdd = rand.rand(35,65);
+    if (theTileRes[resName] === undefined) {
+        theTileRes[resName] = letsAdd;
+    } else {
+        theTileRes[resName] = theTileRes[resName]+letsAdd;
+    }
+    // mapResAddList();
+    mapEditWindow();
 };
 
 function selectTerrain(terName) {
@@ -48,6 +101,7 @@ function selectTerrain(terName) {
 
 function selectInfra(infraName) {
     mped.sinf = infraName;
+    delete mped.ster;
     cursorSwitch('.','grid-item','copy');
     mapEditWindow();
 };
@@ -96,10 +150,18 @@ function clickEdit(tileId) {
             }
         } else if (mped.sinf === 'Res') {
             tile.rq = 3;
-            tile.rs = {};
+            if (tile.rs === undefined) {
+                tile.rs = theTileRes;
+            }
+            mped.sinf = '';
+            theTileRes = {};
         } else if (mped.sinf === 'RareRes') {
             tile.rq = 5;
-            tile.rs = {};
+            if (tile.rs === undefined) {
+                tile.rs = theTileRes;
+            }
+            mped.sinf = '';
+            theTileRes = {};
         } else if (mped.sinf === 'NoRes') {
             delete tile.rq;
             delete tile.rs;
@@ -133,6 +195,7 @@ function clickEdit(tileId) {
             tile.seed = nextSeed;
         }
     }
+    mapEditWindow();
     showMap(zone,true);
     cursorSwitch('.','grid-item','copy');
 };

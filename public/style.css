@@ -899,6 +899,18 @@ td {
     height: 1000px;
     width: 495px;
 }
+.mapedBut {
+    border-style: solid;
+    border-width: thin;
+    border-color: #4C4845;
+    margin-left: 3px;
+}
+.mapedButSel {
+    border-style: solid;
+    border-width: thin;
+    border-color: #6be9b4;
+    margin-left: 3px;
+}
 .terTypeButton {
     margin: 0 0 0 0;
     border: 2px solid #000000;
