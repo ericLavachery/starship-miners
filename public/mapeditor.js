@@ -31,6 +31,7 @@ function mapEditWindow() {
     });
     $('#conUnitList').append('<img src="/static/img/units/ruins.png" title="Ruines" onclick="selectInfra(`Ruines`)">');
     $('#conUnitList').append('<img src="/static/img/units/ruinsf.png" title="Ruines vides" onclick="selectInfra(`Ruines vides`)">');
+    $('#conUnitList').append('<img src="/static/img/units/road.png" title="Route (ou Pont)" onclick="selectInfra(`Route`)">');
     $('#conUnitList').append('<br><br>');
     // $("#conUnitList").animate({scrollTop:0},"fast");
 };
@@ -50,17 +51,41 @@ function clickEdit(tileId) {
     let tile = zone[tileId];
     if (mped.sinf != '') {
         if (mped.sinf === 'Ruines vides') {
-            tile.ruins = true;
-            tile.sh = -1;
-            delete tile.infra;
+            if (!tile.ruins) {
+                tile.ruins = true;
+                tile.sh = -1;
+                tile.rd = true;
+                delete tile.infra;
+            } else {
+                delete tile.ruins;
+                delete tile.sh;
+                delete tile.rd;
+            }
         } else if (mped.sinf === 'Ruines') {
-            tile.ruins = true;
-            tile.sh = 20;
-            delete tile.infra;
+            if (!tile.ruins) {
+                tile.ruins = true;
+                tile.sh = 20;
+                tile.rd = true;
+                delete tile.infra;
+            } else {
+                delete tile.ruins;
+                delete tile.sh;
+                delete tile.rd;
+            }
+        } else if (mped.sinf === 'Route') {
+            if (!tile.rd) {
+                tile.rd = true;
+            } else {
+                delete tile.rd;
+            }
         } else {
-            tile.infra = mped.sinf;
-            delete tile.ruins;
-            delete tile.sh;
+            if (tile.infra != mped.sinf) {
+                tile.infra = mped.sinf;
+                delete tile.ruins;
+                delete tile.sh;
+            } else {
+                delete tile.infra;
+            }
         }
     } else {
         if (mped.ster != undefined) {
