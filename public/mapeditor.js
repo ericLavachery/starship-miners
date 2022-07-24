@@ -32,6 +32,9 @@ function mapEditWindow() {
     $('#conUnitList').append('<img src="/static/img/units/ruins.png" title="Ruines" onclick="selectInfra(`Ruines`)">');
     $('#conUnitList').append('<img src="/static/img/units/ruinsf.png" title="Ruines vides" onclick="selectInfra(`Ruines vides`)">');
     $('#conUnitList').append('<img src="/static/img/units/roads.png" title="Route (ou Pont)" onclick="selectInfra(`Route`)">');
+    $('#conUnitList').append('<img src="/static/img/units/res.png" title="Ajouter des ressources" onclick="selectInfra(`Res`)">');
+    $('#conUnitList').append('<img src="/static/img/units/rareres.png" title="Ajouter des ressources rares" onclick="selectInfra(`RareRes`)">');
+    $('#conUnitList').append('<img src="/static/img/units/nores.png" title="Supprimer les ressources" onclick="selectInfra(`NoRes`)">');
     $('#conUnitList').append('<br><br>');
     // $("#conUnitList").animate({scrollTop:0},"fast");
 };
@@ -39,13 +42,24 @@ function mapEditWindow() {
 function selectTerrain(terName) {
     mped.ster = terName;
     mped.sinf = '';
+    cursorSwitch('.','grid-item','copy');
     mapEditWindow();
 };
 
 function selectInfra(infraName) {
     mped.sinf = infraName;
+    cursorSwitch('.','grid-item','copy');
     mapEditWindow();
 };
+
+function addScrapToRuins(tile) {
+    if (tile.rq === undefined) {
+        tile.rq = 0;
+        let sq = rand.rand(250,500);
+        tile.rs = {};
+        tile.rs['Scrap'] = sq;
+    }
+}
 
 function clickEdit(tileId) {
     let tile = zone[tileId];
@@ -56,6 +70,7 @@ function clickEdit(tileId) {
                 tile.sh = -1;
                 tile.rd = true;
                 delete tile.infra;
+                addScrapToRuins(tile);
             } else {
                 delete tile.ruins;
                 delete tile.sh;
@@ -67,6 +82,7 @@ function clickEdit(tileId) {
                 tile.sh = 20;
                 tile.rd = true;
                 delete tile.infra;
+                addScrapToRuins(tile);
             } else {
                 delete tile.ruins;
                 delete tile.sh;
@@ -78,6 +94,15 @@ function clickEdit(tileId) {
             } else {
                 delete tile.rd;
             }
+        } else if (mped.sinf === 'Res') {
+            tile.rq = 3;
+            tile.rs = {};
+        } else if (mped.sinf === 'RareRes') {
+            tile.rq = 5;
+            tile.rs = {};
+        } else if (mped.sinf === 'NoRes') {
+            delete tile.rq;
+            delete tile.rs;
         } else {
             if (tile.infra != mped.sinf) {
                 tile.infra = mped.sinf;
@@ -109,6 +134,7 @@ function clickEdit(tileId) {
         }
     }
     showMap(zone,true);
+    cursorSwitch('.','grid-item','copy');
 };
 
 function getNextSeed(tile) {

@@ -79,6 +79,9 @@ function confirmMode() {
             selectMode();
         }
     }
+    if (mode === 'edit') {
+        cursorSwitch('.','grid-item','copy');
+    }
 };
 
 function cursorSwitch(seltype,selvalue,kur) {
