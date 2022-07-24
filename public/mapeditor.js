@@ -149,17 +149,23 @@ function clickEdit(tileId) {
                 delete tile.rd;
             }
         } else if (mped.sinf === 'Res') {
-            tile.rq = 3;
             if (tile.rs === undefined) {
                 tile.rs = theTileRes;
+            } else if (tile.rq === 0) {
+                tile.rs = theTileRes;
+                tile.rs['Scrap'] = rand.rand(250,500);
             }
+            tile.rq = 3;
             mped.sinf = '';
             theTileRes = {};
         } else if (mped.sinf === 'RareRes') {
-            tile.rq = 5;
             if (tile.rs === undefined) {
                 tile.rs = theTileRes;
+            } else if (tile.rq === 0) {
+                tile.rs = theTileRes;
+                tile.rs['Scrap'] = rand.rand(250,500);
             }
+            tile.rq = 5;
             mped.sinf = '';
             theTileRes = {};
         } else if (mped.sinf === 'NoRes') {
