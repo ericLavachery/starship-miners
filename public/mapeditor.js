@@ -31,7 +31,7 @@ function mapEditWindow() {
     });
     $('#conUnitList').append('<img src="/static/img/units/ruins.png" title="Ruines" onclick="selectInfra(`Ruines`)">');
     $('#conUnitList').append('<img src="/static/img/units/ruinsf.png" title="Ruines vides" onclick="selectInfra(`Ruines vides`)">');
-    $('#conUnitList').append('<img src="/static/img/units/road.png" title="Route (ou Pont)" onclick="selectInfra(`Route`)">');
+    $('#conUnitList').append('<img src="/static/img/units/roads.png" title="Route (ou Pont)" onclick="selectInfra(`Route`)">');
     $('#conUnitList').append('<br><br>');
     // $("#conUnitList").animate({scrollTop:0},"fast");
 };

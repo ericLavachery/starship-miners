@@ -57,7 +57,7 @@ function editMode() {
 };
 
 function confirmMode() {
-    if (activeTurn === 'player') {
+    if (activeTurn === 'player' && mode != 'edit') {
         if (Object.keys(selectedBat).length >= 1) {
             if (mode === 'fire') {
                 if (selectedWeap.num === 2) {
