@@ -100,8 +100,10 @@ function weaponsInfos(bat,batType,tile,pop) {
             if (bat.apLeft >= thisWeapon.cost) {
                 apOK = true;
             } else {
-                if (batType.skills.includes('guerrilla') && bat.tileId != bat.oldTileId && bat.apLeft >= -4+thisWeapon.cost) {
-                    apOK = true;
+                if (batType.skills.includes('guerrilla') || batType.skills.includes('freeshot') || batType.cat === 'buildings') {
+                    if (bat.apLeft >= -4+thisWeapon.cost) {
+                        apOK = true;
+                    }
                 }
             }
             if (bat.salvoLeft >= 1 && apOK && ammoLeft >= 1 && anyTarget && noBisOK && !noFireMelee) {
@@ -343,8 +345,15 @@ function weaponsInfos(bat,batType,tile,pop) {
             if (bat.apLeft >= thisWeapon.cost) {
                 apOK = true;
             } else {
-                if (batType.skills.includes('guerrilla') && bat.tileId != bat.oldTileId && bat.apLeft >= -4+thisWeapon.cost) {
-                    apOK = true;
+                if (batType.skills.includes('guerrilla')) {
+                    if (bat.apLeft >= -4+thisWeapon.cost) {
+                        apOK = true;
+                    }
+                }
+                if (batType.skills.includes('freeshot') || batType.cat === 'buildings') {
+                    if (bat.apLeft >= -7+thisWeapon.cost) {
+                        apOK = true;
+                    }
                 }
             }
             if (bat.salvoLeft >= 1 && apOK && anyTarget && ammoLeft >= 1 && !noFireMelee && noBisOK) {

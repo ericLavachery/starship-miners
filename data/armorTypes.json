@@ -249,6 +249,7 @@
         "skills":["resistfeu"],
         "bldReq":["Laboratoire"],
         "compReq":{"mat":2,"pyro":1},
+        "altCompReq":{"mat":1,"pyro":3},
         "factor":"thp",
         "costs":{"Carbone":9,"Aluminium":6,"Azote":6,"Nickel":6}
     },
@@ -415,6 +416,7 @@
         "skills":["resistfeu"],
         "bldReq":["Laboratoire"],
         "compReq":{"mat":2,"pyro":1,"ca":2},
+        "altCompReq":{"mat":1,"pyro":3,"ca":2},
         "factor":"thp",
         "costs":{"Carbone":6,"Bossium":2,"Nickel":6,"Azote":3,"Bore":6}
     },

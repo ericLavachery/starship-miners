@@ -401,19 +401,43 @@ function moveSelectedBat(tileId,free,jump) {
                     mudChance = Math.ceil(mudChance*8/(playerInfos.comp.det+6));
                 }
                 if (rand.rand(1,100) <= mudChance) {
-                    if (!selectedBat.tags.includes('mud')) {
-                        selectedBat.tags.push('mud');
+                    let newAP = 0;
+                    let immobChance = 100;
+                    tile.qs = true;
+                    if (selectedBatType.skills.includes('ranger')) {
+                        immobChance = immobChance-40;
+                    } else if (selectedBat.eq === 'e-ranger' || selectedBat.logeq === 'e-ranger') {
+                        immobChance = immobChance-30;
                     }
-                    let newAP = 0-rand.rand(1,selectedBat.ap);
-                    if (newAP < selectedBat.apLeft-2) {
-                        selectedBat.apLeft = newAP;
+                    if (selectedBatType.skills.includes('caterp')) {
+                        immobChance = immobChance-20;
+                        if (selectedBatType.size < 22) {
+                            immobChance = immobChance-20;
+                        }
+                    } else if (selectedBat.eq === 'chenilles' || selectedBat.logeq === 'chenilles') {
+                        immobChance = immobChance-15;
+                    }
+                    if (rand.rand(1,100) <= immobChance) {
+                        if (!selectedBat.tags.includes('mud')) {
+                            selectedBat.tags.push('mud');
+                        }
+                        newAP = newAP-rand.rand(1,selectedBat.ap);
+                        if (newAP < selectedBat.apLeft-2) {
+                            selectedBat.apLeft = newAP;
+                        } else {
+                            selectedBat.apLeft = selectedBat.apLeft-2;
+                        }
+                        if (selectedBat.apLeft <= 0 && selectedBat.tags.includes('mud')) {
+                            warning('Sables mouvants','Bataillon immobilisé!');
+                        } else {
+                            warning('Sables mouvants','Bataillon embourbé!');
+                        }
                     } else {
-                        selectedBat.apLeft = selectedBat.apLeft-2;
+                        warning('Sables mouvants','Sables mouvants détectés');
                     }
+                } else if (playerInfos.comp.det >= 4 && mudChance >= 10) {
                     tile.qs = true;
-                    warning('Sables mouvants','Bataillon immobilisé!')
-                } else if (playerInfos.comp.det >= 4 && mudChance >= 1) {
-                    tile.qs = true;
+                    warning('Sables mouvants','Sables mouvants détectés');
                 }
             }
         }

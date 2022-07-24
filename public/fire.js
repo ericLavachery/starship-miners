@@ -168,7 +168,7 @@ function combat(melee) {
             if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-7;
             }
-            if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('after') || targetBat.eq.includes('w2-auto')) {
+            if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('freeshot') || targetBatType.skills.includes('after') || targetBat.eq.includes('w2-auto')) {
                 minimumFireAP = -999;
             }
             if ((defAlive && attAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
@@ -197,7 +197,7 @@ function combat(melee) {
             if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-7;
             }
-            if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('after')) {
+            if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('after') || targetBatType.skills.includes('freeshot')) {
                 minimumFireAP = -999;
             }
             if (targetBat.apLeft > minimumFireAP) {
@@ -213,7 +213,7 @@ function combat(melee) {
                 if (selectedBatType.skills.includes('guerrilla')) {
                     minimumFireAP = minFireAP-7;
                 }
-                if (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('after')) {
+                if (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('after') || selectedBatType.skills.includes('freeshot')) {
                     minimumFireAP = -999;
                 }
                 if (selectedBat.apLeft > minimumFireAP) {
