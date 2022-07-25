@@ -1894,53 +1894,63 @@ function atomsColors(myZone) {
     myZone.forEach(function(tile) {
         if (tile.rq != undefined) {
             if (tile.rq >= 1 && tile.rq <= 3) {
-                tileTotalRes = 0;
-                tileNumRes = 0;
-                rareRes = 0;
-                Object.entries(tile.rs).map(entry => {
-                    let key = entry[0];
-                    let value = entry[1];
-                    res = getResByName(key);
-                    rarityFactor = 45-Math.ceil(res.rarity*(res.batch+3)/7);
-                    if (rarityFactor <= 15) {
-                        rarityFactor = 15;
-                    }
-                    tileTotalRes = tileTotalRes+Math.round(value*rarityFactor/18);
-                    if (res.rarity <= 16 || res.batch <= 2) {
-                        rareRes = rareRes+2;
-                    } else if (res.rarity <= 25) {
-                        rareRes++;
-                    }
-                    tileNumRes++;
-                });
-                if (tileNumRes >= 5) {
-                    if (tileTotalRes >= 1000 || rareRes >= 2) {
-                        tile.rq = 3;
-                    } else {
-                        tile.rq = 2;
-                    }
-                } else if (tileNumRes >= 4) {
-                    if (tileTotalRes >= 1350 || (rareRes >= 2 && tileTotalRes >= 1000)) {
-                        tile.rq = 3;
-                    } else {
-                        tile.rq = 2;
-                    }
-                } else if (tileNumRes >= 2) {
-                    if (tileTotalRes >= 700 || (rareRes >= 1 && tileTotalRes >= 300) || (rareRes >= 2 && tileTotalRes >= 250)) {
-                        tile.rq = 2;
-                    } else {
-                        tile.rq = 1;
-                    }
-                } else {
-                    if (tileTotalRes >= 850 || (rareRes >= 1 && tileTotalRes >= 400)) {
-                        tile.rq = 2;
-                    } else {
-                        tile.rq = 1;
-                    }
-                }
+                atomColour(tile,false);
             }
         }
     });
+};
+
+function atomColour(tile,inMaped) {
+    let tileTotalRes = 0;
+    let tileNumRes = 0;
+    let rareRes = 0;
+    let specialRes = 0;
+    Object.entries(tile.rs).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        res = getResByName(key);
+        rarityFactor = 45-Math.ceil(res.rarity*(res.batch+3)/7);
+        if (rarityFactor <= 15) {
+            rarityFactor = 15;
+        }
+        tileTotalRes = tileTotalRes+Math.round(value*rarityFactor/18);
+        if (res.rarity <= 16 || res.batch <= 2) {
+            rareRes = rareRes+2;
+        } else if (res.rarity <= 25) {
+            rareRes++;
+        }
+        if (res.cat.includes('sky')) {
+            specialRes++;
+        }
+        tileNumRes++;
+    });
+    if (specialRes >= 1 && inMaped) {
+        tile.rq = 5;
+    } else if (tileNumRes >= 5) {
+        if (tileTotalRes >= 1000 || rareRes >= 2) {
+            tile.rq = 3;
+        } else {
+            tile.rq = 2;
+        }
+    } else if (tileNumRes >= 4) {
+        if (tileTotalRes >= 1350 || (rareRes >= 2 && tileTotalRes >= 1000)) {
+            tile.rq = 3;
+        } else {
+            tile.rq = 2;
+        }
+    } else if (tileNumRes >= 2) {
+        if (tileTotalRes >= 700 || (rareRes >= 1 && tileTotalRes >= 300) || (rareRes >= 2 && tileTotalRes >= 250)) {
+            tile.rq = 2;
+        } else {
+            tile.rq = 1;
+        }
+    } else {
+        if (tileTotalRes >= 850 || (rareRes >= 1 && tileTotalRes >= 400)) {
+            tile.rq = 2;
+        } else {
+            tile.rq = 1;
+        }
+    }
 };
 
 function deepWaters(zone) {

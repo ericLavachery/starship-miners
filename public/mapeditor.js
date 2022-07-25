@@ -81,40 +81,6 @@ function mapResAddList() {
     console.log(theTileRes);
 };
 
-function mapResAdd(resName) {
-    let letsAdd = rand.rand(35,65);
-    if (theTileRes[resName] === undefined) {
-        theTileRes[resName] = letsAdd;
-    } else {
-        theTileRes[resName] = theTileRes[resName]+letsAdd;
-    }
-    // mapResAddList();
-    mapEditWindow();
-};
-
-function selectTerrain(terName) {
-    mped.ster = terName;
-    mped.sinf = '';
-    cursorSwitch('.','grid-item','copy');
-    mapEditWindow();
-};
-
-function selectInfra(infraName) {
-    mped.sinf = infraName;
-    delete mped.ster;
-    cursorSwitch('.','grid-item','copy');
-    mapEditWindow();
-};
-
-function addScrapToRuins(tile) {
-    if (tile.rq === undefined) {
-        tile.rq = 0;
-        let sq = rand.rand(250,500);
-        tile.rs = {};
-        tile.rs['Scrap'] = sq;
-    }
-}
-
 function clickEdit(tileId) {
     let tile = zone[tileId];
     if (mped.sinf != '') {
@@ -149,25 +115,13 @@ function clickEdit(tileId) {
                 delete tile.rd;
             }
         } else if (mped.sinf === 'Res') {
-            if (tile.rs === undefined) {
-                tile.rs = theTileRes;
-            } else if (tile.rq === 0) {
-                tile.rs = theTileRes;
-                tile.rs['Scrap'] = rand.rand(250,500);
-            }
-            tile.rq = 3;
-            mped.sinf = '';
-            theTileRes = {};
+            addResToTile(tile);
+            atomColour(tile,true);
+            // tile.rq = 3;
         } else if (mped.sinf === 'RareRes') {
-            if (tile.rs === undefined) {
-                tile.rs = theTileRes;
-            } else if (tile.rq === 0) {
-                tile.rs = theTileRes;
-                tile.rs['Scrap'] = rand.rand(250,500);
-            }
-            tile.rq = 5;
-            mped.sinf = '';
-            theTileRes = {};
+            addResToTile(tile);
+            atomColour(tile,true);
+            // tile.rq = 5;
         } else if (mped.sinf === 'NoRes') {
             delete tile.rq;
             delete tile.rs;
@@ -204,6 +158,51 @@ function clickEdit(tileId) {
     mapEditWindow();
     showMap(zone,true);
     cursorSwitch('.','grid-item','copy');
+};
+
+function mapResAdd(resName) {
+    let letsAdd = rand.rand(35,65);
+    if (theTileRes[resName] === undefined) {
+        theTileRes[resName] = letsAdd;
+    } else {
+        theTileRes[resName] = theTileRes[resName]+letsAdd;
+    }
+    // mapResAddList();
+    mapEditWindow();
+};
+
+function selectTerrain(terName) {
+    mped.ster = terName;
+    mped.sinf = '';
+    cursorSwitch('.','grid-item','copy');
+    mapEditWindow();
+};
+
+function selectInfra(infraName) {
+    mped.sinf = infraName;
+    delete mped.ster;
+    cursorSwitch('.','grid-item','copy');
+    mapEditWindow();
+};
+
+function addScrapToRuins(tile) {
+    if (tile.rq === undefined) {
+        tile.rq = 0;
+        let sq = rand.rand(250,500);
+        tile.rs = {};
+        tile.rs['Scrap'] = sq;
+    }
+};
+
+function addResToTile(tile) {
+    if (tile.rs === undefined) {
+        tile.rs = theTileRes;
+    } else if (tile.rq === 0) {
+        tile.rs = theTileRes;
+        tile.rs['Scrap'] = rand.rand(250,500);
+    }
+    mped.sinf = '';
+    theTileRes = {};
 };
 
 function getNextSeed(tile) {

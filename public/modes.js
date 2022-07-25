@@ -50,7 +50,6 @@ function editMode() {
     $('#report').empty('');
     mped = {};
     mped.as = false;
-    mped.ster = 'P';
     mped.sinf = '';
     batUnselect();
     mapEditWindow();
