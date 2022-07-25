@@ -55,6 +55,17 @@ function mapEditWindow() {
     mbClass = 'mapedBut';
     if (mped.sinf === 'NoRes') {mbClass = 'mapedButSel';}
     $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/nores.png" title="Supprimer les ressources" onclick="selectInfra(`NoRes`)">');
+    // Tags
+    mbClass = 'mapedBut';
+    if (mped.sinf === 'Garde') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/alienPDM.png" title="Garde alien" onclick="selectInfra(`Garde`)">');
+    mbClass = 'mapedBut';
+    if (mped.sinf === 'NoMove') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/batNoMove.png" title="Bataillon immobilisé" onclick="selectInfra(`NoMove`)">');
+    mbClass = 'mapedBut';
+    if (mped.sinf === 'Outsider') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/batOutsider.png" title="Bataillon outsider" onclick="selectInfra(`Outsider`)">');
+    // End
     $('#conUnitList').append('<br><br>');
     if (mped.sinf === 'RareRes' || mped.sinf === 'Res') {
         mapResAddList();
@@ -125,6 +136,12 @@ function clickEdit(tileId) {
         } else if (mped.sinf === 'NoRes') {
             delete tile.rq;
             delete tile.rs;
+        } else if (mped.sinf === 'Garde') {
+            fixAlienPDM(tile);
+        } else if (mped.sinf === 'NoMove') {
+            addTagToBatOnTile(tile,'nomove');
+        } else if (mped.sinf === 'Outsider') {
+            addTagToBatOnTile(tile,'outsider');
         } else {
             if (tile.infra != mped.sinf) {
                 tile.infra = mped.sinf;
@@ -158,6 +175,18 @@ function clickEdit(tileId) {
     mapEditWindow();
     showMap(zone,true);
     cursorSwitch('.','grid-item','copy');
+};
+
+function fixAlienPDM(tile) {
+    let alien = getAlienByTileId(tile.id);
+    alien.pdm = tile.id;
+};
+
+function addTagToBatOnTile(tile,tag) {
+    let bat = getBatByTileId(tile.id);
+    if (!bat.tags.includes(tag)) {
+        bat.tags.push(tag);
+    }
 };
 
 function mapResAdd(resName) {
@@ -196,13 +225,38 @@ function addScrapToRuins(tile) {
 
 function addResToTile(tile) {
     if (tile.rs === undefined) {
-        tile.rs = theTileRes;
+        if (Object.keys(theTileRes).length === 0) {
+            tile.rs = {};
+            let resName = checkSimpleRes();
+            tile.rs[resName] = rand.rand(75,400);
+        } else {
+            tile.rs = theTileRes;
+        }
     } else if (tile.rq === 0) {
-        tile.rs = theTileRes;
+        if (Object.keys(theTileRes).length === 0) {
+            tile.rs = {};
+            let resName = checkSimpleRes();
+            tile.rs[resName] = rand.rand(75,400);
+        } else {
+            tile.rs = theTileRes;
+        }
         tile.rs['Scrap'] = rand.rand(250,500);
     }
     mped.sinf = '';
     theTileRes = {};
+};
+
+function checkSimpleRes() {
+    let myResName = 'Fer';
+    let shufRes = _.shuffle(resTypes);
+    shufRes.forEach(function(res) {
+        if (res.cat === 'white') {
+            if (res.rarity >= 51) {
+                myResName = res.name;
+            }
+        }
+    });
+    return myResName;
 };
 
 function getNextSeed(tile) {
