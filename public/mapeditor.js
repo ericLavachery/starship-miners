@@ -12,18 +12,21 @@ function mapEditWindow() {
     $('#conUnitList').append('<br>');
     let mbClass = 'mapedBut';
     if (mped.ster === undefined && mped.sinf === '') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/sntiles/V_005.png" title="Changer l\'image sans changer le terrain" onclick="selectTerrain()">');
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/sntiles/V_005.png" width="64" title="Changer l\'image sans changer le terrain" onclick="selectTerrain()">');
     terrainTypes.forEach(function(terrain) {
         if (terrain.name != 'V' && terrain.name != 'X') {
             mbClass = 'mapedBut';
             if (mped.ster === terrain.name && mped.sinf === '') {mbClass = 'mapedButSel';}
-            let tPic = terrain.name+'_001';
-            $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/sntiles/'+tPic+'.png" title="'+terrain.fullName+'" onclick="selectTerrain(`'+terrain.name+'`)">');
+            let tPic = terrain.name+'_004';
+            if (terrain.name === 'R') {
+                tPic = terrain.name+'_002';
+            }
+            $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/sntiles/'+tPic+'.png" width="64" title="'+terrain.fullName+'" onclick="selectTerrain(`'+terrain.name+'`)">');
         }
     });
     mbClass = 'mapedBut';
     if (mped.ster === 'Z' && mped.sinf === '') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/sntiles/R_004.png" title="Gué" onclick="selectTerrain(`Z`)">');
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/sntiles/R_004.png" width="64" title="Gué" onclick="selectTerrain(`Z`)">');
     $('#conUnitList').append('<br>');
     armorTypes.forEach(function(infra) {
         if (infra.cat === 'infra') {
@@ -63,6 +66,13 @@ function mapEditWindow() {
     mbClass = 'mapedBut';
     if (mped.sinf === 'Bleed') {mbClass = 'mapedButSel';}
     $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/bleed.png" title="Blesser le bataillon" onclick="selectInfra(`Bleed`)">');
+    // Landing
+    mbClass = 'mapedBut';
+    if (mped.sinf === 'Lander') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/lander.png" title="Point d\'aterrissage lander" onclick="selectInfra(`Lander`)">');
+    mbClass = 'mapedBut';
+    if (mped.sinf === 'Navette') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/navette.png" title="Point d\'aterrissage navette" onclick="selectInfra(`Navette`)">');
     // End
     $('#conUnitList').append('<br><br>');
     if (mped.sinf === 'RareRes' || mped.sinf === 'Res') {
@@ -70,6 +80,13 @@ function mapEditWindow() {
         $('#conUnitList').append('<br><br>');
     } else {
         theTileRes = {};
+    }
+    if (zone[0].cLand === undefined) {
+        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`cLand`,true)" title="Aterrissage au centre possible">Landing centre</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`cLand`,false)" title="Aterrissage uniquement aux points marqués">Landing points</span></span><br>');
+    } else if (zone[0].cLand) {
+        $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="zoneChange(`cLand`,true)" title="Aterrissage au centre possible">Landing centre</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`cLand`,false)" title="Aterrissage uniquement aux points marqués">Landing points</span></span><br>');
+    } else if (!zone[0].cLand) {
+        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`cLand`,true)" title="Aterrissage au centre possible">Landing centre</span> &nbsp;|&nbsp; <span class="cy klik" onclick="zoneChange(`cLand`,false)" title="Aterrissage uniquement aux points marqués">Landing points</span></span><br>');
     }
     if (zone[0].noEggs === undefined) {
         $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`noEggs`,true)" title="Aucun oeuf ne tombe">Sans Oeufs</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`noEggs`,false)" title="Des oeufs tombent">Avec Oeufs</span></span><br>');
@@ -86,11 +103,11 @@ function mapEditWindow() {
         $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="zoneChange(`coverEggs`,false)" title="Les oeufs tombent normalement">Oeufs partout</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`coverEggs`,true)" title="Les oeufs tombent toujours à couvert (près d\'une ruche, volcan ou colonie)">Oeufs à couvert</span></span><br>');
     }
     if (zone[0].neverMove === undefined) {
-        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`neverMove`,false)" title="Les bataillons avec un tag nomove peuvent bouger dès qu\'un bâtiment est détruit">No move</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`neverMove`,true)" title="Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints">Never move</span></span><br>');
+        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`neverMove`,false)" title="Les bataillons avec un tag nomove peuvent bouger dès qu\'un bâtiment est détruit">Tag nomove normal</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`neverMove`,true)" title="Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints">Never move</span></span><br>');
     } else if (zone[0].neverMove) {
-        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`neverMove`,false)" title="Les bataillons avec un tag nomove peuvent bouger dès qu\'un bâtiment est détruit">No move</span> &nbsp;|&nbsp; <span class="cy klik" onclick="zoneChange(`neverMove`,true)" title="Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints">Never move</span></span><br>');
+        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`neverMove`,false)" title="Les bataillons avec un tag nomove peuvent bouger dès qu\'un bâtiment est détruit">Tag nomove normal</span> &nbsp;|&nbsp; <span class="cy klik" onclick="zoneChange(`neverMove`,true)" title="Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints">Never move</span></span><br>');
     } else if (!zone[0].neverMove) {
-        $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="zoneChange(`neverMove`,false)" title="Les bataillons avec un tag nomove peuvent bouger dès qu\'un bâtiment est détruit">No move</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`neverMove`,true)" title="Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints">Never move</span></span><br>');
+        $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="zoneChange(`neverMove`,false)" title="Les bataillons avec un tag nomove peuvent bouger dès qu\'un bâtiment est détruit">Tag nomove normal</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`neverMove`,true)" title="Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints">Never move</span></span><br>');
     }
     $('#conUnitList').append('<br><br>');
 };
@@ -170,6 +187,24 @@ function clickEdit(tileId) {
             addTagToBatOnTile(tile,'outsider');
         } else if (mped.sinf === 'Bleed') {
             bleedBat(tile);
+        } else if (mped.sinf === 'Lander') {
+            if (tile.land === undefined) {
+                tile.land = true;
+                if (tile.nav != undefined) {
+                    delete tile.nav;
+                }
+            } else {
+                delete tile.land;
+            }
+        } else if (mped.sinf === 'Navette') {
+            if (tile.nav === undefined) {
+                tile.nav = true;
+                if (tile.land != undefined) {
+                    delete tile.land;
+                }
+            } else {
+                delete tile.nav;
+            }
         } else {
             if (tile.infra != mped.sinf) {
                 tile.infra = mped.sinf;

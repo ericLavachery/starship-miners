@@ -1511,7 +1511,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","ranger","maycamo","guerrilla","tirailleur","selfbadmedic","dealer","octiron","kirin","cible","herosalvo"],
+        "skills":["a_light","fouille","fortif","ranger","maycamo","guerrilla","tirailleur","selfbadmedic","dealer","octiron","kirin","cible","souschef","herosalvo"],
         "mediCost":6,
         "maxDrug":6,
         "fuzz":0,
@@ -3029,7 +3029,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","fly","jetpack","longshot","tirailleur","inflammable","baddef","oknitro","souschef","herosalvo"],
+        "skills":["a_mid","fouille","fortif","datt","fly","jetpack","longshot","tirailleur","inflammable","baddef","oknitro","herosalvo"],
         "mediCost":14,
         "fuzz":2.5,
         "deathFx":"human2"

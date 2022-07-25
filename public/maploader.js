@@ -286,6 +286,16 @@ function showRes(tileId) {
     if (tile.infra === 'Crystal' && view) {
         mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/crystal.png"></div>';
     }
+    if (tile.land != undefined) {
+        if (tile.land) {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/landSpot.png"></div>';
+        }
+    }
+    if (tile.nav != undefined) {
+        if (tile.nav) {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/navSpot.png"></div>';
+        }
+    }
     if (playerInfos.showedTiles.includes(tileId)) {
         if (tileId === 1830) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/showCenterTile.png"></div>';
