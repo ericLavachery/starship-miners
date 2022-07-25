@@ -65,6 +65,9 @@ function mapEditWindow() {
     mbClass = 'mapedBut';
     if (mped.sinf === 'Outsider') {mbClass = 'mapedButSel';}
     $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/batOutsider.png" title="Bataillon outsider" onclick="selectInfra(`Outsider`)">');
+    mbClass = 'mapedBut';
+    if (mped.sinf === 'Bleed') {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/bleed.png" title="Blesser le bataillon" onclick="selectInfra(`Bleed`)">');
     // End
     $('#conUnitList').append('<br><br>');
     if (mped.sinf === 'RareRes' || mped.sinf === 'Res') {
@@ -142,6 +145,8 @@ function clickEdit(tileId) {
             addTagToBatOnTile(tile,'nomove');
         } else if (mped.sinf === 'Outsider') {
             addTagToBatOnTile(tile,'outsider');
+        } else if (mped.sinf === 'Bleed') {
+            bleedBat(tile);
         } else {
             if (tile.infra != mped.sinf) {
                 tile.infra = mped.sinf;
@@ -175,6 +180,13 @@ function clickEdit(tileId) {
     mapEditWindow();
     showMap(zone,true);
     cursorSwitch('.','grid-item','copy');
+};
+
+function bleedBat(tile) {
+    let bat = getBatByTileId(tile.id);
+    if (bat.squadsLeft > 1) {
+        bat.squadsLeft = bat.squadsLeft-1;
+    }
 };
 
 function fixAlienPDM(tile) {

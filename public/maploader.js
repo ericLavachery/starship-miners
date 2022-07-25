@@ -396,6 +396,9 @@ function showAlien(bat) {
     if (bat.tags.includes('scion') && playerInfos.comp.ca >= 3) {
         tagz = tagz+' (prégnant)';
     }
+    if (bat.pdm != undefined && mode === 'edit') {
+        tagz = tagz+' (GARDE)';
+    }
     if ((zone[0].dark && !undarkNow.includes(bat.tileId) && !bat.tags.includes('fluo')) || batType.skills.includes('invisible')) {
         if (doggedTiles.includes(bat.tileId)) {
             $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/invisible.png"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
@@ -416,6 +419,72 @@ function showAlien(bat) {
         $('#b'+bat.tileId).append('<div class="gUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/gvet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
     } else {
         $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
+    }
+};
+
+function showBataillon(bat) {
+    let batType = getBatType(bat);
+    let nomComplet = bat.type;
+    if (bat.chief != undefined) {
+        if (bat.chief != '') {
+            let grade = getGrade(bat,batType);
+            nomComplet = nomComplet+' ('+grade+' '+bat.chief+')';
+        }
+    }
+    let batPic = getBatPic(bat,batType);
+    let batCat = batType.cat;
+    let unitsLeft = bat.squadsLeft*batType.squadSize;
+    if (batType.squads === 6 && batType.squadSize === 1 && (batType.cat === 'buildings' || batType.cat === 'devices' || batType.skills.includes('transorbital'))) {
+        unitsLeft = '';
+    } else if (batType.skills.includes('nonumname')) {
+        unitsLeft = '';
+    } else if (bat.citoyens >= 1) {
+        unitsLeft = '';
+    }
+    $('#b'+bat.tileId).empty();
+    let resHere = showRes(bat.tileId);
+    let degNum = getDamageBar(bat);
+    let activityBar = 'nope';
+    if (bat.tags.includes('mining')) {
+        activityBar = 'mining';
+    } else {
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
+            activityBar = 'guet';
+        }
+    }
+    let uClass = 'pUnits';
+    if (batType.cat === 'buildings') {
+        if (bat.fuzz <= -2) {
+            uClass = 'pUnitsCamoFortif';
+        } else {
+            uClass = 'pUnitsFortif';
+        }
+    } else {
+        if (bat.fuzz <= -2) {
+            if (bat.tags.includes('fortif')) {
+                uClass = 'pUnitsCamoFortif';
+            } else {
+                uClass = 'pUnitsCamo';
+            }
+        } else {
+            if (bat.tags.includes('fortif')) {
+                uClass = 'pUnitsFortif';
+            }
+        }
+    }
+    let tagz = ' ';
+    if (mode === 'edit') {
+        if (bat.tags.includes('outsider')) {
+            tagz = tagz+' (outsider)';
+        }
+        if (bat.tags.includes('nomove')) {
+            tagz = tagz+' (nomove)';
+        }
+    }
+    if (!modeSonde) {
+        $('#b'+bat.tileId).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+tagz+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
+    } else {
+        $('#b'+bat.tileId).append('<div class="'+uClass+'"></div><div class="degInfos"></div><div class="batInfos"></div>'+resHere);
     }
 };
 
@@ -515,63 +584,6 @@ function updateDogTiles(tileId) {
     newTileId = tileId+mapSize-2;
     if (!doggedTiles.includes(newTileId)) {
         doggedTiles.push(newTileId);
-    }
-};
-
-function showBataillon(bat) {
-    let batType = getBatType(bat);
-    let nomComplet = bat.type;
-    if (bat.chief != undefined) {
-        if (bat.chief != '') {
-            let grade = getGrade(bat,batType);
-            nomComplet = nomComplet+' ('+grade+' '+bat.chief+')';
-        }
-    }
-    let batPic = getBatPic(bat,batType);
-    let batCat = batType.cat;
-    let unitsLeft = bat.squadsLeft*batType.squadSize;
-    if (batType.squads === 6 && batType.squadSize === 1 && (batType.cat === 'buildings' || batType.cat === 'devices' || batType.skills.includes('transorbital'))) {
-        unitsLeft = '';
-    } else if (batType.skills.includes('nonumname')) {
-        unitsLeft = '';
-    } else if (bat.citoyens >= 1) {
-        unitsLeft = '';
-    }
-    $('#b'+bat.tileId).empty();
-    let resHere = showRes(bat.tileId);
-    let degNum = getDamageBar(bat);
-    let activityBar = 'nope';
-    if (bat.tags.includes('mining')) {
-        activityBar = 'mining';
-    } else {
-        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
-            activityBar = 'guet';
-        }
-    }
-    let uClass = 'pUnits';
-    if (batType.cat === 'buildings') {
-        if (bat.fuzz <= -2) {
-            uClass = 'pUnitsCamoFortif';
-        } else {
-            uClass = 'pUnitsFortif';
-        }
-    } else {
-        if (bat.fuzz <= -2) {
-            if (bat.tags.includes('fortif')) {
-                uClass = 'pUnitsCamoFortif';
-            } else {
-                uClass = 'pUnitsCamo';
-            }
-        } else {
-            if (bat.tags.includes('fortif')) {
-                uClass = 'pUnitsFortif';
-            }
-        }
-    }
-    if (!modeSonde) {
-        $('#b'+bat.tileId).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
-    } else {
-        $('#b'+bat.tileId).append('<div class="'+uClass+'"></div><div class="degInfos"></div><div class="batInfos"></div>'+resHere);
     }
 };
 
