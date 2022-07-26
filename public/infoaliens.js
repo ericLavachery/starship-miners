@@ -1,4 +1,13 @@
-function showEnemyBatInfos(bat) {
+function toggleAlienPicSize(batId,bigPic) {
+    let bat = getAlienById(batId);
+    if (bigPic) {
+        showEnemyBatInfos(bat,true);
+    } else {
+        showEnemyBatInfos(bat,false);
+    }
+};
+
+function showEnemyBatInfos(bat,bigPic) {
     $("#unitInfos").css("display","block");
     $('#unitInfos').empty();
     let alienUnitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
@@ -26,6 +35,20 @@ function showEnemyBatInfos(bat) {
     if (batType.name === 'Colonie') {
         compCA = compCA-2;
     }
+    let relSize = Math.ceil(Math.sqrt(batType.size)*40);
+    if (relSize > 283) {
+        relSize = 283;
+    }
+    if (relSize < 64) {
+        relSize = 64;
+    }
+    // let relSize = 285;
+    if (bigPic) {
+        $('#unitInfos').append('<div class="detailUnits" onclick="toggleAlienPicSize('+bat.id+',false)"><img src="/static/img/units/aliens/'+batType.pic+'.png" width="283"></div>');
+    } else {
+        $('#unitInfos').append('<div class="detailUnits" onclick="toggleAlienPicSize('+bat.id+',true)"><img src="/static/img/units/aliens/'+batType.pic+'.png" width="'+relSize+'"></div>');
+    }
+    $('#unitInfos').append('<br>');
     $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batShowedName+'</h3></span>');
     // SQUADS
     $('#unitInfos').append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batType.squads+'</span><br>');
@@ -388,7 +411,9 @@ function showEnemyBatInfos(bat) {
         }
     }
     // DISMANTLE
-    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Supprimer (Tu triches!)" class="boutonCiel skillButtons" onclick="deleteAlien('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
+    if (allowCheat) {
+        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Supprimer (Tu triches!)" class="boutonCiel skillButtons" onclick="deleteAlien('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
+    }
 
     // "moveCost": 3,
     // "maxFlood": 3,

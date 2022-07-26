@@ -1880,7 +1880,7 @@
         "squadSize":8,
         "crew":0,
         "hp":13,
-        "armor":2,
+        "armor":6,
         "size":5,
         "speed":2,
         "stealth":4,
@@ -2050,7 +2050,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","capfar","grip","venom","reactpoison","nojello"],
+        "skills":["fly","capfar","grip","venom","reactpoison","escape","nojello"],
         "deathFx":"death1",
         "killRes":{"Bugium":1,"Swarmine":3,"Wingium":14},
         "killXP":6

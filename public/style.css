@@ -508,6 +508,16 @@ hr.craft {
     opacity: 0.7;
     /* margin: 1px 1px 1px 1px; */
 }
+.detailUnits {
+    background-color: #ac7731;
+    background-image: url(/static/img/fondG.png);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fbfa94;
+    border-radius: 8px;
+    cursor: nwse-resize;
+    /* margin: 1px 1px 1px 1px; */
+}
 .aUnits {
     background-color: rgba(251, 250, 148, 0.3);
     border-style: solid;

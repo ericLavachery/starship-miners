@@ -10,6 +10,7 @@ function mapEditWindow() {
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<h1>MAP EDITOR</h1><br>');
     $('#conUnitList').append('<br>');
+    // Terrains
     let mbClass = 'mapedBut';
     if (mped.ster === undefined && mped.sinf === '') {mbClass = 'mapedButSel';}
     $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/sntiles/V_005.png" width="64" title="Changer l\'image sans changer le terrain" onclick="selectTerrain()">');
@@ -28,51 +29,27 @@ function mapEditWindow() {
     if (mped.ster === 'Z' && mped.sinf === '') {mbClass = 'mapedButSel';}
     $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/sntiles/R_004.png" width="64" title="Gué" onclick="selectTerrain(`Z`)">');
     $('#conUnitList').append('<br>');
+    // Infra
     armorTypes.forEach(function(infra) {
         if (infra.cat === 'infra') {
-            mbClass = 'mapedBut';
-            if (mped.sinf === infra.name) {mbClass = 'mapedButSel';}
-            $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/'+infra.pic+'.png" title="'+infra.name+'" onclick="selectInfra(`'+infra.name+'`)">');
+            selectStuff(infra.name,infra.pic,infra.name);
         }
     });
-    mbClass = 'mapedBut';
-    if (mped.sinf === 'Ruines') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/ruins.png" title="Ruines" onclick="selectInfra(`Ruines`)">');
-    mbClass = 'mapedBut';
-    if (mped.sinf === 'Ruines vides') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/ruinsf.png" title="Ruines vides" onclick="selectInfra(`Ruines vides`)">');
-    mbClass = 'mapedBut';
-    if (mped.sinf === 'Route') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/roads.png" title="Route (ou Pont)" onclick="selectInfra(`Route`)">');
-    mbClass = 'mapedBut';
-    if (mped.sinf === 'Res') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/res.png" title="Ajouter des ressources" onclick="selectInfra(`Res`)">');
-    mbClass = 'mapedBut';
-    if (mped.sinf === 'RareRes') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/rareres.png" title="Ajouter des ressources rares" onclick="selectInfra(`RareRes`)">');
-    mbClass = 'mapedBut';
-    if (mped.sinf === 'NoRes') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/nores.png" title="Supprimer les ressources" onclick="selectInfra(`NoRes`)">');
+    selectStuff('Ruines','ruins','Ruines');
+    selectStuff('Ruines vides','ruinsf','Ruines vides');
+    selectStuff('Route','roads','Route (ou Pont)');
+    // Ressources 
+    selectStuff('Res','res','Mettre des ressources');
+    selectStuff('RareRes','rareres','Mettre des ressources rares');
+    selectStuff('NoRes','nores','Supprimer les ressources');
     // Tags
-    mbClass = 'mapedBut';
-    if (mped.sinf === 'Garde') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/alienPDM.png" title="Garde alien" onclick="selectInfra(`Garde`)">');
-    mbClass = 'mapedBut';
-    if (mped.sinf === 'NoMove') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/batNoMove.png" title="Bataillon immobilisé" onclick="selectInfra(`NoMove`)">');
-    mbClass = 'mapedBut';
-    if (mped.sinf === 'Outsider') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/batOutsider.png" title="Bataillon outsider" onclick="selectInfra(`Outsider`)">');
-    mbClass = 'mapedBut';
-    if (mped.sinf === 'Bleed') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/bleed.png" title="Blesser le bataillon" onclick="selectInfra(`Bleed`)">');
+    selectStuff('Garde','alienPDM','Garde alien (va rester dans le périmètre)');
+    selectStuff('NoMove','batNoMove','Bataillon immobilisé');
+    selectStuff('Outsider','batOutsider','Bataillon outsider');
+    selectStuff('Bleed','bleed','Blesser le bataillon');
     // Landing
-    mbClass = 'mapedBut';
-    if (mped.sinf === 'Lander') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/lander.png" title="Point d\'aterrissage lander" onclick="selectInfra(`Lander`)">');
-    mbClass = 'mapedBut';
-    if (mped.sinf === 'Navette') {mbClass = 'mapedButSel';}
-    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/navette.png" title="Point d\'aterrissage navette" onclick="selectInfra(`Navette`)">');
+    selectStuff('Lander','lander','Point d\'aterrissage lander (ou navette)');
+    selectStuff('Navette','navette','Point d\'aterrissage navette seulemment');
     // End
     $('#conUnitList').append('<br><br>');
     if (mped.sinf === 'RareRes' || mped.sinf === 'Res') {
@@ -92,6 +69,12 @@ function mapEditWindow() {
         eggsByTerrain('marécages',zone[0].sKind);
     }
     $('#conUnitList').append('<br><br>');
+};
+
+function selectStuff(stuff,stuffImg,stuffDef) {
+    let mbClass = 'mapedBut';
+    if (mped.sinf === stuff) {mbClass = 'mapedButSel';}
+    $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/units/'+stuffImg+'.png" title="'+stuffDef+'" onclick="selectInfra(`'+stuff+'`)">');
 };
 
 function zoneTypeToggle(theZoneType) {
