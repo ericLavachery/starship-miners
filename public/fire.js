@@ -452,8 +452,8 @@ function attack(melee,init) {
     }
     // sleeping alien
     if (selectedBatType.skills.includes('sleep') && selectedBat.tags.includes('invisible')) {
-        shots = Math.round(shots/1.5);
-        attFactor = Math.round(attFactor/1.5);
+        shots = Math.round(shots/1.33);
+        attFactor = Math.round(attFactor/1.33);
     }
     // ESCAPE
     escaped = false;
