@@ -81,35 +81,87 @@ function mapEditWindow() {
     } else {
         theTileRes = {};
     }
-    if (zone[0].cLand === undefined) {
-        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`cLand`,true)" title="Aterrissage au centre possible">Landing centre</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`cLand`,false)" title="Aterrissage uniquement aux points marqués">Landing points</span></span><br>');
-    } else if (zone[0].cLand) {
-        $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="zoneChange(`cLand`,true)" title="Aterrissage au centre possible">Landing centre</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`cLand`,false)" title="Aterrissage uniquement aux points marqués">Landing points</span></span><br>');
-    } else if (!zone[0].cLand) {
-        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`cLand`,true)" title="Aterrissage au centre possible">Landing centre</span> &nbsp;|&nbsp; <span class="cy klik" onclick="zoneChange(`cLand`,false)" title="Aterrissage uniquement aux points marqués">Landing points</span></span><br>');
-    }
-    if (zone[0].noEggs === undefined) {
-        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`noEggs`,true)" title="Aucun oeuf ne tombe">Sans Oeufs</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`noEggs`,false)" title="Des oeufs tombent">Avec Oeufs</span></span><br>');
-    } else if (zone[0].noEggs) {
-        $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="zoneChange(`noEggs`,true)" title="Aucun oeuf ne tombe">Sans Oeufs</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`noEggs`,false)" title="Des oeufs tombent">Avec Oeufs</span></span><br>');
-    } else if (!zone[0].noEggs) {
-        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`noEggs`,true)" title="Aucun oeuf ne tombe">Sans Oeufs</span> &nbsp;|&nbsp; <span class="cy klik" onclick="zoneChange(`noEggs`,false)" title="Des oeufs tombent">Avec Oeufs</span></span><br>');
-    }
-    if (zone[0].coverEggs === undefined) {
-        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`coverEggs`,false)" title="Les oeufs tombent normalement">Oeufs partout</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`coverEggs`,true)" title="Les oeufs tombent toujours à couvert (près d\'une ruche, volcan ou colonie)">Oeufs à couvert</span></span><br>');
-    } else if (zone[0].coverEggs) {
-        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`coverEggs`,false)" title="Les oeufs tombent normalement">Oeufs partout</span> &nbsp;|&nbsp; <span class="cy klik" onclick="zoneChange(`coverEggs`,true)" title="Les oeufs tombent toujours à couvert (près d\'une ruche, volcan ou colonie)">Oeufs à couvert</span></span><br>');
-    } else if (!zone[0].coverEggs) {
-        $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="zoneChange(`coverEggs`,false)" title="Les oeufs tombent normalement">Oeufs partout</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`coverEggs`,true)" title="Les oeufs tombent toujours à couvert (près d\'une ruche, volcan ou colonie)">Oeufs à couvert</span></span><br>');
-    }
-    if (zone[0].neverMove === undefined) {
-        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`neverMove`,false)" title="Les bataillons avec un tag nomove peuvent bouger dès qu\'un bâtiment est détruit">Tag nomove normal</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`neverMove`,true)" title="Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints">Never move</span></span><br>');
-    } else if (zone[0].neverMove) {
-        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`neverMove`,false)" title="Les bataillons avec un tag nomove peuvent bouger dès qu\'un bâtiment est détruit">Tag nomove normal</span> &nbsp;|&nbsp; <span class="cy klik" onclick="zoneChange(`neverMove`,true)" title="Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints">Never move</span></span><br>');
-    } else if (!zone[0].neverMove) {
-        $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="zoneChange(`neverMove`,false)" title="Les bataillons avec un tag nomove peuvent bouger dès qu\'un bâtiment est détruit">Tag nomove normal</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`neverMove`,true)" title="Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints">Never move</span></span><br>');
+    mpedOption('cLand','Aterrissage au centre possible également','Landing centre','Aterrissage uniquement aux points marqués','Landing points');
+    mpedOption('neverMove','Les bataillons avec un tag nomove peuvent également bouger dès qu\'un bâtiment (avec un tag nomove) est détruit','Tag nomove normal','Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints','Never move');
+    mpedOption('noEggs','Aucun oeuf ne tombe','Sans Oeufs','Des oeufs tombent','Avec Oeufs');
+    mpedOption('coverEggs','Les oeufs tombent normalement','Oeufs partout','Les oeufs tombent toujours à couvert (près d\'une ruche, volcan ou colonie)','Oeufs à couvert');
+    $('#conUnitList').append('<span class="constName"><span class="gf">Zone spéciale?</span> : <span class="cy klik" onclick="zoneTypeToggle(`'+zoneInfos.type+'`)" title="Changer le type de zone">'+zoneInfos.type+'</span></span><br>');
+    if (zoneInfos.type === 'normal') {
+        eggsByTerrain('plaines',zone[0].pKind);
+        eggsByTerrain('prairies',zone[0].gKind);
+        eggsByTerrain('marécages',zone[0].sKind);
     }
     $('#conUnitList').append('<br><br>');
+};
+
+function zoneTypeToggle(theZoneType) {
+    if (theZoneType === 'normal') {
+        // leech
+        zone[3].seed = 1;
+        zone[4].seed = 2;
+    } else if (theZoneType === 'leech') {
+        // flies
+        zone[3].seed = 2;
+        zone[4].seed = 1;
+    } else if (theZoneType === 'flies') {
+        // ants
+        zone[3].seed = 3;
+        zone[4].seed = 2;
+    } else if (theZoneType === 'ants') {
+        // roaches
+        zone[3].seed = 4
+        zone[4].seed = 3;
+    } else if (theZoneType === 'roaches') {
+        // spinne
+        zone[3].seed = 5;
+        zone[4].seed = 1;
+    } else if (theZoneType === 'spinne') {
+        // bigbugs
+        zone[3].seed = 6;
+        zone[4].seed = 2;
+    } else if (theZoneType === 'bigbugs') {
+        // normal
+        zone[4].seed = 6;
+    }
+    checkZoneType();
+    mapEditWindow();
+};
+
+function eggsByTerrain(myTer,eggType) {
+    $('#conUnitList').append('<span class="constName"><span class="gf">Oeufs dans les '+myTer+'</span> : <span class="cy klik" onclick="xKindToggle(`'+myTer+'`,`'+eggType+'`)" title="Changer le type d\'oeuf sur ce terrain">'+eggType+'</span></span><br>');
+};
+
+function xKindToggle(myTer,eggType) {
+    let newEggType;
+    let xKind;
+    if (myTer === 'plaines') {
+        xKind = 'pKind';
+    } else if (myTer === 'prairies') {
+        xKind = 'gKind';
+    } else if (myTer === 'marécages') {
+        xKind = 'sKind';
+    }
+    if (eggType === 'bug') {
+        newEggType = 'spider';
+    } else if (eggType === 'spider') {
+        newEggType = 'swarm';
+    } else if (eggType === 'swarm') {
+        newEggType = 'larve';
+    } else if (eggType === 'larve') {
+        newEggType = 'bug';
+    }
+    zone[0][xKind] = newEggType;
+    mapEditWindow();
+};
+
+function mpedOption(champ,defFalse,linkFalse,defTrue,linkTrue) {
+    if (zone[0][champ] === undefined) {
+        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`'+champ+'`,false)" title="'+defTrue+'">'+linkTrue+'</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`'+champ+'`,true)" title="'+defFalse+'">'+linkFalse+'</span></span><br>');
+    } else if (zone[0][champ]) {
+        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`'+champ+'`,false)" title="'+defTrue+'">'+linkTrue+'</span> &nbsp;|&nbsp; <span class="cy klik" onclick="zoneChange(`'+champ+'`,true)" title="'+defFalse+'">'+linkFalse+'</span></span><br>');
+    } else if (!zone[0][champ]) {
+        $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="zoneChange(`'+champ+'`,false)" title="'+defTrue+'">'+linkTrue+'</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`'+champ+'`,true)" title="'+defFalse+'">'+linkFalse+'</span></span><br>');
+    }
 };
 
 function zoneChange(champ,valeur) {
@@ -235,6 +287,7 @@ function clickEdit(tileId) {
             tile.seed = nextSeed;
         }
     }
+    zone[0].edited = true;
     mapEditWindow();
     showMap(zone,true);
     cursorSwitch('.','grid-item','copy');
