@@ -1,13 +1,15 @@
-function toggleAlienPicSize(batId,bigPic) {
+function toggleAlienPicSize(batId) {
     let bat = getAlienById(batId);
     if (bigPic) {
-        showEnemyBatInfos(bat,true);
+        bigPic = false;
+        showEnemyBatInfos(bat);
     } else {
-        showEnemyBatInfos(bat,false);
+        bigPic = true;
+        showEnemyBatInfos(bat);
     }
 };
 
-function showEnemyBatInfos(bat,bigPic) {
+function showEnemyBatInfos(bat) {
     $("#unitInfos").css("display","block");
     $('#unitInfos').empty();
     let alienUnitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));

@@ -201,6 +201,7 @@ teleStationCost['Energie'] = 250;
 teleStationCost['Argon'] = 50;
 teleStationCost['Bossium'] = 10;
 // ALIENS
+let bigPic = false;
 let isFFW = false;
 let pointDeMire = 1830; // tileId
 let possibleMoves = []; // list of tile ids
