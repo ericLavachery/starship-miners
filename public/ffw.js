@@ -25,8 +25,8 @@ function nextAlien() {
     }
     if (alienList.length >= 1) {
         batSelect(alienList[0]);
-        showEnemyBatInfos(selectedBat,true);
         showTileInfos(selectedBat.tileId);
+        showEnemyBatInfos(selectedBat);
         alienWeaponSelect();
         console.log('----------------------');
         console.log(alienList);

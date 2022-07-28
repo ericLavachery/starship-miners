@@ -2889,7 +2889,7 @@
         "id":236,
         "name":"Isolation",
         "bldReq":["Station"],
-        "costs":{"Compo1":100,"Bois":100,"Bore":100,"Carbone":100,"Calcium":75,"Silicium":50},
+        "costs":{"Compo1":100,"Bois":100,"Bore":100,"Carbone":100,"Calcium":75,"Silicium":50,"Nickel":25},
         "fabTime":1,
         "slots":0
     }

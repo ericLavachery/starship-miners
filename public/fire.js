@@ -70,6 +70,9 @@ function clickFire(tileId) {
 
 function combat(melee) {
     console.log('START COMBAT');
+    if (selectedBatType.cat === 'aliens') {
+        showEnemyBatInfos(selectedBat);
+    }
     let selectedBatName = nomVisible(selectedBat);
     let targetBatName = nomVisible(targetBat);
     tagDelete(selectedBat,'mining');

@@ -121,7 +121,7 @@ function clickSelect(tileId) {
             if (bat.tileId === tileId && bat.loc === "zone") {
                 let batType = getBatType(bat);
                 if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) {
-                    showEnemyBatInfos(bat,false);
+                    showEnemyBatInfos(bat);
                 }
                 enemyBatHere = true;
             }

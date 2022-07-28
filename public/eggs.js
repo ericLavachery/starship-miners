@@ -467,7 +467,7 @@ function eggsDrop() {
             } else if (eggTypeDice <= coqPerc+invisibleChance) {
                 dropEgg('Oeuf voilé','any');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
-                if (playerInfos.comp.det >= 3) {
+                if (playerInfos.comp.det >= 3 && playerInfos.bldList.includes('Centre de com') && (playerInfos.knownAliens.includes('Oeuf voilé') || playerInfos.comp.ca >= 4)) {
                     warning('Oeuf voilé','Un Oeuf voilé est tombé!');
                 }
             } else {
