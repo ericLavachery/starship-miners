@@ -1,10 +1,10 @@
 function toggleAlienPicSize(batId) {
     let bat = getAlienById(batId);
-    if (bigPic) {
-        bigPic = false;
+    if (showSilh) {
+        showSilh = false;
         showEnemyBatInfos(bat);
     } else {
-        bigPic = true;
+        showSilh = true;
         showEnemyBatInfos(bat);
     }
 };
@@ -38,18 +38,15 @@ function showEnemyBatInfos(bat) {
         compCA = compCA-2;
     }
     if (batType.kind != 'game') {
-        let relSize = Math.ceil(Math.sqrt(batType.size)*40);
-        if (relSize > 283) {
-            relSize = 283;
-        }
-        if (relSize < 64) {
-            relSize = 64;
-        }
+        let relSize = Math.ceil(Math.sqrt(batType.size-0.85)*40);
+        if (relSize > 310) {relSize = 310;}
+        if (relSize < 0) {relSize = 0;}
         // let relSize = 285;
-        if (bigPic) {
-            $('#unitInfos').append('<div class="detailUnits" onclick="toggleAlienPicSize('+bat.id+',false)"><img src="/static/img/units/aliens/'+batType.pic+'.png" width="283"></div>');
+        let silSize = 350-relSize;
+        if (showSilh) {
+            $('#unitInfos').append('<div class="detailUnits" id="apic" onclick="toggleAlienPicSize('+bat.id+',false)"><img class="silhouette" src="/static/img/silou.png" height="'+silSize+'"><img class="imgAlien" src="/static/img/units/aliens/'+batType.pic+'.png" width="283"></div>');
         } else {
-            $('#unitInfos').append('<div class="detailUnits" onclick="toggleAlienPicSize('+bat.id+',true)"><img src="/static/img/units/aliens/'+batType.pic+'.png" width="'+relSize+'"></div>');
+            $('#unitInfos').append('<div class="detailUnits" id="apic" onclick="toggleAlienPicSize('+bat.id+',false)"><img class="imgAlien" src="/static/img/units/aliens/'+batType.pic+'.png" width="283"></div>');
         }
         $('#unitInfos').append('<br>');
     }
