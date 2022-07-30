@@ -203,16 +203,28 @@ h6 {
     min-height: 21px;
     /* font-weight: bold; */
 }
+.paramAlienName {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    margin-right: 6px;
+    min-height: 17px;
+}
+.paramImg {
+    width: 32px;
+    height: 32px;
+    margin-right: 6px;
+    background-color: #a2a65a;
+    /* background-image: url(/static/img/fondG.png); */
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fbfa94;
+    border-radius: 6px;
+    display: inline-block;
+}
 .paramName {
     display: inline-block;
     width: 135px;
-    text-align: right;
-    margin-right: 3px;
-    min-height: 17px;
-}
-.paramUnitName {
-    display: inline-block;
-    width: 105px;
     text-align: right;
     margin-right: 3px;
     min-height: 17px;
@@ -511,11 +523,13 @@ hr.craft {
 .imgAlien {
     z-index: 30;
     position: relative;
+    bottom: -33px;
     /* margin: 1px 1px 1px 1px; */
 }
 .silhouette {
     z-index: 29;
     position: absolute;
+    bottom: 30px;
     margin-left: 4px;
     /* margin-top: 1px; */
     /* margin: 1px 1px 1px 1px; */
@@ -529,6 +543,7 @@ hr.craft {
     border-radius: 8px;
     cursor: nwse-resize;
     position:relative;
+    min-height: 318px;
     /* margin: 1px 1px 1px 1px; */
 }
 .aUnits {

@@ -1,3 +1,25 @@
+function voirAliens() {
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
+    $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<h1>ALIENS</h1><br>');
+    $('#conUnitList').append('<br>');
+    let sortedAliens = _.sortBy(alienUnits,'size');
+    sortedAliens.forEach(function(unit) {
+        let aSize = Math.floor(unit.size);
+        let aNum = unit.squads*unit.squadSize;
+        let aHP = aNum*unit.hp;
+        $('#conUnitList').append('<span class="paramAlienName cy">'+unit.name+'</span><span class="paramImg"><img src="/static/img/units/aliens/'+unit.pic+'.png" width="32"></span><span class="paramValue"><span class="blanc" title="Taille">'+aSize+'</span> | <span class="bleu" title="Nombre">'+aNum+'</span> | <span class="cy" title="HP">'+aHP+'</span> | <span class="brun" title="Armure">'+unit.armor+'</span></span><br>');
+    });
+    $('#conUnitList').append('<br><br>');
+};
+
 function toggleAlienPicSize(batId) {
     let bat = getAlienById(batId);
     if (showSilh) {
@@ -38,11 +60,11 @@ function showEnemyBatInfos(bat) {
         compCA = compCA-2;
     }
     if (batType.kind != 'game') {
-        let relSize = Math.ceil(Math.sqrt(batType.size-0.85)*40);
-        if (relSize > 310) {relSize = 310;}
+        let relSize = Math.ceil(Math.sqrt(batType.size-0.85)*26);
+        if (relSize > 290) {relSize = 290;}
         if (relSize < 0) {relSize = 0;}
         // let relSize = 285;
-        let silSize = 350-relSize;
+        let silSize = 305-relSize;
         if (showSilh) {
             $('#unitInfos').append('<div class="detailUnits" id="apic" onclick="toggleAlienPicSize('+bat.id+',false)"><img class="silhouette" src="/static/img/silou.png" height="'+silSize+'"><img class="imgAlien" src="/static/img/units/aliens/'+batType.pic+'.png" width="283"></div>');
         } else {

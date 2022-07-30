@@ -244,6 +244,7 @@ function combatReport() {
 };
 
 function calcShotsRangeAdj(weapon,attBat,attBatType,defBat,defBatType) {
+    // let shotsPerc = Math.round(5.56*Math.sqrt(playerInfos.comp.ca+2)*(playerInfos.comp.energ+6));
     let shotsPerc = 100;
     let distance = calcDistance(attBat.tileId,defBat.tileId);
     if (weapon.name.includes('Techno')) {
@@ -2391,6 +2392,11 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     // ROF round
+    if (thisWeapon.ammo.includes('disco')) {
+        thisWeapon.rof = thisWeapon.rof*Math.round(5.56*Math.sqrt(playerInfos.comp.ca+2)*(playerInfos.comp.energ+6))/100;
+    }
+    // console.log('thisWeapon.rof');
+    // console.log(thisWeapon.rof);
     thisWeapon.rof = Math.round(thisWeapon.rof);
     // hero tornade cost
     if (bat.tags.includes('tornade')) {
@@ -2917,10 +2923,17 @@ function getEggProtect(eggBat,eggBatType,weap) {
             if (eggBat.tags.includes('morph')) {
                 eggProt = Math.round(eggProt/1.1);
             }
+            if (weap.noShield) {
+                eggProt = Math.round(eggProt/1.1);
+            } else if (weap.minShield) {
+                eggProt = Math.round(eggProt/1.07);
+            } else if (weap.lowShield) {
+                eggProt = Math.round(eggProt/1.05);
+            }
         }
-        if ((weap.ammo === 'suicide' || weap.ammo === 'suicide-deluge') && eggProt < 110) {
-            eggProt = Math.round(eggProt/1.5);
-        }
+    }
+    if ((weap.ammo === 'suicide' || weap.ammo === 'suicide-deluge') && eggProt < 110) {
+        eggProt = Math.round(eggProt/1.4);
     }
     if (!domeProtect && coconStats.dome && eggBatType.name != 'Colonie') {
         eggProt = eggProt+10;

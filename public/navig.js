@@ -248,7 +248,7 @@ function gangNavig() {
         $('#gangInfos').append('<button type="button" title="Désactiver le mode triche" class="boutonCiel iconButtons" onclick="toggleCheat()"><i class="fas fa-poo"></i></button>');
         $('#gangInfos').append('<br>');
         $('#gangInfos').append('<button type="button" title="Construire gratuitement" class="boutonCiel iconButtons" onclick="bfconst(`all`,true,false,false)"><i class="fa fa-hammer"></i></button>');
-        $('#gangInfos').append('<button type="button" title="Remplir le lander" class="boutonCiel iconButtons" onclick="landerFill()"><i class="fas fa-dolly"></i></button>');
+        $('#gangInfos').append('<button type="button" title="Liste des aliens" class="boutonCiel iconButtons" onclick="voirAliens()"><i class="fab fa-reddit-alien"></i></button>');
         $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonCiel iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button>');
         $('#gangInfos').append('<br>');
         $('#gangInfos').append('<button type="button" title="Ajouter un peu de chaque ressource" class="boutonCiel iconButtons" onclick="allResAdd(10)"><i class="fas fa-cart-plus"></i></button>');
