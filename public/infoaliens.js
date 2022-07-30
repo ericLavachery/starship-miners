@@ -12,10 +12,20 @@ function voirAliens() {
     $('#conUnitList').append('<br>');
     let sortedAliens = _.sortBy(alienUnits,'size');
     sortedAliens.forEach(function(unit) {
-        let aSize = Math.floor(unit.size);
-        let aNum = unit.squads*unit.squadSize;
-        let aHP = aNum*unit.hp;
-        $('#conUnitList').append('<span class="paramAlienName cy">'+unit.name+'</span><span class="paramImg"><img src="/static/img/units/aliens/'+unit.pic+'.png" width="32"></span><span class="paramValue"><span class="blanc" title="Taille">'+aSize+'</span> | <span class="bleu" title="Nombre">'+aNum+'</span> | <span class="cy" title="HP">'+aHP+'</span> | <span class="brun" title="Armure">'+unit.armor+'</span></span><br>');
+        if (unit.kind != 'game') {
+            let aSize = Math.floor(unit.size);
+            let aNum = unit.squads*unit.squadSize;
+            let aHP = aNum*unit.hp;
+            $('#conUnitList').append('<span class="paramAlienName cy">'+unit.name+'</span><span class="paramImg"><img src="/static/img/units/aliens/'+unit.pic+'.png" width="32"></span><span class="paramValue"><span class="blanc" title="Taille">'+aSize+'</span> | <span class="bleu" title="Nombre">'+aNum+'</span> | <span class="cy" title="HP">'+aHP+'</span> | <span class="brun" title="Armure">'+unit.armor+'</span></span><br>');
+        }
+    });
+    sortedAliens.forEach(function(unit) {
+        if (unit.kind === 'game') {
+            let aSize = Math.floor(unit.size);
+            let aNum = unit.squads*unit.squadSize;
+            let aHP = aNum*unit.hp;
+            $('#conUnitList').append('<span class="paramAlienName cy">'+unit.name+'</span><span class="paramImg"><img src="/static/img/units/aliens/'+unit.pic+'.png" width="32"></span><span class="paramValue"><span class="blanc" title="Taille">'+aSize+'</span> | <span class="bleu" title="Nombre">'+aNum+'</span> | <span class="cy" title="HP">'+aHP+'</span> | <span class="brun" title="Armure">'+unit.armor+'</span></span><br>');
+        }
     });
     $('#conUnitList').append('<br><br>');
 };

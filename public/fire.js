@@ -603,8 +603,10 @@ function attack(melee,init) {
     }
     // marquage
     if ((selectedWeap.ammo.includes('marq') || selectedWeap.name.includes('(mark)')) && totalHits >= 5 && !targetBat.tags.includes('fluo')) {
-        targetBat.tags.push('fluo');
-        $('#report').append('<span class="report rose">Bataillon marqué<br></span>');
+        if (selectedWeap.ammo === 'marquage' || selectedWeap.ammo === 'marquage-stop' || totalDamage >= 1) {
+            targetBat.tags.push('fluo');
+            $('#report').append('<span class="report rose">Bataillon marqué<br></span>');
+        }
     }
     // guidage
     if (selectedWeap.ammo.includes('guidage') && totalHits >= 10 && !targetBat.tags.includes('guide')) {
