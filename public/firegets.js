@@ -828,7 +828,7 @@ function calcDamage(weapon,power,armor,defBat) {
     if (calculatedDmg < 0) {
         calculatedDmg = 0;
     }
-    if (calculatedDmg < 1 && weapon.name.includes('plasma')) {
+    if (calculatedDmg < 1 && (weapon.name.includes('plasma') || weapon.ammo === 'toxine')) {
         calculatedDmg = 1;
     }
     if (weapon.name.includes('BFG')) {
@@ -2923,7 +2923,7 @@ function getEggProtect(eggBat,eggBatType,weap) {
             if (eggBat.tags.includes('morph')) {
                 eggProt = Math.round(eggProt/1.1);
             }
-            if (weap.noShield) {
+            if (weap.noShield && !weap.isMelee) {
                 eggProt = Math.round(eggProt/1.1);
             } else if (weap.minShield) {
                 eggProt = Math.round(eggProt/1.07);

@@ -140,15 +140,15 @@ function clickSelect(tileId) {
 
 function toggleShowedTile(tileId) {
     if (selectedBat.tileId != tileId) {
+        let alienHere = isAlienHere(tileId);
         if (playerInfos.showedTiles.includes(tileId)) {
             let index = playerInfos.showedTiles.indexOf(tileId);
             playerInfos.showedTiles.splice(index,1);
         } else {
-            if (selectedTile === tileId) {
+            if (selectedTile === tileId && !alienHere) {
                 playerInfos.showedTiles.push(tileId);
             }
         }
-        let alienHere = isAlienHere(tileId);
         if (!alienHere) {
             redrawTile(tileId,true);
         }

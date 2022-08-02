@@ -824,7 +824,7 @@
     {
         "id":179,
         "name":"Blaze Angels",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":15},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":14},
         "bldReq":["Chaîne de montage","Arsenal","Centre de recherches"],
         "compReq":{"cyber":2},
         "costs":{"Scrap":120,"Carbone":72,"Aluminium":144,"Moteurs":60,"Titane":96,"Tungstène":72,"Electros":96,"Batteries":32,"Cuivre":43,"Silicium":24,"Nickel":48,"Fuel":48,"Energie":96,"Chlore":10,"Tissus":5},
@@ -882,7 +882,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":17,"drogmulojs":99,"tiradores":14,"detruas":99,"brasier":99},
         "bldReq":["Usine","Arsenal","Centre de recherches"],
         "compReq":{"robo":2,"ind":1,"mat":2},
-        "costs":{"Fer":124,"Scrap":42,"Carbone":84,"Moteurs":168,"Tungstène":63,"Titane":630,"Adamantium":42,"Electros":315,"Batteries":210,"Cuivre":210,"Silicium":126,"Cobalt":84,"Nickel":42},
+        "costs":{"Fer":124,"Scrap":42,"Carbone":84,"Moteurs":168,"Tungstène":63,"Titane":630,"Adamantium":126,"Electros":315,"Batteries":210,"Cuivre":210,"Silicium":126,"Cobalt":84,"Nickel":42},
         "deploy":{"Energie":168,"Timonium":21,"Huile":14},
         "fabTime":170,
         "inRuin":1

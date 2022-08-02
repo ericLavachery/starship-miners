@@ -3802,7 +3802,7 @@
         "mecanoCost":10,
         "transMaxSize":100,
         "transUnits":1000000,
-        "transRes":10000000,
+        "transRes":300000,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },

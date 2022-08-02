@@ -497,11 +497,7 @@ function batInfos(bat,batType,pop) {
     if (batType.transRes >= 1) {
         let restSpace = checkResSpace(bat);
         if (restSpace < 1) {tagColor = 'or';} else {tagColor = 'caca';}
-        if (resMax < 1000000) {
-            $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/'+resMax+'</span><br>');
-        } else {
-            $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/</span><br>');
-        }
+        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/'+resMax+'</span><br>');
     }
     if (batType.skills.includes('reserve') || batType.skills.includes('transorbital')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Réserve</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');

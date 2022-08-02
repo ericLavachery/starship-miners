@@ -729,7 +729,8 @@ function missionRes() {
             if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
                 prodOK = false;
             }
-            if (prodOK) {
+            let compReqOK = checkCompReq(unit);
+            if (prodOK && compReqOK) {
                 if (lastKind != unit.kind) {
                     showkind = unit.kind.replace(/zero-/g,"");
                     $('#fillList').append('<br><span class="constName or" id="kind-'+unit.kind+'">'+showkind.toUpperCase()+'</span><br>');
@@ -830,7 +831,8 @@ function missionRes() {
             if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
                 prodOK = false;
             }
-            if (prodOK) {
+            let compReqOK = checkCompReq(infra);
+            if (prodOK && compReqOK) {
                 if (prepaBld[infra.name] === undefined) {
                     showPrep = '';
                 } else {

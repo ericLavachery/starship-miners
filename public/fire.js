@@ -738,8 +738,8 @@ function attack(melee,init) {
     // toxine veuve résistance robots et véhicules
     if (selectedWeap.ammo.includes('toxine')) {
         if (targetBatType.cat != 'infantry') {
-            totalDamage = 0;
-            apDamage = 0;
+            totalDamage = Math.round(totalDamage/5);
+            apDamage = Math.round(totalDamage/5);
             $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
         }
     }
@@ -1706,8 +1706,8 @@ function defense(melee,init) {
     // toxine veuve résistance robots et véhicules
     if (targetWeap.ammo.includes('toxine')) {
         if (selectedBatType.cat != 'infantry') {
-            totalDamage = 0;
-            apDamage = 0;
+            totalDamage = Math.round(totalDamage/5);
+            apDamage = Math.round(totalDamage/5);
             $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
         }
     }

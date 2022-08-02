@@ -75,8 +75,12 @@ function showEnemyBatInfos(bat) {
         if (relSize < 0) {relSize = 0;}
         // let relSize = 285;
         let silSize = 305-relSize;
+        let silclass = 'silhouette';
+        if (batType.skills.includes('silhover')) {
+            silclass = 'silhover';
+        }
         if (showSilh) {
-            $('#unitInfos').append('<div class="detailUnits" id="apic" onclick="toggleAlienPicSize('+bat.id+',false)"><img class="silhouette" src="/static/img/silou.png" height="'+silSize+'"><img class="imgAlien" src="/static/img/units/aliens/'+batType.pic+'.png" width="283"></div>');
+            $('#unitInfos').append('<div class="detailUnits" id="apic" onclick="toggleAlienPicSize('+bat.id+',false)"><img class="'+silclass+'" src="/static/img/silou.png" height="'+silSize+'"><img class="imgAlien" src="/static/img/units/aliens/'+batType.pic+'.png" width="283"></div>');
         } else {
             $('#unitInfos').append('<div class="detailUnits" id="apic" onclick="toggleAlienPicSize('+bat.id+',false)"><img class="imgAlien" src="/static/img/units/aliens/'+batType.pic+'.png" width="283"></div>');
         }
