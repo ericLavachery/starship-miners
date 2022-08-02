@@ -324,6 +324,9 @@ function checkEggsDrop() {
                 }
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
                 let doubleCocon = playerInfos.mapTurn+((zone[0].mapDiff-1)*7);
+                if (playerInfos.mapTurn >= 20 && aliens.length < playerInfos.mapTurn*2 && zone[0].mapDiff >= 5) {
+                    doubleCocon = doubleCocon+100;
+                }
                 if (doubleCocon >= 50) {
                     dropEgg('Oeuf','nedge');
                     playerInfos.droppedEggs = playerInfos.droppedEggs+1;
