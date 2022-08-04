@@ -881,7 +881,9 @@ function playerSkillsUTChanges() {
                     unit.transMaxSize = Math.round(unit.transMaxSize*1.5);
                 }
             } else if (playerInfos.comp.log === 3) {
-                if (unit.transRes >= 50) {
+                if (unit.transRes >= 300000) {
+                    unit.transRes = Math.round(unit.transRes*1.5);
+                } else if (unit.transRes >= 50) {
                     unit.transRes = Math.round(unit.transRes*2);
                 }
                 if (unit.transUnits >= 50) {
@@ -1920,9 +1922,9 @@ function missionResults(onlyLanders,sCount,hCount) {
                     resColour = 'cy';
                 }
                 if (minedRes <= 0) {
-                    $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
+                    $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');
                 } else {
-                    $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="'+resColour+'">'+resResult+'</span> +('+minedRes+')</span><br>');
+                    $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="'+resColour+'">'+resResult+'</span> +('+minedRes+')</span><br>');
                 }
             }
         }

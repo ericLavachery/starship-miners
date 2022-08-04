@@ -131,7 +131,7 @@ function calcEggPause(noMax) {
 };
 
 function checkMaxDroppedEggs() {
-    let overLimit = playerInfos.mapTurn-45;
+    let overLimit = playerInfos.mapTurn-30;
     if (overLimit < 0) {
         overLimit = 0;
     }

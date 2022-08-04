@@ -22,6 +22,9 @@ function events(afterMission,time,sim,quiet) {
     eventBouffe(time,sim,quiet);
     eventCrime(time,sim,quiet);
     eventAliens(time,sim,quiet);
+    if (!sim) {
+        // autoResPurge();
+    }
     console.log('RES BALANCE');
     console.log(playerInfos.weekRes);
     showResBallance(quiet);

@@ -301,7 +301,8 @@
         "cat": "zero",
         "batch": 2,
         "energie": -1,
-        "equiv": 1
+        "equiv": 1,
+        "max": 2000
     },
     {
         "id": 21,
@@ -350,7 +351,8 @@
         "batch": 5,
         "energie": -1,
         "equiv": 1,
-        "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0,"Kzin":0.5,"Horst":0}
+        "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0,"Kzin":0.5,"Horst":0},
+        "max": 15000
     },
     {
         "id": 24,
@@ -758,7 +760,8 @@
         "cat": "alien",
         "batch": 5,
         "energie": -1,
-        "equiv": 3
+        "equiv": 3,
+        "max": 15000
     },
     {
         "id": 60,
@@ -895,7 +898,8 @@
         "cat": "transfo",
         "batch": 4,
         "energie": -1,
-        "equiv": 3
+        "equiv": 3,
+        "max": 15000
     },
     {
         "id": 65,

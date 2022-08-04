@@ -242,7 +242,7 @@ h6 {
 }
 .paramResName {
     display: inline-block;
-    width: 100px;
+    width: 90px;
     text-align: right;
     margin-right: 3px;
     min-height: 17px;
@@ -256,7 +256,7 @@ h6 {
 }
 .paramResValue {
     display: inline-block;
-    width: 90px;
+    width: 60px;
     font-weight: bold;
 }
 .paramCompValue {

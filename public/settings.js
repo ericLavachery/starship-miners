@@ -200,6 +200,7 @@ let teleStationCost = {};
 teleStationCost['Energie'] = 250;
 teleStationCost['Argon'] = 50;
 teleStationCost['Bossium'] = 10;
+let defMaxRes = 25000;
 // ALIENS
 let showSilh = true;
 let isFFW = false;

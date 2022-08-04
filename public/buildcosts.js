@@ -14,6 +14,9 @@ function voirReserve() {
         $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="voirReserve()">Zone</span> &nbsp;|&nbsp; <span class="jaune klik" onclick="voirReserveStation()">Station</span></span><br>');
     } else {
         $('#conUnitList').append('<span class="constName or" id="gentils">RESERVE</span><br>');
+        if (!inSoute) {
+            $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="purgerReserve()" title="Jeter toutes les ressources qui dépassent le maximum">Purger</span></span><br>');
+        }
     }
     $('#conUnitList').append('<br>');
     findLanders();
@@ -29,8 +32,22 @@ function voirReserve() {
         dispoRes = getDispoRes(res.name);
         minedRes = getMinedRes(res.name);
         resIcon = getResIcon(res);
+        let maxRes = getDefResMax(res);
+        let isPerish = false;
+        if (res.max != undefined) {
+            isPerish = true;
+        }
+        if (playerInfos.maxRes[res.name] != undefined) {
+            maxRes = playerInfos.maxRes[res.name];
+        }
         let resCol = '';
-        if (playerInfos.resFlags.includes(res.name)) {
+        if (maxRes < dispoRes && (res.cat != 'alien' || res.name === 'Gibier') && playerInfos.onShip && !inSoute) {
+            if (isPerish) {
+                resCol = ' or';
+            } else {
+                resCol = ' ciel';
+            }
+        } else if (playerInfos.resFlags.includes(res.name)) {
             resCol = ' jaune';
         } else if (res.cat === 'alien') {
             resCol = ' gff';
@@ -39,13 +56,20 @@ function voirReserve() {
             dispoRes = 0;
         }
         if (playerInfos.onShip && (!inSoute || souteTab != 'rez')) {
-            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Taguer cette ressource ('+res.name+')" onclick="tagRes('+res.id+')">&uHar;&dHar;</span>');
+            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Taguer cette ressource ('+res.name+')" onclick="tagRes('+res.id+')">&CircleDot;</span>');
+            if (res.cat != 'alien' && !isPerish) {
+                $('#conUnitList').append('&nbsp; <span class="paramValue brunf" title="Maximum de stockage ('+res.name+')">'+maxRes+'</span> &nbsp;<span class="paramValue klik" title="Augmenter le maximum de stockage ('+res.name+')" onclick="maxResEdit('+res.id+',true)">&uHar;</span> &nbsp;<span class="paramValue klik" title="Diminuer le maximum de stockage ('+res.name+')" onclick="maxResEdit('+res.id+',false)">&dHar;</span><br>');
+            } else if (res.name === 'Gibier' || isPerish) {
+                $('#conUnitList').append('&nbsp; <span class="paramValue brun" title="Maximum de stockage ('+res.name+')">'+maxRes+'</span><br>');
+            } else {
+                $('#conUnitList').append('<br>');
+            }
         } else if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 50) {
-            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span>');
+            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span><br>');
         } else if (res.cat === 'alien' || minedRes <= 0) {
-            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span>');
+            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><br>');
         } else {
-            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span>');
+            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span><br>');
         }
         playerInfos.reserve[res.name] = dispoRes;
     });
@@ -93,6 +117,72 @@ function voirReserveStation() {
     });
     $('#conUnitList').append('<br><br>');
     // $("#conUnitList").animate({scrollTop:0},"fast");
+};
+
+function getDefResMax(res) {
+    let theDefResMax = defMaxRes;
+    if (res.max != undefined) {
+        theDefResMax = res.max;
+    }
+    return theDefResMax;
+}
+
+function purgerReserve() {
+    batUnselect();
+    let soute = getBatById(souteId);
+    resTypes.forEach(function(res) {
+        if (res.cat != 'alien') {
+            let souteRes = soute.transRes[res.name];
+            let maxRes = getDefResMax(res);
+            if (playerInfos.maxRes[res.name] != undefined) {
+                maxRes = playerInfos.maxRes[res.name];
+            }
+            if (souteRes > maxRes) {
+                soute.transRes[res.name] = maxRes;
+            }
+        }
+    });
+    voirReserve();
+};
+
+function autoResPurge() {
+    batUnselect();
+    let soute = getBatById(souteId);
+    resTypes.forEach(function(res) {
+        if (res.max != undefined) {
+            if (res.cat != 'alien') {
+                let souteRes = soute.transRes[res.name];
+                if (souteRes > res.max) {
+                    soute.transRes[res.name] = res.max;
+                }
+            } else {
+                let alienRes = playerInfos.alienRes[res.name];
+                if (alienRes > res.max) {
+                    playerInfos.alienRes[res.name] = res.max;
+                }
+            }
+        }
+    });
+};
+
+function maxResEdit(resId,up) {
+    let res = getResById(resId);
+    let maxRes = getDefResMax(res);
+    if (playerInfos.maxRes[res.name] != undefined) {
+        maxRes = playerInfos.maxRes[res.name];
+    }
+    if (up) {
+        maxRes = Math.ceil(maxRes*1.1);
+    } else {
+        maxRes = Math.floor(maxRes/1.1);
+    }
+    if (res.max != undefined) {
+        if (maxRes > res.max) {
+            maxRes = res.max;
+        }
+    }
+    playerInfos.maxRes[res.name] = maxRes;
+    voirReserve();
 };
 
 function tagRes(resId) {
