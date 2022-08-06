@@ -160,6 +160,7 @@ function landingList() {
             } else if (presAlienDice >= 11 && zone[0].mapDiff >= 2) {
                 zone[0].mapDiff = zone[0].mapDiff-1;
             }
+            checkCanon();
             showMap(zone,true);
             isReloaded = false;
         }

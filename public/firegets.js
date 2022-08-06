@@ -305,12 +305,13 @@ function shot(weapon,attBat,attBatType,defBat,defBatType,shotDice,accurange) {
     let weapAccu = weapon.accuracy+accurange;
     // fly
     if (defBatType.skills.includes('fly')) {
-        weapAccu = Math.round(weapAccu*weapon.dca);
+        weapAccu = weapAccu*weapon.dca;
     }
     // marquage
     if (defBat.tags.includes('fluo')) {
-        weapAccu = weapAccu+15;
+        weapAccu = weapAccu*1.5;
     }
+    weapAccu = Math.ceil(weapAccu);
     // minaccu
     let minAccu = 0;
     if (attBatType.skills.includes('minaccu')) {
@@ -960,7 +961,9 @@ function applyShield() {
             shieldChance = 33;
         }
     }
-    if (activeTurn === 'player' && shieldChance >= 1 && !selectedWeap.ammo != 'marquage') {
+    console.log('SHIELD');
+    console.log(selectedWeap.ammo);
+    if (activeTurn === 'player' && shieldChance >= 1 && selectedWeap.ammo != 'marquage') {
         if (rand.rand(1,100) <= shieldChance && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');
         }
@@ -1210,7 +1213,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
             speed = speed-stealth;
         }
     }
-    if (bat.eq === 'w2-autogun' || bat.eq === 'w2-autopistol') {
+    if (bat.eq === 'w2-autogun' || bat.eq === 'w2-autopistol' || bat.eq === 'w3-autopistol') {
         speed = speed-50-stealth;
     } else {
         if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai') && !attacking) {
@@ -1635,7 +1638,7 @@ function weaponSelectRiposte(distance) {
         if (targetBatType.name === 'Chevaliers') {
             targetWeap.sound = 'axe_x2';
         }
-    } else if (targetBat.eq === 'w2-autogun' || targetBat.eq === 'w2-autopistol') {
+    } else if (targetBat.eq === 'w2-autogun' || targetBat.eq === 'w2-autopistol' || targetBat.eq === 'w3-autopistol') {
         targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon3));
         targetWeap = weaponAdj(targetWeap,targetBat,'w3');
     } else if (targetBatType.skills.includes('w3melee') && distance === 0) {
@@ -2951,7 +2954,7 @@ function getRipNum(bat,batType) {
     if (batType.skills.includes('onedef')) {
         ripNum = ripNum-3;
     }
-    if (batType.skills.includes('gooddef') || bat.eq.includes('w2-auto')) {
+    if (batType.skills.includes('gooddef') || bat.eq.includes('w2-auto') || bat.eq.includes('w3-auto')) {
         ripNum = ripNum+2;
     }
     if (bat.tags.includes('hero') && batType.skills.includes('herorip')) {

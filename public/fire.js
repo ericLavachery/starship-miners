@@ -124,7 +124,7 @@ function combat(melee) {
     if (targetBatType.skills.includes('onedef')) {
         negSalvo = -1;
     }
-    if (targetBatType.skills.includes('gooddef') || targetBat.eq.includes('w2-auto')) {
+    if (targetBatType.skills.includes('gooddef') || targetBat.eq.includes('w2-auto') || targetBat.eq.includes('w3-auto')) {
         negSalvo = -6;
     }
     if (targetBat.tags.includes('hero') && targetBatType.skills.includes('herorip')) {
@@ -171,7 +171,7 @@ function combat(melee) {
             if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-7;
             }
-            if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('freeshot') || targetBatType.skills.includes('after') || targetBat.eq.includes('w2-auto')) {
+            if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('freeshot') || targetBatType.skills.includes('after') || targetBat.eq.includes('w2-auto') || targetBat.eq.includes('w3-auto')) {
                 minimumFireAP = -999;
             }
             if ((defAlive && attAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {

@@ -212,6 +212,7 @@ function alienTurnEnd() {
 
 function nextTurnEnd() {
     alienTurnEnd();
+    alienCanon();
     createStormsLists(false);
     $('#report').empty('');
     // récup du player
@@ -1368,6 +1369,12 @@ function tagsEffect(bat,batType) {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/2));
             } else {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3));
+            }
+            if (bat.prt === 'swing' || bat.prt === 'soap') {
+                let batTile = getTile(bat);
+                if (batTile.web) {
+                    tagDelete(bat,'mud');
+                }
             }
         } else {
             tagDelete(bat,'mud');

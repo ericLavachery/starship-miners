@@ -839,6 +839,7 @@ function eggDropTile(eggName,theArea) {
         });
     }
     // TARGET
+    // Près d'un bâtiment du joueur
     if (area === 'target') {
         let shufBats = _.shuffle(bataillons);
         let bestFuzz = -3;
@@ -899,6 +900,7 @@ function eggDropTile(eggName,theArea) {
         }
     }
     // AROUND
+    // près d'une flaque
     if (area === 'around') {
         let shufAliens = _.shuffle(aliens);
         shufAliens.forEach(function(bat) {
@@ -922,6 +924,7 @@ function eggDropTile(eggName,theArea) {
         });
     }
     // ENCOUNTER
+    // Près du Bastion
     if (area === 'encounter') {
         targetTile = encounterTileId;
         let shufZone = _.shuffle(zone);
@@ -938,6 +941,7 @@ function eggDropTile(eggName,theArea) {
         });
     }
     // GUARD
+    // Près d'une Colonie ou Crysalide
     if (area === 'guard') {
         let shufAliens = _.shuffle(aliens);
         shufAliens.forEach(function(bat) {
@@ -964,6 +968,7 @@ function eggDropTile(eggName,theArea) {
         });
     }
     // A COUVERT
+    // Près d'un Vocan ou d'une Ruche
     if (area === 'acouvert') {
         let bestCover = 0;
         let shufAliens = _.shuffle(aliens);

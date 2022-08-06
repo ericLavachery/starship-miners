@@ -286,6 +286,13 @@ function showRes(tileId) {
     if (tile.infra === 'Crystal' && view) {
         mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/crystal.png"></div>';
     }
+    if (tile.web && view) {
+        let webNum = tile.seed;
+        if (webNum > 6) {
+            webNum = webNum-6;
+        }
+        mapIndicators = mapIndicators+'<div class="webz"><img src="/static/img/units/web'+webNum+'.png"></div>';
+    }
     if (tile.land != undefined) {
         if (tile.land) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/landSpot.png"></div>';

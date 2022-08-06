@@ -379,9 +379,24 @@ function moveSelectedBat(tileId,free,jump) {
             stormDamage(selectedBat,selectedBatType,false,true);
         }
     }
+    let tile = getTileById(tileId);
+    if (tile.web) {
+        if (!selectedBat.tags.includes('mud')) {
+            selectedBat.tags.push('mud');
+        }
+        let newAP = 0-rand.rand(1,Math.ceil(selectedBat.ap/2));
+        if (selectedBat.prt === 'swing' || selectedBat.prt === 'soap') {
+            newAP = newAP+7;
+        }
+        if (newAP < selectedBat.apLeft-2) {
+            selectedBat.apLeft = newAP;
+        } else {
+            selectedBat.apLeft = selectedBat.apLeft-2;
+        }
+        warning('Toile','Bataillon immobilisé!');
+    }
     if (zone[0].planet === 'Kzin') {
         if (!selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('hover') && selectedBat.eq != 'e-jetpack' && selectedBatType.moveCost < 90 && (!selectedBatType.skills.includes('oknitro') || selectedBatType.skills.includes('moto'))) {
-            let tile = getTileById(tileId);
             if (!tile.rd) {
                 let mudChance = 0;
                 if (tile.terrain === 'S') {

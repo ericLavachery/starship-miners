@@ -446,6 +446,13 @@ hr.craft {
     margin-top: -3px;
     z-index: -5;
 }
+.webz {
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+    z-index: -10;
+    opacity: 0.4;
+}
 .ruins {
     position: absolute;
     margin-left: 0px;

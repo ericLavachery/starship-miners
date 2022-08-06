@@ -714,7 +714,7 @@
             "ammo":["standard"]
         },
         "protection":[],
-        "equip":["aucun","lunette","w2-guidage","w2-autopistol","e-radar"],
+        "equip":["aucun","lunette","w2-guidage","w3-autopistol","e-radar"],
         "log3eq":["lunette"],
         "moveCost":99,
         "maxFlood":-1,

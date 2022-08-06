@@ -73,6 +73,15 @@ function eggSound() {
     sound.play();
 };
 
+function webSound() {
+    let myVol = checkMyVol(playerInfos.volFx);
+    var sound = new Howl({
+        src: ['/static/sounds/fx/web-fall.mp3'],
+        volume: myVol
+    });
+    sound.play();
+};
+
 function clicSound() {
     // playMove(false);
     let myVol = checkMyVol(playerInfos.volFx-0.2);
