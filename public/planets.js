@@ -153,6 +153,45 @@ function getCanonTiles(cType,area) {
     return canonTiles;
 };
 
+function stormProtection(dmg,bat,batType) {
+    let adjDmg = dmg;
+    let tile = getTileById(bat.tileId);
+    let stormProtect = 0;
+    let infraProtect = 0;
+    let terProtect = 0;
+    if (tile.infra != undefined) {
+        let okCover = bonusInfra(batType,tile.infra);
+        if (okCover) {
+            if (tile.infra === 'Miradors') {
+                infraProtect = 15;
+            } else if (tile.infra === 'Palissades') {
+                infraProtect = 25;
+            } else if (tile.infra === 'Remparts') {
+                infraProtect = 35;
+            } else if (tile.infra === 'Murailles') {
+                infraProtect = 50;
+            }
+        }
+    }
+    let terrain = getTileTerrain(bat.tileId);
+    if (terrain.scarp > 0) {
+        terProtect = terProtect+(terrain.scarp*terrain.scarp*(10-Math.sqrt(batType.size))/2);
+    }
+    if (terrain.flood > 0) {
+        terProtect = terProtect+(terrain.flood*5);
+    }
+    if (terProtect > infraProtect) {
+        stormProtect = stormProtect+terProtect+(infraProtect/3);
+    } else {
+        stormProtect = stormProtect+infraProtect+(terProtect/3);
+    }
+    if (bat.tags.includes('fortif')) {
+        stormProtect = stormProtect*1.15;
+    }
+    adjDmg = Math.ceil(adjDmg*(100-stormProtect)/100);
+    return adjDmg;
+};
+
 function stormDamage(bat,batType,storm,inMov) {
     let isDead = false;
     if (!storm) {
@@ -165,12 +204,15 @@ function stormDamage(bat,batType,storm,inMov) {
                     if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
                         stormDmg = Math.ceil(stormDmg/1.25);
                     } else {
-                        stormDmg = Math.ceil(stormDmg/1.5);
+                        stormDmg = Math.ceil(stormDmg/2);
                     }
                 } else {
                     if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
-                        stormDmg = Math.ceil(stormDmg*1.85);
+                        stormDmg = Math.ceil(stormDmg*1.5);
                     }
+                }
+                if (stormDmg >= 1) {
+                    stormDmg = stormProtection(stormDmg,bat,batType);
                 }
                 console.log('stormDmg='+stormDmg);
                 let totalDamage = bat.damage+stormDmg;
@@ -182,12 +224,20 @@ function stormDamage(bat,batType,storm,inMov) {
                     bat.apLeft = Math.round(bat.ap/2);
                 }
                 if (bat.squadsLeft <= 0) {
-                    batDeathEffect(bat,true,'Bataillon détruit',bat.type+' brûlé.');
+                    batDeathEffect(bat,true,'Tempête',bat.type+' brûlé.');
                     isDead = true;
                     if (inMov) {
                         batDeath(bat,true,false);
                     } else {
                         checkDeath(bat,batType);
+                    }
+                } else if (stormDmg >= 1) {
+                    if (batType.cat === 'infantry') {
+                        warning('Tempête',bat.type+' blessés.',false,bat.tileId);
+                    } else if (batType.cat === 'buildings') {
+                        warning('Tempête',bat.type+' endommagé.',false,bat.tileId);
+                    } else {
+                        warning('Tempête',bat.type+' endommagés.',false,bat.tileId);
                     }
                 }
             }
@@ -213,6 +263,9 @@ function stormDamage(bat,batType,storm,inMov) {
         if (playerInfos.comp.scaph >= 3 && batType.cat === 'infantry') {
             stormDmg = Math.ceil(stormDmg/1.5);
         }
+        if (stormDmg >= 1) {
+            stormDmg = stormProtection(stormDmg,bat,batType);
+        }
         console.log('stormDmg(T)='+stormDmg);
         let totalDamage = bat.damage+stormDmg;
         let squadHP = batType.squadSize*batType.hp;
@@ -223,12 +276,20 @@ function stormDamage(bat,batType,storm,inMov) {
             bat.apLeft = Math.round(bat.ap/2);
         }
         if (bat.squadsLeft <= 0) {
-            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' brûlé.');
+            batDeathEffect(bat,true,'Tempête',bat.type+' brûlé.');
             isDead = true;
             if (inMov) {
                 batDeath(bat,true,false);
             } else {
                 checkDeath(bat,batType);
+            }
+        } else if (stormDmg >= 1) {
+            if (batType.cat === 'infantry') {
+                warning('Tempête',bat.type+' blessés.',false,bat.tileId);
+            } else if (batType.cat === 'buildings') {
+                warning('Tempête',bat.type+' endommagé.',false,bat.tileId);
+            } else {
+                warning('Tempête',bat.type+' endommagés.',false,bat.tileId);
             }
         }
     }

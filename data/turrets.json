@@ -1459,7 +1459,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_barb","noguet","nodeathcount","notarget","noblub","nolist","norepair","clicput","infrako","bigprot","noaploss","nostation","okdel","oninfra"],
+        "skills":["b_barb","noguet","nodeathcount","notarget","noblub","nolist","norepair","resistfeu","clicput","infrako","bigprot","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
         "deathFx":"xplode"
     },
@@ -1502,7 +1502,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_barb","noguet","nodeathcount","notarget","bigblub","nolist","norepair","clicput","bigprot","infrako","noaploss","nostation","okdel","oninfra"],
+        "skills":["b_barb","noguet","nodeathcount","notarget","bigblub","nolist","norepair","resistfeu","clicput","bigprot","infrako","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
         "deathFx":"xplode"
     },
