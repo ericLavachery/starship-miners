@@ -2,7 +2,7 @@ function generateVM() {
     zone = [];
     savePlayerInfos();
     checkFilter();
-    filterParams();
+    filterParams(true);
     createVM(mapSize);
     washReports(true);
     // zoneReport(zone,false);
@@ -71,7 +71,7 @@ function generateNewMap(filterCheck) {
     if (filterCheck) {
         checkFilter();
     }
-    filterParams();
+    filterParams(filterCheck);
     createMap(mapSize);
     filterMap(zone);
     addRivers(zone);
@@ -384,61 +384,65 @@ function checkFilter() {
     }
 };
 
-function filterParams() {
+function filterParams(filterCheck) {
     maxTileCheck = rand.rand(4,5);
     if (filterBase.spSeed != specialSeed) {
         specialSeed = filterBase.spSeed;
     }
     if (terSeedVariance) {
-        let dice = rand.rand(1,17);
+        if (filterCheck) {
+            terSeedDiceMin = rand.rand(1,14);
+        }
+        console.log('terSeedDiceMin='+terSeedDiceMin);
+        let dice = rand.rand(terSeedDiceMin,terSeedDiceMin+3);
         switch (dice) {
             case 1:
             terSeed = 3;
             break;
             case 2:
-            terSeed = 6;
+            terSeed = 5;
             break;
             case 3:
             terSeed = 6;
             break;
             case 4:
-            terSeed = 9;
+            terSeed = 8;
             break;
             case 5:
             terSeed = 9;
             break;
             case 6:
-            terSeed = 9;
+            terSeed = 10;
             break;
             case 7:
-            terSeed = 12;
+            terSeed = 11;
             break;
             case 8:
             terSeed = 12;
             break;
             case 9:
-            terSeed = 12;
+            terSeed = 14;
             break;
             case 10:
-            terSeed = 12;
+            terSeed = 16;
             break;
             case 11:
             terSeed = 18;
             break;
             case 12:
-            terSeed = 18;
+            terSeed = 20;
             break;
             case 13:
             terSeed = 24;
             break;
             case 14:
-            terSeed = 24;
+            terSeed = 40;
             break;
             case 15:
-            terSeed = 90;
+            terSeed = 80;
             break;
             case 16:
-            terSeed = 90;
+            terSeed = 100;
             break;
             case 17:
             terSeed = 200;
@@ -815,11 +819,19 @@ function addRes(zone) {
     let redMin = Math.floor(playerInfos.sondeDanger)+8;
     let redNum = 0;
     if (zone[0].planet != 'Dom') {
-        mythicMin = mythicMin+Math.floor(playerInfos.sondeDanger/3);
-        if (mythicMin < 2) {
-            mythicMin = 2;
+        if (zone[0].planet != 'Horst') {
+            mythicMin = mythicMin+Math.floor(playerInfos.sondeDanger/3);
+            if (mythicMin < 2) {
+                mythicMin = 2;
+            }
+            mythicMax = mythicMax+Math.floor(playerInfos.sondeDanger/2);
+        } else {
+            mythicMin = mythicMin+Math.floor(playerInfos.sondeDanger/1.5);
+            if (mythicMin < 5) {
+                mythicMin = 5;
+            }
+            mythicMax = mythicMax+playerInfos.sondeDanger;
         }
-        mythicMax = mythicMax+Math.floor(playerInfos.sondeDanger/2);
         baseMin = baseMin+Math.floor(playerInfos.sondeDanger*2.5);
         redMin = redMin+Math.floor(playerInfos.sondeDanger*1.5);
     }

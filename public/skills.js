@@ -1032,6 +1032,82 @@ function checkFreeConsTile(bat,batType) {
     return freeTile;
 };
 
+function checkWeb(tileId) {
+    let isWeb = false;
+    let thisTile = getTileById(tileId);
+    if (thisTile.web) {
+        isWeb = true;
+    }
+    thisTile = getTileById(tileId-1);
+    if (thisTile.web) {
+        isWeb = true;
+    }
+    thisTile = getTileById(tileId+1);
+    if (thisTile.web) {
+        isWeb = true;
+    }
+    thisTile = getTileById(tileId+mapSize);
+    if (thisTile.web) {
+        isWeb = true;
+    }
+    thisTile = getTileById(tileId-mapSize);
+    if (thisTile.web) {
+        isWeb = true;
+    }
+    return isWeb;
+};
+
+function removeWeb(apCost) {
+    let workDone = false;
+    let thisTile = getTileById(selectedBat.tileId);
+    if (thisTile.web) {
+        delete thisTile.web;
+        if (selectedBatType.cat === 'infantry') {
+            workDone = true;
+        }
+    }
+    if (!workDone) {
+        thisTile = getTileById(selectedBat.tileId-1);
+        if (thisTile.web) {
+            delete thisTile.web;
+            let hereBat = getZoneBatByTileId(thisTile.id);
+            if (Object.keys(hereBat).length >= 1) {
+                tagDelete(hereBat,'mud');
+            }
+        }
+        thisTile = getTileById(selectedBat.tileId+1);
+        if (thisTile.web) {
+            delete thisTile.web;
+            let hereBat = getZoneBatByTileId(thisTile.id);
+            if (Object.keys(hereBat).length >= 1) {
+                tagDelete(hereBat,'mud');
+            }
+        }
+        thisTile = getTileById(selectedBat.tileId+mapSize);
+        if (thisTile.web) {
+            delete thisTile.web;
+            let hereBat = getZoneBatByTileId(thisTile.id);
+            if (Object.keys(hereBat).length >= 1) {
+                tagDelete(hereBat,'mud');
+            }
+        }
+        thisTile = getTileById(selectedBat.tileId-mapSize);
+        if (thisTile.web) {
+            delete thisTile.web;
+            let hereBat = getZoneBatByTileId(thisTile.id);
+            if (Object.keys(hereBat).length >= 1) {
+                tagDelete(hereBat,'mud');
+            }
+        }
+    }
+    selectedBat.apLeft = selectedBat.apLeft-apCost;
+    tagDelete(selectedBat,'mud');
+    doneAction(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+    showMap(zone,true);
+};
+
 function fogEffect(myBat) {
     let fogPoison = 1;
     let distance;

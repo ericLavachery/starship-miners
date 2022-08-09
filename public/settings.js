@@ -23,6 +23,7 @@ let maxMapsParDet = 5;
 let impact = false;
 let zoneFiles = [];
 let terSeed = 12; // def 12 +grand = +grandes forêts etc...
+let terSeedDiceMin = rand.rand(1,14);
 let specialSeed = 10; // def 10 +grand = moins de terrains spéciaux
 let riverSeed = 9;
 let swampWater = 5; // def 5 chance d'avoir un swamps à la place d'un water (ou l'inverse)

@@ -2099,6 +2099,28 @@ function skillsInfos(bat,batType,near) {
             }
         }
     }
+    // NETTOYAGE
+    if (batType.skills.includes('cleaning') && !playerInfos.onShip) {
+        let isWeb = checkWeb(bat.tileId);
+        if (isWeb) {
+            apCost = (batType.mecanoCost+1)*2;
+            apReq = Math.ceil(apCost/5);
+            if (batType.cat === 'infantry' && tile.web) {
+                apCost = batType.mecanoCost+1;
+                apReq = 1;
+            }
+            if (bat.apLeft >= apReq && !inMelee) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Détruire les toiles" class="boutonGris skillButtons" onclick="removeWeb('+apCost+')"><i class="fas fa-broom"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nettoyer</h4></span>');
+            } else {
+                if (inMelee) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                } else {
+                    skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                }
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-trash-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nettoyer</h4></span>');
+            }
+        }
+    }
     // UPGRADE INFANTRY
     if (batType.skills.includes('uprank')) {
         let isInPlace = checkUprankPlace(bat,batType);

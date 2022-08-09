@@ -9,7 +9,7 @@
         "batch": 8,
         "energie": 45,
         "equiv": 0.7,
-        "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0.3,"Kzin":0.2,"Horst":0.1}
+        "planets":{"Dom":1,"Sarak":0.85,"Gehenna":0.6,"Kzin":0.45,"Horst":0.35}
     },
     {
         "id": 1,
@@ -510,7 +510,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 3,
-        "planets":{"Dom":0,"Sarak":0.5,"Gehenna":1.2,"Kzin":1,"Horst":0}
+        "planets":{"Dom":0,"Sarak":0.5,"Gehenna":1.2,"Kzin":1,"Horst":0.75}
     },
     {
         "id": 36,
@@ -522,7 +522,7 @@
         "batch": 4,
         "energie": 0.75,
         "equiv": 3,
-        "planets":{"Dom":0,"Sarak":1,"Gehenna":0.7,"Kzin":2,"Horst":0}
+        "planets":{"Dom":0,"Sarak":1,"Gehenna":0.7,"Kzin":2,"Horst":0.75}
     },
     {
         "id": 37,
@@ -547,7 +547,7 @@
         "batch": 3,
         "energie": 1.5,
         "equiv": 2,
-        "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0}
+        "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.5}
     },
     {
         "id": 39,

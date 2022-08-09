@@ -2732,7 +2732,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","inflammable","noaploss","nolaser","baddef","survivor","minaccu","eggprotect","xpfeast","smartrip","aimcfo","silhover","ctarg"],
+        "skills":["isegg","ponte","inflammable","noaploss","nolaser","baddef","minaccu","eggprotect","xpfeast","smartrip","aimcfo","silhover","ctarg"],
         "deathFx":"xplode",
         "killRes":{"Bugium":3,"Creatite":12,"Slime":18},
         "killXP":25,

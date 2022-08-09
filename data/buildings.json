@@ -1388,7 +1388,7 @@
             "name":"Flak canon (sol)",
             "cost":3,
             "range":2,
-            "elevation":1,
+            "elevation":2,
             "isArt":true,
             "noFly":true,
             "rof":7,
