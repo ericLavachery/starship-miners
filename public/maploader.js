@@ -324,10 +324,16 @@ function showRes(tileId) {
         }
     }
     if (zone[0].planet === 'Horst') {
+        let tseed = tile.seed;
+        if (tseed > 6) {
+            tseed = tseed-6;
+        }
         if (playerInfos.stList.includes(tileId)) {
-            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/storm75.png"></div>';
+            mapIndicators = mapIndicators+'<div class="stormz"><img src="/static/img/storm'+tseed+'.png"></div>';
         } else if (playerInfos.sqList.includes(tileId)) {
-            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/squall50.png"></div>';
+            if (playerInfos.bldVM.includes('Station météo')) {
+                mapIndicators = mapIndicators+'<div class="squallz"><img src="/static/img/storm'+tseed+'.png"></div>';
+            }
         }
     }
     return mapIndicators;

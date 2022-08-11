@@ -459,6 +459,19 @@ hr.craft {
     margin-top: 0px;
     z-index: -10;
 }
+.stormz {
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+    z-index: -10;
+}
+.squallz {
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+    z-index: -10;
+    opacity: 0.5;
+}
 .mark {
     position: absolute;
     margin-left: -3px;

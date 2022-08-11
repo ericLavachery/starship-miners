@@ -250,6 +250,11 @@ function calcShotsRangeAdj(weapon,attBat,attBatType,defBat,defBatType) {
     if (weapon.name.includes('Techno')) {
         shotsPerc = shotsPerc-(distance*25);
     }
+    if (weapon.name.includes('Psio')) {
+        shotsPerc = shotsPerc-Math.round(distance*7.5);
+    }
+    // console.log('shotsPerc !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    // console.log(shotsPerc);
     return shotsPerc;
 };
 
@@ -916,7 +921,7 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
     if (!defBat.tags.includes('jelly')) {
         if (attWeap.name != undefined) {
             if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet') || (defBatType.skills.includes('ricoface') && !init)) {
-                if (!attWeap.isFire && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield) {
+                if (!attWeap.isFire && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('psionics') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield) {
                     let defArmor = defBat.armor;
                     if (defBatType.skills.includes('ricoface')) {
                         defArmor = defArmor+10;
@@ -2398,8 +2403,6 @@ function weaponAdj(weapon,bat,wn) {
     if (thisWeapon.ammo.includes('disco')) {
         thisWeapon.rof = thisWeapon.rof*Math.round(5.56*Math.sqrt(playerInfos.comp.ca+2)*(playerInfos.comp.energ+6))/100;
     }
-    // console.log('thisWeapon.rof');
-    // console.log(thisWeapon.rof);
     thisWeapon.rof = Math.round(thisWeapon.rof);
     // hero tornade cost
     if (bat.tags.includes('tornade')) {

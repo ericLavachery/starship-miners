@@ -619,11 +619,15 @@ function attack(melee,init) {
         $('#report').append('<span class="report rose">Arrosé<br></span>');
     }
     // disco
-    if (selectedWeap.ammo.includes('disco')) {
+    if (selectedWeap.ammo.includes('disco') || selectedWeap.ammo.includes('psionics')) {
         let webDamage = totalHits;
         let distFactor = calcShotsRangeAdj(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType);
         webDamage = webDamage*distFactor/100;
-        webDamage = Math.ceil(webDamage*2/Math.sqrt(targetBatType.hp));
+        if (selectedWeap.ammo.includes('psionics')) {
+            webDamage = Math.ceil(webDamage*2/Math.sqrt(targetBatType.hp));
+        } else {
+            webDamage = Math.ceil(webDamage*rand.rand(4,12)/8);
+        }
         apDamage = apDamage+webDamage;
     }
     // inflammable
@@ -741,6 +745,14 @@ function attack(melee,init) {
             totalDamage = Math.round(totalDamage/5);
             apDamage = Math.round(totalDamage/5);
             $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+        }
+    }
+    // psionics résistance robots
+    if (selectedWeap.ammo.includes('psionics')) {
+        if (targetBatType.skills.includes('robot')) {
+            totalDamage = 0;
+            apDamage = 0;
+            $('#report').append('<span class="report rose">Résistance psionique 100%<br></span>');
         }
     }
     // résistance poison (gaz)
@@ -1103,8 +1115,8 @@ function attack(melee,init) {
     // Stun
     if (!targetBat.tags.includes('stun')) {
         if (!selectedWeap.ammo.includes('jello')) {
-            if (selectedWeap.ammo.includes('poraz') || selectedWeap.ammo.includes('disco') || selectedWeap.ammo === 'gaz' || selectedWeap.ammo === 'autodes-gaz' || selectedWeap.ammo.includes('gaz-') || selectedWeap.ammo.includes('freeze')) {
-                if (totalDamage >= 10 || selectedWeap.ammo.includes('disco')) {
+            if (selectedWeap.ammo.includes('poraz') || selectedWeap.ammo.includes('disco') || selectedWeap.ammo.includes('psionics') || selectedWeap.ammo === 'gaz' || selectedWeap.ammo === 'autodes-gaz' || selectedWeap.ammo.includes('gaz-') || selectedWeap.ammo.includes('freeze')) {
+                if (totalDamage >= 10 || selectedWeap.ammo.includes('disco') || selectedWeap.ammo.includes('psionics')) {
                     targetBat.tags.push('stun');
                     $('#report').append('<span class="report rose">Stun<br></span>');
                 }
@@ -1581,11 +1593,15 @@ function defense(melee,init) {
         $('#report').append('<span class="report rose">Arrosé<br></span>');
     }
     // disco
-    if (targetWeap.ammo.includes('disco')) {
+    if (targetWeap.ammo.includes('disco') || targetWeap.ammo.includes('psionics')) {
         let webDamage = totalHits;
         let distFactor = calcShotsRangeAdj(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType);
         webDamage = webDamage*distFactor/100;
-        webDamage = Math.ceil(webDamage*2/Math.sqrt(selectedBatType.hp));
+        if (targetWeap.ammo.includes('disco')) {
+            webDamage = Math.ceil(webDamage*2/Math.sqrt(selectedBatType.hp));
+        } else {
+            webDamage = Math.ceil(webDamage*rand.rand(4,12)/8);
+        }
         apDamage = apDamage+webDamage;
     }
     // berserk (bonus damage des opposants)
@@ -1709,6 +1725,14 @@ function defense(melee,init) {
             totalDamage = Math.round(totalDamage/5);
             apDamage = Math.round(totalDamage/5);
             $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+        }
+    }
+    // psionics résistance robots
+    if (targetWeap.ammo.includes('psionics')) {
+        if (selectedBatType.skills.includes('robot')) {
+            totalDamage = 0;
+            apDamage = 0;
+            $('#report').append('<span class="report rose">Résistance psionique 100%<br></span>');
         }
     }
     // résistance poison (gaz)
@@ -1924,8 +1948,8 @@ function defense(melee,init) {
     // Stun
     if (!selectedBat.tags.includes('stun')) {
         if (!targetWeap.ammo.includes('jello')) {
-            if (targetWeap.ammo.includes('poraz') || targetWeap.ammo.includes('disco') || targetWeap.ammo === 'gaz' || targetWeap.ammo === 'autodes-gaz' || targetWeap.ammo.includes('gaz-') || targetWeap.ammo.includes('freeze')) {
-                if (totalDamage >= 10 || targetWeap.ammo.includes('disco')) {
+            if (targetWeap.ammo.includes('poraz') || targetWeap.ammo.includes('disco') || targetWeap.ammo.includes('psionics') || targetWeap.ammo === 'gaz' || targetWeap.ammo === 'autodes-gaz' || targetWeap.ammo.includes('gaz-') || targetWeap.ammo.includes('freeze')) {
+                if (totalDamage >= 10 || targetWeap.ammo.includes('disco') || targetWeap.ammo.includes('psionics')) {
                     selectedBat.tags.push('stun');
                     $('#report').append('<span class="report rose">Stun<br></span>');
                 }

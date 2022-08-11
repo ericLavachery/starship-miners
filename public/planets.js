@@ -75,9 +75,6 @@ function checkCanon() {
 function alienCanon() {
     if (playerInfos.aCanon === 'web' || hasAlien('Uberspinne')) {
         let freq = 8-Math.ceil(zone[0].mapDiff/2);
-        // console.log('ALIEN CANON $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
-        // console.log(playerInfos.mapTurn);
-        // console.log(freq);
         if (playerInfos.mapTurn % freq === 0) {
             let canonTiles = getCanonTiles('web','egg');
             webCanon(canonTiles);
@@ -93,6 +90,9 @@ function webCanon(canonTiles) {
             if (canonTiles.includes(bat.tileId)) {
                 if (!bat.tags.includes('mud')) {
                     bat.tags.push('mud');
+                }
+                if (!bat.tags.includes('web')) {
+                    bat.tags.push('web');
                 }
             }
         }
@@ -118,7 +118,11 @@ function getCanonTiles(cType,area) {
                         thisTarget = thisTarget+10;
                     }
                     if (thisTarget >= 1) {
-                        thisTarget = thisTarget*batType.hp;
+                        if (batType.name != 'Uberspinne') {
+                            thisTarget = thisTarget*batType.hp;
+                        } else {
+                            thisTarget = thisTarget*3000;
+                        }
                     }
                     if (thisTarget >= bestTarget) {
                         targetTile = bat.tileId;
@@ -188,6 +192,20 @@ function stormProtection(dmg,bat,batType) {
     if (bat.tags.includes('fortif')) {
         stormProtect = stormProtect*1.15;
     }
+    if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
+        if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
+            adjDmg = adjDmg/1.25;
+        } else {
+            adjDmg = adjDmg/1.67;
+        }
+    } else {
+        if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
+            adjDmg = adjDmg*1.5;
+        }
+    }
+    if (batType.skills.includes('resistall') || bat.tags.includes('resistall')) {
+        adjDmg = adjDmg/1.33;
+    }
     adjDmg = Math.ceil(adjDmg*(100-stormProtect)/100);
     return adjDmg;
 };
@@ -200,18 +218,7 @@ function stormDamage(bat,batType,storm,inMov) {
                 let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
                 let stormDmg = rand.rand(2*numUnits,4*numUnits);
                 stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
-                if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
-                    if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
-                        stormDmg = Math.ceil(stormDmg/1.25);
-                    } else {
-                        stormDmg = Math.ceil(stormDmg/2);
-                    }
-                } else {
-                    if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
-                        stormDmg = Math.ceil(stormDmg*1.5);
-                    }
-                }
-                if (stormDmg >= 1) {
+                if (stormDmg > 0) {
                     stormDmg = stormProtection(stormDmg,bat,batType);
                 }
                 console.log('stormDmg='+stormDmg);
@@ -248,22 +255,14 @@ function stormDamage(bat,batType,storm,inMov) {
         let stormDmg = rand.rand(7*numUnits,20*numUnits);
         console.log('stormDmg='+stormDmg);
         stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
+        if (bat.armor >= 14 && playerInfos.comp.scaph >= 3) {
+            stormDmg = 0;
+        }
         console.log('stormDmg(a)='+stormDmg);
-        if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
-            if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
-                stormDmg = Math.ceil(stormDmg/1.25);
-            } else {
-                stormDmg = Math.ceil(stormDmg/1.5);
-            }
-        } else {
-            if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
-                stormDmg = Math.ceil(stormDmg*1.85);
-            }
-        }
         if (playerInfos.comp.scaph >= 3 && batType.cat === 'infantry') {
-            stormDmg = Math.ceil(stormDmg/1.5);
+            stormDmg = stormDmg/1.5;
         }
-        if (stormDmg >= 1) {
+        if (stormDmg > 0) {
             stormDmg = stormProtection(stormDmg,bat,batType);
         }
         console.log('stormDmg(T)='+stormDmg);

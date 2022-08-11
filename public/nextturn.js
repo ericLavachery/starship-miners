@@ -1380,6 +1380,13 @@ function tagsEffect(bat,batType) {
             tagDelete(bat,'mud');
         }
     }
+    // WEB
+    if (bat.tags.includes('web')) {
+        if (bat.apLeft > 0) {
+            bat.apLeft = 0;
+        }
+        tagDelete(bat,'web');
+    }
     // BLAZE DRUG
     if (bat.tags.includes('blaze')) {
         bat.apLeft = bat.apLeft+3;

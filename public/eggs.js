@@ -1038,7 +1038,7 @@ function morphList() {
 };
 
 function aliensCount() {
-    let aliensNums = {lucioles:0,moucherons:0,bugs:0,firebugs:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0,homards:0,veilleurs:0};
+    let aliensNums = {lucioles:0,moucherons:0,bugs:0,firebugs:0,grabbers:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0,homards:0,veilleurs:0};
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type === 'Lucioles') {
@@ -1047,6 +1047,8 @@ function aliensCount() {
                 aliensNums.bugs = aliensNums.bugs+1;
             } else if (bat.type === 'Firebugs') {
                 aliensNums.firebugs = aliensNums.firebugs+1;
+            } else if (bat.type === 'Grabbers') {
+                aliensNums.grabbers = aliensNums.grabbers+1;
             } else if (bat.type === 'Scorpions') {
                 aliensNums.scorpions = aliensNums.scorpions+1;
             } else if (bat.type === 'Larves') {
@@ -1165,6 +1167,8 @@ function spawns() {
                 bat.tags.push('morph');
             } else if (bat.type === 'Dragons' && aliens.length < maxAliens && aliensNums.firebugs < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Firebugs');
+            } else if (bat.type === 'Bigheads' && aliens.length < maxAliens && aliensNums.grabbers < Math.round(maxPonte/1.5)) {
+                alienSpawn(bat,'Grabbers');
             } else if (bat.type === 'Mantes' && aliens.length < maxAliens && aliensNums.fourmis < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Fourmis');
             } else if (bat.type === 'Scarabs' && aliens.length < maxAliens-50 && aliensNums.bugs < maxPonte*2) {
