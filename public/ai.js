@@ -446,6 +446,11 @@ function targetLogic(bat) {
     if (bat.fuzz <= -2) {
         tFuzz = Math.round(tFuzz/2);
     }
+    if (batType.skills.includes('robot')) {
+        if (selectedWeap.ammo.includes('psionics')) {
+            tFuzz = -95;
+        }
+    }
     if (batType.cat != 'infantry') {
         if (selectedWeap.ammo.includes('toxine')) {
             tFuzz = -95;

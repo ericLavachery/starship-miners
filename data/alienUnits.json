@@ -640,7 +640,7 @@
         "maxVeg":3,
         "skills":["minaccu","resistfeu","sentinelle","fastreg"],
         "deathFx":"death1",
-        "killRes":{"Bugium":2,"Pyrus":4},
+        "killRes":{"Bugium":2,"Pyrus":4,"Mendium":1},
         "killXP":10
     },
     {
@@ -924,7 +924,7 @@
         "maxVeg":3,
         "skills":["nocap","flee","terror","bugboost","fastreg","shield","resistall","noaploss","survivor","smartrip","sentinelle"],
         "deathFx":"death2",
-        "killRes":{"Bugium":30},
+        "killRes":{"Bugium":23,"Mendium":12,"Creatite":6,"Egidium":44,"Bossium":28},
         "killXP":30,
         "flavText":"Les bigheads pondent des grabbers."
     },
