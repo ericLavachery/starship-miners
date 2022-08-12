@@ -258,6 +258,9 @@ function stormDamage(bat,batType,storm,inMov) {
         if (bat.armor >= 14 && playerInfos.comp.scaph >= 3) {
             stormDmg = 0;
         }
+        if (batType.skills.includes('resiststorm')) {
+            stormDmg = 0;
+        }
         console.log('stormDmg(a)='+stormDmg);
         if (playerInfos.comp.scaph >= 3 && batType.cat === 'infantry') {
             stormDmg = stormDmg/1.5;

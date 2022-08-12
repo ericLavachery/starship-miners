@@ -479,10 +479,18 @@ function eggsDrop() {
                         dropEgg('Oeuf','acouvert');
                         coveredEggs++;
                     } else {
-                        dropEgg('Oeuf','nedge');
+                        if (rand.rand(1,70) <= playerInfos.mapTurn) {
+                            dropEgg('Oeuf','nearboss');
+                        } else {
+                            dropEgg('Oeuf','nedge');
+                        }
                     }
                 } else {
-                    dropEgg('Oeuf','any');
+                    if (rand.rand(1,70) <= playerInfos.mapTurn) {
+                        dropEgg('Oeuf','nearboss');
+                    } else {
+                        dropEgg('Oeuf','any');
+                    }
                 }
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             }
@@ -1017,6 +1025,69 @@ function eggDropTile(eggName,theArea) {
                     }
                 }
             });
+        }
+    }
+    // neaR BOss
+    // Près d'un Boss
+    if (area === 'nearboss') {
+        let shufAliens = _.shuffle(aliens);
+        shufAliens.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                let batType = getBatType(bat);
+                if (batType.class === 'S' || (batType.class === 'A' && batType.rarity === 2)) {
+                    if (targetTile < 0) {
+                        targetTile = bat.tileId;
+                    }
+                }
+            }
+        });
+        let shufZone = _.shuffle(zone);
+        let distance;
+        if (targetTile < 0) {
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    if (tile.x >= 2 && tile.x <= 59 && tile.y >= 2 && tile.y <= 59) {
+                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            });
+        } else {
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    distance = calcDistance(tile.id,targetTile);
+                    if (distance === 2 || distance === 3) {
+                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            });
+            if (theTile < 0) {
+                shufZone.forEach(function(tile) {
+                    if (theTile < 0) {
+                        distance = calcDistance(tile.id,targetTile);
+                        if (distance === 4 || distance === 5) {
+                            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                                theTile = tile.id;
+                            }
+                        }
+                    }
+                });
+            }
+            if (theTile < 0) {
+                shufZone.forEach(function(tile) {
+                    if (theTile < 0) {
+                        distance = calcDistance(tile.id,targetTile);
+                        if (distance === 2 || distance === 3 || distance === 4 || distance === 5) {
+                            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                                theTile = tile.id;
+                            }
+                        }
+                    }
+                });
+            }
         }
     }
     return theTile;

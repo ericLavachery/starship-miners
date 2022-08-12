@@ -881,18 +881,20 @@ function skillsInfos(bat,batType,near) {
     // COMMANDE
     if (!batType.skills.includes('dome') && !batType.skills.includes('pilone') && !batType.skills.includes('cfo')) {
         let commandOK = false;
-        console.log('COMMAND');
-        console.log(near);
+        // console.log('COMMAND');
+        // console.log(near);
         if (!playerInfos.onShip && near.schef) {
-            if (!batType.skills.includes('brigands') && !bat.tags.includes('outsider')) {
-                commandOK = true;
+            if (!batType.skills.includes('brigands') && !bat.tags.includes('outsider') && !bat.tags.includes('schef') && !batType.skills.includes('leader') && !batType.skills.includes('prayer')) {
+                if (batType.skills.includes('robot') || batType.crew >= 1) {
+                    commandOK = true;
+                }
             }
             if (batType.name === 'Résistants') {
                 commandOK = true;
             }
         }
-        console.log('commandOK: '+commandOK);
-        if (commandOK && !bat.tags.includes('gogogo') && !bat.tags.includes('schef') && !batType.skills.includes('leader') && !batType.skills.includes('prayer')) {
+        // console.log('commandOK: '+commandOK);
+        if (commandOK && !bat.tags.includes('gogogo')) {
             let leSousChef = checkCommand(bat);
             console.log(leSousChef);
             if (leSousChef.ok) {
@@ -2117,7 +2119,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-trash-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nettoyer</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-broom"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nettoyer</h4></span>');
             }
         }
     }

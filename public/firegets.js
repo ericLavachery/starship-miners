@@ -2926,25 +2926,26 @@ function getEggProtect(eggBat,eggBatType,weap) {
             if (!domeProtect) {
                 eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.65));
             }
+            if (eggProt > 100) {eggProt = 100;}
             if (eggBat.tags.includes('morph')) {
-                eggProt = Math.round(eggProt/1.1);
+                eggProt = Math.round(eggProt*0.9);
             }
             if (weap.noShield && !weap.isMelee) {
-                eggProt = Math.round(eggProt/1.1);
+                eggProt = Math.round(eggProt*0.9);
             } else if (weap.minShield) {
-                eggProt = Math.round(eggProt/1.07);
+                eggProt = Math.round(eggProt*0.93);
             } else if (weap.lowShield) {
-                eggProt = Math.round(eggProt/1.05);
+                eggProt = Math.round(eggProt*0.95);
             }
         }
-    }
-    if ((weap.ammo === 'suicide' || weap.ammo === 'suicide-deluge') && eggProt < 110) {
-        eggProt = Math.round(eggProt/1.4);
     }
     if (!domeProtect && coconStats.dome && eggBatType.name != 'Colonie') {
         eggProt = eggProt+10;
     }
     if (eggProt > 100) {eggProt = 100;}
+    if (weap.ammo === 'suicide' || weap.ammo === 'suicide-deluge') {
+        eggProt = Math.round(eggProt/1.2);
+    }
     if (eggProt < 0) {eggProt = 0;}
     return eggProt;
 };

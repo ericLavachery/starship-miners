@@ -872,37 +872,17 @@ function showTileInfos(tileId) {
             if (eggKind === '') {
                 eggKind = getAKindByTer(tile.terrain,zone[0].pKind,zone[0].gKind,zone[0].sKind);
                 eggType = capitalizeFirstLetter(eggKind);
-                // if (tile.terrain === 'M') {
-                //     eggType = 'Bug';
-                // }
-                // if (tile.terrain === 'H') {
-                //     eggType = 'Bug';
-                // }
-                // if (tile.terrain === 'P') {
-                //     eggType = capitalizeFirstLetter(zone[0].pKind);
-                // }
-                // if (tile.terrain === 'G') {
-                //     eggType = capitalizeFirstLetter(zone[0].gKind);
-                // }
-                // if (tile.terrain === 'B') {
-                //     eggType = 'Swarm';
-                // }
-                // if (tile.terrain === 'F') {
-                //     eggType = 'Spider';
-                // }
-                // if (tile.terrain === 'S') {
-                //     eggType = capitalizeFirstLetter(zone[0].sKind);
-                // }
-                // if (tile.terrain === 'W' || tile.terrain == 'L') {
-                //     eggType = 'Larve';
-                // }
-                // if (tile.terrain === 'R') {
-                //     eggType = 'Larve';
-                // }
             } else {
                 eggType = capitalizeFirstLetter(eggKind);
             }
             $('#tileInfos').append('<span class="paramName mauve">Type d\'oeuf</span><span class="paramIcon"><i class="fas fa-bug"></i></span><span class="paramValue mauve">'+eggType+'</span><br>');
+        }
+        if (zone[0].planet === 'Horst') {
+            if (playerInfos.stList.includes(tileId)) {
+                $('#tileInfos').append('<span class="paramName mauve">Intempéries</span><span class="paramIcon"><i class="fas fa-bug"></i></span><span class="paramValue mauve">Tempête</span><br>');
+            } else if (playerInfos.sqList.includes(tileId)) {
+                $('#tileInfos').append('<span class="paramName mauve">Intempéries</span><span class="paramIcon"></span><span class="paramValue mauve">Bourasque</span><br>');
+            }
         }
         // Aménagements
         if (tile.ruins) {

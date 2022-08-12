@@ -4749,7 +4749,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","fly","jetpack","longshot","mecano","badmedic","cyber","dealer","nitro","sudu","oknitro","noblub","roborepair","heroescape"],
+        "skills":["a_mid","fouille","fortif","datt","fly","jetpack","longshot","mecano","cleaning","badmedic","cyber","dealer","nitro","sudu","oknitro","noblub","roborepair","heroescape"],
         "mecanoCost":4,
         "mediCost":8,
         "maxDrug":16,
