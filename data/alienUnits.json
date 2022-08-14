@@ -2059,7 +2059,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["heal","capbld","fear","okwater","ponte","resistfeu","noaploss","resistelec","nez"],
+        "skills":["heal","capbld","fear","okwater","ponte","resistfeu","noaploss","resistelec","nez","silhover"],
         "deathFx":"death3",
         "spawnFx":"spawn-mgrubz",
         "fxPriority":2,

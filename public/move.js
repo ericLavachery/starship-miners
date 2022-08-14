@@ -783,9 +783,9 @@ function calcMoveCost(targetTileId,diag) {
     }
     if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst') {
         if (playerInfos.stList.includes(targetTileId) || playerInfos.stList.includes(selectedBat.tileId)) {
-            moveCost = moveCost*2;
+            moveCost = moveCost*3;
         } else if (playerInfos.sqList.includes(targetTileId) || playerInfos.sqList.includes(selectedBat.tileId)) {
-            moveCost = moveCost*1.5;
+            moveCost = moveCost*2;
         }
     }
     // moveCost = moveCost*moveTuning;

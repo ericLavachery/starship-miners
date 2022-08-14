@@ -2920,13 +2920,15 @@ function checkEscape(bat,batType,weap,attBat,tile) {
 
 function getEggProtect(eggBat,eggBatType,weap) {
     let eggProt = 0;
+    let maxProt = Math.ceil(100*(weap.armors+0.82));
+    if (maxProt > 100) {maxProt = 100;}
     if (eggBatType.skills.includes('eggprotect')) {
         eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1.25)*3.5)));
         if (eggBatType.skills.includes('turnprotect')) {
             if (!domeProtect) {
                 eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.65));
             }
-            if (eggProt > 100) {eggProt = 100;}
+            if (eggProt > maxProt) {eggProt = maxProt;}
             if (eggBat.tags.includes('morph')) {
                 eggProt = Math.round(eggProt*0.9);
             }
@@ -2942,7 +2944,7 @@ function getEggProtect(eggBat,eggBatType,weap) {
     if (!domeProtect && coconStats.dome && eggBatType.name != 'Colonie') {
         eggProt = eggProt+10;
     }
-    if (eggProt > 100) {eggProt = 100;}
+    if (eggProt > maxProt) {eggProt = maxProt;}
     if (weap.ammo === 'suicide' || weap.ammo === 'suicide-deluge') {
         eggProt = Math.round(eggProt/1.2);
     }
