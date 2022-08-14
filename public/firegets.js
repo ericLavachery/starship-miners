@@ -2932,7 +2932,7 @@ function getEggProtect(eggBat,eggBatType,weap) {
             if (eggBat.tags.includes('morph')) {
                 eggProt = Math.round(eggProt*0.9);
             }
-            if (weap.noShield && !weap.isMelee) {
+            if (weap.noShield) {
                 eggProt = Math.round(eggProt*0.9);
             } else if (weap.minShield) {
                 eggProt = Math.round(eggProt*0.93);

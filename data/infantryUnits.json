@@ -624,7 +624,7 @@
             "accuracy":20,
             "dca":0.85,
             "power":9,
-            "armors":0.8,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"mit_light1",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -2207,7 +2207,7 @@
             "accuracy":17,
             "dca":0.7,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"],
@@ -3195,7 +3195,7 @@
             "rof":40,
             "accuracy":17,
             "power":8,
-            "armors":0.8,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"mit_light2",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -3310,7 +3310,7 @@
             "accuracy":17,
             "dca":0.8,
             "power":9,
-            "armors":0.8,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"mit_light1",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -4956,7 +4956,7 @@
             "rof":36,
             "accuracy":17,
             "power":8,
-            "armors":0.8,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"mit_light2",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -5283,7 +5283,7 @@
             "rof":35,
             "accuracy":16,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -6276,7 +6276,7 @@
             "rof":40,
             "accuracy":17,
             "power":8,
-            "armors":0.8,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"mit_light1",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]

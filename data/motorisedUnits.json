@@ -162,7 +162,7 @@
             "accuracy":19,
             "dca":1,
             "power":9,
-            "armors":0.8,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"mit_light1",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -221,7 +221,7 @@
             "accuracy":18,
             "dca":0.8,
             "power":9,
-            "armors":0.8,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"mit_light2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -709,7 +709,7 @@
             "accuracy":17,
             "dca":1.15,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -771,7 +771,7 @@
             "accuracy":17,
             "dca":1,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -846,7 +846,7 @@
             "accuracy":17,
             "dca":1.5,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_heavy2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -906,7 +906,7 @@
             "accuracy":17,
             "dca":1.5,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -1007,7 +1007,7 @@
             "accuracy":17,
             "dca":1,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -1023,7 +1023,7 @@
             "accuracy":17,
             "dca":1,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -1241,12 +1241,11 @@
             "noBis":true,
             "rof":18,
             "accuracy":15,
-            "dca":1.35,
-            "power":15,
-            "armors":0.6,
+            "power":14,
+            "armors":0.77,
             "aoe":"unit",
-            "sound":"mit_heavy3",
-            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
+            "sound":"mit_heavy2",
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -1373,7 +1372,7 @@
             "accuracy":16,
             "dca":0.8,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -1415,7 +1414,7 @@
             "accuracy":17,
             "dca":1,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -1473,7 +1472,7 @@
             "accuracy":16,
             "dca":1,
             "power":15,
-            "armors":0.6,
+            "armors":0.7,
             "aoe":"unit",
             "sound":"mit_heavy3",
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
@@ -1605,7 +1604,7 @@
             "accuracy":17,
             "dca":1.25,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -1903,7 +1902,7 @@
             "accuracy":16,
             "dca":1.35,
             "power":15,
-            "armors":0.6,
+            "armors":0.7,
             "aoe":"unit",
             "sound":"mit_heavy3",
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
@@ -1946,7 +1945,7 @@
             "accuracy":16,
             "dca":1,
             "power":15,
-            "armors":0.6,
+            "armors":0.7,
             "aoe":"unit",
             "sound":"mit_heavy3",
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
@@ -2004,7 +2003,7 @@
             "accuracy":17,
             "dca":1,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_heavy2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -2125,7 +2124,7 @@
             "accuracy":17,
             "dca":1.5,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -2373,7 +2372,7 @@
             "accuracy":18,
             "dca":1,
             "power":15,
-            "armors":0.6,
+            "armors":0.7,
             "aoe":"unit",
             "sound":"mit_heavy3",
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
@@ -2400,7 +2399,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["b_heavy","fortif","mecano","meleehelp","longshot","freeshot","hscarpmove","bastion","gooddef","cible","transport","bigflash","medic","dealer","nitro","starka","octiron","medtrans","recupcit","recupres","crewsave","flash","nochef","lowstress"],
+        "skills":["b_heavy","fortif","mecano","cleaning","meleehelp","longshot","freeshot","hscarpmove","bastion","gooddef","cible","transport","bigflash","medic","dealer","nitro","starka","octiron","medtrans","recupcit","recupres","crewsave","flash","nochef","lowstress"],
         "mecanoCost":7,
         "mediCost":9,
         "transMaxSize":18,
@@ -2688,7 +2687,7 @@
             "accuracy":15,
             "dca":1.25,
             "power":8,
-            "armors":0.8,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"mit_light1",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -3138,7 +3137,7 @@
             "accuracy":17,
             "dca":1.5,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -3527,7 +3526,7 @@
             "accuracy":17,
             "dca":1,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -4178,7 +4177,7 @@
             "accuracy":15,
             "dca":1.5,
             "power":8,
-            "armors":0.8,
+            "armors":0.85,
             "aoe":"unit",
             "sound":"mit_light1",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -4359,14 +4358,14 @@
         "ap":14,
         "maxSalvo":2,
         "weapon":{
-            "name":"Mitrailleuses",
+            "name":"Mitrailleuse lourde",
             "cost":4,
             "range":2,
             "rof":27,
             "accuracy":16,
             "dca":1,
-            "power":15,
-            "armors":0.6,
+            "power":14,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_heavy2",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
@@ -4471,7 +4470,7 @@
             "rof":24,
             "accuracy":16,
             "power":12,
-            "armors":0.7,
+            "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
