@@ -1663,6 +1663,16 @@
         "costs":{"Bois":2,"Aluminium":8,"Titane":6,"Electros":4,"Bore":4}
     },
     {
+        "name":"w2-treb",
+        "cat":"equip",
+        "skills":[],
+        "info":"Arme 2",
+        "bldReq":["Atelier"],
+        "compReq":{"log":1,"def":2},
+        "factor":"rofpow",
+        "costs":{"Fer":15,"Scarp":20,"Bois":40,"Carbone":30}
+    },
+    {
         "name":"w2-brol",
         "cat":"equip",
         "skills":[],

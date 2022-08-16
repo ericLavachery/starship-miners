@@ -536,9 +536,14 @@ function playerSkillsUTChanges() {
             } else {
                 unit.weapon2alt = {};
             }
-            // console.log('WEAPON 2 ALT');
-            // console.log(unit.weapon2);
-            // console.log(unit.weapon2alt);
+        }
+        if (unit.weapon2bis != undefined) {
+            if (unit.weapon2bis.gangs.includes(playerInfos.gang)) {
+                unit.weapon2 = unit.weapon2bis;
+                unit.weapon2bis = {};
+            } else {
+                unit.weapon2bis = {};
+            }
         }
         // BLINDAGES / ARMURES
         unit.protection = allowedArmors(unit);
@@ -759,17 +764,28 @@ function playerSkillsUTChanges() {
                 }
             }
         }
-        // BALISTIQUE
-        if (playerInfos.comp.bal === 3) {
-            if (playerInfos.comp.arti === 1) {
+        // BALISTIQUE / ARTIlLERIE
+        if (playerInfos.comp.bal === 3 || playerInfos.comp.arti === 2) {
+            if (playerInfos.comp.arti >= 1) {
+                let rangeMult = 1;
+                if (playerInfos.comp.arti === 2) {
+                    rangeMult = rangeMult+0.25;
+                    if (playerInfos.comp.bal === 3) {
+                        rangeMult = rangeMult+0.1;
+                    }
+                } else {
+                    if (playerInfos.comp.bal === 3) {
+                        rangeMult = rangeMult+0.15;
+                    }
+                }
                 if (Object.keys(unit.weapon).length >= 3) {
                     if (unit.weapon.isArt) {
-                        unit.weapon.range = Math.ceil(unit.weapon.range*1.2);
+                        unit.weapon.range = Math.ceil(unit.weapon.range*rangeMult);
                     }
                 }
                 if (Object.keys(unit.weapon2).length >= 3) {
                     if (unit.weapon2.isArt) {
-                        unit.weapon2.range = Math.ceil(unit.weapon2.range*1.2);
+                        unit.weapon2.range = Math.ceil(unit.weapon2.range*rangeMult);
                     }
                 }
             }

@@ -3391,7 +3391,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"laser_fusil",
-            "ammo":["laser","laser-g2"]
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-medic","e-camo","theeye","waterproof","silencieux1","chargeur1","chargeur2","repel"],
@@ -4303,7 +4303,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"laser_fusil_x2",
-            "ammo":["laser","laser-g2"]
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "weapon2":{
             "name":"Molotov",
@@ -4492,7 +4492,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"laser_fusil_x2",
-            "ammo":["laser","laser-g2"]
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "weapon2":{
             "name":"Fusil laser",
@@ -4506,7 +4506,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"laser_fusil",
-            "ammo":["laser","laser-g2"]
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-ranger","e-camo","e-jetpack","theeye","waterproof","detector","chargeur","repel"],
@@ -4676,7 +4676,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"laser_fusil_x2",
-            "ammo":["laser","laser-g2"]
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-medic","e-camo","theeye","helper","chargeur2","lunette2","repel"],
@@ -5002,7 +5002,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"laser_fusil_x2",
-            "ammo":["laser","laser-g2"]
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "weapon2":{
             "name":"Lance-flammes",
@@ -5910,7 +5910,7 @@
         "weapon2":{
             "name":"Canon laser",
             "cost":5,
-            "range":3,
+            "range":4,
             "elevation":4,
             "noMelee":true,
             "rof":4,
@@ -5918,7 +5918,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"laser_canon_x1",
-            "ammo":["laser","laser-g2"],
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":12,
             "ravitBld":"Générateur"
         },

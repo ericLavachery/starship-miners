@@ -4,8 +4,8 @@
         "name":"arti",
         "fullName":"Artillerie",
         "levels":{"rednecks":11,"blades":99,"bulbos":12,"drogmulojs":12,"tiradores":99,"detruas":6,"brasier":12},
-        "maxLevel":1,
-        "lvlCosts":[0,2],
+        "maxLevel":2,
+        "lvlCosts":[0,2,1],
         "rechCost":2
     },
     {

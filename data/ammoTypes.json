@@ -1098,6 +1098,21 @@
         "batch":100
     },
     {
+        "name": "proto-laser",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 0.9,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Incendiaire",
+        "deploy":{"Energie":25},
+        "batch":100,
+        "noList": true
+    },
+    {
         "name": "laser",
         "range": 1,
         "rof": 1.2,
@@ -1108,6 +1123,8 @@
         "apdamage": 0,
         "aoe": "",
         "info": "Incendiaire",
+        "bldReq":["Laboratoire"],
+        "compReq":{"energ":1},
         "deploy":{"Energie":15},
         "batch":100,
         "noList": true
@@ -1124,8 +1141,24 @@
         "aoe": "",
         "info": "Incendiaire",
         "bldReq":["Centre de recherches"],
+        "compReq":{"energ":2},
+        "deploy":{"Energie":25,"Plutonium":5},
+        "batch":100
+    },
+    {
+        "name": "laser-g3",
+        "range": 1.5,
+        "rof": 1,
+        "power": 2,
+        "powermult": 1.28,
+        "armors": 0.75,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Incendiaire",
+        "bldReq":["Centre de recherches"],
         "compReq":{"energ":3},
-        "deploy":{"Energie":25,"Plutonium":2},
+        "deploy":{"Energie":25,"Plastanium":3},
         "batch":100
     },
     {
@@ -1155,7 +1188,7 @@
         "aoe": "",
         "bldReq":["Centre de recherches"],
         "compReq":{"energ":3},
-        "deploy":{"Energie":50,"Plutonium":6,"Platine":1},
+        "deploy":{"Energie":50,"Plutonium":6,"Platine":3},
         "batch":100
     },
     {

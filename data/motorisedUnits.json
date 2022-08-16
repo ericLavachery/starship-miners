@@ -283,7 +283,7 @@
             "power":12,
             "aoe":"brochette",
             "sound":"laser_minicanon_x2",
-            "ammo":["laser","laser-g2"],
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":15,
             "ravitBld":"Générateur"
         },
@@ -1300,8 +1300,9 @@
             "rof":6,
             "accuracy":14,
             "power":21,
+            "armors":0.8,
             "aoe":"unit",
-            "sound":"balista",
+            "sound":"balista2",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon2":{
@@ -1708,7 +1709,7 @@
             "accuracy":13,
             "power":23,
             "aoe":"brochette",
-            "sound":"catapult",
+            "sound":"catapult2",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":20,
             "ravitBld":"Atelier"
@@ -2626,8 +2627,9 @@
             "rof":6,
             "accuracy":14,
             "power":21,
+            "armors":0.8,
             "aoe":"unit",
-            "sound":"balista",
+            "sound":"balista2",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon2":{
@@ -4236,7 +4238,7 @@
             "power":12,
             "aoe":"brochette",
             "sound":"laser_minicanon_x2",
-            "ammo":["laser","laser-g2"],
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":16,
             "ravitBld":"Générateur"
         },

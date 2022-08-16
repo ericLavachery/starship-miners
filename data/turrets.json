@@ -286,6 +286,7 @@
         },
         "weapon2":{
             "name":"Obusier",
+            "equip":"w2-arti",
             "cost":6,
             "range":6,
             "noFly":true,
@@ -305,6 +306,7 @@
         "weapon2alt":{
             "name":"Mitrailleuse lourde",
             "gangs":["blades","tiradores"],
+            "equip":"w2-lmit",
             "cost":4,
             "range":4,
             "noBis":true,
@@ -372,6 +374,7 @@
         },
         "weapon2":{
             "name":"Missiles Comet",
+            "equip":"w2-lcomet",
             "cost":7,
             "range":9,
             "noBis":true,
@@ -391,6 +394,7 @@
         "weapon2alt":{
             "name":"Mitrailleuse lourde",
             "gangs":["blades","tiradores"],
+            "equip":"w2-lmit",
             "cost":4,
             "range":4,
             "noBis":true,
@@ -508,6 +512,7 @@
         },
         "weapon2":{
             "name":"Missiles Comet",
+            "equip":"w2-lcomet",
             "cost":7,
             "range":9,
             "noBis":true,
@@ -527,6 +532,7 @@
         "weapon2alt":{
             "name":"Mitrailleuse lourde",
             "gangs":["blades","tiradores"],
+            "equip":"w2-lmit",
             "cost":4,
             "range":4,
             "noBis":true,
@@ -576,13 +582,13 @@
         "weapon":{
             "name":"Canon laser",
             "cost":4,
-            "range":9,
+            "range":10,
             "rof":8,
             "accuracy":40,
             "power":20,
             "aoe":"brochette",
             "sound":"laser_canon_x1",
-            "ammo":["laser","laser-g2"]
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "weapon2":{
             "name":"Missiles Comet",
@@ -761,13 +767,13 @@
             "name":"Canon laser",
             "cost":6,
             "range":6,
-            "elevation":1,
+            "elevation":3,
             "rof":12,
             "accuracy":50,
             "power":16,
             "aoe":"brochette",
             "sound":"laser_canon_x1",
-            "ammo":["laser","laser-g2"],
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":24,
             "ravitBld":"Générateur"
         },
@@ -1192,7 +1198,7 @@
             "accuracy":15,
             "power":28,
             "aoe":"brochette",
-            "sound":"catapult",
+            "sound":"catapult2",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":15,
             "ravitBld":"Atelier"

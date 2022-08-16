@@ -112,7 +112,7 @@ function reEquip(batId,noRefresh) {
                 if (checkSpecialEquip(batEquip,myBatType)) {
                     compReqOK = false;
                 }
-                if ((compReqOK && showEq) || conselTriche) {
+                if ((compReqOK || conselTriche) && showEq) {
                     if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || (bonusEqName === equip)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
@@ -246,11 +246,30 @@ function reEquip(batId,noRefresh) {
 
 function showEquip(batType,batEquip) {
     let showEq = true;
-    if (batType.weapon2.gangs != undefined) {
-        if (batEquip.name === 'w2-explo' || batEquip.name === 'w2-arti' || batEquip.name === 'w2-lcomet') {
-            showEq = false;
+    console.log('W2ALT --------------------------------------------------------------');
+    console.log(batEquip.name);
+    if (batEquip.name.startsWith('w2-') && !batEquip.name.startsWith('w2-auto')) {
+        console.log('start ok');
+        if (batType.weapon2.equip != undefined) {
+            console.log(batType.weapon2.equip);
+            if (batType.weapon2.equip != batEquip.name) {
+                showEq = false;
+            }
         }
     }
+    // console.log(batType.weapon2alt.gangs);
+    // if (batType.weapon2.gangs != undefined) {
+    //     if (batEquip.name === 'w2-explo' || batEquip.name === 'w2-arti' || batEquip.name === 'w2-lcomet') {
+    //         showEq = false;
+    //     }
+    // }
+    // if (batType.weapon2alt != undefined) {
+    //     if (batType.weapon2alt.gangs != undefined) {
+    //         if (batEquip.name === 'w2-ggun' || batEquip.name === 'w2-laser' || batEquip.name === 'w2-lmit') {
+    //             showEq = false;
+    //         }
+    //     }
+    // }
     return showEq;
 };
 

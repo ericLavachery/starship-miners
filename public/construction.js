@@ -451,8 +451,7 @@ function conSelect(unitId,player,noRefresh) {
             // console.log(conselUnit.equip);
             $('#conAmmoList').append('<span class="constName or">Equipement</span><br>');
             conselUnit.equip.forEach(function(equip) {
-                equipIndex = armorTypes.findIndex((obj => obj.name == equip));
-                batEquip = armorTypes[equipIndex];
+                batEquip = getEquipByName(equip);
                 let showEq = showEquip(conselUnit,batEquip);
                 if (batEquip.name === 'e-flash') {
                     if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
@@ -463,7 +462,7 @@ function conSelect(unitId,player,noRefresh) {
                 if (checkSpecialEquip(batEquip,conselUnit)) {
                     compReqOK = false;
                 }
-                if ((compReqOK && showEq) || conselTriche) {
+                if ((compReqOK || conselTriche) && showEq) {
                     if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1) || (bonusEqName === equip)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
@@ -480,7 +479,9 @@ function conSelect(unitId,player,noRefresh) {
                         weapName = ' ('+conselUnit.weapon2.name+')';
                     }
                     if (equip.startsWith('w2-') || equip.startsWith('kit-')) {
-                        weapName = ' ('+conselUnit.weapon2.name+')';
+                        if (!equip.startsWith('w2-auto')) {
+                            weapName = ' ('+conselUnit.weapon2.name+')';
+                        }
                     }
                     if (equip.startsWith('w1-') && !equip.includes('auto')) {
                         weapName = ' ('+conselUnit.weapon.name+')';

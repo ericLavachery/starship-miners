@@ -161,8 +161,9 @@
             "rof":8,
             "accuracy":14,
             "power":23,
+            "armors":0.8,
             "aoe":"unit",
-            "sound":"balista",
+            "sound":"balista2",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon3":{
@@ -501,7 +502,7 @@
             "power":9,
             "aoe":"unit",
             "sound":"laser_fusil",
-            "ammo":["laser","laser-g2"]
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "protection":[],
         "equip":["aucun","w2-flaser","e-medic","lifepod","garage","e-radar"],
@@ -629,6 +630,7 @@
         },
         "weapon2":{
             "name":"Lance grenade",
+            "equip":"w2-explo",
             "cost":4,
             "range":2,
             "elevation":1,
@@ -649,7 +651,8 @@
         },
         "weapon2alt":{
             "name":"Mitrailleuse légère",
-            "gangs":["blades","bulbos","tiradores"],
+            "gangs":["bulbos","tiradores"],
+            "equip":"w2-ggun",
             "cost":2,
             "range":2,
             "elevation":1,
@@ -663,6 +666,24 @@
             "aoe":"unit",
             "sound":"mit_light1",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+        },
+        "weapon2bis":{
+            "name":"Baliste",
+            "gangs":["blades"],
+            "equip":"w2-treb",
+            "cost":4,
+            "range":2,
+            "elevation":1,
+            "kit":true,
+            "isBow":true,
+            "noBis":true,
+            "rof":4,
+            "accuracy":14,
+            "power":21,
+            "armors":0.8,
+            "aoe":"unit",
+            "sound":"balista2",
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon3":{
             "name":"Autopistol",
@@ -678,7 +699,7 @@
             "ammo":["standard"]
         },
         "protection":[],
-        "equip":["aucun","bldkit","w1-gun","w2-explo","w2-ggun","w2-autopistol","psol","isophon","respod","garage","e-infra"],
+        "equip":["aucun","bldkit","w1-gun","w2-explo","w2-ggun","w2-treb","w2-autopistol","psol","isophon","respod","garage","e-infra"],
         "log3eq":["garage","psol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -936,6 +957,7 @@
         },
         "weapon2":{
             "name":"Lance grenade",
+            "equip":"w2-explo",
             "cost":4,
             "range":2,
             "elevation":1,
@@ -956,7 +978,8 @@
         },
         "weapon2alt":{
             "name":"Mitrailleuse légère",
-            "gangs":["blades","bulbos","tiradores"],
+            "gangs":["bulbos","tiradores"],
+            "equip":"w2-ggun",
             "cost":2,
             "range":2,
             "elevation":1,
@@ -971,8 +994,26 @@
             "sound":"mit_light1",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
+        "weapon2bis":{
+            "name":"Baliste",
+            "gangs":["blades"],
+            "equip":"w2-treb",
+            "cost":4,
+            "range":2,
+            "elevation":1,
+            "kit":true,
+            "isBow":true,
+            "noBis":true,
+            "rof":4,
+            "accuracy":14,
+            "power":21,
+            "armors":0.8,
+            "aoe":"unit",
+            "sound":"balista2",
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
+        },
         "protection":[],
-        "equip":["aucun","w1-gun","w2-explo","w2-ggun","respod","garage","e-infra"],
+        "equip":["aucun","w1-gun","w2-explo","w2-ggun","w2-treb","respod","garage","e-infra"],
         "log3eq":["garage"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1289,6 +1330,7 @@
         },
         "weapon2":{
             "name":"Roquettes",
+            "equip":"w2-arti",
             "cost":6,
             "range":6,
             "noBis":true,
@@ -1305,7 +1347,8 @@
         },
         "weapon2alt":{
             "name":"Fusil antichar",
-            "gangs":["blades","tiradores"],
+            "gangs":["tiradores"],
+            "equip":"w2-ggun",
             "cost":6,
             "range":4,
             "elevation":1,
@@ -1321,6 +1364,27 @@
             "sound":"calibre_antichar",
             "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
+        "weapon2bis":{
+            "name":"Catapulte",
+            "gangs":["blades"],
+            "equip":"w2-treb",
+            "cost":5,
+            "range":3,
+            "elevation":1,
+            "noBis":true,
+            "noFly":true,
+            "isBow":true,
+            "noMelee":true,
+            "kit":true,
+            "rof":4,
+            "accuracy":15,
+            "power":28,
+            "aoe":"brochette",
+            "sound":"catapult2",
+            "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
+            "maxAmmo":30,
+            "ravitBld":"Atelier"
+        },
         "weapon3":{
             "name":"Tourelles auto",
             "cost":1,
@@ -1335,7 +1399,7 @@
             "ammo":["standard"]
         },
         "protection":[],
-        "equip":["aucun","bldkit","w1-ggun","w2-arti","w2-ggun","w2-autogun","psol2","isophon","respod","garage","prodboost"],
+        "equip":["aucun","bldkit","w1-ggun","w2-arti","w2-ggun","w2-treb","w2-autogun","psol2","isophon","respod","garage","prodboost"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1448,6 +1512,7 @@
         },
         "weapon2":{
             "name":"RPG",
+            "equip":"w2-explo",
             "cost":6,
             "range":2,
             "noBis":true,
@@ -1465,7 +1530,8 @@
         },
         "weapon2alt":{
             "name":"Mitrailleuse",
-            "gangs":["blades","bulbos","tiradores"],
+            "gangs":["bulbos","tiradores"],
+            "equip":"w2-ggun",
             "cost":4,
             "range":2,
             "elevation":1,
@@ -1480,8 +1546,26 @@
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
+        "weapon2bis":{
+            "name":"Baliste",
+            "gangs":["blades"],
+            "equip":"w2-treb",
+            "cost":4,
+            "range":2,
+            "elevation":1,
+            "kit":true,
+            "isBow":true,
+            "noBis":true,
+            "rof":6,
+            "accuracy":14,
+            "power":21,
+            "armors":0.8,
+            "aoe":"unit",
+            "sound":"balista2",
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
+        },
         "protection":[],
-        "equip":["aucun","bldkit","w1-ggun","w2-explo","w2-ggun","e-medic","psol","isophon","garage","prodboost","e-infra"],
+        "equip":["aucun","bldkit","w1-ggun","w2-explo","w2-ggun","w2-treb","e-medic","psol","isophon","garage","prodboost","e-infra"],
         "log3eq":["garage","psol"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1530,6 +1614,7 @@
         },
         "weapon2":{
             "name":"Obusier",
+            "equip":"w2-arti",
             "cost":6,
             "range":6,
             "noFly":true,
@@ -1548,7 +1633,8 @@
         },
         "weapon2alt":{
             "name":"Fusil antichar",
-            "gangs":["blades","tiradores"],
+            "gangs":["tiradores"],
+            "equip":"w2-ggun",
             "cost":6,
             "range":4,
             "elevation":1,
@@ -1564,8 +1650,29 @@
             "sound":"calibre_antichar",
             "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
+        "weapon2bis":{
+            "name":"Catapulte",
+            "gangs":["blades"],
+            "equip":"w2-treb",
+            "cost":5,
+            "range":4,
+            "elevation":1,
+            "noBis":true,
+            "noFly":true,
+            "isBow":true,
+            "noMelee":true,
+            "kit":true,
+            "rof":5,
+            "accuracy":15,
+            "power":28,
+            "aoe":"brochette",
+            "sound":"catapult2",
+            "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
+            "maxAmmo":30,
+            "ravitBld":"Atelier"
+        },
         "protection":[],
-        "equip":["aucun","bldkit","w2-arti","w2-ggun","psol2","isophon","respod","garage","prodboost"],
+        "equip":["aucun","bldkit","w2-arti","w2-ggun","w2-treb","psol2","isophon","respod","garage","prodboost"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1613,6 +1720,7 @@
         },
         "weapon2":{
             "name":"Missiles Squash",
+            "equip":"w2-arti",
             "cost":10,
             "range":9,
             "noMelee":true,
@@ -1631,7 +1739,8 @@
         },
         "weapon2alt":{
             "name":"Fusil antichar",
-            "gangs":["blades","tiradores"],
+            "gangs":["tiradores"],
+            "equip":"w2-ggun",
             "cost":6,
             "range":4,
             "elevation":1,
@@ -1647,8 +1756,29 @@
             "sound":"calibre_antichar",
             "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
+        "weapon2bis":{
+            "name":"Catapulte",
+            "gangs":["blades"],
+            "equip":"w2-treb",
+            "cost":5,
+            "range":4,
+            "elevation":1,
+            "noBis":true,
+            "noFly":true,
+            "isBow":true,
+            "noMelee":true,
+            "kit":true,
+            "rof":6,
+            "accuracy":15,
+            "power":28,
+            "aoe":"brochette",
+            "sound":"catapult2",
+            "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
+            "maxAmmo":30,
+            "ravitBld":"Atelier"
+        },
         "protection":[],
-        "equip":["aucun","bldkit","w2-arti","w2-ggun","psol2","isophon","respod","garage","prodboost"],
+        "equip":["aucun","bldkit","w2-arti","w2-ggun","w2-treb","psol2","isophon","respod","garage","prodboost"],
         "log3eq":["garage","psol2"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1910,6 +2040,7 @@
         },
         "weapon2":{
             "name":"Roquettes",
+            "equip":"w2-arti",
             "cost":6,
             "range":6,
             "noBis":true,
@@ -1927,8 +2058,9 @@
         "weapon2alt":{
             "name":"Canon laser",
             "gangs":["blades","tiradores"],
+            "equip":"w2-laser",
             "cost":6,
-            "range":5,
+            "range":6,
             "elevation":3,
             "noBis":true,
             "kit":true,
@@ -1937,7 +2069,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"laser_canon_x1",
-            "ammo":["laser","laser-g2"],
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":36,
             "ravitBld":"Générateur"
         },
@@ -2003,6 +2135,7 @@
         },
         "weapon2":{
             "name":"Roquettes",
+            "equip":"w2-arti",
             "cost":6,
             "range":7,
             "kit":true,
@@ -2019,8 +2152,9 @@
         "weapon2alt":{
             "name":"Canon laser",
             "gangs":["blades","tiradores"],
+            "equip":"w2-laser",
             "cost":6,
-            "range":5,
+            "range":6,
             "elevation":3,
             "noBis":true,
             "kit":true,
@@ -2029,7 +2163,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"laser_canon_x1",
-            "ammo":["laser","laser-g2"],
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":36,
             "ravitBld":"Générateur"
         },
@@ -2162,6 +2296,7 @@
         },
         "weapon2":{
             "name":"Lance grenade",
+            "equip":"w2-explo",
             "cost":4,
             "range":2,
             "elevation":1,
@@ -2183,6 +2318,7 @@
         "weapon2alt":{
             "name":"Mitrailleuse légère",
             "gangs":["tiradores"],
+            "equip":"w2-ggun",
             "cost":2,
             "range":2,
             "elevation":1,
@@ -2415,7 +2551,7 @@
             "power":30,
             "aoe":"brochette",
             "sound":"laser_canon_x1",
-            "ammo":["laser","laser-g2"],
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":36,
             "ravitBld":"Générateur"
         },
@@ -2861,6 +2997,7 @@
         },
         "weapon2":{
             "name":"Mortier léger",
+            "equip":"w2-explo",
             "cost":7,
             "range":4,
             "elevation":1,
@@ -2881,6 +3018,7 @@
         "weapon2alt":{
             "name":"Mitrailleuse légère",
             "gangs":["tiradores"],
+            "equip":"w2-ggun",
             "cost":2,
             "range":2,
             "elevation":1,
@@ -2942,6 +3080,7 @@
         },
         "weapon2":{
             "name":"Mortier léger",
+            "equip":"w2-explo",
             "cost":7,
             "range":4,
             "elevation":1,
@@ -2962,6 +3101,7 @@
         "weapon2alt":{
             "name":"Mitrailleuse légère",
             "gangs":["tiradores"],
+            "equip":"w2-ggun",
             "cost":2,
             "range":2,
             "elevation":1,
@@ -3035,6 +3175,7 @@
         },
         "weapon2":{
             "name":"Mortier léger",
+            "equip":"w2-explo",
             "cost":7,
             "range":4,
             "elevation":1,
@@ -3055,6 +3196,7 @@
         "weapon2alt":{
             "name":"Mitrailleuse légère",
             "gangs":["tiradores"],
+            "equip":"w2-ggun",
             "cost":2,
             "range":2,
             "elevation":1,
