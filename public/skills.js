@@ -1033,28 +1033,28 @@ function checkFreeConsTile(bat,batType) {
 };
 
 function checkWeb(tileId) {
-    let isWeb = false;
+    let numWeb = 0;
     let thisTile = getTileById(tileId);
     if (thisTile.web) {
-        isWeb = true;
+        numWeb++;
     }
     thisTile = getTileById(tileId-1);
     if (thisTile.web) {
-        isWeb = true;
+        numWeb++;
     }
     thisTile = getTileById(tileId+1);
     if (thisTile.web) {
-        isWeb = true;
+        numWeb++;
     }
     thisTile = getTileById(tileId+mapSize);
     if (thisTile.web) {
-        isWeb = true;
+        numWeb++;
     }
     thisTile = getTileById(tileId-mapSize);
     if (thisTile.web) {
-        isWeb = true;
+        numWeb++;
     }
-    return isWeb;
+    return numWeb;
 };
 
 function removeWeb(apCost) {

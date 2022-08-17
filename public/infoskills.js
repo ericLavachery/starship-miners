@@ -2102,10 +2102,10 @@ function skillsInfos(bat,batType,near) {
         }
     }
     // NETTOYAGE
-    if (batType.skills.includes('cleaning') && !playerInfos.onShip) {
-        let isWeb = checkWeb(bat.tileId);
-        if (isWeb) {
-            apCost = (batType.mecanoCost+1)*2;
+    if ((batType.skills.includes('cleaning') || (batType.cat === 'buildings' && batType.crew >= 1)) && !playerInfos.onShip) {
+        let numWeb = checkWeb(bat.tileId);
+        if (numWeb >= 1) {
+            apCost = Math.ceil((batType.mecanoCost+1)/1.75*numWeb);
             apReq = Math.ceil(apCost/5);
             if (batType.cat === 'infantry' && tile.web) {
                 apCost = batType.mecanoCost+1;

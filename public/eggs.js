@@ -1168,7 +1168,8 @@ function spawns() {
     let flyDice;
     let warnAsticots = false;
     let warnVers = false;
-    aliens.forEach(function(bat) {
+    let shufAliens = _.shuffle(aliens);
+    shufAliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             flyDice = rand.rand(1,3);
             let batTurn = playerInfos.mapTurn-bat.creaTurn+1;

@@ -464,6 +464,10 @@ function batDeath(bat,count,isWiped) {
         isFlying = true;
     }
     if (bat.team == 'player') {
+        if (batType.crew >= 1 && !batType.skills.includes('dog') && !batType.skills.includes('clone')) {
+            let cytxp = Math.ceil(batType.squads*batType.squadSize*batType.crew/6);
+            playerInfos.gangXP = playerInfos.gangXP+cytxp;
+        }
         if (bat.tags.includes('nomove')) {
             removeNoMoves(bat);
         }
