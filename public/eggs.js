@@ -1,47 +1,49 @@
 function checkStartingAliens() {
     // Ruches
     let numRuches;
-    if (zone[0].mapDiff >= 8 && !zone[0].visit) {
-        dropEgg('Colonie','nedge');
-        coconStats.colo = true;
-        let coloBat = getAlienByName('Colonie');
-        alienSpawn(coloBat,'Vomissure','bmorph');
-        alienSpawn(coloBat,'Vomissure','bmorph');
-        if (zone[0].mapDiff >= 9) {
+    if (!zone[0].visit) {
+        if (zone[0].mapDiff >= 8) {
+            dropEgg('Colonie','nedge');
+            coconStats.colo = true;
+            let coloBat = getAlienByName('Colonie');
             alienSpawn(coloBat,'Vomissure','bmorph');
             alienSpawn(coloBat,'Vomissure','bmorph');
-            alienSpawn(coloBat,'Ruche');
-            coconStats.volc = true;
-            dropEgg('Volcan','guard');
-            if (rand.rand(1,2) === 1) {
+            if (zone[0].mapDiff >= 9) {
+                alienSpawn(coloBat,'Vomissure','bmorph');
+                alienSpawn(coloBat,'Vomissure','bmorph');
+                alienSpawn(coloBat,'Ruche');
+                coconStats.volc = true;
+                dropEgg('Volcan','guard');
+                if (rand.rand(1,2) === 1) {
+                    dropEgg('Volcan','guard');
+                }
+            }
+            if (zone[0].mapDiff >= 10) {
+                alienSpawn(coloBat,'Ruche');
+                alienSpawn(coloBat,'Ruche');
+                alienSpawn(coloBat,'Ruche');
+                dropEgg('Volcan','guard');
                 dropEgg('Volcan','guard');
             }
-        }
-        if (zone[0].mapDiff >= 10) {
-            alienSpawn(coloBat,'Ruche');
-            alienSpawn(coloBat,'Ruche');
-            alienSpawn(coloBat,'Ruche');
-            dropEgg('Volcan','guard');
-            dropEgg('Volcan','guard');
-        }
-        numRuches = rand.rand(1,2);
-        if (zone[0].mapDiff === 9) {
-            numRuches = rand.rand(3,5);
-        }
-        if (zone[0].mapDiff >= 10) {
-            numRuches = rand.rand(6,12);
-        }
-        let i = 1;
-        while (i <= numRuches) {
-            if (rand.rand(1,4) === 1) {
-                dropEgg('Ruche','any');
-                coconStats.volc = true;
-            } else {
-                dropEgg('Ruche','nocenter');
-                coconStats.volc = true;
+            numRuches = rand.rand(1,2);
+            if (zone[0].mapDiff === 9) {
+                numRuches = rand.rand(3,5);
             }
-            if (i > 20) {break;}
-            i++
+            if (zone[0].mapDiff >= 10) {
+                numRuches = rand.rand(6,12);
+            }
+            let i = 1;
+            while (i <= numRuches) {
+                if (rand.rand(1,4) === 1) {
+                    dropEgg('Ruche','any');
+                    coconStats.volc = true;
+                } else {
+                    dropEgg('Ruche','nocenter');
+                    coconStats.volc = true;
+                }
+                if (i > 20) {break;}
+                i++
+            }
         }
     }
     // Flaques
@@ -52,7 +54,7 @@ function checkStartingAliens() {
             if (rand.rand(1,4) === 1) {
                 dropEgg('Flaque','any');
             } else {
-                if (rand.rand(1,6) === 1 && zone[0].mapDiff >= 7) {
+                if (rand.rand(1,4) === 1 && zone[0].mapDiff >= 7) {
                     dropEgg('Ruche','nocenter');
                     coconStats.volc = true;
                 } else {

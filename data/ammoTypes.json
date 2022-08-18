@@ -247,6 +247,22 @@
         "batch":100
     },
     {
+        "name": "gliding",
+        "range": 1,
+        "rof": 1,
+        "power": 2,
+        "powermult": 1,
+        "armors": 0.35,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Elevation+",
+        "bldReq":["Arsenal"],
+        "compReq":{"bal":3,"mat":2},
+        "deploy":{"Munitions":1,"Uranium":1,"Titane":1,"Carbone":1},
+        "batch":100
+    },
+    {
         "name": "hollow",
         "range": 1,
         "rof": 1,
@@ -860,6 +876,22 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"mat":1},
         "deploy":{"Fer":2,"Plomb":2,"Titane":4,"Oxygène":1},
+        "batch":200
+    },
+    {
+        "name": "pn-gliding",
+        "range": 1,
+        "rof": 1,
+        "power": 2,
+        "powermult": 1,
+        "armors": 0.35,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Elevation+",
+        "bldReq":["Arsenal"],
+        "compReq":{"bal":3,"mat":2},
+        "deploy":{"Fer":2,"Plomb":1,"Uranium":2,"Titane":3,"Carbone":2},
         "batch":200
     },
     {

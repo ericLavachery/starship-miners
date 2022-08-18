@@ -2200,6 +2200,9 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.apWeb = false;
     }
+    if (thisWeapon.ammo.includes('gliding')) {
+        thisWeapon.elevation = thisWeapon.elevation+1;
+    }
     if (playerInfos.comp.pyro === 3) {
         if (thisWeapon.ammo.includes('feu') || thisWeapon.ammo.includes('incendiaire') || thisWeapon.ammo.includes('napalm') || thisWeapon.ammo.includes('fire') || thisWeapon.ammo.includes('pyratol') || thisWeapon.ammo.includes('lf-') || thisWeapon.ammo.includes('lt-') || thisWeapon.ammo.includes('molotov')) {
             thisWeapon.armors = thisWeapon.armors*0.8;
