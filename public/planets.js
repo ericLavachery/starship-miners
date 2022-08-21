@@ -205,7 +205,7 @@ function stormProtection(dmg,bat,batType) {
         stormProtect = stormProtect+infraProtect+(terProtect/3);
     }
     if (bat.tags.includes('fortif')) {
-        stormProtect = stormProtect*1.15;
+        stormProtect = stormProtect*1.25;
     }
     if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
         if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
@@ -232,7 +232,11 @@ function stormDamage(bat,batType,storm,inMov) {
             if (batType.cat === 'infantry') {
                 let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
                 let stormDmg = rand.rand(2*numUnits,4*numUnits);
-                stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
+                let batArmour = bat.armor;
+                if (bat.tags.includes('fortif')) {
+                    batArmour = batArmour+5;
+                }
+                stormDmg = Math.ceil(stormDmg/Math.sqrt(batArmour+1));
                 if (stormDmg > 0) {
                     stormDmg = stormProtection(stormDmg,bat,batType);
                 }
@@ -269,8 +273,16 @@ function stormDamage(bat,batType,storm,inMov) {
         console.log('numUnits='+numUnits);
         let stormDmg = rand.rand(7*numUnits,20*numUnits);
         console.log('stormDmg='+stormDmg);
-        stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
-        if (bat.armor >= 14 && playerInfos.comp.scaph >= 3) {
+        let batArmour = bat.armor;
+        if (bat.tags.includes('fortif')) {
+            if (batType.size <= 5) {
+                batArmour = batArmour+8-batType.size;
+            } else {
+                batArmour = batArmour+3;
+            }
+        }
+        stormDmg = Math.ceil(stormDmg/Math.sqrt(batArmour+1));
+        if (batArmour >= 14 && playerInfos.comp.scaph >= 3) {
             stormDmg = 0;
         }
         if (batType.skills.includes('resiststorm')) {

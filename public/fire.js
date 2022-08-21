@@ -854,9 +854,9 @@ function attack(melee,init) {
         if (selectedBatType.name == 'Androks' || selectedBatType.name == 'Homards') {
             gripbonus = 40;
         }
-        if (selectedBatType.name == 'Bourdons') {
-            gripbonus = -20;
-        }
+        // if (selectedBatType.name == 'Bourdons') {
+        //     gripbonus = -20;
+        // }
         let gripFactor = 1;
         if (selectedBatType.skills.includes('eatpoison') && selectedBat.tags.includes('regeneration')) {
             gripFactor = 2;
@@ -978,7 +978,7 @@ function attack(melee,init) {
     // poison
     let minDamage = 7;
     if (targetBatType.cat === 'aliens') {
-        minDamage = minDamage+4-(playerInfos.comp.ca*2);
+        minDamage = minDamage+7-(playerInfos.comp.ca*2)-(playerInfos.comp.exo*2);
     } else {
         minDamage = minDamage+(playerInfos.comp.ca*2);
     }
@@ -1828,7 +1828,7 @@ function defense(melee,init) {
     // poison
     let minDamage = 7;
     if (selectedBatType.cat === 'aliens') {
-        minDamage = minDamage+4-(playerInfos.comp.ca*2);
+        minDamage = minDamage+7-(playerInfos.comp.ca*2)-(playerInfos.comp.exo*2);
     } else {
         minDamage = minDamage+(playerInfos.comp.ca*2);
     }

@@ -1868,6 +1868,7 @@ function missionResults(onlyLanders,sCount,hCount) {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     calcEndRes(onlyLanders);
+    let maintCosts = getAllMaintCosts();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName or">RAPPORT DE MISSION</span><br>');
     $('#conUnitList').append('<br>');
@@ -1916,6 +1917,9 @@ function missionResults(onlyLanders,sCount,hCount) {
                 resCol = ' gff';
             }
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
+            if (maintCosts[key] != undefined) {
+                resResult = resResult-maintCosts[key];
+            }
             if (sondeCount === 'cy') {
                 if (sonde.costs[key] != undefined) {
                     resResult = resResult-sonde.costs[key];
@@ -1957,6 +1961,9 @@ function missionResults(onlyLanders,sCount,hCount) {
                 resCol = ' jaune';
             }
             let resResult = playerInfos.endRes[key]-playerInfos.startRes[key];
+            if (maintCosts[key] != undefined) {
+                resResult = resResult-maintCosts[key];
+            }
             if (sondeCount === 'cy') {
                 if (sonde.costs[key] != undefined) {
                     resResult = resResult-sonde.costs[key];
@@ -1989,6 +1996,20 @@ function missionResults(onlyLanders,sCount,hCount) {
     $('#conUnitList').append('<span class="paramName vert">Total</span><span class="paramIcon"></span><span class="paramValue '+resColour+'">'+balance+'</span> +('+minedTotal+')<br>');
     $("#conUnitList").animate({scrollTop:0},"fast");
     commandes();
+};
+
+function getAllMaintCosts() {
+    let allCosts = {};
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.skills.includes('decay')) {
+            let maintCosts = getAvMaintCosts(batType);
+            mergeObjects(allCosts,maintCosts);
+        }
+    });
+    console.log('ALL MAINTENANCE COSTS');
+    console.log(allCosts);
+    return allCosts;
 };
 
 function adjStartPack() {

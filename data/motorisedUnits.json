@@ -3899,7 +3899,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","noguet","fly","extraction","selfbadmecano","fret","robot","light","conscont","aicamo","recupres","aifouille","autotrans"],
+        "skills":["a_rob","noguet","fly","extraction","selfbadmecano","fret","robot","decay","light","conscont","aicamo","recupres","aifouille","autotrans"],
         "mecanoCost":12,
         "mining":{
             "level":3,

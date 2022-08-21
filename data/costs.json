@@ -871,8 +871,8 @@
         "compReq":{"robo":2},
         "compPass":["detruas"],
         "compHardReq":{"robo":1,"explo":1,"bal":2},
-        "costs":{"Fer":84,"Bois":48,"Carbone":24,"Moteurs":120,"Titane":380,"Tungstène":60,"Electros":96,"Batteries":96,"Cuivre":58,"Silicium":72},
-        "deploy":{"Energie":120,"Electros":16,"Batteries":8},
+        "costs":{"Fer":84,"Bois":48,"Carbone":24,"Moteurs":120,"Titane":380,"Rhodium":126,"Tungstène":60,"Electros":96,"Batteries":96,"Cuivre":58,"Silicium":72},
+        "deploy":{"Energie":120,"Pyratol":21,"Electros":16,"Batteries":8},
         "fabTime":105,
         "inRuin":1
     },
@@ -882,7 +882,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":17,"drogmulojs":99,"tiradores":14,"detruas":99,"brasier":99},
         "bldReq":["Usine","Arsenal","Centre de recherches"],
         "compReq":{"robo":2,"ind":1,"mat":2},
-        "costs":{"Fer":124,"Scrap":42,"Carbone":84,"Moteurs":168,"Tungstène":63,"Titane":630,"Adamantium":126,"Electros":315,"Batteries":210,"Cuivre":210,"Silicium":126,"Cobalt":84,"Nickel":42},
+        "costs":{"Fer":124,"Scrap":42,"Carbone":84,"Moteurs":168,"Tungstène":63,"Titane":630,"Adamantium":210,"Electros":315,"Batteries":210,"Cuivre":210,"Silicium":126,"Cobalt":84,"Nickel":42},
         "deploy":{"Energie":168,"Timonium":21,"Huile":14},
         "fabTime":170,
         "inRuin":1
@@ -1752,7 +1752,7 @@
         "compReq":{"robo":1},
         "compPass":["blades","brasier","drogmulojs","rednecks"],
         "compHardReq":{"ext":1},
-        "costs":{"Fer":72,"Scrap":90,"Carbone":72,"Moteurs":72,"Titane":156,"Silicium":48,"Cuivre":96,"Electros":120,"Batteries":198,"Huile":10,"Eau":120,"Silicium":30},
+        "costs":{"Fer":72,"Scrap":90,"Carbone":72,"Moteurs":108,"Titane":228,"Rhodium":72,"Silicium":48,"Cuivre":96,"Electros":120,"Batteries":198,"Huile":10,"Eau":120,"Silicium":30},
         "deploy":{"Energie":280,"Eau":120,"Silicium":15},
         "fabTime":90,
         "inRuin":2
