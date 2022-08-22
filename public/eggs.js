@@ -194,6 +194,22 @@ function checkCrysalide() {
     return crysalide;
 };
 
+function checkCoconBonus() {
+    console.log('checkCoconBonus !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    console.log(coconStats);
+    console.log('TURN '+playerInfos.mapTurn);
+    if (playerInfos.mapTurn >= 40) {
+        if (aliens.length < playerInfos.mapTurn*2.5) {
+            if (playerInfos.mapTurn % 5 === 0) {
+                console.log(Math.floor(playerInfos.mapTurn/coconStats.turns)+' <= '+playerInfos.cocons);
+                if (Math.floor(playerInfos.mapTurn/coconStats.turns) <= playerInfos.cocons) {
+                    playerInfos.cocons = playerInfos.cocons-1;
+                }
+            }
+        }
+    }
+};
+
 function checkAlienArtillery() {
     let alienArtillery = {};
     alienArtillery.ok = false;
@@ -328,6 +344,9 @@ function checkEggsDrop() {
                 let doubleCocon = playerInfos.mapTurn+((zone[0].mapDiff-1)*7);
                 if (playerInfos.mapTurn >= 20 && aliens.length < playerInfos.mapTurn*2 && zone[0].mapDiff >= 5) {
                     doubleCocon = doubleCocon+100;
+                    if (playerInfos.mapTurn >= 40 && aliens.length < playerInfos.mapTurn) {
+                        doubleCocon = doubleCocon+50;
+                    }
                 }
                 if (doubleCocon >= 50) {
                     dropEgg('Oeuf','nedge');

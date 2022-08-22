@@ -882,6 +882,7 @@ function turnInfo() {
     checkZoneType();
     undarkList();
     setCoconStats();
+    checkCoconBonus();
     // foggedTiles
     let distance;
     let radarDistance = 3+playerInfos.comp.det;
