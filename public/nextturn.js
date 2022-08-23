@@ -369,7 +369,6 @@ function nextTurnEnd() {
             }
         }
     });
-    unitResist = calcUnitResist();
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
@@ -883,6 +882,7 @@ function turnInfo() {
     undarkList();
     setCoconStats();
     checkCoconBonus();
+    unitResist = calcUnitResist();
     // foggedTiles
     let distance;
     let radarDistance = 3+playerInfos.comp.det;
@@ -1503,7 +1503,7 @@ function tagsEffect(bat,batType) {
                 }
             }
         }
-        if (rand.rand(2,24) <= unitResist) {
+        if (rand.rand(3,48) <= unitResist) {
             tagDelete(bat,'necro');
             if (!bat.tags.includes('necro')) {
                 warning('',bat.type+' a éliminé la nécrotoxine.',false,bat.tileId);

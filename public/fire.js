@@ -980,7 +980,7 @@ function attack(melee,init) {
     if (targetBatType.cat === 'aliens') {
         minDamage = minDamage+7-(playerInfos.comp.ca*2)-(playerInfos.comp.exo*2);
     } else {
-        minDamage = minDamage+(playerInfos.comp.ca*2);
+        minDamage = minDamage+playerInfos.comp.ca+unitResist;
     }
     if (selectedWeap.ammo.includes('hypo-')) {
         minDamage = 1;
@@ -1028,10 +1028,10 @@ function attack(melee,init) {
     }
     // Toxine veuve
     let poisonVeuve = 0;
-    if (totalDamage >= 1+(playerInfos.comp.ca*2)) {
+    if (totalDamage >= 1) {
         if (selectedWeap.ammo.includes('toxine') && !targetBat.tags.includes('zombie')) {
             if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
-                poisonVeuve = Math.ceil(totalDamage/(12+playerInfos.comp.ca));
+                poisonVeuve = Math.ceil(totalDamage/(9+playerInfos.comp.ca+unitResist));
                 let i = 1;
                 while (i <= poisonVeuve) {
                     targetBat.tags.push('poison');
@@ -1830,7 +1830,7 @@ function defense(melee,init) {
     if (selectedBatType.cat === 'aliens') {
         minDamage = minDamage+7-(playerInfos.comp.ca*2)-(playerInfos.comp.exo*2);
     } else {
-        minDamage = minDamage+(playerInfos.comp.ca*2);
+        minDamage = minDamage+playerInfos.comp.ca+unitResist;
     }
     if (targetWeap.ammo.includes('hypo-')) {
         minDamage = 1;

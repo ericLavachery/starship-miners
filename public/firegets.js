@@ -2810,7 +2810,7 @@ function checkDisease(giveBatType,damage,haveBat,haveBatType,terrain) {
     if (!haveBat.tags.includes('maladie')) {
         if (giveBatType.skills.includes('maladie') || giveBatType.skills.includes('chancre')) {
             if ((haveBatType.cat == 'infantry' && !haveBatType.skills.includes('mutant') && !haveBat.tags.includes('zombie')) || haveBatType.cat == 'aliens') {
-                let getChance = (damage*5)+5;
+                let getChance = (damage*5)+7-unitResist;
                 if (giveBatType.skills.includes('chancre')) {
                     getChance = getChance*3;
                 } else {
@@ -2819,11 +2819,11 @@ function checkDisease(giveBatType,damage,haveBat,haveBatType,terrain) {
                 if (terrain.name === 'S') {
                     getChance = getChance+25;
                 }
-                if (getChance > 33 && !giveBatType.skills.includes('chancre')) {
-                    getChance = 33;
+                if (getChance > 42-(unitResist*3) && !giveBatType.skills.includes('chancre')) {
+                    getChance = 42-(unitResist*3);
                 }
-                if (getChance < 10 && damage >= 1) {
-                    getChance = 10;
+                if (getChance < 13-unitResist && damage >= 1) {
+                    getChance = 13-unitResist;
                 }
                 if (rand.rand(1,100) <= getChance) {
                     getIt = true;
