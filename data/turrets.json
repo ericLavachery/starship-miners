@@ -1648,7 +1648,7 @@
         "weapon2":{
             "name":"Darts",
             "cost":1,
-            "range":1,
+            "range":2,
             "noDef":true,
             "rof":24,
             "accuracy":25,

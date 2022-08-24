@@ -2269,7 +2269,7 @@ function gangChoice() {
 function gangLevelUp(retour) {
     selectMode();
     let nextGangLevel = playerInfos.gLevel+1;
-    if (!retour) {
+    if (!retour && myCompPoints === 0) {
         myCompPoints = calcCompPoints(nextGangLevel);
     }
     $("#conUnitList").css("display","block");

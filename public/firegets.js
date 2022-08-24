@@ -2227,6 +2227,11 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.power = Math.round(thisWeapon.power*ammo.powermult);
     thisWeapon.power = thisWeapon.power+ammo.power;
     thisWeapon.apdamage = ammo.apdamage;
+    if (ammo.avar != undefined) {
+        if (playerInfos.comp[ammo.avar] >= 2) {
+            ammo.armors = ammo.armors*2.75/(playerInfos.comp[ammo.avar]+2);
+        }
+    }
     thisWeapon.armors = thisWeapon.armors*ammo.armors;
     thisWeapon.armors = thisWeapon.armors.toFixedNumber(2);
     if (ammo.aoe != '' && thisWeapon.aoe != 'bat') {

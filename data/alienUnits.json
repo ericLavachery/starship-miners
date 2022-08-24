@@ -531,7 +531,7 @@
         "weapon":{
             "name":"Glair acide",
             "cost":2,
-            "range":5,
+            "range":6,
             "elevation":3,
             "noFly":false,
             "isMelee":false,
@@ -1009,8 +1009,8 @@
         "weapon":{
             "name":"Jet d'acide",
             "cost":6,
-            "range":3,
-            "elevation":2,
+            "range":4,
+            "elevation":1,
             "noFly":false,
             "isMelee":false,
             "rof":8,
@@ -1584,8 +1584,8 @@
         "weapon2":{
             "name":"Glu",
             "cost":1,
-            "range":2,
-            "elevation":2,
+            "range":3,
+            "elevation":1,
             "noFly":false,
             "isMelee":false,
             "rof":15,
@@ -1675,7 +1675,7 @@
         "weapon":{
             "name":"Boule de feu",
             "cost":5,
-            "range":4,
+            "range":5,
             "elevation":2,
             "noFly":false,
             "isMelee":false,
@@ -1689,7 +1689,7 @@
         "weapon2":{
             "name":"Boule de feu",
             "cost":5,
-            "range":5,
+            "range":6,
             "elevation":4,
             "noFly":false,
             "isMelee":false,
@@ -1845,7 +1845,7 @@
         "weapon2":{
             "name":"Jet d'acide",
             "cost":7,
-            "range":5,
+            "range":6,
             "elevation":3,
             "noFly":false,
             "isMelee":false,
@@ -1988,6 +1988,7 @@
             "name":"Jet d'acide",
             "cost":2,
             "range":3,
+            "elevation":1,
             "noFly":false,
             "isMelee":false,
             "rof":10,
