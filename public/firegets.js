@@ -464,7 +464,7 @@ function batDeath(bat,count,isWiped) {
         isFlying = true;
     }
     if (bat.team == 'player') {
-        if (batType.crew >= 1 && !batType.skills.includes('dog') && !batType.skills.includes('clone')) {
+        if (batType.crew >= 1 && !batType.skills.includes('dog') && !batType.skills.includes('clone') && !bat.tags.includes('outsider')) {
             let cytxp = Math.ceil(batType.squads*batType.squadSize*batType.crew/6);
             playerInfos.gangXP = playerInfos.gangXP+cytxp;
         }

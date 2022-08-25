@@ -311,7 +311,7 @@ function coffreDrop(layBatTileId) {
     let tileDrop = -1;
     let shufZone = _.shuffle(zone);
     shufZone.forEach(function(tile) {
-        if (isAdjacent(layBatTileId,tile.id)) {
+        if (isAdjacent(layBatTileId,tile.id) && !tile.ruins) {
             batHere = false;
             bataillons.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.tileId === tile.id) {
@@ -639,11 +639,15 @@ function checkRuinsRes(tile) {
                         thatResChance = Math.ceil(thatResChance/2*mapFactor/4);
                     }
                 }
-                thatResChance = Math.ceil(thatResChance*(playerInfos.comp.tri+4)/4);
+                thatResChance = thatResChance*(playerInfos.comp.tri+2)/3;
+                let resPlanetFactor = 1;
                 if (res.planets != undefined) {
                     let planetName = zone[0].planet;
-                    thatResChance = Math.ceil(thatResChance*res.planets[planetName]);
+                    resPlanetFactor = res.planets[planetName];
                 }
+                let diffBonus = zone[0].mapDiff*zone[0].mapDiff/200;
+                resPlanetFactor = resPlanetFactor+diffBonus;
+                thatResChance = Math.ceil(thatResChance*resPlanetFactor);
                 console.log(res.name+' '+thatResChance);
                 if (rand.rand(1,1000) <= thatResChance) {
                     thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*1.5*rand.rand(4,16))+rand.rand(0,9);
