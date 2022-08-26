@@ -206,7 +206,7 @@
     {
         "id":155,
         "name":"Gurus",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":7},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":6},
         "bldReq":["Chapelle","Infirmerie","Appartements"],
         "unitCost":"Adeptes",
         "costs":{"Zinc":28,"Chlore":28,"Carbone":10,"Aluminium":10,"Titane":17,"Scrap":40,"Silicium":18,"Drogues":75,"Or":20,"Batteries":3,"Electros":3,"Fuel":60,"Tissus":60},
@@ -451,7 +451,7 @@
     {
         "id":55,
         "name":"Chevaliers",
-        "levels":{"rednecks":99,"blades":6,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":5,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Garage"],
         "costs":{"Fer":196,"Scrap":280,"Bois":56,"Moteurs":42,"Végétaux":20,"Chlore":10,"Tissus":5},
         "deploy":{"Fuel":20,"Drogues":3,"Tissus":2},
@@ -495,7 +495,7 @@
     {
         "id":49,
         "name":"Rambos",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":10,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":11,"detruas":99,"brasier":99},
         "bldReq":["Camp d'entraînement","Arsenal"],
         "costs":{"Fer":120,"Scrap":120,"Carbone":60,"Aluminium":60,"Tungstène":60,"Végétaux":80,"Soufre":30,"Plomb":30,"Drogues":60,"Or":60,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
@@ -1164,7 +1164,7 @@
     {
         "id":100,
         "name":"Spears",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":11,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":10,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "compReq":{"tank":1},
         "compHardReq":{"bal":2},
@@ -1298,7 +1298,7 @@
     {
         "id":22,
         "name":"Trackers",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":6},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":7},
         "bldReq":["Arsenal","Atelier"],
         "compHardReq":{"bal":1,"pyro":2},
         "costs":{"Fer":144,"Scrap":360,"Carbone":168,"Aluminium":144,"Moteurs":120,"Tungstène":216,"Titane":48,"Cuivre":24,"Batteries":12,"Nickel":84,"Compo2":120,"Compo3":45,"Huile":10,"Fuel":120},
@@ -1317,7 +1317,7 @@
     {
         "id":67,
         "name":"Reapers",
-        "levels":{"rednecks":99,"blades":5,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":6,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Atelier","Garage"],
         "costs":{"Fer":90,"Scrap":360,"Carbone":60,"Bois":60,"Aluminium":120,"Moteurs":50,"Batteries":15,"Compo2":60},
         "deploy":{"Fuel":70},
@@ -2676,7 +2676,7 @@
         "id":226,
         "name":"Camp de rééducation",
         "bldReq":["Soute","Salle de sport"],
-        "compReq":{"ordre":2},
+        "compReq":{"ordre":3},
         "costs":{"Compo1":240,"Compo2":90,"Eau":100,"Drogues":400,"Scrap":300,"Calcium":50,"Or":200,"Zinc":200,"Bore":200,"Chlore":50},
         "fabTime":200,
         "slots":3

@@ -3371,7 +3371,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","crewsave","transport","dealer","moloko","routes","producteur","fret","dumper","badmedic","longshot","prefab"],
+        "skills":["fouille","recupcit","brigands","crewsave","transport","dealer","moloko","routes","producteur","fret","dumper","badmedic","longshot","prefab"],
         "mecanoCost":10,
         "mediCost":12,
         "maxDrug":24,

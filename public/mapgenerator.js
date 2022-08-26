@@ -1063,7 +1063,7 @@ function addRes(zone) {
     // check RUINS
     let ruinChance = Math.floor(((scrapRarity*ruinRarity/10)+ruinRarity)/3);
     let resScrap = getResByName('Scrap');
-    ruinChance = Math.round(ruinChance*resScrap.planets[zone[0].planet]);
+    // ruinChance = Math.round(ruinChance*resScrap.planets[zone[0].planet]);
     if (ruinChance > 15) {
         ruinChance = 15;
     }

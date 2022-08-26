@@ -3625,7 +3625,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["b_light","fouille","scav","fortif","guerrilla","tirailleur","datt","maycamo","fret","transport","routes","selfbadmecano","cleaning","dumper","extraction","light","crewsave","recupcit","recupres","ouvert","caterp"],
+        "skills":["b_light","fouille","brigands","scav","fortif","guerrilla","tirailleur","datt","maycamo","fret","transport","routes","selfbadmecano","cleaning","dumper","extraction","light","crewsave","recupcit","recupres","ouvert","caterp"],
         "mecanoCost":12,
         "mining":{
             "level":2,
@@ -3697,7 +3697,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["b_light","fouille","scav","fortif","guerrilla","tirailleur","datt","maycamo","defense","fret","transport","routes","selfbadmecano","cleaning","dumper","extraction","light","crewsave","trapap","recupcit","recupres","ouvert","caterp"],
+        "skills":["b_light","fouille","brigands","scav","fortif","guerrilla","tirailleur","datt","maycamo","defense","fret","transport","routes","selfbadmecano","cleaning","dumper","extraction","light","crewsave","trapap","recupcit","recupres","ouvert","caterp"],
         "mecanoCost":12,
         "mining":{
             "level":2,

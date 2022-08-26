@@ -69,19 +69,16 @@ function checkNeiTurn() {
         if (reCheck > check) {
             theCheck = reCheck;
         }
-        if (zone[0].visit) {
-            theCheck = theCheck+15;
-        }
         if (zone[0].planet === 'Kzin') {
-            theCheck = theCheck+15;
+            theCheck = theCheck+10;
         }
         if (zone[0].planet === 'Horst') {
-            if (rand.rand(1,2) === 1) {
+            if (rand.rand(1,3) === 1) {
                 theCheck = 999;
             }
         }
         if (zone[0].planet === 'Gehenna') {
-            if (rand.rand(1,3) === 1) {
+            if (rand.rand(1,4) === 1) {
                 theCheck = 999;
             }
         }
