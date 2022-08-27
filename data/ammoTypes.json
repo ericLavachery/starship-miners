@@ -1771,7 +1771,7 @@
     {
         "name": "belier-spike",
         "range": 1,
-        "rof": 0.8,
+        "rof": 0.65,
         "power": 0,
         "powermult": 1.05,
         "armors": 0.7,

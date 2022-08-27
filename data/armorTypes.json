@@ -1215,9 +1215,19 @@
         "skills":[],
         "info":"Bélier",
         "bldReq":["Atelier"],
-        "compReq":{"log":2},
+        "compReq":{"log":1},
         "factor":"thp",
         "costs":{"Fer":30,"Tungstène":15}
+    },
+    {
+        "name":"w2-moisso",
+        "cat":"equip",
+        "skills":[],
+        "info":"Moissonneuse (déplacement-)",
+        "bldReq":["Atelier"],
+        "compReq":{"log":2,"trans":2,"mat":1},
+        "factor":"thp",
+        "costs":{"Fer":30,"Aluminium":60,"Carbone":15}
     },
     {
         "name":"w2-magnum",
@@ -1379,10 +1389,21 @@
         "skills":[],
         "info":"Puissance++",
         "bldReq":["Atelier"],
-        "compReq":{"log":2},
+        "compReq":{"log":1},
         "autoComp":["trans",3],
         "factor":"thp",
         "costs":{"Fer":15,"Tungstène":15}
+    },
+    {
+        "name":"moisso",
+        "cat":"equip",
+        "skills":[],
+        "info":"Puissance++",
+        "bldReq":["Atelier"],
+        "compReq":{"log":2,"trans":2,"mat":2},
+        "autoComp":[],
+        "factor":"thp",
+        "costs":{"Fer":15,"Aluminium":10,"Carbone":5,"Cobalt":5,"Silicium":5}
     },
     {
         "name":"landerwkit",

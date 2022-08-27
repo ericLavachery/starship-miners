@@ -1660,7 +1660,7 @@
     {
         "id":182,
         "name":"Spycars",
-        "levels":{"rednecks":13,"blades":5,"bulbos":7,"drogmulojs":7,"tiradores":99,"detruas":13,"brasier":11},
+        "levels":{"rednecks":13,"blades":5,"bulbos":7,"drogmulojs":7,"tiradores":13,"detruas":13,"brasier":11},
         "bldReq":["Garage"],
         "compReq":{"cam":1},
         "compPass":["blades","drogmulojs"],
@@ -2676,7 +2676,7 @@
         "id":226,
         "name":"Camp de rééducation",
         "bldReq":["Soute","Salle de sport"],
-        "compReq":{"ordre":3},
+        "compReq":{"ordre":2},
         "costs":{"Compo1":240,"Compo2":90,"Eau":100,"Drogues":400,"Scrap":300,"Calcium":50,"Or":200,"Zinc":200,"Bore":200,"Chlore":50},
         "fabTime":200,
         "slots":3

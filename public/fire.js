@@ -533,8 +533,6 @@ function attack(melee,init) {
         let weapPriorPower = selectedWeap.power;
         if (targetBatType.size > Math.round(selectedBatType.size/2)) {
             selectedWeap.power = Math.round(selectedWeap.power*selectedBatType.size/2/targetBatType.size);
-        } else if (Math.round(selectedBatType.size/3) > targetBatType.size) {
-            selectedWeap.power = Math.round(selectedWeap.power*selectedBatType.size/3/targetBatType.size);
         }
         if (selectedWeap.ammo === 'belier-spike') {
             selectedWeap.power = selectedWeap.power+Math.round(weapPriorPower/5)+10;
@@ -1523,8 +1521,6 @@ function defense(melee,init) {
         let weapPriorPower = targetWeap.power;
         if (selectedBatType.size > Math.round(targetBatType.size/2)) {
             targetWeap.power = Math.round(targetWeap.power*targetBatType.size/2/selectedBatType.size);
-        } else if (Math.round(targetBatType.size/3) > selectedBatType.size) {
-            targetWeap.power = Math.round(targetWeap.power*targetBatType.size/3/selectedBatType.size);
         }
         if (targetWeap.ammo === 'belier-spike') {
             targetWeap.power = targetWeap.power+Math.round(weapPriorPower/5)+10;
