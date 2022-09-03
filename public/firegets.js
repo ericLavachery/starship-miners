@@ -961,7 +961,11 @@ function applyShield() {
     let shieldValue = 1;
     let shieldChance = 0;
     if (targetBatType.skills.includes('shield')) {
-        shieldChance = 67;
+        if (targetBatType.skills.includes('permashield')) {
+            shieldChance = 100;
+        } else {
+            shieldChance = 67;
+        }
     } else {
         if (targetBatType.kind === 'bug' && bugSHIELD) {
             shieldChance = 33;

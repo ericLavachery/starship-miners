@@ -1130,7 +1130,7 @@ function morphList() {
 };
 
 function aliensCount() {
-    let aliensNums = {lucioles:0,moucherons:0,bugs:0,firebugs:0,grabbers:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0,homards:0,veilleurs:0};
+    let aliensNums = {lucioles:0,moucherons:0,bugs:0,firebugs:0,grabbers:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0,ecrevisses:0,veilleurs:0};
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type === 'Lucioles') {
@@ -1153,8 +1153,8 @@ function aliensCount() {
                 aliensNums.gluantes = aliensNums.gluantes+1;
             } else if (bat.type === 'Moucherons') {
                 aliensNums.moucherons = aliensNums.moucherons+1;
-            } else if (bat.type === 'Homards') {
-                aliensNums.homards = aliensNums.homards+1;
+            } else if (bat.type === 'Ecrevisses') {
+                aliensNums.ecrevisses = aliensNums.ecrevisses+1;
             } else if (bat.type === 'Veilleurs') {
                 aliensNums.veilleurs = aliensNums.veilleurs+1;
             }
@@ -1189,6 +1189,10 @@ function spawns() {
     let flyDice;
     let warnAsticots = false;
     let warnVers = false;
+    let hasHomards = false;
+    if (hasAlien('Homards')) {
+        hasHomards = true;
+    }
     let shufAliens = _.shuffle(aliens);
     shufAliens.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -1271,6 +1275,9 @@ function spawns() {
             } else if (bat.type === 'Homards' && aliens.length < maxAliens-50 && aliensNums.cafards < maxPonte*3) {
                 alienSpawn(bat,'Cafards');
                 alienSpawn(bat,'Cafards');
+                alienSpawn(bat,'Cafards');
+            } else if (bat.type === 'Ecrevisses' && aliens.length < maxAliens-50 && aliensNums.cafards < maxPonte*3) {
+                alienSpawn(bat,'Cafards');
             } else if (bat.type === 'Veilleurs' && aliens.length < maxAliens-50 && bat.squadsLeft >= 3) {
                 let lifeTurn = playerInfos.mapTurn-bat.creaTurn;
                 if (lifeTurn === 1 && landingNoise >= 2) {
@@ -1289,8 +1296,8 @@ function spawns() {
                 }
             } else if (bat.type === 'Megagrubz' && rand.rand(1,2) === 1 && aliens.length < maxAliens) {
                 alienSpawn(bat,'Vomissure','larve');
-            } else if (bat.type === 'Cafards' && aliensNums.homards >= 1 && rand.rand(1,7) === 1) {
-                alienMorph(bat,'Homards',false);
+            } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && (aliensNums.ecrevisses >= 1 || hasHomards) && rand.rand(1,6) === 1) {
+                alienMorph(bat,'Ecrevisses',false);
             } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,4) === 1 && aliens.length < maxAliens-50 && aliensNums.cafards < maxPonte*3) {
                 alienSpawn(bat,'Cafards');
             } else if (bat.type === 'Glaireuses' && aliens.length < maxAliens-50 && aliensNums.gluantes < maxPonte) {
@@ -1808,7 +1815,7 @@ function newEggCat() {
 function checkAlienBoss(eggCat) {
     let alienBoss = false;
     if (eggCat === 'swarm') {
-        if (hasAlien('Homards')) {
+        if (hasAlien('Homards') || hasAlien('Ecrevisses')) {
             alienBoss = true;
         }
     } else if (eggCat === 'larve') {

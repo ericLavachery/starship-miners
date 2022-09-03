@@ -852,7 +852,7 @@ function attack(melee,init) {
     // agrippeur
     if (selectedBatType.skills.includes('grip') && !targetBatType.skills.includes('zerogrip') && totalDamage >= 1 && (selectedBatType.size+3 >= targetBatType.size || selectedBatType.name == 'Androks')) {
         let gripbonus = 0;
-        if (selectedBatType.name == 'Androks' || selectedBatType.name == 'Homards') {
+        if (selectedBatType.name == 'Androks' || selectedBatType.name == 'Homards' || selectedBatType.name == 'Ecrevisses') {
             gripbonus = 40;
         }
         // if (selectedBatType.name == 'Bourdons') {
