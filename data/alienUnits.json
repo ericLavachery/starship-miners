@@ -2318,7 +2318,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","fear","fastreg","destructeur","okwater","resistall","shield","ponte","flee","nojello","aimcfo","silhover"],
+        "skills":["grip","fear","fastreg","destructeur","okwater","resistall","ponte","flee","nojello","aimcfo","silhover"],
         "deathFx":"death3",
         "spawnFx":"spawn-homard",
         "fxPriority":7,

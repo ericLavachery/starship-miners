@@ -121,6 +121,9 @@ function combat(melee) {
     if (targetBatType.skills.includes('guerrilla') || targetBatType.skills.includes('baddef')) {
         negSalvo = -3;
     }
+    if (targetBatType.skills.includes('twodef')) {
+        negSalvo = -2;
+    }
     if (targetBatType.skills.includes('onedef')) {
         negSalvo = -1;
     }

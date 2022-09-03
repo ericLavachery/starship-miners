@@ -155,7 +155,7 @@ function lesVoisins() {
             putNeighbour(neiBatType);
             neiRoad = [true,true];
         }
-        if (rand.rand(1,10) === 1) {
+        if (rand.rand(1,14-playerInfos.mapDiff) === 1) {
             transDice = rand.rand(1,26);
             if (transDice <= 4) {
                 let neiBatType = getBatTypeByName('Jeeps');
@@ -215,12 +215,12 @@ function lesVoisins() {
         }
     }
     // Véhicules
-    if (rand.rand(1,3) === 1) {
+    if (rand.rand(1,6-Math.round(playerInfos.mapDiff/2)) === 1) {
         let vehBatTypeId = checkVehicleId();
         let neiBatType = getBatTypeById(vehBatTypeId);
         putNeighbour(neiBatType);
     }
-    if (rand.rand(1,6) === 1) {
+    if (rand.rand(1,12-playerInfos.mapDiff) === 1) {
         let vehBatTypeId = checkVehicleId();
         let neiBatType = getBatTypeById(vehBatTypeId);
         putNeighbour(neiBatType);

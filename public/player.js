@@ -2035,7 +2035,7 @@ function addStartPack() {
     addFreeBat(1890,'Trolley');
     addFreeBat(1829,'Navette de secours');
     addFreeBat(1834,'Poste de pilotage');
-    addFreeBat(1828,'Forum');
+    addFreeBat(1828,'Foyer');
     addFreeBat(1949,'Serres hydroponiques');
     addFreeBat(1948,'Cantine');
     // addFreeBat(1893,'Aérodocks');

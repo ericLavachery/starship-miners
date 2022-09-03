@@ -767,7 +767,7 @@
             "name":"Canon laser",
             "cost":6,
             "range":6,
-            "elevation":3,
+            "elevation":4,
             "rof":12,
             "accuracy":50,
             "power":16,
