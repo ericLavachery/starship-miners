@@ -1288,6 +1288,9 @@ function spawns() {
                     if (zone[0].mapDiff >= 3) {
                         veilSpawn(bat);
                     }
+                    if (zone[0].mapDiff >= 6) {
+                        veilSpawn(bat);
+                    }
                 }
                 if (!bat.tags.includes('invisible')) {
                     if (rand.rand(1,3) === 1) {
@@ -1297,7 +1300,12 @@ function spawns() {
             } else if (bat.type === 'Megagrubz' && rand.rand(1,2) === 1 && aliens.length < maxAliens) {
                 alienSpawn(bat,'Vomissure','larve');
             } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && (aliensNums.ecrevisses >= 1 || hasHomards) && rand.rand(1,6) === 1) {
-                alienMorph(bat,'Ecrevisses',false);
+                if (hasHomards) {
+                    alienMorph(bat,'Ecrevisses',false);
+                } else {
+                    alienMorph(bat,'Homards',false);
+                    hasHomards = true;
+                }
             } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,4) === 1 && aliens.length < maxAliens-50 && aliensNums.cafards < maxPonte*3) {
                 alienSpawn(bat,'Cafards');
             } else if (bat.type === 'Glaireuses' && aliens.length < maxAliens-50 && aliensNums.gluantes < maxPonte) {
