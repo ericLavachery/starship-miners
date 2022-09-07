@@ -889,11 +889,11 @@
             "elevation":2,
             "rof":24,
             "accuracy":22,
-            "power":14,
-            "armors":0.7,
+            "power":13,
+            "armors":0.85,
             "aoe":"brochette",
             "sound":"blister_canon_x4",
-            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite","fireshells-timonium"]
         },
         "protection":[],
         "equip":["aucun"],

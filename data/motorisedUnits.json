@@ -1177,12 +1177,12 @@
             "cost":3,
             "range":2,
             "elevation":1,
-            "rof":24,
+            "rof":21,
             "accuracy":24,
-            "power":8,
+            "power":9,
             "aoe":"brochette",
             "sound":"blister_x4",
-            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite","fireshells-timonium"],
             "maxAmmo":24,
             "ravitBld":"Poudrière"
         },
@@ -1584,13 +1584,13 @@
             "cost":4,
             "range":3,
             "elevation":1,
-            "rof":24,
+            "rof":21,
             "accuracy":24,
-            "power":14,
-            "armors":0.7,
+            "power":13,
+            "armors":0.85,
             "aoe":"brochette",
             "sound":"blister_canon_x4",
-            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite","fireshells-timonium"],
             "maxAmmo":32,
             "ravitBld":"Poudrière"
         },
@@ -1631,7 +1631,7 @@
         "squadSize":4,
         "crew":3,
         "hp":63,
-        "armor":16,
+        "armor":15,
         "size":22,
         "stealth":0,
         "speed":2,
@@ -4119,7 +4119,7 @@
             "armors":1.2,
             "aoe":"brochette",
             "sound":"blister_pistol",
-            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite","fireshells-timonium"]
         },
         "weapon2":{
             "name":"Sling grenade",
@@ -4682,14 +4682,14 @@
         "weapon":{
             "name":"Blister canon (auto)",
             "cost":3,
-            "range":4,
-            "rof":40,
+            "range":5,
+            "rof":60,
             "accuracy":15,
             "power":14,
-            "armors":0.7,
+            "armors":0.85,
             "aoe":"brochette",
             "sound":"blister_canon_auto",
-            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite","fireshells-timonium"]
         },
         "weapon2":{
             "name":"Bombes",
@@ -4707,7 +4707,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","g2motor","theeye","e-mecano","e-lifepod","e-respod","e-radar"],
+        "equip":["aucun","g2motor","chargeur1","theeye","e-mecano","e-lifepod","e-respod","e-radar"],
         "log3eq":["e-mecano"],
         "moveCost":2,
         "maxFlood":3,

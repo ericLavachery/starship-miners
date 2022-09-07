@@ -1279,7 +1279,7 @@
             "armors":1.2,
             "aoe":"brochette",
             "sound":"blister_pistol",
-            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite","fireshells-timonium"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-ranger","e-medic","chargeur2","waterproof","repel"],
@@ -1325,7 +1325,7 @@
             "armors":1.2,
             "aoe":"brochette",
             "sound":"blister_pistol",
-            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite","fireshells-timonium"]
         },
         "weapon2":{
             "name":"Sling grenade",
@@ -4791,10 +4791,10 @@
             "noDatt":true,
             "rof":16,
             "accuracy":24,
-            "power":7,
+            "power":9,
             "aoe":"brochette",
             "sound":"blister_x4",
-            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite","fireshells-timonium"]
         },
         "weapon2":{
             "name":"Blister gun (auto)",
@@ -4802,17 +4802,17 @@
             "range":1,
             "elevation":1,
             "noDef":true,
-            "rof":48,
-            "accuracy":14,
-            "power":7,
+            "rof":56,
+            "accuracy":12,
+            "power":9,
             "aoe":"brochette",
             "sound":"blister_auto",
-            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"],
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite","fireshells-timonium"],
             "maxAmmo":18,
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","e-flash","e-ranger","gilet","e-camo","lunette1","theeye","helper","waterproof","detector","repel"],
+        "equip":["aucun","e-flash","e-ranger","gilet","e-camo","chargeur2","lunette1","theeye","helper","waterproof","detector","repel"],
         "log3eq":["lunette1"],
         "moveCost":3,
         "maxFlood":1,
@@ -5070,7 +5070,7 @@
             "armors":1.2,
             "aoe":"brochette",
             "sound":"blister_pistol",
-            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite","fireshells-timonium"]
         },
         "weapon2":{
             "name":"Molotov",

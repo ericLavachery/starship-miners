@@ -488,7 +488,7 @@
             "armors":1.2,
             "aoe":"brochette",
             "sound":"blister_pistol_multi",
-            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite"]
+            "ammo":["proto-fireshells","fireshells","fireshells-perfo","fireshells-pyratol","fireshells-nanite","fireshells-salite","fireshells-timonium"]
         },
         "weapon2":{
             "name":"Carabine laser",
