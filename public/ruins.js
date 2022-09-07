@@ -49,7 +49,7 @@ function searchRuins(apCost) {
 };
 
 function checkRuinsComp(tile) {
-    let maxComps = Math.ceil(zone[0].mapDiff/4.1);
+    let maxComps = Math.ceil(zone[0].mapDiff/2.6);
     if (playerInfos.fndComps < maxComps) {
         let foundComp = {};
         let compOK = false;

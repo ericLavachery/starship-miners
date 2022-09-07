@@ -33,7 +33,7 @@ function events(afterMission,time,sim,quiet) {
         playerInfos.mapTurn = 0;
         playerInfos.mapDrop = 0;
         playerInfos.cocons = 0;
-        playerInfos.fndComps = 0;
+        // playerInfos.fndComps = 0;
         playerInfos.fndUnits = 0;
         playerInfos.fndCits = 0;
         playerInfos.sondeMaps = 0;

@@ -2249,12 +2249,13 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.power = Math.round(thisWeapon.power*ammo.powermult);
     thisWeapon.power = thisWeapon.power+ammo.power;
     thisWeapon.apdamage = ammo.apdamage;
+    let thisAmmoArmors = ammo.armors;
     if (ammo.avar != undefined) {
         if (playerInfos.comp[ammo.avar] >= 2) {
-            ammo.armors = ammo.armors*2.75/(playerInfos.comp[ammo.avar]+2);
+            thisAmmoArmors = thisAmmoArmors*2.75/(playerInfos.comp[ammo.avar]+2);
         }
     }
-    thisWeapon.armors = thisWeapon.armors*ammo.armors;
+    thisWeapon.armors = thisWeapon.armors*thisAmmoArmors;
     thisWeapon.armors = thisWeapon.armors.toFixedNumber(2);
     if (ammo.aoe != '' && thisWeapon.aoe != 'bat') {
         thisWeapon.aoe = ammo.aoe;
@@ -2654,7 +2655,7 @@ function chargeurAdj(bat,shots,weap) {
     let newShots = shots;
     if (bat.eq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.eq.includes('carrousel') || bat.logeq.includes('chargeur') || bat.logeq.includes('carrousel') || bat.eq.includes('kit-chouf') || bat.eq.includes('kit-milice') || bat.eq === 'crimekitto' || bat.eq === 'crimekitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq.includes('lgkit') || bat.logeq.includes('lgkit') || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
         let mult = 1.5;
-        if (weap.name.includes('Calibre') || weap.name.includes('verrou')) {
+        if (weap.name.includes('Calibre') || weap.name.includes('verrou') || weap.name.includes('Nailgun')) {
             mult = 2;
         }
         if (weap.name.includes('Revolver') || weap.name.includes('pompe') || weap.name.includes('Blister pistol')) {

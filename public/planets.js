@@ -349,7 +349,7 @@ function createStormsLists(rebuild,init) {
             });
         } else if (!init) {
             for (var i = 0; i < playerInfos.stList.length; i++){
-                let dice = rand.rand(1,4);
+                let dice = rand.rand(1,6);
                 if (dice === 1) {
                     playerInfos.stList[i] = playerInfos.stList[i]+59;
                 } else if (dice === 2) {
@@ -357,7 +357,14 @@ function createStormsLists(rebuild,init) {
                 } else if (dice === 3) {
                     playerInfos.stList[i] = playerInfos.stList[i]-2;
                 } else {
-                    playerInfos.stList[i] = playerInfos.stList[i]-1;
+                    dice = rand.rand(1,5);
+                    if (dice === 1) {
+                        playerInfos.stList[i] = playerInfos.stList[i]+58;
+                    } else if (dice === 2) {
+                        playerInfos.stList[i] = playerInfos.stList[i]-62;
+                    } else {
+                        playerInfos.stList[i] = playerInfos.stList[i]-1;
+                    }
                 }
                 if (playerInfos.stList[i] < 0) {
                     playerInfos.stList[i] = playerInfos.stList[i]+3600;
@@ -367,7 +374,7 @@ function createStormsLists(rebuild,init) {
                 }
             }
             for (var i = 0; i < playerInfos.sqList.length; i++){
-                let dice = rand.rand(1,4);
+                let dice = rand.rand(1,6);
                 if (dice === 1) {
                     playerInfos.sqList[i] = playerInfos.sqList[i]+59;
                 } else if (dice === 2) {
@@ -375,7 +382,14 @@ function createStormsLists(rebuild,init) {
                 } else if (dice === 3) {
                     playerInfos.sqList[i] = playerInfos.sqList[i]-2;
                 } else {
-                    playerInfos.sqList[i] = playerInfos.sqList[i]-1;
+                    dice = rand.rand(1,5);
+                    if (dice === 1) {
+                        playerInfos.sqList[i] = playerInfos.sqList[i]+58;
+                    } else if (dice === 2) {
+                        playerInfos.sqList[i] = playerInfos.sqList[i]-62;
+                    } else {
+                        playerInfos.sqList[i] = playerInfos.sqList[i]-1;
+                    }
                 }
                 if (playerInfos.sqList[i] < 0) {
                     playerInfos.sqList[i] = playerInfos.sqList[i]+3600;

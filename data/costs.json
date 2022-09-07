@@ -1346,7 +1346,7 @@
     },
     {
         "id":294,
-        "name":"APT",
+        "name":"Armadillos",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":15,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "compReq":{"tank":2},

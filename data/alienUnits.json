@@ -1679,9 +1679,9 @@
             "elevation":2,
             "noFly":false,
             "isMelee":false,
-            "rof":9,
+            "rof":12,
             "accuracy":20,
-            "power":30,
+            "power":35,
             "aoe":"squad",
             "sound":"bugboss",
             "ammo":["napalm"]
@@ -1695,7 +1695,7 @@
             "isMelee":false,
             "rof":9,
             "accuracy":13,
-            "power":20,
+            "power":30,
             "aoe":"squad",
             "sound":"bugboss",
             "ammo":["napalm"]
