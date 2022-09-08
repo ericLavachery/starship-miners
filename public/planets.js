@@ -228,6 +228,7 @@ function stormProtection(dmg,bat,batType) {
 function stormDamage(bat,batType,storm,inMov) {
     let isDead = false;
     if (!storm) {
+        // BOURASQUE
         if (playerInfos.comp.scaph < 3) {
             if (batType.cat === 'infantry') {
                 let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
@@ -246,8 +247,9 @@ function stormDamage(bat,batType,storm,inMov) {
                 let squadsOut = Math.floor(totalDamage/squadHP);
                 bat.squadsLeft = bat.squadsLeft-squadsOut;
                 bat.damage = totalDamage-(squadsOut*squadHP);
-                if (bat.apLeft > Math.round(bat.ap/2)) {
-                    bat.apLeft = Math.round(bat.ap/2);
+                bat.apLeft = bat.apLeft-3;
+                if (bat.apLeft > Math.round(bat.ap/3)) {
+                    bat.apLeft = Math.round(bat.ap/3);
                 }
                 if (bat.squadsLeft <= 0) {
                     batDeathEffect(bat,true,'Tempête',bat.type+' brûlé.');
@@ -269,6 +271,7 @@ function stormDamage(bat,batType,storm,inMov) {
             }
         }
     } else {
+        // TEMPETE
         let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
         console.log('numUnits='+numUnits);
         let stormDmg = rand.rand(7*numUnits,20*numUnits);
@@ -301,8 +304,9 @@ function stormDamage(bat,batType,storm,inMov) {
         let squadsOut = Math.floor(totalDamage/squadHP);
         bat.squadsLeft = bat.squadsLeft-squadsOut;
         bat.damage = totalDamage-(squadsOut*squadHP);
-        if (bat.apLeft > Math.round(bat.ap/2)) {
-            bat.apLeft = Math.round(bat.ap/2);
+        bat.apLeft = bat.apLeft-6;
+        if (bat.apLeft > Math.round(bat.ap/4)) {
+            bat.apLeft = Math.round(bat.ap/4);
         }
         if (bat.squadsLeft <= 0) {
             batDeathEffect(bat,true,'Tempête',bat.type+' brûlé.');

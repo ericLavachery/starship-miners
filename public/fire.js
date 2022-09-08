@@ -387,6 +387,11 @@ function attack(melee,init) {
         shots = Math.round(shots/1.25);
         attFactor = Math.round(attFactor/1.25);
     }
+    // HORST BOOST
+    if (zone[0].planet === 'Horst' && selectedBatType.cat === 'aliens') {
+        shots = Math.round(shots*1.2);
+        attFactor = Math.round(attFactor*1.2);
+    }
     // bugROF
     if (bugROF > 1 && selectedBatType.kind === 'bug') {
         shots = Math.round(shots*bugROF);
@@ -1441,6 +1446,10 @@ function defense(melee,init) {
     if (escapeFactor < 1) {
         shots = Math.round(shots*escapeFactor);
         defFactor = Math.round(defFactor*escapeFactor);
+    }
+    if (zone[0].planet === 'Horst' && targetBatType.cat === 'aliens') {
+        shots = Math.round(shots*1.2);
+        defFactor = Math.round(defFactor*1.2);
     }
     // bugROF
     if (bugROF > 1 && targetBatType.kind === 'bug') {

@@ -51,6 +51,9 @@ function clickMove(tileId) {
         if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
             jmc = jmc*1.5*moveKzin;
         }
+        if (selectedBat.team === 'aliens' && zone[0].planet === 'Horst') {
+            jmc = jmc/1.5;
+        }
         if (selectedBat.tags.includes('genfast')) {
             jmc = jmc/1.33;
         }
@@ -299,6 +302,9 @@ function moveSelectedBat(tileId,free,jump) {
             }
             if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
                 jmc = jmc*1.5*moveKzin;
+            }
+            if (selectedBat.team === 'aliens' && zone[0].planet === 'Horst') {
+                jmc = jmc/1.5;
             }
             if (selectedBat.tags.includes('genfast')) {
                 jmc = jmc/1.33;
@@ -788,8 +794,11 @@ function calcMoveCost(targetTileId,diag) {
         if (playerInfos.stList.includes(targetTileId) || playerInfos.stList.includes(selectedBat.tileId)) {
             moveCost = moveCost*3;
         } else if (playerInfos.sqList.includes(targetTileId) || playerInfos.sqList.includes(selectedBat.tileId)) {
-            moveCost = moveCost*2;
+            moveCost = moveCost*3;
         }
+    }
+    if (selectedBat.team === 'aliens' && zone[0].planet === 'Horst') {
+        moveCost = moveCost/1.5;
     }
     // moveCost = moveCost*moveTuning;
     moveCost = moveCost.toFixedNumber(1);
