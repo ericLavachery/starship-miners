@@ -62,7 +62,7 @@
     "bldVMReq":[],
     "compPass":[],
     "bldCost":"none",
-    "bldUp":"none",
+    "bldUp":[],
     "unitCost":"none",
     "unitUp":"none",
     "resCost":{},

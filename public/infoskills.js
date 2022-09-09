@@ -2149,7 +2149,11 @@ function skillsInfos(bat,batType,near) {
         let isCharged = checkCharged(bat,'trans');
         apReq = 5;
         if (bat.apLeft >= apReq && !inMelee && !isCharged) {
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.bldUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`bld`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
+            if (batType.bldUp.length === 1) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.bldUp[0]+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`bld`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
+            } else {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.bldUp[0]+' ou '+batType.bldUp[1]+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`bld`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
+            }
         } else {
             if (inMelee) {
                 skillMessage = "Ne peut pas se faire en mêlée";

@@ -112,7 +112,7 @@ function bfconst(cat,triche,upgrade,retour) {
                 prodHere = false;
             }
             if (conselUpgrade === 'bld') {
-                if (selectedBatType.bldUp === unit.name) {
+                if (selectedBatType.bldUp.includes(unit.name)) {
                     prodHere = true;
                 } else {
                     prodHere = false;

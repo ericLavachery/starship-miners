@@ -1139,7 +1139,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","crewsave","prodres","before","upkeep","transport","routes","producteur","prodres","fret","dumper","mecano","selfbadrepair","dealer","nitro","sudu","longshot","reeq","prefab"],
+        "skills":["fouille","recupcit","crewsave","prodres","before","upkeep","upgrade","transport","routes","producteur","prodres","fret","dumper","mecano","selfbadrepair","dealer","nitro","sudu","longshot","reeq","prefab"],
         "mecanoCost":6,
         "maxDrug":18,
         "transMaxSize":35,
