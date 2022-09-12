@@ -4420,7 +4420,7 @@
         "weapon2":{
             "name":"Roquettes",
             "cost":6,
-            "range":3,
+            "range":4,
             "noDef":true,
             "noDatt":true,
             "noBis":true,
@@ -4477,7 +4477,7 @@
         "weapon2":{
             "name":"Roquettes",
             "cost":6,
-            "range":3,
+            "range":4,
             "noDef":true,
             "noDatt":true,
             "noBis":true,

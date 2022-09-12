@@ -1562,7 +1562,8 @@ function getMorphTags(bat) {
 
 function setCoconStats() {
     coconStats.level = zone[0].mapDiff+Math.floor(playerInfos.mapTurn/35)-1;
-    coconStats.turns = 31-Math.floor((zone[0].mapDiff*1.25)+(playerInfos.fuzzTotal/150));
+    let coconTurbo = Math.round(Math.sqrt(playerInfos.cocons)*2);
+    coconStats.turns = 31-coconTurbo-Math.floor((zone[0].mapDiff*1.25)+(playerInfos.fuzzTotal/150));
     if (hasUnit('Dôme')) {
         coconStats.dome = true;
         playerInfos.eggPause = false;
