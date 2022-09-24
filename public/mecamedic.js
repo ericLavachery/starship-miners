@@ -1031,6 +1031,9 @@ function getMaintenanceCosts(bat,batType) {
         if (key === 'Moteurs') {
             thatCost = Math.ceil(thatCost*2);
         }
+        if (key === 'Plastanium') {
+            thatCost = Math.ceil(thatCost*3);
+        }
         if (thatCost >= 1 && key != 'Transorb') {
             maintCosts[key] = thatCost;
         }
@@ -1044,9 +1047,17 @@ function getAvMaintCosts(batType) {
         Object.entries(batType.costs).map(entry => {
             let key = entry[0];
             let value = entry[1];
-            let thatCost = Math.floor(value*15/100);
+            let thatCost = value*10/100;
+            if (batType.skills.includes('robot')) {
+                thatCost = Math.floor(thatCost*1.5);
+            } else {
+                thatCost = Math.floor(thatCost);
+            }
             if (key === 'Moteurs') {
                 thatCost = Math.ceil(thatCost*2);
+            }
+            if (key === 'Plastanium') {
+                thatCost = Math.ceil(thatCost*3);
             }
             if (thatCost >= 1 && key != 'Transorb') {
                 maintCosts[key] = thatCost;

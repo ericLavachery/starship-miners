@@ -314,11 +314,15 @@ function healEverything() {
                     bat.soins = 3;
                 }
             }
-            if (batType.skills.includes('robot') && batType.skills.includes('decay')) {
+            if (batType.skills.includes('decay')) {
+                let decayPts = 6;
+                if (batType.skills.includes('robot')) {
+                    decayPts = 9;
+                }
                 if (bat.soins != undefined) {
-                    bat.soins = bat.soins+9;
+                    bat.soins = bat.soins+decayPts;
                 } else {
-                    bat.soins = 9;
+                    bat.soins = decayPts;
                 }
             }
         }

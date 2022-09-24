@@ -1803,7 +1803,7 @@
         "name":"Speeders",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":15,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Aérodocks","Poste radio"],
-        "costs":{"Fer":24,"Scrap":72,"Carbone":144,"Aluminium":96,"Moteurs":96,"Cuivre":48,"Titane":240,"Tungstène":24,"Electros":144,"Batteries":48},
+        "costs":{"Fer":24,"Scrap":72,"Carbone":144,"Aluminium":96,"Moteurs":96,"Plastanium":12,"Cuivre":48,"Titane":240,"Tungstène":24,"Electros":144,"Batteries":48},
         "deploy":{"Fuel":190},
         "fabTime":85
     },
@@ -1813,8 +1813,8 @@
         "levels":{"rednecks":99,"blades":17,"bulbos":17,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":18},
         "bldReq":["Usine d'armement","Aérodocks","Centre de com"],
         "compReq":{"aero":1,"energ":1},
-        "costs":{"Fer":30,"Carbone":250,"Aluminium":120,"Moteurs":120,"Titane":480,"Tungstène":105,"Rhodium":100,"Silicium":25,"Cuivre":90,"Electros":270,"Batteries":215,"Nickel":45,"Silicium":15,"Huile":45,"Mendium":30,"Cobalt":30,"Hélium":60},
-        "deploy":{"Fuel":180,"Energie":100,"Huile":25},
+        "costs":{"Fer":30,"Carbone":250,"Aluminium":120,"Moteurs":120,"Plastanium":30,"Titane":480,"Tungstène":105,"Rhodium":100,"Silicium":25,"Cuivre":90,"Electros":270,"Batteries":215,"Nickel":45,"Silicium":15,"Huile":45,"Mendium":30,"Cobalt":30,"Hélium":60},
+        "deploy":{"Fuel":180,"Plastanium":5,"Energie":100,"Huile":25},
         "fabTime":125
     },
     {
@@ -1823,8 +1823,8 @@
         "levels":{"rednecks":16,"blades":99,"bulbos":99,"drogmulojs":18,"tiradores":18,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Aérodocks","Centre de com"],
         "compReq":{"aero":1},
-        "costs":{"Fer":135,"Scrap":15,"Carbone":210,"Aluminium":120,"Moteurs":120,"Titane":450,"Tungstène":60,"Cuivre":90,"Electros":210,"Batteries":180,"Silicium":15,"Huile":45,"Mendium":30},
-        "deploy":{"Fuel":170,"Energie":120,"Huile":30},
+        "costs":{"Fer":135,"Scrap":15,"Carbone":210,"Aluminium":120,"Moteurs":120,"Plastanium":30,"Titane":450,"Tungstène":60,"Cuivre":90,"Electros":210,"Batteries":180,"Silicium":15,"Huile":45,"Mendium":30},
+        "deploy":{"Fuel":170,"Plastanium":5,"Energie":120,"Huile":30},
         "fabTime":115
     },
     {
@@ -1833,7 +1833,7 @@
         "levels":{"rednecks":99,"blades":13,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":16},
         "bldReq":["Aérodocks","Centre de com"],
         "compReq":{"aero":1},
-        "costs":{"Scrap":162,"Carbone":234,"Aluminium":300,"Moteurs":150,"Titane":675,"Cuivre":90,"Electros":180,"Batteries":81,"Silicium":27,"Drogues":55,"Chlore":28,"Zinc":28,"Tissus":14},
+        "costs":{"Scrap":162,"Carbone":234,"Aluminium":300,"Moteurs":150,"Plastanium":45,"Titane":675,"Cuivre":90,"Electros":180,"Batteries":81,"Silicium":27,"Drogues":55,"Chlore":28,"Zinc":28,"Tissus":14},
         "deploy":{"Fuel":320,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":140
     },
@@ -1843,7 +1843,7 @@
         "levels":{"rednecks":18,"blades":99,"bulbos":16,"drogmulojs":16,"tiradores":16,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Aérodocks","Centre de com"],
         "compReq":{"aero":1},
-        "costs":{"Fer":36,"Scrap":171,"Carbone":252,"Aluminium":318,"Moteurs":150,"Titane":700,"Cuivre":90,"Electros":180,"Batteries":81,"Silicium":27,"Drogues":55,"Chlore":28,"Zinc":28,"Tissus":14},
+        "costs":{"Fer":36,"Scrap":171,"Carbone":252,"Aluminium":318,"Moteurs":150,"Plastanium":45,"Titane":700,"Cuivre":90,"Electros":180,"Batteries":81,"Silicium":27,"Drogues":55,"Chlore":28,"Zinc":28,"Tissus":14},
         "deploy":{"Fuel":290,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":150
     },
@@ -1854,8 +1854,8 @@
         "bldReq":["Usine d'armement","Aérodocks","Centre de com"],
         "compReq":{"aero":1},
         "compHardReq":{"energ":1},
-        "costs":{"Carbone":196,"Aluminium":358,"Moteurs":180,"Titane":910,"Bore":91,"Cuivre":130,"Electros":406,"Batteries":247,"Nickel":56,"Cobalt":65,"Hélium":60,"Mercure":42,"Hydrogène":42,"Fuel":70},
-        "deploy":{"Fuel":430,"Electros":10,"Batteries":5},
+        "costs":{"Carbone":196,"Aluminium":358,"Moteurs":180,"Plastanium":90,"Titane":910,"Bore":91,"Cuivre":130,"Electros":406,"Batteries":247,"Nickel":56,"Cobalt":65,"Hélium":60,"Mercure":42,"Hydrogène":42,"Fuel":70},
+        "deploy":{"Fuel":430,"Plastanium":18,"Electros":10,"Batteries":5},
         "fabTime":200
     },
     {
@@ -1864,8 +1864,8 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":18,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Aérodocks","Centre de com"],
         "compReq":{"aero":1},
-        "costs":{"Fer":28,"Scrap":28,"Carbone":224,"Aluminium":288,"Moteurs":180,"Titane":810,"Tungstène":28,"Cuivre":110,"Electros":224,"Batteries":202,"Cobalt":30,"Hélium":60,"Plomb":42,"Soufre":42,"Fuel":70},
-        "deploy":{"Fuel":390,"Electros":10,"Batteries":5},
+        "costs":{"Fer":28,"Scrap":28,"Carbone":224,"Aluminium":288,"Moteurs":180,"Plastanium":90,"Titane":810,"Tungstène":28,"Cuivre":110,"Electros":224,"Batteries":202,"Cobalt":30,"Hélium":60,"Plomb":42,"Soufre":42,"Fuel":70},
+        "deploy":{"Fuel":390,"Plastanium":18,"Electros":10,"Batteries":5},
         "fabTime":180
     },
     {
@@ -1875,8 +1875,8 @@
         "bldReq":["Usine d'armement","Aérodocks","QG"],
         "compReq":{"aero":1},
         "compHardReq":{"explo":1,"energ":1},
-        "costs":{"Carbone":960,"Aluminium":1040,"Moteurs":288,"Titane":2400,"Tungstène":160,"Rhodium":240,"Silicium":40,"Cuivre":224,"Electros":672,"Batteries":410,"Nickel":40,"Cobalt":30,"Hélium":60},
-        "deploy":{"Plutonium":75},
+        "costs":{"Carbone":960,"Aluminium":1040,"Moteurs":288,"Plastanium":150,"Titane":2400,"Tungstène":160,"Rhodium":240,"Silicium":40,"Cuivre":224,"Electros":672,"Batteries":410,"Nickel":40,"Cobalt":30,"Hélium":60},
+        "deploy":{"Plutonium":75,"Plastanium":40},
         "fabTime":360
     },
     {
@@ -1885,8 +1885,8 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":19,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Aérodocks","QG"],
         "compReq":{"aero":1},
-        "costs":{"Fer":32,"Scrap":32,"Carbone":1248,"Aluminium":1168,"Moteurs":288,"Titane":2592,"Cuivre":288,"Electros":704,"Batteries":378,"Cobalt":30,"Hélium":60},
-        "deploy":{"Plutonium":75},
+        "costs":{"Fer":32,"Scrap":32,"Carbone":1248,"Aluminium":1168,"Moteurs":288,"Plastanium":150,"Titane":2592,"Cuivre":288,"Electros":704,"Batteries":378,"Cobalt":30,"Hélium":60},
+        "deploy":{"Plutonium":75,"Plastanium":40},
         "fabTime":360
     },
     {
@@ -1895,8 +1895,8 @@
         "levels":{"rednecks":99,"blades":19,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Aérodocks","QG"],
         "compReq":{"aero":1},
-        "costs":{"Carbone":288,"Aluminium":500,"Moteurs":192,"Titane":1000,"Cuivre":144,"Electros":270,"Batteries":135,"Silicium":18,"Drogues":46,"Chlore":28,"Zinc":28,"Fuel":90,"Tissus":14},
-        "deploy":{"Energie":750,"Plutonium":25,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
+        "costs":{"Carbone":288,"Aluminium":500,"Moteurs":192,"Plastanium":90,"Titane":1000,"Cuivre":144,"Electros":270,"Batteries":135,"Silicium":18,"Drogues":46,"Chlore":28,"Zinc":28,"Fuel":90,"Tissus":14},
+        "deploy":{"Energie":750,"Plutonium":25,"Plastanium":18,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":180
     },
     {
