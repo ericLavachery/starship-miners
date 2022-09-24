@@ -1908,6 +1908,7 @@ function getHuntType() {
         huntType.chance = 25;
         huntType.game = 'Tritons';
     }
+    huntType.chance = Math.ceil(huntType.chance/(zone[0].mapDiff+8)*9);
     if (huntType.max < 7) {
         huntType.max = 7;
     }
