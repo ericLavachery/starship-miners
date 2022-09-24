@@ -1898,6 +1898,16 @@ function getHuntType() {
             huntType.game = 'Rats';
         }
     }
+    if (zone[0].planet === 'Horst') {
+        huntType.chance = 5;
+        huntType.game = 'Rats';
+    } else if (zone[0].planet === 'Kzin') {
+        huntType.chance = Math.ceil(huntType.chance/2);
+        huntType.game = 'Crocos';
+    } else if (zone[0].planet === 'Gehenna') {
+        huntType.chance = 25;
+        huntType.game = 'Tritons';
+    }
     if (huntType.max < 7) {
         huntType.max = 7;
     }

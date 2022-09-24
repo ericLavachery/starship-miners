@@ -601,13 +601,7 @@ function checkRuinsRes(tile) {
                 thatResChance = 0;
                 thatResNum = 0;
                 resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
-                if (res.name === 'Corps') {
-                    if (ruinsEmpty) {
-                        thatResChance = Math.ceil(resFactor*1*res.batch/5);
-                    } else {
-                        thatResChance = Math.ceil(resFactor*0.5*res.batch/5);
-                    }
-                } else if (res.name == 'Nourriture') {
+                if (res.name == 'Nourriture') {
                     if (ruinsEmpty) {
                         thatResChance = Math.ceil(resFactor*res.batch/3);
                     } else {
@@ -639,13 +633,17 @@ function checkRuinsRes(tile) {
                         thatResChance = Math.ceil(thatResChance/2*mapFactor/4);
                     }
                 }
+                let diffBonus = zone[0].mapDiff*zone[0].mapDiff/200;
                 thatResChance = thatResChance*(playerInfos.comp.tri+2)/3;
+                if (res.name == 'Nourriture' || res.name == 'Viande' || res.name == 'Fruits') {
+                    thatResChance = thatResChance*(zone[0].mapDiff+8)/9;
+                    diffBonus = 0;
+                }
                 let resPlanetFactor = 1;
                 if (res.planets != undefined) {
                     let planetName = zone[0].planet;
                     resPlanetFactor = res.planets[planetName];
                 }
-                let diffBonus = zone[0].mapDiff*zone[0].mapDiff/200;
                 resPlanetFactor = resPlanetFactor+diffBonus;
                 thatResChance = Math.ceil(thatResChance*resPlanetFactor);
                 console.log(res.name+' '+thatResChance);
@@ -669,13 +667,7 @@ function checkRuinsRes(tile) {
                         thatResChance = 0;
                         thatResNum = 0;
                         resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
-                        if (res.name === 'Corps') {
-                            if (ruinsEmpty) {
-                                thatResChance = Math.ceil(resFactor*1*res.batch/5);
-                            } else {
-                                thatResChance = Math.ceil(resFactor*0.5*res.batch/5);
-                            }
-                        } else if (res.name == 'Nourriture') {
+                        if (res.name == 'Nourriture') {
                             if (ruinsEmpty) {
                                 thatResChance = Math.ceil(resFactor*res.batch/3);
                             } else {
@@ -687,7 +679,7 @@ function checkRuinsRes(tile) {
                             }
                         } else {
                             if (res.name === 'Huile') {
-                                thatResChance = Math.ceil(75*res.batch/3);
+                                thatResChance = Math.ceil(150*res.batch/3);
                             } else if (res.name === 'Eau') {
                                 if (ruinsEmpty) {
                                     thatResChance = Math.ceil(100*res.batch/3);
@@ -705,6 +697,19 @@ function checkRuinsRes(tile) {
                                 thatResChance = Math.ceil(thatResChance/2*mapFactor/4);
                             }
                         }
+                        let diffBonus = zone[0].mapDiff*zone[0].mapDiff/200;
+                        thatResChance = thatResChance*(playerInfos.comp.tri+2)/3;
+                        if (res.name == 'Nourriture' || res.name == 'Viande' || res.name == 'Fruits') {
+                            thatResChance = thatResChance*(zone[0].mapDiff+8)/9;
+                            diffBonus = 0;
+                        }
+                        let resPlanetFactor = 1;
+                        if (res.planets != undefined) {
+                            let planetName = zone[0].planet;
+                            resPlanetFactor = res.planets[planetName];
+                        }
+                        resPlanetFactor = resPlanetFactor+diffBonus;
+                        thatResChance = Math.ceil(thatResChance*resPlanetFactor);
                         console.log(res.name+' '+thatResChance);
                         if (rand.rand(1,1000) <= thatResChance) {
                             thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*1.5*rand.rand(4,16))+rand.rand(0,9);
