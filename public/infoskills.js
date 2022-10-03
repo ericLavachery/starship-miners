@@ -878,6 +878,21 @@ function skillsInfos(bat,batType,near) {
             }
         }
     }
+    if (!playerInfos.onShip) {
+        if (bat.soins >= 11 && batType.cat === 'vehicles') {
+            if (checkNearConstructor(bat)) {
+                let apLoss = checkVehiclesAPSoins(bat,batType);
+                let maintCosts = getMaintenanceCosts(bat,batType);
+                let maintOK = checkCost(maintCosts);
+                apCost = bat.ap*2;
+                if (maintOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Entretien '+displayCosts(maintCosts)+'" class="boutonBleu skillButtons" onclick="maintenanceInZone()"><i class="fa fa-wrench"></i> <span class="small">0</span></button>&nbsp; Entretien</h4></span>');
+                } else {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes '+displayCosts(maintCosts)+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Entretien</h4></span>');
+                }
+            }
+        }
+    }
     // COMMANDE
     if (!batType.skills.includes('dome') && !batType.skills.includes('pilone') && !batType.skills.includes('cfo')) {
         let commandOK = false;

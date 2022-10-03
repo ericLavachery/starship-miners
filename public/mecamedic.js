@@ -948,7 +948,7 @@ function bestMedicInBld(bldBat) {
         if (bat.loc === "trans" && bat.locId === bldBat.id) {
             let batType = getBatType(bat);
             if (batType.cat != 'buildings' && batType.cat != 'devices') {
-                if (batType.skills.includes('medic')) {
+                if (batType.skills.includes('medic') || (batType.skills.includes('badmedic') && playerInfos.comp.med >= 3 && (bat.eq === 'e-medic' || bat.logeq === 'e-medic'))) {
                     maxMeds = 10*bat.apLeft/batType.mediCost;
                     if (maxMeds > bestMaxMeds) {
                         bestMaxMeds = maxMeds;
@@ -971,7 +971,7 @@ function bestMecanoInBld(bldBat) {
         if (bat.loc === "trans" && bat.locId === bldBat.id) {
             let batType = getBatType(bat);
             if (batType.cat != 'buildings' && batType.cat != 'devices') {
-                if (batType.skills.includes('mecano')) {
+                if (batType.skills.includes('mecano') || (batType.skills.includes('badmecano') && (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano'))) {
                     maxMeds = 10*bat.apLeft/batType.mecanoCost;
                     if (maxMeds > bestMaxMeds) {
                         bestMaxMeds = maxMeds;
@@ -1075,6 +1075,19 @@ function maintenance() {
         selectedBat.soins = 0;
         selectedBatArrayUpdate();
         goSoute();
+        showBatInfos(selectedBat);
+    }
+};
+
+function maintenanceInZone() {
+    let maintCosts = getMaintenanceCosts(selectedBat,selectedBatType);
+    let maintOK = checkCost(maintCosts);
+    if (maintOK) {
+        payCost(maintCosts);
+        selectedBat.soins = 0;
+        selectedBat.apLeft = selectedBat.apLeft-(selectedBat.ap*2);
+        selectedBatArrayUpdate();
+        // goSoute();
         showBatInfos(selectedBat);
     }
 };

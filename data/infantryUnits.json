@@ -5365,9 +5365,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","ranger","ravitaillement","robot","fret","dumper","aifouille","autotrans","w2mecano"],
+        "skills":["a_rob","ranger","ravitaillement","badmecano","robot","fret","dumper","aifouille","autotrans","w2mecano"],
         "maxSkill":19,
-        "mecanoCost":17,
+        "mecanoCost":14,
         "transRes":640,
         "fuzz":2,
         "deathFx":"505751__thehorriblejoke__computer-breaking-sound"

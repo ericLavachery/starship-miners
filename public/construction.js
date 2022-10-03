@@ -251,7 +251,7 @@ function bfconst(cat,triche,upgrade,retour) {
         });
     }
     $('#conUnitList').append('<br>');
-    if (conselUpgrade) {
+    if (conselUpgrade && playerInfos.onShip) {
         if (Object.keys(conselUnit).length >= 1) {
             $('#conUnitList').append('<span class="blockTitle"><h4><button type="button" title="Transformer '+selectedBatType.name+' en '+conselUnit.name+'" class="boutonCaca iconButtons" onclick="doUpgrade()"><i class="ra ra-rifle rpg"></i> &nbsp;<span class="notsosmall">Transformer</span></button></h4></span><br>');
             $('#conUnitList').append('<br>');

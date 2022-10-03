@@ -2709,20 +2709,20 @@
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
-            "name":"Mitrailleuse",
-            "cost":4,
-            "range":3,
-            "elevation":1,
+            "name":"Canon laser",
+            "cost":6,
+            "range":8,
+            "elevation":4,
             "noBis":true,
             "kit":true,
-            "rof":36,
-            "accuracy":20,
-            "dca":1.5,
-            "power":11,
-            "armors":0.77,
-            "aoe":"unit",
-            "sound":"mit_mid",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "rof":6,
+            "accuracy":50,
+            "power":30,
+            "aoe":"brochette",
+            "sound":"laser_canon_x1",
+            "ammo":["proto-laser","laser","laser-g2","laser-g3"],
+            "maxAmmo":36,
+            "ravitBld":"Générateur"
         },
         "weapon3":{
             "name":"Tourelles auto",
@@ -2738,7 +2738,7 @@
             "ammo":["standard"]
         },
         "protection":[],
-        "equip":["aucun","w1-ggun","w2-ggun","w2-autogun","isophon","respod","garage","e-infra"],
+        "equip":["aucun","w1-ggun","w2-laser","w2-autogun","isophon","respod","garage","e-infra"],
         "log3eq":["garage"],
         "moveCost":99,
         "maxFlood":-1,
