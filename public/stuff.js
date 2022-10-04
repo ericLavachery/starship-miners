@@ -504,10 +504,12 @@ function nomoveOut(myBat) {
 function blockMe(stop) {
     if (stop) {
         stopMe = true;
-        $('body').css('background-image', 'url("/static/img/rayures-m.jpg")');
+        // $('body').css('background-image', 'url("/static/img/rayures-m.jpg")');
+        $('#unitInfos').css('background-image', 'url("/static/img/plate-mdork-small.jpg")');
     } else {
         stopMe = false;
-        $('body').css('background-image', 'url("/static/img/rayures.jpg")');
+        // $('body').css('background-image', 'url("/static/img/rayures.jpg")');
+        $('#unitInfos').css('background-image', 'url("/static/img/plate-vdork-small.jpg")');
     }
 };
 

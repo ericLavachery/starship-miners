@@ -1191,7 +1191,7 @@
         "costs":{"Fer":60,"Scrap":444,"Carbone":120,"Aluminium":48,"Moteurs":60,"Cuivre":24,"Batteries":12,"Compo2":168,"Huile":10},
         "deploy":{"Fuel":100},
         "fabTime":70,
-        "inRuin":1
+        "inRuin":2
     },
     {
         "id":121,
@@ -1815,7 +1815,8 @@
         "compReq":{"aero":1,"energ":1},
         "costs":{"Fer":30,"Carbone":250,"Aluminium":120,"Moteurs":120,"Plastanium":30,"Titane":480,"Tungstène":105,"Rhodium":100,"Silicium":25,"Cuivre":90,"Electros":270,"Batteries":215,"Nickel":45,"Silicium":15,"Huile":45,"Mendium":30,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":180,"Plastanium":5,"Energie":100,"Huile":25},
-        "fabTime":125
+        "fabTime":125,
+        "inRuin":1
     },
     {
         "id":113,
@@ -1835,7 +1836,8 @@
         "compReq":{"aero":1},
         "costs":{"Scrap":162,"Carbone":234,"Aluminium":300,"Moteurs":150,"Plastanium":45,"Titane":675,"Cuivre":90,"Electros":180,"Batteries":81,"Silicium":27,"Drogues":55,"Chlore":28,"Zinc":28,"Tissus":14},
         "deploy":{"Fuel":320,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
-        "fabTime":140
+        "fabTime":140,
+        "inRuin":1
     },
     {
         "id":90,
