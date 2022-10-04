@@ -1734,7 +1734,7 @@
     {
         "id":118,
         "name":"Stakhanov",
-        "levels":{"rednecks":15,"blades":18,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":17},
+        "levels":{"rednecks":15,"blades":17,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":17},
         "bldReq":["Centre de recherches","Usine"],
         "compReq":{"ext":3},
         "compPass":["rednecks"],
@@ -1846,6 +1846,16 @@
         "costs":{"Fer":36,"Scrap":171,"Carbone":252,"Aluminium":318,"Moteurs":150,"Plastanium":45,"Titane":700,"Cuivre":90,"Electros":180,"Batteries":81,"Silicium":27,"Drogues":55,"Chlore":28,"Zinc":28,"Tissus":14},
         "deploy":{"Fuel":290,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":150
+    },
+    {
+        "id":296,
+        "name":"Whales",
+        "levels":{"rednecks":19,"blades":18,"bulbos":19,"drogmulojs":19,"tiradores":19,"detruas":99,"brasier":19},
+        "bldReq":["Usine","Aérodocks","Centre de com"],
+        "compReq":{"aero":1,"trans":3},
+        "costs":{"Carbone":1200,"Aluminium":1200,"Moteurs":320,"Plastanium":160,"Titane":2400,"Tungstène":160,"Rhodium":240,"Silicium":80,"Cuivre":200,"Electros":400,"Batteries":480,"Nickel":40,"Cobalt":30,"Hélium":60,"Drogues":12,"Chlore":12,"Zinc":12,"Tissus":12},
+        "deploy":{"Plutonium":100,"Plastanium":40,"Chlore":5,"Zinc":5,"Tissus":5,"Huile":10},
+        "fabTime":300
     },
     {
         "id":111,
