@@ -1776,7 +1776,7 @@ function skillsInfos(bat,batType,near) {
             }
         }
         // POSE CHAMP DE MINES
-        if (batType.skills.includes('landmine')) {
+        if (batType.skills.includes('landmine') && playerInfos.comp.explo >= 1) {
             freeConsTile = checkFreeConsTile(bat,batType);
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
@@ -1789,22 +1789,59 @@ function skillsInfos(bat,batType,near) {
                     colorNope = 'cy';
                 }
                 trapType = getBatTypeByName('Champ de mines');
-                trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(batType.ap/1.1*5/(playerInfos.comp.explo+4));
-                apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.explo+4));
-                if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
-                    $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
-                } else {
-                    if (minesLeft <= 0) {
-                        skillMessage = "Plus de mines";
-                    } else if (!trapCostOK) {
-                        skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                    } else if (inMelee) {
-                        skillMessage = "Ne peut pas se faire en mêlée";
+                if (trapType.levels[playerInfos.gang] <= playerInfos.gLevel) {
+                    trapCostOK = checkCost(trapType.costs);
+                    apCost = Math.round(batType.ap/1.1*5/(playerInfos.comp.explo+4));
+                    apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.explo+4));
+                    if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</'+balise+'></span>');
                     } else {
-                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                        if (minesLeft <= 0) {
+                            skillMessage = "Plus de mines";
+                        } else if (!trapCostOK) {
+                            skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                        } else if (inMelee) {
+                            skillMessage = "Ne peut pas se faire en mêlée";
+                        } else {
+                            skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                        }
+                        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</h4></span>');
                     }
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Champ de mines</h4></span>');
+                }
+            }
+        }
+        // POSE MINES WIPEOUT
+        if (batType.skills.includes('landmine') && playerInfos.comp.explo >= 2) {
+            freeConsTile = checkFreeConsTile(bat,batType);
+            if (freeConsTile) {
+                let minesLeft = calcRavit(bat);
+                balise = 'h4';
+                boutonNope = 'boutonGris';
+                colorNope = 'gf';
+                if (Object.keys(conselUnit).length >= 1) {
+                    balise = 'h3';
+                    boutonNope = 'boutonOK';
+                    colorNope = 'cy';
+                }
+                trapType = getBatTypeByName('Mines wipeout');
+                if (trapType.levels[playerInfos.gang] <= playerInfos.gLevel) {
+                    trapCostOK = checkCost(trapType.costs);
+                    apCost = Math.round(batType.ap/1.1*5/(playerInfos.comp.explo+4));
+                    apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.explo+4));
+                    if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Déposer un champ de mines Wipeout '+displayCosts(trapType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`wipe`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mines wipeout</'+balise+'></span>');
+                    } else {
+                        if (minesLeft <= 0) {
+                            skillMessage = "Plus de mines";
+                        } else if (!trapCostOK) {
+                            skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                        } else if (inMelee) {
+                            skillMessage = "Ne peut pas se faire en mêlée";
+                        } else {
+                            skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                        }
+                        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-coins"></i> <span class="small">'+apCost+'</span></button>&nbsp; Mines wipeout</h4></span>');
+                    }
                 }
             }
         }

@@ -4226,7 +4226,8 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","mutant","genhab2","berserk","undead","survivor","noaploss","resistall","defense","brigands","herosalvo","lowstress"],
+        "skills":["a_mid","fouille","fortif","datt","mutant","landmine","genhab2","berserk","undead","survivor","noaploss","resistall","defense","brigands","herosalvo","lowstress"],
+        "maxSkill":2,
         "fuzz":2,
         "deathFx":"137036__pyrocamancer__beast-death"
     },
@@ -4471,9 +4472,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_cyb","fouille","fortif","datt","mecano","repair","constructeur","cleaning","barbs","routes","infraz","infast","cyber","fret","noblub","resistall","fastempty","dumper","kzin","reeq","nochef"],
+        "skills":["a_cyb","fouille","fortif","datt","mecano","repair","constructeur","cleaning","landmine","routes","infraz","infast","cyber","fret","noblub","resistall","fastempty","dumper","kzin","reeq","nochef"],
         "mecanoCost":5,
-        "maxSkill":8,
+        "maxSkill":6,
         "transRes":180,
         "fuzz":1.5,
         "deathFx":"144469__psychedelic-hands__robot-death"
