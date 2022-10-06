@@ -1246,6 +1246,10 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
             speed = speed-200;
             // console.log('bonus initiative');
         }
+        if (batType.skills.includes('slowfire')) {
+            speed = speed+120;
+            // console.log('bonus initiative');
+        }
         if (batType.skills.includes('after')) {
             if (attacking) {
                 speed = speed-999;
