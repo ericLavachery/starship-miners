@@ -256,9 +256,7 @@ let fuzzDiv = 33; // fuzzTotal/fuzzDiv = bonus mapDiff;
 let cumDrop = 5; // Plus grand = moins méchant : Cumulmative Drop: ((x*mapDrop)+mapTurn)/(x+1)
 let dropMod = 4; //
 let eggLifeStart = 12; //
-let eggLifeFactor = 0.7; //
 let coqLifeStart = 7; //
-let coqLifeFactor = 0.5; //
 let noEggs = 15; // % pour un eggDrop sans oeufs
 let eggPause = false;
 let domeProtect = false;

@@ -2579,7 +2579,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","ravitaillement","autoapprov","maycamo","fastempty","fret","barda","recupcit","conscont","nochef"],
+        "skills":["a_light","fouille","fortif","datt","ravitaillement","autoapprov","maycamo","fastempty","fret","barda","conscont","nochef"],
         "mecanoCost":12,
         "maxSkill":9,
         "transRes":72,
@@ -4906,7 +4906,9 @@
             "power":2,
             "aoe":"bat",
             "sound":"shriek",
-            "ammo":["disco"]
+            "ammo":["disco"],
+            "maxAmmo":20,
+            "ravitBld":"Générateur"
         },
         "weapon2":{
             "name":"Fusil plasma",
@@ -4959,7 +4961,9 @@
             "power":2,
             "aoe":"bat",
             "sound":"shriek",
-            "ammo":["disco"]
+            "ammo":["disco"],
+            "maxAmmo":20,
+            "ravitBld":"Générateur"
         },
         "weapon2":{
             "name":"Fusil mitrailleur",
@@ -6539,7 +6543,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["a_heavy","fouille","fortif","bigfortif","barda","datt","selfbadmedic","fastguet","bastion","camo","longshot","recupcit","zerogrip","unemun","meleehelp","cage","nochef"],
+        "skills":["a_heavy","fouille","fortif","bigfortif","barda","datt","selfbadmedic","fastguet","bastion","camo","longshot","recupcit","nocrime","zerogrip","unemun","meleehelp","cage","nochef"],
         "mediCost":7,
         "fuzz":1,
         "deathFx":"human3"

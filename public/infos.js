@@ -620,7 +620,9 @@ function batInfos(bat,batType,pop) {
                         if (batType.skills.includes('brigands')) {
                             demText = '(récupérer les criminels et les ressources)';
                         } else if (bat.tags.includes('outsider') && !batType.skills.includes('nocrime')) {
-                            demText = '(récupérer les criminels ou citoyens et les ressources)';
+                            demText = '(récupérer les citoyens ou criminels (50%) et les ressources)';
+                        } else if (batType.cat === 'vehicles' && !batType.skills.includes('nocrime')) {
+                            demText = '(récupérer les citoyens ou criminels (20%) et les ressources)';
                         } else {
                             demText = '(récupérer les citoyens et les ressources)';
                         }
@@ -628,7 +630,9 @@ function batInfos(bat,batType,pop) {
                         if (batType.skills.includes('brigands')) {
                             demText = '(récupérer les criminels)';
                         } else if (bat.tags.includes('outsider') && !batType.skills.includes('nocrime')) {
-                            demText = '(récupérer les criminels ou citoyens)';
+                            demText = '(récupérer les criminels (50%) ou citoyens)';
+                        } else if (batType.cat === 'vehicles' && !batType.skills.includes('nocrime')) {
+                            demText = '(récupérer les criminels (20%) ou citoyens)';
                         } else {
                             demText = '(récupérer les citoyens)';
                         }

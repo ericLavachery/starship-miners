@@ -1022,7 +1022,7 @@ function turnInfo() {
                 }
             }
         }
-        $('#tour').append('Morts <span class="or" title="Bataillons perdus">'+playerInfos.unitsLost+'</span> / <span class="neutre" title="Aliens tués">'+playerInfos.aliensKilled+'</span> / <span class="cy" title="Oeufs détruits">'+playerInfos.eggsKilled+'</span>');
+        $('#tour').append('Morts <span class="or" title="'+toNiceString(playerInfos.deadBats)+'">'+playerInfos.unitsLost+'</span> / <span class="neutre" title="Aliens tués">'+playerInfos.aliensKilled+'</span> / <span class="cy" title="Oeufs détruits">'+playerInfos.eggsKilled+'</span>');
     }
     checkVMTileIds();
     // feedZoneDB();
@@ -1655,6 +1655,7 @@ function checkDeath(bat,batType) {
         if (bat.team == 'player') {
             if (!batType.skills.includes('nodeathcount')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
+                playerInfos.deadBats.push(batType.name);
                 transDestroy(deadId,tileId);
                 saveCrew(batType,deadId,tileId);
                 playMusic('rip',false);

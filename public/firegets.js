@@ -476,6 +476,7 @@ function batDeath(bat,count,isWiped) {
         if (count) {
             if (!batType.skills.includes('nodeathcount')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
+                playerInfos.deadBats.push(batType.name);
                 playMusic('rip',false);
             }
             if (batType.skills.includes('transport')) {
@@ -707,6 +708,7 @@ function transDestroy(tileId,deadId,isFlying) {
             bataillons.splice(batIndex,1);
             if (!batType.skills.includes('nodeathcount')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
+                playerInfos.deadBats.push(batType.name);
             }
         }
     });
@@ -1396,6 +1398,9 @@ function isInRange(myBat,thatTileId,myWeapon,alien) {
                 rangeBonus = rangeBonus+1;
             }
         }
+    }
+    if (myBat.type === 'Mines wipeout') {
+        rangeBonus = 0;
     }
     let halfRange = Math.floor(range/2);
     if (halfRange === 0 && myWeapon.range >= 1) {

@@ -20,6 +20,7 @@ function startMission() {
         loadZone(playerInfos.missionZone);
         // var modeLanding = true
         playerInfos.onShip = false;
+        playerInfos.deadBats = [];
         playerInfos.travTurns = 0;
         playerInfos.crafts = 0;
         playerInfos.vz = 0;

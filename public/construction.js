@@ -1472,6 +1472,12 @@ function dismantle(batId) {
                         } else {
                             recupCitoyens(126,tileId,crew,xp);
                         }
+                    } else if (batType.cat === 'vehicles' && !batType.skills.includes('nocrime')) {
+                        if (rand.rand(1,5) === 1) {
+                            recupCitoyens(225,tileId,crew,xp);
+                        } else {
+                            recupCitoyens(126,tileId,crew,xp);
+                        }
                     } else {
                         recupCitoyens(126,tileId,crew,xp);
                     }

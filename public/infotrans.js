@@ -846,6 +846,8 @@ function clickDebarq(tileId) {
         moveMode();
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             moveSelectedBat(tileId,true,false);
+            let tile = getTileById(tileId);
+            delete tile.infra;
         } else {
             moveSelectedBat(tileId,false,false);
         }

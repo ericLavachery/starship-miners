@@ -791,6 +791,12 @@ function playerSkillsUTChanges() {
             }
         }
         // EXPLOSIFS
+        if (unit.name === 'Mines wipeout') {
+            let wipeJump = (playerInfos.comp.explo*2)+playerInfos.comp.arti-4;
+            if (wipeJump >= 1) {
+                unit.weapon2.range = wipeJump;
+            }
+        }
         if (unit.name === 'Champ de mines') {
             if (playerInfos.comp.explo >= 2) {
                 unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-((playerInfos.comp.explo-1)*2);

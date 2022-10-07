@@ -49,7 +49,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","badcrewsave","transport","routes","longshot","cible","sentinelle","fret","dumper","badmedic","meleehelp","infrahelp","phare"],
+        "skills":["fouille","recupcit","nocrime","badcrewsave","transport","routes","longshot","cible","sentinelle","fret","dumper","badmedic","meleehelp","infrahelp","phare"],
         "mecanoCost":10,
         "mediCost":7,
         "transMaxSize":21,
@@ -1435,7 +1435,7 @@
         "weapon":{
             "name":"Flak canon",
             "cost":3,
-            "range":5,
+            "range":6,
             "isArt":true,
             "noGround":true,
             "rof":7,

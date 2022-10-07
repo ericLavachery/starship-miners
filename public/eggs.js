@@ -1856,9 +1856,9 @@ function eggSpawn(bat,fromEgg) {
     if (coconStats.dome) {
         eggModTurn = eggModTurn+3;
     }
-    let eggLife = eggLifeStart+Math.floor(zone[0].mapDiff*eggLifeFactor)+bat.squadsLeft-6;
+    let eggLife = eggLifeStart+Math.floor(zone[0].mapDiff*eggLifeStart/17)+bat.squadsLeft-6;
     if (bat.type === 'Coque' || bat.type === 'Oeuf voilé') {
-        eggLife = coqLifeStart+Math.floor(zone[0].mapDiff*coqLifeFactor)+bat.squadsLeft-6;
+        eggLife = coqLifeStart+Math.floor(zone[0].mapDiff*coqLifeStart/14)+bat.squadsLeft-6;
         if (bat.tags.includes('colo')) {
             eggLife = eggLife-4;
         }

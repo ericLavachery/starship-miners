@@ -1185,7 +1185,7 @@
     {
         "id":92,
         "name":"Shelltrucks",
-        "levels":{"rednecks":9,"blades":12,"bulbos":11,"drogmulojs":10,"tiradores":13,"detruas":6,"brasier":9},
+        "levels":{"rednecks":10,"blades":12,"bulbos":11,"drogmulojs":10,"tiradores":13,"detruas":6,"brasier":9},
         "bldEquiv":["Poudrière"],
         "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":60,"Scrap":444,"Carbone":120,"Aluminium":48,"Moteurs":60,"Cuivre":24,"Batteries":12,"Compo2":168,"Huile":10},
@@ -1196,7 +1196,7 @@
     {
         "id":121,
         "name":"Milkmen",
-        "levels":{"rednecks":7,"blades":8,"bulbos":7,"drogmulojs":8,"tiradores":7,"detruas":4,"brasier":4},
+        "levels":{"rednecks":7,"blades":9,"bulbos":7,"drogmulojs":8,"tiradores":7,"detruas":4,"brasier":4},
         "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":14,"Scrap":207,"Carbone":36,"Moteurs":32,"Batteries":9,"Compo2":28,"Silicium":9,"Huile":9},
         "deploy":{"Fuel":35},
@@ -1550,7 +1550,7 @@
     {
         "id":131,
         "name":"Frogs",
-        "levels":{"rednecks":10,"blades":9,"bulbos":10,"drogmulojs":9,"tiradores":10,"detruas":10,"brasier":12},
+        "levels":{"rednecks":9,"blades":8,"bulbos":10,"drogmulojs":9,"tiradores":10,"detruas":10,"brasier":10},
         "bldReq":["Armurerie","Atelier"],
         "compReq":{"trans":2},
         "costs":{"Fer":60,"Scrap":120,"Carbone":90,"Bois":60,"Silicium":60,"Wingium":60,"Aluminium":60,"Moteurs":60,"Tungstène":15,"Cuivre":15,"Batteries":30,"Compo2":120,"Hélium":75,"Chlore":75,"Huile":10},
@@ -1672,7 +1672,7 @@
     {
         "id":141,
         "name":"Jeeps",
-        "levels":{"rednecks":8,"blades":8,"bulbos":8,"drogmulojs":8,"tiradores":8,"detruas":9,"brasier":8},
+        "levels":{"rednecks":8,"blades":7,"bulbos":8,"drogmulojs":8,"tiradores":8,"detruas":9,"brasier":8},
         "bldReq":["Garage"],
         "compReq":{"trans":1},
         "altCompReq":{"tank":1},
