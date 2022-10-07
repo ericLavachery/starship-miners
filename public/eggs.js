@@ -157,8 +157,13 @@ function checkMaxDroppedEggs() {
         if (overLimit < 0) {
             overLimit = 0;
         }
+        if ((playerInfos.mapTurn*3) > aliens.length && playerInfos.mapTurn >= 30) {
+            overLimit = overLimit+Math.ceil(((playerInfos.mapTurn*3)-aliens.length)/6);
+        }
         maxDroppedEggs = maxDroppedEggs+overLimit;
     }
+    console.log('droppedEggs='+playerInfos.droppedEggs);
+    console.log('maxDroppedEggs='+maxDroppedEggs);
     return maxDroppedEggs;
 };
 
@@ -456,6 +461,18 @@ function eggsDrop() {
             numEggs++;
             eggBonusChance = eggBonusChance-100;
         }
+        if (eggBonusChance >= 100) {
+            numEggs++;
+            eggBonusChance = eggBonusChance-100;
+        }
+        if (eggBonusChance >= 100) {
+            numEggs++;
+            eggBonusChance = eggBonusChance-100;
+        }
+        if (eggBonusChance >= 100) {
+            numEggs++;
+            eggBonusChance = eggBonusChance-100;
+        }
         if (rand.rand(1,100) <= eggBonusChance) {
             numEggs++;
         }
@@ -515,7 +532,7 @@ function eggsDrop() {
                 }
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             }
-            if (i > 4) {break;}
+            if (i > 15) {break;}
             i++
         }
     }
