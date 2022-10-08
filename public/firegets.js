@@ -2973,9 +2973,6 @@ function getEggProtect(eggBat,eggBatType,weap) {
                 eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.65));
             }
             if (eggProt > maxProt) {eggProt = maxProt;}
-            if (eggBat.tags.includes('morph')) {
-                eggProt = Math.round(eggProt*0.9);
-            }
             if (weap.noShield) {
                 eggProt = Math.round(eggProt*0.9);
             } else if (weap.minShield) {

@@ -148,7 +148,7 @@ function checkMaxDroppedEggs() {
         maxDroppedEggs = absoluteMinMax;
     }
     if (coconStats.dome) {
-        overLimit = playerInfos.mapTurn-30;
+        overLimit = playerInfos.mapTurn-25;
         if (overLimit < 0) {
             overLimit = 0;
         }

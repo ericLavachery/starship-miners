@@ -158,7 +158,9 @@ function createMap(size) {
 function checkMapKind(terName,planetName) {
     let dice = rand.rand(1,12);
     if (terName === 'P') {
-        if (planetName === 'Gehenna') {
+        if (planetName === 'Dom' && playerInfos.gLevel >= 19) {
+            return 'bug';
+        } else if (planetName === 'Gehenna') {
             return 'swarm';
         } else if (planetName === 'Kzin') {
             return 'bug';
@@ -174,7 +176,9 @@ function checkMapKind(terName,planetName) {
             }
         }
     } else if (terName === 'G') {
-        if (planetName === 'Gehenna') {
+        if (planetName === 'Dom' && playerInfos.gLevel >= 19) {
+            return 'spider';
+        } else if (planetName === 'Gehenna') {
             return 'swarm';
         } else if (planetName === 'Kzin') {
             return 'spider';
@@ -192,7 +196,9 @@ function checkMapKind(terName,planetName) {
             }
         }
     } else if (terName === 'S') {
-        if (planetName === 'Gehenna') {
+        if (planetName === 'Dom' && playerInfos.gLevel >= 19) {
+            return 'larve';
+        } else if (planetName === 'Gehenna') {
             return 'spider';
         } else if (planetName === 'Kzin') {
             return 'larve';
@@ -2045,6 +2051,9 @@ function checkZoneType() {
             zoneInfos.ieggsBonus = 0;
         }
     }
+    if (playerInfos.gLevel >= 19) {
+        zoneInfos.ieggs = true;
+    }
     // swamp map
     let swampMap = false;
     if (zone[0].ps+zone[0].pw >= 60) {
@@ -2055,7 +2064,7 @@ function checkZoneType() {
     zone[0].type = 'normal';
     zoneInfos.cb = false; // if true add class b to class c
     zoneInfos.as = false; // if true add class s to class a
-    if (zone[0].terrain != 'V') {
+    if (zone[0].terrain != 'V' && playerInfos.gLevel < 19) {
         if ((swampMap || zone[0].edited) && (zone[0].mapDiff >= 5 || zone[0].edited) && zone[3].seed === 1 && zone[4].seed <= 2) {
             zoneInfos.type = 'leech';
             zone[0].type = 'leech';
