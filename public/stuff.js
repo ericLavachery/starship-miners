@@ -589,8 +589,13 @@ function checkNumUnits(unitName) {
 }
 
 function maxUnits(unit) {
-    let isMax;
+    let maxSaucer = 0;
+    let maxHRob = 1;
+    let maxTank = 2;
     let numOf = {};
+    let maxInfo = {};
+    maxInfo.ko = false;
+    maxInfo.text = 'Maximum non atteint';
     if (unit.name === 'Chercheurs') {
         if (playerInfos.onShip) {
             let maxSci = 1;
@@ -601,23 +606,48 @@ function maxUnits(unit) {
                     maxSci = maxSci+Math.floor(playerInfos.comp.det/5);
                 }
                 maxSci = maxSci+2;
+                maxInfo.text = 'Maximum de chercheurs atteint';
             } else if (playerInfos.bldVM.includes('Laboratoire')) {
                 maxSci = maxSci+1;
+                maxInfo.text = 'Pour pouvoir avoir plus de chercheurs vous devez construire un centre de recherches';
+            } else {
+                maxInfo.text = 'Pour pouvoir avoir plus de chercheurs vous devez construire un laboraoire';
             }
             if (playerInfos.sci >= maxSci) {
-                isMax = true;
+                maxInfo.ko = true;
             }
         } else {
-            isMax = true;
+            maxInfo.ko = true;
+            maxInfo.text = 'Vous ne pouvez pas faire des chercheurs hors de la station';
         }
     }
-    if (unit.skills.includes('leader') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre')) {
+    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('hrob') || unit.skills.includes('saucer') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxdet') || unit.skills.includes('maxind')) {
         numOf.leader = 0;
+        numOf.saucer = 0;
+        numOf.hrob = 0;
         numOf[unit.name] = 0;
         bataillons.forEach(function(bat) {
             let batType = getBatType(bat);
             if (batType.skills.includes('leader')) {
                 numOf.leader++;
+            }
+            if (batType.skills.includes('saucer')) {
+                numOf.saucer++;
+            }
+            if (batType.skills.includes('hrob')) {
+                numOf.hrob++;
+            }
+            if (batType.name === 'Aérodocks') {
+                maxSaucer = maxSaucer+6;
+            }
+            if (batType.name === 'Centre de com' || batType.name === 'QG') {
+                maxHRob = maxHRob+3;
+            }
+            if (batType.name === 'Aérodocks') {
+                maxSaucer = maxSaucer+6;
+            }
+            if (batType.name === 'Usine d\'armement') {
+                maxTank = maxTank+3;
             }
             if (bat.type === unit.name) {
                 numOf[unit.name]++;
@@ -626,30 +656,80 @@ function maxUnits(unit) {
     }
     if (unit.skills.includes('leader')) {
         if (numOf.leader >= Math.round(playerInfos.gLevel/4.1)) {
-            isMax = true;
+            maxInfo.ko = true;
+            if (numOf.leader >= 5) {
+                maxInfo.text = 'Maximum de leaders atteint';
+            } else {
+                maxInfo.text = 'Pour pouvoir avoir plus de leaders vous devez monter de niveau';
+            }
+        }
+    }
+    if (unit.skills.includes('saucer')) {
+        if (numOf.saucer >= maxSaucer) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus d\'avions vous devez construire un aérodock supplémentaire';
+        }
+    }
+    if (unit.skills.includes('hrob')) {
+        if (numOf.hrob >= maxHRob && numOf[unit.name] >= 1) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire un centre de com supplémentaire';
+        }
+    }
+    if (unit.skills.includes('tank')) {
+        if (numOf[unit.name] >= maxTank) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire une usine d\'armements supplémentaire';
         }
     }
     if (unit.skills.includes('max1')) {
         if (numOf[unit.name] >= 1) {
-            isMax = true;
+            maxInfo.ko = true;
+            maxInfo.text = unit.name+': Maximum atteint';
         }
     }
     if (unit.skills.includes('max2')) {
         if (numOf[unit.name] >= 2) {
-            isMax = true;
+            maxInfo.ko = true;
+            maxInfo.text = unit.name+': Maximum atteint';
         }
     }
     if (unit.skills.includes('max3')) {
         if (numOf[unit.name] >= 3) {
-            isMax = true;
+            maxInfo.ko = true;
+            maxInfo.text = unit.name+': Maximum atteint';
         }
     }
     if (unit.skills.includes('maxordre')) {
         if (numOf[unit.name] >= playerInfos.comp.ordre && numOf[unit.name] >= 1) {
-            isMax = true;
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de leadership';
         }
     }
-    return isMax;
+    if (unit.skills.includes('maxaero')) {
+        if (numOf[unit.name] >= playerInfos.comp.aero+1) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence d\'aéronautique';
+        }
+    }
+    if (unit.skills.includes('maxind')) {
+        if (numOf[unit.name] >= playerInfos.comp.ind && numOf[unit.name] >= 1) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence d\'industrie';
+        }
+    }
+    if (unit.skills.includes('maxdet')) {
+        let maxThis = 1;
+        if (playerInfos.comp.det > 3) {
+            maxThis = maxThis+playerInfos.comp.det-3;
+        }
+        if (numOf[unit.name] >= maxThis) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de détection';
+        }
+    }
+    console.log(maxInfo);
+    return maxInfo;
 };
 
 function getSoute() {

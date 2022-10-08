@@ -60,6 +60,7 @@ function bfconst(cat,triche,upgrade,retour) {
     let mayOut = false;
     let compReqOK = false;
     let bldOK = false;
+    let uMaxOK = true;
     let costOK = false;
     let costString = '';
     let unitMergedCosts;
@@ -163,9 +164,10 @@ function bfconst(cat,triche,upgrade,retour) {
             bldOK = false;
             if ((playerInfos.bldList.includes(unit.bldReq[0]) || unit.bldReq[0] === undefined) && (playerInfos.bldList.includes(unit.bldReq[1]) || unit.bldReq[1] === undefined) && (playerInfos.bldList.includes(unit.bldReq[2]) || unit.bldReq[2] === undefined)) {
                 bldOK = true;
-                if (maxUnits(unit)) {
-                    bldOK = false;
-                }
+            }
+            let maxInfo = maxUnits(unit);
+            if (maxInfo.ko) {
+                uMaxOK = false;
             }
             costOK = checkUnitCost(unit,true,true);
             unitMergedCosts = mergedUnitCosts(unit);
@@ -218,7 +220,7 @@ function bfconst(cat,triche,upgrade,retour) {
             if (yh[unit.name] >= 1) {
                 yhPrint = ' <span title="#">('+yh[unit.name]+')</span>';
             }
-            if ((bldOK && costOK) || triche) {
+            if ((bldOK && costOK && uMaxOK) || triche) {
                 if (pDistOK && pNumOK) {
                     color = catColor(unit);
                     $('#conUnitList').append('<span class="constName klik '+color+deco+'" onclick="conSelect('+unit.id+',`player`,false)"><span title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
@@ -230,8 +232,13 @@ function bfconst(cat,triche,upgrade,retour) {
                     $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Vous ne pouvez pas construire un Pilône ou un Dôme à moins de 25 cases d\'un Pilône existant">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
                 }
             } else {
-                color = 'gff';
-                $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
+                if (!uMaxOK) {
+                    color = 'gff';
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+maxInfo.text+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
+                } else {
+                    color = 'gff';
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
+                }
             }
             lastKind = unit.kind;
         }

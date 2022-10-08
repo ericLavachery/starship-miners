@@ -22,8 +22,8 @@
         "name":"aero",
         "fullName":"Aéronautique",
         "levels":{"rednecks":12,"blades":11,"bulbos":12,"drogmulojs":12,"tiradores":10,"detruas":99,"brasier":12},
-        "maxLevel":1,
-        "lvlCosts":[0,2],
+        "maxLevel":2,
+        "lvlCosts":[0,2,1],
         "rechCost":2
     },
     {

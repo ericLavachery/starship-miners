@@ -240,7 +240,11 @@ function changeBarbs(stop) {
 };
 
 function changePlayerInfo(dropMenuId,infoName,from) {
+    console.log(dropMenuId);
+    console.log(infoName);
+    console.log(from);
     let value = document.getElementById(dropMenuId).value;
+    console.log(value);
     if (value === 'true') {
         playerInfos[infoName] = true;
     } else if (value === 'false') {
@@ -250,7 +254,7 @@ function changePlayerInfo(dropMenuId,infoName,from) {
     } else {
         playerInfos[infoName] = +value;
     }
-    if (infoName = 'sondePlanet') {
+    if (infoName === 'sondePlanet') {
         if (playerInfos.sondePlanet === 1) {
             playerInfos.sondeDanger = getDoom(true);
         } else {
@@ -259,6 +263,8 @@ function changePlayerInfo(dropMenuId,infoName,from) {
             }
         }
     }
+    console.log(infoName);
+    console.log(from);
     if (infoName === 'gang' && from === 'gangChoice') {
         playerInfos.gangDef = true;
         // savePlayerInfos();
