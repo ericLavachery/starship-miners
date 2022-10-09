@@ -5059,6 +5059,7 @@
         "size":3,
         "volume":0.9,
         "stealth":8,
+        "speed":2,
         "ap":14,
         "maxSalvo":1,
         "weapon":{
@@ -5450,7 +5451,7 @@
         "armor":1,
         "size":2,
         "stealth":1,
-        "speed":4,
+        "speed":3,
         "ap":11,
         "maxSalvo":1,
         "weapon":{

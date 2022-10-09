@@ -522,6 +522,9 @@ function getBatGearStuff(armorName,equipName,batType) {
             gearStuff[1] = baseAP+batArmor.ap;
         }
     }
+    if (batType.skills.includes('domeconst')) {
+        gearStuff[1] = batType.ap;
+    }
     return gearStuff;
 }
 

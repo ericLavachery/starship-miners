@@ -1045,11 +1045,13 @@ function getBatAP(bat,batType) {
 
         }
     });
-    if (boostedTeams.includes(batType.kind)) {
-        newAP = newAP+1;
-    }
-    if (prayedTeams.includes(batType.kind)) {
-        newAP = newAP+1;
+    if (!batType.skills.includes('domeconst')) {
+        if (boostedTeams.includes(batType.kind)) {
+            newAP = newAP+1;
+        }
+        if (prayedTeams.includes(batType.kind)) {
+            newAP = newAP+1;
+        }
     }
     return newAP;
 };
@@ -1092,21 +1094,12 @@ function getAP(bat,batType) {
     }
     if (batType.skills.includes('fastempty')) {
         emptyBonus = fastEmptyBonus(bat,batType);
-        // if (batType.skills.includes('ravitaillement')) {
-        //     ravitNum = calcRavit(bat);
-        //     if (ravitNum < batType.maxSkill) {
-        //         emptyBonus = emptyBonus+((batType.maxSkill-ravitNum)/batType.maxSkill*2.5);
-        //     }
-        // }
-        // if (batType.skills.includes('fret')) {
-        //     resLoaded = checkResLoad(bat);
-        //     if (resLoaded < batType.transRes) {
-        //         emptyBonus = emptyBonus+((batType.transRes-resLoaded)/batType.transRes*2.5);
-        //     }
-        // }
         newAP = newAP+Math.round(emptyBonus);
     }
     newAP = newAP+Math.round(bat.vet*vetBonus.ap);
+    if (batType.skills.includes('domeconst')) {
+        newAP = bat.ap;
+    }
     return newAP;
 };
 

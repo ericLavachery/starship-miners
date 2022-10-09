@@ -458,7 +458,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["shield","minaccu","slowreg","reactpoison","noaploss","destructeur","resistall","dread","nojello","aimcfo","silhover"],
+        "skills":["shield","minaccu","slowreg","nez","reactpoison","noaploss","destructeur","resistall","dread","nojello","aimcfo","silhover"],
         "deathFx":"death3",
         "spawnFx":"spawn-mante",
         "fxPriority":7,

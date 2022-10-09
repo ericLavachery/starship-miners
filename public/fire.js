@@ -609,7 +609,7 @@ function attack(melee,init) {
     }
     // marquage
     if ((selectedWeap.ammo.includes('marq') || selectedWeap.name.includes('(mark)')) && totalHits >= 5 && !targetBat.tags.includes('fluo')) {
-        if (selectedWeap.ammo === 'marquage' || selectedWeap.ammo === 'marquage-stop' || totalDamage >= 1) {
+        if (selectedWeap.ammo === 'marquage' || selectedWeap.ammo === 'marquage-stop' || selectedWeap.ammo === 'firemarq' || totalDamage >= 1) {
             targetBat.tags.push('fluo');
             $('#report').append('<span class="report rose">Bataillon marqué<br></span>');
         }

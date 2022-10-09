@@ -2943,12 +2943,14 @@ function checkEscape(bat,batType) {
             }
         }
         if (!escaping.ok) {
-            if (playerInfos.comp.robo >= 2 && playerInfos.comp.det >= 4) {
+            if (playerInfos.comp.det >= 4) {
                 if (bat.eq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'detector' || bat.logeq === 'g2ai') {
-                    if (batType.speed >= 4) {
-                        if (batType.skills.includes('robot') || batType.skills.includes('cyber')) {
-                            escaping.ok = true;
-                            escaping.speed = batType.speed+bat.vet-2;
+                    if (batType.speed >= 2 && batType.size < 10) {
+                        if (playerInfos.comp.robo >= 2 || playerInfos.comp.cyber >= 2) {
+                            if (batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+                                escaping.ok = true;
+                                escaping.speed = batType.speed+bat.vet-2;
+                            }
                         }
                     }
                 }
