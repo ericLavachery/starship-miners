@@ -1111,8 +1111,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                         } else {
                             let constFactor = 15;
                             if (conselUnit.skills.includes('domeconst')) {
-                                newBat.apLeft = conselUnit.ap-(Math.round((conselUnit.fabTime+200)*conselUnit.ap/constFactor)*3);
-                                newBat.oldapLeft = conselUnit.ap-(Math.round((conselUnit.fabTime+200)*conselUnit.ap/constFactor)*3);
+                                let rbonus = Math.round((playerInfos.mapTurn-10)*conselUnit.ap/2);
+                                newBat.apLeft = conselUnit.ap-(Math.round((conselUnit.fabTime+200)*conselUnit.ap/constFactor)*3)+rbonus;
+                                newBat.oldapLeft = conselUnit.ap-(Math.round((conselUnit.fabTime+200)*conselUnit.ap/constFactor)*3)+rbonus;
                             } else if (conselUnit.skills.includes('longconst')) {
                                 newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
                                 newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
@@ -1212,6 +1213,9 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 }
             } else {
                 newBat.tags = [];
+            }
+            if (coconStats.dome && conselUnit.name === 'Vommissure' && !newBat.tags.includes('morph')) {
+                newBat.tags.push('morph');
             }
             if (conselUnit.skills.includes('genhab') || conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3')) {
                 let genDice = 0;

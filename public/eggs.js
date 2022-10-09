@@ -1219,8 +1219,17 @@ function spawns() {
                 batType = getBatType(bat);
                 eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
                 eggModTurn = eggTurn+(zone[0].mapDiff*2)-12;
-                vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+(eggModTurn*1);
-                if (rand.rand(1,100) <= vomiCheck && bat.type === 'Oeuf') {
+                if (bat.type === 'Coque') {
+                    vomiCheck = eggModTurn;
+                } else if (bat.type === 'Oeuf') {
+                    vomiCheck = ((batType.squads-bat.squadsLeft)*vomiChance)+(eggModTurn*1);
+                } else {
+                    vomiCheck = 0;
+                }
+                if (coconStats.dome) {
+                    vomiCheck = vomiCheck*2;
+                }
+                if (rand.rand(1,100) <= vomiCheck) {
                     vomiSpawn(bat);
                 }
                 eggSpawn(bat,true);

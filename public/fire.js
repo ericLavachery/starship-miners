@@ -832,6 +832,7 @@ function attack(melee,init) {
     if (targetBatType.skills.includes('eggprotect')) {
         let eggProt = getEggProtect(targetBat,targetBatType,selectedWeap);
         totalDamage = Math.round(totalDamage*(100-eggProt)/100);
+        apDamage = Math.round(apDamage*(100-eggProt)/100);
         if (playerInfos.comp.ca >= 2) {
             $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
         }
@@ -1815,6 +1816,7 @@ function defense(melee,init) {
     if (selectedBatType.skills.includes('eggprotect')) {
         let eggProt = getEggProtect(selectedBat,selectedBatType,targetWeap);
         totalDamage = Math.round(totalDamage*(100-eggProt)/100);
+        apDamage = Math.round(apDamage*(100-eggProt)/100);
         if (playerInfos.comp.ca >= 2) {
             $('#report').append('<span class="report rose">Protection '+eggProt+'%<br></span>');
         }
