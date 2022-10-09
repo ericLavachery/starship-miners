@@ -86,6 +86,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.unitsLost === undefined) {
         playerInfos.unitsLost = 0;
     }
+    if (playerInfos.deadBats === undefined) {
+        playerInfos.deadBats = [];
+    }
     if (playerInfos.pauseSeed === undefined) {
         playerInfos.pauseSeed = rand.rand(1,8);
     }

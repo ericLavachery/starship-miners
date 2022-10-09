@@ -468,7 +468,7 @@ function attack(melee,init) {
     }
     // ESCAPE
     escaped = false;
-    let escapeFactor = checkEscape(targetBat,targetBatType,selectedWeap,selectedBat,tile);
+    let escapeFactor = calcEscape(targetBat,targetBatType,selectedWeap,selectedBat,tile);
     if (escapeFactor < 1) {
         shots = Math.round(shots*escapeFactor);
         attFactor = Math.round(attFactor*escapeFactor);
@@ -1240,7 +1240,7 @@ function attack(melee,init) {
     targetBatArrayUpdate();
     // remove ap & salvo
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
-    if (selectedBat.tags.includes('tornade')) {
+    if (selectedBat.tags.includes('tornade') || selectedWeap.free) {
         // salves infinies
     } else {
         selectedBat.salvoLeft = selectedBat.salvoLeft-1;
@@ -1442,7 +1442,7 @@ function defense(melee,init) {
     }
     // ESCAPE
     escaped = false;
-    let escapeFactor = checkEscape(selectedBat,selectedBatType,targetWeap,targetBat,tile);
+    let escapeFactor = calcEscape(selectedBat,selectedBatType,targetWeap,targetBat,tile);
     if (escapeFactor < 1) {
         shots = Math.round(shots*escapeFactor);
         defFactor = Math.round(defFactor*escapeFactor);

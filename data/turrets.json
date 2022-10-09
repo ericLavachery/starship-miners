@@ -890,7 +890,7 @@
             "elevation":2,
             "rof":24,
             "accuracy":22,
-            "power":13,
+            "power":14,
             "armors":0.85,
             "aoe":"brochette",
             "sound":"blister_canon_x4",

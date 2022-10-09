@@ -253,6 +253,10 @@ function batInfos(bat,batType,pop) {
     } else {
         $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+'</span><br>');
     }
+    let escaping = checkEscape(bat,batType);
+    if (escaping.ok) {
+        $('#'+bodyPlace).append('<span class="paramName">Escape</span><span class="paramIcon"></span><span class="paramValue">'+escaping.speed+'</span><br>');
+    }
     let camoEnCours = false;
     if (bat.camoAP >= 1) {
         camoEnCours = true;

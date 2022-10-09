@@ -1890,6 +1890,11 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.noBis = weapon.noBis;
     }
+    if (weapon.free === undefined) {
+        thisWeapon.free = false;
+    } else {
+        thisWeapon.free = weapon.free;
+    }
     if (weapon.noDatt === undefined) {
         thisWeapon.noDatt = false;
     } else {
@@ -2912,34 +2917,60 @@ function getWetness(terrain,onGround) {
     return wetness;
 };
 
-function checkEscape(bat,batType,weap,attBat,tile) {
-    let escapeFactor = 1;
-    let hasEscape = false;
-    let escapeSpeed = batType.speed-2;
+function checkEscape(bat,batType) {
+    let escaping = {};
+    escaping.ok = false;
+    escaping.speed = batType.speed-2;
     if (batType.skills.includes('escape')) {
-        hasEscape = true;
+        escaping.ok = true;
+        if (batType.cat != 'aliens') {
+            escaping.speed = batType.speed+bat.vet-4;
+        } else {
+            escaping.speed = batType.speed-2;
+        }
+        if (bat.eq === 'e-stab' || bat.logeq === 'e-stab') {
+            escaping.speed = escaping.speed+2;
+        }
         if (batType.skills.includes('dogescape')) {
-            escapeSpeed = batType.speed+bat.vet-2;
+            escaping.speed = escaping.speed+2;
         }
     }
-    if (batType.skills.includes('heroescape') && bat.tags.includes('hero')) {
-        hasEscape = true;
-        escapeSpeed = bat.vet*2;
-    }
-    if (playerInfos.comp.robo >= 2 && playerInfos.comp.det >= 4) {
-        // console.log('robo');
-        if (bat.eq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'detector' || bat.logeq === 'g2ai') {
-            // console.log('eq');
-            if (batType.speed >= 4) {
-                // console.log('speed');
-                if (batType.skills.includes('robot') || batType.skills.includes('cyber')) {
-                    // console.log('type');
-                    hasEscape = true;
-                    escapeSpeed = batType.speed+bat.vet-2;
+    if (batType.cat != 'aliens') {
+        if (!escaping.ok) {
+            if (batType.skills.includes('heroescape') && bat.tags.includes('hero')) {
+                escaping.ok = true;
+                escaping.speed = bat.vet*2;
+            }
+        }
+        if (!escaping.ok) {
+            if (playerInfos.comp.robo >= 2 && playerInfos.comp.det >= 4) {
+                if (bat.eq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'detector' || bat.logeq === 'g2ai') {
+                    if (batType.speed >= 4) {
+                        if (batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+                            escaping.ok = true;
+                            escaping.speed = batType.speed+bat.vet-2;
+                        }
+                    }
+                }
+            }
+        }
+        if (!escaping.ok) {
+            if (batType.skills.includes('fly') && !batType.skills.includes('jetpack') && batType.size < 12) {
+                if (bat.eq === 'e-stab' || bat.logeq === 'e-stab') {
+                    escaping.ok = true;
+                    escaping.speed = batType.speed+(bat.vet*2)-6;
                 }
             }
         }
     }
+    return escaping;
+};
+
+function calcEscape(bat,batType,weap,attBat,tile) {
+    let escapeFactor = 1;
+    let escaping = checkEscape(bat,batType);
+    let hasEscape = escaping.ok;
+    let escapeSpeed = escaping.speed;
     console.log('ESCAPE = '+hasEscape);
     if (hasEscape && !weap.noEsc && !bat.tags.includes('stun') && !bat.tags.includes('freeze')) {
         if ((tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') || batType.skills.includes('fly')) {

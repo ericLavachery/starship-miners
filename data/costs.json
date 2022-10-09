@@ -2215,7 +2215,7 @@
         "levels":{"rednecks":15,"blades":15,"bulbos":14,"drogmulojs":15,"tiradores":16,"detruas":10,"brasier":14},
         "bldReq":["Atelier"],
         "compReq":{"explo":2},
-        "costs":{"Explosifs":20,"Nanite":60,"Tungstène":30,"Plomb":6,"Titane":6,"Azote":9,"Cuivre":9,"Electros":6},
+        "costs":{"Explosifs":60,"Nanite":60,"Tungstène":60,"Plomb":12,"Titane":12,"Azote":18,"Cuivre":18,"Electros":18},
         "fabTime":70
     },
     {
