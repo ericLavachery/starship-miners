@@ -959,7 +959,7 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
     return rico;
 };
 
-function applyShield() {
+function applyShield(shots) {
     let shieldValue = 1;
     let shieldChance = 0;
     if (targetBatType.skills.includes('shield')) {
@@ -976,9 +976,19 @@ function applyShield() {
             shieldChance = 33;
         }
     }
+    if (shieldChance >= 1 && shieldChance < 100) {
+        shieldChance = Math.round(shieldChance/3.75*Math.sqrt(Math.sqrt(shots)));
+        if (shieldChance >= 80) {
+            shieldChance = 80;
+        }
+    }
     console.log('SHIELD');
+    console.log(shieldChance+'%');
     console.log(selectedWeap.ammo);
     if (activeTurn === 'player' && shieldChance >= 1 && selectedWeap.ammo != 'marquage') {
+        if (!targetBat.tags.includes('shield')) {
+            $('#report').append('<span class="report rose">Bouclier '+shieldChance+'%<br></span>');
+        }
         if (rand.rand(1,100) <= shieldChance && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');
         }
@@ -994,7 +1004,8 @@ function applyShield() {
             } else if (selectedWeap.lowShield) {
                 shieldValue = shieldValue/1.75;
             }
-            $('#report').append('<span class="report rose">Bouclier activé<br></span>');
+            let avShieldValue = Math.round(shieldValue);
+            $('#report').append('<span class="report rose">Bouclier activé (1/'+avShieldValue+')<br></span>');
         }
     }
     return shieldValue;
@@ -2734,6 +2745,10 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
         brideDef = brideDef*2;
     } else if (batType.skills.includes('defense') && (weap.num === 1 || !weap.noBis)) {
         brideDef = brideDef*1.35;
+    }
+    // disco
+    if (weap.ammo === 'disco') {
+        brideDef = brideDef*1.5;
     }
     // baddef
     if (batType.skills.includes('baddef')) {

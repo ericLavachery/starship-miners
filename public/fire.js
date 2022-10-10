@@ -511,7 +511,7 @@ function attack(melee,init) {
     // console.log(tile.infra+'+++++++++++++++++++++++');
     // console.log('shots='+shots);
     // SHIELD
-    let shieldValue = applyShield();
+    let shieldValue = applyShield(shots);
     shots = Math.ceil(shots/shieldValue);
     let totalDamage = 0;
     let apDamage = 0;

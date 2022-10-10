@@ -1094,8 +1094,13 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             newBat.armor = gearStuff[0];
             newBat.ap = gearStuff[1];
             if (conselUnit.cat === 'aliens') {
-                newBat.apLeft = Math.floor(newBat.ap/1.5);
-                newBat.oldapLeft = Math.floor(newBat.ap/1.5);
+                if (coconStats.dome) {
+                    newBat.apLeft = newBat.ap;
+                    newBat.oldapLeft = newBat.ap;
+                } else {
+                    newBat.apLeft = Math.floor(newBat.ap/1.5);
+                    newBat.oldapLeft = Math.floor(newBat.ap/1.5);
+                }
                 newBat.salvoLeft = conselUnit.maxSalvo;
             } else {
                 if (conselTriche || playerInfos.onShip) {
@@ -1214,7 +1219,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             } else {
                 newBat.tags = [];
             }
-            if (coconStats.dome && conselUnit.name === 'Vommissure' && !newBat.tags.includes('morph')) {
+            if (coconStats.dome && conselUnit.name === 'Vomissure' && !newBat.tags.includes('morph')) {
                 newBat.tags.push('morph');
             }
             if (conselUnit.skills.includes('genhab') || conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3')) {

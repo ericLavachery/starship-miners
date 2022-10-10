@@ -2591,7 +2591,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["inflammable","noaploss","morph","xpplus","silhover"],
+        "skills":["inflammable","noaploss","eggprotect","morph","xpplus","silhover"],
         "deathFx":"xplodewet",
         "killRes":{"Creatite":8},
         "killXP":5,
@@ -2622,7 +2622,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["inflammable","noaploss","shield","morph","xpplus","silhover"],
+        "skills":["inflammable","noaploss","shield","eggprotect","morph","xpplus","silhover"],
         "deathFx":"xplodewet",
         "killRes":{"Bugium":2,"Creatite":16,"Bossium":3,"Egidium":2},
         "killXP":5
