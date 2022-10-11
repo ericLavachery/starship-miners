@@ -1907,6 +1907,10 @@ function getHuntType() {
     } else if (zone[0].planet === 'Gehenna') {
         huntType.chance = 25;
         huntType.game = 'Tritons';
+    } else if (zone[0].planet === 'Sarak') {
+        huntType.chance = 85;
+        huntType.game = 'Meatballs';
+        huntType.max = 7;
     }
     huntType.chance = Math.ceil(huntType.chance/(zone[0].mapDiff+8)*9);
     if (huntType.max < 7) {
