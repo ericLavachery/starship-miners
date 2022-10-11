@@ -638,14 +638,14 @@ function maxUnits(unit) {
                 maxOf.tank = maxOf.tank+3;
             }
             if (batType.name === 'Chaîne de montage' || batType.name === 'Usine') {
-                maxOf.hveh = maxOf.hveh+3;
+                maxOf.hveh = maxOf.hveh+4;
             }
             if (batType.name === 'Centre de com' || batType.name === 'QG') {
                 maxOf.hbot = maxOf.hbot+3;
-                maxOf.lbot = maxOf.lbot+4;
+                maxOf.lbot = maxOf.lbot+3;
             }
             if (batType.name === 'Poste radio') {
-                maxOf.lbot = maxOf.lbot+4;
+                maxOf.lbot = maxOf.lbot+3;
             }
             if (bat.type === unit.name) {
                 numOf[unit.name]++;

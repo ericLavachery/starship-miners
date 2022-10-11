@@ -1367,7 +1367,7 @@
     {
         "id":147,
         "name":"Salamandres",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":19,"detruas":99,"brasier":15},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":15},
         "bldReq":["Usine d'armement","Chaîne de montage"],
         "compReq":{"tank":1,"pyro":2,"bal":1},
         "costs":{"Fer":60,"Scrap":15,"Carbone":225,"Aluminium":90,"Moteurs":140,"Titane":60,"Tungstène":165,"Rhodium":45,"Cuivre":45,"Electros":15,"Batteries":40,"Nickel":90,"Compo2":210,"Compo3":270,"Huile":10,"Cobalt":30,"Hélium":60},

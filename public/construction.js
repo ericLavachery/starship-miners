@@ -67,6 +67,7 @@ function bfconst(cat,triche,upgrade,retour) {
     sortedUnitsList.forEach(function(unit) {
         // console.log(unit.name);
         mayOut = checkMayOut(unit,false);
+        uMaxOK = true;
         prodOK = true;
         if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
             prodOK = false;
