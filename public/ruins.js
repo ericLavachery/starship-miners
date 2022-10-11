@@ -110,6 +110,8 @@ function isFoundCompOK(foundComp) {
         compOK = false;
     } else if (foundComp.lvlCosts[playerCompLvl+1] === 2) {
         compOK = false;
+    } else if (playerCompLvl === 4) {
+        compOK = false;
     }
     return compOK;
 };
@@ -729,34 +731,69 @@ function checkRuinsRes(tile) {
     }
 };
 
+function checkMinMapDiff(unit) {
+    let level = 99;
+    let minMapDiff = 10;
+    if (unit.levels.rednecks < level) {
+        level = unit.levels.rednecks;
+    }
+    if (unit.levels.blades < level) {
+        level = unit.levels.blades;
+    }
+    if (unit.levels.bulbos < level) {
+        level = unit.levels.bulbos;
+    }
+    if (unit.levels.drogmulojs < level) {
+        level = unit.levels.drogmulojs;
+    }
+    if (unit.levels.tiradores < level) {
+        level = unit.levels.tiradores;
+    }
+    if (unit.levels.detruas < level) {
+        level = unit.levels.detruas;
+    }
+    if (unit.levels.brasier < level) {
+        level = unit.levels.brasier;
+    }
+    if (unit.kind === 'zero-resistance') {
+        level = -10;
+    }
+    if (level <= 4 || unit.fabTime <= 20) {
+        level = -10;
+    }
+    level = level-2;
+    minMapDiff = Math.round((level-2)/2);
+    return minMapDiff;
+};
+
 function checkRuinsUnit(tile) {
-    let maxUnits = Math.floor(zone[0].mapDiff/3);
+    let maxUnits = Math.ceil(zone[0].mapDiff/1.55)-1;
     if (playerInfos.fndUnits < maxUnits) {
+        let count = true;
         let chance = 0;
         let foundUnitId = -1;
-        let robotDice = 400+(playerInfos.fndUnits*200);
-        let truckDice = 130+(playerInfos.fndUnits*65);
+        let checkDice = 120;
         let shufUnits = _.shuffle(unitTypes);
         shufUnits.forEach(function(unit) {
             if (foundUnitId < 0) {
                 if (unit.inRuin != undefined) {
-                    if (unit.fabTime > 50) {
-                        chance = unit.inRuin-8+zone[0].mapDiff;
-                    } else {
-                        chance = unit.inRuin-3+Math.ceil(zone[0].mapDiff/2);
-                        if (chance > unit.inRuin) {
-                            chance = unit.inRuin;
-                        }
-                    }
-                    if (ruinsEmpty) {
-                        if (unit.skills.includes('robot')) {
-                            if (rand.rand(1,robotDice) <= chance) {
+                    let minDiff = checkMinMapDiff(unit);
+                    if (minDiff <= zone[0].mapDiff) {
+                        chance = unit.inRuin;
+                        if (ruinsEmpty) {
+                            if (rand.rand(1,checkDice*3) <= chance) {
                                 foundUnitId = unit.id;
+                                if (minDiff < -2) {
+                                    count = false;
+                                }
                             }
-                        }
-                    } else {
-                        if (rand.rand(1,truckDice) <= chance) {
-                            foundUnitId = unit.id;
+                        } else {
+                            if (rand.rand(1,checkDice) <= chance) {
+                                foundUnitId = unit.id;
+                                if (minDiff < -2) {
+                                    count = false;
+                                }
+                            }
                         }
                     }
                 }
@@ -770,7 +807,9 @@ function checkRuinsUnit(tile) {
             }
             conselTriche = true;
             putBatAround(tile.id,false,'noWater',foundUnitId,0);
-            playerInfos.fndUnits = playerInfos.fndUnits+1;
+            if (count) {
+                playerInfos.fndUnits = playerInfos.fndUnits+1;
+            }
             console.log('FOUND! '+batType.name);
             playerOccupiedTileList();
         }

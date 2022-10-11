@@ -597,13 +597,9 @@ function maxUnits(unit) {
     maxOf.saucer = 0;
     let numOf = {};
     numOf[unit.name] = 0;
-    let having = {};
-    having.leader = 0;
-    having.saucer = 0;
-    having.hbot = 0;
-    having.lbot = 0;
-    having.tank = 0;
-    having.hveh = 0;
+    let total = {};
+    total.leader = 0;
+    total.saucer = 0;
     let maxInfo = {};
     maxInfo.ko = false;
     maxInfo.text = 'Maximum non atteint';
@@ -655,17 +651,17 @@ function maxUnits(unit) {
                 numOf[unit.name]++;
             }
             if (batType.skills.includes('leader')) {
-                having.leader++;
+                total.leader++;
             }
             if (batType.skills.includes('saucer')) {
-                having.saucer++;
+                total.saucer++;
             }
         });
     }
     if (unit.skills.includes('leader')) {
-        if (having.leader >= Math.round(playerInfos.gLevel/4.1)) {
+        if (total.leader >= Math.round(playerInfos.gLevel/4.1)) {
             maxInfo.ko = true;
-            if (having.leader >= 5) {
+            if (total.leader >= 5) {
                 maxInfo.text = 'Maximum de leaders atteint';
             } else {
                 maxInfo.text = 'Pour pouvoir avoir plus de leaders vous devez monter de niveau';
@@ -673,19 +669,19 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('saucer')) {
-        if (having.saucer >= maxOf.saucer && numOf[unit.name] >= 2) {
+        if (total.saucer >= maxOf.saucer && numOf[unit.name] >= 3) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus d\'avions vous devez construire un aérodock supplémentaire';
         }
     }
     if (unit.skills.includes('hbot')) {
-        if (having.hbot >= maxOf.hbot && numOf[unit.name] >= 2) {
+        if (numOf[unit.name] >= maxOf.hbot && numOf[unit.name] >= 2) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire un centre de com supplémentaire';
         }
     }
     if (unit.skills.includes('lbot')) {
-        if (having.lbot >= maxOf.lbot && numOf[unit.name] >= 3) {
+        if (numOf[unit.name] >= maxOf.lbot && numOf[unit.name] >= 3) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire un poste radio supplémentaire';
         }
