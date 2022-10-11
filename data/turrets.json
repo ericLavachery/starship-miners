@@ -454,7 +454,7 @@
             "range":10,
             "rof":8,
             "accuracy":40,
-            "power":20,
+            "power":16,
             "aoe":"brochette",
             "sound":"laser_canon_x1",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"]

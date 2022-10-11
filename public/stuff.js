@@ -589,10 +589,21 @@ function checkNumUnits(unitName) {
 }
 
 function maxUnits(unit) {
-    let maxSaucer = 0;
-    let maxHRob = 1;
-    let maxTank = 2;
+    let maxOf = {};
+    maxOf.tank = 0;
+    maxOf.hbot = 0;
+    maxOf.lbot = 0;
+    maxOf.hveh = 0;
+    maxOf.saucer = 0;
     let numOf = {};
+    numOf[unit.name] = 0;
+    let having = {};
+    having.leader = 0;
+    having.saucer = 0;
+    having.hbot = 0;
+    having.lbot = 0;
+    having.tank = 0;
+    having.hveh = 0;
     let maxInfo = {};
     maxInfo.ko = false;
     maxInfo.text = 'Maximum non atteint';
@@ -621,43 +632,40 @@ function maxUnits(unit) {
             maxInfo.text = 'Vous ne pouvez pas faire des chercheurs hors de la station';
         }
     }
-    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('hrob') || unit.skills.includes('saucer') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxdet') || unit.skills.includes('maxind')) {
-        numOf.leader = 0;
-        numOf.saucer = 0;
-        numOf.hrob = 0;
-        numOf[unit.name] = 0;
+    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('hveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxdet') || unit.skills.includes('maxind')) {
         bataillons.forEach(function(bat) {
             let batType = getBatType(bat);
-            if (batType.skills.includes('leader')) {
-                numOf.leader++;
-            }
-            if (batType.skills.includes('saucer')) {
-                numOf.saucer++;
-            }
-            if (batType.skills.includes('hrob')) {
-                numOf.hrob++;
-            }
             if (batType.name === 'Aérodocks') {
-                maxSaucer = maxSaucer+6;
-            }
-            if (batType.name === 'Centre de com' || batType.name === 'QG') {
-                maxHRob = maxHRob+3;
-            }
-            if (batType.name === 'Aérodocks') {
-                maxSaucer = maxSaucer+6;
+                maxOf.saucer = maxOf.saucer+6;
             }
             if (batType.name === 'Usine d\'armement') {
-                maxTank = maxTank+3;
+                maxOf.tank = maxOf.tank+3;
+            }
+            if (batType.name === 'Chaîne de montage' || batType.name === 'Usine') {
+                maxOf.hveh = maxOf.hveh+3;
+            }
+            if (batType.name === 'Centre de com' || batType.name === 'QG') {
+                maxOf.hbot = maxOf.hbot+3;
+                maxOf.lbot = maxOf.lbot+4;
+            }
+            if (batType.name === 'Poste radio') {
+                maxOf.lbot = maxOf.lbot+4;
             }
             if (bat.type === unit.name) {
                 numOf[unit.name]++;
             }
+            if (batType.skills.includes('leader')) {
+                having.leader++;
+            }
+            if (batType.skills.includes('saucer')) {
+                having.saucer++;
+            }
         });
     }
     if (unit.skills.includes('leader')) {
-        if (numOf.leader >= Math.round(playerInfos.gLevel/4.1)) {
+        if (having.leader >= Math.round(playerInfos.gLevel/4.1)) {
             maxInfo.ko = true;
-            if (numOf.leader >= 5) {
+            if (having.leader >= 5) {
                 maxInfo.text = 'Maximum de leaders atteint';
             } else {
                 maxInfo.text = 'Pour pouvoir avoir plus de leaders vous devez monter de niveau';
@@ -665,21 +673,33 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('saucer')) {
-        if (numOf.saucer >= maxSaucer) {
+        if (having.saucer >= maxOf.saucer && numOf[unit.name] >= 2) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus d\'avions vous devez construire un aérodock supplémentaire';
         }
     }
-    if (unit.skills.includes('hrob')) {
-        if (numOf.hrob >= maxHRob && numOf[unit.name] >= 1) {
+    if (unit.skills.includes('hbot')) {
+        if (having.hbot >= maxOf.hbot && numOf[unit.name] >= 2) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire un centre de com supplémentaire';
         }
     }
+    if (unit.skills.includes('lbot')) {
+        if (having.lbot >= maxOf.lbot && numOf[unit.name] >= 3) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire un poste radio supplémentaire';
+        }
+    }
     if (unit.skills.includes('tank')) {
-        if (numOf[unit.name] >= maxTank) {
+        if (numOf[unit.name] >= maxOf.tank && numOf[unit.name] >= 2) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire une usine d\'armements supplémentaire';
+        }
+    }
+    if (unit.skills.includes('hveh')) {
+        if (numOf[unit.name] >= maxOf.hveh && numOf[unit.name] >= 2) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire une chaîne de montage supplémentaire';
         }
     }
     if (unit.skills.includes('max1')) {

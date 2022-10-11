@@ -1094,13 +1094,8 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             newBat.armor = gearStuff[0];
             newBat.ap = gearStuff[1];
             if (conselUnit.cat === 'aliens') {
-                if (coconStats.dome) {
-                    newBat.apLeft = newBat.ap;
-                    newBat.oldapLeft = newBat.ap;
-                } else {
-                    newBat.apLeft = Math.floor(newBat.ap/1.5);
-                    newBat.oldapLeft = Math.floor(newBat.ap/1.5);
-                }
+                newBat.apLeft = Math.floor(newBat.ap/1.5);
+                newBat.oldapLeft = Math.floor(newBat.ap/1.5);
                 newBat.salvoLeft = conselUnit.maxSalvo;
             } else {
                 if (conselTriche || playerInfos.onShip) {
