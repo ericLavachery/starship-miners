@@ -30,7 +30,11 @@ function alienMoveLoop() {
             console.log('loop '+iter+' || ap:'+selectedBat.apLeft+' salvo:'+selectedBat.salvoLeft);
             if (selectedBat.apLeft >= 1 && selectedBat.salvoLeft >= 1) {
                 if (attAlive && defAlive) {
-                    chooseTarget();
+                    if (stopForFight) {
+                        break;
+                    } else {
+                        chooseTarget();
+                    }
                 } else {
                     break;
                 }
@@ -1097,11 +1101,6 @@ function moveAlienBat(tileId,jump) {
     // remove ap
     let moveCost;
     if (jump) {
-        // if (selectedBatType.skills.includes('fouisseur') && !selectedBatType.skills.includes('errant')) {
-        //     moveCost = selectedBat.apLeft;
-        //     selectedBat.salvoLeft = 0;
-        // } else {
-        // }
         moveCost = selectedBat.apLeft-2;
     } else {
         if (isDiag(selectedBat.tileId,tileId)) {

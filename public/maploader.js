@@ -385,7 +385,11 @@ function showAlien(bat) {
     }
     if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 3) {
         let ripNum = getRipNum(bat,batType);
-        tagz = tagz+' ('+ripNum+' rip)';
+        if (!batType.skills.includes('infrip')) {
+            tagz = tagz+' ('+ripNum+' rip)';
+        } else {
+            tagz = tagz+' (rip inf)';
+        }
     }
     if (bat.tags.includes('poison')) {
         let allTags = _.countBy(bat.tags);

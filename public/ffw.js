@@ -63,7 +63,11 @@ function ffw() {
         closeTargetRange = rand.rand(1,closeTargetRangeDice);
         alienMoveLoop();
         if (Object.keys(selectedBat).length >= 1) {
-            outOfList.push(selectedBat.id);
+            if (stopForFight && selectedBat.salvoLeft >= 1 && selectedBat.apLeft >= 1) {
+                // reste sur l'unité
+            } else {
+                outOfList.push(selectedBat.id);
+            }
         }
         if (stopForFight) {
             console.log('$$$$$$$ STOP AFTER COMBAT');

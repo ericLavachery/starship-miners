@@ -2604,7 +2604,7 @@ function calcShotDice(bat,luckyshot) {
 
 function apCostRiposte(bat,batType,weap) {
     let apCost = 1;
-    if (batType.skills.includes('guerrilla')) {
+    if (batType.skills.includes('guerrilla') || batType.skills.includes('infrip')) {
         apCost = 0;
     } else {
         if (weap.cost <= 1) {
@@ -2617,8 +2617,10 @@ function apCostRiposte(bat,batType,weap) {
             apCost = 3;
         }
     }
-    if (batType.cat === 'aliens' && weap.num === 2 && batType.w2chance > 2) {
-        apCost = apCost+((batType.w2chance-2)*2);
+    if (batType.cat === 'aliens') {
+        if (weap.num === 2 && batType.w2chance > 2) {
+            apCost = apCost+((batType.w2chance-2)*2);
+        }
     }
     return apCost;
 };
@@ -2728,6 +2730,13 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
                 brideDef = gmin;
             }
         }
+    }
+    if (batType.skills.includes('infrip')) {
+        let ripFactor = ((bat.salvoLeft/2)+4)/4;
+        if (ripFactor < 0.2) {
+            ripFactor = 0.2;
+        }
+        brideDef = brideDef*ripFactor;
     }
     if (weap.name === 'Autopistol' || weap.name === 'Tourelles auto') {
         brideDef = 1;

@@ -133,7 +133,7 @@ function combat(melee) {
     if (targetBat.tags.includes('hero') && targetBatType.skills.includes('herorip')) {
         negSalvo = negSalvo-3;
     }
-    if ((distance <= 3 || targetBatType.skills.includes('smartrip')) && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef && targetBat.salvoLeft > negSalvo) {
+    if ((distance <= 3 || targetBatType.skills.includes('smartrip')) && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef && (targetBat.salvoLeft > negSalvo || targetBatType.skills.includes('infrip'))) {
         let realmOK = checkRealm();
         if (realmOK) {
             riposte = true;
@@ -1427,25 +1427,25 @@ function defense(melee,init) {
         }
     }
     // console.log('brideDef='+brideDef);
-    let shots = Math.round(targetWeap.rof*targetBat.squadsLeft*brideDef);
+    let shots = Math.ceil(targetWeap.rof*targetBat.squadsLeft*brideDef);
     // undead
     if (targetBatType.skills.includes('undead') || targetBat.tags.includes('zombie')) {
-        shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);
+        shots = Math.ceil(targetWeap.rof*targetBatType.squads*brideDef);
     }
     // hero fanatic
     if ((targetBat.tags.includes('hero') || targetBat.tags.includes('vet')) && targetBatType.skills.includes('herofana')) {
-        shots = Math.round(targetWeap.rof*targetBatType.squads*brideDef);
+        shots = Math.ceil(targetWeap.rof*targetBatType.squads*brideDef);
     }
     // SCIES (noGrip)
     if (selectedWeap.noGrip && targetWeap.range === 0 && targetBatType.size >= 3) {
-        shots = Math.round(shots/1.25);
+        shots = Math.ceil(shots/1.25);
         defFactor = Math.round(defFactor/1.25);
     }
     // ESCAPE
     escaped = false;
     let escapeFactor = calcEscape(selectedBat,selectedBatType,targetWeap,targetBat,tile);
     if (escapeFactor < 1) {
-        shots = Math.round(shots*escapeFactor);
+        shots = Math.ceil(shots*escapeFactor);
         defFactor = Math.round(defFactor*escapeFactor);
     }
     // HORST BOOST
