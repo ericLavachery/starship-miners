@@ -595,11 +595,13 @@ function maxUnits(unit) {
     maxOf.lbot = 0;
     maxOf.hveh = 0;
     maxOf.saucer = 0;
+    maxOf.dog = 0;
     let numOf = {};
     numOf[unit.name] = 0;
     let total = {};
     total.leader = 0;
     total.saucer = 0;
+    total.dog = 0;
     let maxInfo = {};
     maxInfo.ko = false;
     maxInfo.text = 'Maximum non atteint';
@@ -628,7 +630,7 @@ function maxUnits(unit) {
             maxInfo.text = 'Vous ne pouvez pas faire des chercheurs hors de la station';
         }
     }
-    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('hveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxdet') || unit.skills.includes('maxind')) {
+    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('hveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxdet') || unit.skills.includes('maxind') || unit.skills.includes('maxgang')) {
         bataillons.forEach(function(bat) {
             let batType = getBatType(bat);
             if (batType.name === 'Aérodocks') {
@@ -647,6 +649,9 @@ function maxUnits(unit) {
             if (batType.name === 'Poste radio') {
                 maxOf.lbot = maxOf.lbot+3;
             }
+            if (batType.name === 'Chenil') {
+                maxOf.dog = maxOf.dog+6;
+            }
             if (bat.type === unit.name) {
                 numOf[unit.name]++;
             }
@@ -655,6 +660,9 @@ function maxUnits(unit) {
             }
             if (batType.skills.includes('saucer')) {
                 total.saucer++;
+            }
+            if (batType.skills.includes('dog')) {
+                total.dog++;
             }
         });
     }
@@ -666,6 +674,12 @@ function maxUnits(unit) {
             } else {
                 maxInfo.text = 'Pour pouvoir avoir plus de leaders vous devez monter de niveau';
             }
+        }
+    }
+    if (unit.skills.includes('dog')) {
+        if (total.dog >= maxOf.dog && numOf[unit.name] >= 1) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir avoir plus de chiens vous devez construire un chenil supplémentaire';
         }
     }
     if (unit.skills.includes('saucer')) {
@@ -742,6 +756,19 @@ function maxUnits(unit) {
         if (numOf[unit.name] >= maxThis) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de détection';
+        }
+    }
+    if (unit.skills.includes('maxgang')) {
+        if (playerInfos.gang === 'rednecks') {
+            if (numOf[unit.name] >= playerInfos.comp.log+1 && numOf[unit.name] >= 1) {
+                maxInfo.ko = true;
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de logistique';
+            }
+        } else {
+            if (numOf[unit.name] >= Math.floor((playerInfos.comp.log/2)+(playerInfos.comp.gen/1.5)+1) && numOf[unit.name] >= 1) {
+                maxInfo.ko = true;
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter vos compétences de logistique et de génétique';
+            }
         }
     }
     console.log(maxInfo);

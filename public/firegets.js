@@ -2142,59 +2142,6 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.maxAmmo = 16;
         }
     }
-    // if (bat.eq === 'arrosoir') {
-    //     if (thisWeapon.name.includes('Lance-flammes')) {
-    //         thisWeapon.name = 'Arrosoir';
-    //         thisWeapon.range = 1;
-    //         thisWeapon.elevation = 1;
-    //         thisWeapon.accuracy = thisWeapon.accuracy-10;
-    //         thisWeapon.noDef = true;
-    //         thisWeapon.rof = 6;
-    //         thisWeapon.power = 0;
-    //         thisWeapon.sound = 'hose';
-    //         if (wn == 'w2') {
-    //             bat.ammo2 = 'fuel';
-    //         } else {
-    //             bat.ammo = 'fuel';
-    //         }
-    //     }
-    // }
-    // if (bat.eq === 'arcpoulie' || bat.logeq === 'arcpoulie') {
-    //     if (thisWeapon.name.includes('Arc')) {
-    //         thisWeapon.name = 'Arc à poulies';
-    //         thisWeapon.range = 2;
-    //         thisWeapon.elevation = 1;
-    //         thisWeapon.hide = false;
-    //         thisWeapon.power = 8;
-    //         if (playerInfos.comp.train < 1) {
-    //             thisWeapon.cost = 4;
-    //         } else {
-    //             thisWeapon.cost = 3;
-    //         }
-    //     }
-    // }
-    // if (bat.eq === 'arbalourde' || bat.logeq === 'arbalourde') {
-    //     if (thisWeapon.name.includes('Arbalète')) {
-    //         thisWeapon.name = 'Arbalète lourde';
-    //         thisWeapon.elevation = 1;
-    //         thisWeapon.hide = false;
-    //         thisWeapon.power = 9;
-    //         thisWeapon.armors = 0.8;
-    //         if (playerInfos.comp.train < 1) {
-    //             thisWeapon.cost = 5;
-    //         } else {
-    //             thisWeapon.cost = 4;
-    //         }
-    //     }
-    // }
-    // if (bat.eq === 'belier' || bat.logeq === 'belier') {
-    //     if (thisWeapon.name === 'Boutoir') {
-    //         thisWeapon.rof = thisWeapon.rof*1.5;
-    //         thisWeapon.power = Math.round(thisWeapon.power*1.26);
-    //         thisWeapon.accuracy = thisWeapon.accuracy+2;
-    //         thisWeapon.name = 'Bélier';
-    //     }
-    // }
     if (bat.eq === 'crimekitgi') {
         if (thisWeapon.num === 1) {
             thisWeapon.power = thisWeapon.power+1;
@@ -2296,8 +2243,8 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     // helper
-    if ((bat.eq === 'helper' || bat.logeq === 'helper') && thisWeapon.isMelee) {
-        thisWeapon.power = thisWeapon.power+3;
+    if ((bat.eq === 'helper' || bat.logeq === 'helper') && (thisWeapon.isMelee || thisWeapon.name.includes('Javelot'))) {
+        thisWeapon.power = Math.round(thisWeapon.power*1.33);
     }
     // sila drug
     if (bat.tags.includes('sila')) {

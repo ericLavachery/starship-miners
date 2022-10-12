@@ -806,7 +806,7 @@
         "name":"helper",
         "cat":"equip",
         "skills":[],
-        "info":"Bonus PA & +3 puissance mêlée",
+        "info":"Bonus PA & mouvement & puissance mêlée",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"cyber":1},
         "autoComp":[],
@@ -1185,7 +1185,7 @@
         "skills":[],
         "info":"Ceinture d'explosifs",
         "bldReq":["Armurerie"],
-        "compReq":{"log":1,"explo":2},
+        "compReq":{"arti":1,"explo":1},
         "factor":"one",
         "costs":{"Explosifs":30,"Fer":12,"Plomb":4,"Titane":4,"Azote":6,"Cuivre":6,"Electros":1}
     },

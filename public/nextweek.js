@@ -289,12 +289,12 @@ function rechercheSci(bat,time) {
             }
         } else {
             bat.eq = 'aucun';
-            warning('<span class="cy">RECHERCHE: Matériel obsolète!</span>','<span class="gfbleu">Vous devez acheter du nouveau matériel (équipement) pour que vos chercheurs puissent travailler.</span><br>',true);
+            warning('<span class="hrouge">RECHERCHE: Matériel obsolète!</span>','<span class="gfbleu">Vous devez acheter du nouveau matériel (équipement) pour que vos chercheurs puissent travailler.</span><br>',true);
         }
     } else if (bat.eq === 'gang-lore') {
         playerInfos.gangXP = playerInfos.gangXP+Math.round(time/3);
     } else {
-        warning('<span class="cy">RECHERCHE: Chercheurs sans matériel!</span>','<span class="gfbleu">Vous devez leur acheter du matériel (équipement) pour qu\'ils puissent travailler.</span><br>',true);
+        warning('<span class="hrouge">RECHERCHE: Chercheurs sans matériel!</span>','<span class="gfbleu">Vous devez leur acheter du matériel (équipement) pour qu\'ils puissent travailler.</span><br>',true);
     }
 };
 
@@ -711,7 +711,7 @@ function calcCrimeRate(mesCitoyens) {
 };
 
 function chenilProd(bat,batType,time,sim,quiet) {
-    if (playerInfos.onShip && playerInfos.gang === 'rednecks') {
+    if (playerInfos.onShip) {
         console.log('UPKEEP');
         console.log(batType.name);
         let upkeepPaid = true;
@@ -747,18 +747,25 @@ function chenilProd(bat,batType,time,sim,quiet) {
         }
         console.log('upkeepPaid='+upkeepPaid);
         if (upkeepPaid) {
-            let dogChance = Math.ceil(time/2);
-            dogChance = Math.ceil(dogChance*(playerInfos.comp.med+12)/12*(playerInfos.comp.ordre+12)/12);
-            console.log('dogChance='+dogChance);
-            if (rand.rand(1,100) <= dogChance) {
-                console.log('DOOOOOOOOOOOOGS');
-                modWeekRes('Viande',-120);
-                if (!sim) {
-                    resSub('Viande',120);
-                }
-                message = message+'Viande:<span class="rose">-120</span><br>';
-                if (!sim) {
-                    putDog();
+            let dogUnit = getBatTypeById(264);
+            let maxInfo = maxUnits(dogUnit);
+            if (maxInfo.ko) {
+                message = message+'<span class="hrouge">'+maxInfo.text+'</span><br>';
+            } else {
+                let dogChance = Math.ceil(time/2);
+                dogChance = Math.ceil(dogChance*(playerInfos.comp.med+12)/12*(playerInfos.comp.ordre+12)/12);
+                console.log('dogChance='+dogChance);
+                if (rand.rand(1,100) <= dogChance) {
+                    console.log('DOOOOOOOOOOOOGS');
+                    modWeekRes('Viande',-120);
+                    if (!sim) {
+                        resSub('Viande',120);
+                    }
+                    message = message+'<span class="cy">Vous avez un nouveau bataillon de Wardogs!</span><br>';
+                    message = message+'Viande:<span class="rose">-120</span><br>';
+                    if (!sim) {
+                        putDog();
+                    }
                 }
             }
         }
@@ -769,8 +776,7 @@ function chenilProd(bat,batType,time,sim,quiet) {
 }
 
 function putDog() {
-    let unitIndex = unitTypes.findIndex((obj => obj.id === 264));
-    conselUnit = unitTypes[unitIndex];
+    conselUnit = getBatTypeById(264);
     conselAmmos = ['dents','xxx','aucune','aucun'];
     conselPut = false;
     conselTriche = true;

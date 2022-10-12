@@ -1370,11 +1370,13 @@ function checkXPBonus(myBatType) {
             batNewXP = batNewXP+levelXP[3];
         }
     } else if (myBatType.cat === 'buildings' || myBatType.cat === 'devices' || myBatType.kind === 'zero-defense' || myBatType.skills.includes('garde') || myBatType.skills.includes('cage')) {
-        if (playerInfos.comp.def === 2) {
-            batNewXP = batNewXP+levelXP[1];
-        }
-        if (playerInfos.comp.def === 3) {
-            batNewXP = batNewXP+levelXP[2];
+        if (!myBatType.skills.includes('dog')) {
+            if (playerInfos.comp.def === 2) {
+                batNewXP = batNewXP+levelXP[1];
+            }
+            if (playerInfos.comp.def === 3) {
+                batNewXP = batNewXP+levelXP[2];
+            }
         }
     } else {
         if (playerInfos.comp.train === 1) {

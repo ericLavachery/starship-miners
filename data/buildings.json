@@ -3503,7 +3503,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","badmedic","recupcit","crewsave","transport","routes","fret","dumper","longshot","dogprod"],
+        "skills":["fouille","badmedic","recupcit","crewsave","transport","routes","fret","dumper","longshot","dogprod","maxgang"],
         "mecanoCost":10,
         "mediCost":12,
         "transMaxSize":12,

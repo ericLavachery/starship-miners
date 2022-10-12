@@ -407,7 +407,9 @@ function allowedArmors(unit) {
         }
     }
     if (unit.skills.includes('a_light') || unit.skills.includes('a_mid') || unit.skills.includes('a_heavy')) {
-        protection.push('duneg');
+        if (!unit.skills.includes('resistall')) {
+            protection.push('duneg');
+        }
         protection.push('tisal');
         protection.push('swing');
         protection.push('adamantite');
@@ -426,7 +428,9 @@ function allowedArmors(unit) {
         protection.push('chobham');
         protection.push('nano');
         protection.push('soap');
-        protection.push('duneg');
+        if (!unit.skills.includes('resistall')) {
+            protection.push('duneg');
+        }
         protection.push('swing');
         protection.push('tisal');
     }
@@ -437,7 +441,9 @@ function allowedArmors(unit) {
         }
         protection.push('chobham');
         protection.push('soap');
-        protection.push('duneg');
+        if (!unit.skills.includes('resistall')) {
+            protection.push('duneg');
+        }
     }
     if (unit.skills.includes('a_elga')) {
         protection.push('aucune');
@@ -701,7 +707,7 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.def === 3) {
             defComp++;
         }
-        if (playerInfos.comp.def >= 1 && (unit.kind === 'zero-defense' || unit.name.includes('Caserne') || unit.skills.includes('cage')) && !unit.skills.includes('dome') && !unit.skills.includes('pilone') && !unit.skills.includes('cfo')) {
+        if (playerInfos.comp.def >= 1 && (unit.kind === 'zero-defense' || unit.name.includes('Caserne') || unit.skills.includes('cage')) && !unit.skills.includes('dog') && !unit.skills.includes('dome') && !unit.skills.includes('pilone') && !unit.skills.includes('cfo')) {
             if (unit.compReq === undefined && unit.compHardReq === undefined) {
                 unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.def);
                 if (unit.levels[playerInfos.gang] < 1) {
@@ -746,7 +752,7 @@ function playerSkillsUTChanges() {
         }
         if (playerInfos.comp.def >= 1) {
             if (unit.cat === 'buildings' || unit.cat === 'devices' || unit.kind === 'zero-defense' || unit.name.includes('Caserne') || unit.skills.includes('garde') || unit.skills.includes('cage')) {
-                if (unit.kind != 'zero-artillerie') {
+                if (unit.kind != 'zero-artillerie' && !unit.skills.includes('dog')) {
                     if (Object.keys(unit.weapon).length >= 3) {
                         let w1CostBonus = playerInfos.comp.def-1;
                         if (w1CostBonus > unit.weapon.cost-2) {
