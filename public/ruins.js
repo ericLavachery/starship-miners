@@ -636,7 +636,7 @@ function checkRuinsRes(tile) {
                     }
                 }
                 let diffBonus = zone[0].mapDiff*zone[0].mapDiff/200;
-                thatResChance = thatResChance*(playerInfos.comp.tri+2)/3;
+                thatResChance = thatResChance*(playerInfos.comp.tri+1)/4;
                 if (res.name == 'Nourriture' || res.name == 'Viande' || res.name == 'Fruits') {
                     thatResChance = thatResChance*(zone[0].mapDiff+8)/9;
                     diffBonus = 0;
@@ -700,7 +700,7 @@ function checkRuinsRes(tile) {
                             }
                         }
                         let diffBonus = zone[0].mapDiff*zone[0].mapDiff/200;
-                        thatResChance = thatResChance*(playerInfos.comp.tri+2)/3;
+                        thatResChance = thatResChance*(playerInfos.comp.tri+1)/4;
                         if (res.name == 'Nourriture' || res.name == 'Viande' || res.name == 'Fruits') {
                             thatResChance = thatResChance*(zone[0].mapDiff+8)/9;
                             diffBonus = 0;
@@ -772,7 +772,7 @@ function checkRuinsUnit(tile) {
         let count = true;
         let chance = 0;
         let foundUnitId = -1;
-        let checkDice = 120;
+        let checkDice = 450;
         let shufUnits = _.shuffle(unitTypes);
         shufUnits.forEach(function(unit) {
             if (foundUnitId < 0) {

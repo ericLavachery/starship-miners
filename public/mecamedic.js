@@ -405,17 +405,17 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     if (!inBld) {
         if (!selectedBatType.skills.includes('robot') || selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
             selectedBat.xp = selectedBat.xp+xpGain;
-            selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
         }
+        selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
         tagDelete(selectedBat,'mining');
-        tagDelete(selectedBat,'guet');
+        // tagDelete(selectedBat,'guet');
         doneAction(selectedBat);
         selectedBatArrayUpdate();
     } else {
         if (!medicBatType.skills.includes('robot') || medicBat.eq === 'g2ai' || medicBat.logeq === 'g2ai') {
             medicBat.xp = medicBat.xp+xpGain;
-            medicBat.apLeft = medicBat.apLeft-totalAPCost;
         }
+        medicBat.apLeft = medicBat.apLeft-totalAPCost;
     }
     showBatInfos(selectedBat);
 };
@@ -701,7 +701,7 @@ function getAway(myBat,fromTileId,blob) {
         $('#b'+myBat.tileId).empty().append(resHere);
         myBat.tileId = getAwayTile;
         myBat.apLeft = myBat.apLeft-apCost;
-        tagDelete(myBat,'guet');
+        // tagDelete(myBat,'guet');
         tagDelete(myBat,'fortif');
         if (myBat.tags.includes('camo') && !blob) {
             myBat.fuzz = -1;
@@ -720,7 +720,7 @@ function getAway(myBat,fromTileId,blob) {
     } else {
         if (!blob) {
             myBat.apLeft = 0-Math.round(myBat.ap/4*3);
-            tagDelete(myBat,'guet');
+            // tagDelete(myBat,'guet');
             tagDelete(myBat,'fortif');
             if (myBat.tags.includes('camo')) {
                 myBat.fuzz = -1;

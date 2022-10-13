@@ -368,11 +368,11 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["invisible","vault","errant","chancre","okwater","initmelee","dread"],
+        "skills":["invisible","vault","errant","flee","regeneration","chancre","okwater","initmelee","dread"],
         "deathFx":"death2",
         "spawnFx":"spawn-ghost",
         "fxPriority":1,
-        "killRes":{"Bugium":3,"Blendium":21,"Larvium":11,"Germium":10,"Bossium":3},
+        "killRes":{"Bugium":3,"Blendium":21,"Larvium":11,"Mendium":5,"Germium":10,"Bossium":3},
         "killXP":25,
         "flavText":"Les fantômes restent rarement longtemps au même endroit pour ne pas être repérés."
     },
@@ -2748,7 +2748,7 @@
             "rof":3,
             "accuracy":23,
             "dca":1.5,
-            "power":13,
+            "power":10,
             "aoe":"brochette",
             "sound":"ruche",
             "ammo":["ruche"]
@@ -2763,7 +2763,7 @@
             "rof":3,
             "accuracy":19,
             "dca":1.5,
-            "power":14,
+            "power":10,
             "aoe":"brochette",
             "sound":"ruche",
             "ammo":["ruche"]
