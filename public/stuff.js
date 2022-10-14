@@ -302,6 +302,16 @@ function heroUp(bat,batType,grade) {
                 bat.tags.push('vet');
             }
         }
+        if (batType.skills.includes('autohero')) {
+            if (bat.tags.includes('schef')) {
+                tagDelete(bat,'schef');
+                bat.tags.push('hero');
+            }
+            if (bat.tags.includes('vet')) {
+                tagDelete(bat,'vet');
+                bat.tags.push('hero');
+            }
+        }
     } else if (grade === 'Général') {
         if (rand.rand(1,5) <= 2) {
             bat.tags.push('hero');

@@ -4122,7 +4122,7 @@
             "range":2,
             "isShort":true,
             "noise":2,
-            "rof":6,
+            "rof":9,
             "accuracy":22,
             "dca":1.3,
             "power":7,
@@ -4143,7 +4143,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"grenade",
-            "ammo":["fireball","fireglue","firemarq","fireslime","fireblast"],
+            "ammo":["fireball","fireglue","firemarq","fireslime","firebug","fireblast"],
             "maxAmmo":13,
             "ravitBld":"Atelier"
         },

@@ -1080,6 +1080,9 @@ function getAP(bat,batType) {
             newAP++;
         }
     }
+    if (batType.skills.includes('heroap') && bat.tags.includes('hero')) {
+        newAP = newAP+2;
+    }
     if (bat.eq === 'helper' || bat.logeq === 'helper') {
         newAP = newAP+1;
     }

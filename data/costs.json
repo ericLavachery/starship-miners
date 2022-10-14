@@ -91,7 +91,7 @@
         "compReq":{"ordre":3},
         "costs":{"Scrap":30,"Carbone":60,"Bois":60,"Aluminium":105,"Titane":45,"Cuivre":60,"Tissus":30,"Azote":30,"Mendium":30,"Silicium":30,"Electros":60,"Batteries":30},
         "deploy":{"Energie":60},
-        "fabTime":40,
+        "fabTime":90,
         "crime":-2
     },
     {
@@ -647,6 +647,27 @@
         "fabTime":50
     },
     {
+        "id":117,
+        "name":"Light knights",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":13},
+        "bldReq":["Caserne Brasier","Usine d'armement","Cabines"],
+        "compHardReq":{"energ":1},
+        "unitCost":"Slings",
+        "costs":{"Fer":90,"Scrap":60,"Carbone":120,"Tungstène":120,"Rhodium":120,"Silicium":30,"Electros":90,"Batteries":120,"Moteurs":60,"Nickel":60,"Fuel":60,"Soufre":30,"Plomb":30,"Drogues":80,"Or":60,"Chlore":20,"Zinc":20,"Tissus":40},
+        "deploy":{"Fuel":50,"Drogues":7,"Chlore":3,"Zinc":3,"Tissus":3},
+        "fabTime":80
+    },
+    {
+        "id":130,
+        "name":"Luchandos",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":13,"detruas":99,"brasier":99},
+        "bldReq":["Caserne Tiradores","Arsenal","Appartements"],
+        "unitCost":"Pistoleros",
+        "costs":{"Fer":315,"Scrap":189,"Aluminium":63,"Silicium":32,"Végétaux":94,"Blendium":64,"Soufre":63,"Plomb":63,"Drogues":86,"Or":63,"Chlore":30,"Zinc":30,"Tissus":43},
+        "deploy":{"Energie":10,"Drogues":7,"Chlore":3,"Zinc":3,"Tissus":3},
+        "fabTime":40
+    },
+    {
         "id":72,
         "name":"Dogs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":5,"brasier":99},
@@ -869,7 +890,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":11,"brasier":99},
         "bldReq":["Laboratoire","Chaîne de montage"],
         "compReq":{"robo":1},
-        "costs":{"Scrap":60,"Fer":30,"Carbone":120,"Moteurs":100,"Titane":270,"Electros":90,"Batteries":90,"Cuivre":72,"Silicium":60},
+        "costs":{"Scrap":60,"Fer":30,"Carbone":120,"Moteurs":100,"Titane":270,"Electros":60,"Batteries":90,"Cuivre":60,"Silicium":30},
         "deploy":{"Energie":90},
         "fabTime":70,
         "inRuin":1
@@ -981,6 +1002,7 @@
         "name":"Thermoguards",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":8},
         "bldReq":["Camp d'entraînement","Armurerie","Atelier"],
+        "compReq":{"energ":1},
         "costs":{"Fer":128,"Scrap":128,"Carbone":64,"Plomb":64,"Aluminium":64,"Tungstène":64,"Rhodium":64,"Végétaux":96,"Blendium":64,"Oxygène":64,"Drogues":17,"Chlore":17,"Zinc":17,"Tissus":8},
         "deploy":{"Drogues":7,"Chlore":3,"Zinc":3,"Tissus":3},
         "fabTime":30
@@ -993,27 +1015,6 @@
         "costs":{"Fer":128,"Scrap":64,"Carbone":128,"Silicium":32,"Electros":64,"Batteries":32,"Végétaux":136,"Blendium":64,"Soufre":64,"Plomb":64,"Chlore":20,"Zinc":20,"Tissus":10},
         "deploy":{"Drogues":3,"Tissus":2},
         "fabTime":25
-    },
-    {
-        "id":117,
-        "name":"Light knights",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":13},
-        "bldReq":["Caserne Brasier","Usine d'armement","Cabines"],
-        "compHardReq":{"energ":1},
-        "unitCost":"Slings",
-        "costs":{"Fer":90,"Scrap":60,"Carbone":120,"Tungstène":120,"Rhodium":120,"Silicium":30,"Electros":90,"Batteries":120,"Moteurs":60,"Nickel":60,"Fuel":60,"Soufre":30,"Plomb":30,"Drogues":80,"Or":60,"Chlore":20,"Zinc":20,"Tissus":40},
-        "deploy":{"Fuel":50,"Drogues":7,"Chlore":3,"Zinc":3,"Tissus":3},
-        "fabTime":80
-    },
-    {
-        "id":130,
-        "name":"Luchandos",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":13,"detruas":99,"brasier":99},
-        "bldReq":["Caserne Tiradores","Arsenal","Appartements"],
-        "unitCost":"Pistoleros",
-        "costs":{"Fer":315,"Scrap":189,"Aluminium":63,"Silicium":32,"Végétaux":94,"Blendium":64,"Soufre":63,"Plomb":63,"Drogues":86,"Or":63,"Chlore":30,"Zinc":30,"Tissus":43},
-        "deploy":{"Energie":10,"Drogues":7,"Chlore":3,"Zinc":3,"Tissus":3},
-        "fabTime":40
     },
     {
         "id":289,

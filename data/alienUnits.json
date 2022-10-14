@@ -2980,7 +2980,7 @@
             "rof":12,
             "accuracy":18,
             "power":18,
-            "armors":0.75,
+            "armors":0.9,
             "aoe":"unit",
             "sound":"growl1",
             "ammo":["none"]
