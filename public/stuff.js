@@ -225,6 +225,16 @@ function getGangFactors() {
 };
 
 function levelUp(bat,batType) {
+    if (batType.skills.includes('autohero')) {
+        if (bat.tags.includes('schef')) {
+            tagDelete(bat,'schef');
+            bat.tags.push('hero');
+        }
+        if (bat.tags.includes('vet')) {
+            tagDelete(bat,'vet');
+            bat.tags.push('hero');
+        }
+    }
     let oldGrade = getGrade(bat,batType);
     bat.xp = bat.xp.toFixedNumber(2);
     if (bat.xp >= levelXP[4]) {
@@ -604,6 +614,7 @@ function maxUnits(unit) {
     maxOf.hbot = 0;
     maxOf.lbot = 0;
     maxOf.hveh = 0;
+    maxOf.elite = 0;
     maxOf.saucer = 0;
     maxOf.dog = 0;
     let numOf = {};
@@ -615,6 +626,7 @@ function maxUnits(unit) {
     let maxInfo = {};
     maxInfo.ko = false;
     maxInfo.text = 'Maximum non atteint';
+    let maxLeaderAtteint = false;
     if (unit.name === 'Chercheurs') {
         if (playerInfos.onShip) {
             let maxSci = 1;
@@ -640,11 +652,17 @@ function maxUnits(unit) {
             maxInfo.text = 'Vous ne pouvez pas faire des chercheurs hors de la station';
         }
     }
-    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('hveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxdet') || unit.skills.includes('maxind') || unit.skills.includes('maxgang')) {
+    if (playerInfos.bldList.includes('Camp d\'entraînement')) {
+        maxOf.elite = maxOf.elite+playerInfos.train;
+        if (maxOf.elite < 1) {
+            maxOf.elite = 1;
+        }
+    }
+    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('wdev') || unit.skills.includes('hveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxdet') || unit.skills.includes('maxind') || unit.skills.includes('maxgang')) {
         bataillons.forEach(function(bat) {
             let batType = getBatType(bat);
             if (batType.name === 'Aérodocks') {
-                maxOf.saucer = maxOf.saucer+6;
+                maxOf.saucer = maxOf.saucer+5;
             }
             if (batType.name === 'Usine d\'armement') {
                 maxOf.tank = maxOf.tank+3;
@@ -662,6 +680,9 @@ function maxUnits(unit) {
             if (batType.name === 'Chenil') {
                 maxOf.dog = maxOf.dog+6;
             }
+            if (batType.name.includes('Caserne')) {
+                maxOf.elite = maxOf.elite+2;
+            }
             if (bat.type === unit.name) {
                 numOf[unit.name]++;
             }
@@ -676,13 +697,27 @@ function maxUnits(unit) {
             }
         });
     }
+    if (!playerInfos.bldList.includes('Camp d\'entraînement')) {
+        maxOf.elite = 1;
+    }
     if (unit.skills.includes('leader')) {
-        if (total.leader >= Math.round(playerInfos.gLevel/4.1)) {
+        if (total.leader >= Math.floor((playerInfos.gLevel-6)/3)) {
             maxInfo.ko = true;
-            if (total.leader >= 5) {
+            maxLeaderAtteint = true;
+            if (total.leader >= 4) {
                 maxInfo.text = 'Maximum de leaders atteint';
             } else {
                 maxInfo.text = 'Pour pouvoir avoir plus de leaders vous devez monter de niveau';
+            }
+        }
+    }
+    if (unit.skills.includes('elite') || (unit.skills.includes('leader') && !maxLeaderAtteint)) {
+        if (numOf[unit.name] >= maxOf.elite && numOf[unit.name] >= 1) {
+            maxInfo.ko = true;
+            if (playerInfos.bldList.includes('Camp d\'entraînement')) {
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire une caserne supplémentaire';
+            } else {
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire un camp d\'entraînement';
             }
         }
     }
@@ -699,7 +734,11 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('hbot')) {
-        if (numOf[unit.name] >= maxOf.hbot && numOf[unit.name] >= 2) {
+        let maxThis = maxOf.hbot;
+        if (unit.skills.includes('fog')) {
+            maxThis++;
+        }
+        if (numOf[unit.name] >= maxThis && numOf[unit.name] >= 2) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire un centre de com supplémentaire';
         }
@@ -720,6 +759,18 @@ function maxUnits(unit) {
         if (numOf[unit.name] >= maxOf.hveh && numOf[unit.name] >= 2) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire une chaîne de montage supplémentaire';
+        }
+    }
+    if (unit.skills.includes('wbld')) {
+        if (numOf[unit.name] >= playerInfos.comp.def+2) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de désense';
+        }
+    }
+    if (unit.skills.includes('wdev')) {
+        if (numOf[unit.name] >= playerInfos.comp.def+(playerInfos.comp.arti*2)) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de désense ou d\'artillerie';
         }
     }
     if (unit.skills.includes('max1')) {
@@ -1253,5 +1304,12 @@ function coolManCool() {
     // triche: supprime le stress des bataillons
     bataillons.forEach(function(bat) {
         bat.emo = 0;
+    });
+};
+
+function noAlienRip() {
+    // triche: pas de riposte alien
+    aliens.forEach(function(bat) {
+        bat.apLeft = -10;
     });
 };

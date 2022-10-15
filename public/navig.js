@@ -262,7 +262,9 @@ function gangNavig() {
             $('#gangInfos').append('<button type="button" title="Check rencontres" class="boutonCiel iconButtons" onclick="encounterCheck()"><i class="fas fa-city"></i></button>');
             $('#gangInfos').append('<button type="button" title="Check voisins" class="boutonCiel iconButtons" onclick="lesVoisins()"><i class="fas fa-shuttle-van"></i></button>');
             $('#gangInfos').append('<button type="button" title="Map Editor" class="boutonCiel iconButtons" onclick="editMode()"><i class="fas fa-tree"></i></button>');
-            // $('#gangInfos').append('<button type="button" title="Supprime le stress de tous les bataillons" class="boutonCiel iconButtons" onclick="coolManCool()"><i class="fas fa-heart"></i></button>');
+            $('#gangInfos').append('<br>');
+            $('#gangInfos').append('<button type="button" title="Supprime le stress de tous les bataillons" class="boutonCiel iconButtons" onclick="coolManCool()"><i class="fas fa-heart"></i></button>');
+            $('#gangInfos').append('<button type="button" title="Pas de riposte des aliens" class="boutonCiel iconButtons" onclick="noAlienRip()"><i class="fas fa-wheelchair"></i></button>');
         }
     }
     $('#gangInfos').append('<div class="shSpace"></div>');

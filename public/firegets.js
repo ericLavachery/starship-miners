@@ -927,7 +927,7 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
     if (!defBat.tags.includes('jelly')) {
         if (attWeap.name != undefined) {
             if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet') || (defBatType.skills.includes('ricoface') && !init)) {
-                if (!attWeap.isFire && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('psionics') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield) {
+                if (!attWeap.isFire && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('snake') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('psionics') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield) {
                     let defArmor = defBat.armor;
                     if (defBatType.skills.includes('ricoface')) {
                         defArmor = defArmor+10;
@@ -1410,7 +1410,7 @@ function isInRange(myBat,thatTileId,myWeapon,alien) {
             }
         }
     }
-    if (myBat.type === 'Mines wipeout') {
+    if (myBat.type === 'Mines wipeout' || myWeapon.ammo.includes('lt-')) {
         rangeBonus = 0;
     }
     let halfRange = Math.floor(range/2);
@@ -2232,7 +2232,7 @@ function weaponAdj(weapon,bat,wn) {
     if (ammo.aoe != '' && thisWeapon.aoe != 'bat') {
         thisWeapon.aoe = ammo.aoe;
     }
-    if (ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit' || ammo.name.includes('web') || ammo.name.includes('marq') || ammo.name.includes('teflon')) {
+    if (ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit' || ammo.name.includes('web') || ammo.name.includes('marq') || ammo.name.includes('snake') || ammo.name.includes('teflon')) {
         thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
         thisWeapon.rof = thisWeapon.rof*ammo.rof;
     } else {

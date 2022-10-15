@@ -1302,6 +1302,7 @@ function attack(melee,init) {
         }
     }
     doneAction(selectedBat);
+    tagDelete(selectedBat,'embuscade');
     selectedBatArrayUpdate();
     escaped = false;
     if (selectedWeap.ammo.includes('-deluge')) {
