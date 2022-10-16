@@ -386,6 +386,9 @@ function moveSelectedBat(tileId,free,jump) {
         }
     }
     let tile = getTileById(tileId);
+    if (selectedBat.tags.includes('autoroad')) {
+        autoRoad(tile);
+    }
     if (tile.web) {
         if (!selectedBatType.skills.includes('fly') && selectedBat.eq != 'e-jetpack' && selectedBatType.moveCost < 90) {
             if (!selectedBat.tags.includes('mud')) {

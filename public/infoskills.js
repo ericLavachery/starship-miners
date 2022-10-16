@@ -1970,16 +1970,17 @@ function skillsInfos(bat,batType,near) {
         if (batType.skills.includes('infrahelp') || bat.eq === 'e-infra' || bat.logeq === 'e-infra') {
             roadsOK = checkRoadsAround(bat);
         }
-        if (!tile.rd || !roadsOK) {
-            apCost = Math.round(batType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3);
+        if (!tile.rd || !roadsOK || bat.tags.includes('autoroad')) {
+            apCost = batType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
             if (bat.eq === 'e-road' || bat.logeq === 'e-road') {
                 if (batType.skills.includes('routes')) {
-                    apCost = Math.round(apCost/1.5);
+                    apCost = apCost/1.5;
                 } else if (batType.mecanoCost < 12) {
-                    apCost = Math.round(12*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3);
+                    apCost = 12*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
                 }
             }
             apReq = Math.ceil(apCost/10);
+            apCost = Math.round(apCost);
             let roadCosts = getRoadCosts(tile);
             let roadCostsOK = checkCost(roadCosts);
             let roadName = 'Route';
@@ -1994,7 +1995,15 @@ function skillsInfos(bat,batType,near) {
                 }
             }
             if (bat.apLeft >= apReq && !inMelee && roadCostsOK && workForceOK) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris skillButtons" onclick="putRoad('+apCost+')"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
+                if (batType.moveCost < 90) {
+                    if (bat.tags.includes('autoroad')) {
+                        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Stopper la construction automatique de routes" class="boutonOK skillButtons cy" onclick="toggleAutoRoad('+apCost+',true)"><i class="fas fa-road"></i> <span class="small">stop</span></button>&nbsp; '+roadName+'</h4></span>');
+                    } else {
+                        $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris skillButtons" onclick="putRoad('+apCost+')"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Construction automatique de routes" class="boutonNoir skillButtons" onclick="toggleAutoRoad('+apCost+',false)"><i class="fas fa-road"></i> <span class="small">auto</span></button>&nbsp; '+roadName+'</h4></span>');
+                    }
+                } else {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris skillButtons" onclick="putRoad('+apCost+')"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
+                }
             } else {
                 if (inMelee) {
                     skillMessage = "Ne peut pas se faire en mêlée";

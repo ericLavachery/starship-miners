@@ -383,6 +383,20 @@ function getGrade(bat,batType) {
     return grade;
 };
 
+function isOccupied(tileId) {
+    //  tile occupé par une autre unité que le selectedBat?
+    let occu = false;
+    let bat = {};
+    let index = bataillons.findIndex((obj => obj.tileId === tileId && obj.loc === 'zone' && obj.id != selectedBat.id));
+    if (index > -1) {
+        bat = bataillons[index];
+    }
+    if (Object.keys(bat).length >= 1) {
+        occu = true;
+    }
+    return occu;
+};
+
 function nearbyAliens(myBat) {
     let nearby = {};
     nearby.one = false;
@@ -617,12 +631,14 @@ function maxUnits(unit) {
     maxOf.elite = 0;
     maxOf.saucer = 0;
     maxOf.dog = 0;
+    maxOf.mdev = 0;
     let numOf = {};
     numOf[unit.name] = 0;
     let total = {};
     total.leader = 0;
     total.saucer = 0;
     total.dog = 0;
+    total.mdev = 0;
     let maxInfo = {};
     maxInfo.ko = false;
     maxInfo.text = 'Maximum non atteint';
@@ -658,7 +674,7 @@ function maxUnits(unit) {
             maxOf.elite = 1;
         }
     }
-    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('wdev') || unit.skills.includes('hveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxdet') || unit.skills.includes('maxind') || unit.skills.includes('maxgang')) {
+    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('wdev') || unit.skills.includes('mdev') || unit.skills.includes('hveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxdet') || unit.skills.includes('maxind') || unit.skills.includes('maxgang')) {
         bataillons.forEach(function(bat) {
             let batType = getBatType(bat);
             if (batType.name === 'Aérodocks') {
@@ -694,6 +710,9 @@ function maxUnits(unit) {
             }
             if (batType.skills.includes('dog')) {
                 total.dog++;
+            }
+            if (batType.skills.includes('mdev')) {
+                total.mdev++;
             }
         });
     }
@@ -731,6 +750,12 @@ function maxUnits(unit) {
         if (total.saucer >= maxOf.saucer && numOf[unit.name] >= 3) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus d\'avions vous devez construire un aérodock supplémentaire';
+        }
+    }
+    if (unit.skills.includes('mdev')) {
+        if (total.mdev >= playerInfos.comp.def*20) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de désense';
         }
     }
     if (unit.skills.includes('hbot')) {

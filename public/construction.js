@@ -1111,10 +1111,11 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                             newBat.salvoLeft = 0;
                         } else {
                             let constFactor = 15;
+                            let averageDomeTime = 50;
                             if (conselUnit.skills.includes('domeconst')) {
                                 let rbonus = Math.round((playerInfos.mapTurn-10)*conselUnit.ap/2);
-                                newBat.apLeft = conselUnit.ap-(Math.round((conselUnit.fabTime+200)*conselUnit.ap/constFactor)*3)+rbonus;
-                                newBat.oldapLeft = conselUnit.ap-(Math.round((conselUnit.fabTime+200)*conselUnit.ap/constFactor)*3)+rbonus;
+                                newBat.apLeft = conselUnit.ap-(Math.round((conselUnit.fabTime+200)*conselUnit.ap/constFactor)*3/50*averageDomeTime)+rbonus;
+                                newBat.oldapLeft = conselUnit.ap-(Math.round((conselUnit.fabTime+200)*conselUnit.ap/constFactor)*3/50*averageDomeTime)+rbonus;
                             } else if (conselUnit.skills.includes('longconst')) {
                                 newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
                                 newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
@@ -1975,6 +1976,59 @@ function getRoadCosts(tile) {
         }
     }
     return roadCosts;
+};
+
+function toggleAutoRoad(apCost,stop) {
+    if (stop) {
+        tagDelete(selectedBat,'autoroad');
+    } else {
+        if (!selectedBat.tags.includes('autoroad')) {
+            selectedBat.tags.push('autoroad');
+        }
+        putRoad(apCost);
+    }
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+    showMap(zone,false);
+};
+
+function autoRoad(tile) {
+    let isBatHere = isOccupied(tile.id);
+    if (!tile.rd && !isBatHere) {
+        let terrain = getTerrain(selectedBat);
+        let apCost = selectedBatType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
+        if (selectedBat.eq === 'e-road' || selectedBat.logeq === 'e-road') {
+            if (selectedBatType.skills.includes('routes')) {
+                apCost = apCost/1.5;
+            } else if (selectedBatType.mecanoCost < 12) {
+                apCost = 12*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
+            }
+        }
+        if (tile.infra != undefined && tile.infra != 'Débris') {
+            apCost = Math.round(apCost/2);
+        } else {
+            apCost = Math.round(apCost);
+        }
+        let roadCosts = getRoadCosts(tile);
+        let roadCostsOK = checkCost(roadCosts);
+        if (roadCostsOK) {
+            selectedBat.apLeft = selectedBat.apLeft-apCost;
+            selectedBat.xp = selectedBat.xp+(terrain.roadBuild/30);
+            payCost(roadCosts);
+            doneAction(selectedBat);
+            camoOut();
+            tile.rd = true;
+            if (tile.qs != undefined) {
+                delete tile.qs;
+            }
+        } else if (selectedBat.tags.includes('autoroad')) {
+            tagDelete(selectedBat,'autoroad');
+        }
+        // if (selectedBat.apLeft <= 0 && selectedBat.tags.includes('autoroad')) {
+        //     tagDelete(selectedBat,'autoroad');
+        // }
+        // showMap(zone,false);
+    }
 };
 
 function putRoad(apCost) {

@@ -1136,7 +1136,7 @@
     {
         "id":1,
         "name":"Scouts",
-        "levels":{"rednecks":99,"blades":99,"bulbos":13,"drogmulojs":13,"tiradores":99,"detruas":9,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":12,"drogmulojs":12,"tiradores":99,"detruas":9,"brasier":99},
         "bldReq":["Armurerie","Garage"],
         "compReq":{"tank":1,"explo":1,"bal":2},
         "costs":{"Fer":220,"Scrap":215,"Carbone":75,"Aluminium":150,"Moteurs":60,"Tungstène":90,"Cuivre":15,"Batteries":25,"Compo2":60,"Cobalt":30,"Hélium":60,"Explosifs":10,"Fuel":40},
@@ -2100,7 +2100,7 @@
     {
         "id":285,
         "name":"Tourelles",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":13,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "compHardReq":{"bal":1,"pyro":1},
         "costs":{"Compo1":120,"Compo2":280,"Compo3":290,"Eau":48,"Scrap":120,"Tungstène":120,"Aluminium":120,"Fer":360},
@@ -2226,7 +2226,7 @@
         "levels":{"rednecks":15,"blades":15,"bulbos":14,"drogmulojs":15,"tiradores":16,"detruas":10,"brasier":14},
         "bldReq":["Atelier"],
         "compReq":{"explo":2},
-        "costs":{"Explosifs":60,"Nanite":60,"Tungstène":60,"Plomb":12,"Titane":12,"Azote":18,"Cuivre":18,"Electros":18},
+        "costs":{"Explosifs":60,"Nanite":120,"Tungstène":60,"Plomb":12,"Titane":12,"Azote":18,"Cuivre":18,"Electros":18},
         "fabTime":70
     },
     {
