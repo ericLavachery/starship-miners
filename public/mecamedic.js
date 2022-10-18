@@ -523,7 +523,7 @@ function addStressFlag(bat,emoType) {
                 stressChance = stressChance*(20+bat.emo)/20;
             }
             if (batType.skills.includes('lowstress')) {
-                stressChance = Math.round(stressChance/2);
+                stressChance = Math.ceil(stressChance/2);
             } else {
                 stressChance = Math.ceil(stressChance);
             }
@@ -556,7 +556,7 @@ function addStressFlag(bat,emoType) {
                     stressChance = stressChance/3;
                 }
             }
-            stressChance = Math.round(stressChance);
+            stressChance = Math.ceil(stressChance);
             if (rand.rand(1,100) <= stressChance) {
                 stressCost = 1;
             }
@@ -1086,8 +1086,10 @@ function maintenanceInZone() {
         payCost(maintCosts);
         selectedBat.soins = 0;
         selectedBat.apLeft = selectedBat.apLeft-(selectedBat.ap*2);
+        if (!selectedBat.tags.includes('construction')) {
+            selectedBat.tags.push('construction');
+        }
         selectedBatArrayUpdate();
-        // goSoute();
         showBatInfos(selectedBat);
     }
 };

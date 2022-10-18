@@ -3165,18 +3165,18 @@
         "stealth":0,
         "speed":-5,
         "ap":16,
-        "maxSalvo":1,
+        "maxSalvo":2,
         "weapon":{
             "name":"Fusil semi-auto",
             "cost":3,
             "range":3,
             "kit":true,
             "noise":2,
-            "rof":10,
+            "rof":7,
             "accuracy":23,
             "power":7,
             "aoe":"unit",
-            "sound":"calibre_sa_multi",
+            "sound":"calibre_sa",
             "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{

@@ -63,7 +63,7 @@ function ffw() {
         closeTargetRange = rand.rand(1,closeTargetRangeDice);
         alienMoveLoop();
         if (Object.keys(selectedBat).length >= 1) {
-            if (stopForFight && selectedBat.salvoLeft >= 1 && selectedBat.apLeft >= 1) {
+            if (stopForFight && selectedBat.salvoLeft >= 1 && selectedBat.apLeft >= 1 && selectedBat.squadsLeft >= 1) {
                 // reste sur l'unité
             } else {
                 outOfList.push(selectedBat.id);

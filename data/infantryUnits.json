@@ -4706,7 +4706,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_cyb","fouille","fortif","datt","selfbadmedic","guerrilla","tirailleur","fastguet","cyber","maycamo","berserk","ranger","nostun","resistacide","baddef","oknitro","brigands","herorush","lowstress"],
+        "skills":["a_cyb","fouille","fortif","datt","selfbadmedic","guerrilla","tirailleur","fastguet","cyber","maycamo","berserk","ranger","nostun","resistacide","baddef","oknitro","brigands","herorush","lowstress","elite"],
         "mediCost":12,
         "fuzz":1.5,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -4760,7 +4760,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_cyb","fouille","fortif","datt","selfbadmedic","guerrilla","tirailleur","fastguet","cyber","maycamo","berserk","ranger","nostun","resistacide","baddef","oknitro","brigands","herorush","lowstress"],
+        "skills":["a_cyb","fouille","fortif","datt","selfbadmedic","guerrilla","tirailleur","fastguet","cyber","maycamo","berserk","ranger","nostun","resistacide","baddef","oknitro","brigands","herorush","lowstress","elite"],
         "mediCost":12,
         "fuzz":1.5,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -5395,7 +5395,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","fortif","robot","crange","decay","light","aifouille","aicamo","lbot"],
+        "skills":["a_rob","fortif","fastguet","robot","crange","decay","light","aifouille","aicamo","lbot"],
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },

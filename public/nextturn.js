@@ -1189,7 +1189,7 @@ function tagsUpdate(bat) {
         tagDelete(bat,'nokill');
     }
     tagDelete(bat,'tornade');
-    if (rand.rand(1,5) === 1) {
+    if (rand.rand(1,3) === 1) {
         tagDelete(bat,'notorn');
     }
     tagDelete(bat,'noBis1');
@@ -1280,19 +1280,15 @@ function tagsUpdate(bat) {
     if (bat.tags.includes('starka')) {
         tagIndex = bat.tags.indexOf('starka');
         bat.tags.splice(tagIndex,1);
-        tagIndex = bat.tags.indexOf('starka');
-        bat.tags.splice(tagIndex,1);
-        tagIndex = bat.tags.indexOf('starka');
-        bat.tags.splice(tagIndex,1);
+        if (bat.tags.includes('starka')) {
+            tagIndex = bat.tags.indexOf('starka');
+            bat.tags.splice(tagIndex,1);
+        }
         if (!bat.tags.includes('starka')) {
             drugDown(bat,false,false);
         }
     }
     if (bat.tags.includes('nitro')) {
-        tagIndex = bat.tags.indexOf('nitro');
-        bat.tags.splice(tagIndex,1);
-        tagIndex = bat.tags.indexOf('nitro');
-        bat.tags.splice(tagIndex,1);
         tagIndex = bat.tags.indexOf('nitro');
         bat.tags.splice(tagIndex,1);
         if (!bat.tags.includes('nitro')) {
@@ -1395,6 +1391,14 @@ function tagsEffect(bat,batType) {
     // OCTIRON DRUG
     if (bat.tags.includes('octiron') && bat.emo < 11) {
         bat.apLeft = bat.apLeft+4;
+    }
+    // NITRO DRUG
+    if (bat.tags.includes('nitro')) {
+        bat.apLeft = bat.apLeft+2;
+    }
+    // STARKA DRUG
+    if (bat.tags.includes('starka')) {
+        bat.apLeft = bat.apLeft+2;
     }
     // BLISS DRUG
     if (bat.tags.includes('bliss')) {

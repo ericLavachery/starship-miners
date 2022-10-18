@@ -124,7 +124,7 @@ function checkEncDice(encDiceMin,encDiceMax,hard) {
         tooLate(hard);
         playerInfos.enc = playerInfos.enc-10;
         playerInfos.encz.push('pa');
-    } else if (encDice === 14 || encDice === 15 || encDice === 16 || encDice === 17) {
+    } else if ((encDice === 14 || encDice === 15 || encDice === 16 || encDice === 17) && zone[0].mapDiff < 7) {
         tooLate(hard);
         playerInfos.enc = playerInfos.enc-10;
         playerInfos.encz.push('rb');

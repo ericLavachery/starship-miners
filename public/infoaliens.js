@@ -41,6 +41,18 @@ function toggleAlienPicSize(batId) {
     }
 };
 
+function getSilSize(alien) {
+    let relSize = Math.ceil(Math.sqrt(alien.size-0.9)*26);
+    let silSize = 270-relSize;
+    if (silSize < 24) {
+        silSize = 24+Math.round((silSize-24)/5);
+    }
+    if (silSize < 18) {
+        silSize = 18;
+    }
+    return silSize;
+};
+
 function showEnemyBatInfos(bat) {
     $("#unitInfos").css("display","block");
     $('#unitInfos').empty();
@@ -69,18 +81,19 @@ function showEnemyBatInfos(bat) {
     if (batType.name === 'Colonie') {
         compCA = compCA-2;
     }
+    let silSize;
     if (batType.kind != 'game') {
-        let relSize = Math.ceil(Math.sqrt(batType.size-0.85)*26);
-        if (relSize > 290) {relSize = 290;}
-        if (relSize < 0) {relSize = 0;}
-        // let relSize = 285;
-        let silSize = 305-relSize;
+        silSize = getSilSize(batType);
         let silclass = 'silhouette';
         if (batType.skills.includes('silhover')) {
             silclass = 'silhover';
         }
+        let silPic = 'silou';
+        if (batType.size >= 75) {
+            silPic = 'siloub';
+        }
         if (showSilh) {
-            $('#unitInfos').append('<div class="detailUnits" id="apic" onclick="toggleAlienPicSize('+bat.id+',false)"><img class="'+silclass+'" src="/static/img/silou.png" height="'+silSize+'"><img class="imgAlien" src="/static/img/units/aliens/'+batType.pic+'.png" width="283"></div>');
+            $('#unitInfos').append('<div class="detailUnits" id="apic" onclick="toggleAlienPicSize('+bat.id+',false)"><img class="'+silclass+'" src="/static/img/'+silPic+'.png" height="'+silSize+'"><img class="imgAlien" src="/static/img/units/aliens/'+batType.pic+'.png" width="283"></div>');
         } else {
             $('#unitInfos').append('<div class="detailUnits" id="apic" onclick="toggleAlienPicSize('+bat.id+',false)"><img class="imgAlien" src="/static/img/units/aliens/'+batType.pic+'.png" width="283"></div>');
         }

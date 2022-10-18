@@ -1754,7 +1754,7 @@
         "weapon2":{
             "name":"Explosion",
             "cost":1,
-            "range":0,
+            "range":1,
             "noDef":true,
             "rof":20,
             "accuracy":13,

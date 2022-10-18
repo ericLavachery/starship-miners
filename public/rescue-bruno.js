@@ -301,141 +301,141 @@ function makeRescueDB() {
    // équipement lander rayon tracteur
     sauvetages.push(newRescue);
     // -------------------------------------------------------------------newRescue.name = "Équipement spatial ";
-    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit de stabilisateurs de poussée qui permettent d'attérir en terrain difficile.
+    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit de stabilisateurs de poussée qui permettent d'attérir en terrain difficile.";
 	newRescue.nav = true;
     newRescue.rarity = 0;
    // équipement lander stabilisateurs de poussée
     sauvetages.push(newRescue);
     // ---------------------------------------------------------------------
     newRescue.name = "Équipement spatial ";
-    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit de flotteurs qui permettent d'attérir en terrain aquatique.
+    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit de flotteurs qui permettent d'attérir en terrain aquatique.";
     newRescue.rarity = 0;
 	newRescue.nav = true;
    // équipement lander flotteurs
     sauvetages.push(newRescue);
     // ---------------------------------------------------------------------
     newRescue.name = "Équipement spatial ";
-    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'une parabole orbitale, celle-ci augmente la détection de votre vaisseau.
+    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'une parabole orbitale, celle-ci augmente la détection de votre vaisseau.";
 	newRescue.nav = true;
     newRescue.rarity = 0;
    // équipement lander parabole orbitale
     sauvetages.push(newRescue);
     // ---------------------------------------------------------------------
    newRescue.name = "Équipement spatial ";
-    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'une foreuse à plasma, celle-ci permet à votre vaisseau d'extraire des matière du sol.
+    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'une foreuse à plasma, celle-ci permet à votre vaisseau d'extraire des matière du sol.";
 	newRescue.nav = true;
     newRescue.rarity = 0;
    // équipement lander foreuse à plasma
     sauvetages.push(newRescue);
     //  ---------------------------------------------------------------------
      newRescue.name = "Équipement spatial ";
-    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'une Remorque orbitale, celle-ci permet à votre vaisseau de transporter plus de ressources
+    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'une Remorque orbitale, celle-ci permet à votre vaisseau de transporter plus de ressources.";
 	newRescue.nav = true;
     newRescue.rarity = 0;
    // équipement lander Remorque orbitale
     sauvetages.push(newRescue);
     //  ---------------------------------------------------------------------    newRescue.name = "Équipement spatial ";
-    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'un bras articulé, celle-ci permet à votre vaisseau d'assembler les bâtiments plus loin autour de lui.
+    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'un bras articulé, celle-ci permet à votre vaisseau d'assembler les bâtiments plus loin autour de lui.";
 	newRescue.nav = true;
     newRescue.rarity = 0;
   // équipement lander bras articulé
     sauvetages.push(newRescue);
     //   -------------------------------------------------------------------   newRescue.name = "Équipement spatial ";
-    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'une matrice à nanobots , celle-ci permet à votre vaisseau de faire des réparations beaucoup plus vite.
+    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'une matrice à nanobots , celle-ci permet à votre vaisseau de faire des réparations beaucoup plus vite.";
 	newRescue.nav = true;
     newRescue.rarity = 0;
    // équipement lander matrice à nanobots
     sauvetages.push(newRescue);
     //  ---------------------------------------------------------------------
        newRescue.name = "Équipement spatial ";
-    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'un blindage à camouflage optique , celui-ci permet à votre vaisseau de devenir furtif.
+    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'un blindage à camouflage optique , celui-ci permet à votre vaisseau de devenir furtif.";
 	newRescue.nav = true;
     newRescue.rarity = 0;
    // équipement lander camouflage optique
     sauvetages.push(newRescue);
     //  --------------------------------------------------------------------- newRescue.name = "Équipement spatial ";
-    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'un canon atmosphérique , celui-ci permet à votre vaisseau d'endommager les oeufs qui tombent.
+    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'un canon atmosphérique , celui-ci permet à votre vaisseau d'endommager les oeufs qui tombent.";
 	newRescue.nav = true;
     newRescue.rarity = 0;
    // équipement lander canon atmosphérique
     sauvetages.push(newRescue);
     // ---------------------------------------------------------------------
     newRescue.name = "Équipement spatial ";
-    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'un pode de téléportation, celui-ci permet à votre vaisseau de téléporter des ressources ou des infanteries.
+    newRescue.txt = "Votre capsule de Sauvetage revient en tractant un équipement pour vaisseau. Après analyse, il s'agit d'un pode de téléportation, celui-ci permet à votre vaisseau de téléporter des ressources ou des infanteries.";
 	newRescue.nav = true;
     newRescue.rarity = 0;
    // équipement lander canon atmosphérique
     sauvetages.push(newRescue);
     //  ---------------------------------------------------------------------
     newRescue.name = "Epave partielle de vaisseau Trolley";
-    newRescue.txt = "Votre navette de secours revient en tractant les reste d'un vaisseau de type Troley,son moteur est explosé, mais il semble qu'il y ait encore des survivants à bord."; 
+    newRescue.txt = "Votre navette de secours revient en tractant les reste d'un vaisseau de type Troley,son moteur est explosé, mais il semble qu'il y ait encore des survivants à bord.";
     newRescue.nav = true; /
     newRescue.rarity = 0;
-    newRescue.cit = [20,1,10]; 
+    newRescue.cit = [20,1,10];
     newRescue.crim = [3,3,10]
-    newRescue.demUnit = ["Trolley"]; 
-    newRescue.event = ["Epidémie",10]; 
+    newRescue.demUnit = ["Trolley"];
+    newRescue.event = ["Epidémie",10];
     sauvetages.push(newRescue);
     // ---------------------------------------------------------------------
      newRescue.name = "Epave partielle de vaisseau Lander";
-    newRescue.txt = "Votre navette de secours revient en tractant les reste d'un vaisseau de type Lander,son moteur est explosé, mais il semble qu'il y ait encore des survivants à bord."; 
+    newRescue.txt = "Votre navette de secours revient en tractant les reste d'un vaisseau de type Lander,son moteur est explosé, mais il semble qu'il y ait encore des survivants à bord.";
     newRescue.nav = true; /
     newRescue.rarity = 0;
-    newRescue.cit = [30,1,10]; 
+    newRescue.cit = [30,1,10];
     newRescue.crim = [6,3,10]
-    newRescue.demUnit = ["Lander"]; 
+    newRescue.demUnit = ["Lander"];
 	newRescue.comp = [true,3000,"vsp"];
     sauvetages.push(newRescue);
     // ---------------------------------------------------------------------
     newRescue.name = "Epave partielle de vaisseau Shuttle";
-    newRescue.txt = "Votre navette de secours revient en tractant les reste d'un vaisseau de type Shuttle,son moteur est explosé, mais il semble qu'il y ait encore des survivants à bord."; 
+    newRescue.txt = "Votre navette de secours revient en tractant les reste d'un vaisseau de type Shuttle,son moteur est explosé, mais il semble qu'il y ait encore des survivants à bord.";
     newRescue.nav = true; /
     newRescue.rarity = 0;
-    newRescue.cit = [30,1,10]; 
+    newRescue.cit = [30,1,10];
     newRescue.crim = [6,3,10]
-    newRescue.demUnit = ["Shuttle"]; 
+    newRescue.demUnit = ["Shuttle"];
 	newRescue.comp = [true,3000,"vsp"];
     sauvetages.push(newRescue);
-    // 
+    //
 	-------------------------------------------------------------------
 	--
     newRescue.name = "Epave partielle de vaisseau Dropship";
-    newRescue.txt = "Votre navette de secours revient en tractant les reste d'un vaisseau de type Dropship,son moteur est explosé, mais il semble qu'il y ait encore des survivants à bord."; 
+    newRescue.txt = "Votre navette de secours revient en tractant les reste d'un vaisseau de type Dropship,son moteur est explosé, mais il semble qu'il y ait encore des survivants à bord.";
     newRescue.nav = true; /
     newRescue.rarity = 0;
-    newRescue.cit = [40,1,10]; 
+    newRescue.cit = [40,1,10];
     newRescue.crim = [8,3,10]
-    newRescue.demUnit = ["Dropship"]; 
+    newRescue.demUnit = ["Dropship"];
 	newRescue.comp = [true,3000,"vsp"];
     sauvetages.push(newRescue);
-    // 
-	
+    //
+
 ---------------------------------------------------------------------
  --
     newRescue.name = "Epave de vaisseau Trolley";
-    newRescue.txt = "Votre navette de secours revient en tractant un vaisseau de type Troley légèrement endomagé,il semble qu'il y ait encore des survivants à bord."; 
+    newRescue.txt = "Votre navette de secours revient en tractant un vaisseau de type Troley légèrement endomagé,il semble qu'il y ait encore des survivants à bord.";
 	newRescue.nav = true; /
     newRescue.rarity = 0;
     newRescue.cit = [8,1,12];
-    newRescue.crim = [7,3,10]; 
+    newRescue.crim = [7,3,10];
     newRescue.bat3 = ["Trolley",1,1,30];
-    newRescue.scrap = [150,400]; 
-    newRescue.resBase = [5,1,100]; 
-    newRescue.event = ["Epidémie",10]; 
-    newRescue.map = 3; 
+    newRescue.scrap = [150,400];
+    newRescue.resBase = [5,1,100];
+    newRescue.event = ["Epidémie",10];
+    newRescue.map = 3;
     sauvetages.push(newRescue);
-    // 
+    //
 	 newRescue.name = "Epave de vaisseau Lander";
-    newRescue.txt = "Votre navette de secours revient en tractant un vaisseau de type Lander légèrement endomagé,il semble qu'il y ait encore des survivants à bord."; 
+    newRescue.txt = "Votre navette de secours revient en tractant un vaisseau de type Lander légèrement endomagé,il semble qu'il y ait encore des survivants à bord.";
 	newRescue.nav = true; /
     newRescue.rarity = 0;
-    newRescue.crim = [10,3,20]; 
+    newRescue.crim = [10,3,20];
     newRescue.bat3 = ["Lander",1,1,30];
-    newRescue.scrap = [150,400]; 
-    newRescue.resBase = [5,1,100]; 
-    newRescue.event = ["Abordage",50]; 
-    newRescue.map = 6; 
+    newRescue.scrap = [150,400];
+    newRescue.resBase = [5,1,100];
+    newRescue.event = ["Abordage",50];
+    newRescue.map = 6;
     sauvetages.push(newRescue);
-    // 
+    //
  return sauvetages;
 };

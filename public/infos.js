@@ -239,12 +239,12 @@ function batInfos(bat,batType,pop) {
     }
     if (pop) {
         $('#'+bodyPlace).append('<span class="paramName">Armure</span><span class="paramIcon"><i class="fas fa-shield-alt"></i></span><span class="paramValue">'+armure+'</span><br>');
-    }
-    let fortifCover = getCover(bat,true,false);
-    if (bat.tags.includes('fortif')) {
-        $('#'+bodyPlace).append('<span class="paramName">Couverture</span><span class="paramIcon"></span><span class="paramValue">'+fortifCover+'</span><br>');
-    } else {
-        $('#'+bodyPlace).append('<span class="paramName">Couverture</span><span class="paramIcon"></span><span class="paramValue">'+fortifCover+'</span><br>');
+        let fortifCover = getCover(bat,true,false);
+        if (bat.tags.includes('fortif')) {
+            $('#'+bodyPlace).append('<span class="paramName">Couverture</span><span class="paramIcon"></span><span class="paramValue">'+fortifCover+'</span><br>');
+        } else {
+            $('#'+bodyPlace).append('<span class="paramName">Couverture</span><span class="paramIcon"></span><span class="paramValue">'+fortifCover+'</span><br>');
+        }
     }
     let stealth = getStealth(bat);
     let camChance = calcCamo(bat);
@@ -535,9 +535,7 @@ function batInfos(bat,batType,pop) {
     if (batType.cat === 'infantry') {
         protection = 'Armure';
     }
-    if (!batprt.includes('aucun')) {
-        $('#'+bodyPlace).append('<span class="paramName">'+protection+'</span><span class="paramIcon"></span><span class="paramValue lcy">'+batprt+'</span><br>');
-    }
+    $('#'+bodyPlace).append('<span class="paramName">'+protection+'</span><span class="paramIcon"></span><span class="paramValue lcy">'+batprt+' <span class="neutre">(a'+bat.armor+')</span></span><br>');
     let bateq = bat.eq;
     if (!bateq.includes('aucun')) {
         $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">'+bateq+'</span><br>');

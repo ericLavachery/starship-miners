@@ -218,27 +218,35 @@ function bfconst(cat,triche,upgrade,retour) {
                 deco = ' udl';
             }
             let yhPrint = '';
-            if (yh[unit.name] >= 1) {
-                yhPrint = ' <span title="#">('+yh[unit.name]+')</span>';
+            if (yh[unit.name] >= 0) {
+                if (maxInfo.max < 90) {
+                    if (maxInfo.maxText != '') {
+                        yhPrint = ' <span title="'+maxInfo.num+'/'+maxInfo.max+' '+maxInfo.maxText+'">('+yh[unit.name]+')</span>';
+                    } else {
+                        yhPrint = ' <span title="'+yh[unit.name]+'/'+maxInfo.max+'">('+yh[unit.name]+')</span>';
+                    }
+                } else {
+                    yhPrint = ' <span title="'+yh[unit.name]+'/&infin;">('+yh[unit.name]+')</span>';
+                }
             }
             if ((bldOK && costOK && uMaxOK) || triche) {
                 if (pDistOK && pNumOK) {
                     color = catColor(unit);
-                    $('#conUnitList').append('<span class="constName klik '+color+deco+'" onclick="conSelect('+unit.id+',`player`,false)"><span title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName klik '+color+deco+'" onclick="conSelect('+unit.id+',`player`,false)"><span title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');
                 } else if (!pNumOK) {
                     color = 'gff';
-                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Vous devez avoir 4 Pilônes pour construire un Dôme">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Vous devez avoir 4 Pilônes pour construire un Dôme">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');
                 } else if (!pDistOK) {
                     color = 'gff';
-                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Vous ne pouvez pas construire un Pilône ou un Dôme à moins de 25 cases d\'un Pilône existant">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Vous ne pouvez pas construire un Pilône ou un Dôme à moins de 25 cases d\'un Pilône existant">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');
                 }
             } else {
                 if (!uMaxOK) {
                     color = 'gff';
-                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+maxInfo.text+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+maxInfo.text+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');
                 } else {
                     color = 'gff';
-                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+')</span>'+yhPrint+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');
                 }
             }
             lastKind = unit.kind;
@@ -934,9 +942,9 @@ function clickConstruct(tileId,free) {
                 let apCost = prefabCost(selectedBatType,conselUnit,true);
                 selectedBat.apLeft = selectedBat.apLeft-apCost;
                 selectedBat.xp = selectedBat.xp+(Math.sqrt(conselUnit.fabTime)/20);
-                if (!selectedBat.tags.includes('construction')) {
-                    selectedBat.tags.push('construction');
-                }
+                // if (!selectedBat.tags.includes('construction')) {
+                //     selectedBat.tags.push('construction');
+                // }
                 tagDelete(selectedBat,'guet');
                 doneAction(selectedBat);
                 camoOut();
@@ -1120,8 +1128,8 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                                 newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
                                 newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
                             } else {
-                                newBat.apLeft = conselUnit.ap-Math.round(conselUnit.fabTime*conselUnit.ap/constFactor);
-                                newBat.oldapLeft = conselUnit.ap-Math.round(conselUnit.fabTime*conselUnit.ap/constFactor);
+                                newBat.apLeft = conselUnit.ap-Math.round(conselUnit.fabTime*conselUnit.ap/constFactor*1.5);
+                                newBat.oldapLeft = conselUnit.ap-Math.round(conselUnit.fabTime*conselUnit.ap/constFactor*1.5);
                             }
                             newBat.salvoLeft = conselUnit.maxSalvo;
                         }
@@ -2116,9 +2124,9 @@ function putInfra(infraName) {
     console.log('apCost:'+apCost);
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     selectedBat.xp = selectedBat.xp+0.4;
-    if (!selectedBat.tags.includes('construction')) {
-        selectedBat.tags.push('construction');
-    }
+    // if (!selectedBat.tags.includes('construction')) {
+    //     selectedBat.tags.push('construction');
+    // }
     payCost(infra.costs);
     tagDelete(selectedBat,'guet');
     doneAction(selectedBat);

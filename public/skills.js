@@ -385,6 +385,10 @@ function tornade() {
     selectedBat.tags.push('tornade');
     selectedBat.tags.push('notorn');
     selectedBat.tags.push('notorn');
+    if (selectedBatType.weapon.range >= 1) {
+        selectedBat.tags.push('notorn');
+        selectedBat.tags.push('notorn');
+    }
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -446,9 +450,6 @@ function canCamo(bat,batType,tile) {
     if (batType.skills.includes('camo')) {
         iCanCamo = true;
     }
-    // if (batType.skills.includes('maycamo')) {
-    //     iCanCamo = true;
-    // }
     if (batType.skills.includes('aicamo')) {
         if (playerInfos.comp.train >= 1) {
             if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
@@ -463,7 +464,7 @@ function canCamo(bat,batType,tile) {
     }
     if (tile.ruins) {
         if (batType.size < 20) {
-            if (!batType.skills.includes('robot') || batType.skills.includes('aicamo') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+            if (!batType.skills.includes('robot') || (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 1) || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
                 iCanCamo = true;
             }
         }
@@ -477,7 +478,7 @@ function canCamo(bat,batType,tile) {
     }
     if (zone[0].planet === 'Sarak') {
         if (batType.cat != 'buildings' && batType.size < 50) {
-            if (!batType.skills.includes('robot') || batType.skills.includes('aicamo') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+            if (!batType.skills.includes('robot') || (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 1) || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
                 iCanCamo = true;
             }
         }
@@ -842,6 +843,15 @@ function getNitroBonus(bat) {
     }
     let nitroBonus = Math.round(batAPLeft-bat.apLeft);
     return nitroBonus;
+};
+
+function getStarkaIntox(bat) {
+    let fullStarka = false;
+    let allTags = _.countBy(bat.tags);
+    if (allTags.starka >= 3) {
+        fullStarka = true;
+    }
+    return fullStarka;
 };
 
 function getStarkaBonus(bat) {

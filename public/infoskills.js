@@ -601,12 +601,13 @@ function skillsInfos(bat,batType,near) {
         }
         // MEDIC
         let myMedicSkill = checkMedicSkill(bat,batType);
+        let fullStarka = getStarkaIntox(bat);
         if (myMedicSkill === 'medic') {
             numTargets = numMedicTargets(bat,'infantry',true,true,bat);
             baseskillCost = calcBaseSkillCost(bat,batType,true,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !fullStarka && (!inMelee || batType.skills.includes('meleehelp'))) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
             } else {
                 if (inMelee) {
@@ -614,7 +615,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     if (numTargets < 1) {
                         skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
-                    } else if (bat.tags.includes('starka')) {
+                    } else if (fullStarka) {
                         skillMessage = "Pas de soins avec la drogue Starka";
                     } else {
                         skillMessage = "Pas assez de PA";
@@ -629,7 +630,7 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,true,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !fullStarka && (!inMelee || batType.skills.includes('meleehelp'))) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
             } else {
                 if (inMelee) {
@@ -637,7 +638,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     if (numTargets < 1) {
                         skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
-                    } else if (bat.tags.includes('starka')) {
+                    } else if (fullStarka) {
                         skillMessage = "Pas de soins avec la drogue Starka";
                     } else {
                         skillMessage = "Pas assez de PA";
@@ -652,7 +653,7 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,true,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !fullStarka && (!inMelee || batType.skills.includes('meleehelp'))) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Se soigner" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',false,true)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
             } else {
                 if (inMelee) {
@@ -660,7 +661,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     if (numTargets <= 0) {
                         skillMessage = "Aucun dégâts soignable";
-                    } else if (bat.tags.includes('starka')) {
+                    } else if (fullStarka) {
                         skillMessage = "Pas de soins avec la drogue Starka";
                     } else {
                         skillMessage = "Pas assez de PA";
@@ -675,7 +676,7 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,true,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !bat.tags.includes('starka') && (!inMelee || batType.skills.includes('meleehelp'))) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !fullStarka && (!inMelee || batType.skills.includes('meleehelp'))) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Premiers soins" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',false,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
             } else {
                 if (inMelee) {
@@ -683,7 +684,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     if (numTargets <= 0) {
                         skillMessage = "Aucun dégâts soignable";
-                    } else if (bat.tags.includes('starka')) {
+                    } else if (fullStarka) {
                         skillMessage = "Pas de soins avec la drogue Starka";
                     } else {
                         skillMessage = "Pas assez de PA";
@@ -985,50 +986,52 @@ function skillsInfos(bat,batType,near) {
         let drugCostsOK = false;
         if (batType.cat === 'infantry') {
             // STARKA
-            if (allDrugs.includes('starka') || bat.tags.includes('starka')) {
-                drug = getDrugByName('starka');
-                drugCompOK = checkCompReq(drug);
-                drugBldOK = true;
-                if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                    drugBldOK = false;
-                }
-                drugBldVMOK = true;
-                if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                    drugBldVMOK = false;
-                }
-                drugCostsOK = checkCost(drug.costs);
-                balise = 'h4';
-                boutonNope = 'boutonGris';
-                colorNope = 'gf';
-                if (bat.tags.includes('starka')) {
-                    balise = 'h3';
-                    boutonNope = 'boutonOK';
-                    colorNope = 'cy';
-                }
-                apCost = drug.apCost;
-                let starkaPA = getStarkaBonus(bat);
-                let moveDistance = calcDistance(bat.tileId,bat.oldTileId);
-                console.log('moveDistance='+moveDistance);
-                if (drugCompOK) {
-                    if (!bat.tags.includes('starka') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK && moveDistance <= 2 && starkaPA >= 1) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+starkaPA+' PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
-                    } else {
-                        if (bat.tags.includes('starka')) {
-                            skillMessage = "Déjà sous l'effet de cette drogue";
-                        } else if (!drugCompOK) {
-                            skillMessage = "Vous n'avez pas les compétences requises";
-                        } else if (!drugBldVMOK) {
-                            skillMessage = "Vous n'avez pas le bâtiment requis (sur la station ou dans la  zone): "+drug.bldVMReq[0];
-                        } else if (!drugBldOK) {
-                            skillMessage = "Vous n'avez pas le bâtiment requis (dans la  zone): "+drug.bldReq[0];
-                        } else if (!drugCostsOK) {
-                            skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
-                        } else if (starkaPA < 1) {
-                            skillMessage = "Vous vous êtes déjà au maximum de PA";
+            if (!bat.tags.includes('construction')) {
+                if (allDrugs.includes('starka') || bat.tags.includes('starka')) {
+                    drug = getDrugByName('starka');
+                    drugCompOK = checkCompReq(drug);
+                    drugBldOK = true;
+                    if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                        drugBldOK = false;
+                    }
+                    drugBldVMOK = true;
+                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                        drugBldVMOK = false;
+                    }
+                    drugCostsOK = checkCost(drug.costs);
+                    balise = 'h4';
+                    boutonNope = 'boutonGris';
+                    colorNope = 'gf';
+                    if (bat.tags.includes('starka')) {
+                        balise = 'h3';
+                        boutonNope = 'boutonOK';
+                        colorNope = 'cy';
+                    }
+                    apCost = drug.apCost;
+                    let starkaPA = getStarkaBonus(bat);
+                    let moveDistance = calcDistance(bat.tileId,bat.oldTileId);
+                    console.log('moveDistance='+moveDistance);
+                    if (drugCompOK) {
+                        if (!bat.tags.includes('starka') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK && moveDistance <= 2 && starkaPA >= 1) {
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+starkaPA+' PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
                         } else {
-                            skillMessage = "Vous vous êtes déjà trop déplacé ce tour-ci";
+                            if (bat.tags.includes('starka')) {
+                                skillMessage = "Déjà sous l'effet de cette drogue";
+                            } else if (!drugCompOK) {
+                                skillMessage = "Vous n'avez pas les compétences requises";
+                            } else if (!drugBldVMOK) {
+                                skillMessage = "Vous n'avez pas le bâtiment requis (sur la station ou dans la  zone): "+drug.bldVMReq[0];
+                            } else if (!drugBldOK) {
+                                skillMessage = "Vous n'avez pas le bâtiment requis (dans la  zone): "+drug.bldReq[0];
+                            } else if (!drugCostsOK) {
+                                skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                            } else if (starkaPA < 1) {
+                                skillMessage = "Vous vous êtes déjà au maximum de PA";
+                            } else {
+                                skillMessage = "Vous vous êtes déjà trop déplacé ce tour-ci";
+                            }
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
                         }
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>&nbsp; Starka</'+balise+'></span>');
                     }
                 }
             }
@@ -1340,47 +1343,49 @@ function skillsInfos(bat,batType,near) {
         }
         if (batType.cat != 'infantry' || batType.skills.includes('oknitro')) {
             // NITRO
-            if (batType.cat === 'vehicles' || batType.skills.includes('oknitro')) {
-                if (allDrugs.includes('nitro') || bat.tags.includes('nitro')) {
-                    drug = getDrugByName('nitro');
-                    drugCompOK = checkCompReq(drug);
-                    drugBldOK = true;
-                    if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                        drugBldOK = false;
-                    }
-                    drugBldVMOK = true;
-                    if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
-                        drugBldVMOK = false;
-                    }
-                    drugCostsOK = checkCost(drug.costs);
-                    balise = 'h4';
-                    boutonNope = 'boutonGris';
-                    colorNope = 'gf';
-                    if (bat.tags.includes('nitro')) {
-                        balise = 'h3';
-                        boutonNope = 'boutonOK';
-                        colorNope = 'cy';
-                    }
-                    apCost = drug.apCost;
-                    if (drugCompOK) {
-                        let nitroPA = getNitroBonus(bat);
-                        if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('nitro') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+nitroPA+' PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
-                        } else {
-                            if (bat.tags.includes('nitro')) {
-                                skillMessage = "Déjà sous l'effet de cette drogue";
-                            } else if (!drugCompOK) {
-                                skillMessage = "Vous n'avez pas les compétences requises";
-                            } else if (!drugBldVMOK) {
-                                skillMessage = "Vous n'avez pas le bâtiment requis (sur la station ou dans la  zone): "+drug.bldVMReq[0];
-                            } else if (!drugBldOK) {
-                                skillMessage = "Vous n'avez pas le bâtiment requis (dans la  zone): "+drug.bldReq[0];
-                            } else if (!drugCostsOK) {
-                                skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+            if (!bat.tags.includes('construction')) {
+                if (batType.cat === 'vehicles' || batType.skills.includes('oknitro')) {
+                    if (allDrugs.includes('nitro') || bat.tags.includes('nitro')) {
+                        drug = getDrugByName('nitro');
+                        drugCompOK = checkCompReq(drug);
+                        drugBldOK = true;
+                        if (drug.bldReq.length >= 1 && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                            drugBldOK = false;
+                        }
+                        drugBldVMOK = true;
+                        if (drug.bldVMReq.length >= 1 && !playerInfos.bldVM.includes(drug.bldVMReq[0]) && !playerInfos.bldList.includes(drug.bldReq[0])) {
+                            drugBldVMOK = false;
+                        }
+                        drugCostsOK = checkCost(drug.costs);
+                        balise = 'h4';
+                        boutonNope = 'boutonGris';
+                        colorNope = 'gf';
+                        if (bat.tags.includes('nitro')) {
+                            balise = 'h3';
+                            boutonNope = 'boutonOK';
+                            colorNope = 'cy';
+                        }
+                        apCost = drug.apCost;
+                        if (drugCompOK) {
+                            let nitroPA = getNitroBonus(bat);
+                            if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('nitro') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
+                                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="+'+nitroPA+' PA '+displayCosts(drug.costs)+'" class="boutonVert skillButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
                             } else {
-                                skillMessage = "Pas assez de PA";
+                                if (bat.tags.includes('nitro')) {
+                                    skillMessage = "Déjà sous l'effet de cette drogue";
+                                } else if (!drugCompOK) {
+                                    skillMessage = "Vous n'avez pas les compétences requises";
+                                } else if (!drugBldVMOK) {
+                                    skillMessage = "Vous n'avez pas le bâtiment requis (sur la station ou dans la  zone): "+drug.bldVMReq[0];
+                                } else if (!drugBldOK) {
+                                    skillMessage = "Vous n'avez pas le bâtiment requis (dans la  zone): "+drug.bldReq[0];
+                                } else if (!drugCostsOK) {
+                                    skillMessage = "Vous n'avez pas les ressources: "+displayCosts(drug.costs);
+                                } else {
+                                    skillMessage = "Pas assez de PA";
+                                }
+                                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
                             }
-                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nitro</'+balise+'></span>');
                         }
                     }
                 }
