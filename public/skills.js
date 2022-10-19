@@ -336,6 +336,7 @@ function taming(tamingId) {
     newPet.squadsLeft = petSquadsLeft;
     newPet.damage = petDamage;
     selectedBat.apLeft = selectedBat.apLeft-20;
+    selectedBat.tags.push('tame');
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -345,6 +346,7 @@ function taming(tamingId) {
 function rush(rushAP) {
     selectedBat.apLeft = selectedBat.apLeft+rushAP;
     selectedBat.tags.push('rush');
+    selectedBat.tags.push('rush');
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -352,6 +354,7 @@ function rush(rushAP) {
 
 function rage() {
     selectedBat.tags.push('rage');
+    selectedBat.tags.push('norage');
     selectedBat.tags.push('norage');
     // doneAction(selectedBat);
     selectedBatArrayUpdate();
@@ -371,6 +374,7 @@ function fougue() {
 function instaKill() {
     selectedBat.tags.push('kill');
     if (selectedBatType.skills.includes('herominik')) {
+        selectedBat.tags.push('nokill');
         selectedBat.tags.push('nokill');
         selectedBat.tags.push('nokill');
     } else {

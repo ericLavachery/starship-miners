@@ -2944,6 +2944,11 @@ function calcEscape(bat,batType,weap,attBat,tile) {
     let escaping = checkEscape(bat,batType);
     let hasEscape = escaping.ok;
     let escapeSpeed = escaping.speed;
+    let weapCost = weap.cost;
+    if (weap.name === 'Boutoir' || weap.name === 'Bélier' || weap.name === 'Moissonneuse') {
+        let attBatType = getBatType(attBat);
+        weapCost = 8-attBatType.speed;
+    }
     console.log('ESCAPE = '+hasEscape);
     if (hasEscape && !weap.noEsc && !bat.tags.includes('stun') && !bat.tags.includes('freeze')) {
         if ((tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') || batType.skills.includes('fly')) {

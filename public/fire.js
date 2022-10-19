@@ -1174,33 +1174,36 @@ function attack(melee,init) {
     // instakill
     if (!targetBatType.skills.includes('nokill')) {
         if (selectedBat.tags.includes('kill') && selectedWeap.isPrec && totalDamage >= 30) {
-            if (targetBatType.class === 'C' || targetBatType.class === 'B' || targetBatType.cat === 'egg3') {
+            if (targetBatType.class === 'C' || targetBatType.class === 'B' || targetBatType.class === 'G' || targetBatType.kind === 'egg3') {
                 targetBat.squadsLeft = 0;
-            } else if (targetBatType.class === 'A' || targetBatType.class === 'S') {
+            } else if (targetBatType.class === 'A') {
                 if (rand.rand(1,6) <= targetBatType.rarity) {
                     targetBat.squadsLeft = 0;
-                    if ((selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herominik')) || targetBatType.class === 'S') {
-                        selectedBat.tags.push('zerokill');
-                    } else {
-                        selectedBat.tags.push('nokill');
-                        selectedBat.tags.push('nokill');
-                    }
-                }
-            } else if (targetBatType.cat === 'egg2') {
-                if (rand.rand(1,6) <= 4) {
-                    targetBat.squadsLeft = 0;
+                    selectedBat.tags.push('nokill');
                     selectedBat.tags.push('nokill');
                     selectedBat.tags.push('nokill');
                 }
-            } else {
+            } else if (targetBatType.class === 'S') {
                 if (rand.rand(1,6) <= 2) {
                     targetBat.squadsLeft = 0;
-                    if (selectedBat.tags.includes('hero') && selectedBatType.skills.includes('herominik')) {
-                        selectedBat.tags.push('zerokill');
-                    } else {
-                        selectedBat.tags.push('nokill');
-                        selectedBat.tags.push('nokill');
-                    }
+                    selectedBat.tags.push('nokill');
+                    selectedBat.tags.push('nokill');
+                    selectedBat.tags.push('nokill');
+                    selectedBat.tags.push('nokill');
+                }
+            } else if (targetBatType.kind === 'egg2') {
+                if (rand.rand(1,6) <= 2) {
+                    targetBat.squadsLeft = 0;
+                    selectedBat.tags.push('nokill');
+                    selectedBat.tags.push('nokill');
+                    selectedBat.tags.push('nokill');
+                }
+            } else if (targetBatType.kind === 'egg' && targetBatType.name != 'Colonie') {
+                if (rand.rand(1,6) <= 1) {
+                    targetBat.squadsLeft = 0;
+                    selectedBat.tags.push('nokill');
+                    selectedBat.tags.push('nokill');
+                    selectedBat.tags.push('nokill');
                 }
             }
         }

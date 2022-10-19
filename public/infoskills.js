@@ -538,10 +538,10 @@ function skillsInfos(bat,batType,near) {
         }
     }
     // INSTAKILL
-    if (bat.tags.includes('hero') && batHasTarget && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill') && !bat.tags.includes('zerokill') && batHasTarget && !playerInfos.onShip) {
+    if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill') && batHasTarget && !playerInfos.onShip) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Uniquement avec une arme de précision!" class="boutonJaune skillButtons" onclick="instaKill()"><i class="fas fa-skull-crossbones"></i> <span class="small">0</span></button>&nbsp; Instakill</h4></span>');
     }
-    // FOUGUE
+    // BRAVOURE
     if (bat.tags.includes('hero') && batType.skills.includes('herosalvo') && !bat.tags.includes('nofougue') && batHasTarget && !playerInfos.onShip) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Une salve supplémentaire" class="boutonVert skillButtons" onclick="fougue()"><i class="ra ra-player-teleport rpg"></i> <span class="small">0</span></button>&nbsp; Bravoure</h4></span>');
     }
@@ -554,7 +554,7 @@ function skillsInfos(bat,batType,near) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Attire tous aliens dans un rayon de 5 cases" class="boutonJaune skillButtons" onclick="diversion()"><i class="ra ra-aware rpg"></i> <span class="small">2</span></button>&nbsp; Diversion</h4></span>');
     }
     // TAMING
-    if (!playerInfos.onShip) {
+    if (!playerInfos.onShip && !bat.tags.includes('tame')) {
         if ((bat.tags.includes('hero') && batType.skills.includes('herotame')) || batType.skills.includes('taming')) {
             let tamingId = getTamingId(bat,batType);
             if (tamingId >= 0) {

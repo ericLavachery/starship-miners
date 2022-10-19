@@ -515,11 +515,13 @@ function nextTurnEnd() {
             }
             // AP
             ap = getAP(bat,batType);
-            if (boostedTeams.includes(batType.kind)) {
-                ap = ap+1;
-            }
-            if (prayedTeams.includes(batType.kind)) {
-                ap = ap+1;
+            if (!batType.skills.includes('domeconst')) {
+                if (boostedTeams.includes(batType.kind)) {
+                    ap = ap+1;
+                }
+                if (prayedTeams.includes(batType.kind)) {
+                    ap = ap+1;
+                }
             }
             oldAP = ap;
             // camoAP
@@ -1059,14 +1061,14 @@ function getBatAP(bat,batType) {
 function getAP(bat,batType) {
     let newAP = bat.ap;
     if (bat.eq === 'belier' || bat.eq === 'snorkel' || (bat.eq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2)) {
-        newAP = Math.round(newAP*0.9);
+        newAP = newAP*0.9;
     }
     if (playerInfos.bldList.includes('QG')) {
-        newAP = Math.floor(newAP*1.1);
+        newAP = newAP*1.1;
     }
     if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.skills.includes('fly')) {
         if (playerInfos.bldList.includes('Aérodocks')) {
-            newAP = Math.round(newAP*1.15);
+            newAP = newAP*1.15;
         }
     }
     if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && !batType.skills.includes('fly') && batType.moveCost < 90) {
@@ -1075,10 +1077,7 @@ function getAP(bat,batType) {
         }
     }
     if (bat.eq === 'g2motor' || bat.logeq === 'g2motor') {
-        newAP = newAP+3;
-        if (batType.moveCost >= 3) {
-            newAP++;
-        }
+        newAP = newAP+(Math.sqrt(batType.moveCost)*2.5);
     }
     if (batType.skills.includes('heroap') && bat.tags.includes('hero')) {
         newAP = newAP+2;
@@ -1093,12 +1092,13 @@ function getAP(bat,batType) {
         newAP = newAP-1;
     }
     if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
-        newAP = newAP+Math.floor((batType.moveCost+1.5)*(playerInfos.comp.trans-1.25)/2.6);
+        newAP = newAP+((batType.moveCost+1.5)*(playerInfos.comp.trans-1.25)/2.6);
     }
     if (batType.skills.includes('fastempty')) {
         emptyBonus = fastEmptyBonus(bat,batType);
-        newAP = newAP+Math.round(emptyBonus);
+        newAP = newAP+emptyBonus;
     }
+    newAP = Math.round(newAP);
     newAP = newAP+Math.round(bat.vet*vetBonus.ap);
     if (batType.skills.includes('domeconst')) {
         newAP = bat.ap;
@@ -1176,11 +1176,14 @@ function tagsUpdate(bat) {
     tagDelete(bat,'gogogo');
     tagDelete(bat,'command');
     tagDelete(bat,'hsp');
-    if (rand.rand(1,4) === 1) {
+    if (rand.rand(1,2) === 1) {
         tagDelete(bat,'rush');
     }
+    if (rand.rand(1,2) === 1) {
+        tagDelete(bat,'tame');
+    }
     tagDelete(bat,'rage');
-    if (rand.rand(1,4) === 1) {
+    if (rand.rand(1,3) === 1) {
         tagDelete(bat,'norage');
     }
     tagDelete(bat,'nofougue');
@@ -1189,7 +1192,7 @@ function tagsUpdate(bat) {
         tagDelete(bat,'nokill');
     }
     tagDelete(bat,'tornade');
-    if (rand.rand(1,3) === 1) {
+    if (rand.rand(1,4) === 1) {
         tagDelete(bat,'notorn');
     }
     tagDelete(bat,'noBis1');

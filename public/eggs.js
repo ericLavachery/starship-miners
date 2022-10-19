@@ -1789,7 +1789,11 @@ function cocoonSpawn(bat) {
     if (eggTurn >= eggLife) {
         if (eggCat === 'bug') {
             if (coconStats.level >= 9 || bat.tags.includes('crys')) {
-                alienMorph(bat,'Overbugs',false);
+                if (hasAlien('Overbugs')) {
+                    alienMorph(bat,'Dragons',false);
+                } else {
+                    alienMorph(bat,'Overbugs',false);
+                }
             } else if (coconStats.level >= 6) {
                 alienMorph(bat,'Dragons',false);
             } else if (coconStats.level >= 4) {
@@ -1809,7 +1813,11 @@ function cocoonSpawn(bat) {
             }
         } else if (eggCat === 'larve') {
             if (coconStats.level >= 9 || bat.tags.includes('crys')) {
-                alienMorph(bat,'Liches',false);
+                if (hasAlien('Liches')) {
+                    alienMorph(bat,'Megagrubz',false);
+                } else {
+                    alienMorph(bat,'Liches',false);
+                }
             } else if (coconStats.level >= 6) {
                 alienMorph(bat,'Megagrubz',false);
             } else if (coconStats.level >= 4) {
