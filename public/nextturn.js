@@ -1027,8 +1027,58 @@ function turnInfo() {
         $('#tour').append('Morts <span class="or" title="'+toNiceString(playerInfos.deadBats)+'">'+playerInfos.unitsLost+'</span> / <span class="neutre" title="Aliens tués">'+playerInfos.aliensKilled+'</span> / <span class="cy" title="Oeufs détruits">'+playerInfos.eggsKilled+'</span>');
     }
     checkVMTileIds();
+    let lastStand = checkLastStand();
+    if (playerInfos.bldList.includes('Centre de com')) {
+        if (lastStand.turn-20 <= playerInfos.mapTurn) {
+            if (lastStand.turn-1 <= playerInfos.mapTurn) {
+                warning('Apocalypse','Imminent! : Les ruches et volcans vont se suicider en crachant à très grande distance.');
+            } else {
+                let lsTurn = lastStand.turn;
+                let expertise = Math.floor((playerInfos.comp.det+playerInfos.comp.ca)/2)-1;
+                if (expertise < 1) {
+                    lsTurn = 100;
+                } else if (expertise < 2) {
+                    lsTurn = Math.round(lastStand.turn/10)*10;
+                } else if (expertise < 3) {
+                    lsTurn = Math.round(lastStand.turn/5)*5;
+                }
+                if (expertise >= 1) {
+                    warning('Apocalypse','Les ruches et volcans vont se suicider en crachant à très grande distance. Tour prévu par nos experts: '+lsTurn+'.');
+                } else {
+                    warning('Apocalypse','Les ruches et volcans vont se suicider en crachant à très grande distance. Nos experts sont incapables de prévoir quand.');
+                }
+            }
+        }
+    }
     // feedZoneDB();
     // feedZoneDBwith(zone);
+};
+
+function checkLastStand() {
+    let lastStand = {};
+    lastStand.turn = 100+Math.round(playerInfos.pauseSeed/3);
+    lastStand.go = false;
+    let lastMission = hasUnit('Dôme');
+    if (domeProtect) {
+        if (lastMission) {
+            let domeBat = getBatTypeByName('Dôme');
+            if (domeBat.opTurn != undefined) {
+                lastStand.turn = domeBat.opTurn+14+Math.round(playerInfos.pauseSeed/3);
+                if (playerInfos.mapTurn >= lastStand.turn) {
+                    lastStand.go = true;
+                }
+            }
+        }
+    }
+    if (!lastMission) {
+        if (lastStand.turn >= 100) {
+            lastStand.turn = 35+(playerInfos.randSeed*10);
+            if (playerInfos.mapTurn >= lastStand.turn) {
+                lastStand.go = true;
+            }
+        }
+    }
+    return lastStand;
 };
 
 function getBatAP(bat,batType) {
@@ -1747,6 +1797,7 @@ function playerOccupiedTileList() {
 function emptyBatList() {
     batList = [];
     batUnselect();
+    turnInfo();
     centerMap();
     // commandes();
     // console.log(batList);
@@ -1812,6 +1863,7 @@ function nextBat(removeActiveBat,removeForever) {
     } else {
         saveGame();
         batUnselect();
+        turnInfo();
         centerMap();
     }
     // console.log(batList);

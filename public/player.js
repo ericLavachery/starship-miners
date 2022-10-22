@@ -18,10 +18,10 @@ function voirBataillons() {
         if (!batType.skills.includes('nolist')) {
             let batColor = 'ciel';
             if (batType.cat === 'buildings' || batType.cat === 'devices') {
-                batColor = 'bleu';
+                batColor = 'brun';
             }
             if (bat.loc != 'zone') {
-                batColor = 'brun';
+                batColor = 'bleu';
             }
             $('#conUnitList').append('<span class="ListRes '+batColor+' klik" onclick="warnLink('+bat.tileId+')">'+bat.type+'</span>&nbsp;&nbsp;');
             if (bat.vet >= 1) {
@@ -45,6 +45,39 @@ function voirBataillons() {
                 }
             }
             $('#conUnitList').append('<br>');
+        }
+    });
+    $('#conUnitList').append('<span class="shSpace"></span><br>');
+    $('#conUnitList').append('<span class="blockTitle"><h3>Aliens</h3></span>');
+    $('#conUnitList').append('<br><span class="shSpace"></span><br>');
+    let sortedAlienList = _.sortBy(_.sortBy(aliens,'id'),'type');
+    sortedAlienList.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.class === 'A' || batType.class === 'S' || batType.class === 'X') {
+            if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) {
+                let batColor = 'ciel';
+                if (batType.class === 'S') {
+                    batColor = 'cy';
+                }
+                if (batType.class === 'X') {
+                    if (batType.class === 'egg') {
+                        batColor = 'rouge';
+                    } else {
+                        batColor = 'brun';
+                    }
+                }
+                $('#conUnitList').append('<span class="ListRes '+batColor+' klik" onclick="warnLink('+bat.tileId+')">'+bat.type+'</span>&nbsp;&nbsp;');
+                if (bat.damage >= 1 || bat.squadsLeft < batType.squads) {
+                    $('#conUnitList').append('<span class="ListRes" title="Blessé"><i class="ra ra-bleeding-hearts"></i></span>&nbsp;&nbsp;');
+                }
+                if (bat.tags.includes('poison') || bat.tags.includes('shinda')) {
+                    $('#conUnitList').append('<span class="ListRes" title="Empoisonné"><i class="fas fa-skull-crossbones"></i></span>&nbsp;&nbsp;');
+                }
+                if (bat.tags.includes('stun')) {
+                    $('#conUnitList').append('<span class="ListRes" title="Stun"><i class="fas fa-thermometer"></i></span>&nbsp;&nbsp;');
+                }
+                $('#conUnitList').append('<br>');
+            }
         }
     });
     // $("#conUnitList").animate({scrollTop:0},"fast");

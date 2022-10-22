@@ -840,7 +840,7 @@ function calcDamage(weapon,power,armor,defBat) {
     if (calculatedDmg < 0) {
         calculatedDmg = 0;
     }
-    if (calculatedDmg < 1 && (weapon.name.includes('plasma') || weapon.ammo === 'toxine')) {
+    if (calculatedDmg < 1 && (weapon.name.includes('plasma') || weapon.ammo === 'toxine' || weapon.ammo.includes('uridium'))) {
         calculatedDmg = 1;
     }
     if (weapon.name.includes('BFG')) {
@@ -1805,6 +1805,7 @@ function weaponEqChange(thisWeapon,wn,bat,batType) {
             }
             thisWeapon.name = 'Moissonneuse';
             thisWeapon.noBig = false;
+            thisWeapon.noShield = false;
             thisWeapon.aoe = 'squad';
             thisWeapon.power = Math.ceil(Math.sqrt(batType.size*1.75));
             thisWeapon.accuracy = 24;
@@ -2280,19 +2281,13 @@ function weaponAdj(weapon,bat,wn) {
     // ERUPTIONS
     if (thisWeapon.name === 'Eruption') {
         thisWeapon.power = thisWeapon.power+Math.floor((zone[0].mapDiff-1)/1.8/22*thisWeapon.power);
+        let lastStand = checkLastStand();
         if (batType.skills.includes('aimcfo')) {
-            if (domeProtect) {
-                if (hasUnit('Dôme')) {
-                    let domeBat = getBatTypeByName('Dôme');
-                    if (domeBat.opTurn != undefined) {
-                        if (playerInfos.mapTurn-15 >= domeBat.opTurn) {
-                            thisWeapon.range = thisWeapon.range+17;
-                            thisWeapon.elevation = 4;
-                            if (!bat.tags.includes('suicide')) {
-                                bat.tags.push('suicide');
-                            }
-                        }
-                    }
+            if (lastStand.go) {
+                thisWeapon.range = thisWeapon.range+17;
+                thisWeapon.elevation = 4;
+                if (!bat.tags.includes('suicide')) {
+                    bat.tags.push('suicide');
                 }
             }
         }
@@ -2976,12 +2971,20 @@ function getEggProtect(eggBat,eggBatType,weap) {
     let maxProt = Math.ceil(100*(weap.armors+0.82));
     if (maxProt > 100) {maxProt = 100;}
     if (eggBatType.skills.includes('eggprotect')) {
+        console.log(weap);
+        console.log('EGGPROT )))))))))))))))');
         eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1.25)*3.5)));
+        if (!domeProtect && coconStats.dome && eggBatType.name != 'Colonie') {
+            eggProt = eggProt+8;
+        }
+        console.log(eggProt);
         if (eggBatType.skills.includes('turnprotect')) {
+            console.log('TURNPROT )))))))))))))))');
             if (!domeProtect) {
                 eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.65));
             }
             if (eggProt > maxProt) {eggProt = maxProt;}
+            console.log(eggProt);
             if (weap.noShield) {
                 eggProt = Math.round(eggProt*0.9);
             } else if (weap.minShield) {
@@ -2989,16 +2992,18 @@ function getEggProtect(eggBat,eggBatType,weap) {
             } else if (weap.lowShield) {
                 eggProt = Math.round(eggProt*0.95);
             }
+            if (weap.ammo.includes('uridium')) {
+                eggProt = Math.round(eggProt*0.97);
+            }
+            console.log(eggProt);
+        }
+        if (weap.ammo === 'suicide' || weap.ammo === 'suicide-deluge') {
+            eggProt = Math.round(eggProt*0.85);
         }
     }
-    if (!domeProtect && coconStats.dome && eggBatType.name != 'Colonie') {
-        eggProt = eggProt+10;
-    }
     if (eggProt > maxProt) {eggProt = maxProt;}
-    if (weap.ammo === 'suicide' || weap.ammo === 'suicide-deluge') {
-        eggProt = Math.round(eggProt/1.2);
-    }
     if (eggProt < 0) {eggProt = 0;}
+    console.log(eggProt);
     return eggProt;
 };
 

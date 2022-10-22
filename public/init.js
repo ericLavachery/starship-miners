@@ -92,6 +92,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.pauseSeed === undefined) {
         playerInfos.pauseSeed = rand.rand(1,8);
     }
+    if (playerInfos.randSeed === undefined) {
+        playerInfos.randSeed = rand.rand(1,8);
+    }
     if (playerInfos.alienRes === undefined) {
         playerInfos.alienRes = {};
     }
@@ -115,6 +118,9 @@ socket.on('playerInfos-Load', function(pi) {
     }
     if (playerInfos.bldVM === undefined) {
         playerInfos.bldVM = [];
+    }
+    if (playerInfos.gMode === undefined) {
+        playerInfos.gMode = 2;
     }
     if (playerInfos.gang === undefined) {
         playerInfos.gang = 'rednecks';

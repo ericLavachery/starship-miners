@@ -491,6 +491,15 @@ function getBatGearStuff(armorName,equipName,batType) {
     let gearStuff = [];
     let batArmor = getEquipByName(armorName);
     gearStuff[0] = batType.armor+batArmor.armor;
+    if (batType.armor >= 2) {
+        if (batType.skills.includes('robot') || batType.skills.includes('cyber') || batType.cat === 'infantry') {
+            if (batType.armor > batArmor.armor) {
+                gearStuff[0] = batType.armor+Math.ceil(batArmor.armor);
+            } else {
+                gearStuff[0] = batArmor.armor+Math.ceil(batType.armor);
+            }
+        }
+    }
     if (batType.skills.includes('bigprot')) {
         let blindageBonus = (batArmor.armor*2)+1;
         if (blindageBonus > 8) {
@@ -504,8 +513,8 @@ function getBatGearStuff(armorName,equipName,batType) {
     }
     if (batType.skills.includes('robot')) {
         gearStuff[1] = baseAP;
-        if (batArmor.armor >= 1) {
-            gearStuff[0] = batType.armor+batArmor.armor+1;
+        if (batArmor.armor === 1) {
+            gearStuff[0] = gearStuff[0]+1;
         }
     } else {
         if ((batType.skills.includes('fly') || equipName === 'e-jetpack') && batArmor.ap < 0) {

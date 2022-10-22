@@ -73,11 +73,15 @@ function checkCanon() {
 };
 
 function alienCanon() {
-    if (playerInfos.aCanon === 'web' || hasAlien('Uberspinne')) {
+    let cprov = 'canon';
+    if (hasAlien('Uberspinne')) {
+        cprov = 'uber';
+    }
+    if (playerInfos.aCanon === 'web' || cprov === 'uber') {
         let freq = 6-Math.floor(zone[0].mapDiff/2);
         if (freq < 2) {freq = 2;}
         if (playerInfos.mapTurn % freq === 0 && playerInfos.mapTurn >= 2) {
-            let canonTiles = getCanonTiles('web','egg');
+            let canonTiles = getCanonTiles('web','egg',cprov);
             webCanon(canonTiles);
             showMap(zone,true);
         }
@@ -100,14 +104,14 @@ function webCanon(canonTiles) {
     });
 };
 
-function getCanonTiles(cType,area) {
+function getCanonTiles(cType,area,cprov) {
     let canonTiles = [];
     let theTile = -1;
     let targetTile = -1;
     // près d'un oeuf en danger
     if (area === 'egg') {
         let bestTarget = 0;
-        if (hasAlien('Uberspinne') || (aliens.length < playerInfos.mapTurn*2)) {
+        if (cprov === 'uber' || (aliens.length < playerInfos.mapTurn*2)) {
             let shufAliens = _.shuffle(aliens);
             shufAliens.forEach(function(bat) {
                 if (bat.loc === "zone") {
@@ -123,7 +127,7 @@ function getCanonTiles(cType,area) {
                             if (batType.name != 'Uberspinne') {
                                 thisTarget = thisTarget*batType.hp;
                             } else {
-                                thisTarget = thisTarget*3000;
+                                thisTarget = thisTarget*100000;
                             }
                         }
                         if (thisTarget >= bestTarget) {
@@ -150,14 +154,18 @@ function getCanonTiles(cType,area) {
             targetTile = rand.rand(0,3599);
         }
         let shufZone = _.shuffle(zone);
-        shufZone.forEach(function(tile) {
-            if (theTile < 0) {
-                let distance = calcDistance(tile.id,targetTile);
-                if (distance <= 4) {
-                    theTile = tile.id;
+        if (cprov === 'uber') {
+            theTile = targetTile;
+        } else {
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    let distance = calcDistance(tile.id,targetTile);
+                    if (distance <= 4) {
+                        theTile = tile.id;
+                    }
                 }
-            }
-        });
+            });
+        }
         shufZone.forEach(function(tile) {
             let distance = calcDistance(tile.id,theTile);
             if (distance <= 2) {

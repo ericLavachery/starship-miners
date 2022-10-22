@@ -28,6 +28,7 @@ function events(afterMission,time,sim,quiet) {
     console.log('RES BALANCE');
     console.log(playerInfos.weekRes);
     showResBallance(quiet);
+    playerInfos.randSeed = rand.rand(1,8);
     if (!sim) {
         playerInfos.allTurns = playerInfos.allTurns+time;
         playerInfos.mapTurn = 0;

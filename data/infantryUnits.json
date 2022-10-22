@@ -2256,7 +2256,7 @@
         "maxSalvo":1,
         "weapon":{
             "name":"Minigun",
-            "cost":4,
+            "cost":6,
             "range":1,
             "elevation":2,
             "rof":75,
@@ -2271,7 +2271,7 @@
         },
         "weapon2":{
             "name":"Minigun",
-            "cost":4,
+            "cost":6,
             "range":1,
             "elevation":2,
             "kit":true,

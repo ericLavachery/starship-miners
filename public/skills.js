@@ -131,6 +131,12 @@ function checkCommand(myBat) {
 
 function goCommand(chefBatId,gainPA) {
     selectedBat.apLeft = selectedBat.apLeft+gainPA;
+    if (playerInfos.comp.ordre >= 2 && selectedBat.apLeft >= 1) {
+        let salvoDice = 23-(playerInfos.comp.ordre*playerInfos.comp.ordre*2);
+        if (rand.rand(1,salvoDice) === 1) {
+            selectedBat.salvoLeft = selectedBat.salvoLeft+1;
+        }
+    }
     selectedBat.tags.push('gogogo');
     let chefBat = getBatById(chefBatId);
     chefBat.apLeft = chefBat.apLeft-1;

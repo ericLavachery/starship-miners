@@ -887,7 +887,7 @@ function skillsInfos(bat,batType,near) {
                 let maintOK = checkCost(maintCosts);
                 apCost = bat.ap*2;
                 if (maintOK) {
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Entretien '+displayCosts(maintCosts)+'" class="boutonBleu skillButtons" onclick="maintenanceInZone()"><i class="fa fa-wrench"></i> <span class="small">0</span></button>&nbsp; Entretien</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Entretien '+displayCosts(maintCosts)+'" class="boutonBleu skillButtons" onclick="maintenanceInZone()"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Entretien</h4></span>');
                 } else {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes '+displayCosts(maintCosts)+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Entretien</h4></span>');
                 }

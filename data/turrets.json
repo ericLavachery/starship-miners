@@ -288,7 +288,7 @@
             "name":"Obusier",
             "equip":"w2-arti",
             "cost":6,
-            "range":6,
+            "range":7,
             "noFly":true,
             "noBis":true,
             "noMelee":true,
@@ -1048,7 +1048,7 @@
         "weapon":{
             "name":"Missiles Squash",
             "cost":8,
-            "range":9,
+            "range":10,
             "noMelee":true,
             "noFly":true,
             "noDef":true,
@@ -1111,7 +1111,7 @@
         "weapon":{
             "name":"Missiles Wildfire",
             "cost":8,
-            "range":9,
+            "range":10,
             "noMelee":true,
             "noFly":true,
             "noDef":true,
@@ -1128,7 +1128,7 @@
         "weapon2":{
             "name":"Missiles Thunder",
             "cost":10,
-            "range":9,
+            "range":10,
             "noMelee":true,
             "noFly":true,
             "noDef":true,
@@ -1235,7 +1235,7 @@
         "weapon":{
             "name":"Obusier",
             "cost":5,
-            "range":6,
+            "range":7,
             "noFly":true,
             "noMelee":true,
             "isArt":true,

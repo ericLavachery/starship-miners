@@ -304,6 +304,7 @@ function resetPlayerInfos() {
     playerInfos.okFill = false;
     playerInfos.fuzzTotal = 0;
     playerInfos.pauseSeed = rand.rand(1,8);
+    playerInfos.randSeed = rand.rand(1,8);
     playerInfos.res = {};
     playerInfos.alienRes = {};
     playerInfos.myCenter = 1830;

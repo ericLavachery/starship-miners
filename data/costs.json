@@ -1261,7 +1261,7 @@
         "name":"Brimstones",
         "levels":{"rednecks":18,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Usine d'armement","Chaîne de montage"],
-        "compReq":{"tank":2,"explo":1},
+        "compReq":{"tank":2,"explo":1,"energ":1},
         "costs":{"Fer":320,"Scrap":96,"Carbone":384,"Aluminium":32,"Moteurs":240,"Titane":32,"Tungstène":272,"Cuivre":32,"Electros":16,"Batteries":32,"Compo2":504,"Compo3":432,"Huile":16,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":230,"Energie":40,"Huile":10},
         "fabTime":135
