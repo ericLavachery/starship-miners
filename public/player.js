@@ -24,6 +24,9 @@ function voirBataillons() {
                 batColor = 'bleu';
             }
             $('#conUnitList').append('<span class="ListRes '+batColor+' klik" onclick="warnLink('+bat.tileId+')">'+bat.type+'</span>&nbsp;&nbsp;');
+            if (bat.army >= 1) {
+                $('#conUnitList').append('<span class="ListRes gff" title="Armée">('+bat.army+')</span>&nbsp;&nbsp;');
+            }
             if (bat.vet >= 1) {
                 $('#conUnitList').append('<img src="/static/img/vet'+bat.vet+'.png" width="10">&nbsp;&nbsp;');
             }

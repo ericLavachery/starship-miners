@@ -647,16 +647,17 @@ function newAlienKilled(batType,tileId) {
 function saveCrew(deadBatType,deadId,tileId) {
     alienOccupiedTileList();
     playerOccupiedTileList();
-    let savedCits = 0;
     let salvableCits = 0;
     let citId = 126;
     if (deadBatType.skills.includes('brigands')) {
         citId = 225;
     }
-    if (deadBatType.skills.includes('crewsave')) {
-        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/6*rand.rand(4+Math.floor(playerInfos.comp.train/2),6));
-    } else if (deadBatType.skills.includes('badcrewsave') || deadBatType.cat === 'buildings') {
-        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/6*rand.rand(playerInfos.comp.train,4));
+    if (deadBatType.cat ==='infantry' && !deadBatType.skills.includes('iscit') && !deadBatType.skills.includes('clone') && !deadBatType.skills.includes('dog')) {
+        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/12*rand.rand(0,2+playerInfos.comp.train));
+    } else if (deadBatType.skills.includes('crewsave') || deadBatType.cat === 'buildings') {
+        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/12*rand.rand(5+playerInfos.comp.train,12));
+    } else if (deadBatType.skills.includes('badcrewsave')) {
+        salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/12*rand.rand(0,5+playerInfos.comp.train));
     }
     if (salvableCits >= 1) {
         if (salvableCits > 72) {
@@ -671,7 +672,7 @@ function saveCrew(deadBatType,deadId,tileId) {
         }
         conselTriche = true;
         putBatAround(tileId,false,'any',citId,salvableCits);
-        if (savedCits >= 1) {
+        if (salvableCits >= 1) {
             centerMapTo(tileId);
         }
     }

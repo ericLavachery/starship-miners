@@ -194,7 +194,7 @@ function targetBatArrayUpdate() {
 };
 
 function getDoom(floor) {
-    let doom = ((playerInfos.allTurns)/(apoCount+(apoModeVar*3)-(playerInfos.gMode*apoModeVar)))+1;
+    let doom = ((playerInfos.allTurns)/(apoCount+(apoModeVar*2.5)-(playerInfos.gMode*apoModeVar)))+1;
     if (doom < 1) {
         doom = 1;
     }

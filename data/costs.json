@@ -890,8 +890,8 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":11,"brasier":99},
         "bldReq":["Laboratoire","Chaîne de montage"],
         "compReq":{"robo":1},
-        "costs":{"Scrap":60,"Fer":30,"Carbone":120,"Moteurs":100,"Titane":270,"Electros":60,"Batteries":90,"Cuivre":60,"Silicium":30},
-        "deploy":{"Energie":90},
+        "costs":{"Scrap":60,"Fer":30,"Carbone":120,"Moteurs":100,"Titane":270,"Blendium":60,"Electros":60,"Batteries":90,"Cuivre":60,"Silicium":30},
+        "deploy":{"Energie":90,"Huile":12},
         "fabTime":70,
         "inRuin":1
     },

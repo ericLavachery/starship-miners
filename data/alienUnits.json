@@ -2420,7 +2420,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["invisible","chancre","larvehide","fastreg","minaccu","terror","okwater","nolaser","sentinelle","survivor","smartrip","infrip","flee"],
+        "skills":["nocap","invisible","chancre","larvehide","fastreg","minaccu","terror","okwater","nolaser","sentinelle","survivor","smartrip","infrip","flee"],
         "deathFx":"death2",
         "spawnFx":"spawn-lich",
         "fxPriority":12,

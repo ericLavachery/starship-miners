@@ -1229,6 +1229,9 @@ function spawns() {
                 if (coconStats.dome) {
                     vomiCheck = vomiCheck*2;
                 }
+                if (domeProtect) {
+                    vomiCheck = vomiCheck*2;
+                }
                 if (rand.rand(1,100) <= vomiCheck) {
                     vomiSpawn(bat);
                 }

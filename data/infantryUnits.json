@@ -39,7 +39,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["b_none","fouille","fortif","fret","fastempty","varsquad","nodeathcount","nochef","recupcorps"],
+        "skills":["b_none","fouille","fortif","fret","fastempty","varsquad","nodeathcount","nochef","recupcorps","iscit"],
         "transRes":72,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
@@ -128,7 +128,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["b_none","fouille","fortif","fret","fastempty","varsquad","nodeathcount","nochef","recupcorps"],
+        "skills":["b_none","fouille","fortif","fret","fastempty","varsquad","nodeathcount","nochef","recupcorps","iscit"],
         "transRes":72,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
@@ -5352,8 +5352,8 @@
         "armor":5,
         "size":3,
         "volume":1,
-        "stealth":4,
-        "ap":12,
+        "stealth":7,
+        "ap":13,
         "maxSalvo":1,
         "weapon":{
             "name":"Lance",
@@ -5395,7 +5395,8 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","fortif","fastguet","robot","crange","decay","light","aifouille","aicamo","lbot"],
+        "skills":["a_rob","fortif","fastguet","robot","badmecano","crange","decay","light","aifouille","camo","lbot"],
+        "mecanoCost":8,
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
     },
