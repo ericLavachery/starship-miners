@@ -127,7 +127,7 @@ function landingList() {
         updateBldList();
         calcStartRes();
         if (playerInfos.onShip) {
-            playRoom('station',true);
+            playRoom('station',true,true);
             checkVMTileIds();
             checkSelectedLanderId();
             healEverything();
@@ -138,10 +138,10 @@ function landingList() {
             saveGame();
         } else {
             if (zone[0].snd === undefined) {
-                playRoom('crickets',true);
+                playRoom('crickets',true,true);
                 // playBackMusic();
             } else {
-                playRoom(zone[0].snd,true);
+                playRoom(zone[0].snd,true,true);
                 // playBackMusic();
             }
             createStormsLists(true);

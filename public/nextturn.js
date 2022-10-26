@@ -1027,25 +1027,34 @@ function turnInfo() {
         $('#tour').append('Morts <span class="or" title="'+toNiceString(playerInfos.deadBats)+'">'+playerInfos.unitsLost+'</span> / <span class="neutre" title="Aliens tués">'+playerInfos.aliensKilled+'</span> / <span class="cy" title="Oeufs détruits">'+playerInfos.eggsKilled+'</span>');
     }
     checkVMTileIds();
-    let lastStand = checkLastStand();
-    if (playerInfos.bldList.includes('Centre de com')) {
-        if (lastStand.turn-20 <= playerInfos.mapTurn) {
-            if (lastStand.turn-1 <= playerInfos.mapTurn) {
-                warning('Apocalypse','Imminent! : Les ruches et volcans vont se suicider en crachant à très grande distance.');
-            } else {
-                let lsTurn = lastStand.turn;
-                let expertise = Math.floor((playerInfos.comp.det+playerInfos.comp.ca)/2)-1;
-                if (expertise < 1) {
-                    lsTurn = 100;
-                } else if (expertise < 2) {
-                    lsTurn = Math.round(lastStand.turn/10)*10;
-                } else if (expertise < 3) {
-                    lsTurn = Math.round(lastStand.turn/5)*5;
-                }
-                if (expertise >= 1) {
-                    warning('Apocalypse','Les ruches et volcans vont se suicider en crachant à très grande distance. Tour prévu par nos experts: '+lsTurn+'.');
+    if (domeProtect && aliens.length <= 0) {
+        gameOver = true;
+        playRoom('start',true,false);
+        calcEndRes(false);
+        let score = calcScore();
+        warning('Colonie établie!','Promis, on mettra un truc plus sympa pour la fin du jeu.<br>Vous avez sauvé <span class="cy">'+score.cits+' citoyens</span> en '+score.days+' jours.<br>Votre score est de <span class="cy">'+score.score+'</span>.');
+        console.log(score);
+    } else {
+        let lastStand = checkLastStand();
+        if (playerInfos.bldList.includes('Centre de com')) {
+            if (lastStand.turn-20 <= playerInfos.mapTurn) {
+                if (lastStand.turn-1 <= playerInfos.mapTurn) {
+                    warning('Apocalypse','Imminent! : Les ruches et volcans vont se suicider en crachant à très grande distance.');
                 } else {
-                    warning('Apocalypse','Les ruches et volcans vont se suicider en crachant à très grande distance. Nos experts sont incapables de prévoir quand.');
+                    let lsTurn = lastStand.turn;
+                    let expertise = Math.floor((playerInfos.comp.det+playerInfos.comp.ca)/2)-1;
+                    if (expertise < 1) {
+                        lsTurn = 100;
+                    } else if (expertise < 2) {
+                        lsTurn = Math.round(lastStand.turn/10)*10;
+                    } else if (expertise < 3) {
+                        lsTurn = Math.round(lastStand.turn/5)*5;
+                    }
+                    if (expertise >= 1) {
+                        warning('Apocalypse','Les ruches et volcans vont se suicider en crachant à très grande distance. Tour prévu par nos experts: '+lsTurn+'.');
+                    } else {
+                        warning('Apocalypse','Les ruches et volcans vont se suicider en crachant à très grande distance. Nos experts sont incapables de prévoir quand.');
+                    }
                 }
             }
         }

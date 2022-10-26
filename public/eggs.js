@@ -484,6 +484,10 @@ function eggsDrop() {
     let coqPerc = getCoqueChance();
     let coqNum = 0;
     let coveredEggs = 0;
+    let maxPack = Math.floor((zone[0].mapDiff+1)*(zone[0].mapDiff+1)/4.4);
+    if (maxPack > 15) {
+        maxPack = 15;
+    }
     if (numEggs >= 1) {
         let eggTypeDice;
         let i = 1;
@@ -532,7 +536,7 @@ function eggsDrop() {
                 }
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             }
-            if (i > 15) {break;}
+            if (i > maxPack) {break;}
             i++
         }
     }

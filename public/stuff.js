@@ -674,7 +674,7 @@ function maxUnits(unit) {
             maxInfo.text = 'Vous ne pouvez pas faire des chercheurs hors de la station';
         }
     }
-    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('wdev') || unit.skills.includes('mdev') || unit.skills.includes('hveh') || unit.skills.includes('lveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxdet') || unit.skills.includes('maxind') || unit.skills.includes('maxgang')) {
+    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('wdev') || unit.skills.includes('mdev') || unit.skills.includes('hveh') || unit.skills.includes('lveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxexo') || unit.skills.includes('maxdet') || unit.skills.includes('maxind') || unit.skills.includes('maxgang')) {
         if (playerInfos.bldList.includes('Camp d\'entraînement')) {
             maxOf.elite = maxOf.elite+playerInfos.comp.train;
             if (maxOf.elite < 1) {
@@ -883,6 +883,16 @@ function maxUnits(unit) {
         if (numOf[unit.name] >= maxInfo.max && numOf[unit.name] >= 1) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence d\'industrie';
+        }
+    }
+    if (unit.skills.includes('maxexo')) {
+        maxInfo.max = 2;
+        if (playerInfos.comp.exo >= 1) {
+            maxInfo.max = 3;
+        }
+        if (numOf[unit.name] >= maxInfo.max) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence d\'exochimie';
         }
     }
     if (unit.skills.includes('maxdet')) {
@@ -1392,4 +1402,13 @@ function noAlienRip() {
     aliens.forEach(function(bat) {
         bat.apLeft = -10;
     });
+};
+
+function calcScore() {
+    let hs = {};
+    hs.turns = playerInfos.allTurns+playerInfos.mapTurn;
+    hs.days = Math.round(hs.turns/3);
+    hs.cits = playerInfos.endRes.Citoyens;
+    hs.score = Math.round(100*hs.cits/hs.turns*playerInfos.gMode/3);
+    return hs;
 };

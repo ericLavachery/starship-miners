@@ -1061,20 +1061,28 @@ function checkWeb(tileId) {
         numWeb++;
     }
     thisTile = getTileById(tileId-1);
-    if (thisTile.web) {
-        numWeb++;
+    if (thisTile != undefined) {
+        if (thisTile.web) {
+            numWeb++;
+        }
     }
     thisTile = getTileById(tileId+1);
-    if (thisTile.web) {
-        numWeb++;
+    if (thisTile != undefined) {
+        if (thisTile.web) {
+            numWeb++;
+        }
     }
     thisTile = getTileById(tileId+mapSize);
-    if (thisTile.web) {
-        numWeb++;
+    if (thisTile != undefined) {
+        if (thisTile.web) {
+            numWeb++;
+        }
     }
     thisTile = getTileById(tileId-mapSize);
-    if (thisTile.web) {
-        numWeb++;
+    if (thisTile != undefined) {
+        if (thisTile.web) {
+            numWeb++;
+        }
     }
     return numWeb;
 };

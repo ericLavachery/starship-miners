@@ -193,6 +193,7 @@ let sondeCount = 'gff';
 let homeCount = 'cy';
 let apoCount = 400; // 435
 let apoModeVar = 50; // 500,450,400,350
+let gameOver = false;
 let stressLevels = [5,15,35,100]; // stress,freeze,fear,terror
 let teleCost = {};
 teleCost['Energie'] = 50;

@@ -297,7 +297,7 @@ function playBackMusic() {
     console.log('PLAYING: '+track);
 };
 
-function playRoom(piste,interrupt) {
+function playRoom(piste,interrupt,onloop) {
     let track = 'rain';
     if (piste != 'any') {
         track = piste;
@@ -309,7 +309,7 @@ function playRoom(piste,interrupt) {
             src: ['/static/sounds/rooms/'+track+'.mp3'],
             preload: true,
             volume: myVol,
-            loop: true
+            loop: onloop
         });
         theRoom.play();
         console.log('ROOM: '+track);

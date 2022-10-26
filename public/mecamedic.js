@@ -408,7 +408,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
         }
         selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
         tagDelete(selectedBat,'mining');
-        // tagDelete(selectedBat,'guet');
+        if (selectedBatType.cat != 'buildings' && !selectedBatType.skills.includes('transorbital') && !selectedBatType.skills.includes('freeshot')) {
+            tagDelete(selectedBat,'guet');
+        }
         doneAction(selectedBat);
         selectedBatArrayUpdate();
     } else {
@@ -701,7 +703,7 @@ function getAway(myBat,fromTileId,blob) {
         $('#b'+myBat.tileId).empty().append(resHere);
         myBat.tileId = getAwayTile;
         myBat.apLeft = myBat.apLeft-apCost;
-        // tagDelete(myBat,'guet');
+        tagDelete(myBat,'guet');
         tagDelete(myBat,'fortif');
         if (myBat.tags.includes('camo') && !blob) {
             myBat.fuzz = -1;
@@ -720,7 +722,7 @@ function getAway(myBat,fromTileId,blob) {
     } else {
         if (!blob) {
             myBat.apLeft = 0-Math.round(myBat.ap/4*3);
-            // tagDelete(myBat,'guet');
+            tagDelete(myBat,'guet');
             tagDelete(myBat,'fortif');
             if (myBat.tags.includes('camo')) {
                 myBat.fuzz = -1;

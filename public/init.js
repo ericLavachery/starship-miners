@@ -271,14 +271,16 @@ socket.on('savedMap-Load', function(sm) {
         // playMusic('start',true);
     }
     if (playerInfos.onShip) {
-        playRoom('station',true);
+        playRoom('station',true,true);
     } else {
-        if (zone[0].snd === undefined) {
-            playRoom('crickets',true);
-            // playBackMusic();
-        } else {
-            playRoom(zone[0].snd,true);
-            // playBackMusic();
+        if (!gameOver) {
+            if (zone[0].snd === undefined) {
+                playRoom('crickets',true,true);
+                // playBackMusic();
+            } else {
+                playRoom(zone[0].snd,true,true);
+                // playBackMusic();
+            }
         }
     }
     let thisBatType;

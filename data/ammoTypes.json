@@ -290,7 +290,7 @@
         "aoe": "",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2},
-        "deploy":{"Aluminium":1,"Soufre":2,"Plomb":3},
+        "deploy":{"Soufre":2,"Fer":2,"Tungstène":2,"Aluminium":1},
         "batch":100
     },
     {

@@ -464,11 +464,11 @@ function batDeath(bat,count,isWiped) {
         isFlying = true;
     }
     if (bat.team == 'player') {
-        if (batType.crew >= 1 && !batType.skills.includes('dog') && !batType.skills.includes('clone') && !bat.tags.includes('outsider')) {
+        if (batType.crew >= 1 && !batType.skills.includes('dog') && !batType.skills.includes('clone') && !bat.tags.includes('outsider') && count) {
             let cytxp = Math.ceil(batType.squads*batType.squadSize*batType.crew/6);
             playerInfos.gangXP = playerInfos.gangXP+cytxp;
         }
-        if (bat.tags.includes('nomove')) {
+        if (bat.tags.includes('nomove') && count) {
             removeNoMoves(bat);
         }
         let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
@@ -503,9 +503,9 @@ function batDeath(bat,count,isWiped) {
             }
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
             addAlienRes(bat,isWiped);
-        }
-        if (!playerInfos.knownAliens.includes(batType.name)) {
-            newAlienKilled(batType,tileId);
+            if (!playerInfos.knownAliens.includes(batType.name)) {
+                newAlienKilled(batType,tileId);
+            }
         }
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
         aliens.splice(batIndex,1);
