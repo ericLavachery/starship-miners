@@ -108,7 +108,7 @@
         "name":"Miliciens",
         "levels":{"rednecks":1,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
-        "costs":{"Bois":40},
+        "costs":{"Fer":20,"Scrap":20},
         "fabTime":5,
         "crime":-0.4
     },
@@ -462,7 +462,7 @@
         "name":"Scalpels",
         "levels":{"rednecks":99,"blades":3,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Infirmerie"],
-        "costs":{"Scrap":32,"Bois":32,"Végétaux":32,"Drogues":43,"Silicium":18,"Végétaux":32,"Chlore":25,"Zinc":25,"Titane":6,"Tissus":12},
+        "costs":{"Scrap":32,"Bois":32,"Végétaux":32,"Drogues":43,"Silicium":18,"Chlore":25,"Zinc":25,"Titane":6,"Tissus":12},
         "deploy":{"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":25
     },
@@ -488,7 +488,7 @@
         "name":"Snowballs",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":1,"brasier":99},
         "bldReq":["Armurerie"],
-        "costs":{"Fer":120,"Scrap":60,"Végétaux":60,"Soufre":60,"Plomb":60,"Végétaux":110,"Chlore":10,"Tissus":5},
+        "costs":{"Fer":120,"Scrap":60,"Soufre":60,"Plomb":60,"Végétaux":110,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
         "fabTime":15
     },
@@ -1041,7 +1041,7 @@
         "bldReq":["Chenil","Laboratoire"],
         "compReq":{"gen":1},
         "costs":{"Creatite":180,"Gibier":225,"Calcium":90,"Azote":90,"Mercure":36,"Drogues":72},
-        "fabTime":40
+        "fabTime":45
     },
     {
         "id":16,
@@ -2677,7 +2677,7 @@
     {
         "id":216,
         "name":"Cantine",
-        "upkeep":{"Fruits":8,"Végétaux":12,"Energie":2},
+        "upkeep":{"Fruits":8,"Végétaux":4,"Energie":2},
         "prod":{"Nourriture":4},
         "costs":{"Compo1":195,"Compo2":30,"Eau":300,"Carbone":100,"Fer":50,"Batteries":30,"Energie":120},
         "fabTime":25,
@@ -2688,7 +2688,7 @@
         "id":267,
         "name":"Chenil",
         "levels":{"rednecks":5,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "upkeep":{"Viande":0.6},
+        "upkeep":{"Viande":0.3},
         "costs":{"Compo1":120,"Compo2":30,"Eau":50,"Fer":150},
         "fabTime":35,
         "slots":2

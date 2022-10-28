@@ -563,7 +563,7 @@ function addStressFlag(bat,emoType) {
                 stressCost = 1;
             }
         }
-        if (stressCost >= 1 && !bat.tags.includes('octiron') && !bat.tags.includes('bliss')) {
+        if (stressCost >= 1) {
             if (bat.emo != undefined) {
                 bat.emo = bat.emo+stressCost;
             } else {
@@ -584,21 +584,21 @@ function checkStressEffect(bat) {
         distress = 300;
     }
     let fromTileId = -1;
-    if (distress >= 1 && !bat.tags.includes('bliss') && !bat.tags.includes('octiron') && !bat.tags.includes('zealot')) {
+    if (distress >= 1 && !bat.tags.includes('bliss') && !bat.tags.includes('octiron')) {
         let nearby = nearbyAliens(bat);
         let batType = getBatType(bat);
         let isChef = false;
         if (bat.tags.includes('schef') || batType.skills.includes('leader') || batType.skills.includes('prayer')) {
             isChef = true;
         }
-        if (nearby.one) {
+        if (nearby.oneTile) {
             distress = distress*3;
-        } else if (!nearby.two) {
+        } else if (!nearby.twoTiles) {
             distress = Math.floor(distress/3);
         }
         if (distress >= stressLevels[3] && !bat.tags.includes('terror')) {
             // Terror
-            if (nearby.two) {
+            if (nearby.twoTiles) {
                 bat.emo = bat.emo+1;
             }
             bat.tags.push('terror');
@@ -612,7 +612,7 @@ function checkStressEffect(bat) {
             }
         } else if (distress >= stressLevels[2]) {
             // Fear
-            if (nearby.two) {
+            if (nearby.twoTiles) {
                 bat.emo = bat.emo+1;
             }
             fromTileId = getNearestAlienTile(bat.tileId);
@@ -625,12 +625,12 @@ function checkStressEffect(bat) {
             }
         } else if (distress >= stressLevels[1]) {
             // Freeze
-            if (nearby.two) {
+            if (nearby.twoTiles) {
                 bat.emo = bat.emo+1;
             }
             goFreeze(bat);
             warning('Stress',bat.type+' sont atterrés!',false,bat.tileId);
-        } else if (distress >= stressLevels[0] && nearby.two && !isChef) {
+        } else if (distress >= stressLevels[0] && nearby.twoTiles && !isChef) {
             // Stress
             bat.emo = bat.emo+1;
             warning('Stress',bat.type+' sont stressés',false,bat.tileId);

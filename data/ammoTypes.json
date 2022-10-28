@@ -282,15 +282,16 @@
         "name": "snake",
         "range": 1,
         "rof": 4,
-        "power": -3,
-        "powermult": 1,
+        "power": 0,
+        "powermult": 0.5,
         "armors": 0.4,
         "accuracy": 2,
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2},
-        "deploy":{"Soufre":2,"Fer":2,"Tungstène":2,"Aluminium":1},
+        "compReq":{"bal":2,"tri":2},
+        "altCompReq":{"bal":2,"mat":1},
+        "deploy":{"Soufre":2,"Fer":2,"Tungstène":2,"Scrap":3},
         "batch":100
     },
     {
@@ -3062,7 +3063,21 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "squad",
+        "compReq":{"explo":1},
         "deploy":{"Scrap":4,"Fer":1,"Aluminium":1,"Explosifs":2},
+        "batch":100
+    },
+    {
+        "name": "grenade-scrap",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 0.5,
+        "armors": 1,
+        "accuracy": 0.5,
+        "apdamage": 0,
+        "aoe": "squad",
+        "deploy":{"Scrap":5,"Fer":1,"Explosifs":1},
         "batch":100
     },
     {

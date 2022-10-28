@@ -605,9 +605,9 @@ function checkRuinsRes(tile) {
                 resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
                 if (res.name == 'Nourriture') {
                     if (ruinsEmpty) {
-                        thatResChance = Math.ceil(resFactor*res.batch/3);
+                        thatResChance = Math.ceil(200*res.batch/3);
                     } else {
-                        thatResChance = Math.ceil(resFactor*5*res.batch/3);
+                        thatResChance = Math.ceil(500*res.batch/3);
                     }
                 } else if (res.name.includes('Compo')) {
                     thatResChance = Math.ceil((resFactor-100)*1.7*res.batch/3);

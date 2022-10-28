@@ -482,7 +482,7 @@ function showBataillon(bat) {
         }
     }
     let uClass = 'pUnits';
-    if (batType.cat === 'buildings') {
+    if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
         if (bat.fuzz <= -2) {
             uClass = 'pUnitsCamoFortif';
         } else {

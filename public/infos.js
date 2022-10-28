@@ -394,7 +394,7 @@ function batInfos(bat,batType,pop) {
         if (bat.tags.includes('terror')) {
             $('#'+bodyPlace).append('<span class="paramName or">Stress</span><span class="paramIcon"></span><span class="paramValue or" title="Ce bataillon va fuir dès que des aliens sont proches et ne voudra plus les attaquer">Terrorisé!</span><br>');
         } else if (stress >= 1) {
-            if (bat.tags.includes('octiron') || bat.tags.includes('bliss') || bat.tags.includes('zealot')) {
+            if (bat.tags.includes('octiron') || bat.tags.includes('bliss')) {
                 $('#'+bodyPlace).append('<span class="paramName jaune">Stress</span><span class="paramIcon"></span><span class="paramValue jaune" title="Stress sous contrôle">('+stress+')</span><br>');
             } else {
                 $('#'+bodyPlace).append('<span class="paramName jaune">Stress</span><span class="paramIcon"></span><span class="paramValue jaune">'+stress+'</span><br>');

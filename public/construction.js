@@ -1678,16 +1678,17 @@ function recupBodies(bat,batType) {
     if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
         numBodies = bat.citoyens;
     } else {
-        numBodies = Math.ceil(batType.crew*batType.squads*batType.squadSize*batType.size/3);
+        numBodies = batType.crew*batType.squads*batType.squadSize*batType.size/3;
     }
     if (batType.skills.includes('dog')) {
-        numBodies = numBodies*5;
+        numBodies = Math.ceil(numBodies/(7-playerInfos.comp.tri)*16);
         if (coffre.transRes['Viande'] === undefined) {
             coffre.transRes['Viande'] = numBodies;
         } else {
             coffre.transRes['Viande'] = coffre.transRes['Viande']+numBodies;
         }
     } else {
+        numBodies = Math.ceil(numBodies);
         if (coffre.transRes['Corps'] === undefined) {
             coffre.transRes['Corps'] = numBodies;
         } else {
@@ -1746,7 +1747,7 @@ function getResRecup(bat,batType) {
             resRecup['Corps'] = bat.citoyens;
         } else {
             if (batType.skills.includes('dog')) {
-                resRecup['Viande'] = Math.ceil(batType.crew*batType.squads*batType.squadSize*batType.size/3)*5;
+                resRecup['Viande'] = Math.ceil(batType.crew*batType.squads*batType.squadSize*batType.size/3/(7-playerInfos.comp.tri)*16);
             } else {
                 resRecup['Corps'] = Math.ceil(batType.crew*batType.squads*batType.squadSize*batType.size/3);
             }

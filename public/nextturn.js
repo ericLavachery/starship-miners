@@ -99,6 +99,7 @@ function nextTurn() {
             if (bat.tags.includes('fluo') && (batType.skills.includes('hide') || batType.skills.includes('nolaser'))) {
                 tagDelete(bat,'fluo');
             }
+            tagDelete(bat,'rage');
             if (batType.skills.includes('permashield')) {
                 if (!bat.tags.includes('shield')) {
                     bat.tags.push('shield');
@@ -1144,10 +1145,7 @@ function getAP(bat,batType) {
     if (bat.eq === 'helper' || bat.logeq === 'helper') {
         newAP = newAP+1;
     }
-    if (bat.eq === 'e-ranger' || bat.eq === 'gilet' || bat.eq === 'e-lifepod') {
-        newAP = newAP-1;
-    }
-    if (bat.eq === 'e-road' && batType.cat === 'infantry') {
+    if (bat.eq === 'e-lifepod') {
         newAP = newAP-1;
     }
     if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {

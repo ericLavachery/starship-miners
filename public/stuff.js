@@ -399,8 +399,8 @@ function isOccupied(tileId) {
 
 function nearbyAliens(myBat) {
     let nearby = {};
-    nearby.one = false;
-    nearby.two = false;
+    nearby.oneTile = false;
+    nearby.twoTiles = false;
     let oneTileAway = [];
     let twoTilesAway = [];
     oneTileAway.push(myBat.tileId+1);
@@ -433,11 +433,11 @@ function nearbyAliens(myBat) {
     twoTilesAway.push(myBat.tileId-mapSize-mapSize+1);
     const foundOne = oneTileAway.some(r=> alienOccupiedTiles.indexOf(r) >= 0);
     if (foundOne) {
-        nearby.one = true;
+        nearby.oneTile = true;
     }
     const foundTwo = twoTilesAway.some(r=> alienOccupiedTiles.indexOf(r) >= 0);
     if (foundTwo) {
-        nearby.two = true;
+        nearby.twoTiles = true;
     }
     return nearby;
 };

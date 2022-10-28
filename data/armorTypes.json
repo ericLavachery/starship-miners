@@ -455,6 +455,7 @@
         "info":"Précision++ Elévation+",
         "bldReq":["Atelier"],
         "compReq":{"det":2,"log":1},
+        "altCompReq":{"det":3},
         "autoComp":["det",4],
         "factor":"crew",
         "costs":{"Silicium":6,"Carbone":6}
@@ -466,6 +467,7 @@
         "info":"Précision++ Elévation+",
         "bldReq":["Atelier"],
         "compReq":{"det":2,"log":1},
+        "altCompReq":{"det":3},
         "autoComp":["det",4],
         "factor":"crew",
         "costs":{"Silicium":4,"Carbone":4}
@@ -477,6 +479,7 @@
         "info":"Précision++ Elévation+",
         "bldReq":["Atelier"],
         "compReq":{"det":2,"log":1},
+        "altCompReq":{"det":3},
         "autoComp":["det",4],
         "factor":"crew",
         "costs":{"Silicium":4,"Carbone":4}
@@ -499,6 +502,7 @@
         "info":"Cadence++",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"log":2},
+        "altCompReq":{"bal":3},
         "autoComp":["bal",3],
         "factor":"crew",
         "costs":{"Scrap":6,"Carbone":6,"Fer":6}
@@ -509,7 +513,8 @@
         "skills":[],
         "info":"Cadence++",
         "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"log":2},
+        "c":{"bal":2,"log":2},
+        "altCompReq":{"bal":3},
         "autoComp":["bal",3],
         "factor":"crew",
         "costs":{"Scrap":3,"Carbone":3,"Fer":3}
@@ -521,6 +526,7 @@
         "info":"Cadence++",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"log":2},
+        "altCompReq":{"bal":3},
         "autoComp":["bal",3],
         "factor":"crew",
         "costs":{"Scrap":3,"Carbone":3,"Fer":3}
@@ -535,7 +541,7 @@
         "autoComp":["log",2],
         "factor":"crew",
         "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":6},
-        "deploy":{"Végétaux":9}
+        "deploy":{"Végétaux":4}
     },
     {
         "name":"silencieux1",
@@ -547,7 +553,7 @@
         "autoComp":["log",2],
         "factor":"crew",
         "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":6},
-        "deploy":{"Végétaux":9}
+        "deploy":{"Végétaux":4}
     },
     {
         "name":"silencieux2",
@@ -559,7 +565,7 @@
         "autoComp":["log",2],
         "factor":"crew",
         "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":6},
-        "deploy":{"Végétaux":9}
+        "deploy":{"Végétaux":4}
     },
     {
         "name":"lanceur1",
@@ -633,6 +639,7 @@
         "info":"Déplacement+",
         "bldReq":["Atelier"],
         "compReq":{"train":1,"log":1},
+        "altCompReq":{"train":2},
         "autoComp":["train",2],
         "factor":"crew",
         "costs":{"Scrap":3,"Carbone":3}
@@ -679,10 +686,11 @@
         "info":"Camouflage++",
         "bldReq":["Atelier"],
         "compReq":{"train":1,"log":2},
+        "altCompReq":{"train":2},
         "autoComp":["cam",1],
         "factor":"crew",
         "costs":{"Blendium":8,"Tissus":12},
-        "deploy":{"Végétaux":12}
+        "deploy":{"Végétaux":8}
     },
     {
         "name":"e-jetpack",
@@ -986,7 +994,8 @@
         "skills":[],
         "info":"Lightning",
         "bldReq":["Centre de recherches"],
-        "compReq":{"energ":3,"log":2},
+        "compReq":{"energ":2,"log":2},
+        "altCompReq":{"energ":3},
         "factor":"one",
         "costs":{"Cuivre":60,"Rhodium":20,"Silicium":30,"Electros":45,"Batteries":30},
         "deploy":{"Energie":90}
@@ -1044,7 +1053,7 @@
         "compReq":{"def":1},
         "factor":"crew",
         "costs":{"Carbone":36,"Scrap":6,"Aluminium":12,"Tissus":12,"Blendium":12,"Titane":6,"Silicium":6},
-        "deploy":{"Végétaux":12}
+        "deploy":{"Végétaux":8}
     },
     {
         "name":"kit-artilleur",
@@ -1289,6 +1298,7 @@
         "info":"Portée+",
         "bldReq":["Arsenal"],
         "compReq":{"det":2,"log":2,"arti":1},
+        "altCompReq":{"det":2,"log":1,"explo":3,"arti":1},
         "autoComp":["det",4],
         "factor":"rofpow",
         "costs":{"Fer":60,"Tungstène":12,"Titane":6}
@@ -1300,6 +1310,7 @@
         "info":"Portée+",
         "bldReq":["Arsenal"],
         "compReq":{"det":2,"log":2,"arti":1},
+        "altCompReq":{"det":2,"log":1,"explo":3,"arti":1},
         "autoComp":["det",4],
         "factor":"rofpow",
         "costs":{"Fer":60,"Tungstène":12,"Titane":6}
@@ -1311,6 +1322,7 @@
         "info":"Portée+",
         "bldReq":["Arsenal"],
         "compReq":{"det":2,"log":2,"arti":1},
+        "altCompReq":{"det":2,"log":1,"explo":3,"arti":1},
         "autoComp":["det",4],
         "factor":"rofpow",
         "costs":{"Fer":60,"Tungstène":12,"Titane":6}
@@ -1614,6 +1626,7 @@
         "info":"Fortifications",
         "bldReq":["Caserne"],
         "compReq":{"const":1,"def":2,"log":2},
+        "altCompReq":{"const":3,"def":2},
         "autoComp":["def",3],
         "factor":"one",
         "costs":{"Fer":100,"Scrap":100,"Carbone":20,"Moteurs":20,"Eau":50,"Zinc":25,"Cuivre":20},
@@ -1699,7 +1712,7 @@
         "skills":[],
         "info":"Arme 2",
         "bldReq":["Atelier"],
-        "compReq":{"log":2,"def":2},
+        "compReq":{"log":1,"def":2},
         "factor":"rofpow",
         "costs":{"Fer":45,"Tungstène":30,"Huile":5}
     },
@@ -2100,7 +2113,7 @@
         "cat":"equip",
         "skills":[],
         "info":"Recherche: Gang",
-        "bldReq":["Caserne"],
+        "bldReq":[],
         "compReq":{},
         "factor":"one",
         "costs":{}

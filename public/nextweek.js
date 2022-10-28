@@ -293,7 +293,12 @@ function rechercheSci(bat,time) {
             warning('<span class="hrouge">RECHERCHE: Matériel obsolète!</span>','<span class="gfbleu">Vous devez acheter du nouveau matériel (équipement) pour que vos chercheurs puissent travailler.</span><br>',true);
         }
     } else if (bat.eq === 'gang-lore') {
-        playerInfos.gangXP = playerInfos.gangXP+Math.round(time/3);
+        let myCaserne = 'Caserne '+capitalizeFirstLetter(playerInfos.gang);
+        if (playerInfos.bldVM.includes(myCaserne)) {
+            playerInfos.gangXP = playerInfos.gangXP+Math.round(time/2.5);
+        } else {
+            playerInfos.gangXP = playerInfos.gangXP+Math.round(time/5);
+        }
     } else {
         warning('<span class="hrouge">RECHERCHE: Chercheurs sans matériel!</span>','<span class="gfbleu">Vous devez leur acheter du matériel (équipement) pour qu\'ils puissent travailler.</span><br>',true);
     }
@@ -301,7 +306,7 @@ function rechercheSci(bat,time) {
 
 function eventBouffe(time,sim,quiet) {
     let mesCitoyens = calcTotalCitoyens(true);
-    let toutMesCitoyens = mesCitoyens.cit+mesCitoyens.crim;
+    let toutMesCitoyens = mesCitoyens.real+mesCitoyens.false;
     let bouffeCost = {};
     let recycleFactor = playerInfos.comp.tri+8;
     if (playerInfos.bldList.includes('Recyclab')) {
@@ -311,7 +316,7 @@ function eventBouffe(time,sim,quiet) {
     let eatFactor = playerInfos.comp.med+8;
     let numIso = checkNumUnits('Isolation');
     let isoFactor = 1+((26-numIso)/13);
-    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/269/eatFactor*8);
+    bouffeCost['Nourriture'] = Math.round(toutMesCitoyens*time*2/297/eatFactor*8);
     bouffeCost['Eau'] = Math.round(toutMesCitoyens*time*2/234/recycleFactor*8);
     bouffeCost['Oxygène'] = Math.round(toutMesCitoyens*time*2/736/recycleFactor*8);
     bouffeCost['Energie'] = Math.round(Math.sqrt(toutMesCitoyens)*50*time*2/1408/energyFactor*8*isoFactor);
@@ -721,7 +726,7 @@ function chenilProd(bat,batType,time,sim,quiet) {
             Object.entries(batType.upkeep).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
-                let conso = Math.ceil(value*time)+120;
+                let conso = Math.ceil(value*time)+240;
                 let dispoRes = getDispoRes(key);
                 if (dispoRes < conso) {
                     upkeepPaid = false;
@@ -758,9 +763,9 @@ function chenilProd(bat,batType,time,sim,quiet) {
                 console.log('dogChance='+dogChance);
                 if (rand.rand(1,100) <= dogChance) {
                     console.log('DOOOOOOOOOOOOGS');
-                    modWeekRes('Viande',-120);
+                    modWeekRes('Viande',-240);
                     if (!sim) {
-                        resSub('Viande',120);
+                        resSub('Viande',240);
                     }
                     message = message+'<span class="cy">Vous avez un nouveau bataillon de Wardogs!</span><br>';
                     message = message+'Viande:<span class="rose">-120</span><br>';

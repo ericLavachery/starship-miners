@@ -327,20 +327,28 @@ function getTamingId(myBat,myBatType) {
 
 function taming(tamingId) {
     let tamedAlien = getAlienById(tamingId);
-    let petSquadsLeft = tamedAlien.squadsLeft;
-    let petDamage = tamedAlien.damage;
-    let tileId = tamedAlien.tileId;
-    deleteAlien(tamingId);
-    let meatBatType = getBatTypeById(289);
-    conselUnit = meatBatType;
-    conselPut = false;
-    conselTriche = true;
-    conselAmmos = ['dents','xxx','aucune','aucun'];
-    putBat(tileId,0,0,'',false);
-    let newPet = getBatByTileId(tileId);
-    newPet.apLeft = -7;
-    newPet.squadsLeft = petSquadsLeft;
-    newPet.damage = petDamage;
+    let tamingChance = ((selectedBat.vet*4)+selectedBat.apLeft)*3;
+    if (rand.rand(1,100) > tamingChance) {
+        tamedAlien.apLeft = 15+rand.rand(0,6);
+        tamedAlien.salvoLeft = 1;
+        tamedAlien.tags.push('rage');
+        tamedAlien.tags.push('rage');
+    } else {
+        let petSquadsLeft = tamedAlien.squadsLeft;
+        let petDamage = tamedAlien.damage;
+        let tileId = tamedAlien.tileId;
+        deleteAlien(tamingId);
+        let meatBatType = getBatTypeById(289);
+        conselUnit = meatBatType;
+        conselPut = false;
+        conselTriche = true;
+        conselAmmos = ['dents','xxx','aucune','aucun'];
+        putBat(tileId,0,0,'',false);
+        let newPet = getBatByTileId(tileId);
+        newPet.apLeft = -7;
+        newPet.squadsLeft = petSquadsLeft;
+        newPet.damage = petDamage;
+    }
     selectedBat.apLeft = selectedBat.apLeft-20;
     selectedBat.tags.push('tame');
     doneAction(selectedBat);

@@ -152,7 +152,7 @@ function combat(melee) {
         }
     }
     if (activeTurn === 'player') {
-        if (rand.rand(1,100) <= calcTirFurtif(selectedWeap,selectedBat)) {
+        if (rand.rand(1,100) <= calcTirFurtif(selectedWeap,selectedBat,distance)) {
             if (selectedWeap.hide && distance >= 2 && selectedBat.fuzz <= -2) {
                 riposte = false;
             }

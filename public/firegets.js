@@ -2401,6 +2401,9 @@ function weaponAdj(weapon,bat,wn) {
         if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot')) {
             thisWeapon.power = thisWeapon.power+Math.round(Math.sqrt(thisWeapon.power)*1.42);
         }
+        if (batType.cat === 'aliens') {
+            thisWeapon.accuracy = thisWeapon.accuracy+6;
+        }
     }
     // ROF round
     if (thisWeapon.ammo.includes('disco')) {
@@ -2519,13 +2522,14 @@ function checkDeepForest(tile) {
     return deepForest;
 };
 
-function calcTirFurtif(weap,bat) {
+function calcTirFurtif(weap,bat,distance) {
     let tirFurtif = 0;
     if (bat.fuzz <= -2) {
-        if (weap.noise < 2) {
+        if (weap.noise < 2 || (weap.noise < 4 && distance >= 3)) {
             tirFurtif = calcCamo(bat);
+            tirFurtif = tirFurtif+(distance*20)-20;
             if (weap.noise > 0) {
-                tirFurtif = Math.round(tirFurtif/1.65);
+                tirFurtif = Math.round(tirFurtif/(weap.noise+3)*4/1.5);
             } else {
                 tirFurtif = Math.round(tirFurtif/1.15);
             }
@@ -2863,21 +2867,21 @@ function getWetness(terrain,onGround) {
         if (terrain.name === 'W' || terrain.name === 'R' || terrain.name == 'L') {
             wetness = wetness+3;
         } else {
-            if (zone[0].snd === 'rainforest' || zone[0].snd === 'thunderstart' || zone[0].snd === 'swamp' || zone[0].snd === 'uhuwind') {
+            if (zone[0].snd === 'rainforest' || zone[0].snd === 'thunderstart' || zone[0].snd === 'thunderfull' || zone[0].snd === 'swamp' || zone[0].snd === 'uhuwind') {
                 wetness = wetness+1;
                 if (terrain.name === 'S') {
                     wetness = wetness+1;
                 }
-            } else if (zone[0].snd === 'monsoon' || zone[0].snd === 'thunderfull') {
+            } else if (zone[0].snd === 'monsoon') {
                 wetness = wetness+2;
             } else if (terrain.name === 'S') {
                 wetness = wetness+1;
             }
         }
     } else {
-        if (zone[0].snd === 'rainforest' || zone[0].snd === 'thunderstart' || zone[0].snd === 'swamp' || zone[0].snd === 'uhuwind') {
+        if (zone[0].snd === 'rainforest' || zone[0].snd === 'thunderstart' || zone[0].snd === 'thunderfull' || zone[0].snd === 'swamp' || zone[0].snd === 'uhuwind') {
             wetness = wetness+1;
-        } else if (zone[0].snd === 'monsoon' || zone[0].snd === 'thunderfull') {
+        } else if (zone[0].snd === 'monsoon') {
             wetness = wetness+2;
         }
     }
