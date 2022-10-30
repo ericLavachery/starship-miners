@@ -327,7 +327,7 @@ function getTamingId(myBat,myBatType) {
 
 function taming(tamingId) {
     let tamedAlien = getAlienById(tamingId);
-    let tamingChance = ((selectedBat.vet*4)+selectedBat.apLeft)*3;
+    let tamingChance = ((selectedBat.vet*4)+selectedBat.apLeft+4)*3;
     if (rand.rand(1,100) > tamingChance) {
         tamedAlien.apLeft = 15+rand.rand(0,6);
         tamedAlien.salvoLeft = 1;
@@ -350,6 +350,7 @@ function taming(tamingId) {
         newPet.damage = petDamage;
     }
     selectedBat.apLeft = selectedBat.apLeft-20;
+    selectedBat.xp = selectedBat.xp+5;
     selectedBat.tags.push('tame');
     doneAction(selectedBat);
     selectedBatArrayUpdate();

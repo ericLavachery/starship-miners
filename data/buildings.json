@@ -720,7 +720,7 @@
             "subTypes":["Derrick"]
         },
         "transMaxSize":9,
-        "transUnits":300,
+        "transUnits":325,
         "transRes":2500,
         "fuzz":2.5,
         "deathFx":"S_Explosion02"
@@ -837,7 +837,7 @@
             "subTypes":["Scrap","Mine","Comptoir"]
         },
         "transMaxSize":9,
-        "transUnits":200,
+        "transUnits":275,
         "transRes":2500,
         "fuzz":3.5,
         "deathFx":"S_Explosion02"
@@ -4058,7 +4058,7 @@
     {
         "id":229,
         "name":"Jardin",
-        "pic":"jardin",
+        "pic":"jardin2",
         "cat":"buildings",
         "kind":"zero-vm",
         "sort":5,

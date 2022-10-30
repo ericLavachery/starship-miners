@@ -768,7 +768,7 @@ function chenilProd(bat,batType,time,sim,quiet) {
                         resSub('Viande',240);
                     }
                     message = message+'<span class="cy">Vous avez un nouveau bataillon de Wardogs!</span><br>';
-                    message = message+'Viande:<span class="rose">-120</span><br>';
+                    message = message+'Viande:<span class="rose">-240</span><br>';
                     if (!sim) {
                         putDog();
                     }

@@ -57,9 +57,10 @@
         "id":7,
         "name":"tele",
         "fullName":"Téléportation",
-        "levels":{"rednecks":10,"blades":10,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":10,"brasier":10},
+        "levels":{"rednecks":7,"blades":7,"bulbos":7,"drogmulojs":7,"tiradores":7,"detruas":7,"brasier":7},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1],
+        "rechFirst":true,
         "rechCost":1.5
     },
     {

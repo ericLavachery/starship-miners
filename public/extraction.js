@@ -373,6 +373,7 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     if (playerInfos.comp.ext === 3) {
         extComp = extComp+1;
     }
+    let invExtComp = 10-extComp;
     if (playerInfos.comp.tri >= 1 && res.name === 'Scrap') {
         resHere = Math.round(resHere*(playerInfos.comp.tri+8)/8);
     }
@@ -380,21 +381,18 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     if (res.name === 'Scrap') {
         minRes = Math.round(minRes*1.5);
     }
-    // if (playerInfos.comp.ext >= 1) {
-    //     minRes = Math.round(minRes*(extComp+5)/5);
-    // }
     let maxRes = maxResForRate;
     if (res.name === 'Scrap' || res.name === 'Végétaux' || res.name === 'Bois' || res.name === 'Eau') {
         maxRes = Math.round(maxRes*1.25);
     }
-    if (playerInfos.comp.ext >= 1) {
-        maxRes = Math.round(maxRes*(extComp+15)/15);
-    }
+    // if (extComp >= 1) {
+    //     maxRes = Math.round(maxRes*(extComp+15)/15);
+    // }
     if (resHere < minRes && res.cat != 'zero') {
         resHere = minRes;
     }
     if (resHere > maxRes) {
-        resHere = Math.round((resHere-maxRes)/5)+maxRes;
+        resHere = Math.round((resHere-maxRes)/invExtComp*2.5)+maxRes;
     }
     let noMining = false;
     if (res.bld === 'Comptoir' || res.bld === 'Pompe') {

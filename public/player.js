@@ -2359,10 +2359,18 @@ function gangLevelUp(retour) {
             colour = 'cy';
             costColour = 'noir';
         }
+        let rechOnly = false;
+        if (comp.rechFirst != undefined) {
+            if (comp.rechFirst) {
+                if (playerInfos.comp[comp.name] === 0) {
+                    rechOnly = true;
+                }
+            }
+        }
         $('#conUnitList').append('<span class="paramName '+colour+'">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût">('+compCost+')</span><span class="paramCompValue cy" title="Niveau actuel">'+nowComp+'<span class="gff">/'+comp.maxLevel+'</span></span>');
         if (comp.levels[playerInfos.gang] <= nextGangLevel && comp.maxLevel >= nextComp) {
             if (compCost === 1 || (myCompPoints >= 2 && nextGangLevel >= 1)) {
-                if (myCompPoints >= compCost) {
+                if (myCompPoints >= compCost && !rechOnly) {
                     $('#conUnitList').append('<span class="paramValue klik" title="Augmenter '+comp.fullName+' au niveau '+nextComp+' (coût: '+compCost+')" onclick="addComp('+comp.id+','+nextComp+')">'+nextComp+' >>></span>');
                 }
             }

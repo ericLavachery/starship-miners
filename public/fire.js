@@ -1305,6 +1305,10 @@ function attack(melee,init) {
         }
     }
     doneAction(selectedBat);
+    if (selectedBat.tags.includes('embuscade')) {
+        selectedBat.tags.push('noemb');
+        selectedBat.tags.push('noemb');
+    }
     tagDelete(selectedBat,'embuscade');
     selectedBatArrayUpdate();
     escaped = false;

@@ -2389,7 +2389,6 @@
         "id":193,
         "name":"Aérodocks",
         "bldCost":"Garage",
-        "compReq":{"aero":1},
         "costs":{"Compo1":285,"Compo2":165,"Compo3":110,"Eau":180,"Energie":600,"Hydrocarbure":600,"Fuel":800,"Huile":500,"Titane":600,"Aluminium":600,"Cobalt":300,"Cuivre":600,"Platine":300,"Plutonium":150,"Hélium":300,"Electros":350,"Batteries":300},
         "fabTime":240,
         "slots":6
@@ -2659,7 +2658,6 @@
     {
         "id":284,
         "name":"Télépod",
-        "levels":{"rednecks":5,"blades":5,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
         "bldReq":["Centrale SMR"],
         "compReq":{"tele":1},
         "costs":{"Compo1":200,"Compo2":100,"Eau":18,"Végétaux":150,"Blendium":50,"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":350},

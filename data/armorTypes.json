@@ -1966,7 +1966,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{},
         "factor":"one",
-        "costs":{"Carbone":100,"Scrap":100,"Silicium":50,"Larvium":50,"Mendium":100,"Pyrus":50,"Bossium":25}
+        "costs":{"Carbone":100,"Scrap":100,"Silicium":50,"Larvium":50,"Mendium":100,"Bossium":10}
     },
     {
         "name":"sci-det",
@@ -1983,7 +1983,7 @@
         "cat":"equip",
         "skills":[],
         "info":"Recherche: Médecine",
-        "bldReq":["Hôpital"],
+        "bldReq":["Laboratoire"],
         "compReq":{},
         "factor":"one",
         "costs":{"Energie":50,"Drogues":200,"Mendium":100,"Tissus":100,"Titane":30,"Calcium":100,"Or":30,"Silicium":50,"Oxygène":100,"Chlore":100,"Electros":50,"Batteries":20}

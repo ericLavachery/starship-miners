@@ -1224,10 +1224,6 @@ function tagsUpdate(bat) {
     if (rand.rand(1,3) > 1) {
         tagDelete(bat,'noemb');
     }
-    if (bat.tags.includes('embuscade')) {
-        bat.tags.push('noemb');
-        bat.tags.push('noemb');
-    }
     tagDelete(bat,'embuscade');
     tagDelete(bat,'lasso');
     tagDelete(bat,'gogogo');
