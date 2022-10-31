@@ -3476,7 +3476,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","maycamo","recupcit","crewsave","prodres","upkeep","transport","routes","fret","dumper","badmedic","longshot","prefab"],
+        "skills":["fouille","maycamo","recupcit","crewsave","prodres","upkeep","transport","routes","fret","dumper","badmedic","longshot","prefab","maxlevel"],
         "mecanoCost":10,
         "mediCost":9,
         "transMaxSize":9,

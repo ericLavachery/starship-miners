@@ -139,10 +139,29 @@ function getAllRes(bat) {
     let tile = getTile(bat);
     let terrain = getTerrain(bat);
     let srs = getTerrainRes(terrain,tile);
+    let smallFruits = 0;
+    if (playerInfos.comp.ext >= 1) {
+        if (srs['Végétaux'] != undefined) {
+            smallFruits = smallFruits+Math.round(srs['Végétaux']/20);
+        }
+        if (srs['Bois'] != undefined) {
+            smallFruits = smallFruits+Math.round(srs['Bois']/30);
+        }
+    }
     let allRes = {};
     if (tile.rq === undefined) {
         allRes = srs;
+        if (smallFruits >= 15) {
+            tile.rq = 1;
+            tile.rs = {};
+            tile.rs['Fruits'] = smallFruits;
+        }
     } else {
+        if (tile.rs['Fruits'] === undefined) {
+            if (smallFruits >= 15) {
+                tile.rs['Fruits'] = smallFruits;
+            }
+        }
         let rs = tile.rs;
         allRes = {...rs,...srs};
     }

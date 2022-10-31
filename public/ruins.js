@@ -54,9 +54,6 @@ function checkRuinsComp(tile) {
         let foundComp = {};
         let compOK = false;
         let compChance = ruinsCompBase;
-        if (playerInfos.comp.det >= 4) {
-            compChance = compChance+playerInfos.comp.det-3;
-        }
         let compDice = 350+(playerInfos.fndComps*150);
         if (rand.rand(1,compDice) <= compChance) {
             let i = 1;

@@ -674,7 +674,7 @@ function maxUnits(unit) {
             maxInfo.text = 'Vous ne pouvez pas faire des chercheurs hors de la station';
         }
     }
-    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('wdev') || unit.skills.includes('mdev') || unit.skills.includes('hveh') || unit.skills.includes('lveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxexo') || unit.skills.includes('maxdet') || unit.skills.includes('maxind') || unit.skills.includes('maxgang')) {
+    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('wdev') || unit.skills.includes('mdev') || unit.skills.includes('hveh') || unit.skills.includes('lveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxexo') || unit.skills.includes('maxdet') || unit.skills.includes('maxind') || unit.skills.includes('maxgang') || unit.skills.includes('maxlevel')) {
         if (playerInfos.bldList.includes('Camp d\'entraînement')) {
             maxOf.elite = maxOf.elite+playerInfos.comp.train;
             if (maxOf.elite < 1) {
@@ -906,18 +906,44 @@ function maxUnits(unit) {
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de détection';
         }
     }
+    if (unit.skills.includes('maxlevel')) {
+        maxInfo.max = Math.floor((playerInfos.comp.log/2)+(playerInfos.gLevel/8)+0.5);
+        if (numOf[unit.name] >= maxInfo.max) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez monter de niveau et/ou augmenter votre compétence de logistique';
+        }
+    }
     if (unit.skills.includes('maxgang')) {
+        let levelBlock = false;
         if (playerInfos.gang === 'rednecks') {
             maxInfo.max = playerInfos.comp.log+1;
-            if (numOf[unit.name] >= maxInfo.max && numOf[unit.name] >= 1) {
+            let levelMax = Math.floor(playerInfos.gLevel/3.5);
+            if (maxInfo.max > levelMax) {
+                maxInfo.max = levelMax;
+                levelBlock = true;
+            }
+            if (numOf[unit.name] >= maxInfo.max) {
                 maxInfo.ko = true;
-                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de logistique';
+                if (levelBlock) {
+                    maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez monter de niveau';
+                } else {
+                    maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de logistique';
+                }
             }
         } else {
             maxInfo.max = Math.floor((playerInfos.comp.log/2)+(playerInfos.comp.gen/1.5)+1);
-            if (numOf[unit.name] >= maxInfo.max && numOf[unit.name] >= 1) {
+            let levelMax = Math.floor(playerInfos.gLevel/5);
+            if (maxInfo.max > levelMax) {
+                maxInfo.max = levelMax;
+                levelBlock = true;
+            }
+            if (numOf[unit.name] >= maxInfo.max) {
                 maxInfo.ko = true;
-                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter vos compétences de logistique et de génétique';
+                if (levelBlock) {
+                    maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez monter de niveau';
+                } else {
+                    maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter vos compétences de logistique et de génétique';
+                }
             }
         }
     }

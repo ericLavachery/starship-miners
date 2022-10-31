@@ -75,7 +75,7 @@ function combat(melee) {
     }
     let selectedBatName = nomVisible(selectedBat);
     let targetBatName = nomVisible(targetBat);
-    tagDelete(selectedBat,'mining');
+    // tagDelete(selectedBat,'mining');
     if (!targetBat.eq.includes('w2-auto')) {
         tagDelete(targetBat,'mining');
     }

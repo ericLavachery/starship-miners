@@ -285,7 +285,7 @@
         "power": 0,
         "powermult": 0.5,
         "armors": 0.4,
-        "accuracy": 2,
+        "accuracy": 1.5,
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Armurerie"],

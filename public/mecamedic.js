@@ -407,7 +407,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
             selectedBat.xp = selectedBat.xp+xpGain;
         }
         selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
-        tagDelete(selectedBat,'mining');
+        // tagDelete(selectedBat,'mining');
         if (selectedBatType.cat != 'buildings' && !selectedBatType.skills.includes('transorbital') && !selectedBatType.skills.includes('freeshot')) {
             tagDelete(selectedBat,'guet');
         }

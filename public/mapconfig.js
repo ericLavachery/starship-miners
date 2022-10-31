@@ -221,21 +221,25 @@ function findEgg() {
 function checkEggInDark(tileId) {
     let tile = getTileById(tileId);
     let isVisible = true;
-    if (playerInfos.comp.det === 0) {
+    if (playerInfos.vue === 0) {
         isVisible = false;
-    } else if (playerInfos.comp.det === 1) {
+    } else if (playerInfos.vue === 1) {
         if (tile.seed > 1) {
             isVisible = false;
         }
-    } else if (playerInfos.comp.det === 2) {
+    } else if (playerInfos.vue === 2) {
         if (tile.seed > 2) {
             isVisible = false;
         }
-    } else if (playerInfos.comp.det === 3) {
+    } else if (playerInfos.vue === 3) {
+        if (tile.seed > 3) {
+            isVisible = false;
+        }
+    } else if (playerInfos.vue === 4) {
         if (tile.seed > 4) {
             isVisible = false;
         }
-    } else if (playerInfos.comp.det >= 4) {
+    } else if (playerInfos.vue >= 5) {
         isVisible = true;
     }
     return isVisible;

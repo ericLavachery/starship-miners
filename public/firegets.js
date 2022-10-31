@@ -494,7 +494,7 @@ function batDeath(bat,count,isWiped) {
                     eggsNum = eggsNum-1;
                 }
                 if (bat.type === 'Oeuf voilé') {
-                    if (playerInfos.comp.det >= 3) {
+                    if (playerInfos.vue >= 4) {
                         eggsNum = eggsNum-1;
                     }
                     unveilAliens(bat);

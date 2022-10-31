@@ -1025,6 +1025,16 @@
         "bg":"#182a16"
     },
     {
+        "id":172,
+        "result":"Nourriture",
+        "cost":{"Fruits":20,"Végétaux":15,"Energie":1},
+        "compReq":{"tri":2},
+        "bldReq":["Cantine"],
+        "batch":5,
+        "creaNum":100,
+        "bg":"#182a16"
+    },
+    {
         "id":135,
         "result":"Nourriture",
         "cost":{"Viande":15,"Végétaux":10,"Energie":2},

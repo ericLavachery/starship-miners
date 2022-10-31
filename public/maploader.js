@@ -215,9 +215,6 @@ function showRes(tileId) {
     let mapIndicators = '';
     let res = '';
     let view = true;
-    // if (zone[0].dark && !zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
-    //     view = false;
-    // }
     if (modeSonde && playerInfos.comp.det < 0) {
         view = false;
     }
@@ -435,7 +432,7 @@ function showAlien(bat) {
             $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
         }
     } else if (bat.tags.includes('invisible') && !bat.tags.includes('fluo')) {
-        if (playerInfos.comp.det >= 5 || doggedTiles.includes(bat.tileId)) {
+        if (playerInfos.vue >= 6 || doggedTiles.includes(bat.tileId)) {
             if (degNum >= 7) {
                 $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/invisible.png" width="64"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
             } else {

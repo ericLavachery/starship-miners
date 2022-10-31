@@ -13,7 +13,7 @@ function nextTurn() {
         playerInfos.alienSat = playerInfos.alienSat+1;
     }
     if (playerInfos.alienSat >= coconSatLimit-1) {
-        if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) {
+        if (playerInfos.vue >= 4 && playerInfos.comp.ca >= 2) {
             warning('Cocon en approche','Le nombre d\'aliens en jeu est trop élevé.');
         }
     }
@@ -45,7 +45,7 @@ function nextTurn() {
                 bat.logeq = '';
             }
             deFog(bat,batType);
-            if ((!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) || playerInfos.comp.det >= 4) {
+            if ((!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) || playerInfos.vue >= 5) {
                 visibleAliens.push(bat.tileId);
             }
             if (!alienTypesList.includes(batType.name)) {
@@ -729,6 +729,23 @@ function turnInfo() {
     // let citNeed = getCitNeed();
     // console.log('citNeed = '+citNeed);
     checkNeiTurn();
+    playerInfos.vue = playerInfos.comp.det;
+    if (playerInfos.bldList.includes('Centre de com')) {
+        playerInfos.vue = playerInfos.vue+1;
+    } else if (!playerInfos.bldVM.includes('Centre de com')) {
+        playerInfos.vue = playerInfos.vue-1;
+    }
+    if (!playerInfos.bldList.includes('Centre de com')) {
+        if (!playerInfos.bldList.includes('Poste radio')) {
+            if (playerInfos.vue > 1) {
+                playerInfos.vue = 1;
+            }
+        } else {
+            if (playerInfos.vue > 2) {
+                playerInfos.vue = 2;
+            }
+        }
+    }
     let numberOfEggs = 0;
     let numberOfAliens = 0;
     let numClassA = 0;
@@ -762,7 +779,7 @@ function turnInfo() {
                     }
                 }
             }
-            if (bat.type == 'Oeuf' || bat.type == 'Coque' || bat.type === 'Cocon' || bat.type === 'Colonie') {
+            if (bat.type === 'Oeuf' || bat.type === 'Coque' || bat.type === 'Cocon' || bat.type === 'Colonie') {
                 let isVisible = true;
                 if (zone[0].dark && !undarkNow.includes(bat.tileId) && !bat.tags.includes('fluo')) {
                     isVisible = checkEggInDark(bat.tileId);
@@ -776,7 +793,7 @@ function turnInfo() {
             } else if (!bat.tags.includes('invisible') && !batType.skills.includes('invisible')) {
                 numberOfAliens++;
             } else if (bat.type.includes('Oeuf')) {
-                if (playerInfos.comp.det >= 3) {
+                if (playerInfos.vue >= 4) {
                     numberOfEggs++;
                 }
                 realNumberOfEggs++;
@@ -952,7 +969,11 @@ function turnInfo() {
     if (!playerInfos.onShip) {
         $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
         $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
-        $('#tour').append('Présence Alien <span class="or">'+zone[0].mapDiff+'</span><br>');
+        if (playerInfos.mapTurn <= 1 && zone[0].mapDiff != playerInfos.sondeDanger) {
+            $('#tour').append('<span class="wblynk">Présence Alien '+zone[0].mapDiff+'</span><br>');
+        } else {
+            $('#tour').append('Présence Alien <span class="or">'+zone[0].mapDiff+'</span><br>');
+        }
         if (playerInfos.bldList.includes('Champ de force')) {
             if (domeProtect) {
                 $('#tour').append('<span class="cy">Dôme actif</span><br>');
@@ -960,7 +981,7 @@ function turnInfo() {
                 $('#tour').append('<span class="or">Dôme inactif</span><br>');
             }
         }
-        if ((playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) || playerInfos.bldList.includes('Centre de com')) {
+        if (playerInfos.vue >= 3 && playerInfos.comp.ca >= 2) {
             let allCoconTurns = [];
             let turn = 0;
             while (turn <= 300) {
@@ -988,21 +1009,21 @@ function turnInfo() {
                     $('#tour').append('<span class="neutre" title="Aucun oeuf en approche">Aucun oeuf en vue</span><br>');
                     turnCol = 'neutre';
                 }
-                if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2 && allCoconTurns[playerInfos.cocons]-10 <= playerInfos.mapTurn) {
+                if (playerInfos.vue >= 4 && playerInfos.comp.ca >= 2 && allCoconTurns[playerInfos.cocons]-10 <= playerInfos.mapTurn) {
                     let approxTurn = Math.round(allCoconTurns[playerInfos.cocons]/5)*5;
                     $('#tour').append('<span class="'+turnCol+'" title="Cocon prévu aux alentours du tour '+approxTurn+'">Cocon en approche</span><br>');
                 }
             }
         }
         let sconvNear = false;
-        if ((playerInfos.comp.det >= 1 && playerInfos.bldList.includes('Centre de com')) || (playerInfos.comp.det >= 3 && playerInfos.bldList.includes('Poste radio'))) {
+        if (playerInfos.vue >= 2) {
             if (playerInfos.vz-5-playerInfos.pauseSeed <= playerInfos.mapTurn) {
                 if (playerInfos.vz-5-playerInfos.pauseSeed === playerInfos.mapTurn) {
                     warning('Convoi en approche','Attirés par le bruit, des survivants sont en route vers votre Lander.');
                 }
-                if (playerInfos.comp.det >= 4 && playerInfos.bldList.includes('Centre de com')) {
+                if (playerInfos.vue >= 5) {
                     $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (tour '+playerInfos.vz+') ('+playerInfos.vc+')">Survivants</span><br>');
-                } else if (playerInfos.comp.det >= 3 && playerInfos.bldList.includes('Centre de com')) {
+                } else if (playerInfos.vue >= 4) {
                     $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (moins de 15 tours) ('+playerInfos.vc+')">Survivants</span><br>');
                 } else {
                     $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (moins de 15 tours)">Survivants</span><br>');
@@ -1010,10 +1031,10 @@ function turnInfo() {
                 sconvNear = true;
             }
         }
-        if (playerInfos.comp.det >= 3 && playerInfos.bldList.includes('Centre de com')) {
+        if (playerInfos.vue >= 4) {
             if (playerInfos.vz < 90) {
                 if (!sconvNear && playerInfos.mapTurn >= 10) {
-                    if (playerInfos.comp.det >= 4 && playerInfos.bldList.includes('Centre de com') && playerInfos.mapTurn >= 20) {
+                    if (playerInfos.vue >= 5 && playerInfos.mapTurn >= 20) {
                         let approxTurn = Math.round(playerInfos.vz/10)*10;
                         $('#tour').append('<span class="neutre" title="Convoi de survivants en approche (vers le tour '+approxTurn+')">Survivants</span><br>');
                     } else {
@@ -1043,7 +1064,7 @@ function turnInfo() {
                     warning('Apocalypse','Imminent! : Les ruches et volcans vont se suicider en crachant à très grande distance.');
                 } else {
                     let lsTurn = lastStand.turn;
-                    let expertise = Math.floor((playerInfos.comp.det+playerInfos.comp.ca)/2)-1;
+                    let expertise = Math.floor((playerInfos.vue+playerInfos.comp.ca-1)/2)-1;
                     if (expertise < 1) {
                         lsTurn = 100;
                     } else if (expertise < 2) {
@@ -1727,7 +1748,7 @@ function checkDeath(bat,batType) {
                     eggsNum = eggsNum-1;
                 }
                 if (bat.type === 'Oeuf voilé') {
-                    if (playerInfos.comp.det >= 3) {
+                    if (playerInfos.vue >= 4) {
                         eggsNum = eggsNum-1;
                     }
                     unveilAliens(bat);

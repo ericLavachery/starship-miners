@@ -424,7 +424,7 @@ function moveSelectedBat(tileId,free,jump) {
                     mudChance = 0;
                 } else {
                     mudChance = mudChance*7/(selectedBat.vet+6);
-                    mudChance = Math.ceil(mudChance*8/(playerInfos.comp.det+6));
+                    mudChance = Math.ceil(mudChance*8/(playerInfos.vue+5));
                 }
                 if (rand.rand(1,100) <= mudChance) {
                     let newAP = 0;
@@ -461,7 +461,7 @@ function moveSelectedBat(tileId,free,jump) {
                     } else {
                         warning('Sables mouvants','Sables mouvants détectés');
                     }
-                } else if (playerInfos.comp.det >= 4 && mudChance >= 10) {
+                } else if (playerInfos.vue >= 5 && mudChance >= 10) {
                     tile.qs = true;
                     warning('Sables mouvants','Sables mouvants détectés');
                 }
