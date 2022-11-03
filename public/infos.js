@@ -547,13 +547,19 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">'+bat.logeq+'</span><br>');
     }
     if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
-        if (bat.eq != 'e-flash' && bat.logeq != 'e-flash' && bat.eq != 'e-phare' && bat.logeq != 'e-phare') {
+        if (bat.eq != 'e-flash' && bat.logeq != 'e-flash' && bat.eq != 'e-phare' && bat.logeq != 'e-phare' && !bat.tdc.includes('e-flash')) {
             $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">e-flash</span><br>');
         }
     }
     if (pop) {
         if (bat.tdc.length >= 1) {
             $('#'+bodyPlace).append('<span class="paramName" title="Tombés du camion">TDC</span><span class="paramIcon"></span><span class="paramValue lcy">'+toNiceString(bat.tdc)+'</span><br>');
+        }
+    } else {
+        if (bat.tdc.length === 1) {
+            $('#'+bodyPlace).append('<span class="paramName" title="Tombés du camion">TDC</span><span class="paramIcon"></span><span class="paramValue lcy">'+bat.tdc[0]+'</span><br>');
+        } else if (bat.tdc.length >= 2) {
+            $('#'+bodyPlace).append('<span class="paramName" title="Tombés du camion">TDC</span><span class="paramIcon"></span><span class="paramValue lcy" title="'+toNiceString(bat.tdc)+'">'+bat.tdc[0]+'...</span><br>');
         }
     }
     // WEAPONS & SKILLS

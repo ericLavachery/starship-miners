@@ -459,6 +459,7 @@ function conSelect(unitId,player,noRefresh) {
     let weapName;
     let equipNotes;
     let bonusEqName = getBonusEq(conselUnit);
+    let emptyBat = {};
     console.log("bonusEqName="+bonusEqName);
     listNum = 1;
     // EQUIP ---------------------------------------------
@@ -468,7 +469,7 @@ function conSelect(unitId,player,noRefresh) {
             $('#conAmmoList').append('<span class="constName or">Equipement</span><br>');
             conselUnit.equip.forEach(function(equip) {
                 batEquip = getEquipByName(equip);
-                let showEq = showEquip(conselUnit,batEquip);
+                let showEq = showEquip(conselUnit,batEquip,emptyBat);
                 if (batEquip.name === 'e-flash') {
                     if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
                         showEq = false;

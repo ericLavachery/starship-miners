@@ -2154,10 +2154,27 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.maxAmmo = 16;
         }
     }
-    if (bat.eq === 'crimekitgi') {
-        if (thisWeapon.num === 1) {
+    if (bat.tdc.includes('fineclub')) {
+        if (thisWeapon.name === 'Batte') {
             thisWeapon.power = thisWeapon.power+1;
             thisWeapon.rof = thisWeapon.rof*1.33;
+        }
+        if (thisWeapon.name === 'Torche') {
+            thisWeapon.rof = thisWeapon.rof*1.2;
+        }
+        if (thisWeapon.name === 'Toothbrush') {
+            thisWeapon.rof = thisWeapon.rof*1.33;
+        }
+    }
+    if (bat.eq === 'crimekitgi') {
+        if (thisWeapon.num === 1 && thisWeapon.isMelee) {
+            thisWeapon.power = thisWeapon.power+1;
+            thisWeapon.rof = thisWeapon.rof*1.33;
+        }
+    }
+    if (bat.eq === 'crimekitto') {
+        if (thisWeapon.num === 1 && thisWeapon.isMelee) {
+            thisWeapon.rof = thisWeapon.rof*1.2;
         }
     }
     if (bat.eq === 'kit-lightning') {

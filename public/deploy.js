@@ -102,7 +102,7 @@ function reEquip(batId,noRefresh) {
             $('#conAmmoList').append('<span class="constName or">Equipement</span><br>');
             myBatType.equip.forEach(function(equip) {
                 batEquip = getEquipByName(equip);
-                let showEq = showEquip(myBatType,batEquip);
+                let showEq = showEquip(myBatType,batEquip,myBat);
                 if (batEquip.name === 'e-flash') {
                     if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
                         showEq = false;
@@ -240,7 +240,7 @@ function reEquip(batId,noRefresh) {
     $('#conAmmoList').append('<br>');
 };
 
-function showEquip(batType,batEquip) {
+function showEquip(batType,batEquip,bat) {
     let showEq = true;
     console.log('W2ALT --------------------------------------------------------------');
     console.log(batEquip.name);
@@ -253,19 +253,11 @@ function showEquip(batType,batEquip) {
             }
         }
     }
-    // console.log(batType.weapon2alt.gangs);
-    // if (batType.weapon2.gangs != undefined) {
-    //     if (batEquip.name === 'w2-explo' || batEquip.name === 'w2-arti' || batEquip.name === 'w2-lcomet') {
-    //         showEq = false;
-    //     }
-    // }
-    // if (batType.weapon2alt != undefined) {
-    //     if (batType.weapon2alt.gangs != undefined) {
-    //         if (batEquip.name === 'w2-ggun' || batEquip.name === 'w2-laser' || batEquip.name === 'w2-lmit') {
-    //             showEq = false;
-    //         }
-    //     }
-    // }
+    if (Object.keys(bat).length >= 1) {
+        if (bat.tdc.includes(batEquip.name)) {
+            showEq = false;
+        }
+    }
     return showEq;
 };
 
