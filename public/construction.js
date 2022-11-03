@@ -1077,6 +1077,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 }
             }
             // Equip
+            newBat.tdc = [];
             let equipName = conselAmmos[3];
             if (equipName === 'xxx') {
                 equipName = 'aucun';

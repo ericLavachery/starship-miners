@@ -273,7 +273,7 @@ function skillsInfos(bat,batType,near) {
                     if (bat.eq === 'kit-chouf' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu') {
                         apCost = Math.floor(batType.ap/2.5);
                         apReq = 2;
-                    } else if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || bat.eq === 'kit-guetteur') {
+                    } else if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.tdc.includes('e-camo') || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || bat.eq === 'kit-guetteur') {
                         apCost = Math.floor(batType.ap/2);
                         apReq = 3;
                     } else {

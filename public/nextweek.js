@@ -584,6 +584,7 @@ function eventCrime(time,sim,quiet) {
             warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false)
         }
     }
+    setPenitLevel();
 };
 
 function calcCrimeRate(mesCitoyens) {

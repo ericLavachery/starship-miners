@@ -485,8 +485,17 @@ function doReEquip(batId) {
 
 function getBatGearStuff(armorName,equipName,batType) {
     let gearStuff = [];
+    if (batType.skills.includes('penitbat') && playerInfos.onShip) {
+        setPenitLevel();
+    }
+    // ARMOR
     let batArmor = getEquipByName(armorName);
     gearStuff[0] = batType.armor+batArmor.armor;
+    // tombé du camion?
+    if (batType.skills.includes('penitbat') && playerInfos.penit >= 6) {
+        gearStuff[0] = gearStuff[0]+1;
+    }
+    // armure de base de l'unité?
     if (batType.armor >= 2) {
         if (batType.skills.includes('robot') || batType.skills.includes('cyber') || batType.cat === 'infantry') {
             if (batType.armor > batArmor.armor) {
@@ -496,6 +505,7 @@ function getBatGearStuff(armorName,equipName,batType) {
             }
         }
     }
+    // skill bigprot?
     if (batType.skills.includes('bigprot')) {
         let blindageBonus = (batArmor.armor*2)+1;
         if (blindageBonus > 8) {
@@ -503,6 +513,7 @@ function getBatGearStuff(armorName,equipName,batType) {
         }
         gearStuff[0] = batType.armor+blindageBonus;
     }
+    // AP
     let baseAP = batType.ap;
     if (equipName === 'e-jetpack') {
         baseAP = 13;

@@ -235,6 +235,7 @@ function newGame() {
     playerInfos.sondeDanger = -1;
     playerInfos.sondePlanet = -1;
     playerInfos.crime = 0;
+    playerInfos.penit = 0;
     playerInfos.vitals = 0;
     playerInfos.nextId = 1;
     playerInfos.allTurns = 0;

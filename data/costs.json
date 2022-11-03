@@ -24,7 +24,7 @@
         "id":217,
         "name":"Détenus",
         "levels":{"rednecks":99,"blades":99,"bulbos":1,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Prisons"],
+        "bldReq":[],
         "costs":{"Fer":60,"Scrap":60},
         "fabTime":15
     },
@@ -32,7 +32,7 @@
         "id":218,
         "name":"Gangsters",
         "levels":{"rednecks":1,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Prisons"],
+        "bldReq":[],
         "costs":{"Fer":30,"Carbone":15,"Tungstène":15,"Scrap":45},
         "fabTime":15
     },
@@ -40,7 +40,7 @@
         "id":219,
         "name":"Raiders",
         "levels":{"rednecks":99,"blades":1,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Prisons"],
+        "bldReq":[],
         "costs":{"Fer":60,"Bois":60},
         "fabTime":15
     },
@@ -48,7 +48,7 @@
         "id":220,
         "name":"Krimulos",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":1,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Prisons"],
+        "bldReq":[],
         "costs":{"Fer":90,"Scrap":90},
         "fabTime":15
     },
@@ -56,7 +56,7 @@
         "id":223,
         "name":"Sinyaki",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":1,"brasier":99},
-        "bldReq":["Prisons"],
+        "bldReq":[],
         "costs":{"Bois":60},
         "fabTime":15
     },
@@ -64,7 +64,7 @@
         "id":221,
         "name":"Desperados",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":1,"detruas":99,"brasier":99},
-        "bldReq":["Prisons"],
+        "bldReq":[],
         "costs":{"Fer":90,"Scrap":90},
         "fabTime":15
     },
@@ -72,7 +72,7 @@
         "id":222,
         "name":"Tôlards",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":1},
-        "bldReq":["Prisons"],
+        "bldReq":[],
         "costs":{"Scrap":30},
         "fabTime":15
     },
@@ -246,7 +246,7 @@
         "id":144,
         "name":"Bandidos",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":6,"detruas":99,"brasier":99},
-        "bldReq":["Armurerie","Prisons"],
+        "bldReq":["Armurerie","Bar"],
         "costs":{"Fer":81,"Soufre":27,"Plomb":27,"Aluminium":54,"Carbone":54,"Scrap":54,"Végétaux":135,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
         "fabTime":15
@@ -673,7 +673,7 @@
         "id":73,
         "name":"Exodarks",
         "levels":{"rednecks":99,"blades":15,"bulbos":99,"drogmulojs":14,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Camp d'entraînement","Centre de recherches","Prisons"],
+        "bldReq":["Camp d'entraînement","Centre de recherches"],
         "compReq":{"gen":2},
         "compPass":["drogmulojs"],
         "compHardReq":{"gen":1,"bal":1,"ca":3},
@@ -684,7 +684,7 @@
         "id":77,
         "name":"Exobios",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":13,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Arsenal","Centre de recherches","Prisons"],
+        "bldReq":["Arsenal","Centre de recherches"],
         "compReq":{"gen":2},
         "compPass":["drogmulojs"],
         "compHardReq":{"gen":1,"explo":1},
@@ -695,7 +695,7 @@
         "id":176,
         "name":"Exobrutes",
         "levels":{"rednecks":99,"blades":13,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "bldReq":["Laboratoire","Prisons"],
+        "bldReq":["Centre de recherches"],
         "compReq":{"gen":2},
         "costs":{"Fer":48,"Bois":96,"Aluminium":48,"Bugium":200,"Bossium":15,"Creatite":214,"Azote":258,"Calcium":86,"Drogues":60},
         "fabTime":55
@@ -2689,7 +2689,7 @@
         "name":"Prisons",
         "costs":{"Compo1":120,"Compo2":45,"Eau":50,"Fer":150},
         "fabTime":35,
-        "crime":-5,
+        "crime":-4,
         "slots":2
     },
     {

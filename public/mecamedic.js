@@ -900,7 +900,7 @@ function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
         } else if (playerInfos.bldList.includes('Infirmerie') && batType.cat != 'buildings') {
             baseskillCost = Math.round(baseskillCost*3/4);
         }
-        if (bat.eq === 'e-medic' || bat.logeq === 'e-medic') {
+        if (bat.eq === 'e-medic' || bat.logeq === 'e-medic' || bat.tdc.includes('e-medic')) {
             if (baseskillCost >= 7) {
                 baseskillCost = Math.round(baseskillCost*3/4);
             } else {
@@ -950,7 +950,7 @@ function bestMedicInBld(bldBat) {
         if (bat.loc === "trans" && bat.locId === bldBat.id) {
             let batType = getBatType(bat);
             if (batType.cat != 'buildings' && batType.cat != 'devices') {
-                if (batType.skills.includes('medic') || (batType.skills.includes('badmedic') && playerInfos.comp.med >= 3 && (bat.eq === 'e-medic' || bat.logeq === 'e-medic'))) {
+                if (batType.skills.includes('medic') || (batType.skills.includes('badmedic') && playerInfos.comp.med >= 3 && (bat.eq === 'e-medic' || bat.logeq === 'e-medic' || bat.tdc.includes('e-medic')))) {
                     maxMeds = 10*bat.apLeft/batType.mediCost;
                     if (maxMeds > bestMaxMeds) {
                         bestMaxMeds = maxMeds;
@@ -1131,19 +1131,19 @@ function checkMedicSkill(bat,batType) {
     } else if (batType.skills.includes('selfmedic')) {
         myMedicSkill = 'selfmedic';
     } else if (batType.skills.includes('badmedic')) {
-        if ((bat.eq === 'e-medic' || bat.logeq === 'e-medic') && playerInfos.comp.med >= 3) {
+        if ((bat.eq === 'e-medic' || bat.logeq === 'e-medic' || bat.tdc.includes('e-medic')) && playerInfos.comp.med >= 3) {
             myMedicSkill = 'medic';
         } else {
             myMedicSkill = 'badmedic';
         }
     } else if (batType.skills.includes('selfbadmedic')) {
-        if ((bat.eq === 'e-medic' || bat.logeq === 'e-medic') && playerInfos.comp.med >= 3) {
+        if ((bat.eq === 'e-medic' || bat.logeq === 'e-medic' || bat.tdc.includes('e-medic')) && playerInfos.comp.med >= 3) {
             myMedicSkill = 'selfmedic';
         } else {
             myMedicSkill = 'selfbadmedic';
         }
     } else {
-        if (bat.eq === 'e-medic' || bat.logeq === 'e-medic') {
+        if (bat.eq === 'e-medic' || bat.logeq === 'e-medic' || bat.tdc.includes('e-medic')) {
             myMedicSkill = 'selfbadmedic';
         }
     }
@@ -1180,7 +1180,7 @@ function checkMedTrans(bat,batType) {
             isMedic = true;
         }
         if (batType.skills.includes('badmedic') && playerInfos.comp.med >= 3) {
-            if (bat.eq === 'e-medic' || bat.logeq === 'e-medic') {
+            if (bat.eq === 'e-medic' || bat.logeq === 'e-medic' || bat.tdc.includes('e-medic')) {
                 isMedic = true;
             }
         }

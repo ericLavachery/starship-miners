@@ -1164,7 +1164,7 @@ function getAP(bat,batType) {
     if (batType.skills.includes('heroap') && bat.tags.includes('hero')) {
         newAP = newAP+2;
     }
-    if (bat.eq === 'helper' || bat.logeq === 'helper') {
+    if (bat.eq === 'helper' || bat.logeq === 'helper' || bat.tdc.includes('helper')) {
         newAP = newAP+1;
     }
     if (bat.eq === 'e-lifepod') {
@@ -1419,7 +1419,7 @@ function blub(bat,batType) {
         if (terrain.name === 'L' || terrain.name === 'R') {
             let tile = getTile(bat);
             if ((tile.seed <= 3 || terrain.name === 'L') && !tile.rd) {
-                if (bat.eq != 'waterproof' && bat.logeq != 'waterproof') {
+                if (bat.eq != 'waterproof' && bat.logeq != 'waterproof' && !bat.tdc.includes('waterproof')) {
                     if ((!batType.skills.includes('fly') && !batType.skills.includes('hover') && !batType.skills.includes('noblub')) || batType.skills.includes('jetpack')) {
                         bat.tags.push('blub');
                     }
@@ -1437,7 +1437,7 @@ function tagsEffect(bat,batType) {
     if (bat.tags.includes('mud')) {
         if (batType.moveCost < 90) {
             bat.apLeft = bat.apLeft-bat.ap;
-            if (batType.skills.includes('ranger') || batType.skills.includes('caterp') || bat.eq === 'e-ranger' || bat.logeq === 'e-ranger') {
+            if (batType.skills.includes('ranger') || batType.skills.includes('caterp') || bat.eq === 'e-ranger' || bat.logeq === 'e-ranger' || bat.tdc.includes('e-ranger')) {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3*2));
             } else if (bat.eq === 'chenilles' || bat.logeq === 'chenilles') {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/2));

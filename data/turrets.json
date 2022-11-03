@@ -1713,7 +1713,7 @@
         "weapon":{
             "name":"Explosifs",
             "cost":15,
-            "range":0,
+            "range":1,
             "noAtt":true,
             "rof":5,
             "accuracy":32,
@@ -1726,7 +1726,7 @@
         "weapon2":{
             "name":"Explosion",
             "cost":1,
-            "range":0,
+            "range":1,
             "noDef":true,
             "rof":20,
             "accuracy":16,
@@ -1766,7 +1766,7 @@
         "weapon":{
             "name":"Explosifs",
             "cost":15,
-            "range":0,
+            "range":1,
             "noAtt":true,
             "rof":2,
             "accuracy":26,

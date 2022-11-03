@@ -625,16 +625,20 @@ function attack(melee,init) {
         $('#report').append('<span class="report rose">Arrosé<br></span>');
     }
     // disco
-    if (selectedWeap.ammo.includes('disco') || selectedWeap.ammo.includes('psionics')) {
+    if (selectedWeap.ammo.includes('disco') || selectedWeap.ammo.includes('psionics') || selectedWeap.ammo.includes('suicide')) {
         let webDamage = totalHits;
         let distFactor = calcShotsRangeAdj(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType);
-        webDamage = webDamage*distFactor/100;
-        if (selectedWeap.ammo.includes('psionics')) {
-            webDamage = Math.ceil(webDamage*2/Math.sqrt(targetBatType.hp));
+        if (selectedWeap.ammo.includes('suicide')) {
+            totalDamage = Math.ceil(totalDamage*distFactor/100);
         } else {
-            webDamage = Math.ceil(webDamage*rand.rand(4,12)/8);
+            webDamage = webDamage*distFactor/100;
+            if (selectedWeap.ammo.includes('psionics')) {
+                webDamage = Math.ceil(webDamage*2/Math.sqrt(targetBatType.hp));
+            } else {
+                webDamage = Math.ceil(webDamage*rand.rand(4,12)/8);
+            }
+            apDamage = apDamage+webDamage;
         }
-        apDamage = apDamage+webDamage;
     }
     // inflammable
     if (selectedWeap.isFire || selectedWeap.isHot) {
@@ -1611,16 +1615,20 @@ function defense(melee,init) {
         $('#report').append('<span class="report rose">Arrosé<br></span>');
     }
     // disco
-    if (targetWeap.ammo.includes('disco') || targetWeap.ammo.includes('psionics')) {
+    if (targetWeap.ammo.includes('disco') || targetWeap.ammo.includes('psionics') || targetWeap.ammo.includes('suicide')) {
         let webDamage = totalHits;
         let distFactor = calcShotsRangeAdj(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType);
-        webDamage = webDamage*distFactor/100;
-        if (targetWeap.ammo.includes('disco')) {
-            webDamage = Math.ceil(webDamage*2/Math.sqrt(selectedBatType.hp));
+        if (targetWeap.ammo.includes('suicide')) {
+            totalDamage = Math.ceil(totalDamage*distFactor/100);
         } else {
-            webDamage = Math.ceil(webDamage*rand.rand(4,12)/8);
+            webDamage = webDamage*distFactor/100;
+            if (targetWeap.ammo.includes('disco')) {
+                webDamage = Math.ceil(webDamage*2/Math.sqrt(selectedBatType.hp));
+            } else {
+                webDamage = Math.ceil(webDamage*rand.rand(4,12)/8);
+            }
+            apDamage = apDamage+webDamage;
         }
-        apDamage = apDamage+webDamage;
     }
     // berserk (bonus damage des opposants)
     if (activeTurn === 'player') {

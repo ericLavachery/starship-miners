@@ -1014,7 +1014,10 @@ td {
     padding: 0 7px 0 7px;
 }
 #sidebarInfos {
-    width: 270px;
+    width: 305px;
+}
+#sidebarCommand {
+    width: 146px;
 }
 .sidebar a {
     text-decoration: none;

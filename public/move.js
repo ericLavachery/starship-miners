@@ -432,7 +432,7 @@ function moveSelectedBat(tileId,free,jump) {
                     tile.qs = true;
                     if (selectedBatType.skills.includes('ranger')) {
                         immobChance = immobChance-40;
-                    } else if (selectedBat.eq === 'e-ranger' || selectedBat.logeq === 'e-ranger') {
+                    } else if (selectedBat.eq === 'e-ranger' || selectedBat.logeq === 'e-ranger' || selectedBat.tdc.includes('e-ranger')) {
                         immobChance = immobChance-30;
                     }
                     if (selectedBatType.skills.includes('caterp')) {
@@ -722,7 +722,7 @@ function calcBaseMoveCost(bat,batType) {
     if (bat.tags.includes('zombie')) {
         baseMoveCost = baseMoveCost*1.5;
     }
-    if (bat.eq === 'helper' || bat.logeq === 'helper') {
+    if (bat.eq === 'helper' || bat.logeq === 'helper' || bat.tdc.includes('helper')) {
         baseMoveCost = baseMoveCost*0.85;
     }
     if (bat.eq === 'w2-moisso' || bat.logeq === 'w2-moisso' || bat.eq === 'moisso' || bat.logeq === 'moisso') {
@@ -756,7 +756,7 @@ function calcMoveCost(targetTileId,diag) {
         moveCost = baseMoveCost+terrain.alienmc;
     } else if (selectedBatType.skills.includes('okwater')) {
         moveCost = baseMoveCost+terrain.larvemc;
-    } else if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.eq === 'e-ranger' || selectedBat.logeq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitlu' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitto') {
+    } else if (selectedBatType.skills.includes('ranger') || selectedBat.eq === 'kit-sentinelle' || selectedBat.tdc.includes('e-ranger') || selectedBat.eq === 'e-ranger' || selectedBat.logeq === 'e-ranger' || selectedBat.eq === 'crimekitch' || selectedBat.eq === 'crimekitlu' || selectedBat.eq === 'crimekitgi' || selectedBat.eq === 'crimekitto') {
         moveCost = baseMoveCost+terrain.rangermc;
     } else if (selectedBatType.skills.includes('caterp') || (selectedBat.eq === 'chenilles' && selectedBatType.maxFlood >= 1 && selectedBatType.maxScarp >= 2) || (selectedBat.eq === 'chenilles' && selectedBatType.maxFlood >= 1 && terrain.name === 'S') || (selectedBat.eq === 'chenilles' && selectedBatType.maxScarp >= 2 && terrain.name === 'H') || (selectedBat.eq === 'chenilles' && terrain.name === 'B') || (selectedBat.logeq === 'chenilles' && selectedBatType.maxFlood >= 1 && selectedBatType.maxScarp >= 2) || (selectedBat.logeq === 'chenilles' && selectedBatType.maxFlood >= 1 && terrain.name === 'S') || (selectedBat.logeq === 'chenilles' && selectedBatType.maxScarp >= 2 && terrain.name === 'H') || (selectedBat.logeq === 'chenilles' && terrain.name === 'B')) {
         moveCost = baseMoveCost+terrain.catmc;

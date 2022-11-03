@@ -60,6 +60,9 @@ function batInfos(bat,batType,pop) {
     if (!pop) {
         conWindowOut();
     }
+    if (bat.tdc === undefined) {
+        bat.tdc = [];
+    }
     levelUp(bat,batType);
     doRegroup(bat,batType);
     if (playerInfos.onShip) {
@@ -546,6 +549,11 @@ function batInfos(bat,batType,pop) {
     if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
         if (bat.eq != 'e-flash' && bat.logeq != 'e-flash' && bat.eq != 'e-phare' && bat.logeq != 'e-phare') {
             $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">e-flash</span><br>');
+        }
+    }
+    if (pop) {
+        if (bat.tdc.length >= 1) {
+            $('#'+bodyPlace).append('<span class="paramName" title="Tombés du camion">TDC</span><span class="paramIcon"></span><span class="paramValue lcy">'+toNiceString(bat.tdc)+'</span><br>');
         }
     }
     // WEAPONS & SKILLS

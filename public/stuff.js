@@ -865,8 +865,8 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('maxordre')) {
-        maxInfo.max = playerInfos.comp.ordre;
-        if (numOf[unit.name] >= maxInfo.max && numOf[unit.name] >= 1) {
+        maxInfo.max = playerInfos.comp.ordre+1;
+        if (numOf[unit.name] >= maxInfo.max) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de leadership';
         }
