@@ -1,3 +1,37 @@
+function planetThumb() {
+    if (zone[0].id === 0) {
+        zone[0].planet = 'Station';
+        zone[0].pid = 0;
+    }
+    if (modeSonde) {
+        if (playerInfos.sondePlanet === 1) {
+            $('#modesInfos').css('background-image','url(/static/img/dom-thumb.jpg)');
+        } else if (playerInfos.sondePlanet === 2) {
+            $('#modesInfos').css('background-image','url(/static/img/sarak-thumb.jpg)');
+        } else if (playerInfos.sondePlanet === 3) {
+            $('#modesInfos').css('background-image','url(/static/img/gehenna-thumb.jpg)');
+        } else if (playerInfos.sondePlanet === 4) {
+            $('#modesInfos').css('background-image','url(/static/img/kzin-thumb.jpg)');
+        } else if (playerInfos.sondePlanet === 5) {
+            $('#modesInfos').css('background-image','url(/static/img/horst-thumb.jpg)');
+        }
+    } else {
+        if (zone[0].planet === 'Dom') {
+            $('#modesInfos').css('background-image','url(/static/img/dom-thumb.jpg)');
+        } else if (zone[0].planet === 'Sarak') {
+            $('#modesInfos').css('background-image','url(/static/img/sarak-thumb.jpg)');
+        } else if (zone[0].planet === 'Gehenna') {
+            $('#modesInfos').css('background-image','url(/static/img/gehenna-thumb.jpg)');
+        } else if (zone[0].planet === 'Kzin') {
+            $('#modesInfos').css('background-image','url(/static/img/kzin-thumb.jpg)');
+        } else if (zone[0].planet === 'Horst') {
+            $('#modesInfos').css('background-image','url(/static/img/horst-thumb.jpg)');
+        } else if (zone[0].planet === 'Station') {
+            $('#modesInfos').css('background-image','url(/static/img/station-thumb.jpg)');
+        }
+    }
+};
+
 function planetEffects(bat,batType) {
     // Gehenna
     if (zone[0].planet === 'Gehenna') {

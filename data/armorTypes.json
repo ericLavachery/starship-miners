@@ -205,6 +205,17 @@
         "costs":{"Scrap":6,"Swarmine":18}
     },
     {
+        "name":"swarwing",
+        "cat":"armor",
+        "armor":2,
+        "ap":0,
+        "skills":[],
+        "bldReq":["Atelier"],
+        "compReq":{"ca":3},
+        "factor":"thp",
+        "costs":{"Scrap":6,"Swarmine":15,"Wingium":3}
+    },
+    {
         "name":"acier",
         "cat":"armor",
         "armor":3,

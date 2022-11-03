@@ -126,6 +126,7 @@ function landingList() {
         showedTilesReset(false);
         updateBldList();
         calcStartRes();
+        planetThumb();
         if (playerInfos.onShip) {
             playRoom('station',true,true);
             checkVMTileIds();
@@ -489,7 +490,7 @@ function editSonde() {
     $('#conUnitList').append('<select class="boutonGris" id="theZone" onchange="changePlayerInfo(`theZone`,`sondeDanger`,`sonde`)" title="Présence Alien"></select>');
     $('#theZone').empty().append('<option value="">Pr.Alien</option>');
     let prAMin = getDoom(true);
-    if (playerInfos.sondePlanet != 1 && prAMin < 4) {
+    if (playerInfos.sondePlanet > 1 && prAMin < 4) {
         prAMin = 4;
         warning('Attention!','Forte présence alien sur cette planête');
     }
@@ -518,13 +519,14 @@ function editSonde() {
 
 function stopSonde() {
     modeSonde = false;
-    // feedZoneDB();
     feedZoneDBwith(zone);
     saveNewMap();
     loadZone(0);
     showedTilesReset(false);
     miniOut();
     commandes();
+    console.log('ooooooooooooooooooookkkkkkkkkkkkkkkkkkkkkkkkkk');
+    planetThumb();
 };
 
 function goSonde(impacteur) {
@@ -545,6 +547,7 @@ function goSonde(impacteur) {
     checkFilter();
     generateNewMap(false);
     showMap(zone,true);
+    planetThumb();
     commandes();
     ruinsView();
 };
@@ -591,7 +594,11 @@ function pickZone() {
             if (zoneInfo.mapDiff != undefined) {
                 showInfo = toZoneString(zoneInfo);
             }
-            $('#conUnitList').append('<span class="paramName cy klik" onclick="putMissionZone('+zoneId+')">Choisir zone '+zoneId+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span><br>');
+            let zoneName = 'Zone '+zoneId;
+            if (zoneInfo.name != undefined) {
+                zoneName = zoneInfo.name;
+            }
+            $('#conUnitList').append('<span class="paramName cy klik" onclick="putMissionZone('+zoneId+')">Choisir '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span><br>');
         }
     });
     $('#conUnitList').append('<br>');
@@ -619,6 +626,9 @@ function feedZoneDB() {
         newZone.id = zone[0].number;
         newZone.planet = zone[0].planet;
         newZone.pid = zone[0].pid;
+        if (zone[0].name != undefined) {
+            newZone.name = zone[0].name;
+        }
         newZone.dark = zone[0].dark;
         newZone.mapDiff = zone[0].mapDiff;
         newZone.ensol = zone[0].ensol;
@@ -660,6 +670,9 @@ function feedZoneDBwith(myZone) {
         newZone.id = myZone[0].number;
         newZone.planet = myZone[0].planet;
         newZone.pid = myZone[0].pid;
+        if (myZone[0].name != undefined) {
+            newZone.name = myZone[0].name;
+        }
         newZone.dark = myZone[0].dark;
         newZone.mapDiff = myZone[0].mapDiff;
         newZone.ensol = myZone[0].ensol;
@@ -792,6 +805,7 @@ function showZonePreview() {
     } else {
         checkRes = false;
     }
+    pickZone();
     $("#minimap").css("display","block");
     $('#themmap').empty();
     $('#thenavig').empty();

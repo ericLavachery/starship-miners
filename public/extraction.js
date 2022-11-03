@@ -7,14 +7,6 @@ function getMorphite(apCost) {
             conselTriche = true;
             putBatAround(selectedBat.tileId,false,'noWater',239,0,'go');
             let coffre = getZoneBatByTileId(coffreTileId);
-            // let people = selectedBatType.crew;
-            // if (people === 0) {people = 1;}
-            // let crew = selectedBatType.squads*selectedBatType.squadSize*people;
-            // let miningRate = selectedBatType.mining.rate+10;
-            // if (selectedBat.eq === 'g2tools' || selectedBat.logeq === 'g2tools') {
-            //     miningRate = miningRate+10;
-            // }
-            // let morphMining = (miningRate*(selectedBatType.mining.level+0.5))+30+(crew/2);
             let morphMining = getMorphiteRate(selectedBat,selectedBatType);
             let resNum = Math.round((zone[0].mapDiff+2)*rand.rand(10,15)*morphMining/30);
             if (coffre.transRes['Morphite'] === undefined) {
@@ -404,9 +396,6 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     if (res.name === 'Scrap' || res.name === 'Végétaux' || res.name === 'Bois' || res.name === 'Eau') {
         maxRes = Math.round(maxRes*1.25);
     }
-    // if (extComp >= 1) {
-    //     maxRes = Math.round(maxRes*(extComp+15)/15);
-    // }
     if (resHere < minRes && res.cat != 'zero') {
         resHere = minRes;
     }
@@ -435,8 +424,8 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
                 multiExtractAdj = 0.75+maxAdjBonus;
             }
         } else {
-            if (multiExtractAdj < 0.4+(maxAdjBonus*2)) {
-                multiExtractAdj = 0.4+(maxAdjBonus*2);
+            if (multiExtractAdj < 0.4+(maxAdjBonus*1.5)) {
+                multiExtractAdj = 0.4+(maxAdjBonus*1.5);
             }
         }
     }

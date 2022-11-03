@@ -1651,7 +1651,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","camo","baddef","unemun","brigands","guerrilla","tirailleur","datt","fastguet","selfbadmedic","herosalvo","lowstress"],
+        "skills":["a_light","fouille","fortif","camo","baddef","unemun","brigands","gcrim","guerrilla","tirailleur","datt","fastguet","selfbadmedic","herosalvo","lowstress"],
         "mediCost":9,
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"
@@ -2889,7 +2889,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","maycamo","datt","guerrilla","moto","oknitro","baddef","brigands","fret","fastempty","herolasso","heroap","lowstress","taming"],
+        "skills":["a_heavy","fouille","fortif","maycamo","datt","guerrilla","moto","oknitro","baddef","brigands","gcrim","fret","fastempty","herolasso","heroap","lowstress","taming"],
         "mediCost":15,
         "transRes":60,
         "fuzz":2,
@@ -6144,7 +6144,7 @@
             "armors":0.9,
             "aoe":"unit",
             "sound":"growl1",
-            "ammo":["dents","lame-tungsten","lame-carbone","lame-adamantite","lame-adamantium"]
+            "ammo":["dents","dents-tungsten","dents-carbone","dents-adamantite","dents-adamantium"]
         },
         "weapon2":{},
         "protection":[],
@@ -6187,7 +6187,7 @@
             "armors":1.2,
             "aoe":"unit",
             "sound":"dog_attack",
-            "ammo":["dents","lame-tungsten","lame-carbone","lame-adamantite","lame-adamantium"]
+            "ammo":["dents","dents-tungsten","dents-carbone","dents-adamantite","dents-adamantium"]
         },
         "weapon2":{
             "name":"Ceinture goodbye",
@@ -6211,7 +6211,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","dog","dogescape","lowstress","noblub","escape","ranger","snif","guerrilla","tirailleur","recupcorps"],
+        "skills":["a_heavy","dog","dogescape","lowstress","noblub","escape","ranger","snif","guerrilla","tirailleur","sentinelle","initmelee","recupcorps"],
         "fuzz":1,
         "deathFx":"dog_death"
     },
@@ -6243,7 +6243,7 @@
             "power":9,
             "aoe":"unit",
             "sound":"dog_attack",
-            "ammo":["dents","lame-tungsten","lame-carbone","lame-adamantite","lame-adamantium"]
+            "ammo":["dents","dents-tungsten","dents-carbone","dents-adamantite","dents-adamantium"]
         },
         "weapon2":{},
         "protection":[],
@@ -6502,7 +6502,7 @@
         "size":3,
         "volume":0.8,
         "stealth":9,
-        "ap":14,
+        "ap":15,
         "maxSalvo":1,
         "weapon":{
             "name":"Calibre",
@@ -6537,7 +6537,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","camo","selfbadmedic","ranger","lowstress","recupcit","nocrime"],
+        "skills":["a_light","fouille","fortif","guerrilla","datt","camo","selfbadmedic","ranger","lowstress","recupcit","nocrime"],
         "mediCost":10,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"

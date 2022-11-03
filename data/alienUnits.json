@@ -2982,7 +2982,7 @@
             "armors":0.9,
             "aoe":"unit",
             "sound":"growl1",
-            "ammo":["none"]
+            "ammo":["dents"]
         },
         "weapon2":{
             "name":"Morsure",
@@ -2993,10 +2993,10 @@
             "rof":12,
             "accuracy":18,
             "power":18,
-            "armors":0.75,
+            "armors":0.9,
             "aoe":"unit",
             "sound":"growl5",
-            "ammo":["none"]
+            "ammo":["dents"]
         },
         "w2chance":3,
         "moveCost":3,
@@ -3038,7 +3038,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"growl4",
-            "ammo":["none"]
+            "ammo":["dents"]
         },
         "weapon2":{},
         "w2chance":0,

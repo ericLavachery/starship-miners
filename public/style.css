@@ -913,8 +913,9 @@ td {
     min-width: 130px;
 }
 #modesInfos {
+    /* background-image: url(/static/img/dom-thumb.jpg); */
+    background-position: 0% 0%;
     background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: right 20%;
     min-width: 130px;
 }
 #terrainTypes {

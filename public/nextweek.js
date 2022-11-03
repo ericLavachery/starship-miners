@@ -604,15 +604,15 @@ function calcCrimeRate(mesCitoyens) {
     // Unités: (electroguards-2 gurus-2 dealers-1 marshalls-1)
     let maxAntiCrimeUnits = Math.round(Math.sqrt(population)/7.5);
     let antiCrimeUnits = 0;
-    let penitBatCrims = 0;
+    let bigCrims = 0;
     // Bâtiments: (prisons-5 salleSport-2 jardin-4 bar-2 cantine-3 dortoirs+1 cabines-1 appartements+3)
     let sortedBatList = bataillons.slice();
     sortedBatList = _.sortBy(sortedBatList,'sort');
     sortedBatList.reverse();
     sortedBatList.forEach(function(bat) {
         let batType = getBatType(bat);
-        if (batType.skills.includes('penitbat')) {
-            penitBatCrims = penitBatCrims+(batType.squads*batType.crew*batType.squadSize);
+        if (batType.skills.includes('gcrim')) {
+            bigCrims = bigCrims+(batType.squads*batType.crew*batType.squadSize);
         }
         if (batType.name === 'Dortoirs') {
             crimeRate.lits = crimeRate.lits+500;
@@ -679,18 +679,12 @@ function calcCrimeRate(mesCitoyens) {
     if (crimeRate.penib < 0) {
         crimeRate.penib = 0;
     }
-    // Bataillons pénitentiaires
-    let penitAdj = 0;
+    // Grande criminalité
+    let bigAdj = bigCrims*2/(playerInfos.comp.ordre+4);
     let adjCrims = crimeRate.crim;
-    if (playerInfos.comp.ordre === 1) {
-        penitAdj = Math.round(penitBatCrims*2/9);
-    } else if (playerInfos.comp.ordre === 2) {
-        penitAdj = Math.round(penitBatCrims*4/9);
-    } else if (playerInfos.comp.ordre === 3) {
-        penitAdj = Math.round(penitBatCrims*6/9);
-    }
-    adjCrims = Math.ceil((mesCitoyens.crim-penitAdj)*100/population);
+    adjCrims = Math.ceil((mesCitoyens.crim+bigAdj)*100/population);
     console.log('crimeRate.crim='+crimeRate.crim);
+    console.log('bigAdj='+bigAdj);
     console.log('adjCrims='+adjCrims);
     // Treshold
     if (crimeRate.penib < 10) {

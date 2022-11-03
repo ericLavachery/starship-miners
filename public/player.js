@@ -417,7 +417,7 @@ function allowedArmors(unit) {
         protection.push('aucune');
         protection.push('scrap');
         protection.push('kevlar');
-        protection.push('swarmine');
+        protection.push('swarwing');
     }
     if (unit.skills.includes('a_heavy')) {
         protection.push('acier');

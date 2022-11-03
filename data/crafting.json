@@ -1157,7 +1157,7 @@
     {
         "id":75,
         "result":"Viande",
-        "cost":{"Larvium":6,"Huile":1,"Eau":6,"Energie":4},
+        "cost":{"Larvium":6,"Calcium":2,"Eau":3,"Energie":4},
         "compReq":{"ca":2},
         "bldReq":["Laboratoire"],
         "batch":12,
@@ -1187,7 +1187,7 @@
     {
         "id":78,
         "result":"Viande",
-        "cost":{"Drogues":1,"Creatite":4,"Chlore":2},
+        "cost":{"Drogues":1,"Creatite":4,"Calcium":2},
         "compReq":{"ca":4,"gen":1},
         "bldReq":["Centre de recherches"],
         "batch":12,
@@ -1197,8 +1197,18 @@
     {
         "id":79,
         "result":"Viande",
-        "cost":{"Huile":1,"Aranium":6,"Chlore":1,"Drogues":1,"Energie":2},
+        "cost":{"Calcium":1,"Aranium":6,"Chlore":1,"Drogues":1,"Energie":2},
         "compReq":{"ca":4,"exo":1},
+        "bldReq":["Centre de recherches"],
+        "batch":12,
+        "creaNum":180,
+        "bg":"#182a16"
+    },
+    {
+        "id":173,
+        "result":"Viande",
+        "cost":{"Viande":1,"Morphite":3,"Drogues":2,"Calcium":3},
+        "compReq":{"exo":2},
         "bldReq":["Centre de recherches"],
         "batch":12,
         "creaNum":180,
@@ -1606,7 +1616,7 @@
     {
         "id":167,
         "result":"Plastanium",
-        "cost":{"Morphite":5,"Huile":5},
+        "cost":{"Morphite":5,"Calcium":5},
         "compReq":{"tri":1},
         "bldReq":["Recyclab"],
         "batch":5,
