@@ -140,13 +140,18 @@ function getAllRes(bat) {
             smallFruits = smallFruits+Math.round(srs['Bois']/30);
         }
     }
+    console.log('terrain res');
+    console.log(srs);
     let allRes = {};
     if (tile.rq === undefined) {
-        allRes = srs;
         if (smallFruits >= 15) {
             tile.rq = 1;
             tile.rs = {};
             tile.rs['Fruits'] = smallFruits;
+            let rs = tile.rs;
+            allRes = {...rs,...srs};
+        } else {
+            allRes = srs;
         }
     } else {
         if (tile.rs['Fruits'] === undefined) {
@@ -197,6 +202,7 @@ function getTerrainRes(terrain,tile) {
     } else if (terrain.name === 'B') {
         srs.Bois = 25+(tile.seed*25);
     }
+    console.log(srs);
     if (srs.Bois != undefined) {
         srs.Bois = srs.Bois*vf.wood/100;
         srs.Bois = Math.round(srs.Bois*res.planets[zone[0].planet]);
@@ -204,6 +210,7 @@ function getTerrainRes(terrain,tile) {
             delete srs.Bois;
         }
     }
+    console.log(srs);
     // Végétaux
     res = getResByName('Végétaux');
     if (terrain.name === 'F') {
@@ -227,6 +234,7 @@ function getTerrainRes(terrain,tile) {
             delete srs.Végétaux;
         }
     }
+    console.log(srs);
     // Eau
     res = getResByName('Eau');
     if (terrain.name === 'R' && tile.seed >= 4) {
@@ -269,6 +277,7 @@ function getTerrainRes(terrain,tile) {
             delete srs.Eau;
         }
     }
+    console.log(srs);
     return srs;
 };
 

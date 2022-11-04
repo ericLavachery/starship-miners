@@ -380,13 +380,13 @@
             "cost":2,
             "range":0,
             "isMelee":true,
-            "rof":6,
+            "rof":7,
             "accuracy":21,
             "power":7,
             "armors":1.25,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone"]
+            "ammo":["club","club-acier","club-tungsten","club-titane","club-spike","club-spike-carb","club-spike-adam"]
         },
         "weapon2":{
             "name":"Dynamite",
@@ -944,10 +944,10 @@
             "accuracy":19,
             "dca":0.75,
             "power":7,
-            "armors":0.7,
+            "armors":1,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame"]
+            "ammo":["club","club-acier","club-tungsten","club-titane","club-spike","club-spike-carb","club-spike-adam"]
         },
         "equip":["aucun","kit-artilleur","e-ranger","e-jetpack","camkit","e-phare","repel"],
         "log3eq":["e-ranger"],
@@ -5458,10 +5458,10 @@
             "accuracy":20,
             "dca":0.75,
             "power":10,
-            "armors":0.7,
+            "armors":1,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-taser"]
+            "ammo":["club-acier","club-tungsten","club-titane","club-spike","club-spike-carb","club-spike-adam"]
         },
         "weapon2":{
             "name":"Roquettes",

@@ -1,5 +1,5 @@
 function planetThumb() {
-    if (zone[0].id === 0) {
+    if (zone[0].planet === undefined) {
         zone[0].planet = 'Station';
         zone[0].pid = 0;
     }

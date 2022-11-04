@@ -555,6 +555,7 @@ function showAmmo(ammo,redux) {
     ammoView = ammoView.replace('cn-','');
     ammoView = ammoView.replace('fleche-','');
     ammoView = ammoView.replace('lame-','');
+    ammoView = ammoView.replace('club-','');
     ammoView = ammoView.replace('dents-','');
     ammoView = ammoView.replace('moisso-','');
     ammoView = ammoView.replace('foreuse-','');
