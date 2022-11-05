@@ -12,7 +12,6 @@ function searchRuins(apCost) {
     let tile = getTile(selectedBat);
     if (tile.ruins && tile.sh >= 1) {
         console.log('RUINS');
-        fxSound('fouille1');
         selectedBat.apLeft = selectedBat.apLeft-apCost;
         checkRuinsCit(tile);
         checkRuinsRes(tile);
@@ -24,17 +23,17 @@ function searchRuins(apCost) {
             putRuinsCit(tile);
         }
         checkRuinsAliens(tile);
-        if (selectedBat.tags.includes('mining')) {
-            tagIndex = selectedBat.tags.indexOf('mining');
-            selectedBat.tags.splice(tagIndex,1);
-        }
-        if (selectedBat.tags.includes('guet')) {
-            tagIndex = selectedBat.tags.indexOf('guet');
-            selectedBat.tags.splice(tagIndex,1);
-        }
         if (selectedBat.tags.includes('fortif')) {
             tagIndex = selectedBat.tags.indexOf('fortif');
             selectedBat.tags.splice(tagIndex,1);
+        }
+        if (ruinsAlien) {
+            alienSounds(0);
+        } else if (!ruinsEmpty) {
+            fxSound('cheer1');
+        } else {
+            let nf = rand.rand(1,3);
+            fxSound('fouille'+nf);
         }
         tile.sh = -1;
         // saveMap();
@@ -45,6 +44,7 @@ function searchRuins(apCost) {
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
         ruinsEmpty = true;
+        ruinsAlien = false;
         coffreTileId = -1;
     }
 };
@@ -200,7 +200,6 @@ function putRuinsCit(tile) {
             restCit = restCit-72;
         }
     }
-    fxSound('cheer1');
     playerOccupiedTileList();
 };
 
@@ -257,7 +256,7 @@ function checkRuinsAliens(tile) {
                 i++
             }
         }
-        alienSounds(0);
+        ruinsAlien = true;
         selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
         alienOccupiedTileList();
     }
@@ -641,6 +640,9 @@ function checkResByKind(resKind,coffre,recNum) {
                 if (res.name == 'Nourriture' || res.name == 'Viande' || res.name == 'Fruits') {
                     thatResChance = thatResChance*(zone[0].mapDiff+8)/9;
                     diffBonus = 0;
+                    if (ruinsEmpty && resKind != 'food') {
+                        thatResChance = thatResChance/5;
+                    }
                 }
                 let resPlanetFactor = 1;
                 if (res.planets != undefined) {
@@ -680,7 +682,7 @@ function checkResByKind(resKind,coffre,recNum) {
                     }
                     if (resKind === 'auto') {
                         if (res.name === 'Fuel' || res.name === 'Moteurs') {
-                            thatResNum = thatResNum*3;
+                            thatResNum = Math.ceil(thatResNum*1.5);
                         }
                     }
                     if (resKind === 'military') {
