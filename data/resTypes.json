@@ -9,6 +9,7 @@
         "batch": 8,
         "energie": 45,
         "equiv": 0.7,
+        "kinds": [],
         "planets":{"Dom":1,"Sarak":0.85,"Gehenna":0.6,"Kzin":0.45,"Horst":0.35}
     },
     {
@@ -21,6 +22,7 @@
         "batch": 6,
         "energie": -1,
         "equiv": 0.7,
+        "kinds": ["military","industry"],
         "ctri": 15,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":0.5,"Horst":0.5}
     },
@@ -34,6 +36,7 @@
         "batch": 8,
         "energie": -1,
         "equiv": 0.7,
+        "kinds": ["construction","military","industry"],
         "ctri": 40,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":0.5,"Horst":0.5}
     },
@@ -47,6 +50,7 @@
         "batch": 8,
         "energie": 5,
         "equiv": 1,
+        "kinds": ["science","construction","military","industry","energy","auto"],
         "pter": [2,"F","H"],
         "rlab": 30
     },
@@ -60,6 +64,7 @@
         "batch": 5,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["science","construction","military","industry"],
         "rlab": 15
     },
     {
@@ -72,6 +77,7 @@
         "batch": 4,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["science","industry"],
         "ctri": 10,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1.5,"Kzin":1,"Horst":1}
     },
@@ -85,6 +91,7 @@
         "batch": 4,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["science","medecine"],
         "pter": [2,"H","P","B"],
         "rlab": 5
     },
@@ -98,6 +105,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["science","construction","industry","medecine"],
         "ctri": 15,
         "planets":{"Dom":1,"Sarak":0.5,"Gehenna":1.2,"Kzin":0.5,"Horst":0.5}
     },
@@ -111,6 +119,7 @@
         "batch": 4,
         "energie": 20,
         "equiv": 1,
+        "kinds": ["science","military","industry"],
         "pter": [3,"F","B","G"],
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3}
     },
@@ -124,6 +133,7 @@
         "batch": 6,
         "energie": 20,
         "equiv": 0.7,
+        "kinds": ["military","industry"],
         "planets":{"Dom":1,"Sarak":0.5,"Gehenna":0.5,"Kzin":1,"Horst":3}
     },
     {
@@ -136,6 +146,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["science","industry"],
         "pter": [2,"M"],
         "rlab": 5,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":0.7,"Kzin":1,"Horst":1.5}
@@ -150,6 +161,7 @@
         "batch": 4,
         "energie": 20,
         "equiv": 1,
+        "kinds": ["military","industry"],
         "pter": [3,"P","H","F"]
     },
     {
@@ -162,6 +174,7 @@
         "batch": 5,
         "energie": 7,
         "equiv": 1,
+        "kinds": ["construction","military","industry","auto"],
         "ctri": 20
     },
     {
@@ -174,6 +187,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["science"],
         "pter": [2,"M"],
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":1}
     },
@@ -187,6 +201,7 @@
         "batch": 2,
         "energie": -1,
         "equiv": 1.5,
+        "kinds": ["science","construction","military","industry","medecine","auto"],
         "rlab": 5,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":0.7,"Kzin":1,"Horst":1.5}
     },
@@ -200,6 +215,7 @@
         "batch": 2,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["science","industry"],
         "rlab": 5,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1.5,"Kzin":1,"Horst":1}
     },
@@ -213,6 +229,7 @@
         "batch": 5,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["military","industry"],
         "ctri": 10
     },
     {
@@ -226,6 +243,7 @@
         "energie": 0.75,
         "cramBld": "Centrale nucléaire",
         "equiv": 1,
+        "kinds": ["science","industry"],
         "planets":{"Dom":1,"Sarak":0.5,"Gehenna":1.2,"Kzin":2,"Horst":1}
     },
     {
@@ -239,6 +257,7 @@
         "energie": 0.75,
         "cramBld": "Centrale nucléaire",
         "equiv": 1,
+        "kinds": ["science","military","industry"],
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1.2,"Kzin":2,"Horst":1}
     },
     {
@@ -251,6 +270,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 1.5,
+        "kinds": ["science"],
         "ctri": 3
     },
     {
@@ -263,6 +283,7 @@
         "batch": 2,
         "energie": -1,
         "equiv": 1.5,
+        "kinds": ["science","medecine"],
         "pter": [2,"F","B"],
         "ctri": 3
     },
@@ -276,6 +297,7 @@
         "batch": 2,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["science","industry"],
         "pter": [2,"P","G","B"]
     },
     {
@@ -290,6 +312,7 @@
         "equiv": 1.5,
         "pter": [3,"F"],
         "rlab": 1,
+        "kinds": ["science","military","industry"],
         "planets":{"Dom":1,"Sarak":1.5,"Gehenna":1,"Kzin":1.5,"Horst":3}
     },
     {
@@ -302,6 +325,7 @@
         "batch": 2,
         "energie": -1,
         "equiv": 1,
+        "kinds": [],
         "max": 2000
     },
     {
@@ -314,6 +338,7 @@
         "batch": 6,
         "energie": -1,
         "equiv": 0.7,
+        "kinds": ["food","science","industry","medecine"],
         "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.5}
     },
     {
@@ -326,6 +351,7 @@
         "batch": 10,
         "energie": 8,
         "equiv": 1,
+        "kinds": ["industry","energy"],
         "pter": [1.5,"P"],
         "planets":{"Dom":1,"Sarak":0.7,"Gehenna":1.2,"Kzin":1,"Horst":0.5}
     },
@@ -339,6 +365,7 @@
         "batch": 2,
         "energie": 3,
         "equiv": 1,
+        "kinds": ["science","industry","medecine","energy","auto"],
         "planets":{"Dom":1,"Sarak":2,"Gehenna":0,"Kzin":1,"Horst":1}
     },
     {
@@ -351,6 +378,7 @@
         "batch": 5,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["food"],
         "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0,"Kzin":0.5,"Horst":0},
         "max": 15000
     },
@@ -364,6 +392,7 @@
         "batch": 6,
         "energie": 45,
         "equiv": 0.7,
+        "kinds": ["food","science","medecine"],
         "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0,"Kzin":1,"Horst":0.5}
     },
     {
@@ -376,6 +405,7 @@
         "batch": 6,
         "energie": 10,
         "equiv": 0.7,
+        "kinds": ["construction","industry"],
         "ctri": 20,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.7}
     },
@@ -389,6 +419,7 @@
         "batch": 4,
         "energie": -1,
         "equiv": 0,
+        "kinds": [],
         "planets":{"Dom":1,"Sarak":2,"Gehenna":1,"Kzin":1,"Horst":5}
     },
     {
@@ -400,7 +431,8 @@
         "cat": "white",
         "batch": 5,
         "energie": -1,
-        "equiv": 1
+        "equiv": 1,
+        "kinds": ["industry","medecine"]
     },
     {
         "id": 28,
@@ -412,6 +444,7 @@
         "batch": 6,
         "energie": 5,
         "equiv": 1,
+        "kinds": ["military","industry"],
         "pter": [2,"P","G","B"]
     },
     {
@@ -424,6 +457,7 @@
         "batch": 4,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["science","military","industry"],
         "pter": [2,"P","G","B"]
     },
     {
@@ -437,6 +471,7 @@
         "energie": -1,
         "equiv": 1,
         "rlab": 5,
+        "kinds": ["science","military","medecine"],
         "planets":{"Dom":1,"Sarak":1,"Gehenna":3,"Kzin":1,"Horst":1}
     },
     {
@@ -449,6 +484,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["science","industry"],
         "rlab": 1
     },
     {
@@ -461,6 +497,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 1,
+        "kinds": ["science"],
         "rlab": 1
     },
     {
@@ -473,6 +510,7 @@
         "batch": 1,
         "energie": 4,
         "equiv": 3,
+        "kinds": ["science"],
         "planets":{"Dom":0,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":0}
     },
     {
@@ -485,6 +523,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 3,
+        "kinds": ["military"],
         "planets":{"Dom":0,"Sarak":0.7,"Gehenna":1.5,"Kzin":0,"Horst":1}
     },
     {
@@ -498,6 +537,7 @@
         "energie": 0.33,
         "cramBld": "Centrale nucléaire",
         "equiv": 3,
+        "kinds": ["science","military"],
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":1,"Horst":1}
     },
     {
@@ -510,6 +550,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 3,
+        "kinds": ["military"],
         "planets":{"Dom":0,"Sarak":0.5,"Gehenna":1.2,"Kzin":1,"Horst":0.75}
     },
     {
@@ -522,6 +563,7 @@
         "batch": 4,
         "energie": 0.75,
         "equiv": 3,
+        "kinds": ["science","military","energy","auto"],
         "planets":{"Dom":0,"Sarak":1,"Gehenna":0.7,"Kzin":2,"Horst":0.75}
     },
     {
@@ -534,7 +576,8 @@
         "batch": 2,
         "energie": 0.4,
         "cramBld": "Centrale nucléaire",
-        "equiv": 3,
+        "equiv": 4,
+        "kinds": ["science","military"],
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":0.5,"Horst":1.5}
     },
     {
@@ -547,6 +590,7 @@
         "batch": 3,
         "energie": 1.5,
         "equiv": 2,
+        "kinds": ["military"],
         "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.5}
     },
     {
@@ -559,6 +603,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 3,
+        "kinds": ["science","military","industry"],
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0.2,"Kzin":0.75,"Horst":1.5}
     },
     {
@@ -571,6 +616,7 @@
         "batch": 3,
         "energie": 0.67,
         "equiv": 2,
+        "kinds": ["military","industry","energy","auto"],
         "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":2}
     },
     {
@@ -583,6 +629,7 @@
         "batch": 6,
         "energie": 45,
         "equiv": 2,
+        "kinds": ["science","medecine"],
         "planets":{"Dom":1,"Sarak":2,"Gehenna":0,"Kzin":0,"Horst":0}
     },
     {
@@ -595,6 +642,7 @@
         "batch": 6,
         "energie": -1,
         "equiv": 2,
+        "kinds": ["science","military","medecine"],
         "planets":{"Dom":0.5,"Sarak":1,"Gehenna":3,"Kzin":0,"Horst":0}
     },
     {
@@ -772,7 +820,8 @@
         "cat": "transfo",
         "batch": 3,
         "energie": -1,
-        "equiv": 0.3
+        "equiv": 0.3,
+        "kinds": ["food","science","construction","military","industry","medecine","energy","auto"]
     },
     {
         "id": 51,
@@ -783,7 +832,8 @@
         "cat": "transfo",
         "batch": 2,
         "energie": -1,
-        "equiv": 2
+        "equiv": 2,
+        "kinds": ["science","military","industry","medecine","energy","auto"]
     },
     {
         "id": 62,
@@ -795,6 +845,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 3,
+        "kinds": ["science","military","industry","medecine","energy","auto"],
         "ctri": 1.5
     },
     {
@@ -807,6 +858,7 @@
         "batch": 2,
         "energie": -1,
         "equiv": 4,
+        "kinds": ["science","military","industry","medecine","energy","auto"],
         "ctri": 1
     },
     {
@@ -818,7 +870,8 @@
         "cat": "transfo",
         "batch": 3,
         "energie": 3,
-        "equiv": 2
+        "equiv": 2,
+        "kinds": ["military","industry","energy","auto"]
     },
     {
         "id": 74,
@@ -830,6 +883,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 2,
+        "kinds": ["military","industry","energy","auto"],
         "ctri": 2
     },
     {
@@ -841,7 +895,8 @@
         "cat": "transfo",
         "batch": 2,
         "energie": -1,
-        "equiv": 3
+        "equiv": 3,
+        "kinds": ["military"]
     },
     {
         "id": 73,
@@ -852,7 +907,8 @@
         "cat": "transfo",
         "batch": 3,
         "energie": -1,
-        "equiv": 2
+        "equiv": 2,
+        "kinds": ["military"]
     },
     {
         "id": 75,
@@ -863,7 +919,8 @@
         "cat": "transfo",
         "batch": 3,
         "energie": -1,
-        "equiv": 2
+        "equiv": 2,
+        "kinds": ["food","science","medecine"]
     },
     {
         "id": 70,
@@ -875,6 +932,7 @@
         "batch": 3,
         "energie": 15,
         "equiv": 2.5,
+        "kinds": ["medecine"],
         "ctri": 5
     },
     {
@@ -887,6 +945,7 @@
         "batch": 6,
         "energie": -1,
         "equiv": 3.5,
+        "kinds": ["food"],
         "ctri": 5
     },
     {
@@ -898,7 +957,8 @@
         "cat": "transfo",
         "batch": 4,
         "energie": -1,
-        "equiv": 3,
+        "equiv": 2,
+        "kinds": ["food"],
         "max": 15000
     },
     {
@@ -910,7 +970,8 @@
         "cat": "transfo",
         "batch": 1,
         "energie": -1,
-        "equiv": 3000
+        "equiv": 3000,
+        "kinds": []
     },
     {
         "id": 66,
@@ -921,7 +982,8 @@
         "cat": "transfo",
         "batch": 5,
         "energie": 25,
-        "equiv": 1.5
+        "equiv": 1.5,
+        "kinds": ["construction","industry"]
     },
     {
         "id": 67,
@@ -932,7 +994,8 @@
         "cat": "transfo",
         "batch": 4,
         "energie": -1,
-        "equiv": 2
+        "equiv": 2,
+        "kinds": ["construction","military","industry"]
     },
     {
         "id": 68,
@@ -943,6 +1006,7 @@
         "cat": "transfo",
         "batch": 3,
         "energie": -1,
-        "equiv": 2.5
+        "equiv": 2.5,
+        "kinds": ["construction","military","industry"]
     }
 ]

@@ -871,6 +871,7 @@ function showTileInfos(tileId) {
     selectedTile = tileId;
     let tileIndex = zone.findIndex((obj => obj.id == tileId));
     let tile = zone[tileIndex];
+    let ruinType = checkRuinType(tile);
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terrainIndex];
     let potable = checkPotable(zone,tile.id);
@@ -906,7 +907,7 @@ function showTileInfos(tileId) {
         }
         // Aménagements
         if (tile.ruins) {
-            $('#tileInfos').append('<span class="paramName cy">Ruines</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">Oui</span><br>');
+            $('#tileInfos').append('<span class="paramName cy">Ruines</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">'+ruinType.name+'</span><br>');
         }
         if (tile.infra != undefined) {
             $('#tileInfos').append('<span class="paramName cy">Infrastructure</span><span class="paramIcon"><i class="ra ra-tower rpg"></i></span><span class="paramValue cy">'+tile.infra+'</span><br>');

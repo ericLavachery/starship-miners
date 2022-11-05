@@ -137,6 +137,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.nextId === undefined) {
         playerInfos.nextId = 1001;
     }
+    if (playerInfos.cNeed === undefined) {
+        playerInfos.cNeed = 1;
+    }
     if (playerInfos.allCits === undefined) {
         playerInfos.allCits = 2200;
     }

@@ -12,11 +12,12 @@ function searchRuins(apCost) {
     let tile = getTile(selectedBat);
     if (tile.ruins && tile.sh >= 1) {
         console.log('RUINS');
+        fxSound('fouille1');
         selectedBat.apLeft = selectedBat.apLeft-apCost;
         checkRuinsCit(tile);
         checkRuinsRes(tile);
         checkRuinsComp(tile);
-        if (zone[0].mapDiff >= 3) {
+        if (zone[0].mapDiff >= 2) {
             checkRuinsUnit(tile);
         }
         if (!ruinsEmpty) {
@@ -54,6 +55,12 @@ function checkRuinsComp(tile) {
         let foundComp = {};
         let compOK = false;
         let compChance = ruinsCompBase;
+        let ruinType = checkRuinType(tile);
+        if (ruinType.name === 'Université' || ruinType.name === 'Bibliothèque' || ruinType.name === 'Laboratoire') {
+            compChance = compChance*5;
+        } else {
+            compChance = Math.round(compChance/1.75);
+        }
         let compDice = 350+(playerInfos.fndComps*150);
         if (rand.rand(1,compDice) <= compChance) {
             let i = 1;
@@ -70,6 +77,7 @@ function checkRuinsComp(tile) {
                 playerInfos.comp[foundComp.name] = playerInfos.comp[foundComp.name]+1;
                 playerInfos.fndComps = playerInfos.fndComps+1;
                 warning('Compétence trouvée',foundComp.fullName+' +1 (maintenant au niveau '+playerInfos.comp[foundComp.name]+')');
+                fxSound('winstuff');
                 // savePlayerInfos();
             }
         }
@@ -192,6 +200,7 @@ function putRuinsCit(tile) {
             restCit = restCit-72;
         }
     }
+    fxSound('cheer1');
     playerOccupiedTileList();
 };
 
@@ -248,6 +257,7 @@ function checkRuinsAliens(tile) {
                 i++
             }
         }
+        alienSounds(0);
         selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
         alienOccupiedTileList();
     }
@@ -576,27 +586,17 @@ function checkDropSafe(layBatTileId) {
     return tileDrop;
 };
 
-function checkRuinsRes(tile) {
-    console.log('Check Ressources');
-    coffreTileId = -1;
-    let numRuins = tile.sh;
-    if (numRuins > 50) {
-        numRuins = 50;
-    }
-    let resChance = ruinsResBase+(zone[0].mapDiff*2)-10;
-    console.log('resChance: '+resChance);
-    if (rand.rand(1,100) <= resChance) {
-        conselTriche = true;
-        putBatAround(tile.id,false,'noWater',239,0,'go');
-        let coffre = getZoneBatByTileId(coffreTileId);
-        playerOccupiedTileList();
-        let totalRes = 0;
-        let thatResChance = 0;
-        let thatResNum = 0;
-        let mapFactor = Math.round(((Math.sqrt(zone[0].mapDiff+2)*10)+zone[0].mapDiff)/8);
-        let resFactor;
-        resTypes.forEach(function(res) {
-            if (res.name != 'Magma' && res.name != 'Scrap' && res.name != 'Corps' && res.cat != 'alien') {
+function checkResByKind(resKind,coffre,recNum) {
+    // resKind : food, science, construction, military, industry, medecine, any
+    recNum = recNum+1;
+    let totalRes = 0;
+    let thatResChance = 0;
+    let thatResNum = 0;
+    let mapFactor = Math.round(((Math.sqrt(zone[0].mapDiff+2)*10)+zone[0].mapDiff)/8);
+    let resFactor;
+    resTypes.forEach(function(res) {
+        if (res.name != 'Magma' && res.name != 'Scrap' && res.name != 'Corps' && res.cat != 'alien') {
+            if (res.kinds.includes(resKind) || resKind === 'any') {
                 thatResChance = 0;
                 thatResNum = 0;
                 resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
@@ -609,7 +609,11 @@ function checkRuinsRes(tile) {
                 } else if (res.name.includes('Compo')) {
                     thatResChance = Math.ceil((resFactor-100)*1.7*res.batch/3);
                 } else if (res.cat == 'transfo') {
-                    if (res.name != 'Transorb' && res.name != 'Energie' && res.name != 'Energons') {
+                    if (res.name === 'Energie') {
+                        thatResChance = 150;
+                    } else if (res.name === 'Energons') {
+                        thatResChance = Math.ceil(resFactor*1.7*res.batch/3);
+                    } else if (res.name != 'Transorb') {
                         thatResChance = Math.ceil(resFactor*1.7*res.batch/3);
                     }
                 } else {
@@ -645,9 +649,45 @@ function checkRuinsRes(tile) {
                 }
                 resPlanetFactor = resPlanetFactor+diffBonus;
                 thatResChance = Math.ceil(thatResChance*resPlanetFactor);
+                if (resKind != 'any' && resKind != 'industry') {
+                    thatResChance = thatResChance*2;
+                }
+                if (resKind === 'energy') {
+                    if (res.name === 'Energons' || res.name === 'Energie') {
+                        thatResChance = thatResChance*3;
+                    }
+                }
+                if (resKind === 'military') {
+                    if (res.name === 'Munitions') {
+                        thatResChance = thatResChance*5;
+                    }
+                }
+                if (resKind === 'auto') {
+                    if (res.name === 'Fuel' || res.name === 'Moteurs') {
+                        thatResChance = thatResChance*5;
+                    }
+                }
                 console.log(res.name+' '+thatResChance);
                 if (rand.rand(1,1000) <= thatResChance) {
                     thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*1.5*rand.rand(4,16))+rand.rand(0,9);
+                    if (resKind === 'energy') {
+                        if (res.name === 'Energons') {
+                            thatResNum = thatResNum*5;
+                        }
+                        if (res.name === 'Energie') {
+                            thatResNum = thatResNum*10;
+                        }
+                    }
+                    if (resKind === 'auto') {
+                        if (res.name === 'Fuel' || res.name === 'Moteurs') {
+                            thatResNum = thatResNum*3;
+                        }
+                    }
+                    if (resKind === 'military') {
+                        if (res.name === 'Munitions') {
+                            thatResNum = Math.ceil(thatResNum*1.5);
+                        }
+                    }
                     thatResNum = Math.ceil(thatResNum*150/mineRateDiv);
                     console.log('!GET : '+res.name+' '+thatResNum);
                     if (coffre.transRes[res.name] === undefined) {
@@ -658,72 +698,143 @@ function checkRuinsRes(tile) {
                     totalRes = totalRes+thatResNum;
                 }
             }
-        });
-        if (totalRes <= 0) {
-            resTypes.forEach(function(res) {
-                if (totalRes <= 0) {
-                    if (res.name != 'Magma' && res.name != 'Scrap' && res.name != 'Corps' && res.cat != 'alien') {
-                        thatResChance = 0;
-                        thatResNum = 0;
-                        resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
-                        if (res.name == 'Nourriture') {
-                            if (ruinsEmpty) {
-                                thatResChance = Math.ceil(resFactor*res.batch/3);
-                            } else {
-                                thatResChance = Math.ceil(resFactor*5*res.batch/3);
-                            }
-                        } else if (res.cat == 'transfo') {
-                            if (!res.name.includes('Compo') && res.name != 'Transorb' && res.name != 'Energie' && res.name != 'Energons') {
-                                thatResChance = Math.ceil(resFactor*1.7*res.batch/3);
-                            }
-                        } else {
-                            if (res.name === 'Huile') {
-                                thatResChance = Math.ceil(150*res.batch/3);
-                            } else if (res.name === 'Eau') {
-                                if (ruinsEmpty) {
-                                    thatResChance = Math.ceil(100*res.batch/3);
-                                } else {
-                                    thatResChance = Math.ceil(300*res.batch/3);
-                                }
-                            } else {
-                                thatResChance = Math.ceil(resFactor/3*res.batch/3);
-                            }
-                            if (res.cat === 'blue') {
-                                thatResChance = Math.ceil(thatResChance/2*mapFactor/4);
-                            } else if (res.cat === 'blue-sky') {
-                                thatResChance = Math.ceil(thatResChance/1.5*mapFactor/4);
-                            } else if (res.cat === 'sky') {
-                                thatResChance = Math.ceil(thatResChance/2*mapFactor/4);
-                            }
-                        }
-                        let diffBonus = zone[0].mapDiff*zone[0].mapDiff/200;
-                        thatResChance = thatResChance*(playerInfos.comp.tri+1)/4;
-                        if (res.name == 'Nourriture' || res.name == 'Viande' || res.name == 'Fruits') {
-                            thatResChance = thatResChance*(zone[0].mapDiff+8)/9;
-                            diffBonus = 0;
-                        }
-                        let resPlanetFactor = 1;
-                        if (res.planets != undefined) {
-                            let planetName = zone[0].planet;
-                            resPlanetFactor = res.planets[planetName];
-                        }
-                        resPlanetFactor = resPlanetFactor+diffBonus;
-                        thatResChance = Math.ceil(thatResChance*resPlanetFactor);
-                        console.log(res.name+' '+thatResChance);
-                        if (rand.rand(1,1000) <= thatResChance) {
-                            thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*1.5*rand.rand(4,16))+rand.rand(0,9);
-                            thatResNum = Math.ceil(thatResNum*150/mineRateDiv);
-                            console.log('!GET : '+res.name+' '+thatResNum);
-                            if (coffre.transRes[res.name] === undefined) {
-                                coffre.transRes[res.name] = thatResNum;
-                            } else {
-                                coffre.transRes[res.name] = coffre.transRes[res.name]+thatResNum;
-                            }
-                            totalRes = totalRes+thatResNum;
-                        }
-                    }
-                }
-            });
+        }
+    });
+    if (coffre.transRes.Compo1 === undefined) {
+        coffre.transRes.Compo1 = rand.rand(15,75);
+    } else {
+        coffre.transRes.Compo1 = coffre.transRes.Compo1+rand.rand(15,75);
+    }
+    if (totalRes <= 0 && recNum <= 4) {
+        checkResByKind(resKind,coffre,recNum);
+    }
+};
+
+function checkRuinType(tile) {
+    let ruinType = {};
+    if (tile.rt != undefined) {
+        ruinType = tile.rt;
+    } else {
+        ruinType.name = 'Mine';
+        ruinType.checks = ['any'];
+        let checkDice = rand.rand(1,28);
+        switch (checkDice) {
+            case 1:
+            ruinType.name = 'Prison';
+            ruinType.checks = ['food','medecine','military'];
+            break;
+            case 2:
+            ruinType.name = 'Ecole';
+            ruinType.checks = ['food','food'];
+            break;
+            case 3:
+            ruinType.name = 'Université';
+            ruinType.checks = ['food','food','science'];
+            break;
+            case 4:
+            ruinType.name = 'Laboratoire';
+            ruinType.checks = ['any','science','science'];
+            break;
+            case 5:
+            ruinType.name = 'Usine';
+            ruinType.checks = ['industry','industry'];
+            break;
+            case 6:
+            ruinType.name = 'Caserne';
+            ruinType.checks = ['food','military','military','military','medecine'];
+            break;
+            case 7:
+            ruinType.name = 'Poste de police';
+            ruinType.checks = ['food','military'];
+            break;
+            case 8:
+            ruinType.name = 'Centre commercial';
+            ruinType.checks = ['food','food','food','medecine'];
+            break;
+            case 9:
+            ruinType.name = 'Dépot';
+            ruinType.checks = ['any','any'];
+            break;
+            case 10:
+            ruinType.name = 'Chantier';
+            ruinType.checks = ['construction'];
+            break;
+            case 11:
+            ruinType.name = 'Centrale électrique';
+            ruinType.checks = ['energy','energy'];
+            break;
+            case 12:
+            ruinType.name = 'Hôpital';
+            ruinType.checks = ['food','mececine','medecine','medecine'];
+            break;
+            case 13:
+            ruinType.name = 'Pharmacie';
+            ruinType.checks = ['medecine','medecine'];
+            break;
+            case 14:
+            ruinType.name = 'Aéroport';
+            ruinType.checks = ['auto','auto','any'];
+            break;
+            case 15:
+            ruinType.name = 'Garage';
+            ruinType.checks = ['auto'];
+            break;
+            case 16:
+            ruinType.name = 'Bibliothèque';
+            ruinType.checks = [];
+            break;
+            case 17:
+            ruinType.name = 'Centre de tri';
+            ruinType.checks = ['industry','any'];
+            break;
+            case 18:
+            ruinType.name = 'Habitations';
+            ruinType.checks = ['food'];
+            break;
+            case 19:
+            ruinType.name = 'Habitations';
+            ruinType.checks = ['food'];
+            break;
+            case 20:
+            ruinType.name = 'Atelier';
+            ruinType.checks = ['industry'];
+            break;
+            case 21:
+            ruinType.name = 'Armurerie';
+            ruinType.checks = ['military'];
+            break;
+            default:
+            ruinType.name = 'Mine';
+            ruinType.checks = ['any'];
+        }
+        tile.rt = ruinType;
+    }
+    return ruinType;
+};
+
+function checkRuinsRes(tile) {
+    console.log('Check Ressources');
+    coffreTileId = -1;
+    let numRuins = tile.sh;
+    if (numRuins > 50) {
+        numRuins = 50;
+    }
+    let resChance = ruinsResBase-(zone[0].mapDiff*3)+15;
+    let ruinType = checkRuinType(tile);
+    console.log('resChance: '+resChance);
+    if (ruinType.checks.length >= 1) {
+        if (rand.rand(1,100) <= resChance) {
+            conselTriche = true;
+            putBatAround(tile.id,false,'noWater',239,0,'go');
+            let coffre = getZoneBatByTileId(coffreTileId);
+            playerOccupiedTileList();
+            if (ruinType === undefined) {
+                checkResByKind('any',coffre,0);
+            } else {
+                ruinType.checks.forEach(function(checkKind) {
+                    checkResByKind(checkKind,coffre,0);
+                });
+            }
         }
     }
 };
@@ -766,49 +877,53 @@ function checkMinMapDiff(unit) {
 function checkRuinsUnit(tile) {
     let maxUnits = Math.ceil(zone[0].mapDiff/1.55)-1;
     if (playerInfos.fndUnits < maxUnits) {
-        let count = true;
-        let chance = 0;
-        let foundUnitId = -1;
-        let checkDice = 450;
-        let shufUnits = _.shuffle(unitTypes);
-        shufUnits.forEach(function(unit) {
-            if (foundUnitId < 0) {
-                if (unit.inRuin != undefined) {
-                    let minDiff = checkMinMapDiff(unit);
-                    if (minDiff <= zone[0].mapDiff) {
-                        chance = unit.inRuin;
-                        if (ruinsEmpty) {
-                            if (rand.rand(1,checkDice*3) <= chance) {
-                                foundUnitId = unit.id;
-                                if (minDiff < -2) {
-                                    count = false;
+        let unitChance = ruinsUnitBase;
+        let unitDice = 300;
+        if (rand.rand(1,unitDice) <= unitChance) {
+            let count = true;
+            let chance = 0;
+            let foundUnitId = -1;
+            let checkDice = 450;
+            let shufUnits = _.shuffle(unitTypes);
+            shufUnits.forEach(function(unit) {
+                if (foundUnitId < 0) {
+                    if (unit.inRuin != undefined) {
+                        let minDiff = checkMinMapDiff(unit);
+                        if (minDiff <= zone[0].mapDiff) {
+                            chance = unit.inRuin;
+                            if (ruinsEmpty) {
+                                if (rand.rand(1,checkDice*3) <= chance) {
+                                    foundUnitId = unit.id;
+                                    if (minDiff < -2) {
+                                        count = false;
+                                    }
                                 }
-                            }
-                        } else {
-                            if (rand.rand(1,checkDice) <= chance) {
-                                foundUnitId = unit.id;
-                                if (minDiff < -2) {
-                                    count = false;
+                            } else {
+                                if (rand.rand(1,checkDice) <= chance) {
+                                    foundUnitId = unit.id;
+                                    if (minDiff < -2) {
+                                        count = false;
+                                    }
                                 }
                             }
                         }
                     }
                 }
+            });
+            if (foundUnitId >= 0) {
+                let batType = getBatTypeById(foundUnitId);
+                let unitCits = batType.squads*batType.crew*batType.squadSize;
+                if (!batType.skills.includes('clone') && !batType.skills.includes('dog')) {
+                    playerInfos.allCits = playerInfos.allCits+unitCits;
+                }
+                conselTriche = true;
+                putBatAround(tile.id,false,'noWater',foundUnitId,0);
+                if (count) {
+                    playerInfos.fndUnits = playerInfos.fndUnits+1;
+                }
+                console.log('FOUND! '+batType.name);
+                playerOccupiedTileList();
             }
-        });
-        if (foundUnitId >= 0) {
-            let batType = getBatTypeById(foundUnitId);
-            let unitCits = batType.squads*batType.crew*batType.squadSize;
-            if (!batType.skills.includes('clone') && !batType.skills.includes('dog')) {
-                playerInfos.allCits = playerInfos.allCits+unitCits;
-            }
-            conselTriche = true;
-            putBatAround(tile.id,false,'noWater',foundUnitId,0);
-            if (count) {
-                playerInfos.fndUnits = playerInfos.fndUnits+1;
-            }
-            console.log('FOUND! '+batType.name);
-            playerOccupiedTileList();
         }
     }
 }

@@ -225,6 +225,18 @@ function alienSounds(num) {
     sound.play();
 };
 
+function fxSound(sound) {
+    let alienVol = playerInfos.volFx;
+    if (alienVol > 1) {alienVol = 1;}
+    if (alienVol < 0.1) {alienVol = 0.1;}
+    alienVol = alienVol.toFixedNumber(1);
+    var sound = new Howl({
+        src: ['/static/sounds/fx/'+sound+'.mp3'],
+        volume: alienVol
+    });
+    sound.play();
+};
+
 function checkSpawnType(alienType) {
     if (alienType.fxPriority >= 1) {
         let typeOK = false;
