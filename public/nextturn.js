@@ -1068,9 +1068,9 @@ function turnInfo() {
                     let expertise = Math.floor((playerInfos.vue+playerInfos.comp.ca-1)/2)-1;
                     if (expertise < 1) {
                         lsTurn = 100;
-                    } else if (expertise < 2) {
+                    } else if (expertise === 1) {
                         lsTurn = Math.round(lastStand.turn/10)*10;
-                    } else if (expertise < 3) {
+                    } else if (expertise === 2) {
                         lsTurn = Math.round(lastStand.turn/5)*5;
                     }
                     if (expertise >= 1) {
@@ -1104,7 +1104,7 @@ function checkLastStand() {
     }
     if (!lastMission) {
         if (lastStand.turn >= 100) {
-            lastStand.turn = 35+(playerInfos.randSeed*10);
+            lastStand.turn = 65+(playerInfos.randSeed*5);
             if (playerInfos.mapTurn >= lastStand.turn) {
                 lastStand.go = true;
             }

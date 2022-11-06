@@ -7,6 +7,8 @@ function setPenitLevel() {
         }
     });
     playerInfos.penit = Math.ceil((playerInfos.crime+4)*penitNum/4);
+    console.log('TOMBE DU CAMION');
+    console.log(playerInfos.penit);
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (batType.skills.includes('penitbat')) {
@@ -21,27 +23,19 @@ function getCamionEquips(batType) {
     let camion = [];
     // tous sauf tôlards
     if (batType.equip.includes('e-camo') && playerInfos.penit >= 2) {
-        let equip = getEquipByName('e-camo');
-        let compReqOK = checkCompReq(equip);
-        if (compReqOK) {
-            camion.push('e-camo');
-        }
-    }
-    // tous
-    if (batType.equip.includes('e-ranger') && playerInfos.penit >= 3) {
-        let equip = getEquipByName('e-ranger');
-        let compReqOK = checkCompReq(equip);
-        if (compReqOK) {
-            camion.push('e-ranger');
-        }
+        camion.push('e-camo');
     }
     // Tôlards (revolver)
-    if (batType.equip.includes('chargeur2') && playerInfos.penit >= 4) {
+    if (batType.equip.includes('chargeur2') && playerInfos.penit >= 2) {
         let equip = getEquipByName('chargeur2');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
             camion.push('chargeur2');
         }
+    }
+    // tous
+    if (batType.equip.includes('e-ranger') && playerInfos.penit >= 3) {
+        camion.push('e-ranger');
     }
     // Desperados (uzi), Krimulos (pompe), Gangsters (magnum)
     if (batType.equip.includes('chargeur1') && batType.name != 'Détenus' && playerInfos.penit >= 4) {
@@ -61,10 +55,14 @@ function getCamionEquips(batType) {
     }
     // Raiders (javelots), Sinyaki (dynamite)
     if (batType.equip.includes('gilet') && playerInfos.penit >= 4) {
-        let equip = getEquipByName('gilet');
+        camion.push('gilet');
+    }
+    // Tôlards
+    if (batType.equip.includes('e-mecano') && playerInfos.penit >= 4) {
+        let equip = getEquipByName('e-mecano');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
-            camion.push('gilet');
+            camion.push('e-mecano');
         }
     }
     // tous
@@ -81,14 +79,6 @@ function getCamionEquips(batType) {
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
             camion.push('lanceur2');
-        }
-    }
-    // tôlards (revolver)
-    if (batType.equip.includes('silencieux2') && playerInfos.penit >= 5) {
-        let equip = getEquipByName('silencieux2');
-        let compReqOK = checkCompReq(equip);
-        if (compReqOK) {
-            camion.push('silencieux2');
         }
     }
     // détenus (calibre)
@@ -155,6 +145,7 @@ function getCamionEquips(batType) {
             camion.push('repel');
         }
     }
+    console.log(camion);
     return camion;
 };
 

@@ -356,6 +356,23 @@ function batListElement(bat,batType,idOfLander) {
         $('#'+colId).append('<div class="'+blockType+'" onclick="batSouteSelect('+selId+')"><table><tr><td><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"></td><td id="be'+bat.id+'"></td></tr></table></div>');
     }
     $('#be'+bat.id).append('<span class="listRes klik">'+batType.name+'</span>');
+    if (batType.skills.includes('uprank')) {
+        let isXPok = checkUprankXP(bat,batType);
+        let isUpUnitOK = checkUpUnit(batType);
+        if (isXPok && isUpUnitOK) {
+            $('#be'+bat.id).append('<span class="listRes vert" title="Peut être changé en '+batType.unitUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
+        } else {
+            $('#be'+bat.id).append('<span class="listRes gff" title="Pourra être changé en '+batType.unitUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
+        }
+    }
+    if (batType.skills.includes('upgrade')) {
+        let isUpUnitOK = checkUpUnit(batType);
+        if (isUpUnitOK) {
+            $('#be'+bat.id).append('<span class="listRes vert" title="Peut être changé en '+batType.bldUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
+        } else {
+            $('#be'+bat.id).append('<span class="listRes gff" title="Pourra être changé en '+batType.bldUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
+        }
+    }
     let batVolume = calcVolume(bat,batType);
     if (bat.chief != undefined) {
         if (bat.chief != '') {

@@ -751,6 +751,7 @@ function checkCitCost(batType) {
 };
 
 function payUnitCost(batType) {
+    console.log(batType);
     if (batType.costs != undefined) {
         Object.entries(batType.costs).map(entry => {
             let key = entry[0];
@@ -773,11 +774,11 @@ function payUnitCost(batType) {
     if (batType.skills.includes('clone') || batType.skills.includes('dog')) {
         reqCit = 0;
     }
-    console.log('reqCit='+reqCit);
+    // console.log('reqCit='+reqCit);
     if (reqCit >= 1) {
         let landersIds = findLandersIds();
         if (batType.skills.includes('brigands')) {
-            console.log('brigands');
+            // console.log('brigands');
             let dispoCrim = getDispoCrim();
             let restCrim;
             let dispoCit = getDispoCit();
@@ -789,8 +790,8 @@ function payUnitCost(batType) {
                 restCrim = dispoCrim-reqCit;
                 restCit = dispoCit;
             }
-            console.log('restCit='+restCit);
-            console.log('restCrim='+restCrim);
+            // console.log('restCit='+restCit);
+            // console.log('restCrim='+restCrim);
             deadBatsList = [];
             bataillons.forEach(function(bat) {
                 if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Criminels') {
@@ -908,17 +909,31 @@ function resSub(resName,number) {
     if (res.cat === 'alien') {
         playerInfos.alienRes[resName] = playerInfos.alienRes[resName]-number;
     } else {
+        console.log('landers');
+        console.log(landers);
         let revLanders = landers.reverse();
         revLanders.forEach(function(lander) {
             if (number >= 1) {
                 if (lander.loc === 'zone') {
-                    if (lander.transRes[resName] != undefined) {
-                        if (lander.transRes[resName] >= number) {
-                            lander.transRes[resName] = lander.transRes[resName]-number;
-                            number = 0;
-                        } else {
-                            number = number-lander.transRes[resName];
-                            delete lander.transRes[resName];
+                    if (lander.id === selectedBat.id) {
+                        if (selectedBat.transRes[resName] != undefined) {
+                            if (selectedBat.transRes[resName] >= number) {
+                                selectedBat.transRes[resName] = selectedBat.transRes[resName]-number;
+                                number = 0;
+                            } else {
+                                number = number-selectedBat.transRes[resName];
+                                delete selectedBat.transRes[resName];
+                            }
+                        }
+                    } else {
+                        if (lander.transRes[resName] != undefined) {
+                            if (lander.transRes[resName] >= number) {
+                                lander.transRes[resName] = lander.transRes[resName]-number;
+                                number = 0;
+                            } else {
+                                number = number-lander.transRes[resName];
+                                delete lander.transRes[resName];
+                            }
                         }
                     }
                 }

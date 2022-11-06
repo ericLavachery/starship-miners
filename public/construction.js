@@ -840,6 +840,30 @@ function checkUprankXP(myBat,myBatType) {
     return isXPok;
 };
 
+function checkUpUnit(batType) {
+    let upUnitOK = false;
+    let upUnitName = batType.unitUp;
+    if (batType.skills.includes('upgrade')) {
+        upUnitName = batType.bldUp;
+    }
+    if (upUnitName != undefined) {
+        let upBatType = getBatTypeByName(upUnitName);
+        let levelOK = true;
+        if (upBatType.levels[playerInfos.gang] > playerInfos.gLevel) {
+            levelOK = false;
+        }
+        let compReqOK = checkUnitCompReq(upBatType);
+        let bldOK = false;
+        if ((playerInfos.bldList.includes(upBatType.bldReq[0]) || upBatType.bldReq[0] === undefined) && (playerInfos.bldList.includes(upBatType.bldReq[1]) || upBatType.bldReq[1] === undefined) && (playerInfos.bldList.includes(upBatType.bldReq[2]) || upBatType.bldReq[2] === undefined)) {
+            bldOK = true;
+        }
+        if (levelOK && compReqOK && bldOK) {
+            upUnitOK = true;
+        }
+    }
+    return upUnitOK;
+};
+
 function doUpgrade() {
     if (conselUpgrade === 'bld') {
         let myBatXP = selectedBat.xp;
@@ -911,10 +935,6 @@ function clickConstruct(tileId,free) {
         });
         if (conselUnit.cat === 'buildings') {
             let tile = getTileById(tileId);
-            // if (tile.infra != undefined && tile.infra != 'Débris') {
-            //     batHere = true;
-            //     message = 'Pas de construction de bâtiment sur une case occupée par une infrastructure';
-            // }
             if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L') {
                 if (!conselUnit.skills.includes('noblub')) {
                     batHere = true;
@@ -939,9 +959,6 @@ function clickConstruct(tileId,free) {
                 let apCost = prefabCost(selectedBatType,conselUnit,true);
                 selectedBat.apLeft = selectedBat.apLeft-apCost;
                 selectedBat.xp = selectedBat.xp+(Math.sqrt(conselUnit.fabTime)/20);
-                // if (!selectedBat.tags.includes('construction')) {
-                //     selectedBat.tags.push('construction');
-                // }
                 tagDelete(selectedBat,'guet');
                 doneAction(selectedBat);
                 camoOut();
@@ -1010,6 +1027,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             // PAY COSTS !!!
             if (conselUnit.cat != 'aliens') {
                 if (!conselTriche || playerInfos.pseudo === 'Payall') {
+                    console.log('PAYEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER');
                     payUnitCost(conselUnit);
                     payFlatCosts(conselUnit,conselAmmos);
                     if (!playerInfos.onShip) {

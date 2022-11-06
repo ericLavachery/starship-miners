@@ -1118,7 +1118,11 @@ function checkMecanoSkill(bat,batType) {
         myMecanoSkill = 'badmecano';
     } else {
         if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {
-            myMecanoSkill = 'selfbadmecano';
+            if (batType.cat === 'infantry') {
+                myMecanoSkill = 'badmecano';
+            } else {
+                myMecanoSkill = 'selfbadmecano';
+            }
         }
     }
     return myMecanoSkill;
