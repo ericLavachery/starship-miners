@@ -20,7 +20,7 @@
 	margin: auto;
 	padding: 0;
 	border: 1px solid #d5cabd;
-	width: 750px;
+	width: 720px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 	border-radius: 10px;
 }
@@ -43,19 +43,24 @@
 .modal-header {
 	padding: 6px 16px 2px 16px;
 	background-color: #439975;
+	background-image: url(/static/img/oldmetal-ciel.jpg);
 	color: white;
 	border-radius: 10px;
 }
 
 .modal-body {
-	padding: 6px 16px 2px 16px;
+	padding: 50px 45px 10px 40px;
+	background-image: url(/static/img/modalbg.jpg);
 	color: #d5cabd;
 	font-size: 14px;
+	height: 580px;
+	overflow: auto; /* Enable scroll if needed */
 }
 
 .modal-footer {
 	padding: 6px 16px 2px 16px;
 	background-color: #439975;
+	background-image: url(/static/img/oldmetal-ciel.jpg);
 	color: white;
 	min-height: 22px;
 	border-radius: 10px;
