@@ -7,6 +7,11 @@ function skillsInfos(bat,batType,near) {
     let boutonNope;
     let colorNope = 'gf';
     let prodOK = true;
+    let craftsOK = true;
+    let maxCrafts = getMaxCrafts();
+    if (playerInfos.crafts >= maxCrafts && playerInfos.onShip) {
+        craftsOK = false;
+    }
     findLanders();
     let tile = getTile(bat);
     let terrain = getTerrain(bat);
@@ -53,13 +58,13 @@ function skillsInfos(bat,batType,near) {
                 } else if (!deployInfo[2]) {
                     skillMessage = "Plus assez de place dans ce lander";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey bigButtons gf"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
             }
         } else {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Renvoyer le bataillon dans la soute" class="boutonMarine bigButtons" onclick="batUndeploy('+bat.id+')"><i class="fas fa-sign-out-alt fa-flip-horizontal"></i></button>&nbsp; Renvoyer</h4></span>');
         }
     }
-    if (playerInfos.onShip && batType.skills.includes('transorbital') && batType.name != 'Soute') {
+    if (playerInfos.onShip && batType.skills.includes('transorbital') && batType.name != 'Soute' && inSoute) {
         let deployCosts = calcLanderDeploy(batType);
         let enoughRes = checkCost(deployCosts);
         let costString = '';
@@ -75,9 +80,9 @@ function skillsInfos(bat,batType,near) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Inclure ce lander dans la prochaine mission '+costString+'" class="boutonRouge bigButtons" onclick="landerDeploy('+bat.id+')"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
             } else {
                 if (batSoins >= 30) {
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Lander trop endommagé, ne peut pas partir" class="boutonGris bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Lander trop endommagé, ne peut pas partir" class="boutonGrey bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
                 } else {
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes pour inclure ce lander dans la prochaine mission '+costString+'" class="boutonGris bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes pour inclure ce lander dans la prochaine mission '+costString+'" class="boutonGrey bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
                 }
             }
             $('#unitInfos').append('<span class="blockTitle"><h3><button type="button" title="Ne pas inclure ce lander dans la prochaine mission" class="boutonOK bigButtons gf"><i class="fas fa-bed"></i></button>&nbsp; Rester</h3></span>');
@@ -94,7 +99,7 @@ function skillsInfos(bat,batType,near) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de drogues" class="boutonVert skillButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp; Approvisionnement</h4></span>');
         } else {
             skillMessage = "Pas assez de PA";
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp; Approvisionnement</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>&nbsp; Approvisionnement</h4></span>');
         }
     }
     // RAVITAILLEMENT
@@ -117,7 +122,7 @@ function skillsInfos(bat,batType,near) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de munitions" class="boutonCaca skillButtons" onclick="goRavit('+apCost+')"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');
         } else {
             skillMessage = "Pas assez de PA";
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Ravitaillement</h4></span>');
         }
     }
     // STOCKS
@@ -128,13 +133,13 @@ function skillsInfos(bat,batType,near) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Faire le plein de ravitaillements" class="boutonCaca skillButtons" onclick="goStock('+apCost+')"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réapprovisionnement</h4></span>');
         } else {
             skillMessage = "Pas assez de PA";
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réapprovisionnement</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réapprovisionnement</h4></span>');
         }
     }
     // GUET
     if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet') && (hasW1 || hasW2) && !playerInfos.onShip) {
         balise = 'h4';
-        boutonNope = 'boutonGris';
+        boutonNope = 'boutonGrey';
         colorNope = 'gf';
         if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             balise = 'h3';
@@ -185,7 +190,7 @@ function skillsInfos(bat,batType,near) {
     // FORTIFICATION
     if (batType.skills.includes('fortif') && !playerInfos.onShip) {
         balise = 'h4';
-        boutonNope = 'boutonGris';
+        boutonNope = 'boutonGrey';
         colorNope = 'gf';
         if (bat.tags.includes('fortif')) {
             balise = 'h3';
@@ -297,7 +302,7 @@ function skillsInfos(bat,batType,near) {
                 }
             }
             balise = 'h4';
-            boutonNope = 'boutonGris';
+            boutonNope = 'boutonGrey';
             colorNope = 'gf';
             if (bat.fuzz <= -2) {
                 balise = 'h3';
@@ -357,7 +362,7 @@ function skillsInfos(bat,batType,near) {
             apReq = apCost+batType.weapon.cost;
         }
         balise = 'h4';
-        boutonNope = 'boutonGris';
+        boutonNope = 'boutonGrey';
         colorNope = 'gf';
         if (bat.tags.includes('embuscade')) {
             balise = 'h3';
@@ -424,7 +429,7 @@ function skillsInfos(bat,batType,near) {
             }
             if (weapOK && bat.apLeft >= apCost+cheapWeapCost && !isTir) {
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (bat.tags.includes('datt')) {
                     balise = 'h3';
@@ -479,7 +484,7 @@ function skillsInfos(bat,batType,near) {
             }
             if (weapOK && bat.apLeft >= apCost+cheapWeapCost) {
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (bat.tags.includes('vise')) {
                     balise = 'h3';
@@ -515,7 +520,7 @@ function skillsInfos(bat,batType,near) {
             apReq = batType.weapon.cost;
         }
         balise = 'h4';
-        boutonNope = 'boutonGris';
+        boutonNope = 'boutonGrey';
         colorNope = 'gf';
         if (bat.tags.includes('luckyshot')) {
             balise = 'h3';
@@ -534,7 +539,7 @@ function skillsInfos(bat,batType,near) {
             } else {
                 skillMessage = "Pas assez de PA";
             }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-dice-six"></i> <span class="small">'+apCost+'</span></button>&nbsp; Lucky shot</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-dice-six"></i> <span class="small">0</span></button>&nbsp; Lucky shot</'+balise+'></span>');
         }
     }
     // INSTAKILL
@@ -565,7 +570,7 @@ function skillsInfos(bat,batType,near) {
     // FOG
     if (batType.skills.includes('fog') && !playerInfos.onShip) {
         balise = 'h4';
-        boutonNope = 'boutonGris';
+        boutonNope = 'boutonGrey';
         colorNope = 'gf';
         if (bat.tags.includes('fog')) {
             balise = 'h1';
@@ -595,7 +600,7 @@ function skillsInfos(bat,batType,near) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les infanteries adjacentes avec '+medicBat.type+'" class="boutonBleu skillButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true,true,'+medicBat.id+')"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
                 } else {
                     skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
                 }
             }
         }
@@ -621,7 +626,7 @@ function skillsInfos(bat,batType,near) {
                         skillMessage = "Pas assez de PA";
                     }
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
             }
         }
         // BAD MEDIC
@@ -644,7 +649,7 @@ function skillsInfos(bat,batType,near) {
                         skillMessage = "Pas assez de PA";
                     }
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
             }
         }
         // SELF MEDIC
@@ -667,7 +672,7 @@ function skillsInfos(bat,batType,near) {
                         skillMessage = "Pas assez de PA";
                     }
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Soins</h4></span>');
             }
         }
         // FIRST AID (SELF BAD MEDIC)
@@ -690,7 +695,7 @@ function skillsInfos(bat,batType,near) {
                         skillMessage = "Pas assez de PA";
                     }
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>&nbsp; Premiers soins</h4></span>');
             }
         }
         // MECANO IN BLD
@@ -707,7 +712,7 @@ function skillsInfos(bat,batType,near) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Soigner les véhicules adjacents avec '+medicBat.type+'" class="boutonBleu skillButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,true,true,'+medicBat.id+')"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
                 } else {
                     skillMessage = "Aucun véhicule adjacent n'a pas subit de dégâts";
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
                 }
             }
         }
@@ -730,7 +735,7 @@ function skillsInfos(bat,batType,near) {
                         skillMessage = "Pas assez de PA";
                     }
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
             }
         }
         // BAD MECANO
@@ -751,7 +756,7 @@ function skillsInfos(bat,batType,near) {
                         skillMessage = "Pas assez de PA";
                     }
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rafistolage</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rafistolage</h4></span>');
             }
         }
         // SELF BAD MECANO
@@ -770,7 +775,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rafistolage</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rafistolage</h4></span>');
             }
         }
         // SELF MECANO
@@ -789,7 +794,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Dépannage</h4></span>');
             }
         }
         // REPAIR
@@ -810,7 +815,7 @@ function skillsInfos(bat,batType,near) {
                         skillMessage = "Pas assez de PA";
                     }
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
             }
         }
         // SELF BAD REPAIR
@@ -829,7 +834,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
             }
         }
         // SELF REPAIR
@@ -848,7 +853,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
             }
         }
         // REPAIR DIAG
@@ -861,7 +866,7 @@ function skillsInfos(bat,batType,near) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Réparer le bâtiment avec '+repairBat.type+' ('+repairBatType.mecanoCost+' AP)" class="boutonBleu skillButtons" onclick="diagRepair('+repairBat.id+')"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
                 } else {
                     skillMessage = "Pas assez de PA";
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>&nbsp; Réparations</h4></span>');
                 }
             }
         }
@@ -875,7 +880,7 @@ function skillsInfos(bat,batType,near) {
             if (maintOK) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Entretien '+displayCosts(maintCosts)+'" class="boutonBleu skillButtons" onclick="maintenance()"><i class="fa fa-wrench"></i> <span class="small">0</span></button>&nbsp; Entretien</h4></span>');
             } else {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes '+displayCosts(maintCosts)+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">0</span></button>&nbsp; Entretien</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes '+displayCosts(maintCosts)+'" class="boutonGrey skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">0</span></button>&nbsp; Entretien</h4></span>');
             }
         }
     }
@@ -889,7 +894,7 @@ function skillsInfos(bat,batType,near) {
                 if (maintOK) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Entretien '+displayCosts(maintCosts)+'" class="boutonBleu skillButtons" onclick="maintenanceInZone()"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Entretien</h4></span>');
                 } else {
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes '+displayCosts(maintCosts)+'" class="boutonGris skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Entretien</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes '+displayCosts(maintCosts)+'" class="boutonGrey skillButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>&nbsp; Entretien</h4></span>');
                 }
             }
         }
@@ -921,7 +926,7 @@ function skillsInfos(bat,batType,near) {
     // PRIERE
     if (batType.skills.includes('prayer') && !playerInfos.onShip) {
         balise = 'h4';
-        boutonNope = 'boutonGris';
+        boutonNope = 'boutonGrey';
         colorNope = 'gf';
         if (bat.tags.includes('prayer')) {
             balise = 'h3';
@@ -1000,7 +1005,7 @@ function skillsInfos(bat,batType,near) {
                     }
                     drugCostsOK = checkCost(drug.costs);
                     balise = 'h4';
-                    boutonNope = 'boutonGris';
+                    boutonNope = 'boutonGrey';
                     colorNope = 'gf';
                     if (bat.tags.includes('starka')) {
                         balise = 'h3';
@@ -1050,7 +1055,7 @@ function skillsInfos(bat,batType,near) {
                     }
                     drugCostsOK = checkCost(drug.costs);
                     balise = 'h4';
-                    boutonNope = 'boutonGris';
+                    boutonNope = 'boutonGrey';
                     colorNope = 'gf';
                     if (bat.tags.includes('kirin')) {
                         balise = 'h3';
@@ -1094,7 +1099,7 @@ function skillsInfos(bat,batType,near) {
                 }
                 drugCostsOK = checkCost(drug.costs);
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (bat.tags.includes('octiron')) {
                     balise = 'h3';
@@ -1137,7 +1142,7 @@ function skillsInfos(bat,batType,near) {
                 }
                 drugCostsOK = checkCost(drug.costs);
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (bat.tags.includes('moloko')) {
                     balise = 'h3';
@@ -1182,7 +1187,7 @@ function skillsInfos(bat,batType,near) {
                 }
                 drugCostsOK = checkCost(drug.costs);
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (bat.tags.includes('bliss')) {
                     balise = 'h3';
@@ -1225,7 +1230,7 @@ function skillsInfos(bat,batType,near) {
                 }
                 drugCostsOK = checkCost(drug.costs);
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (bat.tags.includes('sila')) {
                     balise = 'h3';
@@ -1268,7 +1273,7 @@ function skillsInfos(bat,batType,near) {
                 }
                 drugCostsOK = checkCost(drug.costs);
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (bat.tags.includes('skupiac')) {
                     balise = 'h3';
@@ -1311,7 +1316,7 @@ function skillsInfos(bat,batType,near) {
                 }
                 drugCostsOK = checkCost(drug.costs);
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (bat.tags.includes('blaze')) {
                     balise = 'h3';
@@ -1358,7 +1363,7 @@ function skillsInfos(bat,batType,near) {
                         }
                         drugCostsOK = checkCost(drug.costs);
                         balise = 'h4';
-                        boutonNope = 'boutonGris';
+                        boutonNope = 'boutonGrey';
                         colorNope = 'gf';
                         if (bat.tags.includes('nitro')) {
                             balise = 'h3';
@@ -1405,7 +1410,7 @@ function skillsInfos(bat,batType,near) {
                     }
                     drugCostsOK = checkCost(drug.costs);
                     balise = 'h4';
-                    boutonNope = 'boutonGris';
+                    boutonNope = 'boutonGrey';
                     colorNope = 'gf';
                     if (bat.tags.includes('sudu')) {
                         balise = 'h3';
@@ -1450,7 +1455,7 @@ function skillsInfos(bat,batType,near) {
                     }
                     drugCostsOK = checkCost(drug.costs);
                     balise = 'h4';
-                    boutonNope = 'boutonGris';
+                    boutonNope = 'boutonGrey';
                     colorNope = 'gf';
                     if (bat.tags.includes('octiron')) {
                         balise = 'h3';
@@ -1494,7 +1499,7 @@ function skillsInfos(bat,batType,near) {
                         }
                         drugCostsOK = checkCost(drug.costs);
                         balise = 'h4';
-                        boutonNope = 'boutonGris';
+                        boutonNope = 'boutonGrey';
                         colorNope = 'gf';
                         if (bat.tags.includes('moloko')) {
                             balise = 'h3';
@@ -1540,7 +1545,7 @@ function skillsInfos(bat,batType,near) {
                     }
                     drugCostsOK = checkCost(drug.costs);
                     balise = 'h4';
-                    boutonNope = 'boutonGris';
+                    boutonNope = 'boutonGrey';
                     colorNope = 'gf';
                     if (bat.tags.includes('bliss')) {
                         balise = 'h3';
@@ -1581,7 +1586,7 @@ function skillsInfos(bat,batType,near) {
             }
         }
         balise = 'h4';
-        boutonNope = 'boutonGris';
+        boutonNope = 'boutonGrey';
         colorNope = 'gf';
         if (bat.tags.includes('mining')) {
             balise = 'h3';
@@ -1642,7 +1647,7 @@ function skillsInfos(bat,batType,near) {
     } else {
         if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar') || batType.skills.includes('dogprod') || batType.skills.includes('transcrap') || batType.skills.includes('cryogen') || batType.skills.includes('cryocit')) {
             balise = 'h1';
-            boutonNope = 'boutonGris';
+            boutonNope = 'boutonGrey';
             colorNope = 'gf';
             if (bat.tags.includes('prodres')) {
                 balise = 'h3';
@@ -1689,7 +1694,7 @@ function skillsInfos(bat,batType,near) {
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (Object.keys(conselUnit).length >= 1) {
                     balise = 'h3';
@@ -1721,7 +1726,7 @@ function skillsInfos(bat,batType,near) {
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (Object.keys(conselUnit).length >= 1) {
                     balise = 'h3';
@@ -1753,7 +1758,7 @@ function skillsInfos(bat,batType,near) {
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (Object.keys(conselUnit).length >= 1) {
                     balise = 'h3';
@@ -1786,7 +1791,7 @@ function skillsInfos(bat,batType,near) {
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (Object.keys(conselUnit).length >= 1) {
                     balise = 'h3';
@@ -1821,7 +1826,7 @@ function skillsInfos(bat,batType,near) {
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (Object.keys(conselUnit).length >= 1) {
                     balise = 'h3';
@@ -1856,7 +1861,7 @@ function skillsInfos(bat,batType,near) {
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (Object.keys(conselUnit).length >= 1) {
                     balise = 'h3';
@@ -1904,7 +1909,7 @@ function skillsInfos(bat,batType,near) {
                         $('#barbButtons').append('<button type="button" title="Déposer des barbelés (scrap) '+displayCosts(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-scrap`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                     } else {
                         skillMessage = "Pas assez de ressources "+displayCosts(barbType.costs);
-                        $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                        $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                     }
                     barbType = getBatTypeByName('Barbelés');
                     barbCostOK = checkCost(barbType.costs);
@@ -1912,7 +1917,7 @@ function skillsInfos(bat,batType,near) {
                         $('#barbButtons').append('<button type="button" title="Déposer des barbelés (acier) '+displayCosts(barbType.costs)+'" class="boutonGris skillButtons" onclick="dropStuff('+apCost+',`barb-fer`)"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                     } else {
                         skillMessage = "Pas assez de ressources "+displayCosts(barbType.costs);
-                        $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                        $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                     }
                     barbType = getBatTypeByName('Barbelés (taser)');
                     barbCostOK = checkCost(barbType.costs);
@@ -1924,7 +1929,7 @@ function skillsInfos(bat,batType,near) {
                         } else {
                             skillMessage = "Pas assez de ressources "+displayCosts(barbType.costs);
                         }
-                        $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
+                        $('#barbButtons').append('<button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i></button>');
                     }
                 } else {
                     if (barbLeft <= 0) {
@@ -1934,7 +1939,7 @@ function skillsInfos(bat,batType,near) {
                     } else {
                         skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                     }
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Barbelés</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="ra ra-crown-of-thorns rpg"></i> <span class="small">'+apCost+'</span></button>&nbsp; Barbelés</h4></span>');
                 }
             }
         }
@@ -1943,7 +1948,7 @@ function skillsInfos(bat,batType,near) {
             freeConsTile = checkFreeConsTile(bat,batType);
             if (freeConsTile) {
                 balise = 'h4';
-                boutonNope = 'boutonGris';
+                boutonNope = 'boutonGrey';
                 colorNope = 'gf';
                 if (Object.keys(conselUnit).length >= 1) {
                     balise = 'h3';
@@ -2019,13 +2024,13 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+roadName+'</h4></span>');
             }
         }
     }
     // INFRASTRUCTURE
     if ((batType.skills.includes('infraz') || near.caserne) && !playerInfos.onShip) {
-        if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
+        if ((tile.terrain != 'W' || playerInfos.comp.const >= 2 || playerInfos.comp.const+playerInfos.comp.def >= 3) && tile.terrain != 'R' && tile.terrain != 'L') {
             apReq = getConstAPReq(bat,batType);
             let infra;
             let infraCostOK;
@@ -2056,7 +2061,7 @@ function skillsInfos(bat,batType,near) {
                     } else {
                         skillMessage = defaultMessage;
                     }
-                    $('#infraButtons').append('<button type="button" title="Miradors: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Mi</span></button>');
+                    $('#infraButtons').append('<button type="button" title="Miradors: '+skillMessage+'" class="boutonGrey skillButtons gf"><span class="small">Mi</span></button>');
                 }
             }
             if (tile.infra != 'Palissades') {
@@ -2077,7 +2082,7 @@ function skillsInfos(bat,batType,near) {
                     } else {
                         skillMessage = defaultMessage;
                     }
-                    $('#infraButtons').append('<button type="button" title="Palissades: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Pa</span></button>');
+                    $('#infraButtons').append('<button type="button" title="Palissades: '+skillMessage+'" class="boutonGrey skillButtons gf"><span class="small">Pa</span></button>');
                 }
             }
             if (tile.infra != 'Remparts' && playerInfos.comp.def >= 1) {
@@ -2098,7 +2103,7 @@ function skillsInfos(bat,batType,near) {
                     } else {
                         skillMessage = defaultMessage;
                     }
-                    $('#infraButtons').append('<button type="button" title="Remparts: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Re</span></button>');
+                    $('#infraButtons').append('<button type="button" title="Remparts: '+skillMessage+'" class="boutonGrey skillButtons gf"><span class="small">Re</span></button>');
                 }
             }
             if (tile.infra != 'Murailles' && playerInfos.comp.def >= 3 && playerInfos.comp.const >= 1) {
@@ -2119,7 +2124,7 @@ function skillsInfos(bat,batType,near) {
                     } else {
                         skillMessage = defaultMessage;
                     }
-                    $('#infraButtons').append('<button type="button" title="Murailles: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Mu</span></button>');
+                    $('#infraButtons').append('<button type="button" title="Murailles: '+skillMessage+'" class="boutonGrey skillButtons gf"><span class="small">Mu</span></button>');
                 }
             }
             if (tile.infra != 'Terriers' && playerInfos.comp.const >= 1) {
@@ -2141,7 +2146,7 @@ function skillsInfos(bat,batType,near) {
                         } else {
                             skillMessage = defaultMessage;
                         }
-                        $('#infraButtons').append('<button type="button" title="Terriers: '+skillMessage+'" class="boutonGris skillButtons gf"><span class="small">Te</span></button>');
+                        $('#infraButtons').append('<button type="button" title="Terriers: '+skillMessage+'" class="boutonGrey skillButtons gf"><span class="small">Te</span></button>');
                     }
                 }
             }
@@ -2162,7 +2167,7 @@ function skillsInfos(bat,batType,near) {
                     } else {
                         skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                     }
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="far fa-trash-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Démolition</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="far fa-trash-alt"></i> <span class="small">'+apCost+'</span></button>&nbsp; Démolition</h4></span>');
                 }
             }
         }
@@ -2185,7 +2190,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-broom"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nettoyer</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fas fa-broom"></i> <span class="small">'+apCost+'</span></button>&nbsp; Nettoyer</h4></span>');
             }
         }
     }
@@ -2195,11 +2200,13 @@ function skillsInfos(bat,batType,near) {
         let isXPok = checkUprankXP(bat,batType);
         let upBatType = getBatTypeByName(batType.unitUp);
         apReq = 5;
-        if (bat.apLeft >= apReq && !inMelee && (isInPlace || inSoute) && isXPok) {
+        if (bat.apLeft >= apReq && !inMelee && (isInPlace || inSoute) && isXPok && craftsOK) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.unitUp+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`inf`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         } else {
             if (inMelee) {
                 skillMessage = "Ne peut pas se faire en mêlée";
+            } else if (!craftsOK) {
+                skillMessage = "Vous avez atteint votre maximum de crafts";
             } else if (!isXPok) {
                 skillMessage = "Ce bataillon n'a pas assez d'expérience pour être monté en grade";
             } else if (!isInPlace) {
@@ -2207,14 +2214,14 @@ function skillsInfos(bat,batType,near) {
             } else {
                 skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         }
     }
     // UPGRADE BUILDING
     if (batType.skills.includes('upgrade')) {
         let isCharged = checkCharged(bat,'trans');
         apReq = 5;
-        if (bat.apLeft >= apReq && !inMelee && !isCharged) {
+        if (bat.apLeft >= apReq && !inMelee && !isCharged && craftsOK) {
             if (batType.bldUp.length === 1) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Transformer en '+batType.bldUp[0]+'" class="boutonGris skillButtons" onclick="bfconst(`buildings`,false,`bld`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
             } else {
@@ -2223,12 +2230,14 @@ function skillsInfos(bat,batType,near) {
         } else {
             if (inMelee) {
                 skillMessage = "Ne peut pas se faire en mêlée";
+            } else if (!craftsOK) {
+                skillMessage = "Vous avez atteint votre maximum de crafts";
             } else if (isCharged) {
                 skillMessage = "Vous devez vider votre bataillon avant de le transformer";
             } else {
                 skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>&nbsp; Transformation</h4></span>');
         }
     }
     if (!inSoute && !bat.tags.includes('nomove')) {
@@ -2236,29 +2245,33 @@ function skillsInfos(bat,batType,near) {
             // CONSTRUCTION BATIMENTS
             if (batType.skills.includes('constructeur')) {
                 apReq = getConstAPReq(bat,batType);
-                if (bat.apLeft >= apReq && !inMelee) {
+                if (bat.apLeft >= apReq && !inMelee && craftsOK) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Construction (bâtiments)" class="boutonNoir bigButtons" onclick="bfconst(`buildings`,false,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Construction</h4></span>');
                 } else {
                     if (inMelee) {
                         skillMessage = "Ne peut pas se faire en mêlée";
+                    } else if (!craftsOK) {
+                        skillMessage = "Vous avez atteint votre maximum de crafts";
                     } else {
                         skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                     }
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-cogs"></i></button>&nbsp; Construction</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey bigButtons gf"><i class="fas fa-cogs"></i></button>&nbsp; Construction</h4></span>');
                 }
             }
             // CONSTRUCTION UNITES
             if (batType.skills.includes('producteur')) {
                 apReq = getConstAPReq(bat,batType);
-                if (bat.apLeft >= apReq && !inMelee) {
+                if (bat.apLeft >= apReq && !inMelee && craftsOK) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Production (unités)" class="boutonNoir bigButtons" onclick="bfconst(`units`,false,false,false)"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
                 } else {
                     if (inMelee) {
                         skillMessage = "Ne peut pas se faire en mêlée";
+                    } else if (!craftsOK) {
+                        skillMessage = "Vous avez atteint votre maximum de crafts";
                     } else {
                         skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                     }
-                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris bigButtons gf"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey bigButtons gf"><i class="fas fa-cogs"></i></button>&nbsp; Production</h4></span>');
                 }
             }
         }
@@ -2288,7 +2301,7 @@ function skillsInfos(bat,batType,near) {
             } else {
                 skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
             }
-            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-user-shield"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rééquiper</h4></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fas fa-user-shield"></i> <span class="small">'+apCost+'</span></button>&nbsp; Rééquiper</h4></span>');
         }
     }
     // FOUILLE DE RUINES
@@ -2313,7 +2326,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-search"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fouille</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fas fa-search"></i> <span class="small">'+apCost+'</span></button>&nbsp; Fouille</h4></span>');
             }
         }
     }
@@ -2334,7 +2347,7 @@ function skillsInfos(bat,batType,near) {
             } else {
                 skillMessage = "Pas assez de PA";
             }
-            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGris skillButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apCost+'</span></button>&nbsp; Chargement</'+balise+'></span>');
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apCost+'</span></button>&nbsp; Chargement</'+balise+'></span>');
         }
     }
     let unloadOK = false;

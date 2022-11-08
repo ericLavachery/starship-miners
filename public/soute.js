@@ -4,6 +4,7 @@ function goSoute() {
     playFx('work',false);
     $("#zone_map").css("display","none");
     $("#zone_soute").css("display","block");
+    $("#modesInfos").css("display","none");
     checkSelectedLanderId();
     checkReserve();
     souteMenu();
@@ -19,8 +20,8 @@ function goSoute() {
         viewLanderRes();
         voirReserve();
     }
-    commandes();
     viewPop();
+    commandes();
     console.log('slId='+slId);
 };
 
@@ -30,6 +31,7 @@ function goStation() {
     playFx('work',true);
     $("#zone_map").css("display","grid");
     $("#zone_soute").css("display","none");
+    $("#modesInfos").css("display","block");
     showMap(zone,true);
     let souteBat = getBatById(souteId);
     batSelect(souteBat);

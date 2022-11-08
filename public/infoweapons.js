@@ -88,7 +88,7 @@ function weaponsInfos(bat,batType,tile,pop) {
                 colIcon = 'cy';
             } else if (selectedWeap.num != undefined || grisee) {
                 balise = 'h6';
-                leBouton = 'boutonGris';
+                leBouton = 'boutonGrey';
                 colBouton = 'gf';
                 colIcon = 'gff';
             }
@@ -136,7 +136,7 @@ function weaponsInfos(bat,batType,tile,pop) {
                 if (pop) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
                 } else {
-                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGris skillButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGrey skillButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
                 }
             }
             let maxSalves = batType.maxSalvo;
@@ -333,7 +333,7 @@ function weaponsInfos(bat,batType,tile,pop) {
                 colIcon = 'cy';
             } else if (selectedWeap.num != undefined || grisee) {
                 balise = 'h6';
-                leBouton = 'boutonGris';
+                leBouton = 'boutonGrey';
                 colBouton = 'gf';
                 colIcon = 'gff';
             }
@@ -386,7 +386,7 @@ function weaponsInfos(bat,batType,tile,pop) {
                 if (pop) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
                 } else {
-                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGris skillButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGrey skillButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
                 }
             }
             let maxSalves = batType.maxSalvo;

@@ -1034,10 +1034,15 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                         payDeployCosts(conselUnit,conselAmmos);
                     }
                 }
-            }
-            // TURNS on STATION
-            if (playerInfos.onShip) {
-                playerInfos.allTurns = playerInfos.allTurns+Math.floor(conselUnit.fabTime/20);
+                // TURNS on STATION
+                if (playerInfos.onShip && !conselTriche) {
+                    // playerInfos.allTurns = playerInfos.allTurns+Math.floor(conselUnit.fabTime/20);
+                    if (conselUnit.fabTime >= 20) {
+                        playerInfos.crafts = playerInfos.crafts+Math.floor(conselUnit.fabTime/5.5);
+                    } else {
+                        playerInfos.crafts = playerInfos.crafts+Math.floor(conselUnit.fabTime/7.7);
+                    }
+                }
             }
             let tile = getTileById(tileId);
             console.log(conselUnit);

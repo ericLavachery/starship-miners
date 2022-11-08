@@ -1284,10 +1284,12 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
     }
     // initmelee
     if (batType.skills.includes('initmelee') && distance === 0) {
-        if (batType.weapon.range >= 1 && !attacking) {
-            speed = speed-120;
-        } else {
-            speed = speed-60;
+        if (batType.cat === 'aliens' || bat.tags.includes('guet')) {
+            if (batType.weapon.range >= 1 && !attacking) {
+                speed = speed-120;
+            } else {
+                speed = speed-60;
+            }
         }
     }
     // camo

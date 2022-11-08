@@ -1,0 +1,65 @@
+/* globals */
+
+/* @import url(prefixes.css); */
+
+/* button { border: none; display: block; } */
+
+button, select {
+	background-color:#222222;
+	border:1px solid #292929;
+	display:inline-block;
+	cursor:pointer;
+	font-size:13px;
+	padding:4px 10px;
+	text-decoration:none;
+    margin: 0 0 0 0;
+}
+select {
+    padding:3px 10px;
+	min-width: 87px;
+}
+
+/* Metal ------------------------- */
+
+.metal {
+  position: relative;
+  /* margin: 40px auto; */
+  outline: none;
+  /* font: bold 6em/2em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; */
+  text-align: center;
+  color: #3c3c3c;
+  text-shadow: hsla(0,0%,40%,.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
+  background-color: hsl(0,0%,90%);
+  /* transition: color .2s; */
+}
+
+/* Linear ------------------------- */
+
+.metal.gris {
+  /* width: 100px; */
+  font-size: 20px;
+  /* height: 80px; */
+  border-radius: 8px;
+  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%,.1) 7.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
+    linear-gradient(180deg, hsl(0,0%,38%)  0%,
+    hsl(0,0%,70%) 27%,
+    hsl(0,0%,38%) 67%,
+    hsl(0,0%,50%) 100%);
+}
+
+/* active ------------------------- */
+
+.metal:active {
+  /* color: hsl(210, 100%, 40%); */
+  color: #6be9b4;
+  /* text-shadow: hsla(210,100%,20%,.3) 0 -1px 0, hsl(210,100%,85%) 0 2px 1px, hsla(200,100%,80%,1) 0 0 5px, hsla(210,100%,50%,.6) 0 0 20px; */
+}
+
+/* hover ------------------------- */
+
+.metal:hover {
+	color: #000000;
+    cursor: pointer;
+}

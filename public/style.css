@@ -33,6 +33,7 @@ body {
     border-style: solid;
     border-width: 2px;
     border-color: #464a4a;
+    /* border-color: #565c5c; */
     margin: 9px 0 10px 0;
     border-radius: 6px;
     min-width: 285px;
@@ -126,10 +127,10 @@ h6 {
 .dunit {
     vertical-align: -70%;
     cursor: pointer;
-    background-color: #565988;
+    background-color: #3b466e;
     border-style: solid;
     border-width: 1px;
-    border-color: #8486ac;
+    border-color: #9298af;
     border-radius: 4px;
 }
 .notsosmall {
@@ -140,35 +141,35 @@ h6 {
 }
 .rosevents {
     padding: 0 0 0 5px;
-    font-size: 24px;
-    -webkit-text-stroke: 1px;
+    font-size: 30px;
+    -webkit-text-stroke: 2px;
     -webkit-text-stroke-color: #000000;
 }
 .mapCenter {
-    margin: 0 0 0 7px;
+    margin: 0 0 0 10px;
     color: #d5cabd;
-    font-size: 27px;
+    font-size: 30px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
 .mapSize {
-    margin: 6px 0 0 14px;
+    margin: 12px 0 0 16px;
+    color: #d5cabd;
+    font-size: 24px;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
+.togClouds {
+    margin: 10px 0 0 15px;
     color: #d5cabd;
     font-size: 18px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
-.togClouds {
-    margin: 4px 0 0 12px;
-    color: #d5cabd;
-    font-size: 16px;
-    -webkit-text-stroke: 1px;
-    -webkit-text-stroke-color: #000000;
-}
 .markErase {
-    margin: 1px 0 0 14px;
+    margin: 10px 0 0 17px;
     color: #d5cabd;
-    font-size: 16px;
+    font-size: 18px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
@@ -843,6 +844,7 @@ td {
     background-position: 0% 5%;
 }
 #unitInfos {
+    /* background-image: url(/static/img/oldmetal_big_bg.jpg); */
     background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 0%;
     scroll-behavior: auto;
@@ -882,9 +884,11 @@ td {
     min-width: 130px;
 }
 #commandz {
-    background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: 0% 25%;
+    /* background-image: url(/static/img/plate-vdork-small.jpg); */
+    /* background-position: 20% 10%; */
     min-width: 130px;
+    background-image: url(/static/img/oldmetal_bg.jpg);
+    background-position: 0% 0%;
 }
 #report {
     background-image: url(/static/img/plate-vdork-small.jpg);

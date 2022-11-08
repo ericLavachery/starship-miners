@@ -303,7 +303,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
         "costs":{"Fer":54,"Bois":108,"Végétaux":54,"Bugium":54,"Mendium":9,"Wingium":9,"Azote":54,"Calcium":27,"Drogues":18},
-        "fabTime":15
+        "fabTime":20
     },
     {
         "id":17,
@@ -340,7 +340,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":3,"detruas":99,"brasier":99},
         "bldReq":["Armurerie"],
         "costs":{"Fer":128,"Scrap":32,"Carbone":32,"Aluminium":64,"Tungstène":32,"Végétaux":20,"Chlore":10,"Tissus":5},
-        "fabTime":15
+        "fabTime":20
     },
     {
         "id":146,
@@ -357,7 +357,7 @@
         "bldReq":["Armurerie","Poudrière"],
         "unitUp":"Alphas",
         "costs":{"Fer":60,"Scrap":72,"Aluminium":96,"Tungstène":24},
-        "fabTime":15
+        "fabTime":20
     },
     {
         "id":24,
@@ -376,7 +376,7 @@
         "compHardReq":{"pyro":1},
         "costs":{"Fer":112,"Scrap":210,"Carbone":14,"Plomb":56,"Aluminium":112,"Tungstène":70,"Végétaux":20,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
-        "fabTime":20
+        "fabTime":15
     },
     {
         "id":23,
@@ -393,7 +393,7 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
         "costs":{"Fer":48,"Scrap":96},
-        "fabTime":15
+        "fabTime":10
     },
     {
         "id":28,
@@ -574,7 +574,7 @@
         "compReq":{"def":1},
         "costs":{"Fer":300,"Scrap":60,"Carbone":60,"Végétaux":110,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
-        "fabTime":20
+        "fabTime":15
     },
     {
         "id":246,
@@ -584,7 +584,7 @@
         "compReq":{"def":1},
         "costs":{"Fer":300,"Scrap":60,"Carbone":60,"Végétaux":110,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
-        "fabTime":20
+        "fabTime":15
     },
     {
         "id":240,
@@ -595,7 +595,7 @@
         "compHardReq":{"pyro":1},
         "costs":{"Fer":330,"Scrap":60,"Carbone":60,"Aluminium":120,"Tungstène":30,"Végétaux":110,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
-        "fabTime":20
+        "fabTime":15
     },
     {
         "id":243,
@@ -605,7 +605,7 @@
         "compReq":{"def":1},
         "costs":{"Fer":300,"Scrap":60,"Carbone":60,"Aluminium":60,"Végétaux":110,"Drogues":16,"Chlore":12,"Zinc":12,"Tissus":6},
         "deploy":{"Drogues":7,"Chlore":3,"Zinc":3,"Tissus":3},
-        "fabTime":20
+        "fabTime":15
     },
     {
         "id":68,
@@ -1080,7 +1080,7 @@
         "compReq":{},
         "costs":{"Fer":72,"Scrap":48,"Végétaux":72,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
-        "fabTime":30,
+        "fabTime":15,
         "inRuin":4
     },
     {
@@ -1221,7 +1221,7 @@
     {
         "id":101,
         "name":"Genius",
-        "levels":{"rednecks":10,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":99,"detruas":11,"brasier":11},
+        "levels":{"rednecks":9,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":99,"detruas":11,"brasier":11},
         "bldReq":["Armurerie","Chaîne de montage"],
         "compReq":{"tank":1},
         "costs":{"Fer":110,"Scrap":330,"Carbone":105,"Aluminium":30,"Moteurs":120,"Tungstène":65,"Cuivre":25,"Electros":25,"Batteries":25,"Compo2":100,"Silicium":15,"Huile":35},
@@ -2163,7 +2163,7 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
         "costs":{"Compo1":150,"Scrap":75,"Carbone":75,"Moteurs":20,"Cuivre":30,"Electros":10,"Batteries":20,"Energie":150},
-        "fabTime":10
+        "fabTime":20
     },
     {
         "id":37,
@@ -2661,7 +2661,7 @@
         "id":215,
         "name":"Bar",
         "costs":{"Compo1":115,"Eau":50,"Huile":15,"Carbone":25,"Fruits":50},
-        "fabTime":15,
+        "fabTime":20,
         "crime":-2,
         "slots":1
     },
