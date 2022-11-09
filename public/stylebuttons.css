@@ -12,12 +12,17 @@ button, select {
 	background-color:#7d5d3b;
 	border:1px solid #54381e;
 	text-shadow:0px 1px 0px #4d3534;
-	-moz-border-radius:4px;
-	-webkit-border-radius:4px;
-	border-radius:4px;
+	/* -moz-border-radius:4px; */
+	/* -webkit-border-radius:4px; */
+	/* border-radius:4px; */
 	display:inline-block;
 	cursor:pointer;
-	color:#e1face;
+	/* color:#e1face; */
+	color:#ededed;
+	text-shadow: 0px 1px 0px #1f1f1f;
+	/* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+	/* -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #858585; */
 	font-size:13px;
 	padding:4px 10px;
 	text-decoration:none;
@@ -41,6 +46,46 @@ button:active {
 	position:relative;
 	top:1px;
 }
+.boutonGris {
+    -moz-box-shadow:inset 0px 1px 0px 0px #a49ca6;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #a49ca6;
+	box-shadow:inset 0px 1px 0px 0px #a49ca6;
+	background-image: url(/static/img/oldmetal.jpg);
+	background-position: 55% 40%;
+	background-color:#7b717c;
+    border:1px solid #574f59;
+    /* text-shadow:0px 1px 0px #4c484d; */
+}
+.boutonGris:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #605c61), color-stop(1, #7b717c));
+	background:-moz-linear-gradient(top, #605c61 5%, #7b717c 100%);
+	background:-webkit-linear-gradient(top, #605c61 5%, #7b717c 100%);
+	background:-o-linear-gradient(top, #605c61 5%, #7b717c 100%);
+	background:-ms-linear-gradient(top, #605c61 5%, #7b717c 100%);
+	background:linear-gradient(to bottom, #605c61 5%, #7b717c 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#605c61', endColorstr='#7b717c',GradientType=0);
+	background-color:#605c61;
+}
+.boutonGrey {
+    -moz-box-shadow:inset 0px 1px 0px 0px #928b94;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #928b94;
+	box-shadow:inset 0px 1px 0px 0px #928b94;
+	background-image: url(/static/img/oldmetal-gris.jpg);
+	background-position: 25% 20%;
+	background-color:#645b65;
+    border:1px solid #433d45;
+    /* text-shadow:0px 1px 0px #393539; */
+}
+.boutonGrey:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #605c61), color-stop(1, #7b717c));
+	background:-moz-linear-gradient(top, #605c61 5%, #7b717c 100%);
+	background:-webkit-linear-gradient(top, #605c61 5%, #7b717c 100%);
+	background:-o-linear-gradient(top, #605c61 5%, #7b717c 100%);
+	background:-ms-linear-gradient(top, #605c61 5%, #7b717c 100%);
+	background:linear-gradient(to bottom, #605c61 5%, #7b717c 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#605c61', endColorstr='#7b717c',GradientType=0);
+	background-color:#605c61;
+}
 .boutonBrun {
 	-moz-box-shadow:inset 0px 1px 0px 0px #a6827e;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #a6827e;
@@ -49,7 +94,7 @@ button:active {
 	background-position: 50% 80%;
 	background-color:#7d5d3b;
 	border:1px solid #54381e;
-	text-shadow:0px 1px 0px #4d3534;
+	/* text-shadow:0px 1px 0px #4d3534; */
 }
 .boutonBrun:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #634b30), color-stop(1, #7d5d3b));
@@ -69,7 +114,7 @@ button:active {
 	background-position: 75% 60%;
 	background-color:#780000;
     border:1px solid #520808;
-    text-shadow:0px 1px 0px #4a1d1b;
+    /* text-shadow:0px 1px 0px #4a1d1b; */
 }
 .boutonRouge:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #631818), color-stop(1, #8a1c1c));
@@ -89,7 +134,7 @@ button:active {
 	background-position: 75% 60%;
 	background-color:#9d5900;
     border:1px solid #523608;
-    text-shadow:0px 1px 0px #4a371b;
+    /* text-shadow:0px 1px 0px #4a371b; */
 }
 .boutonOrange:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6b4700), color-stop(1, #8a6300));
@@ -98,7 +143,7 @@ button:active {
 	background:-o-linear-gradient(top, #6b4700 5%, #8a6300 100%);
 	background:-ms-linear-gradient(top, #6b4700 5%, #8a6300 100%);
 	background:linear-gradient(to bottom, #6b4700 5%, #8a6300 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b4700', endColorstr='#8a6300',GradientType=0);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b4700', endColorstr='#8a6300',GradientType=0);roxi
 	background-color:#603c00;
 }
 .boutonVert {
@@ -109,7 +154,7 @@ button:active {
 	background-position: 50% 80%;
 	background-color:#3b7d3d;
     border:1px solid #1e5422;
-    text-shadow:0px 1px 0px #344d38;
+    /* text-shadow:0px 1px 0px #344d38; */
 }
 .boutonVert:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #306331), color-stop(1, #3b7d3d));
@@ -130,7 +175,7 @@ button:active {
 	color:#ffffff;
 	background-color:#727800;
     border:1px solid #4e5208;
-    text-shadow:0px 1px 0px #494a1b;
+    /* text-shadow:0px 1px 0px #494a1b; */
 }
 .boutonJaune:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #636018), color-stop(1, #8a891c));
@@ -150,7 +195,7 @@ button:active {
 	background-position: 30% 75%;
 	background-color:#652042;
     border:1px solid #521839;
-    text-shadow:0px 1px 0px #44293a;
+    /* text-shadow:0px 1px 0px #44293a; */
 }
 .boutonRose:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #60324a), color-stop(1, #90486f));
@@ -170,7 +215,7 @@ button:active {
 	background-position: 17% 85%;
 	background-color:#5ba6d0;
     border:1px solid #1f6175;
-    text-shadow:0px 1px 0px #3d5961;
+    /* text-shadow:0px 1px 0px #3d5961; */
 }
 .boutonBleu:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #438499), color-stop(1, #5ba6d0));
@@ -191,7 +236,7 @@ button:active {
 	color:#ffffff;
 	background-color:#5cd09f;
     border:1px solid #1f7551;
-    text-shadow:0px 1px 0px #3d6152;
+    /* text-shadow:0px 1px 0px #3d6152; */
 }
 .boutonCiel:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #439975), color-stop(1, #5cd09f));
@@ -211,7 +256,7 @@ button:active {
 	background-position: 60% 75%;
 	background-color:#643b7d;
     border:1px solid #3c1e54;
-    text-shadow:0px 1px 0px #4b344d;
+    /* text-shadow:0px 1px 0px #4b344d; */
 }
 .boutonMauve:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #483063), color-stop(1, #643b7d));
@@ -231,7 +276,7 @@ button:active {
 	background-position: 30% 77%;
 	background-color:#5a5cd0;
     border:1px solid #1f2375;
-    text-shadow:0px 1px 0px #3d4061;
+    /* text-shadow:0px 1px 0px #3d4061; */
 }
 .boutonMarine:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #3c428f), color-stop(1, #5a5cd0));
@@ -251,7 +296,7 @@ button:active {
 	background-position: 35% 50%;
 	background-color:#707d3b;
     border:1px solid #40541e;
-    text-shadow:0px 1px 0px #454d34;
+    /* text-shadow:0px 1px 0px #454d34; */
 }
 .boutonCaca:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #566330), color-stop(1, #707d3b));
@@ -271,7 +316,7 @@ button:active {
 	background-position: 25% 20%;
 	background-color:#5b4a4a;
     border:1px solid #2b0b0b;
-    text-shadow:0px 1px 0px #180202;
+    /* text-shadow:0px 1px 0px #180202; */
 }
 .boutonNoir:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #442d2d), color-stop(1, #5b4a4a));
@@ -283,46 +328,6 @@ button:active {
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#442d2d', endColorstr='#5b4a4a',GradientType=0);
 	background-color:#442d2d;
 }
-.boutonGris {
-    -moz-box-shadow:inset 0px 1px 0px 0px #a49ca6;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #a49ca6;
-	box-shadow:inset 0px 1px 0px 0px #a49ca6;
-	background-image: url(/static/img/oldmetal.jpg);
-	background-position: 35% 75%;
-	background-color:#7b717c;
-    border:1px solid #574f59;
-    text-shadow:0px 1px 0px #4c484d;
-}
-.boutonGris:hover {
-    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #605c61), color-stop(1, #7b717c));
-	background:-moz-linear-gradient(top, #605c61 5%, #7b717c 100%);
-	background:-webkit-linear-gradient(top, #605c61 5%, #7b717c 100%);
-	background:-o-linear-gradient(top, #605c61 5%, #7b717c 100%);
-	background:-ms-linear-gradient(top, #605c61 5%, #7b717c 100%);
-	background:linear-gradient(to bottom, #605c61 5%, #7b717c 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#605c61', endColorstr='#7b717c',GradientType=0);
-	background-color:#605c61;
-}
-.boutonGrey {
-    -moz-box-shadow:inset 0px 1px 0px 0px #928b94;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #928b94;
-	box-shadow:inset 0px 1px 0px 0px #928b94;
-	background-image: url(/static/img/oldmetal-gris.jpg);
-	background-position: 25% 20%;
-	background-color:#645b65;
-    border:1px solid #433d45;
-    text-shadow:0px 1px 0px #393539;
-}
-.boutonGrey:hover {
-    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #605c61), color-stop(1, #7b717c));
-	background:-moz-linear-gradient(top, #605c61 5%, #7b717c 100%);
-	background:-webkit-linear-gradient(top, #605c61 5%, #7b717c 100%);
-	background:-o-linear-gradient(top, #605c61 5%, #7b717c 100%);
-	background:-ms-linear-gradient(top, #605c61 5%, #7b717c 100%);
-	background:linear-gradient(to bottom, #605c61 5%, #7b717c 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#605c61', endColorstr='#7b717c',GradientType=0);
-	background-color:#605c61;
-}
 .boutonOK {
     -moz-box-shadow:inset 0px 1px 0px 0px #a49ca6;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #a49ca6;
@@ -330,8 +335,10 @@ button:active {
 	background-image: url(/static/img/oldmetal-gris.jpg);
 	background-position: 55% 15%;
 	background-color:#7b717c;
-    border:2px solid #6be9b4;
-    text-shadow:0px 1px 0px #4c484d;
+    border:1px solid #6be9b4;
+	color: #6be9b4;
+	font-weight:normal;
+    /* text-shadow:0px 1px 0px #4c484d; */
 }
 .boutonOK:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #605c61), color-stop(1, #7b717c));

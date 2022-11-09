@@ -539,7 +539,7 @@ function skillsInfos(bat,batType,near) {
             } else {
                 skillMessage = "Pas assez de PA";
             }
-            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-dice-six"></i> <span class="small">0&nbsp; </span></button>Lucky shot');
+            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-dice-six"></i> <span class="small">0&nbsp; Lucky shot</span></button>');
         }
     }
     // INSTAKILL

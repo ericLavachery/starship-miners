@@ -1,8 +1,43 @@
+#zone_map {
+    position: absolute;
+    z-index: 1;
+    /* margin-left: 0px; */
+    /* margin-top: 0px; */
+}
+#zone_effect {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    pointer-events:none;
+    /* margin-left: 0px; */
+    /* margin-top: 0px; */
+}
 #minimap {
     font-size: 0px;
-    background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: 0% 40%;
+    /* background-image: url(/static/img/plate-vdork-small.jpg); */
+    /* background-position: 0% 40%; */
+    background-image: url(/static/img/minimap.jpg);
+    background-position: 0% 0%;
+    height: 260px;
+    padding-top: 21px;
+    padding-left: 9px;
     display: none;
+}
+#radar_effect {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    pointer-events:none;
+    margin-left: 2px;
+    margin-top: 13px;
+}
+#glitches_effect {
+    display: block;
+    position: absolute;
+    z-index: 20;
+    pointer-events:none;
+    margin-left: 0px;
+    margin-top: 0px;
 }
 .mini {
     min-width: 4px;
