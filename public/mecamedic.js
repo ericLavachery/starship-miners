@@ -920,7 +920,7 @@ function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
         } else if (playerInfos.bldList.includes('Garage') && batType.cat != 'buildings' && baseskillCost >= 3) {
             baseskillCost = baseskillCost-1;
         }
-        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {
+        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano' || bat.eq === 'trainkitcar') {
             if (batType.skills.includes('mecano') || batType.skills.includes('selfmecano')) {
                 if (baseskillCost >= 6) {
                     baseskillCost = Math.floor(baseskillCost*3/4);
@@ -973,7 +973,7 @@ function bestMecanoInBld(bldBat) {
         if (bat.loc === "trans" && bat.locId === bldBat.id) {
             let batType = getBatType(bat);
             if (batType.cat != 'buildings' && batType.cat != 'devices') {
-                if (batType.skills.includes('mecano') || (batType.skills.includes('badmecano') && (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano'))) {
+                if (batType.skills.includes('mecano') || (batType.skills.includes('badmecano') && (bat.eq === 'e-mecano' || bat.eq === 'trainkitcar' || bat.logeq === 'e-mecano'))) {
                     maxMeds = 10*bat.apLeft/batType.mecanoCost;
                     if (maxMeds > bestMaxMeds) {
                         bestMaxMeds = maxMeds;
@@ -1103,21 +1103,21 @@ function checkMecanoSkill(bat,batType) {
     } else if (batType.skills.includes('selfmecano')) {
         myMecanoSkill = 'selfmecano';
     } else if (batType.skills.includes('badmecano')) {
-        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {
+        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano' || bat.eq === 'trainkitcar') {
             myMecanoSkill = 'mecano';
         } else {
             myMecanoSkill = 'badmecano';
         }
     } else if (batType.skills.includes('selfbadmecano')) {
-        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {
+        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano' || bat.eq === 'trainkitcar') {
             myMecanoSkill = 'selfmecano';
         } else {
             myMecanoSkill = 'selfbadmecano';
         }
-    } else if (batType.skills.includes('w2mecano') && (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano')) {
+    } else if (batType.skills.includes('w2mecano') && (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano' || bat.eq === 'trainkitcar')) {
         myMecanoSkill = 'badmecano';
     } else {
-        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano') {
+        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano' || bat.eq === 'trainkitcar') {
             if (batType.cat === 'infantry') {
                 myMecanoSkill = 'badmecano';
             } else {

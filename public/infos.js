@@ -63,6 +63,7 @@ function batInfos(bat,batType,pop) {
     if (bat.tdc === undefined) {
         bat.tdc = [];
     }
+    updateBatProperties(bat,batType);
     levelUp(bat,batType);
     doRegroup(bat,batType);
     if (playerInfos.onShip) {

@@ -149,12 +149,12 @@ function getCamionEquips(batType) {
     return camion;
 };
 
-// CRIMEKITS
-// crimekitch
+// trainkitS
+// trainkitch
 // ranger, camo, chargeur1
-// crimekitgi
+// trainkitgi
 // ranger, camo, lanceur2, gilet, bonus melee
-// crimekitlu
+// trainkitlu
 // ranger, camo, lunette1
-// crimekitto
+// trainkitto
 // ranger, resistfeu, chargeur2, bonus melee

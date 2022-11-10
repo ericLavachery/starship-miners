@@ -1142,7 +1142,7 @@ function getBatAP(bat,batType) {
 
 function getAP(bat,batType) {
     let newAP = bat.ap;
-    if (bat.eq === 'belier' || bat.eq === 'snorkel' || (bat.eq === 'chenilles' && batType.maxFlood >= 1 && batType.maxScarp >= 2)) {
+    if (bat.eq === 'belier') {
         newAP = newAP*0.9;
     }
     if (playerInfos.bldList.includes('QG')) {
@@ -1158,13 +1158,13 @@ function getAP(bat,batType) {
             newAP = newAP+1;
         }
     }
-    if (bat.eq === 'g2motor' || bat.logeq === 'g2motor') {
+    if (bat.eq === 'g2motor' || bat.logeq === 'g2motor' || bat.eq === 'trainkitcar') {
         newAP = newAP+(Math.sqrt(batType.moveCost)*2.5);
     }
     if (batType.skills.includes('heroap') && bat.tags.includes('hero')) {
         newAP = newAP+2;
     }
-    if (bat.eq === 'helper' || bat.logeq === 'helper' || bat.tdc.includes('helper')) {
+    if (bat.eq === 'helper' || bat.logeq === 'helper' || bat.eq === 'trainkitcy' || bat.tdc.includes('helper')) {
         newAP = newAP+1;
     }
     if (bat.eq === 'e-lifepod') {
@@ -1439,7 +1439,7 @@ function tagsEffect(bat,batType) {
             bat.apLeft = bat.apLeft-bat.ap;
             if (batType.skills.includes('ranger') || batType.skills.includes('caterp') || bat.eq === 'e-ranger' || bat.logeq === 'e-ranger' || bat.tdc.includes('e-ranger')) {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3*2));
-            } else if (bat.eq === 'chenilles' || bat.logeq === 'chenilles') {
+            } else if (bat.eq === 'chenilles' || bat.logeq === 'chenilles' || bat.eq === 'trainkitcar') {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/2));
             } else {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3));
@@ -1796,6 +1796,18 @@ function updateBatProperties(bat,batType) {
     }
     if (bat.eq === 'flash') {
         bat.eq = 'e-flash';
+    }
+    if (bat.eq === 'crimekitch') {
+        bat.eq = 'trainkitch';
+    }
+    if (bat.eq === 'crimekitlu') {
+        bat.eq = 'trainkitlu';
+    }
+    if (bat.eq === 'crimekitgi') {
+        bat.eq = 'trainkitgi';
+    }
+    if (bat.eq === 'crimekitto') {
+        bat.eq = 'trainkitto';
     }
 };
 

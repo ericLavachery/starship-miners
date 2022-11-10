@@ -665,39 +665,8 @@ function playerSkillsUTChanges() {
                 }
             }
         }
+
         // CONSTRUCTION
-        if (unit.mecanoCost < 90) {
-            if (unit.skills.includes('repair')) {
-                repairBonus = true;
-            }
-            if (unit.skills.includes('selfrepair') || unit.skills.includes('selfbadrepair')) {
-                if (!unit.skills.includes('mecano') && !unit.skills.includes('badmecano')) {
-                    repairBonus = true;
-                }
-            }
-            if (repairBonus) {
-                if (playerInfos.comp.const === 2) {
-                    unit.mecanoCost = unit.mecanoCost-1;
-                }
-                if (playerInfos.comp.const === 3) {
-                    unit.mecanoCost = unit.mecanoCost-2;
-                }
-                if (unit.mecanoCost < 2) {
-                    unit.mecanoCost = 2;
-                }
-            }
-        }
-        if (unit.mecanoCost < 90) {
-            if (playerInfos.comp.const === 2) {
-                unit.mecanoCost = unit.mecanoCost-1;
-            }
-            if (playerInfos.comp.const === 3) {
-                unit.mecanoCost = unit.mecanoCost-2;
-            }
-            if (unit.mecanoCost < 2) {
-                unit.mecanoCost = 2;
-            }
-        }
         if (playerInfos.comp.const >= 1) {
             if (unit.cat === 'buildings' || unit.cat === 'devices') {
                 if (!unit.skills.includes('cfo') && !unit.skills.includes('dome') && !unit.skills.includes('pilone')) {
@@ -727,6 +696,62 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.const >= 3) {
             if (unit.costs['Compo3'] != undefined) {
                 unit.costs['Compo3'] = Math.ceil(unit.costs['Compo3']/9*6);
+            }
+        }
+        if (unit.mecanoCost < 90) {
+            if (unit.skills.includes('repair')) {
+                repairBonus = true;
+            }
+            if (unit.skills.includes('selfrepair') || unit.skills.includes('selfbadrepair')) {
+                if (!unit.skills.includes('mecano') && !unit.skills.includes('badmecano')) {
+                    repairBonus = true;
+                }
+            }
+            if (repairBonus) {
+                if (playerInfos.comp.const === 2) {
+                    unit.mecanoCost = Math.floor(unit.mecanoCost*4/5);
+                }
+                if (playerInfos.comp.const === 3) {
+                    unit.mecanoCost = Math.floor(unit.mecanoCost/2);
+                }
+                if (unit.mecanoCost < 2) {
+                    unit.mecanoCost = 2;
+                }
+            }
+        }
+        // TRANSPORTS
+        if (unit.mecanoCost < 90) {
+            if (!repairBonus) {
+                if (unit.skills.includes('mecano') || unit.skills.includes('badmecano') || unit.skills.includes('selfmecano') || unit.skills.includes('selfbadmecano')) {
+                    if (playerInfos.comp.trans === 2) {
+                        unit.mecanoCost = Math.floor(unit.mecanoCost*4/5);
+                    }
+                    if (playerInfos.comp.trans === 3) {
+                        unit.mecanoCost = Math.floor(unit.mecanoCost/2);
+                    }
+                    if (unit.mecanoCost < 2) {
+                        unit.mecanoCost = 2;
+                    }
+                }
+            }
+        }
+        if (playerInfos.comp.trans >= 1) {
+            if (unit.kind === 'zero-transports' || unit.kind === 'zero-trans-fret') {
+                if (unit.compReq === undefined && unit.compHardReq === undefined) {
+                    unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.trans);
+                    if (unit.levels[playerInfos.gang] < 1) {
+                        unit.levels[playerInfos.gang] = 1;
+                    }
+                }
+            }
+        }
+        if (playerInfos.comp.trans >= 1 && unit.cat === 'vehicles') {
+            let transComp = ((playerInfos.comp.trans+1)*(playerInfos.comp.trans+1))-1;
+            if (unit.transRes >= 50) {
+                unit.transRes = Math.round(unit.transRes*(transComp+30)/30);
+            }
+            if (unit.transUnits >= 50) {
+                unit.transUnits = Math.round(unit.transUnits*(transComp+30)/30);
             }
         }
         // INDUSTRIE
@@ -911,41 +936,6 @@ function playerSkillsUTChanges() {
                 if (unit.levels[playerInfos.gang] < 1) {
                     unit.levels[playerInfos.gang] = 1;
                 }
-            }
-        }
-        // TRANSPORTS
-        if (unit.mecanoCost < 90) {
-            if (!repairBonus) {
-                if (unit.skills.includes('mecano') || unit.skills.includes('badmecano') || unit.skills.includes('selfmecano') || unit.skills.includes('selfbadmecano')) {
-                    if (playerInfos.comp.trans === 2) {
-                        unit.mecanoCost = unit.mecanoCost-1;
-                    }
-                    if (playerInfos.comp.trans === 3) {
-                        unit.mecanoCost = unit.mecanoCost-2;
-                    }
-                    if (unit.mecanoCost < 2) {
-                        unit.mecanoCost = 2;
-                    }
-                }
-            }
-        }
-        if (playerInfos.comp.trans >= 1) {
-            if (unit.kind === 'zero-transports' || unit.kind === 'zero-trans-fret') {
-                if (unit.compReq === undefined && unit.compHardReq === undefined) {
-                    unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.trans);
-                    if (unit.levels[playerInfos.gang] < 1) {
-                        unit.levels[playerInfos.gang] = 1;
-                    }
-                }
-            }
-        }
-        if (playerInfos.comp.trans >= 1 && unit.cat === 'vehicles') {
-            let transComp = ((playerInfos.comp.trans+1)*(playerInfos.comp.trans+1))-1;
-            if (unit.transRes >= 50) {
-                unit.transRes = Math.round(unit.transRes*(transComp+30)/30);
-            }
-            if (unit.transUnits >= 50) {
-                unit.transUnits = Math.round(unit.transUnits*(transComp+30)/30);
             }
         }
         // LOGISTIQUE

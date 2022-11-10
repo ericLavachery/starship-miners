@@ -502,7 +502,7 @@ function canCamo(bat,batType,tile) {
             }
         }
     }
-    if (bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.tdc.includes('e-camo') || bat.tdc.includes('silencieux1') || bat.tdc.includes('silencieux2')) {
+    if (bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || bat.eq === 'trainkitgi' || bat.eq === 'trainkitch' || bat.eq === 'trainkitlu' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.tdc.includes('e-camo') || bat.tdc.includes('silencieux1') || bat.tdc.includes('silencieux2')) {
         iCanCamo = true;
     }
     if (bat.eq === 'kit-guetteur' || bat.eq === 'kit-chouf') {

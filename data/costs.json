@@ -781,7 +781,7 @@
         "name":"Riggers",
         "levels":{"rednecks":12,"blades":16,"bulbos":9,"drogmulojs":14,"tiradores":13,"detruas":99,"brasier":12},
         "bldReq":["Atelier","Centre de recherches"],
-        "compReq":{"const":2},
+        "compReq":{"const":1,"trans":1},
         "compPass":["rednecks","bulbos"],
         "compHardReq":{"cyber":1},
         "costs":{"Fer":86,"Scrap":36,"Carbone":72,"Aluminium":36,"Titane":108,"Electros":72,"Batteries":108,"Cuivre":24,"Silicium":18,"Huile":36,"Silicium":16,"Chlore":20,"Zinc":20,"Tungstène":50,"Tissus":10,"Mendium":25},

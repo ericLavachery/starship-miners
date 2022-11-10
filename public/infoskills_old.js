@@ -275,7 +275,7 @@ function skillsInfos(bat,batType,near) {
                 }
             } else {
                 if ((batType.skills.includes('maycamo') || !batType.skills.includes('camo')) && !ruinHide) {
-                    if (bat.eq === 'kit-chouf' || bat.eq === 'crimekitgi' || bat.eq === 'crimekitch' || bat.eq === 'crimekitlu') {
+                    if (bat.eq === 'kit-chouf' || bat.eq === 'trainkitgi' || bat.eq === 'trainkitch' || bat.eq === 'trainkitlu') {
                         apCost = Math.floor(batType.ap/2.5);
                         apReq = 2;
                     } else if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.tdc.includes('e-camo') || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || bat.eq === 'kit-guetteur') {
@@ -387,7 +387,7 @@ function skillsInfos(bat,batType,near) {
     }
     // DOUBLE ATTAQUE
     if (!playerInfos.onShip && !bat.tags.includes('embuscade')) {
-        if (batType.skills.includes('datt') || bat.eq.includes('crimekit')) {
+        if (batType.skills.includes('datt') || bat.eq.includes('trainkit')) {
             let isTir = false;
             if (batType.skills.includes('tirailleur') && bat.oldTileId != bat.tileId) {
                 isTir = true;

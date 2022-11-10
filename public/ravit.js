@@ -35,7 +35,7 @@ function calcRavitVolume(bat) {
         } else if (playerInfos.bldList.includes('Arsenal')) {
             w2maxAmmo = Math.round(w2maxAmmo*1.25);
         }
-        if (bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'crimekitgi' || bat.tdc.includes('gilet')) {
+        if (bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'trainkitgi' || bat.tdc.includes('gilet')) {
             w2maxAmmo = Math.floor(w2maxAmmo*1.5);
             if (w2maxAmmo < 16) {
                 w2maxAmmo = 16;
@@ -70,7 +70,7 @@ function calcRavitVolume(bat) {
         } else if (playerInfos.bldList.includes('Arsenal')) {
             w1maxAmmo = Math.round(w1maxAmmo*1.25);
         }
-        if (bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'crimekitgi' || bat.tdc.includes('gilet')) {
+        if (bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'trainkitgi' || bat.tdc.includes('gilet')) {
             w1maxAmmo = Math.floor(w1maxAmmo*1.5);
             if (w1maxAmmo < 16) {
                 w1maxAmmo = 16;

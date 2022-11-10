@@ -1137,11 +1137,14 @@ function putHLLUnits(centreTileId,hard) {
             conselUnit = getBatTypeById(217);
             if (hard) {
                 conselAmmos = ['perfo','lame-poison','scrap','lunette1'];
-                if (rand.rand(1,4) === 1) {
+                if (rand.rand(1,3) === 1) {
                     conselAmmos[3] = 'e-camo';
                 }
                 if (rand.rand(1,2) === 1) {
-                    conselAmmos[3] = 'crimekitlu';
+                    conselAmmos[3] = 'lunette1';
+                }
+                if (rand.rand(1,3) === 1) {
+                    conselAmmos[3] = 'silencieux1';
                 }
             } else {
                 conselAmmos = ['standard','lame','scrap','aucun'];
@@ -1154,14 +1157,14 @@ function putHLLUnits(centreTileId,hard) {
                 if (rand.rand(1,3) === 1) {
                     conselAmmos[1] = 'dynamite-nitrate';
                 }
-                if (rand.rand(1,4) === 1) {
+                if (rand.rand(1,3) === 1) {
                     conselAmmos[3] = 'e-camo';
                 }
                 if (rand.rand(1,2) === 1) {
                     conselAmmos[3] = 'lanceur2';
                 }
-                if (rand.rand(1,4) === 1) {
-                    conselAmmos[3] = 'crimekitgi';
+                if (rand.rand(1,5) === 1) {
+                    conselAmmos[3] = 'gilet';
                 }
             } else {
                 conselAmmos = ['lame','dynamite','aucune','aucun'];
@@ -1172,7 +1175,10 @@ function putHLLUnits(centreTileId,hard) {
             if (hard) {
                 conselAmmos = ['fleche-poison','fleche-poison','scrap','e-camo'];
                 if (rand.rand(1,2) === 1) {
-                    conselAmmos[3] = 'crimekitgi';
+                    conselAmmos[3] = 'gilet';
+                }
+                if (rand.rand(1,2) === 1) {
+                    conselAmmos[3] = 'e-ranger';
                 }
             } else {
                 conselAmmos = ['fleche','fleche','scrap','aucun'];
@@ -1183,10 +1189,10 @@ function putHLLUnits(centreTileId,hard) {
             if (hard) {
                 conselAmmos = ['torche-feu','perfo','scrap','chargeur2'];
                 if (rand.rand(1,2) === 1) {
-                    conselAmmos[0] = 'torche-feugre';
+                    conselAmmos[3] = 'chargeur2';
                 }
                 if (rand.rand(1,2) === 1) {
-                    conselAmmos[3] = 'crimekitch';
+                    conselAmmos[0] = 'torche-feugre';
                 }
             } else {
                 conselAmmos = ['torche-feu','standard','scrap','aucun'];
@@ -1196,11 +1202,11 @@ function putHLLUnits(centreTileId,hard) {
             conselUnit = getBatTypeById(220);
             if (hard) {
                 conselAmmos = ['perfo','lame-poison','scrap','e-ranger'];
-                if (rand.rand(1,4) === 1) {
+                if (rand.rand(1,3) === 1) {
                     conselAmmos[3] = 'e-camo';
                 }
-                if (rand.rand(1,3) === 1) {
-                    conselAmmos[3] = 'crimekitch';
+                if (rand.rand(1,2) === 1) {
+                    conselAmmos[3] = 'chargeur1';
                 }
             } else {
                 conselAmmos = ['standard','lame','aucun','aucun'];
@@ -1210,8 +1216,11 @@ function putHLLUnits(centreTileId,hard) {
             conselUnit = getBatTypeById(218);
             if (hard) {
                 conselAmmos = ['perfo','lame-poison','scrap','e-ranger'];
+                if (rand.rand(1,3) === 1) {
+                    conselAmmos[3] = 'e-camo';
+                }
                 if (rand.rand(1,2) === 1) {
-                    conselAmmos[3] = 'crimekitch';
+                    conselAmmos[3] = 'chargeur1';
                 }
             } else {
                 conselAmmos = ['standard','lame','scrap','aucun'];
@@ -1221,14 +1230,11 @@ function putHLLUnits(centreTileId,hard) {
             conselUnit = getBatTypeById(221);
             if (hard) {
                 conselAmmos = ['sm-perfo','lame','scrap','aucun'];
-                if (rand.rand(1,4) === 1) {
+                if (rand.rand(1,3) === 1) {
                     conselAmmos[3] = 'e-camo';
                 }
                 if (rand.rand(1,2) === 1) {
                     conselAmmos[3] = 'chargeur1';
-                }
-                if (rand.rand(1,3) === 1) {
-                    conselAmmos[3] = 'crimekitch';
                 }
             } else {
                 conselAmmos = ['standard','lame','aucun','aucun'];

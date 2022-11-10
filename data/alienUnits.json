@@ -1243,7 +1243,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["venin","inflammable","longshot","capmen","lurk"],
+        "skills":["venin","inflammable","longshot","capmen","lurk","infkill"],
         "deathFx":"death1",
         "killRes":{"Aranium":2,"Slime":1,"Blendium":1},
         "killXP":2,

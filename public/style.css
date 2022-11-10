@@ -886,6 +886,7 @@ td {
     font-size: 30px;
     -webkit-text-stroke: 2px;
     -webkit-text-stroke-color: #000000;
+    z-index: 10;
 }
 .mapCenter {
     margin: 11px 0 0 10px;
@@ -893,6 +894,7 @@ td {
     font-size: 30px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
+    z-index: 10;
 }
 .mapSize {
     margin: 9px 0 0 16px;
@@ -900,6 +902,7 @@ td {
     font-size: 24px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
+    z-index: 10;
 }
 .togClouds {
     margin: 7px 0 0 15px;
@@ -907,6 +910,7 @@ td {
     font-size: 18px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
+    z-index: 10;
 }
 .markErase {
     margin: 7px 0 0 17px;

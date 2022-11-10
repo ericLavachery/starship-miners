@@ -831,6 +831,7 @@ function attack(melee,init) {
     // infkill
     if (selectedBatType.skills.includes('infkill') && targetBatType.cat != 'infantry') {
         totalDamage = Math.round(totalDamage/2);
+        apDamage = Math.round(apDamage/3);
     }
     // resistance oeufs
     if (targetBatType.skills.includes('eggprotect')) {
@@ -1827,6 +1828,7 @@ function defense(melee,init) {
     // infkill
     if (targetBatType.skills.includes('infkill') && selectedBatType.cat != 'infantry') {
         totalDamage = Math.round(totalDamage/2);
+        apDamage = Math.round(apDamage/3);
     }
     // resistance oeufs
     if (selectedBatType.skills.includes('eggprotect')) {
