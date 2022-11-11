@@ -1158,13 +1158,13 @@ function getAP(bat,batType) {
             newAP = newAP+1;
         }
     }
-    if (bat.eq === 'g2motor' || bat.logeq === 'g2motor' || bat.eq === 'trainkitcar') {
+    if (bat.eq === 'g2motor' || bat.logeq === 'g2motor' || bat.eq === 'carkit') {
         newAP = newAP+(Math.sqrt(batType.moveCost)*2.5);
     }
     if (batType.skills.includes('heroap') && bat.tags.includes('hero')) {
         newAP = newAP+2;
     }
-    if (bat.eq === 'helper' || bat.logeq === 'helper' || bat.eq === 'trainkitcy' || bat.tdc.includes('helper')) {
+    if (bat.eq === 'helper' || bat.logeq === 'helper' || bat.eq === 'cyberkit' || bat.tdc.includes('helper')) {
         newAP = newAP+1;
     }
     if (bat.eq === 'e-lifepod') {
@@ -1439,7 +1439,7 @@ function tagsEffect(bat,batType) {
             bat.apLeft = bat.apLeft-bat.ap;
             if (batType.skills.includes('ranger') || batType.skills.includes('caterp') || bat.eq === 'e-ranger' || bat.logeq === 'e-ranger' || bat.tdc.includes('e-ranger')) {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3*2));
-            } else if (bat.eq === 'chenilles' || bat.logeq === 'chenilles' || bat.eq === 'trainkitcar') {
+            } else if (bat.eq === 'chenilles' || bat.logeq === 'chenilles' || bat.eq === 'carkit') {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/2));
             } else {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3));
@@ -1501,7 +1501,7 @@ function tagsEffect(bat,batType) {
         }
     }
     // REGENERATION & KIRIN DRUG
-    if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || bat.eq === 'permakirin' || bat.logeq === 'permakirin' || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal') || resistance) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || bat.eq === 'permakirin' || bat.eq === 'cyberkit' || bat.logeq === 'permakirin' || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal') || resistance) {
         let regOK = true;
         if (batType.cat === 'aliens') {
             if (batType.skills.includes('reactpoison') && bat.tags.includes('poison')) {
@@ -1807,7 +1807,7 @@ function updateBatProperties(bat,batType) {
         bat.eq = 'trainkitgi';
     }
     if (bat.eq === 'crimekitto') {
-        bat.eq = 'trainkitto';
+        bat.eq = 'trainkitax';
     }
 };
 

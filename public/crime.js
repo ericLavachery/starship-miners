@@ -156,5 +156,5 @@ function getCamionEquips(batType) {
 // ranger, camo, lanceur2, gilet, bonus melee
 // trainkitlu
 // ranger, camo, lunette1
-// trainkitto
+// trainkitax
 // ranger, resistfeu, chargeur2, bonus melee

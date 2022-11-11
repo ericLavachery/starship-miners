@@ -518,9 +518,9 @@ function getBatGearStuff(armorName,equipName,batType) {
     } else {
         if ((batType.skills.includes('fly') || equipName === 'e-jetpack') && batArmor.ap < 0) {
             gearStuff[1] = Math.ceil(baseAP+(batArmor.ap*1.5));
-        } else if ((equipName === 'helper' || equipName === 'trainkitcy') && batType.moveCost > 3) {
+        } else if ((equipName === 'helper' || equipName === 'cyberkit') && batType.moveCost > 3) {
             gearStuff[1] = baseAP+batArmor.ap+2;
-        } else if ((equipName === 'helper' || equipName === 'trainkitcy') && (batArmor.ap < -1 || batType.ap < 13)) {
+        } else if ((equipName === 'helper' || equipName === 'cyberkit') && (batArmor.ap < -1 || batType.ap < 13)) {
             gearStuff[1] = baseAP+batArmor.ap+1;
         } else if (batType.skills.includes('strong') && (batType.skills.includes('mutant') || playerInfos.bldVM.includes('Salle de sport')) && batArmor.ap < -1) {
             gearStuff[1] = baseAP+batArmor.ap+1;

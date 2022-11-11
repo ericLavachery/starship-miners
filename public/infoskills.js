@@ -96,7 +96,7 @@ function skillsInfos(bat,batType,near) {
     if (anyRavit && bat.tags.includes('dU') && batType.skills.includes('dealer') && !playerInfos.onShip) {
         let apCost = Math.round(batType.ap/3*7/(playerInfos.comp.log+5));
         if (bat.apLeft >= 2) {
-            $('#unitInfos').append('<span class="<button type="button" title="Faire le plein de drogues" class="boutonVert skillButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'&nbsp; Approvisionnement</span></button>');
+            $('#unitInfos').append('<button type="button" title="Faire le plein de drogues" class="boutonVert skillButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'&nbsp; Approvisionnement</span></button>');
         } else {
             skillMessage = "Pas assez de PA";
             $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'&nbsp; Approvisionnement</span></button>');

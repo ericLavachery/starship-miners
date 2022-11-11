@@ -669,6 +669,23 @@ function checkResByKind(resKind,coffre,recNum) {
                         thatResChance = thatResChance*5;
                     }
                 }
+                if (tile.rt != undefined) {
+                    if (res.name === 'Drogues') {
+                        if (tile.rt.name === 'Hôpital' || tile.rt.name === 'Pharmacie') {
+                            thatResChance = thatResChance*5;
+                        }
+                    }
+                    if (res.name === 'Octiron') {
+                        if (tile.rt.name === 'Hôpital') {
+                            thatResChance = thatResChance*3;
+                        }
+                    }
+                    if (res.name === 'Explosifs') {
+                        if (tile.rt.name === 'Caserne') {
+                            thatResChance = thatResChance*5;
+                        }
+                    }
+                }
                 console.log(res.name+' '+thatResChance);
                 if (rand.rand(1,1000) <= thatResChance) {
                     thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*1.5*rand.rand(4,16))+rand.rand(0,9);

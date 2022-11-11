@@ -2165,7 +2165,7 @@
         "aoe": "",
         "info": "Poison++",
         "bldReq":["Laboratoire"],
-        "compReq":{"exo":1},
+        "compReq":{"exo":2},
         "costs":{"Fer":2,"Tungstène":3,"Cobalt":1},
         "deploy":{"Atium":4,"Huile":1},
         "batch":12
@@ -2182,7 +2182,7 @@
         "aoe": "",
         "info": "Poison++ (Lame carbone)",
         "bldReq":["Laboratoire","Arsenal"],
-        "compReq":{"mat":1,"exo":1},
+        "compReq":{"mat":1,"exo":2},
         "costs":{"Fer":3,"Carbone":1,"Cobalt":1,"Silicium":1},
         "deploy":{"Atium":4,"Huile":1},
         "batch":12
@@ -2199,7 +2199,7 @@
         "aoe": "",
         "info": "Poison++ (Lame titane)",
         "bldReq":["Laboratoire","Arsenal"],
-        "compReq":{"mat":2,"exo":1},
+        "compReq":{"mat":2,"exo":2},
         "costs":{"Titane":6,"Silicium":1},
         "deploy":{"Atium":4,"Huile":1},
         "batch":12
@@ -2216,7 +2216,7 @@
         "aoe": "",
         "info": "Poison++ (Lame adamantium)",
         "bldReq":["Laboratoire","Arsenal"],
-        "compReq":{"mat":3,"exo":1},
+        "compReq":{"mat":3,"exo":3},
         "costs":{"Adamantium":6,"Argon":1},
         "deploy":{"Atium":4,"Huile":1},
         "batch":12

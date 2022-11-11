@@ -1279,7 +1279,7 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
             }
         }
     }
-    if (bat.eq === 'theeye' || bat.logeq === 'theeye' || bat.eq === 'trainkitcy' || bat.tdc.includes('theeye')) {
+    if (bat.eq === 'theeye' || bat.logeq === 'theeye' || bat.eq === 'cyberkit' || bat.tdc.includes('theeye')) {
         speed = speed-50;
     }
     // initmelee
@@ -2123,7 +2123,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.noBis = false;
         }
     }
-    if (bat.eq === 'theeye' || bat.logeq === 'theeye' || bat.eq === 'trainkitcy' || bat.tdc.includes('theeye')) {
+    if (bat.eq === 'theeye' || bat.logeq === 'theeye' || bat.eq === 'cyberkit' || bat.tdc.includes('theeye')) {
         if (thisWeapon.aoe === 'unit' || (thisWeapon.aoe === 'brochette' && thisWeapon.name.includes('lister'))) {
             if (thisWeapon.range >= 2 || thisWeapon.elevation >= 4) {
                 thisWeapon.range = thisWeapon.range+1;
@@ -2171,7 +2171,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.rof = thisWeapon.rof*1.15;
         }
     }
-    if (bat.eq === 'trainkitto') {
+    if (bat.eq === 'trainkitax') {
         if (thisWeapon.num === 1 && thisWeapon.isMelee) {
             thisWeapon.rof = thisWeapon.rof*1.15;
         }
@@ -2276,7 +2276,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     // helper
-    if ((bat.eq === 'helper' || bat.logeq === 'helper' || bat.eq === 'trainkitcy' || bat.tdc.includes('helper')) && (thisWeapon.isMelee || thisWeapon.name.includes('Javelot'))) {
+    if ((bat.eq === 'helper' || bat.logeq === 'helper' || bat.eq === 'cyberkit' || bat.tdc.includes('helper')) && (thisWeapon.isMelee || thisWeapon.name.includes('Javelot'))) {
         thisWeapon.power = Math.round(thisWeapon.power*1.33);
     }
     // sila drug
@@ -2658,7 +2658,7 @@ function apCostRiposte(bat,batType,weap) {
 
 function chargeurAdj(bat,shots,weap) {
     let newShots = shots;
-    if (bat.eq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.eq.includes('carrousel') || bat.logeq.includes('chargeur') || bat.tdc.includes('chargeur1') || bat.tdc.includes('chargeur2') || bat.logeq.includes('carrousel') || bat.eq.includes('kit-chouf') || bat.eq.includes('kit-milice') || bat.eq === 'trainkitto' || bat.eq === 'trainkitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq.includes('lgkit') || bat.logeq.includes('lgkit') || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
+    if (bat.eq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.eq.includes('carrousel') || bat.logeq.includes('chargeur') || bat.tdc.includes('chargeur1') || bat.tdc.includes('chargeur2') || bat.logeq.includes('carrousel') || bat.eq.includes('kit-chouf') || bat.eq.includes('kit-milice') || bat.eq === 'trainkitax' || bat.eq === 'trainkitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq.includes('lgkit') || bat.logeq.includes('lgkit') || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
         let mult = 1.5;
         if (weap.name.includes('Calibre') || weap.name.includes('verrou') || weap.name.includes('Nailgun')) {
             mult = 2;
@@ -2672,13 +2672,13 @@ function chargeurAdj(bat,shots,weap) {
         if (bat.eq.includes('kit-chouf')) {
             mult = 2;
         }
-        if (bat.eq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.logeq.includes('chargeur') || bat.tdc.includes('chargeur1') || bat.tdc.includes('chargeur2') || bat.eq.includes('kit-chouf') || bat.eq === 'trainkitch' || bat.eq === 'trainkitto' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit' || bat.eq === 'kit-milice' || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
+        if (bat.eq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.logeq.includes('chargeur') || bat.tdc.includes('chargeur1') || bat.tdc.includes('chargeur2') || bat.eq.includes('kit-chouf') || bat.eq === 'trainkitch' || bat.eq === 'trainkitax' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit' || bat.eq === 'kit-milice' || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
             if (weap.num === 1) {
                 if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.logeq === 'chargeur1' || bat.tdc.includes('chargeur1') || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'trainkitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit' || bat.eq === 'kit-milice' || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
                     newShots = Math.round(newShots*mult);
                 }
             } else {
-                if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.logeq === 'chargeur2' || bat.tdc.includes('chargeur2') || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'trainkitto') {
+                if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.logeq === 'chargeur2' || bat.tdc.includes('chargeur2') || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'trainkitax') {
                     newShots = Math.round(newShots*mult);
                 }
             }
@@ -2694,7 +2694,7 @@ function chargeurAdj(bat,shots,weap) {
                 }
             }
         }
-    } else if (bat.eq === 'helper' || bat.logeq === 'helper' || bat.eq === 'trainkitcy') {
+    } else if (bat.eq === 'helper' || bat.logeq === 'helper' || bat.eq === 'cyberkit') {
         if (!weap.isMelee && !weap.name.includes('Javelot')) {
             newShots = Math.round(newShots*1.25);
         }
