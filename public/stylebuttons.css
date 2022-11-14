@@ -17,12 +17,10 @@ button, select {
 	/* border-radius:4px; */
 	display:inline-block;
 	cursor:pointer;
-	/* color:#e1face; */
 	color:#ededed;
 	text-shadow: 0px 1px 0px #1f1f1f;
-	/* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
-	/* -webkit-text-stroke: 1px;
-    -webkit-text-stroke-color: #858585; */
+	/* color:#fffc00; */
+	/* text-shadow: 0px 0px 1px #b8b639; */
 	font-size:13px;
 	padding:4px 10px;
 	text-decoration:none;
@@ -171,8 +169,9 @@ button:active {
 	-webkit-box-shadow:inset 0px 1px 0px 0px #a6af3f;
 	box-shadow:inset 0px 1px 0px 0px #a6af3f;
 	background-image: url(/static/img/oldmetal-jaune.jpg);
-	background-position: 35% 0%;
+	background-position: 80% 40%;
 	color:#ffffff;
+	text-shadow: 0px 1px 3px #000000;
 	background-color:#727800;
     border:1px solid #4e5208;
     /* text-shadow:0px 1px 0px #494a1b; */

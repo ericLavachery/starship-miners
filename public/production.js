@@ -92,6 +92,63 @@ function getGeoProd(tile) {
     return energyProd;
 };
 
+function cramProd(bat,batType,time,sim,quiet) {
+    let crameur = getCramProd(bat,batType);
+    let message = '';
+    if (crameur.res != 'None') {
+        let key = crameur.res;
+        let value = crameur.cost;
+        let conso = value*time;
+        modWeekRes(key,0-conso);
+        if (!sim) {
+            resSub(key,conso);
+        }
+        message = message+key+':<span class="rose">-'+conso+'</span><br>';
+        energyProd = energyCreation(crameur.prod*time);
+        modWeekRes('Energie',energyProd);
+        if (!sim) {
+            resAdd('Energie',energyProd);
+        }
+        message = message+'Energie:<span class="vert">+'+energyProd+'</span><br>';
+    } else {
+        message = message+'Le crameur ne produit que si vous avez un surplus de carburant.<br>';
+    }
+    if (!quiet) {
+        warning(batType.name,message,true);
+    }
+};
+
+function getCramProd(bat,batType) {
+    let crameur = {};
+    crameur.cost = 0;
+    crameur.res = 'None';
+    crameur.prod = 0;
+    let dispoRes = getDispoRes('Bois');
+    if (dispoRes >= playerInfos.citz.total*3) {
+        let res = getResByName('Bois');
+        crameur.cost = Math.ceil(res.energie*1.4);
+        crameur.res = res.name;
+        crameur.prod = 16;
+    } else {
+        dispoRes = getDispoRes('Hydrocarbure');
+        if (dispoRes >= playerInfos.citz.total*3) {
+            let res = getResByName('Hydrocarbure');
+            crameur.cost = Math.ceil(res.energie*1.4);
+            crameur.res = res.name;
+            crameur.prod = 16;
+        } else {
+            dispoRes = getDispoRes('Fuel');
+            if (dispoRes >= playerInfos.citz.total*2) {
+                let res = getResByName('Fuel');
+                crameur.cost = Math.ceil(res.energie*1.4);
+                crameur.res = res.name;
+                crameur.prod = 16;
+            }
+        }
+    }
+    return crameur;
+};
+
 function gasProd(bat,batType) {
     console.log('UPKEEP');
     console.log(batType.name);

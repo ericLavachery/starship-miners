@@ -144,6 +144,9 @@ function eventProduction(afterMission,time,sim,quiet) {
                 if (batType.skills.includes('solar') && bat.tags.includes('prodres')) {
                     solarProd(bat,batType,time,sim,quiet);
                 }
+                if (batType.skills.includes('cram') && bat.tags.includes('prodres')) {
+                    cramProd(bat,batType,time,sim,quiet);
+                }
             }
         }
     });

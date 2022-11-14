@@ -82,11 +82,15 @@ function webSound() {
     sound.play();
 };
 
-function clicSound() {
+function clicSound(num) {
     // playMove(false);
     let myVol = checkMyVol(playerInfos.volFx-0.2);
+    let clicNum = rand.rand(0,7);
+    if (num != undefined) {
+        clicNum = num;
+    }
     clicSnd = new Howl({
-        src: ['/static/sounds/fx/clic.mp3'],
+        src: ['/static/sounds/fx/clic'+clicNum+'.mp3'],
         volume: myVol
     });
     clicSnd.play();

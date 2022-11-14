@@ -246,6 +246,7 @@ function newGame() {
     playerInfos.sci = 0;
     playerInfos.enc = 65;
     playerInfos.encz = [];
+    playerInfos.aCanon = 'none';
     resetReserve();
     resetStartRes();
     resetEndRes();

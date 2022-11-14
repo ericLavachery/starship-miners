@@ -85,11 +85,11 @@ function mining(bat) {
                                 }
                             } else if (playerInfos.comp.ext >= 1) {
                                 if (playerInfos.comp.ext === 1) {
-                                    adjustedRMR = getResMiningRate(bat,res,value+15,false,false);
+                                    adjustedRMR = getResMiningRate(bat,res,value+10,false,false);
                                 } else if (playerInfos.comp.ext === 2) {
-                                    adjustedRMR = getResMiningRate(bat,res,value+35,false,false);
+                                    adjustedRMR = getResMiningRate(bat,res,value+20,false,false);
                                 } else if (playerInfos.comp.ext === 3) {
-                                    adjustedRMR = getResMiningRate(bat,res,value+80,false,false);
+                                    adjustedRMR = getResMiningRate(bat,res,value+40,false,false);
                                 }
                             }
                             // console.log(res.name+' : '+resMiningRate);
@@ -337,7 +337,7 @@ function getMiningRate(bat,fullRate,noMining) {
         } else if (bat.eq === 'hydroextract' || bat.logeq === 'hydroextract') {
             miningAdj = 1.6;
         } else if (bat.eq === 'tungextract' || bat.logeq === 'tungextract' || bat.eq === 'bldkit') {
-            miningAdj = 1.35;
+            miningAdj = 1.4;
         }
     } else {
         if (bat.eq === 'autoextract' || bat.logeq === 'autoextract') {
@@ -386,14 +386,11 @@ function getMiningRate(bat,fullRate,noMining) {
 function getResMiningRate(bat,res,value,fullRate,forInfos) {
     let batType = getBatType(bat);
     let resHere = value;
-    let extComp = 0;
-    if (playerInfos.comp.ext >= 1) {
-        extComp = playerInfos.comp.ext+1;
-    }
+    let extComp = (playerInfos.comp.ext/2)+1;
     if (playerInfos.comp.ext === 3) {
-        extComp = extComp+1;
+        extComp = extComp+0.2;
     }
-    let invExtComp = 10-extComp;
+    let invExtComp = 7.7-extComp;
     if (playerInfos.comp.tri >= 1 && res.name === 'Scrap') {
         resHere = Math.round(resHere*(playerInfos.comp.tri+8)/8);
     }
@@ -478,11 +475,11 @@ function getAllMiningRates(bat,batType) {
         if (res.bld != '') {
             let resRate = getResMiningRate(bat,res,250,true,true);
             if (playerInfos.comp.ext === 1) {
-                resRate = getResMiningRate(selectedBat,res,265,true,false);
+                resRate = getResMiningRate(selectedBat,res,260,true,false);
             } else if (playerInfos.comp.ext === 2) {
-                resRate = getResMiningRate(selectedBat,res,285,true,false);
+                resRate = getResMiningRate(selectedBat,res,270,true,false);
             } else if (playerInfos.comp.ext === 3) {
-                resRate = getResMiningRate(selectedBat,res,330,true,false);
+                resRate = getResMiningRate(selectedBat,res,290,true,false);
             }
             if (resRate >= 1) {
                 allMiningRates[res.name] = resRate;
@@ -530,11 +527,11 @@ function chooseRes(again) {
                 }
             } else if (playerInfos.comp.ext >= 1) {
                 if (playerInfos.comp.ext === 1) {
-                    adjustedRMR = getResMiningRate(selectedBat,res,value+15,true,false);
+                    adjustedRMR = getResMiningRate(selectedBat,res,value+10,true,false);
                 } else if (playerInfos.comp.ext === 2) {
-                    adjustedRMR = getResMiningRate(selectedBat,res,value+35,true,false);
+                    adjustedRMR = getResMiningRate(selectedBat,res,value+20,true,false);
                 } else if (playerInfos.comp.ext === 3) {
-                    adjustedRMR = getResMiningRate(selectedBat,res,value+80,true,false);
+                    adjustedRMR = getResMiningRate(selectedBat,res,value+40,true,false);
                 }
             }
             if (selectedBat.extracted.includes(res.name)) {

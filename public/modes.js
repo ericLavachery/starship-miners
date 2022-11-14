@@ -85,12 +85,15 @@ function confirmMode() {
 
 function cursorSwitch(seltype,selvalue,kur) {
     let defkur = 'default';
+    if (kur === 'move' && selectedBat.tags.includes('autoroad')) {
+        kur = 'hand';
+    }
     if (kur == 'progress') {
         $(seltype+selvalue).css('cursor','pointer');
     } else if (kur == 'default') {
         $(seltype+selvalue).css('cursor','default');
     } else {
-        if (kur == 'move') {
+        if (kur == 'move' || kur == 'hand') {
             defkur = 'nesw-resize';
         } else if (kur == 'insp') {
             defkur = 'help';

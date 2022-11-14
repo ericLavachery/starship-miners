@@ -2682,7 +2682,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","regeneration","reactpoison","eggprotect","turnprotect","noaploss","morph","xpbonus","silhover","ctarg"],
+        "skills":["isegg","ponte","slowreg","reactpoison","eggprotect","turnprotect","noaploss","morph","xpbonus","silhover","ctarg"],
         "deathFx":"xplodewet",
         "killRes":{"Bugium":24,"Mendium":15,"Creatite":18},
         "killXP":10,

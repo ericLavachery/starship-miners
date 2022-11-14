@@ -26,7 +26,7 @@ function defabInfos(bat,batType) {
                 apOK = false;
             }
             if (depliOK && !isLoaded && !isCharged && damageOK && apOK) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris skillButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris iconButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
             } else {
                 let koMessage = "Une infanterie ne peut pas déconstruire ce bâtiment";
                 if (!damageOK) {
@@ -38,7 +38,7 @@ function defabInfos(bat,batType) {
                 } else if (isLoaded) {
                     koMessage = "Vous ne pouvez pas déconstruire un bâtiment si il y a un autre bâtiment dedans";
                 }
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+koMessage+'" class="boutonGrey skillButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+koMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
             }
         }
     }
@@ -169,13 +169,13 @@ function refabInfos(myBat,myBatUnitType) {
                             }
                             let mayOut = checkMayOut(batType,true,bat);
                             if (mayOut) {
-                                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Reconstruire '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') ('+bat.eq+'/'+batType.logeq+')" class="boutonGris skillButtons" onclick="reconstruction('+bat.id+','+apCost+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</'+balise+'></span>');
+                                $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Reconstruire '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') ('+bat.eq+'/'+batType.logeq+')" class="boutonGris iconButtons" onclick="reconstruction('+bat.id+','+apCost+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</'+balise+'></span>');
                             } else {
-                                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Vous ne pouvez pas débarquer ce bataillon sur cette planète" class="boutonGrey skillButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</h4></span>');
+                                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Vous ne pouvez pas débarquer ce bataillon sur cette planète" class="boutonGrey iconButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</h4></span>');
                             }
                         } else {
                             skillMessage = "PA épuisés";
-                            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey skillButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</h4></span>');
+                            $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; '+batType.name+'</h4></span>');
                         }
                     }
                 }

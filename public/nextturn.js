@@ -1242,7 +1242,7 @@ function tagsUpdate(bat) {
     tagDelete(bat,'chrg');
     tagDelete(bat,'vise');
     tagDelete(bat,'datt');
-    tagDelete(bat,'autoroad');
+    // tagDelete(bat,'autoroad');
     if (rand.rand(1,3) > 1) {
         tagDelete(bat,'noemb');
     }

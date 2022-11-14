@@ -12,7 +12,18 @@ function setPenitLevel() {
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (batType.skills.includes('penitbat')) {
-            bat.tdc = getCamionEquips(batType);
+            let camionEquips = getCamionEquips(batType);
+            let changeIt = false;
+            if (bat.tdc === undefined) {
+                changeIt = true;
+            } else {
+                if (bat.tdc.length <= camionEquips.length) {
+                    changeIt = true;
+                }
+            }
+            if (changeIt) {
+                bat.tdc = camionEquips;
+            }
         } else if (bat.tdc === undefined) {
             bat.tdc = [];
         }
