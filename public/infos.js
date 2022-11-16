@@ -955,6 +955,12 @@ function showTileInfos(tileId) {
         let tileEnergy = getTileEnergy(tile);
         $('#tileInfos').append('<span class="paramName sky" title="Chaleur du sous-sol (pour les sondes géothermiques)">Energie</span><span class="paramIcon"></span><span class="paramValue sky">'+tileEnergy+'</span><br>');
         // RESSOURCES
+        if (playerInfos.comp.ext >= 1 && !modeSonde) {
+            let hereBat = getBatByTileId(tileId);
+            if (Object.keys(hereBat).length >= 1) {
+                let allRes = getAllRes(tileId);
+            }
+        }
         if (playerInfos.comp.det >= 1 || !modeSonde) {
             if (tile.rs !== undefined) {
                 let tileIndex;

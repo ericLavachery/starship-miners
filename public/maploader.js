@@ -166,14 +166,16 @@ function landerLandingOK(tile) {
                 tileOK = false;
             }
         }
-        if (playerInfos.comp.vsp < 2) {
-            if (tile.terrain === 'F') {
-                tileOK = false;
+        if (!tile.rd) {
+            if (playerInfos.comp.vsp < 2) {
+                if (tile.terrain === 'F') {
+                    tileOK = false;
+                }
             }
-        }
-        if (playerInfos.comp.vsp < 1) {
-            if (tile.terrain === 'S' || tile.terrain === 'H') {
-                tileOK = false;
+            if (playerInfos.comp.vsp < 1) {
+                if (tile.terrain === 'S' || tile.terrain === 'H') {
+                    tileOK = false;
+                }
             }
         }
     }

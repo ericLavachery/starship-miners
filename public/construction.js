@@ -20,6 +20,17 @@ function bfconst(cat,triche,upgrade,retour) {
     let dispoCit = getDispoCit();
     let yh = youHave();
     updateBldList();
+    let maxCrafts = getMaxCrafts();
+    let restCrafts = maxCrafts-playerInfos.crafts;
+    let restCraftsPerc = Math.round(100/maxCrafts*restCrafts);
+    let craftCol = 'gff';
+    if (restCraftsPerc <= 20) {
+        craftCol = 'jaune';
+    }
+    if (restCrafts <= 0) {
+        restCrafts = 0;
+        craftCol = 'or';
+    }
     $("#conUnitList").css("display","block");
     if (!playerInfos.onShip) {
         $("#conAmmoList").css("display","block");
@@ -34,6 +45,7 @@ function bfconst(cat,triche,upgrade,retour) {
     $("#tileInfos").css("display","none");
     let color = '';
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<br><span class="constName neutre">Crafts restants: <span class="'+craftCol+'">'+restCrafts+'</span></span><br>');
     $('#conUnitList').append('<br><span class="constName neutre" id="gentils">Citoyens disponibles: <span class="gff">'+dispoCit+'</span> &ndash; <span class="brunf">'+dispoCrim+'</span></span><br>');
     let lastKind = '';
     let showkind = '';

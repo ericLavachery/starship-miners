@@ -933,7 +933,7 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
     if (!defBat.tags.includes('jelly')) {
         if (attWeap.name != undefined) {
             if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet') || (defBatType.skills.includes('ricoface') && !init)) {
-                if (!attWeap.isFire && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('snake') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('psionics') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield) {
+                if (!attWeap.isFire && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('snake') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('psionics') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield && !attWeap.isSaw) {
                     let defArmor = defBat.armor;
                     if (defBatType.skills.includes('ricoface')) {
                         defArmor = defArmor+10;
@@ -2519,6 +2519,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.noEsc = true;
     } else {
         thisWeapon.noEsc = false;
+    }
+    if (thisWeapon.name.includes('Bélier') || thisWeapon.name.includes('Boutoir') || thisWeapon.name.includes('Moisso') || thisWeapon.name.includes('Scie') || thisWeapon.name.includes('Tronço')) {
+        thisWeapon.isSaw = true;
+    } else {
+        thisWeapon.isSaw = false;
     }
     // console.log(thisWeapon);
     return thisWeapon;

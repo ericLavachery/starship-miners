@@ -68,7 +68,7 @@ function mining(bat) {
             let batType = getBatType(bat);
             let rate = getMiningRate(bat,false);
             console.log('rate'+rate);
-            let allRes = getAllRes(bat);
+            let allRes = getAllRes(bat.tileId);
             let bestDumper = getBestDumper(bat);
             if (Object.keys(bestDumper).length >= 1) {
                 Object.entries(allRes).map(entry => {
@@ -127,24 +127,31 @@ function mining(bat) {
     }
 };
 
-function getAllRes(bat) {
-    let tile = getTile(bat);
-    let terrain = getTerrain(bat);
+function getAllRes(tileId) {
+    let tile = getTileById(tileId);
+    let terrain = getTerrainById(tileId);
     let srs = getTerrainRes(terrain,tile);
     let smallFruits = 0;
     if (playerInfos.comp.ext >= 1) {
         if (srs['Végétaux'] != undefined) {
-            smallFruits = smallFruits+Math.round(srs['Végétaux']/20);
+            smallFruits = smallFruits+Math.round(srs['Végétaux']/30);
         }
         if (srs['Bois'] != undefined) {
-            smallFruits = smallFruits+Math.round(srs['Bois']/30);
+            smallFruits = smallFruits+Math.round(srs['Bois']/45);
+        }
+        if (tile.id % 7 != 0 && tile.id % 9 != 0) {
+            smallFruits = 0;
+        } else if (tile.id % 11 === 0) {
+            smallFruits = smallFruits+rand.rand(10,60);
+        } else {
+            smallFruits = smallFruits+rand.rand(0,20)-10;
         }
     }
     console.log('terrain res');
     console.log(srs);
     let allRes = {};
     if (tile.rq === undefined) {
-        if (smallFruits >= 15) {
+        if (smallFruits >= 20) {
             tile.rq = 1;
             tile.rs = {};
             tile.rs['Fruits'] = smallFruits;
@@ -155,7 +162,7 @@ function getAllRes(bat) {
         }
     } else {
         if (tile.rs['Fruits'] === undefined) {
-            if (smallFruits >= 15) {
+            if (smallFruits >= 20) {
                 tile.rs['Fruits'] = smallFruits;
             }
         }
@@ -505,7 +512,7 @@ function chooseRes(again) {
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="constName or">RESSOURCES à extraire</span><br>');
     let rate = getMiningRate(selectedBat,true,false);
-    let allRes = getAllRes(selectedBat);
+    let allRes = getAllRes(selectedBat.tileId);
     console.log('allRes');
     console.log(allRes);
     let totalExRes = 0;

@@ -1124,7 +1124,7 @@ function skillsInfos(bat,batType,near) {
                         } else {
                             skillMessage = "Moloko: Pas assez de PA";
                         }
-                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-wine-bottle"></i> <span class="small">'+apCost+'</span></button>');
                     }
                 }
             }
@@ -1481,7 +1481,7 @@ function skillsInfos(bat,batType,near) {
                                 } else {
                                     skillMessage = "Moloko: Pas assez de PA";
                                 }
-                                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>');
+                                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-wine-bottle"></i> <span class="small">'+apCost+'</span></button>');
                             }
                         }
                     }
@@ -1553,8 +1553,9 @@ function skillsInfos(bat,batType,near) {
         }
         apCost = 2;
         apReq = 0;
+        // <i class="ra ra-mining-diamonds rpg"></i>
         if (!bat.tags.includes('mining') && !inMelee && extractOK) {
-            $('#unitInfos').append('<br><button type="button" title="Extraction: Extraire les ressources" class="boutonCaca iconButtons" onclick="extraction('+apCost+')"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Extraction: Choisir les ressources" class="boutonCaca iconButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>');
+            $('#unitInfos').append('<br><button type="button" title="Extraction: Extraire les ressources" class="boutonCaca iconButtons" onclick="extraction('+apCost+')"><i class="far fa-gem"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Extraction: Choisir les ressources" class="boutonCaca iconButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>');
         } else {
             if (inMelee) {
                 skillMessage = "Extraction: Impossible en mêlée";
@@ -1565,7 +1566,7 @@ function skillsInfos(bat,batType,near) {
             } else {
                 skillMessage = "Extraction: Pas assez de PA";
             }
-            $('#unitInfos').append('<br><button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="ra ra-mining-diamonds rpg"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Extraction: Choisir les ressources" class="boutonCaca iconButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>');
+            $('#unitInfos').append('<br><button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="far fa-gem"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Extraction: Choisir les ressources" class="boutonCaca iconButtons" onclick="chooseRes(false)"><i class="fas fa-list"></i></button>');
         }
     }
     // CRISTAUX
