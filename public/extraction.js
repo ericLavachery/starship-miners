@@ -151,7 +151,7 @@ function getAllRes(tileId) {
     console.log(srs);
     let allRes = {};
     if (tile.rq === undefined) {
-        if (smallFruits >= 20) {
+        if (smallFruits >= 25) {
             tile.rq = 1;
             tile.rs = {};
             tile.rs['Fruits'] = smallFruits;
@@ -162,7 +162,7 @@ function getAllRes(tileId) {
         }
     } else {
         if (tile.rs['Fruits'] === undefined) {
-            if (smallFruits >= 20) {
+            if (smallFruits >= 35) {
                 tile.rs['Fruits'] = smallFruits;
             }
         }

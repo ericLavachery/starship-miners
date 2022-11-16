@@ -614,7 +614,7 @@ function checkResByKind(resKind,coffre,tile,recNum) {
     let resFactor;
     resTypes.forEach(function(res) {
         if (res.name != 'Magma' && res.name != 'Scrap' && res.name != 'Corps' && res.cat != 'alien') {
-            if (res.kinds.includes(resKind) || resKind === 'any') {
+            if (res.kinds.includes(resKind)) {
                 thatResChance = 0;
                 thatResNum = 0;
                 resFactor = res.rarity+Math.round(zone[0].mapDiff*3);

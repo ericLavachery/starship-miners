@@ -373,6 +373,7 @@ function getEquipDeployFactor(unit,equip) {
             }
         }
     }
+    deployFactor = deployFactor*(100+playerInfos.crime)/100;
     return deployFactor;
 };
 
