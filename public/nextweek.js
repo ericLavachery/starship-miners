@@ -307,6 +307,72 @@ function rechercheSci(bat,time) {
     }
 };
 
+function eventDogs(time,sim,quiet,mesCitoyens) {
+    let costFood = Math.ceil(mesCitoyens.dogs/3*time/60);
+    let restFood = Math.ceil(costFood/1.5);
+    let messageFood = 'OK';
+    let allResEaten = 'Gibier';
+    let resEaten = 'Gibier';
+    let dispoRes = getDispoRes(resEaten);
+    if (dispoRes >= restFood) {
+        if (!sim) {
+            resSub(resEaten,restFood);
+        }
+        modWeekRes(resEaten,0-restFood);
+    } else {
+        if (!sim) {
+            resSub(resEaten,dispoRes);
+        }
+        modWeekRes(resEaten,0-dispoRes);
+    }
+    restFood = restFood-dispoRes;
+    if (restFood >= 1) {
+        restFood = Math.ceil(restFood*1.5);
+        allResEaten = allResEaten+', Viande';
+        resEaten = 'Viande';
+        dispoRes = getDispoRes(resEaten);
+        if (dispoRes >= restFood) {
+            if (!sim) {
+                resSub(resEaten,restFood);
+            }
+            modWeekRes(resEaten,0-restFood);
+        } else {
+            if (!sim) {
+                resSub(resEaten,dispoRes);
+            }
+            modWeekRes(resEaten,0-dispoRes);
+        }
+        restFood = restFood-dispoRes;
+    }
+    if (restFood >= 1) {
+        restFood = Math.ceil(restFood/1.5);
+        allResEaten = allResEaten+', <span class="hrouge">Corps</span>';
+        resEaten = 'Corps';
+        dispoRes = getDispoRes(resEaten);
+        if (dispoRes >= restFood) {
+            if (!sim) {
+                resSub(resEaten,restFood);
+            }
+            modWeekRes(resEaten,0-restFood);
+        } else {
+            if (!sim) {
+                resSub(resEaten,dispoRes);
+            }
+            modWeekRes(resEaten,0-dispoRes);
+        }
+        restFood = restFood-dispoRes;
+    }
+    if (restFood >= 1) {
+        messageFood = '<span class="hrouge">Carence</span>';
+        if (!sim) {
+            playerInfos.vitals = playerInfos.vitals+3;
+        }
+    }
+    if (!quiet) {
+        warning('Chiens',allResEaten+': <span class="rose">-'+costFood+'</span><br>'+messageFood+'<br>',true);
+    }
+};
+
 function eventBouffe(time,sim,quiet) {
     let mesCitoyens = calcTotalCitoyens(true);
     let toutMesCitoyens = mesCitoyens.real+mesCitoyens.false;
@@ -432,6 +498,9 @@ function eventBouffe(time,sim,quiet) {
     if (!sim) {
         payMaxCost(bouffeCost);
     }
+    if (mesCitoyens.dogs >= 1) {
+        eventDogs(time,sim,quiet,mesCitoyens);
+    }
 };
 
 function showResBallance(quiet) {
@@ -550,6 +619,7 @@ function calcTotalCitoyens(cryoOut) {
     mesCitoyens.crim = 0;
     mesCitoyens.real = 0;
     mesCitoyens.false = 0;
+    mesCitoyens.dogs = 0;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (batType.name === 'Citoyens') {
@@ -573,6 +643,9 @@ function calcTotalCitoyens(cryoOut) {
                 mesCitoyens.real = mesCitoyens.real+unitCits;
             } else {
                 mesCitoyens.false = mesCitoyens.false+unitCits;
+            }
+            if (batType.skills.includes('dog')) {
+                mesCitoyens.dogs = mesCitoyens.dogs+Math.ceil(unitCits/3*batType.size);
             }
         }
     });

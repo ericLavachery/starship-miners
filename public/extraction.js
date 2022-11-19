@@ -779,22 +779,6 @@ function showFoundRes() {
     console.log(showOneRes);
 };
 
-function showedTilesReset(keepCenter) {
-    if (keepCenter) {
-        playerInfos.showedTiles = [1830];
-    } else {
-        playerInfos.showedTiles = [];
-    }
-    if (showResOpen) {
-        voirRessources();
-    }
-    showMap(zone,true);
-    confirmMode();
-    if (showMini) {
-        minimap();
-    }
-};
-
 function toggleResView() {
     if (showAllRes) {
         showAllRes = false;

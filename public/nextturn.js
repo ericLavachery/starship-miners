@@ -981,7 +981,7 @@ function turnInfo() {
                 $('#tour').append('<span class="or">Dôme inactif</span><br>');
             }
         }
-        if (playerInfos.vue >= 3 && playerInfos.comp.ca >= 2) {
+        if (playerInfos.vue >= 3) {
             let allCoconTurns = [];
             let turn = 0;
             while (turn <= 300) {

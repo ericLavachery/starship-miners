@@ -152,6 +152,34 @@ function centerMapCenter() {
     }
 };
 
+function showedTilesReset(keepCenter) {
+    if (keepCenter) {
+        playerInfos.showedTiles = [1830];
+    } else {
+        playerInfos.showedTiles = [];
+    }
+    if (showResOpen) {
+        voirRessources();
+    }
+    showMap(zone,true);
+    confirmMode();
+    if (showMini) {
+        minimap();
+    }
+};
+
+function toggleMark(tileId) {
+    if (playerInfos.showedTiles.includes(tileId)) {
+        let tagIndex = playerInfos.showedTiles.indexOf(tileId);
+        playerInfos.showedTiles.splice(tagIndex,1);
+    } else {
+        playerInfos.showedTiles.push(tileId);
+    }
+    showMap(zone,true);
+    showTileInfos(tileId);
+    confirmMode();
+};
+
 function isVisible(tileId) {
     let tileX = zone[tileId].x;
     let tileY = zone[tileId].y;
