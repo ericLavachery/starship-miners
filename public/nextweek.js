@@ -501,7 +501,6 @@ function getCitNeed() {
     let mesCitoyens = calcTotalCitoyens(true);
     let citNorm = ((playerInfos.gLevel-4)*450)+2730;
     citNeed = citNeed*citNorm/mesCitoyens.real;
-    // citNeed = (citNeed+0.35)/1.35;
     if (citNeed > 1.75) {
         citNeed = 1.75;
     }
@@ -512,6 +511,13 @@ function getCitNeed() {
     console.log('norm='+citNorm);
     console.log('need='+citNeed);
     return citNeed;
+};
+
+function getCitLoss() {
+    let citNorm = ((playerInfos.gLevel-4)*450)+2730;
+    let citLoss = citNorm-playerInfos.citz.real;
+    playerInfos.cLoss = citLoss;
+    return citLoss;
 };
 
 function bonusCit(citId,toId,number) {

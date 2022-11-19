@@ -1222,7 +1222,7 @@ function getStealth(bat) {
     return batStealth;
 };
 
-function calcSpeed(bat,weap,opweap,distance,attacking) {
+function calcSpeed(bat,weap,opweap,opBatType,distance,attacking) {
     let batType = getBatType(bat);
     let crange = weap.range;
     if (weap.range === 0) {
@@ -1293,8 +1293,10 @@ function calcSpeed(bat,weap,opweap,distance,attacking) {
         }
     }
     // camo
-    if ((bat.fuzz <= -2 || bat.tags.includes('invisible') || batType.skills.includes('invisible')) && attacking) {
-        speed = speed-50;
+    if (bat.fuzz <= -2 || bat.tags.includes('invisible') || batType.skills.includes('invisible')) {
+        if (attacking && !opBatType.skills.includes('snif')) {
+            speed = speed-50;
+        }
     }
     // Skupiac drug
     if (bat.tags.includes('skupiac')) {
@@ -2350,13 +2352,13 @@ function weaponAdj(weapon,bat,wn) {
             highGround = 2;
         }
     } else if (tile.terrain == 'H') {
-        if (infra != '') {
+        if (infra != '' || batType.skills.includes('transorbital')) {
             highGround = 2;
         } else {
             highGround = 1;
         }
     } else {
-        if (infra != '') {
+        if (infra != '' || batType.skills.includes('transorbital')) {
             highGround = 1;
         } else {
             highGround = 0;

@@ -755,8 +755,12 @@ function goDrug(apCost,drugName) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             if (batType.skills.includes('dealer') && batType.skills.includes(drug.name)) {
+                let rangeBonus = 0;
+                if (batType.skills.includes('medrange')) {
+                    rangeBonus = 1;
+                }
                 ravitLeft = calcRavitDrug(bat);
-                if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 1) {
+                if (calcDistance(selectedBat.tileId,bat.tileId) <= 1+rangeBonus && ravitLeft >= 1) {
                     if (biggestRavit < ravitLeft) {
                         biggestRavit = ravitLeft;
                         ravitBat = bat;
@@ -876,6 +880,11 @@ function getStarkaIntox(bat) {
 function getStarkaBonus(bat) {
     let batType = getBatType(bat);
     let batAPLeft = bat.apLeft;
+    let batMoves = calcDistance(bat.tileId,bat.oldTileId);
+    batMoves = Math.ceil(batMoves*5)-10;
+    if (batMoves < 0) {
+        batMoves = 0;
+    }
     if (bat.apLeft < 0) {
         batAPLeft = Math.round(bat.apLeft/2);
     }
@@ -886,7 +895,7 @@ function getStarkaBonus(bat) {
     if (batAPLeft >= maxAP) {
         batAPLeft = maxAP;
     }
-    let starkaBonus = batAPLeft-Math.round(bat.apLeft);
+    let starkaBonus = batAPLeft-Math.round(bat.apLeft)-batMoves;
     return starkaBonus;
 };
 
@@ -897,7 +906,11 @@ function checkDrugs(myBat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             if (batType.skills.includes('dealer')) {
-                if (calcDistance(myBat.tileId,bat.tileId) <= 1 && calcRavitDrug(bat) >= 1) {
+                let rangeBonus = 0;
+                if (batType.skills.includes('medrange')) {
+                    rangeBonus = 1;
+                }
+                if (calcDistance(myBat.tileId,bat.tileId) <= 1+rangeBonus && calcRavitDrug(bat) >= 1) {
                     if (batType.skills.includes('moloko')) {
                         allDrugs.push('moloko');
                     }

@@ -517,6 +517,33 @@ function editSonde() {
     $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
+function pushSonde(mapNum,mapMax) {
+    let vspComp = playerInfos.comp.vsp+1;
+    if (playerInfos.comp.vsp >= 2) {
+        vspComp++;
+    }
+    if (playerInfos.comp.vsp === 4) {
+        vspComp++;
+    }
+    let crashChance = Math.round((mapNum-mapMax)*60/vspComp);
+    // console.log('crash = '+crashChance+'%');
+    if (rand.rand(1,100) > crashChance) {
+        generateNewMap(false);
+    } else {
+        crashSonde();
+    }
+};
+
+function crashSonde() {
+    modeSonde = false;
+    clicSound(11);
+    loadZone(0);
+    showedTilesReset(false);
+    miniOut();
+    commandes();
+    planetThumb();
+};
+
 function stopSonde() {
     modeSonde = false;
     feedZoneDBwith(zone);
@@ -525,7 +552,6 @@ function stopSonde() {
     showedTilesReset(false);
     miniOut();
     commandes();
-    console.log('ooooooooooooooooooookkkkkkkkkkkkkkkkkkkkkkkkkk');
     planetThumb();
 };
 

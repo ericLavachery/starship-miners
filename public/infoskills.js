@@ -311,7 +311,7 @@ function skillsInfos(bat,batType,near) {
             apCost = apCost-0.6;
         }
         apCost = Math.round(apCost);
-        if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.cost) {
+        if (hasW2 && batType.weapon.cost > batType.weapon2.cost) {
             apReq = apCost+batType.weapon2.cost;
         } else {
             apReq = apCost+batType.weapon.cost;
@@ -342,7 +342,7 @@ function skillsInfos(bat,batType,near) {
     }
     // DOUBLE ATTAQUE
     if (!playerInfos.onShip && !bat.tags.includes('embuscade')) {
-        if (batType.skills.includes('datt') || bat.eq.includes('trainkit')) {
+        if (batType.skills.includes('datt')) {
             let isTir = false;
             if (batType.skills.includes('tirailleur') && bat.oldTileId != bat.tileId) {
                 isTir = true;
@@ -358,7 +358,7 @@ function skillsInfos(bat,batType,near) {
             }
             apCost = 7-trainComp;
             if (!batType.weapon.isPrec && !batType.weapon.isBow && !batType.weapon.noDatt) {
-                if (batType.weapon2.rof >= 1) {
+                if (hasW2) {
                     if (!batType.weapon2.isPrec && !batType.weapon2.isBow && !batType.weapon.noDatt) {
                         if (batType.weapon.cost > batType.weapon2.cost) {
                             apReq = apCost+batType.weapon2.cost;
@@ -372,7 +372,7 @@ function skillsInfos(bat,batType,near) {
                     apReq = apCost+batType.weapon.cost;
                 }
             } else {
-                if (batType.weapon2.rof >= 1) {
+                if (hasW2) {
                     if (!batType.weapon2.isPrec && !batType.weapon2.isBow && !batType.weapon2.noDatt) {
                         apReq = apCost+batType.weapon2.cost;
                     } else {
@@ -408,12 +408,12 @@ function skillsInfos(bat,batType,near) {
     }
     // TIR CIBLE
     if (!playerInfos.onShip) {
-        if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (batType.skills.includes('w2cible') && (bat.eq === 'w2-pgun' || bat.eq === 'w2-flaser' || bat.eq === 'w2-laser'))) {
+        if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (batType.skills.includes('w2cible') && (bat.eq.includes('w2') || playerInfos.comp.def === 3))) {
             let tcBonus = calcCibleBonus(batType);
             apCost = tcBonus.ap;
             let weapOK = true;
             if (batType.weapon.isPrec) {
-                if (batType.weapon2.rof >= 1) {
+                if (hasW2) {
                     if (batType.weapon2.isPrec) {
                         if (batType.weapon.cost > batType.weapon2.cost) {
                             apReq = apCost+batType.weapon2.cost;
@@ -427,7 +427,7 @@ function skillsInfos(bat,batType,near) {
                     apReq = apCost+batType.weapon.cost;
                 }
             } else {
-                if (batType.weapon2.rof >= 1) {
+                if (hasW2) {
                     if (batType.weapon2.isPrec) {
                         apReq = apCost+batType.weapon2.cost;
                     } else {
@@ -469,7 +469,7 @@ function skillsInfos(bat,batType,near) {
     }
     // LUCKY SHOT
     if (batType.skills.includes('luckyshot') && !playerInfos.onShip) {
-        if (batType.weapon2.rof >= 1 && batType.weapon.cost > batType.weapon2.rof) {
+        if (hasW2 && batType.weapon.cost > batType.weapon2.rof) {
             apReq = batType.weapon2.cost;
         } else {
             apReq = batType.weapon.cost;
@@ -969,10 +969,10 @@ function skillsInfos(bat,batType,near) {
                     }
                     apCost = drug.apCost;
                     let starkaPA = getStarkaBonus(bat);
-                    let moveDistance = calcDistance(bat.tileId,bat.oldTileId);
-                    console.log('moveDistance='+moveDistance);
+                    // let moveDistance = calcDistance(bat.tileId,bat.oldTileId);
+                    // console.log('moveDistance='+moveDistance);
                     if (drugCompOK) {
-                        if (!bat.tags.includes('starka') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK && moveDistance <= 2 && starkaPA >= 1) {
+                        if (!bat.tags.includes('starka') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK && starkaPA >= 1) {
                             $('#unitInfos').append('<button type="button" title="Starka: +'+starkaPA+' PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>');
                         } else {
                             if (bat.tags.includes('starka')) {

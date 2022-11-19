@@ -128,7 +128,8 @@ function commandes() {
                     $('#commandz').append('<button type="button" title="Changer de région ('+mapNumberAfterChange+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-globe" onclick="regionChange()" onmousedown="clicSound(9)"></i></button>');
                 }
             } else {
-                $('#commandz').append('<button type="button" title="Maximum de cartes atteint" class="boutonGris iconButtons"><i class="fas fa-map"></i></button>');
+                // $('#commandz').append('<button type="button" title="Maximum de cartes atteint" class="boutonGris iconButtons"><i class="fas fa-map"></i></button>');
+                $('#commandz').append('<button type="button" title="Voir une autre zone (au risque de crasher la sonde!)" class="boutonRouge iconButtons"><i class="fas fa-map" onclick="pushSonde('+nextMapNumber+','+maxMaps+')" onmousedown="clicSound(5)"></i></button>');
             }
         }
         $('#commandz').append('<br>');

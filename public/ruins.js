@@ -657,7 +657,7 @@ function checkResByKind(resKind,coffre,tile,recNum) {
                 let diffBonus = zone[0].mapDiff*zone[0].mapDiff/200;
                 thatResChance = thatResChance*(playerInfos.comp.tri+1)/4;
                 if (res.name == 'Nourriture' || res.name == 'Viande' || res.name == 'Fruits') {
-                    thatResChance = thatResChance*(zone[0].mapDiff+8)/9;
+                    thatResChance = thatResChance/(zone[0].mapDiff+8)*9;
                     diffBonus = 0;
                     if (ruinsEmpty && resKind != 'food') {
                         thatResChance = thatResChance/5;
@@ -708,6 +708,9 @@ function checkResByKind(resKind,coffre,tile,recNum) {
                 console.log(res.name+' '+thatResChance);
                 if (rand.rand(1,1000) <= thatResChance) {
                     thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*1.5*rand.rand(4,16))+rand.rand(0,9);
+                    if (res.name == 'Nourriture' || res.name == 'Viande' || res.name == 'Fruits') {
+                        thatResNum = thatResNum/(zone[0].mapDiff+8)*6;
+                    }
                     if (resKind === 'energy') {
                         if (res.name === 'Energons') {
                             thatResNum = thatResNum*5;
@@ -718,12 +721,12 @@ function checkResByKind(resKind,coffre,tile,recNum) {
                     }
                     if (resKind === 'auto') {
                         if (res.name === 'Fuel' || res.name === 'Moteurs') {
-                            thatResNum = Math.ceil(thatResNum*1.5);
+                            thatResNum = thatResNum*1.5;
                         }
                     }
                     if (resKind === 'military') {
                         if (res.name === 'Munitions') {
-                            thatResNum = Math.ceil(thatResNum*1.5);
+                            thatResNum = thatResNum*1.5;
                         }
                     }
                     thatResNum = Math.ceil(thatResNum*150/mineRateDiv);

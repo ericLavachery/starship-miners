@@ -83,6 +83,7 @@ function generateNewMap(filterCheck) {
     zoneReport(zone,false);
     writeMapStyles();
     showMap(zone,false);
+    centerMapCenter();
     minimap();
     commandes();
     ruinsView();
@@ -1389,8 +1390,7 @@ function addRes(zone) {
         let magChance = rand.rand(3,6)*15;
         shufZone.forEach(function(tile) {
             if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
-                terrain = getTileTerrain(tile.id);
-                if (terrain.name != 'M' && tile.rq === undefined) {
+                if (tile.rq === undefined) {
                     if (rand.rand(1,magChance) === 1) {
                         tile.rq = 1;
                         tile.rs = {};

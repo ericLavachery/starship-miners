@@ -1246,9 +1246,18 @@
     {
         "id":36,
         "result":"Carbone",
-        "cost":{"Mendium":5,"Bois":25},
+        "cost":{"Mendium":3,"Bois":20},
         "compReq":{"tri":2,"ca":2},
         "bldReq":["Recyclab"],
+        "batch":15,
+        "bg":"#200808"
+    },
+    {
+        "id":174,
+        "result":"Carbone",
+        "cost":{"Energie":5,"Bois":75},
+        "compReq":{"tri":1},
+        "bldReq":["Atelier"],
         "batch":15,
         "bg":"#200808"
     },

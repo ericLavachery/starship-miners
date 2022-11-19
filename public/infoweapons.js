@@ -38,12 +38,6 @@ function weaponsInfos(bat,batType,tile,pop) {
     let accGround;
     let apOK = false;
     let terrain = getTerrain(bat);
-    // if (batType.weapon.rof >= 1 && batType.weapon2.rof >= 1 && batType.weapon.name === batType.weapon2.name) {
-    //     showW1 = false;
-    // }
-    // console.log('rofs');
-    // console.log(batType.weapon.rof);
-    // console.log(batType.weapon2.rof);
     let hasW1 = checkHasWeapon(1,batType,bat.eq);
     if (batType.weapon.rof >= 1) {
         if (batType.weapon.name.includes('Bélier') || batType.weapon.name.includes('Boutoir') || batType.weapon.name.includes('Moissonneuse')) {
@@ -86,11 +80,15 @@ function weaponsInfos(bat,batType,tile,pop) {
                 leBouton = 'boutonOK';
                 colBouton = 'cy';
                 colIcon = 'cy';
-            } else if (selectedWeap.num != undefined || grisee) {
+            } else if (selectedWeap.num != undefined) {
                 balise = 'h6';
                 leBouton = 'boutonGrey';
                 colBouton = 'gf';
                 colIcon = 'gff';
+            } else if (grisee) {
+                leBouton = 'boutonJauneG';
+                colBouton = 'blanc';
+                colIcon = 'gf';
             }
             noBisOK = true;
             if (thisWeapon.noBis && bat.tags.includes('noBis1')) {
@@ -331,11 +329,15 @@ function weaponsInfos(bat,batType,tile,pop) {
                 leBouton = 'boutonOK';
                 colBouton = 'cy';
                 colIcon = 'cy';
-            } else if (selectedWeap.num != undefined || grisee) {
+            } else if (selectedWeap.num != undefined) {
                 balise = 'h6';
                 leBouton = 'boutonGrey';
                 colBouton = 'gf';
                 colIcon = 'gff';
+            } else if (grisee) {
+                leBouton = 'boutonJauneG';
+                colBouton = 'blanc';
+                colIcon = 'gf';
             }
             noBisOK = true;
             if (thisWeapon.noBis && bat.tags.includes('noBis2')) {

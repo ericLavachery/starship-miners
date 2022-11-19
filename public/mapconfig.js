@@ -38,6 +38,7 @@ function areaGo(x,y) {
     xOffset = x;
     yOffset = y;
     showMap(zone,true);
+    minimap();
     confirmMode();
 };
 

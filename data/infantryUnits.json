@@ -183,7 +183,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fortif","fouille","maycamo","brigands","penitbat","herofortif"],
+        "skills":["a_light","fortif","datt","fouille","maycamo","brigands","penitbat","herofortif"],
         "mediCost":9,
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
@@ -240,7 +240,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fortif","fouille","camo","brigands","guerrilla","embuscade","fastguet","penitbat","herosalvo","lowstress"],
+        "skills":["a_light","fortif","datt","fouille","camo","brigands","guerrilla","embuscade","fastguet","penitbat","herosalvo","lowstress"],
         "mediCost":9,
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
@@ -353,7 +353,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fortif","fouille","berserk","brigands","maycamo","penitbat","herofortif","lowstress"],
+        "skills":["a_heavy","fortif","datt","fouille","berserk","brigands","maycamo","penitbat","herofortif","lowstress"],
         "mediCost":9,
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"
@@ -468,7 +468,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fortif","fouille","brigands","maycamo","guerrilla","tirailleur","penitbat","herofana","heroap","lowstress"],
+        "skills":["a_mid","fortif","datt","fouille","brigands","maycamo","guerrilla","tirailleur","penitbat","herofana","heroap","lowstress"],
         "mediCost":9,
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"
@@ -644,7 +644,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","fastguet","maycamo","garde","fo","kitimage","herofortif"],
+        "skills":["a_heavy","fouille","fortif","datt","fastguet","maycamo","garde","fo","kitimage","herofortif"],
         "fuzz":0.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -704,7 +704,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","fastguet","ranger","maycamo","garde","fo","kitimage","herofortif"],
+        "skills":["a_heavy","fouille","fortif","datt","maycible","fastguet","ranger","maycamo","garde","fo","kitimage","herofortif"],
         "fuzz":0.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -761,7 +761,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","camo","fastguet","garde","fo","herofortif"],
+        "skills":["a_heavy","fouille","fortif","datt","camo","fastguet","garde","fo","herofortif"],
         "fuzz":0.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -881,7 +881,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","fastguet","garde","fo","kitimage","herowc"],
+        "skills":["a_heavy","fouille","fortif","datt","fastguet","garde","fo","kitimage","herowc"],
         "fuzz":0.5,
         "deathFx":"13797__sweetneo85__wilhelm"
     },
@@ -1300,7 +1300,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","medic","cleric","dealer","starka","octiron","uprank","souschef","herorange","lowstress"],
+        "skills":["a_light","fouille","fortif","datt","medic","cleric","dealer","starka","octiron","uprank","souschef","herorange","lowstress"],
         "mediCost":9,
         "maxDrug":18,
         "fuzz":0.5,
@@ -1363,7 +1363,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","medic","cleric","necrocure","dealer","starka","kirin","octiron","prayer","survivor","luckyshot","nochef","lowstress","max3"],
+        "skills":["a_light","fouille","fortif","datt","medic","cleric","necrocure","dealer","starka","kirin","octiron","prayer","survivor","luckyshot","nochef","lowstress","max3"],
         "mediCost":7,
         "maxDrug":24,
         "fuzz":0.5,
@@ -1422,7 +1422,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","camo","uprank","cible","herosalvo","autohero"],
+        "skills":["a_heavy","fouille","fortif","datt","camo","uprank","cible","herosalvo","autohero"],
         "mediCost":10,
         "fuzz":0,
         "deathFx":"human1"
@@ -2370,7 +2370,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","datt","maycamo","uprank","barda","herosalvo"],
+        "skills":["a_heavy","fouille","fortif","maycamo","uprank","barda","herosalvo"],
         "fuzz":2,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -3014,7 +3014,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","medic","realmed","camo","dealer","kirin","octiron","sila","starka","ranger","heropotion"],
+        "skills":["a_light","fouille","fortif","medic","realmed","camo","dealer","kirin","octiron","sila","starka","ranger","heropotion"],
         "mediCost":8,
         "maxDrug":18,
         "fuzz":0,
@@ -4002,7 +4002,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","selfmedic","leader","survivor","luckyshot","fastguet","ranger","guerrilla","maycamo","cible","fo","herokill"],
+        "skills":["a_mid","fouille","fortif","datt","selfmedic","leader","survivor","luckyshot","fastguet","ranger","guerrilla","maycamo","cible","fo","herokill"],
         "mediCost":5,
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"
@@ -4101,6 +4101,7 @@
             "elevation":4,
             "noise":4,
             "noMelee":true,
+            "noDatt":true,
             "rof":4,
             "accuracy":50,
             "power":16,
@@ -4117,7 +4118,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","selfmedic","leader","fly","jetpack","longshot","survivor","inflammable","maycamo","oknitro","herosalvo","heroap"],
+        "skills":["a_light","fouille","fortif","datt","selfmedic","leader","fly","jetpack","longshot","survivor","inflammable","maycamo","oknitro","herosalvo","heroap"],
         "mediCost":10,
         "fuzz":2,
         "deathFx":"162157__mediapaja2009__agony"
@@ -4675,7 +4676,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_cyb","fouille","fortif","badmecano","badmedic","cyber","maycamo","unemun","roborepair","herosalvo"],
+        "skills":["a_cyb","fouille","fortif","maycible","badmecano","badmedic","cyber","maycamo","unemun","roborepair","herosalvo"],
         "mediCost":4,
         "mecanoCost":6,
         "fuzz":1,
@@ -5429,7 +5430,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","fortif","fastguet","robot","badmecano","crange","decay","light","aifouille","camo","lbot"],
+        "skills":["a_rob","fortif","datt","fastguet","robot","badmecano","crange","decay","light","aifouille","camo","lbot"],
         "mecanoCost":8,
         "fuzz":1,
         "deathFx":"395378__skylar1146__machinepoweroff"
@@ -5828,7 +5829,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3.5,
-        "skills":["a_heavy","fortif","bigfortif","datt","maycamo","hardmove","machine","tracked","recupcit","herosalvo"],
+        "skills":["a_heavy","fortif","bigfortif","maycamo","hardmove","machine","tracked","recupcit","herosalvo"],
         "fuzz":3,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -6219,7 +6220,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","dog","dogescape","lowstress","noblub","escape","ranger","snif","guerrilla","tirailleur","sentinelle","initmelee","recupcorps"],
+        "skills":["a_mid","dog","dogescape","lowstress","noblub","escape","ranger","snif","guerrilla","tirailleur","datt","sentinelle","initmelee","recupcorps"],
         "fuzz":1,
         "deathFx":"dog_death"
     },
@@ -6317,7 +6318,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","camo","clone","nodeathcount","lowmed","lowstress"],
+        "skills":["a_light","fouille","fortif","camo","clone","nodeathcount","lowmed","lowstress"],
         "fuzz":-1,
         "cloneSlot":1
     },

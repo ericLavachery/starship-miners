@@ -38,7 +38,7 @@ function mapEditWindow() {
     selectStuff('Ruines','ruins','Ruines');
     selectStuff('Ruines vides','ruinsf','Ruines vides');
     selectStuff('Route','roads','Route (ou Pont)');
-    // Ressources 
+    // Ressources
     selectStuff('Res','res','Mettre des ressources');
     selectStuff('RareRes','rareres','Mettre des ressources rares');
     selectStuff('NoRes','nores','Supprimer les ressources');
@@ -48,8 +48,8 @@ function mapEditWindow() {
     selectStuff('Outsider','batOutsider','Bataillon outsider');
     selectStuff('Bleed','bleed','Blesser le bataillon');
     // Landing
-    selectStuff('Lander','lander','Point d\'aterrissage lander (ou navette)');
-    selectStuff('Navette','navette','Point d\'aterrissage navette seulemment');
+    selectStuff('Lander','lander','Point d\'atterrissage lander (ou navette)');
+    selectStuff('Navette','navette','Point d\'atterrissage navette seulemment');
     // End
     $('#conUnitList').append('<br><br>');
     if (mped.sinf === 'RareRes' || mped.sinf === 'Res') {
@@ -58,7 +58,7 @@ function mapEditWindow() {
     } else {
         theTileRes = {};
     }
-    mpedOption('cLand','Aterrissage au centre possible également','Landing centre','Aterrissage uniquement aux points marqués','Landing points');
+    mpedOption('cLand','Atterrissage au centre possible également','Landing centre','Atterrissage uniquement aux points marqués','Landing points');
     mpedOption('neverMove','Les bataillons avec un tag nomove peuvent également bouger dès qu\'un bâtiment (avec un tag nomove) est détruit','Tag nomove normal','Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints','Never move');
     mpedOption('noEggs','Aucun oeuf ne tombe','Sans Oeufs','Des oeufs tombent','Avec Oeufs');
     mpedOption('coverEggs','Les oeufs tombent normalement','Oeufs partout','Les oeufs tombent toujours à couvert (près d\'une ruche, volcan ou colonie)','Oeufs à couvert');

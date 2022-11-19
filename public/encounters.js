@@ -31,6 +31,9 @@ function encounterCheck() {
                     encounterChance = 60;
                 }
             }
+            if (playerInfos.cAdj <= 3 && playerInfos.cLoss >= 1500) {
+                encounterChance = encounterChance-10;
+            }
             if (rand.rand(1,encounterChance) <= 30) {
                 encounter();
             } else {
@@ -73,8 +76,14 @@ function encounter() {
             encDiceMin = 0;
         }
     }
+    if (playerInfos.cAdj <= 3 && playerInfos.cLoss >= 1500) {
+        hard = true;
+    }
     encDiceMax = encDiceMax-5+Math.round(playerInfos.enc/10);
     checkEncDice(encDiceMin,encDiceMax,hard);
+    if (playerInfos.cAdj <= 3 && playerInfos.cLoss >= 1500) {
+        playerInfos.cAdj++;
+    }
 };
 
 function checkEncDice(encDiceMin,encDiceMax,hard) {
@@ -162,7 +171,7 @@ function putBastionAliens(hard) {
     if (zone[0].mapDiff >= 3 && zone[0].mapDiff < 8 && zone[0].planet === 'Dom') {
         dropEgg('Ruche','encounter');
     }
-    if (hard && playerInfos.cNeed < 1.2) {
+    if (hard && playerInfos.cNeed < 1.2 && (playerInfos.cAdj > 3 || playerInfos.cLoss < 1500 || rand.rand(1,3) === 1)) {
         dropEgg('Cocon','encounter');
         if (zone[0].mapDiff < 8) {
             dropEgg('Ruche','encounter');
@@ -265,7 +274,7 @@ function madCitizens(hard) {
             putBat(dropTile,0,0,'',false);
             playerOccupiedTiles.push(dropTile);
         }
-        if (hard) {
+        if (hard && (playerInfos.cAdj > 3 || playerInfos.cLoss < 1500)) {
             dropEgg('Veilleurs','encounter');
         }
     } else {

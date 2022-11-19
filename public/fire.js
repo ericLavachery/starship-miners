@@ -137,8 +137,8 @@ function combat(melee) {
         let realmOK = checkRealm();
         if (realmOK) {
             riposte = true;
-            let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,distance,true);
-            let dspeed = calcSpeed(targetBat,targetWeap,selectedWeap,distance,false);
+            let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,targetBatType,distance,true);
+            let dspeed = calcSpeed(targetBat,targetWeap,selectedWeap,selectedBatType,distance,false);
             // embuscade (initiative)
             if (activeTurn === 'player') {
                 if (selectedBat.tags.includes('embuscade') && selectedBat.fuzz === -2) {

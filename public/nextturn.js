@@ -726,10 +726,9 @@ function nextTurnEnd() {
 
 function turnInfo() {
     console.log('TURN INFO');
-    // let citNeed = getCitNeed();
-    // console.log('citNeed = '+citNeed);
     planetThumb();
     checkNeiTurn();
+    let citLoss = getCitLoss();
     playerInfos.vue = playerInfos.comp.det;
     if (playerInfos.bldList.includes('Centre de com')) {
         playerInfos.vue = playerInfos.vue+1;

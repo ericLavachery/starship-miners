@@ -991,6 +991,9 @@ function playerSkillsUTChanges() {
             if (unit.cat === 'infantry') {
                 unit.fabTime = unit.fabTime/(playerInfos.comp.train+4)*4;
             }
+            if (unit.skills.includes('maycible')) {
+                unit.skills.push('cible');
+            }
         }
         if (playerInfos.comp.train >= 1) {
             if (unit.cat != 'buildings' && unit.cat != 'devices' && (unit.kind != 'zero-artillerie' || unit.name === 'Raves') && unit.kind != 'zero-defense' && !unit.name.includes('Caserne') && !unit.skills.includes('garde') && !unit.skills.includes('cage') && !unit.skills.includes('robot')) {
