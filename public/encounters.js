@@ -1884,6 +1884,7 @@ function getHuntType() {
         huntType.max = Math.round(zone[0].pg/2);
         if (huntDice >= 7) {
             huntType.game = 'Meatballs';
+            huntType.max = Math.ceil(huntType.max/2);
         } else {
             huntType.game = 'Rats';
         }
@@ -1897,9 +1898,13 @@ function getHuntType() {
             huntType.game = 'Tritons';
         } else if (huntDice >= 8) {
             huntType.game = 'Meatballs';
+            huntType.max = Math.ceil(huntType.max/2);
         } else {
             huntType.game = 'Rats';
         }
+    }
+    if (huntType.max < 7) {
+        huntType.max = 7;
     }
     if (zone[0].planet === 'Horst') {
         huntType.chance = 5;
@@ -1911,14 +1916,11 @@ function getHuntType() {
         huntType.chance = 25;
         huntType.game = 'Tritons';
     } else if (zone[0].planet === 'Sarak') {
-        huntType.chance = 85;
+        huntType.chance = 20;
         huntType.game = 'Meatballs';
         huntType.max = 7;
     }
     huntType.chance = Math.ceil(huntType.chance/(zone[0].mapDiff+8)*9);
-    if (huntType.max < 7) {
-        huntType.max = 7;
-    }
     if (zone[0].hunt === undefined) {
         zone[0].hunt = huntType;
     }

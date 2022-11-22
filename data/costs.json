@@ -2332,7 +2332,7 @@
         "name":"Atmopompe",
         "upkeep":{"Energie":4},
         "costs":{"Compo1":200,"Eau":18,"Hélium":300,"Carbone":75,"Fer":75,"Titane":35,"Moteurs":10,"Cuivre":25,"Electros":35,"Batteries":10},
-        "fabTime":45,
+        "fabTime":35,
         "slots":0
     },
     {
@@ -2469,7 +2469,7 @@
         "upkeep":{"Energie":5,"Végétaux":5,"Huile":2},
         "prod":{"Drogues":3,"Scrap":2},
         "costs":{"Compo1":225,"Compo2":150,"Eau":48,"Energie":400,"Drogues":200,"Mendium":200,"Tissus":500,"Titane":150,"Aluminium":120,"Calcium":500,"Or":150,"Octiron":250,"Silicium":200,"Oxygène":1000,"Chlore":500,"Electros":300,"Batteries":100},
-        "fabTime":350,
+        "fabTime":300,
         "crime":-6,
         "slots":4
     },
@@ -2671,7 +2671,7 @@
         "upkeep":{"Fruits":8,"Végétaux":4,"Energie":2},
         "prod":{"Nourriture":4},
         "costs":{"Compo1":195,"Compo2":30,"Eau":300,"Carbone":100,"Fer":50,"Batteries":30,"Energie":120},
-        "fabTime":25,
+        "fabTime":30,
         "crime":-3,
         "slots":2
     },
@@ -2681,7 +2681,7 @@
         "levels":{"rednecks":5,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "upkeep":{"Viande":0.3},
         "costs":{"Compo1":120,"Compo2":30,"Eau":50,"Fer":150},
-        "fabTime":35,
+        "fabTime":25,
         "slots":2
     },
     {
@@ -2706,7 +2706,7 @@
         "name":"Salle de sport",
         "upkeep":{"Energie":1,"Eau":10},
         "costs":{"Compo1":210,"Compo2":15,"Eau":150,"Energie":60,"Aluminium":15,"Fer":100,"Plomb":25,"Végétaux":100,"Calcium":25,"Chlore":25},
-        "fabTime":50,
+        "fabTime":40,
         "crime":-2,
         "slots":2
     },

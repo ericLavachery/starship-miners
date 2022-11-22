@@ -427,13 +427,13 @@ function showAlien(bat) {
     if (bat.pdm != undefined && mode === 'edit') {
         tagz = tagz+' (GARDE)';
     }
-    if ((zone[0].dark && !undarkNow.includes(bat.tileId) && !bat.tags.includes('fluo')) || batType.skills.includes('invisible')) {
+    if ((zone[0].dark && !undarkNow.includes(bat.tileId) && !bat.tags.includes('fluo') && playerInfos.pseudo != 'Mapedit') || batType.skills.includes('invisible')) {
         if (doggedTiles.includes(bat.tileId)) {
             $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/invisible.png" width="64"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
         } else {
             $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
         }
-    } else if (bat.tags.includes('invisible') && !bat.tags.includes('fluo')) {
+    } else if (bat.tags.includes('invisible') && !bat.tags.includes('fluo') && playerInfos.pseudo != 'Mapedit') {
         if (playerInfos.vue >= 6 || doggedTiles.includes(bat.tileId)) {
             if (degNum >= 7) {
                 $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/invisible.png" width="64"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);

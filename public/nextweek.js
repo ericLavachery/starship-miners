@@ -43,7 +43,6 @@ function events(afterMission,time,sim,quiet) {
         playerInfos.aliensKilled = 0;
         playerInfos.eggsKilled = 0;
         playerInfos.alienSat = 0;
-        playerInfos.unitsLost = 0;
         playerInfos.fuzzTotal = 0;
         playerInfos.pauseSeed = rand.rand(1,8);
         playerInfos.myCenter = 1830;
@@ -700,9 +699,9 @@ function eventCrime(time,sim,quiet) {
     if (!sim) {
         // EFFETS !!! CRIMES !!!
         playerInfos.crime = crimeRate.total;
-        if (!quiet) {
-            warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false)
-        }
+    }
+    if (!quiet) {
+        warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false)
     }
     setPenitLevel();
 };

@@ -82,7 +82,7 @@ function mapEditWindow() {
     $('#conUnitList').append('<br><br>');
 };
 
-// {"number":3,"mapDiff":3,"visit":true}
+// {"number":3,"visit":true}
 
 function diffToggle() {
     zone[0].mapDiff = zone[0].mapDiff+1;

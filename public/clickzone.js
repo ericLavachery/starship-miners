@@ -122,6 +122,8 @@ function clickSelect(tileId) {
                 let batType = getBatType(bat);
                 if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) {
                     showEnemyBatInfos(bat);
+                } else if (playerInfos.pseudo === 'Mapedit') {
+                    showEnemyBatInfos(bat);
                 }
                 enemyBatHere = true;
             }

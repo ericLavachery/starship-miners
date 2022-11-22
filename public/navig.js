@@ -239,6 +239,11 @@ function viewPop() {
             $('#batloop').append('Pénibilité: <span class="'+penibColour+'">'+crimeRate.penib+'</span>%<br>');
             $('#batloop').append('Forces de l\'ordre: <span class="neutre">'+crimeRate.fo+'</span><br>');
             $('#batloop').append('Criminalité: <span class="'+crimColour+'">'+crimeRate.total+'</span>%<br>');
+            if (playerInfos.deadBats.length >= 2) {
+                $('#batloop').append('Morts <span class="or" title="'+toNiceString(playerInfos.deadBats)+'">'+playerInfos.unitsLost+'</span> <span class="neutre" title="Morts en mission: &dagger; '+toNiceString(playerInfos.deadBats)+'">('+playerInfos.deadBats[0]+'...)</span><br>');
+            } else if (playerInfos.deadBats.length === 1) {
+                $('#batloop').append('Morts <span class="or" title="'+toNiceString(playerInfos.deadBats)+'">'+playerInfos.unitsLost+'</span> <span class="neutre"Morts en mission: &dagger; '+toNiceString(playerInfos.deadBats)+'">('+playerInfos.deadBats[0]+')</span><br>');
+            }
             $('#batloop').append('<span class="jaune">Doomclock: '+doomsday+'</span><br>');
             if (!inSoute) {
                 $('#batloop').append('<button type="button" title="Simuler 3 semaines (1 mission)" class="boutonVert iconButtons" onclick="events(false,65,true,false)"><i class="far fa-clock"></i></button>');
