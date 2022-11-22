@@ -2163,9 +2163,21 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.power = thisWeapon.power+1;
             thisWeapon.armors = 1;
         } else if (thisWeapon.name === 'Torche') {
-            thisWeapon.rof = thisWeapon.rof*1.15;
+            thisWeapon.rof = thisWeapon.rof*1.2;
         } else if (thisWeapon.name === 'Toothbrush') {
             thisWeapon.rof = thisWeapon.rof*1.25;
+            thisWeapon.armors = 0.4;
+        }
+    }
+    if (bat.tdc.includes('finegun')) {
+        if (thisWeapon.name === 'Calibre') {
+            thisWeapon.rof = thisWeapon.rof*1.25;
+            thisWeapon.armors = 0.9;
+        } else if (thisWeapon.name === 'Magnum') {
+            thisWeapon.rof = thisWeapon.rof*1.15;
+            thisWeapon.power = thisWeapon.power+1;
+        } else if (thisWeapon.name === 'Revolver') {
+            thisWeapon.rof = thisWeapon.rof*1.2;
         }
     }
     if (bat.eq === 'trainkitgi') {

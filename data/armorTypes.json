@@ -1022,7 +1022,7 @@
         "info":"Snorkel + Chenilles + G2Motor + Mécano",
         "bldReq":["Usine"],
         "compReq":{"log":3,"trans":2,"energ":1,"mat":2},
-        "altCompReq":{"log":3,"trans":3,"mat":2},
+        "altCompReq":{"log":2,"trans":3,"mat":2},
         "autoComp":[],
         "factor":"thp",
         "costs":{"Scrap":4,"Carbone":9,"Fer":24,"Moteurs":8,"Rhodium":4,"Cuivre":3,"Nickel":3,"Electros":11,"Batteries":5},

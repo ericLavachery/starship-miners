@@ -583,6 +583,12 @@ function attack(melee,init) {
             } else if (targetBatType.skills.includes('cyber')) {
                 wapd = wapd*2*20/targetBatType.size;
             }
+        } else if (selectedWeap.ammo.includes('dents')) {
+            if (selectedBatType.size >= targetBatType.size) {
+                wapd = wapd*1.75/Math.sqrt(targetBatType.size);
+            } else {
+                wapd = wapd/Math.sqrt(targetBatType.size);
+            }
         } else {
             wapd = wapd*1.75/Math.sqrt(targetBatType.size);
         }
@@ -1586,6 +1592,12 @@ function defense(melee,init) {
                 wapd = wapd*20/selectedBatType.size;
             } else if (selectedBatType.skills.includes('cyber')) {
                 wapd = wapd*2*20/selectedBatType.size;
+            }
+        } else if (targetWeap.ammo.includes('dents')) {
+            if (targetBatType.size >= selectedBatType.size) {
+                wapd = wapd*1.75/Math.sqrt(selectedBatType.size);
+            } else {
+                wapd = wapd/Math.sqrt(selectedBatType.size);
             }
         } else {
             wapd = wapd*1.75/Math.sqrt(selectedBatType.size);

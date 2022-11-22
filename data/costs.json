@@ -1242,7 +1242,7 @@
     {
         "id":36,
         "name":"Hooks",
-        "levels":{"rednecks":13,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":14,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "compReq":{"tank":1},
         "costs":{"Fer":198,"Scrap":216,"Carbone":156,"Aluminium":24,"Moteurs":156,"Titane":12,"Tungstène":174,"Cuivre":32,"Electros":32,"Batteries":39,"Compo2":168,"Compo3":72,"Silicium":12,"Huile":32,"Mendium":20},
@@ -1362,7 +1362,7 @@
     {
         "id":31,
         "name":"Pitbulls",
-        "levels":{"rednecks":14,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":13,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "compReq":{"tank":1,"explo":1},
         "costs":{"Fer":225,"Scrap":225,"Carbone":165,"Aluminium":150,"Moteurs":150,"Titane":15,"Tungstène":150,"Cuivre":30,"Batteries":15,"Compo2":180,"Compo3":135,"Huile":10},

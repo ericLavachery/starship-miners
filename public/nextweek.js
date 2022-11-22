@@ -362,10 +362,23 @@ function eventDogs(time,sim,quiet,mesCitoyens) {
         }
         restFood = restFood-dispoRes;
     }
-    if (restFood >= 1) {
-        messageFood = '<span class="hrouge">Carence</span>';
+    if (restFood >= Math.round(costFood/2)) {
+        let citEaten = {};
+        citEaten.num = rand.rand(1,Math.ceil(restFood/10));
+        citEaten.type = 'Citoyens';
         if (!sim) {
             playerInfos.vitals = playerInfos.vitals+3;
+            citEaten = getCitDeath('Citoyens',citEaten.num,true);
+        }
+        if (citEaten.num > 1) {
+            messageFood = '<span class="hrouge">Carence grave<br>'+citEaten+' '+citEaten.type+' dévorés!</span>';
+        } else {
+            messageFood = '<span class="hrouge">Carence grave<br>1 citoyen dévoré!</span>';
+        }
+    } else if (restFood >= 1) {
+        messageFood = '<span class="hrouge">Carence</span><br>Citoyens en danger!';
+        if (!sim) {
+            playerInfos.vitals = playerInfos.vitals+1;
         }
     }
     if (!quiet) {
@@ -430,18 +443,18 @@ function eventBouffe(time,sim,quiet) {
             bouffeCost['Oxygène'] = 0;
         }
     }
-    playerInfos.vitals = Math.floor(playerInfos.vitals/3);
+    let penuries = 0;
     let dispoFood = getDispoRes('Nourriture');
     let costFood = bouffeCost['Nourriture'];
     let messageFood = 'OK';
     if (dispoFood < costFood/2) {
         if (!sim) {
-            playerInfos.vitals = playerInfos.vitals+5;
+            penuries = penuries+5;
         }
         messageFood = '<span class="hrouge">Carence grave</span>';
     } else if (dispoFood < costFood) {
         if (!sim) {
-            playerInfos.vitals = playerInfos.vitals+2;
+            penuries = penuries+2;
         }
         messageFood = '<span class="hrouge">Carence</span>';
     }
@@ -450,12 +463,12 @@ function eventBouffe(time,sim,quiet) {
     let messageWater = 'OK';
     if (dispoWater < costWater/2) {
         if (!sim) {
-            playerInfos.vitals = playerInfos.vitals+8;
+            penuries = penuries+8;
         }
         messageWater = '<span class="hrouge">Carence grave</span>';
     } else if (dispoWater < costWater) {
         if (!sim) {
-            playerInfos.vitals = playerInfos.vitals+2;
+            penuries = penuries+2;
         }
         messageWater = '<span class="hrouge">Carence</span>';
     }
@@ -464,12 +477,12 @@ function eventBouffe(time,sim,quiet) {
     let messageAir = 'OK';
     if (dispoAir < costAir/2) {
         if (!sim) {
-            playerInfos.vitals = playerInfos.vitals+12;
+            penuries = penuries+12;
         }
         messageAir = '<span class="hrouge">Carence grave</span>';
     } else if (dispoAir < costAir) {
         if (!sim) {
-            playerInfos.vitals = playerInfos.vitals+3;
+            penuries = penuries+3;
         }
         messageAir = '<span class="hrouge">Carence</span>';
     }
@@ -478,12 +491,12 @@ function eventBouffe(time,sim,quiet) {
     let messageHeat = 'OK';
     if (dispoHeat < costHeat/2) {
         if (!sim) {
-            playerInfos.vitals = playerInfos.vitals+3;
+            penuries = penuries+3;
         }
         messageHeat = '<span class="hrouge">Carence grave</span>';
     } else if (dispoHeat < costHeat) {
         if (!sim) {
-            playerInfos.vitals = playerInfos.vitals+1;
+            penuries = penuries+1;
         }
         messageHeat = '<span class="hrouge">Carence</span>';
     }
@@ -497,6 +510,25 @@ function eventBouffe(time,sim,quiet) {
     modWeekMulti(bouffeCost);
     if (!sim) {
         payMaxCost(bouffeCost);
+    }
+    playerInfos.vitals = Math.floor(playerInfos.vitals*(penuries+5)/15);
+    playerInfos.vitals = playerInfos.vitals+penuries;
+    if (playerInfos.vitals >= 15) {
+        let maxDead = Math.ceil((playerInfos.vitals-10)*time/20/(playerInfos.comp.med+6)*6);
+        let minDead = Math.ceil(maxDead/3);
+        let deadCits = {};
+        deadCits.num = rand.rand(1,maxDead);
+        deadCits.type = 'Citoyens';
+        if (!sim) {
+            deadCits = getCitDeath('Citoyens',deadCits.num,false);
+        }
+        if (!quiet) {
+            if (deadCits.num > 1) {
+                warning('Consommation','<span class="hrouge">Graves pénuries:<br>'+deadCits.num+' '+deadCits.type+' morts</span><br>',true);
+            } else {
+                warning('Consommation','<span class="hrouge">Graves pénuries:<br>1 citoyen mort</span><br>',true);
+            }
+        }
     }
     if (mesCitoyens.dogs >= 1) {
         eventDogs(time,sim,quiet,mesCitoyens);
@@ -542,8 +574,14 @@ function eventCitoyens(time,sim,quiet) {
     if (rand.rand(1,ruinsCrimChance) === 1) {
         citId = 225;
         citName = 'Criminels';
+    } else {
+        if (playerInfos.crime > 50) {
+            newCitsNumber = 0;
+        } else if (playerInfos.crime > 15) {
+            newCitsNumber = Math.floor(newCitsNumber*15/playerInfos.crime);
+        }
     }
-    if (!sim) {
+    if (!sim && newCitsNumber >= 1) {
         bonusCit(citId,souteId,newCitsNumber);
         playerInfos.allCits = playerInfos.allCits+newCitsNumber;
     }
@@ -770,12 +808,16 @@ function calcCrimeRate(mesCitoyens) {
     console.log('bigAdj='+bigAdj);
     console.log('adjCrims='+adjCrims);
     // Treshold
-    if (crimeRate.penib < 10) {
-        crimeRate.total = adjCrims+Math.round(crimeRate.penib/1.9);
+    let horror = crimeRate.penib;
+    if (horror > 15) {
+        horror = Math.ceil((horror-15)/10)+15;
+    }
+    if (horror < 10) {
+        crimeRate.total = adjCrims+Math.round(horror/1.9);
     } else if (adjCrims >= 15) {
-        crimeRate.total = adjCrims+Math.round(crimeRate.penib*1.2);
+        crimeRate.total = adjCrims+Math.round(horror*1.2);
     } else {
-        crimeRate.total = adjCrims+crimeRate.penib;
+        crimeRate.total = adjCrims+horror;
     }
     crimeRate.total = crimeRate.total+crimeRate.fo;
     // compétence maintien de l'ordre

@@ -878,22 +878,42 @@ function playerSkillsUTChanges() {
                 }
             }
         }
-        if (playerInfos.comp.explo === 3) {
+        if (playerInfos.comp.explo >= 2) {
+            let penBonus = 0.9;
+            if (playerInfos.comp.explo === 3) {
+                penBonus = 0.83;
+            }
             if (Object.keys(unit.weapon).length >= 3) {
-                if (unit.weapon.ammo.includes('obus') || unit.weapon.ammo.includes('missile') || unit.weapon.ammo.includes('missile-sunburst') || unit.weapon.ammo.includes('missile-vanguard') || unit.weapon.ammo.includes('missile-wildfire') || unit.weapon.ammo.includes('dynamite') || unit.weapon.ammo.includes('grenade') || unit.weapon.ammo.includes('boulet')) {
-                    if (unit.weapon.power < 10) {
-                        unit.weapon.power = unit.weapon.power+1;
+                if (unit.weapon.ammo.includes('obus') || unit.weapon.ammo.includes('missile') || unit.weapon.ammo.includes('missile-sunburst') || unit.weapon.ammo.includes('missile-vanguard') || unit.weapon.ammo.includes('dynamite') || unit.weapon.ammo.includes('grenade') || unit.weapon.ammo.includes('boulet')) {
+                    if (playerInfos.comp.explo === 3) {
+                        if (unit.weapon.power < 10) {
+                            unit.weapon.power = unit.weapon.power+1;
+                        } else {
+                            unit.weapon.power = Math.round(unit.weapon.power*1.1);
+                        }
+                    }
+                    if (unit.weapon.armors != undefined) {
+                        unit.weapon.armors = unit.weapon.armors*penBonus;
+                        unit.weapon.armors = unit.weapon.armors.toFixedNumber(2);
                     } else {
-                        unit.weapon.power = Math.round(unit.weapon.power*1.1);
+                        unit.weapon.armors = penBonus;
                     }
                 }
             }
             if (Object.keys(unit.weapon2).length >= 3) {
                 if (unit.weapon2.ammo.includes('obus') || unit.weapon2.ammo.includes('missile') || unit.weapon2.ammo.includes('missile-sunburst') || unit.weapon2.ammo.includes('missile-vanguard') || unit.weapon2.ammo.includes('missile-wildfire') || unit.weapon2.ammo.includes('dynamite') || unit.weapon2.ammo.includes('grenade') || unit.weapon2.ammo.includes('boulet')) {
-                    if (unit.weapon2.power < 10) {
-                        unit.weapon2.power = unit.weapon2.power+1;
+                    if (playerInfos.comp.explo === 3) {
+                        if (unit.weapon2.power < 10) {
+                            unit.weapon2.power = unit.weapon2.power+1;
+                        } else {
+                            unit.weapon2.power = Math.round(unit.weapon2.power*1.1);
+                        }
+                    }
+                    if (unit.weapon2.armors != undefined) {
+                        unit.weapon2.armors = unit.weapon2.armors*penBonus;
+                        unit.weapon2.armors = unit.weapon2.armors.toFixedNumber(2);
                     } else {
-                        unit.weapon2.power = Math.round(unit.weapon2.power*1.1);
+                        unit.weapon2.armors = penBonus;
                     }
                 }
             }

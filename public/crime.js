@@ -109,12 +109,24 @@ function getCamionEquips(batType) {
         }
     }
     // tous
+    if (playerInfos.penit >= 6) {
+        // armor +1
+    }
+    // tous
     if (batType.equip.includes('e-medic') && playerInfos.penit >= 7) {
         let equip = getEquipByName('e-medic');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
             camion.push('e-medic');
         }
+    }
+    // Tôlards (torche), Sinyaki (batte)
+    if (batType.weapon.isMelee && playerInfos.penit >= 8) {
+        camion.push('fineclub');
+    }
+    // Gangsters (toothbrush)
+    if (batType.weapon2.isMelee && playerInfos.penit >= 8) {
+        camion.push('fineclub');
     }
     // tous sauf tôlards
     if (batType.equip.includes('waterproof') && playerInfos.penit >= 8) {
@@ -124,16 +136,20 @@ function getCamionEquips(batType) {
             camion.push('waterproof');
         }
     }
-    // Tôlards (torche), Sinyaki (batte)
-    if (batType.weapon.isMelee && playerInfos.penit >= 9) {
-        camion.push('fineclub');
+    // Détenus (calibre), Gangsters (magnum)
+    if (!batType.weapon.isMelee && batType.name != 'Krimulos' && batType.name != 'Desperados' && playerInfos.penit >= 10) {
+        camion.push('finegun');
     }
-    // Gangsters (toothbrush)
-    if (batType.weapon2.isMelee && playerInfos.penit >= 9) {
-        camion.push('fineclub');
+    // Tôlards (revolver)
+    if (!batType.weapon2.isMelee && !batType.weapon2.noBis && batType.name != 'Raiders' && playerInfos.penit >= 10) {
+        camion.push('finegun');
     }
     // tous
-    if (batType.equip.includes('theeye') && playerInfos.penit >= 10) {
+    if (playerInfos.penit >= 11) {
+        // armor +2
+    }
+    // tous
+    if (batType.equip.includes('theeye') && playerInfos.penit >= 12) {
         let equip = getEquipByName('theeye');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -141,7 +157,7 @@ function getCamionEquips(batType) {
         }
     }
     // Tôlards (torche), Sinyaki (batte), Raiders (javelots)
-    if (batType.equip.includes('helper') && playerInfos.penit >= 12) {
+    if (batType.equip.includes('helper') && playerInfos.penit >= 14) {
         let equip = getEquipByName('helper');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -149,7 +165,7 @@ function getCamionEquips(batType) {
         }
     }
     // Tôlards, Sinyaki, Gangsters, Détenus
-    if (batType.equip.includes('repel') && playerInfos.penit >= 14) {
+    if (batType.equip.includes('repel') && playerInfos.penit >= 16) {
         let equip = getEquipByName('repel');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {

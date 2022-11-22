@@ -801,6 +801,7 @@ function payUnitCost(batType) {
                         deadBatsList.push(bat.id);
                     } else {
                         bat.citoyens = restCrim;
+                        bat.squadsLeft = Math.ceil(bat.citoyens/6);
                     }
                 }
                 if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
@@ -809,6 +810,7 @@ function payUnitCost(batType) {
                         deadBatsList.push(bat.id);
                     } else {
                         bat.citoyens = restCit;
+                        bat.squadsLeft = Math.ceil(bat.citoyens/6);
                     }
                 }
             });
@@ -826,6 +828,7 @@ function payUnitCost(batType) {
                         deadBatsList.push(bat.id);
                     } else {
                         bat.citoyens = restCit;
+                        bat.squadsLeft = Math.ceil(bat.citoyens/6);
                     }
                 }
             });
@@ -834,6 +837,53 @@ function payUnitCost(batType) {
             }
         }
     }
+};
+
+function getCitDeath(citType,number,eaten) {
+    // ne fonctionne que dans la station!!
+    let dispoCit = 0;
+    let citLost = {};
+    citLost.num = 0;
+    citLost.type = citType;
+    if (citType === 'Citoyens') {
+        dispoCit = getDispoCit();
+        if (dispoCit < 1) {
+            dispoCit = getDispoCrim();
+            citType = 'Criminels';
+            citLost.type = citType;
+        }
+    } else {
+        dispoCit = getDispoCrim();
+        if (dispoCit < 1) {
+            dispoCit = getDispoCit();
+            citType = 'Citoyens';
+            citLost.type = citType;
+        }
+    }
+    if (dispoCit >= 1) {
+        let restCit = dispoCit-number;
+        deadBatsList = [];
+        bataillons.forEach(function(bat) {
+            if (bat.type === citType) {
+                if (restCit <= 0) {
+                    bat.citoyens = 0;
+                    deadBatsList.push(bat.id);
+                    citLost.num = dispoCit;
+                } else {
+                    bat.citoyens = restCit;
+                    bat.squadsLeft = Math.ceil(bat.citoyens/6);
+                    citLost.num = dispoCit-restCit;
+                }
+            }
+        });
+        if (restCit <= 0) {
+            killBatList();
+        }
+    }
+    if (citLost.num >= 1 && !eaten) {
+        resAdd('Corps',citLost);
+    }
+    return citLost;
 };
 
 function allResAdd(number) {
@@ -1032,6 +1082,7 @@ function getDispoCit() {
                     deadBatsList.push(bat.id);
                 } else {
                     bat.citoyens = dispoCit;
+                    bat.squadsLeft = Math.ceil(bat.citoyens/6);
                 }
             }
         });
@@ -1061,6 +1112,7 @@ function getDispoCrim() {
                     deadBatsList.push(bat.id);
                 } else {
                     bat.citoyens = dispoCrim;
+                    bat.squadsLeft = Math.ceil(bat.citoyens/6);
                 }
             }
         });

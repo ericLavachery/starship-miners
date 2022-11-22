@@ -1371,8 +1371,7 @@
         "weapon":{
             "name":"Canon",
             "cost":6,
-            "range":1,
-            "elevation":1,
+            "range":2,
             "noise":4,
             "noFly":true,
             "rof":9,

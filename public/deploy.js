@@ -484,8 +484,12 @@ function getBatGearStuff(armorName,equipName,batType) {
     let batArmor = getEquipByName(armorName);
     gearStuff[0] = batType.armor+batArmor.armor;
     // tombé du camion?
-    if (batType.skills.includes('penitbat') && playerInfos.penit >= 6) {
-        gearStuff[0] = gearStuff[0]+1;
+    if (batType.skills.includes('penitbat')) {
+        if (playerInfos.penit >= 10 && gearStuff[0] < 4) {
+            gearStuff[0] = gearStuff[0]+2;
+        } else if (playerInfos.penit >= 6) {
+            gearStuff[0] = gearStuff[0]+1;
+        }
     }
     // armure de base de l'unité?
     if (batType.armor >= 2) {

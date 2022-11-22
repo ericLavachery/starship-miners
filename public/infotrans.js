@@ -86,9 +86,19 @@ function unloadInfos(myBat,myBatUnitType) {
                 if (bat.loc === "trans" && bat.locId == myBat.id) {
                     batType = getBatType(bat);
                     let damageIcon = '';
-                    if (bat.squadsLeft < batType.squads) {
-                        damageIcon = '<i class="ra ra-bleeding-hearts blor"></i>';
-                    } else if (bat.damage >= 1) {
+                    let squadLoss = false;
+                    if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
+                        if (bat.squadsLeft < Math.ceil(bat.citoyens/6)) {
+                            damageIcon = '<i class="ra ra-bleeding-hearts blor"></i>';
+                            squadLoss = true;
+                        }
+                    } else {
+                        if (bat.squadsLeft < batType.squads) {
+                            damageIcon = '<i class="ra ra-bleeding-hearts blor"></i>';
+                            squadLoss = true;
+                        }
+                    }
+                    if (!squadLoss && bat.damage >= 1) {
                         damageIcon = '<i class="ra ra-bleeding-hearts"></i>';
                     }
                     let poisonIcon = '';

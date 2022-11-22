@@ -206,14 +206,21 @@ function batInfos(bat,batType,pop) {
     }
     // SQUADS
     let iconCol = 'gff';
-    if (bat.squadsLeft < batType.squads) {
-        iconCol = 'or';
+    if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
+        if (bat.squadsLeft < Math.ceil(bat.citoyens/6)) {
+            iconCol = 'or';
+        }
+    } else {
+        if (bat.squadsLeft < batType.squads) {
+            iconCol = 'or';
+        }
     }
     $('#'+bodyPlace).append('<span class="paramName">Escouades</span><span class="paramIcon '+iconCol+'"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batType.squads+'</span><br>');
     let squadHP = batType.squadSize*batType.hp;
-    iconCol = 'gff';
-    if (bat.squadsLeft < batType.squads || bat.damage >= 1) {
+    if (iconCol === 'or' || bat.damage >= 1) {
         iconCol = 'or';
+    } else {
+        iconCol = 'gff';
     }
     $('#'+bodyPlace).append('<span class="paramName">Dégâts</span><span class="paramIcon '+iconCol+'"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.damage+'/'+squadHP+'</span><br>');
     if (pop) {
@@ -677,7 +684,7 @@ function batInfos(bat,batType,pop) {
         if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall' || allowCheat) {
             $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel skillButtons" onclick="removeBat('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
         }
-        if (batType.transRes >= 1 && batType.name != 'Soute' && batType.name != 'Stocks') {
+        if ((batType.transRes >= 1 && batType.name != 'Soute' && batType.name != 'Stocks') || (batType.transRes >= 1 && allowCheat)) {
             if (Object.keys(bat.transRes).length >= 1) {
                 $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge skillButtons" onclick="fretThrow()"><i class="fas fa-truck-loading"></i></button>&nbsp; Vider</h4></span>');
             }
