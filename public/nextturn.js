@@ -1075,7 +1075,7 @@ function turnInfo() {
                     if (expertise >= 1) {
                         warning('Apocalypse','Les ruches et volcans vont se suicider en crachant à très grande distance. Tour prévu par nos experts: '+lsTurn+'.');
                     } else {
-                        warning('Apocalypse','Les ruches et volcans vont se suicider en crachant à très grande distance. Nos experts sont incapables de prévoir quand.');
+                        warning('Apocalypse','Il se passe un truc bizare avec les ruches. Nos experts manquent de moyen pour enquêter.');
                     }
                 }
             }

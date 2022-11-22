@@ -1866,11 +1866,7 @@ function getHuntType() {
     if (zone[0].pw+zone[0].ps+zone[0].pr >= 30) {
         huntType.chance = 20;
         huntType.max = Math.round(zone[0].pw/2);
-        if (huntDice === 1) {
-            huntType.game = 'Meatballs';
-        } else if (huntDice === 2) {
-            huntType.game = 'Rats';
-        } else if (huntDice >= 5) {
+        if (huntDice >= 4) {
             huntType.game = 'Crocos';
         } else {
             huntType.game = 'Tritons';
@@ -1878,11 +1874,7 @@ function getHuntType() {
     } else if (zone[0].pb+zone[0].pf >= 50) {
         huntType.chance = 15;
         huntType.max = Math.round(zone[0].pf/3);
-        if (huntDice === 1) {
-            huntType.game = 'Crocos';
-        } else if (huntDice === 2 || huntDice === 3) {
-            huntType.game = 'Meatballs';
-        } else if (huntDice >= 10) {
+        if (huntDice >= 9) {
             huntType.game = 'Tritons';
         } else {
             huntType.game = 'Rats';
@@ -1890,11 +1882,7 @@ function getHuntType() {
     } else if (zone[0].pp+zone[0].pg >= 50) {
         huntType.chance = 7;
         huntType.max = Math.round(zone[0].pg/2);
-        if (huntDice === 1) {
-            huntType.game = 'Crocos';
-        } else if (huntDice === 2) {
-            huntType.game = 'Tritons';
-        } else if (huntDice >= 6) {
+        if (huntDice >= 7) {
             huntType.game = 'Meatballs';
         } else {
             huntType.game = 'Rats';

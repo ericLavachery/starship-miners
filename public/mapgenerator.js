@@ -1773,12 +1773,12 @@ function zoneReport(myZone,quiet) {
                     sndEnsolBonus = 230;
                 } else {
                     myZone[0].snd = 'rainforest';
-                    sndEnsolBonus = 100;
+                    sndEnsolBonus = 150;
                     rain = true;
                 }
             } else if (percW+percS >= 50) {
                 myZone[0].snd = 'bogs';
-                sndEnsolBonus = 100;
+                sndEnsolBonus = 40;
             } else if (percB >= 35) {
                 if (rand.rand(1,2) === 1) {
                     myZone[0].snd = 'crickets';
@@ -2064,7 +2064,7 @@ function checkZoneType() {
     zone[0].type = 'normal';
     zoneInfos.cb = false; // if true add class b to class c
     zoneInfos.as = false; // if true add class s to class a
-    if (zone[0].terrain != 'V' && playerInfos.gLevel < 19) {
+    if (zone[0].terrain != 'V' && (playerInfos.gLevel < 19 || zone[0].edited)) {
         if ((swampMap || zone[0].edited) && (zone[0].mapDiff >= 5 || zone[0].edited) && zone[3].seed === 1 && zone[4].seed <= 2) {
             zoneInfos.type = 'leech';
             zone[0].type = 'leech';

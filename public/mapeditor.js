@@ -58,6 +58,17 @@ function mapEditWindow() {
     } else {
         theTileRes = {};
     }
+    $('#conUnitList').append('<span class="constName"><span class="gf">Planête</span> : <span class="cy klik" onclick="planetToggle(`'+zone[0].planet+'`)" title="Changer de planête">'+zone[0].planet+'</span></span><br>');
+    $('#conUnitList').append('<span class="constName"><span class="gf">Présense alien</span> : <span class="cy klik" onclick="diffToggle()" title="Changer la présence alien">pa'+zone[0].mapDiff+'</span></span><br>');
+    $('#conUnitList').append('<span class="constName"><span class="gf">Ambiance</span> : <span class="cy klik" onclick="roomToggle(`'+zone[0].snd+'`)" title="Changer le type de zone">'+zone[0].snd+'</span> <span class="bleu">(Soleil: '+zone[0].ensol+')</span></span><br>');
+    let theGame = {};
+    theGame.game = 'Indéfini';
+    theGame.chance = 0;
+    theGame.max = 0;
+    if (zone[0].hunt != undefined) {
+        theGame = zone[0].hunt;
+    }
+    $('#conUnitList').append('<span class="constName"><span class="gf">Gibier</span> : <span class="cy klik" onclick="checkGibier()" title="Checker le type de gibier">'+theGame.game+'</span> <span class="bleu" title="Chance/Max">('+theGame.chance+'/'+theGame.max+')</span></span><br>');
     mpedOption('cLand','Atterrissage au centre possible également','Landing centre','Atterrissage uniquement aux points marqués','Landing points');
     mpedOption('neverMove','Les bataillons avec un tag nomove peuvent également bouger dès qu\'un bâtiment (avec un tag nomove) est détruit','Tag nomove normal','Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints','Never move');
     mpedOption('noEggs','Aucun oeuf ne tombe','Sans Oeufs','Des oeufs tombent','Avec Oeufs');
@@ -69,6 +80,175 @@ function mapEditWindow() {
         eggsByTerrain('marécages',zone[0].sKind);
     }
     $('#conUnitList').append('<br><br>');
+};
+
+// {"number":3,"mapDiff":3,"visit":true}
+
+function diffToggle() {
+    zone[0].mapDiff = zone[0].mapDiff+1;
+    if (zone[0].mapDiff > 12) {
+        zone[0].mapDiff = 0;
+    }
+    playerInfos.sondeDanger = zone[0].mapDiff;
+    playerInfos.mapDiff = zone[0].mapDiff;
+    mapEditWindow();
+};
+
+function checkGibier() {
+    zonePercCheck();
+    let huntType = getHuntType();
+    zone[0].hunt = huntType;
+    mapEditWindow();
+};
+
+function roomToggle(zound) {
+    let sndEnsolBonus = 100;
+    if (zone[0].planet === 'Dom') {
+        if (zound === 'thunderfull') {
+            zone[0].snd = 'thunderstart';
+            sndEnsolBonus = 35;
+        } else if (zound === 'thunderstart') {
+            zone[0].snd = 'cricketsloop';
+            sndEnsolBonus = 250;
+        } else if (zound === 'cricketsloop') {
+            zone[0].snd = 'jungle';
+            sndEnsolBonus = 230;
+        } else if (zound === 'jungle') {
+            zone[0].snd = 'rainforest';
+            sndEnsolBonus = 150;
+        } else if (zound === 'rainforest') {
+            zone[0].snd = 'birds';
+            sndEnsolBonus = 125;
+        } else if (zound === 'birds') {
+            zone[0].snd = 'crickets';
+            sndEnsolBonus = 150;
+        } else if (zound === 'crickets') {
+            zone[0].snd = 'howlwind';
+            sndEnsolBonus = 75;
+        } else if (zound === 'howlwind') {
+            zone[0].snd = 'bogs';
+            sndEnsolBonus = 30;
+        } else {
+            zone[0].snd = 'thunderfull';
+            sndEnsolBonus = 20;
+        }
+    } else if (zone[0].planet === 'Sarak') {
+        if (zound === 'fogfrogs') {
+            zone[0].snd = 'strange';
+            sndEnsolBonus = 0;
+        } else {
+            zone[0].snd = 'fogfrogs';
+            sndEnsolBonus = 0;
+        }
+    } else if (zone[0].planet === 'Gehenna') {
+        if (zound === 'swamp') {
+            zone[0].snd = 'uhuwind';
+            sndEnsolBonus = 100;
+        } else if (zound === 'uhuwind') {
+            zone[0].snd = 'monsoon';
+            sndEnsolBonus = 25;
+        } else {
+            zone[0].snd = 'swamp';
+            sndEnsolBonus = 50;
+        }
+    } else if (zone[0].planet === 'Kzin') {
+        if (zound === 'sywind') {
+            zone[0].snd = 'bwind';
+            sndEnsolBonus = 100;
+        } else {
+            zone[0].snd = 'sywind';
+            sndEnsolBonus = 50;
+        }
+    } else if (zone[0].planet === 'Horst') {
+        if (zound === 'thunderred') {
+            zone[0].snd = 'bwindred';
+            sndEnsolBonus = 75;
+        } else if (zound === 'bwindred') {
+            zone[0].snd = 'redwind';
+            sndEnsolBonus = 125;
+        } else {
+            zone[0].snd = 'thunderred';
+            sndEnsolBonus = 25;
+        }
+    }
+    let ensolFactor = rand.rand(25,35);
+    let ensolBonus = rand.rand(0,80);
+    zone[0].ensol = Math.round((Math.round(100*ensolFactor/10)+ensolBonus)*sndEnsolBonus/125);
+    if (zone[0].ensol < 50 && zone[0].planet != 'Sarak') {
+        zone[0].ensol = 40+rand.rand(0,10);
+    }
+    playerInfos.sondeDanger = zone[0].mapDiff;
+    playerInfos.mapDiff = zone[0].mapDiff;
+    checkGibier();
+    playRoom(zone[0].snd,true,true);
+    showMap(zone,true);
+    mapEditWindow();
+};
+
+function planetToggle(plaName) {
+    if (plaName === 'Dom') {
+        zone[0].planet = 'Sarak';
+        zone[0].pid = 2;
+        zone[0].snd = 'fogfrogs';
+        zone[0].dark = true;
+        zone[0].undarkAll = true;
+        zone[0].undarkOnce = [];
+        playerInfos.sondePlanet = 2;
+    } else if (plaName === 'Sarak') {
+        zone[0].planet = 'Gehenna';
+        zone[0].pid = 3;
+        zone[0].snd = 'swamp';
+        zone[0].dark = false;
+        zone[0].undarkAll = true;
+        zone[0].undarkOnce = [];
+        playerInfos.sondePlanet = 3;
+    } else if (plaName === 'Gehenna') {
+        zone[0].planet = 'Kzin';
+        zone[0].pid = 4;
+        zone[0].snd = 'sywind';
+        zone[0].dark = false;
+        zone[0].undarkAll = true;
+        zone[0].undarkOnce = [];
+        playerInfos.sondePlanet = 4;
+    } else if (plaName === 'Kzin') {
+        zone[0].planet = 'Horst';
+        zone[0].pid = 5;
+        zone[0].snd = 'thunderred';
+        zone[0].dark = false;
+        zone[0].undarkAll = true;
+        zone[0].undarkOnce = [];
+        playerInfos.sondePlanet = 5;
+    } else if (plaName === 'Horst') {
+        zone[0].planet = 'Dom';
+        zone[0].pid = 1;
+        zone[0].snd = 'howlwind';
+        zone[0].dark = false;
+        zone[0].undarkAll = true;
+        zone[0].undarkOnce = [];
+        playerInfos.sondePlanet = 1;
+    }
+    playerInfos.sondeDanger = zone[0].mapDiff;
+    playerInfos.mapDiff = zone[0].mapDiff;
+    checkGibier();
+    playRoom(zone[0].snd,true,true);
+    showMap(zone,true);
+    planetThumb();
+    mapEditWindow();
+};
+
+function mpedOption(champ,defFalse,linkFalse,defTrue,linkTrue) {
+    if (zone[0][champ] === undefined) {
+        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`'+champ+'`,false)" title="'+defTrue+'">'+linkTrue+'</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`'+champ+'`,true)" title="'+defFalse+'">'+linkFalse+'</span></span><br>');
+    } else if (zone[0][champ]) {
+        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`'+champ+'`,false)" title="'+defTrue+'">'+linkTrue+'</span> &nbsp;|&nbsp; <span class="cy klik" onclick="zoneChange(`'+champ+'`,true)" title="'+defFalse+'">'+linkFalse+'</span></span><br>');
+    } else if (!zone[0][champ]) {
+        $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="zoneChange(`'+champ+'`,false)" title="'+defTrue+'">'+linkTrue+'</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`'+champ+'`,true)" title="'+defFalse+'">'+linkFalse+'</span></span><br>');
+    }
+};
+
+function zoneChange(champ,valeur) {
+    zone[0][champ] = valeur;
+    mapEditWindow();
 };
 
 function selectStuff(stuff,stuffImg,stuffDef) {
@@ -134,21 +314,6 @@ function xKindToggle(myTer,eggType) {
         newEggType = 'bug';
     }
     zone[0][xKind] = newEggType;
-    mapEditWindow();
-};
-
-function mpedOption(champ,defFalse,linkFalse,defTrue,linkTrue) {
-    if (zone[0][champ] === undefined) {
-        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`'+champ+'`,false)" title="'+defTrue+'">'+linkTrue+'</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`'+champ+'`,true)" title="'+defFalse+'">'+linkFalse+'</span></span><br>');
-    } else if (zone[0][champ]) {
-        $('#conUnitList').append('<span class="constName"><span class="gf klik" onclick="zoneChange(`'+champ+'`,false)" title="'+defTrue+'">'+linkTrue+'</span> &nbsp;|&nbsp; <span class="cy klik" onclick="zoneChange(`'+champ+'`,true)" title="'+defFalse+'">'+linkFalse+'</span></span><br>');
-    } else if (!zone[0][champ]) {
-        $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="zoneChange(`'+champ+'`,false)" title="'+defTrue+'">'+linkTrue+'</span> &nbsp;|&nbsp; <span class="gf klik" onclick="zoneChange(`'+champ+'`,true)" title="'+defFalse+'">'+linkFalse+'</span></span><br>');
-    }
-};
-
-function zoneChange(champ,valeur) {
-    zone[0][champ] = valeur;
     mapEditWindow();
 };
 
@@ -408,4 +573,65 @@ function seedAuto() {
 function seedManu() {
     mped.as = false;
     mapEditWindow();
+};
+
+function zonePercCheck() {
+    let percM = 0;
+    let percH = 0;
+    let percP = 0;
+    let percG = 0;
+    let percB = 0;
+    let percF = 0;
+    let percS = 0;
+    let percW = 0;
+    let percR = 0;
+    let terName;
+    zone.forEach(function(tile) {
+        terName = getTileTerrainName(tile.id);
+        if (terName === 'M') {
+            percM++;
+        }
+        if (terName === 'H') {
+            percH++;
+        }
+        if (terName === 'P') {
+            percP++;
+        }
+        if (terName === 'G') {
+            percG++;
+        }
+        if (terName === 'B') {
+            percB++;
+        }
+        if (terName === 'F') {
+            percF++;
+        }
+        if (terName === 'S') {
+            percS++;
+        }
+        if (terName === 'W' || terName === 'L') {
+            percW++;
+        }
+        if (terName === 'R') {
+            percR++;
+        }
+    });
+    percM = Math.round(percM/36);
+    zone[0].pm = percM;
+    percH = Math.round(percH/36);
+    zone[0].ph = percH;
+    percP = Math.round(percP/36);
+    zone[0].pp = percP;
+    percG = Math.round(percG/36);
+    zone[0].pg = percG;
+    percB = Math.round(percB/36);
+    zone[0].pb = percB;
+    percF = Math.round(percF/36);
+    zone[0].pf = percF;
+    percS = Math.round(percS/36);
+    zone[0].ps = percS;
+    percW = Math.round(percW/36);
+    zone[0].pw = percW;
+    percR = Math.round(percR/36);
+    zone[0].pr = percR;
 };

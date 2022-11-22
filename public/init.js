@@ -149,6 +149,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.allCits === undefined) {
         playerInfos.allCits = 2200;
     }
+    if (playerInfos.citz === undefined) {
+        playerInfos.citz = {};
+    }
     if (playerInfos.gangXP === undefined) {
         playerInfos.gangXP = playerInfos.allCits;
     }

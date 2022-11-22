@@ -722,26 +722,41 @@ function getTerrainFilter(mapInf) {
         if (mapInf.snd === undefined) {
             zoneReport(zone,true);
         }
-        if (mapInf.snd === 'thunderfull' || mapInf.snd === 'thunderstart') {
+        if (mapInf.snd === 'thunderfull' || mapInf.snd === 'thunderstart' || mapInf.snd === 'bogs') {
             terClass = 'terPicRain';
         }
-        if (mapInf.snd === 'cricketsloop' || mapInf.snd === 'jungle') {
+        if (mapInf.snd === 'rainforest' || mapInf.snd === 'cricketsloop' || mapInf.snd === 'jungle') {
             terClass = 'terPicSun';
         }
-        if (mapInf.snd === 'rainforest' || mapInf.snd === 'birds' || mapInf.snd === 'crickets' || mapInf.snd === 'howlwind' || mapInf.snd === 'bogs') {
+        if (mapInf.snd === 'birds' || mapInf.snd === 'crickets' || mapInf.snd === 'howlwind') {
             terClass = 'terPic';
         }
-        if (mapInf.snd === 'fogfrogs' || mapInf.snd === 'strange') {
-            terClass = 'terPicFog';
-        }
-        if (mapInf.snd === 'sywind' || mapInf.snd === 'bwind') {
-            terClass = 'terPicGrav';
-        }
-        if (mapInf.snd === 'bwindred' || mapInf.snd === 'thunderred' || mapInf.snd === 'redwind') {
-            terClass = 'terPicHot';
-        }
-        if (mapInf.snd === 'uhuwind' || mapInf.snd === 'swamp' || mapInf.snd === 'monsoon') {
-            terClass = 'terPicTox';
+        if (mapInf.pid != undefined) {
+            if (mapInf.pid === 2) {
+                terClass = 'terPicFog';
+            }
+            if (mapInf.pid === 3) {
+                terClass = 'terPicTox';
+            }
+            if (mapInf.pid === 4) {
+                terClass = 'terPicGrav';
+            }
+            if (mapInf.pid === 5) {
+                terClass = 'terPicHot';
+            }
+        } else {
+            if (mapInf.snd === 'fogfrogs' || mapInf.snd === 'strange') {
+                terClass = 'terPicFog';
+            }
+            if (mapInf.snd === 'uhuwind' || mapInf.snd === 'swamp' || mapInf.snd === 'monsoon') {
+                terClass = 'terPicTox';
+            }
+            if (mapInf.snd === 'sywind' || mapInf.snd === 'bwind') {
+                terClass = 'terPicGrav';
+            }
+            if (mapInf.snd === 'bwindred' || mapInf.snd === 'thunderred' || mapInf.snd === 'redwind') {
+                terClass = 'terPicHot';
+            }
         }
     }
     return terClass;
