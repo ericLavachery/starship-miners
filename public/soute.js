@@ -324,7 +324,25 @@ function batListElement(bat,batType,idOfLander) {
     let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq,bat.logeq]);
     let enoughRes = checkCost(deployCosts);
     let deployInfo = checkPlaceLander(bat,batType,slId);
-    if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2] || bat.eq === 'camkit' || batType.skills.includes('nodeploy')) {
+    let deployOK = true;
+    if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2] || bat.eq === 'camkit' || batType.skills.includes('nodeploy') || bat.tags.includes('dying')) {
+        deployOK = false;
+    }
+    if (batType.cat === 'buildings' || batType.cat === 'devices') {
+        if (bat.soins != undefined) {
+            if (bat.soins >= 20) {
+                deployOK = false;
+            }
+        }
+    }
+    if (batType.cat === 'vehicles') {
+        if (bat.soins != undefined) {
+            if (bat.soins >= 30) {
+                deployOK = false;
+            }
+        }
+    }
+    if (!deployOK) {
         if (bat.id === selectedBat.id) {
             blockType = 'souteBlockCheck';
         } else {
@@ -345,7 +363,7 @@ function batListElement(bat,batType,idOfLander) {
     let lynx = 'none';
     if (bat.id === selectedBat.id) {
         if (bat.locId === souteId) {
-            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && !batType.skills.includes('nodeploy')) {
+            if (deployOK) {
                 lynx = 'deploy';
             }
         } else {
@@ -413,8 +431,20 @@ function batListElement(bat,batType,idOfLander) {
     if (vetStatus != '') {
         $('#be'+bat.id).append('<span class="listRes gff">'+vetStatus+'</span>');
     }
+    if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar') || batType.skills.includes('cram') || batType.skills.includes('dogprod') || batType.skills.includes('transcrap') || batType.skills.includes('cryogen') || batType.skills.includes('cryocit')) {
+        if (bat.tags.includes('prodres')) {
+            $('#be'+bat.id).append('<span class="listRes vert" title="Production activée">&nbsp;<i class="fas fa-industry"></i></span>');
+        } else {
+            $('#be'+bat.id).append('<span class="listRes jaune" title="Production désactivée">&nbsp;<i class="fas fa-industry"></i></span>');
+        }
+    }
+    if (bat.tags.includes('dying')) {
+        $('#be'+bat.id).append('<span class="listRes or" title="Mourrant">&nbsp;<i class="fas fa-bone"></i></span>');
+    } else if (bat.tags.includes('hungry')) {
+        $('#be'+bat.id).append('<span class="listRes jaune" title="Souffrant">&nbsp;<i class="fas fa-bone"></i></span>');
+    }
     let effSoins = checkEffSoins(bat);
-    if (batType.cat === 'vehicles') {
+    if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
         if (bat.soins >= 11) {
             $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-wrench"></i></span>');
         }
@@ -513,6 +543,14 @@ function batUndeploy(batId) {
     loadBat(bat.id,souteId,slId);
     goSoute();
     showBatInfos(bat);
+};
+
+function batUndeployFrom(batId,fromId) {
+    let bat = getBatById(batId);
+    let batType = getBatType(bat);
+    let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq,bat.logeq]);
+    addCost(deployCosts,1);
+    loadBat(bat.id,souteId,fromId);
 };
 
 function calcLanderDeploy(landerBatType) {

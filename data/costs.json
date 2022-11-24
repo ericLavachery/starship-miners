@@ -94,7 +94,7 @@
         "bldReq":[],
         "costs":{"Bois":40},
         "fabTime":5,
-        "crime":-0.4
+        "crime":-0.5
     },
     {
         "id":291,
@@ -103,7 +103,7 @@
         "bldReq":[],
         "costs":{"Fer":20,"Scrap":20},
         "fabTime":5,
-        "crime":-0.4
+        "crime":-0.5
     },
     {
         "id":190,
@@ -112,7 +112,7 @@
         "bldReq":[],
         "costs":{"Fer":20,"Scrap":20},
         "fabTime":5,
-        "crime":-0.4
+        "crime":-0.5
     },
     {
         "id":245,
@@ -121,7 +121,7 @@
         "bldReq":[],
         "costs":{"Fer":20,"Scrap":20},
         "fabTime":5,
-        "crime":-0.4
+        "crime":-0.5
     },
     {
         "id":191,
@@ -130,7 +130,7 @@
         "bldReq":[],
         "costs":{"Fer":20},
         "fabTime":5,
-        "crime":-0.4
+        "crime":-0.5
     },
     {
         "id":213,
@@ -139,7 +139,7 @@
         "bldReq":[],
         "costs":{"Bois":20,"Huile":10},
         "fabTime":5,
-        "crime":-0.4
+        "crime":-0.5
     },
     {
         "id":214,
@@ -148,7 +148,7 @@
         "bldReq":[],
         "costs":{"Bois":20},
         "fabTime":5,
-        "crime":-0.4
+        "crime":-0.5
     },
     {
         "id":0,
@@ -175,7 +175,8 @@
         "bldReq":["Infirmerie"],
         "costs":{"Zinc":40,"Chlore":40,"Titane":10,"Fer":10,"Scrap":10,"Silicium":18,"Drogues":58,"Tissus":20},
         "deploy":{"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
-        "fabTime":25
+        "fabTime":25,
+        "crime":-0.25
     },
     {
         "id":148,
@@ -184,7 +185,8 @@
         "bldReq":[],
         "costs":{"Zinc":25,"Chlore":25,"Titane":6,"Fer":12,"Scrap":12,"Silicium":12,"Drogues":37,"Tissus":12},
         "deploy":{"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
-        "fabTime":25
+        "fabTime":25,
+        "crime":-0.25
     },
     {
         "id":154,
@@ -194,7 +196,8 @@
         "unitUp":"Gurus",
         "costs":{"Zinc":25,"Chlore":25,"Carbone":10,"Aluminium":10,"Titane":16,"Fer":20,"Scrap":20,"Bois":20,"Silicium":12,"Drogues":47,"Tissus":30},
         "deploy":{"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
-        "fabTime":25
+        "fabTime":25,
+        "crime":-0.25
     },
     {
         "id":155,
@@ -332,7 +335,8 @@
         "unitUp":"Marshalls",
         "costs":{"Fer":64,"Scrap":64,"Végétaux":20,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
-        "fabTime":15
+        "fabTime":15,
+        "crime":-0.2
     },
     {
         "id":19,
@@ -457,7 +461,8 @@
         "bldReq":["Infirmerie"],
         "costs":{"Scrap":32,"Bois":32,"Végétaux":32,"Drogues":43,"Silicium":18,"Chlore":25,"Zinc":25,"Titane":6,"Tissus":12},
         "deploy":{"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
-        "fabTime":25
+        "fabTime":25,
+        "crime":-0.25
     },
     {
         "id":42,
@@ -1519,7 +1524,8 @@
         "bldReq":["Infirmerie","Garage"],
         "costs":{"Fer":27,"Scrap":225,"Carbone":36,"Moteurs":27,"Cuivre":18,"Electros":9,"Batteries":9,"Compo2":36,"Silicium":36,"Drogues":94,"Chlore":48,"Zinc":48,"Titane":12,"Tissus":24},
         "deploy":{"Fuel":40,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
-        "fabTime":40
+        "fabTime":40,
+        "crime":-0.2
     },
     {
         "id":61,
@@ -1530,7 +1536,8 @@
         "compHardReq":{"bal":2},
         "costs":{"Fer":150,"Scrap":165,"Carbone":120,"Aluminium":30,"Moteurs":90,"Titane":45,"Tungstène":105,"Cuivre":45,"Electros":60,"Batteries":135,"Compo2":120,"Compo3":45,"Végétaux":270,"Blendium":180,"Silicium":30,"Drogues":100,"Chlore":60,"Zinc":60,"Mendium":45,"Azote":90,"Tissus":30},
         "deploy":{"Energie":380,"Drogues":40,"Chlore":20,"Zinc":20,"Tissus":20},
-        "fabTime":90
+        "fabTime":90,
+        "crime":-0.2
     },
     {
         "id":65,
@@ -1541,7 +1548,8 @@
         "costs":{"Fer":60,"Scrap":432,"Carbone":60,"Moteurs":40,"Electros":12,"Batteries":24,"Compo2":72,"Silicium":60,"Drogues":130,"Chlore":60,"Zinc":60,"Titane":15,"Tissus":30},
         "deploy":{"Fuel":50,"Drogues":40,"Chlore":20,"Zinc":20,"Tissus":20},
         "fabTime":80,
-        "inRuin":4
+        "inRuin":4,
+        "crime":-1
     },
     {
         "id":54,

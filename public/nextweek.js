@@ -20,7 +20,7 @@ function events(afterMission,time,sim,quiet) {
     eventBodies(time,sim,quiet);
     eventProduction(afterMission,time,sim,quiet); // remove 'return' tag !!!
     eventBouffe(time,sim,quiet);
-    eventCrime(time,sim,quiet);
+    eventCrime(time,sim,quiet,afterMission);
     eventAliens(time,sim,quiet);
     if (!sim) {
         autoResPurge();
@@ -512,11 +512,14 @@ function eventBouffe(time,sim,quiet) {
     }
     playerInfos.vitals = Math.floor(playerInfos.vitals*(penuries+5)/15);
     playerInfos.vitals = playerInfos.vitals+penuries;
+    if (!sim) {
+        hungerGames();
+    }
     if (playerInfos.vitals >= 15) {
         let maxDead = Math.ceil((playerInfos.vitals-10)*time/20/(playerInfos.comp.med+6)*6);
         let minDead = Math.ceil(maxDead/3);
         let deadCits = {};
-        deadCits.num = rand.rand(1,maxDead);
+        deadCits.num = rand.rand(minDead,maxDead);
         deadCits.type = 'Citoyens';
         if (!sim) {
             deadCits = getCitDeath('Citoyens',deadCits.num,false);
@@ -531,6 +534,65 @@ function eventBouffe(time,sim,quiet) {
     }
     if (mesCitoyens.dogs >= 1) {
         eventDogs(time,sim,quiet,mesCitoyens);
+    }
+};
+
+function hungerGames() {
+    if (playerInfos.vitals >= 5) {
+        let hungerDice = 100+(playerInfos.comp.med*10);
+        bataillons.forEach(function(bat) {
+            let batType = getBatType(bat);
+            if (batType.crew >= 1) {
+                if (!batType.skills.includes('robot')) {
+                    let affected = true;
+                    if (batType.skills.includes('transorbital')) {
+                        affected = false;
+                    }
+                    if (batType.skills.includes('leader') || batType.skills.includes('prayer')) {
+                        if (playerInfos.vitals < 75) {
+                            affected = false;
+                        }
+                    }
+                    if (batType.skills.includes('penitbat')) {
+                        if (playerInfos.penit >= 10) {
+                            if (playerInfos.vitals < 75) {
+                                affected = false;
+                            }
+                        }
+                    }
+                    if (playerInfos.crime >= 15) {
+                        if (batType.skills.includes('brigands')) {
+                            if (playerInfos.vitals < 30) {
+                                affected = false;
+                            }
+                        }
+                    }
+                    if (affected) {
+                        if (rand.rand(1,hungerDice) <= playerInfos.vitals) {
+                            if (bat.tags.includes('hungry')) {
+                                bat.tags.push('dying');
+                            } else {
+                                bat.tags.push('hungry');
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } else if (playerInfos.vitals >= 2) {
+        bataillons.forEach(function(bat) {
+            if (bat.tags.includes('dying')) {
+                tagDelete(bat,'dying');
+            }
+        });
+    } else {
+        bataillons.forEach(function(bat) {
+            if (bat.tags.includes('dying')) {
+                tagDelete(bat,'dying');
+            } else if (bat.tags.includes('hungry')) {
+                tagDelete(bat,'hungry');
+            }
+        });
     }
 };
 
@@ -691,147 +753,21 @@ function calcTotalCitoyens(cryoOut) {
     return mesCitoyens;
 };
 
-function eventCrime(time,sim,quiet) {
+function eventCrime(time,sim,quiet,afterMission) {
     // Crimes et vols en fonction du taux de criminalité
     let mesCitoyens = calcTotalCitoyens(false);
     let population = mesCitoyens.crim+mesCitoyens.cit;
     let crimeRate = calcCrimeRate(mesCitoyens);
-    if (!sim) {
-        // EFFETS !!! CRIMES !!!
+    if (!sim || playerInfos.pseudo === 'Test') {
         playerInfos.crime = crimeRate.total;
+        setPenitLevel();
     }
     if (!quiet) {
         warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false)
     }
-    setPenitLevel();
-};
-
-function calcCrimeRate(mesCitoyens) {
-    let crimeRate = {};
-    // facteur: +criminels%
-    let population = mesCitoyens.crim+mesCitoyens.cit;
-    crimeRate.crim = Math.ceil(mesCitoyens.crim*100/population);
-    crimeRate.penib = 17;
-    crimeRate.lits = 0;
-    crimeRate.fo = 0;
-    crimeRate.total = 0;
-    // facteur: +population
-    let overPop = population-3000;
-    crimeRate.penib = crimeRate.penib+Math.round(overPop/250);
-    // +1 par point playerInfos.vitals (25 pts)
-    crimeRate.penib = crimeRate.penib+playerInfos.vitals;
-    let bldIds = [];
-    // Unités: (electroguards-2 gurus-2 dealers-1 marshalls-1)
-    let maxAntiCrimeUnits = Math.round(Math.sqrt(population)/7.5);
-    let antiCrimeUnits = 0;
-    let bigCrims = 0;
-    // Bâtiments: (prisons-5 salleSport-2 jardin-4 bar-2 cantine-3 dortoirs+1 cabines-1 appartements+3)
-    let sortedBatList = bataillons.slice();
-    sortedBatList = _.sortBy(sortedBatList,'sort');
-    sortedBatList.reverse();
-    sortedBatList.forEach(function(bat) {
-        let batType = getBatType(bat);
-        if (batType.skills.includes('gcrim')) {
-            bigCrims = bigCrims+(batType.squads*batType.crew*batType.squadSize);
-        }
-        if (batType.name === 'Dortoirs') {
-            crimeRate.lits = crimeRate.lits+500;
-            if (bat.eq === 'mezzanine') {
-                crimeRate.lits = crimeRate.lits+350;
-                crimeRate.penib = crimeRate.penib+1;
-            }
-            if (bat.eq === 'confort') {
-                crimeRate.penib = crimeRate.penib-1;
-            }
-        }
-        if (batType.name === 'Cabines') {
-            crimeRate.lits = crimeRate.lits+350;
-        }
-        if (batType.name === 'Appartements') {
-            crimeRate.lits = crimeRate.lits+75;
-        }
-        if (batType.crime != undefined || bat.eq === 'camkit') {
-            let countMe = false;
-            if (batType.cat === 'buildings' || batType.name === 'Technobass') {
-                if (batType.name === 'Prisons' || batType.name === 'Cabines' || batType.name === 'Technobass' || batType.name === 'Ascenceur' || batType.crime >= 1) {
-                    countMe = true;
-                } else {
-                    if (!bldIds.includes(batType.id)) {
-                        countMe = true;
-                        bldIds.push(batType.id);
-                    }
-                }
-            } else if (batType.name === 'Electroguards') {
-                countMe = true;
-            } else {
-                antiCrimeUnits++;
-                if (antiCrimeUnits <= maxAntiCrimeUnits) {
-                    countMe = true;
-                }
-            }
-            if (countMe) {
-                if (bat.eq === 'camkit' && playerInfos.bldVM.includes('Salle de contrôle')) {
-                    crimeRate.fo = crimeRate.fo-1.2;
-                } else if (batType.skills.includes('fo')) {
-                    crimeRate.fo = crimeRate.fo+batType.crime;
-                } else {
-                    crimeRate.penib = crimeRate.penib+batType.crime;
-                    console.log(batType.name+' '+batType.crime+' total='+crimeRate.penib);
-                }
-            }
-        }
-    });
-    crimeRate.fo = Math.round(crimeRate.fo);
-    // centre de com
-    if (playerInfos.bldList.includes('Salle de contrôle')) {
-        crimeRate.fo = crimeRate.fo-1;
+    if (!sim || playerInfos.pseudo === 'Test') {
+        checkCrimes(crimeRate,time,afterMission);
     }
-    // structure
-    let numStructures = checkNumUnits('Structure');
-    console.log('Structure='+numStructures);
-    crimeRate.penib = crimeRate.penib-Math.round(numStructures/10);
-    // +5 par dortoir manquant
-    if (population > crimeRate.lits) {
-        crimeRate.penib = crimeRate.penib+Math.floor((population-crimeRate.lits)/100);
-    }
-    console.log('PENIBBBBBBBBBBBBBBBBBBBBBBBBB');
-    console.log(crimeRate.penib);
-    if (crimeRate.penib < 0) {
-        crimeRate.penib = 0;
-    }
-    // Grande criminalité
-    let bigAdj = bigCrims*2/(playerInfos.comp.ordre+4);
-    let adjCrims = crimeRate.crim;
-    adjCrims = Math.ceil((mesCitoyens.crim+bigAdj)*100/population);
-    console.log('crimeRate.crim='+crimeRate.crim);
-    console.log('bigAdj='+bigAdj);
-    console.log('adjCrims='+adjCrims);
-    // Treshold
-    let horror = crimeRate.penib;
-    if (horror > 15) {
-        horror = Math.ceil((horror-15)/10)+15;
-    }
-    if (horror < 10) {
-        crimeRate.total = adjCrims+Math.round(horror/1.9);
-    } else if (adjCrims >= 15) {
-        crimeRate.total = adjCrims+Math.round(horror*1.2);
-    } else {
-        crimeRate.total = adjCrims+horror;
-    }
-    crimeRate.total = crimeRate.total+crimeRate.fo;
-    // compétence maintien de l'ordre
-    let mOrdre = 6;
-    if (playerInfos.comp.ordre === 1) {
-        mOrdre = 8;
-    } else if (playerInfos.comp.ordre >= 2) {
-        mOrdre = 10;
-    }
-    crimeRate.total = Math.round(crimeRate.total/mOrdre*6);
-    if (crimeRate.total < 0) {
-        crimeRate.total = 0;
-    }
-    console.log('crimeRate.total='+crimeRate.total);
-    return crimeRate;
 };
 
 function chenilProd(bat,batType,time,sim,quiet) {
@@ -878,6 +814,7 @@ function chenilProd(bat,batType,time,sim,quiet) {
             } else {
                 let dogChance = Math.ceil(time/2);
                 dogChance = Math.ceil(dogChance*(playerInfos.comp.med+12)/12*(playerInfos.comp.ordre+12)/12);
+                dogChance = prodDrop(bat,batType,dogChance);
                 console.log('dogChance='+dogChance);
                 if (rand.rand(1,100) <= dogChance) {
                     console.log('DOOOOOOOOOOOOGS');

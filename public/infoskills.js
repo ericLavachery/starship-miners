@@ -933,32 +933,36 @@ function skillsInfos(bat,batType,near) {
     }
     // ENTRETIEN
     if (playerInfos.onShip) {
-        if (bat.soins >= 11 && batType.cat === 'vehicles') {
-            let apLoss = checkVehiclesAPSoins(bat,batType);
-            let maintCosts = getMaintenanceCosts(bat,batType);
-            let maintOK = checkCost(maintCosts);
-            if (maintOK) {
-                $('#unitInfos').append('<button type="button" title="Entretien '+displayCosts(maintCosts)+'" class="boutonOrange iconButtons" onclick="maintenance()"><i class="fa fa-wrench"></i> <span class="small">0</span></button>');
-                lineBreak = true;
-            } else {
-                $('#unitInfos').append('<button type="button" title="Entretien: Ressources insuffisantes '+displayCosts(maintCosts)+'" class="boutonGrey iconButtons gf"><i class="fa fa-wrench"></i> <span class="small">0</span></button>');
-                lineBreak = true;
+        if (bat.soins >= 11) {
+            if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
+                let apLoss = checkVehiclesAPSoins(bat,batType);
+                let maintCosts = getMaintenanceCosts(bat,batType);
+                let maintOK = checkCost(maintCosts);
+                if (maintOK) {
+                    $('#unitInfos').append('<button type="button" title="Entretien '+displayCosts(maintCosts)+'" class="boutonOrange iconButtons" onclick="maintenance()"><i class="fa fa-wrench"></i> <span class="small">0</span></button>');
+                    lineBreak = true;
+                } else {
+                    $('#unitInfos').append('<button type="button" title="Entretien: Ressources insuffisantes '+displayCosts(maintCosts)+'" class="boutonGrey iconButtons gf"><i class="fa fa-wrench"></i> <span class="small">0</span></button>');
+                    lineBreak = true;
+                }
             }
         }
     }
     if (!playerInfos.onShip) {
-        if (bat.soins >= 11 && batType.cat === 'vehicles') {
-            if (checkNearConstructor(bat)) {
-                let apLoss = checkVehiclesAPSoins(bat,batType);
-                let maintCosts = getMaintenanceCosts(bat,batType);
-                let maintOK = checkCost(maintCosts);
-                apCost = bat.ap*2;
-                if (maintOK) {
-                    $('#unitInfos').append('<button type="button" title="Entretien '+displayCosts(maintCosts)+'" class="boutonOrange iconButtons" onclick="maintenanceInZone()"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
-                    lineBreak = true;
-                } else {
-                    $('#unitInfos').append('<button type="button" title="Entretien: Ressources insuffisantes '+displayCosts(maintCosts)+'" class="boutonGrey iconButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
-                    lineBreak = true;
+        if (bat.soins >= 11) {
+            if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
+                if (checkNearConstructor(bat)) {
+                    let apLoss = checkVehiclesAPSoins(bat,batType);
+                    let maintCosts = getMaintenanceCosts(bat,batType);
+                    let maintOK = checkCost(maintCosts);
+                    apCost = bat.ap*2;
+                    if (maintOK) {
+                        $('#unitInfos').append('<button type="button" title="Entretien '+displayCosts(maintCosts)+'" class="boutonOrange iconButtons" onclick="maintenanceInZone()"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
+                        lineBreak = true;
+                    } else {
+                        $('#unitInfos').append('<button type="button" title="Entretien: Ressources insuffisantes '+displayCosts(maintCosts)+'" class="boutonGrey iconButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
+                        lineBreak = true;
+                    }
                 }
             }
         }

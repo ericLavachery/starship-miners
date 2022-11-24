@@ -675,21 +675,31 @@ function showPrefab(bat) {
 function getDamageBar(bat) {
     let batType = getBatType(bat);
     let degNum = 7;
-    let hurt = isHurt(bat);
-    if (hurt) {
-        let degPerc = Math.round(100*bat.squadsLeft/batType.squads);
-        if (bat.squadsLeft === 1) {
-            degNum = 1;
-        } else if (degPerc < 35) {
-            degNum = 2;
-        } else if (degPerc < 55) {
-            degNum = 3;
-        } else if (degPerc < 70) {
-            degNum = 4;
-        } else if (degPerc < 86 || bat.squadsLeft < batType.squads) {
-            degNum = 5;
-        } else if (degPerc < 100 || (degPerc == 100 && bat.damage > 1)) {
-            degNum = 6;
+    if (playerInfos.onShip) {
+        if (bat.soins != undefined) {
+            if (bat.soins >= 1) {
+                degNum = Math.ceil((50-bat.soins)/8);
+                if (degNum < 1) {degNum = 1;}
+                if (degNum > 7) {degNum = 7;}
+            }
+        }
+    } else {
+        let hurt = isHurt(bat);
+        if (hurt) {
+            let degPerc = Math.round(100*bat.squadsLeft/batType.squads);
+            if (bat.squadsLeft === 1) {
+                degNum = 1;
+            } else if (degPerc < 35) {
+                degNum = 2;
+            } else if (degPerc < 55) {
+                degNum = 3;
+            } else if (degPerc < 70) {
+                degNum = 4;
+            } else if (degPerc < 86 || bat.squadsLeft < batType.squads) {
+                degNum = 5;
+            } else if (degPerc < 100 || (degPerc == 100 && bat.damage > 1)) {
+                degNum = 6;
+            }
         }
     }
     return degNum;

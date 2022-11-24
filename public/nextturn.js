@@ -573,7 +573,7 @@ function nextTurnEnd() {
                 bat.apLeft = bat.apLeft-3;
             }
             // véhicules usés
-            if (batType.cat === 'vehicles') {
+            if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
                 if (bat.soins != undefined) {
                     if (bat.soins >= 11) {
                         bat.apLeft = bat.apLeft-checkVehiclesAPSoins(bat,batType);
@@ -1559,8 +1559,17 @@ function tagsEffect(bat,batType) {
                         }
                     }
                 }
+                if (bat.tags.includes('hungry') && !bat.tags.includes('dying')) {
+                    bat.tags.push('dying');
+                }
             }
         }
+    }
+    // HUNGER GAMES
+    if (bat.tags.includes('dying')) {
+        bat.apLeft = bat.apLeft-Math.floor(bat.ap/1.3);
+    } else if (bat.tags.includes('hungry')) {
+        bat.apLeft = bat.apLeft-Math.floor(bat.ap/3);
     }
     // OCTIRON & POISONS
     if (bat.tags.includes('octiron') || batType.skills.includes('resistpoison') || bat.tags.includes('zombie')) {

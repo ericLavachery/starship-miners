@@ -807,7 +807,7 @@ function addRepairFlag(bat,healCost) {
         healCost = healCost-1;
     }
     if (healCost >= 1) {
-        if (batType.cat === 'vehicles') {
+        if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
             if (bat.soins != undefined) {
                 bat.soins = bat.soins+healCost;
             } else {
@@ -1011,10 +1011,12 @@ function checkEffSoins(bat) {
 
 function checkVehiclesAPSoins(bat,batType) {
     let apLoss = 0;
-    if (batType.cat === 'vehicles' && bat.soins >= 11) {
-        apLoss = Math.ceil(batType.ap*(bat.soins-6)/100);
-        if (apLoss < 1) {
-            apLoss = 1;
+    if (bat.soins >= 11) {
+        if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
+            apLoss = Math.ceil(batType.ap*(bat.soins-6)/100);
+            if (apLoss < 1) {
+                apLoss = 1;
+            }
         }
     }
     return apLoss;

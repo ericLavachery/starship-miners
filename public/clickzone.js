@@ -27,7 +27,9 @@ function clickTile(tileId) {
         } else {
             if (mode === 'select') {
                 clickSelect(tileId);
-                toggleShowedTile(tileId);
+                if (!playerInfos.onShip) {
+                    toggleShowedTile(tileId);
+                }
             } else if (mode === 'move') {
                 clickMove(tileId);
             } else if (mode === 'edit') {

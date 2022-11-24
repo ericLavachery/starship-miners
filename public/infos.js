@@ -414,7 +414,7 @@ function batInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName">Stress</span><span class="paramIcon"></span><span class="paramValue">'+stress+'</span><br>');
         }
     }
-    if (batType.cat === 'vehicles') {
+    if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
         if (bat.soins >= 11) {
             let apLoss = checkVehiclesAPSoins(bat,batType);
             $('#'+bodyPlace).append('<span class="paramName jaune">Usure</span><span class="paramIcon"></span><span class="paramValue jaune">-'+apLoss+' PA</span><br>');
@@ -442,6 +442,11 @@ function batInfos(bat,batType,pop) {
     }
     if (bat.tags.includes('maladie')) {
         $('#'+bodyPlace).append('<span class="paramName or">Malade</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    }
+    if (bat.tags.includes('dying')) {
+        $('#'+bodyPlace).append('<span class="paramName or">Mourrant</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    } else if (bat.tags.includes('hungry')) {
+        $('#'+bodyPlace).append('<span class="paramName jaune">Souffrant</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
     if (bat.tags.includes('necro')) {
         $('#'+bodyPlace).append('<span class="paramName or">Nécrotoxine</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');

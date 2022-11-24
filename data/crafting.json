@@ -1221,6 +1221,7 @@
         "compReq":{"tri":2,"ca":2,"mat":1},
         "bldReq":["Recyclab"],
         "batch":15,
+        "creaNum":75,
         "bg":"#200808"
     },
     {
@@ -1250,6 +1251,7 @@
         "compReq":{"tri":2,"ca":2},
         "bldReq":["Recyclab"],
         "batch":15,
+        "creaNum":150,
         "bg":"#200808"
     },
     {
@@ -1286,6 +1288,7 @@
         "compReq":{"tri":2,"ca":2,"mat":1},
         "bldReq":["Recyclab"],
         "batch":15,
+        "creaNum":75,
         "bg":"#200808"
     },
     {
@@ -1324,6 +1327,7 @@
         "compReq":{"tri":1,"ca":3},
         "bldReq":["Recyclab"],
         "batch":10,
+        "creaNum":75,
         "bg":"#200808"
     },
     {

@@ -3969,7 +3969,6 @@
             "cost":2,
             "range":1,
             "isShort":true,
-            "noBis":true,
             "rof":32,
             "accuracy":17,
             "dca":1.2,
@@ -4002,7 +4001,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","selfmedic","leader","survivor","luckyshot","fastguet","ranger","guerrilla","maycamo","cible","fo","herokill"],
+        "skills":["a_mid","fouille","fortif","datt","selfmedic","defense","leader","survivor","luckyshot","fastguet","ranger","guerrilla","maycamo","cible","fo","herokill"],
         "mediCost":5,
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"

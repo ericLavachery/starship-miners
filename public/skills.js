@@ -438,6 +438,9 @@ function prodToggle() {
         }
     }
     selectedBatArrayUpdate();
+    if (inSoute) {
+        goSoute();
+    }
     showBatInfos(selectedBat);
 };
 

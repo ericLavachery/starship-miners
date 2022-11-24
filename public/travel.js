@@ -20,7 +20,7 @@ function startMission() {
         loadZone(playerInfos.missionZone);
         // var modeLanding = true
         playerInfos.onShip = false;
-        playerInfos.deadBats = [];        
+        playerInfos.deadBats = [];
         playerInfos.unitsLost = 0;
         playerInfos.travTurns = 0;
         playerInfos.crafts = 0;
@@ -287,6 +287,12 @@ function healEverything() {
         }
         if (bat.tags.includes('necro')) {
             gearTags.push('necro');
+        }
+        if (bat.tags.includes('hungry')) {
+            gearTags.push('hungry');
+        }
+        if (bat.tags.includes('dying')) {
+            gearTags.push('dying');
         }
         bat.tags = gearTags;
         // SOINS -------------------------------------------

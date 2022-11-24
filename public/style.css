@@ -1061,6 +1061,11 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
     color: #f77a28;
     text-decoration: none;
 }
+.hblanc {
+    color: #000000;
+    font-weight: bold;
+    background-color: #ffffff;
+}
 .hrouge {
     color: #ff0000;
     font-weight: bold;

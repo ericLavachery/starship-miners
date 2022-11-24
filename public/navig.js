@@ -152,27 +152,26 @@ function commandes() {
         }
         if (!modeSonde) {
             if (playerInfos.onShip) {
-                $('#commandz').append('<hr>');
-                $('#commandz').append('<button type="button" title="Nouvelle campagne?" class="boutonRose iconButtons" onclick="showMapReset()" onmousedown="warnSound(`nope`)" id="reset1"><i class="fas fa-power-off"></i></button>');
-                $('#commandz').append('<button type="button" title="Nouvelle campagne!" class="boutonRouge iconButtons" onclick="newGame()" onmousedown="clicSound(8)" id="reset2"><i class="fas fa-recycle"></i></button>');
-                if (bataillons.length === 0) {
-                    $('#commandz').append('<button type="button" title="Ajouter le pack de ressources" class="boutonRose iconButtons blynk" onclick="addStartPack()" onmousedown="clicSound()"><i class="fas fa-coins"></i></button>');
-                } else {
-                    if (playerInfos.gangDef) {
-                        let nextGangLevel = checkGangLevel();
-                        if (nextGangLevel > -1) {
-                            $('#commandz').append('<button type="button" title="Monter au niveau de gang '+nextGangLevel+'" class="boutonRose iconButtons blynk" onclick="gangLevelUp()" onmousedown="clicSound(2)"><i class="fas fa-graduation-cap"></i></button>');
-                        } else {
-                            $('#commandz').append('<button type="button" title="Voir vos compétences" class="boutonRose iconButtons" onclick="gangLevelView()" onmousedown="clicSound(2)"><i class="fas fa-award"></i></button>');
-                        }
-                        $('#commandz').append('<button type="button" title="Voir toutes les unités du gang" class="boutonRose iconButtons" onclick="gangUnitsList()" onmousedown="clicSound(2)"><i class="fas fa-user-astronaut"></i></button>');
+                if (!inSoute) {
+                    $('#commandz').append('<hr>');
+                    $('#commandz').append('<button type="button" title="Nouvelle campagne?" class="boutonRose iconButtons" onclick="showMapReset()" onmousedown="warnSound(`nope`)" id="reset1"><i class="fas fa-power-off"></i></button>');
+                    $('#commandz').append('<button type="button" title="Nouvelle campagne!" class="boutonRouge iconButtons" onclick="newGame()" onmousedown="clicSound(8)" id="reset2"><i class="fas fa-recycle"></i></button>');
+                    if (bataillons.length === 0) {
+                        $('#commandz').append('<button type="button" title="Ajouter le pack de ressources" class="boutonRose iconButtons blynk" onclick="addStartPack()" onmousedown="clicSound()"><i class="fas fa-coins"></i></button>');
                     } else {
-                        $('#commandz').append('<button type="button" title="Choisir un gang" class="boutonRose iconButtons blynk" onclick="gangChoice()" onmousedown="clicSound(2)"><i class="fas fa-mask"></i></button>');
+                        if (playerInfos.gangDef) {
+                            let nextGangLevel = checkGangLevel();
+                            if (nextGangLevel > -1) {
+                                $('#commandz').append('<button type="button" title="Monter au niveau de gang '+nextGangLevel+'" class="boutonRose iconButtons blynk" onclick="gangLevelUp()" onmousedown="clicSound(2)"><i class="fas fa-graduation-cap"></i></button>');
+                            } else {
+                                $('#commandz').append('<button type="button" title="Voir vos compétences" class="boutonRose iconButtons" onclick="gangLevelView()" onmousedown="clicSound(2)"><i class="fas fa-award"></i></button>');
+                            }
+                            $('#commandz').append('<button type="button" title="Voir toutes les unités du gang" class="boutonRose iconButtons" onclick="gangUnitsList()" onmousedown="clicSound(2)"><i class="fas fa-user-astronaut"></i></button>');
+                        } else {
+                            $('#commandz').append('<button type="button" title="Choisir un gang" class="boutonRose iconButtons blynk" onclick="gangChoice()" onmousedown="clicSound(2)"><i class="fas fa-mask"></i></button>');
+                        }
                     }
                 }
-                // if (!playerInfos.adjok) {
-                //     $('#commandz').append('<button type="button" title="Ajuster le pack de ressources" class="boutonRouge iconButtons" onclick="adjStartPack()"><i class="fas fa-coins"></i></button>');
-                // }
             } else {
                 if (!isReloaded && playerInfos.mapTurn === 0) {
                     $('#commandz').append('<hr>');

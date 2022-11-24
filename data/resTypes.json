@@ -392,7 +392,7 @@
         "batch": 6,
         "energie": 45,
         "equiv": 0.7,
-        "kinds": ["food","science","medecine"],
+        "kinds": ["science","medecine"],
         "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0,"Kzin":1,"Horst":0.5}
     },
     {
@@ -821,7 +821,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 0.3,
-        "kinds": ["food","science","construction","military","industry","medecine","energy","auto","any"]
+        "kinds": ["science","construction","military","industry","medecine","energy","auto","any"]
     },
     {
         "id": 51,
@@ -920,7 +920,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 2,
-        "kinds": ["food","science","medecine"]
+        "kinds": ["science","medecine"]
     },
     {
         "id": 70,
