@@ -1209,6 +1209,7 @@ function fastEmptyBonus(bat,batType) {
 };
 
 function calcUnitResist() {
+    // min 1 / norm 2 / max 4
     let unitResist = -1;
     // INFIRMERIES
     if (playerInfos.bldList.includes('Hôpital')) {
@@ -1686,6 +1687,15 @@ function tagsEffect(bat,batType) {
             bat.damage = totalDamage-(squadsOut*squadHP);
             if (bat.squadsLeft <= 0) {
                 batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le venin.');
+            } else {
+                if (batType.cat != 'aliens') {
+                    let degDice = 3+Math.floor(playerInfos.comp.ca*1.5)+(unitResist*2);
+                    if (unitResist < 4 || playerInfos.comp.ca < 4) {
+                        if (rand.rand(1,degDice) === 1) {
+                            bat.tags.push('venin');
+                        }
+                    }
+                }
             }
         }
         // POISON
@@ -1715,19 +1725,19 @@ function tagsEffect(bat,batType) {
             bat.damage = totalDamage-(squadsOut*squadHP);
             if (bat.squadsLeft <= 0) {
                 batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le poison.');
-            }
-            let stopPoison = 10;
-            if (batType.cat != 'aliens') {
-                stopPoison = 18-Math.floor(playerInfos.comp.ca*1.5)-(unitResist*2);
-            }
-            let i = 1;
-            while (i <= allTags.poison) {
-                if (rand.rand(1,stopPoison) === 1) {
-                    tagDelete(bat,'poison');
-                    console.log('tag poison out');
+            } else {
+                let stopPoison = 10;
+                if (batType.cat != 'aliens') {
+                    stopPoison = 18-Math.floor(playerInfos.comp.ca*1.5)-(unitResist*2);
                 }
-                if (i > 10) {break;}
-                i++
+                let i = 1;
+                while (i <= allTags.poison) {
+                    if (rand.rand(1,stopPoison) === 1) {
+                        tagDelete(bat,'poison');
+                    }
+                    if (i > 10) {break;}
+                    i++
+                }
             }
         }
     }

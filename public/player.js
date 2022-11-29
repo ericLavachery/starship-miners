@@ -595,13 +595,19 @@ function playerSkillsUTChanges() {
         }
         // BLINDAGES / ARMURES
         unit.protection = allowedArmors(unit);
+        // BLD HP & TRANS
+        if (unit.cat === 'buildings') {
+            unit.hp = Math.round(unit.hp*bldHPTuning);
+            unit.transUnits = Math.round(unit.transUnits*bldTransTuning);
+        }
         // TUNING FRET
         if (unit.skills.includes('fret')) {
             unit.transRes = Math.round(unit.transRes*fretTuning);
         }
-        // TUNING LANDER FRET
+        // TUNING LANDER FRET & HP
         if (unit.skills.includes('transorbital')) {
             unit.transRes = Math.round(unit.transRes*landerFretTuning);
+            unit.hp = Math.round(unit.hp*landerHPTuning);
         }
         let repairBonus = false;
         // VOLS SPACIAUX

@@ -122,8 +122,10 @@ function batInfos(bat,batType,pop) {
     let grade = '';
     if (batType.skills.includes('robot')) {
         grade = 'Robot';
-    } else if (batType.skills.includes('clone') || batType.skills.includes('dog')) {
+    } else if (batType.skills.includes('clone')) {
         grade = 'Clone';
+    } else if (batType.skills.includes('dog')) {
+        grade = 'Dog';
     } else if (batType.crew === 0) {
         grade = batType.name;
     } else {
@@ -894,25 +896,27 @@ function showTileInfos(tileId) {
     if (zone[0].dark && !zone[0].undarkOnce.includes(selectedTile) && !zone[0].undarkAll) {
         view = false;
     }
+    $('#tileInfos').append('<span class="blockTitle"><h3>'+terrain.fullName+'</h3></span>');
+    $('#tileInfos').append('<div class="shSpace"></div>');
+    // NOM
+    if (tile.tileName !== undefined && tile.tileName !== null && tile.tileName != '') {
+        $('#tileInfos').append('<span class="paramIcon"><i class="fas fa-map-signs"></i></span><span class="fullLine or"><b>'+tile.tileName+'</b></span><br>');
+    }
     if (view) {
-        $('#tileInfos').append('<span class="blockTitle"><h3>'+terrain.fullName+'</h3></span>');
-        $('#tileInfos').append('<div class="shSpace"></div>');
-        // NOM
-        if (tile.tileName !== undefined && tile.tileName !== null && tile.tileName != '') {
-            $('#tileInfos').append('<span class="paramIcon"><i class="fas fa-map-signs"></i></span><span class="fullLine or"><b>'+tile.tileName+'</b></span><br>');
+    }
+    // Type d'oeufs
+    if (playerInfos.comp.ca >= 3) {
+        let eggType = 'Bug';
+        let eggKind = checkEggKindByZoneType();
+        if (eggKind === '') {
+            eggKind = getAKindByTer(tile.terrain,zone[0].pKind,zone[0].gKind,zone[0].sKind);
+            eggType = capitalizeFirstLetter(eggKind);
+        } else {
+            eggType = capitalizeFirstLetter(eggKind);
         }
-        // Type d'oeufs
-        if (playerInfos.comp.ca >= 3) {
-            let eggType = 'Bug';
-            let eggKind = checkEggKindByZoneType();
-            if (eggKind === '') {
-                eggKind = getAKindByTer(tile.terrain,zone[0].pKind,zone[0].gKind,zone[0].sKind);
-                eggType = capitalizeFirstLetter(eggKind);
-            } else {
-                eggType = capitalizeFirstLetter(eggKind);
-            }
-            $('#tileInfos').append('<span class="paramName mauve">Type d\'oeuf</span><span class="paramIcon"><i class="fas fa-bug"></i></span><span class="paramValue mauve">'+eggType+'</span><br>');
-        }
+        $('#tileInfos').append('<span class="paramName mauve">Type d\'oeuf</span><span class="paramIcon"><i class="fas fa-bug"></i></span><span class="paramValue mauve">'+eggType+'</span><br>');
+    }
+    if (view) {
         if (zone[0].planet === 'Horst') {
             if (playerInfos.stList.includes(tileId)) {
                 $('#tileInfos').append('<span class="paramName mauve">Intempéries</span><span class="paramIcon"><i class="fas fa-bug"></i></span><span class="paramValue mauve">Tempête</span><br>');
@@ -944,99 +948,99 @@ function showTileInfos(tileId) {
             coverIcon = '<i class="fas fa-shield-alt"></i>'
         }
         $('#tileInfos').append('<span class="paramName">Couverture</span><span class="paramIcon">'+coverIcon+'</span><span class="paramValue">'+terrain.cover+'</span><br>');
-        // scarp, flood, veg
-        let sIcon = '';
-        let vIcon = '';
-        let fIcon = '';
-        if (terrain.veg >= 2) {
-            vIcon = '<i class="fab fa-pagelines"></i>'
-        }
-        if (terrain.scarp >= 2) {
-            sIcon = '<i class="fas fa-mountain"></i>'
-        }
-        if (terrain.flood >= 1) {
-            fIcon = '<i class="fas fa-water"></i>'
-        }
-        $('#tileInfos').append('<span class="paramName">Végétation</span><span class="paramIcon">'+vIcon+'</span><span class="paramValue">'+terrain.veg+'</span><br>');
-        $('#tileInfos').append('<span class="paramName">Escarpement</span><span class="paramIcon">'+sIcon+'</span><span class="paramValue">'+terrain.scarp+'</span><br>');
-        $('#tileInfos').append('<span class="paramName">Innondation</span><span class="paramIcon">'+fIcon+'</span><span class="paramValue">'+terrain.flood+'</span><br>');
-        // Coordonnées
-        $('#tileInfos').append('<span class="paramName">Coordonnées</span><span class="paramIcon"><i class="fas fa-map-marker-alt"></i></span><span class="paramValue" title="y'+tile.y+' x'+tile.x+'">'+tile.y+'&lrhar;'+tile.x+'</span><br>');
-        $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+' ('+tile.seed+')</span><br>');
-        // Heat
-        let tileEnergy = getTileEnergy(tile);
-        $('#tileInfos').append('<span class="paramName sky" title="Chaleur du sous-sol (pour les sondes géothermiques)">Energie</span><span class="paramIcon"></span><span class="paramValue sky">'+tileEnergy+'</span><br>');
-        // RESSOURCES
-        if (playerInfos.comp.ext >= 1 && !modeSonde) {
-            let hereBat = getBatByTileId(tileId);
-            if (Object.keys(hereBat).length >= 1) {
-                let allRes = getAllRes(tileId);
-            }
-        }
-        if (playerInfos.comp.det >= 1 || !modeSonde) {
-            if (tile.rs !== undefined) {
-                let tileIndex;
-                let res;
-                let bldReq;
-                Object.entries(tile.rs).map(entry => {
-                    let key = entry[0];
-                    let value = entry[1];
-                    resIndex = resTypes.findIndex((obj => obj.name == key));
-                    res = resTypes[resIndex];
-                    bldReq = onlyFirstLetter(res.bld);
-                    let resKol = 'cy';
-                    if (playerInfos.resFlags.includes(res.name)) {
-                        resKol = 'jaune';
-                    }
-                    if (playerInfos.comp.det < 3 && modeSonde) {
-                        $('#tileInfos').append('<span class="paramName '+resKol+'">'+key+'</span><span class="paramIcon"></span><span class="paramValue '+resKol+'"><span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
-                    } else {
-                        $('#tileInfos').append('<span class="paramName '+resKol+'">'+key+'</span><span class="paramIcon"></span><span class="paramValue '+resKol+'">'+value+' <span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
-                    }
-                    // console.log(key,value);
-                });
-            }
-            console.log(terrain);
-            console.log(tile);
-            let srs = getTerrainRes(terrain,tile);
-            console.log('terrain res');
-            console.log(srs);
-            if (Object.keys(srs).length >= 1) {
-                let tileIndex;
-                let res;
-                let bldReq;
-                Object.entries(srs).map(entry => {
-                    let key = entry[0];
-                    let value = entry[1];
-                    resIndex = resTypes.findIndex((obj => obj.name == key));
-                    res = resTypes[resIndex];
-                    bldReq = onlyFirstLetter(res.bld);
-                    if (bldReq != '') {
-                        bldReq = ' ('+bldReq+')';
-                    }
-                    $('#tileInfos').append('<span class="paramName sky">'+key+'</span><span class="paramIcon"></span><span class="paramValue sky">'+value+'<span class="gf">'+bldReq+'</span></span><br>');
-                    // console.log(key,value);
-                });
-            }
-            if (zone[0].planet === 'Gehenna') {
-                if (terrain.name === 'W' || terrain.name === 'S' || terrain.name === 'R' || terrain.name == 'L') {
-                    $('#tileInfos').append('<span class="paramName sky">Eau</span><span class="paramIcon"></span><span class="paramValue sky">0<span class="gf"> (poison)</span></span><br>');
-                }
-            } else if (!potable) {
-                if (playerInfos.comp.ca >= 2 || !modeSonde) {
-                    $('#tileInfos').append('<span class="paramName sky">Eau</span><span class="paramIcon"></span><span class="paramValue sky">0<span class="gf"> (poison)</span></span><br>');
-                }
-            }
-        }
-        // RENOMMER
-        if (playerInfos.showedTiles.includes(tile.id)) {
-            $('#tileInfos').append('<button type="button" title="Effacer le marqueur" class="boutonGris skillButtons" onclick="toggleMark('+tileId+')"><i class="fas fa-eraser"></i></button>');
-        } else {
-            $('#tileInfos').append('<button type="button" title="Mettre un marqueur" class="boutonGris skillButtons" onclick="toggleMark('+tileId+')"><i class="fas fa-map-pin"></i></button>');
-        }
-        $('#tileInfos').append('<button type="button" title="Nommer cet emplacement" class="boutonGris skillButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>');
-        $('#tileInfos').append('<button type="button" title="Faire de cet emplacement mon centre" class="boutonGris skillButtons" onclick="defCenter('+tileId+')"><i class="fas fa-space-shuttle"></i></button>');
     }
+    // scarp, flood, veg
+    let sIcon = '';
+    let vIcon = '';
+    let fIcon = '';
+    if (terrain.veg >= 2) {
+        vIcon = '<i class="fab fa-pagelines"></i>'
+    }
+    if (terrain.scarp >= 2) {
+        sIcon = '<i class="fas fa-mountain"></i>'
+    }
+    if (terrain.flood >= 1) {
+        fIcon = '<i class="fas fa-water"></i>'
+    }
+    $('#tileInfos').append('<span class="paramName">Végétation</span><span class="paramIcon">'+vIcon+'</span><span class="paramValue">'+terrain.veg+'</span><br>');
+    $('#tileInfos').append('<span class="paramName">Escarpement</span><span class="paramIcon">'+sIcon+'</span><span class="paramValue">'+terrain.scarp+'</span><br>');
+    $('#tileInfos').append('<span class="paramName">Innondation</span><span class="paramIcon">'+fIcon+'</span><span class="paramValue">'+terrain.flood+'</span><br>');
+    // Coordonnées
+    $('#tileInfos').append('<span class="paramName">Coordonnées</span><span class="paramIcon"><i class="fas fa-map-marker-alt"></i></span><span class="paramValue" title="y'+tile.y+' x'+tile.x+'">'+tile.y+'&lrhar;'+tile.x+'</span><br>');
+    $('#tileInfos').append('<span class="paramName">Id</span><span class="paramIcon"></span><span class="paramValue">#'+tile.id+' ('+tile.seed+')</span><br>');
+    // Heat
+    let tileEnergy = getTileEnergy(tile);
+    $('#tileInfos').append('<span class="paramName sky" title="Chaleur du sous-sol (pour les sondes géothermiques)">Energie</span><span class="paramIcon"></span><span class="paramValue sky">'+tileEnergy+'</span><br>');
+    // RESSOURCES
+    if (playerInfos.comp.ext >= 1 && !modeSonde) {
+        let hereBat = getBatByTileId(tileId);
+        if (Object.keys(hereBat).length >= 1) {
+            let allRes = getAllRes(tileId);
+        }
+    }
+    if (playerInfos.comp.det >= 1 || !modeSonde) {
+        if (tile.rs !== undefined) {
+            let tileIndex;
+            let res;
+            let bldReq;
+            Object.entries(tile.rs).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                resIndex = resTypes.findIndex((obj => obj.name == key));
+                res = resTypes[resIndex];
+                bldReq = onlyFirstLetter(res.bld);
+                let resKol = 'cy';
+                if (playerInfos.resFlags.includes(res.name)) {
+                    resKol = 'jaune';
+                }
+                if (playerInfos.comp.det < 3 && modeSonde) {
+                    $('#tileInfos').append('<span class="paramName '+resKol+'">'+key+'</span><span class="paramIcon"></span><span class="paramValue '+resKol+'"><span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
+                } else {
+                    $('#tileInfos').append('<span class="paramName '+resKol+'">'+key+'</span><span class="paramIcon"></span><span class="paramValue '+resKol+'">'+value+' <span class="gf">('+bldReq+'-'+res.rarity+')</span></span><br>');
+                }
+                // console.log(key,value);
+            });
+        }
+        console.log(terrain);
+        console.log(tile);
+        let srs = getTerrainRes(terrain,tile);
+        console.log('terrain res');
+        console.log(srs);
+        if (Object.keys(srs).length >= 1) {
+            let tileIndex;
+            let res;
+            let bldReq;
+            Object.entries(srs).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                resIndex = resTypes.findIndex((obj => obj.name == key));
+                res = resTypes[resIndex];
+                bldReq = onlyFirstLetter(res.bld);
+                if (bldReq != '') {
+                    bldReq = ' ('+bldReq+')';
+                }
+                $('#tileInfos').append('<span class="paramName sky">'+key+'</span><span class="paramIcon"></span><span class="paramValue sky">'+value+'<span class="gf">'+bldReq+'</span></span><br>');
+                // console.log(key,value);
+            });
+        }
+        if (zone[0].planet === 'Gehenna') {
+            if (terrain.name === 'W' || terrain.name === 'S' || terrain.name === 'R' || terrain.name == 'L') {
+                $('#tileInfos').append('<span class="paramName sky">Eau</span><span class="paramIcon"></span><span class="paramValue sky">0<span class="gf"> (poison)</span></span><br>');
+            }
+        } else if (!potable) {
+            if (playerInfos.comp.ca >= 2 || !modeSonde) {
+                $('#tileInfos').append('<span class="paramName sky">Eau</span><span class="paramIcon"></span><span class="paramValue sky">0<span class="gf"> (poison)</span></span><br>');
+            }
+        }
+    }
+    // RENOMMER
+    if (playerInfos.showedTiles.includes(tile.id)) {
+        $('#tileInfos').append('<button type="button" title="Effacer le marqueur" class="boutonGris skillButtons" onclick="toggleMark('+tileId+')"><i class="fas fa-eraser"></i></button>');
+    } else {
+        $('#tileInfos').append('<button type="button" title="Mettre un marqueur" class="boutonGris skillButtons" onclick="toggleMark('+tileId+')"><i class="fas fa-map-pin"></i></button>');
+    }
+    $('#tileInfos').append('<button type="button" title="Nommer cet emplacement" class="boutonGris skillButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>');
+    $('#tileInfos').append('<button type="button" title="Faire de cet emplacement mon centre" class="boutonGris skillButtons" onclick="defCenter('+tileId+')"><i class="fas fa-space-shuttle"></i></button>');
 };
 
 function renameTile(tileId) {

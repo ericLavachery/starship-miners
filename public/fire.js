@@ -76,7 +76,7 @@ function combat(melee) {
     let selectedBatName = nomVisible(selectedBat);
     let targetBatName = nomVisible(targetBat);
     // tagDelete(selectedBat,'mining');
-    if (!targetBat.eq.includes('w2-auto')) {
+    if (!targetBat.eq.includes('w2-auto') && targetBatType.cat != 'buildings') {
         tagDelete(targetBat,'mining');
     }
     escaped = false;
@@ -1001,6 +1001,12 @@ function attack(melee,init) {
         minDamage = minDamage+7-(playerInfos.comp.ca*2)-(playerInfos.comp.exo*2);
     } else {
         minDamage = minDamage+playerInfos.comp.ca+unitResist;
+        if (selectedBatType.skills.includes('dard')) {
+            minDamage = Math.round(minDamage/2);
+        }
+    }
+    if (minDamage < 1) {
+        minDamage = 1;
     }
     if (selectedWeap.ammo.includes('hypo-')) {
         minDamage = 1;
@@ -1008,7 +1014,7 @@ function attack(melee,init) {
     if (selectedWeap.ammo.includes('gaz')) {
         minDamage = 0;
     }
-    if (totalDamage >= minDamage || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
+    if (totalDamage >= minDamage || (totalDamage >= 1 && minDamage >= 1 && rand.rand(1,minDamage) === 1)) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap') || selectedWeap.ammo.includes('gaz')) {
             if (!targetBatType.skills.includes('resistpoison') && !targetBatType.skills.includes('eatpoison') && !targetBat.tags.includes('zombie')) {
                 if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || targetBatType.cat === 'aliens') {
@@ -1323,6 +1329,10 @@ function attack(melee,init) {
         selectedBat.tags.push('noemb');
     }
     tagDelete(selectedBat,'embuscade');
+    if (selectedBat.salvoLeft <= 0 && selectedBat.tags.includes('datt')) {
+        tagDelete(selectedBat,'datt');
+        tagDelete(selectedBat,'guet');
+    }
     selectedBatArrayUpdate();
     escaped = false;
     if (selectedWeap.ammo.includes('-deluge')) {
@@ -1876,6 +1886,12 @@ function defense(melee,init) {
         minDamage = minDamage+7-(playerInfos.comp.ca*2)-(playerInfos.comp.exo*2);
     } else {
         minDamage = minDamage+playerInfos.comp.ca+unitResist;
+        if (targetBatType.skills.includes('dard')) {
+            minDamage = Math.round(minDamage/2);
+        }
+    }
+    if (minDamage < 1) {
+        minDamage = 1;
     }
     if (targetWeap.ammo.includes('hypo-')) {
         minDamage = 1;
@@ -1883,7 +1899,7 @@ function defense(melee,init) {
     if (targetWeap.ammo.includes('gaz')) {
         minDamage = 0;
     }
-    if (totalDamage >= minDamage || (totalDamage >= 1 && rand.rand(1,3) === 1)) {
+    if (totalDamage >= minDamage || (totalDamage >= 1 && minDamage >= 1 && rand.rand(1,minDamage) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap') || targetWeap.ammo.includes('gaz')) {
             if (!selectedBatType.skills.includes('resistpoison') && !selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('zombie')) {
                 if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || selectedBatType.cat === 'aliens') {

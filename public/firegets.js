@@ -2667,6 +2667,9 @@ function apCostRiposte(bat,batType,weap) {
             apCost = 3;
         }
     }
+    if (bat.tags.includes('mining')) {
+        apCost = apCost+2;
+    }
     if (batType.cat === 'aliens') {
         if (weap.num === 2 && batType.w2chance > 2) {
             apCost = apCost+((batType.w2chance-2)*2);

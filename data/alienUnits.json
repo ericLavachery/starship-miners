@@ -1086,7 +1086,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","capfar","inflammable","escape","baddef","infkill"],
+        "skills":["fly","capfar","inflammable","escape","baddef","infkill","dard"],
         "deathFx":"death1",
         "killRes":{"Larvium":2,"Wingium":3,"Mephitis":1},
         "killXP":4
@@ -1268,7 +1268,7 @@
         "ap":15,
         "maxSalvo":2,
         "weapon":{
-            "name":"Dard",
+            "name":"Sagettes",
             "cost":3,
             "range":1,
             "noFly":false,
@@ -1543,7 +1543,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["resistpoison","resistblast","resistfeu","infkill","nojello"],
+        "skills":["resistpoison","resistblast","resistfeu","infkill","nojello","dard"],
         "deathFx":"death1",
         "killRes":{"Bugium":1,"Swarmine":5,"Mephitis":1},
         "killXP":2

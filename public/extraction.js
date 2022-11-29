@@ -183,7 +183,7 @@ function getVegFactor() {
     vf.wood = vf.wood*(seedWood+8)/10;
     vf.wood = vf.wood*(zone[0].ensol+200)/350;
     if (zone[0].pf >= 35) {
-        vf.wood = vf.wood*zone[0].pf/35;
+        vf.wood = vf.wood*(zone[0].pf-10)/25;
     }
     vf.veg = 100;
     let seedVeg = zone[23].seed;
@@ -193,7 +193,7 @@ function getVegFactor() {
     vf.veg = vf.veg*(seedVeg+8)/10;
     vf.veg = vf.veg*(zone[0].ensol+100)/250;
     if (zone[0].pb+zone[0].pf >= 50) {
-        vf.veg = vf.veg*(zone[0].pb+zone[0].pf)/50;
+        vf.veg = vf.veg*(zone[0].pb+zone[0].pf-20)/30;
     }
     return vf;
 };

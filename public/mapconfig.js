@@ -177,6 +177,9 @@ function toggleMark(tileId) {
     }
     showMap(zone,true);
     showTileInfos(tileId);
+    if (showMini) {
+        minimap();
+    }
     confirmMode();
 };
 

@@ -945,16 +945,16 @@
         "ap":15,
         "maxSalvo":2,
         "weapon":{
-            "name":"Blaster",
+            "name":"Shotgun",
             "cost":3,
-            "range":1,
-            "rof":16,
-            "accuracy":17,
-            "power":10,
-            "armors":0.7,
-            "aoe":"unit",
-            "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
+            "range":0,
+            "rof":22,
+            "accuracy":40,
+            "power":8,
+            "armors":1.25,
+            "aoe":"brochette",
+            "sound":"calibre_shotgun",
+            "ammo":["standard","scrap","snake","incendiaire","tungsten","uranium","timonium","salite","adamantium","ac-dunium","freeze"]
         },
         "weapon2":{
             "name":"Mitrailleuses",

@@ -69,6 +69,7 @@ function bfconst(cat,triche,upgrade,retour) {
     let prodSign = ' <span class="ciel">&raquo;</span>';
     let prodOK = false;
     let prodHere = false;
+    let directProd = true;
     let mayOut = false;
     let compReqOK = false;
     let bldOK = false;
@@ -81,6 +82,7 @@ function bfconst(cat,triche,upgrade,retour) {
         mayOut = checkMayOut(unit,false);
         uMaxOK = true;
         prodOK = true;
+        directProd = true;
         if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
             prodOK = false;
         }
@@ -119,11 +121,17 @@ function bfconst(cat,triche,upgrade,retour) {
                     }
                 }
             }
-            if (unit.bldCost != 'none' && unit.bldCost != selectedBatType.name) {
-                prodHere = false;
+            // if (unit.bldCost != 'none' && unit.bldCost != selectedBatType.name) {
+            //     prodHere = false;
+            // }
+            // if (unit.unitCost != 'none' && unit.unitCost != selectedBatType.name) {
+            //     prodHere = false;
+            // }
+            if (unit.bldCost != 'none') {
+                directProd = false;
             }
-            if (unit.unitCost != 'none' && unit.unitCost != selectedBatType.name) {
-                prodHere = false;
+            if (unit.unitCost != 'none') {
+                directProd = false;
             }
             if (conselUpgrade === 'bld') {
                 if (selectedBatType.bldUp.includes(unit.name)) {
@@ -241,7 +249,16 @@ function bfconst(cat,triche,upgrade,retour) {
                     yhPrint = ' <span title="'+yh[unit.name]+'/&infin;">('+yh[unit.name]+')</span>';
                 }
             }
-            if ((bldOK && costOK && uMaxOK) || triche) {
+            if (!directProd && conselUpgrade != 'bld' && conselUpgrade != 'inf' && !triche) {
+                let fromUnitName = 'Tagada';
+                if (unit.bldCost != 'none') {
+                    fromUnitName = unit.bldCost;
+                } else if (unit.unitCost != 'none') {
+                    fromUnitName = unit.unitCost;
+                }
+                color = 'gff';
+                $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Se construit en transformant: '+fromUnitName+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');
+            } else if ((bldOK && costOK && uMaxOK) || triche) {
                 if (pDistOK && pNumOK) {
                     color = catColor(unit);
                     $('#conUnitList').append('<span class="constName klik '+color+deco+'" onclick="conSelect('+unit.id+',`player`,false)"><span title="'+toNiceString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');

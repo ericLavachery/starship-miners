@@ -9,7 +9,9 @@ function minimap() {
     $('#themmap').empty();
     $('#thenavig').empty();
     $('#radar_effect').empty();
-    $('#radar_effect').append('<span><img src="/static/img/radar.png"></span>');
+    if (!modeSonde) {
+        $('#radar_effect').append('<span><img src="/static/img/radar.png"></span>');
+    }
     $('#thenavig').append('<span class="constIcon"><i class="fas fa-times-circle klik" onclick="miniOut()"></i></span><br>');
     if (!modeSonde) {
         if (miniDots === 'units') {

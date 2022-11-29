@@ -160,6 +160,7 @@ function toggleShowedTile(tileId) {
             voirRessources();
         }
         selectedTile = tileId;
+        showTileInfos(tileId);
         if (showMini) {
             minimap();
         }
