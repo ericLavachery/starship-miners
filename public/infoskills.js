@@ -2127,7 +2127,7 @@ function skillsInfos(bat,batType,near) {
         if (batType.skills.includes('infrahelp') || bat.eq === 'e-infra' || bat.logeq === 'e-infra') {
             roadsOK = checkRoadsAround(bat);
         }
-        if (!tile.rd || !roadsOK || bat.tags.includes('autoroad')) {
+        if (!tile.rd || !roadsOK) {
             apCost = batType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
             if (bat.eq === 'e-road' || bat.logeq === 'e-road') {
                 if (batType.skills.includes('routes')) {
@@ -2153,13 +2153,8 @@ function skillsInfos(bat,batType,near) {
             }
             if (bat.apLeft >= apReq && !inMelee && roadCostsOK && workForceOK) {
                 if (batType.moveCost < 90) {
-                    if (bat.tags.includes('autoroad')) {
-                        $('#unitInfos').append('<button type="button" title="Stopper la construction automatique de routes" class="boutonOK iconButtons cy" onclick="toggleAutoRoad('+apCost+',true)"><i class="fas fa-road"></i> <span class="small">Stop</span></button>');
-                        lineBreak = true;
-                    } else {
-                        $('#unitInfos').append('<button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris iconButtons" onclick="putRoad('+apCost+')"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Construction automatique de routes" class="boutonNoir iconButtons" onclick="toggleAutoRoad('+apCost+',false)"><i class="fas fa-road"></i> <span class="small">Auto</span></button>');
-                        lineBreak = true;
-                    }
+                    $('#unitInfos').append('<button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris iconButtons" onclick="putRoad('+apCost+')"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>');
+                    lineBreak = true;
                 } else {
                     $('#unitInfos').append('<button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris iconButtons" onclick="putRoad('+apCost+')"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>');
                     lineBreak = true;
@@ -2175,6 +2170,16 @@ function skillsInfos(bat,batType,near) {
                     skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
                 }
                 $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>');
+                lineBreak = true;
+            }
+        }
+        // AUTOROAD
+        if (batType.moveCost < 90) {
+            if (bat.tags.includes('autoroad')) {
+                $('#unitInfos').append('<button type="button" title="Stopper la construction automatique de routes" class="boutonOK iconButtons cy" onclick="toggleAutoRoad('+apCost+',true)"><i class="fas fa-road"></i> <span class="small">Stop</span></button>');
+                lineBreak = true;
+            } else {
+                $('#unitInfos').append('<button type="button" title="Construction automatique de routes" class="boutonNoir iconButtons" onclick="toggleAutoRoad('+apCost+',false)"><i class="fas fa-road"></i> <span class="small">Auto</span></button>');
                 lineBreak = true;
             }
         }

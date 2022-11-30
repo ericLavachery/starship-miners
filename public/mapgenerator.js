@@ -1145,6 +1145,7 @@ function addRes(zone) {
             if (mythicResBld === 'Derrick') {
                 bldFactor = 9;
             }
+            let minBlueResNum = Math.ceil(zone[0].mapDiff/3)+2;
             resTypes.forEach(function(res) {
                 if (res.bld === mythicResBld || (mythicRes.bld === 'Comptoir' && res.bld === 'Comptoir' && res.cat != 'zero')) {
                     resRarity = res.adjRarity;
@@ -1166,6 +1167,52 @@ function addRes(zone) {
                     }
                 }
             });
+            if (Object.keys(tile.rs).length < minBlueResNum) {
+                resTypes.forEach(function(res) {
+                    if (res.bld === mythicResBld || (mythicRes.bld === 'Comptoir' && res.bld === 'Comptoir' && res.cat != 'zero')) {
+                        resRarity = res.adjRarity;
+                        if (resRarity >= 1) {
+                            resRarity = resRarity+9;
+                            if (mythicRes.bld === 'Comptoir' && res.bld === 'Comptoir') {
+                                resRarity = resRarity+20;
+                            }
+                            if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
+                                resRarity = resRarity+23;
+                            }
+                            if (rand.rand(1,100) <= Math.round((resRarity)/10*bldFactor)) {
+                                let rajResBatch = res.adjBatch;
+                                if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
+                                    rajResBatch = rajResBatch+3;
+                                }
+                                tile.rs[res.name] = (rajResBatch*rajResBatch*rand.rand(8,18))+rand.rand(0,9);
+                            }
+                        }
+                    }
+                });
+            }
+            if (Object.keys(tile.rs).length < minBlueResNum) {
+                resTypes.forEach(function(res) {
+                    if (res.bld === mythicResBld || (mythicRes.bld === 'Comptoir' && res.bld === 'Comptoir' && res.cat != 'zero')) {
+                        resRarity = res.adjRarity;
+                        if (resRarity >= 1) {
+                            resRarity = resRarity+9;
+                            if (mythicRes.bld === 'Comptoir' && res.bld === 'Comptoir') {
+                                resRarity = resRarity+20;
+                            }
+                            if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
+                                resRarity = resRarity+23;
+                            }
+                            if (rand.rand(1,100) <= Math.round((resRarity)/10*bldFactor)) {
+                                let rajResBatch = res.adjBatch;
+                                if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
+                                    rajResBatch = rajResBatch+3;
+                                }
+                                tile.rs[res.name] = (rajResBatch*rajResBatch*rand.rand(8,18))+rand.rand(0,9);
+                            }
+                        }
+                    }
+                });
+            }
         } else if (tile.rq >= 1) {
             let isGas = 'maybe';
             let firstRes = true;
@@ -1385,16 +1432,20 @@ function addRes(zone) {
     console.log('realNumberOfRuins='+realNumberOfRuins);
     console.log('nothing under '+nothingUnder);
     // MAGMA
-    if (rand.rand(1,magmaZone) === 1) {
+    let magmaRes = getResByName('Magma');
+    let pName = zone[0].planet;
+    let magmaFactor = magmaRes.planets[pName];
+    let magmaZoneDice = Math.ceil(magmaZone/magmaFactor);
+    if (rand.rand(1,magmaZoneDice) === 1) {
         let magName = 'Magma';
-        let magChance = rand.rand(3,6)*15;
+        let magChanceDice = rand.rand(3,6)*Math.round(15/magmaFactor);
         shufZone.forEach(function(tile) {
             if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
                 if (tile.rq === undefined) {
-                    if (rand.rand(1,magChance) === 1) {
+                    if (rand.rand(1,magChanceDice) === 1) {
                         tile.rq = 1;
                         tile.rs = {};
-                        tile.rs[magName] = rand.rand(250,600-magChance);
+                        tile.rs[magName] = rand.rand(250,600-magChanceDice);
                     }
                 }
             }

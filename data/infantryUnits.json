@@ -6241,7 +6241,7 @@
         "armor":2,
         "size":6,
         "volume":0.85,
-        "stealth":4,
+        "stealth":2,
         "speed":5,
         "ap":14,
         "maxSalvo":2,

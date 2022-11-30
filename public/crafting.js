@@ -98,12 +98,14 @@ function craftWindow(retour) {
             if (res.energie > 0) {
                 let cramBld = 'Crameur';
                 if (res.cramBld != undefined) {
-                    if (res.cramBld === 'Centrale nucléaire') {
-                        cramBld = 'Centrale nucléaire';
-                    }
+                    cramBld = res.cramBld;
                 }
                 if (playerInfos.bldList.includes(cramBld)) {
-                    energyFactor = Math.round(50/Math.sqrt(res.energie)*(indus+6)/6)*5;
+                    if (playerInfos.bldList.includes('Incinérateur') || (cramBld != 'Crameur' && cramBld != 'Incinérateur')) {
+                        energyFactor = Math.round(50/Math.sqrt(res.energie)*(indus+6)/6)*5;
+                    } else {
+                        energyFactor = Math.round(37/Math.sqrt(res.energie)*(indus+6)/6)*5;
+                    }
                     dispoRes = getDispoRes(res.name);
                     neededRes = res.energie*energyFactor/eCrafting;
                     neededRes = cramPower(res,neededRes);
@@ -415,8 +417,12 @@ function cramPower(res,neededRes) {
     } else if (playerInfos.comp.energ === 3) {
         energyComp = 5;
     }
-    neededRes = Math.round(neededRes/(energyComp+5)*8);
-    if (res.name === 'Huile' || res.name === 'Fuel' || res.name === 'Pyrus' || res.name === 'Pyratol' || res.name === 'Hydrocarbure') {
+    if (playerInfos.bldList.includes('Incinérateur')) {
+        neededRes = neededRes/(energyComp+5)*8;
+    } else {
+        neededRes = neededRes/(energyComp+5)*10;
+    }
+    if (res.name === 'Huile' || res.name === 'Soufre' || res.name === 'Pyrus' || res.name === 'Pyratol' || res.name === 'Phosphore') {
         neededRes = Math.round(neededRes/(playerInfos.comp.pyro+7)*7);
     } else if (res.name === 'Scrap') {
         neededRes = Math.round(neededRes/(playerInfos.comp.tri+5)*5);

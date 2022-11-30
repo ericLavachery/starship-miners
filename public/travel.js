@@ -153,7 +153,7 @@ function landingList() {
             if (zone[0].mapDiff < minDiff) {
                 zone[0].mapDiff = minDiff;
                 saveMap();
-                console.log('done!');
+                // console.log('done!');
             }
             let presAlienDice = rand.rand(1,12);
             if (zone[0].planet === 'Gehenna') {

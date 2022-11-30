@@ -48,7 +48,7 @@
         "rarity": 36,
         "cat": "white",
         "batch": 8,
-        "energie": 5,
+        "energie": -1,
         "equiv": 1,
         "kinds": ["science","construction","military","industry","energy","auto","any"],
         "pter": [2,"F","H"],
@@ -117,7 +117,8 @@
         "rarity": 25,
         "cat": "white",
         "batch": 4,
-        "energie": 20,
+        "energie": 10,
+        "cramBld": "Incinérateur",
         "equiv": 1,
         "kinds": ["science","military","industry","any"],
         "pter": [3,"F","B","G"],
@@ -131,7 +132,8 @@
         "rarity": 100,
         "cat": "white",
         "batch": 6,
-        "energie": 20,
+        "energie": 15,
+        "cramBld": "Incinérateur",
         "equiv": 0.7,
         "kinds": ["military","industry","any"],
         "planets":{"Dom":1,"Sarak":0.5,"Gehenna":0.5,"Kzin":1,"Horst":3}
@@ -160,6 +162,7 @@
         "cat": "white",
         "batch": 4,
         "energie": 20,
+        "cramBld": "Incinérateur",
         "equiv": 1,
         "kinds": ["military","industry","any"],
         "pter": [3,"P","H","F"]
@@ -172,7 +175,8 @@
         "rarity": 37,
         "cat": "white",
         "batch": 5,
-        "energie": 7,
+        "energie": 6,
+        "cramBld": "Incinérateur",
         "equiv": 1,
         "kinds": ["construction","military","industry","auto","any"],
         "ctri": 20
@@ -442,7 +446,8 @@
         "rarity": 25,
         "cat": "white",
         "batch": 6,
-        "energie": 5,
+        "energie": 4,
+        "cramBld": "Incinérateur",
         "equiv": 1,
         "kinds": ["military","industry"],
         "pter": [2,"P","G","B"]
@@ -509,6 +514,7 @@
         "cat": "transfo",
         "batch": 1,
         "energie": 4,
+        "cramBld": "Incinérateur",
         "equiv": 3,
         "kinds": ["science"],
         "planets":{"Dom":0,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":0}
@@ -562,6 +568,7 @@
         "cat": "blue-sky",
         "batch": 4,
         "energie": 0.75,
+        "cramBld": "Incinérateur",
         "equiv": 3,
         "kinds": ["science","military","energy","auto"],
         "planets":{"Dom":0,"Sarak":1,"Gehenna":0.7,"Kzin":2,"Horst":0.75}
@@ -589,6 +596,7 @@
         "cat": "blue-sky",
         "batch": 3,
         "energie": 1.5,
+        "cramBld": "Incinérateur",
         "equiv": 2,
         "kinds": ["military"],
         "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.5}
@@ -653,7 +661,7 @@
         "rarity": 100,
         "cat": "alien",
         "batch": 5,
-        "energie": 20,
+        "energie": -1,
         "equiv": 1
     },
     {
@@ -664,7 +672,7 @@
         "rarity": 60,
         "cat": "alien",
         "batch": 5,
-        "energie": 20,
+        "energie": -1,
         "equiv": 1
     },
     {
@@ -675,7 +683,8 @@
         "rarity": 40,
         "cat": "alien",
         "batch": 5,
-        "energie": 7,
+        "energie": 5,
+        "cramBld": "Incinérateur",
         "equiv": 1
     },
     {
@@ -686,7 +695,8 @@
         "rarity": 60,
         "cat": "alien",
         "batch": 5,
-        "energie": 10,
+        "energie": 8,
+        "cramBld": "Incinérateur",
         "equiv": 1
     },
     {
@@ -697,7 +707,7 @@
         "rarity": 30,
         "cat": "alien",
         "batch": 5,
-        "energie": 20,
+        "energie": -1,
         "equiv": 1
     },
     {
@@ -708,7 +718,7 @@
         "rarity": 50,
         "cat": "alien",
         "batch": 5,
-        "energie": 50,
+        "energie": -1,
         "equiv": 1
     },
     {
@@ -719,7 +729,8 @@
         "rarity": 35,
         "cat": "alien",
         "batch": 5,
-        "energie": 4,
+        "energie": 3,
+        "cramBld": "Incinérateur",
         "equiv": 1
     },
     {
@@ -730,7 +741,7 @@
         "rarity": 25,
         "cat": "alien",
         "batch": 5,
-        "energie": 20,
+        "energie": -1,
         "equiv": 1
     },
     {
@@ -741,7 +752,7 @@
         "rarity": 20,
         "cat": "alien",
         "batch": 5,
-        "energie": 5,
+        "energie": -1,
         "equiv": 1
     },
     {
@@ -752,7 +763,7 @@
         "rarity": 25,
         "cat": "alien",
         "batch": 5,
-        "energie": 25,
+        "energie": -1,
         "equiv": 1
     },
     {
@@ -797,6 +808,7 @@
         "cat": "alien",
         "batch": 5,
         "energie": 1,
+        "cramBld": "Incinérateur",
         "equiv": 1.5
     },
     {

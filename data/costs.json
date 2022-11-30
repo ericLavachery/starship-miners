@@ -2578,7 +2578,18 @@
     {
         "id":210,
         "name":"Crameur",
-        "costs":{"Compo1":285,"Compo2":90,"Compo3":75,"Eau":2500,"Carbone":1000,"Tungstène":500,"Nickel":500,"Argon":300,"Batteries":150},
+        "bldUp":["Incinérateur"],
+        "costs":{"Compo1":285,"Compo2":90,"Compo3":75,"Eau":2500,"Carbone":500,"Tungstène":500,"Nickel":500,"Argon":300,"Batteries":150},
+        "fabTime":120,
+        "slots":2
+    },
+    {
+        "id":298,
+        "name":"Incinérateur",
+        "bldEquiv":["Crameur"],
+        "bldCost":"Crameur",
+        "compReq":{"mat":2},
+        "costs":{"Compo2":450,"Compo3":250,"Eau":3500,"Carbone":2000,"Tungstène":1500,"Bore":1500,"Rhodium":50,"Batteries":100},
         "fabTime":120,
         "slots":3
     },

@@ -117,7 +117,15 @@ function okSound(roger) {
     } else {
         okFile = 'ok';
         randNum = rand.rand(1,28);
-        if (selectedBatType.skills.includes('robot')) {
+        if (selectedBatType.skills.includes('dog')) {
+            if (selectedBatType.name === 'Pets' || selectedBatType.name === 'Meatballs') {
+                okFile = 'dok';
+                randNum = 5;
+            } else {
+                okFile = 'dok';
+                randNum = 2;
+            }
+        } else if (selectedBatType.skills.includes('robot')) {
             if (selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
                 if (selectedBatType.name === 'Thunderbots' || selectedBatType.name === 'T-Skeltons') {
                     okFile = 'rok';

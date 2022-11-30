@@ -86,19 +86,22 @@ function planetEffects(bat,batType) {
 };
 
 function checkCanon() {
+    let doom = getDoom(true);
     // à enlever quand il y aura la map spéciale
+    // enlever le canon
     if (playerInfos.aCanon === 'web') {
-        if (zone[0].mapDiff >= 6) {
-            let chance = 30+((zone[0].mapDiff-6)*15);
+        if (doom >= 6) {
+            let chance = 30+((doom-6)*15);
             if (rand.rand(1,100) <= chance) {
                 playerInfos.aCanon = 'destroyed';
             }
         }
     }
     // à garder
+    // mettre le canon
     if (playerInfos.aCanon === 'none') {
-        if (zone[0].mapDiff >= 6) {
-            let chance = 40+((zone[0].mapDiff-6)*50);
+        if (doom >= 6) {
+            let chance = 40+((doom-6)*40);
             if (rand.rand(1,100) <= chance) {
                 playerInfos.aCanon = 'web';
             }

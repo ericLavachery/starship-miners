@@ -163,6 +163,9 @@ function getCramProd(bat,batType) {
             }
         }
     }
+    if (batType.name === 'Incinérateur') {
+        crameur.prod = crameur.prod*2;
+    }
     return crameur;
 };
 

@@ -1399,9 +1399,9 @@ function isInRange(myBat,thatTileId,myWeapon,alien) {
             let terrain = getTerrainById(thatTileId);
             let alienType = getBatType(alien);
             if (!alienType.skills.includes('fly') && !alien.tags.includes('fluo')) {
-                if (terrain.scarp >= 3 && alienType.size <= 2) {
-                    terrainAdj = terrainAdj-1;
-                }
+                // if (terrain.scarp >= 3 && alienType.size <= 2) {
+                //     terrainAdj = terrainAdj-1;
+                // }
                 if (terrain.veg > alienType.size) {
                     terrainAdj = terrainAdj-terrain.veg+alienType.size;
                 }
@@ -1410,9 +1410,6 @@ function isInRange(myBat,thatTileId,myWeapon,alien) {
                 }
             }
             let alienAdjSize = alienType.size;
-            if (terrain.scarp >= 3) {
-                alienAdjSize = alienAdjSize-20;
-            }
             if (alienAdjSize > 50) {
                 rangeBonus = rangeBonus+2;
             } else if (alienAdjSize > 20) {

@@ -2044,7 +2044,10 @@ function toggleAutoRoad(apCost,stop) {
         if (!selectedBat.tags.includes('autoroad')) {
             selectedBat.tags.push('autoroad');
         }
-        putRoad(apCost);
+        let tile = getTile(selectedBat);
+        if (!tile.rd) {
+            putRoad(apCost);
+        }
     }
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -2083,10 +2086,6 @@ function autoRoad(tile) {
         } else if (selectedBat.tags.includes('autoroad')) {
             tagDelete(selectedBat,'autoroad');
         }
-        // if (selectedBat.apLeft <= 0 && selectedBat.tags.includes('autoroad')) {
-        //     tagDelete(selectedBat,'autoroad');
-        // }
-        // showMap(zone,false);
     }
 };
 
