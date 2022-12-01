@@ -298,11 +298,13 @@ function playMusic(piste,interrupt) {
     if (piste != 'any') {
         track = piste;
     }
+    let myVol = checkMyVol(playerInfos.volMu+0.3);
     if (!theMusic.playing() || interrupt) {
+        theMusic.stop();
         theMusic = new Howl({
             src: ['/static/sounds/music/'+track+'.mp3'],
             preload: true,
-            volume: playerInfos.volMu
+            volume: myVol
         });
         theMusic.play();
         console.log('PLAYING: '+track);

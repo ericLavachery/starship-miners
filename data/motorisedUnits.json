@@ -235,7 +235,7 @@
             "noDef":true,
             "noBis":true,
             "kit":true,
-            "rof":3,
+            "rof":4,
             "accuracy":24,
             "power":4,
             "aoe":"squad",

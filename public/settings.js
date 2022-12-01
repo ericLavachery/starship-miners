@@ -273,9 +273,10 @@ let eggPauseMin = 7; // 1 chance sur 12: fin de pause (+compte des oeufs)
 let eggPauseMax = 20;
 let eggDropCount = 0;
 // SOUNDS
-let musicTracks = ['nero1','nero2','nero3','nero4','nero5','nero6','nero7','nero8'];
+let musicChance = 2;
+let musicTracks = ['trucsympa','amb_spaceambiant','amb_ambiant','trucsympa','amb_spaceambiant','amb_ambiant','aftermath','falling','it_is_raped','parallel_dimensions'];
 let theMusic = new Howl({
-    src: ['/static/sounds/music/nero1.mp3']
+    src: ['/static/sounds/music/trucsympa.mp3']
 });
 // let theBack = new Howl({
 //     src: ['/static/sounds/music/joao-janz_sha04.mp3']
@@ -296,4 +297,3 @@ let okSnd = new Howl({
     src: ['/static/sounds/moves/bip.mp3']
 });
 let soundDuration = 2000;
-let musicChance = 8;
