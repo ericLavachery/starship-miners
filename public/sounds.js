@@ -295,16 +295,16 @@ function spawnSound() {
 
 function playMusic(piste,interrupt) {
     // let track = [_.sample(musicTracks)];
-    let track = musicTracks[trackNum];
-    trackNum = trackNum+1;
-    if (trackNum > musicTracks.length-1) {
-        trackNum = 0;
-    }
-    if (piste != 'any') {
-        track = piste;
-    }
     let myVol = checkMyVol(playerInfos.volMu+0.3);
     if (!theMusic.playing() || interrupt) {
+        let track = musicTracks[trackNum];
+        trackNum = trackNum+1;
+        if (trackNum > musicTracks.length-1) {
+            trackNum = 0;
+        }
+        if (piste != 'any') {
+            track = piste;
+        }
         theMusic.stop();
         theMusic = new Howl({
             src: ['/static/sounds/music/'+track+'.mp3'],
@@ -333,7 +333,7 @@ function playRoom(piste,interrupt,onloop) {
     if (piste != 'any') {
         track = piste;
     }
-    let myVol = checkMyVol(playerInfos.volFx+0.1);
+    let myVol = checkMyVol(playerInfos.volFx-0.1);
     if (!theRoom.playing() || interrupt) {
         theRoom.stop();
         theRoom = new Howl({

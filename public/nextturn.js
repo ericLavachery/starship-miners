@@ -892,7 +892,7 @@ function turnInfo() {
         }
     }
     console.log('landingNoise = '+landingNoise);
-    playerInfos.fuzzTotal = fuzzTotal;
+    playerInfos.fuzzTotal = Math.round(fuzzTotal);
     let bonusDiff = Math.floor((fuzzTotal+rand.rand(0,fuzzDiv)-(fuzzDiv/2))/fuzzDiv);
     playerInfos.mapAdjDiff = zone[0].mapDiff+bonusDiff;
     if (playerInfos.mapAdjDiff < 1) {

@@ -82,6 +82,7 @@ function deconstruction(prefabId) {
         tagDelete(selectedBat,'guet');
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
+        showMap(zone,true);
         selectMode();
     }
 };
