@@ -337,7 +337,11 @@ function checkHasWeapon(num,batType,eq) {
     } else if (num === 2) {
         if (batType.weapon2.rof >= 1) {
             if (!batType.weapon2.kit || eq.includes('kit-') || eq.includes('w2-')) {
-                hasWeapon = true;
+                if (batType.weapon2.name === 'Guidage laser' && (playerInfos.gang === 'tiradores' || playerInfos.gang === 'rednecks' || playerInfos.gang === 'blades')) {
+                    hasWeapon = false;
+                } else {
+                    hasWeapon = true;
+                }
             }
             if (batType.skills.includes('w2mecano') && eq === 'e-mecano') {
                 hasWeapon = false;

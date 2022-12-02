@@ -118,16 +118,27 @@ function clickSelect(tileId) {
             // console.log(selectedBat);
             // console.log(selectedBatType);
         }
+        let omd = false;
+        if (zone[0].dark && !undarkNow.includes(tileId)) {
+            omd = true;
+        }
         let enemyBatHere = false;
         aliens.forEach(function(bat) {
             if (bat.tileId === tileId && bat.loc === "zone") {
+                if (bat.tags.includes('fluo')) {
+                    omd = false;
+                }
                 let batType = getBatType(bat);
-                if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) {
+                if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible') && !omd) {
                     showEnemyBatInfos(bat);
+                    enemyBatHere = true;
+                } else if (bat.tags.includes('invisible') && playerInfos.comp.det >= 5) {
+                    showEnemyBatInfos(bat);
+                    enemyBatHere = true;
                 } else if (playerInfos.pseudo === 'Mapedit') {
                     showEnemyBatInfos(bat);
+                    enemyBatHere = true;
                 }
-                enemyBatHere = true;
             }
         });
         // console.log(enemyBatHere);
@@ -168,13 +179,22 @@ function toggleShowedTile(tileId) {
 };
 
 function isAlienHere(tileId) {
+    let omd = false;
+    if (zone[0].dark && !undarkNow.includes(tileId)) {
+        omd = true;
+    }
     let alienHere = false;
     aliens.forEach(function(bat) {
         if (bat.tileId === tileId && bat.loc === "zone") {
+            if (bat.tags.includes('fluo')) {
+                omd = false;
+            }
             batType = getBatType(bat);
-            if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible')) {
+            if (!batType.skills.includes('invisible') && !bat.tags.includes('invisible') && !omd) {
                 alienHere = true;
             } else if (bat.tags.includes('invisible') && playerInfos.comp.det >= 5) {
+                alienHere = true;
+            } else if (playerInfos.pseudo === 'Mapedit') {
                 alienHere = true;
             }
         }

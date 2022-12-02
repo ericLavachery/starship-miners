@@ -1749,7 +1749,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","capfar","inflammable","resistelec"],
+        "skills":["fly","capfar","inflammable","resistelec","light"],
         "deathFx":"death1",
         "killRes":{"Bugium":1,"Larvium":2,"Wingium":4},
         "killXP":5

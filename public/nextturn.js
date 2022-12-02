@@ -1,9 +1,7 @@
 function nextTurn() {
     testConnect(pseudo);
     saveGame();
-    if (zone[0].dark) {
-        checkUndark();
-    }
+    checkUndark();
     console.log('NOUVEAU TOUR');
     console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     // stopMe = true;
@@ -902,6 +900,7 @@ function turnInfo() {
     }
     checkZoneType();
     undarkList();
+    checkUndark();
     setCoconStats();
     checkCoconBonus();
     unitResist = calcUnitResist();

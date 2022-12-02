@@ -618,6 +618,9 @@ function attack(melee,init) {
         if (selectedWeap.ammo === 'marquage' || selectedWeap.ammo === 'marquage-stop' || selectedWeap.ammo === 'firemarq' || totalDamage >= 1) {
             targetBat.tags.push('fluo');
             $('#report').append('<span class="report rose">Bataillon marqué<br></span>');
+            if (zone[0].dark) {
+                undarkAlien(targetBat);
+            }
         }
     }
     // guidage

@@ -294,7 +294,12 @@ function spawnSound() {
 };
 
 function playMusic(piste,interrupt) {
-    let track = [_.sample(musicTracks)];
+    // let track = [_.sample(musicTracks)];
+    let track = musicTracks[trackNum];
+    trackNum = trackNum+1;
+    if (trackNum > musicTracks.length-1) {
+        trackNum = 0;
+    }
     if (piste != 'any') {
         track = piste;
     }

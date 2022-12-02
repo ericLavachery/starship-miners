@@ -545,6 +545,24 @@ function checkUndark() {
                 undarkAround(bat,false);
             }
         });
+        aliens.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                if (bat.tags.includes('fluo')) {
+                    undarkAlien(bat);
+                } else if (bat.type === 'Lucioles') {
+                    undarkAlien(bat);
+                }
+            }
+        });
+        zone.forEach(function(tile) {
+            if (tile.fluo != undefined) {
+                if (tile.fluo >= playerInfos.mapTurn) {
+                    undarkTomb(tile.id);
+                } else {
+                    delete tile.fluo;
+                }
+            }
+        });
     }
 };
 
@@ -677,6 +695,131 @@ function undarkAround(bat,center) {
             thisTile = batTileId-mapSize+3;
             unDark(thisTile);
             thisTile = batTileId-mapSize-mapSize+3;
+            unDark(thisTile);
+        }
+    }
+};
+
+function undarkAlien(bat) {
+    let power = 1;
+    if (bat.tags.includes('fluo')) {
+        if (playerInfos.comp.energ === 3 || playerInfos.comp.det >= 4) {
+            power = 2;
+        }
+    }
+    let batTileId = bat.tileId;
+    let thisTile = batTileId;
+    unDark(thisTile);
+    if (power >= 1) {
+        thisTile = batTileId-1;
+        unDark(thisTile);
+        thisTile = batTileId+1;
+        unDark(thisTile);
+        thisTile = batTileId-1-mapSize;
+        unDark(thisTile);
+        thisTile = batTileId+1-mapSize;
+        unDark(thisTile);
+        thisTile = batTileId-mapSize;
+        unDark(thisTile);
+        thisTile = batTileId-1+mapSize;
+        unDark(thisTile);
+        thisTile = batTileId+1+mapSize;
+        unDark(thisTile);
+        thisTile = batTileId+mapSize;
+        unDark(thisTile);
+        if (power >= 2) {
+            thisTile = batTileId-mapSize-mapSize-2;
+            unDark(thisTile);
+            thisTile = batTileId-mapSize-mapSize-1;
+            unDark(thisTile);
+            thisTile = batTileId-mapSize-mapSize;
+            unDark(thisTile);
+            thisTile = batTileId-mapSize-mapSize+1;
+            unDark(thisTile);
+            thisTile = batTileId-mapSize-mapSize+2;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize+mapSize-2;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize+mapSize-1;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize+mapSize;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize+mapSize+1;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize+mapSize+2;
+            unDark(thisTile);
+            thisTile = batTileId+2;
+            unDark(thisTile);
+            thisTile = batTileId-mapSize+2;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize+2;
+            unDark(thisTile);
+            thisTile = batTileId-2;
+            unDark(thisTile);
+            thisTile = batTileId-mapSize-2;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize-2;
+            unDark(thisTile);
+        }
+    }
+};
+
+function undarkTomb(batTileId) {
+    let power = 1;
+    if (playerInfos.comp.energ === 3 || playerInfos.comp.det >= 4) {
+        power = 2;
+    }
+    let thisTile = batTileId;
+    unDark(thisTile);
+    if (power >= 1) {
+        thisTile = batTileId-1;
+        unDark(thisTile);
+        thisTile = batTileId+1;
+        unDark(thisTile);
+        thisTile = batTileId-1-mapSize;
+        unDark(thisTile);
+        thisTile = batTileId+1-mapSize;
+        unDark(thisTile);
+        thisTile = batTileId-mapSize;
+        unDark(thisTile);
+        thisTile = batTileId-1+mapSize;
+        unDark(thisTile);
+        thisTile = batTileId+1+mapSize;
+        unDark(thisTile);
+        thisTile = batTileId+mapSize;
+        unDark(thisTile);
+        if (power >= 2) {
+            thisTile = batTileId-mapSize-mapSize-2;
+            unDark(thisTile);
+            thisTile = batTileId-mapSize-mapSize-1;
+            unDark(thisTile);
+            thisTile = batTileId-mapSize-mapSize;
+            unDark(thisTile);
+            thisTile = batTileId-mapSize-mapSize+1;
+            unDark(thisTile);
+            thisTile = batTileId-mapSize-mapSize+2;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize+mapSize-2;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize+mapSize-1;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize+mapSize;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize+mapSize+1;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize+mapSize+2;
+            unDark(thisTile);
+            thisTile = batTileId+2;
+            unDark(thisTile);
+            thisTile = batTileId-mapSize+2;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize+2;
+            unDark(thisTile);
+            thisTile = batTileId-2;
+            unDark(thisTile);
+            thisTile = batTileId-mapSize-2;
+            unDark(thisTile);
+            thisTile = batTileId+mapSize-2;
             unDark(thisTile);
         }
     }

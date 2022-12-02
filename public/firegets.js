@@ -573,6 +573,14 @@ function batDeathEffect(bat,quiet,title,body) {
             deathStress();
         }
     }
+    if (zone[0].dark) {
+        if (bat.team === 'aliens') {
+            if (bat.tags.includes('fluo')) {
+                let tile = getTile(bat);
+                tile.fluo = playerInfos.mapTurn+5;
+            }
+        }
+    }
     if (bat.team === 'aliens' && bat.tags.includes('scion')) {
         let unitIndex = alienUnits.findIndex((obj => obj.name === 'Scions'));
         conselUnit = alienUnits[unitIndex];

@@ -274,13 +274,11 @@ let eggPauseMax = 20;
 let eggDropCount = 0;
 // SOUNDS
 let musicChance = 2;
-let musicTracks = ['trucsympa','amb_spaceambiant','amb_ambiant','trucsympa','amb_spaceambiant','amb_ambiant','aftermath','falling','it_is_raped','parallel_dimensions'];
+let musicTracks = ['trucsympa','amb_spaceambiant','parallel_dimensions','aftermath','trucsympa','amb_ambiant','amb_spaceambiant','it_is_raped'];
+let trackNum = 0;
 let theMusic = new Howl({
     src: ['/static/sounds/music/trucsympa.mp3']
 });
-// let theBack = new Howl({
-//     src: ['/static/sounds/music/joao-janz_sha04.mp3']
-// });
 let theRoom = new Howl({
     src: ['/static/sounds/rooms/station.mp3']
 });
