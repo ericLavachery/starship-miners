@@ -2397,6 +2397,7 @@
     {
         "id":3,
         "name":"Atelier",
+        "bldReplace":["Chaîne de montage","Usine"],
         "upkeep":{"Bois":4,"Végétaux":4,"Energie":0.5},
         "prod":{"Compo1":3,"Tissus":1,"Scrap":2},
         "bldUp":["Chaîne de montage"],
@@ -2407,6 +2408,7 @@
     {
         "id":198,
         "name":"Chaîne de montage",
+        "bldReplace":["Usine"],
         "bldEquiv":["Atelier"],
         "bldUp":["Usine"],
         "bldCost":"Atelier",
@@ -2430,6 +2432,7 @@
     {
         "id":170,
         "name":"Armurerie",
+        "bldReplace":["Arsenal","Usine d'armement"],
         "bldUp":["Arsenal"],
         "upkeep":{"Fer":0.7,"Soufre":1.4,"Plomb":1.4},
         "prod":{"Munitions":1,"Scrap":1},
@@ -2440,6 +2443,7 @@
     {
         "id":171,
         "name":"Arsenal",
+        "bldReplace":["Usine d'armement"],
         "bldEquiv":["Armurerie"],
         "bldUp":["Usine d'armement"],
         "bldCost":"Armurerie",
@@ -2463,6 +2467,7 @@
     {
         "id":150,
         "name":"Infirmerie",
+        "bldReplace":["Hôpital"],
         "bldUp":["Hôpital"],
         "costs":{"Compo1":115,"Eau":24,"Drogues":50,"Tissus":50,"Aluminium":30,"Calcium":25,"Or":10,"Silicium":25,"Oxygène":25,"Chlore":50,"Energie":40},
         "fabTime":20,
@@ -2484,6 +2489,7 @@
     {
         "id":194,
         "name":"Poste radio",
+        "bldReplace":["Centre de com","QG"],
         "bldUp":["Centre de com"],
         "upkeep":{"Energie":1},
         "costs":{"Compo1":130,"Compo2":20,"Eau":12,"Energie":60,"Cuivre":50,"Electros":15,"Batteries":10},
@@ -2493,6 +2499,7 @@
     {
         "id":195,
         "name":"Centre de com",
+        "bldReplace":["QG"],
         "bldEquiv":["Poste radio"],
         "bldUp":["QG"],
         "bldCost":"Poste radio",
@@ -2517,6 +2524,7 @@
     {
         "id":203,
         "name":"Décharge",
+        "bldReplace":["Centre de tri","Recyclab"],
         "bldUp":["Centre de tri"],
         "costs":{"Compo1":175,"Eau":18,"Fer":50},
         "fabTime":20,
@@ -2525,6 +2533,7 @@
     {
         "id":204,
         "name":"Centre de tri",
+        "bldReplace":["Recyclab"],
         "bldEquiv":["Décharge"],
         "bldUp":["Recyclab"],
         "bldCost":"Décharge",
@@ -2547,6 +2556,7 @@
     {
         "id":206,
         "name":"Laboratoire",
+        "bldReplace":["Centre de recherches"],
         "bldUp":["Centre de recherches"],
         "upkeep":{"Energie":3,"Eau":2,"Végétaux":3.5,"Huile":1.5},
         "prod":{"Drogues":2,"Scrap":1},
@@ -2578,6 +2588,7 @@
     {
         "id":210,
         "name":"Crameur",
+        "bldReplace":["Incinérateur"],
         "bldUp":["Incinérateur"],
         "costs":{"Compo1":285,"Compo2":90,"Compo3":75,"Eau":2500,"Carbone":500,"Tungstène":500,"Nickel":500,"Argon":300,"Batteries":150},
         "fabTime":120,
@@ -2697,6 +2708,7 @@
     {
         "id":267,
         "name":"Chenil",
+        "bldReq":["Soute"],
         "levels":{"rednecks":5,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "upkeep":{"Viande":0.3},
         "costs":{"Compo1":120,"Compo2":30,"Eau":50,"Fer":150},

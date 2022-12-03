@@ -335,7 +335,7 @@ function checkEggsDrop() {
         }
         if (eggDropCount >= 1 || satDrop) {
             eggSound();
-            playMusic('any',false);
+            // playMusic('any',false);
             if (Math.floor(playerInfos.mapTurn/coconStats.turns) > playerInfos.cocons && !satDrop) {
                 if (coconStats.level >= 9) {
                     dropEgg('Cocon','nedge');
@@ -374,7 +374,7 @@ function checkEggsDrop() {
                 playerInfos.cocons = playerInfos.cocons+1;
             }
         } else {
-            // playMusic('noEgg',false);
+            // playMusic('any',false);
         }
     }
     if (playerInfos.mapTurn >= 15 && !domeProtect) {

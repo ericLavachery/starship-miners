@@ -700,7 +700,7 @@ function maxUnits(unit) {
                 maxOf.lbot = maxOf.lbot+3;
             }
             if (batType.name === 'Garage') {
-                maxOf.lveh = maxOf.lveh+6;
+                maxOf.lveh = maxOf.lveh+8;
             }
             if (batType.name === 'Chenil') {
                 maxOf.dog = maxOf.dog+6;

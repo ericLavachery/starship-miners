@@ -382,7 +382,7 @@ function batListElement(bat,batType,idOfLander) {
         let isXPok = checkUprankXP(bat,batType);
         let isUpUnitOK = checkUpUnit(batType);
         if (isXPok && isUpUnitOK) {
-            $('#be'+bat.id).append('<span class="listRes vert" title="Peut être changé en '+batType.unitUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes bleu" title="Peut être changé en '+batType.unitUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
         } else {
             $('#be'+bat.id).append('<span class="listRes gff" title="Pourra être changé en '+batType.unitUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
         }
@@ -390,7 +390,7 @@ function batListElement(bat,batType,idOfLander) {
     if (batType.skills.includes('upgrade')) {
         let isUpUnitOK = checkUpUnit(batType);
         if (isUpUnitOK) {
-            $('#be'+bat.id).append('<span class="listRes vert" title="Peut être changé en '+batType.bldUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes bleu" title="Peut être changé en '+batType.bldUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
         } else {
             $('#be'+bat.id).append('<span class="listRes gff" title="Pourra être changé en '+batType.bldUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
         }

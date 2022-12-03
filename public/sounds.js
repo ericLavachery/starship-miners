@@ -100,7 +100,7 @@ function warnSound(theSound) {
     // playMove(false);
     let myVol = checkMyVol(playerInfos.volFx+0.2);
     if (theSound === 'takeoff') {
-        myVol = checkMyVol(playerInfos.volFx+0.3);
+        myVol = checkMyVol(playerInfos.volFx+0.1);
     }
     clicSnd = new Howl({
         src: ['/static/sounds/fx/'+theSound+'.mp3'],

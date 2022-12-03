@@ -274,7 +274,7 @@ let eggPauseMax = 20;
 let eggDropCount = 0;
 // SOUNDS
 let musicChance = 2;
-let musicTracks = ['trucsympa','amb_spaceambiant','parallel_dimensions','aftermath','trucsympa','amb_ambiant','amb_spaceambiant','it_is_raped'];
+let musicTracks = ['trucsympa','amb_spaceambiant2','parallel_dimensions','aftermath','trucsympa','amb_ambiant','amb_spaceambiant','it_is_raped'];
 let trackNum = 0;
 let theMusic = new Howl({
     src: ['/static/sounds/music/trucsympa.mp3']

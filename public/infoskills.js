@@ -2462,10 +2462,16 @@ function skillsInfos(bat,batType,near) {
     if (!inSoute && !bat.tags.includes('nomove')) {
         if (isReloaded || playerInfos.mapTurn != 0 || playerInfos.onShip) {
             // CONSTRUCTION BATIMENTS
-            if (batType.skills.includes('constructeur')) {
+            if (batType.skills.includes('constructeur') || batType.skills.includes('producteur')) {
                 apReq = getConstAPReq(bat,batType);
                 if (bat.apLeft >= apReq && !inMelee && craftsOK) {
-                    $('#unitInfos').append('<button type="button" title="Construction (bâtiments)" class="boutonOrange iconButtons" onclick="bfconst(`buildings`,false,false,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
+                    if ((batType.skills.includes('constructeur') && batType.skills.includes('producteur')) || batType.skills.includes('transorbital')) {
+                        $('#unitInfos').append('<button type="button" title="Production (bâtiments & unités)" class="boutonOrange iconButtons" onclick="bfconst(`all`,false,false,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
+                    } else if (batType.skills.includes('constructeur')) {
+                        $('#unitInfos').append('<button type="button" title="Construction (bâtiments)" class="boutonOrange iconButtons" onclick="bfconst(`buildings`,false,false,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
+                    } else if (batType.skills.includes('producteur')) {
+                        $('#unitInfos').append('<button type="button" title="Production (unités)" class="boutonOrange iconButtons" onclick="bfconst(`units`,false,false,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
+                    }
                     lineBreak = true;
                 } else {
                     if (inMelee) {
@@ -2480,23 +2486,23 @@ function skillsInfos(bat,batType,near) {
                 }
             }
             // CONSTRUCTION UNITES
-            if (batType.skills.includes('producteur')) {
-                apReq = getConstAPReq(bat,batType);
-                if (bat.apLeft >= apReq && !inMelee && craftsOK) {
-                    $('#unitInfos').append('<button type="button" title="Production (unités)" class="boutonOrange iconButtons" onclick="bfconst(`units`,false,false,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
-                    lineBreak = true;
-                } else {
-                    if (inMelee) {
-                        skillMessage = "Production: Ne peut pas se faire en mêlée";
-                    } else if (!craftsOK) {
-                        skillMessage = "Production: Vous avez atteint votre maximum de crafts";
-                    } else {
-                        skillMessage = "Production: Pas assez de PA (réserve de "+apReq+" requise)";
-                    }
-                    $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
-                    lineBreak = true;
-                }
-            }
+            // if (batType.skills.includes('producteur')) {
+            //     apReq = getConstAPReq(bat,batType);
+            //     if (bat.apLeft >= apReq && !inMelee && craftsOK) {
+            //         $('#unitInfos').append('<button type="button" title="Production (unités)" class="boutonOrange iconButtons" onclick="bfconst(`units`,false,false,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
+            //         lineBreak = true;
+            //     } else {
+            //         if (inMelee) {
+            //             skillMessage = "Production: Ne peut pas se faire en mêlée";
+            //         } else if (!craftsOK) {
+            //             skillMessage = "Production: Vous avez atteint votre maximum de crafts";
+            //         } else {
+            //             skillMessage = "Production: Pas assez de PA (réserve de "+apReq+" requise)";
+            //         }
+            //         $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
+            //         lineBreak = true;
+            //     }
+            // }
         }
     }
     // CHANGER AMMOS-ARMURE-EQUIPEMENT

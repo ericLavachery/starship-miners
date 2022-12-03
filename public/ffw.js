@@ -18,6 +18,7 @@ function createAlienList() {
 
 function nextAlien() {
     // activated by click
+    playMusic('any',false);
     washReports(false);
     if (Object.keys(selectedBat).length >= 1) {
         let batIndex = alienList.findIndex((obj => obj.id == selectedBat.id));
@@ -43,6 +44,7 @@ function nextAlien() {
 
 function ffw() {
     console.log('$$$$$$$ START FFW');
+    playMusic('any',false);
     let outOfList = [];
     isFFW = true;
     for(let bat of alienList){

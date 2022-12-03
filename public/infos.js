@@ -403,17 +403,17 @@ function batInfos(bat,batType,pop) {
         }
     }
     if (bat.emo >= 1) {
-        let stress = bat.emo-10;
+        let stress = bat.emo;
         if (bat.tags.includes('terror')) {
             $('#'+bodyPlace).append('<span class="paramName or">Stress</span><span class="paramIcon"></span><span class="paramValue or" title="Ce bataillon va fuir dès que des aliens sont proches et ne voudra plus les attaquer">Terrorisé!</span><br>');
-        } else if (stress >= 1) {
+        } else if (stress >= 11) {
             if (bat.tags.includes('octiron') || bat.tags.includes('bliss')) {
                 $('#'+bodyPlace).append('<span class="paramName jaune">Stress</span><span class="paramIcon"></span><span class="paramValue jaune" title="Stress sous contrôle">('+stress+')</span><br>');
             } else {
-                $('#'+bodyPlace).append('<span class="paramName jaune">Stress</span><span class="paramIcon"></span><span class="paramValue jaune">'+stress+'</span><br>');
+                $('#'+bodyPlace).append('<span class="paramName or">Stress</span><span class="paramIcon"></span><span class="paramValue or">'+stress+'</span><br>');
             }
         } else if (playerInfos.onShip) {
-            $('#'+bodyPlace).append('<span class="paramName">Stress</span><span class="paramIcon"></span><span class="paramValue">'+stress+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName jaune">Stress</span><span class="paramIcon"></span><span class="paramValue jaune">'+stress+'</span><br>');
         }
     }
     if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {

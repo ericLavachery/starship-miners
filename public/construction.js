@@ -9,6 +9,13 @@ function bfconst(cat,triche,upgrade,retour) {
     if (cat === 'units') {
         catz.push('infantry');
         catz.push('vehicles');
+        catz.push('devices');
+    }
+    if (cat === 'all') {
+        catz.push('buildings');
+        catz.push('infantry');
+        catz.push('vehicles');
+        catz.push('devices');
     }
     selectMode();
     if (Object.keys(conselUnit).length >= 1) {
@@ -32,12 +39,13 @@ function bfconst(cat,triche,upgrade,retour) {
         craftCol = 'or';
     }
     $("#conUnitList").css("display","block");
-    if (!playerInfos.onShip) {
-        $("#conAmmoList").css("display","block");
-        $('#conUnitList').css("height","300px");
-    } else {
-        $('#conUnitList').css("height","700px");
-    }
+    $('#conUnitList').css("height","700px");
+    // if (!playerInfos.onShip) {
+    //     $("#conAmmoList").css("display","block");
+    //     $('#conUnitList').css("height","300px");
+    // } else {
+    //     $('#conUnitList').css("height","700px");
+    // }
     $('#conUnitList').empty();
     $('#unitInfos').empty();
     $("#unitInfos").css("display","none");
@@ -82,6 +90,7 @@ function bfconst(cat,triche,upgrade,retour) {
         mayOut = checkMayOut(unit,false);
         uMaxOK = true;
         prodOK = true;
+        prodHere = false;
         directProd = true;
         if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
             prodOK = false;
@@ -96,36 +105,31 @@ function bfconst(cat,triche,upgrade,retour) {
         let pDistOK = checkPiloneDistance(unit,triche);
         let pNumOK = checkPiloneNumber(unit,triche);
         if (!triche) {
-            if (catz.includes(unit.cat) && unit.fabTime >= 1) {
-                prodHere = true;
-            }
-            if (selectedBatType.skills.includes('transorbital')) {
-                prodHere = true;
-            }
-            if (!selectedBatType.skills.includes('transorbital')) {
-                if (!unit.bldReq.includes(selectedBatType.name)) {
-                    if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
-                        prodHere = false;
-                    } else {
-                        if (unit.cat === 'vehicles' || unit.cat === 'infantry') {
-                            prodHere = false;
-                        }
-                    }
-                    if (unit.cat === 'vehicles' || unit.cat === 'infantry') {
-                        if (unit.bldReq[0] != undefined) {
-                            prodHere = false;
-                        }
-                    }
-                    if (selectedBatType.cat === 'infantry' && unit.fabTime >= 35 && !unit.skills.includes('clicput')) {
-                        prodHere = false;
-                    }
-                }
-            }
-            // if (unit.bldCost != 'none' && unit.bldCost != selectedBatType.name) {
-            //     prodHere = false;
+            prodHere = iCanProdThis(selectedBatType,unit,catz);
+            // if (catz.includes(unit.cat) && unit.fabTime >= 1) {
+            //     prodHere = true;
             // }
-            // if (unit.unitCost != 'none' && unit.unitCost != selectedBatType.name) {
-            //     prodHere = false;
+            // if (selectedBatType.skills.includes('transorbital')) {
+            //     prodHere = true;
+            // }
+            // if (!selectedBatType.skills.includes('transorbital')) {
+            //     if (!unit.bldReq.includes(selectedBatType.name)) {
+            //         if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
+            //             prodHere = false;
+            //         } else {
+            //             if (unit.cat === 'vehicles' || unit.cat === 'infantry') {
+            //                 prodHere = false;
+            //             }
+            //         }
+            //         if (unit.cat === 'vehicles' || unit.cat === 'infantry') {
+            //             if (unit.bldReq[0] != undefined) {
+            //                 prodHere = false;
+            //             }
+            //         }
+            //         if (selectedBatType.cat === 'infantry' && unit.fabTime >= 35 && !unit.skills.includes('clicput')) {
+            //             prodHere = false;
+            //         }
+            //     }
             // }
             if (unit.bldCost != 'none') {
                 directProd = false;

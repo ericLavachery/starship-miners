@@ -1,5 +1,6 @@
 function nextTurn() {
     testConnect(pseudo);
+    playMusic('any',false);
     saveGame();
     checkUndark();
     console.log('NOUVEAU TOUR');

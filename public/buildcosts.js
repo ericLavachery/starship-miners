@@ -1266,3 +1266,47 @@ function calcAllCosts(unit,ammoNames,withDeploy,withFlat) {
     // console.log(allCosts);
     return allCosts;
 };
+
+function iCanProdThis(prodUnit,unit,catz) {
+    let prodThis = false;
+    if (prodUnit.skills.includes('transorbital')) {
+        prodThis = true;
+    } else {
+        if (catz.includes(unit.cat)) {
+            if (prodUnit.cat === 'infantry' && unit.fabTime >= 35 && !unit.skills.includes('clicput')) {
+                prodThis = false;
+            } else {
+                if (unit.bldReq.length < 1) {
+                    prodThis = true;
+                } else if (unit.bldReq.includes(prodUnit.name)) {
+                    prodThis = true;
+                } else {
+                    let bldRequis = unit.bldReq;
+                    let thisBldReq = {};
+                    if (unit.bldReq[0] != undefined) {
+                        thisBldReq = getBatTypeByName(unit.bldReq[0]);
+                        if (thisBldReq.bldReplace != undefined) {
+                            bldRequis = bldRequis.concat(thisBldReq.bldReplace);
+                        }
+                    }
+                    if (unit.bldReq[1] != undefined) {
+                        thisBldReq = getBatTypeByName(unit.bldReq[1]);
+                        if (thisBldReq.bldReplace != undefined) {
+                            bldRequis = bldRequis.concat(thisBldReq.bldReplace);
+                        }
+                    }
+                    if (unit.bldReq[2] != undefined) {
+                        thisBldReq = getBatTypeByName(unit.bldReq[2]);
+                        if (thisBldReq.bldReplace != undefined) {
+                            bldRequis = bldRequis.concat(thisBldReq.bldReplace);
+                        }
+                    }
+                    if (bldRequis.includes(prodUnit.name)) {
+                        prodThis = true;
+                    }
+                }
+            }
+        }
+    }
+    return prodThis;
+};
