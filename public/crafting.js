@@ -284,10 +284,18 @@ function adjCraftFactor(craft,craftFactor) {
                     recupLevel = recupLevel-craft.compReq['tri'];
                 }
                 if (recupLevel >= 1) {
-                    if (morphCrafting) {
-                        craftFactor = craftFactor*6/(6+recupLevel);
+                    if (playerInfos.comp.tri === 4 && playerInfos.bldList.includes('Recyclab')) {
+                        if (morphCrafting) {
+                            craftFactor = craftFactor*2/(2+recupLevel);
+                        } else {
+                            craftFactor = craftFactor*16/(16+recupLevel);
+                        }
                     } else {
-                        craftFactor = craftFactor*16/(16+recupLevel);
+                        if (morphCrafting) {
+                            craftFactor = craftFactor*6/(6+recupLevel);
+                        } else {
+                            craftFactor = craftFactor*16/(16+recupLevel);
+                        }
                     }
                 }
             }

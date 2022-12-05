@@ -291,10 +291,8 @@ socket.on('savedMap-Load', function(sm) {
         if (!gameOver) {
             if (zone[0].snd === undefined) {
                 playRoom('crickets',true,true);
-                // playBackMusic();
             } else {
                 playRoom(zone[0].snd,true,true);
-                // playBackMusic();
             }
         }
     }

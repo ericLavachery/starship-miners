@@ -899,6 +899,10 @@ function getStarkaBonus(bat) {
         batAPLeft = maxAP;
     }
     let starkaBonus = batAPLeft-Math.round(bat.apLeft)-batMoves;
+    let minBonus = Math.round(medBonus/2)+2;
+    if (starkaBonus < minBonus) {
+        starkaBonus = minBonus;
+    }
     return starkaBonus;
 };
 

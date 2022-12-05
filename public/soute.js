@@ -1,7 +1,9 @@
 function goSoute() {
     inSoute = true;
-    playRoom('soute',true,true);
-    playFx('work',false);
+    if (playerInfos.onShip) {
+        playRoom('soute',true,true);
+        playFx('work',false);
+    }
     $("#zone_map").css("display","none");
     $("#zone_soute").css("display","block");
     $("#modesInfos").css("display","none");
@@ -28,8 +30,10 @@ function goSoute() {
 
 function goStation() {
     inSoute = false;
-    playRoom('station',true,true);
-    playFx('work',true);
+    if (playerInfos.onShip) {
+        playRoom('station',true,true);
+        playFx('work',true);
+    }
     $("#zone_map").css("display","grid");
     $("#zone_soute").css("display","none");
     $("#modesInfos").css("display","block");

@@ -217,10 +217,12 @@ function showRes(tileId) {
     let mapIndicators = '';
     let res = '';
     let view = true;
-    if (modeSonde && playerInfos.comp.det < 0) {
-        view = false;
+    if (zone[0].dark) {
+        if (!zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
+            view = false;
+        }
     }
-    if (tile.rq != undefined && view) {
+    if (tile.rq != undefined) {
         if (playerInfos.comp.det >= 1 || !modeSonde) {
             res = JSON.stringify(tile.rs);
             res = res.replace(/"/g,"");
@@ -238,26 +240,24 @@ function showRes(tileId) {
             res = res+' ('+tile.tileName+')'
         }
     }
-    if (view) {
-        if (tile.rd || tile.qs || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
-            mapIndicators = mapIndicators+'<div class="mapInfos" title="'+res+'">';
-        }
-        if (tile.rd) {
-            mapIndicators = mapIndicators+'<i class="fas fa-shoe-prints fa-rotate-270 road"></i>';
-        } else if (tile.qs) {
-            mapIndicators = mapIndicators+'<i class="fas fa-water road"></i>';
-        }
-        if (tile.tileName !== undefined && tile.tileName != '') {
-            mapIndicators = mapIndicators+'<i class="fas fa-map-marker-alt inficon"></i>';
-        }
-        if (tile.rq != undefined) {
-            mapIndicators = mapIndicators+'<i class="fas fa-atom inficon rq'+tile.rq+'"></i>';
-        }
-        if (tile.rd || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
-            mapIndicators = mapIndicators+'</div>';
-        }
+    if (tile.rd || tile.qs || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
+        mapIndicators = mapIndicators+'<div class="mapInfos" title="'+res+'">';
     }
-    if (tile.ruins && view) {
+    if (tile.rd) {
+        mapIndicators = mapIndicators+'<i class="fas fa-shoe-prints fa-rotate-270 road"></i>';
+    } else if (tile.qs) {
+        mapIndicators = mapIndicators+'<i class="fas fa-water road"></i>';
+    }
+    if (tile.tileName !== undefined && tile.tileName != '') {
+        mapIndicators = mapIndicators+'<i class="fas fa-map-marker-alt inficon"></i>';
+    }
+    if (tile.rq != undefined) {
+        mapIndicators = mapIndicators+'<i class="fas fa-atom inficon rq'+tile.rq+'"></i>';
+    }
+    if (tile.rd || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
+        mapIndicators = mapIndicators+'</div>';
+    }
+    if (tile.ruins) {
         if (tile.sh === -1) {
             mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/ruinsf.png"></div>';
         } else {
@@ -282,7 +282,7 @@ function showRes(tileId) {
     if (tile.infra === 'Débris' && view) {
         mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/debris.png"></div>';
     }
-    if (tile.infra === 'Crystal' && view) {
+    if (tile.infra === 'Crystal') {
         mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/crystal.png"></div>';
     }
     if (tile.web && view) {

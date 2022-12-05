@@ -243,6 +243,7 @@ let conselUnit = {};
 let conselAmmos = ['xxx','xxx','xxx','xxx'];
 let conselCat;
 let conselUpgrade = '';
+let conselInto = false;
 let conselTriche;
 let conselCosts = {};
 let myNewGear = ['xxx','xxx','xxx','xxx'];
@@ -275,7 +276,7 @@ let eggDropCount = 0;
 // SOUNDS
 let musicChance = 2;
 let musicTracks = ['trucsympa','amb_spaceambiant2','parallel_dimensions','aftermath','trucsympa','amb_ambiant','amb_spaceambiant','it_is_raped'];
-let trackNum = 0;
+let trackNum = rand.rand(0,3);
 let theMusic = new Howl({
     src: ['/static/sounds/music/trucsympa.mp3']
 });

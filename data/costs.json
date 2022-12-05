@@ -1624,7 +1624,7 @@
         "levels":{"rednecks":13,"blades":12,"bulbos":13,"drogmulojs":14,"tiradores":14,"detruas":13,"brasier":13},
         "bldReq":["Garage","Atelier"],
         "compReq":{"trans":3},
-        "costs":{"Fer":96,"Scrap":378,"Carbone":288,"Aluminium":96,"Moteurs":200,"Tungstène":96,"Cuivre":32,"Electros":12,"Batteries":114,"Compo2":390,"Compo3":108,"Huile":10},
+        "costs":{"Fer":96,"Scrap":378,"Carbone":288,"Aluminium":96,"Moteurs":200,"Tungstène":96,"Cuivre":32,"Electros":12,"Batteries":114,"Compo2":390,"Compo3":108,"Mendium":80,"Huile":10},
         "deploy":{"Fuel":120},
         "fabTime":120,
         "inRuin":1

@@ -39,13 +39,13 @@ function bfconst(cat,triche,upgrade,retour) {
         craftCol = 'or';
     }
     $("#conUnitList").css("display","block");
-    $('#conUnitList').css("height","700px");
-    // if (!playerInfos.onShip) {
-    //     $("#conAmmoList").css("display","block");
-    //     $('#conUnitList').css("height","300px");
-    // } else {
-    //     $('#conUnitList').css("height","700px");
-    // }
+    // $('#conUnitList').css("height","700px");
+    if (conselTriche) {
+        $("#conAmmoList").css("display","block");
+        $('#conUnitList').css("height","300px");
+    } else {
+        $('#conUnitList').css("height","700px");
+    }
     $('#conUnitList').empty();
     $('#unitInfos').empty();
     $("#unitInfos").css("display","none");
@@ -106,31 +106,6 @@ function bfconst(cat,triche,upgrade,retour) {
         let pNumOK = checkPiloneNumber(unit,triche);
         if (!triche) {
             prodHere = iCanProdThis(selectedBatType,unit,catz);
-            // if (catz.includes(unit.cat) && unit.fabTime >= 1) {
-            //     prodHere = true;
-            // }
-            // if (selectedBatType.skills.includes('transorbital')) {
-            //     prodHere = true;
-            // }
-            // if (!selectedBatType.skills.includes('transorbital')) {
-            //     if (!unit.bldReq.includes(selectedBatType.name)) {
-            //         if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
-            //             prodHere = false;
-            //         } else {
-            //             if (unit.cat === 'vehicles' || unit.cat === 'infantry') {
-            //                 prodHere = false;
-            //             }
-            //         }
-            //         if (unit.cat === 'vehicles' || unit.cat === 'infantry') {
-            //             if (unit.bldReq[0] != undefined) {
-            //                 prodHere = false;
-            //             }
-            //         }
-            //         if (selectedBatType.cat === 'infantry' && unit.fabTime >= 35 && !unit.skills.includes('clicput')) {
-            //             prodHere = false;
-            //         }
-            //     }
-            // }
             if (unit.bldCost != 'none') {
                 directProd = false;
             }
@@ -300,7 +275,7 @@ function bfconst(cat,triche,upgrade,retour) {
         });
     }
     $('#conUnitList').append('<br>');
-    if (conselUpgrade && playerInfos.onShip) {
+    if ((conselUpgrade === 'inf' || conselUpgrade === 'bld') && playerInfos.onShip) {
         if (Object.keys(conselUnit).length >= 1) {
             $('#conUnitList').append('<span class="blockTitle"><h4><button type="button" title="Transformer '+selectedBatType.name+' en '+conselUnit.name+'" class="boutonCaca iconButtons" onclick="doUpgrade()"><i class="ra ra-rifle rpg"></i> &nbsp;<span class="notsosmall">Transformer</span></button></h4></span><br>');
             $('#conUnitList').append('<br>');
@@ -956,8 +931,35 @@ function clickConstruct(tileId,free) {
         let landerRange = getLanderRange();
         bataillons.forEach(function(bat) {
             if (bat.tileId === tileId && bat.loc === "zone") {
-                batHere = true;
-                message = 'Pas de construction sur une case occupée par un de vos bataillons';
+                // Object.keys(selectedBat).length >= 1
+                if (!conselTriche) {
+                    let intoOK = false;
+                    if (!playerInfos.onShip) {
+                        if (tileId === selectedBat.tileId) {
+                            if (selectedBatType.skills.includes('transorbital')) {
+                                if (conselUnit.cat != 'buildings' && conselUnit.cat != 'devices') {
+                                    intoOK = true;
+                                } else {
+                                    message = 'Pas de construction de bâtiments dans un lander';
+                                }
+                            } else {
+                                message = 'Pas de construction sur une case occupée par un de vos bataillons sauf si c\'est un lander';
+                            }
+                        }
+                    }
+                    if (intoOK) {
+                        batHere = false;
+                        conselInto = true;
+                    } else {
+                        batHere = true;
+                        if (message === '') {
+                            message = 'Pas de construction sur une case occupée par un de vos bataillons';
+                        }
+                    }
+                } else {
+                    batHere = true;
+                    message = 'Pas de construction sur une case occupée par un de vos bataillons';
+                }
             }
         });
         aliens.forEach(function(bat) {
@@ -1032,7 +1034,11 @@ function conselNeat() {
         }
     }
     if (conselAmmos[2] == 'xxx') {
-        conselAmmos[2] = 'aucune';
+        if (conselUnit.cat === 'infantry') {
+            conselAmmos[2] = 'aucune';
+        } else {
+            conselAmmos[2] = 'aucun';
+        }
     }
     if (conselAmmos[3] == 'xxx') {
         conselAmmos[3] = 'aucun';
@@ -1041,6 +1047,7 @@ function conselNeat() {
 
 function putBat(tileId,citoyens,xp,startTag,show) {
     console.log('PUTBAT');
+    constuctorBatId = selectedBat.id;
     if (conselUnit.cat === 'aliens') {
         conselTriche = true;
     }
@@ -1069,7 +1076,6 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 }
                 // TURNS on STATION
                 if (playerInfos.onShip && !conselTriche) {
-                    // playerInfos.allTurns = playerInfos.allTurns+Math.floor(conselUnit.fabTime/20);
                     if (conselUnit.fabTime >= 20) {
                         playerInfos.crafts = playerInfos.crafts+Math.floor(conselUnit.fabTime/5.5);
                     } else {
@@ -1173,6 +1179,10 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                             newBat.salvoLeft = 0;
                         } else {
                             let constFactor = 15;
+                            let daFabTime = conselUnit.fabTime;
+                            if (daFabTime < 50) {
+                                daFabTime = Math.ceil((conselUnit.fabTime+50)/2);
+                            }
                             let averageDomeTime = 50;
                             if (conselUnit.skills.includes('domeconst')) {
                                 let rbonus = Math.round((playerInfos.mapTurn-10)*conselUnit.ap/2);
@@ -1182,8 +1192,8 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                                 newBat.apLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
                                 newBat.oldapLeft = conselUnit.ap-(Math.round(conselUnit.fabTime*conselUnit.ap/constFactor)*3);
                             } else {
-                                newBat.apLeft = conselUnit.ap-Math.round(conselUnit.fabTime*conselUnit.ap/constFactor*1);
-                                newBat.oldapLeft = conselUnit.ap-Math.round(conselUnit.fabTime*conselUnit.ap/constFactor*1);
+                                newBat.apLeft = conselUnit.ap-Math.round(daFabTime*conselUnit.ap/constFactor*1);
+                                newBat.oldapLeft = conselUnit.ap-Math.round(daFabTime*conselUnit.ap/constFactor*1);
                             }
                             newBat.salvoLeft = conselUnit.maxSalvo;
                         }
@@ -1379,10 +1389,14 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 if (newBat.type === 'Chercheurs') {
                     playerInfos.sci++;
                 }
-                // console.log(bataillons);
-                if (show) {
-                    showBataillon(newBat);
+                if (conselInto) {
+                    loadBat(newBat.id,constuctorBatId);
+                } else {
+                    if (show) {
+                        showBataillon(newBat);
+                    }
                 }
+                // console.log(bataillons);
             } else {
                 aliens.push(newBat);
                 // console.log(aliens);
@@ -1476,6 +1490,7 @@ function conselReset(changeMode) {
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     // conselCat = '';
     conselUpgrade = '';
+    conselInto = false;
     conselTriche = false;
     conselPut = false;
     conselCosts = {};

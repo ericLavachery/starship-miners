@@ -141,10 +141,8 @@ function landingList() {
         } else {
             if (zone[0].snd === undefined) {
                 playRoom('crickets',true,true);
-                // playBackMusic();
             } else {
                 playRoom(zone[0].snd,true,true);
-                // playBackMusic();
             }
             createStormsLists(true);
             checkUndark();

@@ -2466,11 +2466,11 @@ function skillsInfos(bat,batType,near) {
                 apReq = getConstAPReq(bat,batType);
                 if (bat.apLeft >= apReq && !inMelee && craftsOK) {
                     if ((batType.skills.includes('constructeur') && batType.skills.includes('producteur')) || batType.skills.includes('transorbital')) {
-                        $('#unitInfos').append('<button type="button" title="Production (bâtiments & unités)" class="boutonOrange iconButtons" onclick="bfconst(`all`,false,false,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Production (bâtiments & unités)" class="boutonOrange iconButtons" onclick="bfconst(`all`,false,``,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
                     } else if (batType.skills.includes('constructeur')) {
-                        $('#unitInfos').append('<button type="button" title="Construction (bâtiments)" class="boutonOrange iconButtons" onclick="bfconst(`buildings`,false,false,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Construction (bâtiments)" class="boutonOrange iconButtons" onclick="bfconst(`buildings`,false,``,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
                     } else if (batType.skills.includes('producteur')) {
-                        $('#unitInfos').append('<button type="button" title="Production (unités)" class="boutonOrange iconButtons" onclick="bfconst(`units`,false,false,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Production (unités)" class="boutonOrange iconButtons" onclick="bfconst(`units`,false,``,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
                     }
                     lineBreak = true;
                 } else {
@@ -2485,24 +2485,6 @@ function skillsInfos(bat,batType,near) {
                     lineBreak = true;
                 }
             }
-            // CONSTRUCTION UNITES
-            // if (batType.skills.includes('producteur')) {
-            //     apReq = getConstAPReq(bat,batType);
-            //     if (bat.apLeft >= apReq && !inMelee && craftsOK) {
-            //         $('#unitInfos').append('<button type="button" title="Production (unités)" class="boutonOrange iconButtons" onclick="bfconst(`units`,false,false,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
-            //         lineBreak = true;
-            //     } else {
-            //         if (inMelee) {
-            //             skillMessage = "Production: Ne peut pas se faire en mêlée";
-            //         } else if (!craftsOK) {
-            //             skillMessage = "Production: Vous avez atteint votre maximum de crafts";
-            //         } else {
-            //             skillMessage = "Production: Pas assez de PA (réserve de "+apReq+" requise)";
-            //         }
-            //         $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
-            //         lineBreak = true;
-            //     }
-            // }
         }
     }
     // CHANGER AMMOS-ARMURE-EQUIPEMENT
@@ -2620,6 +2602,6 @@ function skillsInfos(bat,batType,near) {
     }
     // CONSTRUCTION TRICHE
     if (batType.skills.includes('triche')) {
-        $('#unitInfos').append('<button type="button" title="Construction (Triche)" class="boutonGris iconButtons" onclick="bfconst(`all`,true,false,false)"><i class="fas fa-drafting-compass"></i>&nbsp; Construction</button>');
+        $('#unitInfos').append('<button type="button" title="Construction (Triche)" class="boutonGris iconButtons" onclick="bfconst(`all`,true,``,false)"><i class="fas fa-drafting-compass"></i>&nbsp; Construction</button>');
     }
 };

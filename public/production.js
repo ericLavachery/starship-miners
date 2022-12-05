@@ -520,9 +520,8 @@ function triProd(bat,batType,time,sim,quiet) {
 };
 
 function scrapRecup(resCreated) {
-    let triComp = playerInfos.comp.tri;
-    resCreated = Math.ceil(resCreated*(triComp+2)/2*rand.rand(2,6)/4);
-    // resCreated = Math.ceil(resCreated*(triComp+2)/2);
+    let triComp = (playerInfos.comp.tri*playerInfos.comp.tri);
+    resCreated = Math.ceil(resCreated*(triComp+3)/4*rand.rand(2,6)/4);
     return resCreated;
 };
 
