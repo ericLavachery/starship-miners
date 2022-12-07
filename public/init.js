@@ -17,6 +17,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.onShip === undefined) {
         playerInfos.onShip = true;
     }
+    if (playerInfos.onStart === undefined) {
+        playerInfos.onStart = false;
+    }
     if (playerInfos.clouds === undefined) {
         playerInfos.clouds = true;
     }

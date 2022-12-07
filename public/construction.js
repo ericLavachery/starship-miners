@@ -809,7 +809,12 @@ function checkCompReq(stuff) {
 function checkUprankPlace(myBat,myBatType) {
     let isInPlace = false;
     let upBatType = getBatTypeByName(myBatType.unitUp);
-    let uprankBld = upBatType.bldReq[0];
+    let uprankBld = '';
+    if (upBatType.bldReq != undefined) {
+        if (upBatType.bldReq.length >= 1) {
+            uprankBld = upBatType.bldReq[0];
+        }
+    }
     let distance;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -849,7 +854,9 @@ function checkUprankXP(myBat,myBatType) {
 };
 
 function checkUpUnit(batType) {
-    let upUnitOK = false;
+    let upUnitOK = {};
+    upUnitOK.ok = false;
+    upUnitOK.message = '';
     let upUnitName = batType.unitUp;
     if (batType.skills.includes('upgrade')) {
         upUnitName = batType.bldUp;
@@ -857,17 +864,27 @@ function checkUpUnit(batType) {
     if (upUnitName != undefined) {
         let upBatType = getBatTypeByName(upUnitName);
         let levelOK = true;
-        if (upBatType.levels[playerInfos.gang] > playerInfos.gLevel) {
-            levelOK = false;
-        }
-        let compReqOK = checkUnitCompReq(upBatType);
         let bldOK = false;
-        if ((playerInfos.bldList.includes(upBatType.bldReq[0]) || upBatType.bldReq[0] === undefined) && (playerInfos.bldList.includes(upBatType.bldReq[1]) || upBatType.bldReq[1] === undefined) && (playerInfos.bldList.includes(upBatType.bldReq[2]) || upBatType.bldReq[2] === undefined)) {
-            bldOK = true;
+        let compReqOK = checkUnitCompReq(upBatType);
+        if (!compReqOK) {
+            upUnitOK.message = 'Compétences insuffisantes';
+        } else {
+            if (upBatType.levels[playerInfos.gang] > playerInfos.gLevel) {
+                levelOK = false;
+                upUnitOK.message = 'Niveau de gang insuffisant';
+            } else {
+                if ((playerInfos.bldList.includes(upBatType.bldReq[0]) || upBatType.bldReq[0] === undefined) && (playerInfos.bldList.includes(upBatType.bldReq[1]) || upBatType.bldReq[1] === undefined) && (playerInfos.bldList.includes(upBatType.bldReq[2]) || upBatType.bldReq[2] === undefined)) {
+                    bldOK = true;
+                } else {
+                    upUnitOK.message = 'Bâtiment manquant';
+                }
+            }
         }
         if (levelOK && compReqOK && bldOK) {
-            upUnitOK = true;
+            upUnitOK.ok = true;
         }
+    } else {
+        upUnitOK.message = 'Pas de transformation possible';
     }
     return upUnitOK;
 };

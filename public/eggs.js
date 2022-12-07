@@ -1768,6 +1768,7 @@ function cocoonSpawn(bat) {
                     }
                 });
             }
+            // REPLACE ALIEN
             console.log('spawned unit ->');
             console.log(conselUnit);
             if (Object.keys(conselUnit).length >= 1) {
@@ -2059,6 +2060,7 @@ function eggSpawn(bat,fromEgg) {
                         }
                     }
                 });
+                // REPLACE ALIEN
                 console.log('spawned unit ->');
                 console.log(conselUnit);
                 if (Object.keys(conselUnit).length >= 1) {
@@ -2079,6 +2081,32 @@ function eggSpawn(bat,fromEgg) {
         } else {
             console.log('no spawn');
         }
+    }
+};
+
+function replaceAlien(oldAlien) {
+    let inName = '';
+    let outName = '';
+    if (oldAlien.class === 'C') {
+        if (zone[0].rc != undefined) {
+            inName = zone[0].rc[0];
+            outName = zone[0].rc[1];
+        }
+    }
+    if (oldAlien.class === 'B') {
+        if (zone[0].rb != undefined) {
+            inName = zone[0].rb[0];
+            outName = zone[0].rb[1];
+        }
+    }
+    if (oldAlien.class === 'A') {
+        if (zone[0].ra != undefined) {
+            inName = zone[0].ra[0];
+            outName = zone[0].ra[1];
+        }
+    }
+    if (oldAlien.name === inName) {
+        conselUnit = getAlienByName(outName);
     }
 };
 

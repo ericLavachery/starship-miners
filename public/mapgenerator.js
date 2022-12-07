@@ -2150,11 +2150,215 @@ function checkZoneType() {
         // surf zone
         if (swampMap && zone[0].mapDiff >= 4 && zone[2].seed <= 4) {
             zoneInfos.surf = true;
+        } else if (zone[0].mapDiff >= 2 && zone[0].mapDiff < 8) {
+            checkZoneARep();
         }
     }
     console.log('ZONE TYPE');
     console.log(zoneInfos);
 };
+
+function checkZoneARep() {
+    if (rand.rand(1,2) === 1) {
+        let domAlien = getZoneDomAlien();
+        if (domAlien === 'bug') {
+            let aoa = ["Bugs","Punaises","Escarbots","Grabbers"];
+            let inAlien = [_.sample(aoa)];
+            let index = aoa.indexOf(inAlien);
+            if (index > -1) {
+                aoa.splice(index,1);
+            }
+            let outAlien = [_.sample(aoa)];
+            zone[0].rc = [inAlien,outAlien];
+            aoa = ["Broyeurs","Chancres","Firebugs","Spitbugs"];
+            inAlien = [_.sample(aoa)];
+            index = aoa.indexOf(inAlien);
+            if (index > -1) {
+                aoa.splice(index,1);
+            }
+            outAlien = [_.sample(aoa)];
+            zone[0].rb = [inAlien,outAlien];
+            if (outAlien === 'Spitbugs') {
+                zone[0].ra = ["Dragons","Scarabs"];
+            }
+            if (outAlien === 'Firebugs') {
+                zone[0].ra = ["Bigheads","Dragons"];
+            }
+        }
+        if (domAlien === 'swarm') {
+            let aoa = ["Cafards","Blattes","Scorpions","Necros"];
+            let inAlien = [_.sample(aoa)];
+            let index = aoa.indexOf(inAlien);
+            if (index > -1) {
+                aoa.splice(index,1);
+            }
+            let outAlien = [_.sample(aoa)];
+            zone[0].rc = [inAlien,outAlien];
+            if (inAlien === 'Fourmis') {
+                zone[0].ra = ["Mantes","Galéodes"];
+            } else if (inAlien === 'Scorpions') {
+                zone[0].ra = ["Androks","Galéodes"];
+            }
+            if (outAlien === 'Scorpions') {
+                zone[0].rb = ["Bourdons","Skolos"];
+                zone[0].ra = ["Mantes","Androks"];
+            } else if (outAlien === 'Necros') {
+                zone[0].rb = ["Bourdons","Ojos"];
+                if (inAlien === 'Fourmis') {
+                    zone[0].ra = ["Mantes","Necros"];
+                } else if (inAlien === 'Scorpions') {
+                    zone[0].ra = ["Androks","Necros"];
+                } else {
+                    zone[0].ra = ["Galéodes","Necros"];
+                }
+            } else {
+                aoa = ["Fourmis","Skolos","Bourdons","Ojos"];
+                inAlien = [_.sample(aoa)];
+                index = aoa.indexOf(inAlien);
+                if (index > -1) {
+                    aoa.splice(index,1);
+                }
+                index = aoa.indexOf('Ojos');
+                if (index > -1) {
+                    aoa.splice(index,1);
+                }
+                outAlien = [_.sample(aoa)];
+                zone[0].rb = [inAlien,outAlien];
+            }
+        }
+        if (domAlien === 'spider') {
+            let aoa = ["Cracheuses","Gluantes","Nerveuses","Surfeuses"];
+            let inAlien = [_.sample(aoa)];
+            let index = aoa.indexOf(inAlien);
+            if (index > -1) {
+                aoa.splice(index,1);
+            }
+            let outAlien = [_.sample(aoa)];
+            zone[0].rc = [inAlien,outAlien];
+            if (inAlien === 'Gluantes') {
+                zone[0].ra = ["Glaireuses","Veuves"];
+            }
+            aoa = ["Faucheux","Sournoises","Torches","Discoballs"];
+            inAlien = [_.sample(aoa)];
+            index = aoa.indexOf(inAlien);
+            if (index > -1) {
+                aoa.splice(index,1);
+            }
+            outAlien = [_.sample(aoa)];
+            zone[0].rb = [inAlien,outAlien];
+            if (inAlien === 'Faucheux') {
+                zone[0].ra = ["Mygales","Veuves"];
+            }
+        }
+        if (domAlien === 'larve') {
+            let aoa = ["Lombrics","Larves","Asticots","Vers"];
+            let inAlien = [_.sample(aoa)];
+            let index = aoa.indexOf(inAlien);
+            if (index > -1) {
+                aoa.splice(index,1);
+            }
+            let outAlien = [_.sample(aoa)];
+            zone[0].rc = [inAlien,outAlien];
+            if (inAlien === 'Lombrics') {
+                zone[0].rb = ["Sangsues","Ombres"];
+                zone[0].ra = ["Libellules","Fantômes"];
+            }
+            if (inAlien === 'Larves') {
+                if (outAlien === 'Asticots') {
+                    zone[0].rb = ["Wurms","Moucherons"];
+                    zone[0].ra = ["Megagrubz","Libellules"];
+                } else if (outAlien === 'Vers') {
+                    zone[0].rb = ["Wurms","Lucioles"];
+                    zone[0].ra = ["Megagrubz","Libellules"];
+                } else {
+                    zone[0].rb = ["Wurms","Sangsues"];
+                    zone[0].ra = ["Megagrubz","Libellules"];
+                }
+            }
+            if (inAlien === 'Vers') {
+                if (outAlien === 'Larves') {
+                    zone[0].rb = ["Lucioles","Wurms"];
+                    zone[0].ra = ["Libellules","Megagrubz"];
+                } else if (outAlien === 'Asticots') {
+                    zone[0].rb = ["Lucioles","Moucherons"];
+                } else {
+                    zone[0].rb = ["Lucioles","Sangsues"];
+                    zone[0].ra = ["Fantômes","Libellules"];
+                }
+            }
+            if (inAlien === 'Asticots') {
+                if (outAlien === 'Larves') {
+                    zone[0].rb = ["Moucherons","Wurms"];
+                    zone[0].ra = ["Libellules","Megagrubz"];
+                } else if (outAlien === 'Vers') {
+                    zone[0].rb = ["Moucherons","Lucioles"];
+                } else {
+                    zone[0].rb = ["Moucherons","Sangsues"];
+                    zone[0].ra = ["Fantômes","Libellules"];
+                }
+            }
+        }
+    }
+};
+
+function getZoneDomAlien() {
+    let domAlien = 'bug';
+    let ex = {};
+    ex.bug = zone[0].pm+zone[0].ph;
+    if (zone[0].pKind === 'bug') {
+        ex.bug = ex.bug+zone[0].pp;
+    }
+    if (zone[0].gKind === 'bug') {
+        ex.bug = ex.bug+zone[0].pg;
+    }
+    if (zone[0].sKind === 'bug') {
+        ex.bug = ex.bug+zone[0].ps;
+    }
+    ex.swarm = zone[0].pb;
+    if (zone[0].pKind === 'swarm') {
+        ex.swarm = ex.swarm+zone[0].pp;
+    }
+    if (zone[0].gKind === 'swarm') {
+        ex.swarm = ex.swarm+zone[0].pg;
+    }
+    if (zone[0].sKind === 'swarm') {
+        ex.swarm = ex.swarm+zone[0].ps;
+    }
+    ex.spider = zone[0].pf;
+    if (zone[0].pKind === 'spider') {
+        ex.spider = ex.spider+zone[0].pp;
+    }
+    if (zone[0].gKind === 'spider') {
+        ex.spider = ex.spider+zone[0].pg;
+    }
+    if (zone[0].sKind === 'spider') {
+        ex.spider = ex.spider+zone[0].ps;
+    }
+    ex.larve = zone[0].pw+zone[0].pr;
+    if (zone[0].pKind === 'larve') {
+        ex.larve = ex.larve+zone[0].pp;
+    }
+    if (zone[0].gKind === 'larve') {
+        ex.larve = ex.larve+zone[0].pg;
+    }
+    if (zone[0].sKind === 'larve') {
+        ex.larve = ex.larve+zone[0].ps;
+    }
+    let max = Math.max(ex.bug,ex.swarm,ex.spider,ex.larve);
+    if (ex.larve === max) {
+        domAlien = 'larve';
+    }
+    if (ex.swarm === max) {
+        domAlien = 'swarm';
+    }
+    if (ex.spider === max) {
+        domAlien = 'spider';
+    }
+    if (ex.bug === max) {
+        domAlien = 'bug';
+    }
+    return domAlien;
+}
 
 function checkRarityByZoneType(unit) {
     let ztRarity = unit.rarity;

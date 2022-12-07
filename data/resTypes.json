@@ -122,6 +122,7 @@
         "equiv": 1,
         "kinds": ["science","military","industry","any"],
         "pter": [3,"F","B","G"],
+        "rlab": 1,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3}
     },
     {
@@ -136,6 +137,7 @@
         "cramBld": "Incinérateur",
         "equiv": 0.7,
         "kinds": ["military","industry","any"],
+        "rlab": 1,
         "planets":{"Dom":1,"Sarak":0.5,"Gehenna":0.5,"Kzin":1,"Horst":3}
     },
     {
@@ -165,6 +167,7 @@
         "cramBld": "Incinérateur",
         "equiv": 1,
         "kinds": ["military","industry","any"],
+        "rlab": 3,
         "pter": [3,"P","H","F"]
     },
     {
@@ -192,6 +195,7 @@
         "energie": -1,
         "equiv": 1,
         "kinds": ["science","any"],
+        "rlab": 1,
         "pter": [2,"M"],
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":1}
     },
@@ -289,7 +293,7 @@
         "equiv": 1.5,
         "kinds": ["science","medecine"],
         "pter": [2,"F","B"],
-        "ctri": 3
+        "ctri": 1
     },
     {
         "id": 20,
@@ -301,6 +305,7 @@
         "batch": 2,
         "energie": -1,
         "equiv": 1,
+        "rlab": 1,
         "kinds": ["science","industry"],
         "pter": [2,"P","G","B"]
     },
@@ -357,6 +362,7 @@
         "equiv": 1,
         "kinds": ["industry","energy","any"],
         "pter": [1.5,"P"],
+        "rlab": 3,
         "planets":{"Dom":1,"Sarak":0.7,"Gehenna":1.2,"Kzin":1,"Horst":0.5}
     },
     {
@@ -370,6 +376,7 @@
         "energie": 3,
         "equiv": 1,
         "kinds": ["science","industry","medecine","energy","auto"],
+        "rlab": 1,
         "planets":{"Dom":1,"Sarak":2,"Gehenna":0,"Kzin":1,"Horst":1}
     },
     {
@@ -450,6 +457,7 @@
         "cramBld": "Incinérateur",
         "equiv": 1,
         "kinds": ["military","industry"],
+        "rlab": 1,
         "pter": [2,"P","G","B"]
     },
     {
@@ -463,6 +471,7 @@
         "energie": -1,
         "equiv": 1,
         "kinds": ["science","military","industry"],
+        "rlab": 1,
         "pter": [2,"P","G","B"]
     },
     {
@@ -845,6 +854,7 @@
         "batch": 2,
         "energie": -1,
         "equiv": 2,
+        "rlab": 1,
         "kinds": ["science","military","industry","medecine","energy","auto"]
     },
     {
@@ -883,6 +893,7 @@
         "batch": 3,
         "energie": 3,
         "equiv": 2,
+        "rlab": 3,
         "kinds": ["military","industry","energy","auto","any"]
     },
     {

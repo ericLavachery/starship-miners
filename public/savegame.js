@@ -226,6 +226,7 @@ function newGame() {
     playerInfos.showedTiles = [1830];
     playerInfos.comp = resetComp();
     playerInfos.onShip = true;
+    playerInfos.onStart = true;
     playerInfos.gang = 'rednecks';
     playerInfos.gangDef = false;
     playerInfos.gLevel = -1;

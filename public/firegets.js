@@ -577,7 +577,7 @@ function batDeathEffect(bat,quiet,title,body) {
         if (bat.team === 'aliens') {
             if (bat.tags.includes('fluo')) {
                 let tile = getTile(bat);
-                tile.fluo = playerInfos.mapTurn+5;
+                tile.fluo = playerInfos.mapTurn+8;
             }
         }
     }
@@ -941,7 +941,7 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
     if (!defBat.tags.includes('jelly')) {
         if (attWeap.name != undefined) {
             if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet') || (defBatType.skills.includes('ricoface') && !init)) {
-                if (!attWeap.isFire && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('snake') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('psionics') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield && !attWeap.isSaw) {
+                if (!attWeap.isFire && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('eflash') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('snake') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('psionics') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield && !attWeap.isSaw) {
                     let defArmor = defBat.armor;
                     if (defBatType.skills.includes('ricoface')) {
                         defArmor = defArmor+10;
@@ -1312,6 +1312,9 @@ function calcSpeed(bat,weap,opweap,opBatType,distance,attacking) {
     }
     if (weap.ammo.includes('disco')) {
         speed = speed-100;
+    }
+    if (weap.ammo.includes('eflash')) {
+        speed = speed-50;
     }
     if (bat.team === 'player') {
         if ((bat.apLeft < 0 && !batType.skills.includes('guerrilla')) || bat.apLeft > 0) {
@@ -2488,7 +2491,7 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.isHot = false;
         thisWeapon.isFire = false;
     }
-    if (thisWeapon.ammo.includes('electric') || thisWeapon.ammo.includes('taser')) {
+    if (thisWeapon.ammo.includes('electric') || thisWeapon.ammo.includes('taser') || thisWeapon.ammo.includes('eflash')) {
         thisWeapon.isElec = true;
     } else {
         thisWeapon.isElec = false;
@@ -2843,6 +2846,9 @@ function mirDestruction(weap,bat,batType,tile,teamOnMir,infraName) {
         damage = Math.round(damage*2);
     } else if (weap.aoe === 'bat') {
         damage = Math.round(damage*4);
+    }
+    if (weap.ammo.includes('eflash') || weap.ammo.includes('psionics')) {
+        damage = 0;
     }
     // console.log('MirDamage='+damage);
     let breakChance = Math.floor(damage/20);

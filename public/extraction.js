@@ -69,6 +69,7 @@ function mining(bat) {
             let rate = getMiningRate(bat,false);
             console.log('rate'+rate);
             let allRes = getAllRes(bat.tileId);
+            let minedScrap = 0;
             let bestDumper = getBestDumper(bat);
             if (Object.keys(bestDumper).length >= 1) {
                 Object.entries(allRes).map(entry => {
@@ -92,7 +93,12 @@ function mining(bat) {
                                     adjustedRMR = getResMiningRate(bat,res,value+40,false,false);
                                 }
                             }
-                            // console.log(res.name+' : '+resMiningRate);
+                            if (res.name === 'Scrap') {
+                                minedScrap = adjustedRMR;
+                                if (batType.skills.includes('scrapmorph')) {
+                                    adjustedRMR = Math.ceil(adjustedRMR/2);
+                                }
+                            }
                             if (bestDumper.transRes[res.name] === undefined) {
                                 bestDumper.transRes[res.name] = adjustedRMR;
                             } else {
@@ -111,6 +117,9 @@ function mining(bat) {
                     }
                 });
                 autoUnload(bat);
+                if (batType.skills.includes('scrapmorph') && minedScrap >= 1) {
+                    scrapMorphing(bat,batType,minedScrap);
+                }
             } else {
                 warning('Extraction stoppée',bat.type+': Plus de place pour stocker',false,bat.tileId);
             }
@@ -125,6 +134,46 @@ function mining(bat) {
             }
         }
     }
+};
+
+function scrapMorphing(bat,batType,minedScrap) {
+    console.log('SCRAPMORPHING ---------------------------------------------------------');
+    let morphed = Math.ceil(minedScrap/75);
+    resTypes.forEach(function(res) {
+        let resProd = 0;
+        let resFactor = 0;
+        if (res.ctri != undefined) {
+            resFactor = (res.ctri+2.5)*2.5;
+        } else {
+            if (res.rlab != undefined) {
+                resFactor = (res.rlab+2.5)*2.5;
+            }
+        }
+        if (resFactor >= 1) {
+            let resNum = Math.round(resFactor/22*morphed);
+            console.log(res.name);
+            console.log('resNum: '+resNum);
+            if (resNum >= 3) {
+                resProd = resNum;
+            } else {
+                let resChance = Math.round(100*resFactor/30*morphed/3);
+                console.log('resChance: '+resChance+'%');
+                if (rand.rand(1,100) <= resChance) {
+                    resProd = 3;
+                }
+            }
+        }
+        if (resProd >= 1) {
+            resProd = prodDrop(bat,batType,resProd);
+            resAddToBld(res.name,resProd,bat,batType,true);
+            if (minedThisTurn[res.name] === undefined) {
+                minedThisTurn[res.name] = resProd;
+            } else {
+                minedThisTurn[res.name] = minedThisTurn[res.name]+resProd;
+            }
+            console.log('resProd: '+resProd);
+        }
+    });
 };
 
 function getAllRes(tileId) {
@@ -352,14 +401,14 @@ function getMiningRate(bat,fullRate,noMining) {
         }
     }
     if (bat.tags.includes('camo')) {
-        miningAdj = miningAdj/2;
+        miningAdj = miningAdj/1.5;
     }
     let helpInside = 1;
     if (batType.skills.includes('exhelp')) {
         if (bat.transIds.length >= 1) {
             bataillons.forEach(function(inBat) {
                 if (inBat.loc === "trans" && inBat.locId === bat.id) {
-                    if (inBat.type === 'Mineurs') {
+                    if (inBat.type === 'Mineurs' || inBat.type === 'Scrapers') {
                         if (inBat.apLeft >= 7 && inBat.squadsLeft >= 6) {
                             if (helpInside < 1.5) {
                                 helpInside = 1.5;

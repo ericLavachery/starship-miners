@@ -42,13 +42,32 @@ function skillsInfos(bat,batType,near) {
             let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq,bat.logeq]);
             let enoughRes = checkCost(deployCosts);
             let deployInfo = checkPlaceLander(bat,batType,slId);
-            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.type != 'Chercheurs') {
+            let deployOK = true;
+            if (batType.cat === 'buildings' || batType.cat === 'devices') {
+                if (bat.soins != undefined) {
+                    if (bat.soins >= 20) {
+                        deployOK = false;
+                    }
+                }
+            }
+            if (batType.cat === 'vehicles') {
+                if (bat.soins != undefined) {
+                    if (bat.soins >= 30) {
+                        deployOK = false;
+                    }
+                }
+            }
+            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.type != 'Chercheurs' && !bat.tags.includes('dying') && deployOK) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Charger le bataillon dans le lander" class="boutonMarine bigButtons" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
             } else {
                 if (bat.eq === 'camkit') {
                     skillMessage = "Les unités ayant le CamKit deviennent des policiers et restent donc dans la station";
                 } else if (bat.type === 'Chercheurs') {
                     skillMessage = "Les Chercheurs ne peuvent pas être déployés";
+                } else if (bat.tags.includes('dying')) {
+                    skillMessage = "Ce bataillon est trop faible pour être déployé";
+                } else if (!deployOK) {
+                    skillMessage = "Ce bataillon est trop endommagé pour être déployé";
                 } else if (!enoughRes) {
                     skillMessage = "Ressources insuffisantes";
                 } else if (!deployInfo[0]) {

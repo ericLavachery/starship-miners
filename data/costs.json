@@ -404,9 +404,21 @@
         "name":"Mineurs",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
+        "unitUp":"Scrapers",
         "costs":{"Fer":90,"Scrap":36,"Carbone":18,"Bois":36,"Moteurs":5,"Batteries":5,"Végétaux":20,"Chlore":10,"Tissus":5},
         "deploy":{"Energie":15,"Drogues":1,"Tissus":1},
         "fabTime":15
+    },
+    {
+        "id":299,
+        "name":"Scrapers",
+        "levels":{"rednecks":5,"blades":5,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
+        "bldReq":["Recyclab","Armurerie"],
+        "compReq":{"tri":4},
+        "unitCost":"Mineurs",
+        "costs":{"Fer":82,"Scrap":108,"Carbone":54,"Blendium":54,"Bois":28,"Moteurs":5,"Batteries":5,"Végétaux":20,"Chlore":10,"Tissus":5},
+        "deploy":{"Energie":15,"Drogues":1,"Tissus":1},
+        "fabTime":35
     },
     {
         "id":112,

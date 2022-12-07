@@ -20,6 +20,7 @@ function startMission() {
         loadZone(playerInfos.missionZone);
         // var modeLanding = true
         playerInfos.onShip = false;
+        playerInfos.onStart = false;
         playerInfos.deadBats = [];
         playerInfos.unitsLost = 0;
         playerInfos.travTurns = 0;
@@ -74,6 +75,7 @@ function stopMission() {
     // charger la zone STATION
     loadZone(0);
     playerInfos.onShip = true;
+    playerInfos.onStart = false;
     playerInfos.okFill = false;
     playerInfos.crafts = 0;
     playerInfos.vz = 999;

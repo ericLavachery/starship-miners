@@ -1275,6 +1275,8 @@ function iCanProdThis(prodUnit,unit,catz) {
         if (catz.includes(unit.cat)) {
             if (prodUnit.cat === 'infantry' && unit.fabTime >= 35 && !unit.skills.includes('clicput')) {
                 prodThis = false;
+            } else if (prodUnit.skills.includes('constructeur')) {
+                prodThis = true;
             } else {
                 if (unit.bldReq.length < 1) {
                     prodThis = true;

@@ -278,7 +278,7 @@ let musicChance = 2;
 let musicTracks = ['amb_trucsympa','amb_space2','amb_ambiant1','parallel_dimensions','amb_trucsympa','amb_ambiant2','amb_space1','aftermath','it_is_raped'];
 let trackNum = rand.rand(0,7);
 let theMusic = new Howl({
-    src: ['/static/sounds/music/trucsympa.mp3']
+    src: ['/static/sounds/music/amb_trucsympa.mp3']
 });
 let theRoom = new Howl({
     src: ['/static/sounds/rooms/station.mp3']

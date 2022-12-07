@@ -385,18 +385,28 @@ function batListElement(bat,batType,idOfLander) {
     if (batType.skills.includes('uprank')) {
         let isXPok = checkUprankXP(bat,batType);
         let isUpUnitOK = checkUpUnit(batType);
-        if (isXPok && isUpUnitOK) {
+        let competFail = '';
+        if (isUpUnitOK.message.includes('Compétences')) {
+            competFail = '?';
+        }
+        if (isXPok && isUpUnitOK.ok) {
             $('#be'+bat.id).append('<span class="listRes bleu" title="Peut être changé en '+batType.unitUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
+        } else if (!isUpUnitOK.ok) {
+            $('#be'+bat.id).append('<span class="listRes gff" title="Pourra être changé en '+batType.unitUp+competFail+' ('+isUpUnitOK.message+')">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
         } else {
-            $('#be'+bat.id).append('<span class="listRes gff" title="Pourra être changé en '+batType.unitUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes gff" title="Pourra être changé en '+batType.unitUp+' (Bataillon insuffisamment expérimenté)">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
         }
     }
     if (batType.skills.includes('upgrade')) {
         let isUpUnitOK = checkUpUnit(batType);
-        if (isUpUnitOK) {
+        let competFail = '';
+        if (isUpUnitOK.message.includes('Compétences')) {
+            competFail = '?';
+        }
+        if (isUpUnitOK.ok) {
             $('#be'+bat.id).append('<span class="listRes bleu" title="Peut être changé en '+batType.bldUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
         } else {
-            $('#be'+bat.id).append('<span class="listRes gff" title="Pourra être changé en '+batType.bldUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes gff" title="Pourra être changé en '+batType.bldUp+competFail+' ('+isUpUnitOK.message+')">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
         }
     }
     let batVolume = calcVolume(bat,batType);
