@@ -455,6 +455,11 @@ function targetLogic(bat) {
             tFuzz = -95;
         }
     }
+    if (batType.cat === 'infantry') {
+        if (selectedWeap.ammo.includes('eflash')) {
+            tFuzz = -95;
+        }
+    }
     if (batType.cat != 'infantry') {
         if (selectedWeap.ammo.includes('toxine')) {
             tFuzz = -95;
@@ -613,10 +618,8 @@ function checkPossibleMoves() {
                     batHere = true;
                 }
             }
-            if (!tile.rd && tile.terrain === 'R' && tile.seed < 4 && selectedBatType.maxFlood < 3) {
-                batHere = true;
-            }
-            if (!tile.rd && (tile.terrain === 'W' || tile.terrain === 'L') && selectedBatType.maxFlood < 2) {
+            let terAccess = alienTerrainAccess(tile,selectedBatType);
+            if (!terAccess) {
                 batHere = true;
             }
             if (!batHere) {
@@ -624,6 +627,32 @@ function checkPossibleMoves() {
             }
         }
     });
+};
+
+function alienTerrainAccess(tile,batType) {
+    let access = true;
+    let terrain = getTerrainById(tile.id);
+    let terFlood = terrain.flood;
+    if (terrain.name === 'R' && tile.seed >= 4) {
+        terFlood = 0;
+    }
+    if (batType.maxFlood < terFlood && !tile.rd) {
+        access = false;
+    }
+    if (batType.maxScarp < terrain.scarp && !tile.rd) {
+        access = false;
+    }
+    if (batType.maxVeg < terrain.veg && !tile.rd) {
+        access = false;
+    }
+    if (batType.skills.includes('nodry')) {
+        if (terrain.flood < 1) {
+            if (terrain.veg < 1) {
+                access = false;
+            }
+        }
+    }
+    return access;
 };
 
 function checkPossibleJumps() {

@@ -682,6 +682,13 @@ function terrainAccess(batId,targetTileId) {
             }
         }
     }
+    if (batType.skills.includes('nodry')) {
+        if (terrain.flood < 1) {
+            if (terrain.veg < 1) {
+                access = false;
+            }
+        }
+    }
     if (playerInfos.onShip) {
         access = true;
     }

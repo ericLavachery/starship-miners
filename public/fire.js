@@ -574,11 +574,13 @@ function attack(melee,init) {
     if (selectedWeap.apdamage > 0) {
         let wapd = selectedWeap.apdamage;
         if (selectedWeap.ammo.includes('eflash')) {
-            if (targetBatType.cat == 'vehicles' || targetBatType.cat == 'devices') {
-                if (targetBatType.skills.includes('fly')) {
-                    wapd = wapd*8;
-                } else {
+            if (targetBatType.cat == 'devices') {
+                wapd = wapd*6;
+            } else if (targetBatType.cat == 'vehicles') {
+                if (targetBatType.skills.includes('robot') || targetBatType.skills.includes('emoteur') || targetBatType.skills.includes('fly')) {
                     wapd = wapd*6;
+                } else {
+                    wapd = wapd*3;
                 }
             } else if (targetBatType.cat == 'buildings') {
                 wapd = wapd*3;
@@ -1610,11 +1612,13 @@ function defense(melee,init) {
     if (targetWeap.apdamage > 0) {
         let wapd = targetWeap.apdamage;
         if (targetWeap.ammo.includes('eflash')) {
-            if (selectedBatType.cat == 'vehicles' || selectedBatType.cat == 'devices') {
-                if (selectedBatType.skills.includes('fly')) {
-                    wapd = wapd*8;
-                } else {
+            if (selectedBatType.cat == 'devices') {
+                wapd = wapd*6;
+            } else if (selectedBatType.cat == 'vehicles') {
+                if (selectedBatType.skills.includes('robot') || selectedBatType.skills.includes('emoteur') || selectedBatType.skills.includes('fly')) {
                     wapd = wapd*6;
+                } else {
+                    wapd = wapd*3;
                 }
             } else if (selectedBatType.cat == 'buildings') {
                 wapd = wapd*3;

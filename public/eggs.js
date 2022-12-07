@@ -1770,7 +1770,9 @@ function cocoonSpawn(bat) {
             }
             // REPLACE ALIEN
             console.log('spawned unit ->');
-            console.log(conselUnit);
+            console.log(conselUnit.name);
+            replaceAlien(conselUnit);
+            console.log(conselUnit.name);
             if (Object.keys(conselUnit).length >= 1) {
                 dropTile = checkDrop(bat.tileId);
                 if (dropTile >= 0) {
@@ -2060,9 +2062,11 @@ function eggSpawn(bat,fromEgg) {
                         }
                     }
                 });
-                // REPLACE ALIEN
                 console.log('spawned unit ->');
-                console.log(conselUnit);
+                console.log(conselUnit.name);
+                // REPLACE ALIEN
+                replaceAlien(conselUnit);
+                console.log(conselUnit.name);
                 if (Object.keys(conselUnit).length >= 1) {
                     dropTile = checkDrop(bat.tileId);
                     if (dropTile >= 0) {
@@ -2106,7 +2110,7 @@ function replaceAlien(oldAlien) {
         }
     }
     if (oldAlien.name === inName) {
-        conselUnit = getAlienByName(outName);
+        conselUnit = getAlienTypeByName(outName);
     }
 };
 

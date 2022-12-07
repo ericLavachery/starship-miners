@@ -1113,6 +1113,15 @@ function getAlienByName(name) {
     return bat;
 };
 
+function getAlienTypeByName(batName) {
+    let batType = {};
+    let index = alienUnits.findIndex((obj => obj.name == batName));
+    if (index > -1) {
+        batType = alienUnits[index];
+    }
+    return batType;
+};
+
 function getAlienById(batId) {
     let bat = {};
     let index = aliens.findIndex((obj => obj.id == batId));
