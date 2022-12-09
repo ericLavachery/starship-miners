@@ -63,6 +63,7 @@ let maxResForRate = 500;
 let alienResFactor = 11; // base: 10
 let magmaZone = 3;
 let eCrafting = 7; // base: 10 (x ressources pour 10 enargie)
+let craftList = '#ALL';
 let baseCrafts = 4;
 let hasScraptruck = false;
 let ruinRarity = 5; // default 8

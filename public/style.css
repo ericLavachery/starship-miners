@@ -231,6 +231,13 @@ h6 {
     margin-right: 8px;
     font-weight: bold;
 }
+.morphBlock {
+    background-color: #1d0f30;
+    padding-left: 8px;
+    padding-top: 5px;
+    /* padding-bottom: 5px; */
+    padding-right: 8px;
+}
 .craftsBlock {
     background-color: #002442;
     padding-left: 8px;

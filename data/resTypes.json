@@ -206,7 +206,7 @@
         "level": 2,
         "rarity": 16,
         "cat": "white",
-        "batch": 2,
+        "batch": 2.5,
         "energie": -1,
         "equiv": 1.5,
         "kinds": ["science","construction","military","industry","medecine","auto","any"],
@@ -222,7 +222,7 @@
         "cat": "white",
         "batch": 2,
         "energie": -1,
-        "equiv": 1,
+        "equiv": 1.5,
         "kinds": ["science","industry","any"],
         "rlab": 5,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1.5,"Kzin":1,"Horst":1}
@@ -318,7 +318,7 @@
         "cat": "white",
         "batch": 2,
         "energie": -1,
-        "equiv": 1.5,
+        "equiv": 2,
         "pter": [3,"F"],
         "rlab": 1,
         "kinds": ["science","military","industry"],
@@ -374,7 +374,7 @@
         "cat": "white",
         "batch": 2,
         "energie": 3,
-        "equiv": 1,
+        "equiv": 1.5,
         "kinds": ["science","industry","medecine","energy","auto"],
         "rlab": 1,
         "planets":{"Dom":1,"Sarak":2,"Gehenna":0,"Kzin":1,"Horst":1}
@@ -537,7 +537,7 @@
         "cat": "sky",
         "batch": 3,
         "energie": -1,
-        "equiv": 3,
+        "equiv": 3.5,
         "kinds": ["military"],
         "planets":{"Dom":0,"Sarak":0.7,"Gehenna":1.5,"Kzin":0,"Horst":1}
     },
@@ -551,7 +551,7 @@
         "batch": 3,
         "energie": 0.33,
         "cramBld": "Centrale nucléaire",
-        "equiv": 3,
+        "equiv": 4,
         "kinds": ["science","military"],
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":1,"Horst":1}
     },
@@ -564,7 +564,7 @@
         "cat": "sky",
         "batch": 3,
         "energie": -1,
-        "equiv": 3,
+        "equiv": 3.5,
         "kinds": ["military"],
         "planets":{"Dom":0,"Sarak":0.5,"Gehenna":1.2,"Kzin":1,"Horst":0.75}
     },
@@ -592,7 +592,7 @@
         "batch": 2,
         "energie": 0.4,
         "cramBld": "Centrale nucléaire",
-        "equiv": 4,
+        "equiv": 5,
         "kinds": ["science","military"],
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":0.5,"Horst":1.5}
     },
@@ -606,7 +606,7 @@
         "batch": 3,
         "energie": 1.5,
         "cramBld": "Incinérateur",
-        "equiv": 2,
+        "equiv": 2.5,
         "kinds": ["military"],
         "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.5}
     },
@@ -619,7 +619,7 @@
         "cat": "sky",
         "batch": 3,
         "energie": -1,
-        "equiv": 3,
+        "equiv": 3.5,
         "kinds": ["science","military","industry"],
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0.2,"Kzin":0.75,"Horst":1.5}
     },
@@ -632,7 +632,7 @@
         "cat": "blue-sky",
         "batch": 3,
         "energie": 0.67,
-        "equiv": 2,
+        "equiv": 2.5,
         "kinds": ["military","industry","energy","auto"],
         "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":2}
     },

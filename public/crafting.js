@@ -1,3 +1,8 @@
+function craftListSelect(selection) {
+    craftList = selection;
+    craftWindow(false);
+};
+
 function craftWindow(retour) {
     selectMode();
     batUnselect();
@@ -17,6 +22,28 @@ function craftWindow(retour) {
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<span class="blockTitle"><h1>Crafting <span class="vert">('+playerInfos.crafts+'/'+maxCrafts+')</span></h1></span>');
+    $('#conUnitList').append('<br><span class="shSpace"></span><br>');
+    let lynkol = 'neutre';
+    if (craftList === '#ALL') {lynkol = 'cy';} else {lynkol = 'neutre';}
+    $('#conUnitList').append('<span class="constMenu '+lynkol+' klik" onclick="craftListSelect(`#ALL`)">Tous</span>&nbsp;&middot;&nbsp;');
+    if (craftList === '#1b1510') {lynkol = 'cy';} else {lynkol = 'neutre';}
+    $('#conUnitList').append('<span class="constMenu '+lynkol+' klik" onclick="craftListSelect(`#1b1510`)">Compo</span>&nbsp;&middot;&nbsp;');
+    if (craftList === '#094949') {lynkol = 'cy';} else {lynkol = 'neutre';}
+    $('#conUnitList').append('<span class="constMenu '+lynkol+' klik" onclick="craftListSelect(`#094949`)">Electro</span>&nbsp;&middot;&nbsp;');
+    if (craftList === '#2a2810') {lynkol = 'cy';} else {lynkol = 'neutre';}
+    $('#conUnitList').append('<span class="constMenu '+lynkol+' klik" onclick="craftListSelect(`#2a2810`)">Moteur</span>&nbsp;&middot;&nbsp;');
+    if (craftList === '#000000') {lynkol = 'cy';} else {lynkol = 'neutre';}
+    $('#conUnitList').append('<span class="constMenu '+lynkol+' klik" onclick="craftListSelect(`#000000`)">Munitions</span>&nbsp;&middot;&nbsp;');
+    if (craftList === '#2e1c2d') {lynkol = 'cy';} else {lynkol = 'neutre';}
+    $('#conUnitList').append('<span class="constMenu '+lynkol+' klik" onclick="craftListSelect(`#2e1c2d`)">Médical</span>&nbsp;&middot;&nbsp;');
+    if (craftList === '#182a16') {lynkol = 'cy';} else {lynkol = 'neutre';}
+    $('#conUnitList').append('<span class="constMenu '+lynkol+' klik" onclick="craftListSelect(`#182a16`)">Nourriture</span>&nbsp;&middot;&nbsp;');
+    if (craftList === '#1d0f30') {lynkol = 'cy';} else {lynkol = 'neutre';}
+    $('#conUnitList').append('<span class="constMenu '+lynkol+' klik" onclick="craftListSelect(`#1d0f30`)">Morphite</span>&nbsp;&middot;&nbsp;');
+    if (craftList === '#002442') {lynkol = 'cy';} else {lynkol = 'neutre';}
+    $('#conUnitList').append('<span class="constMenu '+lynkol+' klik" onclick="craftListSelect(`#002442`)">Energie</span>&nbsp;&middot;&nbsp;');
+    if (craftList === '#200808') {lynkol = 'cy';} else {lynkol = 'neutre';}
+    $('#conUnitList').append('<span class="constMenu '+lynkol+' klik" onclick="craftListSelect(`#200808`)">Autres</span>');
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     let creationNum;
     let craftCostsList;
@@ -54,76 +81,147 @@ function craftWindow(retour) {
         if (craft.deg) {
             craftCol = 'sky';
         }
-        if ((compReqOK || playerInfos.pseudo === 'Test') && !oldCraft) {
-            $('#conUnitList').append('<div class="craftsBlock" style="background-color:'+craft.bg+';" id="crf'+craft.id+'"></div>');
-            if (craftOK) {
-                $('#crf'+craft.id).append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                $('#crf'+craft.id).append('<span class="craftsList '+craftCol+' klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+creationNum+')">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
-            } else {
-                $('#crf'+craft.id).append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                $('#crf'+craft.id).append('<span class="craftsList gf" title="'+toNiceString(craft.bldReq)+'">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
-            }
-            craftCostsList = showCraftCost(craft,creationNum);
-            $('#crf'+craft.id).append('<span class="craftsList">'+craftCostsList+'</span><br>');
-            if (craft.bldReq.length >= 1) {
-                if (bldOK) {
-                    $('#crf'+craft.id).append('<span class="craftsList bleu">'+toNiceString(craft.bldReq)+'</span><br>');
+        if (craft.bg === craftList || craftList === '#ALL') {
+            if ((compReqOK || playerInfos.pseudo === 'Test') && !oldCraft) {
+                $('#conUnitList').append('<div class="craftsBlock" style="background-color:'+craft.bg+';" id="crf'+craft.id+'"></div>');
+                if (craftOK) {
+                    $('#crf'+craft.id).append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                    $('#crf'+craft.id).append('<span class="craftsList '+craftCol+' klik" title="'+toNiceString(craft.bldReq)+'" onclick="doCraft('+craft.id+','+creationNum+')">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
                 } else {
-                    $('#crf'+craft.id).append('<span class="craftsList rouge">'+toNiceString(craft.bldReq)+'</span><br>');
+                    $('#crf'+craft.id).append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                    $('#crf'+craft.id).append('<span class="craftsList gf" title="'+toNiceString(craft.bldReq)+'">'+creationNum+' '+craft.result+' <span class="brunf">('+iHave+')</span></span><br>');
                 }
-            }
-            if (Object.keys(craft.compReq).length >= 1) {
-                craftCompReqs = showCraftCompReqs(craft);
-                if (compReqOK) {
-                    $('#crf'+craft.id).append('<span class="craftsList bleu">'+craftCompReqs+'</span><br>');
-                } else {
-                    $('#crf'+craft.id).append('<span class="craftsList rouge">'+craftCompReqs+'</span><br>');
+                craftCostsList = showCraftCost(craft,creationNum);
+                $('#crf'+craft.id).append('<span class="craftsList">'+craftCostsList+'</span><br>');
+                if (craft.bldReq.length >= 1) {
+                    if (bldOK) {
+                        $('#crf'+craft.id).append('<span class="craftsList bleu">'+toNiceString(craft.bldReq)+'</span><br>');
+                    } else {
+                        $('#crf'+craft.id).append('<span class="craftsList rouge">'+toNiceString(craft.bldReq)+'</span><br>');
+                    }
                 }
+                if (Object.keys(craft.compReq).length >= 1) {
+                    craftCompReqs = showCraftCompReqs(craft);
+                    if (compReqOK) {
+                        $('#crf'+craft.id).append('<span class="craftsList bleu">'+craftCompReqs+'</span><br>');
+                    } else {
+                        $('#crf'+craft.id).append('<span class="craftsList rouge">'+craftCompReqs+'</span><br>');
+                    }
+                }
+                $('#crf'+craft.id).append('<hr class="craft">');
             }
-            $('#crf'+craft.id).append('<hr class="craft">');
         }
     });
-    if (playerInfos.bldList.includes('Crameur') || playerInfos.bldList.includes('Centrale nucléaire')) {
-        let energyFactor = 100;
-        let dispoRes = 0;
-        let neededRes = 0;
-        let indus = playerInfos.comp.ind;
-        if (playerInfos.comp.ind === 3) {
-            indus = 4;
-        }
-        let iHave = getDispoRes('Energie');
-        let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'rarity'),'cat'),'energie');
-        // sortedResTypes.reverse();
-        sortedResTypes.forEach(function(res) {
-            if (res.energie > 0) {
-                let cramBld = 'Crameur';
-                if (res.cramBld != undefined) {
-                    cramBld = res.cramBld;
-                }
-                if (playerInfos.bldList.includes(cramBld)) {
-                    if (playerInfos.bldList.includes('Incinérateur') || (cramBld != 'Crameur' && cramBld != 'Incinérateur')) {
-                        energyFactor = Math.round(50/Math.sqrt(res.energie)*(indus+6)/6)*5;
-                    } else {
-                        energyFactor = Math.round(37/Math.sqrt(res.energie)*(indus+6)/6)*5;
-                    }
-                    dispoRes = getDispoRes(res.name);
-                    neededRes = res.energie*energyFactor/eCrafting;
-                    neededRes = cramPower(res,neededRes);
-                    $('#conUnitList').append('<div class="craftsBlock" id="cram'+res.id+'"></div>');
-                    if (dispoRes >= neededRes && playerInfos.crafts < maxCrafts) {
-                        $('#cram'+res.id).append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-                        $('#cram'+res.id).append('<span class="craftsList cy klik" onclick="doEnergyCraft(`'+res.name+'`,'+neededRes+','+energyFactor+')">'+energyFactor+' Energie <span class="brunf">('+iHave+')</span></span><br>');
-                        $('#cram'+res.id).append('<span class="craftsList gf">'+res.name+':<span class="bleu">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
-                    } else {
-                        $('#cram'+res.id).append('<span class="constIcon"><i class="far fa-circle"></i></span>');
-                        $('#cram'+res.id).append('<span class="craftsList gf">'+energyFactor+' Energie</span><br>');
-                        $('#cram'+res.id).append('<span class="craftsList gf">'+res.name+':<span class="rouge">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
-                    }
-                    $('#cram'+res.id).append('<span class="craftsList bleu">'+cramBld+'</span><br>');
-                    $('#cram'+res.id).append('<hr class="craft">');
-                }
+    if (craftList === '#002442' || craftList === '#ALL') {
+        if (playerInfos.bldList.includes('Crameur') || playerInfos.bldList.includes('Centrale nucléaire')) {
+            let energyFactor = 100;
+            let dispoRes = 0;
+            let neededRes = 0;
+            let indus = playerInfos.comp.ind;
+            if (playerInfos.comp.ind === 3) {
+                indus = 4;
             }
-        });
+            let iHave = getDispoRes('Energie');
+            let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'cat'),'energie');
+            // sortedResTypes.reverse();
+            sortedResTypes.forEach(function(res) {
+                if (res.energie > 0) {
+                    let cramBld = 'Crameur';
+                    if (res.cramBld != undefined) {
+                        cramBld = res.cramBld;
+                    }
+                    if (playerInfos.bldList.includes(cramBld)) {
+                        if (playerInfos.bldList.includes('Incinérateur') || (cramBld != 'Crameur' && cramBld != 'Incinérateur')) {
+                            energyFactor = Math.round(50/Math.sqrt(res.energie)*(indus+6)/6)*5;
+                        } else {
+                            energyFactor = Math.round(37/Math.sqrt(res.energie)*(indus+6)/6)*5;
+                        }
+                        dispoRes = getDispoRes(res.name);
+                        neededRes = res.energie*energyFactor/eCrafting;
+                        neededRes = cramPower(res,neededRes);
+                        $('#conUnitList').append('<div class="craftsBlock" id="cram'+res.id+'"></div>');
+                        if (dispoRes >= neededRes && playerInfos.crafts < maxCrafts) {
+                            $('#cram'+res.id).append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                            $('#cram'+res.id).append('<span class="craftsList cy klik" onclick="doEnergyCraft(`'+res.name+'`,'+neededRes+','+energyFactor+')">'+energyFactor+' Energie <span class="brunf">('+iHave+')</span></span><br>');
+                            $('#cram'+res.id).append('<span class="craftsList gf">'+res.name+':<span class="bleu">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
+                        } else {
+                            $('#cram'+res.id).append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                            $('#cram'+res.id).append('<span class="craftsList gf">'+energyFactor+' Energie</span><br>');
+                            $('#cram'+res.id).append('<span class="craftsList gf">'+res.name+':<span class="rouge">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
+                        }
+                        $('#cram'+res.id).append('<span class="craftsList bleu">'+cramBld+'</span><br>');
+                        $('#cram'+res.id).append('<hr class="craft">');
+                    }
+                }
+            });
+        }
+    }
+    if (craftList === '#1d0f30') {
+        if (playerInfos.bldList.includes('Recyclab')) {
+            let morphFactor = morphCreation(100);
+            let doRes = 100;
+            let neededRes = 35;
+            let iHaveRes = 0;
+            let iHaveMorph = getDispoRes('Morphite');
+            let iHaveScrap = getDispoRes('Scrap');
+            let iHaveWater = getDispoRes('Eau');
+            let baseRes = 'Scrap';
+            let iHaveTheBase = 0;
+            let sortedResTypes = _.sortBy(_.sortBy(resTypes,'rarity'),'cat');
+            // sortedResTypes.reverse();
+            sortedResTypes.forEach(function(res) {
+                if (res.name != 'Scrap' && res.name != 'Corps' && res.name != 'Eau' && res.name != 'Végétaux' && res.name != 'Bois' && res.name != 'Fruits' && res.name != 'Atium' && res.name != 'Octiron' && res.name != 'Magma' && res.cat != 'alien' && res.cat != 'transfo') {
+                    iHaveRes = getDispoRes(res.name);
+                    if (res.bld === 'Derrick') {
+                        baseRes = 'Eau';
+                        iHaveTheBase = iHaveWater;
+                    } else {
+                        baseRes = 'Scrap';
+                        iHaveTheBase = iHaveScrap;
+                    }
+                    doRes = Math.ceil(Math.sqrt(res.rarity)*Math.sqrt(res.batch)/res.equiv*2*morphFactor/100)*5;
+                    if (doRes > 100) {
+                        neededRes = Math.ceil(neededRes*500/(doRes+400));
+                        doRes = 100;
+                    }
+                    let triReq = 0;
+                    if (res.name === 'Uridium') {
+                        triReq = 3;
+                    } else if (res.rarity <= 7) {
+                        triReq = 2;
+                    } else if (res.equiv > 1 || res.batch <= 3) {
+                        triReq = 1;
+                    }
+                    $('#conUnitList').append('<div class="morphBlock" id="morph'+res.id+'"></div>');
+                    if (iHaveMorph >= neededRes && iHaveTheBase >= doRes && triReq <= playerInfos.comp.tri && playerInfos.crafts < maxCrafts) {
+                        $('#morph'+res.id).append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                        $('#morph'+res.id).append('<span class="craftsList cy klik" onclick="doMorphCraft(`'+res.name+'`,'+doRes+',`'+baseRes+'`,'+neededRes+')">'+doRes+' '+res.name+' <span class="brunf">('+iHaveRes+')</span></span><br>');
+                    } else {
+                        $('#morph'+res.id).append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                        $('#morph'+res.id).append('<span class="craftsList gf">'+doRes+' '+res.name+'</span><br>');
+                    }
+                    if (iHaveMorph >= neededRes) {
+                        $('#morph'+res.id).append('<span class="craftsList gf">Morphite:<span class="bleu">'+neededRes+'</span>/<span class="vert">'+iHaveMorph+'</span></span>');
+                    } else {
+                        $('#morph'+res.id).append('<span class="craftsList gf">Morphite:<span class="rouge">'+neededRes+'</span>/<span class="vert">'+iHaveMorph+'</span></span>');
+                    }
+                    if (iHaveTheBase >= doRes) {
+                        $('#morph'+res.id).append('<span class="craftsList gf">'+baseRes+':<span class="bleu">'+doRes+'</span>/<span class="vert">'+iHaveScrap+'</span></span><br>');
+                    } else {
+                        $('#morph'+res.id).append('<span class="craftsList gf">'+baseRes+':<span class="rouge">'+doRes+'</span>/<span class="vert">'+iHaveScrap+'</span></span><br>');
+                    }
+                    $('#morph'+res.id).append('<span class="craftsList bleu">Recyclab</span><br>');
+                    if (triReq >= 1) {
+                        if (triReq <= playerInfos.comp.tri) {
+                            $('#morph'+res.id).append('<span class="craftsList bleu">tri:'+triReq+'</span><br>');
+                        } else {
+                            $('#morph'+res.id).append('<span class="craftsList rouge">tri:'+triReq+'</span><br>');
+                        }
+                    }
+                    $('#morph'+res.id).append('<hr class="craft">');
+                }
+            });
+        }
     }
     if (!retour) {
         $("#conUnitList").animate({scrollTop:0},"fast");
@@ -325,6 +423,14 @@ function doEnergyCraft(resName,neededRes,energyCreated) {
     craftWindow(true);
 };
 
+function doMorphCraft(creaResName,creaResNum,baseResName,morphNeed) {
+    resSub(baseResName,creaResNum);
+    resSub('Morphite',morphNeed);
+    resAdd(creaResName,creaResNum);
+    playerInfos.crafts = playerInfos.crafts+1;
+    craftWindow(true);
+};
+
 function showCraftCost(craft,number) {
     let craftCostsList = ' ';
     let dispoRes;
@@ -414,6 +520,12 @@ function scrapCreation(scrapCreated) {
     }
     scrapCreated = Math.ceil(scrapCreated*(triComp+3)/3);
     return scrapCreated;
+};
+
+function morphCreation(resCreated) {
+    let triComp = Math.ceil(playerInfos.comp.tri*playerInfos.comp.tri/2);
+    resCreated = Math.ceil(resCreated*(triComp+2)/3);
+    return resCreated;
 };
 
 function cramPower(res,neededRes) {

@@ -1920,6 +1920,11 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.noBis = weapon.noBis;
     }
+    if (weapon.noStab === undefined) {
+        thisWeapon.noStab = false;
+    } else {
+        thisWeapon.noStab = weapon.noStab;
+    }
     if (weapon.free === undefined) {
         thisWeapon.free = false;
     } else {
@@ -2011,6 +2016,15 @@ function weaponAdj(weapon,bat,wn) {
     // tuning
     if (batType.cat != 'aliens' && thisWeapon.isMelee) {
         thisWeapon.rof = thisWeapon.rof*meleeROF;
+    }
+    // WSTAB
+    if (thisWeapon.noStab) {
+        if (bat.eq  === 'wstab' || bat.logeq  === 'wstab' || bat.eq  === 'wstabkit' || bat.logeq  === 'wstabkit' || bat.eq  === 'carkit' || bat.eq  === 'e-stab' || bat.logeq  === 'e-stab') {
+            thisWeapon.accuracy = thisWeapon.accuracy+3;
+            if (thisWeapon.dca < 1) {
+                thisWeapon.dca = 1;
+            }
+        }
     }
     // Equip adj
     if (thisWeapon.num === 1) {
@@ -2688,7 +2702,32 @@ function apCostRiposte(bat,batType,weap) {
 
 function chargeurAdj(bat,shots,weap) {
     let newShots = shots;
-    if (bat.eq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.eq.includes('carrousel') || bat.logeq.includes('chargeur') || bat.tdc.includes('chargeur1') || bat.tdc.includes('chargeur2') || bat.logeq.includes('carrousel') || bat.eq.includes('kit-chouf') || bat.eq.includes('kit-milice') || bat.eq === 'trainkitax' || bat.eq === 'trainkitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq.includes('lgkit') || bat.logeq.includes('lgkit') || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
+    let hasChargeur = false;
+    if (weap.num === 1) {
+        if (bat.eq.includes('chargeur') || bat.logeq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.eq.includes('carrousel') || bat.logeq.includes('carrousel') || bat.tdc.includes('chargeur1') || bat.eq.includes('kit-milice') || bat.eq === 'trainkitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq.includes('lgkit') || bat.logeq.includes('lgkit') || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
+            hasChargeur = true;
+        }
+    } else {
+        if (bat.eq.includes('chargeur') || bat.logeq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.eq.includes('carrousel') || bat.logeq.includes('carrousel') || bat.tdc.includes('chargeur2') || bat.eq.includes('kit-chouf') || bat.eq === 'trainkitax') {
+            hasChargeur = true;
+        }
+    }
+    if (weap.noStab) {
+        if (bat.eq.includes('wstabkit') || bat.logeq.includes('wstabkit')) {
+            hasChargeur = true;
+        }
+    }
+    let hasCarrousel = false;
+    if (weap.num === 1) {
+        if (bat.eq === 'carrousel1' || bat.eq === 'carrousel' || bat.logeq === 'carrousel1' || bat.logeq === 'carrousel') {
+            hasCarrousel = true;
+        }
+    } else {
+        if (bat.eq === 'carrousel2' || bat.eq === 'carrousel' || bat.logeq === 'carrousel2' || bat.logeq === 'carrousel') {
+            hasCarrousel = true;
+        }
+    }
+    if (hasChargeur) {
         let mult = 1.5;
         if (weap.name.includes('Calibre') || weap.name.includes('verrou') || weap.name.includes('Nailgun')) {
             mult = 2;
@@ -2702,28 +2741,9 @@ function chargeurAdj(bat,shots,weap) {
         if (bat.eq.includes('kit-chouf')) {
             mult = 2;
         }
-        if (bat.eq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.logeq.includes('chargeur') || bat.tdc.includes('chargeur1') || bat.tdc.includes('chargeur2') || bat.eq.includes('kit-chouf') || bat.eq === 'trainkitch' || bat.eq === 'trainkitax' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit' || bat.eq === 'kit-milice' || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
-            if (weap.num === 1) {
-                if (bat.eq === 'chargeur1' || bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.logeq === 'chargeur1' || bat.tdc.includes('chargeur1') || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'trainkitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq === 'lgkit' || bat.logeq === 'lgkit' || bat.eq === 'kit-milice' || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
-                    newShots = Math.round(newShots*mult);
-                }
-            } else {
-                if (bat.eq === 'chargeur2' || bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.logeq === 'chargeur2' || bat.tdc.includes('chargeur2') || bat.logeq === 'chargeur' || bat.eq.includes('kit-chouf') || bat.eq === 'trainkitax') {
-                    newShots = Math.round(newShots*mult);
-                }
-            }
-        }
-        if (bat.eq.includes('carrousel') || bat.logeq.includes('carrousel')) {
-            if (weap.num === 1) {
-                if (bat.eq === 'carrousel1' || bat.eq === 'carrousel' || bat.logeq === 'carrousel1' || bat.logeq === 'carrousel') {
-                    newShots = Math.round(newShots*1.25);
-                }
-            } else {
-                if (bat.eq === 'carrousel2' || bat.eq === 'carrousel' || bat.logeq === 'carrousel2' || bat.logeq === 'carrousel') {
-                    newShots = Math.round(newShots*1.25);
-                }
-            }
-        }
+        newShots = Math.round(newShots*mult);
+    } else if (hasCarrousel) {
+        newShots = Math.round(newShots*1.25);
     } else if (bat.eq === 'helper' || bat.logeq === 'helper' || bat.eq === 'cyberkit') {
         if (!weap.isMelee && !weap.name.includes('Javelot')) {
             newShots = Math.round(newShots*1.25);
