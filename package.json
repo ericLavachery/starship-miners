@@ -11,7 +11,7 @@
     "description": "",
     "dependencies": {
         "ent": "^2.2.0",
-        "express": "^4.16.4",
+        "express": "^4.17.3",
         "file-system": "^2.2.2",
         "howler": "^2.2.0",
         "jquery": ">=3.4.0",
