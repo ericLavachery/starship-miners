@@ -217,6 +217,11 @@ function deleteZones() {
     savePlayerInfos();
 };
 
+function copyStartMission() {
+    let startZoneId = 99;
+    socket.emit('put-start-zone',startZoneId);
+};
+
 function newGame() {
     bataillons = [];
     saveBataillons();
@@ -232,7 +237,6 @@ function newGame() {
     playerInfos.gLevel = -1;
     playerInfos.allCits = 2200;
     playerInfos.gangXP = 2200;
-    playerInfos.missionZone = -1;
     playerInfos.sondeDanger = -1;
     playerInfos.sondePlanet = -1;
     playerInfos.crime = 0;
@@ -251,11 +255,15 @@ function newGame() {
     playerInfos.cAdj = 0;
     playerInfos.cLoss = 0;
     playerInfos.cNeed = 1;
+    // playerInfos.missionZone = -1;
+    playerInfos.missionZone = 99;
+    playerInfos.okFill = true;
     resetReserve();
     resetStartRes();
     resetEndRes();
     resetVMRes();
     deleteZones();
+    copyStartMission();
     generateVM();
     showMap(zone,false);
     miniOut();

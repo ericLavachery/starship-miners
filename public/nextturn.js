@@ -725,6 +725,9 @@ function nextTurnEnd() {
 
 function turnInfo() {
     console.log('TURN INFO');
+    if (zone[0].number >= 90) {
+        isStartZone = true;
+    }
     planetThumb();
     checkNeiTurn();
     let citLoss = getCitLoss();

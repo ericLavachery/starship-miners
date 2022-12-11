@@ -43,6 +43,7 @@ let filterVariance = true; // true!
 let terSeedVariance = true;
 let baseFilterChance = 1; // minimum 1 !!! (1 = autant de chances pour chaque filtre)
 let filterBase = {};
+let isStartZone = false;
 let zone = [];
 let zonePrev = [];
 let resources = [];

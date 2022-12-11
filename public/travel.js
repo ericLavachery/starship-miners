@@ -98,6 +98,8 @@ function landingList() {
     $('#conUnitList').empty();
     $('#conUnitList').append('<h1 class="or" id="gentils">Atterrissage</h1><br><br>');
     slId = -1;
+    console.log('LANDING LIST --------------------------------------------------------------');
+    console.log(batsInSpace);
     batsInSpace.forEach(function(bat) {
         if (slId < 0) {
             if (bat.loc === 'zone') {

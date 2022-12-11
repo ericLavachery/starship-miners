@@ -302,17 +302,32 @@ socket.on('savedMap-Load', function(sm) {
     let thisBatType;
     // Verif bat id's + sorting
     bataillons.forEach(function(bat) {
-        if (bat.id >= playerInfos.nextId) {
-            playerInfos.nextId = bat.id+1;
+        if (bat.type === 'Soute') {
+            bat.id = 1;
+            if (playerInfos.nextId === 1) {
+                playerInfos.nextId = 2;
+            }
+        } else {
+            if (bat.id >= playerInfos.nextId) {
+                playerInfos.nextId = bat.id+1;
+            }
         }
     });
     let allMyIds = [];
     bataillons.forEach(function(bat) {
+        if (bat.id === 1 && bat.type != 'Soute') {
+            playerInfos.nextId++;
+            bat.id = playerInfos.nextId;
+            playerInfos.nextId++;
+        }
         if (!allMyIds.includes(bat.id)) {
             allMyIds.push(bat.id);
         } else {
             bat.id = playerInfos.nextId;
             playerInfos.nextId++;
+        }
+        if (bat.tdc === undefined) {
+            bat.tdc = [];
         }
         if (bat.loc === "zone" || bat.loc === "trans") {
             thisBatType = getBatType(bat);
@@ -324,6 +339,11 @@ socket.on('savedMap-Load', function(sm) {
             } else {
                 bat.sort = thisBatType.sort;
             }
+        }
+    });
+    aliens.forEach(function(bat) {
+        if (bat.tdc === undefined) {
+            bat.tdc = [];
         }
     });
 });

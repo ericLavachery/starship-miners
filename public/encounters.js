@@ -1,5 +1,5 @@
 function encounterCheck() {
-    if (!zone[0].visit) {
+    if (!zone[0].visit && !isStartZone) {
         if (zone[0].mapDiff >= 2) {
             let encounterChance = playerInfos.enc;
             if (zone[0].planet === 'Dom') {

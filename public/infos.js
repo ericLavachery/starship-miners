@@ -1,10 +1,12 @@
 function showBatInfos(bat) {
-    $("#unitInfos").css("display","block");
-    let batType = getBatType(bat);
-    batInfos(bat,batType,false);
-    $("#unitInfos").animate({scrollTop:0},"fast");
-    if (bat.type === 'Soute') {
-        viewPop();
+    if (!playerInfos.onStart) {
+        $("#unitInfos").css("display","block");
+        let batType = getBatType(bat);
+        batInfos(bat,batType,false);
+        $("#unitInfos").animate({scrollTop:0},"fast");
+        if (bat.type === 'Soute') {
+            viewPop();
+        }
     }
 };
 

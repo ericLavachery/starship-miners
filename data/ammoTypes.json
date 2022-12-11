@@ -1870,7 +1870,7 @@
         "bldReq":["Arsenal"],
         "compReq":{"mat":1},
         "costs":{"Aluminium":2,"Carbone":1,"Cobalt":1,"Silicium":1,"Adamantium":4},
-        "deploy":{"Huile":2,"Argon":2},
+        "deploy":{"Huile":0.1,"Argon":0.1},
         "batch":12
     },
     {
@@ -3798,7 +3798,7 @@
         "powermult": 1,
         "armors": 0,
         "accuracy": 1,
-        "apdamage": 0.05,
+        "apdamage": 0.06,
         "aoe": "",
         "noList": true
     },

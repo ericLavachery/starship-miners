@@ -611,7 +611,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","chargeur1","w2-lgren","g2motor","chenilles","snorkel","carkit","e-flash","e-mecano"],
+        "equip":["aucun","chargeur1","w2-lgren","g2motor","chenilles","snorkel","carkit","e-flash","e-mecano","e-road"],
         "log3eq":["chargeur1","chenilles"],
         "moveCost":2,
         "maxFlood":1,
@@ -3191,7 +3191,7 @@
             "noise":4,
             "rof":24,
             "accuracy":17,
-            "dca":1.5,
+            "dca":1.0,
             "power":11,
             "armors":0.77,
             "aoe":"unit",
