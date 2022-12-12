@@ -1805,7 +1805,7 @@
         "maxVeg":3,
         "skills":["fly","capfar","inflammable","resistelec","light"],
         "deathFx":"death1",
-        "killRes":{"Bugium":1,"Larvium":2,"Wingium":4},
+        "killRes":{"Bugium":1,"Larvium":2,"Wingium":6},
         "killXP":5
     },
     {
@@ -2327,7 +2327,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capmen","hide","resistfeu","resistall","infkill","bomb","nez"],
+        "skills":["capmen","hide","resistfeu","resistall","infkill","bomb","nez","light"],
         "deathFx":"death1",
         "killRes":{"Bugium":1,"Aranium":6,"Pyrus":1,"Blendium":5},
         "killXP":6,

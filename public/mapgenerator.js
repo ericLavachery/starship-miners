@@ -1002,10 +1002,6 @@ function addRes(zone) {
             }
             resRarity = Math.ceil(resRarity*planetFactor);
             resBatch = Math.ceil(resBatch*Math.sqrt(planetFactor));
-            // if (planetFactor === 0 && playerInfos.sondeDanger >= 8) {
-            //     resRarity = 0.5;
-            //     resBatch = Math.ceil(resBatch*0.2);
-            // }
         } else if (zone[0].planet != 'Dom') {
             resRarity = resRarity+2;
         }
@@ -1157,6 +1153,11 @@ function addRes(zone) {
                         if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
                             resRarity = resRarity+23;
                         }
+                        if (res.name === 'Fruits' || res.name === 'Huile') {
+                            if (tile.terrain != 'F' && tile.terrain != 'S' && tile.terrain != 'B') {
+                                resRarity = 0;
+                            }
+                        }
                         if (rand.rand(1,100) <= Math.round((resRarity)/10*bldFactor)) {
                             let rajResBatch = res.adjBatch;
                             if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
@@ -1178,6 +1179,11 @@ function addRes(zone) {
                             }
                             if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
                                 resRarity = resRarity+23;
+                            }
+                            if (res.name === 'Fruits' || res.name === 'Huile') {
+                                if (tile.terrain != 'F' && tile.terrain != 'S' && tile.terrain != 'B') {
+                                    resRarity = 0;
+                                }
                             }
                             if (rand.rand(1,100) <= Math.round((resRarity)/10*bldFactor)) {
                                 let rajResBatch = res.adjBatch;
@@ -1201,6 +1207,11 @@ function addRes(zone) {
                             }
                             if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
                                 resRarity = resRarity+23;
+                            }
+                            if (res.name === 'Fruits' || res.name === 'Huile') {
+                                if (tile.terrain != 'F' && tile.terrain != 'S' && tile.terrain != 'B') {
+                                    resRarity = 0;
+                                }
                             }
                             if (rand.rand(1,100) <= Math.round((resRarity)/10*bldFactor)) {
                                 let rajResBatch = res.adjBatch;

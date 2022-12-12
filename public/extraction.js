@@ -96,7 +96,7 @@ function mining(bat) {
                             if (res.name === 'Scrap') {
                                 minedScrap = adjustedRMR;
                                 if (batType.skills.includes('scrapmorph')) {
-                                    adjustedRMR = Math.ceil(adjustedRMR/2);
+                                    adjustedRMR = Math.ceil(adjustedRMR/1.5);
                                 }
                             }
                             if (bestDumper.transRes[res.name] === undefined) {
@@ -408,7 +408,14 @@ function getMiningRate(bat,fullRate,noMining) {
         if (bat.transIds.length >= 1) {
             bataillons.forEach(function(inBat) {
                 if (inBat.loc === "trans" && inBat.locId === bat.id) {
-                    if (inBat.type === 'Mineurs' || inBat.type === 'Scrapers') {
+                    if (inBat.type === 'Scrapers') {
+                        if (inBat.apLeft >= 7 && inBat.squadsLeft >= 6) {
+                            if (helpInside < 1.6) {
+                                helpInside = 1.6;
+                            }
+                        }
+                    }
+                    if (inBat.type === 'Mineurs') {
                         if (inBat.apLeft >= 7 && inBat.squadsLeft >= 6) {
                             if (helpInside < 1.5) {
                                 helpInside = 1.5;

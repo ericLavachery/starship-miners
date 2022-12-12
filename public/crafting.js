@@ -182,6 +182,8 @@ function craftWindow(retour) {
                     doRes = Math.ceil(Math.sqrt(res.rarity)*Math.sqrt(res.batch)/res.equiv*2*morphFactor/100)*5;
                     if (doRes > 100) {
                         neededRes = Math.ceil(neededRes*500/(doRes+400));
+                        if (neededRes < 15) {neededRes = Math.ceil(Math.sqrt(neededRes)*3.87);}
+                        if (neededRes < 5) {neededRes = 5;}
                         doRes = 100;
                     }
                     let triReq = 0;

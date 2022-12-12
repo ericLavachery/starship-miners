@@ -308,6 +308,10 @@ socket.on('savedMap-Load', function(sm) {
                 playerInfos.nextId = 2;
             }
         } else {
+            if (bat.id >= 9000) {
+                bat.id = playerInfos.nextId;
+                playerInfos.nextId++;
+            }
             if (bat.id >= playerInfos.nextId) {
                 playerInfos.nextId = bat.id+1;
             }

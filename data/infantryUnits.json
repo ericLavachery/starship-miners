@@ -1064,13 +1064,13 @@
             "sound":"calibre_shotgun",
             "ammo":["standard","scrap","snake","incendiaire","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
         },
-        "equip":["aucun","e-flash","e-camo","chargeur","e-jetpack","theeye","helper","waterproof"],
+        "equip":["aucun","e-flash","e-camo","chargeur","e-jetpack","e-medic","theeye","helper","waterproof"],
         "log3eq":["chargeur","e-camo"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","fastguet","datt","selfbadmedic","maycamo","ranger","unemun","herosalvo","heroap"],
+        "skills":["a_heavy","fouille","fortif","fastguet","datt","maycamo","ranger","unemun","herosalvo","heroap"],
         "mediCost":9,
         "fuzz":1,
         "deathFx":"195954__minian89__death-blood-splatter"
@@ -1716,7 +1716,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","camo","guerrilla","tirailleur","datt","selfbadmedic","ranger","noblub","uprank","herorage","herofana"],
+        "skills":["a_light","fouille","fortif","camo","guerrilla","tirailleur","datt","ranger","noblub","uprank","herorage","herofana"],
         "mediCost":9,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
@@ -1833,7 +1833,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","datt","camo","selfbadmedic","barda","herorip"],
+        "skills":["a_heavy","fouille","fortif","datt","camo","barda","herorip"],
         "mediCost":9,
         "fuzz":0,
         "deathFx":"human2"
@@ -2064,7 +2064,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","datt","selfbadmedic","maycamo","strong","defense","herorange"],
+        "skills":["a_heavy","fouille","fortif","datt","maycamo","strong","defense","herorange"],
         "mediCost":9,
         "fuzz":1.5,
         "deathFx":"195954__minian89__death-blood-splatter"
@@ -2483,7 +2483,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","datt","inflammable","maycamo","selfbadmedic","strong","barda","herotornade","herofana","autohero"],
+        "skills":["a_heavy","fouille","fortif","datt","inflammable","maycamo","strong","barda","herotornade","herofana","autohero"],
         "mediCost":6,
         "fuzz":0.5,
         "deathFx":"219149__musability__female-wilhelm-scream-audacity"
@@ -2727,7 +2727,7 @@
         "mecanoCost":10,
         "mining":{
             "level":3,
-            "rate":19,
+            "rate":20,
             "multi":false,
             "types":["Mine","Comptoir","Scrap"],
             "subTypes":["Derrick","Pompe"]

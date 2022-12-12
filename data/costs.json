@@ -155,8 +155,7 @@
         "name":"Rednecks",
         "levels":{"rednecks":2,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie"],
-        "costs":{"Fer":120,"Scrap":120,"Aluminium":60,"Végétaux":20,"Chlore":10,"Tissus":5},
-        "deploy":{"Drogues":3,"Tissus":2},
+        "costs":{"Fer":120,"Scrap":120,"Aluminium":60},
         "fabTime":15
     },
     {
@@ -260,8 +259,7 @@
         "levels":{"rednecks":99,"blades":1,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
         "unitUp":"Rétiaires",
-        "costs":{"Scrap":64,"Bois":128,"Végétaux":148,"Chlore":10,"Tissus":5},
-        "deploy":{"Drogues":3,"Tissus":2},
+        "costs":{"Scrap":64,"Bois":128,"Végétaux":128},
         "fabTime":15
     },
     {
@@ -278,8 +276,7 @@
         "name":"Piquiers",
         "levels":{"rednecks":99,"blades":4,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
-        "costs":{"Fer":30,"Carbone":60,"Bois":120,"Végétaux":140,"Chlore":10,"Tissus":5},
-        "deploy":{"Drogues":3,"Tissus":2},
+        "costs":{"Fer":30,"Carbone":60,"Bois":120,"Végétaux":120},
         "fabTime":15
     },
     {
@@ -313,8 +310,7 @@
         "name":"Gunners",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":1,"detruas":99,"brasier":99},
         "bldReq":["Armurerie"],
-        "costs":{"Fer":60,"Scrap":120,"Plomb":60,"Carbone":60,"Végétaux":20,"Chlore":10,"Tissus":5},
-        "deploy":{"Drogues":3,"Tissus":2},
+        "costs":{"Fer":60,"Scrap":120,"Plomb":60,"Carbone":60},
         "fabTime":15
     },
     {
@@ -378,8 +374,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":2},
         "bldReq":["Atelier"],
         "compHardReq":{"pyro":1},
-        "costs":{"Fer":112,"Scrap":210,"Carbone":14,"Plomb":56,"Aluminium":112,"Tungstène":70,"Végétaux":20,"Chlore":10,"Tissus":5},
-        "deploy":{"Drogues":3,"Tissus":2},
+        "costs":{"Fer":112,"Scrap":210,"Carbone":14,"Plomb":56,"Aluminium":112,"Tungstène":70},
         "fabTime":15
     },
     {

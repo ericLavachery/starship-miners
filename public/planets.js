@@ -549,8 +549,11 @@ function checkUndark() {
             if (bat.loc === "zone") {
                 if (bat.tags.includes('fluo')) {
                     undarkAlien(bat);
-                } else if (bat.type === 'Lucioles') {
-                    undarkAlien(bat);
+                } else if (!bat.tags.includes('invisible')) {
+                    let batType = getBatType(bat);
+                    if (batType.skills.includes('light')) {
+                        undarkAlien(bat);
+                    }
                 }
             }
         });
