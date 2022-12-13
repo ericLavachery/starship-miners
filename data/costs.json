@@ -411,7 +411,7 @@
         "bldReq":["Recyclab","Armurerie"],
         "compReq":{"tri":4},
         "unitCost":"Mineurs",
-        "costs":{"Fer":82,"Scrap":108,"Carbone":54,"Blendium":54,"Bois":28,"Moteurs":5,"Batteries":5,"Végétaux":20,"Chlore":10,"Tissus":5},
+        "costs":{"Fer":82,"Scrap":108,"Carbone":54,"Blendium":54,"Bois":27,"Moteurs":5,"Batteries":10,"Electros":10,"Chlore":54,"Argon":27,"Végétaux":20,"Chlore":10,"Tissus":5},
         "deploy":{"Energie":15,"Drogues":1,"Tissus":1},
         "fabTime":35
     },

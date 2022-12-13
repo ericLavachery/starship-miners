@@ -114,7 +114,7 @@
         "size":25,
         "speed":12,
         "stealth":0,
-        "ap":18,
+        "ap":15,
         "maxSalvo":2,
         "weapon":{
             "name":"Mandibules",
@@ -133,7 +133,7 @@
         },
         "weapon2":{},
         "w2chance":0,
-        "moveCost":1.4,
+        "moveCost":1.5,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
@@ -160,7 +160,7 @@
         "size":30,
         "speed":4,
         "stealth":0,
-        "ap":9,
+        "ap":12,
         "maxSalvo":1,
         "weapon":{
             "name":"Mandibules",
@@ -192,7 +192,7 @@
             "ammo":["spitbug"]
         },
         "w2chance":2,
-        "moveCost":1,
+        "moveCost":1.5,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
@@ -1064,7 +1064,7 @@
         "size":2,
         "speed":6,
         "stealth":0,
-        "ap":12,
+        "ap":11,
         "maxSalvo":1,
         "weapon":{
             "name":"Dard",
@@ -1782,7 +1782,7 @@
         "size":2.5,
         "speed":3,
         "stealth":0,
-        "ap":7,
+        "ap":8,
         "maxSalvo":1,
         "weapon":{
             "name":"Décharge électrique",
@@ -1970,7 +1970,7 @@
         "maxFlood":3,
         "maxScarp":1,
         "maxVeg":2,
-        "skills":["chancre","hover","capmen","nocap","resistelec","baddef","dive","nodry","reactblast"],
+        "skills":["chancre","hover","capmen","resistelec","baddef","dive","nodry","reactblast"],
         "deathFx":"death1",
         "killRes":{"Larvium":5,"Germium":4,"Mephitis":2,"Bugium":1},
         "killXP":4,
@@ -2137,7 +2137,7 @@
         "size":7,
         "speed":5,
         "stealth":0,
-        "ap":12,
+        "ap":9,
         "maxSalvo":1,
         "weapon":{
             "name":"Mandibules",

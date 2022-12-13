@@ -482,7 +482,7 @@ function batDeath(bat,count,isWiped) {
             if (!batType.skills.includes('nodeathcount')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 playerInfos.deadBats.push(batType.name);
-                playMusic('rip',false);
+                playMusic('rip',true);
             }
             if (batType.skills.includes('transport')) {
                 transDestroy(tileId,deadId,isFlying);

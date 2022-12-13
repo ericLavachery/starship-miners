@@ -456,21 +456,26 @@ function triProd(bat,batType,time,sim,quiet) {
         resTypes.forEach(function(res) {
             let resProd = 0;
             let resFactor = 0;
-            if (res.ctri != undefined) {
-                if (batType.name === 'Recyclab') {
-                    resFactor = (res.ctri+playerInfos.comp.tri-1.5)*2.5;
-                } else {
-                    resFactor = res.ctri+playerInfos.comp.tri-1.5;
-                }
-            } else {
-                if (res.rlab != undefined) {
-                    if (batType.name === 'Recyclab') {
-                        resFactor = (res.rlab+playerInfos.comp.tri-1.5)*2.5;
+            if (res.rlab != undefined) {
+                let scrapLevel = 2;
+                if (res.bld != 'Derrick') {
+                    if (res.cramBld === undefined && res.rlab >= 4) {
+                        if (res.rlab >= 7 || res.rarity >= 20) {
+                            scrapLevel = 1;
+                        }
                     }
+                    if (res.level === 1 || res.level === 4) {
+                        scrapLevel = 1;
+                    }
+                }
+                if (batType.name === 'Recyclab') {
+                    resFactor = (res.rlab+playerInfos.comp.tri-2)*2.5;
+                } else if (scrapLevel === 1) {
+                    resFactor = res.rlab+playerInfos.comp.tri-2;
                 }
             }
             if (resFactor >= 1) {
-                let resNum = Math.round(resFactor/22*time);
+                let resNum = Math.round(time*resFactor/rand.rand(9,12)/2);
                 console.log(res.name);
                 console.log('resNum: '+resNum);
                 if (resNum >= 3) {

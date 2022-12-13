@@ -142,12 +142,16 @@ function checkRavit(myBat) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 let batType = getBatType(bat);
+                let ravitDistance = 1;
+                if (batType.skills.includes('autoapprov')) {
+                    ravitDistance = 2;
+                }
                 ravitTypeOK = false;
                 if (bldRav === batType.name || batType.bldEquiv.includes(bldRav) || !batType.skills.includes('ravitprod') || batType.skills.includes('ravitall')) {
                     ravitTypeOK = true;
                 }
                 if (batType.skills.includes('ravitaillement') && !batType.skills.includes('stockmed') && ravitTypeOK) {
-                    if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
+                    if (calcDistance(myBat.tileId,bat.tileId) <= ravitDistance) {
                         let ravitLeft = calcRavit(bat);
                         let ravitVolOK = true;
                         if (ravitLeft >= 1) {
@@ -191,13 +195,17 @@ function goRavit(apCost) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
+                let ravitDistance = 1;
+                if (batType.skills.includes('autoapprov')) {
+                    ravitDistance = 2;
+                }
                 ravitTypeOK = false;
                 if (bldReq === batType.name || batType.bldEquiv.includes(bldReq) || !batType.skills.includes('ravitprod') || batType.skills.includes('ravitall')) {
                     ravitTypeOK = true;
                 }
                 if (batType.skills.includes('ravitaillement') && ravitTypeOK) {
                     ravitLeft = calcRavit(bat);
-                    if (calcDistance(selectedBat.tileId,bat.tileId) <= 1 && ravitLeft >= 1) {
+                    if (calcDistance(selectedBat.tileId,bat.tileId) <= ravitDistance && ravitLeft >= 1) {
                         if (biggestRavit < ravitLeft) {
                             biggestRavit = ravitLeft;
                             ravitBat = bat;
@@ -294,13 +302,13 @@ function checkRavitDrug(myBat) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
+            let ravitDistance = 1;
+            if (batType.skills.includes('autoapprov')) {
+                ravitDistance = 2;
+            }
             if (batType.skills.includes('ravitaillement')) {
-                if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
+                if (calcDistance(myBat.tileId,bat.tileId) <= ravitDistance) {
                     anyRavit = true;
-                    // ravitLeft = calcRavit(bat);
-                    // if (ravitLeft >= 2 || batType.skills.includes('stock')) {
-                    //     anyRavit = true;
-                    // }
                 }
             }
         }
@@ -318,9 +326,13 @@ function goRavitDrug(apCost) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
+                let ravitDistance = 1;
+                if (batType.skills.includes('autoapprov')) {
+                    ravitDistance = 2;
+                }
                 if (batType.skills.includes('ravitaillement')) {
                     ravitLeft = calcRavit(bat);
-                    if (calcDistance(selectedBat.tileId,bat.tileId) <= 1) {
+                    if (calcDistance(selectedBat.tileId,bat.tileId) <= ravitDistance) {
                         if (biggestRavit < ravitLeft) {
                             biggestRavit = ravitLeft;
                             ravitBat = bat;
@@ -334,27 +346,7 @@ function goRavitDrug(apCost) {
             if (playerInfos.comp.log < 3) {
                 selectedBat.salvoLeft = 0;
             }
-            // let i = 1;
-            // while (i <= 120) {
-            //     if (selectedBat.tags.includes('dU')) {
-            //         tagIndex = selectedBat.tags.indexOf('dU');
-            //         selectedBat.tags.splice(tagIndex,1);
-            //     } else {
-            //         break;
-            //     }
-            //     if (i > 120) {break;}
-            //     i++;
-            // }
             selectedBat.tags = selectedBat.tags.filter(a => a !== 'dU');
-            // ravitBatType = getBatType(ravitBat);
-            // let maxSkill = batType.maxSkill;
-            // if (ravitBatType.skills.includes('stock')) {
-            //     maxSkill = 999;
-            // }
-            // if (maxSkill < 999 && !ravitBatType.skills.includes('stockmed')) {
-            //     ravitBat.tags.push('sU');
-            //     ravitBat.tags.push('sU');
-            // }
             doneAction(ravitBat);
             tagDelete(selectedBat,'guet');
             doneAction(selectedBat);
@@ -371,8 +363,12 @@ function checkStock(myBat) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             let batType = getBatType(bat);
+            let ravitDistance = 1;
+            if (batType.skills.includes('autoapprov')) {
+                ravitDistance = 2;
+            }
             if (batType.skills.includes('stock')) {
-                if (calcDistance(myBat.tileId,bat.tileId) <= 1) {
+                if (calcDistance(myBat.tileId,bat.tileId) <= ravitDistance) {
                     anyStock = true;
                 }
             }
@@ -389,8 +385,12 @@ function goStock(apCost) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
+                let ravitDistance = 1;
+                if (batType.skills.includes('autoapprov')) {
+                    ravitDistance = 2;
+                }
                 if (batType.skills.includes('stock')) {
-                    if (calcDistance(selectedBat.tileId,bat.tileId) <= 1) {
+                    if (calcDistance(selectedBat.tileId,bat.tileId) <= ravitDistance) {
                         stockOK = true;
                         stockBat = bat;
                     }

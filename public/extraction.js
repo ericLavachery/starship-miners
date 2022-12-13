@@ -138,19 +138,15 @@ function mining(bat) {
 
 function scrapMorphing(bat,batType,minedScrap) {
     console.log('SCRAPMORPHING ---------------------------------------------------------');
-    let morphed = Math.ceil(minedScrap/75);
+    let morphed = minedScrap/75;
     resTypes.forEach(function(res) {
         let resProd = 0;
         let resFactor = 0;
-        if (res.ctri != undefined) {
-            resFactor = (res.ctri+2.5)*2.5;
-        } else {
-            if (res.rlab != undefined) {
-                resFactor = (res.rlab+2.5)*2.5;
-            }
+        if (res.rlab != undefined) {
+            resFactor = (res.rlab+1)*3;
         }
         if (resFactor >= 1) {
-            let resNum = Math.round(resFactor/22*morphed);
+            let resNum = Math.round(morphed*resFactor/rand.rand(3,18)/2);
             console.log(res.name);
             console.log('resNum: '+resNum);
             if (resNum >= 3) {

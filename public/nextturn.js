@@ -1758,7 +1758,7 @@ function checkDeath(bat,batType) {
                 playerInfos.deadBats.push(batType.name);
                 transDestroy(deadId,tileId);
                 saveCrew(batType,deadId,tileId);
-                playMusic('rip',false);
+                playMusic('rip',true);
             }
             deadBatsList.push(bat.id);
         } else if (batType.kind == 'game') {

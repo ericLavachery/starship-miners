@@ -964,6 +964,12 @@ function playerSkillsUTChanges() {
                 }
             }
         }
+        // RECYCLAGE
+        if (playerInfos.comp.tri === 4) {
+            if (unit.skills.includes('maysm')) {
+                unit.skills.push('scrapmorph');
+            }
+        }
         // LOGISTIQUE
         if (playerInfos.comp.log >= 2 && unit.cat === 'buildings') {
             if (playerInfos.comp.log === 2) {

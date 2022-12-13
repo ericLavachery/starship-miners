@@ -305,7 +305,10 @@ function playMusic(piste,interrupt) {
         if (piste != 'any') {
             track = piste;
         }
-        theMusic.stop();
+        // theMusic.stop();
+        theMusic.fade(myVol,0.0,3000);
+        // if (theMusic.playing()) {
+        // }
         theMusic = new Howl({
             src: ['/static/sounds/music/'+track+'.mp3'],
             preload: true,

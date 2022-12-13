@@ -588,14 +588,14 @@ function attack(melee,init) {
                 wapd = wapd*4;
             }
         } else if (selectedWeap.ammo.includes('electric')) {
-            if (targetBatType.cat == 'vehicles') {
+            if (targetBatType.cat == 'vehicles' || targetBatType.cat == 'devices') {
                 if (targetBatType.skills.includes('fly')) {
                     wapd = wapd*4*20/targetBatType.size;
                 } else {
                     wapd = wapd*2.25*20/targetBatType.size;
                 }
-            } else if (targetBatType.cat == 'buildings' || targetBatType.cat == 'devices') {
-                wapd = wapd*20/targetBatType.size;
+            } else if (targetBatType.cat == 'buildings') {
+                wapd = wapd/2*20/targetBatType.size;
             } else if (targetBatType.skills.includes('cyber')) {
                 wapd = wapd*2*20/targetBatType.size;
             }
@@ -1626,15 +1626,15 @@ function defense(melee,init) {
                 wapd = wapd*4;
             }
         } else if (targetWeap.ammo.includes('electric')) {
-            if (selectedBatType.cat == 'vehicles') {
+            if (selectedBatType.cat == 'vehicles' || selectedBatType.cat == 'devices') {
                 if (selectedBatType.skills.includes('fly')) {
                     wapd = wapd*4*20/selectedBatType.size;
                 } else {
                     wapd = wapd*2.25*20/selectedBatType.size;
                 }
                 wapd = wapd*2.25*20/selectedBatType.size;
-            } else if (selectedBatType.cat == 'buildings' || selectedBatType.cat == 'devices') {
-                wapd = wapd*20/selectedBatType.size;
+            } else if (selectedBatType.cat == 'buildings') {
+                wapd = wapd/2*20/selectedBatType.size;
             } else if (selectedBatType.skills.includes('cyber')) {
                 wapd = wapd*2*20/selectedBatType.size;
             }
