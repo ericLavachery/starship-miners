@@ -58,7 +58,11 @@ function showMap(wmap,justMoved) {
         if (tile.seed >= 10) {
             tPic = tile.terrain+'_0'+tile.seed;
         } else {
-            tPic = tile.terrain+'_00'+tile.seed;
+            if (zone[0].planet === 'Gehenna' && tile.terrain === 'F') {
+                tPic = tile.terrain+'b_00'+tile.seed;
+            } else {
+                tPic = tile.terrain+'_00'+tile.seed;
+            }
         }
         if (zone[0].dark) {
             if (zone[0].undarkOnce.includes(tile.id) || zone[0].undarkAll) {
@@ -68,7 +72,11 @@ function showMap(wmap,justMoved) {
                 tPic = 'D_001';
             }
         } else {
-            terclass = 'ter'+tile.terrain+tile.seed;
+            if (zone[0].planet === 'Gehenna' && tile.terrain === 'F') {
+                terclass = 'ter'+tile.terrain+'b'+tile.seed;
+            } else {
+                terclass = 'ter'+tile.terrain+tile.seed;
+            }
         }
         $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')" title="#'+tile.id+' ('+tile.y+'&lrhar;'+tile.x+')"><span class="'+terClass+'"><img src="/static/img/sntiles/'+tPic+'.png"></span><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
         if (!modeSonde) {

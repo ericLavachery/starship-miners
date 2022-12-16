@@ -654,8 +654,8 @@ function calcCrimeRate(mesCitoyens) {
     crimeRate.penib = crimeRate.penib+playerInfos.vitals;
     let bldIds = [];
     // Unités: (electroguards-2 gurus-2 dealers-1 marshalls-1)
-    let maxAntiCrimeUnits = Math.round(Math.sqrt(population)/7.5);
-    let antiCrimeUnits = 0;
+    let maxCamGuards = Math.floor(Math.sqrt(population)/16);
+    let camGuards = 0;
     let hopitBonus = 0;
     let bigCrims = 0;
     // Bâtiments: (prisons-5 salleSport-2 jardin-4 bar-2 cantine-3 dortoirs+1 cabines-1 appartements+3)
@@ -682,7 +682,7 @@ function calcCrimeRate(mesCitoyens) {
                 crimeRate.penib = crimeRate.penib+1;
             }
             if (bat.eq === 'confort' && !outOfOrder) {
-                crimeRate.penib = crimeRate.penib-1;
+                crimeRate.penib = crimeRate.penib-0.5;
             }
             if (outOfOrder) {
                 crimeRate.lits = crimeRate.lits-100;
@@ -697,7 +697,7 @@ function calcCrimeRate(mesCitoyens) {
         if (batType.name === 'Appartements' && !outOfOrder) {
             crimeRate.lits = crimeRate.lits+75;
         }
-        if (batType.crime != undefined || bat.eq === 'camkit') {
+        if (batType.crime != undefined || bat.eq === 'camkit' || bat.eq === 'taserkit') {
             let countMe = false;
             if (batType.cat === 'buildings' || batType.name === 'Technobass') {
                 if (batType.crime >= 1) {
@@ -724,19 +724,25 @@ function calcCrimeRate(mesCitoyens) {
             } else if (batType.name === 'Electroguards') {
                 countMe = true;
             } else {
-                // antiCrimeUnits++;
-                if (antiCrimeUnits <= maxAntiCrimeUnits) {
+                if (bat.eq === 'camkit' || bat.eq === 'taserkit') {
+                    camGuards++;
+                    if (camGuards <= maxCamGuards) {
+                        countMe = true;
+                    }
+                } else {
                     countMe = true;
                 }
             }
             if (countMe) {
-                if (bat.eq === 'camkit' && playerInfos.bldVM.includes('Salle de contrôle')) {
-                    crimeRate.fo = crimeRate.fo-1.2;
+                if (bat.eq === 'taserkit') {
+                    crimeRate.fo = crimeRate.fo-0.5;
+                } else if (bat.eq === 'camkit' && playerInfos.bldVM.includes('Salle de contrôle')) {
+                    crimeRate.fo = crimeRate.fo-1;
                 } else if (batType.skills.includes('fo')) {
                     crimeRate.fo = crimeRate.fo+batType.crime;
                 } else {
                     crimeRate.penib = crimeRate.penib+batType.crime;
-                    console.log(batType.name+' '+batType.crime+' total='+crimeRate.penib);
+                    // console.log(batType.name+' '+batType.crime+' total='+crimeRate.penib);
                 }
             }
         }
@@ -748,7 +754,7 @@ function calcCrimeRate(mesCitoyens) {
     }
     // structure
     let numStructures = checkNumUnits('Structure');
-    console.log('Structure='+numStructures);
+    // console.log('Structure='+numStructures);
     crimeRate.penib = crimeRate.penib-Math.round(numStructures/10);
     // +5 par dortoir manquant
     if (population > crimeRate.lits) {

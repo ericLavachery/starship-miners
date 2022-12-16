@@ -1472,6 +1472,16 @@ function checkXPBonus(myBatType) {
                 batNewXP = batNewXP+levelXP[2];
             }
         }
+    } else if (myBatType.kind === 'zero-extraction') {
+        if (playerInfos.comp.ext === 1) {
+            batNewXP = batNewXP+levelXP[1];
+        }
+        if (playerInfos.comp.ext === 2) {
+            batNewXP = batNewXP+Math.ceil(levelXP[2]/2);
+        }
+        if (playerInfos.comp.ext === 3) {
+            batNewXP = batNewXP+Math.ceil(levelXP[2]);
+        }
     } else {
         if (playerInfos.comp.train === 1) {
             batNewXP = batNewXP+levelXP[1];

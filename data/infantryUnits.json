@@ -638,7 +638,7 @@
             "sound":"mit_light1",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "equip":["aucun","kit-garde","e-ranger","e-jetpack","camkit","e-phare","repel"],
+        "equip":["aucun","kit-garde","e-ranger","e-jetpack","taserkit","camkit","e-phare","repel"],
         "log3eq":["e-ranger"],
         "moveCost":3,
         "maxFlood":3,
@@ -698,7 +698,7 @@
             "sound":"calibre_sniper",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
-        "equip":["aucun","chargeur1","e-ranger","kit-milice","e-jetpack","camkit","e-phare","repel"],
+        "equip":["aucun","chargeur1","e-ranger","kit-milice","e-jetpack","taserkit","camkit","e-phare","repel"],
         "log3eq":["e-ranger"],
         "moveCost":3,
         "maxFlood":3,
@@ -755,7 +755,7 @@
             "sound":"paint",
             "ammo":["marquage","marquage-spike","marquage-stop"]
         },
-        "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1","silencieux","camkit","e-phare","repel"],
+        "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1","silencieux","taserkit","camkit","e-phare","repel"],
         "log3eq":["repel"],
         "moveCost":3,
         "maxFlood":3,
@@ -815,7 +815,7 @@
             "maxAmmo":12,
             "ravitBld":"Poudrière"
         },
-        "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","chargeur1","silencieux1","camkit","e-phare","repel"],
+        "equip":["aucun","e-flash","e-camo","kit-guetteur","e-ranger","e-jetpack","chargeur1","silencieux1","taserkit","camkit","e-phare","repel"],
         "log3eq":["silencieux1"],
         "moveCost":3,
         "maxFlood":3,
@@ -875,7 +875,7 @@
             "maxAmmo":10,
             "ravitBld":"Atelier"
         },
-        "equip":["aucun","e-flash","kit-pompiste","e-ranger","e-jetpack","camkit","e-phare","repel"],
+        "equip":["aucun","e-flash","kit-pompiste","e-ranger","e-jetpack","taserkit","camkit","e-phare","repel"],
         "log3eq":["e-ranger"],
         "moveCost":3,
         "maxFlood":3,
@@ -949,7 +949,7 @@
             "sound":"axe_x2",
             "ammo":["club","club-acier","club-tungsten","club-titane","club-spike","club-spike-carb","club-spike-adam"]
         },
-        "equip":["aucun","kit-artilleur","e-ranger","e-jetpack","camkit","e-phare","repel"],
+        "equip":["aucun","kit-artilleur","e-ranger","e-jetpack","taserkit","camkit","e-phare","repel"],
         "log3eq":["e-ranger"],
         "moveCost":3,
         "maxFlood":3,
@@ -1011,7 +1011,7 @@
             "sound":"bow",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
-        "equip":["aucun","kit-sentinelle","e-ranger","e-jetpack","e-medic","camkit","e-phare","repel","helper"],
+        "equip":["aucun","kit-sentinelle","e-ranger","e-jetpack","e-medic","taserkit","camkit","e-phare","repel","helper"],
         "log3eq":["helper"],
         "moveCost":3,
         "maxFlood":3,
@@ -2724,7 +2724,7 @@
         "maxVeg":3,
         "skills":["a_mid","fouille","fortif","camo","ranger","datt","defense","strong","extraction","scrapmorph","cleaning","noblub","selfmedic","dynamite","fret","barda","conscont","heroap","herorange","autohero"],
         "mediCost":8,
-        "mecanoCost":10,
+        "mecanoCost":7,
         "mining":{
             "level":3,
             "rate":20,
@@ -6234,9 +6234,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","dog","lowstress","noblub","regeneration","ranger","ricoface","initmelee","resistall","recupcorps"],
+        "skills":["a_heavy","dog","lowstress","noblub","regeneration","ranger","ricoface","initmelee","resistall","recupcorps","nochef"],
         "fuzz":1.5,
-        "deathFx":"death2"
+        "deathFx":"137036__pyrocamancer__beast-death"
     },
     {
         "id":264,
@@ -6292,7 +6292,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","dog","dogescape","lowstress","noblub","escape","ranger","snif","guerrilla","tirailleur","datt","sentinelle","initmelee","recupcorps"],
+        "skills":["a_mid","dog","dogescape","lowstress","noblub","escape","ranger","snif","guerrilla","tirailleur","datt","sentinelle","initmelee","recupcorps","nochef"],
         "fuzz":1,
         "deathFx":"dog_death"
     },
@@ -6335,7 +6335,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","dog","dogescape","lowmed","lowstress","noblub","escape","ranger","genhab2","guerrilla","tirailleur","recupcorps"],
+        "skills":["a_mid","dog","dogescape","lowmed","lowstress","noblub","escape","ranger","genhab2","guerrilla","tirailleur","recupcorps","nochef"],
         "fuzz":1,
         "cloneSlot":2,
         "deathFx":"dog_death"

@@ -329,7 +329,7 @@ function batListElement(bat,batType,idOfLander) {
     let enoughRes = checkCost(deployCosts);
     let deployInfo = checkPlaceLander(bat,batType,slId);
     let deployOK = true;
-    if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2] || bat.eq === 'camkit' || batType.skills.includes('nodeploy') || bat.tags.includes('dying')) {
+    if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2] || bat.eq === 'camkit' || bat.eq === 'taserkit' || batType.skills.includes('nodeploy') || bat.tags.includes('dying')) {
         deployOK = false;
     }
     if (batType.cat === 'buildings' || batType.cat === 'devices') {
@@ -512,7 +512,7 @@ function batListElement(bat,batType,idOfLander) {
     }
     if (bat.id === selectedBat.id) {
         $('#be'+bat.id).append('<hr class="cyff">');
-        if (bat.eq != 'camkit' && !batType.skills.includes('nodeploy')) {
+        if (bat.eq != 'camkit' && bat.eq != 'taserkit' && !batType.skills.includes('nodeploy')) {
             if (lynx === 'deploy') {
                 $('#be'+bat.id).append('<span class="listRes marine klik" title="Charger le bataillon dans le lander" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></span>&nbsp;');
             } else if (lynx === 'undeploy') {

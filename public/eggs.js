@@ -2111,6 +2111,12 @@ function replaceAlien(oldAlien) {
     }
     if (oldAlien.name === inName) {
         conselUnit = getAlienTypeByName(outName);
+    } else {
+        if (conselUnit.minpa != undefined) {
+            if (zone[0].mapDiff < conselUnit.minpa) {
+                conselUnit = getAlienTypeByName(conselUnit.rep);
+            }
+        }
     }
 };
 

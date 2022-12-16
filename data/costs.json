@@ -94,7 +94,7 @@
         "bldReq":[],
         "costs":{"Bois":40},
         "fabTime":5,
-        "crime":-0.5
+        "crime":-0.25
     },
     {
         "id":291,
@@ -103,7 +103,7 @@
         "bldReq":[],
         "costs":{"Fer":20,"Scrap":20},
         "fabTime":5,
-        "crime":-0.5
+        "crime":-0.25
     },
     {
         "id":190,
@@ -112,7 +112,7 @@
         "bldReq":[],
         "costs":{"Fer":20,"Scrap":20},
         "fabTime":5,
-        "crime":-0.5
+        "crime":-0.25
     },
     {
         "id":245,
@@ -121,7 +121,7 @@
         "bldReq":[],
         "costs":{"Fer":20,"Scrap":20},
         "fabTime":5,
-        "crime":-0.5
+        "crime":-0.25
     },
     {
         "id":191,
@@ -130,7 +130,7 @@
         "bldReq":[],
         "costs":{"Fer":20},
         "fabTime":5,
-        "crime":-0.5
+        "crime":-0.25
     },
     {
         "id":213,
@@ -139,7 +139,7 @@
         "bldReq":[],
         "costs":{"Bois":20,"Huile":10},
         "fabTime":5,
-        "crime":-0.5
+        "crime":-0.2
     },
     {
         "id":214,
@@ -148,7 +148,7 @@
         "bldReq":[],
         "costs":{"Bois":20},
         "fabTime":5,
-        "crime":-0.5
+        "crime":-0.2
     },
     {
         "id":0,
@@ -175,7 +175,7 @@
         "costs":{"Zinc":40,"Chlore":40,"Titane":10,"Fer":10,"Scrap":10,"Silicium":18,"Drogues":58,"Tissus":20},
         "deploy":{"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":25,
-        "crime":-0.25
+        "crime":-0.1
     },
     {
         "id":148,
@@ -185,7 +185,7 @@
         "costs":{"Zinc":25,"Chlore":25,"Titane":6,"Fer":12,"Scrap":12,"Silicium":12,"Drogues":37,"Tissus":12},
         "deploy":{"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":25,
-        "crime":-0.25
+        "crime":-0.1
     },
     {
         "id":154,
@@ -196,7 +196,7 @@
         "costs":{"Zinc":25,"Chlore":25,"Carbone":10,"Aluminium":10,"Titane":16,"Fer":20,"Scrap":20,"Bois":20,"Silicium":12,"Drogues":47,"Tissus":30},
         "deploy":{"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":25,
-        "crime":-0.25
+        "crime":-0.2
     },
     {
         "id":155,
@@ -332,7 +332,7 @@
         "costs":{"Fer":64,"Scrap":64,"Végétaux":20,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
         "fabTime":15,
-        "crime":-0.2
+        "crime":-0.15
     },
     {
         "id":19,
@@ -441,7 +441,7 @@
         "costs":{"Fer":36,"Scrap":36,"Bois":36,"Carbone":36,"Végétaux":122,"Drogues":36,"Silicium":36,"Chlore":25,"Zinc":25,"Tissus":12},
         "deploy":{"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":25,
-        "crime":-1
+        "crime":-0.3
     },
     {
         "id":40,
@@ -469,7 +469,7 @@
         "costs":{"Scrap":32,"Bois":32,"Végétaux":32,"Drogues":43,"Silicium":18,"Chlore":25,"Zinc":25,"Titane":6,"Tissus":12},
         "deploy":{"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":25,
-        "crime":-0.25
+        "crime":-0.1
     },
     {
         "id":42,
@@ -1531,8 +1531,7 @@
         "bldReq":["Infirmerie","Garage"],
         "costs":{"Fer":27,"Scrap":225,"Carbone":36,"Moteurs":27,"Cuivre":18,"Electros":9,"Batteries":9,"Compo2":36,"Silicium":36,"Drogues":94,"Chlore":48,"Zinc":48,"Titane":12,"Tissus":24},
         "deploy":{"Fuel":40,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
-        "fabTime":40,
-        "crime":-0.2
+        "fabTime":40
     },
     {
         "id":61,
@@ -1543,8 +1542,7 @@
         "compHardReq":{"bal":2},
         "costs":{"Fer":150,"Scrap":165,"Carbone":120,"Aluminium":30,"Moteurs":90,"Titane":45,"Tungstène":105,"Cuivre":45,"Electros":60,"Batteries":135,"Compo2":120,"Compo3":45,"Végétaux":270,"Blendium":180,"Silicium":30,"Drogues":100,"Chlore":60,"Zinc":60,"Mendium":45,"Azote":90,"Tissus":30},
         "deploy":{"Energie":380,"Drogues":40,"Chlore":20,"Zinc":20,"Tissus":20},
-        "fabTime":90,
-        "crime":-0.2
+        "fabTime":90
     },
     {
         "id":65,
@@ -1609,7 +1607,7 @@
         "compPass":["detruas"],
         "compHardReq":{"trans":1},
         "costs":{"Fer":54,"Scrap":546,"Carbone":174,"Aluminium":18,"Moteurs":78,"Cuivre":24,"Batteries":72,"Compo2":232,"Végétaux":96,"Huile":10,"Eau":192,"Zinc":24},
-        "deploy":{"Fuel":115},
+        "deploy":{"Fuel":145},
         "fabTime":70,
         "inRuin":1
     },
@@ -1632,7 +1630,7 @@
         "bldReq":["Garage","Atelier"],
         "compReq":{"trans":3},
         "costs":{"Fer":96,"Scrap":378,"Carbone":288,"Aluminium":96,"Moteurs":200,"Tungstène":96,"Cuivre":32,"Electros":12,"Batteries":114,"Compo2":390,"Compo3":108,"Mendium":80,"Huile":10},
-        "deploy":{"Fuel":120},
+        "deploy":{"Fuel":230},
         "fabTime":120,
         "inRuin":1
     },
@@ -2728,6 +2726,14 @@
         "costs":{"Compo1":120,"Compo2":45,"Eau":50,"Fer":150},
         "fabTime":35,
         "crime":-4,
+        "slots":2
+    },
+    {
+        "id":300,
+        "name":"Commisariat",
+        "costs":{"Compo1":120,"Compo2":45,"Eau":50,"Fer":150,"Munitions":300},
+        "fabTime":35,
+        "crime":-1,
         "slots":2
     },
     {

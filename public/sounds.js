@@ -297,27 +297,40 @@ function playMusic(piste,interrupt) {
     // let track = [_.sample(musicTracks)];
     let myVol = checkMyVol(playerInfos.volMu+0.3);
     if (!theMusic.playing() || interrupt) {
-        let track = musicTracks[trackNum];
-        trackNum = trackNum+1;
-        if (trackNum > musicTracks.length-1) {
-            trackNum = 0;
+        let track = 'amb_trucsympa';
+        if (!playerInfos.onShip) {
+            if (trackNum > musicTracks.length-1) {
+                trackNum = 0;
+            }
+            track = musicTracks[trackNum];
+            trackNum = trackNum+1;
+            if (trackNum > musicTracks.length-1) {
+                trackNum = 0;
+            }
+        } else {
+            if (trackNum > stationTracks.length-1) {
+                trackNum = 0;
+            }
+            track = stationTracks[trackNum];
+            trackNum = trackNum+1;
+            if (trackNum > stationTracks.length-1) {
+                trackNum = 0;
+            }
         }
         if (piste != 'any') {
             track = piste;
         }
         // theMusic.stop();
         theMusic.fade(myVol,0.0,3000);
-        // if (theMusic.playing()) {
-        // }
         theMusic = new Howl({
             src: ['/static/sounds/music/'+track+'.mp3'],
             preload: true,
             volume: myVol
         });
         theMusic.play();
-        console.log('PLAYING: '+track);
+        // console.log('PLAYING: '+track);
     } else {
-        console.log('ALREADY PLAYING');
+        // console.log('ALREADY PLAYING');
     }
 };
 

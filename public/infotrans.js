@@ -861,7 +861,11 @@ function clickDebarq(tileId) {
         } else {
             moveSelectedBat(tileId,false,false);
         }
-        moveInfos(selectedBat,false);
+        if (selectedBatType.moveCost >= 90) {
+            selectMode();
+        } else {
+            moveInfos(selectedBat,false);
+        }
         showBatInfos(selectedBat);
         showTileInfos(selectedBat.tileId);
         batDebarq = {};

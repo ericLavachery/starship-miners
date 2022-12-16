@@ -881,6 +881,8 @@
         "kind":"bug",
         "class":"A",
         "rarity":1,
+        "minpa":7,
+        "rep":"Scarabs",
         "squads":5,
         "squadSize":3,
         "crew":0,

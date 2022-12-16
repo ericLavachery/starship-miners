@@ -218,7 +218,7 @@
     {
         "id":109,
         "result":"Compo3",
-        "cost":{"Fer":2,"Silicium":4,"Tungstène":4,"Energie":2},
+        "cost":{"Fer":2,"Silicium":4,"Tungstène":2,"Titane":2,"Energie":2},
         "compReq":{"const":1},
         "bldReq":["Atelier"],
         "compOut":{"ind":1},
@@ -230,7 +230,7 @@
     {
         "id":121,
         "result":"Compo3",
-        "cost":{"Fer":2,"Carbone":5,"Tungstène":3,"Energie":4},
+        "cost":{"Fer":2,"Carbone":5,"Tungstène":1,"Titane":2,"Energie":4},
         "compReq":{"mat":1},
         "bldReq":["Atelier"],
         "compOut":{"const":1,"ind":1},
@@ -252,7 +252,7 @@
     {
         "id":8,
         "result":"Compo3",
-        "cost":{"Fer":2,"Silicium":4,"Tungstène":3,"Energie":2},
+        "cost":{"Fer":2,"Silicium":4,"Tungstène":1,"Titane":2,"Energie":2},
         "compReq":{},
         "bldReq":["Chaîne de montage"],
         "batch":4,
@@ -262,7 +262,7 @@
     {
         "id":14,
         "result":"Compo3",
-        "cost":{"Fer":2,"Carbone":4,"Tungstène":3,"Energie":2},
+        "cost":{"Fer":2,"Carbone":4,"Tungstène":1,"Titane":2,"Energie":2},
         "compReq":{"const":1,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4,
@@ -272,7 +272,7 @@
     {
         "id":18,
         "result":"Compo3",
-        "cost":{"Scrap":4,"Carbone":3,"Tungstène":2,"Energie":2},
+        "cost":{"Scrap":4,"Carbone":3,"Tungstène":1,"Titane":1,"Energie":2},
         "compReq":{"const":2,"tri":3,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4,
@@ -282,7 +282,7 @@
     {
         "id":15,
         "result":"Compo3",
-        "cost":{"Fer":2,"Carbone":3,"Tungstène":2,"Azote":1,"Energie":3},
+        "cost":{"Fer":2,"Carbone":3,"Tungstène":1,"Titane":1,"Azote":1,"Energie":3},
         "compReq":{"const":2,"ind":2},
         "bldReq":["Usine"],
         "batch":4,

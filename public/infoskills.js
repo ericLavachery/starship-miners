@@ -57,11 +57,11 @@ function skillsInfos(bat,batType,near) {
                     }
                 }
             }
-            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.type != 'Chercheurs' && !bat.tags.includes('dying') && deployOK) {
+            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.eq != 'taserkit' && bat.type != 'Chercheurs' && !bat.tags.includes('dying') && deployOK) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Charger le bataillon dans le lander" class="boutonMarine bigButtons" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
             } else {
-                if (bat.eq === 'camkit') {
-                    skillMessage = "Les unités ayant le CamKit deviennent des policiers et restent donc dans la station";
+                if (bat.eq === 'camkit' || bat.eq === 'taserkit') {
+                    skillMessage = "Les unités ayant le CamKit ou le TaserKit deviennent des policiers et restent donc dans la station";
                 } else if (bat.type === 'Chercheurs') {
                     skillMessage = "Les Chercheurs ne peuvent pas être déployés";
                 } else if (bat.tags.includes('dying')) {

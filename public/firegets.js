@@ -2398,6 +2398,18 @@ function weaponAdj(weapon,bat,wn) {
             highGround = 0;
         }
     }
+    let highTower = 0;
+    if (batType.cat === 'buildings') {
+        if (playerInfos.comp.const+playerInfos.comp.def >= 5) {
+            highTower = 2;
+        } else if (playerInfos.comp.const+playerInfos.comp.def >= 4) {
+            highTower = 1;
+        }
+    }
+    highGround = highGround+highTower;
+    if (highGround > 2) {
+        highGround = 2;
+    }
     if (infra === 'Miradors' || infra === 'Murailles') {
         if (!thisWeapon.isMelee && ((!thisWeapon.isShort && thisWeapon.range >= 1) || thisWeapon.range >= 2 || (thisWeapon.elevation >= 1 && thisWeapon.range >= 1))) {
             thisWeapon.range = thisWeapon.range+1;

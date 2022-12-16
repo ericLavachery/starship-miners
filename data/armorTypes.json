@@ -1067,12 +1067,23 @@
         "name":"camkit",
         "cat":"equip",
         "skills":[],
-        "info":"Criminalité- (ne peut plus être déployé)",
-        "bldReq":["Salle de contrôle"],
-        "compReq":{"det":3,"ordre":2},
+        "info":"Criminalité-- (ne peut plus être déployé)",
+        "bldReq":["Salle de contrôle","Commisariat"],
+        "compReq":{"det":2,"log":2},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Silicium":15,"Carbone":15,"Cuivre":10,"Electros":10}
+        "costs":{"Silicium":15,"Carbone":15,"Cuivre":10,"Electros":10,"Batteries":2}
+    },
+    {
+        "name":"taserkit",
+        "cat":"equip",
+        "skills":[],
+        "info":"Criminalité- (ne peut plus être déployé)",
+        "bldReq":["Prisons","Commisariat"],
+        "compReq":{},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Cuivre":5,"Carbone":20,"Electros":2,"Batteries":4}
     },
     {
         "name":"kit-pompiste",
@@ -1530,7 +1541,7 @@
         "compReq":{"log":1,"trans":1},
         "autoComp":[],
         "factor":"thp",
-        "costs":{"Carbone":6,"Scrap":6,"Aluminium":6}
+        "costs":{"Carbone":0.8,"Scrap":0.8,"Aluminium":0.8}
     },
     {
         "name":"megatrans",
@@ -1541,7 +1552,7 @@
         "compReq":{"log":1,"trans":1},
         "autoComp":[],
         "factor":"thp",
-        "costs":{"Scrap":6,"Tissus":6,"Fer":4,"Bois":2,"Batteries":1}
+        "costs":{"Scrap":0.7,"Tissus":0.3,"Fer":0.6,"Bois":0.1,"Batteries":0.1}
     },
     {
         "name":"siland",
@@ -1552,7 +1563,7 @@
         "compReq":{"vsp":3},
         "autoComp":[],
         "factor":"thp",
-        "costs":{"Scrap":4,"Carbone":8,"Zinc":4,"Nickel":4}
+        "costs":{"Scrap":0.7,"Carbone":1,"Zinc":0.3,"Nickel":0.3}
     },
     {
         "name":"tungextract",
