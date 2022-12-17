@@ -601,7 +601,7 @@ function nextTurnEnd() {
             }
             planetEffects(bat,batType);
             tagsEffect(bat,batType);
-            tagsUpdate(bat);
+            tagsUpdate(bat,batType);
             if (bat.loc === "zone") {
                 blub(bat,batType);
             }
@@ -1239,7 +1239,11 @@ function calcUnitResist() {
     return unitResist;
 };
 
-function tagsUpdate(bat) {
+function tagsUpdate(bat,batType) {
+    let batEmo = 0;
+    if (bat.emo != undefined) {
+        batEmo = bat.emo;
+    }
     tagDelete(bat,'podcd');
     tagDelete(bat,'deb');
     tagDelete(bat,'chrg');
@@ -1299,12 +1303,16 @@ function tagsUpdate(bat) {
         }
     }
     if (bat.tags.includes('octiron')) {
-        if (rand.rand(1,5) === 1) {
+        let demiVie = 5;
+        if (batType.skills.includes('dog') && batEmo < 11) {
+            demiVie = 15;
+        }
+        if (rand.rand(1,demiVie) === 1) {
             tagIndex = bat.tags.indexOf('octiron');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('octiron')) {
-                drugDown(bat,false,false);
-                if (bat.emo >= 11 && playerInfos.comp.ordre >= 2) {
+                drugDown(bat,false,99);
+                if (batEmo >= 11 && playerInfos.comp.ordre >= 2) {
                     warning('Stress',bat.type+' est n\'est plus sous l\'effet de l\'Octiron.',false,bat.tileId);
                 }
             }
@@ -1315,7 +1323,7 @@ function tagsUpdate(bat) {
             tagIndex = bat.tags.indexOf('kirin');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('kirin')) {
-                drugDown(bat,false,false);
+                drugDown(bat,false,99);
             }
         }
     }
@@ -1324,7 +1332,7 @@ function tagsUpdate(bat) {
             tagIndex = bat.tags.indexOf('sila');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('sila')) {
-                drugDown(bat,true,false);
+                drugDown(bat,true,10);
             }
         }
     }
@@ -1333,8 +1341,8 @@ function tagsUpdate(bat) {
             tagIndex = bat.tags.indexOf('bliss');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('bliss')) {
-                drugDown(bat,false,true);
-                if (bat.emo >= 11 && playerInfos.comp.ordre >= 2) {
+                drugDown(bat,false,5);
+                if (batEmo >= 11 && playerInfos.comp.ordre >= 2) {
                     warning('Stress',bat.type+' est n\'est plus sous l\'effet du Bliss.',false,bat.tileId);
                 }
             }
@@ -1345,16 +1353,16 @@ function tagsUpdate(bat) {
             tagIndex = bat.tags.indexOf('blaze');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('blaze')) {
-                drugDown(bat,true,true);
+                drugDown(bat,true,3);
             }
         }
     }
     if (bat.tags.includes('skupiac')) {
-        if (rand.rand(1,6) === 1) {
+        if (rand.rand(1,5) === 1) {
             tagIndex = bat.tags.indexOf('skupiac');
             bat.tags.splice(tagIndex,1);
             if (!bat.tags.includes('skupiac')) {
-                drugDown(bat,true,false);
+                drugDown(bat,true,8);
             }
         }
     }
@@ -1366,14 +1374,14 @@ function tagsUpdate(bat) {
             bat.tags.splice(tagIndex,1);
         }
         if (!bat.tags.includes('starka')) {
-            drugDown(bat,false,false);
+            drugDown(bat,false,15);
         }
     }
     if (bat.tags.includes('nitro')) {
         tagIndex = bat.tags.indexOf('nitro');
         bat.tags.splice(tagIndex,1);
         if (!bat.tags.includes('nitro')) {
-            drugDown(bat,false,false);
+            boostDown(bat,8);
         }
     }
 };
@@ -1384,11 +1392,25 @@ function drugDown(bat,fatigue,addict) {
             bat.apLeft = 3;
         }
     }
-    if (addict && rand.rand(1,3) === 1) {
-        if (bat.emo != undefined) {
-            bat.emo = bat.emo+1;
-        } else {
-            bat.emo = 1;
+    if (addict < 90) {
+        if (rand.rand(1,addict) === 1) {
+            if (bat.emo != undefined) {
+                bat.emo = bat.emo+1;
+            } else {
+                bat.emo = 1;
+            }
+        }
+    }
+};
+
+function boostDown(bat,addict) {
+    if (addict < 90) {
+        if (rand.rand(1,addict) === 1) {
+            if (bat.soins != undefined) {
+                bat.soins = bat.soins+1;
+            } else {
+                bat.soins = 1;
+            }
         }
     }
 };

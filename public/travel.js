@@ -580,6 +580,12 @@ function goSonde(impacteur) {
     modeSonde = true;
     playerInfos.sondeMaps = 0;
     checkFilter();
+    console.log('CHECK MAP DIRECTION');
+    if (rand.rand(1,2) === 1) {
+        mapTurn = true;
+    } else {
+        mapTurn = false;
+    }
     generateNewMap(false);
     showMap(zone,true);
     planetThumb();

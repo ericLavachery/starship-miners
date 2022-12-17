@@ -39,14 +39,16 @@ function mapEditWindow() {
     selectStuff('Ruines vides','ruinsf','Ruines vides');
     selectStuff('Route','roads','Route (ou Pont)');
     // Ressources
-    selectStuff('Res','res','Mettre des ressources');
-    selectStuff('RareRes','rareres','Mettre des ressources rares');
-    selectStuff('NoRes','nores','Supprimer les ressources');
+    selectStuff('Res','res','Mettre des ressources sur le terrain');
+    selectStuff('RareRes','rareres','Mettre des ressources rares sur le terrain');
+    selectStuff('NoRes','nores','Supprimer les ressources du terrain');
     // Tags
     selectStuff('Garde','alienPDM','Garde alien (va rester dans le périmètre)');
     selectStuff('NoMove','batNoMove','Bataillon immobilisé');
     selectStuff('Outsider','batOutsider','Bataillon outsider');
     selectStuff('Bleed','bleed','Blesser le bataillon');
+    selectStuff('BatRes','batres','Mettre des ressources dans le bataillon');
+    selectStuff('Toile','web1','Toile (Canon Web)');
     // Landing
     selectStuff('Lander','lander','Point d\'atterrissage lander (ou navette)');
     selectStuff('Navette','navette','Point d\'atterrissage navette seulemment');
@@ -57,6 +59,12 @@ function mapEditWindow() {
         $('#conUnitList').append('<br><br>');
     } else {
         theTileRes = {};
+    }
+    if (mped.sinf === 'BatRes') {
+        batResAddList();
+        $('#conUnitList').append('<br><br>');
+    } else {
+        theBatRes = {};
     }
     $('#conUnitList').append('<span class="constName"><span class="gf">Planête</span> : <span class="cy klik" onclick="planetToggle(`'+zone[0].planet+'`)" title="Changer de planête">'+zone[0].planet+'</span></span><br>');
     $('#conUnitList').append('<span class="constName"><span class="gf">Présense alien</span> : <span class="cy klik" onclick="diffToggle()" title="Changer la présence alien">pa'+zone[0].mapDiff+'</span></span><br>');
@@ -329,10 +337,30 @@ function mapResAddList() {
             if (dispoRes < 0) {
                 dispoRes = 0;
             }
-            $('#conUnitList').append('<span class="paramResName klik" onclick="mapResAdd(`'+res.name+'`)">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span>');
+            $('#conUnitList').append('<span class="paramResName klik" onclick="mapResAdd(`'+res.name+'`)">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><br>');
         }
     });
     console.log(theTileRes);
+};
+
+function batResAddList() {
+    let sortedResTypes = _.sortBy(resTypes,'name');
+    sortedResTypes.forEach(function(res) {
+        if (res.cat === 'white' || res.cat === 'zero' || res.cat === 'transfo' || res.cat.includes('sky') || res.cat.includes('blue')) {
+            if (res.name != 'Magma') {
+                let resIcon = getResIcon(res);
+                let dispoRes = theBatRes[res.name];
+                if (dispoRes === undefined) {
+                    dispoRes = 0;
+                }
+                if (dispoRes < 0) {
+                    dispoRes = 0;
+                }
+                $('#conUnitList').append('<span class="paramResName klik" onclick="batResAdd(`'+res.name+'`)">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><br>');
+            }
+        }
+    });
+    console.log(theBatRes);
 };
 
 function clickEdit(tileId) {
@@ -368,6 +396,14 @@ function clickEdit(tileId) {
             } else {
                 delete tile.rd;
             }
+        } else if (mped.sinf === 'Toile') {
+            if (tile.web === undefined) {
+                tile.web = true;
+            } else {
+                delete tile.web;
+            }
+        } else if (mped.sinf === 'BatRes') {
+            addResToBat(tile);
         } else if (mped.sinf === 'Res') {
             addResToTile(tile);
             atomColour(tile,true);
@@ -480,6 +516,17 @@ function mapResAdd(resName) {
     mapEditWindow();
 };
 
+function batResAdd(resName) {
+    let letsAdd = rand.rand(35,65);
+    if (theBatRes[resName] === undefined) {
+        theBatRes[resName] = letsAdd;
+    } else {
+        theBatRes[resName] = theBatRes[resName]+letsAdd;
+    }
+    // mapResAddList();
+    mapEditWindow();
+};
+
 function selectTerrain(terName) {
     mped.ster = terName;
     mped.sinf = '';
@@ -521,6 +568,16 @@ function addResToTile(tile) {
             tile.rs = theTileRes;
         }
         tile.rs['Scrap'] = rand.rand(250,500);
+    }
+    mped.sinf = '';
+    theTileRes = {};
+};
+
+function addResToBat(tile) {
+    let bat = getBatByTileId(tile.id);
+    let batType = getBatType(bat);
+    if (batType.transRes >= 100) {
+        bat.transRes = theBatRes;
     }
     mped.sinf = '';
     theTileRes = {};

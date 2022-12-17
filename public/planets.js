@@ -35,8 +35,8 @@ function planetThumb() {
 function planetEffects(bat,batType) {
     // Gehenna
     if (zone[0].planet === 'Gehenna') {
-        if (batType.cat === 'infantry' && batType.name != 'Citoyens' && batType.name != 'Criminels') {
-            if (playerInfos.comp.scaph < 1 || batType.squads > bat.squadsLeft || bat.damage >= 1) {
+        if (batType.cat === 'infantry' && batType.name != 'Citoyens' && batType.name != 'Criminels' && !bat.tags.includes('octiron')) {
+            if (playerInfos.comp.scaph < 1 || batType.squads > bat.squadsLeft || bat.damage >= 1 || batType.skills.includes('dog')) {
                 let medDice = (playerInfos.comp.med*2)+12;
                 if (playerInfos.comp.scaph < 1 || batType.squads > bat.squadsLeft) {
                     medDice = medDice-6;
@@ -83,6 +83,51 @@ function planetEffects(bat,batType) {
             stormDamage(bat,batType,false,false);
         }
     }
+};
+
+function checkMayOut(batType,isBat,bat) {
+    let mayOut = true;
+    if (zone[0].planet === 'Kzin') {
+        if (playerInfos.comp.scaph < 2 || batType.skills.includes('dog')) {
+            mayOut = false;
+            if (batType.name === 'Pets' || batType.name === 'Klogs') {
+                mayOut = true;
+            }
+            if (batType.cat === 'buildings') {
+                mayOut = true;
+            }
+            if (batType.cat === 'devices' && batType.crew === 0) {
+                mayOut = true;
+            }
+            if (batType.cat === 'vehicles') {
+                if (batType.skills.includes('kzin') || batType.skills.includes('transorbital') || batType.skills.includes('robot')) {
+                    mayOut = true;
+                }
+            }
+            if (batType.cat === 'infantry') {
+                if (batType.skills.includes('kzin') || batType.skills.includes('mutant')) {
+                    mayOut = true;
+                }
+            }
+        }
+        if (batType.skills.includes('fly')) {
+            if (batType.cat != 'infantry') {
+                if (!isBat) {
+                    mayOut = false;
+                } else if (bat.eq != 'g2motor' && bat.logeq != 'g2motor' && bat.eq != 'e-stab' && bat.logeq != 'e-stab' && !batType.skills.includes('stab')) {
+                    mayOut = false;
+                }
+            }
+        }
+    }
+    if (isBat) {
+        if (bat.tags.includes('genwater') && playerInfos.comp.scaph < 1) {
+            if (isRaining(zone)) {
+                mayOut = false;
+            }
+        }
+    }
+    return mayOut;
 };
 
 function checkCanon() {

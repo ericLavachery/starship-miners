@@ -2248,7 +2248,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","crewsave","transport","ravitaillement","stock","routes","producteur","upkeep","updisable","prodres","longshot","fret","dumper","selfbadrepair","mecano","medic","medtrans","reeq","prefab","infrahelp","max1","control","phare","teleport"],
+        "skills":["fouille","recupcit","crewsave","transport","ravitaillement","stock","routes","producteur","upkeep","updisable","prodres","longshot","fret","dumper","selfbadrepair","mecano","medic","dealer","kirin","octiron","starka","medtrans","reeq","prefab","infrahelp","max1","control","phare","teleport"],
         "mecanoCost":10,
         "mediCost":7,
         "transMaxSize":50,

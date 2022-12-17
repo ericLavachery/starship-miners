@@ -1862,10 +1862,11 @@ function getHuntType() {
     huntType.game = 'Rats';
     huntType.chance = 10;
     huntType.max = 7;
+    let waterTiles = zone[0].pw+zone[0].ps+zone[0].pr;
     let huntDice = rand.rand(1,12);
-    if (zone[0].pw+zone[0].ps+zone[0].pr >= 30) {
-        huntType.chance = 20;
-        huntType.max = Math.round(zone[0].pw/2);
+    if (waterTiles >= 30) {
+        huntType.chance = Math.round(waterTiles/3);
+        huntType.max = Math.round(waterTiles/3);
         if (huntDice >= 4) {
             huntType.game = 'Crocos';
         } else {
@@ -1910,8 +1911,15 @@ function getHuntType() {
         huntType.chance = 5;
         huntType.game = 'Rats';
     } else if (zone[0].planet === 'Kzin') {
-        huntType.chance = Math.ceil(huntType.chance/2);
-        huntType.game = 'Crocos';
+        if (waterTiles >= 10) {
+            huntType.chance = Math.ceil(waterTiles/3);
+            huntType.max = Math.round(waterTiles/3);
+            huntType.game = 'Crocos';
+        } else {
+            huntType.chance = 10;
+            huntType.game = 'Meatballs';
+            huntType.max = 4;
+        }
     } else if (zone[0].planet === 'Gehenna') {
         huntType.chance = 25;
         huntType.game = 'Tritons';

@@ -1,3 +1,31 @@
+function turnMap(map) {
+    map.forEach(function(tile) {
+        let swapIt = true;
+        if (tile.x === 1) {
+            if (tile.y === 1 || tile.y === 60) {
+                swapIt = false;
+            }
+        }
+        if (tile.x === 60) {
+            if (tile.y === 1 || tile.y === 60) {
+                swapIt = false;
+            }
+        }
+        if (swapIt) {
+            let tileX = tile.y;
+            let tileY = 61-tile.x;
+            tile.x = tileX;
+            tile.y = tileY;
+        }
+    });
+    zone = _.sortBy(_.sortBy(map,'y'),'x');
+    let newId = 0;
+    zone.forEach(function(tile) {
+        tile.id = newId;
+        newId++;
+    });
+};
+
 function generateVM() {
     zone = [];
     savePlayerInfos();
@@ -70,6 +98,17 @@ function generateNewMap(filterCheck) {
     }
     if (filterCheck) {
         checkFilter();
+        console.log('CHECK MAP DIRECTION');
+        if (rand.rand(1,2) === 1) {
+            mapTurn = true;
+        } else {
+            mapTurn = false;
+        }
+    }
+    if (mapTurn) {
+        console.log('HORIZONTAL MAP');
+    } else {
+        console.log('VERTICAL MAP');
     }
     filterParams(filterCheck);
     createMap(mapSize);
@@ -84,6 +123,7 @@ function generateNewMap(filterCheck) {
     writeMapStyles();
     showMap(zone,false);
     centerMapCenter();
+    conOut(true);
     minimap();
     commandes();
     ruinsView();
@@ -152,6 +192,9 @@ function createMap(size) {
             y = 1;
             x++;
         }
+    }
+    if (mapTurn) {
+        turnMap(zone);
     }
     // console.log(zone);
 };
@@ -870,6 +913,12 @@ function addRes(zone) {
                     if (resLevelDice === 3) {
                         redNum++;
                     }
+                    if (resLevelDice === 4) {
+                        mythicNum = mythicNum+0.4;
+                    }
+                    if (resLevelDice === 5) {
+                        mythicNum++;
+                    }
                 }
             }
         }
@@ -933,7 +982,7 @@ function addRes(zone) {
                 if (terrain.name === 'S' || terrain.name === 'F') {
                     if (rand.rand(1,silverChance) === 1) {
                         tile.rq = 4;
-                        mythicNum = mythicNum+0.5;
+                        mythicNum = mythicNum+0.4;
                     }
                 }
             }
@@ -1048,7 +1097,7 @@ function addRes(zone) {
                 bestRarity = res.adjRarity;
                 resDefault = res;
             }
-        } else if (res.cat.includes('sky')) {
+        } else if (res.cat.includes('sky') || res.cat.includes('blue')) {
             res.adjRarity = resRarity;
             res.adjBatch = resBatch;
             if (res.adjBatch < 1) {
@@ -1999,7 +2048,7 @@ function atomColour(tile,inMaped) {
         } else if (res.rarity <= 25) {
             rareRes++;
         }
-        if (res.cat.includes('sky')) {
+        if (res.cat.includes('sky') || res.cat.includes('blue')) {
             specialRes++;
         }
         tileNumRes++;

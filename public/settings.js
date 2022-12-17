@@ -18,6 +18,7 @@ if (yOffset == null) {
 // MAP GENERATOR
 let mped = {};
 let theTileRes = {};
+let theBatRes = {};
 let modeSonde = false;
 let maxMapsParDet = 5;
 let impact = false;
@@ -36,6 +37,7 @@ let maxTileCheck = 5; // 4 = tendance transversale / 5 = tendance droite
 let terrainTypes = [];
 let armorTypes = [];
 let ammoTypes = [];
+let mapTurn = false;
 let mapFilters = [];
 let filterEffect = 10;
 let mapFilterDefault = "Normal"; // Normal!
@@ -280,6 +282,9 @@ let musicChance = 2;
 let musicTracks = ['amb_trucsympa','amb_space2','amb_ambiant1','parallel_dimensions','amb_trucsympa','amb_ambiant2','amb_space1','biosphere','it_is_raped'];
 let stationTracks = ['lh_oblivion','lh_bobdub','lh_twodogs','lh_whengone','lh_hanap'];
 let trackNum = rand.rand(0,7);
+if (playerInfos.onShip) {
+    trackNum = rand.rand(0,4);
+}
 let theMusic = new Howl({
     src: ['/static/sounds/music/amb_trucsympa.mp3']
 });

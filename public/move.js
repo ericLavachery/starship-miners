@@ -808,11 +808,11 @@ function calcMoveCost(targetTileId,diag) {
     if (selectedBat.team != 'aliens' && zone[0].planet === 'Kzin') {
         if (selectedBatType.cat === 'vehicles') {
             moveCost = moveCost*1.5*moveKzin;
-        } else {
+        } else if (selectedBatType.name != 'Pets') {
             moveCost = moveCost*2*moveKzin;
         }
     }
-    if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
+    if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry' && selectedBatType.name != 'Pets') {
         moveCost = moveCost*1.5*moveKzin;
     }
     if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst') {

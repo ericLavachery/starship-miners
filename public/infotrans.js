@@ -197,48 +197,6 @@ function unloadInLander() {
     showMap(zone,false);
 };
 
-function checkMayOut(batType,isBat,bat) {
-    let mayOut = true;
-    if (zone[0].planet === 'Kzin') {
-        if (playerInfos.comp.scaph < 2) {
-            mayOut = false;
-            if (batType.cat === 'buildings') {
-                mayOut = true;
-            }
-            if (batType.cat === 'devices' && batType.crew === 0) {
-                mayOut = true;
-            }
-            if (batType.cat === 'vehicles') {
-                if (batType.skills.includes('kzin') || batType.skills.includes('transorbital') || batType.skills.includes('robot')) {
-                    mayOut = true;
-                }
-            }
-            if (batType.cat === 'infantry') {
-                if (batType.skills.includes('kzin') || batType.skills.includes('mutant')) {
-                    mayOut = true;
-                }
-            }
-        }
-        if (batType.skills.includes('fly')) {
-            if (batType.cat != 'infantry') {
-                if (!isBat) {
-                    mayOut = false;
-                } else if (bat.eq != 'g2motor' && bat.logeq != 'g2motor' && bat.eq != 'e-stab' && bat.logeq != 'e-stab' && !batType.skills.includes('stab')) {
-                    mayOut = false;
-                }
-            }
-        }
-    }
-    if (isBat) {
-        if (bat.tags.includes('genwater') && playerInfos.comp.scaph < 1) {
-            if (isRaining(zone)) {
-                mayOut = false;
-            }
-        }
-    }
-    return mayOut;
-};
-
 function calcVolume(bat,batType) {
     let batVolume;
     if (Object.keys(batType).length >= 1) {
