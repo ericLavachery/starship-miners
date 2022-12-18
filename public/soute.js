@@ -6,6 +6,7 @@ function goSoute() {
     }
     $("#zone_map").css("display","none");
     $("#zone_soute").css("display","block");
+    $("#zone_metro").css("display","none");
     $("#modesInfos").css("display","none");
     $("#glitches_effect").css("display","none");
     checkSelectedLanderId();
@@ -36,6 +37,7 @@ function goStation() {
     }
     $("#zone_map").css("display","grid");
     $("#zone_soute").css("display","none");
+    $("#zone_metro").css("display","none");
     $("#modesInfos").css("display","block");
     $("#glitches_effect").css("display","block");
     showMap(zone,true);

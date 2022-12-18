@@ -415,6 +415,9 @@ function clickEdit(tileId) {
         } else if (mped.sinf === 'NoRes') {
             delete tile.rq;
             delete tile.rs;
+            if (tile.ruins) {
+                addScrapToRuins(tile);
+            }
         } else if (mped.sinf === 'Garde') {
             fixAlienPDM(tile);
         } else if (mped.sinf === 'NoMove') {
@@ -542,11 +545,15 @@ function selectInfra(infraName) {
 };
 
 function addScrapToRuins(tile) {
+    let sq = rand.rand(150,500);
     if (tile.rq === undefined) {
         tile.rq = 0;
-        let sq = rand.rand(250,500);
         tile.rs = {};
         tile.rs['Scrap'] = sq;
+    } else {
+        if (tile.rs['Scrap'] === undefined) {
+            tile.rs['Scrap'] = sq;
+        }
     }
 };
 

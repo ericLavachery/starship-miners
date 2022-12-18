@@ -952,6 +952,9 @@ td {
 #zone_soute {
     display: none;
 }
+#zone_metro {
+    display: none;
+}
 #menu_soute {
     background-image: url(/static/img/plate-dork-mid.jpg);
     background-position: right 0% 0%;

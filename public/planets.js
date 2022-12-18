@@ -16,7 +16,9 @@ function planetThumb() {
             $('#modesInfos').css('background-image','url(/static/img/horst-thumb.jpg)');
         }
     } else {
-        if (zone[0].planet === 'Dom') {
+        if (playerInfos.onStart) {
+            $('#modesInfos').css('background-image','url(/static/img/dom-thumb.jpg)');
+        } else if (zone[0].planet === 'Dom') {
             $('#modesInfos').css('background-image','url(/static/img/dom-thumb.jpg)');
         } else if (zone[0].planet === 'Sarak') {
             $('#modesInfos').css('background-image','url(/static/img/sarak-thumb.jpg)');

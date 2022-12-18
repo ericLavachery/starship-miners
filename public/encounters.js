@@ -1,5 +1,5 @@
 function encounterCheck() {
-    if (!zone[0].visit && !isStartZone) {
+    if (!zone[0].visit && zone[0].number < 50) {
         if (zone[0].mapDiff >= 2) {
             let encounterChance = playerInfos.enc;
             if (zone[0].planet === 'Dom') {
@@ -1753,6 +1753,25 @@ function pactole(bastionTileId,withTrans) {
         });
     }
 };
+
+function nomoveOut(myBat) {
+    tagDelete(myBat,'nomove');
+    playerInfos.gangXP = playerInfos.gangXP+5;
+    let myBatType = getBatType(myBat);
+    if (myBatType.skills.includes('transorbital')) {
+        if (!myBat.tags.includes('deploy')) {
+            myBat.tags.push('deploy');
+        }
+    }
+    if (myBat.transIds != undefined) {
+        bataillons.forEach(function(bat) {
+            if (myBat.transIds.includes(bat.id)) {
+                tagDelete(bat,'nomove');
+                playerInfos.gangXP = playerInfos.gangXP+5;
+            }
+        });
+    }
+}
 
 function removeNoMoves(myBat) {
     if (myBat.type != 'Silo') {

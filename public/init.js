@@ -439,6 +439,9 @@ socket.on('zoneFiles-Load', function(zf) {
 socket.on('savedZone-Load', function(newZone) {
     zone = newZone[0];
     bataillons = newZone[1];
+    if (zone[0].number >= 50) {
+        idRepair();
+    }
     createBatList();
     aliens = newZone[2];
     if (zone[0].number === 0) {

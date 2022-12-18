@@ -1784,6 +1784,9 @@ function getLanderRange(landerBatType) {
                 if (landerBatType.name === 'Trolley') {
                     landerRange = 1+playerInfos.comp.vsp;
                 }
+                if (playerInfos.onShip) {
+                    landerRange = 1;
+                }
             }
         }
     }
@@ -2117,9 +2120,9 @@ function adjStartPack() {
 
 function addStartPack() {
     addFreeBat(1830,'Soute');
-    addFreeBat(1770,'Stocks');
+    // addFreeBat(1770,'Stocks');
     addFreeBat(1831,'Lander');
-    addFreeBat(1890,'Trolley');
+    // addFreeBat(1890,'Trolley');
     addFreeBat(1829,'Navette de secours');
     addFreeBat(1834,'Poste de pilotage');
     addFreeBat(1828,'Foyer');

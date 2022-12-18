@@ -30,25 +30,32 @@ function events(afterMission,time,sim,quiet) {
     showResBallance(quiet);
     playerInfos.randSeed = rand.rand(1,8);
     if (!sim) {
-        playerInfos.allTurns = playerInfos.allTurns+time;
-        playerInfos.mapTurn = 0;
-        playerInfos.mapDrop = 0;
-        playerInfos.cocons = 0;
-        // playerInfos.fndComps = 0;
-        // playerInfos.fndUnits = 0;
-        playerInfos.fndCits = 0;
-        playerInfos.sondeMaps = 0;
-        playerInfos.eggPause = false;
-        playerInfos.droppedEggs = 0;
-        playerInfos.aliensKilled = 0;
-        playerInfos.eggsKilled = 0;
-        playerInfos.alienSat = 0;
-        playerInfos.fuzzTotal = 0;
-        playerInfos.pauseSeed = rand.rand(1,8);
-        playerInfos.myCenter = 1830;
-        playerInfos.undarkOnce = [];
-        playerInfos.showedTiles = [];
+        afterMissionReset(time);
     }
+};
+
+function afterMissionReset(time) {
+    bataillons.forEach(function(bat) {
+        if (bat.tags.includes('return')) {
+            tagDelete(bat,'return');
+        }
+    });
+    playerInfos.allTurns = playerInfos.allTurns+time;
+    playerInfos.mapTurn = 0;
+    playerInfos.mapDrop = 0;
+    playerInfos.cocons = 0;
+    playerInfos.fndCits = 0;
+    playerInfos.sondeMaps = 0;
+    playerInfos.eggPause = false;
+    playerInfos.droppedEggs = 0;
+    playerInfos.aliensKilled = 0;
+    playerInfos.eggsKilled = 0;
+    playerInfos.alienSat = 0;
+    playerInfos.fuzzTotal = 0;
+    playerInfos.pauseSeed = rand.rand(1,8);
+    playerInfos.myCenter = 1830;
+    playerInfos.undarkOnce = [];
+    playerInfos.showedTiles = [];
 };
 
 function calcTurnXP(turns) {

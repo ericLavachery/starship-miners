@@ -64,6 +64,9 @@ function stopMission() {
     $("#tileInfos").css("display","none");
     saveGame();
     batUnselect();
+    if (zone[0].number >= 90) {
+        isStartZone = true;
+    }
     // créer db batsInSpace, avec les landers et toutes les unités qui sont dedans
     createBatsInSpace();
     // virer ces landers et ces unités de la bd bataillons
@@ -139,7 +142,12 @@ function landingList() {
             healEverything();
             payCost(playerInfos.teleRes);
             playerInfos.teleRes = {};
-            events(true,0,false);
+            if (!isStartZone) {
+                events(true,0,false);
+            } else {
+                afterMissionReset(playerInfos.mapTurn);
+            }
+            isStartZone = false;
             miniOut();
             saveGame();
         } else {
@@ -392,10 +400,6 @@ function createBatsInSpace() {
             batsInSpace.push(bat);
         }
     });
-    // console.log('bataillons');
-    // console.log(bataillons);
-    // console.log('batsInSpace creation');
-    // console.log(batsInSpace);
 };
 
 function removeDeployedBats() {
@@ -1082,6 +1086,28 @@ function getZoneType(myZone) {
         spType = zonePrev[0].type;
     }
     return spType;
+};
+
+function idRepair() {
+    bataillons.forEach(function(bat) {
+        bat.oldId = bat.id;
+        bat.id = playerInfos.nextId;
+        playerInfos.nextId++;
+    });
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'trans') {
+            let transBat = getBatByOldId(bat.locId);
+            bat.loc = transBat.id;
+            if (transBat.transIds.includes(bat.oldId)) {
+                let index = transBat.transIds.indexOf(bat.oldId);
+                transBat.transIds.splice(index,1);
+                transBat.transIds.push(bat.id);
+            }
+        }
+    });
+    bataillons.forEach(function(bat) {
+        delete bat.oldId;
+    });
 };
 
 function isRaining(myZone) {

@@ -1,7 +1,7 @@
 function checkStartingAliens() {
     // Ruches
     let numRuches;
-    if (!zone[0].visit) {
+    if (!zone[0].visit && zone[0].number < 50) {
         if (zone[0].mapDiff >= 8) {
             dropEgg('Colonie','nedge');
             coconStats.colo = true;
@@ -48,7 +48,7 @@ function checkStartingAliens() {
     }
     // Flaques
     let numVomi = Math.floor((zone[0].mapDiff+2)*rand.rand(8,20)/14);
-    if (!zone[0].visit) {
+    if (!zone[0].visit && zone[0].number < 50) {
         let ii = 1;
         while (ii <= numVomi) {
             if (rand.rand(1,4) === 1) {
@@ -67,7 +67,7 @@ function checkStartingAliens() {
     }
     // Veilleurs
     let numSent = Math.floor((zone[0].mapDiff+zone[0].mapDiff)*rand.rand(8,20)/12);
-    if (!zone[0].visit) {
+    if (!zone[0].visit && zone[0].number < 50) {
         let ii = 1;
         while (ii <= numSent) {
             dropEgg('Veilleurs','none');

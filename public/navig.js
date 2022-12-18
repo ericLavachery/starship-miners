@@ -4,9 +4,21 @@ function commandes() {
         $("#tour").css("display","none");
         $("#mode").css("display","none");
         if (playerInfos.onStart) {
-            $("#cadreMap").css("display","none");
+            // $("#cadreMap").css("display","none");
+            $("#zone_map").css("display","none");
+            $("#zone_soute").css("display","none");
+            $("#zone_metro").css("display","block");
         } else {
-            $("#cadreMap").css("display","block");
+            // $("#cadreMap").css("display","block");
+            if (inSoute) {
+                $("#zone_map").css("display","none");
+                $("#zone_soute").css("display","block");
+                $("#zone_metro").css("display","none");
+            } else {
+                $("#zone_map").css("display","grid");
+                $("#zone_soute").css("display","none");
+                $("#zone_metro").css("display","none");
+            }
         }
     } else {
         $("#tour").css("display","block");

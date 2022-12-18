@@ -250,7 +250,7 @@
             "subTypes":["Derrick","Pompe"]
         },
         "transMaxSize":60,
-        "transUnits":24000,
+        "transUnits":25000,
         "transRes":55000,
         "fuzz":5,
         "hySpeed":6,
@@ -668,7 +668,7 @@
         "mecanoCost":7,
         "transMaxSize":24,
         "transUnits":8000,
-        "transRes":15000,
+        "transRes":10000,
         "fuzz":4,
         "hySpeed":4,
         "deathFx":"planeexploground2"

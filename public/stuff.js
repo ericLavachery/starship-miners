@@ -9,45 +9,6 @@ function canIHit(bat,weap,alien,batInMelee) {
     return iCanHit;
 };
 
-// C'EST DE LA MEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEERDE
-function idVerif() {
-    let allMyIds = [];
-    bataillons.forEach(function(bat) {
-        if (bat.type === 'Soute') {
-            bat.id = 1;
-        }
-        if (bat.id === 1 && bat.type != 'Soute') {
-            bat.id = 999999;
-        }
-        if (!allMyIds.includes(bat.id)) {
-            allMyIds.push(bat.id);
-        } else {
-            bat.id = 999999;
-        }
-    });
-    bataillons.forEach(function(bat) {
-        if (bat.id === 999999) {
-
-        }
-    });
-};
-function batIdChange(bat) {
-    // find a free id
-    // si c'est un transport: change locId des bats transportés
-    // si il est dans un transport: change transIds du transport
-};
-function findMeAnId(allMyIds) {
-    let brandNewId = 0;
-    let i = 1;
-    while (i <= 500) {
-        idz.push(i);
-        if (i > 500) {break;}
-        i++
-    }
-    return brandNewId;
-};
-// C'EST DE LA MEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEERDE
-
 function calcBatFuzz(bat) {
     let batFuzz = bat.fuzz+2;
     if (bat.fuzz === undefined) {
@@ -560,19 +521,6 @@ function nearWhat(myBat,myBatType) {
     });
     return near;
 };
-
-function nomoveOut(myBat) {
-    tagDelete(myBat,'nomove');
-    playerInfos.gangXP = playerInfos.gangXP+5;
-    if (myBat.transIds != undefined) {
-        bataillons.forEach(function(bat) {
-            if (myBat.transIds.includes(bat.id)) {
-                tagDelete(bat,'nomove');
-                playerInfos.gangXP = playerInfos.gangXP+5;
-            }
-        });
-    }
-}
 
 function blockMe(stop) {
     if (stop) {
@@ -1101,6 +1049,15 @@ function getResById(resId) {
 function getBatById(batId) {
     let bat = {};
     let index = bataillons.findIndex((obj => obj.id == batId));
+    if (index > -1) {
+        bat = bataillons[index];
+    }
+    return bat;
+};
+
+function getBatByOldId(batOldId) {
+    let bat = {};
+    let index = bataillons.findIndex((obj => obj.oldId == batOldId));
     if (index > -1) {
         bat = bataillons[index];
     }
