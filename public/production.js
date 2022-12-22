@@ -469,9 +469,15 @@ function triProd(bat,batType,time,sim,quiet) {
                     }
                 }
                 if (batType.name === 'Recyclab') {
-                    resFactor = (res.rlab+playerInfos.comp.tri-2)*2.5;
+                    resFactor = (res.rlab+playerInfos.comp.tri-3)*2.5;
                 } else if (scrapLevel === 1) {
-                    resFactor = res.rlab+playerInfos.comp.tri-2;
+                    resFactor = res.rlab+playerInfos.comp.tri-3;
+                }
+                if (res.name === 'Fuel' || res.name === 'Nourriture') {
+                    resFactor = resFactor/10;
+                }
+                if (res.bld === 'Derrick') {
+                    resFactor = resFactor/2;
                 }
             }
             if (resFactor >= 1) {

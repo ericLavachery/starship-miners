@@ -269,30 +269,30 @@ function zoneTypeToggle(theZoneType) {
     if (theZoneType === 'normal') {
         // leech
         zone[3].seed = 1;
-        zone[4].seed = 2;
+        zone[9].seed = 2;
     } else if (theZoneType === 'leech') {
         // flies
         zone[3].seed = 2;
-        zone[4].seed = 1;
+        zone[9].seed = 1;
     } else if (theZoneType === 'flies') {
         // ants
         zone[3].seed = 3;
-        zone[4].seed = 2;
+        zone[9].seed = 2;
     } else if (theZoneType === 'ants') {
         // roaches
-        zone[3].seed = 4
-        zone[4].seed = 3;
+        zone[3].seed = 4;
+        zone[9].seed = 3;
     } else if (theZoneType === 'roaches') {
         // spinne
         zone[3].seed = 5;
-        zone[4].seed = 1;
+        zone[9].seed = 1;
     } else if (theZoneType === 'spinne') {
         // bigbugs
         zone[3].seed = 6;
-        zone[4].seed = 2;
+        zone[9].seed = 2;
     } else if (theZoneType === 'bigbugs') {
         // normal
-        zone[4].seed = 6;
+        zone[9].seed = 6;
     }
     checkZoneType();
     mapEditWindow();

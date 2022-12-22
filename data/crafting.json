@@ -88,7 +88,7 @@
     {
         "id":171,
         "result":"Compo1",
-        "cost":{"Bois":7},
+        "cost":{"Bois":7,"Energie":1},
         "compReq":{"const":1,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4,
@@ -98,7 +98,7 @@
     {
         "id":16,
         "result":"Compo1",
-        "cost":{"Carbone":5,"Energie":1},
+        "cost":{"Carbone":5,"Azote":1,"Energie":2},
         "compReq":{"const":1},
         "bldReq":["Chaîne de montage"],
         "batch":4,
@@ -108,7 +108,7 @@
     {
         "id":59,
         "result":"Compo1",
-        "cost":{"Carbone":3,"Scrap":2,"Energie":1},
+        "cost":{"Carbone":3,"Scrap":3,"Energie":1},
         "compReq":{"const":1,"tri":1,"ind":1},
         "bldReq":["Chaîne de montage"],
         "batch":4,
@@ -118,21 +118,11 @@
     {
         "id":156,
         "result":"Compo1",
-        "cost":{"Carbone":5,"Azote":1,"Energie":2},
+        "cost":{"Carbone":4,"Azote":1,"Energie":2},
         "compReq":{"const":1,"ind":1},
         "bldReq":["Usine"],
         "batch":4,
         "creaNum":300,
-        "bg":"#1b1510"
-    },
-    {
-        "id":60,
-        "result":"Compo1",
-        "cost":{"Carbone":3,"Azote":1,"Energie":2},
-        "compReq":{"const":1,"ind":3},
-        "bldReq":["Usine"],
-        "batch":4,
-        "creaNum":400,
         "bg":"#1b1510"
     },
     {

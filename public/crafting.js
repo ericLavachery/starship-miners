@@ -343,13 +343,13 @@ function adjCraftFactor(craft,craftFactor) {
             energyCrafting = true;
         }
         let scrapCrafting = false;
-        let morphCrafting = false;
         if (craft.result === 'Scrap') {
             scrapCrafting = true;
         }
         if (craft.cost['Scrap'] != undefined) {
             scrapCrafting = true;
         }
+        let morphCrafting = false;
         if (craft.cost['Morphite'] != undefined) {
             morphCrafting = true;
         }
@@ -359,19 +359,21 @@ function adjCraftFactor(craft,craftFactor) {
             craftFactor = craftFactor/energyFactor;
         }
         // INDUSTRIE
-        if (playerInfos.comp.ind >= 1 && playerInfos.bldList.includes('Atelier') && !energyCrafting && !morphCrafting) {
-            let indusLevel = playerInfos.comp.ind;
+        if (playerInfos.comp.ind >= 1 && !energyCrafting && !morphCrafting) {
+            let bldFactor = 0.5;
             if (playerInfos.bldList.includes('Usine')) {
-                indusLevel = indusLevel+2;
-                if (playerInfos.comp.ind >= 3) {
-                    indusLevel = indusLevel+2;
-                } else if (playerInfos.comp.ind >= 1) {
-                    indusLevel = indusLevel+1;
-                }
+                bldFactor = 3;
             } else if (playerInfos.bldList.includes('Chaîne de montage')) {
-                indusLevel = indusLevel+1;
+                bldFactor = 2;
+            } else if (playerInfos.bldList.includes('Atelier')) {
+                bldFactor = 1;
             }
-            craftFactor = craftFactor*20/(20+indusLevel);
+            let indusLevel = (playerInfos.comp.ind+0.5)*bldFactor;
+            if (craft.bldReq.includes('Chaîne de montage') || craft.bldReq.includes('Usine')) {
+                craftFactor = craftFactor*21/(20+indusLevel);
+            } else {
+                craftFactor = craftFactor*31/(30+indusLevel);
+            }
         }
         // RECYCLAGE
         if (playerInfos.comp.tri >= 1 && playerInfos.bldList.includes('Décharge')) {

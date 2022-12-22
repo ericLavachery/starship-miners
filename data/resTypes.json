@@ -50,9 +50,9 @@
         "batch": 8,
         "energie": -1,
         "equiv": 1,
-        "kinds": ["science","construction","military","industry","energy","auto","any"],
+        "kinds": ["science","construction","military","industry","any"],
         "pter": [2,"F","H"],
-        "rlab": 30
+        "rlab": 20
     },
     {
         "id": 3,
@@ -168,7 +168,8 @@
         "equiv": 1,
         "kinds": ["military","industry","any"],
         "rlab": 2,
-        "pter": [3,"P","H","F"]
+        "pter": [3,"P","H","F"],
+        "planets":{"Dom":1.1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":1}
     },
     {
         "id": 11,
@@ -204,12 +205,12 @@
         "name": "Titane",
         "bld": "Mine",
         "level": 2,
-        "rarity": 16,
+        "rarity": 19,
         "cat": "white",
         "batch": 2.5,
         "energie": -1,
         "equiv": 1.5,
-        "kinds": ["science","construction","military","industry","medecine","auto","any"],
+        "kinds": ["science","military","industry","medecine","auto","any"],
         "rlab": 6,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":0.7,"Kzin":1,"Horst":1.5}
     },
@@ -251,7 +252,7 @@
         "energie": 0.75,
         "cramBld": "Centrale nucléaire",
         "equiv": 1,
-        "kinds": ["science","industry"],
+        "kinds": ["science","industry","energy"],
         "planets":{"Dom":1,"Sarak":0.5,"Gehenna":1.2,"Kzin":2,"Horst":1}
     },
     {
@@ -265,7 +266,7 @@
         "energie": 0.75,
         "cramBld": "Centrale nucléaire",
         "equiv": 1,
-        "kinds": ["science","military","industry"],
+        "kinds": ["science","military","industry","energy"],
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1.2,"Kzin":2,"Horst":1}
     },
     {
@@ -418,7 +419,7 @@
         "equiv": 0.7,
         "kinds": ["construction","industry","any"],
         "rlab": 20,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.7}
+        "planets":{"Dom":1.1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.7}
     },
     {
         "id": 26,

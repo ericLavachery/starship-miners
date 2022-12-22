@@ -444,7 +444,7 @@ function isLanderDeployed() {
 function editSonde() {
     selectMode();
     $("#conUnitList").css("display","block");
-    $('#conUnitList').css("height","100px");
+    $('#conUnitList').css("height","800px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
     $("#unitInfos").css("display","none");
@@ -526,6 +526,9 @@ function editSonde() {
         if (i >= prAMax) {break;}
         i++
     }
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<br>');
+    planetsDesc();
     $('#conUnitList').append('<br>');
     $("#conUnitList").animate({scrollTop:0},"fast");
 };

@@ -1,3 +1,77 @@
+function planetsDesc() {
+    let thisPlanet = 'Dom';
+    $('#conUnitList').append('<span class="ListRes cy">DOM</span><br>');
+    $('#conUnitList').append('<span class="ListRes">Planète habitable.</span><br>');
+    planetResDesc(thisPlanet);
+    thisPlanet = 'Sarak';
+    $('#conUnitList').append('<span class="ListRes cy">SARAK</span><br>');
+    $('#conUnitList').append('<span class="ListRes">Planète habitable. Brouillard dense.</span><br>');
+    planetResDesc(thisPlanet);
+    thisPlanet = 'Gehenna';
+    $('#conUnitList').append('<span class="ListRes cy">GEHENNA</span><br>');
+    $('#conUnitList').append('<span class="ListRes">Planète inhabitable. Empoisonnée par les végétaux.</span><br>');
+    planetResDesc(thisPlanet);
+    thisPlanet = 'Kzin';
+    $('#conUnitList').append('<span class="ListRes cy">KZIN</span><br>');
+    $('#conUnitList').append('<span class="ListRes">Planète inhabitable. Gravité et pression intense. Sables mouvants.</span><br>');
+    planetResDesc(thisPlanet);
+    thisPlanet = 'Horst';
+    $('#conUnitList').append('<span class="ListRes cy">HORST</span><br>');
+    $('#conUnitList').append('<span class="ListRes">Planète inhabitable. Chaleur intense. Tempêtes.</span><br>');
+    planetResDesc(thisPlanet);
+};
+
+function planetResDesc(thisPlanet) {
+    $('#conUnitList').append('<span class="ListRes bleu">Ressources rares présentes:</span><br>');
+    resTypes.forEach(function(res) {
+        if (res.cat.includes('sky') || res.cat.includes('blue') || res.name === 'Morphite') {
+            if (res.planets != undefined) {
+                if (res.planets[thisPlanet] != 0) {
+                    let resAb = Math.round(res.planets[thisPlanet]*100);
+                    $('#conUnitList').append('<span class="ListRes gf">'+res.name+'<span class="brun">('+resAb+'%)</span> </span>');
+                }
+            }
+        }
+    });
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="ListRes bleu">Ressources absentes:</span><br>');
+    resTypes.forEach(function(res) {
+        if (res.cat === 'white' || res.cat.includes('sky') || res.cat.includes('blue') || res.cat.includes('zero') || res.name === 'Morphite') {
+            if (res.planets != undefined) {
+                if (res.planets[thisPlanet] === 0) {
+                    $('#conUnitList').append('<span class="ListRes gf">'+res.name+' </span>');
+                }
+            }
+        }
+    });
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="ListRes bleu">Ressources plus abondantes:</span><br>');
+    resTypes.forEach(function(res) {
+        if (res.cat === 'white' || res.cat.includes('sky') || res.cat.includes('blue') || res.cat.includes('zero') || res.name === 'Morphite') {
+            if (res.planets != undefined) {
+                if (res.planets[thisPlanet] > 1 && res.planets[thisPlanet] != 0) {
+                    let resAb = Math.round(res.planets[thisPlanet]*100);
+                    $('#conUnitList').append('<span class="ListRes gf">'+res.name+'<span class="brun">('+resAb+'%)</span> </span>');
+                }
+            }
+        }
+    });
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="ListRes bleu">Ressources moins abondantes:</span><br>');
+    resTypes.forEach(function(res) {
+        if (res.cat === 'white' || res.cat.includes('sky') || res.cat.includes('blue') || res.cat.includes('zero') || res.name === 'Morphite') {
+            if (res.planets != undefined) {
+                if (res.planets[thisPlanet] < 1 && res.planets[thisPlanet] != 0) {
+                    let resAb = Math.round(res.planets[thisPlanet]*100);
+                    $('#conUnitList').append('<span class="ListRes gf">'+res.name+'<span class="brun">('+resAb+'%)</span> </span>');
+                }
+            }
+        }
+    });
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<br>');
+}
+
 function planetThumb() {
     if (zone[0].planet === undefined) {
         zone[0].planet = 'Station';

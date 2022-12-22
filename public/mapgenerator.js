@@ -2176,30 +2176,30 @@ function checkZoneType() {
     zoneInfos.cb = false; // if true add class b to class c
     zoneInfos.as = false; // if true add class s to class a
     if (zone[0].terrain != 'V' && (playerInfos.gLevel < 19 || zone[0].edited)) {
-        if ((swampMap || zone[0].edited) && (zone[0].mapDiff >= 5 || zone[0].edited) && zone[3].seed === 1 && zone[4].seed <= 2) {
+        if ((swampMap || zone[0].edited) && (zone[0].mapDiff >= 5 || zone[0].edited) && zone[3].seed === 1 && zone[9].seed <= 2) {
             zoneInfos.type = 'leech';
             zone[0].type = 'leech';
             zoneInfos.cb = true;
-        } else if ((zone[0].ps+zone[0].pw >= 30 || zone[0].edited) && (zone[0].mapDiff >= 2 || zone[0].edited) && zone[3].seed === 2 && zone[4].seed <= 3) {
+        } else if ((zone[0].ps+zone[0].pw >= 30 || zone[0].edited) && (zone[0].mapDiff >= 2 || zone[0].edited) && zone[3].seed === 2 && zone[9].seed <= 3) {
             zoneInfos.type = 'flies';
             zone[0].type = 'flies';
-        } else if ((zone[0].ps+zone[0].pw <= 10 || zone[0].edited) && (zone[0].mapDiff >= 4 || zone[0].edited) && zone[3].seed === 3 && zone[4].seed <= 2) {
-            zoneInfos.type = 'ants';
-            zone[0].type = 'ants';
-            zoneInfos.cb = true;
-        } else if ((zone[0].pb >= 25 || zone[0].edited) && (zone[0].mapDiff >= 2 || zone[0].edited) && zone[3].seed === 4 && zone[4].seed <= 3) {
+        } else if ((zone[0].pb >= 25 || zone[0].edited) && (zone[0].mapDiff >= 2 || zone[0].edited) && zone[3].seed === 4 && zone[9].seed <= 3) {
             zoneInfos.type = 'roaches';
             zone[0].type = 'roaches';
             zoneInfos.as = true;
-        } else if ((zone[0].pf >= 25 || zone[0].edited) && (zone[0].mapDiff >= 7 || zone[0].edited) && zone[3].seed === 5 && zone[4].seed === 1) {
+        } else if ((zone[0].pf >= 25 || zone[0].edited) && (zone[0].mapDiff >= 7 || zone[0].edited) && zone[3].seed === 5 && zone[9].seed === 1) {
             zoneInfos.type = 'spinne';
             zone[0].type = 'spinne';
             zoneInfos.cb = true;
             zoneInfos.as = true;
-        } else if ((zone[0].pm >= 25 || zone[0].edited) && (zone[0].mapDiff >= 5 || zone[0].edited) && zone[3].seed === 6 && zone[4].seed <= 2) {
+        } else if ((zone[0].pm >= 25 || zone[0].edited) && (zone[0].mapDiff >= 5 || zone[0].edited) && zone[3].seed === 6 && zone[9].seed <= 2) {
             zoneInfos.type = 'bigbugs';
             zone[0].type = 'bigbugs';
             zoneInfos.as = true;
+        } else if ((zone[0].ps+zone[0].pw <= 10 || zone[0].edited) && (zone[0].mapDiff >= 4 || zone[0].edited) && zone[3].seed === 3 && zone[9].seed <= 2) {
+            zoneInfos.type = 'ants';
+            zone[0].type = 'ants';
+            zoneInfos.cb = true;
         }
     }
     // Test

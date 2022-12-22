@@ -1214,6 +1214,10 @@ function spawns() {
     if (hasAlien('Homards')) {
         hasHomards = true;
     }
+    let cafDice = 4;
+    if (zone[0].type === 'roaches') {
+        cafDice = 2;
+    }
     let shufAliens = _.shuffle(aliens);
     shufAliens.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -1339,7 +1343,7 @@ function spawns() {
                     alienMorph(bat,'Homards',false);
                     hasHomards = true;
                 }
-            } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,4) === 1 && aliens.length < maxAliens-50 && aliensNums.cafards < maxPonte*3) {
+            } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,cafDice) === 1 && aliens.length < maxAliens-50 && aliensNums.cafards < maxPonte*3) {
                 alienSpawn(bat,'Cafards');
             } else if (bat.type === 'Glaireuses' && aliens.length < maxAliens-50 && aliensNums.gluantes < maxPonte) {
                 alienSpawn(bat,'Gluantes');

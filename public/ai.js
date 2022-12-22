@@ -682,11 +682,6 @@ function checkPossibleJumps() {
                     batHere = true;
                 }
             }
-            // if (tile.terrain === 'M' || tile.terrain === 'R' || tile.terrain === 'W' || tile.terrain === 'L') {
-            //     if (selectedBatType.skills.includes('fouisseur')) {
-            //         batHere = true;
-            //     }
-            // }
             if (!batHere) {
                 possibleMoves.push(tile.id);
             }
@@ -768,7 +763,7 @@ function uncheckBadMoves() {
         });
     }
     // enlève les possibleMoves vers l'eau
-    if (possibleMoves.length >= 2 && rand.rand(1,3) != 1 && !selectedBatType.skills.includes('hover')) {
+    if (possibleMoves.length >= 3 && rand.rand(1,3) != 1 && !selectedBatType.skills.includes('hover') && !selectedBatType.skills.includes('fly')) {
         shufZone.forEach(function(tile) {
             if (isAdjacent(selectedBat.tileId,tile.id)) {
                 if (possibleMoves.length >= 3) {
@@ -827,7 +822,7 @@ function uncheckBadJumps() {
         });
     }
     // enlève les possibleMoves vers l'eau
-    if (possibleMoves.length >= 2 && !selectedBatType.skills.includes('hover')) {
+    if (possibleMoves.length >= 2 && !selectedBatType.skills.includes('hover') && !selectedBatType.skills.includes('fly')) {
         shufZone.forEach(function(tile) {
             if (possibleMoves.length > 1) {
                 if (tile.terrain === 'S' || tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {

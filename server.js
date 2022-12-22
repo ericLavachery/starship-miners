@@ -367,21 +367,21 @@ io.sockets.on('connection', function (socket, pseudo) {
         });
     });
 
-    // Put start mission in data/players
-    socket.on('put-start-zone', function(zoneId) {
-        let fileToBeMoved = './data/players/Missions/start99/'+socket.pseudo+'-map'+zoneId+'.json';
+    // Put specific mission in data/players
+    socket.on('move-mission-zone', function(zoneId) {
+        let fileToBeMoved = './data/players/Missions/Mission-map'+zoneId+'.json';
         let fileToBeCreated = './data/players/'+socket.pseudo+'-map'+zoneId+'.json';
         fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
             if (err) throw err;
             console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
         });
-        fileToBeMoved = './data/players/Missions/start99/'+socket.pseudo+'-bataillons'+zoneId+'.json';
+        fileToBeMoved = './data/players/Missions/Mission-bataillons'+zoneId+'.json';
         fileToBeCreated = './data/players/'+socket.pseudo+'-bataillons'+zoneId+'.json';
         fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
             if (err) throw err;
             console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
         });
-        fileToBeMoved = './data/players/Missions/start99/'+socket.pseudo+'-aliens'+zoneId+'.json';
+        fileToBeMoved = './data/players/Missions/Mission-aliens'+zoneId+'.json';
         fileToBeCreated = './data/players/'+socket.pseudo+'-aliens'+zoneId+'.json';
         fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
             if (err) throw err;
@@ -488,9 +488,6 @@ io.sockets.on('connection', function (socket, pseudo) {
     };
     function sendZone() {
         console.log('loading saved map (with bats & aliens)');
-        // console.log(savedMap);
-        // console.log(bataillons);
-        // console.log(aliens);
         socket.emit('savedZone-Load',[savedMap,bataillons,aliens]);
     };
 

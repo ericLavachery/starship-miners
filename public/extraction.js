@@ -111,14 +111,18 @@ function mining(bat) {
                             }
                             // diminution des gisements
                             if (!permaRes && res.cat != 'zero') {
-                                tile.rs[res.name] = tile.rs[res.name]-Math.ceil(resMiningRate/resPersistance);
+                                if (res.name === 'Scrap') {
+                                    tile.rs[res.name] = tile.rs[res.name]-Math.ceil(resMiningRate/resPersistance*5);
+                                } else {
+                                    tile.rs[res.name] = tile.rs[res.name]-Math.ceil(resMiningRate/resPersistance);
+                                }
                             }
                         }
                     }
                 });
                 autoUnload(bat);
                 if (batType.skills.includes('scrapmorph') && minedScrap >= 1) {
-                    scrapMorphing(bat,batType,minedScrap);
+                    scrapMorphing(bat,batType,minedScrap,tile);
                 }
             } else {
                 warning('Extraction stoppée',bat.type+': Plus de place pour stocker',false,bat.tileId);
@@ -136,15 +140,93 @@ function mining(bat) {
     }
 };
 
-function scrapMorphing(bat,batType,minedScrap) {
+function cleanChecks(theChecks) {
+    let checks = theChecks;
+    if (checks.includes('medecine')) {
+        let index = checks.indexOf('medecine');
+        checks.splice(index,1);
+    }
+    return checks;
+};
+
+function checkResKindFactor(checks,kinds,res) {
+    // dans le cas d'une catégorie commune
+    let factor = 1.5;
+    if (res.name != 'Energie' && res.name != 'Energons') {
+        if (checks.includes('science') && kinds.includes('science')) {
+            if (res.name === 'Electros' || res.name === 'Drogues' || res.name === 'Huile') {
+                factor = 5;
+            } else {
+                factor = 2.5;
+            }
+        }
+        if (checks.includes('military') && kinds.includes('military')) {
+            if (res.name === 'Munitions' || res.name === 'Explosifs') {
+                factor = 4;
+            }
+        }
+        if (checks.includes('medecine') && kinds.includes('medecine')) {
+            if (res.name === 'Or' || res.name === 'Drogues' || res.name === 'Tissus' || res.name === 'Huile' || res.name === 'Oxygène' || res.name === 'Octiron') {
+                factor = 4;
+            }
+        }
+        if (checks.includes('auto') && kinds.includes('auto')) {
+            if (res.name === 'Fuel' || res.name === 'Moteurs') {
+                factor = 5;
+            }
+        }
+    }
+    if (checks.includes('energy') && kinds.includes('energy')) {
+        if (res.name === 'Energie' || res.name === 'Energons' || res.name === 'Batteries') {
+            factor = 5;
+        } else if (res.name === 'Fuel' || res.name === 'Moteurs') {
+            factor = 3;
+        } else {
+            factor = 2;
+        }
+    }
+    return factor;
+};
+
+function scrapMorphing(bat,batType,minedScrap,tile) {
     console.log('SCRAPMORPHING ---------------------------------------------------------');
     let morphed = minedScrap/75;
+    let theChecks = [];
+    if (tile.rt != undefined) {
+        if (tile.rt.checks != undefined) {
+            theChecks = cleanChecks(tile.rt.checks);
+        }
+    }
     resTypes.forEach(function(res) {
         let resProd = 0;
         let resFactor = 0;
         if (res.rlab != undefined) {
             resFactor = (res.rlab+1)*3;
         }
+        let kindFactor = 1
+        if (theChecks.length >= 1) {
+            if (res.kinds != undefined) {
+                let found = theChecks.some(r=> res.kinds.includes(r));
+                if (found) {
+                    kindFactor = checkResKindFactor(theChecks,res.kinds,res);
+                    if (resFactor === 0) {
+                        let planetFactor = 1;
+                        if (res.planets != undefined) {
+                            let planet = zone[0].planet;
+                            planetFactor = res.planets[planet];
+                        }
+                        resFactor = res.rarity*res.batch/5*planetFactor;
+                    }
+                } else if (res.kinds.includes('construction')) {
+                    kindFactor = 0.4;
+                } else {
+                    kindFactor = 0.2;
+                }
+            }
+        } else {
+            kindFactor = 0.3;
+        }
+        resFactor = resFactor*kindFactor;
         if (resFactor >= 1) {
             let resNum = Math.round(morphed*resFactor/rand.rand(3,18)/2);
             console.log(res.name);
@@ -482,6 +564,8 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     if (!forInfos) {
         if (bat.extracted.length >= 2) {
             multiExtractAdj = 1-((bat.extracted.length-1)/12);
+        } else if (batType.mining.multi) {
+            multiExtractAdj = 1.33;
         }
         let maxAdjBonus = extComp/33;
         if (miningLevel >= 4) {

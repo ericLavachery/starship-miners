@@ -785,7 +785,7 @@ function checkRuinType(tile) {
                 case 4:
                 ruinType.name = 'Poste de police';
                 ruinType.checks = ['food','military'];
-                ruinType.scrap = 200;
+                ruinType.scrap = 150;
                 // cit x4.2
                 break;
                 case 5:
@@ -935,7 +935,7 @@ function checkRuinType(tile) {
                     break;
                     case 7:
                     ruinType.name = 'Clinique';
-                    ruinType.checks = ['food','mececine'];
+                    ruinType.checks = ['food','mececine','mececine'];
                     ruinType.scrap = 250;
                     // cit x4.2
                     break;
@@ -1042,13 +1042,14 @@ function checkMinMapDiff(unit) {
 function checkRuinsUnit(tile) {
     let maxUnits = Math.ceil(zone[0].mapDiff/1.55)-1;
     if (playerInfos.fndUnits < maxUnits) {
+        let fndBonus = (maxUnits-playerInfos.fndUnits)*50;
         let unitChance = ruinsUnitBase;
-        let unitDice = 300;
+        let unitDice = 300-fndBonus;
         if (rand.rand(1,unitDice) <= unitChance) {
             let count = true;
             let chance = 0;
             let foundUnitId = -1;
-            let checkDice = 450;
+            let checkDice = 450-fndBonus;
             let shufUnits = _.shuffle(unitTypes);
             shufUnits.forEach(function(unit) {
                 if (foundUnitId < 0) {

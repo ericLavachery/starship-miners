@@ -230,6 +230,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.volMu === undefined) {
         playerInfos.volMu = 0.4;
     }
+    if (playerInfos.statMu === undefined) {
+        playerInfos.statMu = true;
+    }
     let doom = getDoom(true);
     if (playerInfos.sondeDanger < doom) {
         playerInfos.sondeDanger = doom;
@@ -340,6 +343,9 @@ socket.on('savedMap-Load', function(sm) {
                 if (thisBatType.transUnits >= 10 && thisBatType.cat === 'vehicles' && bat.sort < 25) {
                     bat.sort = 25;
                 }
+                if (thisBatType.skills.includes('medic') && thisBatType.cat === 'infantry' && bat.sort < 11) {
+                    bat.sort = 11;
+                }
             } else {
                 bat.sort = thisBatType.sort;
             }
@@ -439,7 +445,7 @@ socket.on('zoneFiles-Load', function(zf) {
 socket.on('savedZone-Load', function(newZone) {
     zone = newZone[0];
     bataillons = newZone[1];
-    if (zone[0].number >= 50) {
+    if (zone[0].number >= 50 && playerInfos.pseudo != 'Mapedit') {
         idRepair();
     }
     createBatList();

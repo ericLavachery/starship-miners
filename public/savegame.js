@@ -217,9 +217,8 @@ function deleteZones() {
     savePlayerInfos();
 };
 
-function copyStartMission() {
-    let startZoneId = 99;
-    socket.emit('put-start-zone',startZoneId);
+function moveMissionZone(theZoneId) {
+    socket.emit('move-mission-zone',theZoneId);
 };
 
 function newGame() {
@@ -263,7 +262,7 @@ function newGame() {
     resetEndRes();
     resetVMRes();
     deleteZones();
-    copyStartMission();
+    moveMissionZone(99);
     generateVM();
     showMap(zone,false);
     miniOut();
