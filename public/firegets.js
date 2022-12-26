@@ -761,6 +761,13 @@ function calcDamage(weapon,power,armor,defBat) {
     // powerDice is max 4x power
     // fortif armor
     let defBatType = getBatType(defBat);
+    if (bugROF > 1) {
+        if (defBatType.cat === 'aliens') {
+            if (defBatType.skills.includes('arboost')) {
+                armor = armor*2;
+            }
+        }
+    }
     if (defBat.tags.includes('fortif')) {
         if ((defBat.tags.includes('hero') || defBat.tags.includes('vet')) && defBatType.skills.includes('herofortif')) {
             armor = armor+2;
@@ -821,9 +828,6 @@ function calcDamage(weapon,power,armor,defBat) {
     let powerDice;
     if (power >= 3) {
         let powerDiceMin = Math.round(power/2.5);
-        if (playerInfos.comp.ca >= 5 && defBatType.cat === 'aliens') {
-            powerDiceMin = Math.round(power/1.6);
-        }
         let powerDiceMax = Math.round(power*1.6);
         powerDice = rand.rand(powerDiceMin,powerDiceMax);
         if (powerDice == powerDiceMax) {
@@ -832,14 +836,8 @@ function calcDamage(weapon,power,armor,defBat) {
         }
     } else if (power === 2) {
         powerDice = rand.rand(0,4);
-        if (playerInfos.comp.ca >= 5 && defBatType.cat === 'aliens') {
-            powerDice = rand.rand(1,4);
-        }
     } else if (power === 1) {
         powerDice = Math.floor(rand.rand(0,4)/4);
-        if (playerInfos.comp.ca >= 5 && defBatType.cat === 'aliens') {
-            powerDice = Math.floor(rand.rand(0,3)/3);
-        }
     } else {
         powerDice = 0;
     }
@@ -943,6 +941,13 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
             if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet') || (defBatType.skills.includes('ricoface') && !init)) {
                 if (!attWeap.isFire && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('eflash') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('snake') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('psionics') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield && !attWeap.isSaw) {
                     let defArmor = defBat.armor;
+                    if (bugROF > 1) {
+                        if (defBatType.cat === 'aliens') {
+                            if (defBatType.skills.includes('arboost')) {
+                                defArmor = defArmor*2;
+                            }
+                        }
+                    }
                     if (defBatType.skills.includes('ricoface')) {
                         defArmor = defArmor+10;
                     }
@@ -3072,12 +3077,12 @@ function calcEscape(bat,batType,weap,attBat,tile) {
 
 function getEggProtect(eggBat,eggBatType,weap) {
     let eggProt = 0;
-    let maxProt = Math.ceil(100*(weap.armors+0.82));
+    let maxProt = 100*(weap.armors+0.82);
     if (maxProt > 100) {maxProt = 100;}
     if (eggBatType.skills.includes('eggprotect')) {
         console.log(weap);
         console.log('EGGPROT )))))))))))))))');
-        eggProt = 100-Math.round(1000/(10+((zone[0].mapDiff-1.25)*3.5)));
+        eggProt = 100-(1000/(10+((zone[0].mapDiff-1.25)*3.5)));
         if (!domeProtect && coconStats.dome && eggBatType.name != 'Colonie') {
             eggProt = eggProt+8;
         }
@@ -3085,29 +3090,35 @@ function getEggProtect(eggBat,eggBatType,weap) {
         if (eggBatType.skills.includes('turnprotect')) {
             console.log('TURNPROT )))))))))))))))');
             if (!domeProtect) {
-                eggProt = Math.round((eggProt*3/5)+(playerInfos.mapTurn*1.65));
+                eggProt = (eggProt*3/5)+(playerInfos.mapTurn*1.65);
             }
             if (eggProt > maxProt) {eggProt = maxProt;}
             console.log(eggProt);
             if (weap.noShield) {
-                eggProt = Math.round(eggProt*0.9);
+                eggProt = eggProt*0.9;
             } else if (weap.minShield) {
-                eggProt = Math.round(eggProt*0.93);
+                eggProt = eggProt*0.93;
             } else if (weap.lowShield) {
-                eggProt = Math.round(eggProt*0.95);
+                eggProt = eggProt*0.95;
             }
             if (weap.ammo.includes('uridium')) {
-                eggProt = Math.round(eggProt*0.97);
+                eggProt = eggProt*0.97;
             }
             console.log(eggProt);
         }
+        if (playerInfos.comp.ca === 5) {
+            eggProt = eggProt*0.94;
+        } else if (playerInfos.comp.ca === 4) {
+            eggProt = eggProt*0.98;
+        }
         if (weap.ammo === 'suicide' || weap.ammo === 'suicide-deluge') {
-            eggProt = Math.round(eggProt*0.85);
+            eggProt = eggProt*0.85;
         }
     }
     if (eggProt > maxProt) {eggProt = maxProt;}
     if (eggProt < 0) {eggProt = 0;}
     console.log(eggProt);
+    eggProt = Math.round(eggProt);
     return eggProt;
 };
 

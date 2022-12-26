@@ -1126,7 +1126,7 @@
         "info": "Incendiaire",
         "bldReq":["Usine d'armement","Laboratoire"],
         "compReq":{"bal":2,"explo":3,"pyro":2},
-        "deploy":{"Fer":2,"Plutonium":2,"Aluminium":1,"Phosphore":2,"Nanite":5},
+        "deploy":{"Fer":2,"Plutonium":2,"Aluminium":1,"Phosphore":2,"Nanite":6},
         "batch":100
     },
     {
@@ -2535,7 +2535,7 @@
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":2},
-        "costs":{"Cuivre":2,"Aluminium":1,"Titane":1,"Azote":1,"Potassium":1,"Nanite":3},
+        "costs":{"Cuivre":2,"Aluminium":1,"Titane":1,"Azote":1,"Potassium":1,"Nanite":5},
         "batch":50
     },
     {
@@ -2632,7 +2632,7 @@
         "range": 1,
         "rof": 1,
         "power": 0,
-        "powermult": 1.4,
+        "powermult": 1.3,
         "armors": 0.67,
         "accuracy": 1.35,
         "apdamage": 0,
@@ -3219,8 +3219,8 @@
         "apdamage": 0,
         "aoe": "bat",
         "bldReq":["Laboratoire"],
-        "compReq":{"explo":3},
-        "deploy":{"Scrap":2,"Fer":3,"Explosifs":4,"Cuivre":1,"Carbone":1,"Oxygène":2,"Potassium":1,"Nanite":3},
+        "compReq":{"explo":2},
+        "deploy":{"Scrap":2,"Fer":3,"Explosifs":4,"Cuivre":1,"Carbone":1,"Oxygène":2,"Potassium":1,"Nanite":5},
         "batch":100
     },
     {
@@ -3295,7 +3295,7 @@
         "aoe": "squad",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":3},
-        "deploy":{"Scrap":4,"Fer":2,"Aluminium":2,"Potassium":1,"Nanite":3,"Explosifs":2},
+        "deploy":{"Scrap":4,"Fer":2,"Aluminium":2,"Potassium":1,"Nanite":5,"Explosifs":2},
         "batch":100
     },
     {
@@ -3600,7 +3600,7 @@
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
         "compReq":{"explo":2,"pyro":2},
-        "deploy":{"Hydrocarbure":3,"Oxygène":3,"Nanite":4},
+        "deploy":{"Hydrocarbure":3,"Oxygène":3,"Nanite":5},
         "batch":100
     },
     {

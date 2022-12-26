@@ -36,7 +36,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":[],
+        "skills":["arboost"],
         "deathFx":"death1",
         "killRes":{"Bugium":1},
         "killXP":2
@@ -867,7 +867,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capbld","fear","reactpoison","reactelec","destructeur","ricochet","resistall","silhover"],
+        "skills":["capbld","fear","reactpoison","reactelec","destructeur","ricochet","resistall","silhover","arboost"],
         "deathFx":"death2",
         "killRes":{"Bugium":30},
         "killXP":15,
@@ -928,7 +928,7 @@
         "deathFx":"death2",
         "killRes":{"Bugium":23,"Mendium":12,"Creatite":6,"Egidium":44,"Bossium":28},
         "killXP":30,
-        "flavText":"Les bigheads pondent des grabbers."
+        "flavText":"Les bigheads augmentent la cadence de tir de tous les bugs et l'armure de certains d'entre eux'. Ils pondent des escarbots."
     },
     {
         "id":11,
@@ -1188,7 +1188,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["resistfeu","destructeur","sentinelle"],
+        "skills":["resistfeu","destructeur","sentinelle","arboost"],
         "deathFx":"death2",
         "killRes":{"Bugium":5},
         "killXP":3
@@ -1766,7 +1766,7 @@
         "fxPriority":8,
         "killRes":{"Bugium":50,"Bossium":28,"Creatite":6,"Pyrus":75},
         "killXP":40,
-        "flavText":"Les dragons augmentent la cadence de tir de tous les bugs. Ils pondent des firebugs. Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
+        "flavText":"Ils pondent des firebugs. Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
     {
         "id":26,

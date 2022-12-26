@@ -155,39 +155,65 @@ function showLanderLandingTiles() {
     });
 }
 
-function landerLandingOK(tile) {
+function landerLandingOK(tile,landerBatType) {
     let tileOK = false;
-    let landerRange = getLanderRange();
-    let distance = calcDistanceSquare(tile.id,1830);
-    if (distance <= landerRange) {
-        tileOK = true;
-        if (tile.terrain === 'R' || tile.terrain === 'L') {
-            tileOK = false;
+    let centreLand = true;
+    if (zone[0].cLand != undefined) {
+        if (!zone[0].cLand) {
+            centreLand = false;
         }
-        if (playerInfos.comp.vsp < 4) {
-            if (tile.terrain === 'W') {
-                tileOK = false;
-            }
+    }
+    if (centreLand) {
+        let landerRange = getLanderRange();
+        let distance = calcDistanceSquare(tile.id,1830);
+        if (distance <= landerRange) {
+            tileOK = landingTerrainOK(tile);
         }
-        if (playerInfos.comp.vsp < 3) {
-            if (tile.terrain === 'M') {
-                tileOK = false;
-            }
-        }
-        if (!tile.rd) {
-            if (playerInfos.comp.vsp < 2) {
-                if (tile.terrain === 'F') {
-                    tileOK = false;
+    } else {
+        tileOK = false;
+        if (tile.land) {
+            tileOK = landingTerrainOK(tile);
+        } else if (tile.nav) {
+            if (landerBatType != undefined) {
+                if (landerBatType.skills.includes('rescue')) {
+                    tileOK = landingTerrainOK(tile);
                 }
-            }
-            if (playerInfos.comp.vsp < 1) {
-                if (tile.terrain === 'S' || tile.terrain === 'H') {
-                    tileOK = false;
-                }
+            } else {
+                tileOK = landingTerrainOK(tile);
             }
         }
     }
     return tileOK;
+};
+
+function landingTerrainOK(tile) {
+    let terOK = true;
+    if (tile.terrain === 'R' || tile.terrain === 'L') {
+        tileOK = false;
+    }
+    if (playerInfos.comp.vsp < 4) {
+        if (tile.terrain === 'W') {
+            tileOK = false;
+        }
+    }
+    if (playerInfos.comp.vsp < 3) {
+        if (tile.terrain === 'M') {
+            tileOK = false;
+        }
+    }
+    if (!tile.rd) {
+        if (playerInfos.comp.vsp < 2) {
+            if (tile.terrain === 'F') {
+                tileOK = false;
+            }
+        }
+        if (playerInfos.comp.vsp < 1) {
+            if (tile.terrain === 'S' || tile.terrain === 'H') {
+                tileOK = false;
+            }
+        }
+    }
+    return terOK;
 };
 
 function redrawTile(tileId,drawSelectedBat) {

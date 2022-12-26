@@ -1151,7 +1151,7 @@ function morphList() {
 };
 
 function aliensCount() {
-    let aliensNums = {lucioles:0,moucherons:0,bugs:0,firebugs:0,grabbers:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0,ecrevisses:0,veilleurs:0};
+    let aliensNums = {lucioles:0,moucherons:0,bugs:0,firebugs:0,escarbots:0,scorpions:0,fourmis:0,cafards:0,gluantes:0,larves:0,ecrevisses:0,veilleurs:0};
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (bat.type === 'Lucioles') {
@@ -1160,8 +1160,8 @@ function aliensCount() {
                 aliensNums.bugs = aliensNums.bugs+1;
             } else if (bat.type === 'Firebugs') {
                 aliensNums.firebugs = aliensNums.firebugs+1;
-            } else if (bat.type === 'Grabbers') {
-                aliensNums.grabbers = aliensNums.grabbers+1;
+            } else if (bat.type === 'Escarbots') {
+                aliensNums.escarbots = aliensNums.escarbots+1;
             } else if (bat.type === 'Scorpions') {
                 aliensNums.scorpions = aliensNums.scorpions+1;
             } else if (bat.type === 'Larves') {
@@ -1301,8 +1301,8 @@ function spawns() {
                 bat.tags.push('morph');
             } else if (bat.type === 'Dragons' && aliens.length < maxAliens && aliensNums.firebugs < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Firebugs');
-            } else if (bat.type === 'Bigheads' && aliens.length < maxAliens && aliensNums.grabbers < Math.round(maxPonte/1.5)) {
-                alienSpawn(bat,'Grabbers');
+            } else if (bat.type === 'Bigheads' && aliens.length < maxAliens && aliensNums.escarbots < Math.round(maxPonte/1.5)) {
+                alienSpawn(bat,'Escarbots');
             } else if (bat.type === 'Mantes' && aliens.length < maxAliens && aliensNums.fourmis < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Fourmis');
             } else if (bat.type === 'Scarabs' && aliens.length < maxAliens-50 && aliensNums.bugs < maxPonte*2) {
@@ -1343,7 +1343,7 @@ function spawns() {
                     alienMorph(bat,'Homards',false);
                     hasHomards = true;
                 }
-            } else if (bat.type === 'Cafards' && bat.squadsLeft >= 6 && rand.rand(1,cafDice) === 1 && aliens.length < maxAliens-50 && aliensNums.cafards < maxPonte*3) {
+            } else if (bat.type === 'Cafards' && bat.squadsLeft > cafDice+1 && rand.rand(1,cafDice) === 1 && aliens.length < maxAliens-50 && aliensNums.cafards < maxPonte*3) {
                 alienSpawn(bat,'Cafards');
             } else if (bat.type === 'Glaireuses' && aliens.length < maxAliens-50 && aliensNums.gluantes < maxPonte) {
                 alienSpawn(bat,'Gluantes');
@@ -2090,6 +2090,113 @@ function eggSpawn(bat,fromEgg) {
             console.log('no spawn');
         }
     }
+};
+
+function checkRarityByZoneType(unit) {
+    let ztRarity = unit.rarity;
+    if (zoneInfos.type === 'leech') {
+        if (unit.name === 'Sangsues') {
+            ztRarity = 20;
+        } else if (unit.name === 'Ombres') {
+            ztRarity = 8;
+        } else if (unit.name === 'Megagrubz') {
+            ztRarity = 5;
+        } else if (unit.name === 'Fantômes') {
+            ztRarity = 2;
+        } else {
+            ztRarity = 0;
+        }
+    }
+    if (zoneInfos.type === 'flies') {
+        if (unit.name === 'Asticots') {
+            ztRarity = 20;
+        } else if (unit.name === 'Lombrics') {
+            ztRarity = 8;
+        } else if (unit.name === 'Moucherons') {
+            ztRarity = 8;
+        } else if (unit.name === 'Libellules') {
+            ztRarity = 7;
+        } else {
+            ztRarity = 0;
+        }
+    }
+    if (zoneInfos.type === 'roaches') {
+        if (unit.name === 'Cafards') {
+            ztRarity = 25;
+        } else if (unit.name === 'Blattes') {
+            ztRarity = 9;
+        } else if (unit.name === 'Homards') {
+            ztRarity = 7;
+        } else {
+            ztRarity = 0;
+        }
+    }
+    if (zoneInfos.type === 'spinne') {
+        if (unit.name === 'Sournoises') {
+            ztRarity = 22;
+        } else if (unit.name === 'Torches') {
+            ztRarity = 8;
+        } else if (unit.name === 'Uberspinne') {
+            ztRarity = 5;
+        } else {
+            ztRarity = 0;
+        }
+    }
+    if (zoneInfos.type === 'bigbugs') {
+        if (unit.name === 'Escarbots') {
+            ztRarity = 15;
+        } else if (unit.name === 'Broyeurs') {
+            ztRarity = 15;
+        } else if (unit.name === 'Bigheads') {
+            ztRarity = 5;
+        } else {
+            ztRarity = 0;
+        }
+    }
+    if (zoneInfos.type === 'ants') {
+        if (unit.name === 'Fourmis') {
+            ztRarity = 24;
+        } else if (unit.name === 'Skolos') {
+            ztRarity = 8;
+        } else if (unit.name === 'Mantes') {
+            ztRarity = 8;
+        } else {
+            ztRarity = 0;
+        }
+    }
+    if (zoneInfos.surf) {
+        if (unit.kind === 'spider') {
+            if (unit.name === 'Surfeuses') {
+                ztRarity = ztRarity*4;
+            } else if (unit.name === 'Nerveuses' || unit.name === 'Cracheuses' || unit.name === 'Torches') {
+                ztRarity = 0;
+            }
+        }
+    }
+    return ztRarity;
+};
+
+function checkEggKindByZoneType() {
+    let eggKind = '';
+    if (zoneInfos.type === 'leech') {
+        eggKind = 'larve';
+    }
+    if (zoneInfos.type === 'flies') {
+        eggKind = 'larve';
+    }
+    if (zoneInfos.type === 'ants') {
+        eggKind = 'swarm';
+    }
+    if (zoneInfos.type === 'roaches') {
+        eggKind = 'swarm';
+    }
+    if (zoneInfos.type === 'spinne') {
+        eggKind = 'spider';
+    }
+    if (zoneInfos.type === 'bigbugs') {
+        eggKind = 'bug';
+    }
+    return eggKind;
 };
 
 function replaceAlien(oldAlien) {

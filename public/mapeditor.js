@@ -268,31 +268,59 @@ function selectStuff(stuff,stuffImg,stuffDef) {
 function zoneTypeToggle(theZoneType) {
     if (theZoneType === 'normal') {
         // leech
+        zone[0].type = 'leech';
         zone[3].seed = 1;
         zone[9].seed = 2;
+        zone[0].rc = ["Vers","Larves"];
+        zone[0].rb = ["Lucioles","Wurms"];
+        zone[0].ra = ["Libellules","Megagrubz"];
     } else if (theZoneType === 'leech') {
         // flies
+        zone[0].type = 'flies';
         zone[3].seed = 2;
         zone[9].seed = 1;
+        zone[0].rc = ["Larves","Lombrics"];
+        zone[0].rb = ["Wurms","Moucherons"];
+        zone[0].ra = ["Megagrubz","Libellules"];
     } else if (theZoneType === 'flies') {
         // ants
+        zone[0].type = 'ants';
         zone[3].seed = 3;
         zone[9].seed = 2;
+        zone[0].rc = ["Cafards","Fourmis"];
+        zone[0].rb = ["Ojos","Skolos"];
+        zone[0].ra = ["Galéodes","Mantes"];
     } else if (theZoneType === 'ants') {
         // roaches
+        zone[0].type = 'roaches';
         zone[3].seed = 4;
         zone[9].seed = 3;
+        zone[0].rc = ["Scorpions","Blattes"];
+        zone[0].rb = ["Bourdons","Ojos"];
+        zone[0].ra = ["Androks","Homards"];
     } else if (theZoneType === 'roaches') {
         // spinne
+        zone[0].type = 'spinne';
         zone[3].seed = 5;
         zone[9].seed = 1;
+        zone[0].rc = ["Cracheuses","Torches"];
+        zone[0].rb = ["Faucheux","Discoballs"];
+        delete zone[0].ra;
     } else if (theZoneType === 'spinne') {
         // bigbugs
+        zone[0].type = 'bigbugs';
         zone[3].seed = 6;
         zone[9].seed = 2;
+        zone[0].rc = ["Grabbers","Escarbots"];
+        zone[0].rb = ["Spitbugs","Broyeurs"];
+        zone[0].ra = ["Scarabs","Bigheads"];
     } else if (theZoneType === 'bigbugs') {
         // normal
+        zone[0].type = 'normal';
         zone[9].seed = 6;
+        delete zone[0].rc;
+        delete zone[0].rb;
+        delete zone[0].ra;
     }
     checkZoneType();
     mapEditWindow();

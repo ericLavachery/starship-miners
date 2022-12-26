@@ -999,7 +999,7 @@ function clickConstruct(tileId,free) {
                 batHere = true;
                 message = 'Vous ne pouvez pas poser votre vaisseau à plus de '+landerRange+' cases du centre.';
             } else {
-                let tileLandingOK = landerLandingOK(tile);
+                let tileLandingOK = landerLandingOK(tile,conselUnit);
                 if (!tileLandingOK) {
                     batHere = true;
                     message = 'Vous ne pouvez pas poser votre vaisseau sur ce type de terrain.';

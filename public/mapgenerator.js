@@ -2180,26 +2180,43 @@ function checkZoneType() {
             zoneInfos.type = 'leech';
             zone[0].type = 'leech';
             zoneInfos.cb = true;
+            zone[0].rc = ["Vers","Larves"];
+            zone[0].rb = ["Lucioles","Wurms"];
+            zone[0].ra = ["Libellules","Megagrubz"];
         } else if ((zone[0].ps+zone[0].pw >= 30 || zone[0].edited) && (zone[0].mapDiff >= 2 || zone[0].edited) && zone[3].seed === 2 && zone[9].seed <= 3) {
             zoneInfos.type = 'flies';
             zone[0].type = 'flies';
+            zone[0].rc = ["Larves","Lombrics"];
+            zone[0].rb = ["Wurms","Moucherons"];
+            zone[0].ra = ["Megagrubz","Libellules"];
         } else if ((zone[0].pb >= 25 || zone[0].edited) && (zone[0].mapDiff >= 2 || zone[0].edited) && zone[3].seed === 4 && zone[9].seed <= 3) {
             zoneInfos.type = 'roaches';
             zone[0].type = 'roaches';
             zoneInfos.as = true;
+            zone[0].rc = ["Scorpions","Blattes"];
+            zone[0].rb = ["Bourdons","Ojos"];
+            zone[0].ra = ["Androks","Homards"];
         } else if ((zone[0].pf >= 25 || zone[0].edited) && (zone[0].mapDiff >= 7 || zone[0].edited) && zone[3].seed === 5 && zone[9].seed === 1) {
             zoneInfos.type = 'spinne';
             zone[0].type = 'spinne';
             zoneInfos.cb = true;
             zoneInfos.as = true;
+            zone[0].rc = ["Cracheuses","Torches"];
+            zone[0].rb = ["Faucheux","Discoballs"];
         } else if ((zone[0].pm >= 25 || zone[0].edited) && (zone[0].mapDiff >= 5 || zone[0].edited) && zone[3].seed === 6 && zone[9].seed <= 2) {
             zoneInfos.type = 'bigbugs';
             zone[0].type = 'bigbugs';
             zoneInfos.as = true;
+            zone[0].rc = ["Grabbers","Escarbots"];
+            zone[0].rb = ["Spitbugs","Broyeurs"];
+            zone[0].ra = ["Scarabs","Bigheads"];
         } else if ((zone[0].ps+zone[0].pw <= 10 || zone[0].edited) && (zone[0].mapDiff >= 4 || zone[0].edited) && zone[3].seed === 3 && zone[9].seed <= 2) {
             zoneInfos.type = 'ants';
             zone[0].type = 'ants';
             zoneInfos.cb = true;
+            zone[0].rc = ["Cafards","Fourmis"];
+            zone[0].rb = ["Ojos","Skolos"];
+            zone[0].ra = ["Galéodes","Mantes"];
         }
     }
     // Test
@@ -2428,101 +2445,4 @@ function getZoneDomAlien() {
         domAlien = 'bug';
     }
     return domAlien;
-}
-
-function checkRarityByZoneType(unit) {
-    let ztRarity = unit.rarity;
-    if (zoneInfos.type === 'leech') {
-        if (unit.name === 'Sangsues') {
-            ztRarity = 25;
-        } else if (unit.name === 'Megagrubz') {
-            ztRarity = 6;
-        } else {
-            ztRarity = 0;
-        }
-    }
-    if (zoneInfos.type === 'flies') {
-        if (unit.name === 'Asticots') {
-            ztRarity = 24;
-        } else if (unit.name === 'Lombrics') {
-            ztRarity = 10;
-        } else {
-            ztRarity = 0;
-        }
-    }
-    if (zoneInfos.type === 'ants') {
-        if (unit.name === 'Fourmis') {
-            ztRarity = 32;
-        } else if (unit.name === 'Mantes') {
-            ztRarity = 8;
-        } else {
-            ztRarity = 0;
-        }
-    }
-    if (zoneInfos.type === 'roaches') {
-        if (unit.name === 'Cafards') {
-            ztRarity = 25;
-        } else if (unit.name === 'Blattes') {
-            ztRarity = 9;
-        } else if (unit.name === 'Homards') {
-            ztRarity = 7;
-        } else {
-            ztRarity = 0;
-        }
-    }
-    if (zoneInfos.type === 'spinne') {
-        if (unit.name === 'Sournoises') {
-            ztRarity = 22;
-        } else if (unit.name === 'Torches') {
-            ztRarity = 8;
-        } else if (unit.name === 'Uberspinne') {
-            ztRarity = 5;
-        } else {
-            ztRarity = 0;
-        }
-    }
-    if (zoneInfos.type === 'bigbugs') {
-        if (unit.name === 'Escarbots') {
-            ztRarity = 15;
-        } else if (unit.name === 'Broyeurs') {
-            ztRarity = 15;
-        } else if (unit.name === 'Overbugs') {
-            ztRarity = 5;
-        } else {
-            ztRarity = 0;
-        }
-    }
-    if (zoneInfos.surf) {
-        if (unit.kind === 'spider') {
-            if (unit.name === 'Surfeuses') {
-                ztRarity = ztRarity*4;
-            } else if (unit.name === 'Nerveuses' || unit.name === 'Cracheuses' || unit.name === 'Torches') {
-                ztRarity = 0;
-            }
-        }
-    }
-    return ztRarity;
-};
-
-function checkEggKindByZoneType() {
-    let eggKind = '';
-    if (zoneInfos.type === 'leech') {
-        eggKind = 'larve';
-    }
-    if (zoneInfos.type === 'flies') {
-        eggKind = 'larve';
-    }
-    if (zoneInfos.type === 'ants') {
-        eggKind = 'swarm';
-    }
-    if (zoneInfos.type === 'roaches') {
-        eggKind = 'swarm';
-    }
-    if (zoneInfos.type === 'spinne') {
-        eggKind = 'spider';
-    }
-    if (zoneInfos.type === 'bigbugs') {
-        eggKind = 'bug';
-    }
-    return eggKind;
 };

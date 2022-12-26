@@ -199,14 +199,44 @@ function clickLanding(tileId) {
             message = 'Pas d\'atterrissage sur une case occupée par un alien';
         }
     });
-    if (tile.x > 31+landerRange || tile.x < 31-landerRange || tile.y > 31+landerRange || tile.y < 31-landerRange) {
-        batHere = true;
-        message = 'Pas d\'atterrissage à plus de '+landerRange+' cases du centre.';
-    } else {
-        let tileLandingOK = landerLandingOK(tile);
-        if (!tileLandingOK) {
+    let centreLand = true;
+    if (zone[0].cLand != undefined) {
+        if (!zone[0].cLand) {
+            centreLand = false;
+        }
+    }
+    if (centreLand) {
+        if (tile.x > 31+landerRange || tile.x < 31-landerRange || tile.y > 31+landerRange || tile.y < 31-landerRange) {
             batHere = true;
-            message = 'Pas d\'atterrissage sur ce type de terrain.';
+            message = 'Pas d\'atterrissage à plus de '+landerRange+' cases du centre.';
+        } else {
+            let tileLandingOK = landerLandingOK(tile,landerBatType);
+            if (!tileLandingOK) {
+                batHere = true;
+                message = 'Pas d\'atterrissage sur ce type de terrain.';
+            }
+        }
+    } else {
+        if (tile.land) {
+            let tileLandingOK = landerLandingOK(tile,landerBatType);
+            if (!tileLandingOK) {
+                batHere = true;
+                message = 'Pas d\'atterrissage sur ce type de terrain.';
+            }
+        } else if (tile.nav) {
+            if (!landerBatType.skills.includes('rescue')) {
+                batHere = true;
+                message = 'Cette piste ne peut recevoir qu\'une navette de secours.';
+            } else {
+                let tileLandingOK = landerLandingOK(tile,landerBatType);
+                if (!tileLandingOK) {
+                    batHere = true;
+                    message = 'Pas d\'atterrissage sur ce type de terrain.';
+                }
+            }
+        } else {
+            batHere = true;
+            message = 'Pas d\'atterrissage en dehors des pistes.';
         }
     }
     if (!batHere) {
