@@ -10,7 +10,7 @@ function putThisBat(unitId,ammo1,ammo2,armorName,equipName,tileId,citoyens,xp,st
 
 function searchRuins(apCost) {
     let tile = getTile(selectedBat);
-    let ruinType = checkRuinType(tile);
+    let ruinType = checkRuinType(tile,false);
     if (tile.ruins && tile.sh >= 1) {
         console.log('RUINS');
         selectedBat.apLeft = selectedBat.apLeft-apCost;
@@ -56,7 +56,7 @@ function checkRuinsComp(tile) {
         let foundComp = {};
         let compOK = false;
         let compChance = ruinsCompBase;
-        let ruinType = checkRuinType(tile);
+        let ruinType = checkRuinType(tile,false);
         if (ruinType.name === 'Université' || ruinType.name === 'Bibliothèque' || ruinType.name === 'Médiathèque' || ruinType.name === 'Laboratoire' || ruinType.name === 'Centre de recherches') {
             compChance = compChance*5;
         } else {
@@ -751,7 +751,7 @@ function checkResByKind(resKind,coffre,tile,recNum) {
     }
 };
 
-function checkRuinType(tile) {
+function checkRuinType(tile,quiet) {
     let ruinType = {};
     ruinType.name = '';
     ruinType.checks = [];
@@ -972,6 +972,9 @@ function checkRuinType(tile) {
             }
             tile.rt = ruinType;
             tile.rs['Scrap'] = Math.ceil(ruinType.scrap*rand.rand(8,14)/10)+rand.rand(0,9);
+            if (!quiet) {
+                warning(ruinType.name,'Ressources: '+toNiceString(ruinType.checks)+' / Scrap: '+tile.rs['Scrap']);
+            }
         }
     }
     return ruinType;
@@ -985,7 +988,7 @@ function checkRuinsRes(tile) {
         numRuins = 50;
     }
     let resChance = ruinsResBase-(zone[0].mapDiff*3)+15;
-    let ruinType = checkRuinType(tile);
+    let ruinType = checkRuinType(tile,false);
     console.log('resChance: '+resChance);
     if (ruinType.checks.length >= 1) {
         if (rand.rand(1,100) <= resChance) {

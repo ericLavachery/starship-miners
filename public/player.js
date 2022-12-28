@@ -2118,6 +2118,208 @@ function adjStartPack() {
     commandes();
 };
 
+function putStartUnits() {
+    if (isStartZone) {
+        // déterminer le tileId de départ (ruine de mine)
+        let startTileId = -1;
+        zone.forEach(function(tile) {
+            if (tile.land != undefined) {
+                if (tile.land) {
+                    startTileId = tile.id;
+                }
+            }
+        });
+        if (startTileId < 0) {
+            startTileId = 1830;
+        }
+        // centre = start
+        playerInfos.myCenter = startTileId;
+        // liste de bataillons en fonction du niveau de difficulté et du gang
+        let startBatList = getStartBatList();
+        // déterminer le tileId de ce bataillon
+        // 400 xp pour le sous-chef
+        let tileId = startTileId;
+        let unitNum = 0;
+        startBatList.forEach(function(unitName) {
+            unitNum++;
+            let unitXP = rand.rand(0,75);
+            let isChef = false;
+            if (unitName === 'Stalkers' || unitName === 'Chevaliers' || unitName === 'Vapos' || unitName === 'Mutants' || unitName === 'Jumpers' || unitName === 'Dogs' || unitName === 'Adeptes') {
+                unitXP = unitXP+400;
+                isChef = true;
+            }
+            tileId = getStartBatTileId(tileId,unitNum);
+            addStartBat(tileId,unitName,unitXP,isChef);
+        });
+    }
+};
+
+function getStartBatTileId(oldTileId,unitNum) {
+    let newTileId = -1;
+    if (unitNum === 1) {
+        newTileId = oldTileId;
+    } else if (unitNum === 2) {
+        newTileId = oldTileId-60;
+    } else if (unitNum === 3) {
+        newTileId = oldTileId+61;
+    } else if (unitNum === 4) {
+        newTileId = oldTileId+59;
+    } else if (unitNum === 5) {
+        newTileId = oldTileId-61;
+    } else if (unitNum === 6) {
+        newTileId = oldTileId-58;
+    } else if (unitNum === 7) {
+        newTileId = oldTileId+118;
+    } else if (unitNum === 8) {
+        newTileId = oldTileId-120;
+    } else if (unitNum === 9) {
+        newTileId = oldTileId+122;
+    } else if (unitNum === 10) {
+        newTileId = oldTileId+59;
+    } else if (unitNum === 11) {
+        newTileId = oldTileId-118;
+    }
+    return newTileId;
+};
+
+function addStartBat(tileId,unitName,xp,schef) {
+    let unitIndex = unitTypes.findIndex((obj => obj.name === unitName));
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
+    conselTriche = true;
+    if (schef) {
+        putBat(tileId,0,xp,'schef');
+    } else {
+        putBat(tileId,0,xp);
+    }
+}
+
+function getStartBatList() {
+    let startBatList = [];
+    if (playerInfos.gang === 'rednecks') {
+        startBatList.push('Rednecks');
+        startBatList.push('Barmen');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Riders');
+            startBatList.push('Stalkers');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Gangsters');
+            startBatList.push('Buggies');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Pickups');
+            startBatList.push('Sapeurs');
+            startBatList.push('Infirmiers');
+            startBatList.push('Bus');
+        }
+    } else if (playerInfos.gang === 'blades') {
+        startBatList.push('Amazones');
+        startBatList.push('Warriors');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Scalpels');
+            startBatList.push('Chevaliers');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Raiders');
+            startBatList.push('Amazones');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Piquiers');
+            startBatList.push('Reapers');
+            startBatList.push('Bus');
+        }
+    } else if (playerInfos.gang === 'bulbos') {
+        startBatList.push('Shooters');
+        startBatList.push('Cyborgs');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Toubibs');
+            startBatList.push('Vapos');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Shooters');
+            startBatList.push('The Box');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Shooters');
+            startBatList.push('Détenus');
+            startBatList.push('Sapeurs');
+            startBatList.push('Drones');
+            startBatList.push('Bus');
+        }
+    } else if (playerInfos.gang === 'drogmulojs') {
+        startBatList.push('Toxs');
+        startBatList.push('Blastoxs');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Dealers');
+            startBatList.push('Mutants');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Krimulos');
+            startBatList.push('Bugmen');
+            startBatList.push('Choufs');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Toxs');
+            startBatList.push('Tacots');
+            startBatList.push('Bus');
+        }
+    } else if (playerInfos.gang === 'tiradores') {
+        startBatList.push('Pistoleros');
+        startBatList.push('Gunners');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Cazadores');
+            startBatList.push('Jumpers');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Desperados');
+            startBatList.push('Amigos');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Douilles');
+            startBatList.push('Infirmiers');
+            startBatList.push('Bus');
+        }
+    } else if (playerInfos.gang === 'detruas') {
+        startBatList.push('Snowballs');
+        startBatList.push('Bombastiks');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Lovushkas');
+            startBatList.push('Dogs');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Sinyaki');
+            startBatList.push('Bombastiks');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Rainmen');
+            startBatList.push('Tacots');
+            startBatList.push('Infirmiers');
+            startBatList.push('Bus');
+        }
+    } else if (playerInfos.gang === 'brasier') {
+        startBatList.push('Blocks');
+        startBatList.push('Slings');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Hot girls');
+            startBatList.push('Adeptes');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Blocks');
+            startBatList.push('Warcars');
+            startBatList.push('Pompistes');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Hot girls');
+            startBatList.push('Tôlards');
+            startBatList.push('Tacots');
+            startBatList.push('Bus');
+        }
+    }
+    return startBatList;
+};
+
 function addStartPack() {
     addFreeBat(1830,'Soute');
     // addFreeBat(1770,'Stocks');
@@ -2211,7 +2413,7 @@ function addStartPack() {
     addFreeBat(2136,'Isolation');
     // Ajouter les Citoyens
     let soute = getSoute();
-    let thePeople = 2076+(rand.rand(6,10)*6);
+    let thePeople = 1668+(30*(4-playerInfos.gMode))+(rand.rand(6,10)*6);
     let theMafia = rand.rand(12,20)*6;
     thePeople = thePeople-theMafia;
     let unitIndex = unitTypes.findIndex((obj => obj.name === 'Citoyens'));

@@ -890,7 +890,7 @@ function showTileInfos(tileId) {
     selectedTile = tileId;
     let tileIndex = zone.findIndex((obj => obj.id == tileId));
     let tile = zone[tileIndex];
-    let ruinType = checkRuinType(tile);
+    let ruinType = checkRuinType(tile,false);
     let terrainIndex = terrainTypes.findIndex((obj => obj.name == tile.terrain));
     let terrain = terrainTypes[terrainIndex];
     let potable = checkPotable(zone,tile.id);

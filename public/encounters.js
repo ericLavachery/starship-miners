@@ -1774,12 +1774,20 @@ function nomoveOut(myBat) {
 }
 
 function removeNoMoves(myBat) {
-    if (myBat.type != 'Silo') {
-        bataillons.forEach(function(bat) {
-            if (bat.tags.includes('nomove')) {
-                tagDelete(bat,'nomove');
-            }
-        });
+    let nevMove = false;
+    if (zone[0].neverMove != undefined) {
+        if (zone[0].neverMove) {
+            nevMove = true;
+        }
+    }
+    if (!nevMove) {
+        if (myBat.type != 'Silo') {
+            bataillons.forEach(function(bat) {
+                if (bat.tags.includes('nomove')) {
+                    tagDelete(bat,'nomove');
+                }
+            });
+        }
     }
 }
 

@@ -292,10 +292,14 @@ function showRes(tileId) {
         mapIndicators = mapIndicators+'</div>';
     }
     if (tile.ruins) {
+        let ruinType = 'Ruines';
+        if (tile.rt != undefined) {
+            ruinType = tile.rt.name;
+        }
         if (tile.sh === -1) {
-            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/ruinsf.png"></div>';
+            mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType+'"><img src="/static/img/units/ruinsf.png"></div>';
         } else {
-            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/ruins.png"></div>';
+            mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType+'"><img src="/static/img/units/ruins.png"></div>';
         }
     }
     if (tile.infra === 'Miradors' && view) {

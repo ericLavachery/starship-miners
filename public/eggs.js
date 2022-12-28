@@ -77,6 +77,8 @@ function checkStartingAliens() {
     }
     // Encounters
     encounterCheck();
+    // Starting Units
+    putStartUnits();
     // Gibier
     letsHunt(true);
 };
@@ -161,6 +163,13 @@ function checkMaxDroppedEggs() {
             overLimit = overLimit+Math.ceil(((playerInfos.mapTurn*3)-aliens.length)/6);
         }
         maxDroppedEggs = maxDroppedEggs+overLimit;
+    }
+    if (playerInfos.mapTurn < 25+playerInfos.randSeed) {
+        if (zone[0].noEggs != undefined) {
+            if (zone[0].noEggs) {
+                maxDroppedEggs = 0;
+            }
+        }
     }
     console.log('droppedEggs='+playerInfos.droppedEggs);
     console.log('maxDroppedEggs='+maxDroppedEggs);
@@ -752,6 +761,16 @@ function eggDropTile(eggName,theArea) {
     }
     if (area === 'encounter' && encounterTileId < 0) {
         area = 'nedge';
+    }
+    // Mission coverEggs
+    if (playerInfos.mapTurn < 26+playerInfos.randSeed) {
+        if (eggName === 'Coque' || eggName.includes('Oeuf')) {
+            if (zone[0].coverEggs != undefined) {
+                if (zone[0].coverEggs) {
+                    area = 'acouvert';
+                }
+            }
+        }
     }
     // ANY
     if (area === 'any') {

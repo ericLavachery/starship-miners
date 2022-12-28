@@ -78,9 +78,9 @@ function mapEditWindow() {
     }
     $('#conUnitList').append('<span class="constName"><span class="gf">Gibier</span> : <span class="cy klik" onclick="checkGibier()" title="Checker le type de gibier">'+theGame.game+'</span> <span class="bleu" title="Chance/Max">('+theGame.chance+'/'+theGame.max+')</span></span><br>');
     mpedOption('cLand','Atterrissage au centre possible également','Landing centre','Atterrissage uniquement aux points marqués','Landing points');
-    mpedOption('neverMove','Les bataillons avec un tag nomove peuvent également bouger dès qu\'un bâtiment (avec un tag nomove) est détruit','Tag nomove normal','Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints','Never move');
+    mpedOption('neverMove','Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints','Never move','Les bataillons avec un tag nomove peuvent également bouger dès qu\'un bâtiment (avec un tag nomove) est détruit','Tag nomove normal');
     mpedOption('noEggs','Aucun oeuf ne tombe','Sans Oeufs','Des oeufs tombent','Avec Oeufs');
-    mpedOption('coverEggs','Les oeufs tombent normalement','Oeufs partout','Les oeufs tombent toujours à couvert (près d\'une ruche, volcan ou colonie)','Oeufs à couvert');
+    mpedOption('coverEggs','Les oeufs tombent toujours à couvert (près d\'une ruche, volcan ou colonie)','Oeufs à couvert','Les oeufs tombent normalement','Oeufs partout');
     $('#conUnitList').append('<span class="constName"><span class="gf">Zone spéciale?</span> : <span class="cy klik" onclick="zoneTypeToggle(`'+zoneInfos.type+'`)" title="Changer le type de zone">'+zoneInfos.type+'</span></span><br>');
     if (zoneInfos.type === 'normal') {
         eggsByTerrain('plaines',zone[0].pKind);
@@ -354,28 +354,44 @@ function xKindToggle(myTer,eggType) {
 };
 
 function mapResAddList() {
+    let planet = zone[0].planet;
     let sortedResTypes = _.sortBy(resTypes,'name');
     sortedResTypes.forEach(function(res) {
-        if (res.cat === 'white' || (res.cat.includes('sky') && mped.sinf === 'RareRes')) {
-            let resIcon = getResIcon(res);
-            let dispoRes = theTileRes[res.name];
-            if (dispoRes === undefined) {
-                dispoRes = 0;
+        if (res.cat === 'white' || ((res.cat.includes('sky') || res.cat.includes('blue')) && mped.sinf === 'RareRes')) {
+            let planetOK = true;
+            if (res.planets != undefined) {
+                if (res.planets[planet] === 0) {
+                    planetOK = false;
+                }
             }
-            if (dispoRes < 0) {
-                dispoRes = 0;
+            if (planetOK) {
+                let resIcon = getResIcon(res);
+                let dispoRes = theTileRes[res.name];
+                if (dispoRes === undefined) {
+                    dispoRes = 0;
+                }
+                if (dispoRes < 0) {
+                    dispoRes = 0;
+                }
+                $('#conUnitList').append('<span class="paramResName klik" onclick="mapResAdd(`'+res.name+'`)">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><br>');
             }
-            $('#conUnitList').append('<span class="paramResName klik" onclick="mapResAdd(`'+res.name+'`)">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><br>');
         }
     });
     console.log(theTileRes);
 };
 
 function batResAddList() {
+    let planet = zone[0].planet;
     let sortedResTypes = _.sortBy(resTypes,'name');
     sortedResTypes.forEach(function(res) {
         if (res.cat === 'white' || res.cat === 'zero' || res.cat === 'transfo' || res.cat.includes('sky') || res.cat.includes('blue')) {
             if (res.name != 'Magma') {
+                let planetOK = true;
+                if (res.planets != undefined) {
+                    if (res.planets[planet] === 0) {
+                        planetOK = false;
+                    }
+                }
                 let resIcon = getResIcon(res);
                 let dispoRes = theBatRes[res.name];
                 if (dispoRes === undefined) {
@@ -384,7 +400,11 @@ function batResAddList() {
                 if (dispoRes < 0) {
                     dispoRes = 0;
                 }
-                $('#conUnitList').append('<span class="paramResName klik" onclick="batResAdd(`'+res.name+'`)">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><br>');
+                if (planetOK) {
+                    $('#conUnitList').append('<span class="paramResName klik" onclick="batResAdd(`'+res.name+'`)">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><br>');
+                } else {
+                    $('#conUnitList').append('<span class="paramResName gff klik" title="Attention: Ressource normalement non présente sur cette planête!" onclick="batResAdd(`'+res.name+'`)">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><br>');
+                }
             }
         }
     });
@@ -393,6 +413,12 @@ function batResAddList() {
 
 function clickEdit(tileId) {
     let tile = zone[tileId];
+    let bord = false;
+    if (tile.x >= 4 && tile.y >= 4 && tile.x <= 57 && tile.y <= 57) {
+        // OK
+    } else {
+        bord = true;
+    }
     if (mped.sinf != '') {
         if (mped.sinf === 'Ruines vides') {
             if (!tile.ruins) {
@@ -401,10 +427,13 @@ function clickEdit(tileId) {
                 tile.rd = true;
                 delete tile.infra;
                 addScrapToRuins(tile);
+                washReports(true);
+                checkRuinType(tile,false);
             } else {
                 delete tile.ruins;
                 delete tile.sh;
                 delete tile.rd;
+                delete tile.rt;
             }
         } else if (mped.sinf === 'Ruines') {
             if (!tile.ruins) {
@@ -413,10 +442,13 @@ function clickEdit(tileId) {
                 tile.rd = true;
                 delete tile.infra;
                 addScrapToRuins(tile);
+                washReports(true);
+                checkRuinType(tile,false);
             } else {
                 delete tile.ruins;
                 delete tile.sh;
                 delete tile.rd;
+                delete tile.rt;
             }
         } else if (mped.sinf === 'Route') {
             if (!tile.rd) {
@@ -455,22 +487,30 @@ function clickEdit(tileId) {
         } else if (mped.sinf === 'Bleed') {
             bleedBat(tile);
         } else if (mped.sinf === 'Lander') {
-            if (tile.land === undefined) {
-                tile.land = true;
-                if (tile.nav != undefined) {
-                    delete tile.nav;
-                }
-            } else {
-                delete tile.land;
-            }
-        } else if (mped.sinf === 'Navette') {
-            if (tile.nav === undefined) {
-                tile.nav = true;
-                if (tile.land != undefined) {
+            if (!bord) {
+                if (tile.land === undefined) {
+                    tile.land = true;
+                    if (tile.nav != undefined) {
+                        delete tile.nav;
+                    }
+                } else {
                     delete tile.land;
                 }
             } else {
-                delete tile.nav;
+                warning('Achtung!','Trop près du bord de la carte.');
+            }
+        } else if (mped.sinf === 'Navette') {
+            if (!bord) {
+                if (tile.nav === undefined) {
+                    tile.nav = true;
+                    if (tile.land != undefined) {
+                        delete tile.land;
+                    }
+                } else {
+                    delete tile.nav;
+                }
+            } else {
+                warning('Achtung!','Trop près du bord de la carte.');
             }
         } else {
             if (tile.infra != mped.sinf) {

@@ -25,6 +25,7 @@
     "sound":"calibre_shotgun",
     "ammo":["standard","scrap","snake","incendiaire","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
 },
+=(AZ2*$AX2)+(AZ3*$AX3)+(AZ4*$AX4)+(AZ5*$AX5)+(AZ6*$AX6)+(AZ7*$AX7)+(AZ8*$AX8)+(AZ9*$AX9)+(AZ10*$AX10)+(AZ11*$AX11)+(AZ12*$AX12)
 autre son
 rof 1/2
 seconde arme tir à 1+1 (accuracy 10) noFly
@@ -229,7 +230,7 @@ Carbone
 Silicium
 Cuivre
 Calcium
-Zinc
+APinc
 Phosphore
 Soufre
 Nickel

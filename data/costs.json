@@ -2115,6 +2115,15 @@
         "slots":0
     },
     {
+        "id":301,
+        "name":"Autobunkers",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Station"],
+        "costs":{},
+        "fabTime":200,
+        "slots":0
+    },
+    {
         "id":129,
         "name":"Squash",
         "levels":{"rednecks":99,"blades":99,"bulbos":15,"drogmulojs":99,"tiradores":99,"detruas":14,"brasier":99},
