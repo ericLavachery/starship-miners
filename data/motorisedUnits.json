@@ -3353,7 +3353,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["b_light","maycamo","transport","fret","hardmove","dumper","badcrewsave","recupcit","nocrime","recupres","nochef","lveh"],
+        "skills":["b_light","maycamo","transport","fret","hardmove","dumper","badcrewsave","recupcit","nocrime","recupres","nochef","lveh","nofight"],
         "mecanoCost":16,
         "transMaxSize":4,
         "transUnits":460,

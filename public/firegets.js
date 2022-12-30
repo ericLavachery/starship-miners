@@ -622,38 +622,40 @@ function addBodies(bat,batType,cits) {
 };
 
 function newAlienKilled(batType,tileId) {
-    playerInfos.knownAliens.push(batType.name);
-    if (batType.class != 'C') {
-        playerInfos.gangXP = playerInfos.gangXP+batType.killXP;
-        if (batType.class === 'A' || batType.class === 'S' || batType.class === 'X') {
+    if (!isStartZone) {
+        playerInfos.knownAliens.push(batType.name);
+        if (batType.class != 'C') {
             playerInfos.gangXP = playerInfos.gangXP+batType.killXP;
-        }
-    }
-    let xpBonus = batType.killXP;
-    xpBonus = Math.floor(xpBonus*(playerInfos.comp.train+2)/4);
-    if (xpBonus >= 1) {
-        if (Object.keys(selectedBat).length >= 1) {
-            if (selectedBat.team === 'player') {
-                if (!selectedBatType.skills.includes('robot') || selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
-                    selectedBat.xp = selectedBat.xp+xpBonus;
-                    selectedBatArrayUpdate();
-                }
+            if (batType.class === 'A' || batType.class === 'S' || batType.class === 'X') {
+                playerInfos.gangXP = playerInfos.gangXP+batType.killXP;
             }
         }
-        bataillons.forEach(function(bat) {
-            if (bat.loc === "zone" || bat.loc === "trans") {
-                let distance = calcDistance(tileId,bat.tileId);
-                let batType = getBatType(bat);
-                if (distance <= 4 || xpBonus >= 25) {
-                    if (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
-                        bat.xp = bat.xp+xpBonus;
+        let xpBonus = batType.killXP;
+        xpBonus = Math.floor(xpBonus*(playerInfos.comp.train+2)/4);
+        if (xpBonus >= 1) {
+            if (Object.keys(selectedBat).length >= 1) {
+                if (selectedBat.team === 'player') {
+                    if (!selectedBatType.skills.includes('robot') || selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
+                        selectedBat.xp = selectedBat.xp+xpBonus;
+                        selectedBatArrayUpdate();
                     }
                 }
             }
-        });
-        warning('Alien inconnu tué : '+batType.name,'Toutes vos unités dans la zone ont gagné '+xpBonus+' points d\'expérience');
-    } else {
-        warning('Alien inconnu tué : '+batType.name,'');
+            bataillons.forEach(function(bat) {
+                if (bat.loc === "zone" || bat.loc === "trans") {
+                    let distance = calcDistance(tileId,bat.tileId);
+                    let batType = getBatType(bat);
+                    if (distance <= 4 || xpBonus >= 25) {
+                        if (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                            bat.xp = bat.xp+xpBonus;
+                        }
+                    }
+                }
+            });
+            warning('Alien inconnu tué : '+batType.name,'Toutes vos unités dans la zone ont gagné '+xpBonus+' points d\'expérience');
+        } else {
+            warning('Alien inconnu tué : '+batType.name,'');
+        }
     }
 };
 

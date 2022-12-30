@@ -500,7 +500,6 @@ io.sockets.on('connection', function (socket, pseudo) {
             console.log('Map saved to '+mapname);
         });
     });
-
     // Save Aliens as !!!
     socket.on('save-aliens-as', function(aliens) {
         let json = JSON.stringify(aliens[0]);
@@ -510,7 +509,6 @@ io.sockets.on('connection', function (socket, pseudo) {
             console.log('Aliens saved to '+filename);
         });
     });
-
     // Save Bataillons as !!!
     socket.on('save-bataillons-as', function(bataillons) {
         let json = JSON.stringify(bataillons[0]);
@@ -519,6 +517,57 @@ io.sockets.on('connection', function (socket, pseudo) {
             if (err) throw err;
             console.log('Bataillons saved to '+filename);
         });
+    });
+
+    // Save zone from MAP EDITOR
+    socket.on('save-edited-map', function(wholeMap) {
+        let zone = wholeMap[0];
+        let missionNum = zone[0].number;
+        if (missionNum >= 50 && missionNum <= 99) {
+            let dir = './data/players/Missions';
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
+            dir = './data/players/Missions/'+missionNum;
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
+            let jsonmap = JSON.stringify(zone);
+            let mapname = socket.pseudo+'-currentMap.json';
+            fs.writeFile('./data/players/Missions/'+missionNum+'/'+mapname, jsonmap, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Map saved to Missions/'+missionNum+'/'+mapname);
+            });
+            mapname = 'Mission-map'+missionNum+'.json';
+            fs.writeFile('./data/players/Missions/'+mapname, jsonmap, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Map saved to Missions/'+mapname);
+            });
+            let bataillons = wholeMap[1];
+            let jsonbat = JSON.stringify(bataillons);
+            let batsname = socket.pseudo+'-bataillons.json';
+            fs.writeFile('./data/players/Missions/'+missionNum+'/'+batsname, jsonbat, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Bataillons saved to Missions/'+missionNum+'/'+batsname);
+            });
+            batsname = 'Mission-bataillons'+missionNum+'.json';
+            fs.writeFile('./data/players/Missions/'+batsname, jsonbat, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Bataillons saved to Missions/'+batsname);
+            });
+            let aliens = wholeMap[2];
+            let jsonbug = JSON.stringify(aliens);
+            let bugsname = socket.pseudo+'-aliens.json';
+            fs.writeFile('./data/players/Missions/'+missionNum+'/'+bugsname, jsonbug, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Aliens saved to Missions/'+missionNum+'/'+bugsname);
+            });
+            bugsname = 'Mission-aliens'+missionNum+'.json';
+            fs.writeFile('./data/players/Missions/'+bugsname, jsonbug, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Aliens saved to Missions/'+bugsname);
+            });
+        }
     });
 
     // Save zone
@@ -530,7 +579,6 @@ io.sockets.on('connection', function (socket, pseudo) {
             console.log('Map saved to '+mapname);
         });
     });
-
     // Save Bataillons
     socket.on('save-bataillons', function(bataillons) {
         let json = JSON.stringify(bataillons);
@@ -540,7 +588,6 @@ io.sockets.on('connection', function (socket, pseudo) {
             console.log('Bataillons saved to '+filename);
         });
     });
-
     // Save Aliens
     socket.on('save-aliens', function(aliens) {
         let json = JSON.stringify(aliens);
@@ -550,7 +597,6 @@ io.sockets.on('connection', function (socket, pseudo) {
             console.log('Aliens saved to '+filename);
         });
     });
-
     // Save playerInfos
     socket.on('save-playerInfos', function(playerInfos) {
         let json = JSON.stringify(playerInfos);

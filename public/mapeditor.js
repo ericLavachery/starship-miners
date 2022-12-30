@@ -9,6 +9,20 @@ function mapEditWindow() {
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<h1>MAP EDITOR</h1><br>');
+    // map number
+    $('#conUnitList').append('<select class="boutonGris" id="mapNumber" onchange="mapNumAssign(`mapNumber`)"></select>');
+    $('#mapNumber').append('<option value="100" selected>Zone n°??</option>');
+    let mapNum = 50;
+    while (mapNum <= 99) {
+        if (zone[0].number === mapNum) {
+            $('#mapNumber').append('<option value="'+mapNum+'" selected>Zone n°'+mapNum+'</option>');
+        } else {
+            $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+'</option>');
+        }
+        if (mapNum >= 99) {break;}
+        mapNum++
+    }
+    $('#conUnitList').append('<br>');
     $('#conUnitList').append('<br>');
     // Terrains
     let mbClass = 'mapedBut';
@@ -38,20 +52,21 @@ function mapEditWindow() {
     selectStuff('Ruines','ruins','Ruines');
     selectStuff('Ruines vides','ruinsf','Ruines vides');
     selectStuff('Route','roads','Route (ou Pont)');
+    selectStuff('Toile','webIcon','Toile (Canon Web)');
+    // Landing
+    selectStuff('Lander','lander','Point d\'atterrissage lander (ou navette)');
+    selectStuff('Navette','navette','Point d\'atterrissage navette seulemment');
     // Ressources
     selectStuff('Res','res','Mettre des ressources sur le terrain');
     selectStuff('RareRes','rareres','Mettre des ressources rares sur le terrain');
     selectStuff('NoRes','nores','Supprimer les ressources du terrain');
-    // Tags
-    selectStuff('Garde','alienPDM','Garde alien (va rester dans le périmètre)');
-    selectStuff('NoMove','batNoMove','Bataillon immobilisé');
-    selectStuff('Outsider','batOutsider','Bataillon outsider');
-    selectStuff('Bleed','bleed','Blesser le bataillon');
     selectStuff('BatRes','batres','Mettre des ressources dans le bataillon');
-    selectStuff('Toile','web1','Toile (Canon Web)');
-    // Landing
-    selectStuff('Lander','lander','Point d\'atterrissage lander (ou navette)');
-    selectStuff('Navette','navette','Point d\'atterrissage navette seulemment');
+    // Tags
+    selectStuff('NoMove','batNoMove2','Bataillon immobilisé (non contrôlé par le joueur)');
+    selectStuff('Outsider','batOutsider2','Bataillon outsider (si démantelé, pourrait donner des criminels)');
+    selectStuff('NoPrefab','bldNoPrefab2','Ne peut pas être déconstruit (démantèlement seulement / personnel réduit)');
+    selectStuff('Bleed','bleed','Blesser le bataillon');
+    selectStuff('Garde','alienPDM2','Garde alien (va rester dans le périmètre)');
     // End
     $('#conUnitList').append('<br><br>');
     if (mped.sinf === 'RareRes' || mped.sinf === 'Res') {
@@ -91,6 +106,14 @@ function mapEditWindow() {
 };
 
 // {"number":3,"visit":true}
+
+function mapNumAssign(dropMenuId) {
+    let mapNum = document.getElementById(dropMenuId).value;
+    if (mapNum != 100) {
+        zone[0].number = +mapNum;
+    }
+    mapEditWindow();
+};
 
 function diffToggle() {
     zone[0].mapDiff = zone[0].mapDiff+1;
@@ -484,6 +507,8 @@ function clickEdit(tileId) {
             addTagToBatOnTile(tile,'nomove');
         } else if (mped.sinf === 'Outsider') {
             addTagToBatOnTile(tile,'outsider');
+        } else if (mped.sinf === 'NoPrefab') {
+            addTagToBatOnTile(tile,'noprefab');
         } else if (mped.sinf === 'Bleed') {
             bleedBat(tile);
         } else if (mped.sinf === 'Lander') {
@@ -569,10 +594,13 @@ function fixAlienPDM(tile) {
 
 function addTagToBatOnTile(tile,tag) {
     let bat = getBatByTileId(tile.id);
-    if (!bat.tags.includes(tag)) {
-        bat.tags.push(tag);
-    } else {
-        tagDelete(bat,tag);
+    let batType = getBatType(bat);
+    if (tag != 'noprefab' || batType.skills.includes('prefab')) {
+        if (!bat.tags.includes(tag)) {
+            bat.tags.push(tag);
+        } else {
+            tagDelete(bat,tag);
+        }
     }
 };
 

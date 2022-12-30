@@ -51,6 +51,7 @@ function editMode() {
     mped = {};
     mped.as = false;
     mped.sinf = '';
+    // showMap(zone,false);
     batUnselect();
     mapEditWindow();
 };

@@ -299,7 +299,11 @@ function skillsInfos(bat,batType,near) {
                 $('#unitInfos').append('<button type="button" title="Mode furtif ('+apReq+' PA requis)" class="'+bouton+' iconButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else if (bat.fuzz <= -2) {
-                $('#unitInfos').append('<button type="button" title="Sortir du mode furtif" class="'+boutonNope+' iconButtons '+colorNope+'" onclick="camoOut()"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>');
+                if (bat.tags.includes('nomove')) {
+                    $('#unitInfos').append('<button type="button" title="" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>');
+                } else {
+                    $('#unitInfos').append('<button type="button" title="Sortir du mode furtif" class="'+boutonNope+' iconButtons '+colorNope+'" onclick="camoOut()"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>');
+                }
                 lineBreak = true;
             } else {
                 if (!camoufOK) {
@@ -310,14 +314,14 @@ function skillsInfos(bat,batType,near) {
                 $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGris iconButtons '+colorNope+'"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             }
-            if (bat.tags.includes('camo') && bat.fuzz >= -1) {
+            if (bat.tags.includes('camo') && bat.fuzz >= -1 && !bat.tags.includes('nomove')) {
                 $('#unitInfos').append('<button type="button" title="Sortir du mode furtif" class="boutonGris iconButtons" onclick="camoOut()"><i class="fas fa-shoe-prints"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             }
         }
     }
     // PASSAGE SECRET
-    if (batType.size <= 9 && batType.cat === 'infantry') {
+    if (batType.size <= 9 && batType.cat === 'infantry' && !batType.skills.includes('moto')) {
         if (tile.infra === 'Terriers') {
             let secretPass = checkSecretPass(bat);
             if (secretPass.ok) {

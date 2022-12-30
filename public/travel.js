@@ -165,13 +165,15 @@ function landingList() {
                 saveMap();
                 // console.log('done!');
             }
-            let presAlienDice = rand.rand(1,12);
-            if (zone[0].planet === 'Gehenna') {
-                zone[0].mapDiff = zone[0].mapDiff+1;
-            } else if (presAlienDice <= 2 && zone[0].mapDiff <= 8 && zone[0].mapDiff >= 2) {
-                zone[0].mapDiff = zone[0].mapDiff+1;
-            } else if (presAlienDice >= 11 && zone[0].mapDiff >= 2) {
-                zone[0].mapDiff = zone[0].mapDiff-1;
+            if (!zone[0].edited) {
+                let presAlienDice = rand.rand(1,12);
+                if (zone[0].planet === 'Gehenna') {
+                    zone[0].mapDiff = zone[0].mapDiff+1;
+                } else if (presAlienDice <= 2 && zone[0].mapDiff <= 8 && zone[0].mapDiff >= 2) {
+                    zone[0].mapDiff = zone[0].mapDiff+1;
+                } else if (presAlienDice >= 11 && zone[0].mapDiff >= 2) {
+                    zone[0].mapDiff = zone[0].mapDiff-1;
+                }
             }
             checkCanon();
             showMap(zone,true);

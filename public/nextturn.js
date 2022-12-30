@@ -831,6 +831,7 @@ function turnInfo() {
     let nPil = 0;
     let nDom = 0;
     domeProtect = false;
+    hasOwnLander = false;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo')) {
@@ -874,8 +875,13 @@ function turnInfo() {
             if (bat.type === 'Scraptrucks') {
                 hasScraptruck = true;
             }
-            if (batType.skills.includes('transorbital') && bat.eq != 'siland') {
-                landingNoise = landingNoise+Math.floor(batType.hp/75*batType.fuzz*batType.fuzz/25)+2;
+            if (batType.skills.includes('transorbital')) {
+                if (bat.eq != 'siland') {
+                    landingNoise = landingNoise+Math.floor(batType.hp/75*batType.fuzz*batType.fuzz/25)+2;
+                }
+                if (playerInfos.onShip || bat.tags.includes('deploy')) {
+                    hasOwnLander = true;
+                }
             }
             if (zone[0].dark) {
                 if (batType.skills.includes('phare') || batType.skills.includes('bigflash') || bat.eq === 'e-phare' || bat.logeq === 'e-phare' || batType.skills.includes('radar') || bat.eq === 'e-radar' || bat.logeq === 'e-radar') {

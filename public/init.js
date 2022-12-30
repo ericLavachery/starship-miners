@@ -445,7 +445,7 @@ socket.on('zoneFiles-Load', function(zf) {
 socket.on('savedZone-Load', function(newZone) {
     zone = newZone[0];
     bataillons = newZone[1];
-    if (zone[0].number >= 50 && playerInfos.pseudo != 'Mapedit') {
+    if (zone[0].edited && playerInfos.pseudo != 'Mapedit') {
         idRepair();
     }
     createBatList();

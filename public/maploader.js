@@ -546,6 +546,9 @@ function showBataillon(bat) {
         if (bat.tags.includes('nomove')) {
             tagz = tagz+' (nomove)';
         }
+        if (bat.tags.includes('noprefab')) {
+            tagz = tagz+' (noprefab)';
+        }
     }
     if (!modeSonde) {
         $('#b'+bat.tileId).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+tagz+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);

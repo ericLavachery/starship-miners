@@ -184,13 +184,6 @@ function gangEdit() {
         if (i > 25) {break;}
         i++
     }
-    // BARBS
-    // $('#conUnitList').append('<br><span class="shSpace"></span><br>');
-    // if (playerInfos.stopBarbs) {
-    //     $('#conUnitList').append('<button type="button" title="Ne pas stopper pour les barbelés" class="boutonGris skillButtons" onclick="changeBarbs(false)"><i class="ra ra-crown-of-thorns rpg"></i> stop</button>');
-    // } else {
-    //     $('#conUnitList').append('<button type="button" title="Stopper pour les barbelés" class="boutonGris skillButtons" onclick="changeBarbs(true)"><i class="ra ra-crown-of-thorns rpg"></i> no stop</button>');
-    // }
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     let maxGangComp = maxGangCompCosts();
     $('#conUnitList').append('<span class="constName">Max Compétences : '+toNiceString(maxGangComp)+'</span>');
@@ -200,11 +193,6 @@ function gangEdit() {
     $('#conUnitList').append('<br><span class="shSpace"></span><br>');
     let totalGangComp = getTotalCompCosts();
     $('#conUnitList').append('<span class="constName">Total Compétences : '+toNiceString(totalGangComp)+'</span>');
-    // dark
-    // $('#conUnitList').append('<select class="boutonGris" id="theDark" onchange="changePlayerInfo(`theDark`,`dark`)"></select>');
-    // $('#theDark').empty().append('<option value="false">Type de Zone</option>');
-    // $('#theDark').append('<option value="false">Normale</option>');
-    // $('#theDark').append('<option value="true">Sombre</option>');
     $("#conUnitList").animate({scrollTop:0},"fast");
     showEquip();
 };
@@ -301,20 +289,37 @@ function changePlayerInfo(dropMenuId,infoName,from) {
     }
     console.log(infoName);
     console.log(from);
-    if (infoName === 'gang' && from === 'gangChoice') {
-        playerInfos.gangDef = true;
-        // savePlayerInfos();
-        conOut(true);
+    if (from === 'gangChoice') {
+        if (infoName === 'gang') {
+            playerInfos.gangDef = true;
+            if (playerInfos.gang === undefined) {
+                playerInfos.gMode = 'rednecks';
+            }
+            if (playerInfos.gMode === undefined) {
+                playerInfos.gMode = 2;
+            } else {
+                if (playerInfos.gMode < 1 || playerInfos.gMode > 4) {
+                    playerInfos.gMode = 2;
+                }
+            }
+            if (playerInfos.missionZone === undefined) {
+                playerInfos.missionZone = 97;
+            } else {
+                if (playerInfos.missionZone < 90) {
+                    playerInfos.missionZone = 97;
+                }
+            }
+            moveMissionZone(playerInfos.missionZone);
+            conOut(true);
+            commandes();
+        }
+    } else if (from === 'sonde') {
+        editSonde();
         commandes();
     } else {
-        if (from === 'sonde') {
-            editSonde();
-            commandes();
-        } else {
-            maxGangCompCosts();
-            gangNavig();
-            gangEdit();
-        }
+        maxGangCompCosts();
+        gangNavig();
+        gangEdit();
     }
 };
 
@@ -2186,7 +2191,8 @@ function addStartBat(tileId,unitName,xp,schef) {
     let unitIndex = unitTypes.findIndex((obj => obj.name === unitName));
     conselUnit = unitTypes[unitIndex];
     conselPut = false;
-    conselAmmos = ['xxx','xxx','xxx','xxx'];
+    // conselAmmos = ['xxx','xxx','xxx','xxx'];
+    conselAmmos = startBatGear(conselUnit);
     conselTriche = true;
     if (schef) {
         putBat(tileId,0,xp,'schef');
@@ -2194,6 +2200,260 @@ function addStartBat(tileId,unitName,xp,schef) {
         putBat(tileId,0,xp);
     }
 }
+
+function startBatGear(unit) {
+    // console.log('STARTBAT GEAR');
+    let gear = ['xxx','xxx','scrap','xxx'];
+    let gearChance = 1;
+    if (unit.skills.includes('souschef')) {
+        gearChance = 2;
+    }
+    if (unit.weapon.rof >= 1) {
+        // console.log('has w1');
+        if (unit.weapon.ammo.includes('club-acier') && rand.rand(1,2) <= gearChance) {
+            gear[0] = 'club-acier';
+        }
+        if (playerInfos.comp.bal >= 1) {
+            if (unit.weapon.ammo.includes('perfo')) {
+                gear[0] = 'perfo';
+            }
+            if (unit.weapon.ammo.includes('sm-perfo') && rand.rand(1,2) <= gearChance) {
+                gear[0] = 'sm-perfo';
+            }
+            if (unit.weapon.ammo.includes('tungsten') && rand.rand(1,4) <= gearChance) {
+                gear[0] = 'tungsten';
+            }
+            if (unit.weapon.ammo.includes('sm-tungsten') && rand.rand(1,4) <= gearChance) {
+                gear[0] = 'sm-tungsten';
+            }
+            if (unit.weapon.ammo.includes('ac-tungsten') && rand.rand(1,4) <= gearChance) {
+                gear[0] = 'ac-tungsten';
+            }
+            if (playerInfos.comp.explo >= 2) {
+                if (unit.weapon.ammo.includes('explosive') && rand.rand(1,2) <= gearChance) {
+                    gear[0] = 'explosive';
+                }
+                if (unit.weapon.ammo.includes('ac-explosive') && rand.rand(1,2) <= gearChance) {
+                    gear[0] = 'ac-explosive';
+                }
+                if (unit.weapon.ammo.includes('sm-explosive') && rand.rand(1,2) <= gearChance) {
+                    gear[0] = 'sm-explosive';
+                }
+            }
+        }
+        if (playerInfos.comp.bal >= 2) {
+            if (unit.weapon.ammo.includes('tungsten') && rand.rand(1,2) <= gearChance) {
+                gear[0] = 'tungsten';
+            }
+            if (unit.weapon.ammo.includes('sm-tungsten') && rand.rand(1,2) <= gearChance) {
+                gear[0] = 'sm-tungsten';
+            }
+            if (unit.weapon.ammo.includes('ac-tungsten') && rand.rand(1,2) <= gearChance) {
+                gear[0] = 'ac-tungsten';
+            }
+            if (playerInfos.comp.tri >= 3) {
+                if (unit.weapon.ammo.includes('snake') && rand.rand(1,2) <= gearChance) {
+                    gear[0] = 'snake';
+                }
+            }
+        }
+        if (unit.weapon.ammo.includes('fleche-tungsten') && rand.rand(1,3) <= gearChance) {
+            gear[0] = 'fleche-tungsten';
+        }
+        if (unit.weapon.ammo.includes('lame-tungsten') && rand.rand(1,2) <= gearChance) {
+            gear[0] = 'lame-tungsten';
+        }
+        if (playerInfos.comp.ca >= 1) {
+            if (playerInfos.comp.exo >= 1) {
+                if (unit.weapon.ammo.includes('fleche-poison') && rand.rand(1,2) <= gearChance) {
+                    gear[0] = 'fleche-poison';
+                }
+                if (unit.weapon.ammo.includes('lame-poison') && rand.rand(1,2) <= gearChance) {
+                    gear[0] = 'lame-poison';
+                }
+            }
+        }
+        if (playerInfos.comp.ca >= 2) {
+            if (unit.weapon.ammo.includes('teflon') && rand.rand(1,2) <= gearChance) {
+                gear[0] = 'teflon';
+            }
+            if (unit.weapon.ammo.includes('sm-teflon') && rand.rand(1,2) <= gearChance) {
+                gear[0] = 'sm-teflon';
+            }
+        }
+        if (playerInfos.comp.energ >= 1) {
+            if (unit.weapon.ammo.includes('laser') && rand.rand(1,2) <= gearChance) {
+                gear[0] = 'laser';
+            }
+            if (playerInfos.comp.bal >= 1) {
+                if (unit.weapon.ammo.includes('plasma') && rand.rand(1,2) <= gearChance) {
+                    gear[0] = 'plasma';
+                }
+            }
+        }
+        if (playerInfos.comp.pyro >= 1) {
+            if (unit.weapon.ammo.includes('obus-incendiaire') && rand.rand(1,2) <= gearChance) {
+                gear[0] = 'obus-incendiaire';
+            }
+        }
+        if (playerInfos.comp.pyro >= 2) {
+            if (unit.weapon.ammo.includes('grenade-incendiaire') && rand.rand(1,2) <= gearChance) {
+                gear[0] = 'grenade-incendiaire';
+            }
+            if (playerInfos.comp.ca >= 2) {
+                if (unit.weapon.ammo.includes('molotov-slime') && rand.rand(1,2) <= gearChance) {
+                    gear[0] = 'molotov-slime';
+                }
+            }
+        }
+        if (playerInfos.comp.pyro >= 3) {
+            if (unit.weapon.ammo.includes('torche-feugre') && rand.rand(1,2) <= gearChance) {
+                gear[0] = 'torche-feugre';
+            }
+        }
+        if (playerInfos.comp.explo >= 1) {
+            if (unit.weapon.ammo.includes('obus')) {
+                gear[0] = 'obus';
+            }
+            if (unit.weapon.ammo.includes('grenade')) {
+                gear[0] = 'grenade';
+            }
+        }
+        if (playerInfos.comp.explo >= 2) {
+            if (unit.weapon.ammo.includes('dynamite-nitrate') && rand.rand(1,2) <= gearChance) {
+                gear[0] = 'dynamite-nitrate';
+            }
+        }
+    }
+    if (unit.weapon2.rof >= 1) {
+        // console.log('has w2');
+        if (unit.skills.includes('unemun')) {
+            gear[1] = gear[0];
+        } else {
+            if (unit.weapon2.ammo.includes('club-acier') && rand.rand(1,2) <= gearChance) {
+                gear[1] = 'club-acier';
+            }
+            if (playerInfos.comp.bal >= 1) {
+                if (unit.weapon2.ammo.includes('perfo') && rand.rand(1,2) <= gearChance) {
+                    gear[1] = 'perfo';
+                }
+                if (unit.weapon2.ammo.includes('sm-perfo') && rand.rand(1,2) <= gearChance) {
+                    gear[1] = 'sm-perfo';
+                }
+                if (unit.weapon2.ammo.includes('tungsten') && rand.rand(1,4) <= gearChance) {
+                    gear[1] = 'tungsten';
+                }
+                if (unit.weapon2.ammo.includes('sm-tungsten') && rand.rand(1,4) <= gearChance) {
+                    gear[1] = 'sm-tungsten';
+                }
+                if (unit.weapon2.ammo.includes('ac-tungsten') && rand.rand(1,4) <= gearChance) {
+                    gear[1] = 'ac-tungsten';
+                }
+                if (playerInfos.comp.explo >= 2) {
+                    if (unit.weapon2.ammo.includes('explosive') && rand.rand(1,2) <= gearChance) {
+                        gear[1] = 'explosive';
+                    }
+                    if (unit.weapon2.ammo.includes('ac-explosive') && rand.rand(1,2) <= gearChance) {
+                        gear[1] = 'ac-explosive';
+                    }
+                    if (unit.weapon2.ammo.includes('sm-explosive') && rand.rand(1,2) <= gearChance) {
+                        gear[1] = 'sm-explosive';
+                    }
+                }
+            }
+            if (playerInfos.comp.bal >= 2) {
+                if (unit.weapon2.ammo.includes('tungsten') && rand.rand(1,2) <= gearChance) {
+                    gear[1] = 'tungsten';
+                }
+                if (unit.weapon2.ammo.includes('sm-tungsten') && rand.rand(1,2) <= gearChance) {
+                    gear[1] = 'sm-tungsten';
+                }
+                if (unit.weapon2.ammo.includes('ac-tungsten') && rand.rand(1,2) <= gearChance) {
+                    gear[1] = 'ac-tungsten';
+                }
+                if (playerInfos.comp.tri >= 3) {
+                    if (unit.weapon2.ammo.includes('snake') && rand.rand(1,2) <= gearChance) {
+                        gear[1] = 'snake';
+                    }
+                }
+            }
+            if (unit.weapon2.ammo.includes('fleche-tungsten') && rand.rand(1,3) <= gearChance) {
+                gear[1] = 'fleche-tungsten';
+            }
+            if (unit.weapon2.ammo.includes('lame-tungsten') && rand.rand(1,2) <= gearChance) {
+                gear[1] = 'lame-tungsten';
+            }
+            if (playerInfos.comp.ca >= 1) {
+                if (playerInfos.comp.exo >= 1) {
+                    if (unit.weapon2.ammo.includes('fleche-poison') && rand.rand(1,2) <= gearChance) {
+                        gear[1] = 'fleche-poison';
+                    }
+                    if (unit.weapon2.ammo.includes('lame-poison') && rand.rand(1,2) <= gearChance) {
+                        gear[1] = 'lame-poison';
+                    }
+                }
+            }
+            if (playerInfos.comp.ca >= 2) {
+                if (unit.weapon2.ammo.includes('teflon') && rand.rand(1,2) <= gearChance) {
+                    gear[1] = 'teflon';
+                }
+                if (unit.weapon2.ammo.includes('sm-teflon') && rand.rand(1,2) <= gearChance) {
+                    gear[1] = 'sm-teflon';
+                }
+            }
+            if (playerInfos.comp.energ >= 1) {
+                if (unit.weapon2.ammo.includes('laser') && rand.rand(1,2) <= gearChance) {
+                    gear[1] = 'laser';
+                }
+                if (playerInfos.comp.bal >= 1) {
+                    if (unit.weapon2.ammo.includes('plasma') && rand.rand(1,2) <= gearChance) {
+                        gear[1] = 'plasma';
+                    }
+                }
+            }
+            if (playerInfos.comp.pyro >= 1) {
+                if (unit.weapon2.ammo.includes('obus-incendiaire') && rand.rand(1,2) <= gearChance) {
+                    gear[1] = 'obus-incendiaire';
+                }
+            }
+            if (playerInfos.comp.pyro >= 2) {
+                if (unit.weapon2.ammo.includes('grenade-incendiaire') && rand.rand(1,2) <= gearChance) {
+                    gear[1] = 'grenade-incendiaire';
+                }
+                if (playerInfos.comp.ca >= 2) {
+                    if (unit.weapon2.ammo.includes('molotov-slime') && rand.rand(1,2) <= gearChance) {
+                        gear[1] = 'molotov-slime';
+                    }
+                }
+            }
+            if (playerInfos.comp.pyro >= 3) {
+                if (unit.weapon2.ammo.includes('torche-feugre') && rand.rand(1,2) <= gearChance) {
+                    gear[1] = 'torche-feugre';
+                }
+            }
+            if (playerInfos.comp.explo >= 1) {
+                if (unit.weapon2.ammo.includes('obus')) {
+                    gear[1] = 'obus';
+                }
+                if (unit.weapon2.ammo.includes('grenade')) {
+                    gear[1] = 'grenade';
+                }
+            }
+            if (playerInfos.comp.explo >= 2) {
+                if (unit.weapon2.ammo.includes('dynamite-nitrate') && rand.rand(1,2) <= gearChance) {
+                    gear[1] = 'dynamite-nitrate';
+                }
+            }
+        }
+    }
+    if (playerInfos.comp.ca >= 2) {
+        if (unit.protection.includes('bugium') && rand.rand(1,2) <= gearChance) {
+            gear[2] === 'bugium';
+        }
+    }
+    // console.log(gear);
+    return gear;
+};
 
 function getStartBatList() {
     let startBatList = [];
@@ -2537,13 +2797,46 @@ function getNextLevelPop() {
 function gangChoice() {
     selectMode();
     $("#conUnitList").css("display","block");
-    $('#conUnitList').css("height","200px");
+    $('#conUnitList').css("height","300px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
     $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="ListRes">Choisir dans cet ordre</span><br>');
+    $('#conUnitList').append('<br>');
+    // MAP DE DEPART
+    $('#conUnitList').append('<span class="ListRes or">CHOISIR LA ZONE DE DEPART</span><br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<select class="boutonGris" id="theStartZone" onchange="changePlayerInfo(`theStartZone`,`missionZone`,`gangChoice`)"></select>');
+    $('#theStartZone').empty().append('<option value="97">Zone</option>');
+    $('#theStartZone').append('<option value="99">Zone 99 - Ile</option>');
+    $('#theStartZone').append('<option value="98">Zone 98 - Ville</option>');
+    $('#theStartZone').append('<option value="97">Zone 97 - Chemins</option>');
+    $('#theStartZone').append('<option value="96" disabled>Zone 96</option>');
+    $('#theStartZone').append('<option value="95" disabled>Zone 95</option>');
+    $('#theStartZone').append('<option value="94" disabled>Zone 94</option>');
+    $('#theStartZone').append('<option value="93" disabled>Zone 93</option>');
+    $('#theStartZone').append('<option value="92" disabled>Zone 92</option>');
+    $('#theStartZone').append('<option value="91" disabled>Zone 91</option>');
+    $('#theStartZone').append('<option value="90" disabled>Zone 90</option>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="butSpace"></span>');
+    $('#conUnitList').append('<br>');
+    // DIFFICULTE
+    $('#conUnitList').append('<span class="ListRes or">CHOISIR LE NIVEAU DE DIFFICULTE</span><br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<select class="boutonGris" id="theDiffMode" onchange="changePlayerInfo(`theDiffMode`,`gMode`,`gangChoice`)"></select>');
+    $('#theDiffMode').empty().append('<option value="2">Niveau</option>');
+    $('#theDiffMode').append('<option value="1">J\'ai peur des bourdons</option>');
+    $('#theDiffMode').append('<option value="2">Normal</option>');
+    $('#theDiffMode').append('<option value="3">Les fourmis c\'est trop mignon</option>');
+    $('#theDiffMode').append('<option value="4">La guêpe pepsis ça chatouille</option>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="butSpace"></span>');
+    $('#conUnitList').append('<br>');
+    // GANG
     $('#conUnitList').append('<span class="ListRes or">CHOISIR UN GANG</span><br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<select class="boutonGris" id="theGangs" onchange="changePlayerInfo(`theGangs`,`gang`,`gangChoice`)"></select>');
@@ -2555,7 +2848,9 @@ function gangChoice() {
     $('#theGangs').append('<option value="tiradores">Tiradores</option>');
     $('#theGangs').append('<option value="detruas">Detruas</option>');
     $('#theGangs').append('<option value="brasier">Le Brasier</option>');
+    $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="butSpace"></span>');
+
 };
 
 function gangLevelUp(retour) {

@@ -338,7 +338,7 @@ function coffreDrop(layBatTileId) {
     let tileDrop = -1;
     let shufZone = _.shuffle(zone);
     shufZone.forEach(function(tile) {
-        if (isAdjacent(layBatTileId,tile.id) && !tile.ruins) {
+        if (isAdjacent(layBatTileId,tile.id)) {
             batHere = false;
             bataillons.forEach(function(bat) {
                 if (bat.loc === "zone" && bat.tileId === tile.id) {
@@ -354,6 +354,11 @@ function coffreDrop(layBatTileId) {
             }
             if (!batHere) {
                 thisDistance = calcDistance(playerInfos.myCenter,tile.id);
+                if (tile.ruins) {
+                    if (tile.sh >= 0) {
+                        thisDistance = thisDistance+5;
+                    }
+                }
                 if (thisDistance < nearestDistance) {
                     nearestDistance = thisDistance;
                     tileDrop = tile.id;
@@ -381,6 +386,11 @@ function coffreDrop(layBatTileId) {
                 }
                 if (!batHere) {
                     thisDistance = calcDistance(playerInfos.myCenter,tile.id);
+                    if (tile.ruins) {
+                        if (tile.sh >= 0) {
+                            thisDistance = thisDistance+5;
+                        }
+                    }
                     if (thisDistance < nearestDistance) {
                         nearestDistance = thisDistance;
                         tileDrop = tile.id;
@@ -993,7 +1003,7 @@ function checkRuinsRes(tile) {
     if (ruinType.checks.length >= 1) {
         if (rand.rand(1,100) <= resChance) {
             conselTriche = true;
-            putBatAround(tile.id,false,'noWater',239,0,'go');
+            putBatAround(tile.id,false,'near',239,0,'go');
             let coffre = getZoneBatByTileId(coffreTileId);
             playerOccupiedTileList();
             if (ruinType === undefined) {

@@ -246,16 +246,18 @@ function findLandersIds() {
     return landersIds;
 };
 
-function findTheLander() {
+function findTheLander(ownOnly) {
     let theLander = {};
     let bestLander = 0;
     bataillons.forEach(function(bat) {
         if (bat.loc === 'zone') {
-            let batType = getBatType(bat);
-            let landerScore = getLanderScore(batType);
-            if (bestLander < landerScore) {
-                bestLander = landerScore;
-                theLander = bat;
+            if (!bat.tags.includes('nomove') || !ownOnly) {
+                let batType = getBatType(bat);
+                let landerScore = getLanderScore(batType);
+                if (bestLander < landerScore) {
+                    bestLander = landerScore;
+                    theLander = bat;
+                }
             }
         }
     });

@@ -179,8 +179,14 @@ function commandes() {
                 if (!isStartZone) {
                     $('#commandz').append('<button type="button" title="Rapport de mission (estimation)" class="boutonRose iconButtons" onclick="missionResults(false)" onmousedown="clicSound(1)"><i class="fas fa-balance-scale"></i></button>');
                 }
-                $('#commandz').append('<button type="button" title="Rentrer à la station" class="boutonNoir iconButtons pipi" onclick="showStartLander()" onmousedown="warnSound(`nope`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
-                $('#commandz').append('<button type="button" title="Rentrer à la station" class="boutonRouge iconButtons" onclick="stopMission()" onmousedown="warnSound(`takeoff`)" id="takeof2"><i class="fas fa-space-shuttle"></i></button>');
+                if (hasOwnLander) {
+                    let returnText = 'Rentrer à la station';
+                    if (isStartZone) {
+                        returnText = 'Rejoindre la station spatiale';
+                    }
+                    $('#commandz').append('<button type="button" title="'+returnText+'" class="boutonNoir iconButtons pipi" onclick="showStartLander()" onmousedown="warnSound(`nope`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
+                    $('#commandz').append('<button type="button" title="'+returnText+'" class="boutonRouge iconButtons" onclick="stopMission()" onmousedown="warnSound(`takeoff`)" id="takeof2"><i class="fas fa-space-shuttle"></i></button>');
+                }
             }
         }
         if (!modeSonde) {
@@ -288,9 +294,8 @@ function viewPop() {
 
 function gangNavig() {
     $('#gangInfos').empty();
-    if (!allowCheat) {
-        $('#gangInfos').append('<button type="button" title="Activer le mode triche" class="boutonCiel iconButtons" onclick="toggleCheat()"><i class="fas fa-poo"></i></button>');
-    } else {
+    if (allowCheat || playerInfos.pseudo === 'Mapedit' || playerInfos.pseudo === 'Payall') {
+        allowCheat = true;
         $('#gangInfos').append('<button type="button" title="Désactiver le mode triche" class="boutonCiel iconButtons" onclick="toggleCheat()"><i class="fas fa-poo"></i></button>');
         $('#gangInfos').append('<br>');
         $('#gangInfos').append('<button type="button" title="Construire gratuitement" class="boutonCiel iconButtons" onclick="bfconst(`all`,true,``,false)"><i class="fa fa-hammer"></i></button>');
@@ -301,17 +306,20 @@ function gangNavig() {
         $('#gangInfos').append('<button type="button" title="Charger une zone sauvegardée" class="boutonCiel iconButtons" onclick="voirZones()"><i class="fas fa-folder-open"></i></button>');
         $('#gangInfos').append('<button type="button" title="Remettre les compétences à zéro" class="boutonCiel iconButtons" onclick="compReset()"><i class="fas fa-award"></i></button>');
         if (!modeSonde && !playerInfos.onShip) {
-            $('#gangInfos').append('<button type="button" title="Nouvelle zone" class="boutonCiel iconButtons" onclick="generateNewMap(true)"><i class="far fa-map"></i></button>');
+            $('#gangInfos').append('<button type="button" title="Pas de riposte des aliens" class="boutonCiel iconButtons" onclick="noAlienRip()"><i class="fas fa-wheelchair"></i></button>');
             $('#gangInfos').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonCiel iconButtons" onclick="mapReset()"><i class="fas fa-skull-crossbones"></i></button>');
             $('#gangInfos').append('<button type="button" title="Supprimer tous les aliens" class="boutonCiel iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
             $('#gangInfos').append('<br>');
+            $('#gangInfos').append('<button type="button" title="Nouvelle zone" class="boutonCiel iconButtons" onclick="generateNewMap(true)"><i class="far fa-map"></i></button>');
             $('#gangInfos').append('<button type="button" title="Check rencontres" class="boutonCiel iconButtons" onclick="encounterCheck()"><i class="fas fa-city"></i></button>');
             $('#gangInfos').append('<button type="button" title="Check voisins" class="boutonCiel iconButtons" onclick="lesVoisins()"><i class="fas fa-shuttle-van"></i></button>');
-            $('#gangInfos').append('<button type="button" title="Map Editor" class="boutonCiel iconButtons" onclick="editMode()"><i class="fas fa-tree"></i></button>');
             $('#gangInfos').append('<br>');
+            $('#gangInfos').append('<button type="button" title="Retour station forcé" class="boutonRouge iconButtons" onclick="stopMission()"><i class="fas fa-space-shuttle"></i></button>');
             $('#gangInfos').append('<button type="button" title="Supprime le stress de tous les bataillons" class="boutonCiel iconButtons" onclick="coolManCool()"><i class="fas fa-heart"></i></button>');
-            $('#gangInfos').append('<button type="button" title="Pas de riposte des aliens" class="boutonCiel iconButtons" onclick="noAlienRip()"><i class="fas fa-wheelchair"></i></button>');
+            $('#gangInfos').append('<button type="button" title="Map Editor" class="boutonCiel iconButtons" onclick="editMode()"><i class="fas fa-tree"></i></button>');
         }
+    } else {
+        $('#gangInfos').append('<button type="button" title="Activer le mode triche" class="boutonCiel iconButtons" onclick="toggleCheat()"><i class="fas fa-poo"></i></button>');
     }
     $('#gangInfos').append('<div class="shSpace"></div>');
     $('#gangInfos').append('<span class="butSpace"></span>');

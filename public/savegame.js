@@ -98,42 +98,62 @@ function saveCurrentZoneAs(zoneNumber) {
 
 function saveMapForReturn() {
     let zoneNum = zone[0].number;
+    let isMission = false;
+    if (zone[0].edited != undefined) {
+        if (zone[0].edited) {
+            isMission = true;
+        }
+    }
     // savePlayerInfos();
     zone[0].visit = true;
     atomsColors(zone);
     socket.emit('save-map-as',[zone,zoneNum]);
-    saveAliensForReturn(zoneNum);
-    saveBataillonsForReturn(zoneNum);
+    saveAliensForReturn(zoneNum,isMission);
+    saveBataillonsForReturn(zoneNum,isMission);
     // showMap(zone,true);
     commandes();
 };
 
-function saveAliensForReturn(zoneNum) {
+function saveAliensForReturn(zoneNum,isMission) {
     deadAliensList = [];
     aliens.forEach(function(bat) {
         let batType = getBatType(bat);
         bat.creaTurn = 0;
         if (batType.moveCost >= 90) {
-            if (batType.name === 'Coque') {
-                deadAliensList.push(bat.id);
-            }
             if (batType.name === 'Cocon') {
-                deadAliensList.push(bat.id);
-            }
-            if (batType.name === 'Oeuf voilé' || batType.name === 'Oeuf') {
                 deadAliensList.push(bat.id);
             }
             if (batType.name === 'Vomissure') {
                 deadAliensList.push(bat.id);
             }
-            if (batType.name === 'Ruche' && rand.rand(1,100) <= 75) {
-                deadAliensList.push(bat.id);
+            if (batType.name === 'Ruche') {
+                if (rand.rand(1,100) <= 50) {
+                    deadAliensList.push(bat.id);
+                }
             }
-            if (batType.name === 'Volcan' && rand.rand(1,100) <= 75) {
-                deadAliensList.push(bat.id);
+            if (batType.name === 'Volcan') {
+                if (rand.rand(1,100) <= 25) {
+                    deadAliensList.push(bat.id);
+                }
             }
             if (batType.name === 'Flaque') {
-                alienMorph(bat,'Vomissure',false);
+                if (rand.rand(1,100) <= 25) {
+                    alienMorph(bat,'Vomissure',false);
+                }
+            }
+            if (batType.name === 'Oeuf voilé' || batType.name === 'Oeuf') {
+                if (rand.rand(1,100) <= 50) {
+                    alienMorph(bat,'Ruche',false);
+                } else {
+                    deadAliensList.push(bat.id);
+                }
+            }
+            if (batType.name === 'Coque') {
+                if (rand.rand(1,100) <= 75) {
+                    alienMorph(bat,'Volcan',false);
+                } else {
+                    deadAliensList.push(bat.id);
+                }
             }
         } else {
             deadAliensList.push(bat.id);
@@ -143,7 +163,7 @@ function saveAliensForReturn(zoneNum) {
     socket.emit('save-aliens-as',[aliens,zoneNum]);
 };
 
-function saveBataillonsForReturn(zoneNum) {
+function saveBataillonsForReturn(zoneNum,isMission) {
     bataillons.forEach(function(bat) {
         bat.creaTurn = 0;
         if (bat.loc === 'trans') {
@@ -160,7 +180,17 @@ function saveBataillonsForReturn(zoneNum) {
         let batType = getBatType(bat);
         bat.creaTurn = 0;
         if (bat.fuzz > -2) {
-            deadBatsList.push(bat.id);
+            if (batType.moveCost >= 90) {
+                deadBatsList.push(bat.id);
+            } else {
+                let safeChance = Math.round(100/batType.size*(batType.stealth+10)/14);
+                if (batType.skills.includes('camo')) {
+                    safeChance = safeChance*2;
+                }
+                if (rand.rand(1,100) > safeChance) {
+                    deadBatsList.push(bat.id);
+                }
+            }
         } else {
             if (batType.cat != 'buildings' && batType.cat != 'devices' && bat.loc === 'zone' && batType.transUnits === 0) {
                 if (rand.rand(1,100) <= 15) {
@@ -191,6 +221,9 @@ function saveGame() {
     saveAliens();
     savePlayerInfos();
     saveMap();
+    if (playerInfos.pseudo === 'Mapedit') {
+        socket.emit('save-edited-map',[zone,bataillons,aliens]);
+    }
     testConnect(pseudo);
     commandes();
 };
@@ -255,14 +288,14 @@ function newGame() {
     playerInfos.cLoss = 0;
     playerInfos.cNeed = 1;
     // playerInfos.missionZone = -1;
-    playerInfos.missionZone = 99;
+    playerInfos.missionZone = 97;
     playerInfos.okFill = true;
     resetReserve();
     resetStartRes();
     resetEndRes();
     resetVMRes();
     deleteZones();
-    moveMissionZone(99);
+    // moveMissionZone(97);
     generateVM();
     showMap(zone,false);
     miniOut();

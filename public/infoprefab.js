@@ -2,13 +2,17 @@ function defabInfos(bat,batType) {
     console.log('prefabInfos');
     let prefabId = checkPrefabId(bat,batType);
     if (prefabId >= 0) {
-        let landerBat = findTheLander();
+        let landerBat = findTheLander(true);
         let prefabBat = getBatById(prefabId);
         let prefabBatType = getBatType(prefabBat);
         let prefabBatName = prefabBat.type;
         let isLoaded = checkCharged(prefabBat,'load');
         let isCharged = checkCharged(prefabBat,'trans');
-        if (batType.skills.includes('constructeur') && !bat.tags.includes('nomove') && Object.keys(landerBat).length >= 1) {
+        let haveLander = false;
+        if (Object.keys(landerBat).length >= 1) {
+            haveLander = true;
+        }
+        if (batType.skills.includes('constructeur') && !bat.tags.includes('nomove') && !bat.tags.includes('noprefab')) {
             decButHere = true;
             let apCost = prefabCost(batType,prefabBatType,false);
             let depliOK = true;
@@ -25,11 +29,13 @@ function defabInfos(bat,batType) {
             if (prefabBat.apLeft < 0) {
                 apOK = false;
             }
-            if (depliOK && !isLoaded && !isCharged && damageOK && apOK) {
+            if (depliOK && !isLoaded && !isCharged && damageOK && apOK && haveLander) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris iconButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
             } else {
-                let koMessage = "Une infanterie ne peut pas déconstruire ce bâtiment";
-                if (!damageOK) {
+                let koMessage = "Vous ne pouvez pas déconstruire ce bâtiment";
+                if (!haveLander) {
+                    koMessage = "Vous ne pouvez pas déconstruire de bâtiments si vous n'avez pas de lander";
+                } else if (!damageOK) {
                     koMessage = "Ce bâtiment est trop endommagé pour être déconstruit";
                 } else if (!apOK) {
                     koMessage = "Vous ne pouvez pas déconstruire un bâtiment qui est en PA négatifs";
@@ -37,6 +43,8 @@ function defabInfos(bat,batType) {
                     koMessage = "Vous ne pouvez pas déconstruire un bâtiment si il y a un bataillon dedans";
                 } else if (isLoaded) {
                     koMessage = "Vous ne pouvez pas déconstruire un bâtiment si il y a un autre bâtiment dedans";
+                } else if (!depliOK) {
+                    koMessage = "Une infanterie ne peut pas déconstruire ce bâtiment";
                 }
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+koMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
             }
@@ -64,26 +72,28 @@ function deconstruction(prefabId) {
     let prefabBat = bataillons[prefabIndex];
     let prefabBatType = getBatType(prefabBat);
     let tileId = prefabBat.tileId;
-    let landerBat = findTheLander();
-    if (Object.keys(landerBat).length >= 1) {
-        if (!playerInfos.onShip) {
-            let apCost = prefabCost(selectedBatType,prefabBatType,false);
-            selectedBat.apLeft = selectedBat.apLeft-apCost;
-            if (prefabBatType.cat === 'buildings') {
-                prefabBat.apLeft = 0-Math.round(prefabBat.ap*2)-2;
-            } else {
-                prefabBat.apLeft = 0-Math.round(prefabBat.ap/2);
+    let landerBat = findTheLander(true);
+    if (!prefabBat.tags.includes('noprefab')) {
+        if (Object.keys(landerBat).length >= 1) {
+            if (!playerInfos.onShip) {
+                let apCost = prefabCost(selectedBatType,prefabBatType,false);
+                selectedBat.apLeft = selectedBat.apLeft-apCost;
+                if (prefabBatType.cat === 'buildings') {
+                    prefabBat.apLeft = 0-Math.round(prefabBat.ap*2)-2;
+                } else {
+                    prefabBat.apLeft = 0-Math.round(prefabBat.ap/2);
+                }
             }
+            loadBat(prefabBat.id,landerBat.id);
+            // tagDelete(prefabBat,'mining');
+            // prefabBat.extracted = [];
+            recupPrefabFret(prefabBat,prefabBatType,tileId,false,-1);
+            tagDelete(selectedBat,'guet');
+            selectedBatArrayUpdate();
+            showBatInfos(selectedBat);
+            showMap(zone,true);
+            selectMode();
         }
-        loadBat(prefabBat.id,landerBat.id);
-        // tagDelete(prefabBat,'mining');
-        // prefabBat.extracted = [];
-        recupPrefabFret(prefabBat,prefabBatType,tileId,false,-1);
-        tagDelete(selectedBat,'guet');
-        selectedBatArrayUpdate();
-        showBatInfos(selectedBat);
-        showMap(zone,true);
-        selectMode();
     }
 };
 
@@ -92,23 +102,25 @@ function autoDeconstruction(prefabId) {
     let prefabBat = bataillons[prefabIndex];
     let prefabBatType = getBatType(prefabBat);
     let tileId = prefabBat.tileId;
-    let landerBat = findTheLander();
-    if (Object.keys(landerBat).length >= 1) {
-        if (!playerInfos.onShip) {
-            if (prefabBatType.cat === 'buildings') {
-                prefabBat.apLeft = 0-Math.round(prefabBat.ap*2)-2;
-            } else {
-                prefabBat.apLeft = 0-Math.round(prefabBat.ap/2);
+    let landerBat = findTheLander(false);
+    if (!prefabBat.tags.includes('noprefab')) {
+        if (Object.keys(landerBat).length >= 1) {
+            if (!playerInfos.onShip) {
+                if (prefabBatType.cat === 'buildings') {
+                    prefabBat.apLeft = 0-Math.round(prefabBat.ap*2)-2;
+                } else {
+                    prefabBat.apLeft = 0-Math.round(prefabBat.ap/2);
+                }
             }
+            loadBat(prefabBat.id,landerBat.id);
+            // tagDelete(prefabBat,'mining');
+            // prefabBat.extracted = [];
+            recupPrefabFret(prefabBat,prefabBatType,tileId,true,landerBat);
+            showMap(zone,false);
+            batSelect(landerBat);
+            showBatInfos(landerBat);
+            selectMode();
         }
-        loadBat(prefabBat.id,landerBat.id);
-        // tagDelete(prefabBat,'mining');
-        // prefabBat.extracted = [];
-        recupPrefabFret(prefabBat,prefabBatType,tileId,true,landerBat);
-        showMap(zone,false);
-        batSelect(landerBat);
-        showBatInfos(landerBat);
-        selectMode();
     }
 };
 
@@ -143,7 +155,7 @@ function refabInfos(myBat,myBatUnitType) {
         $('#unitInfos').append('<hr>');
         let balise = 'h4';
         let apCost;
-        let landerBat = findTheLander();
+        let landerBat = findTheLander(true);
         let sortedBats = bataillons.slice();
         sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'id'),'type'),'army');
         sortedBats.reverse();

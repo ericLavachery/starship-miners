@@ -1567,6 +1567,9 @@ function dismantle(batId) {
                 recupBodies(bat,batType);
             }
             let crew = batType.squads*batType.squadSize*batType.crew;
+            if (bat.tags.includes('noprefab')) {
+                crew = Math.ceil(crew/2);
+            }
             let xp = getXp(bat);
             batUnselect();
             batDeath(bat,false,false);
@@ -1580,6 +1583,8 @@ function dismantle(batId) {
                     recupKrimulos(220,tileId,crew,xp,bat.ammo2,bat.eq);
                 } else if (batType.name === 'Juggernauts') {
                     recupRaiders(219,tileId,crew,xp,bat.ammo,bat.eq);
+                } else if (batType.name === 'Retranchement') {
+                    recupRebelles(302,tileId,crew,xp,bat.ammo,bat.eq);
                 } else if (batType.name === 'Scroungers') {
                     recupAmazones(14,tileId,crew,xp,bat.ammo,bat.eq);
                 } else {
@@ -1610,6 +1615,20 @@ function dismantle(batId) {
     }
     if (inSoute) {
         goSoute();
+    }
+};
+
+function recupRebelles(unitId,tileId,citoyens,xp,ammo,equip) {
+    let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
+    conselUnit = unitTypes[unitIndex];
+    conselPut = false;
+    conselAmmos = [ammo,ammo,'scrap',equip];
+    conselTriche = true;
+    let typeId = conselUnit.id;
+    putBat(tileId,60,xp);
+    if (playerInfos.onShip) {
+        let citBat = getBatByTypeIdAndTileId(typeId,tileId);
+        loadBat(citBat.id,souteId);
     }
 };
 

@@ -1107,6 +1107,17 @@
         "inRuin":2
     },
     {
+        "id":302,
+        "name":"Rebelles",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":[],
+        "compReq":{},
+        "costs":{"Fer":81,"Soufre":27,"Plomb":27,"Aluminium":54,"Carbone":54,"Scrap":54,"Végétaux":135,"Chlore":10,"Tissus":5},
+        "deploy":{"Drogues":3,"Tissus":2},
+        "fabTime":30,
+        "inRuin":2
+    },
+    {
         "id":263,
         "name":"Retranchement",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},

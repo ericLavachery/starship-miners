@@ -181,6 +181,7 @@ let batDebarq = {};
 let medicalTransports = [];
 let medicPatientAP = 5;
 let landers = [];
+let hasOwnLander = false;
 let fogRange = 5;
 let foggedTiles = [];
 let doggedTiles = [];

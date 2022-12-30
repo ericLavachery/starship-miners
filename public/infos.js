@@ -67,6 +67,15 @@ function batInfos(bat,batType,pop) {
     }
     updateBatProperties(bat,batType);
     levelUp(bat,batType);
+    if (!playerInfos.onShip) {
+        if (batType.skills.includes('transorbital')) {
+            if (!bat.tags.includes('nomove')) {
+                if (!bat.tags.includes('deploy')) {
+                    bat.tags.push('deploy');
+                }
+            }
+        }
+    }
     doRegroup(bat,batType);
     if (playerInfos.onShip) {
         checkAmmoReqs(bat,batType);
@@ -231,6 +240,9 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName">Unités/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+batType.squadSize+'</span><br>');
     }
     let totalCrew = batType.crew*batType.squadSize*batType.squads;
+    if (bat.tags.includes('noprefab')) {
+        totalCrew = Math.ceil(totalCrew/2);
+    }
     if (pop) {
         $('#'+bodyPlace).append('<span class="paramName">Personnel</span><span class="paramIcon"><i class="fas fa-user-friends"></i></span><span class="paramValue">'+totalCrew+'</span><br>');
     }
@@ -298,6 +310,9 @@ function batInfos(bat,batType,pop) {
             outsiderMessage = 'Outsider: Si ce bataillon est démantelé, il se peut que les citoyens récupérés deviennent des criminels';
         }
         $('#'+bodyPlace).append('<span class="paramName jaune" title="'+outsiderMessage+'">Outsider</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+    }
+    if (bat.tags.includes('nomove')) {
+        $('#'+bodyPlace).append('<span class="paramName or" title="">Sous contrôle</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
     }
     if (bat.tags.includes('construction')) {
         $('#'+bodyPlace).append('<span class="paramName or">Opérationel</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
