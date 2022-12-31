@@ -88,7 +88,20 @@ function commandes() {
             }
         }
         if (!modeSonde) {
-            $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveGame()" onmousedown="clicSound(8)"><i class="far fa-save"></i> &nbsp;<span class="notsosmall">Save</span></button>');
+            let saveOK = true;
+            if (playerInfos.pseudo === 'Mapedit') {
+                if (zone != undefined) {
+                    if (zone[0] != undefined) {
+                        if (zone[0].number < 50) {
+                            saveOK = false;
+                        }
+                    }
+                }
+            }
+            if (saveOK) {
+                $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveGame()" onmousedown="clicSound(8)"><i class="far fa-save"></i> &nbsp;<span class="notsosmall">Save</span></button>');
+            }
+
         }
         $('#commandz').append('<br>');
     } else if (activeTurn == 'aliens') {

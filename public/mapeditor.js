@@ -114,6 +114,7 @@ function mapNumAssign(dropMenuId) {
         zone[0].number = +mapNum;
     }
     mapEditWindow();
+    commandes();
 };
 
 function diffToggle() {
