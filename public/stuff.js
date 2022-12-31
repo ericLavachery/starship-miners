@@ -476,7 +476,7 @@ function nearWhat(myBat,myBatType) {
             }
         }
         if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1 || myBat.tileId === bat.tileId) {
-            if (!bat.tags.includes('nomove') && batType.crew >= 1 && !batType.skills.includes('dogs')) {
+            if (!bat.tags.includes('nomove') && batType.crew >= 1 && !batType.skills.includes('dog') && (!bat.tags.includes('outsider') || !batType.skills.includes('nofight')) && !batType.skills.includes('iscit')) {
                 near.control = true;
             }
             if (bat.tags.includes('hero') && batType.skills.includes('heropotion') && !bat.tags.includes('potion')) {

@@ -406,9 +406,9 @@ function batListElement(bat,batType,idOfLander) {
             competFail = '?';
         }
         if (isUpUnitOK.ok) {
-            $('#be'+bat.id).append('<span class="listRes bleu" title="Peut être changé en '+batType.bldUp+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes bleu" title="Peut être changé en '+batType.bldUp[0]+'">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
         } else {
-            $('#be'+bat.id).append('<span class="listRes gff" title="Pourra être changé en '+batType.bldUp+competFail+' ('+isUpUnitOK.message+')">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes gff" title="Pourra être changé en '+batType.bldUp[0]+competFail+' ('+isUpUnitOK.message+')">&nbsp;<i class="fas fa-chevron-circle-up"></i></span>');
         }
     }
     let batVolume = calcVolume(bat,batType);

@@ -1715,6 +1715,11 @@ function skillsInfos(bat,batType,near) {
                 extractOK = true;
             }
         }
+        if (!extractOK) {
+            if (bat.tags.includes('mining')) {
+                tagDelete(bat,'mining');
+            }
+        }
         balise = 'h4';
         boutonNope = 'boutonGrey';
         colorNope = 'gf';

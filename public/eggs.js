@@ -80,7 +80,9 @@ function checkStartingAliens() {
     // Starting Units
     putStartUnits();
     // Gibier
-    letsHunt(true);
+    if (!isStartZone) {
+        letsHunt(true);
+    }
 };
 
 function getColonyTiles() {

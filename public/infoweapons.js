@@ -66,6 +66,9 @@ function weaponsInfos(bat,batType,tile,pop) {
                 }
             }
             anyTarget = anyAlienInRange(bat,thisWeapon);
+            if (bat.tags.includes('nomove') && batType.skills.includes('nofight')) {
+                anyTarget = false;
+            }
             if (anyTarget) {
                 batHasTarget = true;
             }
@@ -315,6 +318,9 @@ function weaponsInfos(bat,batType,tile,pop) {
                 }
             }
             anyTarget = anyAlienInRange(bat,thisWeapon);
+            if (bat.tags.includes('nomove') && batType.skills.includes('nofight')) {
+                anyTarget = false;
+            }
             if (anyTarget) {
                 batHasTarget = true;
             }

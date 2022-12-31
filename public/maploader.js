@@ -505,7 +505,7 @@ function showBataillon(bat) {
     } else if (batType.skills.includes('nonumname')) {
         unitsLeft = '';
     } else if (bat.citoyens >= 1) {
-        unitsLeft = '';
+        unitsLeft = bat.citoyens;
     }
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
@@ -539,7 +539,7 @@ function showBataillon(bat) {
         }
     }
     let tagz = ' ';
-    if (mode === 'edit') {
+    if (mode === 'edit' || playerInfos.pseudo === 'Mapedit') {
         if (bat.tags.includes('outsider')) {
             tagz = tagz+' (outsider)';
         }

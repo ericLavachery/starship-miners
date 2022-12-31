@@ -1209,9 +1209,17 @@ function attack(melee,init) {
     let squadsOut = Math.floor(allDamage/squadHP);
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
     targetBat.damage = allDamage-(squadsOut*squadHP);
-    if (totalDamage >= 1 && targetBatType.skills.includes('nofight')) {
+    if (targetBatType.skills.includes('nofight')) {
         if (targetBat.tags.includes('nomove')) {
-            tagDelete(targetBat,'nomove');
+            if (totalDamage >= 1) {
+                if (targetBatType.cat === 'infantry') {
+                    tagDelete(targetBat,'nomove');
+                } else {
+                    if (targetBat.squadsLeft <= targetBatType.squads-2) {
+                        tagDelete(targetBat,'nomove');
+                    }
+                }
+            }
         }
     }
     // instakill

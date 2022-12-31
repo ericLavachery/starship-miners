@@ -62,11 +62,12 @@ function mapEditWindow() {
     selectStuff('NoRes','nores','Supprimer les ressources du terrain');
     selectStuff('BatRes','batres','Mettre des ressources dans le bataillon');
     // Tags
+    selectStuff('Garde','alienPDM2','Garde alien (va rester dans le périmètre)');
     selectStuff('NoMove','batNoMove2','Bataillon immobilisé (non contrôlé par le joueur)');
     selectStuff('Outsider','batOutsider2','Bataillon outsider (si démantelé, pourrait donner des criminels)');
     selectStuff('NoPrefab','bldNoPrefab2','Ne peut pas être déconstruit (démantèlement seulement / personnel réduit)');
     selectStuff('Bleed','bleed','Blesser le bataillon');
-    selectStuff('Garde','alienPDM2','Garde alien (va rester dans le périmètre)');
+    selectStuff('CitChange','lessCit2','Diminuer le nombre de citoyens ou criminels');
     // End
     $('#conUnitList').append('<br><br>');
     if (mped.sinf === 'RareRes' || mped.sinf === 'Res') {
@@ -511,6 +512,8 @@ function clickEdit(tileId) {
             addTagToBatOnTile(tile,'noprefab');
         } else if (mped.sinf === 'Bleed') {
             bleedBat(tile);
+        } else if (mped.sinf === 'CitChange') {
+            changeBatCits(tile);
         } else if (mped.sinf === 'Lander') {
             if (!bord) {
                 if (tile.land === undefined) {
@@ -583,6 +586,18 @@ function bleedBat(tile) {
     }
 };
 
+function changeBatCits(tile) {
+    let bat = getBatByTileId(tile.id);
+    let batType = getBatType(bat);
+    if (batType.skills.includes('iscit')) {
+        if (bat.citoyens < 6) {
+            bat.citoyens = 72;
+        } else {
+            bat.citoyens = bat.citoyens-6;
+        }
+    }
+};
+
 function fixAlienPDM(tile) {
     let alien = getAlienByTileId(tile.id);
     if (alien.pdm === undefined) {
@@ -595,11 +610,35 @@ function fixAlienPDM(tile) {
 function addTagToBatOnTile(tile,tag) {
     let bat = getBatByTileId(tile.id);
     let batType = getBatType(bat);
-    if (tag != 'noprefab' || batType.skills.includes('prefab')) {
+    let tagOK = true;
+    if (tag === 'noprefab') {
+        tagOK = false;
+        if (batType.skills.includes('prefab')) {
+            tagOK = true;
+        }
+        if (batType.cat === 'buildings' || batType.cat === 'devices') {
+            tagOK = true;
+        }
+        if (batType.cat === 'vehicles') {
+            if (batType.crew >= 2) {
+                if (batType.kind === 'zero-trans-fret') {
+                    tagOK = true;
+                }
+            }
+        }
+    }
+    if (tagOK) {
         if (!bat.tags.includes(tag)) {
             bat.tags.push(tag);
         } else {
             tagDelete(bat,tag);
+        }
+    }
+    if (batType.skills.includes('nofight') && !batType.skills.includes('iscit')) {
+        if (bat.tags.includes('nomove')) {
+            if (!bat.tags.includes('outsider')) {
+                bat.tags.push('outsider');
+            }
         }
     }
 };

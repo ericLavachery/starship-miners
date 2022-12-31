@@ -854,15 +854,19 @@ function checkUprankXP(myBat,myBatType) {
 };
 
 function checkUpUnit(batType) {
+    console.log('check uuuuuuuuuuuuuuuuuup');
+    console.log(batType);
     let upUnitOK = {};
     upUnitOK.ok = false;
     upUnitOK.message = '';
     let upUnitName = batType.unitUp;
     if (batType.skills.includes('upgrade')) {
-        upUnitName = batType.bldUp;
+        upUnitName = batType.bldUp[0];
     }
+    console.log(upUnitName);
     if (upUnitName != undefined) {
         let upBatType = getBatTypeByName(upUnitName);
+        console.log(upBatType);
         let levelOK = true;
         let bldOK = false;
         let compReqOK = checkUnitCompReq(upBatType);

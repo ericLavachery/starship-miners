@@ -24,7 +24,7 @@ function nextTurn() {
     batUnselect();
     if (playerInfos.mapTurn === 0) {
         checkStartingAliens();
-    } else if (aliens.length < 50) {
+    } else if (aliens.length < 50 && !isStartZone) {
         if (rand.rand(1,4) === 1) {
             letsHunt(false);
         }

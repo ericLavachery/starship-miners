@@ -6729,7 +6729,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","unemun","maycamo","fastguet","selfbadmedic","ranger","brigands","heroescape","lowstress"],
+        "skills":["a_mid","fouille","fortif","datt","guerrilla","unemun","maycamo","fastguet","selfbadmedic","ranger","brigands","heroescape","lowstress"],
         "mediCost":8,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
