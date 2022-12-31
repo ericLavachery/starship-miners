@@ -281,10 +281,10 @@ let eggDropCount = 0;
 // SOUNDS
 let musicChance = 2;
 let musicTracks = ['amb_trucsympa','amb_space2','amb_ambiant1','parallel_dimensions','amb_trucsympa','amb_ambiant2','amb_space1','biosphere','amb_ambiant1','it_is_raped'];
-let stationTracks = ['lh_oblivion','lh_bobdub','lh_twodogs','lh_whengone','lh_hanap'];
+let stationTracks = ['lh_bobdub','lh_twodogs','lh_whengone','lh_hanap'];
 let trackNum = rand.rand(0,7);
 if (playerInfos.onShip) {
-    trackNum = rand.rand(0,4);
+    trackNum = rand.rand(0,3);
 }
 let theMusic = new Howl({
     src: ['/static/sounds/music/amb_trucsympa.mp3']
