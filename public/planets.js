@@ -418,12 +418,12 @@ function stormDamage(bat,batType,storm,inMov) {
                     bat.apLeft = Math.round(bat.ap/3);
                 }
                 if (bat.squadsLeft <= 0) {
-                    batDeathEffect(bat,true,'Tempête',bat.type+' brûlé.');
+                    batDeathEffect(bat,true,false,'Tempête',bat.type+' brûlé.');
                     isDead = true;
                     if (inMov) {
-                        batDeath(bat,true,false);
+                        batDeath(bat,true,false,false);
                     } else {
-                        checkDeath(bat,batType);
+                        checkDeath(bat,batType,false);
                     }
                 } else if (stormDmg >= 1) {
                     if (batType.cat === 'infantry') {
@@ -475,12 +475,12 @@ function stormDamage(bat,batType,storm,inMov) {
             bat.apLeft = Math.round(bat.ap/4);
         }
         if (bat.squadsLeft <= 0) {
-            batDeathEffect(bat,true,'Tempête',bat.type+' brûlé.');
+            batDeathEffect(bat,true,false,'Tempête',bat.type+' brûlé.');
             isDead = true;
             if (inMov) {
-                batDeath(bat,true,false);
+                batDeath(bat,true,false,false);
             } else {
-                checkDeath(bat,batType);
+                checkDeath(bat,batType,false);
             }
         } else if (stormDmg >= 1) {
             if (batType.cat === 'infantry') {

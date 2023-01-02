@@ -375,6 +375,8 @@ function attack(melee,init) {
     // autodes or undead
     if (selectedWeap.ammo.includes('autodes') || selectedBatType.skills.includes('undead') || selectedBat.tags.includes('zombie')) {
         shots = selectedWeap.rof*selectedBatType.squads;
+    } else if (selectedBatType.cat === 'buildings') {
+        shots = selectedWeap.rof*(selectedBatType.squads+selectedBat.squadsLeft)/2;
     }
     // hero fanatic
     if ((selectedBat.tags.includes('hero') || selectedBat.tags.includes('vet')) && selectedBatType.skills.includes('herofana')) {
@@ -1214,9 +1216,13 @@ function attack(melee,init) {
             if (totalDamage >= 1) {
                 if (targetBatType.cat === 'infantry') {
                     tagDelete(targetBat,'nomove');
+                    targetBat.army = 21;
+                    warning(targetBatType.name,'Ce bataillon passe sous votre contrôle',false,targetBat.tileId);
                 } else {
                     if (targetBat.squadsLeft <= targetBatType.squads-2) {
                         tagDelete(targetBat,'nomove');
+                        targetBat.army = 21;
+                        warning(targetBatType.name,'Ce bataillon passe sous votre contrôle',false,targetBat.tileId);
                     }
                 }
             }
@@ -1303,16 +1309,20 @@ function attack(melee,init) {
     // add xp & remove life :)
     if (targetBat.squadsLeft <= 0) {
         defAlive = false;
-        batDeath(targetBat,true,sWipe);
+        let gain = true;
+        if (selectedBat.tags.includes('nomove')) {
+            gain = false;
+        }
+        batDeath(targetBat,true,gain,sWipe);
         $('#report').append('<br><span class="report cy">Bataillon ('+targetBatName+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
                 setTimeout(function (){
-                    batDeathEffect(targetBat,false,'','');
+                    batDeathEffect(targetBat,false,gain,'','');
                 }, soundDuration);
             }, 200);
         } else {
-            batDeathEffect(targetBat,false,'','');
+            batDeathEffect(targetBat,false,gain,'','');
         }
     } else {
         // targetBatArrayUpdate();
@@ -1324,18 +1334,18 @@ function attack(melee,init) {
     }
     if (selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('autodes')) {
         attAlive = false;
-        batDeath(selectedBat,true,true);
+        batDeath(selectedBat,true,false,true);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBatName+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
                 setTimeout(function (){
-                    batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
+                    batDeathEffect(selectedBat,false,false,'Bataillon détruit','Suicide');
                     $('#unitInfos').empty();
                     $("#unitInfos").css("display","none");
                 }, soundDuration);
             }, 200);
         } else {
-            batDeathEffect(selectedBat,false,'Bataillon détruit','Suicide');
+            batDeathEffect(selectedBat,false,false,'Bataillon détruit','Suicide');
         }
         $('#unitInfos').empty();
         $("#unitInfos").css("display","none");
@@ -1494,6 +1504,8 @@ function defense(melee,init) {
     // undead
     if (targetBatType.skills.includes('undead') || targetBat.tags.includes('zombie')) {
         shots = Math.ceil(targetWeap.rof*targetBatType.squads*brideDef);
+    } else if (targetBatType.cat === 'buildings') {
+        shots = Math.ceil(targetWeap.rof*(targetBatType.squads+targetBat.squadsLeft)/2*brideDef);
     }
     // hero fanatic
     if ((targetBat.tags.includes('hero') || targetBat.tags.includes('vet')) && targetBatType.skills.includes('herofana')) {
@@ -2136,16 +2148,20 @@ function defense(melee,init) {
     selectedBatArrayUpdate();
     if (selectedBat.squadsLeft <= 0) {
         attAlive = false;
-        batDeath(selectedBat,true,false);
+        let gain = true;
+        if (targetBat.tags.includes('nomove')) {
+            gain = false;
+        }
+        batDeath(selectedBat,true,gain,false);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBatName+') détruit<br></span>');
         if (!isFFW) {
             setTimeout(function (){
                 setTimeout(function (){
-                    batDeathEffect(selectedBat,false,'','');
+                    batDeathEffect(selectedBat,false,gain,'','');
                 }, soundDuration);
             }, 200);
         } else {
-            batDeathEffect(selectedBat,false,'','');
+            batDeathEffect(selectedBat,false,gain,'','');
         }
     } else {
         // selectedBatArrayUpdate();

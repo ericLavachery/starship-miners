@@ -739,7 +739,7 @@ function getAway(myBat,fromTileId,blob) {
         } else {
             let batIndex = bataillons.findIndex((obj => obj.id == myBat.id));
             bataillons.splice(batIndex,1);
-            batDeathEffect(myBat,true,'Bataillon digéré',myBat.type+' englouti par la vomissure...',false,myBat.tileId);
+            batDeathEffect(myBat,true,false,'Bataillon digéré',myBat.type+' englouti par la vomissure...',false,myBat.tileId);
         }
     }
     playerOccupiedTileList();

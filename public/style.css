@@ -471,44 +471,6 @@ hr.craft {
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #504832;
 }
-.pUnits {
-    background-color: rgba(221, 248, 252, 0.3);
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgba(221, 248, 252, 0.5);
-    border-radius: 8px;
-    position: absolute;
-    /* margin: 1px 1px 1px 1px; */
-}
-.pUnitsFortif {
-    background-color: rgba(221, 248, 252, 0.3);
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgba(249, 223, 188, 1);
-    border-radius: 8px;
-    position: absolute;
-    /* margin: 1px 1px 1px 1px; */
-}
-.pUnitsCamo {
-    background-color: rgba(170, 242, 251, 0.4);
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgba(170, 242, 251, 0.9);
-    border-radius: 8px;
-    position: absolute;
-    opacity: 0.7;
-    /* margin: 1px 1px 1px 1px; */
-}
-.pUnitsCamoFortif {
-    background-color: rgba(170, 242, 251, 0.4);
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgba(249, 230, 205, 1);
-    border-radius: 8px;
-    position: absolute;
-    opacity: 0.7;
-    /* margin: 1px 1px 1px 1px; */
-}
 .imgAlien {
     z-index: 30;
     position: relative;
@@ -557,9 +519,50 @@ hr.craft {
     border-style: solid;
     border-width: 1px;
     border-color: rgba(148, 251, 248, 0.5);
-    border-radius: 8px;
+    border-radius: 32px;
     position: absolute;
     /* margin: 1px 1px 1px 1px; */
+}
+.pUnits {
+    background-color: rgba(221, 248, 252, 0.3);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(221, 248, 252, 0.5);
+    border-radius: 32px;
+    position: absolute;
+    /* margin: 1px 1px 1px 1px; */
+}
+.pUnitsFortif {
+    background-color: rgba(221, 248, 252, 0.3);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(249, 223, 188, 1);
+    border-radius: 32px;
+    position: absolute;
+    /* margin: 1px 1px 1px 1px; */
+}
+.pUnitsCamo {
+    background-color: rgba(170, 242, 251, 0.4);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(170, 242, 251, 0.9);
+    border-radius: 32px;
+    position: absolute;
+    opacity: 0.7;
+    /* margin: 1px 1px 1px 1px; */
+}
+.pUnitsCamoFortif {
+    background-color: rgba(170, 242, 251, 0.4);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(249, 230, 205, 1);
+    border-radius: 32px;
+    position: absolute;
+    opacity: 0.7;
+    /* margin: 1px 1px 1px 1px; */
+}
+.nmUnits {
+    border-radius: 8px;
 }
 .iUnits {
     /* background-color: rgba(255, 254, 177, 0.3); */

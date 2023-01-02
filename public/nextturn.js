@@ -132,12 +132,12 @@ function nextTurn() {
                 }
                 if (aliens.length >= 100 && rand.rand(1,5) === 1) {
                     bat.squadsLeft = 0;
-                    checkDeath(bat,batType);
+                    checkDeath(bat,batType,false);
                 }
                 let tile = getTile(bat);
                 if (tile.x === 1 || tile.x === 60 || tile.y === 1 || tile.y === 60) {
                     bat.squadsLeft = 0;
-                    checkDeath(bat,batType);
+                    checkDeath(bat,batType,false);
                 }
             }
         }
@@ -624,9 +624,9 @@ function nextTurnEnd() {
             // fin champ de force
             if (bat.type === 'Champ de force') {
                 if (playerInfos.mapTurn >= bat.creaTurn+25) {
-                    batDeathEffect(bat,true,'Bataillon détruit',bat.type+' expiré.');
+                    batDeathEffect(bat,true,false,'Bataillon détruit',bat.type+' expiré.');
                     bat.squadsLeft = 0;
-                    checkDeath(bat,batType);
+                    checkDeath(bat,batType,false);
                 }
             }
             // fin coffres
@@ -634,9 +634,9 @@ function nextTurnEnd() {
                 resSpace = checkResSpace(bat);
                 resMax = batType.transRes;
                 if (resSpace >= resMax) {
-                    batDeathEffect(bat,true,'Bataillon détruit',bat.type+' expiré.');
+                    batDeathEffect(bat,true,false,'Bataillon détruit',bat.type+' expiré.');
                     bat.squadsLeft = 0;
-                    checkDeath(bat,batType);
+                    checkDeath(bat,batType,false);
                 }
             }
             // FOG
@@ -834,6 +834,15 @@ function turnInfo() {
     hasOwnLander = false;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
+        if (bat.army === 0) {
+            if (!bat.tags.includes('nomove')) {
+                if (isStartZone) {
+                    bat.army = 21;
+                } else if (batType.skills.includes('iscit')) {
+                    bat.army = 21;
+                }
+            }
+        }
         if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo')) {
             bat.fuzz = batType.fuzz;
         }
@@ -879,7 +888,7 @@ function turnInfo() {
                 if (bat.eq != 'siland') {
                     landingNoise = landingNoise+Math.floor(batType.hp/75*batType.fuzz*batType.fuzz/25)+2;
                 }
-                if (playerInfos.onShip || bat.tags.includes('deploy')) {
+                if (playerInfos.onShip || !bat.tags.includes('nomove')) {
                     hasOwnLander = true;
                 }
             }
@@ -1442,9 +1451,9 @@ function blub(bat,batType) {
                 bat.apLeft = Math.round(bat.ap/2);
             }
             if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,'Bataillon détruit',bat.type+' noyé.');
+                batDeathEffect(bat,true,false,'Bataillon détruit',bat.type+' noyé.');
             }
-            checkDeath(bat,batType);
+            checkDeath(bat,batType,false);
         }
     } else {
         if (terrain.name === 'L' || terrain.name === 'R') {
@@ -1662,7 +1671,7 @@ function tagsEffect(bat,batType) {
             bat.squadsLeft = bat.squadsLeft-squadsOut;
             bat.damage = totalDamage-(squadsOut*squadHP);
             if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le parasite.');
+                batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le parasite.');
             }
         }
         // SHINDA
@@ -1685,7 +1694,7 @@ function tagsEffect(bat,batType) {
                 bat.squadsLeft = bat.squadsLeft-squadsOut;
                 bat.damage = totalDamage-(squadsOut*squadHP);
                 if (bat.squadsLeft <= 0) {
-                    batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le shinda.');
+                    batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le shinda.');
                 }
             }
         }
@@ -1701,7 +1710,7 @@ function tagsEffect(bat,batType) {
             bat.squadsLeft = bat.squadsLeft-squadsOut;
             bat.damage = totalDamage-(squadsOut*squadHP);
             if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par la drogue.');
+                batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par la drogue.');
             }
         }
         // VENIN
@@ -1717,7 +1726,7 @@ function tagsEffect(bat,batType) {
             bat.squadsLeft = bat.squadsLeft-squadsOut;
             bat.damage = totalDamage-(squadsOut*squadHP);
             if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le venin.');
+                batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le venin.');
             } else {
                 if (batType.cat != 'aliens') {
                     let degDice = 3+Math.floor(playerInfos.comp.ca*1.5)+(unitResist*2);
@@ -1755,7 +1764,7 @@ function tagsEffect(bat,batType) {
             bat.squadsLeft = bat.squadsLeft-squadsOut;
             bat.damage = totalDamage-(squadsOut*squadHP);
             if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,'Bataillon détruit',bat.type+' tués par le poison.');
+                batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le poison.');
             } else {
                 let stopPoison = 10;
                 if (batType.cat != 'aliens') {
@@ -1772,10 +1781,10 @@ function tagsEffect(bat,batType) {
             }
         }
     }
-    checkDeath(bat,batType);
+    checkDeath(bat,batType,true);
 };
 
-function checkDeath(bat,batType) {
+function checkDeath(bat,batType,gain) {
     if (bat.squadsLeft <= 0) {
         let deadId = bat.id;
         let tileId = bat.tileId;
@@ -1804,8 +1813,10 @@ function checkDeath(bat,batType) {
                     unveilAliens(bat);
                 }
             }
-            playerInfos.aliensKilled = playerInfos.aliensKilled+1;
-            addAlienRes(bat,false);
+            if (gain) {
+                playerInfos.aliensKilled = playerInfos.aliensKilled+1;
+                addAlienRes(bat,false);
+            }
             deadAliensList.push(bat.id);
         }
     }

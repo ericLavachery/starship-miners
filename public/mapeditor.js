@@ -95,6 +95,7 @@ function mapEditWindow() {
     $('#conUnitList').append('<span class="constName"><span class="gf">Gibier</span> : <span class="cy klik" onclick="checkGibier()" title="Checker le type de gibier">'+theGame.game+'</span> <span class="bleu" title="Chance/Max">('+theGame.chance+'/'+theGame.max+')</span></span><br>');
     mpedOption('cLand','Atterrissage au centre possible également','Landing centre','Atterrissage uniquement aux points marqués','Landing points');
     mpedOption('neverMove','Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints','Never move','Les bataillons avec un tag nomove peuvent également bouger dès qu\'un bâtiment (avec un tag nomove) est détruit','Tag nomove normal');
+    mpedOption('flw','Les aliens se dirigent vers le bataillon le plus proche','Follow','Les aliens se comportent normalement','No follow');
     mpedOption('noEggs','Aucun oeuf ne tombe','Sans Oeufs','Des oeufs tombent','Avec Oeufs');
     mpedOption('coverEggs','Les oeufs tombent toujours à couvert (près d\'une ruche, volcan ou colonie)','Oeufs à couvert','Les oeufs tombent normalement','Oeufs partout');
     $('#conUnitList').append('<span class="constName"><span class="gf">Zone spéciale?</span> : <span class="cy klik" onclick="zoneTypeToggle(`'+zoneInfos.type+'`)" title="Changer le type de zone">'+zoneInfos.type+'</span></span><br>');

@@ -1309,6 +1309,17 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             } else {
                 newBat.tags = [];
             }
+            if (conselUnit.cat === 'aliens' && conselUnit.moveCost < 90 && conselUnit.kind != 'game') {
+                if (zone[0].flw != undefined) {
+                    if (zone[0].flw) {
+                        if (!conselUnit.skills.includes('errant') && !conselUnit.skills.includes('capbld') && !conselUnit.skills.includes('nocap') && !conselUnit.skills.includes('capmen') && !conselUnit.skills.includes('anycap')) {
+                            if (!newBat.tags.includes('follow')) {
+                                newBat.tags.push('follow');
+                            }
+                        }
+                    }
+                }
+            }
             if (coconStats.dome && conselUnit.name === 'Vomissure' && !newBat.tags.includes('morph')) {
                 newBat.tags.push('morph');
             }
@@ -1544,7 +1555,7 @@ function removeBat(batId) {
     let bat = getBatById(batId);
     let batType = getBatType(bat);
     batUnselect();
-    batDeath(bat,false,false);
+    batDeath(bat,false,false,false);
     let batIndex = batList.findIndex((obj => obj.id == batId));
     batList.splice(batIndex,1);
     $('#b'+bat.tileId).empty();
@@ -1576,7 +1587,7 @@ function dismantle(batId) {
             }
             let xp = getXp(bat);
             batUnselect();
-            batDeath(bat,false,false);
+            batDeath(bat,false,false,false);
             let batIndex = batList.findIndex((obj => obj.id == batId));
             batList.splice(batIndex,1);
             $('#b'+bat.tileId).empty();
@@ -2075,7 +2086,7 @@ function getXp(bat) {
 function deleteAlien(batId) {
     let index = aliens.findIndex((obj => obj.id == batId));
     let bat = aliens[index];
-    batDeath(bat,false,false);
+    batDeath(bat,false,false,false);
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     $('#b'+bat.tileId).append(resHere);

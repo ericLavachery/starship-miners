@@ -81,6 +81,9 @@ function showEnemyBatInfos(bat) {
     if (batType.name === 'Colonie') {
         compCA = compCA-2;
     }
+    if (playerInfos.pseudo === 'Mapedit') {
+        compCA = 10;
+    }
     let silSize;
     if (batType.kind != 'game') {
         silSize = getSilSize(batType);

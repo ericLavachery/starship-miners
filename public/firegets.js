@@ -149,11 +149,11 @@ function delugeDamage(weap,bat,batType) {
     bat.damage = totalDamage-(squadsOut*squadHP);
     if (bat.squadsLeft <= 0) {
         if (weap.ammo.includes('suicide')) {
-            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' volatilisé.');
+            batDeathEffect(bat,true,false,'Bataillon détruit',bat.type+' volatilisé.');
         } else {
-            batDeathEffect(bat,true,'Bataillon détruit',bat.type+' brûlé.');
+            batDeathEffect(bat,true,false,'Bataillon détruit',bat.type+' brûlé.');
         }
-        checkDeath(bat,batType);
+        checkDeath(bat,batType,false);
     }
 }
 
@@ -458,7 +458,7 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
     return result;
 };
 
-function batDeath(bat,count,isWiped) {
+function batDeath(bat,count,gain,isWiped) {
     console.log('DEATH');
     console.log(bat);
     let deadId = bat.id;
@@ -507,9 +507,11 @@ function batDeath(bat,count,isWiped) {
                 playMusic('eggKill',false);
             }
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
-            addAlienRes(bat,isWiped);
-            if (!playerInfos.knownAliens.includes(batType.name)) {
-                newAlienKilled(batType,tileId);
+            if (gain) {
+                addAlienRes(bat,isWiped);
+                if (!playerInfos.knownAliens.includes(batType.name)) {
+                    newAlienKilled(batType,tileId);
+                }
             }
         }
         let batIndex = aliens.findIndex((obj => obj.id == bat.id));
@@ -525,7 +527,7 @@ function batDeath(bat,count,isWiped) {
     }
 };
 
-function batDeathEffect(bat,quiet,title,body) {
+function batDeathEffect(bat,quiet,gain,title,body) {
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     if (!isFFW) {
@@ -563,7 +565,7 @@ function batDeathEffect(bat,quiet,title,body) {
         $('#b'+bat.tileId).append(resHere);
         warning(title,body);
     }
-    if (!quiet && bat.team === 'aliens' && !playerInfos.knownAliens.includes(bat.type)) {
+    if (gain && bat.team === 'aliens' && !playerInfos.knownAliens.includes(bat.type)) {
         newAlienKilled(bat.type,bat.tileId);
     }
     if (bat.team != 'aliens') {

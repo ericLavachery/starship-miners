@@ -1756,8 +1756,10 @@ function pactole(bastionTileId,withTrans) {
 
 function nomoveOut(myBat) {
     tagDelete(myBat,'nomove');
+    myBat.army = 21;
     playerInfos.gangXP = playerInfos.gangXP+5;
     let myBatType = getBatType(myBat);
+    warning(myBatType.name,'Ce bataillon passe sous votre contrôle',false,myBat.tileId);
     if (myBatType.skills.includes('transorbital')) {
         if (!myBat.tags.includes('deploy')) {
             myBat.tags.push('deploy');
@@ -1767,7 +1769,9 @@ function nomoveOut(myBat) {
         bataillons.forEach(function(bat) {
             if (myBat.transIds.includes(bat.id)) {
                 tagDelete(bat,'nomove');
+                bat.army = 21;
                 playerInfos.gangXP = playerInfos.gangXP+5;
+                warning(bat.type,'Ce bataillon passe sous votre contrôle',false,bat.tileId);
             }
         });
     }
@@ -1785,6 +1789,8 @@ function removeNoMoves(myBat) {
             bataillons.forEach(function(bat) {
                 if (bat.tags.includes('nomove')) {
                     tagDelete(bat,'nomove');
+                    bat.army = 21;
+                    warning(bat.type,'Ce bataillon passe sous votre contrôle',false,bat.tileId);
                 }
             });
         }

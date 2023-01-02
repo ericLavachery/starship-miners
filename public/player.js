@@ -2820,7 +2820,7 @@ function gangChoice() {
     $('#theStartZone').append('<option value="93" disabled>Zone 93</option>');
     $('#theStartZone').append('<option value="92" disabled>Zone 92</option>');
     $('#theStartZone').append('<option value="91" disabled>Zone 91</option>');
-    $('#theStartZone').append('<option value="90" disabled>Zone 90</option>');
+    $('#theStartZone').append('<option value="90">Zone 90 - Place forte</option>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="butSpace"></span>');
     $('#conUnitList').append('<br>');

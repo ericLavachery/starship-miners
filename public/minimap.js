@@ -186,7 +186,7 @@ function checkVisibleAliens() {
     aliens.forEach(function(alien) {
         if (alien.loc === "zone") {
             alienType = getBatType(alien);
-            if ((!alien.tags.includes('invisible') && !alienType.skills.includes('invisible')) || playerInfos.vue >= 5) {
+            if ((!alien.tags.includes('invisible') && !alienType.skills.includes('invisible')) || playerInfos.vue >= 5 || playerInfos.pseudo === 'Mapedit') {
                 if (alienType.kind === 'game') {
                     visibleHunts.push(alien.tileId);
                 } else {
