@@ -452,6 +452,7 @@ function nearWhat(myBat,myBatType) {
     let near = {};
     near.caserne = false;
     near.control = false;
+    near.friends = false;
     near.schef = false;
     near.doxey = false;
     near.loader = false;
@@ -478,6 +479,9 @@ function nearWhat(myBat,myBatType) {
         if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1 || myBat.tileId === bat.tileId) {
             if (!bat.tags.includes('nomove') && batType.crew >= 1 && !batType.skills.includes('dog') && (!bat.tags.includes('outsider') || !batType.skills.includes('nofight')) && !batType.skills.includes('iscit')) {
                 near.control = true;
+            }
+            if (bat.tags.includes('nomove')) {
+                near.friends = true;
             }
             if (bat.tags.includes('hero') && batType.skills.includes('heropotion') && !bat.tags.includes('potion')) {
                 near.doxey = true;
@@ -537,6 +541,7 @@ function blockMe(stop) {
 function washReports(warningsAlso) {
     if (warningsAlso) {
         $('#warnings').empty();
+        friendsAlert = false;
     }
     $('#report').empty();
 };

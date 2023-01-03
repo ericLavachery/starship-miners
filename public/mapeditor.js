@@ -68,6 +68,8 @@ function mapEditWindow() {
     selectStuff('NoPrefab','bldNoPrefab2','Ne peut pas être déconstruit (démantèlement seulement / personnel réduit)');
     selectStuff('Bleed','bleed','Blesser le bataillon');
     selectStuff('CitChange','lessCit2','Diminuer le nombre de citoyens ou criminels');
+    selectStuff('FullShield','alienShield','Cet alien a un bouclier permanent');
+    selectStuff('FastMorph','alienFastMorph','Cet alien se transforme plus rapidement (Veilleurs se transforment en Ruche vers le tour 12)');
     // End
     $('#conUnitList').append('<br><br>');
     if (mped.sinf === 'RareRes' || mped.sinf === 'Res') {
@@ -97,6 +99,11 @@ function mapEditWindow() {
     mpedOption('neverMove','Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints','Never move','Les bataillons avec un tag nomove peuvent également bouger dès qu\'un bâtiment (avec un tag nomove) est détruit','Tag nomove normal');
     mpedOption('flw','Les aliens se dirigent vers le bataillon le plus proche','Follow','Les aliens se comportent normalement','No follow');
     mpedOption('noEggs','Aucun oeuf ne tombe','Sans Oeufs','Des oeufs tombent','Avec Oeufs');
+    let meip = 0;
+    if (zone[0].meip != undefined) {
+        meip = zone[0].meip;
+    }
+    $('#conUnitList').append('<span class="constName"><span class="gf" title="Maximum d\'oeufs en jeu (en plus de la normale)">Max Eggs</span> : <span class="cy klik" onclick="addMaxEggs(false)" title="Diminuer">&ddarr;</span> <span class="bleu">+'+meip+'</span> <span class="cy klik" onclick="addMaxEggs(true)" title="Augmenter">&uuarr;</span></span><br>');
     mpedOption('coverEggs','Les oeufs tombent toujours à couvert (près d\'une ruche, volcan ou colonie)','Oeufs à couvert','Les oeufs tombent normalement','Oeufs partout');
     $('#conUnitList').append('<span class="constName"><span class="gf">Zone spéciale?</span> : <span class="cy klik" onclick="zoneTypeToggle(`'+zoneInfos.type+'`)" title="Changer le type de zone">'+zoneInfos.type+'</span></span><br>');
     if (zoneInfos.type === 'normal') {
@@ -267,6 +274,20 @@ function planetToggle(plaName) {
     playRoom(zone[0].snd,true,true);
     showMap(zone,true);
     planetThumb();
+    mapEditWindow();
+};
+
+function addMaxEggs(up) {
+    let meip = 0;
+    if (zone[0].meip != undefined) {
+        meip = zone[0].meip;
+    }
+    if (up) {
+        meip++;
+    } else {
+        meip--
+    }
+    zone[0].meip = meip;
     mapEditWindow();
 };
 
@@ -506,6 +527,10 @@ function clickEdit(tileId) {
             }
         } else if (mped.sinf === 'Garde') {
             fixAlienPDM(tile);
+        } else if (mped.sinf === 'FastMorph') {
+            addTagToAlienOnTile(tile,'fastmorph');
+        } else if (mped.sinf === 'FullShield') {
+            addTagToAlienOnTile(tile,'permashield');
         } else if (mped.sinf === 'NoMove') {
             addTagToBatOnTile(tile,'nomove');
         } else if (mped.sinf === 'Outsider') {
@@ -606,6 +631,25 @@ function fixAlienPDM(tile) {
         alien.pdm = tile.id;
     } else {
         delete alien.pdm;
+    }
+};
+
+function addTagToAlienOnTile(tile,tag) {
+    let bat = getAlienByTileId(tile.id);
+    let batType = getBatType(bat);
+    let tagOK = true;
+    if (tag === 'fastmorph') {
+        tagOK = false;
+        if (batType.name === 'Veilleurs') {
+            tagOK = true;
+        }
+    }
+    if (tagOK) {
+        if (!bat.tags.includes(tag)) {
+            bat.tags.push(tag);
+        } else {
+            tagDelete(bat,tag);
+        }
     }
 };
 

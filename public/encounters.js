@@ -1755,25 +1755,27 @@ function pactole(bastionTileId,withTrans) {
 };
 
 function nomoveOut(myBat) {
-    tagDelete(myBat,'nomove');
-    myBat.army = 21;
-    playerInfos.gangXP = playerInfos.gangXP+5;
     let myBatType = getBatType(myBat);
-    warning(myBatType.name,'Ce bataillon passe sous votre contrôle',false,myBat.tileId);
-    if (myBatType.skills.includes('transorbital')) {
-        if (!myBat.tags.includes('deploy')) {
-            myBat.tags.push('deploy');
-        }
-    }
-    if (myBat.transIds != undefined) {
-        bataillons.forEach(function(bat) {
-            if (myBat.transIds.includes(bat.id)) {
-                tagDelete(bat,'nomove');
-                bat.army = 21;
-                playerInfos.gangXP = playerInfos.gangXP+5;
-                warning(bat.type,'Ce bataillon passe sous votre contrôle',false,bat.tileId);
+    if (!myBatType.skills.includes('nomove')) {
+        tagDelete(myBat,'nomove');
+        myBat.army = 21;
+        playerInfos.gangXP = playerInfos.gangXP+5;
+        warning(myBatType.name,'Ce bataillon passe sous votre contrôle',false,myBat.tileId);
+        if (myBatType.skills.includes('transorbital')) {
+            if (!myBat.tags.includes('deploy')) {
+                myBat.tags.push('deploy');
             }
-        });
+        }
+        if (myBat.transIds != undefined) {
+            bataillons.forEach(function(bat) {
+                if (myBat.transIds.includes(bat.id)) {
+                    tagDelete(bat,'nomove');
+                    bat.army = 21;
+                    playerInfos.gangXP = playerInfos.gangXP+5;
+                    warning(bat.type,'Ce bataillon passe sous votre contrôle',false,bat.tileId);
+                }
+            });
+        }
     }
 }
 
@@ -1787,7 +1789,8 @@ function removeNoMoves(myBat) {
     if (!nevMove) {
         if (myBat.type != 'Silo') {
             bataillons.forEach(function(bat) {
-                if (bat.tags.includes('nomove')) {
+                let batType = getBatType(bat);
+                if (bat.tags.includes('nomove') && !batType.skills.includes('nomove')) {
                     tagDelete(bat,'nomove');
                     bat.army = 21;
                     warning(bat.type,'Ce bataillon passe sous votre contrôle',false,bat.tileId);

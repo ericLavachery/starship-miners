@@ -116,7 +116,7 @@
         "transMaxSize":21,
         "transUnits":1500,
         "transRes":1500,
-        "maxSkill":24,
+        "maxSkill":36,
         "maxDrug":12,
         "fuzz":4.5,
         "deathFx":"S_Explosion02"
@@ -195,7 +195,7 @@
         "transMaxSize":21,
         "transUnits":1500,
         "transRes":1500,
-        "maxSkill":24,
+        "maxSkill":36,
         "maxDrug":18,
         "fuzz":1,
         "deathFx":"S_Explosion02"
@@ -260,7 +260,7 @@
         "transMaxSize":26,
         "transUnits":2000,
         "transRes":1500,
-        "maxSkill":24,
+        "maxSkill":36,
         "maxDrug":12,
         "fuzz":4.5,
         "deathFx":"S_Explosion02"
@@ -328,7 +328,7 @@
         "transMaxSize":21,
         "transUnits":1500,
         "transRes":1500,
-        "maxSkill":24,
+        "maxSkill":36,
         "maxDrug":24,
         "fuzz":4.5,
         "deathFx":"S_Explosion02"
@@ -392,7 +392,7 @@
         "transMaxSize":21,
         "transUnits":1500,
         "transRes":1500,
-        "maxSkill":24,
+        "maxSkill":36,
         "maxDrug":12,
         "fuzz":4.5,
         "deathFx":"S_Explosion02"
@@ -459,7 +459,7 @@
         "transMaxSize":21,
         "transUnits":1500,
         "transRes":1500,
-        "maxSkill":24,
+        "maxSkill":36,
         "maxDrug":12,
         "fuzz":4.5,
         "deathFx":"S_Explosion02"
@@ -522,7 +522,7 @@
         "transMaxSize":21,
         "transUnits":1500,
         "transRes":1500,
-        "maxSkill":24,
+        "maxSkill":36,
         "maxDrug":12,
         "fuzz":4.5,
         "deathFx":"S_Explosion02"
@@ -1341,7 +1341,7 @@
         "skills":["fouille","mecano","roborepair","selfrepair","meleehelp","recupcit","crewsave","transport","routes","dealer","nitro","sudu","producteur","craft","upkeep","updisable","upgrade","prodres","longshot","ravitaillement","ravitprod","fret","dumper","cible","reeq","prefab","infrahelp"],
         "mecanoCost":4,
         "maxDrug":24,
-        "maxSkill":24,
+        "maxSkill":36,
         "transMaxSize":25,
         "transUnits":1500,
         "transRes":3000,
@@ -1461,7 +1461,7 @@
         "skills":["fouille","mecano","roborepair","selfrepair","meleehelp","recupcit","crewsave","transport","routes","dealer","nitro","sudu","constructeur","producteur","barbs","craft","upkeep","updisable","prodres","longshot","w2cible","ravitaillement","ravitprod","fret","dumper","reeq","prefab","infrahelp","maxind"],
         "mecanoCost":4,
         "maxDrug":24,
-        "maxSkill":36,
+        "maxSkill":48,
         "transMaxSize":50,
         "transUnits":2500,
         "transRes":5000,
@@ -1744,7 +1744,7 @@
         "transMaxSize":50,
         "transUnits":1500,
         "transRes":3000,
-        "maxSkill":24,
+        "maxSkill":36,
         "fuzz":5,
         "deathFx":"S_Explosion02"
     },
@@ -1853,7 +1853,7 @@
         "transMaxSize":50,
         "transUnits":2500,
         "transRes":4000,
-        "maxSkill":36,
+        "maxSkill":48,
         "fuzz":5,
         "deathFx":"S_Explosion02"
     },

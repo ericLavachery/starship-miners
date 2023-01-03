@@ -376,7 +376,13 @@ function attack(melee,init) {
     if (selectedWeap.ammo.includes('autodes') || selectedBatType.skills.includes('undead') || selectedBat.tags.includes('zombie')) {
         shots = selectedWeap.rof*selectedBatType.squads;
     } else if (selectedBatType.cat === 'buildings') {
-        shots = selectedWeap.rof*(selectedBatType.squads+selectedBat.squadsLeft)/2;
+        if (selectedBatType.squads === 6) {
+            let aptSquads = selectedBat.squadsLeft+2.5;
+            if (aptSquads > 6) {aptSquads = 6;}
+            shots = selectedWeap.rof*aptSquads;
+        } else {
+            shots = selectedWeap.rof*selectedBatType.squads;
+        }
     }
     // hero fanatic
     if ((selectedBat.tags.includes('hero') || selectedBat.tags.includes('vet')) && selectedBatType.skills.includes('herofana')) {
@@ -536,7 +542,7 @@ function attack(melee,init) {
     } else {
         shotDice = calcShotDice(selectedBat,false);
     }
-    if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall') {
+    if (playerInfos.pseudo === 'Payall') {
         shotDice = 100;
     }
     // console.log('shotDice='+shotDice);
@@ -1212,14 +1218,14 @@ function attack(melee,init) {
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
     targetBat.damage = allDamage-(squadsOut*squadHP);
     if (targetBatType.skills.includes('nofight')) {
-        if (targetBat.tags.includes('nomove')) {
+        if (targetBat.tags.includes('nomove') && !targetBatType.skills.includes('nomove')) {
             if (totalDamage >= 1) {
                 if (targetBatType.cat === 'infantry') {
                     tagDelete(targetBat,'nomove');
                     targetBat.army = 21;
                     warning(targetBatType.name,'Ce bataillon passe sous votre contrôle',false,targetBat.tileId);
                 } else {
-                    if (targetBat.squadsLeft <= targetBatType.squads-2) {
+                    if (targetBat.squadsLeft <= targetBatType.squads-1) {
                         tagDelete(targetBat,'nomove');
                         targetBat.army = 21;
                         warning(targetBatType.name,'Ce bataillon passe sous votre contrôle',false,targetBat.tileId);
@@ -1505,7 +1511,13 @@ function defense(melee,init) {
     if (targetBatType.skills.includes('undead') || targetBat.tags.includes('zombie')) {
         shots = Math.ceil(targetWeap.rof*targetBatType.squads*brideDef);
     } else if (targetBatType.cat === 'buildings') {
-        shots = Math.ceil(targetWeap.rof*(targetBatType.squads+targetBat.squadsLeft)/2*brideDef);
+        if (targetBatType.squads === 6) {
+            let aptSquads = targetBat.squadsLeft+2.5;
+            if (aptSquads > 6) {aptSquads = 6;}
+            shots = targetWeap.rof*aptSquads;
+        } else {
+            shots = targetWeap.rof*targetBatType.squads;
+        }
     }
     // hero fanatic
     if ((targetBat.tags.includes('hero') || targetBat.tags.includes('vet')) && targetBatType.skills.includes('herofana')) {
@@ -1604,7 +1616,7 @@ function defense(melee,init) {
     } else {
         shotDice = calcShotDice(targetBat,false);
     }
-    if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall') {
+    if (playerInfos.pseudo === 'Payall') {
         shotDice = 100;
     }
     // noBig

@@ -130,6 +130,12 @@ function batInfos(bat,batType,pop) {
             }
         }
     }
+    if (near.friends && !friendsAlert) {
+        if (!bat.tags.includes('nomove') && batType.crew >= 1 && !batType.skills.includes('dog') && (!bat.tags.includes('outsider') || !batType.skills.includes('nofight')) && !batType.skills.includes('iscit')) {
+            warning('Bataillons non contrôlés','Vous avez rejoint un ou plusieurs bataillons amis. Vous pouvez en prendre contrôle en cliquant dessus.');
+            friendsAlert = true;
+        }
+    }
     let grade = '';
     if (batType.skills.includes('robot')) {
         grade = 'Robot';
@@ -946,7 +952,11 @@ function showTileInfos(tileId) {
             $('#tileInfos').append('<span class="paramName cy">Ruines</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">'+ruinType.name+'</span><br>');
         }
         if (tile.infra != undefined) {
-            $('#tileInfos').append('<span class="paramName cy">Infrastructure</span><span class="paramIcon"><i class="ra ra-tower rpg"></i></span><span class="paramValue cy">'+tile.infra+'</span><br>');
+            let infraDesc = "";
+            if (tile.infra === 'Terriers') {
+                infraDesc = "Vos infanteries peuvent se déplacer furtivement d'un terrier à l'autre (à 7 cases max). Placer un marqueur sur le terrier de destination.";
+            }
+            $('#tileInfos').append('<span class="paramName cy">Infrastructure</span><span class="paramIcon"><i class="ra ra-tower rpg"></i></span><span class="paramValue cy" title="'+infraDesc+'">'+tile.infra+'</span><br>');
         }
         if (tile.rd != undefined) {
             if (tile.rd) {

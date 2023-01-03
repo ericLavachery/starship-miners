@@ -417,6 +417,14 @@ function showAlien(bat) {
     if (batType.class === 'X') {
         tagz = tagz+myKind;
     }
+    if (mode === 'edit' || playerInfos.pseudo === 'Mapedit') {
+        if (bat.tags.includes('fastmorph')) {
+            tagz = tagz+' (fastmorph)';
+        }
+        if (bat.tags.includes('permashield')) {
+            tagz = tagz+' (permashield)';
+        }
+    }
     if (playerInfos.comp.det >= 3 && playerInfos.comp.ca >= 2) {
         tagz = tagz+' ('+bat.apLeft+' PA)';
     }

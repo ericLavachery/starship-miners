@@ -1241,7 +1241,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","medic","realmed","maycamo","dealer","starka","kirin","octiron","nochef"],
+        "skills":["a_light","fouille","fortif","medic","realmed","maycamo","dealer","starka","kirin","octiron","nochef","nofight"],
         "mediCost":8,
         "maxDrug":18,
         "fuzz":0,

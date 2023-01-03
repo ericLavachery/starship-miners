@@ -2388,10 +2388,10 @@ function skillsInfos(bat,batType,near) {
             if (batType.skills.includes('scav')) {
                 apCost = Math.round(apCost/1.75);
             }
-            if (batType.cat === 'infantry' && !batType.skills.includes('moto') && !batType.skills.includes('fly')) {
-                apCost = Math.floor(apCost/batType.ap*11);
+            if (batType.cat === 'infantry') {
+                apCost = Math.floor(apCost*batType.ap/bat.ap/1.6);
             }
-            if (apCost > batType.ap*1.5 || batType.skills.includes('moto') || batType.skills.includes('fly')) {
+            if (apCost > batType.ap*1.5) {
                 apCost = Math.round(batType.ap*1.5);
             }
             if (bat.apLeft >= apReq && !inMelee) {

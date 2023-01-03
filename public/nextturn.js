@@ -261,7 +261,7 @@ function nextTurnEnd() {
             if (batType.name === 'Scraptrucks') {
                 hasScraptruck = true;
             }
-            if (batType.skills.includes('stock') || (batType.skills.includes('ravitprod') && batType.skills.includes('ravitall'))) {
+            if (batType.skills.includes('stock')) {
                 stockTileIds.push(bat.tileId);
             }
             if (batType.skills.includes('stock') || batType.skills.includes('ravitaillement')) {
@@ -455,7 +455,7 @@ function nextTurnEnd() {
                 bat.apLeft = 0-(bat.ap*2);
             }
             // nolist
-            if (bat.loc === "zone" && bat.tags.includes('nolist')) {
+            if (bat.loc === "zone" && bat.tags.includes('nolist') && !batType.skills.includes('neverlist')) {
                 aliens.forEach(function(alien) {
                     distance = calcDistance(bat.tileId,alien.tileId);
                     alienType = getBatType(alien);

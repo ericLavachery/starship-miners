@@ -2673,7 +2673,7 @@ function addStartPack() {
     addFreeBat(2136,'Isolation');
     // Ajouter les Citoyens
     let soute = getSoute();
-    let thePeople = 1668+(30*(4-playerInfos.gMode))+(rand.rand(6,10)*6);
+    let thePeople = 1404+(30*(4-playerInfos.gMode))+(rand.rand(6,10)*6);
     let theMafia = rand.rand(12,20)*6;
     thePeople = thePeople-theMafia;
     let unitIndex = unitTypes.findIndex((obj => obj.name === 'Citoyens'));

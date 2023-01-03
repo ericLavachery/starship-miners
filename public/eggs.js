@@ -187,6 +187,9 @@ function checkMaxEggsInPlay() {
     if (maxEggsInPlay < 1) {
         maxEggsInPlay = 1;
     }
+    if (zone[0].meip != undefined) {
+        maxEggsInPlay = maxEggsInPlay+zone[0].meip;
+    }
     return maxEggsInPlay;
 };
 
@@ -1227,6 +1230,7 @@ function spawns() {
     let libGenMorph = 0;
     let libGenMax = 14-zone[0].mapDiff;
     if (libGenMax < 4) {libGenMax = 4;}
+    let veilTransTurn = Math.ceil(35-(zone[0].mapDiff*zone[0].mapDiff/10));
     let minVolcDiff = (zone[0].mapDiff*20)+zone[0].mapTurn;
     let flyDice;
     let warnAsticots = false;
@@ -1336,6 +1340,17 @@ function spawns() {
                 alienSpawn(bat,'Cafards');
             } else if (bat.type === 'Ecrevisses' && aliens.length < maxAliens-50 && aliensNums.cafards < maxPonte*3) {
                 alienSpawn(bat,'Cafards');
+            } else if (bat.type === 'Veilleurs' && (batTurn >= veilTransTurn || (batTurn >= 12 && bat.tags.includes('fastmorph'))) && bat.squadsLeft >= 3 && rand.rand(1,6) === 1) {
+                bat.tags.push('morph');
+                if (bat.tags.includes('invisible')) {
+                    tagDelete(bat,'invisible');
+                }
+                if (playerInfos.vue >= 1 && playerInfos.comp.ca >= 1) {
+                    warning('Tranformation imminante','Des Veilleurs vont se transformer en Ruche!',false,bat.tileId);
+                }
+            } else if (bat.type === 'Veilleurs' && bat.tags.includes('morph')) {
+                alienMorph(bat,'Ruche',false);
+                coconStats.volc = true;
             } else if (bat.type === 'Veilleurs' && aliens.length < maxAliens-50 && bat.squadsLeft >= 3) {
                 let lifeTurn = playerInfos.mapTurn-bat.creaTurn;
                 if (lifeTurn === 1 && landingNoise >= 2) {

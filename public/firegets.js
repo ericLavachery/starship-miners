@@ -610,7 +610,7 @@ function addBodies(bat,batType,cits) {
     }
     let bodyFactor = 45+(playerInfos.comp.gen*10)+(playerInfos.comp.med*5)+(gangFacts.bod*100)-100+rand.rand(0,10);
     let bodyRecup = Math.ceil(unitCits*bodyFactor/100);
-    if (bodyRecup >= 1) {
+    if (bodyRecup >= 1 && !isStartZone) {
         resAdd('Corps',bodyRecup);
     }
     if (batType.skills.includes('dog')) {
@@ -985,8 +985,8 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
 function applyShield(shots) {
     let shieldValue = 1;
     let shieldChance = 0;
-    if (targetBatType.skills.includes('shield')) {
-        if (targetBatType.skills.includes('permashield')) {
+    if (targetBatType.skills.includes('shield') || targetBat.tags.includes('permashield')) {
+        if (targetBatType.skills.includes('permashield') || targetBat.tags.includes('permashield')) {
             shieldChance = 100;
         } else {
             shieldChance = 67;
@@ -1015,9 +1015,9 @@ function applyShield(shots) {
         if (rand.rand(1,100) <= shieldChance && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');
         }
-        if (targetBat.tags.includes('shield') || playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall') {
+        if (targetBat.tags.includes('shield') || playerInfos.pseudo === 'Payall') {
             shieldValue = rand.rand(6,14);
-            if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall') {
+            if (playerInfos.pseudo === 'Payall') {
                 shieldValue = 10;
             }
             if (selectedWeap.noShield) {

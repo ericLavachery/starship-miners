@@ -1289,13 +1289,16 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                         newBat.tags = startTag;
                     } else if (startTag === 'veil') {
                         newBat.tags = ['invisible','follow'];
+                        if (!conselUnit.skills.includes('errant') && !conselUnit.skills.includes('capbld') && !conselUnit.skills.includes('nocap') && !conselUnit.skills.includes('capmen')) {
+                            newBat.tags = ['invisible','follow'];
+                        } else {
+                            newBat.tags = ['invisible'];
+                        }
                     } else {
                         newBat.tags = [startTag];
                     }
                 } else {
-                    if (startTag === 'veil') {
-                        newBat.tags = ['invisible','follow'];
-                    } else if (startTag === 'fortifguet') {
+                    if (startTag === 'fortifguet') {
                         newBat.tags = ['guet','fortif'];
                     } else if (startTag === 'fgnomove') {
                         newBat.tags = ['guet','fortif','nomove'];
@@ -1312,7 +1315,7 @@ function putBat(tileId,citoyens,xp,startTag,show) {
             if (conselUnit.cat === 'aliens' && conselUnit.moveCost < 90 && conselUnit.kind != 'game') {
                 if (zone[0].flw != undefined) {
                     if (zone[0].flw) {
-                        if (!conselUnit.skills.includes('errant') && !conselUnit.skills.includes('capbld') && !conselUnit.skills.includes('nocap') && !conselUnit.skills.includes('capmen') && !conselUnit.skills.includes('anycap')) {
+                        if (!conselUnit.skills.includes('errant') && !conselUnit.skills.includes('capbld') && !conselUnit.skills.includes('nocap') && !conselUnit.skills.includes('capmen')) {
                             if (!newBat.tags.includes('follow')) {
                                 newBat.tags.push('follow');
                             }
