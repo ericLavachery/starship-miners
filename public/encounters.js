@@ -1761,6 +1761,7 @@ function nomoveOut(myBat) {
         myBat.army = 21;
         playerInfos.gangXP = playerInfos.gangXP+5;
         warning(myBatType.name,'Ce bataillon passe sous votre contrôle',false,myBat.tileId);
+        showMap(zone,true);
         if (myBatType.skills.includes('transorbital')) {
             if (!myBat.tags.includes('deploy')) {
                 myBat.tags.push('deploy');

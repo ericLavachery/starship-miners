@@ -82,6 +82,7 @@ let ruinsCrimChance = 7; // 1/7 criminels au lieu de citoyens (15%)
 let ruinsEmpty = true;
 let ruinsAlien = false;
 let ruinsBugBase = 25; // def 50
+let ruinsDices = [1,1];
 let selectedTile = -1;
 let showMini = false;
 let miniDots = 'units';

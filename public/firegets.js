@@ -1009,7 +1009,7 @@ function applyShield(shots) {
     console.log(shieldChance+'%');
     console.log(selectedWeap.ammo);
     if (activeTurn === 'player' && shieldChance >= 1 && selectedWeap.ammo != 'marquage') {
-        if (!targetBat.tags.includes('shield')) {
+        if (!targetBat.tags.includes('shield') && !targetBat.tags.includes('permashield')) {
             $('#report').append('<span class="report rose">Bouclier '+shieldChance+'%<br></span>');
         }
         if (rand.rand(1,100) <= shieldChance && !targetBat.tags.includes('shield')) {
@@ -1171,7 +1171,7 @@ function getStealth(bat) {
     }
     if (batType.cat != 'aliens') {
         if (isOnInfra(bat)) {
-            if (playerInfos.comp.cam >= 1) {
+            if (playerInfos.comp.cam >= 2) {
                 batStealth = batStealth+4;
             } else {
                 batStealth = batStealth+2;
@@ -1233,6 +1233,10 @@ function getStealth(bat) {
     }
     // Starka drug
     if (bat.tags.includes('starka') || bat.tags.includes('moloko')) {
+        batStealth = batStealth/1.5;
+    }
+    // camouflage 0
+    if (batStealth >= 1 && playerInfos.comp.cam < 1) {
         batStealth = batStealth/1.5;
     }
     batStealth = Math.round(batStealth);

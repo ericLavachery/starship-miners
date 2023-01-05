@@ -2612,7 +2612,7 @@ function skillsInfos(bat,batType,near) {
         unloadInfos(bat,batType);
         // DECONSTRUIRE VERS LANDER (si à côté)
         if (!playerInfos.onShip) {
-            if (batType.skills.includes('prefab') && bat.apLeft >= 5) {
+            if (batType.skills.includes('prefab') && bat.apLeft >= 5 && !bat.tags.includes('noprefab')) {
                 let isLoaded = checkCharged(bat,'load');
                 let isCharged = checkCharged(bat,'trans');
                 if (!isLoaded && !isCharged) {

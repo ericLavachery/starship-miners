@@ -473,7 +473,7 @@ function canCamo(bat,batType,tile) {
         iCanCamo = true;
     }
     if (batType.skills.includes('aicamo')) {
-        if (playerInfos.comp.train >= 1) {
+        if (playerInfos.comp.cam >= 1) {
             if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
                 iCanCamo = true;
             }
@@ -486,13 +486,40 @@ function canCamo(bat,batType,tile) {
     }
     if (tile.ruins) {
         if (batType.size < 20) {
-            if (!batType.skills.includes('robot') || (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 1) || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+            if (batType.skills.includes('robot')) {
+                if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                    iCanCamo = true;
+                }
+                if (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 1) {
+                    iCanCamo = true;
+                }
+            } else if (batType.skills.includes('dog')) {
+                if (playerInfos.comp.cam >= 1) {
+                    iCanCamo = true;
+                }
+            } else {
                 iCanCamo = true;
             }
         }
     }
     if (tile.terrain === 'F') {
         if (batType.size < 20) {
+            if (batType.skills.includes('robot')) {
+                if (playerInfos.comp.cam >= 1) {
+                    if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                        iCanCamo = true;
+                    }
+                    if (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 2) {
+                        iCanCamo = true;
+                    }
+                }
+            } else if (batType.skills.includes('dog')) {
+                if (playerInfos.comp.cam >= 1) {
+                    iCanCamo = true;
+                }
+            } else {
+                iCanCamo = true;
+            }
             if (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
                 iCanCamo = true;
             }
@@ -500,16 +527,27 @@ function canCamo(bat,batType,tile) {
     }
     if (zone[0].planet === 'Sarak') {
         if (batType.cat != 'buildings' && batType.size < 50) {
-            if (!batType.skills.includes('robot') || (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 1) || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+            if (batType.skills.includes('robot')) {
+                if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                    iCanCamo = true;
+                }
+                if (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 1) {
+                    iCanCamo = true;
+                }
+            } else if (batType.skills.includes('dog')) {
+                if (playerInfos.comp.cam >= 1) {
+                    iCanCamo = true;
+                }
+            } else {
                 iCanCamo = true;
             }
         }
     }
-    if (bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || bat.eq === 'trainkitgi' || bat.eq === 'trainkitch' || bat.eq === 'trainkitlu' || bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.tdc.includes('e-camo') || bat.tdc.includes('silencieux1') || bat.tdc.includes('silencieux2')) {
+    if (bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.tdc.includes('e-camo') || bat.tdc.includes('silencieux1') || bat.tdc.includes('silencieux2')) {
         iCanCamo = true;
     }
-    if (bat.eq === 'kit-guetteur' || bat.eq === 'kit-chouf') {
-        if (playerInfos.comp.train >= 1) {
+    if (bat.eq === 'kit-milice' || bat.eq === 'kit-guetteur' || bat.eq === 'kit-chouf' || bat.eq === 'kit-sentinelle' || bat.eq === 'trainkitch' || bat.eq === 'trainkitlu' || bat.eq === 'trainkitgi') {
+        if (playerInfos.comp.cam >= 1) {
             iCanCamo = true;
         }
     }

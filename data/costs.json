@@ -1628,7 +1628,6 @@
         "levels":{"rednecks":8,"blades":4,"bulbos":6,"drogmulojs":5,"tiradores":7,"detruas":8,"brasier":7},
         "bldReq":["Garage","Atelier"],
         "compReq":{"cam":1},
-        "compPass":["blades"],
         "costs":{"Fer":24,"Scrap":128,"Carbone":48,"Moteurs":36,"Cuivre":36,"Electros":36,"Batteries":36,"Compo2":36},
         "deploy":{"Energie":120},
         "fabTime":25,

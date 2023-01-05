@@ -121,9 +121,9 @@
         "id":14,
         "name":"cam",
         "fullName":"Camouflage",
-        "levels":{"rednecks":6,"blades":0,"bulbos":6,"drogmulojs":6,"tiradores":6,"detruas":6,"brasier":6},
+        "levels":{"rednecks":3,"blades":0,"bulbos":3,"drogmulojs":0,"tiradores":5,"detruas":3,"brasier":3},
         "maxLevel":3,
-        "lvlCosts":[0,2,1,1],
+        "lvlCosts":[0,1,2,1],
         "rechCost":0.7
     },
     {

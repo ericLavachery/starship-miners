@@ -49,10 +49,10 @@ function mapEditWindow() {
             selectStuff(infra.name,infra.pic,infra.name);
         }
     });
-    selectStuff('Ruines','ruins','Ruines');
-    selectStuff('Ruines vides','ruinsf','Ruines vides');
+    selectStuff('Ruines','ruinCheck','Ruines (type au hasard)');
+    selectStuff('RuinesNext','ruinNext','Ruines (le type suivant)');
+    selectStuff('RuinesVides','ruinEmpty2','Ruines fouillées / Non fouillées (sans changer le type de ruine)');
     selectStuff('Route','roads','Route (ou Pont)');
-    selectStuff('Toile','webIcon','Toile (Canon Web)');
     // Landing
     selectStuff('Lander','lander','Point d\'atterrissage lander (ou navette)');
     selectStuff('Navette','navette','Point d\'atterrissage navette seulemment');
@@ -63,13 +63,14 @@ function mapEditWindow() {
     selectStuff('BatRes','batres','Mettre des ressources dans le bataillon');
     // Tags
     selectStuff('Garde','alienPDM2','Garde alien (va rester dans le périmètre)');
+    selectStuff('FullShield','alienShield','Cet alien a un bouclier permanent');
+    selectStuff('FastMorph','alienFastMorph','Cet alien se transforme plus rapidement (Veilleurs se transforment en Ruche vers le tour 12 / Oeufs, Coques et Vomissures se transforment 2x plus vite)');
+    selectStuff('Toile','webIcon','Toile (Canon Web)');
     selectStuff('NoMove','batNoMove2','Bataillon immobilisé (non contrôlé par le joueur)');
     selectStuff('Outsider','batOutsider2','Bataillon outsider (si démantelé, pourrait donner des criminels)');
     selectStuff('NoPrefab','bldNoPrefab2','Ne peut pas être déconstruit (démantèlement seulement / personnel réduit)');
     selectStuff('Bleed','bleed','Blesser le bataillon');
     selectStuff('CitChange','lessCit2','Diminuer le nombre de citoyens ou criminels');
-    selectStuff('FullShield','alienShield','Cet alien a un bouclier permanent');
-    selectStuff('FastMorph','alienFastMorph','Cet alien se transforme plus rapidement (Veilleurs se transforment en Ruche vers le tour 12)');
     // End
     $('#conUnitList').append('<br><br>');
     if (mped.sinf === 'RareRes' || mped.sinf === 'Res') {
@@ -467,15 +468,24 @@ function clickEdit(tileId) {
         bord = true;
     }
     if (mped.sinf != '') {
-        if (mped.sinf === 'Ruines vides') {
+        if (mped.sinf === 'RuinesVides') {
+            if (tile.ruins) {
+                if (tile.sh >= 0) {
+                    tile.sh = -1;
+                } else {
+                    tile.sh = 10;
+                }
+            }
+        } else if (mped.sinf === 'RuinesNext') {
             if (!tile.ruins) {
                 tile.ruins = true;
-                tile.sh = -1;
+                tile.sh = 10;
                 tile.rd = true;
                 delete tile.infra;
                 addScrapToRuins(tile);
                 washReports(true);
-                checkRuinType(tile,false);
+                checkNextRuinType(tile);
+                // checkRuinType(tile,false);
             } else {
                 delete tile.ruins;
                 delete tile.sh;
@@ -490,6 +500,7 @@ function clickEdit(tileId) {
                 delete tile.infra;
                 addScrapToRuins(tile);
                 washReports(true);
+                // checkNextRuinType(tile);
                 checkRuinType(tile,false);
             } else {
                 delete tile.ruins;
@@ -640,7 +651,7 @@ function addTagToAlienOnTile(tile,tag) {
     let tagOK = true;
     if (tag === 'fastmorph') {
         tagOK = false;
-        if (batType.name === 'Veilleurs') {
+        if (batType.name === 'Veilleurs' || batType.name === 'Vomissure' || batType.name === 'Oeuf' || batType.name === 'Oeuf voilé' || batType.name === 'Coque') {
             tagOK = true;
         }
     }

@@ -1217,8 +1217,8 @@ function spawns() {
     let transList = morphList();
     let aliensNums = aliensCount();
     let vomiToRuche = 22-Math.round(zone[0].mapDiff*1.5);
-    if (vomiToRuche < 5) {
-        vomiToRuche = 5;
+    if (vomiToRuche < 7) {
+        vomiToRuche = 7;
     }
     let maxPonte = zone[0].mapDiff+zone[0].mapDiff+2;
     let fantMorph = Math.round((11.5-zone[0].mapDiff)/Math.sqrt(zone[0].mapDiff)*10);
@@ -1247,6 +1247,10 @@ function spawns() {
     shufAliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             flyDice = rand.rand(1,3);
+            let vomiDice = vomiToRuche;
+            if (bat.tags.includes('fastmorph')) {
+                vomiDice = Math.ceil(vomiDice/2);
+            }
             let batTurn = playerInfos.mapTurn-bat.creaTurn+1;
             if ((bat.type.includes('Oeuf') || bat.type === 'Coque') && aliens.length < maxAliens) {
                 batType = getBatType(bat);
@@ -1314,7 +1318,7 @@ function spawns() {
                 alienMorph(bat,'Fantômes',false);
             } else if (scionMorph <= 20 && rand.rand(1,scionMorph) === 1 && bat.type === 'Wurms' && !bat.tags.includes('scion')) {
                 bat.tags.push('scion');
-            } else if (rand.rand(1,vomiToRuche) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure' && !bat.tags.includes('morph')) {
+            } else if (rand.rand(1,vomiDice) === 1 && playerInfos.mapTurn >= Math.ceil(vomiToRuche/1.5) && bat.type === 'Vomissure' && !bat.tags.includes('morph')) {
                 bat.tags.push('morph');
                 if (playerInfos.vue >= 1 && playerInfos.comp.ca >= 1) {
                     warning('Tranformation imminante','Une Vomissure va devenir une Ruche!',false,bat.tileId);
@@ -1958,6 +1962,9 @@ function eggSpawn(bat,fromEgg) {
         if (bat.tags.includes('colo')) {
             eggLife = eggLife-4;
         }
+    }
+    if (bat.tags.includes('fastmorph')) {
+        eggLife = Math.ceil(eggLife/2);
     }
     let presAlien = zone[0].mapDiff;
     if (presAlien < 1) {

@@ -37,7 +37,7 @@ function calcBatFuzz(bat) {
         batFuzz = batFuzz+batFuzz-3;
     }
     if (bat.eq === 'isophon' || bat.logeq === 'isophon' || bat.eq === 'bldkit') {
-        batFuzz = batFuzz-3;
+        batFuzz = batFuzz-4;
     }
     if (batFuzz < 0) {
         batFuzz = 0;

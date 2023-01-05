@@ -318,7 +318,7 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName jaune" title="'+outsiderMessage+'">Outsider</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
     if (bat.tags.includes('nomove')) {
-        $('#'+bodyPlace).append('<span class="paramName or" title="">Sous contrôle</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName or" title="">Hors contrôle</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     if (bat.tags.includes('construction')) {
         $('#'+bodyPlace).append('<span class="paramName or">Opérationel</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
@@ -665,10 +665,10 @@ function batInfos(bat,batType,pop) {
     }
 
     // DISMANTLE
-    if (!pop && !decButHere) {
+    if (!pop) {
         $('#'+bodyPlace).append('<hr>');
         let demText;
-        if (!bat.tags.includes('nomove') && !batType.skills.includes('nodelete')) {
+        if (!bat.tags.includes('nomove') && !batType.skills.includes('nodelete') && !decButHere) {
             let okKill = checkOkKill(batType);
             if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || (batType.skills.includes('recupcorps') && okKill) || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
                 if (batType.skills.includes('recupcit')) {
@@ -711,7 +711,7 @@ function batInfos(bat,batType,pop) {
                 $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+' '+toCoolString(resRecup)+'" class="boutonRouge skillButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');
             }
         }
-        if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall' || allowCheat) {
+        if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Mapedit' || allowCheat) {
             $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel skillButtons" onclick="removeBat('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
         }
         if ((batType.transRes >= 1 && batType.name != 'Soute' && batType.name != 'Stocks') || (batType.transRes >= 1 && allowCheat)) {

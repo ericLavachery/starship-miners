@@ -134,10 +134,18 @@ function chooseTarget(iter) {
                 if (alienInMelee) {
                     moveOutOfMelee();
                     inPlace = targetFarthest(iter);
-                    shootTarget(true,false);
+                    if (inPlace) {
+                        shootTarget(true,false);
+                    } else {
+                        moveToPDM();
+                    }
                 } else {
                     inPlace = targetFarthest(iter);
-                    shootTarget(false,false);
+                    if (inPlace) {
+                        shootTarget(false,false);
+                    } else {
+                        moveToPDM();
+                    }
                 }
             } else {
                 moveToPDM();
