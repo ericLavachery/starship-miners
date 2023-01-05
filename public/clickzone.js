@@ -299,11 +299,11 @@ function tileSelect(bat) {
 };
 
 function tileTarget(bat) {
-    console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
-    console.log(bat);
+    // console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+    // console.log(bat);
     let tileIndex = zone.findIndex((obj => obj.id === bat.tileId));
     let tile = zone[tileIndex];
-    console.log(tile);
+    // console.log(tile);
     terclass = 'ter'+tile.terrain+tile.seed;
     if (zone[0].dark && !zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
         terclass = 'terFog';

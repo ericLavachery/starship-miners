@@ -1788,13 +1788,17 @@ function checkDeath(bat,batType,gain) {
     if (bat.squadsLeft <= 0) {
         let deadId = bat.id;
         let tileId = bat.tileId;
+        let isNoPrefab = false;
+        if (bat.tags.includes('noprefab')) {
+            isNoPrefab = true;
+        }
         let batType = getBatType(bat);
         if (bat.team == 'player') {
             if (!batType.skills.includes('nodeathcount')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 playerInfos.deadBats.push(batType.name);
                 transDestroy(deadId,tileId);
-                saveCrew(batType,deadId,tileId);
+                saveCrew(batType,deadId,tileId,isNoPrefab);
                 playMusic('rip',true);
             }
             deadBatsList.push(bat.id);

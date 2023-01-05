@@ -463,6 +463,10 @@ function batDeath(bat,count,gain,isWiped) {
     console.log(bat);
     let deadId = bat.id;
     let tileId = bat.tileId;
+    let isNoPrefab = false;
+    if (bat.tags.includes('noprefab')) {
+        isNoPrefab = true;
+    }
     let batType = getBatType(bat);
     let isFlying = false;
     if (batType.skills.includes('fly')) {
@@ -487,7 +491,7 @@ function batDeath(bat,count,gain,isWiped) {
             if (batType.skills.includes('transport')) {
                 transDestroy(tileId,deadId,isFlying);
             }
-            saveCrew(batType,deadId,tileId);
+            saveCrew(batType,deadId,tileId,isNoPrefab);
         }
         batIndex = batList.findIndex((obj => obj.id == bat.id));
         batList.splice(batIndex,1);
@@ -661,7 +665,7 @@ function newAlienKilled(batType,tileId) {
     }
 };
 
-function saveCrew(deadBatType,deadId,tileId) {
+function saveCrew(deadBatType,deadId,tileId,isNoPrefab) {
     alienOccupiedTileList();
     playerOccupiedTileList();
     let salvableCits = 0;
@@ -677,6 +681,9 @@ function saveCrew(deadBatType,deadId,tileId) {
         salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/12*rand.rand(0,5+playerInfos.comp.train));
     }
     if (salvableCits >= 1) {
+        if (isNoPrefab) {
+            salvableCits = Math.ceil(salvableCits/2);
+        }
         if (salvableCits > 72) {
             conselTriche = true;
             putBatAround(tileId,false,'any',citId,72);
@@ -1009,7 +1016,7 @@ function applyShield(shots) {
     console.log(shieldChance+'%');
     console.log(selectedWeap.ammo);
     if (activeTurn === 'player' && shieldChance >= 1 && selectedWeap.ammo != 'marquage') {
-        if (!targetBat.tags.includes('shield') && !targetBat.tags.includes('permashield')) {
+        if (!targetBat.tags.includes('shield')) {
             $('#report').append('<span class="report rose">Bouclier '+shieldChance+'%<br></span>');
         }
         if (rand.rand(1,100) <= shieldChance && !targetBat.tags.includes('shield')) {

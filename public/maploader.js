@@ -399,6 +399,11 @@ function showAlien(bat) {
             }
         }
     }
+    if (batType.name === 'Coque' || batType.name === 'Oeuf') {
+        if (bat.tags.includes('permashield')) {
+            batPic = batPic+'-hard';
+        }
+    }
     let batCat = batType.cat;
     let unitsLeft = bat.squadsLeft*batType.squadSize;
     $('#b'+bat.tileId).empty();

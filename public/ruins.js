@@ -770,7 +770,7 @@ function checkNextRuinType(tile) {
         }
         ruinsDices[1]++;
     } else {
-        if (ruinsDices[0] >= 27) {
+        if (ruinsDices[0] >= 24) {
             ruinsDices[0] = 0;
         }
         ruinsDices[1] = 1;
