@@ -1190,40 +1190,12 @@ function getAP(bat,batType) {
     if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
         newAP = newAP+((batType.moveCost+1.5)*(playerInfos.comp.trans-1.25)/2.6);
     }
-    if (batType.skills.includes('fastempty')) {
-        emptyBonus = fastEmptyBonus(bat,batType);
-        newAP = newAP+emptyBonus;
-    }
     newAP = Math.round(newAP);
     newAP = newAP+Math.round(bat.vet*vetBonus.ap);
     if (batType.skills.includes('domeconst')) {
         newAP = bat.ap;
     }
     return newAP;
-};
-
-function fastEmptyBonus(bat,batType) {
-    let apBonus = 0;
-    if (batType.skills.includes('fastempty')) {
-        if (batType.skills.includes('ravitaillement')) {
-            let ravitNum = calcRavit(bat);
-            if (ravitNum < batType.maxSkill) {
-                apBonus = apBonus+((batType.maxSkill-ravitNum)/batType.maxSkill*2.5);
-            }
-        }
-        if (batType.skills.includes('fret') && batType.transRes > batType.transUnits) {
-            let resLoaded = checkResLoad(bat);
-            if (resLoaded < batType.transRes) {
-                apBonus = apBonus+((batType.transRes-resLoaded)/batType.transRes*2.5);
-            }
-        }
-        if (batType.skills.includes('transport') && batType.transRes <= batType.transUnits) {
-            let transLeft = calcTransUnitsLeft(bat,batType);
-            apBonus = apBonus+(transLeft/batType.transUnits*2.5);
-        }
-    }
-    // apBonus = apBonus.toFixedNumber(1);
-    return apBonus;
 };
 
 function calcUnitResist() {

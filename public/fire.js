@@ -315,7 +315,7 @@ function attack(melee,init) {
             }
         }
         if (!targetBatType.skills.includes('resistelec') && !targetBat.tags.includes('resistelec') && (!targetBatType.skills.includes('hover') || targetBatType.cat === 'aliens')) {
-            if (selectedWeap.ammo.includes('taser') || selectedWeap.ammo.includes('electric')) {
+            if (selectedWeap.ammo.includes('taser') || selectedWeap.ammo.includes('electric') || selectedWeap.ammo.includes('marquage-stop')) {
                 if (wetness >= 2) {
                     selectedWeap.power = Math.round(selectedWeap.power*1.35);
                     if (selectedWeap.aoe === 'unit') {
@@ -1436,7 +1436,7 @@ function defense(melee,init) {
             }
         }
         if (!selectedBatType.skills.includes('resistelec') && !selectedBat.tags.includes('resistelec') && (!selectedBatType.skills.includes('hover') || selectedBatType.cat === 'aliens')) {
-            if (targetWeap.ammo.includes('taser') || targetWeap.ammo.includes('electric')) {
+            if (targetWeap.ammo.includes('taser') || targetWeap.ammo.includes('electric') || targetWeap.ammo.includes('marquage-stop')) {
                 if (wetness >= 2) {
                     targetWeap.power = Math.round(targetWeap.power*1.35);
                     if (targetWeap.aoe === 'unit') {

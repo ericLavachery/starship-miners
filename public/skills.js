@@ -551,6 +551,9 @@ function canCamo(bat,batType,tile) {
             iCanCamo = true;
         }
     }
+    if (playerInfos.pseudo === 'Mapedit') {
+        iCanCamo = true;
+    }
     return iCanCamo;
 };
 
@@ -595,13 +598,13 @@ function calcCamo(bat) {
 
 function camouflage(apCost) {
     console.log('MODE FURTIF');
-    if (apCost <= selectedBat.ap) {
+    if (apCost <= selectedBat.ap || playerInfos.pseudo === 'Mapedit') {
         let camChance = calcCamo(selectedBat);
         let camOK = false;
         let camDice = rand.rand(1,100);
         console.log('camChance '+camChance);
         let naturalFuzz = selectedBatType.fuzz;
-        if (camDice <= camChance) {
+        if (camDice <= camChance || playerInfos.pseudo === 'Mapedit') {
             camOK = true;
             selectedBat.fuzz = -2;
         } else {
@@ -618,7 +621,7 @@ function camouflage(apCost) {
                 }
             }
         }
-        if (apCost >= 1) {
+        if (apCost >= 1 && playerInfos.pseudo != 'Mapedit') {
             selectedBat.apLeft = selectedBat.apLeft-apCost;
         }
     } else {

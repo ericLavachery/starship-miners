@@ -713,18 +713,10 @@ function calcBaseMoveCost(bat,batType) {
         baseMoveCost = 9;
     }
     if (bat.tags.includes('genslow')) {
-        if (batType.moveCost >= 3) {
-            baseMoveCost = baseMoveCost+1;
-        } else {
-            baseMoveCost = baseMoveCost+0.5;
-        }
+        baseMoveCost = baseMoveCost*1.25;
     }
     if (bat.tags.includes('genfast')) {
-        if (batType.moveCost >= 3) {
-            baseMoveCost = baseMoveCost-1;
-        } else {
-            baseMoveCost = baseMoveCost-0.5;
-        }
+        baseMoveCost = baseMoveCost*0.7;
     }
     if (bat.tags.includes('zombie')) {
         baseMoveCost = baseMoveCost*1.5;
@@ -741,9 +733,39 @@ function calcBaseMoveCost(bat,batType) {
     if (playerInfos.comp.trans === 3 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
         baseMoveCost = baseMoveCost*0.9;
     }
+    baseMoveCost = baseMoveCost*fastEmptyFactor(bat,batType);
     baseMoveCost = baseMoveCost*moveTuning;
+    // console.log('*** baseMoveCost : '+baseMoveCost);
     return baseMoveCost;
 }
+
+function fastEmptyFactor(bat,batType) {
+    let mcFactor = 1;
+    let apBonus = 0;
+    if (batType.skills.includes('rweight') || batType.skills.includes('fweight') || batType.skills.includes('tweight')) {
+        if (batType.skills.includes('ravitaillement') && batType.skills.includes('rweight')) {
+            let ravitNum = calcRavit(bat);
+            if (ravitNum < batType.maxSkill) {
+                apBonus = apBonus+((batType.maxSkill-ravitNum)/batType.maxSkill*2);
+            }
+        }
+        if (batType.skills.includes('fret') && batType.skills.includes('fweight')) {
+            mcFactor = mcFactor+0.2;
+            let resLoaded = checkResLoad(bat);
+            if (resLoaded < batType.transRes) {
+                apBonus = apBonus+((batType.transRes-resLoaded)/batType.transRes*2);
+            }
+        }
+        if (batType.skills.includes('transport') && batType.skills.includes('tweight')) {
+            mcFactor = mcFactor+0.2;
+            let transLeft = calcTransUnitsLeft(bat,batType);
+            apBonus = apBonus+(transLeft/batType.transUnits*2);
+        }
+        mcFactor = mcFactor*10/(10+apBonus);
+    }
+    // console.log('*** fastEmptyFactor : '+mcFactor);
+    return mcFactor;
+};
 
 function calcMoveCost(targetTileId,diag) {
     let tile = getTileById(targetTileId);
@@ -830,6 +852,7 @@ function calcMoveCost(targetTileId,diag) {
     // if (playerInfos.onShip) {
     //     moveCost = 0;
     // }
+    // console.log('*** moveCost : '+moveCost);
     return moveCost;
 };
 

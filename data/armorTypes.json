@@ -32,7 +32,7 @@
         "cat":"infra",
         "compReq":{},
         "fabTime":9,
-        "levels":{"rednecks":5,"blades":5,"bulbos":4,"drogmulojs":5,"tiradores":7,"detruas":7,"brasier":5},
+        "levels":{"rednecks":5,"blades":5,"bulbos":4,"drogmulojs":5,"tiradores":6,"detruas":7,"brasier":5},
         "costs":{"Compo1":85}
     },
     {
@@ -41,7 +41,7 @@
         "cat":"infra",
         "compReq":{"const":1,"cam":1},
         "fabTime":18,
-        "levels":{"rednecks":7,"blades":6,"bulbos":10,"drogmulojs":9,"tiradores":9,"detruas":8,"brasier":9},
+        "levels":{"rednecks":7,"blades":6,"bulbos":10,"drogmulojs":9,"tiradores":9,"detruas":9,"brasier":9},
         "costs":{"Compo1":75,"Compo2":25,"Végétaux":75}
     },
     {

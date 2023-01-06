@@ -1484,31 +1484,50 @@ function getAKindByTer(terName,pKind,gKind,sKind) {
 function veilSpawn(bat) {
     let terName = getTileTerrainName(bat.tileId);
     let kind = getAKindByTer(terName,zoneInfos.pKind,zoneInfos.gKind,zoneInfos.sKind);
+    let spawnName = 'Bugs';
     if (kind === 'bug') {
         if (rand.rand(1,15) < zone[0].mapDiff) {
-            alienSpawn(bat,'Punaises','veil');
+            spawnName = 'Punaises';
+            // alienSpawn(bat,'Punaises','veil');
         } else {
-            alienSpawn(bat,'Bugs','veil');
+            spawnName = 'Bugs';
+            // alienSpawn(bat,'Bugs','veil');
         }
     } else if (kind === 'swarm') {
         if (rand.rand(1,15) < zone[0].mapDiff) {
-            alienSpawn(bat,'Cafards','veil');
+            spawnName = 'Cafards';
+            // alienSpawn(bat,'Cafards','veil');
         } else {
-            alienSpawn(bat,'Scorpions','veil');
+            spawnName = 'Scorpions';
+            // alienSpawn(bat,'Scorpions','veil');
         }
     } else if (kind === 'larve') {
         if (rand.rand(1,15) < zone[0].mapDiff) {
-            alienSpawn(bat,'Vers','veil');
+            spawnName = 'Vers';
+            // alienSpawn(bat,'Vers','veil');
         } else {
-            alienSpawn(bat,'Asticots','veil');
+            spawnName = 'Asticots';
+            // alienSpawn(bat,'Asticots','veil');
         }
     } else if (kind === 'spider') {
         if (rand.rand(1,15) < zone[0].mapDiff) {
-            alienSpawn(bat,'Nerveuses','veil');
+            spawnName = 'Nerveuses';
+            // alienSpawn(bat,'Nerveuses','veil');
         } else {
-            alienSpawn(bat,'Gluantes','veil');
+            spawnName = 'Gluantes';
+            // alienSpawn(bat,'Gluantes','veil');
         }
     }
+    let inName = 'Yapa';
+    let outName = 'Bugs';
+    if (zone[0].rc != undefined) {
+        inName = zone[0].rc[0];
+        outName = zone[0].rc[1];
+    }
+    if (spawnName === inName) {
+        spawnName = outName;
+    }
+    alienSpawn(bat,spawnName,'veil');
 };
 
 function vomiSpawn(bat) {
