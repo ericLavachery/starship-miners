@@ -563,6 +563,12 @@ function isBldLike(bat,batType) {
 
 function anyCloseTarget(iter) {
     newPointDeMire = -1;
+    let closeRange = closeTargetRange;
+    if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0) {
+        closeRange = closeRange-1;
+    } else if (selectedBat.squadsLeft >= selectedBatType.squads/2) {
+        closeRange = closeRange+1;
+    }
     if (!selectedBatType.skills.includes('flee') || selectedBatType.squads < selectedBat.squadsLeft*2) {
         let distance;
         let lePlusProche = 100;
@@ -579,7 +585,7 @@ function anyCloseTarget(iter) {
                         if ((bat.fuzz >= minFuzz.unit && !bldLike) || (bat.fuzz >= minFuzz.bld && bldLike)) {
                             if ((!batType.skills.includes('fly') && bat.eq != 'e-jetpack') || !selectedWeap.noFly) {
                                 distance = calcDistance(selectedBat.tileId,bat.tileId);
-                                if (distance <= closeTargetRange) {
+                                if (distance <= closeRange) {
                                     tLogic = targetLogic(bat,iter);
                                     if (tLogic > bestLogic) {
                                         bestLogic = tLogic;

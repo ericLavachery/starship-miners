@@ -1239,9 +1239,9 @@ function spawns() {
     if (hasAlien('Homards')) {
         hasHomards = true;
     }
-    let cafDice = 4;
+    let cafDice = 5;
     if (zone[0].type === 'roaches') {
-        cafDice = 2;
+        cafDice = 3;
     }
     let shufAliens = _.shuffle(aliens);
     shufAliens.forEach(function(bat) {

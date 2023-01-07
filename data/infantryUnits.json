@@ -753,7 +753,7 @@
             "power":0,
             "aoe":"unit",
             "sound":"paint",
-            "ammo":["marquage","marquage-spike","marquage-stop"]
+            "ammo":["marquage","marquage-spike","marquage-stop","marquage-kill"]
         },
         "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1","silencieux","taserkit","camkit","e-phare","repel"],
         "log3eq":["repel"],
@@ -915,7 +915,7 @@
             "power":0,
             "aoe":"unit",
             "sound":"paint",
-            "ammo":["marquage","marquage-spike","marquage-stop"]
+            "ammo":["marquage","marquage-spike","marquage-stop","marquage-kill"]
         },
         "weapon2":{
             "name":"Minicanon",

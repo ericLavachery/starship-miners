@@ -303,10 +303,10 @@ function changePlayerInfo(dropMenuId,infoName,from) {
                 }
             }
             if (playerInfos.missionZone === undefined) {
-                playerInfos.missionZone = 97;
+                playerInfos.missionZone = 99;
             } else {
                 if (playerInfos.missionZone < 90) {
-                    playerInfos.missionZone = 97;
+                    playerInfos.missionZone = 99;
                 }
             }
             moveMissionZone(playerInfos.missionZone);

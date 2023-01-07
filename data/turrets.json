@@ -703,7 +703,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"paint",
-            "ammo":["marquage","marquage-spike","marquage-stop"]
+            "ammo":["marquage","marquage-spike","marquage-stop","marquage-kill"]
         },
         "weapon2":{
             "name":"Guidage laser",
@@ -739,7 +739,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","longshot","prefab","notrash","noshow","transport","fret","ravitaillement","routes","phare","recupcit","badcrewsave","recupres","lurange","detsalvo"],
+        "skills":["fouille","longshot","baddef","prefab","notrash","noshow","transport","fret","ravitaillement","routes","phare","recupcit","badcrewsave","recupres","lurange","detsalvo"],
         "mecanoCost":10,
         "transMaxSize":9,
         "transUnits":250,
@@ -1492,7 +1492,7 @@
         "maxVeg":-1,
         "skills":["b_none","noguet","nodeathcount","notarget","noblub","nolist","neverlist","norepair","clicput","infrako","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
-        "deathFx":"xplode"
+        "deathFx":"none"
     },
     {
         "id":168,
@@ -1505,7 +1505,7 @@
         "squadSize":6,
         "crew":0,
         "hp":12,
-        "armor":4,
+        "armor":5,
         "size":12,
         "stealth":0,
         "speed":-20,
@@ -1535,7 +1535,7 @@
         "maxVeg":-1,
         "skills":["b_barb","noguet","nodeathcount","notarget","noblub","nolist","neverlist","norepair","resiststorm","clicput","infrako","bigprot","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
-        "deathFx":"xplode"
+        "deathFx":"none"
     },
     {
         "id":169,
@@ -1548,7 +1548,7 @@
         "squadSize":6,
         "crew":0,
         "hp":12,
-        "armor":5,
+        "armor":4,
         "size":12,
         "stealth":0,
         "speed":-20,
@@ -1578,7 +1578,7 @@
         "maxVeg":-1,
         "skills":["b_barb","noguet","nodeathcount","notarget","bigblub","nolist","neverlist","norepair","resiststorm","clicput","bigprot","infrako","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
-        "deathFx":"xplode"
+        "deathFx":"none"
     },
     {
         "id":185,

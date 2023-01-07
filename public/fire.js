@@ -328,6 +328,9 @@ function attack(melee,init) {
                 } else if (wetness === 1 && targetBatType.cat === 'aliens') {
                     selectedWeap.power = Math.round(selectedWeap.power*1.2);
                 }
+                if (selectedWeap.ammo.includes('marquage-stop')) {
+                    selectedWeap.power = selectedWeap.power+2;
+                }
             }
         }
         if (selectedWeap.ammo.includes('plastanium')) {
@@ -630,7 +633,7 @@ function attack(melee,init) {
                 webDamage = webDamage+Math.round(totalHits/3);
             }
         } else if (selectedWeap.ammo.includes('marquage-stop')) {
-            webDamage = Math.ceil(totalHits/1.2/Math.sqrt(targetBatType.hp+10));
+            webDamage = Math.ceil(totalHits/1/Math.sqrt(targetBatType.hp+10)); // avant 1.2
         }
         if (targetBatType.cat != 'aliens') {
             webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);
@@ -1224,11 +1227,13 @@ function attack(melee,init) {
                     tagDelete(targetBat,'nomove');
                     targetBat.army = 21;
                     warning(targetBatType.name,'Ce bataillon passe sous votre contrôle',false,targetBat.tileId);
+                    clicSound(13);
                 } else {
                     if (targetBat.squadsLeft <= targetBatType.squads-1) {
                         tagDelete(targetBat,'nomove');
                         targetBat.army = 21;
                         warning(targetBatType.name,'Ce bataillon passe sous votre contrôle',false,targetBat.tileId);
+                        clicSound(13);
                     }
                 }
             }
@@ -1448,6 +1453,9 @@ function defense(melee,init) {
                     }
                 } else if (wetness === 1 && selectedBatType.cat === 'aliens') {
                     targetWeap.power = Math.round(targetWeap.power*1.2);
+                }
+                if (targetWeap.ammo.includes('marquage-stop')) {
+                    targetWeap.power = targetWeap.power+2;
                 }
             }
         }
@@ -1699,7 +1707,7 @@ function defense(melee,init) {
                 webDamage = webDamage+Math.round(totalHits/3);
             }
         } else if (targetWeap.ammo.includes('marquage-stop')) {
-            webDamage = Math.ceil(totalHits/1.2/Math.sqrt(selectedBatType.hp+10));
+            webDamage = Math.ceil(totalHits/1/Math.sqrt(selectedBatType.hp+10)); // avant 1.2
         }
         if (selectedBatType.cat != 'aliens') {
             webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);
