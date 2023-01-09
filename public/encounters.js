@@ -1760,8 +1760,10 @@ function nomoveOut(myBat) {
         tagDelete(myBat,'nomove');
         myBat.army = 21;
         playerInfos.gangXP = playerInfos.gangXP+5;
-        warning(myBatType.name,'Ce bataillon passe sous votre contrôle',false,myBat.tileId);
-        clicSound(13);
+        if (!myBatType.skills.includes('nolist')) {
+            warning(myBatType.name,'Ce bataillon passe sous votre contrôle',false,myBat.tileId);
+            clicSound(12);
+        }
         showMap(zone,true);
         if (myBatType.skills.includes('transorbital')) {
             if (!myBat.tags.includes('deploy')) {
@@ -1795,7 +1797,9 @@ function removeNoMoves(myBat) {
                 if (bat.tags.includes('nomove') && !batType.skills.includes('nomove')) {
                     tagDelete(bat,'nomove');
                     bat.army = 21;
-                    warning(bat.type,'Ce bataillon passe sous votre contrôle',false,bat.tileId);
+                    if (!batType.skills.includes('nolist')) {
+                        warning(bat.type,'Ce bataillon passe sous votre contrôle',false,bat.tileId);
+                    }
                 }
             });
         }

@@ -3007,6 +3007,96 @@ function getWetness(terrain,onGround) {
     return wetness;
 };
 
+function inWaterAdj(attWeap,defBat,defBatType,wetness) {
+    if (wetness >= 1) {
+        if (attWeap.ammo.includes('feu') || attWeap.ammo.includes('incendiaire') || attWeap.ammo.includes('napalm') || attWeap.ammo.includes('fire') || attWeap.ammo.includes('lf-') || attWeap.ammo.includes('lt-') || attWeap.ammo.includes('molotov')) {
+            if (!attWeap.ammo.includes('pyratol') && !attWeap.ammo.includes('hellfire')) {
+                if (attWeap.ammo.includes('incendiaire') || attWeap.ammo.includes('fireshells')) {
+                    attWeap.power = Math.round(attWeap.power*0.9);
+                } else {
+                    attWeap.power = Math.round(attWeap.power*0.8);
+                }
+                if (wetness >= 2) {
+                    if (attWeap.aoe === 'brochette') {
+                        attWeap.aoe = 'unit';
+                    } else if (attWeap.aoe === 'squad') {
+                        attWeap.aoe = 'brochette';
+                    } else if (attWeap.aoe === 'bat') {
+                        attWeap.aoe = 'squad';
+                    }
+                }
+            }
+        }
+        if (attWeap.ammo.includes('laser') || attWeap.ammo.includes('gaz')) {
+            if (wetness >= 3) {
+                attWeap.power = Math.round(attWeap.power*0.8);
+            }
+        }
+        if (!defBatType.skills.includes('resistelec') && !defBat.tags.includes('resistelec') && (!defBatType.skills.includes('hover') || defBatType.cat === 'aliens')) {
+            if (attWeap.ammo.includes('taser') || attWeap.ammo.includes('electric') || attWeap.ammo.includes('marquage-stop')) {
+                if (wetness >= 2) {
+                    attWeap.power = Math.round(attWeap.power*1.35);
+                    if (attWeap.aoe === 'unit') {
+                        attWeap.aoe = 'brochette';
+                    } else if (attWeap.aoe === 'brochette') {
+                        attWeap.aoe = 'squad';
+                    } else {
+                        attWeap.aoe = 'bat';
+                    }
+                } else if (wetness === 1 && defBatType.cat === 'aliens') {
+                    attWeap.power = Math.round(attWeap.power*1.2);
+                }
+                if (attWeap.ammo.includes('marquage-stop')) {
+                    attWeap.power = attWeap.power+2;
+                }
+            }
+        }
+        if (attWeap.ammo.includes('plastanium')) {
+            if (wetness >= 2) {
+                if (attWeap.aoe === 'unit') {
+                    attWeap.aoe = 'brochette';
+                } else if (attWeap.aoe === 'brochette') {
+                    attWeap.aoe = 'squad';
+                } else {
+                    attWeap.aoe = 'bat';
+                }
+            }
+            attWeap.power = Math.round(attWeap.power*(1+(wetness/3)));
+        }
+    }
+    return attWeap;
+};
+
+function getAOEshots(attWeap,defBat,defBatType) {
+    let aoeShots = 1;
+    if (attWeap.aoe == "bat") {
+        if (defBatType.squads === 6 && defBatType.squadSize === 1 && !attWeap.ammo.includes('gaz')) {
+            aoeShots = 12;
+        } else {
+            aoeShots = defBatType.squadSize*defBat.squadsLeft;
+        }
+        if (aoeShots < 9) {
+            aoeShots = 9;
+        }
+    } else if (attWeap.aoe != "unit") {
+        if (defBatType.squads === 6 && defBatType.squadSize === 1) {
+            aoeShots = 6;
+        } else {
+            aoeShots = defBatType.squadSize;
+        }
+        if (attWeap.aoe == "squad") {
+            if (aoeShots < 4) {
+                aoeShots = 4;
+            }
+        } else if (attWeap.aoe == "brochette") {
+            if (aoeShots < 2) {
+                aoeShots = 2;
+            }
+        }
+    }
+    return aoeShots;
+}
+
 function checkEscape(bat,batType) {
     let escaping = {};
     escaping.ok = false;

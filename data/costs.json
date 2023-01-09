@@ -485,6 +485,7 @@
         "name":"Scyths",
         "levels":{"rednecks":99,"blades":13,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Camp d'entraînement","Atelier"],
+        "compReq":{"exo":3,"ca":3},
         "costs":{"Fer":140,"Carbone":56,"Bois":140,"Végétaux":216,"Blendium":56,"Drogues":56,"Or":56,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
         "fabTime":30
@@ -689,7 +690,7 @@
         "bldReq":["Camp d'entraînement","Centre de recherches"],
         "compReq":{"gen":2},
         "compPass":["drogmulojs"],
-        "compHardReq":{"gen":1,"bal":1,"ca":3},
+        "compHardReq":{"gen":1,"bal":1,"exo":1,"ca":3},
         "costs":{"Carbone":81,"Aluminium":162,"Slime":76,"Mendium":113,"Blendium":113,"Bossium":76,"Azote":171,"Calcium":57,"Fer":122,"Soufre":122,"Plomb":122,"Drogues":45},
         "fabTime":90
     },
@@ -1590,6 +1591,15 @@
         "inRuin":2
     },
     {
+        "id":303,
+        "name":"Dingys",
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "bldReq":["Atelier"],
+        "costs":{"Fer":32,"Scrap":32,"Bois":160},
+        "deploy":{},
+        "fabTime":15
+    },
+    {
         "id":80,
         "name":"Cavaleries",
         "levels":{"rednecks":6,"blades":6,"bulbos":6,"drogmulojs":6,"tiradores":6,"detruas":7,"brasier":6},
@@ -2226,16 +2236,20 @@
     {
         "id":185,
         "name":"Fosses",
-        "levels":{"rednecks":9,"blades":1,"bulbos":9,"drogmulojs":9,"tiradores":9,"detruas":9,"brasier":9},
+        "levels":{"rednecks":6,"blades":1,"bulbos":6,"drogmulojs":6,"tiradores":6,"detruas":6,"brasier":6},
         "bldReq":["Atelier"],
+        "compReq":{"cam":1},
+        "compPass":["blades"],
         "costs":{"Végétaux":36,"Fer":12,"Bois":36,"Tungstène":12,"Huile":4,"Calcium":12},
         "fabTime":60
     },
     {
         "id":237,
         "name":"Pièges",
-        "levels":{"rednecks":10,"blades":1,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":10,"brasier":10},
+        "levels":{"rednecks":7,"blades":1,"bulbos":7,"drogmulojs":7,"tiradores":7,"detruas":7,"brasier":7},
         "bldReq":["Atelier"],
+        "compReq":{"cam":1},
+        "compPass":["blades"],
         "costs":{"Végétaux":18,"Fer":9,"Bois":18,"Scrap":9,"Huile":4,"Calcium":12},
         "fabTime":25
     },
@@ -2244,6 +2258,9 @@
         "name":"Dardières",
         "levels":{"rednecks":99,"blades":9,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Atelier"],
+        "compReq":{"cam":1},
+        "compPass":["blades"],
+        "compHardReq":{"exo":3,"ca":3},
         "costs":{"Végétaux":36,"Fer":6,"Bois":18,"Scrap":9,"Titane":9,"Argon":6,"Mephitis":36,"Atium":12,"Huile":9},
         "fabTime":35
     },

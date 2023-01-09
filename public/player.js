@@ -1024,6 +1024,12 @@ function playerSkillsUTChanges() {
             }
         }
         // ENTRAINEMENT
+        if (unit.name === 'Dardières' || unit.name === 'Pièges') {
+            let trapJump = Math.floor((playerInfos.comp.train+playerInfos.comp.bal)/2);
+            if (trapJump >= 1) {
+                unit.weapon2.range = unit.weapon2.range+trapJump;
+            }
+        }
         if (playerInfos.comp.train >= 1) {
             if (unit.cat === 'infantry') {
                 unit.fabTime = unit.fabTime/(playerInfos.comp.train+4)*4;
@@ -2596,6 +2602,8 @@ function addStartPack() {
     addFreeBat(1707,'Dortoirs');
     addFreeBat(1767,'Dortoirs');
     addFreeBat(1827,'Dortoirs');
+    addFreeBat(1887,'Dortoirs');
+    addFreeBat(1947,'Dortoirs');
     addFreeBat(2007,'Sonde');
     addFreeBat(2008,'Sonde');
     addFreeBat(2009,'Sonde');

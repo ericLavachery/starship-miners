@@ -533,13 +533,13 @@ function showBataillon(bat) {
     }
     let uClass = 'pUnits';
     if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
-        if (bat.fuzz <= -2) {
+        if (bat.fuzz <= -2 && bat.type != 'Fosses') {
             uClass = 'pUnitsCamoFortif';
         } else {
             uClass = 'pUnitsFortif';
         }
     } else {
-        if (bat.fuzz <= -2) {
+        if (bat.fuzz <= -2 && bat.type != 'Fosses') {
             if (bat.tags.includes('fortif')) {
                 uClass = 'pUnitsCamoFortif';
             } else {

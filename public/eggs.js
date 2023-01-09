@@ -1288,7 +1288,7 @@ function spawns() {
                 alienSpawn(bat,'Vomissure','bmorph');
             } else if (bat.type === 'Colonie' && batTurn % 2 === 0 && batTurn > 1 && aliens.length < maxAliens-50) {
                 alienSpawn(bat,'Torches');
-            } else if (transList.includes('Asticots') && bat.type === 'Asticots' && !bat.tags.includes('morph')) {
+            } else if (transList.includes('Asticots') && bat.type === 'Asticots' && !bat.tags.includes('morph') && (playerInfos.mapTurn >= 20 || !isStartZone)) {
                 bat.tags.push('morph');
                 if (playerInfos.vue >= 2 && playerInfos.comp.ca >= 2 && !warnAsticots) {
                     warnAsticots = true;
