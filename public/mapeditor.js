@@ -691,6 +691,10 @@ function addTagToBatOnTile(tile,tag) {
             tagDelete(bat,tag);
         }
     }
+    if (batType.skills.includes('noselfmove')) {
+        tagDelete(bat,'outsider');
+        tagDelete(bat,'nomove');
+    }
     if (!batType.skills.includes('iscit')) {
         if (bat.tags.includes('nomove')) {
             if (!bat.tags.includes('outsider')) {

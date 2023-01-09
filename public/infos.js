@@ -82,6 +82,10 @@ function batInfos(bat,batType,pop) {
                 }
             }
         }
+        if (batType.skills.includes('noselfmove')) {
+            tagDelete(bat,'outsider');
+            tagDelete(bat,'nomove');
+        }
     }
     doRegroup(bat,batType);
     if (playerInfos.onShip) {
