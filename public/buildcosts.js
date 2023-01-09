@@ -1271,7 +1271,7 @@ function calcAllCosts(unit,ammoNames,withDeploy,withFlat) {
 
 function iCanProdThis(prodUnit,unit,catz) {
     let prodThis = false;
-    if (prodUnit.skills.includes('transorbital')) {
+    if (prodUnit.skills.includes('transorbital') || unit.skills.includes('panprod')) {
         prodThis = true;
     } else {
         if (catz.includes(unit.cat)) {

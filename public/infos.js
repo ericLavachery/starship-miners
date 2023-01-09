@@ -75,6 +75,13 @@ function batInfos(bat,batType,pop) {
                 }
             }
         }
+        if (!batType.skills.includes('iscit')) {
+            if (bat.tags.includes('nomove')) {
+                if (!bat.tags.includes('outsider')) {
+                    bat.tags.push('outsider');
+                }
+            }
+        }
     }
     doRegroup(bat,batType);
     if (playerInfos.onShip) {
@@ -130,9 +137,16 @@ function batInfos(bat,batType,pop) {
             }
         }
     }
+    let inDanger = checkNoAuthority(bat,batType);
     if (near.friends && !friendsAlert) {
-        if (!bat.tags.includes('nomove') && batType.crew >= 1 && !batType.skills.includes('dog') && (!bat.tags.includes('outsider') || !batType.skills.includes('nofight')) && !batType.skills.includes('iscit')) {
-            warning('Bataillons non contrôlés','Vous avez rejoint un ou plusieurs bataillons amis. Vous pouvez en prendre contrôle en cliquant dessus.');
+        if (!bat.tags.includes('nomove')) {
+            if (inDanger) {
+                warning('Bataillons non contrôlés','Vous avez rejoint un ou plusieurs bataillons d\'un autre groupe.<br><span class="or">Vous ne pouvez pas en prendre contrôle</span> (Votre bataillon n\'inspire pas confiance).');
+                clicSound(15);
+            } else {
+                warning('Bataillons non contrôlés','Vous avez rejoint un ou plusieurs bataillons d\'un autre groupe.<br><span class="cy">Vous pouvez en prendre contrôle</span> en cliquant dessus.');
+                clicSound(13);
+            }
             friendsAlert = true;
         }
     }
@@ -319,6 +333,11 @@ function batInfos(bat,batType,pop) {
     }
     if (bat.tags.includes('nomove')) {
         $('#'+bodyPlace).append('<span class="paramName or" title="">Hors contrôle</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    }
+    if (batType.skills.includes('nofight')) {
+        $('#'+bodyPlace).append('<span class="paramName jaune" title="Ne peux pas prendre contrôle d\'un bataillon d\'un autre groupe">Non combatant</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+    } else if (inDanger) {
+        $('#'+bodyPlace).append('<span class="paramName jaune" title="Ne peux pas prendre contrôle d\'un bataillon d\'un autre groupe">En perdition</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
     if (bat.tags.includes('construction')) {
         $('#'+bodyPlace).append('<span class="paramName or">Opérationel</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');

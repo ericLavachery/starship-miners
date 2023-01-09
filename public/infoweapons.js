@@ -66,7 +66,8 @@ function weaponsInfos(bat,batType,tile,pop) {
                 }
             }
             anyTarget = anyAlienInRange(bat,thisWeapon);
-            if (bat.tags.includes('nomove') && batType.skills.includes('nofight') && bat.fuzz <= -2) {
+            let inDanger = checkInDanger(bat,batType);
+            if (bat.tags.includes('nomove') && inDanger && bat.fuzz <= -2) {
                 anyTarget = false;
             }
             if (anyTarget) {
@@ -318,7 +319,8 @@ function weaponsInfos(bat,batType,tile,pop) {
                 }
             }
             anyTarget = anyAlienInRange(bat,thisWeapon);
-            if (bat.tags.includes('nomove') && batType.skills.includes('nofight') && bat.fuzz <= -2) {
+            let inDanger = checkInDanger(bat,batType);
+            if (bat.tags.includes('nomove') && inDanger && bat.fuzz <= -2) {
                 anyTarget = false;
             }
             if (anyTarget) {

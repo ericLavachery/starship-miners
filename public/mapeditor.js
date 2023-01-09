@@ -691,7 +691,7 @@ function addTagToBatOnTile(tile,tag) {
             tagDelete(bat,tag);
         }
     }
-    if (batType.skills.includes('nofight') && !batType.skills.includes('iscit')) {
+    if (!batType.skills.includes('iscit')) {
         if (bat.tags.includes('nomove')) {
             if (!bat.tags.includes('outsider')) {
                 bat.tags.push('outsider');

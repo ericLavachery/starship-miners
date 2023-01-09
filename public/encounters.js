@@ -1754,6 +1754,53 @@ function pactole(bastionTileId,withTrans) {
     }
 };
 
+function checkInDanger(bat,batType) {
+    let inDanger = false;
+    if (batType.skills.includes('nofight')) {
+        inDanger = true;
+    }
+    if (bat.squadsLeft <= 1) {
+        inDanger = true;
+    }
+    return inDanger;
+};
+
+function checkNoAuthority(bat,batType) {
+    let noAuthority = false;
+    if (batType.skills.includes('nofight')) {
+        noAuthority = true;
+    }
+    if (batType.crew === 0) {
+        if (batType.skills.includes('robot')) {
+            if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                // rien
+            } else {
+                noAuthority = true;
+            }
+        } else {
+            noAuthority = true;
+        }
+    }
+    if (batType.skills.includes('dog')) {
+        noAuthority = true;
+    }
+    let noAuthoritySquads = 2;
+    if (batType.squads <= 3) {
+        noAuthoritySquads = 1;
+    }
+    if (!bat.tags.includes('outsider')) {
+        if (playerInfos.comp.ordre >= 2) {
+            noAuthoritySquads = 0;
+        } else if (playerInfos.comp.ordre >= 1) {
+            noAuthoritySquads = 1;
+        }
+    }
+    if (bat.squadsLeft <= noAuthoritySquads) {
+        noAuthority = true;
+    }
+    return noAuthority;
+};
+
 function nomoveOut(myBat) {
     let myBatType = getBatType(myBat);
     if (!myBatType.skills.includes('nomove')) {

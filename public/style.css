@@ -519,7 +519,7 @@ hr.craft {
     border-style: solid;
     border-width: 1px;
     border-color: rgba(148, 251, 248, 0.5);
-    border-radius: 32px;
+    border-radius: 8px;
     position: absolute;
     /* margin: 1px 1px 1px 1px; */
 }

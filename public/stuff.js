@@ -477,7 +477,8 @@ function nearWhat(myBat,myBatType) {
             }
         }
         if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1 || myBat.tileId === bat.tileId) {
-            if (!bat.tags.includes('nomove') && batType.crew >= 1 && !batType.skills.includes('dog') && (!bat.tags.includes('outsider') || !batType.skills.includes('nofight')) && !batType.skills.includes('iscit')) {
+            let inDanger = checkNoAuthority(bat,batType);
+            if (!bat.tags.includes('nomove') && !inDanger) {
                 near.control = true;
             }
             if (bat.tags.includes('nomove') && !batType.skills.includes('nolist')) {

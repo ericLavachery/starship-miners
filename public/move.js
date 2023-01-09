@@ -640,52 +640,69 @@ function terrainAccess(batId,targetTileId) {
     let access = false;
     let bat = getBatById(batId);
     let batType = getBatType(bat);
-    let terrain = getTerrainById(targetTileId);
-    let terFlood = terrain.flood;
-    if (terrain.name === 'R' && zone[targetTileId].seed >= 4) {
-        terFlood = 0;
-    }
-    let terVeg = terrain.veg;
-    let terScarp = terrain.scarp;
-    if (batType.skills.includes('routes') || bat.eq === 'e-road' || bat.logeq === 'e-road') {
-        let unitTile = getTileById(bat.tileId);
-        if (unitTile.rd) {
-            terVeg = 0;
-            terFlood = 0;
-            terScarp = 0;
-        }
-    }
-    if (zone[targetTileId].rd) {
-        access = true;
-    }
-    let batMaxFlood = batType.maxFlood;
-    let batMaxScarp = batType.maxScarp;
-    let batMaxVeg = batType.maxVeg;
-    if (batMaxFlood === 0 && (bat.eq === 'chenilles' || bat.logeq === 'chenilles' || bat.eq === 'carkit')) {
-        batMaxFlood = 1;
-    }
-    if (batMaxScarp < 2 && (bat.eq === 'chenilles' || bat.logeq === 'chenilles' || bat.eq === 'carkit')) {
-        batMaxScarp = 2;
-    }
-    if (batMaxFlood >= terFlood && batMaxScarp >= terScarp && batMaxVeg >= terVeg) {
-        access = true;
-    }
-    if (bat.eq === 'snorkel' || bat.logeq === 'snorkel' || bat.eq === 'carkit') {
-        if (terFlood >= 2) {
-            access = true;
-        }
-    }
-    if (bat.tags.includes('genwater')) {
-        if (terrain.name === 'W' || (terrain.name === 'S' && playerInfos.comp.scaph < 1) || terrain.name === 'L' || terrain.name === 'R') {
-            if (!zone[targetTileId].rd) {
-                access = false;
+    let selfMove = true;
+    if (batType.skills.includes('noselfmove')) {
+        if (batType.transUnits >= 1) {
+            selfMove = false;
+            if (bat.transIds.length >= 1) {
+                bat.transIds.forEach(function(transId) {
+                    let inBat = getBatById(transId);
+                    let inBatType = getBatType(inBat);
+                    if (inBatType.crew >= 1 && !inBatType.skills.includes('dog')) {
+                        selfMove = true;
+                    }
+                });
             }
         }
     }
-    if (batType.skills.includes('nodry')) {
-        if (terrain.flood < 1) {
-            if (terrain.veg < 1) {
-                access = false;
+    if (selfMove) {
+        let terrain = getTerrainById(targetTileId);
+        let terFlood = terrain.flood;
+        if (terrain.name === 'R' && zone[targetTileId].seed >= 4) {
+            terFlood = 0;
+        }
+        let terVeg = terrain.veg;
+        let terScarp = terrain.scarp;
+        if (batType.skills.includes('routes') || bat.eq === 'e-road' || bat.logeq === 'e-road') {
+            let unitTile = getTileById(bat.tileId);
+            if (unitTile.rd) {
+                terVeg = 0;
+                terFlood = 0;
+                terScarp = 0;
+            }
+        }
+        if (zone[targetTileId].rd) {
+            access = true;
+        }
+        let batMaxFlood = batType.maxFlood;
+        let batMaxScarp = batType.maxScarp;
+        let batMaxVeg = batType.maxVeg;
+        if (batMaxFlood === 0 && (bat.eq === 'chenilles' || bat.logeq === 'chenilles' || bat.eq === 'carkit')) {
+            batMaxFlood = 1;
+        }
+        if (batMaxScarp < 2 && (bat.eq === 'chenilles' || bat.logeq === 'chenilles' || bat.eq === 'carkit')) {
+            batMaxScarp = 2;
+        }
+        if (batMaxFlood >= terFlood && batMaxScarp >= terScarp && batMaxVeg >= terVeg) {
+            access = true;
+        }
+        if (bat.eq === 'snorkel' || bat.logeq === 'snorkel' || bat.eq === 'carkit') {
+            if (terFlood >= 2) {
+                access = true;
+            }
+        }
+        if (bat.tags.includes('genwater')) {
+            if (terrain.name === 'W' || (terrain.name === 'S' && playerInfos.comp.scaph < 1) || terrain.name === 'L' || terrain.name === 'R') {
+                if (!zone[targetTileId].rd) {
+                    access = false;
+                }
+            }
+        }
+        if (batType.skills.includes('nodry')) {
+            if (terrain.flood < 1) {
+                if (terrain.veg < 1) {
+                    access = false;
+                }
             }
         }
     }

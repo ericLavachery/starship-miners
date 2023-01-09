@@ -1183,6 +1183,17 @@
         "costs":{"Carbone":6,"Scrap":6,"Fer":18,"Aluminium":12,"Tungstène":6}
     },
     {
+        "name":"w2-mit",
+        "cat":"equip",
+        "skills":[],
+        "info":"Mitrailleuse",
+        "bldReq":["Armurerie"],
+        "compReq":{"def":1,"bal":2},
+        "factor":"crew",
+        "costs":{"Carbone":12,"Scrap":12,"Fer":48,"Aluminium":24,"Tungstène":12,"Silicium":6},
+        "deploy":{}
+    },
+    {
         "name":"w2-vanguard",
         "cat":"equip",
         "skills":[],

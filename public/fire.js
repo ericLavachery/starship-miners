@@ -1260,7 +1260,8 @@ function attack(melee,init) {
     let squadsOut = Math.floor(allDamage/squadHP);
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
     targetBat.damage = allDamage-(squadsOut*squadHP);
-    if (targetBatType.skills.includes('nofight')) {
+    let inDanger = checkInDanger(targetBat,targetBatType);
+    if (inDanger) {
         if (targetBat.tags.includes('nomove') && !targetBatType.skills.includes('nomove')) {
             if (totalDamage >= 1) {
                 if (targetBatType.cat === 'infantry') {

@@ -1595,7 +1595,18 @@
         "name":"Dingys",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Atelier"],
+        "compReq":{"trans":1},
         "costs":{"Fer":32,"Scrap":32,"Bois":160},
+        "deploy":{},
+        "fabTime":15
+    },
+    {
+        "id":304,
+        "name":"Barges",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"trans":1},
+        "costs":{},
         "deploy":{},
         "fabTime":15
     },
