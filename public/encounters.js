@@ -1759,7 +1759,11 @@ function checkInDanger(bat,batType) {
     if (batType.skills.includes('nofight')) {
         inDanger = true;
     }
-    if (bat.squadsLeft <= 1) {
+    let inDangerSquads = 2;
+    if (batType.squads <= 3) {
+        inDangerSquads = 1;
+    }
+    if (bat.squadsLeft <= inDangerSquads) {
         inDanger = true;
     }
     return inDanger;
