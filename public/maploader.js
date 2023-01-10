@@ -340,6 +340,9 @@ function showRes(tileId) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/navSpot.png"></div>';
         }
     }
+    if (tile.ap != undefined) {
+        mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/ammoPack.png" title="Ammo pack: '+tile.ap+'"></div>';
+    }
     if (playerInfos.showedTiles.includes(tileId)) {
         if (tileId === 1830) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/showCenterTile.png"></div>';

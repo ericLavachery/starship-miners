@@ -990,6 +990,19 @@ function showTileInfos(tileId) {
                 }
             }
         }
+        // Ammo packs
+        if (tile.ap != undefined) {
+            let ammo = getAmmoByName(tile.ap);
+            let ammoDesc = 'stnd';
+            if (ammo.name.includes('ac-')) {
+                ammoDesc = '20 mm';
+            }
+            if (ammo.name.includes('sm-')) {
+                ammoDesc = '6 mm';
+            }
+            let ammoInfo = showAmmoInfo(ammo.name);
+            $('#tileInfos').append('<span class="paramName cy">Pack de munitions</span><span class="paramIcon"><i class="ra ra-rifle rpg"></i></span><span class="paramValue cy" title="'+ammoInfo+' / '+ammoDesc+'">'+tile.ap+'</span><br>');
+        }
         // Move Cost
         $('#tileInfos').append('<span class="paramName">Coûts de déplacement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">+'+terrain.mc+'</span><br>');
         // Cover

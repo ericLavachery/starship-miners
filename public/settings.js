@@ -19,6 +19,7 @@ if (yOffset == null) {
 let mped = {};
 let theTileRes = {};
 let theBatRes = {};
+let theTilePacks = 'tungsten';
 let modeSonde = false;
 let maxMapsParDet = 5;
 let impact = false;

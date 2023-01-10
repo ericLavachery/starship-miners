@@ -1,10 +1,6 @@
 function reEquip(batId,noRefresh) {
-    console.log('reEquip +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
-    console.log('batId = '+batId);
     let myBat = getBatById(batId);
-    console.log(myBat);
     let myBatType = getBatType(myBat);
-    console.log(myBatType);
     let myGear = [myBat.ammo,myBat.ammo2,myBat.prt,myBat.eq];
     if (!noRefresh) {
         myNewGear = [myBat.ammo,myBat.ammo2,myBat.prt,myBat.eq];
@@ -87,7 +83,11 @@ function reEquip(batId,noRefresh) {
                     }
                 } else {
                     if (armor === myBat.prt) {
-                        $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                        if (myNewGear[2] === myBat.prt) {
+                            $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                        } else {
+                            $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                        }
                         $('#conAmmoList').append('<span class="constName gff" title="'+toNiceString(batArmor.bldReq)+'">'+armor+' <span class="gff">(+'+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
                     }
                 }
@@ -158,13 +158,17 @@ function reEquip(batId,noRefresh) {
                     if (bonusEqName === equip) {
                         $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip,myBatType,true)+' / '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else if ((bldReqOK && costsOK) || conselTriche) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip,myBatType,true)+' / '+displayCosts(flatCosts)+'" onclick="deployEquip(`'+equip+'`,`'+myBat.id+'`)">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip,myBatType,true)+' / '+displayCosts(flatCosts)+'" onclick="deployEquip(`'+equip+'`,'+myBat.id+')">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else {
                         $('#conAmmoList').append('<span class="constName gff" title="'+showEquipInfo(equip,myBatType,true)+' / '+toNiceString(batEquip.bldReq)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     }
                 } else {
                     if (equip === myBat.eq || equip === myBat.logeq) {
-                        $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                        if (myNewGear[2] === myBat.prt) {
+                            $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                        } else {
+                            $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                        }
                         $('#conAmmoList').append('<span class="constName gff" title="'+showEquipInfo(equip,myBatType,true)+' / '+toNiceString(batEquip.bldReq)+'">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     }
                 }
@@ -252,12 +256,12 @@ function reEquip(batId,noRefresh) {
 
 function showEquip(batType,batEquip,bat) {
     let showEq = true;
-    console.log('W2ALT --------------------------------------------------------------');
-    console.log(batEquip.name);
+    // console.log('W2ALT --------------------------------------------------------------');
+    // console.log(batEquip.name);
     if (batEquip.name.startsWith('w2-') && !batEquip.name.startsWith('w2-auto')) {
-        console.log('start ok');
+        // console.log('start ok');
         if (batType.weapon2.equip != undefined) {
-            console.log(batType.weapon2.equip);
+            // console.log(batType.weapon2.equip);
             if (batType.weapon2.equip != batEquip.name) {
                 showEq = false;
             }
@@ -272,10 +276,10 @@ function showEquip(batType,batEquip,bat) {
 };
 
 function getBonusEq(unit) {
-    console.log("CHECK BONUS EQ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    // console.log("CHECK BONUS EQ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     let bonusEqName = '';
     if (unit.autoEq != undefined) {
-        console.log(unit.autoEq);
+        // console.log(unit.autoEq);
         if (unit.autoEq.length >= 1) {
             unit.autoEq.forEach(function(equipName) {
                 if (bonusEqName === '') {
@@ -285,7 +289,7 @@ function getBonusEq(unit) {
                     if (checkSpecialEquip(equip,unit)) {
                         compReqOK = false;
                     }
-                    console.log('compReqOK='+compReqOK);
+                    // console.log('compReqOK='+compReqOK);
                     if (compReqOK) {
                         if (equip.autoComp.length === 2) {
                             let autoCompName = equip.autoComp[0];
@@ -301,7 +305,7 @@ function getBonusEq(unit) {
     }
     if (bonusEqName === '') {
         if (unit.log3eq != undefined) {
-            console.log(unit.log3eq);
+            // console.log(unit.log3eq);
             if (unit.log3eq.length >= 1) {
                 unit.log3eq.forEach(function(equipName) {
                     if (bonusEqName === '') {
@@ -311,7 +315,7 @@ function getBonusEq(unit) {
                         if (checkSpecialEquip(equip,unit)) {
                             compReqOK = false;
                         }
-                        console.log('compReqOK='+compReqOK);
+                        // console.log('compReqOK='+compReqOK);
                         if (compReqOK) {
                             if (playerInfos.comp.log === 3 && equipName != 'garage') {
                                 // console.log('log3');
@@ -334,10 +338,6 @@ function getBonusEq(unit) {
 };
 
 function checkHasWeapon(num,batType,eq) {
-    console.log('checkHasWeapon ================================================================================');
-    console.log(num);
-    console.log(batType);
-    console.log(eq);
     let hasWeapon = false;
     if (num === 1) {
         if (batType.weapon.rof >= 1) {
@@ -371,17 +371,51 @@ function checkAmmoReqs(bat,batType) {
         let compReqOK = checkCompReq(ammo);
         let bldReqOK = verifBldReq(batType,ammo.bldReq);
         if (!compReqOK || !bldReqOK) {
-            selectedBat.ammo = batType.weapon.ammo[0];
+            let forcedAmmo = checkForcedAmmo(selectedBat.ammo,batType,1);
+            if (selectedBat.ammo != forcedAmmo) {
+                warning('Munitions inconnues','<span class="bleu">'+batType.name+'</span> : Les munitions de ce bataillon n\'ont pas pu être produites.<br><span class="brun">'+selectedBat.ammo+'</span> remplacées par <span class="brun">'+forcedAmmo+'</span>');
+            }
+            selectedBat.ammo = forcedAmmo;
         }
         ammo = getAmmoByName(bat.ammo2);
         compReqOK = checkCompReq(ammo);
         bldReqOK = verifBldReq(batType,ammo.bldReq);
         if (!compReqOK || !bldReqOK) {
-            selectedBat.ammo2 = batType.weapon.ammo[0];
+            let forcedAmmo = checkForcedAmmo(selectedBat.ammo2,batType,2);
+            if (selectedBat.ammo2 != forcedAmmo) {
+                warning('Munitions inconnues','<span class="bleu">'+batType.name+'</span> : Les munitions de ce bataillon n\'ont pas pu être produites.<br><span class="brun">'+selectedBat.ammo2+'</span> remplacées par <span class="brun">'+forcedAmmo+'</span>');
+            }
+            selectedBat.ammo2 = forcedAmmo;
         }
         selectedBatArrayUpdate();
     }
 };
+
+function checkForcedAmmo(oldAmmoName,batType,weapNum) {
+    let forcedAmmo = oldAmmoName;
+    if (oldAmmoName.includes('lame-')) {
+        if (oldAmmoName.includes('-poison') || oldAmmoName.includes('-poraz') || oldAmmoName.includes('-atium')) {
+            if (oldAmmoName.includes('lame-c-')) {
+                forcedAmmo = 'lame-carbone';
+            } else if (oldAmmoName.includes('lame-t-')) {
+                forcedAmmo = 'lame-titane';
+            } else if (oldAmmoName.includes('lame-a-')) {
+                forcedAmmo = 'lame-adamantium';
+            } else {
+                forcedAmmo = 'lame';
+            }
+        }
+    } else if (!oldAmmoName.includes('web-') && !oldAmmoName.includes('dents-') && !oldAmmoName.includes('club-') && !oldAmmoName.includes('autodes-')) {
+        if (weapNum === 1) {
+            forcedAmmo = batType.weapon.ammo[0];
+        } else {
+            forcedAmmo = batType.weapon2.ammo[0];
+        }
+    } else {
+        forcedAmmo = oldAmmoName;
+    }
+    return forcedAmmo;
+}
 
 function doReEquip(batId) {
     let myBat = getBatById(batId);
@@ -602,9 +636,9 @@ function getBatGearTags(armorName,equipName,batType) {
 
 function verifBldReq(unit,bldReq) {
     let bldReqOK = false;
-    console.log('VERIF BLDREQ');
-    console.log(unit);
-    console.log(bldReq);
+    // console.log('VERIF BLDREQ');
+    // console.log(unit);
+    // console.log(bldReq);
     if (bldReq instanceof Array) {
         if (bldReq[0] === 'Caserne') {
             bldReq[0] = 'Caserne '+capitalizeFirstLetter(playerInfos.gang);
@@ -651,9 +685,6 @@ function deployArmor(armor,batId) {
 };
 
 function deployEquip(equip,batId) {
-    console.log('deployEquip **********************************');
-    console.log(batId);
-    console.log(equip);
     myNewGear[3] = equip;
     reEquip(batId,true);
 };

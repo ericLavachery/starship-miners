@@ -9,8 +9,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Guidage",
-        "noList": true
+        "info": "Guidage"
     },
     {
         "name": "marquage",
@@ -24,8 +23,7 @@
         "aoe": "",
         "info": "Marquage",
         "deploy":{"Fer":1,"Silicium":1,"Mercure":1},
-        "batch":200,
-        "noList": true
+        "batch":200
     },
     {
         "name": "marquage-spike",
@@ -43,8 +41,7 @@
         "compReq":{"det":2,"mat":1,"bal":1},
         "deploy":{"Fer":3,"Munitions":1,"Carbone":1,"Cobalt":1,"Silicium":1,"Mercure":1},
         "batch":200,
-        "sound":{"paint":"paint_spike","fragger_throw":"paint_spike"},
-        "noList": true
+        "sound":{"paint":"paint_spike","fragger_throw":"paint_spike"}
     },
     {
         "name": "marquage-stop",
@@ -62,8 +59,7 @@
         "compReq":{"det":3,"energ":1,"pyro":1,"ca":2},
         "deploy":{"Fer":2,"Potassium":1,"Carbone":1,"Soufre":1,"Oxygène":3,"Azote":1,"Chlore":1,"Mercure":1},
         "batch":200,
-        "sound":{"paint":"paint_flash","fragger_throw":"paint_flash"},
-        "noList": true
+        "sound":{"paint":"paint_flash","fragger_throw":"paint_flash"}
     },
     {
         "name": "marquage-kill",
@@ -81,8 +77,7 @@
         "compReq":{"det":2,"mat":1,"bal":1,"explo":2},
         "deploy":{"Fer":1,"Carbone":1,"Cobalt":1,"Silicium":1,"Mercure":1,"Explosifs":2,"Nanite":2},
         "batch":200,
-        "sound":{"paint":"paint_kill","fragger_throw":"paint_kill"},
-        "noList": true
+        "sound":{"paint":"paint_kill","fragger_throw":"paint_kill"}
     },
     {
         "name": "web",
@@ -95,8 +90,7 @@
         "apdamage": 0,
         "apweb": true,
         "aoe": "",
-        "info": "Entrave",
-        "noList": true
+        "info": "Entrave"
     },
     {
         "name": "web-standard",
@@ -109,8 +103,7 @@
         "apdamage": 0,
         "apweb": true,
         "aoe": "",
-        "info": "Entrave",
-        "noList": true
+        "info": "Entrave"
     },
     {
         "name": "web-spike",
@@ -127,8 +120,7 @@
         "bldReq":["Atelier"],
         "compReq":{"mat":1},
         "costs":{"Fer":3,"Carbone":1,"Cobalt":1,"Silicium":1},
-        "batch":24,
-        "noList": true
+        "batch":24
     },
     {
         "name": "web-taser",
@@ -147,8 +139,7 @@
         "costs":{"Fer":3,"Cuivre":3,"Carbone":1,"Batteries":1},
         "deploy":{"Energie":5},
         "batch":24,
-        "sound":{"bolas":"bolas_taser","filet":"filet_taser"},
-        "noList": true
+        "sound":{"bolas":"bolas_taser","filet":"filet_taser"}
     },
     {
         "name": "standard",
@@ -191,22 +182,6 @@
         "batch":100
     },
     {
-        "name": "needle",
-        "range": 1,
-        "rof": 2,
-        "power": 0,
-        "powermult": 0.5,
-        "armors": 0.8,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": "",
-        "info": "Portée 1 max",
-        "bldReq":["Atelier"],
-        "compReq":{"bal":2,"mat":1,"ca":3},
-        "deploy":{"Fer":3,"Soufre":4,"Tungstène":2,"Uranium":1,"Bugium":2},
-        "batch":200
-    },
-    {
         "name": "tungsten",
         "range": 1,
         "rof": 1,
@@ -219,7 +194,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":1},
         "deploy":{"Munitions":1,"Tungstène":2},
-        "batch":100
+        "batch":100,
+        "icon":1
     },
     {
         "name": "uranium",
@@ -234,7 +210,8 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Munitions":1,"Uranium":2},
-        "batch":100
+        "batch":100,
+        "icon":2
     },
     {
         "name": "teflon",
@@ -250,7 +227,8 @@
         "bldReq":["Atelier"],
         "compReq":{"ca":2},
         "deploy":{"Fer":1,"Soufre":1,"Scrap":1,"Cuivre":1,"Larvium":1,"Potassium":1},
-        "batch":100
+        "batch":100,
+        "icon":1
     },
     {
         "name": "titanium",
@@ -265,23 +243,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"mat":1},
         "deploy":{"Munitions":1,"Titane":2},
-        "batch":100
-    },
-    {
-        "name": "gliding",
-        "range": 1,
-        "rof": 1,
-        "power": 2,
-        "powermult": 1,
-        "armors": 0.35,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": "",
-        "info": "Elevation+",
-        "bldReq":["Arsenal"],
-        "compReq":{"bal":3,"mat":2},
-        "deploy":{"Munitions":1,"Uranium":1,"Titane":1,"Carbone":1},
-        "batch":100
+        "batch":100,
+        "icon":2
     },
     {
         "name": "hollow",
@@ -298,37 +261,6 @@
         "batch":100
     },
     {
-        "name": "snake",
-        "range": 1,
-        "rof": 4,
-        "power": 0,
-        "powermult": 0.5,
-        "armors": 0.4,
-        "accuracy": 1.5,
-        "apdamage": 0,
-        "aoe": "",
-        "bldReq":["Armurerie"],
-        "compReq":{"bal":2,"tri":3},
-        "altCompReq":{"bal":3,"mat":1},
-        "deploy":{"Soufre":2,"Fer":2,"Tungstène":2,"Scrap":3},
-        "batch":100
-    },
-    {
-        "name": "dunium",
-        "range": 1.1,
-        "rof": 1,
-        "power": 0,
-        "powermult": 2.7,
-        "armors": 0.85,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": "",
-        "bldReq":["Arsenal"],
-        "compReq":{"bal":2,"mat":1},
-        "deploy":{"Munitions":1,"Aluminium":1,"Dunium":2},
-        "batch":100
-    },
-    {
         "name": "explosive",
         "range": 1,
         "rof": 1,
@@ -342,7 +274,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":1,"explo":2},
         "deploy":{"Munitions":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
-        "batch":200
+        "batch":200,
+        "icon":1
     },
     {
         "name": "incendiaire",
@@ -359,7 +292,76 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
         "deploy":{"Munitions":1,"Aluminium":1,"Phosphore":2},
-        "batch":100
+        "batch":100,
+        "icon":1
+    },
+    {
+        "name": "needle",
+        "range": 1,
+        "rof": 2,
+        "power": 0,
+        "powermult": 0.5,
+        "armors": 0.8,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Portée 1 max",
+        "bldReq":["Atelier"],
+        "compReq":{"bal":2,"mat":1,"ca":3},
+        "deploy":{"Fer":3,"Soufre":4,"Tungstène":2,"Uranium":1,"Bugium":2},
+        "batch":200,
+        "icon":2
+    },
+    {
+        "name": "gliding",
+        "range": 1,
+        "rof": 1,
+        "power": 2,
+        "powermult": 1,
+        "armors": 0.35,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Elevation+",
+        "bldReq":["Arsenal"],
+        "compReq":{"bal":3,"mat":2},
+        "deploy":{"Munitions":1,"Uranium":1,"Titane":1,"Carbone":1},
+        "batch":100,
+        "icon":2
+    },
+    {
+        "name": "snake",
+        "range": 1,
+        "rof": 4,
+        "power": 0,
+        "powermult": 0.5,
+        "armors": 0.4,
+        "accuracy": 1.5,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Shotgun",
+        "bldReq":["Armurerie"],
+        "compReq":{"bal":2,"tri":3},
+        "altCompReq":{"bal":3,"mat":1},
+        "deploy":{"Soufre":2,"Fer":2,"Tungstène":2,"Scrap":3},
+        "batch":100,
+        "icon":2
+    },
+    {
+        "name": "dunium",
+        "range": 1.1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 2.7,
+        "armors": 0.85,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "bldReq":["Arsenal"],
+        "compReq":{"bal":2,"mat":1},
+        "deploy":{"Munitions":1,"Aluminium":1,"Dunium":2},
+        "batch":100,
+        "icon":3
     },
     {
         "name": "timonium",
@@ -374,7 +376,8 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Munitions":1,"Timonium":2,"Uranium":1},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "salite",
@@ -389,7 +392,8 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
         "deploy":{"Munitions":1,"Salite":2},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "adamantium",
@@ -405,7 +409,8 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"mat":3,"bal":2},
         "deploy":{"Munitions":1,"Adamantium":2},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "freeze",
@@ -422,7 +427,8 @@
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
         "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":1,"Germium":2},
-        "batch":100
+        "batch":100,
+        "icon":2
     },
     {
         "name": "flechette",
@@ -437,7 +443,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":3},
         "deploy":{"Munitions":1,"Fer":1,"Soufre":1,"Tungstène":3},
-        "batch":100
+        "batch":100,
+        "icon":2
     },
     {
         "name": "ac-standard",
@@ -465,7 +472,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":1},
         "deploy":{"Munitions":1,"Tungstène":2},
-        "batch":100
+        "batch":100,
+        "icon":1
     },
     {
         "name": "ac-titanium",
@@ -480,22 +488,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"mat":1},
         "deploy":{"Munitions":1,"Titane":2},
-        "batch":100
-    },
-    {
-        "name": "ac-uranium",
-        "range": 1,
-        "rof": 1,
-        "power": 4,
-        "powermult": 1,
-        "armors": 0.3,
-        "accuracy": 1,
-        "apdamage": 0,
-        "aoe": "",
-        "bldReq":["Arsenal"],
-        "compReq":{"bal":2,"mat":2},
-        "deploy":{"Munitions":1,"Uranium":2},
-        "batch":100
+        "batch":100,
+        "icon":2
     },
     {
         "name": "ac-explosive",
@@ -511,7 +505,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":1,"explo":2},
         "deploy":{"Munitions":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
-        "batch":200
+        "batch":200,
+        "icon":1
     },
     {
         "name": "ac-incendiaire",
@@ -528,7 +523,24 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
         "deploy":{"Munitions":1,"Aluminium":1,"Phosphore":2},
-        "batch":100
+        "batch":100,
+        "icon":1
+    },
+    {
+        "name": "ac-uranium",
+        "range": 1,
+        "rof": 1,
+        "power": 4,
+        "powermult": 1,
+        "armors": 0.3,
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "bldReq":["Arsenal"],
+        "compReq":{"bal":2,"mat":2},
+        "deploy":{"Munitions":1,"Uranium":2},
+        "batch":100,
+        "icon":2
     },
     {
         "name": "ac-timonium",
@@ -543,7 +555,8 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Munitions":1,"Timonium":2,"Uranium":1},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "ac-flechette",
@@ -559,7 +572,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":3},
         "deploy":{"Munitions":1,"Fer":1,"Soufre":1,"Tungstène":3},
-        "batch":100
+        "batch":100,
+        "icon":2
     },
     {
         "name": "ac-freeze",
@@ -576,7 +590,8 @@
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
         "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":1,"Germium":2},
-        "batch":100
+        "batch":100,
+        "icon":2
     },
     {
         "name": "ac-salite",
@@ -591,7 +606,8 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
         "deploy":{"Munitions":1,"Salite":2},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "ac-adamantium",
@@ -607,7 +623,8 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":3},
         "deploy":{"Munitions":1,"Adamantium":2},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "ac-dunium",
@@ -622,7 +639,8 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":1},
         "deploy":{"Munitions":1,"Aluminium":1,"Dunium":2},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "sm-perfo",
@@ -652,7 +670,8 @@
         "bldReq":["Atelier"],
         "compReq":{"bal":2,"mat":1,"ca":3},
         "deploy":{"Fer":3,"Soufre":4,"Tungstène":2,"Uranium":1,"Bugium":2},
-        "batch":200
+        "batch":200,
+        "icon":2
     },
     {
         "name": "sm-tungsten",
@@ -667,7 +686,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":1},
         "deploy":{"Munitions":1,"Tungstène":2},
-        "batch":100
+        "batch":100,
+        "icon":1
     },
     {
         "name": "sm-uranium",
@@ -682,7 +702,8 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Munitions":1,"Uranium":2},
-        "batch":100
+        "batch":100,
+        "icon":2
     },
     {
         "name": "sm-teflon",
@@ -698,7 +719,8 @@
         "bldReq":["Atelier"],
         "compReq":{"ca":2},
         "deploy":{"Fer":1,"Soufre":1,"Scrap":1,"Cuivre":1,"Larvium":1,"Potassium":1},
-        "batch":100
+        "batch":100,
+        "icon":1
     },
     {
         "name": "sm-hollow",
@@ -727,7 +749,8 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":1},
         "deploy":{"Munitions":1,"Aluminium":1,"Dunium":2},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "sm-explosive",
@@ -743,7 +766,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":1,"explo":2},
         "deploy":{"Munitions":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
-        "batch":200
+        "batch":200,
+        "icon":1
     },
     {
         "name": "sm-incendiaire",
@@ -760,7 +784,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
         "deploy":{"Munitions":1,"Aluminium":1,"Phosphore":2},
-        "batch":100
+        "batch":100,
+        "icon":1
     },
     {
         "name": "sm-timonium",
@@ -775,7 +800,8 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Munitions":1,"Timonium":2,"Uranium":1},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "sm-salite",
@@ -790,7 +816,8 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
         "deploy":{"Munitions":1,"Salite":2},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "sm-adamantium",
@@ -806,7 +833,8 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":3},
         "deploy":{"Munitions":1,"Adamantium":2},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "sm-freeze",
@@ -823,7 +851,8 @@
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
         "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":1,"Germium":2},
-        "batch":100
+        "batch":100,
+        "icon":2
     },
     {
         "name": "pn-standard",
@@ -1080,8 +1109,7 @@
         "bldReq":["Armurerie"],
         "compReq":{},
         "deploy":{"Fer":2,"Soufre":2,"Plutonium":1,"Aluminium":1,"Phosphore":2},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "fireshells",
@@ -1097,8 +1125,7 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":1,"pyro":2},
         "deploy":{"Fer":2,"Soufre":2,"Plutonium":2,"Aluminium":1,"Phosphore":2},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "fireshells-perfo",
@@ -1192,8 +1219,7 @@
         "aoe": "",
         "info": "Incendiaire",
         "deploy":{"Energie":25},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "laser",
@@ -1209,8 +1235,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"energ":1},
         "deploy":{"Energie":15},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "laser-g2",
@@ -1256,8 +1281,7 @@
         "aoe": "",
         "compReq":{"energ":1},
         "deploy":{"Energie":30,"Plutonium":2,"Platine":1},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "bfg-g2",
@@ -1285,8 +1309,7 @@
         "apdamage": 0.04,
         "aoe": "",
         "deploy":{"Mercure":1,"Hydrogène":3,"Larvium":2},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "plasma",
@@ -1301,8 +1324,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"energ":1},
         "deploy":{"Mercure":1,"Hydrogène":3,"Larvium":1},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "impact",
@@ -1317,8 +1339,7 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"bal":2,"energ":1},
         "deploy":{"Or":1,"Hydrogène":3,"Larvium":2},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "grapeshot",
@@ -1333,8 +1354,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"bal":3,"energ":1},
         "deploy":{"Platine":2,"Hydrogène":2,"Larvium":1,"Aranium":1},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "plastanium",
@@ -1393,8 +1413,7 @@
         "apdamage": 0.04,
         "aoe": "brochette",
         "deploy":{"Mercure":1,"Hydrogène":3,"Larvium":2},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "cn-plasma",
@@ -1409,8 +1428,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"energ":1},
         "deploy":{"Mercure":1,"Hydrogène":3,"Larvium":1},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "cn-impact",
@@ -1425,8 +1443,7 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"bal":2,"energ":1},
         "deploy":{"Or":1,"Hydrogène":3,"Larvium":2},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "cn-grapeshot",
@@ -1441,8 +1458,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"bal":3,"energ":1},
         "deploy":{"Platine":2,"Hydrogène":2,"Larvium":1,"Aranium":1},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "cn-plastanium",
@@ -1771,8 +1787,7 @@
         "apdamage": 0,
         "aoe": "",
         "deploy":{},
-        "batch":12,
-        "noList": true
+        "batch":12
     },
     {
         "name": "barb-scrap",
@@ -1786,8 +1801,7 @@
         "apdamage": 0,
         "aoe": "",
         "deploy":{},
-        "batch":12,
-        "noList": true
+        "batch":12
     },
     {
         "name": "barb-taser",
@@ -1801,8 +1815,7 @@
         "apdamage": 0.04,
         "aoe": "",
         "deploy":{},
-        "batch":12,
-        "noList": true
+        "batch":12
     },
     {
         "name": "belier-spike",
@@ -1829,8 +1842,7 @@
         "armors": 0.75,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "dents",
@@ -1841,8 +1853,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0.05,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "dents-tungsten",
@@ -2088,7 +2099,8 @@
         "compReq":{"mat":2},
         "costs":{"Titane":6,"Silicium":1},
         "deploy":{},
-        "batch":12
+        "batch":12,
+        "icon":1
     },
     {
         "name": "lame-adamantite",
@@ -2120,7 +2132,8 @@
         "compReq":{"mat":3},
         "costs":{"Adamantium":6,"Argon":1},
         "deploy":{},
-        "batch":12
+        "batch":12,
+        "icon":3
     },
     {
         "name": "lame-poison",
@@ -2305,7 +2318,8 @@
         "costs":{"Rhodium":6},
         "deploy":{"Rhodium":0.1},
         "batch":12,
-        "sound":{"lame":"lame_mono","axe_x2":"lame_mono"}
+        "sound":{"lame":"lame_mono","axe_x2":"lame_mono"},
+        "icon":3
     },
     {
         "name": "lame-moisso-mono",
@@ -2339,7 +2353,8 @@
         "costs":{"Fer":3,"Carbone":1,"Titane":3,"Platine":3,"Batteries":1,"Larvium":1},
         "deploy":{"Energie":10},
         "batch":12,
-        "sound":{"lame":"plasblade","axe_x2":"plasblade"}
+        "sound":{"lame":"plasblade","axe_x2":"plasblade"},
+        "icon":3
     },
     {
         "name": "lame-fplasma",
@@ -2416,8 +2431,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "apweb": true,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "trap-suicide",
@@ -2430,8 +2444,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "apweb": true,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "shinda",
@@ -2443,8 +2456,7 @@
         "avar": "train",
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "shinda-suicide",
@@ -2456,8 +2468,7 @@
         "avar": "train",
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "mine",
@@ -2469,8 +2480,7 @@
         "avar": "explo",
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "suicide",
@@ -2482,8 +2492,7 @@
         "avar": "explo",
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "suicide-deluge",
@@ -2495,8 +2504,7 @@
         "avar": "explo",
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "autodes",
@@ -2507,8 +2515,7 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "autodes-incendiaire",
@@ -2628,8 +2635,7 @@
         "apdamage": 0,
         "aoe": "brochette",
         "deploy":{"Scrap":1,"Explosifs":2,"Végétaux":2},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "dynamite-nitrate",
@@ -2644,7 +2650,8 @@
         "bldReq":["Atelier"],
         "compReq":{"explo":2},
         "deploy":{"Carbone":1,"Scrap":1,"Explosifs":3,"Végétaux":2,"Azote":4},
-        "batch":100
+        "batch":100,
+        "icon":1
     },
     {
         "name": "dynamite-nanite",
@@ -2659,7 +2666,8 @@
         "bldReq":["Laboratoire"],
         "compReq":{"explo":2},
         "deploy":{"Carbone":1,"Scrap":1,"Explosifs":3,"Végétaux":2,"Potassium":2,"Nanite":8},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "obus",
@@ -3162,8 +3170,7 @@
         "apdamage": 0,
         "aoe": "squad",
         "deploy":{"Scrap":5,"Fer":5},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "boulet-explosif",
@@ -3284,7 +3291,8 @@
         "compReq":{"explo":1,"pyro":1},
         "deploy":{"Fer":2,"Oxygène":4,"Azote":2,"Potassium":1,"Chlore":2,"Explosifs":1},
         "batch":100,
-        "sound":{"mortier":"flashbang","grenade":"flashbang","tromblon":"flashbang","tromblon_long":"flashbang"}
+        "sound":{"mortier":"flashbang","grenade":"flashbang","tromblon":"flashbang","tromblon_long":"flashbang"},
+        "icon":1
     },
     {
         "name": "grenade-incendiaire",
@@ -3300,7 +3308,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"pyro":2},
         "deploy":{"Scrap":4,"Fer":1,"Aluminium":2,"Phosphore":4,"Explosifs":1},
-        "batch":100
+        "batch":100,
+        "icon":1
     },
     {
         "name": "grenade-nanite",
@@ -3315,7 +3324,8 @@
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":3},
         "deploy":{"Scrap":4,"Fer":2,"Aluminium":2,"Potassium":1,"Nanite":5,"Explosifs":2},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "grenade-gaz",
@@ -3330,7 +3340,8 @@
         "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"ca":3},
         "deploy":{"Carbone":1,"Scrap":3,"Fer":1,"Aluminium":1,"Hydrocarbure":2,"Chlore":4,"Atium":3,"Mephitis":1,"Végétaux":2,"Explosifs":1},
-        "batch":100
+        "batch":100,
+        "icon":2
     },
     {
         "name": "grenade-jello",
@@ -3345,7 +3356,8 @@
         "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"ca":4},
         "deploy":{"Carbone":1,"Scrap":3,"Fer":1,"Aluminium":1,"Argon":2,"Azote":8,"Plastanium":2,"Végétaux":4,"Explosifs":1},
-        "batch":100
+        "batch":100,
+        "icon":2
     },
     {
         "name": "grenade-antichar",
@@ -3360,7 +3372,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"explo":2},
         "deploy":{"Scrap":1,"Fer":2,"Huile":1,"Explosifs":4},
-        "batch":100
+        "batch":100,
+        "icon":1
     },
     {
         "name": "disco",
@@ -3373,8 +3386,7 @@
         "apdamage": 0,
         "aoe": "",
         "deploy":{},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "psionics",
@@ -3387,8 +3399,7 @@
         "apdamage": 0,
         "aoe": "",
         "deploy":{},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "gaz",
@@ -3402,8 +3413,7 @@
         "aoe": "",
         "compReq":{"exo":1,"ca":1},
         "deploy":{"Carbone":5,"Scrap":5,"Phosphore":6,"Hydrocarbure":4,"Chlore":12,"Végétaux":5},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "gaz-pluto",
@@ -3447,8 +3457,7 @@
         "aoe": "",
         "compReq":{"exo":1,"ca":4},
         "deploy":{"Carbone":5,"Scrap":5,"Plastanium":4,"Argon":4,"Azote":12,"Végétaux":8},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "molotov-feu",
@@ -3478,7 +3487,8 @@
         "bldReq":["Laboratoire"],
         "compReq":{"pyro":2,"ca":2},
         "deploy":{"Scrap":3,"Fuel":2,"Slime":3,"Phosphore":2,"Huile":2},
-        "batch":100
+        "batch":100,
+        "icon":1
     },
     {
         "name": "molotov-pyrus",
@@ -3494,7 +3504,8 @@
         "bldReq":["Laboratoire"],
         "compReq":{"pyro":2,"ca":3},
         "deploy":{"Scrap":3,"Fuel":2,"Pyrus":3,"Oxygène":1,"Huile":1},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "molotov-pyratol",
@@ -3510,7 +3521,8 @@
         "bldReq":["Laboratoire"],
         "compReq":{"pyro":3},
         "deploy":{"Scrap":3,"Fuel":2,"Pyratol":3,"Potassium":1,"Huile":1},
-        "batch":100
+        "batch":100,
+        "icon":3
     },
     {
         "name": "lf-feu",
@@ -3603,8 +3615,7 @@
         "aoe": "unit",
         "info": "Incendiaire",
         "deploy":{"Hydrocarbure":3,"Oxygène":3},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "lt-nanite",
@@ -3663,8 +3674,7 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0.05,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "fireball",
@@ -3678,8 +3688,7 @@
         "aoe": "squad",
         "info": "Incendiaire",
         "deploy":{"Soufre":2,"Potassium":2,"Fuel":2,"Huile":3,"Végétaux":2,"Tissus":1},
-        "batch":100,
-        "noList": true
+        "batch":100
     },
     {
         "name": "fireglue",
@@ -3770,8 +3779,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "creuseur",
@@ -3782,8 +3790,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "troueur",
@@ -3794,8 +3801,7 @@
         "armors": 0.3,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "electric",
@@ -3806,8 +3812,7 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0.04,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "eflash",
@@ -3818,8 +3823,7 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0.06,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "spit",
@@ -3830,8 +3834,7 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0.15,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "spitbug",
@@ -3842,8 +3845,7 @@
         "armors": 0.67,
         "accuracy": 1,
         "apdamage": 0.1,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "glair",
@@ -3855,8 +3857,7 @@
         "accuracy": 1,
         "apdamage": 0.1,
         "apweb": true,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "acide",
@@ -3867,8 +3868,7 @@
         "armors": 0.5,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "ruche",
@@ -3879,8 +3879,7 @@
         "armors": 0.6,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "venin",
@@ -3891,8 +3890,7 @@
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "parasite",
@@ -3903,8 +3901,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "necro",
@@ -3915,8 +3912,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "glue",
@@ -3927,8 +3923,7 @@
         "armors": 0.25,
         "accuracy": 1,
         "apdamage": 0.15,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "toxine",
@@ -3939,8 +3934,7 @@
         "armors": 0.25,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "poison",
@@ -3952,8 +3946,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Poison",
-        "noList": true
+        "info": "Poison"
     },
     {
         "name": "atium",
@@ -3965,8 +3958,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Poison++",
-        "noList": true
+        "info": "Poison++"
     },
     {
         "name": "feu",
@@ -3978,8 +3970,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Incendiaire",
-        "noList": true
+        "info": "Incendiaire"
     },
     {
         "name": "fuel",
@@ -3990,8 +3981,7 @@
         "armors": 1,
         "accuracy": 1,
         "apdamage": 0,
-        "aoe": "",
-        "noList": true
+        "aoe": ""
     },
     {
         "name": "napalm",
@@ -4003,7 +3993,6 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
-        "info": "Incendiaire",
-        "noList": true
+        "info": "Incendiaire"
     }
 ]

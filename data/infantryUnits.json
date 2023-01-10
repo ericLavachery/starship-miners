@@ -1062,7 +1062,7 @@
             "armors":1.75,
             "aoe":"unit",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","snake","incendiaire","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
+            "ammo":["standard","scrap","snake","incendiaire","tungsten","uranium","timonium","salite","adamantium","ac-dunium","freeze"]
         },
         "equip":["aucun","e-flash","e-camo","chargeur","e-jetpack","e-medic","theeye","helper","waterproof"],
         "log3eq":["chargeur","e-camo"],
@@ -5810,7 +5810,7 @@
             "armors":1.25,
             "aoe":"brochette",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","snake","incendiaire","ac-tungsten","ac-uranium","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze"]
+            "ammo":["standard","scrap","snake","incendiaire","tungsten","uranium","timonium","salite","adamantium","ac-dunium","freeze"]
         },
         "weapon2":{
             "name":"Rainbow gun",

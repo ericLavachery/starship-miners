@@ -1208,6 +1208,50 @@ function removeWeb(apCost) {
     showMap(zone,true);
 };
 
+function checkAmmoPack(ammoName,bat,batType) {
+    let ammoOK = false;
+    let hasW1 = checkHasWeapon(1,batType,bat.eq);
+    if (hasW1) {
+        if (batType.weapon.ammo.includes(ammoName)) {
+            ammoOK = true;
+        }
+    }
+    let hasW2 = checkHasWeapon(2,batType,bat.eq);
+    if (hasW2) {
+        if (batType.weapon2.ammo.includes(ammoName)) {
+            ammoOK = true;
+        }
+    }
+    return ammoOK;
+};
+
+function useAmmoPack(ammoName) {
+    let ammoOK = false;
+    let hasW1 = checkHasWeapon(1,selectedBatType,selectedBat.eq);
+    if (hasW1) {
+        if (selectedBatType.weapon.ammo.includes(ammoName)) {
+            selectedBat.ammo = ammoName;
+            ammoOK = true;
+        }
+    }
+    let hasW2 = checkHasWeapon(2,selectedBatType,selectedBat.eq);
+    if (hasW2) {
+        if (selectedBatType.weapon2.ammo.includes(ammoName)) {
+            selectedBat.ammo2 = ammoName;
+            ammoOK = true;
+        }
+    }
+    if (ammoOK) {
+        selectedBat.apLeft = selectedBat.apLeft-1;
+        let tile = getTile(selectedBat);
+        delete tile.ap;
+    }
+    doneAction(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+    showMap(zone,true);
+};
+
 function fogEffect(myBat) {
     let fogPoison = 1;
     let distance;

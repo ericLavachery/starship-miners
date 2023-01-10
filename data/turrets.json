@@ -1086,7 +1086,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["bastion","longshot","noshow","notrash","transport","fret","routes","flash","bigflash","nomove"],
+        "skills":["bastion","longshot","noshow","notrash","transport","fret","routes","flash","bigflash","nomove","nodelete"],
         "mecanoCost":12,
         "transMaxSize":9,
         "transUnits":400,

@@ -51,26 +51,32 @@ function mapEditWindow() {
     });
     selectStuff('Ruines','ruinCheck','Ruines (type au hasard)');
     selectStuff('RuinesNext','ruinNext','Ruines (le type suivant)');
-    selectStuff('RuinesVides','ruinEmpty2','Ruines fouillées / Non fouillées (sans changer le type de ruine)');
+    // <br>
     selectStuff('Route','roads','Route (ou Pont)');
-    // Landing
-    selectStuff('Lander','lander','Point d\'atterrissage lander (ou navette)');
-    selectStuff('Navette','navette','Point d\'atterrissage navette seulemment');
+    selectStuff('AmmoPack','ammoPacks','Pack de munitions');
+    selectStuff('RuinesVides','ruinEmpty2','Ruines fouillées / Non fouillées (sans changer le type de ruine)');
+    $('#conUnitList').append('<br>');
     // Ressources
     selectStuff('Res','res','Mettre des ressources sur le terrain');
     selectStuff('RareRes','rareres','Mettre des ressources rares sur le terrain');
     selectStuff('NoRes','nores','Supprimer les ressources du terrain');
     selectStuff('BatRes','batres','Mettre des ressources dans le bataillon');
+    // <br>
     // Tags
     selectStuff('Garde','alienPDM2','Garde alien (va rester dans le périmètre)');
     selectStuff('FullShield','alienShield','Cet alien a un bouclier permanent');
     selectStuff('FastMorph','alienFastMorph','Cet alien se transforme plus rapidement (Veilleurs se transforment en Ruche vers le tour 12 / Oeufs, Coques et Vomissures se transforment 2x plus vite)');
     selectStuff('Toile','webIcon','Toile (Canon Web)');
+    // <br>
     selectStuff('NoMove','batNoMove2','Bataillon immobilisé (non contrôlé par le joueur)');
     selectStuff('Outsider','batOutsider2','Bataillon outsider (si démantelé, pourrait donner des criminels)');
     selectStuff('NoPrefab','bldNoPrefab2','Ne peut pas être déconstruit (démantèlement seulement / personnel réduit)');
     selectStuff('Bleed','bleed','Blesser le bataillon');
+    // <br>
     selectStuff('CitChange','lessCit2','Diminuer le nombre de citoyens ou criminels');
+    // Landing
+    selectStuff('Lander','lander','Point d\'atterrissage lander (ou navette)');
+    selectStuff('Navette','navette','Point d\'atterrissage navette seulemment');
     // End
     $('#conUnitList').append('<br><br>');
     if (mped.sinf === 'RareRes' || mped.sinf === 'Res') {
@@ -84,6 +90,12 @@ function mapEditWindow() {
         $('#conUnitList').append('<br><br>');
     } else {
         theBatRes = {};
+    }
+    if (mped.sinf === 'AmmoPack') {
+        mapPackAddList();
+        $('#conUnitList').append('<br><br>');
+    } else {
+        theTilePacks = 'tungsten';
     }
     $('#conUnitList').append('<span class="constName"><span class="gf">Planête</span> : <span class="cy klik" onclick="planetToggle(`'+zone[0].planet+'`)" title="Changer de planête">'+zone[0].planet+'</span></span><br>');
     $('#conUnitList').append('<span class="constName"><span class="gf">Présense alien</span> : <span class="cy klik" onclick="diffToggle()" title="Changer la présence alien">pa'+zone[0].mapDiff+'</span></span><br>');
@@ -459,6 +471,45 @@ function batResAddList() {
     console.log(theBatRes);
 };
 
+function mapPackAddList() {
+    ammoTypes.forEach(function(ammo) {
+        let ammoIcon = getAmmoIcon(ammo);
+        if (ammoIcon != '') {
+            let ammoDesc = '';
+            if (ammo.name.includes('ac-')) {
+                ammoDesc = '20 mm';
+            }
+            if (ammo.name.includes('sm-')) {
+                ammoDesc = '6 mm';
+            }
+            let ammoInfo = showAmmoInfo(ammo.name);
+            let col = 'klik';
+            if (theTilePacks === ammo.name) {
+                col = 'cy klik';
+            }
+            $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapPackAdd(`'+ammo.name+'`)" title="'+ammoInfo+'">'+ammo.name+'</span><span class="paramIcon blanc">'+ammoIcon+'</span><span class="paramResValue gff">'+ammoDesc+'</span><br>');
+        }
+    });
+}
+
+function getAmmoIcon(ammo) {
+    let ammoIcon;
+    if (ammo.icon === undefined) {
+        ammoIcon = '';
+    } else {
+        if (ammo.icon === 3) {
+            ammoIcon = '&starf;';
+        } else if (ammo.icon === 2) {
+            ammoIcon = '&star;';
+        } else if (ammo.icon === 1) {
+            ammoIcon = '&dtri;';
+        } else {
+            ammoIcon = '';
+        }
+    }
+    return ammoIcon;
+};
+
 function clickEdit(tileId) {
     let tile = zone[tileId];
     let bord = false;
@@ -520,6 +571,8 @@ function clickEdit(tileId) {
             } else {
                 delete tile.web;
             }
+        } else if (mped.sinf === 'AmmoPack') {
+            addAmmoToTile(tile);
         } else if (mped.sinf === 'BatRes') {
             addResToBat(tile);
         } else if (mped.sinf === 'Res') {
@@ -726,6 +779,11 @@ function batResAdd(resName) {
     mapEditWindow();
 };
 
+function mapPackAdd(ammoName) {
+    theTilePacks = ammoName;
+    mapEditWindow();
+};
+
 function selectTerrain(terName) {
     mped.ster = terName;
     mped.sinf = '';
@@ -750,6 +808,14 @@ function addScrapToRuins(tile) {
         if (tile.rs['Scrap'] === undefined) {
             tile.rs['Scrap'] = sq;
         }
+    }
+};
+
+function addAmmoToTile(tile) {
+    if (tile.ap != undefined) {
+        delete tile.ap;
+    } else {
+        tile.ap = theTilePacks;
     }
 };
 

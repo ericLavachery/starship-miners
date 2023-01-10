@@ -2557,10 +2557,10 @@ function getStartBatList() {
         if (playerInfos.gMode <= 2) {
             startBatList.push('Sinyaki');
             startBatList.push('Bombastiks');
+            startBatList.push('Milkmen');
         }
         if (playerInfos.gMode <= 1) {
             startBatList.push('Rainmen');
-            startBatList.push('Tacots');
             startBatList.push('Infirmiers');
             startBatList.push('Bus');
         }
