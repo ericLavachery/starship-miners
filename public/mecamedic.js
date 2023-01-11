@@ -1162,7 +1162,7 @@ function checkMedicSkill(bat,batType) {
 
 function checkMedBld(bat,batType) {
     let canBeMedBld = false;
-    if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
+    if (batType.cat === 'buildings' || batType.skills.includes('transorbital') || batType.skills.includes('stable')) {
         canBeMedBld = true;
     } else if (batType.cat === 'vehicles' && !batType.skills.includes('fly')) {
         if (bat.tags.includes('fortif')) {

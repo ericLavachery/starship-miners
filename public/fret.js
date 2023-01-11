@@ -555,6 +555,9 @@ function checkResSpace(bat) {
     if (bat.eq === 'megafret') {
         resMax = Math.round(resMax*1.33);
     }
+    if (bat.eq === 'break') {
+        resMax = Math.round(resMax/4);
+    }
     if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
         resMax = resMax*2;
         if (resMax < 5000) {

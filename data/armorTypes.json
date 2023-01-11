@@ -1481,6 +1481,17 @@
         "costs":{"Carbone":3,"Moteurs":2,"Electros":2}
     },
     {
+        "name":"break",
+        "cat":"equip",
+        "skills":[],
+        "info":"Transport+ Fret-",
+        "bldReq":["Usine"],
+        "compReq":{"log":2,"trans":1},
+        "autoComp":[],
+        "factor":"thp",
+        "costs":{"Scrap":8,"Carbone":4,"Fer":4}
+    },
+    {
         "name":"belier",
         "cat":"equip",
         "skills":[],

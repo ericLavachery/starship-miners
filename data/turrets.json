@@ -1091,7 +1091,7 @@
         "transMaxSize":9,
         "transUnits":400,
         "transRes":250,
-        "fuzz":3,
+        "fuzz":5,
         "deathFx":"explo1"
     },
     {

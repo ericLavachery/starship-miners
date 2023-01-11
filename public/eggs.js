@@ -1056,6 +1056,18 @@ function eggDropTile(eggName,theArea) {
                 }
             }
         });
+        if (targetTile < 0) {
+            shufAliens.forEach(function(bat) {
+                if (bat.loc === "zone") {
+                    if (bat.type === 'Coque' || bat.type === 'Oeuf') {
+                        if (bat.squadsLeft > bestCover) {
+                            targetTile = bat.tileId;
+                            bestCover = bat.squadsLeft;
+                        }
+                    }
+                }
+            });
+        }
         let shufZone = _.shuffle(zone);
         let distance;
         shufZone.forEach(function(tile) {

@@ -116,6 +116,9 @@ function batInfos(bat,batType,pop) {
     if (bat.eq === 'megafret') {
         resMax = Math.round(resMax*1.33);
     }
+    if (bat.eq === 'break') {
+        resMax = Math.round(resMax/4);
+    }
     if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
         resMax = resMax*2;
         if (resMax < 5000) {
@@ -551,6 +554,11 @@ function batInfos(bat,batType,pop) {
         let transBase = batType.transUnits;
         if (bat.eq === 'megatrans' || bat.logeq === 'megatrans') {
             transBase = Math.round(transBase*1.25);
+        }
+        if (bat.eq === 'break') {
+            transBase = calcTransWithBreak(transBase,batType);
+            // transBase = Math.round(transBase*1.33);
+            // transBase = transBase+Math.round(batType.transRes/4);
         }
         if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
             transBase = transBase*2;

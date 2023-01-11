@@ -324,6 +324,17 @@ function checkTransportId(myBat,myBatType) {
     return transId;
 };
 
+function calcTransWithBreak(theTrans,batType) {
+    let break1 = theTrans+Math.round(batType.transRes/4);
+    let break2 = Math.round(theTrans*1.25);
+    if (break1 > break2) {
+        theTrans = break1;
+    } else {
+        theTrans = break2;
+    }
+    return theTrans;
+}
+
 function calcTransUnitsLeft(myBat,myBatType) {
     let myBatTransUnitsLeft = myBatType.transUnits;
     if (myBat.eq === 'garage' || myBat.logeq === 'garage' || myBat.eq === 'bldkit') {
@@ -331,6 +342,11 @@ function calcTransUnitsLeft(myBat,myBatType) {
     }
     if (myBat.eq === 'megatrans' || myBat.logeq === 'megatrans') {
         myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*1.25);
+    }
+    if (myBat.eq === 'break') {
+        myBatTransUnitsLeft = calcTransWithBreak(myBatTransUnitsLeft,myBatType);
+        // myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*1.5);
+        // myBatTransUnitsLeft = myBatTransUnitsLeft+Math.round(myBatType.transRes/4);
     }
     if (myBatType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
         myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*bonusTransRetour);
