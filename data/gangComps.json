@@ -96,7 +96,9 @@
         "fullName":"Médecine",
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
-        "lvlCosts":[0,1,1,2],
+        "lvlCosts":[0,1,1,1],
+        "rechLast":true,
+        "rechPass":["bulbos"],
         "rechCost":1
     },
     {
@@ -196,6 +198,8 @@
         "levels":{"rednecks":0,"blades":5,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1],
+        "rechLast":true,
+        "rechPass":["tiradores"],
         "rechCost":1
     },
     {
@@ -205,6 +209,8 @@
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1],
+        "rechLast":true,
+        "rechPass":["detruas"],
         "rechCost":1
     },
     {
@@ -214,6 +220,8 @@
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":3,
         "lvlCosts":[0,1,1,1],
+        "rechLast":true,
+        "rechPass":["brasier"],
         "rechCost":1
     },
     {
@@ -223,6 +231,8 @@
         "levels":{"rednecks":0,"blades":0,"bulbos":0,"drogmulojs":0,"tiradores":0,"detruas":0,"brasier":0},
         "maxLevel":5,
         "lvlCosts":[0,1,1,1,1,1],
+        "rechLast":true,
+        "rechPass":["bulbos"],
         "rechCost":0.85
     },
     {
@@ -241,6 +251,8 @@
         "levels":{"rednecks":5,"blades":5,"bulbos":5,"drogmulojs":5,"tiradores":5,"detruas":5,"brasier":5},
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,1],
+        "rechLast":true,
+        "rechPass":["blades"],
         "rechCost":1.25
     },
     {

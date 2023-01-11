@@ -293,7 +293,7 @@ function changePlayerInfo(dropMenuId,infoName,from) {
         if (infoName === 'gang') {
             playerInfos.gangDef = true;
             if (playerInfos.gang === undefined) {
-                playerInfos.gMode = 'rednecks';
+                playerInfos.gang = 'rednecks';
             }
             if (playerInfos.gMode === undefined) {
                 playerInfos.gMode = 2;
@@ -308,6 +308,9 @@ function changePlayerInfo(dropMenuId,infoName,from) {
                 if (playerInfos.missionZone < 90) {
                     playerInfos.missionZone = 99;
                 }
+            }
+            if (playerInfos.gang === 'rednecks' && playerInfos.comp.ext === 0) {
+                playerInfos.comp.ext = 1;
             }
             moveMissionZone(playerInfos.missionZone);
             conOut(true);
@@ -2905,6 +2908,19 @@ function gangLevelUp(retour) {
             if (comp.rechFirst) {
                 if (playerInfos.comp[comp.name] === 0) {
                     rechOnly = true;
+                }
+            }
+        }
+        if (comp.rechLast != undefined) {
+            if (comp.rechLast) {
+                if (playerInfos.comp[comp.name] === comp.maxLevel-1) {
+                    if (comp.rechPass != undefined) {
+                        if (!comp.rechPass.includes(playerInfos.gang)) {
+                            rechOnly = true;
+                        }
+                    } else {
+                        rechOnly = true;
+                    }
                 }
             }
         }
