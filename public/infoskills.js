@@ -2547,13 +2547,13 @@ function skillsInfos(bat,batType,near) {
     }
     // AMMO PACK
     if (tile.ap != undefined) {
-        let ammoOK = checkAmmoPack(tile.ap,bat,batType);
+        let ammoOK = checkAmmoPack(tile.ap,bat,batType,true);
         if (ammoOK) {
             apCost = 1;
             apReq = 0;
             let ammo = getAmmoByName(tile.ap);
             let ammoInfo = showAmmoInfo(ammo.name);
-            $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tile.ap+' / '+ammoInfo+')" class="boutonVert iconButtons" onclick="useAmmoPack(`'+tile.ap+'`)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
+            $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tile.ap+' / '+ammoInfo+')" class="boutonVert iconButtons" onclick="useAmmoPack(`'+tile.ap+'`,true)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
         }
     }

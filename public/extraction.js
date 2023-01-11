@@ -57,7 +57,7 @@ function extraction(apCost) {
 function mining(bat) {
     if (bat.tags.includes('mining')) {
         if (bat.apLeft >= 1) {
-            console.log('MINING');
+            // console.log('MINING');
             // xp
             if (playerInfos.comp.ext >= 3) {
                 bat.xp = bat.xp+0.4;
@@ -67,7 +67,7 @@ function mining(bat) {
             let tile = getTile(bat);
             let batType = getBatType(bat);
             let rate = getMiningRate(bat,false);
-            console.log('rate'+rate);
+            // console.log('rate'+rate);
             let allRes = getAllRes(bat.tileId);
             let minedScrap = 0;
             let bestDumper = getBestDumper(bat);
@@ -189,7 +189,7 @@ function checkResKindFactor(checks,kinds,res) {
 };
 
 function scrapMorphing(bat,batType,minedScrap,tile) {
-    console.log('SCRAPMORPHING ---------------------------------------------------------');
+    // console.log('SCRAPMORPHING ---------------------------------------------------------');
     let morphed = minedScrap/75;
     let theChecks = [];
     if (tile.rt != undefined) {
@@ -229,13 +229,13 @@ function scrapMorphing(bat,batType,minedScrap,tile) {
         resFactor = resFactor*kindFactor;
         if (resFactor >= 1) {
             let resNum = Math.round(morphed*resFactor/rand.rand(3,18)/2);
-            console.log(res.name);
-            console.log('resNum: '+resNum);
+            // console.log(res.name);
+            // console.log('resNum: '+resNum);
             if (resNum >= 3) {
                 resProd = resNum;
             } else {
                 let resChance = Math.round(100*resFactor/30*morphed/3);
-                console.log('resChance: '+resChance+'%');
+                // console.log('resChance: '+resChance+'%');
                 if (rand.rand(1,100) <= resChance) {
                     resProd = 3;
                 }
@@ -249,7 +249,7 @@ function scrapMorphing(bat,batType,minedScrap,tile) {
             } else {
                 minedThisTurn[res.name] = minedThisTurn[res.name]+resProd;
             }
-            console.log('resProd: '+resProd);
+            // console.log('resProd: '+resProd);
         }
     });
 };
@@ -274,8 +274,8 @@ function getAllRes(tileId) {
             smallFruits = smallFruits+rand.rand(0,20)-10;
         }
     }
-    console.log('terrain res');
-    console.log(srs);
+    // console.log('terrain res');
+    // console.log(srs);
     let allRes = {};
     if (tile.rq === undefined) {
         if (smallFruits >= 25) {
@@ -336,7 +336,7 @@ function getTerrainRes(terrain,tile) {
     } else if (terrain.name === 'B') {
         srs.Bois = 25+(tile.seed*25);
     }
-    console.log(srs);
+    // console.log(srs);
     if (srs.Bois != undefined) {
         srs.Bois = srs.Bois*vf.wood/100;
         srs.Bois = Math.round(srs.Bois*res.planets[zone[0].planet]);
@@ -344,7 +344,7 @@ function getTerrainRes(terrain,tile) {
             delete srs.Bois;
         }
     }
-    console.log(srs);
+    // console.log(srs);
     // Végétaux
     res = getResByName('Végétaux');
     if (terrain.name === 'F') {
@@ -368,7 +368,7 @@ function getTerrainRes(terrain,tile) {
             delete srs.Végétaux;
         }
     }
-    console.log(srs);
+    // console.log(srs);
     // Eau
     res = getResByName('Eau');
     if (terrain.name === 'R' && tile.seed >= 4) {
@@ -411,7 +411,7 @@ function getTerrainRes(terrain,tile) {
             delete srs.Eau;
         }
     }
-    console.log(srs);
+    // console.log(srs);
     return srs;
 };
 
@@ -579,8 +579,8 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
         }
     }
     let resRate = Math.ceil(resHere*batRate/mineRateDiv*multiExtractAdj);
-    console.log(res.name);
-    console.log('resRate='+resRate);
+    // console.log(res.name);
+    // console.log('resRate='+resRate);
     // ADJ SUBTYPE & LEVELS
     if (!batType.mining.types.includes(res.bld)) {
         if (batType.mining.subTypes.includes(res.bld)) {
@@ -606,7 +606,7 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     if (value <= 0) {
         resRate = 0;
     }
-    console.log('resRate='+resRate);
+    // console.log('resRate='+resRate);
     return resRate;
 };
 
@@ -649,8 +649,8 @@ function chooseRes(again) {
     $('#conUnitList').append('<span class="constName or">RESSOURCES à extraire</span><br>');
     let rate = getMiningRate(selectedBat,true,false);
     let allRes = getAllRes(selectedBat.tileId);
-    console.log('allRes');
-    console.log(allRes);
+    // console.log('allRes');
+    // console.log(allRes);
     let totalExRes = 0;
     Object.entries(allRes).map(entry => {
         let key = entry[0];
@@ -912,7 +912,7 @@ function showFoundRes() {
     if (showMini) {
         oneResView();
     }
-    console.log(showOneRes);
+    // console.log(showOneRes);
 };
 
 function toggleResView() {
@@ -940,7 +940,7 @@ function toggleMarkedView() {
 };
 
 function markMap(tileId) {
-    console.log('MARK MAP '+tileId);
+    // console.log('MARK MAP '+tileId);
     let index;
     selectedTile = tileId;
     if (showAllRes) {

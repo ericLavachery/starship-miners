@@ -487,7 +487,9 @@ function mapPackAddList() {
             if (theTilePacks === ammo.name) {
                 col = 'cy klik';
             }
-            $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapPackAdd(`'+ammo.name+'`)" title="'+ammoInfo+'">'+ammo.name+'</span><span class="paramIcon blanc">'+ammoIcon+'</span><span class="paramResValue gff">'+ammoDesc+'</span><br>');
+            if (ammoDesc === '') {
+                $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapPackAdd(`'+ammo.name+'`)" title="'+ammoInfo+'">'+ammo.name+'</span><span class="paramIcon blanc">'+ammoIcon+'</span><span class="paramResValue gff">'+ammoDesc+'</span><br>');
+            }
         }
     });
 }

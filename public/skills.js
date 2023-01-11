@@ -1208,37 +1208,104 @@ function removeWeb(apCost) {
     showMap(zone,true);
 };
 
-function checkAmmoPack(ammoName,bat,batType) {
+function checkAmmoPack(ammoName,bat,batType,conv) {
     let ammoOK = false;
     let hasW1 = checkHasWeapon(1,batType,bat.eq);
     if (hasW1) {
-        if (batType.weapon.ammo.includes(ammoName)) {
-            ammoOK = true;
+        if (conv) {
+            let convAmmo = ammoConv(batType.weapon.ammo);
+            if (convAmmo.base.includes(ammoName)) {
+                ammoOK = true;
+            }
+            if (ammoName === 'dunium' && batType.weapon.ammo.includes('ac-dunium')) {
+                ammoOK = true;
+            }
+        } else {
+            if (batType.weapon.ammo.includes(ammoName)) {
+                ammoOK = true;
+            }
         }
     }
     let hasW2 = checkHasWeapon(2,batType,bat.eq);
     if (hasW2) {
-        if (batType.weapon2.ammo.includes(ammoName)) {
-            ammoOK = true;
+        if (conv) {
+            let convAmmo = ammoConv(batType.weapon2.ammo);
+            if (convAmmo.base.includes(ammoName)) {
+                ammoOK = true;
+            }
+            if (ammoName === 'dunium' && batType.weapon2.ammo.includes('ac-dunium')) {
+                ammoOK = true;
+            }
+        } else {
+            if (batType.weapon.ammo2.includes(ammoName)) {
+                ammoOK = true;
+            }
         }
     }
     return ammoOK;
 };
 
-function useAmmoPack(ammoName) {
+function ammoConv(myAmmos) {
+    console.log(myAmmos);
+    let convAmmo = {};
+    convAmmo.pref = '';
+    convAmmo.base = myAmmos;
+    if (myAmmos.includes('ac-tungsten')) {
+        convAmmo.pref = 'ac-';
+    }
+    if (myAmmos.includes('sm-tungsten')) {
+        convAmmo.pref = 'sm-';
+    }
+    if (myAmmos.includes('pn-tungsten')) {
+        convAmmo.pref = 'pn-';
+    }
+    if (convAmmo.pref != '') {
+        let iter = 0;
+        myAmmos.forEach(function(ammo) {
+            convAmmo.base[iter] = ammo.replace(convAmmo.pref,'');
+            iter++;
+        });
+    }
+    console.log(convAmmo);
+    return convAmmo;
+};
+
+function useAmmoPack(ammoName,conv) {
     let ammoOK = false;
     let hasW1 = checkHasWeapon(1,selectedBatType,selectedBat.eq);
     if (hasW1) {
-        if (selectedBatType.weapon.ammo.includes(ammoName)) {
-            selectedBat.ammo = ammoName;
-            ammoOK = true;
+        if (conv) {
+            let convAmmo = ammoConv(selectedBatType.weapon.ammo);
+            if (convAmmo.base.includes(ammoName)) {
+                selectedBat.ammo = convAmmo.pref+ammoName;
+                ammoOK = true;
+            } else if (ammoName === 'dunium' && selectedBatType.weapon.ammo.includes('ac-dunium')) {
+                selectedBat.ammo = 'ac-dunium';
+                ammoOK = true;
+            }
+        } else {
+            if (selectedBatType.weapon.ammo.includes(ammoName)) {
+                selectedBat.ammo = ammoName;
+                ammoOK = true;
+            }
         }
     }
     let hasW2 = checkHasWeapon(2,selectedBatType,selectedBat.eq);
     if (hasW2) {
-        if (selectedBatType.weapon2.ammo.includes(ammoName)) {
-            selectedBat.ammo2 = ammoName;
-            ammoOK = true;
+        if (conv) {
+            let convAmmo = ammoConv(selectedBatType.weapon2.ammo);
+            if (convAmmo.base.includes(ammoName)) {
+                selectedBat.ammo2 = convAmmo.pref+ammoName;
+                ammoOK = true;
+            } else if (ammoName === 'dunium' && selectedBatType.weapon2.ammo.includes('ac-dunium')) {
+                selectedBat.ammo2 = 'ac-dunium';
+                ammoOK = true;
+            }
+        } else {
+            if (selectedBatType.weapon2.ammo.includes(ammoName)) {
+                selectedBat.ammo2 = ammoName;
+                ammoOK = true;
+            }
         }
     }
     if (ammoOK) {
