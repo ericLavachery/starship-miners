@@ -764,7 +764,7 @@ function checkResByKind(resKind,coffre,tile,recNum) {
 function checkNextRuinType(tile) {
     checkRuinType(tile,false,ruinsDices[0],ruinsDices[1]);
     if (ruinsDices[0] === 21 || ruinsDices[0] === 22) {
-        if (ruinsDices[1] >= 13) {
+        if (ruinsDices[1] >= 14) {
             ruinsDices[1] = 1;
             ruinsDices[0] = 23;
         }
@@ -978,28 +978,34 @@ function checkRuinType(tile,quiet,dice1,dice2) {
                     // cit x0.8
                     break;
                     case 8:
-                    ruinType.name = 'Centrale électrique';
-                    ruinType.checks = ['energy','energy','energy'];
-                    ruinType.scrap = 400;
-                    // cit x0.6
-                    break;
-                    case 9:
-                    ruinType.name = 'Aéroport';
-                    ruinType.checks = ['auto','auto','any','any'];
-                    ruinType.scrap = 750;
-                    // cit x0.8
-                    break;
-                    case 10:
                     ruinType.name = 'Bibliothèque';
                     ruinType.checks = [];
                     ruinType.scrap = 150;
                     // cit x0.1
                     break;
-                    case 11:
+                    case 9:
                     ruinType.name = 'Médiathèque';
                     ruinType.checks = [];
                     ruinType.scrap = 250;
                     // cit x0.1
+                    break;
+                    case 10:
+                    ruinType.name = 'Centrale électrique';
+                    ruinType.checks = ['energy','energy','energy'];
+                    ruinType.scrap = 400;
+                    // cit x0.6
+                    break;
+                    case 11:
+                    ruinType.name = 'Aéroport';
+                    ruinType.checks = ['auto','auto','any','any'];
+                    ruinType.scrap = 750;
+                    // cit x0.8
+                    break;
+                    case 13:
+                    ruinType.name = 'Port';
+                    ruinType.checks = ['auto','industry','any','any'];
+                    ruinType.scrap = 750;
+                    // cit x0.8
                     break;
                     default:
                     ruinType.name = 'Centre de tri';

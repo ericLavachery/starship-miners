@@ -671,7 +671,7 @@ function terrainAccess(batId,targetTileId) {
                 terScarp = 0;
             }
         }
-        if (zone[targetTileId].rd) {
+        if (zone[targetTileId].rd && !batType.skills.includes('nodry')) {
             access = true;
         }
         let batMaxFlood = batType.maxFlood;
@@ -702,6 +702,29 @@ function terrainAccess(batId,targetTileId) {
             if (terrain.flood < 1) {
                 if (terrain.veg < 1) {
                     access = false;
+                }
+            }
+        }
+        if (batType.cat != 'aliens' && !access) {
+            if (zone[targetTileId].ruins) {
+                if (batType.skills.includes('nodry')) {
+                    let unitTerrain = getTerrain(bat);
+                    if (unitTerrain.flood >= 2) {
+                        access = true;
+                    }
+                } else {
+                    access = true;
+                }
+            }
+            if (!access) {
+                if (zone[targetTileId].rd) {
+                    let hereBat = getZoneBatByTileId(targetTileId);
+                    if (Object.keys(hereBat).length >= 1) {
+                        let hereBatType = getBatType(hereBat);
+                        if (hereBatType.skills.includes('transorbital')) {
+                            access = true;
+                        }
+                    }
                 }
             }
         }

@@ -2891,7 +2891,7 @@
         "maxVeg":0,
         "skills":["b_mid","fortif","longshot","hover","nodry","badmecano","transport","fret","fweight","light","crewsave","recupcit","nocrime","recupres","nochef"],
         "mecanoCost":12,
-        "transMaxSize":7,
+        "transMaxSize":21,
         "transUnits":800,
         "transRes":1000,
         "fuzz":2,
