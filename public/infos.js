@@ -116,7 +116,7 @@ function batInfos(bat,batType,pop) {
     if (bat.eq === 'megafret') {
         resMax = Math.round(resMax*1.33);
     }
-    if (bat.eq === 'break') {
+    if (bat.eq === 'maxtrans') {
         resMax = Math.round(resMax/4);
     }
     if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
@@ -202,15 +202,16 @@ function batInfos(bat,batType,pop) {
             }
         }
     }
-    if ((grade != batType.name && grade != 'Caporal') || vetStatus != '' || armyNum != '' || chargeIcon != '' || fretIcon != '') {
-        if (bat.chief != undefined) {
-            if (bat.chief != '') {
-                $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+' '+bat.chief+vetStatus+armyNum+fretIcon+chargeIcon+'</span><br>');
-                $('#'+bodyPlace).append('<div class="shSpace"></div>');
-            } else {
-                $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+vetStatus+armyNum+fretIcon+chargeIcon+'</span><br>');
-                $('#'+bodyPlace).append('<div class="shSpace"></div>');
-            }
+    let chiefName = '';
+    if (bat.chief != undefined) {
+        if (bat.chief != '') {
+            chiefName = bat.chief;
+        }
+    }
+    if ((grade != batType.name && grade != 'Caporal') || vetStatus != '' || armyNum != '' || chargeIcon != '' || fretIcon != '' || chiefName != '') {
+        if (chiefName != '') {
+            $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+' '+bat.chief+vetStatus+armyNum+fretIcon+chargeIcon+'</span><br>');
+            $('#'+bodyPlace).append('<div class="shSpace"></div>');
         } else {
             $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+vetStatus+armyNum+fretIcon+chargeIcon+'</span><br>');
             $('#'+bodyPlace).append('<div class="shSpace"></div>');
@@ -555,10 +556,8 @@ function batInfos(bat,batType,pop) {
         if (bat.eq === 'megatrans' || bat.logeq === 'megatrans') {
             transBase = Math.round(transBase*1.25);
         }
-        if (bat.eq === 'break') {
+        if (bat.eq === 'maxtrans') {
             transBase = calcTransWithBreak(transBase,batType);
-            // transBase = Math.round(transBase*1.33);
-            // transBase = transBase+Math.round(batType.transRes/4);
         }
         if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
             transBase = transBase*2;

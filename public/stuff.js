@@ -481,7 +481,7 @@ function nearWhat(myBat,myBatType) {
             if (!bat.tags.includes('nomove') && !inDanger) {
                 near.control = true;
             }
-            if (bat.tags.includes('nomove') && !batType.skills.includes('nolist')) {
+            if (bat.tags.includes('nomove') && !batType.skills.includes('nolist') && !batType.skills.includes('nomove')) {
                 near.friends = true;
             }
             if (bat.tags.includes('hero') && batType.skills.includes('heropotion') && !bat.tags.includes('potion')) {

@@ -767,6 +767,13 @@ function calcBaseMoveCost(bat,batType) {
     if (bat.eq === 'w2-moisso' || bat.logeq === 'w2-moisso' || bat.eq === 'moisso' || bat.logeq === 'moisso') {
         baseMoveCost = baseMoveCost*1.1;
     }
+    if (bat.eq === 'maxtrans') {
+        if (!batType.skills.includes('tweight')) {
+            if (batType.skills.includes('fweight')) {
+                baseMoveCost = baseMoveCost*1.1;
+            }
+        }
+    }
     if (bat.tags.includes('sudu')) {
         baseMoveCost = baseMoveCost*mcSudu;
     }

@@ -1841,34 +1841,36 @@ function recupRes(bat,batType) {
         putBatAround(bat.tileId,false,'near',239,0);
         coffre = getZoneBatByTileId(coffreTileId);
     }
-    if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
-        let resRecup = getResRecup(bat,batType);
-        if (resRecup != undefined) {
-            Object.entries(resRecup).map(entry => {
-                let key = entry[0];
-                let value = entry[1];
-                if (value >= 1) {
-                    let res = getResByName(key);
-                    if (res.cat === 'alien') {
-                        if (playerInfos.alienRes[key] === undefined) {
-                            playerInfos.alienRes[key] = value;
+    if (Object.keys(coffre).length >= 1) {
+        if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
+            let resRecup = getResRecup(bat,batType);
+            if (resRecup != undefined) {
+                Object.entries(resRecup).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (value >= 1) {
+                        let res = getResByName(key);
+                        if (res.cat === 'alien') {
+                            if (playerInfos.alienRes[key] === undefined) {
+                                playerInfos.alienRes[key] = value;
+                            } else {
+                                playerInfos.alienRes[key] = playerInfos.alienRes[key]+value;
+                            }
                         } else {
-                            playerInfos.alienRes[key] = playerInfos.alienRes[key]+value;
-                        }
-                    } else {
-                        if (coffre.transRes[key] === undefined) {
-                            coffre.transRes[key] = value;
-                        } else {
-                            coffre.transRes[key] = coffre.transRes[key]+value;
+                            if (coffre.transRes[key] === undefined) {
+                                coffre.transRes[key] = value;
+                            } else {
+                                coffre.transRes[key] = coffre.transRes[key]+value;
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
         }
-    }
-    let resFret = checkResLoad(bat);
-    if (resFret >= 1) {
-        putFretInChest(bat,batType,coffre);
+        let resFret = checkResLoad(bat);
+        if (resFret >= 1) {
+            putFretInChest(bat,batType,coffre);
+        }
     }
     coffreTileId = -1;
 };

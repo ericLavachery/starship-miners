@@ -1481,7 +1481,7 @@
         "costs":{"Carbone":3,"Moteurs":2,"Electros":2}
     },
     {
-        "name":"break",
+        "name":"maxtrans",
         "cat":"equip",
         "skills":[],
         "info":"Transport+ Fret-",

@@ -398,6 +398,21 @@ function checkPDM() {
             });
         }
     }
+    if (pointDeMire < 0 && selectedBatType.skills.includes('nez')) {
+        // si nez, se rabat sur un lander furtif
+        shufBats.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                batType = getBatType(bat);
+                if (batType.skills.includes('transorbital')) {
+                    distance = calcDistance(selectedBat.tileId,bat.tileId);
+                    if (distance < lePlusProche) {
+                        pointDeMire = bat.tileId;
+                        lePlusProche = distance;
+                    }
+                }
+            }
+        });
+    }
     if (pointDeMire < 0) {
         pointDeMire = 1830;
     }
@@ -548,6 +563,7 @@ function calcMinFuzz() {
 }
 
 function isBldLike(bat,batType) {
+    // uniquement pour les cibles des aliens!!!
     let bldLike = false;
     if (batType.cat === 'buildings') {
         bldLike = true;

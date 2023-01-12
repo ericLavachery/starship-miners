@@ -387,6 +387,26 @@ function getBatPic(bat,batType) {
     if (batType.skills.includes('garde') && bat.eq === 'e-phare') {
         batPic = 'phare';
     }
+    if (batType.pic.includes('-v1')) {
+        if (playerInfos.pseudo === 'Mapedit') {
+            // reste v1;
+        } else {
+            if (bat.pv === undefined) {
+                let picNum1 = rand.rand(1,4);
+                let picNum2 = rand.rand(1,4);
+                if (picNum1 < picNum2) {
+                    bat.pv = picNum1;
+                } else {
+                    bat.pv = picNum2;
+                }
+            }
+            batPic = batPic.replace('-v1','-v'+bat.pv);
+            if (batPic === 'bus-v4') {
+                bat.chief = 'Priscilla';
+                bat.ok = 'ok4';
+            }
+        }
+    }
     return batPic;
 };
 
