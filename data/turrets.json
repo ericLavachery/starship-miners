@@ -1414,7 +1414,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_none","fret","nodeathcount","resiststorm","okdel","noblub","notarget","clicput","nostation","oninfra"],
+        "skills":["b_none","fret","nodeathcount","resiststorm","okdel","noblub","notarget","clicput","nostation","oninfra","neverlist"],
         "transRes":500,
         "fuzz":-2,
         "deathFx":"S_Explosion02"

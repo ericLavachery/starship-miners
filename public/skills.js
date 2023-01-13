@@ -1208,6 +1208,31 @@ function removeWeb(apCost) {
     showMap(zone,true);
 };
 
+function ammoConv(myAmmos) {
+    console.log(myAmmos);
+    let convAmmo = {};
+    convAmmo.pref = '';
+    convAmmo.base = myAmmos;
+    if (myAmmos.includes('ac-tungsten')) {
+        convAmmo.pref = 'ac-';
+    }
+    if (myAmmos.includes('sm-tungsten')) {
+        convAmmo.pref = 'sm-';
+    }
+    if (myAmmos.includes('pn-tungsten')) {
+        convAmmo.pref = 'pn-';
+    }
+    if (convAmmo.pref != '') {
+        let iter = 0;
+        myAmmos.forEach(function(ammo) {
+            convAmmo.base[iter] = ammo.replace(convAmmo.pref,'');
+            iter++;
+        });
+    }
+    console.log(convAmmo);
+    return convAmmo;
+};
+
 function checkAmmoPack(ammoName,bat,batType,conv) {
     let ammoOK = false;
     let hasW1 = checkHasWeapon(1,batType,bat.eq);
@@ -1243,31 +1268,6 @@ function checkAmmoPack(ammoName,bat,batType,conv) {
         }
     }
     return ammoOK;
-};
-
-function ammoConv(myAmmos) {
-    console.log(myAmmos);
-    let convAmmo = {};
-    convAmmo.pref = '';
-    convAmmo.base = myAmmos;
-    if (myAmmos.includes('ac-tungsten')) {
-        convAmmo.pref = 'ac-';
-    }
-    if (myAmmos.includes('sm-tungsten')) {
-        convAmmo.pref = 'sm-';
-    }
-    if (myAmmos.includes('pn-tungsten')) {
-        convAmmo.pref = 'pn-';
-    }
-    if (convAmmo.pref != '') {
-        let iter = 0;
-        myAmmos.forEach(function(ammo) {
-            convAmmo.base[iter] = ammo.replace(convAmmo.pref,'');
-            iter++;
-        });
-    }
-    console.log(convAmmo);
-    return convAmmo;
 };
 
 function useAmmoPack(ammoName,conv) {
@@ -1310,6 +1310,40 @@ function useAmmoPack(ammoName,conv) {
     }
     if (ammoOK) {
         selectedBat.apLeft = selectedBat.apLeft-1;
+        let tile = getTile(selectedBat);
+        delete tile.ap;
+    }
+    doneAction(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+    showMap(zone,true);
+};
+
+function checkArmorPack(armorName,bat,batType) {
+    let armorOK = false;
+    if (batType.protection.includes(armorName)) {
+        armorOK = true;
+    }
+    return armorOK;
+};
+
+function useArmorPack(armorName) {
+    let armorOK = false;
+    if (selectedBatType.protection.includes(armorName)) {
+        armorOK = true;
+        let oldGearTags = getBatGearTags(selectedBat.prt,selectedBat.eq,selectedBatType);
+        selectedBat.tags = selectedBat.tags.filter(function(el) {
+            return !oldGearTags.includes(el);
+        });
+        let gearTags = getBatGearTags(armorName,selectedBat.eq,selectedBatType);
+        selectedBat.tags.push.apply(selectedBat.tags,gearTags);
+        let gearStuff = getBatGearStuff(armorName,selectedBat.eq,selectedBatType);
+        selectedBat.armor = gearStuff[0];
+        selectedBat.ap = gearStuff[1];
+        selectedBat.prt = armorName;
+    }
+    if (armorOK) {
+        selectedBat.apLeft = selectedBat.apLeft-3;
         let tile = getTile(selectedBat);
         delete tile.ap;
     }

@@ -1586,6 +1586,16 @@ function dismantle(batId) {
         let isLoaded = checkCharged(bat,'load');
         // let resFret = checkResLoad(bat);
         if (!isCharged && !isLoaded) {
+            let nearby = nearbyAliens(bat);
+            let squadsLost = batType.squads-bat.squadsLeft-1;
+            if (squadsLost < 0) {squadsLost = 0;}
+            let perdition = (squadsLost/batType.squads*6)+2;
+            if (zone[0].edited) {
+                perdition = perdition+2;
+            }
+            if (nearby.twoTiles) {
+                perdition = perdition+2;
+            }
             let tileId = bat.tileId;
             if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
                 recupRes(bat,batType);
@@ -1618,13 +1628,13 @@ function dismantle(batId) {
                     if (batType.skills.includes('brigands')) {
                         recupCitoyens(225,tileId,crew,xp);
                     } else if (bat.tags.includes('outsider') && !batType.skills.includes('nocrime')) {
-                        if (rand.rand(1,2) === 1) {
+                        if (rand.rand(1,perdition) === 1) {
                             recupCitoyens(225,tileId,crew,xp);
                         } else {
                             recupCitoyens(126,tileId,crew,xp);
                         }
                     } else if (batType.cat === 'vehicles' && !batType.skills.includes('nocrime')) {
-                        if (rand.rand(1,5) === 1) {
+                        if (rand.rand(1,perdition+3) === 1) {
                             recupCitoyens(225,tileId,crew,xp);
                         } else {
                             recupCitoyens(126,tileId,crew,xp);

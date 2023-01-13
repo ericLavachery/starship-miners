@@ -2547,14 +2547,31 @@ function skillsInfos(bat,batType,near) {
     }
     // AMMO PACK
     if (tile.ap != undefined) {
-        let ammoOK = checkAmmoPack(tile.ap,bat,batType,true);
-        if (ammoOK) {
-            apCost = 1;
-            apReq = 0;
-            let ammo = getAmmoByName(tile.ap);
-            let ammoInfo = showAmmoInfo(ammo.name);
-            $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tile.ap+' / '+ammoInfo+')" class="boutonVert iconButtons" onclick="useAmmoPack(`'+tile.ap+'`,true)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
-            lineBreak = true;
+        if (!tile.ap.includes('prt_')) {
+            let ammoOK = checkAmmoPack(tile.ap,bat,batType,true);
+            if (ammoOK) {
+                apCost = 1;
+                apReq = 0;
+                let ammo = getAmmoByName(tile.ap);
+                let ammoInfo = showAmmoInfo(ammo.name);
+                $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tile.ap+' / '+ammoInfo+')" class="boutonVert iconButtons" onclick="useAmmoPack(`'+tile.ap+'`,true)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
+                lineBreak = true;
+            }
+        }
+    }
+    // ARMOR PACK
+    if (tile.ap != undefined) {
+        if (tile.ap.includes('prt_')) {
+            let armorName = tile.ap.replace('prt_','');
+            let armorOK = checkArmorPack(armorName,bat,batType);
+            if (armorOK) {
+                apCost = 3;
+                apReq = 0;
+                let armor = getEquipByName(armorName);
+                let armorInfo = showArmorInfo(armor);
+                $('#unitInfos').append('<button type="button" title="Enfiler les armures ('+armorName+' / '+armorInfo+')" class="boutonVert iconButtons" onclick="useArmorPack(`'+armorName+'`)"><i class="ra ra-vest rpg"></i> <span class="small">'+apCost+'</span></button>');
+                lineBreak = true;
+            }
         }
     }
     // UPGRADE INFANTRY
