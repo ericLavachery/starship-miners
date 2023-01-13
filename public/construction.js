@@ -417,28 +417,7 @@ function conSelect(unitId,player,noRefresh) {
                     } else {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                     }
-                    armorSkills = '';
-                    if (batArmor.skills.includes('slowreg')) {
-                        armorSkills = armorSkills+' slowreg';
-                    }
-                    if (batArmor.skills.includes('regeneration')) {
-                        armorSkills = armorSkills+' regeneration';
-                    }
-                    if (batArmor.skills.includes('resistacide')) {
-                        armorSkills = armorSkills+' resistacide';
-                    }
-                    if (batArmor.skills.includes('resistelec')) {
-                        armorSkills = armorSkills+' resistelec';
-                    }
-                    if (batArmor.skills.includes('resistfeu')) {
-                        armorSkills = armorSkills+' resistfeu';
-                    }
-                    if (batArmor.skills.includes('resistall')) {
-                        armorSkills = armorSkills+' resistall';
-                    }
-                    if (batArmor.skills.includes('soap')) {
-                        armorSkills = armorSkills+' resistgrip';
-                    }
+                    armorSkills = showArmorInfo(batArmor);
                     flatCosts = getCosts(conselUnit,batArmor,0,'equip');
                     deployCosts = getDeployCosts(conselUnit,batArmor,0,'equip');
                     mergeObjects(flatCosts,deployCosts);
@@ -453,9 +432,9 @@ function conSelect(unitId,player,noRefresh) {
                         prodSign = '';
                     }
                     if ((bldReqOK && costsOK) || conselTriche) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+prodSign+' <span class="gff">(+'+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'" onclick="selectArmor(`'+armor+'`,`'+unitId+'`)">'+armor+prodSign+' <span class="gff">'+armorSkills+'</span></span><br>');
                     } else {
-                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'">'+armor+prodSign+' <span class="gff">(+'+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'">'+armor+prodSign+' <span class="gff">'+armorSkills+'</span></span><br>');
                     }
                 }
                 listNum++;
@@ -676,6 +655,36 @@ function checkSpecialEquip(equip,batType) {
     }
     return nope;
 }
+
+function showArmorInfo(batArmor) {
+    let apAdj = batArmor.ap;
+    if (apAdj >= 1) {
+        apAdj = '+'+apAdj;
+    }
+    let armorSkills = '(+'+batArmor.armor+'/'+apAdj+') ';
+    if (batArmor.skills.includes('slowreg')) {
+        armorSkills = armorSkills+' slowreg';
+    }
+    if (batArmor.skills.includes('regeneration')) {
+        armorSkills = armorSkills+' regeneration';
+    }
+    if (batArmor.skills.includes('resistacide')) {
+        armorSkills = armorSkills+' resistacide';
+    }
+    if (batArmor.skills.includes('resistfeu')) {
+        armorSkills = armorSkills+' resistfeu';
+    }
+    if (batArmor.skills.includes('resistall')) {
+        armorSkills = armorSkills+' resistall';
+    }
+    if (batArmor.skills.includes('resistelec')) {
+        armorSkills = armorSkills+' resistelec';
+    }
+    if (batArmor.skills.includes('soap')) {
+        armorSkills = armorSkills+' resistgrip';
+    }
+    return armorSkills;
+};
 
 function selectAmmo(ammo,weapon,unitId) {
     if (conselUnit.skills.includes('unemun')) {

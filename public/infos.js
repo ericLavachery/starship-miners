@@ -999,16 +999,22 @@ function showTileInfos(tileId) {
         }
         // Ammo packs
         if (tile.ap != undefined) {
-            let ammo = getAmmoByName(tile.ap);
-            let ammoDesc = 'stnd';
-            if (ammo.name.includes('ac-')) {
-                ammoDesc = '20 mm';
+            if (tile.ap.includes('prt_')) {
+                let armorName = tile.ap.replace('prt_','');
+                let armor = getEquipByName(armorName);
+                let armorInfo = showArmorInfo(armor);
+                $('#tileInfos').append('<span class="paramName cy">Armure</span><span class="paramIcon"><i class="ra ra-vest rpg"></i></span><span class="paramValue cy" title="'+armorInfo+'">'+armorName+'</span><br>');
+            } else {
+                let ammo = getAmmoByName(tile.ap);
+                let ammoInfo = showAmmoInfo(ammo.name);
+                if (tile.ap.includes('grenade') || tile.ap.includes('dynamite') || tile.ap.includes('molotov')) {
+                    $('#tileInfos').append('<span class="paramName cy">Munitions</span><span class="paramIcon"><i class="ra ra-grenade rpg"></i></span><span class="paramValue cy" title="'+ammoInfo+'">'+tile.ap+'</span><br>');
+                } else if (tile.ap.includes('lame-')) {
+                    $('#tileInfos').append('<span class="paramName cy">Lame</span><span class="paramIcon"><i class="ra ra-plain-dagger rpg"></i></span><span class="paramValue cy" title="'+ammoInfo+'">'+tile.ap+'</span><br>');
+                } else {
+                    $('#tileInfos').append('<span class="paramName cy">Munitions</span><span class="paramIcon"><i class="ra ra-rifle rpg"></i></span><span class="paramValue cy" title="'+ammoInfo+'">'+tile.ap+'</span><br>');
+                }
             }
-            if (ammo.name.includes('sm-')) {
-                ammoDesc = '6 mm';
-            }
-            let ammoInfo = showAmmoInfo(ammo.name);
-            $('#tileInfos').append('<span class="paramName cy">Pack de munitions</span><span class="paramIcon"><i class="ra ra-rifle rpg"></i></span><span class="paramValue cy" title="'+ammoInfo+' / '+ammoDesc+'">'+tile.ap+'</span><br>');
         }
         // Move Cost
         $('#tileInfos').append('<span class="paramName">Coûts de déplacement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">+'+terrain.mc+'</span><br>');

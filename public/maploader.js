@@ -332,7 +332,11 @@ function showRes(tileId) {
     }
     if (tile.land != undefined) {
         if (tile.land) {
-            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/landSpot.png"></div>';
+            if (isStartZone) {
+                mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/abri.png"></div>';
+            } else {
+                mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/landSpot.png"></div>';
+            }
         }
     }
     if (tile.nav != undefined) {
@@ -341,7 +345,15 @@ function showRes(tileId) {
         }
     }
     if (tile.ap != undefined) {
-        mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/ammoPack.png" title="Ammo pack: '+tile.ap+'"></div>';
+        if (tile.ap.includes('grenade') || tile.ap.includes('dynamite') || tile.ap.includes('molotov')) {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apgren.png" title="Munitions: '+tile.ap+'"></div>';
+        } else if (tile.ap.includes('lame-')) {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aplame.png" title="Lame: '+tile.ap+'"></div>';
+        } else if (tile.ap.includes('prt_')) {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aparmor.png" title="Armure: '+tile.ap.replace('prt_','')+'"></div>';
+        } else {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apslugs.png" title="Munitions: '+tile.ap+'"></div>';
+        }
     }
     if (playerInfos.showedTiles.includes(tileId)) {
         if (tileId === 1830) {

@@ -2599,7 +2599,6 @@ function addStartPack() {
     addFreeBat(1828,'Foyer');
     addFreeBat(1949,'Serres hydroponiques');
     addFreeBat(1948,'Cantine');
-    // addFreeBat(1893,'Aérodocks');
     addFreeBat(1833,'Générateur');
     addFreeBat(1773,'Crameur');
     addFreeBat(1707,'Dortoirs');
@@ -2714,6 +2713,9 @@ function addStartPack() {
         Object.entries(pack.res).map(entry => {
             let key = entry[0];
             let value = entry[1];
+            let min = Math.ceil(value/1.25);
+            let max = Math.ceil(value*1.2);
+            value = rand.rand(min,max);
             let res = getResByName(key);
             if (res.cat === 'alien') {
                 playerInfos.alienRes[key] = value;

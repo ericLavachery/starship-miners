@@ -38,28 +38,7 @@ function reEquip(batId,noRefresh) {
             }
             myBatType.protection.forEach(function(armor) {
                 batArmor = getEquipByName(armor);
-                armorSkills = '';
-                if (batArmor.skills.includes('slowreg')) {
-                    armorSkills = armorSkills+' slowreg';
-                }
-                if (batArmor.skills.includes('regeneration')) {
-                    armorSkills = armorSkills+' regeneration';
-                }
-                if (batArmor.skills.includes('resistacide')) {
-                    armorSkills = armorSkills+' resistacide';
-                }
-                if (batArmor.skills.includes('resistfeu')) {
-                    armorSkills = armorSkills+' resistfeu';
-                }
-                if (batArmor.skills.includes('resistall')) {
-                    armorSkills = armorSkills+' resistall';
-                }
-                if (batArmor.skills.includes('resistelec')) {
-                    armorSkills = armorSkills+' resistelec';
-                }
-                if (batArmor.skills.includes('soap')) {
-                    armorSkills = armorSkills+' resistgrip';
-                }
+                armorSkills = showArmorInfo(batArmor);
                 compReqOK = checkCompReq(batArmor);
                 if (compReqOK) {
                     if (myNewGear[2] == armor || (myNewGear[2] === 'xxx' && listNum === 1)) {
@@ -77,9 +56,9 @@ function reEquip(batId,noRefresh) {
                         prodSign = '';
                     }
                     if ((bldReqOK && costsOK) || conselTriche) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'" onclick="deployArmor(`'+armor+'`,`'+myBat.id+'`)">'+armor+prodSign+' <span class="gff">(+'+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'" onclick="deployArmor(`'+armor+'`,`'+myBat.id+'`)">'+armor+prodSign+' <span class="gff">'+armorSkills+'</span></span><br>');
                     } else {
-                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'">'+armor+prodSign+' <span class="gff">(+'+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'">'+armor+prodSign+' <span class="gff">'+armorSkills+'</span></span><br>');
                     }
                 } else {
                     if (armor === myBat.prt) {
@@ -88,7 +67,7 @@ function reEquip(batId,noRefresh) {
                         } else {
                             $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                         }
-                        $('#conAmmoList').append('<span class="constName gff" title="'+toNiceString(batArmor.bldReq)+'">'+armor+' <span class="gff">(+'+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName gff" title="'+toNiceString(batArmor.bldReq)+'">'+armor+' <span class="gff">'+armorSkills+'</span></span><br>');
                     }
                 }
                 listNum++;

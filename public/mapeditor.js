@@ -472,6 +472,7 @@ function batResAddList() {
 };
 
 function mapPackAddList() {
+    $('#conUnitList').append('<span class="paramName or">Munitions</span><br>');
     ammoTypes.forEach(function(ammo) {
         let ammoIcon = getAmmoIcon(ammo);
         if (ammoIcon != '') {
@@ -488,7 +489,21 @@ function mapPackAddList() {
                 col = 'cy klik';
             }
             if (ammoDesc === '') {
-                $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapPackAdd(`'+ammo.name+'`)" title="'+ammoInfo+'">'+ammo.name+'</span><span class="paramIcon blanc">'+ammoIcon+'</span><span class="paramResValue gff">'+ammoDesc+'</span><br>');
+                $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapPackAdd(`'+ammo.name+'`,false)" title="'+ammoInfo+'">'+ammo.name+'</span><span class="paramIcon blanc">'+ammoIcon+'</span><br>');
+            }
+        }
+    });
+    $('#conUnitList').append('<span class="paramName or">Armures</span><br>');
+    armorTypes.forEach(function(armor) {
+        if (armor.cat === 'armor') {
+            let armorIcon = getAmmoIcon(armor);
+            if (armorIcon != '') {
+                let armorInfo = showArmorInfo(armor);
+                let col = 'klik';
+                if (theTilePacks === 'prt_'+armor.name) {
+                    col = 'cy klik';
+                }
+                $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapPackAdd(`'+armor.name+'`,true)" title="'+armorInfo+'">'+armor.name+'</span><span class="paramIcon blanc">'+armorIcon+'</span><br>');
             }
         }
     });
@@ -781,8 +796,12 @@ function batResAdd(resName) {
     mapEditWindow();
 };
 
-function mapPackAdd(ammoName) {
-    theTilePacks = ammoName;
+function mapPackAdd(ammoName,isArmor) {
+    if (isArmor) {
+        theTilePacks = 'prt_'+ammoName;
+    } else {
+        theTilePacks = ammoName;
+    }
     mapEditWindow();
 };
 

@@ -191,18 +191,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"mat":1},
         "factor":"thp",
-        "costs":{"Scrap":6,"Carbone":12,"Azote":6}
-    },
-    {
-        "name":"swarmine",
-        "cat":"armor",
-        "armor":2,
-        "ap":-1,
-        "skills":[],
-        "bldReq":["Atelier"],
-        "compReq":{"ca":3},
-        "factor":"thp",
-        "costs":{"Scrap":6,"Swarmine":18}
+        "costs":{"Scrap":6,"Carbone":12,"Azote":6},
+        "icon":1
     },
     {
         "name":"swarwing",
@@ -214,7 +204,8 @@
         "compReq":{"ca":3},
         "factor":"thp",
         "costs":{"Scrap":6,"Swarmine":15,"Wingium":3},
-        "deploy":{"Swarmine":0.5}
+        "deploy":{"Swarmine":0.5},
+        "icon":1
     },
     {
         "name":"acier",
@@ -235,7 +226,8 @@
         "bldReq":["Atelier"],
         "compReq":{"ca":2},
         "factor":"thp",
-        "costs":{"Scrap":6,"Bugium":24}
+        "costs":{"Scrap":6,"Bugium":24},
+        "icon":1
     },
     {
         "name":"combo",
@@ -246,7 +238,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"mat":1,"ca":3},
         "factor":"thp",
-        "costs":{"Carbone":9,"Mendium":4,"Bossium":1,"Rhodium":6}
+        "costs":{"Carbone":9,"Mendium":4,"Bossium":1,"Rhodium":6},
+        "icon":1
     },
     {
         "name":"duneg",
@@ -257,7 +250,8 @@
         "bldReq":["Arsenal"],
         "compReq":{"mat":2,"ca":2},
         "factor":"thp",
-        "costs":{"Carbone":9,"Azote":3,"Dunium":6,"Egidium":1}
+        "costs":{"Carbone":9,"Azote":3,"Dunium":6,"Egidium":1},
+        "icon":2
     },
     {
         "name":"kapton",
@@ -269,7 +263,8 @@
         "compReq":{"mat":2,"pyro":1},
         "altCompReq":{"mat":1,"pyro":3},
         "factor":"thp",
-        "costs":{"Carbone":9,"Aluminium":6,"Azote":6,"Nickel":6}
+        "costs":{"Carbone":9,"Aluminium":6,"Azote":6,"Nickel":6},
+        "icon":2
     },
     {
         "name":"wendium",
@@ -280,7 +275,8 @@
         "bldReq":["Laboratoire"],
         "compReq":{"mat":2,"ca":3},
         "factor":"thp",
-        "costs":{"Carbone":6,"Mendium":6,"Azote":3,"Wingium":6}
+        "costs":{"Carbone":6,"Mendium":6,"Azote":3,"Wingium":6},
+        "icon":2
     },
     {
         "name":"soap",
@@ -291,7 +287,8 @@
         "bldReq":["Laboratoire"],
         "compReq":{"mat":1,"ca":4},
         "factor":"thp",
-        "costs":{"Carbone":12,"Azote":6,"Wingium":3,"Aranium":6}
+        "costs":{"Carbone":12,"Azote":6,"Wingium":3,"Aranium":6},
+        "icon":2
     },
     {
         "name":"titane",
@@ -302,7 +299,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"mat":2},
         "factor":"thp",
-        "costs":{"Aluminium":9,"Titane":9}
+        "costs":{"Aluminium":9,"Titane":9},
+        "icon":1
     },
     {
         "name":"tisal",
@@ -313,7 +311,8 @@
         "bldReq":["Armurerie"],
         "compReq":{"mat":2,"energ":1},
         "factor":"thp",
-        "costs":{"Carbone":2,"Titane":9,"Salite":9}
+        "costs":{"Carbone":2,"Titane":9,"Salite":9},
+        "icon":3
     },
     {
         "name":"nano",
@@ -324,7 +323,8 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":4,"ind":1},
         "factor":"thp",
-        "costs":{"Carbone":12,"Hélium":6,"Energie":72}
+        "costs":{"Carbone":12,"Hélium":6,"Energie":72},
+        "icon":2
     },
     {
         "name":"swing",
@@ -335,7 +335,8 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":4,"ind":2,"ca":3},
         "factor":"thp",
-        "costs":{"Carbone":6,"Hélium":3,"Nickel":2,"Azote":3,"Mendium":5,"Wingium":5,"Energie":72}
+        "costs":{"Carbone":6,"Hélium":3,"Nickel":2,"Azote":3,"Mendium":5,"Wingium":5,"Energie":72},
+        "icon":3
     },
     {
         "name":"adamantite",
@@ -346,7 +347,8 @@
         "bldReq":["Arsenal"],
         "compReq":{"mat":3},
         "factor":"thp",
-        "costs":{"Aluminium":6,"Adamantium":12,"Argon":3}
+        "costs":{"Aluminium":6,"Adamantium":12,"Argon":3},
+        "icon":3
     },
     {
         "name":"aegis",
@@ -357,7 +359,8 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":3,"ca":3},
         "factor":"thp",
-        "costs":{"Aluminium":6,"Egidium":12}
+        "costs":{"Aluminium":6,"Egidium":12},
+        "icon":3
     },
     {
         "name":"battlesuit",
@@ -369,7 +372,8 @@
         "compReq":{"mat":2,"med":2,"cyber":1,"ind":1},
         "factor":"thp",
         "costs":{"Carbone":6,"Moteurs":9,"Titane":18,"Electros":12,"Batteries":12,"Or":6},
-        "deploy":{"Drogues":3,"Energie":24,"Végétaux":3,"Mendium":6}
+        "deploy":{"Drogues":3,"Energie":24,"Végétaux":3,"Mendium":6},
+        "icon":3
     },
     {
         "name":"kanchan",
@@ -470,7 +474,8 @@
         "altCompReq":{"det":3},
         "autoComp":["det",4],
         "factor":"crew",
-        "costs":{"Silicium":6,"Carbone":6}
+        "costs":{"Silicium":6,"Carbone":6},
+        "icon":1
     },
     {
         "name":"lunette1",
@@ -517,7 +522,8 @@
         "altCompReq":{"bal":3},
         "autoComp":["bal",3],
         "factor":"crew",
-        "costs":{"Scrap":6,"Carbone":6,"Titane":6}
+        "costs":{"Scrap":6,"Carbone":6,"Titane":6},
+        "icon":1
     },
     {
         "name":"chargeur1",
@@ -575,7 +581,8 @@
         "autoComp":["log",2],
         "factor":"crew",
         "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":6},
-        "deploy":{"Végétaux":4}
+        "deploy":{"Végétaux":4},
+        "icon":1
     },
     {
         "name":"silencieux1",
@@ -676,7 +683,8 @@
         "altCompReq":{"train":2},
         "autoComp":["train",2],
         "factor":"crew",
-        "costs":{"Scrap":3,"Carbone":3}
+        "costs":{"Scrap":3,"Carbone":3},
+        "icon":1
     },
     {
         "name":"e-mecano",
@@ -688,7 +696,8 @@
         "autoComp":["trans",3],
         "factor":"crew",
         "costs":{"Fer":6,"Carbone":3,"Tungstène":3,"Electros":3,"Batteries":3},
-        "deploy":{"Huile":3,"Energie":12}
+        "deploy":{"Huile":3,"Energie":12},
+        "icon":2
     },
     {
         "name":"e-medic",
@@ -700,7 +709,8 @@
         "autoComp":["med",3],
         "factor":"one",
         "costs":{"Titane":2,"Or":2},
-        "deploy":{"Drogues":20,"Chlore":10,"Tissus":10,"Zinc":10}
+        "deploy":{"Drogues":20,"Chlore":10,"Tissus":10,"Zinc":10},
+        "icon":2
     },
     {
         "name":"gilet",
@@ -724,7 +734,8 @@
         "autoComp":["cam",2],
         "factor":"crew",
         "costs":{"Blendium":8,"Tissus":12},
-        "deploy":{"Végétaux":8}
+        "deploy":{"Végétaux":8},
+        "icon":2
     },
     {
         "name":"e-jetpack",
@@ -736,7 +747,8 @@
         "autoComp":[],
         "factor":"crew",
         "costs":{"Nickel":12,"Aluminium":18,"Moteurs":12,"Electros":12},
-        "deploy":{"Fuel":12}
+        "deploy":{"Fuel":12},
+        "icon":3
     },
     {
         "name":"detector",
