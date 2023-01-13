@@ -1111,7 +1111,7 @@ function skillsInfos(bat,batType,near) {
                     // console.log('moveDistance='+moveDistance);
                     if (drugCompOK) {
                         if (!bat.tags.includes('starka') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK && starkaPA >= 1) {
-                            $('#unitInfos').append('<button type="button" title="Starka: +'+starkaPA+' PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`starka`)"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="Starka: +'+starkaPA+' PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`starka`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
                         } else {
                             if (bat.tags.includes('starka')) {
@@ -1129,7 +1129,7 @@ function skillsInfos(bat,batType,near) {
                             } else {
                                 skillMessage = "Starka: Vous vous êtes déjà trop déplacé ce tour-ci";
                             }
-                            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-syringe"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
                         }
                     }
@@ -1160,7 +1160,7 @@ function skillsInfos(bat,batType,near) {
                     apCost = drug.apCost;
                     if (drugCompOK) {
                         if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('kirin') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                            $('#unitInfos').append('<button type="button" title="Kirin: Régénération rapide '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="Kirin: Régénération rapide '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
                         } else {
                             if (bat.tags.includes('kirin')) {
@@ -1176,7 +1176,7 @@ function skillsInfos(bat,batType,near) {
                             } else {
                                 skillMessage = "Kirin: Pas assez de PA";
                             }
-                            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="ra ra-heart-bottle rpg"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
                         }
                     }
@@ -1206,7 +1206,7 @@ function skillsInfos(bat,batType,near) {
                 apCost = drug.apCost;
                 if (drugCompOK) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('octiron') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                        $('#unitInfos').append('<button type="button" title="Octiron: +4 PA / protection poisons et maladies / réduit le stress '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Octiron: +4 PA / protection poisons et maladies / réduit le stress '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
                     } else {
                         if (bat.tags.includes('octiron')) {
@@ -1222,7 +1222,7 @@ function skillsInfos(bat,batType,near) {
                         } else {
                             skillMessage = "Octiron: Pas assez de PA";
                         }
-                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
                     }
                 }
@@ -1251,7 +1251,7 @@ function skillsInfos(bat,batType,near) {
                 apCost = drug.apCost;
                 if (drugCompOK) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('moloko') && !bat.tags.includes('bliss') && !batType.skills.includes('nofear') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                        $('#unitInfos').append('<button type="button" title="Moloko: Immunisé à la peur / -2 PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`moloko`)"><i class="fas fa-wine-bottle"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Moloko: Immunisé à la peur / -2 PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`moloko`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
                     } else {
                         if (bat.tags.includes('moloko')) {
@@ -1269,7 +1269,7 @@ function skillsInfos(bat,batType,near) {
                         } else {
                             skillMessage = "Moloko: Pas assez de PA";
                         }
-                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-wine-bottle"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
                     }
                 }
@@ -1298,7 +1298,7 @@ function skillsInfos(bat,batType,near) {
                 apCost = drug.apCost;
                 if (drugCompOK) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('bliss') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                        $('#unitInfos').append('<button type="button" title="Bliss: Dégâts reçus réduits / immunisé à la peur / réduit le stress / -1 PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Bliss: Dégâts reçus réduits / immunisé à la peur / réduit le stress / -1 PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
                     } else {
                         if (bat.tags.includes('bliss')) {
@@ -1314,7 +1314,7 @@ function skillsInfos(bat,batType,near) {
                         } else {
                             skillMessage = "Bliss: Pas assez de PA";
                         }
-                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
                     }
                 }
@@ -1343,7 +1343,7 @@ function skillsInfos(bat,batType,near) {
                 apCost = drug.apCost;
                 if (drugCompOK) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('sila') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                        $('#unitInfos').append('<button type="button" title="Sila: +3 puissance aux armes de mêlée '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sila`)"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Sila: +3 puissance aux armes de mêlée '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sila`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
                     } else {
                         if (bat.tags.includes('sila')) {
@@ -1359,7 +1359,7 @@ function skillsInfos(bat,batType,near) {
                         } else {
                             skillMessage = "Sila: Pas assez de PA";
                         }
-                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-fist-raised"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
                     }
                 }
@@ -1388,7 +1388,7 @@ function skillsInfos(bat,batType,near) {
                 apCost = drug.apCost;
                 if (drugCompOK) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('skupiac') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                        $('#unitInfos').append('<button type="button" title="Skupiac: +6 précision / +3 défense / guérit les maladies '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Skupiac: +6 précision / +3 défense / guérit les maladies '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
                     } else {
                         if (bat.tags.includes('skupiac')) {
@@ -1404,7 +1404,7 @@ function skillsInfos(bat,batType,near) {
                         } else {
                             skillMessage = "Skupiac: Pas assez de PA";
                         }
-                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="far fa-eye"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
                     }
                 }
@@ -1433,7 +1433,7 @@ function skillsInfos(bat,batType,near) {
                 apCost = drug.apCost;
                 if (drugCompOK) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('blaze') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                        $('#unitInfos').append('<button type="button" title="Blaze: +3 PA & +1 salve '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Blaze: +3 PA & +1 salve '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
                     } else {
                         if (bat.tags.includes('blaze')) {
@@ -1449,7 +1449,7 @@ function skillsInfos(bat,batType,near) {
                         } else {
                             skillMessage = "Blaze: Pas assez de PA";
                         }
-                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
                     }
                 }
@@ -1483,7 +1483,7 @@ function skillsInfos(bat,batType,near) {
                         if (drugCompOK) {
                             let nitroPA = getNitroBonus(bat);
                             if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('nitro') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                                $('#unitInfos').append('<button type="button" title="Nitro: +'+nitroPA+' PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>');
+                                $('#unitInfos').append('<button type="button" title="Nitro: +'+nitroPA+' PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                                 lineBreak = true;
                             } else {
                                 if (bat.tags.includes('nitro')) {
@@ -1499,7 +1499,7 @@ function skillsInfos(bat,batType,near) {
                                 } else {
                                     skillMessage = "Nitro: Pas assez de PA";
                                 }
-                                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="ra ra-bottled-bolt rpg"></i> <span class="small">'+apCost+'</span></button>');
+                                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                                 lineBreak = true;
                             }
                         }
@@ -1531,7 +1531,7 @@ function skillsInfos(bat,batType,near) {
                     apCost = drug.apCost;
                     if (drugCompOK) {
                         if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('sudu') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                            $('#unitInfos').append('<button type="button" title="Sudu: Vitesse 115% '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sudu`)"><i class="fas fa-tachometer-alt"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="Sudu: Vitesse 115% '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sudu`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
                         } else {
                             if (bat.tags.includes('sudu')) {
@@ -1547,7 +1547,7 @@ function skillsInfos(bat,batType,near) {
                             } else {
                                 skillMessage = "Sudu: Pas assez de PA";
                             }
-                            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-tachometer-alt"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
                         }
                     }
@@ -1578,7 +1578,7 @@ function skillsInfos(bat,batType,near) {
                     apCost = drug.apCost;
                     if (drugCompOK) {
                         if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('octiron') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                            $('#unitInfos').append('<button type="button" title="Octiron: +4 PA / réduit le stress '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="Octiron: +4 PA / réduit le stress '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
                         } else {
                             if (bat.tags.includes('octiron')) {
@@ -1594,7 +1594,7 @@ function skillsInfos(bat,batType,near) {
                             } else {
                                 skillMessage = "Octiron: Pas assez de PA";
                             }
-                            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-cannabis"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
                         }
                     }
@@ -1624,7 +1624,7 @@ function skillsInfos(bat,batType,near) {
                         apCost = drug.apCost;
                         if (drugCompOK) {
                             if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('moloko') && !bat.tags.includes('bliss') && !batType.skills.includes('nofear') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                                $('#unitInfos').append('<button type="button" title="Moloko: Immunisé à la peur / -2 PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`moloko`)"><i class="fas fa-wine-bottle"></i> <span class="small">'+apCost+'</span></button>');
+                                $('#unitInfos').append('<button type="button" title="Moloko: Immunisé à la peur / -2 PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`moloko`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                                 lineBreak = true;
                             } else {
                                 if (bat.tags.includes('moloko')) {
@@ -1642,7 +1642,7 @@ function skillsInfos(bat,batType,near) {
                                 } else {
                                     skillMessage = "Moloko: Pas assez de PA";
                                 }
-                                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-wine-bottle"></i> <span class="small">'+apCost+'</span></button>');
+                                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                                 lineBreak = true;
                             }
                         }
@@ -1672,7 +1672,7 @@ function skillsInfos(bat,batType,near) {
                     apCost = drug.apCost;
                     if (drugCompOK) {
                         if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('bliss') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
-                            $('#unitInfos').append('<button type="button" title="Bliss: Immunisé à la peur / réduit le stress / -1 PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="Bliss: Immunisé à la peur / réduit le stress / -1 PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
                         } else {
                             if (bat.tags.includes('bliss')) {
@@ -1688,7 +1688,7 @@ function skillsInfos(bat,batType,near) {
                             } else {
                                 skillMessage = "Bliss: Pas assez de PA";
                             }
-                            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="ra ra-pills rpg"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
                         }
                     }
@@ -2570,6 +2570,28 @@ function skillsInfos(bat,batType,near) {
                 let armor = getEquipByName(armorName);
                 let armorInfo = showArmorInfo(armor);
                 $('#unitInfos').append('<button type="button" title="Enfiler les armures ('+armorName+' / '+armorInfo+')" class="boutonVert iconButtons" onclick="useArmorPack(`'+armorName+'`)"><i class="ra ra-vest rpg"></i> <span class="small">'+apCost+'</span></button>');
+                lineBreak = true;
+            }
+        }
+    }
+    // DRUG PACK
+    if (tile.ap != undefined) {
+        if (tile.ap.includes('drg_')) {
+            let drugName = tile.ap.replace('drg_','');
+            let drugOK = checkDrugPack(drugName,bat,batType);
+            if (drugOK) {
+                let drug = getEquipByName(drugName);
+                apCost = drug.apCost;
+                apReq = 0;
+                if (drugName === 'meca') {
+                    apCost = Math.ceil(bat.ap/2);
+                    apReq = Math.ceil(bat.ap/4);
+                }
+                if (drug.units === 'veh') {
+                    $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert iconButtons" onclick="useDrugPack(`'+drugName+'`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                } else {
+                    $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert iconButtons" onclick="useDrugPack(`'+drugName+'`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                }
                 lineBreak = true;
             }
         }

@@ -835,60 +835,83 @@ function goDrug(apCost,drugName) {
             selectedBat.tags.push(drug.name);
             selectedBat.tags.push(drug.name);
             selectedBat.tags.push(drug.name);
-            // blaze instant bonus
-            if (drug.name === 'blaze') {
-                selectedBat.apLeft = selectedBat.apLeft+6;
-                selectedBat.salvoLeft = selectedBat.salvoLeft+1;
-                console.log('blaze bonus');
-            }
-            // bliss instant bonus
-            if (drug.name === 'bliss') {
-                selectedBat.apLeft = selectedBat.apLeft-3;
-            }
-            // octiron instant bonus
-            if (drug.name === 'octiron') {
-                tagDelete(selectedBat,'lucky');
-                selectedBat.apLeft = selectedBat.apLeft+4;
-                if (selectedBatType.cat === 'infantry') {
-                    if (playerInfos.comp.med >= 3) {
-                        selectedBat.damage = 0;
-                        let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
-                        if (lostSquads >= 2) {
-                            selectedBat.squadsLeft = selectedBat.squadsLeft+1;
-                        }
-                    }
-                }
-                console.log('octiron bonus');
-            }
-            // starka instant bonus
-            if (drug.name === 'starka') {
-                selectedBat.apLeft = selectedBat.apLeft+getStarkaBonus(selectedBat);
-                console.log('starka bonus');
-            }
-            // kirin instant bonus
-            if (drug.name === 'kirin' && playerInfos.comp.med >= 2) {
-                selectedBat.damage = 0;
-                if (playerInfos.comp.med >= 3) {
-                    let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
-                    if (lostSquads >= 2) {
-                        selectedBat.squadsLeft = selectedBat.squadsLeft+2;
-                    } else if (lostSquads === 1) {
-                        selectedBat.squadsLeft = selectedBat.squadsLeft+1;
-                    }
-                }
-                console.log('kirin bonus med');
-            }
-            // nitro instant bonus
-            if (drug.name === 'nitro') {
-                selectedBat.apLeft = selectedBat.apLeft+getNitroBonus(selectedBat);
-                console.log('nitro bonus');
-            }
+            drugInstantBonus(drug,false);
         }
         payCost(drug.costs);
         doneAction(ravitBat);
         doneAction(selectedBat);
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
+    }
+};
+
+function drugInstantBonus(drug,fromPack) {
+    // blaze instant bonus
+    if (drug.name === 'blaze') {
+        selectedBat.apLeft = selectedBat.apLeft+6;
+        selectedBat.salvoLeft = selectedBat.salvoLeft+1;
+        console.log('blaze bonus');
+    }
+    // bliss instant bonus
+    if (drug.name === 'bliss') {
+        if (!fromPack) {
+            selectedBat.apLeft = selectedBat.apLeft-3;
+        }
+    }
+    // octiron instant bonus
+    if (drug.name === 'octiron') {
+        tagDelete(selectedBat,'lucky');
+        selectedBat.apLeft = selectedBat.apLeft+4;
+        if (selectedBatType.cat === 'infantry') {
+            if (playerInfos.comp.med >= 3 || fromPack) {
+                selectedBat.damage = 0;
+                let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
+                if (lostSquads >= 2) {
+                    selectedBat.squadsLeft = selectedBat.squadsLeft+1;
+                }
+            }
+        }
+        console.log('octiron bonus');
+    }
+    // starka instant bonus
+    if (drug.name === 'starka') {
+        if (fromPack) {
+            selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap+3;
+        } else {
+            selectedBat.apLeft = selectedBat.apLeft+getStarkaBonus(selectedBat);
+        }
+        console.log('starka bonus');
+    }
+    // kirin instant bonus
+    if (drug.name === 'kirin' && playerInfos.comp.med >= 2) {
+        selectedBat.damage = 0;
+        if (playerInfos.comp.med >= 3 || fromPack) {
+            let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
+            if (lostSquads >= 2) {
+                selectedBat.squadsLeft = selectedBat.squadsLeft+2;
+            } else if (lostSquads === 1) {
+                selectedBat.squadsLeft = selectedBat.squadsLeft+1;
+            }
+        }
+        console.log('kirin bonus med');
+    }
+    // nitro instant bonus
+    if (drug.name === 'nitro') {
+        selectedBat.apLeft = selectedBat.apLeft+getNitroBonus(selectedBat);
+        console.log('nitro bonus');
+    }
+    // repair kit
+    if (drug.name === 'meca') {
+        selectedBat.damage = 0;
+        let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
+        if (lostSquads >= 3 && playerInfos.comp.trans >= 3) {
+            selectedBat.squadsLeft = selectedBat.squadsLeft+3;
+        } else if (lostSquads >= 2 && playerInfos.comp.trans >= 2) {
+            selectedBat.squadsLeft = selectedBat.squadsLeft+2;
+        } else if (lostSquads >= 1 && playerInfos.comp.trans >= 1) {
+            selectedBat.squadsLeft = selectedBat.squadsLeft+1;
+        }
+        console.log('repair kit bonus');
     }
 };
 
@@ -1344,6 +1367,66 @@ function useArmorPack(armorName) {
     }
     if (armorOK) {
         selectedBat.apLeft = selectedBat.apLeft-3;
+        let tile = getTile(selectedBat);
+        delete tile.ap;
+    }
+    doneAction(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+    showMap(zone,true);
+};
+
+function checkDrugPack(drugName,bat,batType) {
+    let drugOK = false;
+    let drug = getEquipByName(drugName);
+    if (batType.cat === 'infantry' && drug.units.includes('inf')) {
+        drugOK = true;
+    }
+    if (batType.cat != 'infantry' || batType.skills.includes('oknitro')) {
+        if (batType.cat === 'vehicles' || batType.skills.includes('oknitro')) {
+            if (drug.name === 'nitro') {
+                drugOK = true;
+            }
+        }
+        if (batType.cat === 'vehicles' && !batType.skills.includes('cyber') && !batType.skills.includes('robot') && !batType.skills.includes('emoteur') && batType.moveCost < 90) {
+            if (drug.name === 'sudu') {
+                drugOK = true;
+            }
+        }
+        if (batType.crew >= 1 && !batType.skills.includes('clone') && batType.cat != 'infantry' && !batType.skills.includes('dome') && !batType.skills.includes('pilone') && !batType.skills.includes('cfo')) {
+            if (drug.name === 'octiron') {
+                drugOK = true;
+            }
+            if (drug.name === 'moloko') {
+                drugOK = true;
+            }
+            if (drug.name === 'bliss') {
+                drugOK = true;
+            }
+        }
+    }
+    if (batType.cat === 'vehicles') {
+        if (drug.name === 'meca') {
+            drugOK = true;
+        }
+    }
+    return drugOK;
+};
+
+function useDrugPack(drugName) {
+    let drug = getEquipByName(drugName);
+    let drugOK = checkDrugPack(drugName,selectedBat,selectedBatType);
+    let apCost = drug.apCost;
+    if (drug.apCost >= 10) {
+        apCost = Math.ceil(selectedBat.ap/2);
+    }
+    if (drugOK) {
+        selectedBat.tags.push(drug.name);
+        selectedBat.tags.push(drug.name);
+        selectedBat.tags.push(drug.name);
+        selectedBat.tags.push(drug.name);
+        drugInstantBonus(drug,true);
+        selectedBat.apLeft = selectedBat.apLeft-apCost;
         let tile = getTile(selectedBat);
         delete tile.ap;
     }

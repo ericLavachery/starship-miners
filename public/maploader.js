@@ -348,9 +348,13 @@ function showRes(tileId) {
         if (tile.ap.includes('grenade') || tile.ap.includes('dynamite') || tile.ap.includes('molotov')) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apgren.png" title="Munitions: '+tile.ap+'"></div>';
         } else if (tile.ap.includes('lame-')) {
-            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aplame.png" title="Lame: '+tile.ap+'"></div>';
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aplame.png" title="Lames: '+tile.ap+'"></div>';
+        } else if (tile.ap === 'drg_sudu' || tile.ap === 'drg_nitro' || tile.ap === 'drg_meca') {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apmeca.png" title="Tuning: '+tile.ap.replace('drg_','')+'"></div>';
+        } else if (tile.ap.includes('drg_')) {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apdrug.png" title="Drogues: '+tile.ap.replace('drg_','')+'"></div>';
         } else if (tile.ap.includes('prt_')) {
-            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aparmor.png" title="Armure: '+tile.ap.replace('prt_','')+'"></div>';
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aparmor.png" title="Armures: '+tile.ap.replace('prt_','')+'"></div>';
         } else {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apslugs.png" title="Munitions: '+tile.ap+'"></div>';
         }

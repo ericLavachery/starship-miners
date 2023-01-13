@@ -53,7 +53,7 @@ function mapEditWindow() {
     selectStuff('RuinesNext','ruinNext','Ruines (le type suivant)');
     // <br>
     selectStuff('Route','roads','Route (ou Pont)');
-    selectStuff('AmmoPack','ammoPacks','Pack de munitions');
+    selectStuff('AmmoPack','ammoPacks','Packs de munitions/armures/drogues');
     selectStuff('RuinesVides','ruinEmpty2','Ruines fouillées / Non fouillées (sans changer le type de ruine)');
     $('#conUnitList').append('<br>');
     // Ressources
@@ -489,7 +489,7 @@ function mapPackAddList() {
                 col = 'cy klik';
             }
             if (ammoDesc === '') {
-                $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapPackAdd(`'+ammo.name+'`,false)" title="'+ammoInfo+'">'+ammo.name+'</span><span class="paramIcon blanc">'+ammoIcon+'</span><br>');
+                $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapPackAdd(`'+ammo.name+'`,`ammo`)" title="'+ammoInfo+'">'+ammo.name+'</span><span class="paramIcon blanc">'+ammoIcon+'</span><br>');
             }
         }
     });
@@ -503,8 +503,18 @@ function mapPackAddList() {
                 if (theTilePacks === 'prt_'+armor.name) {
                     col = 'cy klik';
                 }
-                $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapPackAdd(`'+armor.name+'`,true)" title="'+armorInfo+'">'+armor.name+'</span><span class="paramIcon blanc">'+armorIcon+'</span><br>');
+                $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapPackAdd(`'+armor.name+'`,`armor`)" title="'+armorInfo+'">'+armor.name+'</span><span class="paramIcon blanc">'+armorIcon+'</span><br>');
             }
+        }
+    });
+    $('#conUnitList').append('<span class="paramName or">Drogues</span><br>');
+    armorTypes.forEach(function(drug) {
+        if (drug.cat === 'drogue') {
+            let col = 'klik';
+            if (theTilePacks === 'drg_'+drug.name) {
+                col = 'cy klik';
+            }
+            $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapPackAdd(`'+drug.name+'`,`drug`)" title="'+drug.info+'">'+drug.name+'</span><span class="paramIcon blanc"><i class="'+drug.icon+'"></i></span><br>');
         }
     });
 }
@@ -796,11 +806,13 @@ function batResAdd(resName) {
     mapEditWindow();
 };
 
-function mapPackAdd(ammoName,isArmor) {
-    if (isArmor) {
-        theTilePacks = 'prt_'+ammoName;
+function mapPackAdd(packName,type) {
+    if (type === 'drug') {
+        theTilePacks = 'drg_'+packName;
+    } else if (type === 'armor') {
+        theTilePacks = 'prt_'+packName;
     } else {
-        theTilePacks = ammoName;
+        theTilePacks = packName;
     }
     mapEditWindow();
 };
