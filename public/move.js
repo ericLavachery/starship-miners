@@ -691,6 +691,24 @@ function terrainAccess(batId,targetTileId) {
                 access = true;
             }
         }
+        if (terFlood === 3 && batType.cat === 'infantry' && batType.maxFlood === 3 && bat.eq != 'waterproof' && bat.logeq != 'waterproof' && !zone[targetTileId].rd) {
+            let batArmor = getEquipByName(bat.prt);
+            let swimming = bat.vet+playerInfos.comp.train+(batArmor.ap*2)+1;
+            if (batType.skills.includes('swim')) {
+                swimming = swimming+2;
+            } else if (batType.skills.includes('ranger')) {
+                swimming = swimming+1;
+            }
+            if (zone[0].planet != 'Dom') {
+                swimming = swimming-1;
+                if (zone[0].planet === 'Kzin') {
+                    swimming = swimming-1;
+                }
+            }
+            if (swimming <= 0 || batArmor.ap >= 3) {
+                access = false;
+            }
+        }
         if (bat.tags.includes('genwater')) {
             if (terrain.name === 'W' || (terrain.name === 'S' && playerInfos.comp.scaph < 1) || terrain.name === 'L' || terrain.name === 'R') {
                 if (!zone[targetTileId].rd) {
