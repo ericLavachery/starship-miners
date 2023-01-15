@@ -133,7 +133,9 @@ function delugeDamage(weap,bat,batType) {
             }
         }
     }
-    if (batType.skills.includes('resistall') || bat.tags.includes('resistall')) {
+    if (batType.skills.includes('protectall') || bat.tags.includes('protectall')) {
+        stormDmg = Math.ceil(stormDmg/2);
+    } else if (batType.skills.includes('resistall') || bat.tags.includes('resistall')) {
         stormDmg = Math.ceil(stormDmg/1.5);
     }
     if (batType.skills.includes('resistblast') || bat.tags.includes('resistblast')) {
@@ -577,6 +579,9 @@ function batDeathEffect(bat,quiet,gain,title,body) {
         addBodies(bat,batType,0);
         if (batType.crew >= 1 && !batType.skills.includes('robot') && !batType.skills.includes('clone') && !batType.skills.includes('dog') && !batType.skills.includes('brigands') && !bat.tags.includes('outsider') && batType.name != 'Citoyens' && batType.name != 'Criminels') {
             deathStress();
+        }
+        if (batType.cat === 'buildings') {
+            putRuinsOfDestroyedBld(batType.name,bat.tileId);
         }
     }
     if (zone[0].dark) {
@@ -3246,3 +3251,95 @@ function getRipNum(bat,batType) {
     }
     return ripNum;
 }
+
+function getRealNoise(weap,batType) {
+    let realNoise = 0;
+    if (batType.cat === 'aliens') {
+        realNoise = 0;
+    } else {
+        let weapPower = 4;
+        if (weap.num == 1) {
+            weapPower = batType.weapon.power;
+        } else {
+            weapPower = batType.weapon2.power;
+        }
+        let hasNoise = false;
+        if (weap.ammo.includes('laser') && weapPower >= 15) {
+            hasNoise = true;
+        } else if (!weap.ammo.includes('lf-') && !weap.ammo.includes('lt-') && weapPower >= 6 && weap.noise >= 3) {
+            hasNoise = true;
+        }
+        if (hasNoise) {
+            realNoise = 1;
+            if (weapPower >= 8) {
+                realNoise++;
+            }
+            if (weapPower >= 18) {
+                realNoise++;
+            }
+            if (weap.noise >= 4) {
+                realNoise++;
+            }
+        }
+    }
+    // realNoise between 0 and 4
+    return realNoise;
+};
+
+function realNoiseAlert(weap,batType,tileId) {
+    if (batType.cat != 'aliens') {
+        let realNoise = getRealNoise(weap,batType);
+        if (realNoise >= 1) {
+            let theChance = Math.round(realNoise*20);
+            let maxDistance = Math.round(4+(realNoise*3));
+            let closeAliens = 0;
+            let affectedAliens = 0;
+            let shufAliens = _.shuffle(aliens);
+            shufAliens.forEach(function(bat) {
+                if (bat.pdm === undefined) {
+                    if (closeAliens < 3) {
+                        let batType = getBatType(bat);
+                        let alienMaxDistance = Math.round(batType.ap/batType.moveCost*3);
+                        if (batType.skills.includes('vault') || batType.skills.includes('fouisseur')) {
+                            alienMaxDistance = 20;
+                        }
+                        if (batType.skills.includes('nocap') || batType.skills.includes('capbld') || batType.moveCost >= 90) {
+                            alienMaxDistance = 0;
+                        }
+                        if (alienMaxDistance >= 6) {
+                            let distance = calcDistance(tileId,bat.tileId);
+                            if (distance <= 4) {
+                                closeAliens++;
+                            } else {
+                                if (!bat.tags.includes('heard')) {
+                                    if (distance <= alienMaxDistance) {
+                                        if (distance <= maxDistance) {
+                                            bat.tags.push('heard');
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            shufAliens.forEach(function(bat) {
+                if (bat.pdm === undefined) {
+                    if (closeAliens < 3 && affectedAliens < 3) {
+                        if (bat.tags.includes('heard')) {
+                            let batType = getBatType(bat);
+                            if (rand.rand(1,100) <= theChance) {
+                                bat.pdm = tileId;
+                                affectedAliens++;
+                            } else {
+                                tagDelete(bat,'heard');
+                            }
+                        }
+                    } else {
+                        tagDelete(bat,'heard');
+                    }
+                }
+            });
+        }
+    }
+};

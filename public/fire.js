@@ -857,16 +857,29 @@ function attack(melee,init) {
             // console.log('résistance acide!');
         }
     }
-    // résistance all
-    if (targetBatType.skills.includes('resistall') || targetBat.tags.includes('resistall')) {
+    // protection all
+    if (targetBatType.skills.includes('protectall') || targetBat.tags.includes('protectall')) {
         if (targetBatType.cat === 'aliens') {
-            totalDamage = Math.round(totalDamage/1.5);
+            totalDamage = Math.round(totalDamage/2);
             if (playerInfos.comp.ca >= 2) {
-                $('#report').append('<span class="report rose">Protection 33%<br></span>');
+                $('#report').append('<span class="report rose">Protection 50%<br></span>');
             }
         } else {
-            totalDamage = Math.round(totalDamage/1.34);
-            $('#report').append('<span class="report rose">Protection 25%<br></span>');
+            totalDamage = Math.round(totalDamage/1.5);
+            $('#report').append('<span class="report rose">Protection 33%<br></span>');
+        }
+    } else {
+        // résistance all
+        if (targetBatType.skills.includes('resistall') || targetBat.tags.includes('resistall')) {
+            if (targetBatType.cat === 'aliens') {
+                totalDamage = Math.round(totalDamage/1.5);
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Protection 33%<br></span>');
+                }
+            } else {
+                totalDamage = Math.round(totalDamage/1.34);
+                $('#report').append('<span class="report rose">Protection 25%<br></span>');
+            }
         }
     }
     // ricochet
@@ -1260,6 +1273,9 @@ function attack(melee,init) {
     let squadsOut = Math.floor(allDamage/squadHP);
     targetBat.squadsLeft = targetBat.squadsLeft-squadsOut;
     targetBat.damage = allDamage-(squadsOut*squadHP);
+    if (targetBatType.cat === 'aliens') {
+        realNoiseAlert(selectedWeap,selectedBatType,selectedBat.tileId);
+    }
     let inDanger = checkInDanger(targetBat,targetBatType);
     if (inDanger) {
         if (targetBat.tags.includes('nomove') && !targetBatType.skills.includes('nomove')) {
@@ -1960,16 +1976,29 @@ function defense(melee,init) {
             // console.log('résistance acide!');
         }
     }
-    // résistance all
-    if (selectedBatType.skills.includes('resistall') || selectedBat.tags.includes('resistall')) {
+    // protect all
+    if (selectedBatType.skills.includes('protectall') || selectedBat.tags.includes('protectall')) {
         if (selectedBatType.cat === 'aliens') {
-            totalDamage = Math.round(totalDamage/1.5);
+            totalDamage = Math.round(totalDamage/2);
             if (playerInfos.comp.ca >= 2) {
-                $('#report').append('<span class="report rose">Protection 33%<br></span>');
+                $('#report').append('<span class="report rose">Protection 50%<br></span>');
             }
         } else {
-            totalDamage = Math.round(totalDamage/1.34);
-            $('#report').append('<span class="report rose">Protection 25%<br></span>');
+            totalDamage = Math.round(totalDamage/1.5);
+            $('#report').append('<span class="report rose">Protection 33%<br></span>');
+        }
+    } else {
+        // résistance all
+        if (selectedBatType.skills.includes('resistall') || selectedBat.tags.includes('resistall')) {
+            if (selectedBatType.cat === 'aliens') {
+                totalDamage = Math.round(totalDamage/1.5);
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Protection 33%<br></span>');
+                }
+            } else {
+                totalDamage = Math.round(totalDamage/1.34);
+                $('#report').append('<span class="report rose">Protection 25%<br></span>');
+            }
         }
     }
     // ricochet

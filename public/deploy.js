@@ -596,8 +596,13 @@ function getBatGearTags(armorName,equipName,batType) {
         }
     }
     if (batArmor.skills.includes('resistall')) {
-        if (!batType.skills.includes('resistall')) {
+        if (!batType.skills.includes('resistall') && !batType.skills.includes('protectall')) {
             gearTags.push('resistall');
+        }
+    }
+    if (batArmor.skills.includes('protectall')) {
+        if (!batType.skills.includes('protectall')) {
+            gearTags.push('protectall');
         }
     }
     if (batArmor.skills.includes('resistacide') || batEquip.name === 'kit-sentinelle') {

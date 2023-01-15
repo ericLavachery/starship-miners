@@ -5095,7 +5095,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_cyb","fouille","fortif","datt","cyber","hardmove","kzin","herosalvo","herofortif","detrange","tank"],
+        "skills":["a_cyb","fouille","fortif","datt","cyber","hardmove","resistall","kzin","herosalvo","herofortif","detrange","tank"],
         "fuzz":2.5,
         "deathFx":"144469__psychedelic-hands__robot-death"
     },

@@ -7,6 +7,7 @@ function selectMode() {
     if (selectedBat.id >= 0) {
         tileSelect(selectedBat);
     }
+    showMap(zone,true);
     selectedWeap = {};
     mped = {};
 };
@@ -21,6 +22,7 @@ function moveMode() {
         $('.selTile').remove();
         tileSelect(selectedBat);
     }
+    showMap(zone,true);
     selectedWeap = {};
     mped = {};
 };

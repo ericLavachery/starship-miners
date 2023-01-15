@@ -446,12 +446,12 @@ function allowedArmors(unit) {
         protection.push('soap');
     }
     if (unit.skills.includes('a_mid') || unit.skills.includes('a_heavy')) {
-        if (!unit.skills.includes('resistall')) {
+        if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('combo');
         }
     }
     if (unit.skills.includes('a_light') || unit.skills.includes('a_mid') || unit.skills.includes('a_heavy')) {
-        if (!unit.skills.includes('resistall')) {
+        if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('duneg');
         }
         protection.push('tisal');
@@ -485,7 +485,7 @@ function allowedArmors(unit) {
         }
         protection.push('chobham');
         protection.push('soap');
-        if (!unit.skills.includes('resistall')) {
+        if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('duneg');
         }
     }
@@ -524,7 +524,7 @@ function allowedArmors(unit) {
         }
     }
     if (unit.skills.includes('b_heavy')) {
-        if (!unit.skills.includes('resistall')) {
+        if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('bulk');
         }
     }
@@ -542,7 +542,7 @@ function allowedArmors(unit) {
         if (!unit.skills.includes('resistelec')) {
             protection.push('iso');
         }
-        if (!unit.skills.includes('resistall')) {
+        if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('bulk');
         }
         if (!unit.skills.includes('resistacide')) {
@@ -560,7 +560,7 @@ function allowedArmors(unit) {
         if (!unit.skills.includes('resistelec')) {
             protection.push('iso');
         }
-        if (!unit.skills.includes('resistall')) {
+        if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('bulk');
         }
         if (!unit.skills.includes('resistacide')) {

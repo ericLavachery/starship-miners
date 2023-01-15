@@ -677,6 +677,9 @@ function showArmorInfo(batArmor) {
     if (batArmor.skills.includes('resistall')) {
         armorSkills = armorSkills+' resistall';
     }
+    if (batArmor.skills.includes('protectall')) {
+        armorSkills = armorSkills+' protectall';
+    }
     if (batArmor.skills.includes('resistelec')) {
         armorSkills = armorSkills+' resistelec';
     }
@@ -1573,6 +1576,23 @@ function removeBat(batId) {
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     $('#b'+bat.tileId).append(resHere);
+};
+
+function putRuinsOfDestroyedBld(name,tileId) {
+    if (!playerInfos.onShip) {
+        let tile = getTileById(tileId);
+        if (!tile.ruins) {
+            tile.ruins = true;
+            tile.sh = -1;
+            tile.rd = true;
+            let ruinType = {};
+            ruinType.name = name;
+            ruinType.checks = ['any'];
+            ruinType.scrap = 300;
+            tile.rt = ruinType;
+            addScrapToRuins(tile);
+        }
+    }
 };
 
 function dismantle(batId) {

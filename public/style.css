@@ -440,6 +440,14 @@ hr.craft {
     margin-top: -3px;
     z-index: -8;
 }
+.markover {
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 15px;
+    width: 30px;
+    height: 30px;
+    z-index: 20;
+}
 .dark {
     position: absolute;
     /* margin-right: -3px; */

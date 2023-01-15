@@ -437,7 +437,9 @@ function batInfos(bat,batType,pop) {
     if (bat.tags.includes('resistelec') || batType.skills.includes('resistelec')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Résistance électricité</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
-    if (bat.tags.includes('resistall') || batType.skills.includes('resistall')) {
+    if (bat.tags.includes('protectall') || batType.skills.includes('protectall')) {
+        $('#'+bodyPlace).append('<span class="paramName cy">Protection globale</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    } else if (bat.tags.includes('resistall') || batType.skills.includes('resistall')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Résistance globale</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
     }
     if (bat.tags.includes('moloko')) {

@@ -357,7 +357,7 @@ function showEnemyBatInfos(bat) {
         }
     }
     if (compCA >= 3) {
-        if (bat.tags.includes('resistall') || batType.skills.includes('resistall')) {
+        if (bat.tags.includes('protectall') || batType.skills.includes('protectall') || bat.tags.includes('resistall') || batType.skills.includes('resistall')) {
             $('#unitInfos').append('<span class="paramName">Résistance globale</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
         }
     }

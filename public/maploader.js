@@ -256,6 +256,46 @@ function showRes(tileId) {
             view = false;
         }
     }
+    let tileText = '';
+    if (tile.ruins) {
+        let ruinType = 'Ruines';
+        if (tile.rt != undefined) {
+            ruinType = tile.rt.name;
+        }
+        if (tile.sh === -1) {
+            mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType+'"><img src="/static/img/units/ruinsf.png"></div>';
+        } else {
+            mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType+'"><img src="/static/img/units/ruins.png"></div>';
+        }
+        tileText = tileText+'&timesb;'+ruinType+' ';
+    }
+    if (tile.tileName !== undefined && tile.tileName != '') {
+        tileText = tileText+'('+tile.tileName+')&nbsp;&nbsp;&nbsp; ';
+    } else {
+        tileText = tileText+'&nbsp;&nbsp;&nbsp; ';
+    }
+    if (tile.ap != undefined) {
+        if (tile.ap.includes('grenade') || tile.ap.includes('dynamite') || tile.ap.includes('molotov')) {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apgren.png"></div>';
+            tileText = tileText+'(Munitions:&nbsp; '+tile.ap+')';
+        } else if (tile.ap.includes('lame-')) {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aplame.png"></div>';
+            tileText = tileText+'(Lames:&nbsp; '+tile.ap+')';
+        } else if (tile.ap === 'drg_sudu' || tile.ap === 'drg_nitro' || tile.ap === 'drg_meca') {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apmeca.png"></div>';
+            tileText = tileText+'(Tuning:&nbsp; '+tile.ap.replace('drg_','')+')';
+        } else if (tile.ap.includes('drg_')) {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apdrug.png"></div>';
+            tileText = tileText+'(Drogues:&nbsp; '+tile.ap.replace('drg_','')+')';
+        } else if (tile.ap.includes('prt_')) {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aparmor.png""></div>';
+            tileText = tileText+'(Armures:&nbsp; '+tile.ap.replace('prt_','')+')';
+        } else {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apslugs.png"></div>';
+            tileText = tileText+'(Munitions:&nbsp; '+tile.ap+')';
+        }
+        tileText = tileText+'&nbsp;&nbsp;&nbsp; ';
+    }
     if (tile.rq != undefined) {
         if (playerInfos.comp.det >= 1 || !modeSonde) {
             res = JSON.stringify(tile.rs);
@@ -270,12 +310,13 @@ function showRes(tileId) {
                 res = res.replace(/\d+/g,"");
             }
         }
-        if (tile.tileName !== undefined && tile.tileName != '') {
-            res = res+' ('+tile.tileName+')'
-        }
     }
     if (tile.rd || tile.qs || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
-        mapIndicators = mapIndicators+'<div class="mapInfos" title="'+res+'">';
+        // mapIndicators = mapIndicators+'<div class="mapInfos" title="'+res+'">';
+        mapIndicators = mapIndicators+'<div class="mapInfos">';
+        if (tile.rq != undefined) {
+            tileText = tileText+'(Ressources:&nbsp; '+res+') ';
+        }
     }
     if (tile.rd) {
         mapIndicators = mapIndicators+'<i class="fas fa-shoe-prints fa-rotate-270 road"></i>';
@@ -290,17 +331,6 @@ function showRes(tileId) {
     }
     if (tile.rd || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
         mapIndicators = mapIndicators+'</div>';
-    }
-    if (tile.ruins) {
-        let ruinType = 'Ruines';
-        if (tile.rt != undefined) {
-            ruinType = tile.rt.name;
-        }
-        if (tile.sh === -1) {
-            mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType+'"><img src="/static/img/units/ruinsf.png"></div>';
-        } else {
-            mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType+'"><img src="/static/img/units/ruins.png"></div>';
-        }
     }
     if (tile.infra === 'Miradors' && view) {
         mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/mirador.png"></div>';
@@ -344,21 +374,6 @@ function showRes(tileId) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/navSpot.png"></div>';
         }
     }
-    if (tile.ap != undefined) {
-        if (tile.ap.includes('grenade') || tile.ap.includes('dynamite') || tile.ap.includes('molotov')) {
-            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apgren.png" title="Munitions: '+tile.ap+'"></div>';
-        } else if (tile.ap.includes('lame-')) {
-            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aplame.png" title="Lames: '+tile.ap+'"></div>';
-        } else if (tile.ap === 'drg_sudu' || tile.ap === 'drg_nitro' || tile.ap === 'drg_meca') {
-            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apmeca.png" title="Tuning: '+tile.ap.replace('drg_','')+'"></div>';
-        } else if (tile.ap.includes('drg_')) {
-            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apdrug.png" title="Drogues: '+tile.ap.replace('drg_','')+'"></div>';
-        } else if (tile.ap.includes('prt_')) {
-            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aparmor.png" title="Armures: '+tile.ap.replace('prt_','')+'"></div>';
-        } else {
-            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apslugs.png" title="Munitions: '+tile.ap+'"></div>';
-        }
-    }
     if (playerInfos.showedTiles.includes(tileId)) {
         if (tileId === 1830) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/showCenterTile.png"></div>';
@@ -390,6 +405,11 @@ function showRes(tileId) {
             if (playerInfos.bldVM.includes('Station météo')) {
                 mapIndicators = mapIndicators+'<div class="squallz"><img src="/static/img/storm'+tseed+'.png"></div>';
             }
+        }
+    }
+    if (mode === 'select') {
+        if (tileText.includes('&timesb;') || tileText.includes('(')) {
+            mapIndicators = mapIndicators+'<div class="markover" title="'+tileText+'"></div>';
         }
     }
     return mapIndicators;
@@ -605,10 +625,14 @@ function showBataillon(bat) {
     if (bat.tags.includes('nomove')) {
         uClass = uClass+' nmUnits';
     }
-    if (!modeSonde) {
-        $('#b'+bat.tileId).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+tagz+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
+    if (mode === 'move') {
+        $('#b'+bat.tileId).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
     } else {
-        $('#b'+bat.tileId).append('<div class="'+uClass+'"></div><div class="degInfos"></div><div class="batInfos"></div>'+resHere);
+        if (!modeSonde) {
+            $('#b'+bat.tileId).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+tagz+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
+        } else {
+            $('#b'+bat.tileId).append('<div class="'+uClass+'"></div><div class="degInfos"></div><div class="batInfos"></div>'+resHere);
+        }
     }
 };
 

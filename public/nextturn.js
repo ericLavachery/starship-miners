@@ -140,6 +140,17 @@ function nextTurn() {
                     checkDeath(bat,batType,false);
                 }
             }
+            if (bat.tags.includes('heard')) {
+                if (bat.pdm != undefined) {
+                    let pdmDistance = calcDistance(bat.pdm,bat.tileId);
+                    if (pdmDistance <= 2) {
+                        tagDelete(bat,'heard');
+                        delete bat.pdm;
+                    }
+                } else {
+                    tagDelete(bat,'heard');
+                }
+            }
         }
     });
     killAlienList();

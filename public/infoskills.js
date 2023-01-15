@@ -1109,7 +1109,7 @@ function skillsInfos(bat,batType,near) {
                     let starkaPA = getStarkaBonus(bat);
                     // let moveDistance = calcDistance(bat.tileId,bat.oldTileId);
                     // console.log('moveDistance='+moveDistance);
-                    if (drugCompOK) {
+                    if (drugCompOK || bat.tags.includes(drug.name)) {
                         if (!bat.tags.includes('starka') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK && starkaPA >= 1) {
                             $('#unitInfos').append('<button type="button" title="Starka: +'+starkaPA+' PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`starka`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
@@ -1158,7 +1158,7 @@ function skillsInfos(bat,batType,near) {
                         colorNope = 'cy';
                     }
                     apCost = drug.apCost;
-                    if (drugCompOK) {
+                    if (drugCompOK || bat.tags.includes(drug.name)) {
                         if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('kirin') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
                             $('#unitInfos').append('<button type="button" title="Kirin: Régénération rapide '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`kirin`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
@@ -1204,7 +1204,7 @@ function skillsInfos(bat,batType,near) {
                     colorNope = 'cy';
                 }
                 apCost = drug.apCost;
-                if (drugCompOK) {
+                if (drugCompOK || bat.tags.includes(drug.name)) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('octiron') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
                         $('#unitInfos').append('<button type="button" title="Octiron: +4 PA / protection poisons et maladies / réduit le stress '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
@@ -1249,7 +1249,7 @@ function skillsInfos(bat,batType,near) {
                     colorNope = 'cy';
                 }
                 apCost = drug.apCost;
-                if (drugCompOK) {
+                if (drugCompOK || bat.tags.includes(drug.name)) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('moloko') && !bat.tags.includes('bliss') && !batType.skills.includes('nofear') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
                         $('#unitInfos').append('<button type="button" title="Moloko: Immunisé à la peur / -2 PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`moloko`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
@@ -1296,7 +1296,7 @@ function skillsInfos(bat,batType,near) {
                     colorNope = 'cy';
                 }
                 apCost = drug.apCost;
-                if (drugCompOK) {
+                if (drugCompOK || bat.tags.includes(drug.name)) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('bliss') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
                         $('#unitInfos').append('<button type="button" title="Bliss: Dégâts reçus réduits / immunisé à la peur / réduit le stress / -1 PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
@@ -1341,7 +1341,7 @@ function skillsInfos(bat,batType,near) {
                     colorNope = 'cy';
                 }
                 apCost = drug.apCost;
-                if (drugCompOK) {
+                if (drugCompOK || bat.tags.includes(drug.name)) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('sila') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
                         $('#unitInfos').append('<button type="button" title="Sila: +3 puissance aux armes de mêlée '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sila`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
@@ -1386,7 +1386,7 @@ function skillsInfos(bat,batType,near) {
                     colorNope = 'cy';
                 }
                 apCost = drug.apCost;
-                if (drugCompOK) {
+                if (drugCompOK || bat.tags.includes(drug.name)) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('skupiac') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
                         $('#unitInfos').append('<button type="button" title="Skupiac: +6 précision / +3 défense / guérit les maladies '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`skupiac`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
@@ -1431,7 +1431,7 @@ function skillsInfos(bat,batType,near) {
                     colorNope = 'cy';
                 }
                 apCost = drug.apCost;
-                if (drugCompOK) {
+                if (drugCompOK || bat.tags.includes(drug.name)) {
                     if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('blaze') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
                         $('#unitInfos').append('<button type="button" title="Blaze: +3 PA & +1 salve '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`blaze`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;
@@ -1480,7 +1480,7 @@ function skillsInfos(bat,batType,near) {
                             colorNope = 'cy';
                         }
                         apCost = drug.apCost;
-                        if (drugCompOK) {
+                        if (drugCompOK || bat.tags.includes(drug.name)) {
                             let nitroPA = getNitroBonus(bat);
                             if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('nitro') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
                                 $('#unitInfos').append('<button type="button" title="Nitro: +'+nitroPA+' PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`nitro`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
@@ -1529,7 +1529,7 @@ function skillsInfos(bat,batType,near) {
                         colorNope = 'cy';
                     }
                     apCost = drug.apCost;
-                    if (drugCompOK) {
+                    if (drugCompOK || bat.tags.includes(drug.name)) {
                         if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('sudu') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
                             $('#unitInfos').append('<button type="button" title="Sudu: Vitesse 115% '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`sudu`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
@@ -1576,7 +1576,7 @@ function skillsInfos(bat,batType,near) {
                         colorNope = 'cy';
                     }
                     apCost = drug.apCost;
-                    if (drugCompOK) {
+                    if (drugCompOK || bat.tags.includes(drug.name)) {
                         if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('octiron') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
                             $('#unitInfos').append('<button type="button" title="Octiron: +4 PA / réduit le stress '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`octiron`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;
@@ -1622,7 +1622,7 @@ function skillsInfos(bat,batType,near) {
                             colorNope = 'cy';
                         }
                         apCost = drug.apCost;
-                        if (drugCompOK) {
+                        if (drugCompOK || bat.tags.includes(drug.name)) {
                             if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('moloko') && !bat.tags.includes('bliss') && !batType.skills.includes('nofear') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
                                 $('#unitInfos').append('<button type="button" title="Moloko: Immunisé à la peur / -2 PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`moloko`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                                 lineBreak = true;
@@ -1670,7 +1670,7 @@ function skillsInfos(bat,batType,near) {
                         colorNope = 'cy';
                     }
                     apCost = drug.apCost;
-                    if (drugCompOK) {
+                    if (drugCompOK || bat.tags.includes(drug.name)) {
                         if ((bat.apLeft >= apCost || apCost <= 0) && !bat.tags.includes('bliss') && drugCompOK && drugBldOK && drugBldVMOK && drugCostsOK) {
                             $('#unitInfos').append('<button type="button" title="Bliss: Immunisé à la peur / réduit le stress / -1 PA '+displayCosts(drug.costs)+'" class="boutonVert iconButtons" onclick="goDrug('+apCost+',`bliss`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             lineBreak = true;

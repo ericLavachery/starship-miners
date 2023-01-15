@@ -384,7 +384,9 @@ function stormProtection(dmg,bat,batType) {
             adjDmg = adjDmg*1.5;
         }
     }
-    if (batType.skills.includes('resistall') || bat.tags.includes('resistall')) {
+    if (batType.skills.includes('protectall') || bat.tags.includes('protectall')) {
+        adjDmg = adjDmg/1.5;
+    } else if (batType.skills.includes('resistall') || bat.tags.includes('resistall')) {
         adjDmg = adjDmg/1.33;
     }
     adjDmg = Math.ceil(adjDmg*(100-stormProtect)/100);
