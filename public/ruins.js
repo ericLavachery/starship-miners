@@ -16,6 +16,7 @@ function searchRuins(apCost) {
         selectedBat.apLeft = selectedBat.apLeft-apCost;
         checkRuinsCit(tile);
         checkRuinsRes(tile);
+        checkRuinsPack(tile);
         checkRuinsComp(tile);
         if (zone[0].mapDiff >= 2) {
             checkRuinsUnit(tile);
@@ -824,22 +825,22 @@ function checkRuinType(tile,quiet,dice1,dice2) {
                 // cit x0.9
                 break;
                 case 6:
+                ruinType.name = 'Habitations';
+                ruinType.checks = ['food'];
+                ruinType.scrap = 200;
+                // cit x0.9
+                break;
+                case 7:
                 ruinType.name = 'Villas';
                 ruinType.checks = ['food','food'];
                 ruinType.scrap = 250;
                 // cit x1.8
                 break;
-                case 7:
+                case 8:
                 ruinType.name = 'Ecole';
                 ruinType.checks = ['food','food'];
                 ruinType.scrap = 200;
                 // cit x1.8
-                break;
-                case 8:
-                ruinType.name = 'Pharmacie';
-                ruinType.checks = ['medecine','medecine'];
-                ruinType.scrap = 150;
-                // cit x0.4
                 break;
                 case 9:
                 ruinType.name = 'Pharmacie';
@@ -848,28 +849,28 @@ function checkRuinType(tile,quiet,dice1,dice2) {
                 // cit x0.4
                 break;
                 case 10:
+                ruinType.name = 'Bar';
+                ruinType.checks = ['food'];
+                ruinType.scrap = 150;
+                // cit x0.9
+                break;
+                case 11:
                 ruinType.name = 'Centre commercial';
                 ruinType.checks = ['food','food','food','medecine','construction'];
                 ruinType.scrap = 750;
                 // cit x10.4
                 break;
-                case 11:
+                case 12:
                 ruinType.name = 'Garage';
                 ruinType.checks = ['auto'];
                 ruinType.scrap = 350;
                 // cit x0.2
                 break;
-                case 12:
+                case 13:
                 ruinType.name = 'Station service';
                 ruinType.checks = ['auto'];
                 ruinType.scrap = 400;
                 // cit x0.2
-                break;
-                case 13:
-                ruinType.name = 'Dépot';
-                ruinType.checks = ['any','any'];
-                ruinType.scrap = 250;
-                // cit x0.4
                 break;
                 case 14:
                 ruinType.name = 'Dépot';
@@ -908,10 +909,10 @@ function checkRuinType(tile,quiet,dice1,dice2) {
                 // cit x0.2
                 break;
                 case 20:
-                ruinType.name = 'Caserne';
-                ruinType.checks = ['food','military','military','military','medecine'];
-                ruinType.scrap = 400;
-                // cit x10.4
+                ruinType.name = 'Prison';
+                ruinType.checks = ['food','medecine','military'];
+                ruinType.scrap = 450;
+                // cit x6.3
                 break;
                 case 21:
                 ruinType.name = 'Spécial';
@@ -936,26 +937,26 @@ function checkRuinType(tile,quiet,dice1,dice2) {
                 }
                 switch (checkDice2) {
                     case 1:
-                    ruinType.name = 'Prison';
-                    ruinType.checks = ['food','medecine','military'];
-                    ruinType.scrap = 350;
-                    // cit x6.3
+                    ruinType.name = 'Caserne';
+                    ruinType.checks = ['food','military','military','military','medecine'];
+                    ruinType.scrap = 400;
+                    // cit x10.4
                     break;
                     case 2:
-                    ruinType.name = 'Prison';
-                    ruinType.checks = ['food','food','medecine','military'];
-                    ruinType.scrap = 450;
-                    // cit x8.3
+                    ruinType.name = 'Caserne';
+                    ruinType.checks = ['food','military','military','military','medecine'];
+                    ruinType.scrap = 400;
+                    // cit x10.4
                     break;
                     case 3:
                     ruinType.name = 'Clinique';
-                    ruinType.checks = ['food','mececine','mececine'];
+                    ruinType.checks = ['food','medecine','medecine'];
                     ruinType.scrap = 250;
                     // cit x4.2
                     break;
                     case 4:
                     ruinType.name = 'Hôpital';
-                    ruinType.checks = ['food','mececine','medecine','medecine'];
+                    ruinType.checks = ['food','medecine','medecine','medecine'];
                     ruinType.scrap = 450;
                     // cit x8.4
                     break;
@@ -1022,6 +1023,115 @@ function checkRuinType(tile,quiet,dice1,dice2) {
         }
     }
     return ruinType;
+};
+
+function checkRuinsPack(tile) {
+    if (tile.ap === undefined) {
+        let ruinType = checkRuinType(tile,false);
+        console.log('-------------------------------------------------------- RUINS PACK CHECK: '+ruinType.name);
+        let ruinSize = ruinType.checks.length;
+        if (ruinSize === 0) {
+            ruinSize = 0.5;
+        }
+        if (ruinType.name === 'Bar') {
+            ruinSize = 3;
+        }
+        if (ruinType.name === 'Pharmacie') {
+            ruinSize = 3;
+        }
+        if (ruinType.name === 'Garage') {
+            ruinSize = 3;
+        }
+        if (ruinType.name === 'Poste de police') {
+            ruinSize = 4;
+        }
+        if (ruinType.name === 'Laboratoire' || ruinType.name === 'Centre de recherches') {
+            ruinSize = ruinSize*3;
+        }
+        let thePack = '';
+        let zoneFactor = Math.ceil((zone[0].mapDiff+8)/1.5);
+        let minAmmoLevel = 1;
+        if (zone[0].mapDiff >= 6) {
+            minAmmoLevel = 2;
+        }
+        let shufArmors = _.shuffle(armorTypes);
+        shufArmors.forEach(function(armor) {
+            if (thePack === '') {
+                if (armor.cat === 'drogue') {
+                    if (armor.popIn.includes(ruinType.name)) {
+                        let chance = armor.rarity*ruinSize;
+                        if (armor.popIn[0] === ruinType.name) {
+                            chance = chance*1.5;
+                        }
+                        chance = Math.ceil(chance);
+                        let dice = 100;
+                        let percent = Math.ceil(chance/dice*100);
+                        console.log(armor.name+' = '+chance+'/'+dice+' = '+percent+'%');
+                        if (rand.rand(1,dice) <= chance) {
+                            thePack = 'drg_'+armor.name;
+                            console.log('YEP!');
+                        }
+                    }
+                }
+                if (armor.cat === 'armor') {
+                    if (armor.icon != undefined) {
+                        if (armor.icon >= 1) {
+                            if (armor.popIn.includes(ruinType.name)) {
+                                let chance = (zoneFactor-(armor.icon*armor.icon))*ruinSize;
+                                if (armor.popIn[0] === ruinType.name) {
+                                    chance = chance*1.5;
+                                }
+                                chance = Math.ceil(chance);
+                                let dice = 2500;
+                                let percent = Math.ceil(chance/dice*100);
+                                console.log(armor.name+' = '+chance+'/'+dice+' = '+percent+'%');
+                                if (rand.rand(1,dice) <= chance) {
+                                    thePack = 'prt_'+armor.name;
+                                    console.log('YEP!');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        let maxAmmoLevel = 0;
+        if (ruinType.name === 'Poste de police' || ruinType.name === 'Prison') {
+            maxAmmoLevel = 1;
+        }
+        if (ruinType.name === 'Caserne' || ruinType.name === 'Armurerie') {
+            maxAmmoLevel = 3;
+        }
+        let shufAmmos = _.shuffle(ammoTypes);
+        shufAmmos.forEach(function(ammo) {
+            if (thePack === '') {
+                if (ammo.icon != undefined) {
+                    if (ammo.icon >= minAmmoLevel) {
+                        if (ammo.icon <= maxAmmoLevel) {
+                            let chance = (zoneFactor+2-(ammo.icon*ammo.icon))*ruinSize;
+                            chance = Math.ceil(chance);
+                            let dice = 500;
+                            if (ammo.name.includes('lame-')) {
+                                dice = 2000;
+                            } else if (ammo.name.includes('-')) {
+                                dice = 1500;
+                            }
+                            let percent = Math.ceil(chance/dice*100);
+                            console.log(ammo.name+' = '+chance+'/'+dice+' = '+percent+'%');
+                            if (rand.rand(1,dice) <= chance) {
+                                thePack = ammo.name;
+                                console.log('YEP!');
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        if (thePack != '') {
+            tile.ap = thePack;
+            showMap(zone,true);
+        }
+    }
 };
 
 function checkRuinsRes(tile) {

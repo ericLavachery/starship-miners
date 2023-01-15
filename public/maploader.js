@@ -267,7 +267,7 @@ function showRes(tileId) {
         } else {
             mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType+'"><img src="/static/img/units/ruins.png"></div>';
         }
-        tileText = tileText+'&timesb;'+ruinType+' ';
+        tileText = tileText+'&timesb; '+ruinType+' ';
     }
     if (tile.tileName !== undefined && tile.tileName != '') {
         tileText = tileText+'('+tile.tileName+')&nbsp;&nbsp;&nbsp; ';
@@ -407,7 +407,7 @@ function showRes(tileId) {
             }
         }
     }
-    if (mode === 'select') {
+    if (mode === 'select' || mode === 'edit') {
         if (tileText.includes('&timesb;') || tileText.includes('(')) {
             mapIndicators = mapIndicators+'<div class="markover" title="'+tileText+'"></div>';
         }

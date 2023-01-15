@@ -344,8 +344,7 @@
         "compReq":{"bal":2,"tri":3},
         "altCompReq":{"bal":3,"mat":1},
         "deploy":{"Soufre":2,"Fer":2,"Tungstène":2,"Scrap":3},
-        "batch":100,
-        "icon":2
+        "batch":100
     },
     {
         "name": "dunium",
@@ -428,7 +427,7 @@
         "compReq":{"bal":1,"exo":2,"ca":4},
         "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":1,"Germium":2},
         "batch":100,
-        "icon":2
+        "icon":3
     },
     {
         "name": "flechette",
@@ -472,8 +471,7 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":1},
         "deploy":{"Munitions":1,"Tungstène":2},
-        "batch":100,
-        "icon":1
+        "batch":100
     },
     {
         "name": "ac-titanium",
@@ -488,8 +486,7 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"mat":1},
         "deploy":{"Munitions":1,"Titane":2},
-        "batch":100,
-        "icon":2
+        "batch":100
     },
     {
         "name": "ac-explosive",
@@ -505,8 +502,7 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":1,"explo":2},
         "deploy":{"Munitions":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
-        "batch":200,
-        "icon":1
+        "batch":200
     },
     {
         "name": "ac-incendiaire",
@@ -523,8 +519,7 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
         "deploy":{"Munitions":1,"Aluminium":1,"Phosphore":2},
-        "batch":100,
-        "icon":1
+        "batch":100
     },
     {
         "name": "ac-uranium",
@@ -539,8 +534,7 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Munitions":1,"Uranium":2},
-        "batch":100,
-        "icon":2
+        "batch":100
     },
     {
         "name": "ac-timonium",
@@ -555,8 +549,7 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Munitions":1,"Timonium":2,"Uranium":1},
-        "batch":100,
-        "icon":3
+        "batch":100
     },
     {
         "name": "ac-flechette",
@@ -572,8 +565,7 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":3},
         "deploy":{"Munitions":1,"Fer":1,"Soufre":1,"Tungstène":3},
-        "batch":100,
-        "icon":2
+        "batch":100
     },
     {
         "name": "ac-freeze",
@@ -590,8 +582,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
         "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":1,"Germium":2},
-        "batch":100,
-        "icon":2
+        "batch":100
     },
     {
         "name": "ac-salite",
@@ -606,8 +597,7 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
         "deploy":{"Munitions":1,"Salite":2},
-        "batch":100,
-        "icon":3
+        "batch":100
     },
     {
         "name": "ac-adamantium",
@@ -623,8 +613,7 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":3},
         "deploy":{"Munitions":1,"Adamantium":2},
-        "batch":100,
-        "icon":3
+        "batch":100
     },
     {
         "name": "ac-dunium",
@@ -639,8 +628,7 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":1},
         "deploy":{"Munitions":1,"Aluminium":1,"Dunium":2},
-        "batch":100,
-        "icon":3
+        "batch":100
     },
     {
         "name": "sm-perfo",
@@ -670,8 +658,7 @@
         "bldReq":["Atelier"],
         "compReq":{"bal":2,"mat":1,"ca":3},
         "deploy":{"Fer":3,"Soufre":4,"Tungstène":2,"Uranium":1,"Bugium":2},
-        "batch":200,
-        "icon":2
+        "batch":200
     },
     {
         "name": "sm-tungsten",
@@ -686,8 +673,7 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":1},
         "deploy":{"Munitions":1,"Tungstène":2},
-        "batch":100,
-        "icon":1
+        "batch":100
     },
     {
         "name": "sm-uranium",
@@ -702,8 +688,7 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Munitions":1,"Uranium":2},
-        "batch":100,
-        "icon":2
+        "batch":100
     },
     {
         "name": "sm-teflon",
@@ -719,8 +704,7 @@
         "bldReq":["Atelier"],
         "compReq":{"ca":2},
         "deploy":{"Fer":1,"Soufre":1,"Scrap":1,"Cuivre":1,"Larvium":1,"Potassium":1},
-        "batch":100,
-        "icon":1
+        "batch":100
     },
     {
         "name": "sm-hollow",
@@ -749,8 +733,7 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"mat":1},
         "deploy":{"Munitions":1,"Aluminium":1,"Dunium":2},
-        "batch":100,
-        "icon":3
+        "batch":100
     },
     {
         "name": "sm-explosive",
@@ -766,8 +749,7 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":1,"explo":2},
         "deploy":{"Munitions":2,"Aluminium":2,"Phosphore":2,"Hydrogène":1},
-        "batch":200,
-        "icon":1
+        "batch":200
     },
     {
         "name": "sm-incendiaire",
@@ -784,8 +766,7 @@
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
         "deploy":{"Munitions":1,"Aluminium":1,"Phosphore":2},
-        "batch":100,
-        "icon":1
+        "batch":100
     },
     {
         "name": "sm-timonium",
@@ -800,8 +781,7 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":2},
         "deploy":{"Munitions":1,"Timonium":2,"Uranium":1},
-        "batch":100,
-        "icon":3
+        "batch":100
     },
     {
         "name": "sm-salite",
@@ -816,8 +796,7 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
         "deploy":{"Munitions":1,"Salite":2},
-        "batch":100,
-        "icon":3
+        "batch":100
     },
     {
         "name": "sm-adamantium",
@@ -833,8 +812,7 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":2,"mat":3},
         "deploy":{"Munitions":1,"Adamantium":2},
-        "batch":100,
-        "icon":3
+        "batch":100
     },
     {
         "name": "sm-freeze",
@@ -851,8 +829,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"bal":1,"exo":2,"ca":4},
         "deploy":{"Tungstène":2,"Soufre":2,"Or":2,"Bossium":1,"Germium":2},
-        "batch":100,
-        "icon":2
+        "batch":100
     },
     {
         "name": "pn-standard",

@@ -440,14 +440,6 @@ hr.craft {
     margin-top: -3px;
     z-index: -8;
 }
-.markover {
-    position: absolute;
-    margin-left: 15px;
-    margin-top: 15px;
-    width: 30px;
-    height: 30px;
-    z-index: 20;
-}
 .dark {
     position: absolute;
     /* margin-right: -3px; */
@@ -1167,4 +1159,57 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
 }
 .udl {
     text-decoration: underline;
+}
+
+.tooltip-text {
+    position: absolute;
+    /* top: -40px; */
+    /* left: -50%; */
+    /* z-index: 2; */
+    /* width: 100px; */
+    color: white;
+    font-size: 12px;
+    background-color: #192733;
+    border-radius: 8px;
+    /* padding: 10px 15px 10px 15px; */
+    margin-left: 15px;
+    margin-top: 15px;
+    /* width: 30px; */
+    /* height: 30px; */
+    z-index: 20;
+}
+
+#fade {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#delay {
+    opacity: 0;
+    transition: opacity 0.2s;
+    transition-delay: 0.3s;
+}
+
+.hover-text:hover #fade { opacity: 1; }
+.hover-text:hover #delay { opacity: 1; }
+
+.hover-text {
+    position: relative;
+    /* display: inline-block; */
+    /* margin: 40px; */
+    /* text-align: center; */
+    margin-left: 15px;
+    margin-top: 15px;
+    width: 30px;
+    height: 30px;
+    /* z-index: 20; */
+}
+
+.markover {
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 15px;
+    width: 30px;
+    height: 30px;
+    z-index: 20;
 }

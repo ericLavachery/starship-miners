@@ -62,6 +62,8 @@
         "compReq":{},
         "costs":{"Drogues":2},
         "units":"inf-veh",
+        "popIn":["Bar"],
+        "rarity":15,
         "icon":"fas fa-wine-bottle",
         "info":"Immunisé à la peur / -2 PA"
     },
@@ -75,6 +77,8 @@
         "altCompReq":{"med":1},
         "costs":{"Drogues":1,"Zinc":1,"Swarmine":1},
         "units":"inf",
+        "popIn":["Hôpital","Pharmacie","Clinique","Bar"],
+        "rarity":3,
         "icon":"fas fa-syringe",
         "info":"Bonus PA (variable)"
     },
@@ -87,6 +91,8 @@
         "compReq":{"ca":2,"med":1},
         "costs":{"Drogues":1,"Végétaux":1,"Or":1,"Mendium":5},
         "units":"inf",
+        "popIn":["Hôpital","Pharmacie","Clinique"],
+        "rarity":4,
         "icon":"ra ra-heart-bottle rpg",
         "info":"Régénération"
     },
@@ -99,6 +105,8 @@
         "compReq":{"med":1},
         "costs":{"Drogues":2,"Hélium":2,"Bore":2,"Octiron":12},
         "units":"inf-veh",
+        "popIn":["Hôpital","Pharmacie","Clinique"],
+        "rarity":3,
         "icon":"fas fa-cannabis",
         "info":"+4 PA / protection poisons et maladies / réduit le stress"
     },
@@ -111,6 +119,8 @@
         "compReq":{"ca":1,"exo":2},
         "costs":{"Drogues":1,"Bore":2,"Larvium":8},
         "units":"inf-veh",
+        "popIn":["Centre de recherches","Laboratoire","Bar"],
+        "rarity":1,
         "icon":"ra ra-pills rpg",
         "info":"Dégâts reçus réduits / immunisé à la peur / réduit le stress / -1 PA"
     },
@@ -123,6 +133,8 @@
         "compReq":{"ca":2,"exo":2},
         "costs":{"Drogues":2,"Mercure":1,"Or":1,"Aranium":12},
         "units":"inf",
+        "popIn":["Centre de recherches","Laboratoire","Bar"],
+        "rarity":1,
         "icon":"far fa-eye",
         "info":"+6 précision / +3 défense / guérit les maladies"
     },
@@ -135,6 +147,8 @@
         "compReq":{"ca":3,"exo":3},
         "costs":{"Drogues":3,"Mercure":2,"Hélium":3,"Bore":6,"Wingium":9},
         "units":"inf",
+        "popIn":["Centre de recherches","Laboratoire","Bar"],
+        "rarity":1,
         "icon":"ra ra-player-dodge rpg",
         "info":"+3 PA / +1 salve"
     },
@@ -147,6 +161,8 @@
         "compReq":{"ca":1,"exo":1},
         "costs":{"Drogues":1,"Zinc":1,"Creatite":3,"Bugium":12},
         "units":"inf",
+        "popIn":["Centre de recherches","Laboratoire","Bar"],
+        "rarity":1,
         "icon":"fas fa-fist-raised",
         "info":"Bonus de puissance aux armes de mêlée"
     },
@@ -160,6 +176,8 @@
         "altCompReq":{"trans":2},
         "costs":{"Huile":1,"Hydrogène":2,"Azote":2,"Slime":5},
         "units":"veh",
+        "popIn":["Garage","Station service","Aéroport","Port"],
+        "rarity":4,
         "icon":"ra ra-bottled-bolt rpg",
         "info":"Bonus PA (variable)"
     },
@@ -173,6 +191,8 @@
         "altCompReq":{"trans":2},
         "costs":{"Huile":5,"Pyratol":20,"Plomb":2},
         "units":"veh",
+        "popIn":["Garage","Station service","Aéroport","Port"],
+        "rarity":3,
         "icon":"fas fa-tachometer-alt",
         "info":"Augmente la rapidité de déplacement"
     },
@@ -185,6 +205,8 @@
         "compReq":{"trans":4},
         "costs":{},
         "units":"veh",
+        "popIn":["Garage","Station service","Aéroport","Port","Atelier","Usine"],
+        "rarity":15,
         "icon":"fa fa-wrench",
         "info":"Pièces de rechange pour rafistoler un véhicule"
     },
@@ -234,7 +256,8 @@
         "compReq":{"mat":1},
         "factor":"thp",
         "costs":{"Scrap":6,"Carbone":12,"Azote":6},
-        "icon":1
+        "icon":1,
+        "popIn":["Poste de police","Prison","Caserne","Armurerie"]
     },
     {
         "name":"swarwing",
@@ -247,7 +270,8 @@
         "factor":"thp",
         "costs":{"Scrap":6,"Swarmine":15,"Wingium":3},
         "deploy":{"Swarmine":0.5},
-        "icon":1
+        "icon":1,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"acier",
@@ -269,7 +293,8 @@
         "compReq":{"ca":2},
         "factor":"thp",
         "costs":{"Scrap":6,"Bugium":24},
-        "icon":1
+        "icon":1,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"combo",
@@ -281,7 +306,8 @@
         "compReq":{"mat":1,"ca":3},
         "factor":"thp",
         "costs":{"Carbone":9,"Mendium":4,"Bossium":1,"Rhodium":6},
-        "icon":1
+        "icon":1,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"duneg",
@@ -293,7 +319,8 @@
         "compReq":{"mat":2,"ca":2},
         "factor":"thp",
         "costs":{"Carbone":9,"Azote":3,"Dunium":6,"Egidium":1},
-        "icon":2
+        "icon":2,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"kapton",
@@ -306,7 +333,8 @@
         "altCompReq":{"mat":1,"pyro":3},
         "factor":"thp",
         "costs":{"Carbone":9,"Aluminium":6,"Azote":6,"Nickel":6},
-        "icon":2
+        "icon":2,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"wendium",
@@ -318,7 +346,8 @@
         "compReq":{"mat":2,"ca":3},
         "factor":"thp",
         "costs":{"Carbone":6,"Mendium":6,"Azote":3,"Wingium":6},
-        "icon":2
+        "icon":2,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"soap",
@@ -330,7 +359,8 @@
         "compReq":{"mat":1,"ca":4},
         "factor":"thp",
         "costs":{"Carbone":12,"Azote":6,"Wingium":3,"Aranium":6},
-        "icon":2
+        "icon":2,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"titane",
@@ -342,7 +372,8 @@
         "compReq":{"mat":2},
         "factor":"thp",
         "costs":{"Aluminium":9,"Titane":9},
-        "icon":1
+        "icon":1,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"tisal",
@@ -354,7 +385,8 @@
         "compReq":{"mat":2,"energ":1},
         "factor":"thp",
         "costs":{"Carbone":2,"Titane":9,"Salite":9},
-        "icon":3
+        "icon":3,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"nano",
@@ -366,7 +398,8 @@
         "compReq":{"mat":4,"ind":1},
         "factor":"thp",
         "costs":{"Carbone":12,"Hélium":6,"Energie":72},
-        "icon":2
+        "icon":2,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"swing",
@@ -378,7 +411,8 @@
         "compReq":{"mat":4,"ind":2,"ca":3},
         "factor":"thp",
         "costs":{"Carbone":6,"Hélium":3,"Nickel":2,"Azote":3,"Mendium":5,"Wingium":5,"Energie":72},
-        "icon":3
+        "icon":3,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"adamantite",
@@ -390,7 +424,8 @@
         "compReq":{"mat":3},
         "factor":"thp",
         "costs":{"Aluminium":6,"Adamantium":12,"Argon":3},
-        "icon":3
+        "icon":3,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"aegis",
@@ -402,7 +437,8 @@
         "compReq":{"mat":3,"ca":3},
         "factor":"thp",
         "costs":{"Aluminium":6,"Egidium":12},
-        "icon":3
+        "icon":3,
+        "popIn":["Caserne"]
     },
     {
         "name":"battlesuit",
@@ -415,7 +451,8 @@
         "factor":"thp",
         "costs":{"Carbone":6,"Moteurs":9,"Titane":18,"Electros":12,"Batteries":12,"Or":6},
         "deploy":{"Drogues":3,"Energie":24,"Végétaux":3,"Mendium":6},
-        "icon":3
+        "icon":3,
+        "popIn":["Caserne"]
     },
     {
         "name":"kanchan",

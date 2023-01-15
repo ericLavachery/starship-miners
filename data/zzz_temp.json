@@ -1,16 +1,7 @@
-else {
-   if (armor === myBat.prt) {
-       $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-       $('#conAmmoList').append('<span class="constName gff" title="'+toNiceString(batArmor.bldReq)+'">'+armor+' <span class="gff">(+'+batArmor.armor+'/'+batArmor.ap+')'+armorSkills+'</span></span><br>');
-   }
-}
-
-else {
-   if (equip === myBat.eq || equip === myBat.logeq) {
-       $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
-       $('#conAmmoList').append('<span class="constName gff" title="'+showEquipInfo(equip,myBatType,true)+' / '+toNiceString(batEquip.bldReq)+'">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
-   }
-}
+<div class="hover-text">hover me
+    <span class="tooltip-text" id="delay">I'm a tooltip!</span>
+</div>
+(delay devrait être une classe!)
 
 "weapon":{
     "name":"Tromblon",

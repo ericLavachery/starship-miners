@@ -4243,7 +4243,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["recupcit"]
+        "skills":["recupcit"],
+        "fuzz":4
     },
     {
         "id":275,
@@ -4264,7 +4265,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["recupcit"]
+        "skills":["recupcit"],
+        "fuzz":3
     },
     {
         "id":276,
@@ -4285,7 +4287,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["recupcit","prodres","upkeep","updisable"]
+        "skills":["recupcit","prodres","upkeep","updisable"],
+        "fuzz":3
     },
     {
         "id":277,
@@ -4305,7 +4308,8 @@
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
-        "maxVeg":-1
+        "maxVeg":-1,
+        "fuzz":3
     },
     {
         "id":278,
@@ -4345,7 +4349,8 @@
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
-        "maxVeg":-1
+        "maxVeg":-1,
+        "fuzz":3
     },
     {
         "id":280,
@@ -4366,7 +4371,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["recupcit"]
+        "skills":["recupcit"],
+        "fuzz":3
     },
     {
         "id":281,
@@ -4386,7 +4392,8 @@
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
-        "maxVeg":-1
+        "maxVeg":-1,
+        "fuzz":3
     },
     {
         "id":282,
@@ -4406,7 +4413,8 @@
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
-        "maxVeg":-1
+        "maxVeg":-1,
+        "fuzz":5
     },
     {
         "id":244,
@@ -4427,7 +4435,8 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["fret","nodelete","notrash"],
-        "transRes":100000
+        "transRes":100000,
+        "fuzz":3
     },
     {
         "id":273,
