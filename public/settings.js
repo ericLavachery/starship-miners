@@ -161,6 +161,7 @@ let initiativeDice = 15 // ajoute 0-15
 let unitResist = 0;
 let minFailSoins = 60; // def 60 : minimum 15/75 soins réussis
 let stopMe = false;
+let stopThem = false;
 let nextTurnOK = false;
 let toHit = 999;
 let escapeValue = 1.45;

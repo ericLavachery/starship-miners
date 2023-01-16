@@ -2627,8 +2627,7 @@
         "bldReq":["Atelier"],
         "compReq":{"explo":2},
         "deploy":{"Carbone":1,"Scrap":1,"Explosifs":3,"Végétaux":2,"Azote":4},
-        "batch":100,
-        "icon":1
+        "batch":100
     },
     {
         "name": "dynamite-nanite",
@@ -2643,8 +2642,7 @@
         "bldReq":["Laboratoire"],
         "compReq":{"explo":2},
         "deploy":{"Carbone":1,"Scrap":1,"Explosifs":3,"Végétaux":2,"Potassium":2,"Nanite":8},
-        "batch":100,
-        "icon":3
+        "batch":100
     },
     {
         "name": "obus",

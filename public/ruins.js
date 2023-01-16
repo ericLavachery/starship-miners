@@ -6,7 +6,7 @@ function putThisBat(unitId,ammo1,ammo2,armorName,equipName,tileId,citoyens,xp,st
     conselAmmos = [ammo1,ammo2,armorName,equipName];
     putBat(tileId,citoyens,xp,startTag,show);
     playerOccupiedTiles.push(tileId);
-}
+};
 
 function searchRuins(apCost) {
     let tile = getTile(selectedBat);
@@ -1039,6 +1039,9 @@ function checkRuinsPack(tile) {
         if (ruinType.name === 'Pharmacie') {
             ruinSize = 3;
         }
+        if (ruinType.name === 'Hôpital') {
+            ruinSize = 6;
+        }
         if (ruinType.name === 'Garage') {
             ruinSize = 3;
         }
@@ -1128,10 +1131,55 @@ function checkRuinsPack(tile) {
             }
         });
         if (thePack != '') {
+            thePack = replacePack(thePack,false);
             tile.ap = thePack;
             showMap(zone,true);
         }
     }
+};
+
+function replacePack(oldPack,edited) {
+    newPack = oldPack;
+    if (playerInfos.gang === 'brasier') {
+        if (oldPack === 'grenade-antichar') {
+            newPack = 'molotov-pyrus';
+        } else if (oldPack === 'grenade-flashbang' || oldPack === 'grenade-incendiaire') {
+            newPack = 'molotov-slime';
+        } else if (oldPack.includes('grenade')) {
+            newPack = 'molotov-pyratol';
+        }
+    } else if (playerInfos.gang === 'detruas') {
+        if (oldPack === 'molotov-slime') {
+            newPack = 'grenade-gaz';
+        } else if (oldPack === 'molotov-pyrus') {
+            newPack = 'grenade-antichar';
+        } else if (oldPack === 'molotov-pyratol') {
+            newPack = 'grenade-nanite';
+        }
+    } else {
+        if (rand.rand(1,3) != 1) {
+            if (oldPack === 'grenade-antichar') {
+                newPack = 'uranium';
+            } else if (oldPack === 'grenade-flashbang') {
+                newPack = 'teflon';
+            } else if (oldPack === 'grenade-incendiaire') {
+                newPack = 'incendiaire';
+            } else if (oldPack === 'grenade-jello') {
+                newPack = 'freeze';
+            } else if (oldPack === 'grenade-gaz') {
+                newPack = 'dunium';
+            } else if (oldPack === 'grenade-nanite') {
+                newPack = 'explosive';
+            } else if (oldPack === 'molotov-slime') {
+                newPack = 'salite';
+            } else if (oldPack === 'molotov-pyrus') {
+                newPack = 'timonium';
+            } else if (oldPack === 'molotov-pyratol') {
+                newPack = 'adamantium';
+            }
+        }
+    }
+    return newPack;
 };
 
 function checkRuinsRes(tile) {

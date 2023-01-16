@@ -106,9 +106,17 @@ function commandes() {
         $('#commandz').append('<br>');
     } else if (activeTurn == 'aliens') {
         if (alienList.length >= 2) {
-            $('#commandz').append('<button type="button" title="" class="boutonMauve iconButtons" onclick="ffw()"><i class="fas fa-fast-forward"></i></button>');
+            if (stopThem) {
+                $('#commandz').append('<button type="button" title="Alien suivant" class="boutonGrey iconButtons" id="affw"><i class="fas fa-fast-forward"></i></button>');
+            } else {
+                $('#commandz').append('<button type="button" title="Alien suivant" class="boutonMauve iconButtons" id="affw" onclick="ffw()"><i class="fas fa-fast-forward"></i></button>');
+            }
         } else {
-            $('#commandz').append('<button type="button" title="Passer au bataillon suivant" class="boutonMauve iconButtons" onclick="nextAlien()"><i class="fas fa-chevron-circle-right"></i></button>');
+            if (stopThem) {
+                $('#commandz').append('<button type="button" title="Alien suivant" class="boutonGrey iconButtons" id="ana"><i class="fas fa-chevron-circle-right"></i></button>');
+            } else {
+                $('#commandz').append('<button type="button" title="Alien suivant" class="boutonMauve iconButtons" id="ana" onclick="nextAlien()"><i class="fas fa-chevron-circle-right"></i></button>');
+            }
         }
         $('#commandz').append('<button type="button" title="Nombre d\'aliens en vue" class="boutonGris iconButtons">'+aliensNum+'</button>');
         $('#commandz').append('<button type="button" title="Nombre d\'oeufs en vue" class="boutonGris iconButtons" onclick="findEgg()" onmousedown="clicSound(5)">'+eggsNum+'</button>');

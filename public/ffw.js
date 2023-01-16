@@ -72,6 +72,7 @@ function ffw() {
             }
         }
         if (stopForFight) {
+            blockThem(true);
             console.log('$$$$$$$ STOP AFTER COMBAT');
             commandes();
             break;

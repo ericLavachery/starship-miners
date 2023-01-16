@@ -1587,7 +1587,7 @@ function putRuinsOfDestroyedBld(name,tileId) {
             tile.rd = true;
             let ruinType = {};
             ruinType.name = name;
-            ruinType.checks = ['any'];
+            ruinType.checks = ['any','any'];
             ruinType.scrap = 300;
             tile.rt = ruinType;
             addScrapToRuins(tile);
@@ -1617,7 +1617,10 @@ function dismantle(batId) {
                 perdition = perdition+2;
             }
             let tileId = bat.tileId;
-            if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
+            if (batType.cat === 'buildings') {
+                putRuinsOfDestroyedBld(batType.name,bat.tileId);
+                recupRes(bat,batType);
+            } else if (batType.skills.includes('recupres')) {
                 recupRes(bat,batType);
             }
             if (batType.skills.includes('recupcorps')) {

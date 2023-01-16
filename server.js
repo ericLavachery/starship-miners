@@ -521,109 +521,121 @@ io.sockets.on('connection', function (socket, pseudo) {
 
     // Save zone from MAP EDITOR
     socket.on('save-edited-map', function(wholeMap) {
-        let zone = wholeMap[0];
-        let missionNum = zone[0].number;
-        if (missionNum >= 50 && missionNum <= 99) {
-            let dir = './data/players/Missions';
-            if (!fs.existsSync(dir)){
-                fs.mkdirSync(dir);
+        if (socket.pseudo != undefined) {
+            let zone = wholeMap[0];
+            let missionNum = zone[0].number;
+            if (missionNum >= 50 && missionNum <= 99) {
+                let dir = './data/players/Missions';
+                if (!fs.existsSync(dir)){
+                    fs.mkdirSync(dir);
+                }
+                dir = './data/players/Missions/'+missionNum;
+                if (!fs.existsSync(dir)){
+                    fs.mkdirSync(dir);
+                }
+                let jsonmap = JSON.stringify(zone);
+                let mapname = socket.pseudo+'-currentMap.json';
+                fs.writeFile('./data/players/Missions/'+missionNum+'/'+mapname, jsonmap, 'utf8', (err) => {
+                    if (err) throw err;
+                    console.log('Map saved to Missions/'+missionNum+'/'+mapname);
+                });
+                mapname = 'Mission-map'+missionNum+'.json';
+                fs.writeFile('./data/players/Missions/'+mapname, jsonmap, 'utf8', (err) => {
+                    if (err) throw err;
+                    console.log('Map saved to Missions/'+mapname);
+                });
+                let bataillons = wholeMap[1];
+                let jsonbat = JSON.stringify(bataillons);
+                let batsname = socket.pseudo+'-bataillons.json';
+                fs.writeFile('./data/players/Missions/'+missionNum+'/'+batsname, jsonbat, 'utf8', (err) => {
+                    if (err) throw err;
+                    console.log('Bataillons saved to Missions/'+missionNum+'/'+batsname);
+                });
+                batsname = 'Mission-bataillons'+missionNum+'.json';
+                fs.writeFile('./data/players/Missions/'+batsname, jsonbat, 'utf8', (err) => {
+                    if (err) throw err;
+                    console.log('Bataillons saved to Missions/'+batsname);
+                });
+                let aliens = wholeMap[2];
+                let jsonbug = JSON.stringify(aliens);
+                let bugsname = socket.pseudo+'-aliens.json';
+                fs.writeFile('./data/players/Missions/'+missionNum+'/'+bugsname, jsonbug, 'utf8', (err) => {
+                    if (err) throw err;
+                    console.log('Aliens saved to Missions/'+missionNum+'/'+bugsname);
+                });
+                bugsname = 'Mission-aliens'+missionNum+'.json';
+                fs.writeFile('./data/players/Missions/'+bugsname, jsonbug, 'utf8', (err) => {
+                    if (err) throw err;
+                    console.log('Aliens saved to Missions/'+bugsname);
+                });
             }
-            dir = './data/players/Missions/'+missionNum;
-            if (!fs.existsSync(dir)){
-                fs.mkdirSync(dir);
-            }
-            let jsonmap = JSON.stringify(zone);
-            let mapname = socket.pseudo+'-currentMap.json';
-            fs.writeFile('./data/players/Missions/'+missionNum+'/'+mapname, jsonmap, 'utf8', (err) => {
-                if (err) throw err;
-                console.log('Map saved to Missions/'+missionNum+'/'+mapname);
-            });
-            mapname = 'Mission-map'+missionNum+'.json';
-            fs.writeFile('./data/players/Missions/'+mapname, jsonmap, 'utf8', (err) => {
-                if (err) throw err;
-                console.log('Map saved to Missions/'+mapname);
-            });
-            let bataillons = wholeMap[1];
-            let jsonbat = JSON.stringify(bataillons);
-            let batsname = socket.pseudo+'-bataillons.json';
-            fs.writeFile('./data/players/Missions/'+missionNum+'/'+batsname, jsonbat, 'utf8', (err) => {
-                if (err) throw err;
-                console.log('Bataillons saved to Missions/'+missionNum+'/'+batsname);
-            });
-            batsname = 'Mission-bataillons'+missionNum+'.json';
-            fs.writeFile('./data/players/Missions/'+batsname, jsonbat, 'utf8', (err) => {
-                if (err) throw err;
-                console.log('Bataillons saved to Missions/'+batsname);
-            });
-            let aliens = wholeMap[2];
-            let jsonbug = JSON.stringify(aliens);
-            let bugsname = socket.pseudo+'-aliens.json';
-            fs.writeFile('./data/players/Missions/'+missionNum+'/'+bugsname, jsonbug, 'utf8', (err) => {
-                if (err) throw err;
-                console.log('Aliens saved to Missions/'+missionNum+'/'+bugsname);
-            });
-            bugsname = 'Mission-aliens'+missionNum+'.json';
-            fs.writeFile('./data/players/Missions/'+bugsname, jsonbug, 'utf8', (err) => {
-                if (err) throw err;
-                console.log('Aliens saved to Missions/'+bugsname);
-            });
         }
     });
 
     // Save zone
     socket.on('save-map', function(zone) {
-        let jsonmap = JSON.stringify(zone);
-        let mapname = socket.pseudo+'-currentMap.json';
-        fs.writeFile('./data/players/'+mapname, jsonmap, 'utf8', (err) => {
-            if (err) throw err;
-            console.log('Map saved to '+mapname);
-        });
+        if (socket.pseudo != undefined) {
+            let jsonmap = JSON.stringify(zone);
+            let mapname = socket.pseudo+'-currentMap.json';
+            fs.writeFile('./data/players/'+mapname, jsonmap, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Map saved to '+mapname);
+            });
+        }
     });
     // Save Bataillons
     socket.on('save-bataillons', function(bataillons) {
-        let json = JSON.stringify(bataillons);
-        let filename = socket.pseudo+'-bataillons.json'
-        fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
-            if (err) throw err;
-            console.log('Bataillons saved to '+filename);
-        });
+        if (socket.pseudo != undefined) {
+            let json = JSON.stringify(bataillons);
+            let filename = socket.pseudo+'-bataillons.json'
+            fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Bataillons saved to '+filename);
+            });
+        }
     });
     // Save Aliens
     socket.on('save-aliens', function(aliens) {
-        let json = JSON.stringify(aliens);
-        let filename = socket.pseudo+'-aliens.json'
-        fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
-            if (err) throw err;
-            console.log('Aliens saved to '+filename);
-        });
+        if (socket.pseudo != undefined) {
+            let json = JSON.stringify(aliens);
+            let filename = socket.pseudo+'-aliens.json'
+            fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Aliens saved to '+filename);
+            });
+        }
     });
     // Save playerInfos
     socket.on('save-playerInfos', function(playerInfos) {
-        let json = JSON.stringify(playerInfos);
-        let filename = socket.pseudo+'-playerInfos.json'
-        fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
-            if (err) throw err;
-            console.log('Player infos saved to '+filename+' on turn '+playerInfos.mapTurn);
-        });
+        if (socket.pseudo != undefined) {
+            let json = JSON.stringify(playerInfos);
+            let filename = socket.pseudo+'-playerInfos.json'
+            fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Player infos saved to '+filename+' on turn '+playerInfos.mapTurn);
+            });
+        }
     });
 
     // Save playerInfos Log
     socket.on('save-playerLog', function(playerInfos) {
-        let json = JSON.stringify(playerInfos);
-        var dir = './data/players/'+socket.pseudo;
-        if (!fs.existsSync(dir)){
-            fs.mkdirSync(dir);
+        if (socket.pseudo != undefined) {
+            let json = JSON.stringify(playerInfos);
+            var dir = './data/players/'+socket.pseudo;
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
+            let filename = socket.pseudo+'-playerLog-'+playerInfos.gangXP+'.json';
+            fs.writeFile('./data/players/'+socket.pseudo+'/'+filename, json, 'utf8', (err) => {
+                if (err) throw err;
+                console.log('Player infos saved to '+filename+' on turn '+playerInfos.mapTurn);
+            });
         }
-        let filename = socket.pseudo+'-playerLog-'+playerInfos.gangXP+'.json';
-        fs.writeFile('./data/players/'+socket.pseudo+'/'+filename, json, 'utf8', (err) => {
-            if (err) throw err;
-            console.log('Player infos saved to '+filename+' on turn '+playerInfos.mapTurn);
-        });
     });
 
     // Save TEST
     socket.on('testcon', function(test) {
-        if (socket.pseudo == undefined) {
+        if (socket.pseudo === undefined) {
             let pseutest = socket.pseudo;
             console.log('UNDEFINED PLAYER');
             socket.emit('testcon-failed',pseutest);

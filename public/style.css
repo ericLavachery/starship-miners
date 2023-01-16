@@ -415,6 +415,12 @@ hr.craft {
     z-index: -10;
     opacity: 0.4;
 }
+.infraz {
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+    z-index: -10;
+}
 .ruins {
     position: absolute;
     margin-left: 0px;

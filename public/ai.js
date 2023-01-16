@@ -1219,6 +1219,10 @@ function anyTargetInRange() {
     return inRange;
 };
 
+function lockTargetBat(bat) {
+    targetBat = JSON.parse(JSON.stringify(bat));
+};
+
 function targetMelee(iter) {
     // console.log('targetMeleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
     // console.log(selectedBatType.name);
@@ -1245,7 +1249,8 @@ function targetMelee(iter) {
                             // console.log('tLogic='+tLogic);
                             if (tLogic > bestLogic) {
                                 bestLogic = tLogic;
-                                targetBat = JSON.parse(JSON.stringify(bat));
+                                // targetBat = JSON.parse(JSON.stringify(bat));
+                                lockTargetBat(bat);
                                 inPlace = true;
                             }
                         }
@@ -1278,7 +1283,8 @@ function targetFarthest(iter) {
                         tLogic = targetLogic(bat,iter);
                         if (tLogic > bestLogic) {
                             bestLogic = tLogic;
-                            targetBat = JSON.parse(JSON.stringify(bat));
+                            // targetBat = JSON.parse(JSON.stringify(bat));
+                            lockTargetBat(bat);
                             inPlace = true;
                         }
                     }
@@ -1296,7 +1302,8 @@ function targetFarthest(iter) {
                         tLogic = targetLogic(bat,iter);
                         if (tLogic > bestLogic) {
                             bestLogic = tLogic;
-                            targetBat = JSON.parse(JSON.stringify(bat));
+                            // targetBat = JSON.parse(JSON.stringify(bat));
+                            lockTargetBat(bat);
                             inPlace = true;
                         }
                     }
@@ -1327,7 +1334,8 @@ function targetClosest(iter) {
                         tLogic = targetLogic(bat,iter);
                         if (tLogic > bestLogic) {
                             bestLogic = tLogic;
-                            targetBat = JSON.parse(JSON.stringify(bat));
+                            // targetBat = JSON.parse(JSON.stringify(bat));
+                            lockTargetBat(bat);
                             inPlace = true;
                         }
                     }
@@ -1345,7 +1353,8 @@ function targetClosest(iter) {
                         tLogic = targetLogic(bat,iter);
                         if (tLogic > bestLogic) {
                             bestLogic = tLogic;
-                            targetBat = JSON.parse(JSON.stringify(bat));
+                            // targetBat = JSON.parse(JSON.stringify(bat));
+                            lockTargetBat(bat);
                             inPlace = true;
                         }
                     }

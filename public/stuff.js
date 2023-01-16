@@ -541,6 +541,23 @@ function blockMe(stop) {
     }
 };
 
+function blockThem(stop) {
+    if (stop) {
+        stopThem = true;
+        // $('#affw').removeClass('boutonMauve');
+        // $('#ana').removeClass('boutonMauve');
+        // $('#affw').addClass('boutonGrey');
+        // $('#ana').addClass('boutonGrey');
+    } else {
+        stopThem = false;
+        // $('#affw').removeClass('boutonGrey');
+        // $('#ana').removeClass('boutonGrey');
+        // $('#affw').addClass('boutonMauve');
+        // $('#ana').addClass('boutonMauve');
+    }
+    commandes();
+};
+
 function washReports(warningsAlso) {
     if (warningsAlso) {
         $('#warnings').empty();

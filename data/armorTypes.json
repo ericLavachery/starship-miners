@@ -91,7 +91,7 @@
         "compReq":{"ca":2,"med":1},
         "costs":{"Drogues":1,"Végétaux":1,"Or":1,"Mendium":5},
         "units":"inf",
-        "popIn":["Hôpital","Pharmacie","Clinique"],
+        "popIn":["Hôpital","Pharmacie","Clinique","Centre de recherches","Laboratoire"],
         "rarity":4,
         "icon":"ra ra-heart-bottle rpg",
         "info":"Régénération"
@@ -105,8 +105,8 @@
         "compReq":{"med":1},
         "costs":{"Drogues":2,"Hélium":2,"Bore":2,"Octiron":12},
         "units":"inf-veh",
-        "popIn":["Hôpital","Pharmacie","Clinique"],
-        "rarity":3,
+        "popIn":["Hôpital","Pharmacie","Clinique","Centre de recherches","Laboratoire"],
+        "rarity":2,
         "icon":"fas fa-cannabis",
         "info":"+4 PA / protection poisons et maladies / réduit le stress"
     },
@@ -145,7 +145,7 @@
         "bldReq":["Bar"],
         "bldVMReq":["Centre de recherches"],
         "compReq":{"ca":3,"exo":3},
-        "costs":{"Drogues":3,"Mercure":2,"Hélium":3,"Bore":6,"Wingium":9},
+        "costs":{"Drogues":3,"Mercure":2,"Hélium":3,"Bore":6,"Wingium":6,"Plastanium":3},
         "units":"inf",
         "popIn":["Centre de recherches","Laboratoire","Bar"],
         "rarity":1,

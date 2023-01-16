@@ -293,90 +293,8 @@ function attack(melee,init) {
     let inWater = inWaterAdj(selectedWeap,targetBat,targetBatType,wetness);
     selectedWeap.power = inWater.power;
     selectedWeap.aoe = inWater.aoe;
-    // if (wetness >= 1) {
-    //     if (selectedWeap.ammo.includes('feu') || selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('napalm') || selectedWeap.ammo.includes('fire') || selectedWeap.ammo.includes('lf-') || selectedWeap.ammo.includes('lt-') || selectedWeap.ammo.includes('molotov')) {
-    //         if (!selectedWeap.ammo.includes('pyratol') && !selectedWeap.ammo.includes('hellfire')) {
-    //             if (selectedWeap.ammo.includes('incendiaire') || selectedWeap.ammo.includes('fireshells')) {
-    //                 selectedWeap.power = Math.round(selectedWeap.power*0.9);
-    //             } else {
-    //                 selectedWeap.power = Math.round(selectedWeap.power*0.8);
-    //             }
-    //             if (wetness >= 2) {
-    //                 if (selectedWeap.aoe === 'brochette') {
-    //                     selectedWeap.aoe = 'unit';
-    //                 } else if (selectedWeap.aoe === 'squad') {
-    //                     selectedWeap.aoe = 'brochette';
-    //                 } else if (selectedWeap.aoe === 'bat') {
-    //                     selectedWeap.aoe = 'squad';
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     if (selectedWeap.ammo.includes('laser') || selectedWeap.ammo.includes('gaz')) {
-    //         if (wetness >= 3) {
-    //             selectedWeap.power = Math.round(selectedWeap.power*0.8);
-    //         }
-    //     }
-    //     if (!targetBatType.skills.includes('resistelec') && !targetBat.tags.includes('resistelec') && (!targetBatType.skills.includes('hover') || targetBatType.cat === 'aliens')) {
-    //         if (selectedWeap.ammo.includes('taser') || selectedWeap.ammo.includes('electric') || selectedWeap.ammo.includes('marquage-stop')) {
-    //             if (wetness >= 2) {
-    //                 selectedWeap.power = Math.round(selectedWeap.power*1.35);
-    //                 if (selectedWeap.aoe === 'unit') {
-    //                     selectedWeap.aoe = 'brochette';
-    //                 } else if (selectedWeap.aoe === 'brochette') {
-    //                     selectedWeap.aoe = 'squad';
-    //                 } else {
-    //                     selectedWeap.aoe = 'bat';
-    //                 }
-    //             } else if (wetness === 1 && targetBatType.cat === 'aliens') {
-    //                 selectedWeap.power = Math.round(selectedWeap.power*1.2);
-    //             }
-    //             if (selectedWeap.ammo.includes('marquage-stop')) {
-    //                 selectedWeap.power = selectedWeap.power+2;
-    //             }
-    //         }
-    //     }
-    //     if (selectedWeap.ammo.includes('plastanium')) {
-    //         if (wetness >= 2) {
-    //             if (selectedWeap.aoe === 'unit') {
-    //                 selectedWeap.aoe = 'brochette';
-    //             } else if (selectedWeap.aoe === 'brochette') {
-    //                 selectedWeap.aoe = 'squad';
-    //             } else {
-    //                 selectedWeap.aoe = 'bat';
-    //             }
-    //         }
-    //         selectedWeap.power = Math.round(selectedWeap.power*(1+(wetness/3)));
-    //     }
-    // }
     // AOE Shots
     let aoeShots = getAOEshots(selectedWeap,targetBat,targetBatType);
-    // let aoeShots = 1;
-    // if (selectedWeap.aoe == "bat") {
-    //     if (targetBatType.squads === 6 && targetBatType.squadSize === 1 && !selectedWeap.ammo.includes('gaz')) {
-    //         aoeShots = 12;
-    //     } else {
-    //         aoeShots = targetBatType.squadSize*targetBat.squadsLeft;
-    //     }
-    //     if (aoeShots < 9) {
-    //         aoeShots = 9;
-    //     }
-    // } else if (selectedWeap.aoe != "unit") {
-    //     if (targetBatType.squads === 6 && targetBatType.squadSize === 1) {
-    //         aoeShots = 6;
-    //     } else {
-    //         aoeShots = targetBatType.squadSize;
-    //     }
-    //     if (selectedWeap.aoe == "squad") {
-    //         if (aoeShots < 4) {
-    //             aoeShots = 4;
-    //         }
-    //     } else if (selectedWeap.aoe == "brochette") {
-    //         if (aoeShots < 2) {
-    //             aoeShots = 2;
-    //         }
-    //     }
-    // }
     // bigDef for Traps
     if (selectedWeap.bigDef && targetBatType.size >= 4) {
         if (selectedBatType.cat === 'devices' || selectedBatType.cat === 'buildings') {
@@ -1454,6 +1372,9 @@ function attack(melee,init) {
         }
         seveso(delugeTileId,fromMissile);
     }
+    setTimeout(function (){
+        blockThem(false);
+    }, 1500);
 };
 
 function defense(melee,init) {
@@ -1476,89 +1397,7 @@ function defense(melee,init) {
     let inWater = inWaterAdj(targetWeap,selectedBat,selectedBatType,wetness);
     targetWeap.power = inWater.power;
     targetWeap.aoe = inWater.aoe;
-    // if (wetness >= 1) {
-    //     if (targetWeap.ammo.includes('feu') || targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('napalm') || targetWeap.ammo.includes('fire') || targetWeap.ammo.includes('lf-') || targetWeap.ammo.includes('lt-') || targetWeap.ammo.includes('molotov')) {
-    //         if (!targetWeap.ammo.includes('pyratol') && !targetWeap.ammo.includes('hellfire')) {
-    //             if (targetWeap.ammo.includes('incendiaire') || targetWeap.ammo.includes('fireshells')) {
-    //                 targetWeap.power = Math.round(targetWeap.power*0.9);
-    //             } else {
-    //                 targetWeap.power = Math.round(targetWeap.power*0.8);
-    //             }
-    //             if (wetness >= 2) {
-    //                 if (targetWeap.aoe === 'brochette') {
-    //                     targetWeap.aoe = 'unit';
-    //                 } else if (targetWeap.aoe === 'squad') {
-    //                     targetWeap.aoe = 'brochette';
-    //                 } else if (targetWeap.aoe === 'bat') {
-    //                     targetWeap.aoe = 'squad';
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     if (targetWeap.ammo.includes('laser') || targetWeap.ammo.includes('gaz')) {
-    //         if (wetness >= 3) {
-    //             targetWeap.power = Math.round(targetWeap.power*0.8);
-    //         }
-    //     }
-    //     if (!selectedBatType.skills.includes('resistelec') && !selectedBat.tags.includes('resistelec') && (!selectedBatType.skills.includes('hover') || selectedBatType.cat === 'aliens')) {
-    //         if (targetWeap.ammo.includes('taser') || targetWeap.ammo.includes('electric') || targetWeap.ammo.includes('marquage-stop')) {
-    //             if (wetness >= 2) {
-    //                 targetWeap.power = Math.round(targetWeap.power*1.35);
-    //                 if (targetWeap.aoe === 'unit') {
-    //                     targetWeap.aoe = 'brochette';
-    //                 } else if (targetWeap.aoe === 'brochette') {
-    //                     targetWeap.aoe = 'squad';
-    //                 } else {
-    //                     targetWeap.aoe = 'bat';
-    //                 }
-    //             } else if (wetness === 1 && selectedBatType.cat === 'aliens') {
-    //                 targetWeap.power = Math.round(targetWeap.power*1.2);
-    //             }
-    //             if (targetWeap.ammo.includes('marquage-stop')) {
-    //                 targetWeap.power = targetWeap.power+2;
-    //             }
-    //         }
-    //     }
-    //     if (targetWeap.ammo.includes('plastanium')) {
-    //         if (wetness >= 2) {
-    //             if (targetWeap.aoe === 'unit') {
-    //                 targetWeap.aoe = 'brochette';
-    //             } else if (targetWeap.aoe === 'brochette') {
-    //                 targetWeap.aoe = 'squad';
-    //             } else {
-    //                 targetWeap.aoe = 'bat';
-    //             }
-    //         }
-    //         targetWeap.power = Math.round(targetWeap.power*(1+(wetness/3)));
-    //     }
-    // }
     let aoeShots = getAOEshots(targetWeap,selectedBat,selectedBatType);
-    // let aoeShots = 1;
-    // if (targetWeap.aoe == "bat") {
-    //     if (selectedBatType.squads === 6 && selectedBatType.squadSize === 1 && !targetWeap.ammo.includes('gaz')) {
-    //         aoeShots = 12;
-    //     } else {
-    //         aoeShots = selectedBatType.squadSize*selectedBat.squadsLeft;
-    //     }
-    //     if (aoeShots < 9) {
-    //         aoeShots = 9;
-    //     }
-    // } else if (targetWeap.aoe != "unit") {
-    //     if (selectedBatType.squads === 6 && selectedBatType.squadSize === 1) {
-    //         aoeShots = 6;
-    //     } else {
-    //         aoeShots = selectedBatType.squadSize;
-    //     }
-    //     if (targetWeap.aoe == "squad") {
-    //         if (aoeShots < 4) {
-    //             aoeShots = 4;
-    //         }
-    //     } else if (targetWeap.aoe == "brochette") {
-    //         if (aoeShots < 2) {
-    //             aoeShots = 2;
-    //         }
-    //     }
-    // }
     // BRIDAGE DEFENSE
     let brideDef = 0.75;
     let isGuet = false;
@@ -2329,4 +2168,7 @@ function defense(melee,init) {
         }
         seveso(delugeTileId,fromMissile);
     }
+    setTimeout(function (){
+        blockThem(false);
+    }, 1500);
 };

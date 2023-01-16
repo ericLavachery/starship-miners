@@ -246,6 +246,84 @@ function redrawTile(tileId,drawSelectedBat) {
     }
 };
 
+function getRuinsPic(ruinType) {
+    let ruinPic = 'ruins1';
+    let ruinSize = ruinType.checks.length;
+    if (ruinType.name === 'Bidonvilles') {
+        ruinPic = 'ruins2';
+    } else if (ruinType.name === 'Habitations') {
+        ruinPic = 'ruins2';
+    } else if (ruinType.name === 'Villas') {
+        ruinPic = 'ruins6';
+    } else if (ruinType.name === 'Ecole') {
+        ruinPic = 'ruins6';
+    } else if (ruinType.name === 'Pharmacie') {
+        ruinPic = 'ruins9';
+    } else if (ruinType.name === 'Bar') {
+        ruinPic = 'ruins9';
+    } else if (ruinType.name === 'Centre commercial') {
+        ruinPic = 'ruins3';
+    } else if (ruinType.name === 'Garage') {
+        ruinPic = 'ruins9';
+    } else if (ruinType.name === 'Station service') {
+        ruinPic = 'ruins4';
+    } else if (ruinType.name === 'Dépot') {
+        ruinPic = 'ruins1';
+    } else if (ruinType.name === 'Chantier') {
+        ruinPic = 'ruins0';
+    } else if (ruinType.name === 'Atelier') {
+        ruinPic = 'ruins9';
+    } else if (ruinType.name === 'Usine') {
+        ruinPic = 'ruins0';
+    } else if (ruinType.name === 'Poste de police') {
+        ruinPic = 'ruins5';
+    } else if (ruinType.name === 'Armurerie') {
+        ruinPic = 'ruins9';
+    } else if (ruinType.name === 'Prison') {
+        ruinPic = 'ruins0';
+    } else if (ruinType.name === 'Mine') {
+        ruinPic = 'ruins7';
+    } else if (ruinType.name === 'Caserne') {
+        ruinPic = 'ruins8';
+    } else if (ruinType.name === 'Clinique') {
+        ruinPic = 'ruins1';
+    } else if (ruinType.name === 'Hôpital') {
+        ruinPic = 'ruins3';
+    } else if (ruinType.name === 'Université') {
+        ruinPic = 'ruins8';
+    } else if (ruinType.name === 'Laboratoire') {
+        ruinPic = 'ruins1';
+    } else if (ruinType.name === 'Centre de recherches') {
+        ruinPic = 'ruins3';
+    } else if (ruinType.name === 'Bibliothèque') {
+        ruinPic = 'ruins6';
+    } else if (ruinType.name === 'Médiathèque') {
+        ruinPic = 'ruins6';
+    } else if (ruinType.name === 'Centrale électrique') {
+        ruinPic = 'ruins0';
+    } else if (ruinType.name === 'Aéroport') {
+        ruinPic = 'ruins3';
+    } else if (ruinType.name === 'Port') {
+        ruinPic = 'ruins0';
+    } else if (ruinType.name === 'Centre de tri') {
+        ruinPic = 'ruins1';
+    } else {
+        if (ruinSize <= 1) {
+            ruinPic = 'ruins4';
+        } else if (ruinSize === 2) {
+            ruinPic = 'ruins5';
+        } else if (ruinSize === 3) {
+            ruinPic = 'ruins1';
+        } else if (ruinSize === 4) {
+            ruinPic = 'ruins6';
+        } else if (ruinSize >= 5) {
+            ruinPic = 'ruins2';
+        }
+    }
+
+    return ruinPic;
+};
+
 function showRes(tileId) {
     let tile = zone[tileId];
     let mapIndicators = '';
@@ -258,16 +336,20 @@ function showRes(tileId) {
     }
     let tileText = '';
     if (tile.ruins) {
-        let ruinType = 'Ruines';
+        let ruinType = {};
+        ruinType.name = 'Ruines';
+        ruinType.checks = ['any','any'];
+        ruinType.scrap = 250;
         if (tile.rt != undefined) {
-            ruinType = tile.rt.name;
+            ruinType = tile.rt;
         }
+        let ruinPic = getRuinsPic(ruinType);
         if (tile.sh === -1) {
-            mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType+'"><img src="/static/img/units/ruinsf.png"></div>';
+            mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType.name+'"><img style="opacity:0.9;" src="/static/img/units/ruins/'+ruinPic+'f.png"></div>';
         } else {
-            mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType+'"><img src="/static/img/units/ruins.png"></div>';
+            mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType.name+'"><img style="opacity:0.9;" src="/static/img/units/ruins/'+ruinPic+'.png"></div>';
         }
-        tileText = tileText+'&timesb; '+ruinType+' ';
+        tileText = tileText+'&timesb; '+ruinType.name+' ';
     }
     if (tile.tileName !== undefined && tile.tileName != '') {
         tileText = tileText+'('+tile.tileName+')&nbsp;&nbsp;&nbsp; ';
@@ -281,9 +363,15 @@ function showRes(tileId) {
         } else if (tile.ap.includes('lame-')) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aplame.png"></div>';
             tileText = tileText+'(Lames:&nbsp; '+tile.ap+')';
-        } else if (tile.ap === 'drg_sudu' || tile.ap === 'drg_nitro' || tile.ap === 'drg_meca') {
+        } else if (tile.ap === 'drg_sudu' || tile.ap === 'drg_nitro') {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apnitro.png"></div>';
+            tileText = tileText+'(Tuning:&nbsp; '+tile.ap.replace('drg_','')+')';
+        } else if (tile.ap === 'drg_meca') {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apmeca.png"></div>';
             tileText = tileText+'(Tuning:&nbsp; '+tile.ap.replace('drg_','')+')';
+        } else if (tile.ap === 'drg_starka' || tile.ap === 'drg_kirin' || tile.ap === 'drg_octiron') {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apmed.png"></div>';
+            tileText = tileText+'(Drogues:&nbsp; '+tile.ap.replace('drg_','')+')';
         } else if (tile.ap.includes('drg_')) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apdrug.png"></div>';
             tileText = tileText+'(Drogues:&nbsp; '+tile.ap.replace('drg_','')+')';
@@ -333,25 +421,25 @@ function showRes(tileId) {
         mapIndicators = mapIndicators+'</div>';
     }
     if (tile.infra === 'Miradors' && view) {
-        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/mirador.png"></div>';
+        mapIndicators = mapIndicators+'<div class="infraz"><img src="/static/img/units/mirador.png"></div>';
     }
     if (tile.infra === 'Palissades' && view) {
-        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/palissade.png"></div>';
+        mapIndicators = mapIndicators+'<div class="infraz"><img src="/static/img/units/palissade.png"></div>';
     }
     if (tile.infra === 'Remparts' && view) {
-        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/rempart.png"></div>';
+        mapIndicators = mapIndicators+'<div class="infraz"><img src="/static/img/units/rempart.png"></div>';
     }
     if (tile.infra === 'Murailles' && view) {
-        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/muraille.png"></div>';
+        mapIndicators = mapIndicators+'<div class="infraz"><img src="/static/img/units/muraille.png"></div>';
     }
     if (tile.infra === 'Terriers' && view) {
-        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/terrier.png"></div>';
+        mapIndicators = mapIndicators+'<div class="infraz"><img src="/static/img/units/terrier.png"></div>';
     }
     if (tile.infra === 'Débris' && view) {
-        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/debris.png"></div>';
+        mapIndicators = mapIndicators+'<div class="ruins"><img style="opacity:0.9;" src="/static/img/units/debris.png"></div>';
     }
     if (tile.infra === 'Crystal') {
-        mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/crystal.png"></div>';
+        mapIndicators = mapIndicators+'<div class="infraz"><img src="/static/img/units/crystal.png"></div>';
     }
     if (tile.web && view) {
         let webNum = tile.seed;

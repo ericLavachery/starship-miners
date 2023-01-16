@@ -848,6 +848,12 @@ function goDrug(apCost,drugName) {
 function drugInstantBonus(drug,fromPack) {
     // blaze instant bonus
     if (drug.name === 'blaze') {
+        if (fromPack) {
+            if (selectedBat.apLeft < 0) {
+                selectedBat.apLeft = Math.round(selectedBat.apLeft/6);
+            }
+            selectedBat.apLeft = selectedBat.apLeft+6;
+        }
         selectedBat.apLeft = selectedBat.apLeft+6;
         selectedBat.salvoLeft = selectedBat.salvoLeft+1;
         console.log('blaze bonus');
@@ -876,28 +882,34 @@ function drugInstantBonus(drug,fromPack) {
     // starka instant bonus
     if (drug.name === 'starka') {
         if (fromPack) {
-            selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap+3;
+            selectedBat.apLeft = Math.ceil(selectedBat.apLeft/3)+Math.ceil(selectedBat.ap*1.5);
         } else {
             selectedBat.apLeft = selectedBat.apLeft+getStarkaBonus(selectedBat);
         }
         console.log('starka bonus');
     }
     // kirin instant bonus
-    if (drug.name === 'kirin' && playerInfos.comp.med >= 2) {
-        selectedBat.damage = 0;
-        if (playerInfos.comp.med >= 3 || fromPack) {
-            let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
-            if (lostSquads >= 2) {
-                selectedBat.squadsLeft = selectedBat.squadsLeft+2;
-            } else if (lostSquads === 1) {
-                selectedBat.squadsLeft = selectedBat.squadsLeft+1;
+    if (drug.name === 'kirin') {
+        if (playerInfos.comp.med >= 2 || fromPack) {
+            selectedBat.damage = 0;
+            if (playerInfos.comp.med >= 3 || fromPack) {
+                let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
+                if (lostSquads >= 2) {
+                    selectedBat.squadsLeft = selectedBat.squadsLeft+2;
+                } else if (lostSquads === 1) {
+                    selectedBat.squadsLeft = selectedBat.squadsLeft+1;
+                }
             }
         }
         console.log('kirin bonus med');
     }
     // nitro instant bonus
     if (drug.name === 'nitro') {
-        selectedBat.apLeft = selectedBat.apLeft+getNitroBonus(selectedBat);
+        if (fromPack) {
+            selectedBat.apLeft = Math.ceil(selectedBat.apLeft/3)+Math.ceil(selectedBat.ap*1.5);
+        } else {
+            selectedBat.apLeft = selectedBat.apLeft+getNitroBonus(selectedBat);
+        }
         console.log('nitro bonus');
     }
     // repair kit
