@@ -569,6 +569,7 @@ function clickEdit(tileId) {
                 delete tile.sh;
                 delete tile.rd;
                 delete tile.rt;
+                removeScrapFromRuins(tile);
             }
         } else if (mped.sinf === 'Ruines') {
             if (!tile.ruins) {
@@ -585,6 +586,7 @@ function clickEdit(tileId) {
                 delete tile.sh;
                 delete tile.rd;
                 delete tile.rt;
+                removeScrapFromRuins(tile);
             }
         } else if (mped.sinf === 'Route') {
             if (!tile.rd) {
@@ -840,6 +842,18 @@ function addScrapToRuins(tile) {
     } else {
         if (tile.rs['Scrap'] === undefined) {
             tile.rs['Scrap'] = sq;
+        }
+    }
+};
+
+function removeScrapFromRuins(tile) {
+    if (tile.rq != undefined) {
+        if (tile.rs['Scrap'] != undefined) {
+            delete tile.rs['Scrap'];
+            if (Object.keys(tile.rs).length < 1) {
+                delete tile.rs;
+                delete tile.rq;
+            }
         }
     }
 };

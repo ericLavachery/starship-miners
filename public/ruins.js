@@ -826,7 +826,7 @@ function checkRuinType(tile,quiet,dice1,dice2) {
                 break;
                 case 6:
                 ruinType.name = 'Habitations';
-                ruinType.checks = ['food'];
+                ruinType.checks = ['food','food'];
                 ruinType.scrap = 200;
                 // cit x0.9
                 break;

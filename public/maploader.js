@@ -250,9 +250,11 @@ function getRuinsPic(ruinType) {
     let ruinPic = 'ruins1';
     let ruinSize = ruinType.checks.length;
     if (ruinType.name === 'Bidonvilles') {
+        ruinPic = 'ruins12';
+    } else if (ruinType.name === 'Habitations' && ruinSize >= 2) {
         ruinPic = 'ruins2';
     } else if (ruinType.name === 'Habitations') {
-        ruinPic = 'ruins2';
+        ruinPic = 'ruins11';
     } else if (ruinType.name === 'Villas') {
         ruinPic = 'ruins6';
     } else if (ruinType.name === 'Ecole') {
@@ -268,7 +270,7 @@ function getRuinsPic(ruinType) {
     } else if (ruinType.name === 'Station service') {
         ruinPic = 'ruins4';
     } else if (ruinType.name === 'Dépot') {
-        ruinPic = 'ruins1';
+        ruinPic = 'ruins10';
     } else if (ruinType.name === 'Chantier') {
         ruinPic = 'ruins0';
     } else if (ruinType.name === 'Atelier') {
@@ -302,11 +304,11 @@ function getRuinsPic(ruinType) {
     } else if (ruinType.name === 'Centrale électrique') {
         ruinPic = 'ruins0';
     } else if (ruinType.name === 'Aéroport') {
-        ruinPic = 'ruins3';
+        ruinPic = 'ruins13';
     } else if (ruinType.name === 'Port') {
         ruinPic = 'ruins0';
     } else if (ruinType.name === 'Centre de tri') {
-        ruinPic = 'ruins1';
+        ruinPic = 'ruins12';
     } else {
         if (ruinSize <= 1) {
             ruinPic = 'ruins4';
