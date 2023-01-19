@@ -1120,6 +1120,28 @@
         "inRuin":2
     },
     {
+        "id":305,
+        "name":"Conscrits",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":[],
+        "compReq":{},
+        "costs":{},
+        "deploy":{},
+        "fabTime":15,
+        "inRuin":2
+    },
+    {
+        "id":306,
+        "name":"Troupiers",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":[],
+        "compReq":{},
+        "costs":{},
+        "deploy":{},
+        "fabTime":25,
+        "inRuin":2
+    },
+    {
         "id":263,
         "name":"Retranchement",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},

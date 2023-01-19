@@ -78,21 +78,30 @@ function mapEditWindow() {
     selectStuff('Lander','lander','Point d\'atterrissage lander (ou navette)');
     selectStuff('Navette','navette','Point d\'atterrissage navette seulemment');
     // End
-    $('#conUnitList').append('<br><br>');
+    $('#conUnitList').append('<br><span id="melists"></span><br>');
     if (mped.sinf === 'RareRes' || mped.sinf === 'Res') {
         mapResAddList();
+        if (Object.keys(theTileRes).length < 1) {
+            window.location.hash = '#melists';
+        }
         $('#conUnitList').append('<br><br>');
     } else {
         theTileRes = {};
     }
     if (mped.sinf === 'BatRes') {
         batResAddList();
+        if (Object.keys(theBatRes).length < 1) {
+            window.location.hash = '#melists';
+        }
         $('#conUnitList').append('<br><br>');
     } else {
         theBatRes = {};
     }
     if (mped.sinf === 'AmmoPack') {
         mapPackAddList();
+        if (theTilePacks === 'tungsten') {
+            window.location.hash = '#melists';
+        }
         $('#conUnitList').append('<br><br>');
     } else {
         theTilePacks = 'tungsten';

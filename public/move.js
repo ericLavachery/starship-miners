@@ -686,7 +686,7 @@ function terrainAccess(batId,targetTileId) {
         if (batMaxFlood >= terFlood && batMaxScarp >= terScarp && batMaxVeg >= terVeg) {
             access = true;
         }
-        if (bat.eq === 'snorkel' || bat.logeq === 'snorkel' || bat.eq === 'carkit') {
+        if (bat.eq === 'snorkel' || bat.logeq === 'snorkel' || bat.eq === 'carkit' || bat.eq === 'waterproof' || bat.logeq === 'waterproof') {
             if (terFlood >= 2) {
                 access = true;
             }

@@ -2439,6 +2439,11 @@ function weaponAdj(weapon,bat,wn) {
         if (!thisWeapon.isMelee && ((!thisWeapon.isShort && thisWeapon.range >= 1) || thisWeapon.range >= 2 || (thisWeapon.elevation >= 1 && thisWeapon.range >= 1))) {
             thisWeapon.range = thisWeapon.range+1;
         }
+        if (thisWeapon.name === 'Grenade' || thisWeapon.name === 'Molotov' || thisWeapon.name === 'Dynamite') {
+            if (thisWeapon.range === 0 && thisWeapon.elevation === 0) {
+                thisWeapon.range = 1;
+            }
+        }
         if (infra === 'Miradors' && thisWeapon.elevation >= 2 && thisWeapon.ammo.includes('salite')) {
             thisWeapon.range = thisWeapon.range+1;
         }

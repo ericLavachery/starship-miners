@@ -705,21 +705,25 @@ function batInfos(bat,batType,pop) {
             if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || (batType.skills.includes('recupcorps') && okKill) || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
                 if (batType.skills.includes('recupcit')) {
                     if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
-                        if (batType.skills.includes('brigands')) {
+                        if (batType.skills.includes('nocrime')) {
+                            demText = '(récupérer les citoyens et les ressources)';
+                        } else if (batType.skills.includes('brigands')) {
                             demText = '(récupérer les criminels et les ressources)';
-                        } else if (bat.tags.includes('outsider') && !batType.skills.includes('nocrime')) {
+                        } else if (bat.tags.includes('outsider')) {
                             demText = '(récupérer les citoyens ou criminels (50%) et les ressources)';
-                        } else if (batType.cat === 'vehicles' && !batType.skills.includes('nocrime')) {
+                        } else if (batType.cat === 'vehicles') {
                             demText = '(récupérer les citoyens ou criminels (20%) et les ressources)';
                         } else {
                             demText = '(récupérer les citoyens et les ressources)';
                         }
                     } else {
-                        if (batType.skills.includes('brigands')) {
+                        if (batType.skills.includes('nocrime')) {
+                            demText = '(récupérer les citoyens)';
+                        } else if (batType.skills.includes('brigands')) {
                             demText = '(récupérer les criminels)';
-                        } else if (bat.tags.includes('outsider') && !batType.skills.includes('nocrime')) {
+                        } else if (bat.tags.includes('outsider')) {
                             demText = '(récupérer les criminels (50%) ou citoyens)';
-                        } else if (batType.cat === 'vehicles' && !batType.skills.includes('nocrime')) {
+                        } else if (batType.cat === 'vehicles') {
                             demText = '(récupérer les criminels (20%) ou citoyens)';
                         } else {
                             demText = '(récupérer les citoyens)';

@@ -1648,15 +1648,17 @@ function dismantle(batId) {
                 } else if (batType.name === 'Scroungers') {
                     recupAmazones(14,tileId,crew,xp,bat.ammo,bat.eq);
                 } else {
-                    if (batType.skills.includes('brigands')) {
+                    if (batType.skills.includes('nocrime')) {
+                        recupCitoyens(126,tileId,crew,xp);
+                    } else if (batType.skills.includes('brigands')) {
                         recupCitoyens(225,tileId,crew,xp);
-                    } else if (bat.tags.includes('outsider') && !batType.skills.includes('nocrime')) {
+                    } else if (bat.tags.includes('outsider')) {
                         if (rand.rand(1,perdition) === 1) {
                             recupCitoyens(225,tileId,crew,xp);
                         } else {
                             recupCitoyens(126,tileId,crew,xp);
                         }
-                    } else if (batType.cat === 'vehicles' && !batType.skills.includes('nocrime')) {
+                    } else if (batType.cat === 'vehicles') {
                         if (rand.rand(1,perdition+3) === 1) {
                             recupCitoyens(225,tileId,crew,xp);
                         } else {

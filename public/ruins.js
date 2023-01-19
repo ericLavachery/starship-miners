@@ -1110,11 +1110,21 @@ function checkRuinsPack(tile) {
             if (thePack === '') {
                 if (ammo.icon != undefined) {
                     if (ammo.icon >= minAmmoLevel) {
-                        if (ammo.icon <= maxAmmoLevel) {
+                        let ammoOK = false;
+                        if (ammo.name === 'freeze') {
+                            if (ruinType.name === 'Laboratoire' || ruinType.name === 'Centre de recherches') {
+                                ammoOK = true;
+                            }
+                        } else if (ammo.icon <= maxAmmoLevel) {
+                            ammoOK = true;
+                        }
+                        if (ammoOK) {
                             let chance = (zoneFactor+2-(ammo.icon*ammo.icon))*ruinSize;
                             chance = Math.ceil(chance);
                             let dice = 500;
-                            if (ammo.name.includes('lame-')) {
+                            if (ammo.name === 'freeze') {
+                                dice = 250;
+                            } else if (ammo.name.includes('lame-')) {
                                 dice = 2000;
                             } else if (ammo.name.includes('-')) {
                                 dice = 1500;

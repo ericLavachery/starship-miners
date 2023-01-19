@@ -202,11 +202,15 @@ function skillsInfos(bat,batType,near) {
         if (apReq < apReqGuet) {
             apReq = apReqGuet;
         }
+        if (playerInfos.pseudo === 'Mapedit') {
+            apCost = 0;
+            apReq = 0;
+        }
         let bouton = 'boutonBrun';
         if (bat.tags.includes('mining')) {
             bouton = 'boutonGris';
         }
-        if ((bat.apLeft >= apReq || bat.apLeft >= bat.ap-2) && !bat.tags.includes('fortif') && !inMelee) {
+        if ((bat.apLeft >= apReq || bat.apLeft >= bat.ap-2) && !bat.tags.includes('fortif') && (!inMelee || playerInfos.pseudo === 'Mapedit')) {
             $('#unitInfos').append('<button type="button" title="Se fortifier ('+apReq+' PA requis)" class="'+bouton+' iconButtons" onclick="fortification('+apCost+')"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
         } else {

@@ -310,17 +310,7 @@ function getRuinsPic(ruinType) {
     } else if (ruinType.name === 'Centre de tri') {
         ruinPic = 'ruins12';
     } else {
-        if (ruinSize <= 1) {
-            ruinPic = 'ruins4';
-        } else if (ruinSize === 2) {
-            ruinPic = 'ruins5';
-        } else if (ruinSize === 3) {
-            ruinPic = 'ruins1';
-        } else if (ruinSize === 4) {
-            ruinPic = 'ruins6';
-        } else if (ruinSize >= 5) {
-            ruinPic = 'ruins2';
-        }
+        ruinPic = 'ruins12';
     }
 
     return ruinPic;
@@ -337,9 +327,13 @@ function showRes(tileId) {
         }
     }
     let tileText = '';
+    if (tile.tileName !== undefined && tile.tileName != '') {
+        let showTileName = tile.tileName.toUpperCase();
+        tileText = tileText+showTileName+'&nbsp;&nbsp;&nbsp; ';
+    }
     if (tile.ruins) {
         let ruinType = {};
-        ruinType.name = 'Ruines';
+        ruinType.name = '?';
         ruinType.checks = ['any','any'];
         ruinType.scrap = 250;
         if (tile.rt != undefined) {
@@ -351,12 +345,7 @@ function showRes(tileId) {
         } else {
             mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType.name+'"><img style="opacity:0.9;" src="/static/img/units/ruins/'+ruinPic+'.png"></div>';
         }
-        tileText = tileText+'&timesb; '+ruinType.name+' ';
-    }
-    if (tile.tileName !== undefined && tile.tileName != '') {
-        tileText = tileText+'('+tile.tileName+')&nbsp;&nbsp;&nbsp; ';
-    } else {
-        tileText = tileText+'&nbsp;&nbsp;&nbsp; ';
+        tileText = tileText+'&timesb; Ruines ('+ruinType.name+')&nbsp;&nbsp;&nbsp; ';
     }
     if (tile.ap != undefined) {
         if (tile.ap.includes('grenade') || tile.ap.includes('dynamite') || tile.ap.includes('molotov')) {
@@ -438,7 +427,7 @@ function showRes(tileId) {
         mapIndicators = mapIndicators+'<div class="infraz"><img src="/static/img/units/terrier.png"></div>';
     }
     if (tile.infra === 'Débris' && view) {
-        mapIndicators = mapIndicators+'<div class="ruins"><img style="opacity:0.9;" src="/static/img/units/debris.png"></div>';
+        mapIndicators = mapIndicators+'<div class="ruins"><img style="opacity:0.8;" src="/static/img/units/debris.png"></div>';
     }
     if (tile.infra === 'Crystal') {
         mapIndicators = mapIndicators+'<div class="infraz"><img src="/static/img/units/crystal.png"></div>';
