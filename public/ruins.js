@@ -8,43 +8,62 @@ function putThisBat(unitId,ammo1,ammo2,armorName,equipName,tileId,citoyens,xp,st
     playerOccupiedTiles.push(tileId);
 };
 
-function searchRuins(apCost) {
-    let tile = getTile(selectedBat);
+function searchRuins(apCost,tileId) {
+    let tile = {};
+    let auto = false;
+    if (tileId >= 0) {
+        tile = getTileById(tileId);
+        auto = true;
+    } else {
+        tile = getTile(selectedBat);
+        auto = false;
+    }
     let ruinType = checkRuinType(tile,false);
     if (tile.ruins && tile.sh >= 1) {
         console.log('RUINS');
-        selectedBat.apLeft = selectedBat.apLeft-apCost;
+        if (!auto) {
+            selectedBat.apLeft = selectedBat.apLeft-apCost;
+        }
         checkRuinsCit(tile);
         checkRuinsRes(tile);
         checkRuinsPack(tile);
-        checkRuinsComp(tile);
+        if (!auto) {
+            checkRuinsComp(tile);
+        }
         if (zone[0].mapDiff >= 2) {
             checkRuinsUnit(tile);
         }
         if (!ruinsEmpty) {
             putRuinsCit(tile);
         }
-        checkRuinsAliens(tile);
-        if (selectedBat.tags.includes('fortif')) {
-            tagIndex = selectedBat.tags.indexOf('fortif');
-            selectedBat.tags.splice(tagIndex,1);
-        }
-        if (ruinsAlien) {
-            alienSounds(0);
-        } else if (!ruinsEmpty) {
-            fxSound('cheer1');
+        checkRuinsAliens(tile,auto);
+        if (!auto) {
+            if (selectedBat.tags.includes('fortif')) {
+                tagIndex = selectedBat.tags.indexOf('fortif');
+                selectedBat.tags.splice(tagIndex,1);
+            }
+            if (ruinsAlien) {
+                alienSounds(0);
+            } else if (!ruinsEmpty) {
+                fxSound('cheer1');
+            } else {
+                let nf = rand.rand(1,3);
+                fxSound('fouille'+nf);
+            }
         } else {
-            let nf = rand.rand(1,3);
-            fxSound('fouille'+nf);
+            clicSound(16);
+            warning('<span class="rq3">Alerte!</span>','<span class="vio">Les aliens ont fouillé une ruine!</span>',false,tileId);
         }
         tile.sh = -1;
         // saveMap();
-        selectedBat.xp = selectedBat.xp+1;
-        playerInfos.gangXP = playerInfos.gangXP+1;
-        tagDelete(selectedBat,'guet');
-        doneAction(selectedBat);
-        selectedBatArrayUpdate();
-        showBatInfos(selectedBat);
+        if (!auto) {
+            selectedBat.xp = selectedBat.xp+1;
+            playerInfos.gangXP = playerInfos.gangXP+1;
+            tagDelete(selectedBat,'guet');
+            doneAction(selectedBat);
+            selectedBatArrayUpdate();
+            showBatInfos(selectedBat);
+        }
         ruinsEmpty = true;
         ruinsAlien = false;
         coffreTileId = -1;
@@ -223,7 +242,7 @@ function putRuinsCit(tile) {
     playerOccupiedTileList();
 };
 
-function checkRuinsAliens(tile) {
+function checkRuinsAliens(tile,auto) {
     console.log('Check Aliens');
     let numRuins = tile.sh;
     if (numRuins > 50) {
@@ -277,7 +296,9 @@ function checkRuinsAliens(tile) {
             }
         }
         ruinsAlien = true;
-        selectedBat.apLeft = selectedBat.apLeft+selectedBat.ap;
+        if (!auto) {
+            selectedBat.apLeft = selectedBat.apLeft+Math.ceil(selectedBat.ap/1.5);
+        }
         alienOccupiedTileList();
     }
 };

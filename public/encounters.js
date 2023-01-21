@@ -196,7 +196,7 @@ function putBastionAliens(hard) {
 function madCitizens(hard) {
     console.log('CITOYENS ERRANTS');
     let centreTileId = checkEncounterTile();
-    warning('Citoyens errants en vue!','',false,encounterTileId);
+    warning('<span class="rq3">Citoyens errants en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         // CITOYENS
         let dropTile;
@@ -285,7 +285,7 @@ function madCitizens(hard) {
 function tooLate(hard) {
     console.log('TROP TARD');
     let centreTileId = checkEncounterTile();
-    warning('Restes d\'une base en vue!','',false,encounterTileId);
+    warning('<span class="rq3">Restes d\'une base en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         // Silo
         conselUnit = getBatTypeById(158);
@@ -316,7 +316,7 @@ function tooLate(hard) {
 function zoneIndustrielle(hard) {
     console.log('ZONE INDUSTRIELLE');
     let centreTileId = checkEncounterTile();
-    warning('Zone industrielle en vue!','',false,encounterTileId);
+    warning('<span class="rq3">Zone industrielle en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         putIndusUnits(centreTileId,hard);
         bastionRes(centreTileId);
@@ -623,7 +623,7 @@ function putIndusUnits(centreTileId,hard) {
 function campDeColons(hard) {
     console.log('CAMP DE COLONS');
     let centreTileId = checkEncounterTile();
-    warning('Camp de colons en vue!','',false,encounterTileId);
+    warning('<span class="rq3">Camp de colons en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         putColonUnits(centreTileId,hard);
         bastionRes(centreTileId);
@@ -800,7 +800,7 @@ function putColonUnits(centreTileId,hard) {
 function baseLabo(hard) {
     console.log('BASE DE RECHECRCHE');
     let centreTileId = checkEncounterTile();
-    warning('Base scientifique en vue!','',false,encounterTileId);
+    warning('<span class="rq3">Base scientifique en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         putLaboUnits(centreTileId,hard);
         bastionRes(centreTileId);
@@ -953,7 +953,7 @@ function putLaboUnits(centreTileId,hard) {
 function bastionDeBrigands(hard) {
     console.log('HORS LA LOI');
     let centreTileId = checkEncounterTile();
-    warning('Bastion de brigands en vue!','',false,encounterTileId);
+    warning('<span class="rq3">Bastion de brigands en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         putHLLUnits(centreTileId,hard);
         bastionRes(centreTileId);
@@ -1303,7 +1303,7 @@ function putHLLUnits(centreTileId,hard) {
 function baseDeResistants(hard) {
     console.log('BASTION DE RESISTANTS');
     let centreTileId = checkEncounterTile();
-    warning('Bastion de résistants en vue!','',false,encounterTileId);
+    warning('<span class="rq3">Bastion de résistants en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         putBastionUnits(centreTileId,hard);
         bastionRes(centreTileId);

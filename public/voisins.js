@@ -230,7 +230,7 @@ function lesVoisins() {
         putNeighbour(neiBatType);
     }
     if (lastNeiTileId >= 0) {
-        warning('Convoi de survivants en vue','Attirés par le bruit, des survivants sont venus à votre rencontre.',false,lastNeiTileId);
+        warning('<span class="rq3">Convoi de survivants en vue</span>','<span class="vio">Attirés par le bruit, des survivants sont venus à votre rencontre.</span>',false,lastNeiTileId);
         lastNeiTileId = -1;
     }
     neiRoad = [true,false];
@@ -600,4 +600,118 @@ function placeNeighbours(nearTileId,koTerrains) {
         });
     }
     return vTileId;
+};
+
+function checkCitCaves() {
+    console.log('---------------------------- checkCitCaves');
+    let hasCaves = true;
+    if (zone[0].edited != undefined) {
+        if (zone[0].edited) {
+            hasCaves = false;
+        }
+    }
+    if (zone[0].caves != undefined) {
+        if (zone[0].caves >= 3) {
+            hasCaves = false;
+        }
+    }
+    if (hasCaves) {
+        let fruitTiles = 0;
+        let ruinTiles = 0;
+        if (zone[0].nfru === undefined || zone[0].nruin === undefined) {
+            zone.forEach(function(tile) {
+                if (tile.rq != undefined) {
+                    if (Object.keys(tile.rs).length >= 1) {
+                        if (tile.rs['Fruits'] != undefined) {
+                            fruitTiles++;
+                        }
+                    }
+                }
+                if (tile.ruins) {
+                    ruinTiles++;
+                }
+            });
+            zone[0].nfru = fruitTiles;
+            zone[0].nruin = ruinTiles;
+        } else {
+            fruitTiles = zone[0].nfru;
+            ruinTiles = zone[0].nruin;
+        }
+        console.log(fruitTiles+' - '+ruinTiles);
+        let fmr = (fruitTiles*2)-ruinTiles+25;
+        if (fmr < 1) {fmr = 1;}
+        let chance = Math.ceil(Math.sqrt(fmr)/1.75);
+        console.log('chance '+chance);
+        if (playerInfos.mapTurn < 15) {
+            chance = chance-Math.ceil((15-playerInfos.mapTurn)/2);
+        }
+        // chance = 100;
+        if (chance >= 1 && fruitTiles >= 1) {
+            if (rand.rand(1,100) <= chance) {
+                playerOccupiedTileList();
+                alienOccupiedTileList();
+                let caveTileId = -1;
+                let shufZone = _.shuffle(zone);
+                shufZone.forEach(function(tile) {
+                    if (caveTileId < 0) {
+                        if (tile.rq != undefined) {
+                            if (Object.keys(tile.rs).length >= 1) {
+                                if (tile.rs['Fruits'] != undefined) {
+                                    if (!tile.ruins) {
+                                        if (tile.infra === undefined) {
+                                            if (tile.x < 15 || tile.x > 45 || tile.y < 15 || tile.y > 45) {
+                                                if (!playerOccupiedTiles.includes(tile.id)) {
+                                                    if (!alienOccupiedTiles.includes(tile.id)) {
+                                                        caveTileId = tile.id;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                if (caveTileId >= 0) {
+                    putCitCave(caveTileId);
+                }
+            }
+        }
+    }
+};
+
+function putCitCave(caveTileId) {
+    let tile = getTileById(caveTileId);
+    tile.infra = 'Terriers';
+    if (zone[0].caves === undefined) {
+        zone[0].caves = 1;
+    } else {
+        zone[0].caves = zone[0].caves+1;
+    }
+    if (rand.rand(1,3) === 1) {
+        warning('<span class="rq3">Survivants en vue!</span>','<span class="vio">Des survivants sont sortis de leur sous-terrain.</span>',false,caveTileId);
+        let citId = 287;
+        unitIndex = unitTypes.findIndex((obj => obj.id == citId));
+        conselUnit = unitTypes[unitIndex];
+        conselAmmos = ['standard','lame','scrap','aucun'];
+        conselPut = false;
+        conselTriche = true;
+        putBat(caveTileId,0,0,'',false,false);
+        playerOccupiedTiles.push(caveTileId);
+    } else {
+        warning('<span class="rq3">Citoyens en vue!</span>','<span class="vio">Des citoyens sont sortis de leur sous-terrain.</span>',false,caveTileId);
+        let citId = 126;
+        if (rand.rand(1,ruinsCrimChance) === 1) {
+            citId = 225;
+        }
+        let numCit = rand.rand(1,12)*6;
+        unitIndex = unitTypes.findIndex((obj => obj.id == citId));
+        conselUnit = unitTypes[unitIndex];
+        conselAmmos = ['lame-scrap','xxx','aucune','aucun'];
+        conselPut = false;
+        conselTriche = true;
+        putBat(caveTileId,numCit,0,'',false,false);
+        playerOccupiedTiles.push(caveTileId);
+    }
 };

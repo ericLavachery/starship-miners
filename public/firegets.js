@@ -1179,17 +1179,16 @@ function getStealth(bat) {
         batStealth = batStealth+5;
     }
     if (tile.infra === 'Terriers' && batType.size < 9 && batType.cat != 'aliens') {
-        batStealth = batStealth+5;
-    }
-    if (tile.ruins) {
         batStealth = batStealth+4;
+    } else if (tile.ruins) {
+        batStealth = batStealth+2;
     }
     if (batType.cat != 'aliens') {
         if (isOnInfra(bat)) {
             if (playerInfos.comp.cam >= 2) {
-                batStealth = batStealth+4;
-            } else {
-                batStealth = batStealth+2;
+                batStealth = batStealth+3;
+            } else if (playerInfos.comp.cam >= 1) {
+                batStealth = batStealth+1;
             }
         }
     }
@@ -1223,8 +1222,10 @@ function getStealth(bat) {
             terBonus = terBonus+terrain.cover;
         }
     }
-    if (tile.ruins) {
-        terBonus = (terBonus/3)+9;
+    if (tile.infra === 'Terriers' && batType.size < 9 && batType.cat != 'aliens') {
+        terBonus = (terBonus/3)+8;
+    } else if (tile.ruins) {
+        terBonus = (terBonus/3)+8;
     } else if (isOnInfra(bat)) {
         terBonus = (terBonus/1.5)+4;
     }

@@ -833,6 +833,9 @@ function clickDebarq(tileId) {
             moveSelectedBat(tileId,true,false);
             let tile = getTileById(tileId);
             delete tile.infra;
+            if (tile.ruins && tile.sh >= 1) {
+                searchRuins(1,-1);
+            }
         } else {
             moveSelectedBat(tileId,false,false);
         }

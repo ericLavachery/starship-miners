@@ -148,8 +148,11 @@ function batInfos(bat,batType,pop) {
     if (near.friends && !friendsAlert) {
         if (!bat.tags.includes('nomove')) {
             if (inDanger) {
-                warning('Bataillons non contrôlés','Vous avez rejoint un ou plusieurs bataillons d\'un autre groupe.<br><span class="or">Vous ne pouvez pas en prendre contrôle</span> (Votre bataillon n\'inspire pas confiance).');
-                clicSound(15);
+                if (!noControlAlert) {
+                    warning('Bataillons non contrôlés','Vous avez rejoint un ou plusieurs bataillons d\'un autre groupe.<br><span class="or">Vous ne pouvez pas en prendre contrôle</span> (Votre bataillon n\'inspire pas confiance).');
+                    clicSound(15);
+                    noControlAlert = true;
+                }
             } else {
                 warning('Bataillons non contrôlés','Vous avez rejoint un ou plusieurs bataillons d\'un autre groupe.<br><span class="cy">Vous pouvez en prendre contrôle</span> en cliquant dessus.');
                 clicSound(13);
@@ -999,7 +1002,11 @@ function showTileInfos(tileId) {
         }
         // Aménagements
         if (tile.ruins) {
-            $('#tileInfos').append('<span class="paramName cy">Ruines</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">'+ruinType.name+'</span><br>');
+            if (allowCheat) {
+                $('#tileInfos').append('<span class="paramName cy klik" onclick="searchRuins(0,'+tile.id+')">Ruines</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">'+ruinType.name+'</span><br>');
+            } else {
+                $('#tileInfos').append('<span class="paramName cy">Ruines</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">'+ruinType.name+'</span><br>');
+            }
         }
         if (tile.infra != undefined) {
             let infraDesc = "";

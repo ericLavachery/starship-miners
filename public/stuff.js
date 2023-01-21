@@ -566,17 +566,45 @@ function washReports(warningsAlso) {
     $('#report').empty();
 };
 
-function warning(title,body,noHand,tileId) {
-    $('#warnings').append('<span class="warnings"><span class="or">'+title+'<br></span> '+body+'<br></span>');
+function washThisWarning(warnNumber) {
+    $('#warn'+warnNumber).empty();
+    friendsAlert = false;
+    $('#report').empty();
+};
+
+function warning(title,body,noHand,tileId,closeAll) {
+    let warnNumber = nextWarn;
+    nextWarn++;
+    $('#warnings').append('<span class="warnings" id="warn'+warnNumber+'"><span class="or">'+title+'<br></span> '+body+'<br></span>');
     if (tileId != undefined) {
-        if (tileId >= -1) {
-            $('#warnings').append('<span class="warnings"><i class="fas fa-eye cy klik" onclick="warnLink('+tileId+')"></i></span>');
+        if (tileId > -1) {
+            $('#warn'+warnNumber).append('<span class="warnings"><i class="fas fa-eye cy klik" onclick="warnLink('+tileId+')"></i></span>');
         }
     }
     if (!noHand) {
-        $('#warnings').append('<i class="far fa-hand-paper wash" onclick="washReports(true)" title="Cacher l\'alerte"></i>');
+        if (closeAll != undefined) {
+            if (closeAll) {
+                $('#warn'+warnNumber).append('<i class="far fa-hand-paper washAll" onclick="washReports(true)" title="Supprimer toutes les alertes"></i>');
+            } else {
+                $('#warn'+warnNumber).append('<i class="far fa-hand-paper wash" onclick="washThisWarning('+warnNumber+')" title="Supprimer cette alerte"></i>');
+            }
+        } else {
+            $('#warn'+warnNumber).append('<i class="far fa-hand-paper wash" onclick="washThisWarning('+warnNumber+')" title="Supprimer cette alerte"></i>');
+        }
     }
 };
+
+// function warning(title,body,noHand,tileId) {
+//     $('#warnings').append('<span class="warnings"><span class="or">'+title+'<br></span> '+body+'<br></span>');
+//     if (tileId != undefined) {
+//         if (tileId >= -1) {
+//             $('#warnings').append('<span class="warnings"><i class="fas fa-eye cy klik" onclick="warnLink('+tileId+')"></i></span>');
+//         }
+//     }
+//     if (!noHand) {
+//         $('#warnings').append('<i class="far fa-hand-paper wash" onclick="washReports(true)" title="Cacher l\'alerte"></i>');
+//     }
+// };
 
 function warnLink(tileId) {
     let linkBatId = -1;

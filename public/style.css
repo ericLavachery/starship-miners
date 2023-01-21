@@ -127,9 +127,22 @@ h6 {
 .small {
     font-size: 13px;
 }
-.wash {
+.washAll {
     margin: 0 0 0 107px;
     color: #f77a28;
+    font-size: 24px;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
+.washAll:hover {
+    color: #6be9b4;
+    cursor: pointer;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
+.wash {
+    margin: 0 0 0 107px;
+    color: #fbffab;
     font-size: 24px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;

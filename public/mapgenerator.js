@@ -2007,7 +2007,7 @@ function zoneReport(myZone,quiet) {
                 warning('Etangs',percW+'% (larve)',true);
                 warning('Rivières',percR+'% (larve)',true);
             }
-            warning('Marécages',percS+'% ('+myZone[0].sKind+')');
+            warning('Marécages',percS+'% ('+myZone[0].sKind+')',false,-1,true);
         }
     }
     console.log('ensol');

@@ -186,6 +186,7 @@ let medicPatientAP = 5;
 let landers = [];
 let hasOwnLander = false;
 let friendsAlert = false;
+let noControlAlert = false;
 let fogRange = 5;
 let foggedTiles = [];
 let doggedTiles = [];
@@ -218,6 +219,7 @@ teleStationCost['Energie'] = 250;
 teleStationCost['Argon'] = 50;
 teleStationCost['Bossium'] = 10;
 let defMaxRes = 25000;
+let nextWarn = 1;
 // ALIENS
 let showSilh = true;
 let isFFW = false;

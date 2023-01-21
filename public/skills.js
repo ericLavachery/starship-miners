@@ -572,11 +572,8 @@ function calcCamo(bat) {
         }
     }
     // max
-    if (batType.skills.includes('underground') || batType.cat === 'buildings' || (tile.infra === 'Terriers' && batType.size < 9 && batType.cat != 'aliens')) {
+    if (batType.skills.includes('underground') || batType.cat === 'buildings') {
         camChance = camChance+75;
-        if (tile.infra === 'Terriers' && batType.size < 9 && batType.cat != 'aliens') {
-            camChance = camChance+10;
-        }
         if (camChance > 100) {
             camChance = 100;
         }

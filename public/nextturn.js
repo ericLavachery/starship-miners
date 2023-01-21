@@ -181,6 +181,23 @@ function nextTurn() {
 
 function alienTurnEnd() {
     deadAliensList = [];
+    let aFouille = true;
+    if (playerInfos.mapTurn < 15) {
+        aFouille = false;
+    }
+    if (aFouille) {
+        if (zone[0].edited != undefined) {
+            if (zone[0].edited) {
+                aFouille = false;
+            }
+        }
+    }
+    if (aFouille) {
+        if (rand.rand(1,3) != 1) {
+            aFouille = false;
+        }
+    }
+    let fRuinTileId = -1;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             let batType = getBatType(bat);
@@ -218,14 +235,26 @@ function alienTurnEnd() {
                     }
                 }
             }
+            if (aFouille) {
+                if (fRuinTileId < 0) {
+                    let tile = getTile(bat);
+                    if (tile.ruins && tile.sh >= 1) {
+                        fRuinTileId = tile.id;
+                    }
+                }
+            }
         }
     });
     killAlienList();
-}
+    if (fRuinTileId >= 0 && aFouille) {
+        searchRuins(0,fRuinTileId);
+    }
+};
 
 function nextTurnEnd() {
     alienTurnEnd();
     alienCanon();
+    checkCitCaves();
     createStormsLists(false);
     $('#report').empty('');
     // récup du player

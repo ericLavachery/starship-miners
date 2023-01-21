@@ -16,6 +16,13 @@ function events(afterMission,time,sim,quiet) {
     if (!sim) {
         repos(time);
     }
+    if (!quiet) {
+        if (sim) {
+            warning('<h3>ESTIMATION</h3>','<span class="vert">'+Math.round(time/3)+' jours</span> passés<br>('+time+' tours)',false,-1,true);
+        } else {
+            warning('<h5>RAPPORT</h5>','<span class="vert">'+Math.round(time/3)+' jours</span> passés<br>('+time+' tours)',false,-1,true);
+        }
+    }
     eventCitoyens(time,sim,quiet);
     eventBodies(time,sim,quiet);
     eventProduction(afterMission,time,sim,quiet); // remove 'return' tag !!!
@@ -627,7 +634,7 @@ function showResBallance(quiet) {
             }
         });
         if (!quiet) {
-            warning('Ballance',balMessage+'<br>',false);
+            warning('Ballance',balMessage+'<br>',false,-1,true);
         }
     }
 };
@@ -636,7 +643,7 @@ function eventCitoyens(time,sim,quiet) {
     let citNeed = getCitNeed();
     // let gangFacts = getGangFactors();
     console.log('$$$$$$$$$$$$$$$$$$$$$ citNeed = '+citNeed);
-    let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,20)*gangFacts.cit*(playerInfos.comp.med+30)*(playerInfos.comp.vsp+30)/10000);
+    let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,18)*gangFacts.cit*(playerInfos.comp.med+30)*(playerInfos.comp.vsp+30)/10000);
     let citId = 126;
     let citName = 'Citoyens';
     if (rand.rand(1,ruinsCrimChance) === 1) {
@@ -654,7 +661,7 @@ function eventCitoyens(time,sim,quiet) {
         playerInfos.allCits = playerInfos.allCits+newCitsNumber;
     }
     if (!quiet) {
-        warning('Navette de secours','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont été récupérés par la navette de secours.<br>',false);
+        warning('Navette de secours','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont été récupérés par la navette de secours.<br>',true);
     }
 };
 
@@ -770,7 +777,7 @@ function eventCrime(time,sim,quiet,afterMission) {
         setPenitLevel();
     }
     if (!quiet) {
-        warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false)
+        warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false,-1,true)
     }
     if (!sim || playerInfos.pseudo === 'Test') {
         checkCrimes(crimeRate,time,afterMission);

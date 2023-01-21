@@ -2399,7 +2399,7 @@ function skillsInfos(bat,batType,near) {
                 apCost = Math.round(batType.ap*1.5);
             }
             if (bat.apLeft >= apReq && !inMelee) {
-                $('#unitInfos').append('<button type="button" title="Fouiller les ruines" class="boutonCaca iconButtons" onclick="searchRuins('+apCost+')"><i class="fas fa-search"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="Fouiller les ruines" class="boutonCaca iconButtons" onclick="searchRuins('+apCost+',-1)"><i class="fas fa-search"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
                 if (inMelee) {

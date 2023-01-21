@@ -1099,7 +1099,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite) {
         if (costStatus.ok || conselTriche || conselUpgrade != '') {
             // PAY COSTS !!!
             if (conselUnit.cat != 'aliens') {
-                if (!conselTriche || playerInfos.pseudo === 'Payall') {
+                if (!conselTriche) {
                     console.log('PAYEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER');
                     payUnitCost(conselUnit);
                     payFlatCosts(conselUnit,conselAmmos);
@@ -1209,8 +1209,8 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite) {
                             newBat.apLeft = 5;
                             newBat.oldapLeft = 5;
                         } else {
-                            newBat.apLeft = -5;
-                            newBat.oldapLeft = -5;
+                            newBat.apLeft = -8;
+                            newBat.oldapLeft = -8;
                         }
                     }
                     newBat.salvoLeft = conselUnit.maxSalvo;
