@@ -700,6 +700,7 @@ function batInfos(bat,batType,pop) {
     if (!pop) {
         $('#'+bodyPlace).append('<hr>');
         let demText;
+        let fleeText;
         if (!bat.tags.includes('nomove') && !batType.skills.includes('nodelete') && !decButHere) {
             let okKill = checkOkKill(batType);
             if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || (batType.skills.includes('recupcorps') && okKill) || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
@@ -707,26 +708,36 @@ function batInfos(bat,batType,pop) {
                     if (batType.skills.includes('recupres') || batType.cat === 'buildings') {
                         if (batType.skills.includes('nocrime')) {
                             demText = '(récupérer les citoyens et les ressources)';
+                            fleeText = '(récupérer les citoyens)';
                         } else if (batType.skills.includes('brigands')) {
                             demText = '(récupérer les criminels et les ressources)';
+                            fleeText = '(récupérer les criminels)';
                         } else if (bat.tags.includes('outsider')) {
                             demText = '(récupérer les citoyens ou criminels (50%) et les ressources)';
+                            fleeText = '(récupérer les criminels (50%) ou citoyens)';
                         } else if (batType.cat === 'vehicles') {
                             demText = '(récupérer les citoyens ou criminels (20%) et les ressources)';
+                            fleeText = '(récupérer les criminels (20%) ou citoyens)';
                         } else {
                             demText = '(récupérer les citoyens et les ressources)';
+                            fleeText = '(récupérer les citoyens)';
                         }
                     } else {
                         if (batType.skills.includes('nocrime')) {
                             demText = '(récupérer les citoyens)';
+                            fleeText = '(récupérer les citoyens)';
                         } else if (batType.skills.includes('brigands')) {
                             demText = '(récupérer les criminels)';
+                            fleeText = '(récupérer les criminels)';
                         } else if (bat.tags.includes('outsider')) {
                             demText = '(récupérer les criminels (50%) ou citoyens)';
+                            fleeText = '(récupérer les criminels (50%) ou citoyens)';
                         } else if (batType.cat === 'vehicles') {
                             demText = '(récupérer les criminels (20%) ou citoyens)';
+                            fleeText = '(récupérer les criminels (20%) ou citoyens)';
                         } else {
                             demText = '(récupérer les citoyens)';
+                            fleeText = '(récupérer les citoyens)';
                         }
                     }
                 } else {
@@ -744,15 +755,18 @@ function batInfos(bat,batType,pop) {
                     demText = '(détruire)';
                 }
                 let resRecup = getResRecup(bat,batType);
-                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+' '+toCoolString(resRecup)+'" class="boutonRouge skillButtons" onclick="dismantle('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Démanteler</h4></span>');
+                if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
+                    $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+' '+toCoolString(resRecup)+'" class="boutonRouge bigButtons" onclick="dismantle('+bat.id+',false)"><i class="fas fa-people-carry"></i></button>&nbsp; Démanteler</h4></span>');
+                }
+                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler sans récupérer les ressources (et donc sans perdre de PA) '+fleeText+'" class="boutonRouge bigButtons" onclick="dismantle('+bat.id+',true)"><i class="fas fa-running"></i></button>&nbsp; Abandonner</h4></span>');
             }
         }
         if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Mapedit' || allowCheat) {
-            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel skillButtons" onclick="removeBat('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
+            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel bigButtons" onclick="removeBat('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
         }
         if ((batType.transRes >= 1 && batType.name != 'Soute' && batType.name != 'Stocks') || (batType.transRes >= 1 && allowCheat)) {
             if (Object.keys(bat.transRes).length >= 1) {
-                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge skillButtons" onclick="fretThrow()"><i class="fas fa-truck-loading"></i></button>&nbsp; Vider</h4></span>');
+                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge bigButtons" onclick="fretThrow()"><i class="fas fa-truck-loading"></i></button>&nbsp; Vider</h4></span>');
             }
         }
         // let resLoaded = checkResLoad(bat);

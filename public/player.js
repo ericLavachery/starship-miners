@@ -2156,7 +2156,9 @@ function putStartUnits() {
         let unitNum = 0;
         startBatList.forEach(function(unitName) {
             unitNum++;
-            let unitXP = rand.rand(0,75);
+            let maxXP = Math.round((5-playerInfos.gMode)*30);
+            let minXP = Math.floor(maxXP/5);
+            let unitXP = rand.rand(minXP,maxXP);
             let isChef = false;
             if (unitName === 'Stalkers' || unitName === 'Chevaliers' || unitName === 'Vapos' || unitName === 'Mutants' || unitName === 'Jumpers' || unitName === 'Dogs' || unitName === 'Adeptes') {
                 unitXP = unitXP+400;
@@ -2830,7 +2832,7 @@ function gangChoice() {
     $('#theStartZone').append('<option value="96" disabled>Zone 96</option>');
     $('#theStartZone').append('<option value="95" disabled>Zone 95</option>');
     $('#theStartZone').append('<option value="94" disabled>Zone 94</option>');
-    $('#theStartZone').append('<option value="93" disabled>Zone 93</option>');
+    $('#theStartZone').append('<option value="93">Zone 93 - Le grand tour</option>');
     $('#theStartZone').append('<option value="92">Zone 92 - Caché</option>');
     $('#theStartZone').append('<option value="91">Zone 91 - Grenouilles</option>');
     $('#theStartZone').append('<option value="90">Zone 90 - Place forte</option>');

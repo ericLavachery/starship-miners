@@ -1010,6 +1010,9 @@ function applyShield(shots) {
         if ((targetBatType.kind === 'egg' || targetBatType.kind === 'egg2') && eggSHIELD && targetBatType.name != 'Colonie') {
             shieldChance = 33;
         }
+        if (targetBatType.name === 'Vomissure' && eggSHIELD) {
+            shieldChance = 100;
+        }
     }
     if (shieldChance >= 1 && shieldChance < 100) {
         shieldChance = Math.round(shieldChance/3.75*Math.sqrt(Math.sqrt(shots)));

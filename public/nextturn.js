@@ -928,7 +928,7 @@ function turnInfo() {
         }
     }
     if (uncontrolledBats) {
-        warning('Bataillons non contrôlés','Il y a des bataillons d\'autres groupes dans la zone.<br>Vous pouvez en prendre contrôle en les rejoignant avec un de vos propres bataillons.<br>Cela ne fonctionne pas avec un bataillon non combatant (Citoyens, Survivants, Infirmiers, Tacots etc...), ni avec un bataillon sans humains (Wardogs, Droïdes etc...), ni avec un bataillon en perdition (trop blessé et faible compétence de leadership).');
+        warning('Bataillons non contrôlés','Il y a des bataillons d\'autres groupes dans la zone.<br>Vous pouvez en prendre contrôle en les rejoignant avec un de vos propres bataillons.<br>Cela ne fonctionne pas avec un bataillon non combatant (Citoyens, Survivants, Infirmiers etc...), ni avec un bataillon sans humains (Wardogs, Droïdes etc...), ni avec un bataillon en perdition (trop blessé et/ou faible compétence de leadership).');
         clicSound(16);
     }
     console.log('landingNoise = '+landingNoise);

@@ -858,7 +858,7 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,false,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !inMelee) {
                 $('#unitInfos').append('<button type="button" title="Réparer les bâtiments adjacents" class="boutonBleu iconButtons" onclick="medic(`buildings`,'+baseskillCost+',true,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
@@ -881,7 +881,7 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,false,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !inMelee) {
                 $('#unitInfos').append('<button type="button" title="Réparer le bâtiment" class="boutonBleu iconButtons" onclick="medic(`buildings`,'+baseskillCost+',false,false)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
@@ -902,7 +902,7 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,false,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !inMelee) {
                 $('#unitInfos').append('<button type="button" title="Réparer le bâtiment" class="boutonBleu iconButtons" onclick="medic(`buildings`,'+baseskillCost+',false,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
@@ -918,7 +918,7 @@ function skillsInfos(bat,batType,near) {
             }
         }
         // REPAIR DIAG
-        if ((batType.cat === 'buildings' || batType.cat === 'devices') && !batType.skills.includes('nobld') && !batType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batType.squads)) {
+        if ((batType.cat === 'buildings' || batType.cat === 'devices') && !batType.skills.includes('nobld') && !batType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batType.squads) && !inMelee) {
             let repairBat = checkRepairBat(bat.tileId);
             if (Object.keys(repairBat).length >= 1) {
                 let repairBatType = getBatType(repairBat);
@@ -2386,7 +2386,7 @@ function skillsInfos(bat,batType,near) {
     lineBreak = false;
     // FOUILLE DE RUINES
     if (!playerInfos.onShip) {
-        if ((batType.skills.includes('fouille') || (batType.skills.includes('aifouille') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai' || playerInfos.bldList.includes('Centre de com')))) && tile.ruins && tile.sh >= 1) {
+        if ((batType.skills.includes('fouille') || (batType.skills.includes('aifouille') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai' || playerInfos.bldList.includes('Centre de com')))) && tile.ruins && tile.sh >= 1 && !bat.tags.includes('nomove')) {
             apReq = Math.round(5*7/(playerInfos.comp.tri+6));
             apCost = Math.round(1250/bat.squadsLeft/batType.squadSize/batType.crew);
             if (batType.skills.includes('scav')) {

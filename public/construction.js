@@ -1078,7 +1078,7 @@ function conselNeat() {
     }
 };
 
-function putBat(tileId,citoyens,xp,startTag,show) {
+function putBat(tileId,citoyens,xp,startTag,show,fuite) {
     console.log('PUTBAT');
     constuctorBatId = selectedBat.id;
     if (conselUnit.cat === 'aliens') {
@@ -1201,8 +1201,18 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 newBat.salvoLeft = conselUnit.maxSalvo;
             } else {
                 if (conselTriche || playerInfos.onShip) {
-                    newBat.apLeft = newBat.ap;
-                    newBat.oldapLeft = newBat.ap;
+                    if (fuite === undefined) {
+                        newBat.apLeft = newBat.ap;
+                        newBat.oldapLeft = newBat.ap;
+                    } else {
+                        if (fuite) {
+                            newBat.apLeft = 5;
+                            newBat.oldapLeft = 5;
+                        } else {
+                            newBat.apLeft = -5;
+                            newBat.oldapLeft = -5;
+                        }
+                    }
                     newBat.salvoLeft = conselUnit.maxSalvo;
                 } else {
                     if (conselUnit.fabTime >= 1) {
@@ -1296,30 +1306,37 @@ function putBat(tileId,citoyens,xp,startTag,show) {
                 newBat.transRes = {};
             }
             if (startTag != undefined) {
-                if (conselUnit.cat === 'aliens') {
-                    if (Array.isArray(startTag)) {
-                        newBat.tags = startTag;
-                    } else if (startTag === 'veil') {
-                        newBat.tags = ['invisible','follow'];
-                        if (!conselUnit.skills.includes('errant') && !conselUnit.skills.includes('capbld') && !conselUnit.skills.includes('nocap') && !conselUnit.skills.includes('capmen')) {
-                            newBat.tags = ['invisible','follow'];
+                if (startTag != '') {
+                    if (conselUnit.cat === 'aliens') {
+                        if (Array.isArray(startTag)) {
+                            newBat.tags = startTag;
+                        } else if (startTag === 'follow') {
+                            if (!conselUnit.skills.includes('errant') && !conselUnit.skills.includes('capbld') && !conselUnit.skills.includes('nocap') && !conselUnit.skills.includes('capmen')) {
+                                newBat.tags = ['follow'];
+                            }
+                        } else if (startTag === 'veil') {
+                            if (!conselUnit.skills.includes('errant') && !conselUnit.skills.includes('capbld') && !conselUnit.skills.includes('nocap') && !conselUnit.skills.includes('capmen')) {
+                                newBat.tags = ['invisible','follow'];
+                            } else {
+                                newBat.tags = ['invisible'];
+                            }
                         } else {
-                            newBat.tags = ['invisible'];
+                            newBat.tags = [startTag];
                         }
                     } else {
-                        newBat.tags = [startTag];
+                        if (startTag === 'fortifguet') {
+                            newBat.tags = ['guet','fortif'];
+                        } else if (startTag === 'fgnomove') {
+                            newBat.tags = ['guet','fortif','nomove'];
+                        } else {
+                            newBat.tags = [startTag];
+                        }
+                        if (newBat.tags.includes('nomove')) {
+                            newBat.tags.push('outsider');
+                        }
                     }
                 } else {
-                    if (startTag === 'fortifguet') {
-                        newBat.tags = ['guet','fortif'];
-                    } else if (startTag === 'fgnomove') {
-                        newBat.tags = ['guet','fortif','nomove'];
-                    } else {
-                        newBat.tags = [startTag];
-                    }
-                    if (newBat.tags.includes('nomove')) {
-                        newBat.tags.push('outsider');
-                    }
+                    newBat.tags = [];
                 }
             } else {
                 newBat.tags = [];
@@ -1595,7 +1612,7 @@ function putRuinsOfDestroyedBld(name,tileId) {
     }
 };
 
-function dismantle(batId) {
+function dismantle(batId,fuite) {
     // saveGame();
     selectMode();
     let bat = getBatById(batId);
@@ -1619,9 +1636,13 @@ function dismantle(batId) {
             let tileId = bat.tileId;
             if (batType.cat === 'buildings') {
                 putRuinsOfDestroyedBld(batType.name,bat.tileId);
-                recupRes(bat,batType);
+                if (!fuite) {
+                    recupRes(bat,batType);
+                }
             } else if (batType.skills.includes('recupres')) {
-                recupRes(bat,batType);
+                if (!fuite) {
+                    recupRes(bat,batType);
+                }
             }
             if (batType.skills.includes('recupcorps')) {
                 recupBodies(bat,batType);
@@ -1649,23 +1670,23 @@ function dismantle(batId) {
                     recupAmazones(14,tileId,crew,xp,bat.ammo,bat.eq);
                 } else {
                     if (batType.skills.includes('nocrime')) {
-                        recupCitoyens(126,tileId,crew,xp);
+                        recupCitoyens(126,tileId,crew,fuite);
                     } else if (batType.skills.includes('brigands')) {
-                        recupCitoyens(225,tileId,crew,xp);
+                        recupCitoyens(225,tileId,crew,fuite);
                     } else if (bat.tags.includes('outsider')) {
                         if (rand.rand(1,perdition) === 1) {
-                            recupCitoyens(225,tileId,crew,xp);
+                            recupCitoyens(225,tileId,crew,fuite);
                         } else {
-                            recupCitoyens(126,tileId,crew,xp);
+                            recupCitoyens(126,tileId,crew,fuite);
                         }
                     } else if (batType.cat === 'vehicles') {
                         if (rand.rand(1,perdition+3) === 1) {
-                            recupCitoyens(225,tileId,crew,xp);
+                            recupCitoyens(225,tileId,crew,fuite);
                         } else {
-                            recupCitoyens(126,tileId,crew,xp);
+                            recupCitoyens(126,tileId,crew,fuite);
                         }
                     } else {
-                        recupCitoyens(126,tileId,crew,xp);
+                        recupCitoyens(126,tileId,crew,fuite);
                     }
                 }
             }
@@ -1785,14 +1806,14 @@ function recupRaiders(unitId,tileId,citoyens,xp,ammo,equip) {
     }
 };
 
-function recupCitoyens(unitId,tileId,citoyens,xp) {
+function recupCitoyens(unitId,tileId,citoyens,fuite) {
     let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
     conselUnit = unitTypes[unitIndex];
     conselPut = false;
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     conselTriche = true;
     let typeId = conselUnit.id;
-    putBat(tileId,citoyens,xp);
+    putBat(tileId,citoyens,0,'',true,fuite);
     if (playerInfos.onShip) {
         let citBat = getBatByTypeIdAndTileId(typeId,tileId);
         loadBat(citBat.id,souteId);
@@ -1950,6 +1971,9 @@ function getResRecup(bat,batType) {
         recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+1)/8);
         if (batType.skills.includes('recupfull') && recupFactor < 70) {
             recupFactor = 70;
+        }
+        if (bat.squadsLeft < batType.squads-1) {
+            recupFactor = Math.round(recupFactor*bat.squadsLeft/(batType.squads-1));
         }
         console.log('hasScraptruck='+hasScraptruck);
         let totalRes = 0;

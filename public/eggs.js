@@ -25,16 +25,20 @@ function checkStartingAliens() {
                 dropEgg('Volcan','guard');
                 dropEgg('Volcan','guard');
             }
-            numRuches = rand.rand(1,2);
+            numRuches = rand.rand(4,6);
             if (zone[0].mapDiff === 9) {
-                numRuches = rand.rand(3,5);
+                numRuches = rand.rand(6,9);
             }
             if (zone[0].mapDiff >= 10) {
-                numRuches = rand.rand(6,12);
+                numRuches = rand.rand(9,12);
             }
+        } else if (zone[0].mapDiff >= 5) {
+            numRuches = rand.rand(0,2)+zone[0].mapDiff-5;
+        }
+        if (numRuches >= 1) {
             let i = 1;
             while (i <= numRuches) {
-                if (rand.rand(1,4) === 1) {
+                if (rand.rand(1,4) === 1 && zone[0].mapDiff >= 7) {
                     dropEgg('Ruche','any');
                     coconStats.volc = true;
                 } else {
@@ -1381,7 +1385,11 @@ function spawns() {
                         veilSpawn(bat);
                     }
                 }
-                if (!bat.tags.includes('invisible')) {
+                if (bat.tags.includes('invisible')) {
+                    if (playerInfos.mapTurn >= 7 && rand.rand(1,6) === 1) {
+                        veilSpawn(bat);
+                    }
+                } else {
                     if (rand.rand(1,3) === 1) {
                         veilSpawn(bat);
                     }
@@ -1539,7 +1547,11 @@ function veilSpawn(bat) {
     if (spawnName === inName) {
         spawnName = outName;
     }
-    alienSpawn(bat,spawnName,'veil');
+    if (bat.tags.includes('invisible')) {
+        alienSpawn(bat,spawnName,'veil');
+    } else {
+        alienSpawn(bat,spawnName,'follow');
+    }
 };
 
 function vomiSpawn(bat) {
