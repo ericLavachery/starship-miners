@@ -2318,7 +2318,7 @@
             "isMelee":true,
             "rof":9,
             "accuracy":9,
-            "power":14,
+            "power":22,
             "armors":1,
             "aoe":"squad",
             "sound":"explo1",

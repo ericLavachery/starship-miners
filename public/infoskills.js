@@ -1,4 +1,4 @@
-function skillsInfos(bat,batType,near) {
+function skillsInfos(bat,batType,near,nearby) {
     let skillMessage;
     let numTargets = 0;
     let apCost;
@@ -210,11 +210,11 @@ function skillsInfos(bat,batType,near) {
         if (bat.tags.includes('mining')) {
             bouton = 'boutonGris';
         }
-        if ((bat.apLeft >= apReq || bat.apLeft >= bat.ap-2) && !bat.tags.includes('fortif') && (!inMelee || playerInfos.pseudo === 'Mapedit')) {
+        if ((bat.apLeft >= apReq || bat.apLeft >= bat.ap-2) && !bat.tags.includes('fortif') && (!nearby.oneTile || playerInfos.pseudo === 'Mapedit')) {
             $('#unitInfos').append('<button type="button" title="Se fortifier ('+apReq+' PA requis)" class="'+bouton+' iconButtons" onclick="fortification('+apCost+')"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
         } else {
-            if (inMelee) {
+            if (nearby.oneTile) {
                 skillMessage = "Vous ne pouvez pas vous fortifier en mêlée";
             } else {
                 skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
@@ -770,11 +770,11 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,false,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!nearby.oneTile || batType.skills.includes('meleehelp'))) {
                 $('#unitInfos').append('<button type="button" title="Réparer les véhicules adjacents" class="boutonBleu iconButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,true)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
-                if (inMelee) {
+                if (nearby.oneTile) {
                     skillMessage = "Pas de réparations en mêlée";
                 } else {
                     if (numTargets < 1) {
@@ -793,11 +793,11 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,false,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!nearby.oneTile || batType.skills.includes('meleehelp'))) {
                 $('#unitInfos').append('<button type="button" title="Rafistoler les véhicules adjacents" class="boutonBleu iconButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
-                if (inMelee) {
+                if (nearby.oneTile) {
                     skillMessage = "Pas de réparations en mêlée";
                 } else {
                     if (numTargets < 1) {
@@ -816,13 +816,13 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,false,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!nearby.oneTile || batType.skills.includes('meleehelp'))) {
                 $('#unitInfos').append('<button type="button" title="Retaper le véhicule" class="boutonBleu iconButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
                 if (numTargets <= 0) {
                     skillMessage = "Ce véhicule n'a pas subit de dégâts";
-                } else if (inMelee) {
+                } else if (nearby.oneTile) {
                     skillMessage = "Pas de réparations en mêlée";
                 } else {
                     skillMessage = "Pas assez de PA";
@@ -837,13 +837,13 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,false,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!inMelee || batType.skills.includes('meleehelp'))) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!nearby.oneTile || batType.skills.includes('meleehelp'))) {
                 $('#unitInfos').append('<button type="button" title="Retaper le véhicule" class="boutonBleu iconButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,true)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
                 if (numTargets <= 0) {
                     skillMessage = "Ce véhicule n'a pas subit de dégâts";
-                } else if (inMelee) {
+                } else if (nearby.oneTile) {
                     skillMessage = "Pas de réparations en mêlée";
                 } else {
                     skillMessage = "Pas assez de PA";
@@ -858,11 +858,11 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,false,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !inMelee) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !nearby.oneTile) {
                 $('#unitInfos').append('<button type="button" title="Réparer les bâtiments adjacents" class="boutonBleu iconButtons" onclick="medic(`buildings`,'+baseskillCost+',true,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
-                if (inMelee) {
+                if (nearby.oneTile) {
                     skillMessage = "Pas de réparations en mêlée";
                 } else {
                     if (numTargets < 1) {
@@ -881,13 +881,13 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,false,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !inMelee) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !nearby.oneTile) {
                 $('#unitInfos').append('<button type="button" title="Réparer le bâtiment" class="boutonBleu iconButtons" onclick="medic(`buildings`,'+baseskillCost+',false,false)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
                 if (numTargets <= 0) {
                     skillMessage = "Ce bâtiment n'a pas subit de dégâts";
-                } else if (inMelee) {
+                } else if (nearby.oneTile) {
                     skillMessage = "Pas de réparations en mêlée";
                 } else {
                     skillMessage = "Pas assez de PA";
@@ -902,13 +902,13 @@ function skillsInfos(bat,batType,near) {
             baseskillCost = calcBaseSkillCost(bat,batType,false,false);
             apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             if (apCost === 0) {apCost = baseskillCost;}
-            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !inMelee) {
+            if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !nearby.oneTile) {
                 $('#unitInfos').append('<button type="button" title="Réparer le bâtiment" class="boutonBleu iconButtons" onclick="medic(`buildings`,'+baseskillCost+',false,true)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
                 if (numTargets <= 0) {
                     skillMessage = "Ce bâtiment n'a pas subit de dégâts";
-                } else if (inMelee) {
+                } else if (nearby.oneTile) {
                     skillMessage = "Pas de réparations en mêlée";
                 } else {
                     skillMessage = "Pas assez de PA";
@@ -918,7 +918,7 @@ function skillsInfos(bat,batType,near) {
             }
         }
         // REPAIR DIAG
-        if ((batType.cat === 'buildings' || batType.cat === 'devices') && !batType.skills.includes('nobld') && !batType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batType.squads) && !inMelee) {
+        if ((batType.cat === 'buildings' || batType.cat === 'devices') && !batType.skills.includes('nobld') && !batType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batType.squads) && !nearby.oneTile) {
             let repairBat = checkRepairBat(bat.tileId);
             if (Object.keys(repairBat).length >= 1) {
                 let repairBatType = getBatType(repairBat);
@@ -944,11 +944,11 @@ function skillsInfos(bat,batType,near) {
                 apCost = batType.mecanoCost+1;
                 apReq = 1;
             }
-            if (bat.apLeft >= apReq && !inMelee) {
+            if (bat.apLeft >= apReq && !nearby.oneTile) {
                 $('#unitInfos').append('<button type="button" title="Détruire les toiles" class="boutonGris iconButtons" onclick="removeWeb('+apCost+')"><i class="fas fa-broom"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
-                if (inMelee) {
+                if (nearby.oneTile) {
                     skillMessage = "Détruire les toiles: Ne peut pas se faire en mêlée";
                 } else {
                     skillMessage = "Détruire les toiles: Pas assez de PA (réserve de "+apReq+" requise)";
@@ -1857,7 +1857,7 @@ function skillsInfos(bat,batType,near) {
                 trapCostOK = checkCost(trapType.costs);
                 apCost = Math.round(batType.ap*1.5*5/(playerInfos.comp.def+4));
                 apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.def+4));
-                if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
                     $('#unitInfos').append('<button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`trap-fosse`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Fosses</span></button>');
                     lineBreak = true;
                 } else {
@@ -1865,7 +1865,7 @@ function skillsInfos(bat,batType,near) {
                         skillMessage = "Plus de pièges";
                     } else if (!trapCostOK) {
                         skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                    } else if (inMelee) {
+                    } else if (nearby.oneTile) {
                         skillMessage = "Ne peut pas se faire en mêlée";
                     } else {
                         skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
@@ -1961,7 +1961,7 @@ function skillsInfos(bat,batType,near) {
                     trapCostOK = checkCost(trapType.costs);
                     apCost = Math.round(batType.ap/1.1*5/(playerInfos.comp.explo+4));
                     apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.explo+4));
-                    if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                    if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
                         $('#unitInfos').append('<button type="button" title="Déposer un champ de mines '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Mines</span></button>');
                         lineBreak = true;
                     } else {
@@ -1969,7 +1969,7 @@ function skillsInfos(bat,batType,near) {
                             skillMessage = "Plus de mines";
                         } else if (!trapCostOK) {
                             skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                        } else if (inMelee) {
+                        } else if (nearby.oneTile) {
                             skillMessage = "Ne peut pas se faire en mêlée";
                         } else {
                             skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
@@ -1998,7 +1998,7 @@ function skillsInfos(bat,batType,near) {
                     trapCostOK = checkCost(trapType.costs);
                     apCost = Math.round(batType.ap/1.1*5/(playerInfos.comp.explo+4));
                     apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.explo+4));
-                    if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                    if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
                         $('#unitInfos').append('<button type="button" title="Déposer un champ de mines Wipeout '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`wipe`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Wipeout</span></button>');
                         lineBreak = true;
                     } else {
@@ -2006,7 +2006,7 @@ function skillsInfos(bat,batType,near) {
                             skillMessage = "Plus de mines";
                         } else if (!trapCostOK) {
                             skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                        } else if (inMelee) {
+                        } else if (nearby.oneTile) {
                             skillMessage = "Ne peut pas se faire en mêlée";
                         } else {
                             skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
@@ -2034,7 +2034,7 @@ function skillsInfos(bat,batType,near) {
                 trapCostOK = checkCost(trapType.costs);
                 apCost = Math.round(batType.ap*5/(playerInfos.comp.explo+4));
                 apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.explo+4));
-                if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
                     $('#unitInfos').append('<button type="button" title="Déposer des explosifs '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'&nbsp; Explosifs</span></button>');
                     lineBreak = true;
                 } else {
@@ -2042,7 +2042,7 @@ function skillsInfos(bat,batType,near) {
                         skillMessage = "Plus de mines";
                     } else if (!trapCostOK) {
                         skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                    } else if (inMelee) {
+                    } else if (nearby.oneTile) {
                         skillMessage = "Ne peut pas se faire en mêlée";
                     } else {
                         skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
@@ -2068,13 +2068,13 @@ function skillsInfos(bat,batType,near) {
                 trapCostOK = checkCost(trapType.costs);
                 apCost = 8;
                 apReq = Math.ceil(batType.ap/2);
-                if (bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                if (bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
                     $('#unitInfos').append('<button type="button" title="Construire des coffres '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`coffre`)"><i class="fas fa-box-open"></i> <span class="small">'+apCost+'&nbsp; Coffres</span></button>');
                     lineBreak = true;
                 } else {
                     if (!trapCostOK) {
                         skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                    } else if (inMelee) {
+                    } else if (nearby.oneTile) {
                         skillMessage = "Ne peut pas se faire en mêlée";
                     } else {
                         skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
@@ -2183,7 +2183,7 @@ function skillsInfos(bat,batType,near) {
                     workForceOK = false;
                 }
             }
-            if (bat.apLeft >= apReq && !inMelee && roadCostsOK && workForceOK) {
+            if (bat.apLeft >= apReq && !nearby.oneTile && roadCostsOK && workForceOK) {
                 if (batType.moveCost < 90) {
                     $('#unitInfos').append('<button type="button" title="Construction ('+roadName+') '+displayCosts(roadCosts)+'" class="boutonGris iconButtons" onclick="putRoad('+apCost+')"><i class="fas fa-road"></i> <span class="small">'+apCost+'</span></button>');
                     lineBreak = true;
@@ -2192,7 +2192,7 @@ function skillsInfos(bat,batType,near) {
                     lineBreak = true;
                 }
             } else {
-                if (inMelee) {
+                if (nearby.oneTile) {
                     skillMessage = "Ne peut pas se faire en mêlée";
                 } else if (!roadCostsOK) {
                     skillMessage = "Pas assez de ressources "+displayCosts(roadCosts);
@@ -2232,7 +2232,7 @@ function skillsInfos(bat,batType,near) {
             if (bat.apLeft < apReq) {
                 defaultMessage = 'Pas assez de PA (réserve de '+apReq+' requise)';
             }
-            if (inMelee) {
+            if (nearby.oneTile) {
                 defaultMessage = 'Impossible en mêlée';
             }
             $('#unitInfos').append('<span id="infraButtons"></span>');
@@ -2245,7 +2245,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     prodOK = true;
                 }
-                if (infraCostOK && prodOK && bat.apLeft >= apReq && !inMelee) {
+                if (infraCostOK && prodOK && bat.apLeft >= apReq && !nearby.oneTile) {
                     $('#infraButtons').append('<button type="button" title="Construction (Miradors) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
                     lineBreak = true;
                 } else {
@@ -2268,7 +2268,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     prodOK = true;
                 }
-                if (infraCostOK && prodOK && bat.apLeft >= apReq && !inMelee) {
+                if (infraCostOK && prodOK && bat.apLeft >= apReq && !nearby.oneTile) {
                     $('#infraButtons').append('<button type="button" title="Construction (Palissades) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
                     lineBreak = true;
                 } else {
@@ -2291,7 +2291,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     prodOK = true;
                 }
-                if (infraCostOK && prodOK && bat.apLeft >= apReq && !inMelee) {
+                if (infraCostOK && prodOK && bat.apLeft >= apReq && !nearby.oneTile) {
                     $('#infraButtons').append('<button type="button" title="Construction (Remparts) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
                     lineBreak = true;
                 } else {
@@ -2314,7 +2314,7 @@ function skillsInfos(bat,batType,near) {
                 } else {
                     prodOK = true;
                 }
-                if (infraCostOK && prodOK && bat.apLeft >= apReq && !inMelee) {
+                if (infraCostOK && prodOK && bat.apLeft >= apReq && !nearby.oneTile) {
                     $('#infraButtons').append('<button type="button" title="Construction (Murailles) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
                     lineBreak = true;
                 } else {
@@ -2338,7 +2338,7 @@ function skillsInfos(bat,batType,near) {
                     } else {
                         prodOK = true;
                     }
-                    if (infraCostOK && prodOK && bat.apLeft >= apReq && !inMelee) {
+                    if (infraCostOK && prodOK && bat.apLeft >= apReq && !nearby.oneTile) {
                         $('#infraButtons').append('<button type="button" title="Construction (Terriers) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Terriers`)"><span class="small">Te</span></button>');
                         lineBreak = true;
                     } else {
@@ -2363,11 +2363,11 @@ function skillsInfos(bat,batType,near) {
                 let infra = getInfraByName(tile.infra);
                 apCost = Math.round(Math.sqrt(batType.mecanoCost)*infra.fabTime/5.1);
                 apReq = getConstAPReq(bat,batType);
-                if (bat.apLeft >= apReq && !inMelee) {
+                if (bat.apLeft >= apReq && !nearby.oneTile) {
                     $('#unitInfos').append('<button type="button" title="Démanteler '+tile.infra+'" class="boutonGris iconButtons" onclick="demolition('+apCost+')"><i class="far fa-trash-alt"></i> <span class="small">'+apCost+'</span></button>');
                     lineBreak = true;
                 } else {
-                    if (inMelee) {
+                    if (nearby.oneTile) {
                         skillMessage = "Ne peut pas se faire en mêlée";
                     } else {
                         skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
@@ -2496,7 +2496,7 @@ function skillsInfos(bat,batType,near) {
             // CONSTRUCTION BATIMENTS
             if (batType.skills.includes('constructeur') || batType.skills.includes('producteur')) {
                 apReq = getConstAPReq(bat,batType);
-                if (bat.apLeft >= apReq && !inMelee && craftsOK) {
+                if (bat.apLeft >= apReq && !nearby.oneTile && craftsOK) {
                     if ((batType.skills.includes('constructeur') && batType.skills.includes('producteur')) || batType.skills.includes('transorbital')) {
                         $('#unitInfos').append('<button type="button" title="Production (bâtiments & unités)" class="boutonOrange iconButtons" onclick="bfconst(`all`,false,``,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
                     } else if (batType.skills.includes('constructeur')) {
@@ -2506,7 +2506,7 @@ function skillsInfos(bat,batType,near) {
                     }
                     lineBreak = true;
                 } else {
-                    if (inMelee) {
+                    if (nearby.oneTile) {
                         skillMessage = "Construction: Ne peut pas se faire en mêlée";
                     } else if (!craftsOK) {
                         skillMessage = "Construction: Vous avez atteint votre maximum de crafts";
@@ -2578,6 +2578,21 @@ function skillsInfos(bat,batType,near) {
             }
         }
     }
+    // EQUIPEMENT PACK
+    if (tile.ap != undefined) {
+        if (tile.ap.includes('eq_')) {
+            let equipName = tile.ap.replace('eq_','');
+            let equipackOK = checkEquipPack(equipName,bat,batType);
+            if (equipackOK) {
+                apCost = 3;
+                apReq = 0;
+                let equip = getEquipByName(equipName);
+                let oldEquip = getEquipByName(bat.eq);
+                $('#unitInfos').append('<button type="button" title="Utiliser les équipements ('+equipName+' / '+equip.info+') &mdash; Se débarasser de ('+bat.eq+' / '+oldEquip.info+')" class="boutonVert iconButtons" onclick="useEquipPack(`'+equipName+'`)"><i class="fas fa-compass"></i> <span class="small">'+apCost+'</span></button>');
+                lineBreak = true;
+            }
+        }
+    }
     // DRUG PACK
     if (tile.ap != undefined) {
         if (tile.ap.includes('drg_')) {
@@ -2606,11 +2621,11 @@ function skillsInfos(bat,batType,near) {
         let isXPok = checkUprankXP(bat,batType);
         let upBatType = getBatTypeByName(batType.unitUp);
         apReq = 5;
-        if (bat.apLeft >= apReq && !inMelee && (isInPlace || inSoute) && isXPok && craftsOK) {
+        if (bat.apLeft >= apReq && !nearby.oneTile && (isInPlace || inSoute) && isXPok && craftsOK) {
             $('#unitInfos').append('<button type="button" title="Transformer en '+batType.unitUp+'" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false,`inf`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
             lineBreak = true;
         } else {
-            if (inMelee) {
+            if (nearby.oneTile) {
                 skillMessage = "Transformation: Ne peut pas se faire en mêlée";
             } else if (!craftsOK) {
                 skillMessage = "Transformation: Vous avez atteint votre maximum de crafts";
@@ -2629,7 +2644,7 @@ function skillsInfos(bat,batType,near) {
     if (batType.skills.includes('upgrade')) {
         let isCharged = checkCharged(bat,'trans');
         apReq = 5;
-        if (bat.apLeft >= apReq && !inMelee && !isCharged && craftsOK) {
+        if (bat.apLeft >= apReq && !nearby.oneTile && !isCharged && craftsOK) {
             if (batType.bldUp.length === 1) {
                 $('#unitInfos').append('<button type="button" title="Transformer en '+batType.bldUp[0]+'" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false,`bld`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
                 lineBreak = true;
@@ -2638,7 +2653,7 @@ function skillsInfos(bat,batType,near) {
                 lineBreak = true;
             }
         } else {
-            if (inMelee) {
+            if (nearby.oneTile) {
                 skillMessage = "Transformation: Ne peut pas se faire en mêlée";
             } else if (!craftsOK) {
                 skillMessage = "Transformation: Vous avez atteint votre maximum de crafts";

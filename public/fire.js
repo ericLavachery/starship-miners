@@ -1091,7 +1091,6 @@ function attack(melee,init) {
                         targetBat.tags.push('freeze');
                     } else {
                         targetBat.tags.push('freeze');
-                        targetBat.tags.push('freeze');
                     }
                     if (selectedWeap.ammo === 'hypo-freeze') {
                         targetBat.tags.push('freeze');
@@ -1198,19 +1197,10 @@ function attack(melee,init) {
     if (inDanger) {
         if (targetBat.tags.includes('nomove') && !targetBatType.skills.includes('nomove')) {
             if (totalDamage >= 1) {
-                if (targetBatType.cat === 'infantry') {
-                    tagDelete(targetBat,'nomove');
-                    targetBat.army = 21;
-                    warning(targetBatType.name,'Ce bataillon passe sous votre contrôle',false,targetBat.tileId);
-                    clicSound(12);
-                } else {
-                    if (targetBat.squadsLeft <= targetBatType.squads-1) {
-                        tagDelete(targetBat,'nomove');
-                        targetBat.army = 21;
-                        warning(targetBatType.name,'Ce bataillon passe sous votre contrôle',false,targetBat.tileId);
-                        clicSound(12);
-                    }
-                }
+                tagDelete(targetBat,'nomove');
+                targetBat.army = 21;
+                warning(targetBatType.name,'Ce bataillon passe sous votre contrôle',false,targetBat.tileId);
+                clicSound(12);
             }
         }
     }
@@ -1981,14 +1971,10 @@ function defense(melee,init) {
                     if (!selectedBat.tags.includes('freeze')) {
                         selectedBat.tags.push('freeze');
                         selectedBat.tags.push('freeze');
-                        selectedBat.tags.push('freeze');
                     } else {
-                        selectedBat.tags.push('freeze');
                         selectedBat.tags.push('freeze');
                     }
                     if (targetWeap.ammo === 'hypo-freeze') {
-                        selectedBat.tags.push('freeze');
-                        selectedBat.tags.push('freeze');
                         selectedBat.tags.push('freeze');
                         selectedBat.tags.push('freeze');
                         selectedBat.tags.push('freeze');

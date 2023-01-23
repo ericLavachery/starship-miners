@@ -1351,6 +1351,77 @@ function useAmmoPack(ammoName,conv) {
     showMap(zone,true);
 };
 
+function checkEquipPack(equipName,bat,batType) {
+    let equipOK = false;
+    if (batType.equip.includes(equipName)) {
+        equipOK = true;
+    }
+    if (equipName === 'lunette') {
+        if (batType.equip.includes('lunette1') || batType.equip.includes('lunette2')) {
+            equipOK = true;
+        }
+    }
+    if (equipName === 'chargeur') {
+        if (batType.equip.includes('chargeur1') || batType.equip.includes('chargeur2')) {
+            equipOK = true;
+        }
+    }
+    if (equipName === 'silencieux') {
+        if (batType.equip.includes('silencieux1') || batType.equip.includes('silencieux2')) {
+            equipOK = true;
+        }
+    }
+    return equipOK;
+};
+
+function useEquipPack(equipName) {
+    let equipOK = false;
+    if (selectedBatType.equip.includes(equipName)) {
+        equipOK = true;
+        selectedBat.eq = equipName;
+    } else {
+        if (equipName === 'lunette') {
+            if (selectedBatType.equip.includes('lunette1')) {
+                selectedBat.eq = 'lunette1';
+                equipOK = true;
+            }
+            if (selectedBatType.equip.includes('lunette2')) {
+                selectedBat.eq = 'lunette2';
+                equipOK = true;
+            }
+        }
+        if (equipName === 'chargeur') {
+            if (selectedBatType.equip.includes('chargeur1')) {
+                selectedBat.eq = 'chargeur1';
+                equipOK = true;
+            }
+            if (selectedBatType.equip.includes('chargeur2')) {
+                selectedBat.eq = 'chargeur2';
+                equipOK = true;
+            }
+        }
+        if (equipName === 'silencieux') {
+            if (selectedBatType.equip.includes('silencieux1')) {
+                selectedBat.eq = 'silencieux1';
+                equipOK = true;
+            }
+            if (selectedBatType.equip.includes('silencieux2')) {
+                selectedBat.eq = 'silencieux2';
+                equipOK = true;
+            }
+        }
+    }
+    if (equipOK) {
+        selectedBat.apLeft = selectedBat.apLeft-3;
+        let tile = getTile(selectedBat);
+        delete tile.ap;
+    }
+    doneAction(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+    showMap(zone,true);
+};
+
 function checkArmorPack(armorName,bat,batType) {
     let armorOK = false;
     if (batType.protection.includes(armorName)) {

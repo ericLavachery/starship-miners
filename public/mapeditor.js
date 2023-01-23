@@ -49,8 +49,8 @@ function mapEditWindow() {
             selectStuff(infra.name,infra.pic,infra.name);
         }
     });
-    selectStuff('Ruines','ruinCheck','Ruines (type au hasard)');
-    selectStuff('RuinesNext','ruinNext','Ruines (le type suivant)');
+    selectStuff('Ruines','ruinCheck','Ruines (au hasard)');
+    selectStuff('RuinesNext','ruinNext','Ruines (au choix)');
     // <br>
     selectStuff('Route','roads','Route (ou Pont)');
     selectStuff('AmmoPack','ammoPacks','Packs de munitions/armures/drogues');
@@ -105,6 +105,15 @@ function mapEditWindow() {
         $('#conUnitList').append('<br><br>');
     } else {
         theTilePacks = 'tungsten';
+    }
+    if (mped.sinf === 'RuinesNext') {
+        mapRuinsAddList();
+        if (theTileRuins === 'Habitations') {
+            window.location.hash = '#melists';
+        }
+        $('#conUnitList').append('<br><br>');
+    } else {
+        theTileRuins = 'Habitations';
     }
     $('#conUnitList').append('<span class="constName"><span class="gf">Planête</span> : <span class="cy klik" onclick="planetToggle(`'+zone[0].planet+'`)" title="Changer de planête">'+zone[0].planet+'</span></span><br>');
     $('#conUnitList').append('<span class="constName"><span class="gf">Présense alien</span> : <span class="cy klik" onclick="diffToggle()" title="Changer la présence alien">pa'+zone[0].mapDiff+'</span></span><br>');
@@ -422,6 +431,19 @@ function xKindToggle(myTer,eggType) {
     mapEditWindow();
 };
 
+function mapRuinsAddList() {
+    let sortedRuins = _.sortBy(armorTypes,'name');
+    sortedRuins.forEach(function(thisRuin) {
+        if (thisRuin.cat === 'ruins') {
+            let col = 'klik';
+            if (theTileRuins === thisRuin.name) {
+                col = 'cy klik';
+            }
+            $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapRuinsAdd(`'+thisRuin.name+'`)">'+thisRuin.name+'</span><img src="/static/img/units/ruins/'+thisRuin.pic+'.png" width="32" style="background-color:#89874c;"><br>');
+        }
+    });
+};
+
 function mapResAddList() {
     let planet = zone[0].planet;
     let sortedResTypes = _.sortBy(resTypes,'name');
@@ -516,6 +538,19 @@ function mapPackAddList() {
             }
         }
     });
+    $('#conUnitList').append('<span class="paramName or">Equipements</span><br>');
+    armorTypes.forEach(function(equip) {
+        if (equip.cat === 'equip') {
+            let equipIcon = getAmmoIcon(equip);
+            if (equipIcon != '') {
+                let col = 'klik';
+                if (theTilePacks === 'eq_'+equip.name) {
+                    col = 'cy klik';
+                }
+                $('#conUnitList').append('<span class="paramName '+col+'" onclick="mapPackAdd(`'+equip.name+'`,`equip`)" title="'+equip.info+'">'+equip.name+'</span><span class="paramIcon blanc">'+equipIcon+'</span><br>');
+            }
+        }
+    });
     $('#conUnitList').append('<span class="paramName or">Drogues</span><br>');
     armorTypes.forEach(function(drug) {
         if (drug.cat === 'drogue') {
@@ -564,22 +599,7 @@ function clickEdit(tileId) {
                 }
             }
         } else if (mped.sinf === 'RuinesNext') {
-            if (!tile.ruins) {
-                tile.ruins = true;
-                tile.sh = 10;
-                tile.rd = true;
-                delete tile.infra;
-                addScrapToRuins(tile);
-                washReports(true);
-                checkNextRuinType(tile);
-                // checkRuinType(tile,false);
-            } else {
-                delete tile.ruins;
-                delete tile.sh;
-                delete tile.rd;
-                delete tile.rt;
-                removeScrapFromRuins(tile);
-            }
+            addRuinsToTile(tile);
         } else if (mped.sinf === 'Ruines') {
             if (!tile.ruins) {
                 tile.ruins = true;
@@ -795,6 +815,12 @@ function addTagToBatOnTile(tile,tag) {
     }
 };
 
+function mapRuinsAdd(ruinsName) {
+    theTileRuins = ruinsName;
+    // mapResAddList();
+    mapEditWindow();
+};
+
 function mapResAdd(resName) {
     let letsAdd = rand.rand(35,65);
     if (theTileRes[resName] === undefined) {
@@ -822,6 +848,8 @@ function mapPackAdd(packName,type) {
         theTilePacks = 'drg_'+packName;
     } else if (type === 'armor') {
         theTilePacks = 'prt_'+packName;
+    } else if (type === 'equip') {
+        theTilePacks = 'eq_'+packName;
     } else {
         theTilePacks = packName;
     }
@@ -864,6 +892,36 @@ function removeScrapFromRuins(tile) {
                 delete tile.rq;
             }
         }
+    }
+};
+
+function addRuinsToTile(tile) {
+    if (!tile.ruins) {
+        tile.ruins = true;
+        tile.sh = 10;
+        tile.rd = true;
+        delete tile.infra;
+        addScrapToRuins(tile);
+        washReports(true);
+        let ruinType = {};
+        let theRuin = getEquipByName(theTileRuins);
+        if (Object.keys(theRuin).length >= 1) {
+            ruinType.name = theRuin.name;
+            ruinType.checks = theRuin.checks;
+            ruinType.scrap = theRuin.scrap;
+        } else {
+            ruinType.name = 'Habitations';
+            ruinType.checks = ['food'];
+            ruinType.scrap = 200;
+        }
+        tile.rt = ruinType;
+        checkNextRuinType(tile);
+    } else {
+        delete tile.ruins;
+        delete tile.sh;
+        delete tile.rd;
+        delete tile.rt;
+        removeScrapFromRuins(tile);
     }
 };
 

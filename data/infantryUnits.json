@@ -1416,7 +1416,7 @@
             "sound":"revolver_x2",
             "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
-        "equip":["aucun","e-flash","e-ranger","chargeur1","chargeur2","silencieux2","e-camo","permakirin","theeye","helper","waterproof","e-medic","repel"],
+        "equip":["aucun","e-flash","e-ranger","chargeur1","silencieux2","e-camo","permakirin","theeye","helper","waterproof","e-medic","repel"],
         "log3eq":["chargeur1","silencieux2"],
         "moveCost":3,
         "maxFlood":3,
@@ -2241,7 +2241,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","e-flash","e-camo","e-medic","chargeur1","lunette2","chargeur2","theeye","helper","waterproof","repel"],
+        "equip":["aucun","e-flash","e-camo","e-medic","lunette2","chargeur","theeye","helper","waterproof","repel"],
         "log3eq":["e-camo"],
         "moveCost":5,
         "maxFlood":2,
@@ -3491,7 +3491,7 @@
             "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "protection":[],
-        "equip":["aucun","e-flash","e-medic","e-camo","theeye","waterproof","silencieux1","chargeur1","chargeur2","repel"],
+        "equip":["aucun","e-flash","e-medic","e-camo","theeye","waterproof","silencieux1","chargeur2","repel"],
         "log3eq":["e-medic"],
         "moveCost":1.2,
         "maxFlood":3,
@@ -4180,7 +4180,7 @@
             "ravitBld":"Générateur"
         },
         "protection":[],
-        "equip":["aucun","e-flash","e-camo","chargeur1","chargeur2","gilet","theeye","waterproof","e-medic","repel"],
+        "equip":["aucun","e-flash","e-camo","chargeur2","gilet","theeye","waterproof","e-medic","repel"],
         "log3eq":["chargeur2"],
         "moveCost":1.2,
         "maxFlood":3,

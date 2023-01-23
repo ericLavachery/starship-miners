@@ -554,7 +554,8 @@
         "autoComp":["det",4],
         "factor":"crew",
         "costs":{"Silicium":6,"Carbone":6},
-        "icon":1
+        "icon":1,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"lunette1",
@@ -602,7 +603,8 @@
         "autoComp":["bal",3],
         "factor":"crew",
         "costs":{"Scrap":6,"Carbone":6,"Titane":6},
-        "icon":1
+        "icon":1,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"chargeur1",
@@ -661,7 +663,8 @@
         "factor":"crew",
         "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":6},
         "deploy":{"Végétaux":4},
-        "icon":1
+        "icon":1,
+        "popIn":["Caserne","Armurerie"]
     },
     {
         "name":"silencieux1",
@@ -763,7 +766,8 @@
         "autoComp":["train",2],
         "factor":"crew",
         "costs":{"Scrap":3,"Carbone":3},
-        "icon":1
+        "icon":1,
+        "popIn":["Atelier","Caserne","Armurerie"]
     },
     {
         "name":"e-mecano",
@@ -776,7 +780,8 @@
         "factor":"crew",
         "costs":{"Fer":6,"Carbone":3,"Tungstène":3,"Electros":3,"Batteries":3},
         "deploy":{"Huile":3,"Energie":12},
-        "icon":2
+        "icon":2,
+        "popIn":["Garage","Station service","Aéroport","Port","Atelier","Usine","Caserne"]
     },
     {
         "name":"e-medic",
@@ -789,7 +794,8 @@
         "factor":"one",
         "costs":{"Titane":2,"Or":2},
         "deploy":{"Drogues":20,"Chlore":10,"Tissus":10,"Zinc":10},
-        "icon":2
+        "icon":2,
+        "popIn":["Hôpital","Pharmacie","Clinique","Caserne"]
     },
     {
         "name":"gilet",
@@ -814,7 +820,8 @@
         "factor":"crew",
         "costs":{"Blendium":8,"Tissus":12},
         "deploy":{"Végétaux":8},
-        "icon":2
+        "icon":2,
+        "popIn":["Atelier","Caserne","Armurerie"]
     },
     {
         "name":"e-jetpack",
@@ -827,7 +834,8 @@
         "factor":"crew",
         "costs":{"Nickel":12,"Aluminium":18,"Moteurs":12,"Electros":12},
         "deploy":{"Fuel":12},
-        "icon":3
+        "icon":3,
+        "popIn":["Usine","Aéroport","Laboratoire","Centre de recherches"]
     },
     {
         "name":"detector",
@@ -991,7 +999,9 @@
         "compReq":{"scaph":1,"log":1},
         "autoComp":["scaph",3],
         "factor":"thp",
-        "costs":{"Carbone":9,"Scrap":6,"Silicium":4,"Larvium":3}
+        "costs":{"Carbone":9,"Scrap":6,"Silicium":4,"Larvium":3},
+        "icon":1,
+        "popIn":["Atelier","Garage","Port"]
     },
     {
         "name":"g2tools",
@@ -1140,7 +1150,9 @@
         "autoComp":[],
         "factor":"thp",
         "costs":{"Scrap":4,"Carbone":9,"Fer":24,"Moteurs":8,"Rhodium":4,"Cuivre":3,"Nickel":3,"Electros":11,"Batteries":5},
-        "deploy":{"Hydrogène":3,"Huile":2,"Energie":6}
+        "deploy":{"Hydrogène":3,"Huile":2,"Energie":6},
+        "icon":3,
+        "popIn":["Usine","Atelier","Garage"]
     },
     {
         "name":"kit-lightning",
@@ -1524,7 +1536,9 @@
         "autoComp":["trans",3],
         "factor":"thp",
         "costs":{"Cuivre":3,"Moteurs":6,"Nickel":3,"Electros":6,"Batteries":3},
-        "deploy":{"Hydrogène":3,"Huile":1}
+        "deploy":{"Hydrogène":3,"Huile":1},
+        "icon":2,
+        "popIn":["Garage","Atelier","Usine"]
     },
     {
         "name":"e-stab",
@@ -1558,7 +1572,9 @@
         "compReq":{"trans":1},
         "autoComp":["trans",3],
         "factor":"thp",
-        "costs":{"Scrap":4,"Carbone":4,"Fer":20}
+        "costs":{"Scrap":4,"Carbone":4,"Fer":20},
+        "icon":1,
+        "popIn":["Garage","Atelier","Station service"]
     },
     {
         "name":"snorkel",
@@ -1569,7 +1585,9 @@
         "compReq":{"trans":2},
         "autoComp":["trans",3],
         "factor":"thp",
-        "costs":{"Carbone":3,"Moteurs":2,"Electros":2}
+        "costs":{"Carbone":3,"Moteurs":2,"Electros":2},
+        "icon":1,
+        "popIn":["Garage","Atelier"]
     },
     {
         "name":"maxtrans",
@@ -2303,6 +2321,296 @@
         "compReq":{},
         "factor":"one",
         "costs":{}
+    },
+    {
+        "name":"Mine",
+        "cat":"ruins",
+        "pic":"ruins7",
+        "list":1,
+        "rolls":["r1","r23","r24","r25","r26","r27","r28","r29","r30","r31","r32","r33","r34","r35","r36","r37","r38","r39","r40"],
+        "checks":["any"],
+        "scrap":300
+    },
+    {
+        "name":"Bidonvilles",
+        "cat":"ruins",
+        "pic":"ruins12",
+        "list":1,
+        "rolls":["r2"],
+        "checks":[],
+        "scrap":200,
+        "packSize":0.5
+    },
+    {
+        "name":"Habitations",
+        "cat":"ruins",
+        "pic":"ruins11",
+        "list":1,
+        "rolls":["r3","r4","r5"],
+        "checks":["food"],
+        "scrap":200
+    },
+    {
+        "name":"Immeubles",
+        "cat":"ruins",
+        "pic":"ruins2",
+        "list":1,
+        "rolls":["r6"],
+        "checks":["food","food"],
+        "scrap":350
+    },
+    {
+        "name":"Villas",
+        "cat":"ruins",
+        "pic":"ruins6",
+        "list":1,
+        "rolls":["r7"],
+        "checks":["food","food"],
+        "scrap":250
+    },
+    {
+        "name":"Ecole",
+        "cat":"ruins",
+        "pic":"ruins6",
+        "list":1,
+        "rolls":["r8"],
+        "checks":["food","food"],
+        "scrap":200
+    },
+    {
+        "name":"Pharmacie",
+        "cat":"ruins",
+        "pic":"ruins9",
+        "list":1,
+        "rolls":["r9"],
+        "checks":["medecine","medecine"],
+        "scrap":150,
+        "packSize":3
+    },
+    {
+        "name":"Bar",
+        "cat":"ruins",
+        "pic":"ruins9",
+        "list":1,
+        "rolls":["r10"],
+        "checks":["food"],
+        "scrap":150,
+        "packSize":3
+    },
+    {
+        "name":"Centre commercial",
+        "cat":"ruins",
+        "pic":"ruins3",
+        "list":1,
+        "rolls":["r11"],
+        "checks":["food","food","food","medecine","construction"],
+        "scrap":750
+    },
+    {
+        "name":"Garage",
+        "cat":"ruins",
+        "pic":"ruins9",
+        "list":1,
+        "rolls":["r12"],
+        "checks":["auto"],
+        "scrap":350,
+        "packSize":3
+    },
+    {
+        "name":"Station service",
+        "cat":"ruins",
+        "pic":"ruins4",
+        "list":1,
+        "rolls":["r13"],
+        "checks":["auto"],
+        "scrap":200,
+        "packSize":2
+    },
+    {
+        "name":"Dépot",
+        "cat":"ruins",
+        "pic":"ruins10",
+        "list":1,
+        "rolls":["r14"],
+        "checks":["any","any","any"],
+        "scrap":320
+    },
+    {
+        "name":"Chantier",
+        "cat":"ruins",
+        "pic":"ruins0",
+        "list":1,
+        "rolls":["r15"],
+        "checks":["construction","construction","construction"],
+        "scrap":350
+    },
+    {
+        "name":"Atelier",
+        "cat":"ruins",
+        "pic":"ruins9",
+        "list":1,
+        "rolls":["r16"],
+        "checks":["industry"],
+        "scrap":400
+    },
+    {
+        "name":"Usine",
+        "cat":"ruins",
+        "pic":"ruins0",
+        "list":1,
+        "rolls":["r17"],
+        "checks":["any","industry","industry","industry"],
+        "scrap":700
+    },
+    {
+        "name":"Poste de police",
+        "cat":"ruins",
+        "pic":"ruins5",
+        "list":1,
+        "rolls":["r18"],
+        "checks":["food","military"],
+        "scrap":300,
+        "packSize":4
+    },
+    {
+        "name":"Armurerie",
+        "cat":"ruins",
+        "pic":"ruins9",
+        "list":1,
+        "rolls":["r19"],
+        "checks":["military"],
+        "scrap":200
+    },
+    {
+        "name":"Prison",
+        "cat":"ruins",
+        "pic":"ruins0",
+        "list":1,
+        "rolls":["r20"],
+        "checks":["food","medecine","military"],
+        "scrap":450
+    },
+    {
+        "name":"Caserne",
+        "cat":"ruins",
+        "pic":"ruins8",
+        "list":2,
+        "rolls":["r1","r2"],
+        "checks":["food","medecine","military","military","military"],
+        "scrap":600
+    },
+    {
+        "name":"Clinique",
+        "cat":"ruins",
+        "pic":"ruins1",
+        "list":2,
+        "rolls":["r3"],
+        "checks":["food","medecine","medecine"],
+        "scrap":250
+    },
+    {
+        "name":"Hôpital",
+        "cat":"ruins",
+        "pic":"ruins3",
+        "list":2,
+        "rolls":["r4"],
+        "checks":["food","medecine","medecine","medecine","science"],
+        "scrap":600,
+        "packSize":6
+    },
+    {
+        "name":"Université",
+        "cat":"ruins",
+        "pic":"ruins8",
+        "list":2,
+        "rolls":["r5"],
+        "checks":["any","food","food","science","science"],
+        "scrap":800
+    },
+    {
+        "name":"Laboratoire",
+        "cat":"ruins",
+        "pic":"ruins1",
+        "list":2,
+        "rolls":["r6"],
+        "checks":["any","science","science"],
+        "scrap":400,
+        "packSize":9
+    },
+    {
+        "name":"Centre de recherches",
+        "cat":"ruins",
+        "pic":"ruins3",
+        "list":2,
+        "rolls":["r7"],
+        "checks":["any","science","science","science","science"],
+        "scrap":650,
+        "packSize":15
+    },
+    {
+        "name":"Bibliothèque",
+        "cat":"ruins",
+        "pic":"ruins6",
+        "list":2,
+        "rolls":["r8"],
+        "checks":[],
+        "scrap":150,
+        "packSize":0.5
+    },
+    {
+        "name":"Médiathèque",
+        "cat":"ruins",
+        "pic":"ruins6",
+        "list":2,
+        "rolls":["r9"],
+        "checks":[],
+        "scrap":250,
+        "packSize":0.5
+    },
+    {
+        "name":"Centrale électrique",
+        "cat":"ruins",
+        "pic":"ruins0",
+        "list":2,
+        "rolls":["r10"],
+        "checks":["energy","energy","energy"],
+        "scrap":400
+    },
+    {
+        "name":"Centre de tri",
+        "cat":"ruins",
+        "pic":"ruins12",
+        "list":2,
+        "rolls":["r11"],
+        "checks":["any","industry"],
+        "scrap":800
+    },
+    {
+        "name":"Aéroport",
+        "cat":"ruins",
+        "pic":"ruins13",
+        "list":2,
+        "rolls":["r12"],
+        "checks":["any","any","auto","auto","industry"],
+        "scrap":750
+    },
+    {
+        "name":"Port",
+        "cat":"ruins",
+        "pic":"ruins0",
+        "list":2,
+        "rolls":["r13","r14","r15","r16","r17","r18","r19","r20","r21","r22"],
+        "checks":["any","any","auto","industry","industry"],
+        "scrap":750
+    },
+    {
+        "name":"Pompes",
+        "cat":"ruins",
+        "pic":"ruins7",
+        "list":2,
+        "rolls":["r23"],
+        "checks":[],
+        "scrap":150
     },
     {
         "name":"respack-soins1",

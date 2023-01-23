@@ -441,6 +441,8 @@ function nearbyAliens(myBat) {
             nearby.twoTiles = true;
         }
     }
+    console.log('NEARBY');
+    console.log(nearby);
     return nearby;
 };
 

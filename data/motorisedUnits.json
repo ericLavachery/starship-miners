@@ -2465,8 +2465,8 @@
             "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":[],
-        "equip":["aucun","lunette2","chargeur1","chargeur2","g2motor","e-mecano","e-medic","e-phare","e-road","e-lifepod"],
-        "log3eq":["chargeur1"],
+        "equip":["aucun","lunette2","chargeur","g2motor","e-mecano","e-medic","e-phare","e-road","e-lifepod"],
+        "log3eq":["chargeur"],
         "moveCost":6,
         "maxFlood":0,
         "maxScarp":2,

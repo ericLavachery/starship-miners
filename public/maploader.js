@@ -249,70 +249,15 @@ function redrawTile(tileId,drawSelectedBat) {
 function getRuinsPic(ruinType) {
     let ruinPic = 'ruins1';
     let ruinSize = ruinType.checks.length;
-    if (ruinType.name === 'Bidonvilles') {
-        ruinPic = 'ruins12';
-    } else if (ruinType.name === 'Habitations' && ruinSize >= 2) {
-        ruinPic = 'ruins2';
-    } else if (ruinType.name === 'Habitations') {
-        ruinPic = 'ruins11';
-    } else if (ruinType.name === 'Villas') {
-        ruinPic = 'ruins6';
-    } else if (ruinType.name === 'Ecole') {
-        ruinPic = 'ruins6';
-    } else if (ruinType.name === 'Pharmacie') {
-        ruinPic = 'ruins9';
-    } else if (ruinType.name === 'Bar') {
-        ruinPic = 'ruins9';
-    } else if (ruinType.name === 'Centre commercial') {
-        ruinPic = 'ruins3';
-    } else if (ruinType.name === 'Garage') {
-        ruinPic = 'ruins9';
-    } else if (ruinType.name === 'Station service') {
-        ruinPic = 'ruins4';
-    } else if (ruinType.name === 'Dépot') {
-        ruinPic = 'ruins10';
-    } else if (ruinType.name === 'Chantier') {
-        ruinPic = 'ruins0';
-    } else if (ruinType.name === 'Atelier') {
-        ruinPic = 'ruins9';
-    } else if (ruinType.name === 'Usine') {
-        ruinPic = 'ruins0';
-    } else if (ruinType.name === 'Poste de police') {
-        ruinPic = 'ruins5';
-    } else if (ruinType.name === 'Armurerie') {
-        ruinPic = 'ruins9';
-    } else if (ruinType.name === 'Prison') {
-        ruinPic = 'ruins0';
-    } else if (ruinType.name === 'Mine') {
-        ruinPic = 'ruins7';
-    } else if (ruinType.name === 'Caserne') {
-        ruinPic = 'ruins8';
-    } else if (ruinType.name === 'Clinique') {
-        ruinPic = 'ruins1';
-    } else if (ruinType.name === 'Hôpital') {
-        ruinPic = 'ruins3';
-    } else if (ruinType.name === 'Université') {
-        ruinPic = 'ruins8';
-    } else if (ruinType.name === 'Laboratoire') {
-        ruinPic = 'ruins1';
-    } else if (ruinType.name === 'Centre de recherches') {
-        ruinPic = 'ruins3';
-    } else if (ruinType.name === 'Bibliothèque') {
-        ruinPic = 'ruins6';
-    } else if (ruinType.name === 'Médiathèque') {
-        ruinPic = 'ruins6';
-    } else if (ruinType.name === 'Centrale électrique') {
-        ruinPic = 'ruins0';
-    } else if (ruinType.name === 'Aéroport') {
-        ruinPic = 'ruins13';
-    } else if (ruinType.name === 'Port') {
-        ruinPic = 'ruins0';
-    } else if (ruinType.name === 'Centre de tri') {
-        ruinPic = 'ruins12';
+    let theRuin = getEquipByName(ruinType.name);
+    if (Object.keys(theRuin).length >= 1) {
+        ruinPic = theRuin.pic;
     } else {
         ruinPic = 'ruins12';
     }
-
+    if (ruinType.name === 'Habitations' && ruinSize >= 2) {
+        ruinPic = 'ruins2';
+    }
     return ruinPic;
 };
 
@@ -366,6 +311,9 @@ function showRes(tileId) {
         } else if (tile.ap.includes('drg_')) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apdrug.png"></div>';
             tileText = tileText+'(Drogues:&nbsp; '+tile.ap.replace('drg_','')+')';
+        } else if (tile.ap.includes('eq_')) {
+            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apequip.png""></div>';
+            tileText = tileText+'(Equipements:&nbsp; '+tile.ap.replace('eq_','')+')';
         } else if (tile.ap.includes('prt_')) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aparmor.png""></div>';
             tileText = tileText+'(Armures:&nbsp; '+tile.ap.replace('prt_','')+')';

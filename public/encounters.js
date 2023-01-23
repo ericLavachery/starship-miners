@@ -1756,14 +1756,13 @@ function pactole(bastionTileId,withTrans) {
 
 function checkInDanger(bat,batType) {
     let inDanger = false;
-    if (batType.skills.includes('nofight')) {
+    if (batType.skills.includes('nofight') && bat.damage >= 1) {
         inDanger = true;
     }
-    let inDangerSquads = 2;
-    if (batType.squads <= 3) {
-        inDangerSquads = 1;
-    }
-    if (bat.squadsLeft <= inDangerSquads) {
+    let hpBase = (batType.squads*batType.squadSize*batType.hp);
+    let hpLeft = (bat.squadsLeft*batType.squadSize*batType.hp)-bat.damage;
+    let hpDanger = (hpBase/3);
+    if (hpLeft <= hpDanger) {
         inDanger = true;
     }
     return inDanger;
@@ -1788,18 +1787,14 @@ function checkNoAuthority(bat,batType) {
     if (batType.skills.includes('dog')) {
         noAuthority = true;
     }
-    let noAuthoritySquads = 2;
-    if (batType.squads <= 3) {
-        noAuthoritySquads = 1;
-    }
+    let hpBase = (batType.squads*batType.squadSize*batType.hp);
+    let hpLeft = (bat.squadsLeft*batType.squadSize*batType.hp)-bat.damage;
+    let hpDanger = Math.round(hpBase/3);
     if (!bat.tags.includes('outsider')) {
-        if (playerInfos.comp.ordre >= 2) {
-            noAuthoritySquads = 0;
-        } else if (playerInfos.comp.ordre >= 1) {
-            noAuthoritySquads = 1;
-        }
+        let leadershipEffect = Math.ceil(playerInfos.comp.ordre*playerInfos.comp.ordre/1.33);
+        hpDanger = Math.round(hpBase/(3+leadershipEffect));
     }
-    if (bat.squadsLeft <= noAuthoritySquads) {
+    if (hpLeft <= hpDanger) {
         noAuthority = true;
     }
     return noAuthority;

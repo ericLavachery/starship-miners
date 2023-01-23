@@ -137,6 +137,7 @@ function batInfos(bat,batType,pop) {
     }
     $('#'+bodyPlace).append('<div class="shSpace"></div>');
     let near = nearWhat(bat,batType);
+    let nearby = nearbyAliens(bat);
     if (batType.moveCost < 90) {
         if (near.cleric) {
             if (!bat.tags.includes('zealot')) {
@@ -144,10 +145,19 @@ function batInfos(bat,batType,pop) {
             }
         }
     }
-    let inDanger = checkNoAuthority(bat,batType);
+    let noAuthority = checkNoAuthority(bat,batType);
+    let inDanger = checkInDanger(bat,batType);
+    // if (bat.tags.includes('nomove') && !batType.skills.includes('nomove')) {
+    //     if (inDanger) {
+    //         tagDelete(bat,'nomove');
+    //         bat.army = 21;
+    //         warning(batType.name,'Ce bataillon passe sous votre contrôle',false);
+    //         clicSound(12);
+    //     }
+    // }
     if (near.friends && !friendsAlert) {
         if (!bat.tags.includes('nomove')) {
-            if (inDanger) {
+            if (noAuthority) {
                 if (!noControlAlert) {
                     warning('Bataillons non contrôlés','Vous avez rejoint un ou plusieurs bataillons d\'un autre groupe.<br><span class="or">Vous ne pouvez pas en prendre contrôle</span> (Votre bataillon n\'inspire pas confiance).');
                     clicSound(15);
@@ -156,8 +166,8 @@ function batInfos(bat,batType,pop) {
             } else {
                 warning('Bataillons non contrôlés','Vous avez rejoint un ou plusieurs bataillons d\'un autre groupe.<br><span class="cy">Vous pouvez en prendre contrôle</span> en cliquant dessus.');
                 clicSound(13);
+                friendsAlert = true;
             }
-            friendsAlert = true;
         }
     }
     let grade = '';
@@ -347,8 +357,12 @@ function batInfos(bat,batType,pop) {
     }
     if (batType.skills.includes('nofight')) {
         $('#'+bodyPlace).append('<span class="paramName jaune" title="Ne peux pas prendre contrôle d\'un bataillon d\'un autre groupe">Non combatant</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
-    } else if (inDanger) {
-        $('#'+bodyPlace).append('<span class="paramName jaune" title="Ne peux pas prendre contrôle d\'un bataillon d\'un autre groupe">En perdition</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+    } else if (noAuthority) {
+        if (inDanger) {
+            $('#'+bodyPlace).append('<span class="paramName jaune" title="Ne peux pas prendre contrôle d\'un bataillon d\'un autre groupe">En perdition</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+        } else {
+            $('#'+bodyPlace).append('<span class="paramName jaune" title="Ne peux pas prendre contrôle d\'un bataillon d\'un autre groupe">Sans autorité</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+        }
     }
     if (bat.tags.includes('construction')) {
         $('#'+bodyPlace).append('<span class="paramName or">Opérationel</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');
@@ -641,7 +655,7 @@ function batInfos(bat,batType,pop) {
             if (!bat.tags.includes('terror')) {
                 weaponsInfos(bat,batType,tile,pop);
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
-                skillsInfos(bat,batType,near);
+                skillsInfos(bat,batType,near,nearby);
             }
         } else {
             if (!playerInfos.onShip || batType.id === 126 || batType.id === 225) {
@@ -1039,6 +1053,10 @@ function showTileInfos(tileId) {
                 let armor = getEquipByName(armorName);
                 let armorInfo = showArmorInfo(armor);
                 $('#tileInfos').append('<span class="paramName cy">Armures</span><span class="paramIcon"><i class="ra ra-vest rpg"></i></span><span class="paramValue cy" title="'+armorInfo+'">'+armorName+'</span><br>');
+            } else if (tile.ap.includes('eq_')) {
+                let equipName = tile.ap.replace('eq_','');
+                let equip = getEquipByName(equipName);
+                $('#tileInfos').append('<span class="paramName cy">Equipements</span><span class="paramIcon"><i class="fas fa-compass"></i></span><span class="paramValue cy" title="'+equip.info+'">'+equipName+'</span><br>');
             } else {
                 let ammo = getAmmoByName(tile.ap);
                 let ammoInfo = showAmmoInfo(ammo.name);

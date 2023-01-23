@@ -162,7 +162,9 @@ function checkRuinsCit(tile) {
         if (checkz === 0) {
             checkz = 0.5;
         }
-        if (tile.rt.checks.includes('food')) {
+        if (tile.rt.name === 'Mine') {
+            citChance = citChance*1.5;
+        } else if (tile.rt.checks.includes('food')) {
             if (tile.rt.checks.includes('military') || tile.rt.checks.includes('medecine')) {
                 citChance = citChance*3.5*checkz;
             } else {
@@ -800,7 +802,7 @@ function checkNextRuinType(tile) {
     }
 };
 
-function checkRuinType(tile,quiet,dice1,dice2) {
+function checkRuinType(tile,quiet) {
     let ruinType = {};
     ruinType.name = '';
     ruinType.checks = [];
@@ -809,231 +811,57 @@ function checkRuinType(tile,quiet,dice1,dice2) {
         if (tile.rt != undefined) {
             ruinType = tile.rt;
         } else {
+            let nearRiver = checkNearRiver(tile);
             ruinType.name = 'Mine';
             ruinType.checks = ['any'];
-            let checkDice1 = rand.rand(1,28);
-            if (dice1 != undefined) {
-                checkDice1 = dice1;
+            let checkDice1 = rand.rand(1,40);
+            if (Object.keys(tile.rs).length <= 1) {
+                checkDice1 = rand.rand(2,22);
             }
-            switch (checkDice1) {
-                case 1:
-                ruinType.name = 'Mine';
-                ruinType.checks = ['any'];
-                ruinType.scrap = 300;
-                break;
-                case 2:
-                ruinType.name = 'Bidonvilles';
-                ruinType.checks = [];
-                ruinType.scrap = 200;
-                // cit x0.1
-                break;
-                case 3:
-                ruinType.name = 'Habitations';
-                ruinType.checks = ['food'];
-                ruinType.scrap = 200;
-                // cit x0.9
-                break;
-                case 4:
-                ruinType.name = 'Habitations';
-                ruinType.checks = ['food'];
-                ruinType.scrap = 200;
-                // cit x0.9
-                break;
-                case 5:
-                ruinType.name = 'Habitations';
-                ruinType.checks = ['food'];
-                ruinType.scrap = 200;
-                // cit x0.9
-                break;
-                case 6:
-                ruinType.name = 'Habitations';
-                ruinType.checks = ['food','food'];
-                ruinType.scrap = 200;
-                // cit x0.9
-                break;
-                case 7:
-                ruinType.name = 'Villas';
-                ruinType.checks = ['food','food'];
-                ruinType.scrap = 250;
-                // cit x1.8
-                break;
-                case 8:
-                ruinType.name = 'Ecole';
-                ruinType.checks = ['food','food'];
-                ruinType.scrap = 200;
-                // cit x1.8
-                break;
-                case 9:
-                ruinType.name = 'Pharmacie';
-                ruinType.checks = ['medecine','medecine'];
-                ruinType.scrap = 150;
-                // cit x0.4
-                break;
-                case 10:
-                ruinType.name = 'Bar';
-                ruinType.checks = ['food'];
-                ruinType.scrap = 150;
-                // cit x0.9
-                break;
-                case 11:
-                ruinType.name = 'Centre commercial';
-                ruinType.checks = ['food','food','food','medecine','construction'];
-                ruinType.scrap = 750;
-                // cit x10.4
-                break;
-                case 12:
-                ruinType.name = 'Garage';
-                ruinType.checks = ['auto'];
-                ruinType.scrap = 350;
-                // cit x0.2
-                break;
-                case 13:
-                ruinType.name = 'Station service';
-                ruinType.checks = ['auto'];
-                ruinType.scrap = 400;
-                // cit x0.2
-                break;
-                case 14:
-                ruinType.name = 'Dépot';
-                ruinType.checks = ['any','any','any'];
-                ruinType.scrap = 320;
-                // cit x0.6
-                break;
-                case 15:
-                ruinType.name = 'Chantier';
-                ruinType.checks = ['construction','construction'];
-                ruinType.scrap = 350;
-                // cit x0.4
-                break;
-                case 16:
-                ruinType.name = 'Atelier';
-                ruinType.checks = ['industry'];
-                ruinType.scrap = 400;
-                // cit x0.2
-                break;
-                case 17:
-                ruinType.name = 'Usine';
-                ruinType.checks = ['industry','industry','industry'];
-                ruinType.scrap = 700;
-                // cit x0.6
-                break;
-                case 18:
-                ruinType.name = 'Poste de police';
-                ruinType.checks = ['food','military'];
-                ruinType.scrap = 150;
-                // cit x4.2
-                break;
-                case 19:
-                ruinType.name = 'Armurerie';
-                ruinType.checks = ['military'];
-                ruinType.scrap = 200;
-                // cit x0.2
-                break;
-                case 20:
-                ruinType.name = 'Prison';
-                ruinType.checks = ['food','medecine','military'];
-                ruinType.scrap = 450;
-                // cit x6.3
-                break;
-                case 21:
-                ruinType.name = 'Spécial';
-                ruinType.checks = [];
-                ruinType.scrap = 200;
-                break;
-                case 22:
-                ruinType.name = 'Spécial';
-                ruinType.checks = [];
-                ruinType.scrap = 200;
-                break;
-                default:
-                ruinType.name = 'Mine';
-                ruinType.checks = ['any'];
-                ruinType.scrap = 300;
-                // cit x0.2
-            }
-            if (ruinType.name === 'Spécial') {
+            checkDice1 = 'r'+checkDice1;
+            if (checkDice1 != "r21" && checkDice1 != "r22") {
+                armorTypes.forEach(function(thisRuin) {
+                    if (thisRuin.cat === 'ruins' && thisRuin.list === 1) {
+                        if (thisRuin.rolls.includes(checkDice1)) {
+                            ruinType.name = thisRuin.name;
+                            ruinType.checks = thisRuin.checks;
+                            ruinType.scrap = thisRuin.scrap;
+                        }
+                    }
+                });
+            } else {
                 let checkDice2 = rand.rand(1,12);
-                if (dice2 != undefined) {
-                    checkDice2 = dice2;
+                if (nearRiver) {
+                    checkDice2 = rand.rand(1,22);
                 }
-                switch (checkDice2) {
-                    case 1:
-                    ruinType.name = 'Caserne';
-                    ruinType.checks = ['food','military','military','military','medecine'];
-                    ruinType.scrap = 400;
-                    // cit x10.4
-                    break;
-                    case 2:
-                    ruinType.name = 'Caserne';
-                    ruinType.checks = ['food','military','military','military','medecine'];
-                    ruinType.scrap = 400;
-                    // cit x10.4
-                    break;
-                    case 3:
-                    ruinType.name = 'Clinique';
-                    ruinType.checks = ['food','medecine','medecine'];
-                    ruinType.scrap = 250;
-                    // cit x4.2
-                    break;
-                    case 4:
-                    ruinType.name = 'Hôpital';
-                    ruinType.checks = ['food','medecine','medecine','medecine'];
-                    ruinType.scrap = 450;
-                    // cit x8.4
-                    break;
-                    case 5:
-                    ruinType.name = 'Université';
-                    ruinType.checks = ['food','food','science','science'];
-                    ruinType.scrap = 800;
-                    // cit x8.3
-                    break;
-                    case 6:
-                    ruinType.name = 'Laboratoire';
-                    ruinType.checks = ['any','science','science'];
-                    ruinType.scrap = 400;
-                    // cit x0.6
-                    break;
-                    case 7:
-                    ruinType.name = 'Centre de recherches';
-                    ruinType.checks = ['any','science','science','science'];
-                    ruinType.scrap = 650;
-                    // cit x0.8
-                    break;
-                    case 8:
-                    ruinType.name = 'Bibliothèque';
-                    ruinType.checks = [];
-                    ruinType.scrap = 150;
-                    // cit x0.1
-                    break;
-                    case 9:
-                    ruinType.name = 'Médiathèque';
-                    ruinType.checks = [];
-                    ruinType.scrap = 250;
-                    // cit x0.1
-                    break;
-                    case 10:
-                    ruinType.name = 'Centrale électrique';
-                    ruinType.checks = ['energy','energy','energy'];
-                    ruinType.scrap = 400;
-                    // cit x0.6
-                    break;
-                    case 11:
-                    ruinType.name = 'Aéroport';
-                    ruinType.checks = ['auto','auto','any','any'];
-                    ruinType.scrap = 750;
-                    // cit x0.8
-                    break;
-                    case 13:
-                    ruinType.name = 'Port';
-                    ruinType.checks = ['auto','industry','any','any'];
-                    ruinType.scrap = 750;
-                    // cit x0.8
-                    break;
-                    default:
-                    ruinType.name = 'Centre de tri';
-                    ruinType.checks = ['industry','any'];
-                    ruinType.scrap = 800;
-                    // cit x0.4
+                checkDice2 = 'r'+checkDice2;
+                armorTypes.forEach(function(thisRuin) {
+                    if (thisRuin.cat === 'ruins' && thisRuin.list === 2) {
+                        if (thisRuin.rolls.includes(checkDice2)) {
+                            ruinType.name = thisRuin.name;
+                            ruinType.checks = thisRuin.checks;
+                            ruinType.scrap = thisRuin.scrap;
+                        }
+                    }
+                });
+            }
+            if (ruinType.name === 'Mine') {
+                if (Object.keys(tile.rs).length <= 1) {
+                    ruinType.name = 'Habitations';
+                    ruinType.checks = ["food"];
+                    ruinType.scrap = 200;
+                }
+            }
+            if (tile.terrain === 'R' || tile.terrain === 'W' || tile.terrain === 'L') {
+                ruinType.name = 'Pompes';
+                ruinType.checks = [];
+                ruinType.scrap = 150;
+            }
+            if (ruinType.name === 'Aéroport') {
+                if (tile.terrain != 'G' && tile.terrain != 'P') {
+                    ruinType.name = 'Dépot';
+                    ruinType.checks = ["any","any","any"];
+                    ruinType.scrap = 320;
                 }
             }
             tile.rt = ruinType;
@@ -1044,6 +872,16 @@ function checkRuinType(tile,quiet,dice1,dice2) {
         }
     }
     return ruinType;
+};
+
+function checkNearRiver(tile) {
+    let nearRiver = false;
+    if (tile.x > 2 && tile.y > 2 && tile.x < 59 && tile.y < 59) {
+        if (zone[tile.id+1].terrain === 'R' || zone[tile.id-1].terrain === 'R' || zone[tile.id+mapSize].terrain === 'R' || zone[tile.id+mapSize-1].terrain === 'R' || zone[tile.id+mapSize+1].terrain === 'R' || zone[tile.id-mapSize].terrain === 'R' || zone[tile.id-mapSize-1].terrain === 'R' || zone[tile.id-mapSize+1].terrain === 'R') {
+            nearRiver = true;
+        }
+    }
+    return nearRiver;
 };
 
 function checkRuinsPack(tile) {
@@ -1111,6 +949,33 @@ function checkRuinsPack(tile) {
                                 console.log(armor.name+' = '+chance+'/'+dice+' = '+percent+'%');
                                 if (rand.rand(1,dice) <= chance) {
                                     thePack = 'prt_'+armor.name;
+                                    console.log('YEP!');
+                                }
+                            }
+                        }
+                    }
+                }
+                if (armor.cat === 'equip') {
+                    if (armor.icon != undefined) {
+                        if (armor.icon >= 1) {
+                            if (armor.popIn.includes(ruinType.name)) {
+                                let thisSize = ruinSize;
+                                if (ruinType.name === 'Atelier') {
+                                    thisSize = 6;
+                                }
+                                if (ruinType.name === 'Usine') {
+                                    thisSize = 20;
+                                }
+                                let chance = (zoneFactor-(armor.icon*armor.icon))*thisSize;
+                                if (armor.popIn[0] === ruinType.name) {
+                                    chance = chance*1.5;
+                                }
+                                chance = Math.ceil(chance);
+                                let dice = 2500;
+                                let percent = Math.ceil(chance/dice*100);
+                                console.log(armor.name+' = '+chance+'/'+dice+' = '+percent+'%');
+                                if (rand.rand(1,dice) <= chance) {
+                                    thePack = 'eq_'+armor.name;
                                     console.log('YEP!');
                                 }
                             }

@@ -3,6 +3,7 @@ function nextTurn() {
     playMusic('any',false);
     saveGame();
     checkUndark();
+    nextWarn = 1;
     console.log('NOUVEAU TOUR');
     console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     // stopMe = true;
