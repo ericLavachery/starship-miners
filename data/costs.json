@@ -894,7 +894,7 @@
     {
         "id":297,
         "name":"Pikebots",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":11,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":9,"drogmulojs":99,"tiradores":99,"detruas":11,"brasier":99},
         "bldReq":["Laboratoire","Chaîne de montage"],
         "compReq":{"robo":1},
         "costs":{"Scrap":60,"Fer":30,"Carbone":120,"Moteurs":100,"Titane":270,"Blendium":60,"Electros":60,"Batteries":90,"Cuivre":60,"Silicium":30},
@@ -929,7 +929,7 @@
     {
         "id":241,
         "name":"Donkys",
-        "levels":{"rednecks":99,"blades":99,"bulbos":9,"drogmulojs":99,"tiradores":6,"detruas":6,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":6,"drogmulojs":99,"tiradores":6,"detruas":6,"brasier":99},
         "bldReq":["Chaîne de montage","Laboratoire"],
         "compReq":{"robo":1},
         "costs":{"Scrap":128,"Carbone":128,"Moteurs":128,"Titane":96,"Aluminium":256,"Electros":64,"Batteries":128,"Cuivre":80,"Silicium":32},

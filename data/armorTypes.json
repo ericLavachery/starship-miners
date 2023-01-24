@@ -612,7 +612,7 @@
         "skills":[],
         "info":"Cadence++",
         "bldReq":["Armurerie"],
-        "c":{"bal":2,"log":2},
+        "compReq":{"bal":2,"log":2},
         "altCompReq":{"bal":3},
         "autoComp":["bal",3],
         "factor":"crew",
@@ -1205,7 +1205,7 @@
         "skills":[],
         "info":"Mitrailleuse",
         "bldReq":["Armurerie"],
-        "compReq":{"def":1,"bal":1},
+        "compReq":{"def":1,"bal":2},
         "factor":"crew",
         "costs":{"Carbone":12,"Scrap":12,"Fer":48,"Aluminium":24,"Tungstène":12,"Silicium":6},
         "deploy":{"Energie":12}
@@ -1216,7 +1216,7 @@
         "skills":[],
         "info":"Sniper (Camouflage+)",
         "bldReq":["Armurerie"],
-        "compReq":{"def":1,"bal":1,"det":1},
+        "compReq":{"def":1,"bal":1,"det":2},
         "factor":"crew",
         "costs":{"Carbone":16,"Scrap":12,"Fer":24,"Silicium":8},
         "deploy":{"Energie":12}
@@ -1260,7 +1260,7 @@
         "skills":[],
         "info":"Cadence++ Précision++ Elévation+ Marqueur",
         "bldReq":["Laboratoire"],
-        "compReq":{"def":1,"det":1},
+        "compReq":{"def":1,"det":2},
         "factor":"crew",
         "costs":{"Carbone":24,"Scrap":6,"Fer":6,"Silicium":6,"Electros":6,"Batteries":1},
         "deploy":{"Energie":12}

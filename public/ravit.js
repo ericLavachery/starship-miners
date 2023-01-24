@@ -136,6 +136,9 @@ function checkRavit(myBat) {
     if (bldReq === 'Poudrière') {
         bldRav = 'Armurerie';
     }
+    if (isStartZone) {
+        bldReq = '';
+    }
     if (playerInfos.bldList.includes(bldReq) || bldReq === '') {
         let ravitVolume = calcRavitVolume(myBat);
         let ravitTypeOK = false;

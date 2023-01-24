@@ -505,7 +505,7 @@ function batResAddList() {
 function mapPackAddList() {
     $('#conUnitList').append('<span class="paramName or">Munitions</span><br>');
     ammoTypes.forEach(function(ammo) {
-        let ammoIcon = getAmmoIcon(ammo);
+        let ammoIcon = getRarityIcon(ammo);
         if (ammoIcon != '') {
             let ammoDesc = '';
             if (ammo.name.includes('ac-')) {
@@ -527,7 +527,7 @@ function mapPackAddList() {
     $('#conUnitList').append('<span class="paramName or">Armures</span><br>');
     armorTypes.forEach(function(armor) {
         if (armor.cat === 'armor') {
-            let armorIcon = getAmmoIcon(armor);
+            let armorIcon = getRarityIcon(armor);
             if (armorIcon != '') {
                 let armorInfo = showArmorInfo(armor);
                 let col = 'klik';
@@ -541,7 +541,7 @@ function mapPackAddList() {
     $('#conUnitList').append('<span class="paramName or">Equipements</span><br>');
     armorTypes.forEach(function(equip) {
         if (equip.cat === 'equip') {
-            let equipIcon = getAmmoIcon(equip);
+            let equipIcon = getRarityIcon(equip);
             if (equipIcon != '') {
                 let col = 'klik';
                 if (theTilePacks === 'eq_'+equip.name) {
@@ -563,22 +563,22 @@ function mapPackAddList() {
     });
 }
 
-function getAmmoIcon(ammo) {
-    let ammoIcon;
-    if (ammo.icon === undefined) {
-        ammoIcon = '';
+function getRarityIcon(stuff) {
+    let theIcon;
+    if (stuff.icon === undefined) {
+        theIcon = '';
     } else {
-        if (ammo.icon === 3) {
-            ammoIcon = '&starf;';
-        } else if (ammo.icon === 2) {
-            ammoIcon = '&star;';
-        } else if (ammo.icon === 1) {
-            ammoIcon = '&dtri;';
+        if (stuff.icon === 3) {
+            theIcon = '&starf;';
+        } else if (stuff.icon === 2) {
+            theIcon = '&star;';
+        } else if (stuff.icon === 1) {
+            theIcon = '&dtri;';
         } else {
-            ammoIcon = '';
+            theIcon = '';
         }
     }
-    return ammoIcon;
+    return theIcon;
 };
 
 function clickEdit(tileId) {

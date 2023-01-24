@@ -481,7 +481,11 @@ function targetLogic(bat,iter) {
         tFuzz = averageDamage;
     }
     if (bat.fuzz <= -2) {
-        tFuzz = Math.round(tFuzz/2);
+        if (tFuzz > 0) {
+            tFuzz = Math.round(tFuzz/2);
+        } else {
+            tFuzz = Math.round(tFuzz*2);
+        }
     }
     if (batType.skills.includes('robot')) {
         if (selectedWeap.ammo.includes('psionics')) {
@@ -517,13 +521,23 @@ function targetLogic(bat,iter) {
     }
     if (batType.hp <= 20) {
         if (selectedWeap.power >= 25 && selectedWeap.accuracy <= 14 && selectedWeap.aoe != 'squad' && selectedWeap.aoe != 'bat') {
-            tFuzz = Math.round(tFuzz/2);
+            if (tFuzz > 0) {
+                tFuzz = Math.round(tFuzz/2);
+            } else {
+                tFuzz = Math.round(tFuzz*2);
+            }
         }
     }
     if (bat.eq === 'repel' || bat.logeq === 'repel' || bat.tdc.includes('repel')) {
         let repelChance = (playerInfos.comp.exo*6)+(playerInfos.comp.ca*12)+(playerInfos.comp.gen*2)+10;
         if (rand.rand(1,100) <= repelChance) {
             tFuzz = -95;
+        } else {
+            if (tFuzz > 0) {
+                tFuzz = Math.round(tFuzz/2);
+            } else {
+                tFuzz = Math.round(tFuzz*2);
+            }
         }
     }
     if (tFuzz < -95) {
@@ -578,6 +592,7 @@ function isBldLike(bat,batType) {
 function anyCloseTarget(iter) {
     newPointDeMire = -1;
     let closeRange = closeTargetRange;
+    console.log('closeRange='+closeRange);
     if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0) {
         closeRange = closeRange-1;
     } else if (selectedBat.squadsLeft >= selectedBatType.squads/2) {
@@ -599,8 +614,11 @@ function anyCloseTarget(iter) {
                         if ((bat.fuzz >= minFuzz.unit && !bldLike) || (bat.fuzz >= minFuzz.bld && bldLike)) {
                             if ((!batType.skills.includes('fly') && bat.eq != 'e-jetpack') || !selectedWeap.noFly) {
                                 distance = calcDistance(selectedBat.tileId,bat.tileId);
+                                console.log(bat.type);
+                                console.log('distance='+distance);
                                 if (distance <= closeRange) {
                                     tLogic = targetLogic(bat,iter);
+                                    console.log('tLogic='+tLogic);
                                     if (tLogic > bestLogic) {
                                         bestLogic = tLogic;
                                         newPointDeMire = bat.tileId;
@@ -617,6 +635,7 @@ function anyCloseTarget(iter) {
         pointDeMire = newPointDeMire;
         // console.log('new PDM: '+pointDeMire);
     }
+    console.log('pointDeMire='+pointDeMire);
 };
 
 function anyFarTarget(iter) {
@@ -933,6 +952,7 @@ function checkGoodMoves() {
     let goodMoves = [];
     let thisTile;
     let minFuzz = calcMinFuzz();
+    let repelChance = (playerInfos.comp.exo*6)+(playerInfos.comp.ca*12)+(playerInfos.comp.gen*2)+10;
     let bestLogic = -99;
     let tLogic;
     let batType;
@@ -941,40 +961,48 @@ function checkGoodMoves() {
         let meleeTile;
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && checkAlienFlyTarget(selectedWeap,bat)) {
-                batType = getBatType(bat);
-                let bldLike = isBldLike(bat,batType);
-                if ((bat.fuzz >= minFuzz.unit && !bldLike) || (bat.fuzz >= minFuzz.bld && bldLike)) {
-                    thisTile = bat.tileId;
-                    meleeTile = thisTile-1;
-                    if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
-                        tLogic = targetLogic(bat,-1);
-                        if (tLogic >= bestLogic) {
-                            bestLogic = tLogic;
-                            goodMoves.push(meleeTile);
-                        }
+                let repeled = false;
+                if (bat.eq === 'repel' || bat.logeq === 'repel' || bat.tdc.includes('repel')) {
+                    if (rand.rand(1,100) <= repelChance) {
+                        repeled = true;
                     }
-                    meleeTile = thisTile+1;
-                    if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
-                        tLogic = targetLogic(bat,-1);
-                        if (tLogic >= bestLogic) {
-                            bestLogic = tLogic;
-                            goodMoves.push(meleeTile);
+                }
+                if (!repeled) {
+                    batType = getBatType(bat);
+                    let bldLike = isBldLike(bat,batType);
+                    if ((bat.fuzz >= minFuzz.unit && !bldLike) || (bat.fuzz >= minFuzz.bld && bldLike)) {
+                        thisTile = bat.tileId;
+                        meleeTile = thisTile-1;
+                        if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
+                            tLogic = targetLogic(bat,-1);
+                            if (tLogic >= bestLogic) {
+                                bestLogic = tLogic;
+                                goodMoves.push(meleeTile);
+                            }
                         }
-                    }
-                    meleeTile = thisTile-mapSize;
-                    if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
-                        tLogic = targetLogic(bat,-1);
-                        if (tLogic >= bestLogic) {
-                            bestLogic = tLogic;
-                            goodMoves.push(meleeTile);
+                        meleeTile = thisTile+1;
+                        if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
+                            tLogic = targetLogic(bat,-1);
+                            if (tLogic >= bestLogic) {
+                                bestLogic = tLogic;
+                                goodMoves.push(meleeTile);
+                            }
                         }
-                    }
-                    meleeTile = thisTile+mapSize;
-                    if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
-                        tLogic = targetLogic(bat,-1);
-                        if (tLogic >= bestLogic) {
-                            bestLogic = tLogic;
-                            goodMoves.push(meleeTile);
+                        meleeTile = thisTile-mapSize;
+                        if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
+                            tLogic = targetLogic(bat,-1);
+                            if (tLogic >= bestLogic) {
+                                bestLogic = tLogic;
+                                goodMoves.push(meleeTile);
+                            }
+                        }
+                        meleeTile = thisTile+mapSize;
+                        if (possibleMoves.includes(meleeTile) && !goodMoves.includes(meleeTile)) {
+                            tLogic = targetLogic(bat,-1);
+                            if (tLogic >= bestLogic) {
+                                bestLogic = tLogic;
+                                goodMoves.push(meleeTile);
+                            }
                         }
                     }
                 }
@@ -984,40 +1012,48 @@ function checkGoodMoves() {
         let r1Tile;
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && checkAlienFlyTarget(selectedWeap,bat)) {
-                batType = getBatType(bat);
-                let bldLike = isBldLike(bat,batType);
-                if ((bat.fuzz >= minFuzz.unit && !bldLike) || (bat.fuzz >= minFuzz.bld && bldLike)) {
-                    thisTile = bat.tileId;
-                    r1Tile = thisTile-mapSize-1;
-                    if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
-                        tLogic = targetLogic(bat,-1);
-                        if (tLogic >= bestLogic) {
-                            bestLogic = tLogic;
-                            goodMoves.push(r1Tile);
-                        }
+                let repeled = false;
+                if (bat.eq === 'repel' || bat.logeq === 'repel' || bat.tdc.includes('repel')) {
+                    if (rand.rand(1,100) <= repelChance) {
+                        repeled = true;
                     }
-                    r1Tile = thisTile-mapSize+1;
-                    if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
-                        tLogic = targetLogic(bat,-1);
-                        if (tLogic >= bestLogic) {
-                            bestLogic = tLogic;
-                            goodMoves.push(r1Tile);
+                }
+                if (!repeled) {
+                    batType = getBatType(bat);
+                    let bldLike = isBldLike(bat,batType);
+                    if ((bat.fuzz >= minFuzz.unit && !bldLike) || (bat.fuzz >= minFuzz.bld && bldLike)) {
+                        thisTile = bat.tileId;
+                        r1Tile = thisTile-mapSize-1;
+                        if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
+                            tLogic = targetLogic(bat,-1);
+                            if (tLogic >= bestLogic) {
+                                bestLogic = tLogic;
+                                goodMoves.push(r1Tile);
+                            }
                         }
-                    }
-                    r1Tile = thisTile+mapSize-1;
-                    if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
-                        tLogic = targetLogic(bat,-1);
-                        if (tLogic >= bestLogic) {
-                            bestLogic = tLogic;
-                            goodMoves.push(r1Tile);
+                        r1Tile = thisTile-mapSize+1;
+                        if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
+                            tLogic = targetLogic(bat,-1);
+                            if (tLogic >= bestLogic) {
+                                bestLogic = tLogic;
+                                goodMoves.push(r1Tile);
+                            }
                         }
-                    }
-                    r1Tile = thisTile+mapSize+1;
-                    if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
-                        tLogic = targetLogic(bat,-1);
-                        if (tLogic >= bestLogic) {
-                            bestLogic = tLogic;
-                            goodMoves.push(r1Tile);
+                        r1Tile = thisTile+mapSize-1;
+                        if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
+                            tLogic = targetLogic(bat,-1);
+                            if (tLogic >= bestLogic) {
+                                bestLogic = tLogic;
+                                goodMoves.push(r1Tile);
+                            }
+                        }
+                        r1Tile = thisTile+mapSize+1;
+                        if (possibleMoves.includes(r1Tile) && !goodMoves.includes(r1Tile)) {
+                            tLogic = targetLogic(bat,-1);
+                            if (tLogic >= bestLogic) {
+                                bestLogic = tLogic;
+                                goodMoves.push(r1Tile);
+                            }
                         }
                     }
                 }
@@ -1105,12 +1141,6 @@ function moveToPDM() {
         if (selectedBatType.skills.includes('vault') && rand.rand(1,3) === 1) {
             jump = true;
         }
-        // if (selectedBatType.skills.includes('fouisseur') && rand.rand(1,3) === 1 && selectedBat.apLeft >= 4) {
-        //     let tile = getTile(selectedBat);
-        //     if (tile.terrain != 'M' && tile.terrain != 'R' && tile.terrain != 'W' && tile.terrain != 'L') {
-        //         jump = true;
-        //     }
-        // }
         if (selectedBat.tags.includes('stun')) {
             jump = false;
         }

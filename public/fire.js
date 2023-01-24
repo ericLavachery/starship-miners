@@ -1276,8 +1276,17 @@ function attack(melee,init) {
     // console.log('Damage Left : '+targetBat.damage);
     targetBatArrayUpdate();
     // remove ap & salvo
+    let sbk = false;
+    if (activeTurn === 'player') {
+        if (selectedBatType.skills.includes('superberserk') && selectedBat.squadsLeft <= Math.ceil(selectedBatType.squads/2)) {
+            sbk = true;
+        }
+    }
+    if (selectedBat.tags.includes('tornade') || sbk) {
+        if (selectedWeap.cost < 1) {selectedWeap.cost = 1;}
+    }
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
-    if (selectedBat.tags.includes('tornade') || selectedWeap.free) {
+    if (selectedBat.tags.includes('tornade') || selectedWeap.free || sbk) {
         // salves infinies
     } else {
         selectedBat.salvoLeft = selectedBat.salvoLeft-1;

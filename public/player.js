@@ -2202,7 +2202,6 @@ function addStartBat(tileId,unitName,xp,schef) {
     let unitIndex = unitTypes.findIndex((obj => obj.name === unitName));
     conselUnit = unitTypes[unitIndex];
     conselPut = false;
-    // conselAmmos = ['xxx','xxx','xxx','xxx'];
     conselAmmos = startBatGear(conselUnit);
     conselTriche = true;
     if (schef) {
@@ -2212,10 +2211,236 @@ function addStartBat(tileId,unitName,xp,schef) {
     }
 }
 
+function getStartBatList() {
+    let startBatList = [];
+    if (playerInfos.gang === 'rednecks') {
+        startBatList.push('Rednecks');
+        startBatList.push('Barmen');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Riders');
+            startBatList.push('Stalkers');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Gangsters');
+            startBatList.push('Buggies');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Pickups');
+            startBatList.push('Sapeurs');
+            startBatList.push('Infirmiers');
+            startBatList.push('Bus');
+        }
+    } else if (playerInfos.gang === 'blades') {
+        startBatList.push('Amazones');
+        startBatList.push('Warriors');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Scalpels');
+            startBatList.push('Chevaliers');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Raiders');
+            startBatList.push('Amazones');
+            startBatList.push('Sentinelles');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Piquiers');
+            startBatList.push('Reapers');
+            startBatList.push('Bus');
+        }
+    } else if (playerInfos.gang === 'bulbos') {
+        startBatList.push('Shooters');
+        startBatList.push('Cyborgs');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Toubibs');
+            startBatList.push('Vapos');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Shooters');
+            startBatList.push('The Box');
+            startBatList.push('Drones');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Shooters');
+            startBatList.push('Détenus');
+            startBatList.push('Sapeurs');
+            startBatList.push('Bus');
+        }
+    } else if (playerInfos.gang === 'drogmulojs') {
+        startBatList.push('Toxs');
+        startBatList.push('Blastoxs');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Dealers');
+            startBatList.push('Mutants');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Krimulos');
+            startBatList.push('Bugmen');
+            startBatList.push('Choufs');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Toxs');
+            startBatList.push('Tacots');
+            startBatList.push('Bus');
+        }
+    } else if (playerInfos.gang === 'tiradores') {
+        startBatList.push('Pistoleros');
+        startBatList.push('Gunners');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Cazadores');
+            startBatList.push('Jumpers');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Desperados');
+            startBatList.push('Amigos');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Douilles');
+            startBatList.push('Infirmiers');
+            startBatList.push('Bus');
+        }
+    } else if (playerInfos.gang === 'detruas') {
+        startBatList.push('Snowballs');
+        startBatList.push('Bombastiks');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Lovushkas');
+            startBatList.push('Dogs');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Sinyaki');
+            startBatList.push('Bombastiks');
+            startBatList.push('Milkmen');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Rainmen');
+            startBatList.push('Infirmiers');
+            startBatList.push('Bus');
+        }
+    } else if (playerInfos.gang === 'brasier') {
+        startBatList.push('Blocks');
+        startBatList.push('Slings');
+        if (playerInfos.gMode <= 3) {
+            startBatList.push('Hot girls');
+            startBatList.push('Adeptes');
+        }
+        if (playerInfos.gMode <= 2) {
+            startBatList.push('Blocks');
+            startBatList.push('Warcars');
+            startBatList.push('Pompistes');
+            startBatList.push('Milkmen');
+        }
+        if (playerInfos.gMode <= 1) {
+            startBatList.push('Hot girls');
+            startBatList.push('Tôlards');
+            startBatList.push('Bus');
+        }
+    }
+    return startBatList;
+};
+
 function startBatGear(unit) {
     // console.log('STARTBAT GEAR');
     let gear = ['xxx','xxx','scrap','xxx'];
     let gearChance = 1;
+    if (unit.skills.includes('souschef')) {
+        gearChance = 3;
+    }
+    // EQUIPS
+    if (playerInfos.comp.def >= 1) {
+        if (unit.equip.includes('kit-pompiste')) {
+            if (playerInfos.comp.pyro >= 1) {
+                gear[3] = 'kit-pompiste';
+            }
+        }
+        if (unit.equip.includes('kit-milice')) {
+            if (playerInfos.comp.det >= 2 && playerInfos.comp.bal >= 1) {
+                gear[3] = 'kit-milice';
+            }
+        }
+        if (unit.equip.includes('kit-chouf')) {
+            if (playerInfos.comp.det >= 2) {
+                gear[3] = 'kit-chouf';
+            }
+        }
+    }
+    if (gear[3] === 'xxx') {
+        if (!unit.skills.includes('camo')) {
+            if (playerInfos.comp.log >= 1) {
+                if (playerInfos.comp.cam >= 1 || playerInfos.comp.train >= 2) {
+                    if (rand.rand(1,3) <= gearChance) {
+                        if (unit.equip.includes('e-camo')) {
+                            gear[3] = 'e-camo';
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if (gear[3] === 'xxx') {
+        if (!unit.skills.includes('camo')) {
+            if (playerInfos.comp.cam >= 1 && playerInfos.comp.log >= 1) {
+                if (rand.rand(1,2) <= gearChance) {
+                    if (unit.equip.includes('silencieux')) {
+                        gear[3] = 'silencieux';
+                    }
+                    if (unit.equip.includes('silencieux1')) {
+                        gear[3] = 'silencieux1';
+                    }
+                    if (unit.equip.includes('silencieux2')) {
+                        gear[3] = 'silencieux2';
+                    }
+                }
+            }
+        }
+    }
+    if (gear[3] === 'xxx') {
+        if (unit.log3eq.includes('repel')) {
+            if (unit.skills.includes('souschef') || (playerInfos.comp.exo >= 2 && playerInfos.comp.ca >= 3)) {
+                if (unit.equip.includes('repel')) {
+                    gear[3] = 'repel';
+                }
+            }
+        }
+    }
+    if (gear[3] === 'xxx') {
+        if (playerInfos.comp.det >= 3 || (playerInfos.comp.det >= 2 && playerInfos.comp.log >= 1)) {
+            if (rand.rand(1,2) <= gearChance) {
+                if (unit.equip.includes('lunette')) {
+                    gear[3] = 'lunette';
+                }
+                if (unit.equip.includes('lunette1')) {
+                    if (unit.weapon.isPrec) {
+                        gear[3] = 'lunette1';
+                    }
+                }
+                if (unit.equip.includes('lunette2')) {
+                    if (unit.weapon2.isPrec) {
+                        gear[3] = 'lunette2';
+                    }
+                }
+            }
+        }
+    }
+    if (gear[3] === 'xxx') {
+        if (playerInfos.comp.bal >= 3 || (playerInfos.comp.bal >= 2 && playerInfos.comp.log >= 2)) {
+            if (rand.rand(1,3) <= gearChance) {
+                if (unit.equip.includes('chargeur')) {
+                    gear[3] = 'chargeur';
+                }
+                if (unit.equip.includes('chargeur1')) {
+                    if (!unit.weapon.name.includes('plasma') && !unit.weapon.name.includes('laser')) {
+                        gear[3] = 'chargeur1';
+                    }
+                }
+                if (unit.equip.includes('chargeur2')) {
+                    if (!unit.weapon2.name.includes('plasma') && !unit.weapon2.name.includes('laser')) {
+                        gear[3] = 'chargeur2';
+                    }
+                }
+            }
+        }
+    }
+    // AMMOS
+    gearChance = 1;
     if (unit.skills.includes('souschef')) {
         gearChance = 2;
     }
@@ -2464,131 +2689,6 @@ function startBatGear(unit) {
     }
     // console.log(gear);
     return gear;
-};
-
-function getStartBatList() {
-    let startBatList = [];
-    if (playerInfos.gang === 'rednecks') {
-        startBatList.push('Rednecks');
-        startBatList.push('Barmen');
-        if (playerInfos.gMode <= 3) {
-            startBatList.push('Riders');
-            startBatList.push('Stalkers');
-        }
-        if (playerInfos.gMode <= 2) {
-            startBatList.push('Gangsters');
-            startBatList.push('Buggies');
-        }
-        if (playerInfos.gMode <= 1) {
-            startBatList.push('Pickups');
-            startBatList.push('Sapeurs');
-            startBatList.push('Infirmiers');
-            startBatList.push('Bus');
-        }
-    } else if (playerInfos.gang === 'blades') {
-        startBatList.push('Amazones');
-        startBatList.push('Warriors');
-        if (playerInfos.gMode <= 3) {
-            startBatList.push('Scalpels');
-            startBatList.push('Chevaliers');
-        }
-        if (playerInfos.gMode <= 2) {
-            startBatList.push('Raiders');
-            startBatList.push('Amazones');
-        }
-        if (playerInfos.gMode <= 1) {
-            startBatList.push('Piquiers');
-            startBatList.push('Reapers');
-            startBatList.push('Bus');
-        }
-    } else if (playerInfos.gang === 'bulbos') {
-        startBatList.push('Shooters');
-        startBatList.push('Cyborgs');
-        if (playerInfos.gMode <= 3) {
-            startBatList.push('Toubibs');
-            startBatList.push('Vapos');
-        }
-        if (playerInfos.gMode <= 2) {
-            startBatList.push('Shooters');
-            startBatList.push('The Box');
-        }
-        if (playerInfos.gMode <= 1) {
-            startBatList.push('Shooters');
-            startBatList.push('Détenus');
-            startBatList.push('Sapeurs');
-            startBatList.push('Drones');
-            startBatList.push('Bus');
-        }
-    } else if (playerInfos.gang === 'drogmulojs') {
-        startBatList.push('Toxs');
-        startBatList.push('Blastoxs');
-        if (playerInfos.gMode <= 3) {
-            startBatList.push('Dealers');
-            startBatList.push('Mutants');
-        }
-        if (playerInfos.gMode <= 2) {
-            startBatList.push('Krimulos');
-            startBatList.push('Bugmen');
-            startBatList.push('Choufs');
-        }
-        if (playerInfos.gMode <= 1) {
-            startBatList.push('Toxs');
-            startBatList.push('Tacots');
-            startBatList.push('Bus');
-        }
-    } else if (playerInfos.gang === 'tiradores') {
-        startBatList.push('Pistoleros');
-        startBatList.push('Gunners');
-        if (playerInfos.gMode <= 3) {
-            startBatList.push('Cazadores');
-            startBatList.push('Jumpers');
-        }
-        if (playerInfos.gMode <= 2) {
-            startBatList.push('Desperados');
-            startBatList.push('Amigos');
-        }
-        if (playerInfos.gMode <= 1) {
-            startBatList.push('Douilles');
-            startBatList.push('Infirmiers');
-            startBatList.push('Bus');
-        }
-    } else if (playerInfos.gang === 'detruas') {
-        startBatList.push('Snowballs');
-        startBatList.push('Bombastiks');
-        if (playerInfos.gMode <= 3) {
-            startBatList.push('Lovushkas');
-            startBatList.push('Dogs');
-        }
-        if (playerInfos.gMode <= 2) {
-            startBatList.push('Sinyaki');
-            startBatList.push('Bombastiks');
-            startBatList.push('Milkmen');
-        }
-        if (playerInfos.gMode <= 1) {
-            startBatList.push('Rainmen');
-            startBatList.push('Infirmiers');
-            startBatList.push('Bus');
-        }
-    } else if (playerInfos.gang === 'brasier') {
-        startBatList.push('Blocks');
-        startBatList.push('Slings');
-        if (playerInfos.gMode <= 3) {
-            startBatList.push('Hot girls');
-            startBatList.push('Adeptes');
-        }
-        if (playerInfos.gMode <= 2) {
-            startBatList.push('Blocks');
-            startBatList.push('Warcars');
-            startBatList.push('Pompistes');
-        }
-        if (playerInfos.gMode <= 1) {
-            startBatList.push('Hot girls');
-            startBatList.push('Tôlards');
-            startBatList.push('Tacots');
-            startBatList.push('Bus');
-        }
-    }
-    return startBatList;
 };
 
 function addStartPack() {

@@ -1277,6 +1277,15 @@ function checkAmmoPack(ammoName,bat,batType,conv) {
             if (ammoName === 'dunium' && batType.weapon.ammo.includes('ac-dunium')) {
                 ammoOK = true;
             }
+            if (ammoName === 'molotov-slime' && batType.weapon.ammo.includes('fireslime')) {
+                ammoOK = true;
+            }
+            if (ammoName === 'molotov-pyrus' && batType.weapon.ammo.includes('firebug')) {
+                ammoOK = true;
+            }
+            if (ammoName === 'molotov-pyratol' && batType.weapon.ammo.includes('fireblast')) {
+                ammoOK = true;
+            }
         } else {
             if (batType.weapon.ammo.includes(ammoName)) {
                 ammoOK = true;
@@ -1291,6 +1300,15 @@ function checkAmmoPack(ammoName,bat,batType,conv) {
                 ammoOK = true;
             }
             if (ammoName === 'dunium' && batType.weapon2.ammo.includes('ac-dunium')) {
+                ammoOK = true;
+            }
+            if (ammoName === 'molotov-slime' && batType.weapon2.ammo.includes('fireslime')) {
+                ammoOK = true;
+            }
+            if (ammoName === 'molotov-pyrus' && batType.weapon2.ammo.includes('firebug')) {
+                ammoOK = true;
+            }
+            if (ammoName === 'molotov-pyratol' && batType.weapon2.ammo.includes('fireblast')) {
                 ammoOK = true;
             }
         } else {
@@ -1314,6 +1332,15 @@ function useAmmoPack(ammoName,conv) {
             } else if (ammoName === 'dunium' && selectedBatType.weapon.ammo.includes('ac-dunium')) {
                 selectedBat.ammo = 'ac-dunium';
                 ammoOK = true;
+            } else if (ammoName === 'molotov-slime' && selectedBatType.weapon.ammo.includes('fireslime')) {
+                selectedBat.ammo = 'fireslime';
+                ammoOK = true;
+            } else if (ammoName === 'molotov-pyrus' && selectedBatType.weapon.ammo.includes('firebug')) {
+                selectedBat.ammo = 'firebug';
+                ammoOK = true;
+            } else if (ammoName === 'molotov-pyratol' && selectedBatType.weapon.ammo.includes('fireblast')) {
+                selectedBat.ammo = 'fireblast';
+                ammoOK = true;
             }
         } else {
             if (selectedBatType.weapon.ammo.includes(ammoName)) {
@@ -1331,6 +1358,15 @@ function useAmmoPack(ammoName,conv) {
                 ammoOK = true;
             } else if (ammoName === 'dunium' && selectedBatType.weapon2.ammo.includes('ac-dunium')) {
                 selectedBat.ammo2 = 'ac-dunium';
+                ammoOK = true;
+            } else if (ammoName === 'molotov-slime' && selectedBatType.weapon2.ammo.includes('fireslime')) {
+                selectedBat.ammo2 = 'fireslime';
+                ammoOK = true;
+            } else if (ammoName === 'molotov-pyrus' && selectedBatType.weapon2.ammo.includes('firebug')) {
+                selectedBat.ammo2 = 'firebug';
+                ammoOK = true;
+            } else if (ammoName === 'molotov-pyratol' && selectedBatType.weapon2.ammo.includes('fireblast')) {
+                selectedBat.ammo2 = 'fireblast';
                 ammoOK = true;
             }
         } else {

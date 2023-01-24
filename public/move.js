@@ -756,16 +756,16 @@ function terrainAccess(batId,targetTileId) {
 function calcBaseMoveCost(bat,batType) {
     let baseMoveCost = batType.moveCost;
     if (bat.eq === 'kit-garde' || bat.eq === 'kit-sentinelle') {
-        baseMoveCost = 4;
+        baseMoveCost = 4.5;
     }
     if (bat.eq === 'kit-artilleur' || bat.eq === 'kit-guetteur') {
         baseMoveCost = 5;
     }
     if (bat.eq === 'e-phare' && batType.cat === 'infantry') {
-        baseMoveCost = 7;
+        baseMoveCost = 6;
     }
     if (bat.eq === 'kit-pompiste') {
-        baseMoveCost = 4;
+        baseMoveCost = 3.5;
     }
     if (bat.eq === 'w2-canon') {
         baseMoveCost = 9;

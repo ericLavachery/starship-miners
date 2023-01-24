@@ -2556,9 +2556,17 @@ function skillsInfos(bat,batType,near,nearby) {
             if (ammoOK) {
                 apCost = 1;
                 apReq = 0;
-                let ammo = getAmmoByName(tile.ap);
+                let tileAmmoPackName = tile.ap;
+                if (tileAmmoPackName === 'molotov-slime' && batType.skills.includes('fireballs')) {
+                    tileAmmoPackName = 'fireslime';
+                } else if (tileAmmoPackName === 'molotov-pyrus' && batType.skills.includes('fireballs')) {
+                    tileAmmoPackName = 'firebug';
+                } else if (tileAmmoPackName === 'molotov-pyratol' && batType.skills.includes('fireballs')) {
+                    tileAmmoPackName = 'fireblast';
+                }
+                let ammo = getAmmoByName(tileAmmoPackName);
                 let ammoInfo = showAmmoInfo(ammo.name);
-                $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tile.ap+' / '+ammoInfo+')" class="boutonVert iconButtons" onclick="useAmmoPack(`'+tile.ap+'`,true)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tileAmmoPackName+' / '+ammoInfo+')" class="boutonVert iconButtons" onclick="useAmmoPack(`'+tile.ap+'`,true)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             }
         }
