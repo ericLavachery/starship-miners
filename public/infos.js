@@ -113,13 +113,13 @@ function batInfos(bat,batType,pop) {
     if (bat.citoyens >= 1) {
         resMax = bat.citoyens;
     }
-    if (bat.eq === 'megafret') {
+    if (hasEquip(bat,['megafret'])) {
         resMax = Math.round(resMax*1.33);
     }
-    if (bat.eq === 'maxtrans') {
+    if (hasEquip(bat,['maxtrans'])) {
         resMax = Math.round(resMax/4);
     }
-    if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
+    if (hasEquip(bat,['garage','bldkit'])) {
         resMax = resMax*2;
         if (resMax < 5000) {
             resMax = 5000;
@@ -397,7 +397,7 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName cy">Embuscade</span><span class="paramIcon"></span><span class="paramValue cy">'+embushBonus+'%</span><br>');
     }
     if (pop) {
-        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || batType.skills.includes('initiative') || hasEquip(bat,['detector','g2ai'])) {
             $('#'+bodyPlace).append('<span class="paramName cy">Guet</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
         }
     }
@@ -419,7 +419,7 @@ function batInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName cy">Drogue</span><span class="paramIcon"></span><span class="paramValue cy">'+myDrugs.toString()+'</span><br>');
         }
     }
-    if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || bat.eq === 'permakirin' || bat.logeq === 'permakirin' || bat.eq === 'cyberkit') {
+    if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || hasEquip(bat,['permakirin','cyberkit'])) {
         let regenType = 'lente';
         if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || batType.skills.includes('regeneration') || bat.tags.includes('regeneration')) {
             regenType = 'rapide';
@@ -572,13 +572,13 @@ function batInfos(bat,batType,pop) {
     if (batType.transUnits >= 1) {
         let transLeft = calcTransUnitsLeft(bat,batType);
         let transBase = batType.transUnits;
-        if (bat.eq === 'megatrans' || bat.logeq === 'megatrans') {
+        if (hasEquip(bat,['megatrans'])) {
             transBase = Math.round(transBase*1.25);
         }
-        if (bat.eq === 'maxtrans') {
+        if (hasEquip(bat,['maxtrans'])) {
             transBase = calcTransWithBreak(transBase,batType);
         }
-        if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
+        if (hasEquip(bat,['garage','bldkit'])) {
             transBase = transBase*2;
         }
         if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
@@ -634,19 +634,23 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">'+bat.logeq+'</span><br>');
     }
     if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
-        if (bat.eq != 'e-flash' && bat.logeq != 'e-flash' && bat.eq != 'e-phare' && bat.logeq != 'e-phare' && !bat.tdc.includes('e-flash')) {
+        if (noEquip(bat,['e-flash','e-phare'])) {
             $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">e-flash</span><br>');
         }
     }
+    let tdcDesc = ['Equipements','Bonus compétences'];
+    if (batType.skills.includes('penitbat')) {
+        tdcDesc = ['TDC','Tombés du camion'];
+    }
     if (pop) {
         if (bat.tdc.length >= 1) {
-            $('#'+bodyPlace).append('<span class="paramName" title="Tombés du camion">TDC</span><span class="paramIcon"></span><span class="paramValue lcy">'+toNiceString(bat.tdc)+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName" title="'+tdcDesc[1]+'">'+tdcDesc[0]+'</span><span class="paramIcon"></span><span class="paramValue lcy">'+toNiceString(bat.tdc)+'</span><br>');
         }
     } else {
         if (bat.tdc.length === 1) {
-            $('#'+bodyPlace).append('<span class="paramName" title="Tombés du camion">TDC</span><span class="paramIcon"></span><span class="paramValue lcy">'+bat.tdc[0]+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName" title="'+tdcDesc[1]+'">'+tdcDesc[0]+'</span><span class="paramIcon"></span><span class="paramValue lcy">'+bat.tdc[0]+'</span><br>');
         } else if (bat.tdc.length >= 2) {
-            $('#'+bodyPlace).append('<span class="paramName" title="Tombés du camion">TDC</span><span class="paramIcon"></span><span class="paramValue lcy" title="'+toNiceString(bat.tdc)+'">'+bat.tdc[0]+'...</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName" title="'+tdcDesc[1]+'">'+tdcDesc[0]+'</span><span class="paramIcon"></span><span class="paramValue lcy" title="'+toNiceString(bat.tdc)+'">'+bat.tdc[0]+'...</span><br>');
         }
     }
     // WEAPONS & SKILLS

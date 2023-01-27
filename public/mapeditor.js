@@ -142,10 +142,28 @@ function mapEditWindow() {
         eggsByTerrain('prairies',zone[0].gKind);
         eggsByTerrain('marécages',zone[0].sKind);
     }
+    $('#conUnitList').append('<br>');
+    if (zone[0].title === undefined) {
+        zone[0].title = 'Super Méga Zone';
+    }
+    if (zone[0].body === undefined) {
+        zone[0].body = 'Allez chercher ce Trolley et cassez-vous, bordel!';
+    }
+    $('#conUnitList').append('<span class="constName"><form id="descFrm" onkeydown="return event.key != `Enter`;">Nom:<br><input type="text" id="descTitle" name="descTitle" class="txtInputs" value="'+zone[0].title+'"><br>Objectif/Description:<br><textarea id="descBody" name="descBody" rows="8" cols="32" class="txtInputs">'+zone[0].body+'</textarea><br><input type="button" onclick="nameTheZoneBaby()" value="Envoyer" class="boutonGris skillButtons"></form></span>');
     $('#conUnitList').append('<br><br>');
 };
 
-// {"number":3,"visit":true}
+function nameTheZoneBaby() {
+    let theTitle = document.getElementById("descTitle").value;
+    let theBody = document.getElementById("descBody").value;
+    if (theTitle != '') {
+        zone[0].title = theTitle;
+    }
+    if (theBody != '') {
+        zone[0].body = theBody;
+    }
+    mapEditWindow();
+};
 
 function mapNumAssign(dropMenuId) {
     let mapNum = document.getElementById(dropMenuId).value;

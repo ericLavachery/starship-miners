@@ -3735,14 +3735,14 @@
         "rof": 1.5,
         "power": 0,
         "powermult": 1.4,
-        "armors": 1.5,
+        "armors": 1.35,
         "accuracy": 2,
         "apdamage": 0,
         "aoe": "bat",
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
         "compReq":{"pyro":3,"explo":2},
-        "deploy":{"Soufre":2,"Nanite":2,"Oxygène":2,"Potassium":2,"Fuel":2,"Huile":2,"Végétaux":2,"Tissus":1},
+        "deploy":{"Soufre":2,"Nanite":5,"Oxygène":2,"Potassium":2,"Fuel":2,"Huile":2,"Végétaux":2,"Tissus":1},
         "batch":100
     },
     {

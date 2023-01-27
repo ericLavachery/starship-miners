@@ -133,7 +133,7 @@ function landerMenu() {
         let transUnitLeft = calcTransUnitsLeft(landerBat,landerBatType);
         let transResLeft = checkResSpace(landerBat);
         let transResMax = landerBatType.transRes;
-        if (landerBat.eq === 'megafret') {
+        if (hasEquip(landerBat,['megafret'])) {
             transResMax = Math.round(transResMax*1.33);
         }
         let ucol = 'cy';
@@ -436,10 +436,10 @@ function batListElement(bat,batType,idOfLander) {
     }
     let vetStatus = '';
     if (bat.tags.includes('schef') || batType.skills.includes('leader')) {
-        vetStatus = '<span class="rouge">(Chef)</span>';
+        vetStatus = '<span class="bleu">(Chef)</span>';
     }
     if (bat.tags.includes('hero')) {
-        vetStatus = '<span class="rouge">(Héros)</span>';
+        vetStatus = '<span class="bleu">(Héros)</span>';
     }
     if (bat.tags.includes('vet')) {
         vetStatus = '(Vétéran)';
@@ -501,16 +501,28 @@ function batListElement(bat,batType,idOfLander) {
     if (eq.includes('aucun')) {
         eq = '/';
     }
-    $('#be'+bat.id).append('<span class="listRes gff">Eq: <span class="brunf">'+eq+'</span></span>&nbsp;');
+    if (bat.tdc.includes(bat.eq) || bat.logeq === bat.eq) {
+        $('#be'+bat.id).append('<span class="listRes gff" title="Equipement choisi identique à un autre équipement!">Eq: <span class="rouge">'+eq+'</span></span>&nbsp;');
+    } else {
+        $('#be'+bat.id).append('<span class="listRes gff" title="Equipement choisi">Eq: <span class="brunf">'+eq+'</span></span>&nbsp;');
+    }
     if (bat.logeq != '') {
-        $('#be'+bat.id).append('<span class="listRes gff">Eq2: <span class="brunf">'+bat.logeq+'</span></span>&nbsp;');
+        $('#be'+bat.id).append('<span class="listRes gff" title="Equipement bonus logistique">Eq2: <span class="brunf">'+bat.logeq+'</span></span>');
+    }
+    if (bat.tdc.length >= 1) {
+        $('#be'+bat.id).append('<br>');
+        if (batType.skills.includes('penitbat')) {
+            $('#be'+bat.id).append('<span class="listRes gff" title="Equipement(s) tombé(s) du camion">Eq3+: <span class="brunf">'+toNiceString(bat.tdc)+'</span></span>');
+        } else {
+            $('#be'+bat.id).append('<span class="listRes gff" title="Equipement(s) bonus compétences">Eq3+: <span class="brunf">'+toNiceString(bat.tdc)+'</span></span>');
+        }
     }
     $('#be'+bat.id).append('<br>');
     if (checkHasWeapon(1,batType,bat.eq)) {
         $('#be'+bat.id).append('<span class="listRes gff">'+batType.weapon.name+': <span class="brunf">'+bat.ammo+'</span></span>&nbsp;');
     }
     if (checkHasWeapon(2,batType,bat.eq)) {
-        $('#be'+bat.id).append('<span class="listRes gff">'+batType.weapon2.name+': <span class="brunf">'+bat.ammo2+'</span></span>&nbsp;');
+        $('#be'+bat.id).append('<span class="listRes gff">'+batType.weapon2.name+': <span class="brunf">'+bat.ammo2+'</span></span>');
     }
     if (bat.id === selectedBat.id) {
         $('#be'+bat.id).append('<hr class="cyff">');
@@ -721,7 +733,7 @@ function viewLanderRes() {
     let transResLeft = checkResSpace(landerBat);
     let transResIn = checkResLoad(landerBat);
     let transResMax = landerBatType.transRes;
-    if (landerBat.eq === 'megafret') {
+    if (hasEquip(landerBat,['megafret'])) {
         transResMax = Math.round(transResMax*1.33);
     }
     let numCit = getLanderNumCit(slId,126);

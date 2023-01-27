@@ -1775,7 +1775,7 @@ function checkNoAuthority(bat,batType) {
     }
     if (batType.crew === 0) {
         if (batType.skills.includes('robot')) {
-            if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+            if (hasEquip(bat,['g2ai'])) {
                 // rien
             } else {
                 noAuthority = true;

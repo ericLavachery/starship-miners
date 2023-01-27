@@ -446,6 +446,7 @@ function conSelect(unitId,player,noRefresh) {
     let weapName;
     let equipNotes;
     let bonusEqName = getBonusEq(conselUnit);
+    let autoEqList = getBaseAutoEqList(conselUnit);
     let emptyBat = {};
     console.log("bonusEqName="+bonusEqName);
     listNum = 1;
@@ -467,7 +468,7 @@ function conSelect(unitId,player,noRefresh) {
                     compReqOK = false;
                 }
                 if ((compReqOK || conselTriche) && showEq) {
-                    if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1) || (bonusEqName === equip)) {
+                    if (conselAmmos[3] == equip || (conselAmmos[3] === 'xxx' && listNum === 1)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
@@ -1173,7 +1174,6 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite) {
                 }
             }
             // Equip
-            newBat.tdc = [];
             let equipName = conselAmmos[3];
             if (equipName === 'xxx') {
                 equipName = 'aucun';
@@ -1181,10 +1181,19 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite) {
             let batEquip = getEquipByName(equipName);
             newBat.eq = equipName;
             // log3eq
-            newBat.logeq = getBonusEq(conselUnit);
-            if (newBat.logeq === 'g2ai') {
-                newBat.ok = '';
+            if (!conselTriche) {
+                newBat.logeq = getBonusEq(conselUnit);
+                if (newBat.logeq === 'g2ai') {
+                    newBat.ok = '';
+                }
             }
+            // tdc
+            newBat.tdc = [];
+            // if (!conselTriche) {
+            //     if (!conselUnit.skills.includes('penitbat')) {
+            //         newBat.tdc = getBaseAutoEqList(conselUnit);
+            //     }
+            // }
             // Armor
             let armorName = conselAmmos[2];
             if (armorName === 'xxx') {
@@ -2212,7 +2221,7 @@ function autoRoad(tile) {
     if (!tile.rd && !isBatHere) {
         let terrain = getTerrain(selectedBat);
         let apCost = selectedBatType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
-        if (selectedBat.eq === 'e-road' || selectedBat.logeq === 'e-road') {
+        if (hasEquip(selectedBat,['e-road'])) {
             if (selectedBatType.skills.includes('routes')) {
                 apCost = apCost/1.5;
             } else if (selectedBatType.mecanoCost < 12) {
@@ -2265,7 +2274,7 @@ function putRoad(apCost) {
     tagDelete(selectedBat,'guet');
     doneAction(selectedBat);
     camoOut();
-    if (selectedBatType.skills.includes('infrahelp') || selectedBat.eq === 'e-infra' || selectedBat.logeq === 'e-infra') {
+    if (selectedBatType.skills.includes('infrahelp') || hasEquip(selectedBat,['e-infra'])) {
         selectedBat.apLeft = selectedBat.apLeft-apCost;
         putRoadsAround();
     } else {

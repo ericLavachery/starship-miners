@@ -367,7 +367,7 @@ function nextTurnEnd() {
                 if (theTransType.skills.includes('medic')) {
                     medicalTransports.push(bat.locId);
                 } else if (theTransType.skills.includes('badmedic') && playerInfos.comp.med >= 3) {
-                    if (theTrans.eq === 'e-medic' || theTrans.logeq === 'e-medic') {
+                    if (hasEquip(theTrans,['e-medic'])) {
                         medicalTransports.push(bat.locId);
                     }
                 }
@@ -434,7 +434,7 @@ function nextTurnEnd() {
                     triProd(bat,batType,1,false,false);
                 }
                 if (!playerInfos.onShip) {
-                    if (bat.eq.includes('psol') || bat.logeq.includes('psol') || bat.eq.includes('bldkit') || bat.logeq.includes('bldkit')) {
+                    if (hasEquip(bat,['psol','psol2','bldkit'])) {
                         solarPanel(bat,batType);
                     }
                 }
@@ -480,7 +480,7 @@ function nextTurnEnd() {
             }
             // CAMP ENTRAINEMENT
             if (playerInfos.bldList.includes('Camp d\'entraînement')) {
-                if (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
                     if (bat.loc === "trans" && campIds.includes(bat.locId)) {
                         bat.xp = bat.xp+1;
                     } else {
@@ -621,7 +621,7 @@ function nextTurnEnd() {
                 }
             }
             if (landerTileId >= 0) {
-                if (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
                     let distFromLander = calcDistance(bat.tileId,landerTileId);
                     if (distFromLander >= 17) {
                         bat.xp = bat.xp+0.3;
@@ -919,7 +919,7 @@ function turnInfo() {
             if (batType.skills.includes('snif')) {
                 dogTiles.push(bat.tileId);
             }
-            if (batType.skills.includes('radar') || bat.eq === 'e-radar' || bat.logeq === 'e-radar') {
+            if (batType.skills.includes('radar') || hasEquip(bat,['e-radar'])) {
                 radarTiles.push(bat.tileId);
             }
             if (bat.eq === 'e-control' || bat.logeq === 'e-control' || batType.skills.includes('control')) {
@@ -932,7 +932,7 @@ function turnInfo() {
                 hasScraptruck = true;
             }
             if (batType.skills.includes('transorbital')) {
-                if (bat.eq != 'siland') {
+                if (noEquip(bat,['siland'])) {
                     landingNoise = landingNoise+Math.floor(batType.hp/75*batType.fuzz*batType.fuzz/25)+2;
                 }
                 if (playerInfos.onShip || !bat.tags.includes('nomove')) {
@@ -940,7 +940,7 @@ function turnInfo() {
                 }
             }
             if (zone[0].dark) {
-                if (batType.skills.includes('phare') || batType.skills.includes('bigflash') || bat.eq === 'e-phare' || bat.logeq === 'e-phare' || batType.skills.includes('radar') || bat.eq === 'e-radar' || bat.logeq === 'e-radar') {
+                if (batType.skills.includes('phare') || batType.skills.includes('bigflash') || batType.skills.includes('radar') || hasEquip(bat,['e-phare','e-radar'])) {
                     unDarkVision(bat,batType);
                 }
             }
@@ -1210,7 +1210,7 @@ function getBatAP(bat,batType) {
 
 function getAP(bat,batType) {
     let newAP = bat.ap;
-    if (bat.eq === 'belier') {
+    if (hasEquip(bat,['belier'])) {
         newAP = newAP*0.9;
     }
     if (playerInfos.bldList.includes('QG')) {
@@ -1226,13 +1226,13 @@ function getAP(bat,batType) {
             newAP = newAP+1;
         }
     }
-    if (bat.eq === 'g2motor' || bat.logeq === 'g2motor' || bat.eq === 'carkit') {
+    if (hasEquip(bat,['g2motor','carkit'])) {
         newAP = newAP+(Math.sqrt(batType.moveCost)*2.5);
     }
     if (batType.skills.includes('heroap') && bat.tags.includes('hero')) {
         newAP = newAP+2;
     }
-    if (bat.eq === 'helper' || bat.logeq === 'helper' || bat.eq === 'cyberkit' || bat.tdc.includes('helper')) {
+    if (hasEquip(bat,['helper','cyberkit'])) {
         newAP = newAP+1;
     }
     if (bat.eq === 'e-lifepod') {
@@ -1482,7 +1482,7 @@ function blub(bat,batType) {
         if (terrain.name === 'L' || terrain.name === 'R') {
             let tile = getTile(bat);
             if ((tile.seed <= 3 || terrain.name === 'L') && !tile.rd) {
-                if (bat.eq != 'waterproof' && bat.logeq != 'waterproof' && !bat.tdc.includes('waterproof')) {
+                if (noEquip(bat,['waterproof'])) {
                     if ((!batType.skills.includes('fly') && !batType.skills.includes('hover') && !batType.skills.includes('noblub')) || batType.skills.includes('jetpack')) {
                         bat.tags.push('blub');
                     }
@@ -1500,9 +1500,9 @@ function tagsEffect(bat,batType) {
     if (bat.tags.includes('mud')) {
         if (batType.moveCost < 90) {
             bat.apLeft = bat.apLeft-bat.ap;
-            if (batType.skills.includes('ranger') || batType.skills.includes('caterp') || bat.eq === 'e-ranger' || bat.logeq === 'e-ranger' || bat.tdc.includes('e-ranger')) {
+            if (batType.skills.includes('ranger') || batType.skills.includes('caterp') || hasEquip(bat,['e-ranger'])) {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3*2));
-            } else if (bat.eq === 'chenilles' || bat.logeq === 'chenilles' || bat.eq === 'carkit') {
+            } else if (hasEquip(bat,['chenilles','carkit'])) {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/2));
             } else {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3));
@@ -1564,7 +1564,7 @@ function tagsEffect(bat,batType) {
         }
     }
     // REGENERATION & KIRIN DRUG
-    if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || bat.eq === 'permakirin' || bat.eq === 'cyberkit' || bat.logeq === 'permakirin' || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal') || resistance) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || hasEquip(bat,['permakirin','cyberkit']) || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal') || resistance) {
         let regOK = true;
         if (batType.cat === 'aliens') {
             if (batType.skills.includes('reactpoison') && bat.tags.includes('poison')) {

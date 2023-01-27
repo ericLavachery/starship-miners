@@ -407,7 +407,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     // xpGain = Math.round(xpGain*100)/100;
     xpGain = xpGain.toFixedNumber(2);
     if (!inBld) {
-        if (!selectedBatType.skills.includes('robot') || selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
+        if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
             selectedBat.xp = selectedBat.xp+xpGain;
         }
         selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
@@ -418,7 +418,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
         doneAction(selectedBat);
         selectedBatArrayUpdate();
     } else {
-        if (!medicBatType.skills.includes('robot') || medicBat.eq === 'g2ai' || medicBat.logeq === 'g2ai') {
+        if (!medicBatType.skills.includes('robot') || hasEquip(medicBat,['g2ai'])) {
             medicBat.xp = medicBat.xp+xpGain;
         }
         medicBat.apLeft = medicBat.apLeft-totalAPCost;
@@ -659,7 +659,7 @@ function getAway(myBat,fromTileId,blob) {
         let batType = getBatType(bat);
         if (batType.skills.includes('transport') && batType.cat === 'buildings' && getAwayTile < 0) {
             let maxSize = batType.transMaxSize;
-            if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
+            if (hasEquip(bat,['garage','bldkit'])) {
                 maxSize = maxSize*3;
             }
             if (myBatType.size <= maxSize) {
@@ -904,7 +904,7 @@ function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
         } else if (playerInfos.bldList.includes('Infirmerie') && batType.cat != 'buildings') {
             baseskillCost = Math.round(baseskillCost*3/4);
         }
-        if (bat.eq === 'e-medic' || bat.logeq === 'e-medic' || bat.tdc.includes('e-medic')) {
+        if (hasEquip(bat,['e-medic'])) {
             if (baseskillCost >= 7) {
                 baseskillCost = Math.round(baseskillCost*3/4);
             } else {
@@ -924,7 +924,7 @@ function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
         } else if (playerInfos.bldList.includes('Garage') && batType.cat != 'buildings' && baseskillCost >= 3) {
             baseskillCost = baseskillCost-1;
         }
-        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano' || bat.eq === 'carkit') {
+        if (hasEquip(bat,['e-mecano','carkit'])) {
             if (batType.skills.includes('mecano') || batType.skills.includes('selfmecano')) {
                 if (baseskillCost >= 6) {
                     baseskillCost = Math.floor(baseskillCost*3/4);
@@ -954,7 +954,7 @@ function bestMedicInBld(bldBat) {
         if (bat.loc === "trans" && bat.locId === bldBat.id) {
             let batType = getBatType(bat);
             if (batType.cat != 'buildings' && batType.cat != 'devices') {
-                if (batType.skills.includes('medic') || (batType.skills.includes('badmedic') && playerInfos.comp.med >= 3 && (bat.eq === 'e-medic' || bat.logeq === 'e-medic' || bat.tdc.includes('e-medic')))) {
+                if (batType.skills.includes('medic') || (batType.skills.includes('badmedic') && playerInfos.comp.med >= 3 && hasEquip(bat,['e-medic']))) {
                     maxMeds = 10*bat.apLeft/batType.mediCost;
                     if (maxMeds > bestMaxMeds) {
                         bestMaxMeds = maxMeds;
@@ -977,7 +977,7 @@ function bestMecanoInBld(bldBat) {
         if (bat.loc === "trans" && bat.locId === bldBat.id) {
             let batType = getBatType(bat);
             if (batType.cat != 'buildings' && batType.cat != 'devices') {
-                if (batType.skills.includes('mecano') || (batType.skills.includes('badmecano') && (bat.eq === 'e-mecano' || bat.eq === 'carkit' || bat.logeq === 'e-mecano'))) {
+                if (batType.skills.includes('mecano') || (batType.skills.includes('badmecano') && hasEquip(bat,['e-mecano','carkit']))) {
                     maxMeds = 10*bat.apLeft/batType.mecanoCost;
                     if (maxMeds > bestMaxMeds) {
                         bestMaxMeds = maxMeds;
@@ -1109,21 +1109,21 @@ function checkMecanoSkill(bat,batType) {
     } else if (batType.skills.includes('selfmecano')) {
         myMecanoSkill = 'selfmecano';
     } else if (batType.skills.includes('badmecano')) {
-        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano' || bat.eq === 'carkit') {
+        if (hasEquip(bat,['e-mecano','carkit'])) {
             myMecanoSkill = 'mecano';
         } else {
             myMecanoSkill = 'badmecano';
         }
     } else if (batType.skills.includes('selfbadmecano')) {
-        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano' || bat.eq === 'carkit') {
+        if (hasEquip(bat,['e-mecano','carkit'])) {
             myMecanoSkill = 'selfmecano';
         } else {
             myMecanoSkill = 'selfbadmecano';
         }
-    } else if (batType.skills.includes('w2mecano') && (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano' || bat.eq === 'carkit')) {
+    } else if (batType.skills.includes('w2mecano') && hasEquip(bat,['e-mecano','carkit'])) {
         myMecanoSkill = 'badmecano';
     } else {
-        if (bat.eq === 'e-mecano' || bat.logeq === 'e-mecano' || bat.eq === 'carkit') {
+        if (hasEquip(bat,['e-mecano','carkit'])) {
             if (batType.cat === 'infantry') {
                 myMecanoSkill = 'badmecano';
             } else {
@@ -1141,19 +1141,19 @@ function checkMedicSkill(bat,batType) {
     } else if (batType.skills.includes('selfmedic')) {
         myMedicSkill = 'selfmedic';
     } else if (batType.skills.includes('badmedic')) {
-        if ((bat.eq === 'e-medic' || bat.logeq === 'e-medic' || bat.tdc.includes('e-medic')) && playerInfos.comp.med >= 3) {
+        if (hasEquip(bat,['e-medic']) && playerInfos.comp.med >= 3) {
             myMedicSkill = 'medic';
         } else {
             myMedicSkill = 'badmedic';
         }
     } else if (batType.skills.includes('selfbadmedic')) {
-        if ((bat.eq === 'e-medic' || bat.logeq === 'e-medic' || bat.tdc.includes('e-medic')) && playerInfos.comp.med >= 3) {
+        if (hasEquip(bat,['e-medic']) && playerInfos.comp.med >= 3) {
             myMedicSkill = 'selfmedic';
         } else {
             myMedicSkill = 'selfbadmedic';
         }
     } else {
-        if (bat.eq === 'e-medic' || bat.logeq === 'e-medic' || bat.tdc.includes('e-medic')) {
+        if (hasEquip(bat,['e-medic'])) {
             myMedicSkill = 'selfbadmedic';
         }
     }
@@ -1190,7 +1190,7 @@ function checkMedTrans(bat,batType) {
             isMedic = true;
         }
         if (batType.skills.includes('badmedic') && playerInfos.comp.med >= 3) {
-            if (bat.eq === 'e-medic' || bat.logeq === 'e-medic' || bat.tdc.includes('e-medic')) {
+            if (hasEquip(bat,['e-medic'])) {
                 isMedic = true;
             }
         }

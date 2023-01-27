@@ -303,7 +303,7 @@ function checkTransportId(myBat,myBatType) {
         if (bat.loc === "zone" && bat.tileId === myBat.tileId) {
             batType = getBatType(bat);
             let maxSize = batType.transMaxSize;
-            if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
+            if (hasEquip(bat,['garage','bldkit'])) {
                 maxSize = maxSize*3;
             }
             if (maxSize >= myBatType.size) {
@@ -340,13 +340,13 @@ function calcTransWithBreak(theTrans,batType) {
 
 function calcTransUnitsLeft(myBat,myBatType) {
     let myBatTransUnitsLeft = myBatType.transUnits;
-    if (myBat.eq === 'garage' || myBat.logeq === 'garage' || myBat.eq === 'bldkit') {
+    if (hasEquip(myBat,['garage','bldkit'])) {
         myBatTransUnitsLeft = myBatTransUnitsLeft*2;
     }
-    if (myBat.eq === 'megatrans' || myBat.logeq === 'megatrans') {
+    if (hasEquip(myBat,['megatrans'])) {
         myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*1.25);
     }
-    if (myBat.eq === 'maxtrans') {
+    if (hasEquip(myBat,['maxtrans'])) {
         myBatTransUnitsLeft = calcTransWithBreak(myBatTransUnitsLeft,myBatType);
     }
     if (myBatType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
@@ -372,7 +372,7 @@ function checkLanderResSpace(bat) {
     let batType = getBatType(bat);
     let resLoaded = checkResLoad(bat);
     let resMax = batType.transRes;
-    if (bat.eq === 'megafret') {
+    if (hasEquip(bat,['megafret'])) {
         resMax = Math.round(resMax*1.33);
     }
     if (bat.citoyens > 0) {
@@ -533,7 +533,7 @@ function checkEmbarqArmy(transBat,transBatType,firstBat) {
 function embarqArmy(transBat,transBatType,oldTransBat) {
     let transOK = false;
     let maxSize = transBatType.transMaxSize;
-    if (transBat.eq === 'garage' || transBat.logeq === 'garage' || transBat.eq === 'bldkit') {
+    if (hasEquip(transBat,['garage','bldkit'])) {
         maxSize = maxSize*3;
     }
     bataillons.forEach(function(bat) {
@@ -590,7 +590,7 @@ function jumpInTrans() {
                         let batType = getBatType(bat);
                         if (resLoad <= 0 || !batType.skills.includes('transorbital')) {
                             let maxSize = batType.transMaxSize;
-                            if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
+                            if (hasEquip(bat,['garage','bldkit'])) {
                                 maxSize = maxSize*3;
                             }
                             if (batType.transUnits >= 1 && maxSize >= selectedBatType.size) {
@@ -737,7 +737,7 @@ function clickDebarq(tileId) {
                 message = 'Le bataillon de destination ne peut pas acceuillir de troupes.';
             } else {
                 let maxSize = batType.transMaxSize;
-                if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
+                if (hasEquip(bat,['garage','bldkit'])) {
                     maxSize = maxSize*3;
                 }
                 if (maxSize < batDebarqType.size) {

@@ -126,7 +126,7 @@ function okSound(roger) {
                 randNum = 2;
             }
         } else if (selectedBatType.skills.includes('robot')) {
-            if (selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
+            if (hasEquip(selectedBat,['g2ai'])) {
                 if (selectedBatType.name === 'Thunderbots' || selectedBatType.name === 'T-Skeltons') {
                     okFile = 'rok';
                     randNum = 2;

@@ -31,7 +31,7 @@ function getMorphiteRate(bat,batType) {
     if (people === 0) {people = 1;}
     let crew = batType.squads*batType.squadSize*people;
     let miningRate = batType.mining.rate+10;
-    if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
+    if (hasEquip(bat,['g2tools'])) {
         miningRate = miningRate+10;
     }
     let morphMining = (miningRate*(batType.mining.level+0.5))+30+(crew/2);
@@ -462,19 +462,19 @@ function getMiningRate(bat,fullRate,noMining) {
                 miningAdj = 1.6;
             }
         }
-        if (bat.eq === 'plasmaextract' || bat.logeq === 'plasmaextract') {
+        if (hasEquip(bat,['plasmaextract'])) {
             miningAdj = 1.7;
-        } else if (bat.eq === 'monoextract' || bat.logeq === 'monoextract') {
+        } else if (hasEquip(bat,['monoextract'])) {
             miningAdj = 2.2;
-        } else if (bat.eq === 'autoextract' || bat.logeq === 'autoextract') {
+        } else if (hasEquip(bat,['autoextract'])) {
             miningAdj = 1.7;
-        } else if (bat.eq === 'hydroextract' || bat.logeq === 'hydroextract') {
+        } else if (hasEquip(bat,['hydroextract'])) {
             miningAdj = 1.6;
-        } else if (bat.eq === 'tungextract' || bat.logeq === 'tungextract' || bat.eq === 'bldkit') {
+        } else if (hasEquip(bat,['tungextract','bldkit'])) {
             miningAdj = 1.4;
         }
     } else {
-        if (bat.eq === 'autoextract' || bat.logeq === 'autoextract') {
+        if (hasEquip(bat,['autoextract'])) {
             miningAdj = 1.7;
         }
     }
@@ -513,7 +513,7 @@ function getMiningRate(bat,fullRate,noMining) {
     }
     miningAdj = miningAdj*helpInside;
     let batMining = batType.mining.rate;
-    if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
+    if (hasEquip(bat,['g2tools'])) {
         batMining = batMining+5;
     }
     if (fullRate) {
@@ -555,7 +555,7 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     }
     let batRate = getMiningRate(bat,fullRate,noMining);
     let miningLevel = batType.mining.level;
-    if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
+    if (hasEquip(bat,['g2tools'])) {
         if (miningLevel < 2) {
             miningLevel = 2;
         }
@@ -584,7 +584,7 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     // ADJ SUBTYPE & LEVELS
     if (!batType.mining.types.includes(res.bld)) {
         if (batType.mining.subTypes.includes(res.bld)) {
-            if (bat.eq === 'g2tools' || bat.logeq === 'g2tools') {
+            if (hasEquip(bat,['g2tools'])) {
                 resRate = Math.ceil(resRate/1.5);
             } else {
                 resRate = Math.ceil(resRate/2.5);

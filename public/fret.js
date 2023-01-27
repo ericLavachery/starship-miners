@@ -552,13 +552,13 @@ function checkResSpace(bat) {
     let batType = getBatType(bat);
     let resLoaded = checkResLoad(bat);
     let resMax = batType.transRes;
-    if (bat.eq === 'megafret') {
+    if (hasEquip(bat,['megafret'])) {
         resMax = Math.round(resMax*1.33);
     }
-    if (bat.eq === 'maxtrans') {
+    if (hasEquip(bat,['maxtrans'])) {
         resMax = Math.round(resMax/4);
     }
-    if (bat.eq === 'garage' || bat.logeq === 'garage' || bat.eq === 'bldkit') {
+    if (hasEquip(bat,['garage','bldkit'])) {
         resMax = resMax*2;
         if (resMax < 5000) {
             resMax = 5000;

@@ -27,7 +27,7 @@ function calcBatFuzz(bat) {
     if (bat.eq === 'w2-lmit' || bat.eq === 'w1-ggun' || bat.eq === 'w2-ggun' || bat.eq === 'w2-rain' || bat.eq === 'w2-autopistol' || bat.eq === 'w3-autopistol' || bat.eq === 'kit-garde' || bat.eq === 'kit-lightning' || bat.eq === 'w2-acanon' || bat.eq === 'w2-mortier') {
         batFuzz = batFuzz+1.5;
     }
-    if (bat.eq === 'autoextract' || bat.eq === 'w1-gun' || bat.eq === 'w1-plasma' || bat.eq === 'w2-brol' || bat.eq === 'w2-fire' || bat.eq === 'w2-molo' || bat.eq === 'w2-laser' || bat.eq === 'kit-guetteur') {
+    if (bat.eq === 'w1-gun' || bat.eq === 'w1-plasma' || bat.eq === 'w2-brol' || bat.eq === 'w2-fire' || bat.eq === 'w2-molo' || bat.eq === 'w2-laser' || bat.eq === 'kit-guetteur') {
         batFuzz = batFuzz+1;
     }
     if (playerInfos.comp.cam >= 1) {
@@ -36,7 +36,7 @@ function calcBatFuzz(bat) {
     if (batFuzz >= 6) {
         batFuzz = batFuzz+batFuzz-3;
     }
-    if (bat.eq === 'isophon' || bat.logeq === 'isophon' || bat.eq === 'bldkit') {
+    if (hasEquip(bat,['isophon','bldkit'])) {
         batFuzz = batFuzz-4;
     }
     if (batFuzz < 0) {
@@ -465,7 +465,7 @@ function nearWhat(myBat,myBatType) {
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (bat.loc === "zone") {
-            if (batType.skills.includes('infrahelp') || bat.eq === 'e-infra' || bat.logeq === 'e-infra') {
+            if (batType.skills.includes('infrahelp') || hasEquip(bat,['e-infra'])) {
                 if (myCrew >= 12 && myCat === 'infantry' && !myBatType.skills.includes('dog')) {
                     if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
                         near.caserne = true;

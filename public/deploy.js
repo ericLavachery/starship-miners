@@ -78,6 +78,7 @@ function reEquip(batId,noRefresh) {
     let weapName;
     let equipNotes;
     let bonusEqName = getBonusEq(myBatType);
+    let autoEqList = getAutoEqList(myBat,myBatType);
     listNum = 1;
     // EQUIP ---------------------------------------------
     if (myBatType.equip != undefined) {
@@ -115,7 +116,7 @@ function reEquip(batId,noRefresh) {
                     compReqOK = false;
                 }
                 if ((compReqOK || conselTriche) && showEq) {
-                    if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || (bonusEqName === equip)) {
+                    if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || bonusEqName === equip || autoEqList.includes(equip)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
@@ -143,7 +144,7 @@ function reEquip(batId,noRefresh) {
                     }
                 } else {
                     if (equip === myBat.eq || equip === myBat.logeq) {
-                        if (myNewGear[2] === myBat.prt) {
+                        if (myNewGear[3] === myBat.eq || myNewGear[3] === myBat.logeq) {
                             $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                         } else {
                             $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
@@ -196,7 +197,7 @@ function reEquip(batId,noRefresh) {
     let hasW2 = checkHasWeapon(2,myBatType,myNewGear[3]);
     listNum = 1;
     if (hasW2) {
-        if (Object.keys(myBatType.weapon2).length >= 1 && (!myBatType.skills.includes('unemun') || myBat.eq === 'fakit' || myBat.logeq === 'fakit')) {
+        if (Object.keys(myBatType.weapon2).length >= 1 && (!myBatType.skills.includes('unemun') || hasEquip(myBat,['fakit']))) {
             if (myBatType.weapon2.ammo.length >= 1) {
                 $('#conAmmoList').append('<span class="constName or">'+myBatType.weapon2.name+'</span><br>');
                 myBatType.weapon2.ammo.forEach(function(ammo) {
@@ -246,33 +247,108 @@ function showEquip(batType,batEquip,bat) {
             }
         }
     }
-    if (Object.keys(bat).length >= 1) {
-        if (bat.tdc.includes(batEquip.name)) {
-            showEq = false;
-        }
-    }
+    // if (Object.keys(bat).length >= 1) {
+    //     if (bat.tdc.includes(batEquip.name)) {
+    //         showEq = false;
+    //     }
+    // }
     return showEq;
 };
 
-function getBonusEq(unit) {
-    // console.log("CHECK BONUS EQ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    let bonusEqName = '';
-    if (unit.autoEq != undefined) {
-        // console.log(unit.autoEq);
-        if (unit.autoEq.length >= 1) {
-            unit.autoEq.forEach(function(equipName) {
-                if (bonusEqName === '') {
+function getBaseAutoEqList(batType) {
+    // Pour Triche seulement!
+    // console.log("CHECK AUTO EQs LIST !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    let autoEqList = [];
+    if (batType.autoEq != undefined) {
+        // console.log(batType.autoEq);
+        if (batType.autoEq.length >= 1) {
+            batType.autoEq.forEach(function(equipName) {
+                let equip = getEquipByName(equipName);
+                // console.log(equip);
+                let compReqOK = checkCompReq(equip);
+                if (checkSpecialEquip(equip,batType)) {
+                    compReqOK = false;
+                }
+                // console.log('compReqOK='+compReqOK);
+                if (compReqOK) {
+                    if (equip.autoComp.length === 2) {
+                        let autoCompName = equip.autoComp[0];
+                        let autoCompLevel = equip.autoComp[1];
+                        if (playerInfos.comp[autoCompName] >= autoCompLevel) {
+                            autoEqList.push(equipName);
+                        }
+                    }
+                }
+            });
+        }
+    }
+    console.log('autoEqList');
+    console.log(autoEqList);
+    return autoEqList;
+};
+
+function getAutoEqList(bat,batType) {
+    // console.log("CHECK AUTO EQs LIST !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    let autoEqList = [];
+    if (batType.skills.includes('penitbat')) {
+        autoEqList = bat.tdc;
+    } else if (bat.vet >= 3 || batType.skills.includes('leader') || batType.skills.includes('cleric') || batType.skills.includes('souschef')) {
+        if (batType.autoEq != undefined) {
+            // console.log(batType.autoEq);
+            if (batType.autoEq.length >= 1) {
+                batType.autoEq.forEach(function(equipName) {
                     let equip = getEquipByName(equipName);
                     // console.log(equip);
                     let compReqOK = checkCompReq(equip);
-                    if (checkSpecialEquip(equip,unit)) {
+                    if (checkSpecialEquip(equip,batType)) {
                         compReqOK = false;
                     }
                     // console.log('compReqOK='+compReqOK);
-                    if (compReqOK) {
+                    let bldReqOK = verifBldReq(batType,equip.bldReq);
+                    if (compReqOK && bldReqOK) {
                         if (equip.autoComp.length === 2) {
                             let autoCompName = equip.autoComp[0];
                             let autoCompLevel = equip.autoComp[1];
+                            if (playerInfos.comp[autoCompName] >= autoCompLevel) {
+                                autoEqList.push(equipName);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+    console.log('autoEqList');
+    console.log(autoEqList);
+    return autoEqList;
+};
+
+function getBonusEq(unit) {
+    console.log("CHECK BONUS EQ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    let bonusEqName = '';
+    if (unit.log3eq != undefined) {
+        console.log(unit.log3eq);
+        if (unit.log3eq.length >= 1) {
+            unit.log3eq.forEach(function(equipName) {
+                if (bonusEqName === '') {
+                    let equip = getEquipByName(equipName);
+                    console.log(equip);
+                    let compReqOK = checkCompReq(equip);
+                    console.log('compReqOK='+compReqOK);
+                    if (checkSpecialEquip(equip,unit)) {
+                        compReqOK = false;
+                    }
+                    console.log('compReqOK='+compReqOK);
+                    let bldReqOK = verifBldReq(unit,equip.bldReq);
+                    if (compReqOK && bldReqOK) {
+                        if (playerInfos.comp.log === 3 && equipName != 'garage') {
+                            console.log('log3');
+                            bonusEqName = equipName;
+                        } else if (equip.autoComp.length === 2) {
+                            let autoCompName = equip.autoComp[0];
+                            let autoCompLevel = equip.autoComp[1];
+                            console.log(autoCompName+'='+autoCompLevel);
+                            console.log(playerInfos.comp[autoCompName]);
                             if (playerInfos.comp[autoCompName] >= autoCompLevel) {
                                 bonusEqName = equipName;
                             }
@@ -282,38 +358,28 @@ function getBonusEq(unit) {
             });
         }
     }
-    if (bonusEqName === '') {
-        if (unit.log3eq != undefined) {
-            // console.log(unit.log3eq);
-            if (unit.log3eq.length >= 1) {
-                unit.log3eq.forEach(function(equipName) {
-                    if (bonusEqName === '') {
-                        let equip = getEquipByName(equipName);
-                        // console.log(equip);
-                        let compReqOK = checkCompReq(equip);
-                        if (checkSpecialEquip(equip,unit)) {
-                            compReqOK = false;
-                        }
-                        // console.log('compReqOK='+compReqOK);
-                        if (compReqOK) {
-                            if (playerInfos.comp.log === 3 && equipName != 'garage') {
-                                // console.log('log3');
-                                bonusEqName = equipName;
-                            } else if (equip.autoComp.length === 2) {
-                                let autoCompName = equip.autoComp[0];
-                                let autoCompLevel = equip.autoComp[1];
-                                if (playerInfos.comp[autoCompName] >= autoCompLevel) {
-                                    bonusEqName = equipName;
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-    }
     console.log('bonusEqName='+bonusEqName);
     return bonusEqName;
+};
+
+function hasEquip(bat,equipList) {
+    let hasAny = false;
+    equipList.forEach(function(equipName) {
+        if (bat.eq === equipName || bat.logeq === equipName || bat.tdc.includes(equipName)) {
+            hasAny = true;
+        }
+    });
+    return hasAny;
+};
+
+function noEquip(bat,equipList) {
+    let hasNone = false;
+    equipList.forEach(function(equipName) {
+        if (bat.eq != equipName && bat.logeq != equipName && !bat.tdc.includes(equipName)) {
+            hasNone = true;
+        }
+    });
+    return hasNone;
 };
 
 function checkHasWeapon(num,batType,eq) {
@@ -472,6 +538,7 @@ function doReEquip(batId) {
         myBat.ammo2 = myNewGear[1];
         myBat.prt = myNewGear[2];
         myBat.eq = myNewGear[3];
+        myBat.tdc = getAutoEqList(myBat,myBatType);
         myBat.logeq = getBonusEq(myBatType);
         if (myBat.logeq === 'g2ai') {
             myBat.ok = '';
@@ -650,15 +717,15 @@ function verifBldReq(unit,bldReq) {
 function deployAmmo(ammo,weapon,batId) {
     let myBat = getBatById(batId);
     let myBatType = getBatType(myBat);
-    if (myBatType.skills.includes('unemun') && myBat.eq != 'fakit' && myBat.logeq != 'fakit') {
-        myNewGear[0] = ammo;
-        myNewGear[1] = ammo;
-    } else {
+    if (hasEquip(myBat,['fakit']) || !myBatType.skills.includes('unemun')) {
         if (weapon === 'w1') {
             myNewGear[0] = ammo;
         } else {
             myNewGear[1] = ammo;
         }
+    } else {
+        myNewGear[0] = ammo;
+        myNewGear[1] = ammo;
     }
     reEquip(batId,true);
 };

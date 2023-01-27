@@ -613,7 +613,7 @@ function showBataillon(bat) {
     if (bat.tags.includes('mining')) {
         activityBar = 'mining';
     } else {
-        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai']) || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
             activityBar = 'guet';
         }
     }
@@ -788,7 +788,7 @@ function showPrefab(bat) {
     if (bat.tags.includes('mining')) {
         activityBar = 'mining';
     } else {
-        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai']) || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
             activityBar = 'guet';
         }
     }

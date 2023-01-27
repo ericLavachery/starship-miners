@@ -1243,7 +1243,7 @@ function attack(melee,init) {
     }
     // survivor
     if (targetBat.squadsLeft <= 0) {
-        if ((targetBatType.skills.includes('survivor') || targetBat.eq === 'permakirin' || targetBat.logeq === 'permakirin' || targetBat.vet === 4 || targetBat.tags.includes('survivor')) && !targetBat.tags.includes('lucky')) {
+        if ((targetBatType.skills.includes('survivor') || hasEquip(targetBat,['permakirin']) || targetBat.vet === 4 || targetBat.tags.includes('survivor')) && !targetBat.tags.includes('lucky')) {
             targetBat.squadsLeft = 1;
             if (targetBat.apLeft < 4) {
                 targetBat.apLeft = 4;
@@ -1336,7 +1336,7 @@ function attack(melee,init) {
         $("#unitInfos").css("display","none");
     } else {
         if (squadsOut >= 1 && activeTurn == 'player') {
-            if (!selectedBatType.skills.includes('robot') || selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
+            if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
                 selectedBat.xp = selectedBat.xp+xpFactor;
                 if (targetBatType.skills.includes('xpplus')) {
                     selectedBat.xp = selectedBat.xp+(xpFactor*1);
@@ -1408,7 +1408,7 @@ function defense(melee,init) {
     let defFactor = Math.round(100*brideDef);
     // bigDef
     if (targetWeap.bigDef && selectedBatType.size >= 4) {
-        if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || targetBat.eq === 'detector' || targetBat.logeq === 'detector' || targetBat.eq === 'g2ai' || targetBat.logeq === 'g2ai' || targetBatType.skills.includes('initiative')) {
+        if (targetBat.tags.includes('guet') || targetBatType.skills.includes('sentinelle') || hasEquip(targetBat,['detector','g2ai']) || targetBatType.skills.includes('initiative')) {
             targetWeap.power = Math.ceil(targetWeap.power+Math.sqrt(selectedBatType.size));
         }
         if (targetBatType.cat === 'devices' || targetBatType.cat === 'buildings') {
@@ -2077,7 +2077,7 @@ function defense(melee,init) {
     // console.log('Squads left: '+selectedBat.squadsLeft);
     if (selectedBat.squadsLeft <= 0) {
         // console.log('dead');
-        if (!selectedBat.tags.includes('lucky') && (selectedBatType.skills.includes('survivor') || selectedBat.eq === 'permakirin' || selectedBat.logeq === 'permakirin' || selectedBat.vet === 4 || selectedBat.tags.includes('survivor'))) {
+        if (!selectedBat.tags.includes('lucky') && (selectedBatType.skills.includes('survivor') || hasEquip(selectedBat,['permakirin']) || selectedBat.vet === 4 || selectedBat.tags.includes('survivor'))) {
             selectedBat.squadsLeft = 1;
             if (selectedBat.apLeft < 4) {
                 selectedBat.apLeft = 4;
@@ -2140,7 +2140,7 @@ function defense(melee,init) {
         targetBat.salvoLeft = targetBat.salvoLeft-1;
     }
     if (squadsOut >= 1 && activeTurn === 'aliens') {
-        if (!targetBatType.skills.includes('robot') || targetBat.eq === 'g2ai' || targetBat.logeq === 'g2ai') {
+        if (!targetBatType.skills.includes('robot') || hasEquip(targetBat,['g2ai'])) {
             targetBat.xp = targetBat.xp+xpFactor;
             if (selectedBatType.skills.includes('xpplus')) {
                 targetBat.xp = targetBat.xp+(xpFactor*1);

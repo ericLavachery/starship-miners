@@ -160,7 +160,7 @@ function checkTreuil(myBat) {
             let distance = calcDistance(bat.tileId,myBat.tileId);
             if (distance <= 1) {
                 let batType = getBatType(bat);
-                if (batType.skills.includes('treuil') || bat.eq === 'e-treuil' || bat.logeq === 'e-treuil') {
+                if (batType.skills.includes('treuil') || hasEquip(bat,['e-treuil'])) {
                     let thisEffect = 200+bat.apLeft;
                     let gainPA = 2;
                     if (Math.ceil(batType.size*1.5) >= myBatType.size) {
@@ -474,7 +474,7 @@ function canCamo(bat,batType,tile) {
     }
     if (batType.skills.includes('aicamo')) {
         if (playerInfos.comp.cam >= 1) {
-            if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+            if (hasEquip(bat,['g2ai'])) {
                 iCanCamo = true;
             }
         }
@@ -487,7 +487,7 @@ function canCamo(bat,batType,tile) {
     if (tile.ruins) {
         if (batType.size < 20) {
             if (batType.skills.includes('robot')) {
-                if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                if (hasEquip(bat,['g2ai'])) {
                     iCanCamo = true;
                 }
                 if (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 1) {
@@ -506,7 +506,7 @@ function canCamo(bat,batType,tile) {
         if (batType.size < 20) {
             if (batType.skills.includes('robot')) {
                 if (playerInfos.comp.cam >= 1) {
-                    if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                    if (hasEquip(bat,['g2ai'])) {
                         iCanCamo = true;
                     }
                     if (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 2) {
@@ -520,7 +520,7 @@ function canCamo(bat,batType,tile) {
             } else {
                 iCanCamo = true;
             }
-            if (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+            if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
                 iCanCamo = true;
             }
         }
@@ -528,7 +528,7 @@ function canCamo(bat,batType,tile) {
     if (zone[0].planet === 'Sarak') {
         if (batType.cat != 'buildings' && batType.size < 50) {
             if (batType.skills.includes('robot')) {
-                if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                if (hasEquip(bat,['g2ai'])) {
                     iCanCamo = true;
                 }
                 if (batType.skills.includes('aicamo') && playerInfos.comp.cam >= 1) {
@@ -543,10 +543,10 @@ function canCamo(bat,batType,tile) {
             }
         }
     }
-    if (bat.eq.includes('silencieux') || bat.logeq.includes('silencieux') || bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.tdc.includes('e-camo') || bat.tdc.includes('silencieux1') || bat.tdc.includes('silencieux2')) {
+    if (hasEquip(bat,['silencieux','silencieux1','silencieux2','e-camo'])) {
         iCanCamo = true;
     }
-    if (bat.eq === 'kit-milice' || bat.eq === 'kit-guetteur' || bat.eq === 'kit-chouf' || bat.eq === 'kit-sentinelle' || bat.eq === 'trainkitch' || bat.eq === 'trainkitlu' || bat.eq === 'trainkitgi') {
+    if (hasEquip(bat,['kit-milice','kit-guetteur','kit-chouf','kit-sentinelle','trainkitch','trainkitlu','trainkitgi'])) {
         if (playerInfos.comp.cam >= 1) {
             iCanCamo = true;
         }
@@ -820,7 +820,7 @@ function goDrug(apCost,drugName) {
             } else {
                 ravitBat.tags.push('dU');
                 if (rand.rand(1,2) === 1) {
-                    if (!ravitBatType.skills.includes('robot') || ravitBat.eq === 'g2ai' || ravitBat.logeq === 'g2ai') {
+                    if (!ravitBatType.skills.includes('robot') || hasEquip(ravitBat,['g2ai'])) {
                         ravitBat.xp = ravitBat.xp+1;
                     }
                 }

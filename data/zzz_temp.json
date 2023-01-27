@@ -3,6 +3,68 @@
 </div>
 (delay devrait être une classe!)
 
+function getBonusEqOld(unit) {
+    // console.log("CHECK BONUS EQ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    let bonusEqName = '';
+    if (unit.autoEq != undefined) {
+        // console.log(unit.autoEq);
+        if (unit.autoEq.length >= 1) {
+            unit.autoEq.forEach(function(equipName) {
+                if (bonusEqName === '') {
+                    let equip = getEquipByName(equipName);
+                    // console.log(equip);
+                    let compReqOK = checkCompReq(equip);
+                    if (checkSpecialEquip(equip,unit)) {
+                        compReqOK = false;
+                    }
+                    // console.log('compReqOK='+compReqOK);
+                    if (compReqOK) {
+                        if (equip.autoComp.length === 2) {
+                            let autoCompName = equip.autoComp[0];
+                            let autoCompLevel = equip.autoComp[1];
+                            if (playerInfos.comp[autoCompName] >= autoCompLevel) {
+                                bonusEqName = equipName;
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+    if (bonusEqName === '') {
+        if (unit.log3eq != undefined) {
+            // console.log(unit.log3eq);
+            if (unit.log3eq.length >= 1) {
+                unit.log3eq.forEach(function(equipName) {
+                    if (bonusEqName === '') {
+                        let equip = getEquipByName(equipName);
+                        // console.log(equip);
+                        let compReqOK = checkCompReq(equip);
+                        if (checkSpecialEquip(equip,unit)) {
+                            compReqOK = false;
+                        }
+                        // console.log('compReqOK='+compReqOK);
+                        if (compReqOK) {
+                            if (playerInfos.comp.log === 3 && equipName != 'garage') {
+                                // console.log('log3');
+                                bonusEqName = equipName;
+                            } else if (equip.autoComp.length === 2) {
+                                let autoCompName = equip.autoComp[0];
+                                let autoCompLevel = equip.autoComp[1];
+                                if (playerInfos.comp[autoCompName] >= autoCompLevel) {
+                                    bonusEqName = equipName;
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+    console.log('bonusEqName='+bonusEqName);
+    return bonusEqName;
+};
+
 "weapon":{
     "name":"Tromblon",
     "cost":4,

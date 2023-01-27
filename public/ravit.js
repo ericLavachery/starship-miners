@@ -35,13 +35,13 @@ function calcRavitVolume(bat) {
         } else if (playerInfos.bldList.includes('Arsenal')) {
             w2maxAmmo = Math.round(w2maxAmmo*1.25);
         }
-        if (bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'trainkitgi' || bat.tdc.includes('gilet')) {
+        if (hasEquip(bat,['gilet','trainkitgi'])) {
             w2maxAmmo = Math.floor(w2maxAmmo*1.5);
             if (w2maxAmmo < 16) {
                 w2maxAmmo = 16;
             }
         }
-        if (bat.eq.includes('carrousel') || bat.logeq.includes('carrousel')) {
+        if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
             w2maxAmmo = Math.floor(w2maxAmmo*1.35);
             if (w2maxAmmo < 16) {
                 w2maxAmmo = 16;
@@ -70,13 +70,13 @@ function calcRavitVolume(bat) {
         } else if (playerInfos.bldList.includes('Arsenal')) {
             w1maxAmmo = Math.round(w1maxAmmo*1.25);
         }
-        if (bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'trainkitgi' || bat.tdc.includes('gilet')) {
+        if (hasEquip(bat,['gilet','trainkitgi'])) {
             w1maxAmmo = Math.floor(w1maxAmmo*1.5);
             if (w1maxAmmo < 16) {
                 w1maxAmmo = 16;
             }
         }
-        if (bat.eq.includes('carrousel') || bat.logeq.includes('carrousel')) {
+        if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
             w1maxAmmo = Math.floor(w1maxAmmo*1.35);
             if (w1maxAmmo < 16) {
                 w1maxAmmo = 16;
@@ -224,7 +224,7 @@ function goRavit(apCost) {
             // xp
             if (biggestRavit < 999) {
                 if (ravitBat.id != selectedBat.id) {
-                    if (!ravitBatType.skills.includes('robot') || ravitBat.eq === 'g2ai' || ravitBat.logeq === 'g2ai') {
+                    if (!ravitBatType.skills.includes('robot') || hasEquip(ravitBat,['g2ai'])) {
                         ravitBat.xp = ravitBat.xp+1;
                     }
                 }

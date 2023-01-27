@@ -387,6 +387,15 @@ button:active {
 select.crudButtons {
     padding: 3px 10px;
 }
+.txtInputs {
+    min-width: 25px;
+    font-size: 12px;
+	color: #ece5dd;
+	background-color: #000000;
+	background-image: url(/static/img/oldmetal-gris.jpg);
+    padding: 4px 5px 3px 5px;
+	margin: 3px 0 3px 6px;
+}
 .skillButtons {
     min-width: 25px;
     font-size: 12px;

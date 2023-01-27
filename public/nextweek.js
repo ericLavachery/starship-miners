@@ -200,7 +200,7 @@ function eventProduction(afterMission,time,sim,quiet) {
                         } else if (batType.cat === 'vehicles') {
                             if (batType.size <= 15) {
                                 if (batType.skills.includes('robot')) {
-                                    if (bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                                    if (hasEquip(bat,['g2ai'])) {
                                         trained = true;
                                     }
                                 } else if (batType.skills.includes('cyber')) {

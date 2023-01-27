@@ -1052,6 +1052,26 @@ function replacePack(oldPack,edited) {
         } else if (oldPack === 'molotov-pyratol') {
             newPack = 'grenade-nanite';
         }
+    } else if (playerInfos.gang === 'blades') {
+        if (oldPack === 'grenade-antichar') {
+            newPack = 'fleche-plastanium';
+        } else if (oldPack === 'grenade-flashbang') {
+            newPack = 'fleche-freeze';
+        } else if (oldPack === 'grenade-incendiaire') {
+            newPack = 'fleche-poraz';
+        } else if (oldPack === 'grenade-jello') {
+            newPack = 'fleche-shinda';
+        } else if (oldPack === 'grenade-gaz') {
+            newPack = 'fleche-atium';
+        } else if (oldPack === 'grenade-nanite') {
+            newPack = 'fleche-mono';
+        } else if (oldPack === 'molotov-slime') {
+            newPack = 'lame-plasma';
+        } else if (oldPack === 'molotov-pyrus') {
+            newPack = 'lame-adamantium';
+        } else if (oldPack === 'molotov-pyratol') {
+            newPack = 'lame-mono';
+        }
     } else {
         if (rand.rand(1,3) != 1) {
             if (oldPack === 'grenade-antichar') {

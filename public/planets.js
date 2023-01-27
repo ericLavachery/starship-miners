@@ -190,7 +190,7 @@ function checkMayOut(batType,isBat,bat) {
             if (batType.cat != 'infantry') {
                 if (!isBat) {
                     mayOut = false;
-                } else if (bat.eq != 'g2motor' && bat.logeq != 'g2motor' && bat.eq != 'e-stab' && bat.logeq != 'e-stab' && !batType.skills.includes('stab')) {
+                } else if (noEquip(bat,['e-stab','g2motor']) && !batType.skills.includes('stab')) {
                     mayOut = false;
                 }
             }
@@ -637,7 +637,7 @@ function calcVue(bat,batType) {
             allFlash = true;
         }
     }
-    if (batType.skills.includes('flash') || bat.eq === 'e-flash' || bat.logeq === 'e-flash' || bat.eq.includes('kit-') || allFlash || infra === 'Miradors' || infra === 'Murailles') {
+    if (batType.skills.includes('flash') || hasEquip(bat,['e-flash']) || bat.eq.includes('kit-') || allFlash || infra === 'Miradors' || infra === 'Murailles') {
         if (!bat.tags.includes('camo')) {
             if (hauteur < 2) {
                 hauteur = 2;
@@ -645,7 +645,7 @@ function calcVue(bat,batType) {
             vue = 3;
         }
     }
-    if (batType.skills.includes('phare') || batType.skills.includes('bigflash') || bat.eq === 'e-phare' || bat.logeq === 'e-phare') {
+    if (batType.skills.includes('phare') || batType.skills.includes('bigflash') || hasEquip(bat,['e-phare'])) {
         if (hauteur < 3) {
             hauteur = 3;
         }
@@ -974,7 +974,7 @@ function unDarkVision(bat,batType) {
         lumDistance++;
     }
     let hasPhare = false;
-    if (bat.eq === 'e-phare' || bat.logeq === 'e-phare') {
+    if (hasEquip(bat,['e-phare'])) {
         if (batType.cat != 'infantry') {
             hasPhare = true;
         } else {
@@ -1004,7 +1004,7 @@ function unDarkVision(bat,batType) {
     }
     let radarDistance = 0;
     let hasRadar = false;
-    if (batType.skills.includes('radar') || bat.eq === 'e-radar' || bat.logeq === 'e-radar') {
+    if (batType.skills.includes('radar') || hasEquip(bat,['e-radar'])) {
         hasRadar = true;
     }
     if (hasRadar) {

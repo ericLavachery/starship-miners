@@ -174,7 +174,7 @@ function checkAlienFlyTarget(weapon,bat) {
         } else if (batType.skills.includes('fly')) {
             if (bat.apLeft >= -6) {
                 isFlying = true;
-            } else if ((bat.eq === 'e-stab' || bat.logeq === 'e-stab') && bat.apLeft >= -15) {
+            } else if (hasEquip(bat,['e-stab']) && bat.apLeft >= -15) {
                 isFlying = true;
             }
         }
@@ -528,7 +528,7 @@ function targetLogic(bat,iter) {
             }
         }
     }
-    if (bat.eq === 'repel' || bat.logeq === 'repel' || bat.tdc.includes('repel')) {
+    if (hasEquip(bat,['repel'])) {
         let repelChance = (playerInfos.comp.exo*6)+(playerInfos.comp.ca*12)+(playerInfos.comp.gen*2)+10;
         if (rand.rand(1,100) <= repelChance) {
             tFuzz = -95;
@@ -962,7 +962,7 @@ function checkGoodMoves() {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && checkAlienFlyTarget(selectedWeap,bat)) {
                 let repeled = false;
-                if (bat.eq === 'repel' || bat.logeq === 'repel' || bat.tdc.includes('repel')) {
+                if (hasEquip(bat,['repel'])) {
                     if (rand.rand(1,100) <= repelChance) {
                         repeled = true;
                     }
@@ -1013,7 +1013,7 @@ function checkGoodMoves() {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone" && checkAlienFlyTarget(selectedWeap,bat)) {
                 let repeled = false;
-                if (bat.eq === 'repel' || bat.logeq === 'repel' || bat.tdc.includes('repel')) {
+                if (hasEquip(bat,['repel'])) {
                     if (rand.rand(1,100) <= repelChance) {
                         repeled = true;
                     }

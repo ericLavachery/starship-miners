@@ -119,14 +119,14 @@ function skillsInfos(bat,batType,near,nearby) {
         balise = 'h4';
         boutonNope = 'boutonGrey';
         colorNope = 'gf';
-        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai']) || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             balise = 'h3';
             boutonNope = 'boutonOK';
             colorNope = 'cy';
         }
         let okTrain = true;
         let defComp = playerInfos.comp.def;
-        if (batType.skills.includes('robot') && bat.eq != 'g2ai' && bat.logeq != 'g2ai') {
+        if (batType.skills.includes('robot') && noEquip(bat,['g2ai'])) {
             okTrain = false;
             defComp = 0;
         }
@@ -152,12 +152,12 @@ function skillsInfos(bat,batType,near,nearby) {
         if (bat.tags.includes('mining')) {
             bouton = 'boutonGris';
         }
-        if ((bat.apLeft >= apReq || bat.apLeft >= bat.ap-2) && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && bat.eq != 'detector' && bat.logeq != 'detector' && bat.eq != 'g2ai' && bat.logeq != 'g2ai' && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
+        if ((bat.apLeft >= apReq || bat.apLeft >= bat.ap-2) && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && noEquip(bat,['detector','g2ai']) && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
             // assez d'ap
             $('#unitInfos').append('<button type="button" title="Faire le guet ('+apReq+' PA requis)" class="'+bouton+' iconButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
         } else {
-            if (batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+            if (batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai']) || batType.skills.includes('initiative') || batType.skills.includes('after')) {
                 skillMessage = "Sentinelle";
             } else {
                 skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
@@ -179,7 +179,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
         let okTrain = true;
         let defComp = playerInfos.comp.def;
-        if (batType.skills.includes('robot') && bat.eq != 'g2ai' && bat.logeq != 'g2ai') {
+        if (batType.skills.includes('robot') && noEquip(bat,['g2ai'])) {
             okTrain = false;
             defComp = 0;
         }
@@ -261,10 +261,10 @@ function skillsInfos(bat,batType,near,nearby) {
                 }
             } else {
                 if ((batType.skills.includes('maycamo') || !batType.skills.includes('camo')) && !ruinHide) {
-                    if (bat.eq === 'kit-chouf' || bat.eq === 'trainkitgi' || bat.eq === 'trainkitch' || bat.eq === 'trainkitlu') {
+                    if (hasEquip(bat,['trainkitlu','trainkitch','trainkitgi','kit-chouf'])) {
                         apCost = Math.floor(batType.ap/2.5);
                         apReq = 2;
-                    } else if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.tdc.includes('e-camo') || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || bat.eq === 'kit-guetteur') {
+                    } else if (hasEquip(bat,['kit-guetteur','kit-milice','kit-sentinelle','e-camo'])) {
                         apCost = Math.floor(batType.ap/2);
                         apReq = 3;
                     } else {
@@ -416,7 +416,7 @@ function skillsInfos(bat,batType,near,nearby) {
             }
             let weapOK = true;
             let trainComp = playerInfos.comp.train;
-            if (batType.skills.includes('robot') && bat.eq != 'g2ai' && bat.logeq != 'g2ai') {
+            if (batType.skills.includes('robot') && noEquip(bat,['g2ai'])) {
                 trainComp = 0;
             } else {
                 if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
@@ -477,7 +477,7 @@ function skillsInfos(bat,batType,near,nearby) {
     }
     // TIR CIBLE
     if (!playerInfos.onShip) {
-        if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai')) || (batType.skills.includes('w2cible') && (bat.eq.includes('w2') || playerInfos.comp.def === 3))) {
+        if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && hasEquip(bat,['g2ai'])) || (batType.skills.includes('w2cible') && (bat.eq.includes('w2') || playerInfos.comp.def === 3))) {
             let tcBonus = calcCibleBonus(batType);
             apCost = tcBonus.ap;
             let weapOK = true;
@@ -1808,7 +1808,7 @@ function skillsInfos(bat,batType,near,nearby) {
             } else {
                 if (batType.skills.includes('cryogen')) {
                     let g2 = false;
-                    if (bat.eq === 'g2cryo' || bat.logeq === 'g2cryo') {
+                    if (hasEquip(bat,['g2cryo'])) {
                         g2 = true;
                     }
                     let atmo = getAtmo(g2);
@@ -2154,14 +2154,14 @@ function skillsInfos(bat,batType,near,nearby) {
     $('#unitInfos').append('<span id="line-roads"></span>');
     lineBreak = false;
     // ROUTES / PONTS
-    if ((batType.skills.includes('routes') || bat.eq === 'e-road' || bat.logeq === 'e-road') && !playerInfos.onShip) {
+    if ((batType.skills.includes('routes') || hasEquip(bat,['e-road'])) && !playerInfos.onShip) {
         let roadsOK = true;
-        if (batType.skills.includes('infrahelp') || bat.eq === 'e-infra' || bat.logeq === 'e-infra') {
+        if (batType.skills.includes('infrahelp') || hasEquip(bat,['e-infra'])) {
             roadsOK = checkRoadsAround(bat);
         }
         if (!tile.rd || !roadsOK) {
             apCost = batType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
-            if (bat.eq === 'e-road' || bat.logeq === 'e-road') {
+            if (hasEquip(bat,['e-road'])) {
                 if (batType.skills.includes('routes')) {
                     apCost = apCost/1.5;
                 } else if (batType.mecanoCost < 12) {
@@ -2386,7 +2386,7 @@ function skillsInfos(bat,batType,near,nearby) {
     lineBreak = false;
     // FOUILLE DE RUINES
     if (!playerInfos.onShip) {
-        if ((batType.skills.includes('fouille') || (batType.skills.includes('aifouille') && (bat.eq === 'g2ai' || bat.logeq === 'g2ai' || playerInfos.bldList.includes('Centre de com')))) && tile.ruins && tile.sh >= 1 && !bat.tags.includes('nomove')) {
+        if ((batType.skills.includes('fouille') || (batType.skills.includes('aifouille') && (hasEquip(bat,['g2ai']) || playerInfos.bldList.includes('Centre de com')))) && tile.ruins && tile.sh >= 1 && !bat.tags.includes('nomove')) {
             apReq = Math.round(5*7/(playerInfos.comp.tri+6));
             apCost = Math.round(1250/bat.squadsLeft/batType.squadSize/batType.crew);
             if (batType.skills.includes('scav')) {
@@ -2456,7 +2456,7 @@ function skillsInfos(bat,batType,near,nearby) {
         if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
             ravitFactor = 1;
         }
-        if (bat.eq.includes('carrousel') || bat.logeq.includes('carrousel')) {
+        if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
             ravitFactor = ravitFactor*1.5;
         }
         if (playerInfos.comp.log >= 3) {

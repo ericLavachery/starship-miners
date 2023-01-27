@@ -646,7 +646,7 @@ function newAlienKilled(batType,tileId) {
         if (xpBonus >= 1) {
             if (Object.keys(selectedBat).length >= 1) {
                 if (selectedBat.team === 'player') {
-                    if (!selectedBatType.skills.includes('robot') || selectedBat.eq === 'g2ai' || selectedBat.logeq === 'g2ai') {
+                    if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
                         selectedBat.xp = selectedBat.xp+xpBonus;
                         selectedBatArrayUpdate();
                     }
@@ -657,7 +657,7 @@ function newAlienKilled(batType,tileId) {
                     let distance = calcDistance(tileId,bat.tileId);
                     let batType = getBatType(bat);
                     if (distance <= 4 || xpBonus >= 25) {
-                        if (!batType.skills.includes('robot') || bat.eq === 'g2ai' || bat.logeq === 'g2ai') {
+                        if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
                             bat.xp = bat.xp+xpBonus;
                         }
                     }
@@ -1064,7 +1064,7 @@ function getCover(bat,withFortif,forAOE) {
         }
     } else {
         cover = terrain.cover;
-        if (bat.eq === 'waterproof' || bat.logeq === 'waterproof' || bat.tdc.includes('waterproof') || batType.skills.includes('noblub')) {
+        if (hasEquip(bat,['waterproof']) || batType.skills.includes('noblub')) {
             if (terrain.name === 'W' || terrain.name === 'R' || terrain.name === 'L') {
                 cover = 3;
             }
@@ -1087,7 +1087,7 @@ function getCover(bat,withFortif,forAOE) {
             if (batType.skills.includes('baddef')) {
                 cover = Math.ceil((terrain.fortifcover+terrain.cover)/2);
             }
-            if (bat.eq === 'waterproof' || bat.logeq === 'waterproof' || bat.tdc.includes('waterproof') || batType.skills.includes('noblub')) {
+            if (hasEquip(bat,['waterproof']) || batType.skills.includes('noblub')) {
                 if (terrain.name === 'W' || terrain.name === 'R' || terrain.name === 'L') {
                     cover = 3;
                 }
@@ -1192,7 +1192,7 @@ function getStealth(bat) {
             }
         }
     }
-    if (bat.eq === 'e-camo' || bat.logeq === 'e-camo' || bat.tdc.includes('e-camo') || bat.eq === 'kit-sentinelle' || bat.eq === 'kit-milice' || bat.eq === 'kit-chouf' || bat.eq === 'kit-guetteur' || bat.eq === 'trainkitgi' || bat.eq === 'trainkitch' || bat.eq === 'trainkitlu') {
+    if (hasEquip(bat,['e-camo','kit-sentinelle','kit-milice','kit-chouf','kit-guetteur','trainkitgi','trainkitch','trainkitlu'])) {
         if (batType.skills.includes('camo')) {
             batStealth = batStealth+3;
         } else {
@@ -1213,7 +1213,7 @@ function getStealth(bat) {
     } else {
         terBonus = terBonus+(terrain.flood*2);
         if (terrain.name === 'R' || terrain.name === 'W' || terrain.name === 'L' || terrain.name === 'S') {
-            if (bat.eq === 'waterproof' || bat.logeq === 'waterproof' || bat.tdc.includes('waterproof') || batType.skills.includes('noblub')) {
+            if (hasEquip(bat,['waterproof']) || batType.skills.includes('noblub')) {
                 terBonus = terBonus+terrain.fishcover;
             } else {
                 terBonus = terBonus+terrain.cover;
@@ -1282,10 +1282,10 @@ function calcSpeed(bat,weap,opweap,opBatType,distance,attacking) {
             speed = speed-stealth;
         }
     }
-    if (bat.eq === 'w2-autogun' || bat.eq === 'w2-autopistol' || bat.eq === 'w3-autopistol') {
+    if (hasEquip(bat,['w2-autogun','w2-autopistol','w3-autopistol'])) {
         speed = speed-50-stealth;
     } else {
-        if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai') && !attacking) {
+        if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai'])) && !attacking) {
             speed = speed-watchInitBonus-stealth;
             // console.log('bonus guet');
         }
@@ -1316,7 +1316,7 @@ function calcSpeed(bat,weap,opweap,opBatType,distance,attacking) {
             }
         }
     }
-    if (bat.eq === 'theeye' || bat.logeq === 'theeye' || bat.eq === 'cyberkit' || bat.tdc.includes('theeye')) {
+    if (hasEquip(bat,['theeye','ciberkit'])) {
         speed = speed-50;
     }
     // initmelee
@@ -1718,7 +1718,7 @@ function weaponSelectRiposte(distance) {
         if (targetBatType.name === 'Chevaliers') {
             targetWeap.sound = 'axe_x2';
         }
-    } else if (targetBat.eq === 'w2-autogun' || targetBat.eq === 'w2-autopistol' || targetBat.eq === 'w3-autopistol') {
+    } else if (hasEquip(targetBat,['w2-autogun','w2-autopistol','w3-autopistol'])) {
         targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon3));
         targetWeap = weaponAdj(targetWeap,targetBat,'w3');
     } else if (targetBatType.skills.includes('w3melee') && distance === 0) {
@@ -1790,7 +1790,7 @@ function weaponEqChange(thisWeapon,wn,bat,batType) {
     // console.log(bat);
     // console.log(bat.eq);
     // console.log(wn);
-    if (bat.eq === 'arrosoir') {
+    if (hasEquip(bat,['arrosoir'])) {
         if (thisWeapon.name.includes('Lance-flammes')) {
             thisWeapon.name = 'Arrosoir';
             thisWeapon.range = 1;
@@ -1809,7 +1809,7 @@ function weaponEqChange(thisWeapon,wn,bat,batType) {
     }
     // console.log(thisWeapon.name);
     // console.log(bat.ammo2);
-    if (bat.eq === 'arcpoulie' || bat.logeq === 'arcpoulie') {
+    if (hasEquip(bat,['arcpoulie'])) {
         if (thisWeapon.name.includes('Arc')) {
             thisWeapon.name = 'Arc à poulies';
             thisWeapon.range = 2;
@@ -1823,7 +1823,7 @@ function weaponEqChange(thisWeapon,wn,bat,batType) {
             }
         }
     }
-    if (bat.eq === 'arbalourde' || bat.logeq === 'arbalourde') {
+    if (hasEquip(bat,['arbalourde'])) {
         if (thisWeapon.name.includes('Arbalète')) {
             thisWeapon.name = 'Arbalète lourde';
             thisWeapon.elevation = 1;
@@ -1837,7 +1837,7 @@ function weaponEqChange(thisWeapon,wn,bat,batType) {
             }
         }
     }
-    if (bat.eq === 'belier' || bat.logeq === 'belier') {
+    if (hasEquip(bat,['belier'])) {
         if (thisWeapon.name === 'Boutoir') {
             thisWeapon.name = 'Bélier';
             thisWeapon.rof = thisWeapon.rof*1.5;
@@ -1845,7 +1845,7 @@ function weaponEqChange(thisWeapon,wn,bat,batType) {
             thisWeapon.accuracy = thisWeapon.accuracy+2;
         }
     }
-    if (bat.eq === 'moisso' || bat.logeq === 'moisso') {
+    if (hasEquip(bat,['moisso'])) {
         if (thisWeapon.name === 'Boutoir' || thisWeapon.name === 'Bélier') {
             if (thisWeapon.name === 'Bélier') {
                 thisWeapon.rof = thisWeapon.rof/1.25;
@@ -2048,7 +2048,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     // WSTAB
     if (thisWeapon.noStab) {
-        if (bat.eq  === 'wstab' || bat.logeq  === 'wstab' || bat.eq  === 'wstabkit' || bat.logeq  === 'wstabkit' || bat.eq  === 'carkit' || bat.eq  === 'e-stab' || bat.logeq  === 'e-stab') {
+        if (hasEquip(bat,['wstab','wstabkit','carkit','e-stab'])) {
             thisWeapon.accuracy = thisWeapon.accuracy+3;
             if (thisWeapon.dca < 1) {
                 thisWeapon.dca = 1;
@@ -2058,17 +2058,17 @@ function weaponAdj(weapon,bat,wn) {
     // Equip adj
     if (thisWeapon.num === 1) {
         if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes' && !thisWeapon.isMelee) {
-            if (bat.eq  === 'detector' || bat.logeq  === 'detector' || bat.eq  === 'g2ai' || bat.logeq  === 'g2ai') {
+            if (hasEquip(bat,['detector','g2ai'])) {
                 if (thisWeapon.elevation === 1 && thisWeapon.range >= 2) {
                     thisWeapon.elevation = 2;
                 }
                 thisWeapon.range = thisWeapon.range+1;
             }
         }
-        if (bat.eq === 'longtom' || bat.eq === 'longtom1' || bat.logeq === 'longtom' || bat.logeq === 'longtom1') {
+        if (hasEquip(bat,['longtom','longtom1'])) {
             thisWeapon.range = thisWeapon.range+1;
         }
-        if (bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.eq === 'chargeur1' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur1' || bat.tdc.includes('chargeur1') || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
+        if (hasEquip(bat,['chargeur','chargeur1','w2-2ch','lgkit'])) {
             if (thisWeapon.cost < 6 && playerInfos.comp.train < 1) {
                 thisWeapon.accuracy = thisWeapon.accuracy-1;
                 if (thisWeapon.cost >= 3) {
@@ -2076,28 +2076,37 @@ function weaponAdj(weapon,bat,wn) {
                 }
             }
         }
-        if (bat.eq === 'lanceur1' || bat.logeq === 'lanceur1') {
+        if (hasEquip(bat,['lanceur1'])) {
             if (!batType.skills.includes('camo')) {
                 thisWeapon.noise = thisWeapon.noise+1;
             }
-            if (!batType.skills.includes('fly') && bat.eq != 'e-jetpack' && bat.logeq != 'e-jetpack') {
+            if (!batType.skills.includes('fly') && bat.eq != 'e-jetpack') {
                 thisWeapon.range = thisWeapon.range+1;
                 thisWeapon.elevation = thisWeapon.elevation+1;
             } else {
                 thisWeapon.range = 2;
             }
+        } else if (hasEquip(bat,['helper'])) {
+            if (thisWeapon.name === 'Molotov' || thisWeapon.name === 'Grenade' || thisWeapon.name === 'Dynamite') {
+                if (thisWeapon.range === 0) {
+                    thisWeapon.range = 1;
+                }
+            }
+            if (thisWeapon.name === 'Sling grenade') {
+                thisWeapon.range = thisWeapon.range+1;
+            }
         }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1' || bat.tdc.includes('lunette1')) {
+        if (hasEquip(bat,['lunette','lunette1'])) {
             if (playerInfos.comp.train < 1 && thisWeapon.cost > 1) {
                 thisWeapon.cost = thisWeapon.cost+1;
             }
         }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette1' || bat.logeq === 'lunette' || bat.logeq === 'lunette1' || bat.tdc.includes('lunette1') || bat.eq === 'trainkitlu' || bat.eq.includes('kit-chouf') || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l')) {
+        if (hasEquip(bat,['lunette','lunette1','trainkitlu','kit-chouf','landerwkit'])) {
             if (batType.skills.includes('lurange')) {
                 let tgr = getTGuetRange();
                 thisWeapon.range = thisWeapon.range+tgr.range;
                 thisWeapon.elevation = thisWeapon.elevation+tgr.elev;
-            } else if (batType.skills.includes('fly')) {
+            } else if (batType.skills.includes('fly') || batType.skills.includes('transorbital')) {
                 thisWeapon.range = thisWeapon.range+1;
             } else {
                 thisWeapon.elevation = thisWeapon.elevation+1;
@@ -2108,23 +2117,23 @@ function weaponAdj(weapon,bat,wn) {
             }
             thisWeapon.accuracy = thisWeapon.accuracy+accuBonus;
         }
-        if (bat.eq === 'silencieux' || bat.logeq === 'silencieux' || bat.eq === 'silencieux1' || bat.logeq === 'silencieux1' || bat.eq === 'trainkitlu' || bat.tdc.includes('silencieux1') || bat.eq.includes('kit-chouf')) {
+        if (hasEquip(bat,['silencieux','silencieux1','trainkitlu','kit-chouf'])) {
             thisWeapon.noise = thisWeapon.noise-1;
             thisWeapon.hide = true;
         }
     } else if (thisWeapon.num === 2) {
         if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes' && !thisWeapon.isMelee) {
-            if (bat.eq  === 'detector' || bat.logeq  === 'detector' || bat.eq  === 'g2ai' || bat.logeq  === 'g2ai') {
+            if (hasEquip(bat,['detector','g2ai'])) {
                 if (thisWeapon.elevation === 1 && thisWeapon.range >= 2) {
                     thisWeapon.elevation = 2;
                 }
                 thisWeapon.range = thisWeapon.range+1;
             }
         }
-        if (bat.eq === 'longtom' || bat.eq === 'longtom2' || bat.logeq === 'longtom' || bat.logeq === 'longtom2') {
+        if (hasEquip(bat,['longtom','longtom2'])) {
             thisWeapon.range = thisWeapon.range+1;
         }
-        if (bat.eq === 'chargeur' || bat.eq === 'w2-2ch' || bat.eq === 'chargeur2' || bat.logeq === 'chargeur' || bat.logeq === 'chargeur2') {
+        if (hasEquip(bat,['chargeur','chargeur2','w2-2ch'])) {
             if (thisWeapon.cost < 6 && playerInfos.comp.train < 1) {
                 thisWeapon.accuracy = thisWeapon.accuracy-1;
                 if (thisWeapon.cost >= 3) {
@@ -2132,23 +2141,32 @@ function weaponAdj(weapon,bat,wn) {
                 }
             }
         }
-        if (bat.eq === 'lanceur2' || bat.logeq === 'lanceur2' || bat.tdc.includes('lanceur2') || bat.eq === 'trainkitgi' || bat.eq === 'lgkit' || bat.logeq === 'lgkit') {
+        if (hasEquip(bat,['lanceur2','trainkitgi','lgkit'])) {
             if (!batType.skills.includes('camo')) {
                 thisWeapon.noise = thisWeapon.noise+1;
             }
-            if (!batType.skills.includes('fly') && bat.eq != 'e-jetpack' && bat.logeq != 'e-jetpack') {
+            if (!batType.skills.includes('fly') && bat.eq != 'e-jetpack') {
                 thisWeapon.range = thisWeapon.range+1;
                 thisWeapon.elevation = thisWeapon.elevation+1;
             } else {
                 thisWeapon.range = 2;
             }
+        } else if (hasEquip(bat,['helper'])) {
+            if (thisWeapon.name === 'Molotov' || thisWeapon.name === 'Grenade' || thisWeapon.name === 'Dynamite') {
+                if (thisWeapon.range === 0) {
+                    thisWeapon.range = 1;
+                }
+            }
+            if (thisWeapon.name === 'Sling grenade') {
+                thisWeapon.range = thisWeapon.range+1;
+            }
         }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.logeq === 'lunette' || bat.logeq === 'lunette2') {
+        if (hasEquip(bat,['lunette','lunette2'])) {
             if (playerInfos.comp.train < 1 && thisWeapon.cost > 1) {
                 thisWeapon.cost = thisWeapon.cost+1;
             }
         }
-        if (bat.eq === 'lunette' || bat.eq === 'lunette2' || bat.logeq === 'lunette' || bat.logeq === 'lunette2' || bat.eq.includes('kit-chouf')) {
+        if (hasEquip(bat,['lunette','lunette2','kit-chouf'])) {
             if (batType.skills.includes('lurange')) {
                 let tgr = getTGuetRange();
                 thisWeapon.range = thisWeapon.range+tgr.range;
@@ -2164,19 +2182,19 @@ function weaponAdj(weapon,bat,wn) {
             }
             thisWeapon.accuracy = thisWeapon.accuracy+accuBonus;
         }
-        if (bat.eq === 'silencieux' || bat.logeq === 'silencieux' || bat.eq === 'silencieux2' || bat.logeq === 'silencieux2' || bat.tdc.includes('silencieux2') || bat.eq.includes('kit-chouf')) {
+        if (hasEquip(bat,['silencieux','silencieux2','kit-chouf'])) {
             thisWeapon.noise = thisWeapon.noise-1;
             thisWeapon.hide = true;
         }
     }
-    if (bat.eq === 'g2siege' || bat.logeq === 'g2siege') {
+    if (hasEquip(bat,['g2siege'])) {
         if (thisWeapon.name.includes('Baliste') || thisWeapon.name.includes('Catapulte')) {
             thisWeapon.range = thisWeapon.range+1;
             thisWeapon.rof = thisWeapon.rof*1.4;
             thisWeapon.noBis = false;
         }
     }
-    if (bat.eq === 'theeye' || bat.logeq === 'theeye' || bat.eq === 'cyberkit' || bat.tdc.includes('theeye')) {
+    if (hasEquip(bat,['theeye','ciberkit'])) {
         if (thisWeapon.aoe === 'unit' || (thisWeapon.aoe === 'brochette' && thisWeapon.name.includes('lister'))) {
             if (thisWeapon.range >= 2 || thisWeapon.elevation >= 4) {
                 thisWeapon.range = thisWeapon.range+1;
@@ -2197,13 +2215,13 @@ function weaponAdj(weapon,bat,wn) {
     } else if (playerInfos.bldList.includes('Arsenal')) {
         thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.25);
     }
-    if ((bat.eq === 'gilet' || bat.logeq === 'gilet' || bat.eq === 'trainkitgi' || bat.tdc.includes('gilet')) && thisWeapon.maxAmmo < 99) {
+    if (hasEquip(bat,['gilet','trainkitgi']) && thisWeapon.maxAmmo < 99) {
         thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
         if (thisWeapon.maxAmmo < 16) {
             thisWeapon.maxAmmo = 16;
         }
     }
-    if ((bat.eq.includes('carrousel') || bat.logeq.includes('carrousel')) && thisWeapon.maxAmmo < 99) {
+    if (hasEquip(bat,['carrousel','carrousel1','carrousel2']) && thisWeapon.maxAmmo < 99) {
         thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.35);
         if (thisWeapon.maxAmmo < 16) {
             thisWeapon.maxAmmo = 16;
@@ -2341,7 +2359,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     // helper
-    if ((bat.eq === 'helper' || bat.logeq === 'helper' || bat.eq === 'cyberkit' || bat.tdc.includes('helper')) && (thisWeapon.isMelee || thisWeapon.name.includes('Javelot'))) {
+    if (hasEquip(bat,['helper','ciberkit']) && (thisWeapon.isMelee || thisWeapon.name.includes('Javelot'))) {
         thisWeapon.power = Math.round(thisWeapon.power*1.33);
     }
     // sila drug
@@ -2483,7 +2501,7 @@ function weaponAdj(weapon,bat,wn) {
     if (infra === 'Miradors' || infra === 'Murailles' || infra === 'Remparts') {
         overInfra = true;
     }
-    if (tile.terrain == 'F' && !overInfra && batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('transorbital') && !batType.skills.includes('fly') && !bat.eq != 'e-jetpack' && !bat.logeq != 'e-jetpack') {
+    if (tile.terrain == 'F' && !overInfra && batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('transorbital') && !batType.skills.includes('fly') && !bat.eq != 'e-jetpack') {
         if (checkDeepForest(tile)) {
             if (thisWeapon.range >= 2) {
                 if (thisWeapon.range >= 3) {
@@ -2750,26 +2768,26 @@ function chargeurAdj(bat,shots,weap) {
     let newShots = shots;
     let hasChargeur = false;
     if (weap.num === 1) {
-        if (bat.eq.includes('chargeur') || bat.logeq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.eq.includes('carrousel') || bat.logeq.includes('carrousel') || bat.tdc.includes('chargeur1') || bat.eq.includes('kit-milice') || bat.eq === 'trainkitch' || bat.eq.includes('landerwkit') || bat.eq.includes('w2-l') || bat.eq.includes('lgkit') || bat.logeq.includes('lgkit') || bat.eq.includes('fakit') || bat.logeq.includes('fakit')) {
+        if (hasEquip(bat,['chargeur','chargeur1','w2-2ch','carrousel','carrousel1','kit-milice','trainkitch','landerwkit','lgkit','fakit'])) {
             hasChargeur = true;
         }
     } else {
-        if (bat.eq.includes('chargeur') || bat.logeq.includes('chargeur') || bat.eq === 'w2-2ch' || bat.eq.includes('carrousel') || bat.logeq.includes('carrousel') || bat.tdc.includes('chargeur2') || bat.eq.includes('kit-chouf') || bat.eq === 'trainkitax') {
+        if (hasEquip(bat,['chargeur','chargeur2','w2-2ch','carrousel','carrousel2','kit-chouf','trainkitax'])) {
             hasChargeur = true;
         }
     }
     if (weap.noStab) {
-        if (bat.eq.includes('wstabkit') || bat.logeq.includes('wstabkit')) {
+        if (hasEquip(bat,['wstabkit'])) {
             hasChargeur = true;
         }
     }
     let hasCarrousel = false;
     if (weap.num === 1) {
-        if (bat.eq === 'carrousel1' || bat.eq === 'carrousel' || bat.logeq === 'carrousel1' || bat.logeq === 'carrousel') {
+        if (hasEquip(bat,['carrousel','carrousel1'])) {
             hasCarrousel = true;
         }
     } else {
-        if (bat.eq === 'carrousel2' || bat.eq === 'carrousel' || bat.logeq === 'carrousel2' || bat.logeq === 'carrousel') {
+        if (hasEquip(bat,['carrousel','carrousel2'])) {
             hasCarrousel = true;
         }
     }
@@ -2787,10 +2805,13 @@ function chargeurAdj(bat,shots,weap) {
         if (bat.eq.includes('kit-chouf')) {
             mult = 2;
         }
+        if (hasEquip(bat,['landerwkit'])) {
+            mult = mult+0.17;
+        }
         newShots = Math.round(newShots*mult);
     } else if (hasCarrousel) {
         newShots = Math.round(newShots*1.25);
-    } else if (bat.eq === 'helper' || bat.logeq === 'helper' || bat.eq === 'cyberkit') {
+    } else if (hasEquip(bat,['helper','cyberkit'])) {
         if (!weap.isMelee && !weap.name.includes('Javelot')) {
             newShots = Math.round(newShots*1.25);
         }
@@ -2816,7 +2837,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
         }
     }
     // GUET
-    if (guet || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+    if (guet || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai']) || batType.skills.includes('initiative') || batType.skills.includes('after')) {
         brideDef = 1;
     }
     // Defense, Bastion
@@ -2831,7 +2852,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
     }
     // baddef
     if (batType.skills.includes('baddef')) {
-        if (guet || batType.skills.includes('sentinelle') || bat.eq === 'detector' || bat.logeq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'g2ai' || batType.skills.includes('initiative') || batType.skills.includes('after')) {
+        if (guet || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai']) || batType.skills.includes('initiative') || batType.skills.includes('after')) {
             brideDef = brideDef/1.17;
         } else {
             brideDef = brideDef/1.5;
@@ -2982,7 +3003,7 @@ function checkDisease(giveBatType,damage,haveBat,haveBatType,terrain) {
 
 function isOnGround(bat,batType,tile) {
     let onGround = true;
-    if (batType.skills.includes('fly') || batType.skills.includes('jetpack') || bat.eq === 'e-jetpack' || bat.logeq === 'e-jetpack') {
+    if (batType.skills.includes('fly') || batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') {
         onGround = false;
     }
     if (tile.rd || tile.ruins) {
@@ -3122,7 +3143,7 @@ function checkEscape(bat,batType) {
         } else {
             escaping.speed = batType.speed-2;
         }
-        if (bat.eq === 'e-stab' || bat.logeq === 'e-stab') {
+        if (hasEquip(bat,['e-stab'])) {
             escaping.speed = escaping.speed+2;
         }
         if (batType.skills.includes('dogescape')) {
@@ -3138,7 +3159,7 @@ function checkEscape(bat,batType) {
         }
         if (!escaping.ok) {
             if (playerInfos.comp.det >= 4) {
-                if (bat.eq === 'detector' || bat.eq === 'g2ai' || bat.logeq === 'detector' || bat.logeq === 'g2ai') {
+                if (hasEquip(bat,['detector','g2ai'])) {
                     if (batType.speed >= 2 && batType.size < 10) {
                         if (playerInfos.comp.robo >= 2 || playerInfos.comp.cyber >= 2) {
                             if (batType.skills.includes('robot') || batType.skills.includes('cyber')) {
@@ -3152,7 +3173,7 @@ function checkEscape(bat,batType) {
         }
         if (!escaping.ok) {
             if (batType.skills.includes('fly') && !batType.skills.includes('jetpack') && batType.size < 12) {
-                if (bat.eq === 'e-stab' || bat.logeq === 'e-stab') {
+                if (hasEquip(bat,['e-stab'])) {
                     escaping.ok = true;
                     escaping.speed = batType.speed+(bat.vet*2)-6;
                 }

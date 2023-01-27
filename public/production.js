@@ -204,7 +204,7 @@ function gasProd(bat,batType) {
                 let key = entry[0];
                 let value = entry[1];
                 let fullProd = value;
-                if (bat.eq === 'g2cryo' || bat.logeq === 'g2cryo') {
+                if (hasEquip(bat,['g2cryo'])) {
                     fullProd = fullProd*2;
                 }
                 if (fullProd < 1) {
@@ -380,9 +380,9 @@ function solarPanel(bat,batType) {
             energyProd = rand.rand(4,5);
         }
         energyProd = Math.floor(energyProd*zone[0].ensol/pansolFactor);
-        if (bat.eq === 'psol' || bat.logeq === 'psol') {
+        if (hasEquip(bat,['psol'])) {
             energyProd = Math.round(energyProd/2);
-        } else if (bat.eq === 'bldkit' || bat.logeq === 'bldkit') {
+        } else if (hasEquip(bat,['bldkit'])) {
             if (!batType.equip.includes('psol2')) {
                 energyProd = Math.round(energyProd/2);
             }
@@ -419,7 +419,7 @@ function triProd(bat,batType,time,sim,quiet) {
             let key = entry[0];
             let value = entry[1];
             let conso = value*time;
-            if (bat.eq === 'prodboost') {
+            if (hasEquip(bat,['prodboost'])) {
                 conso = Math.round(conso*1.5);
             }
             let dispoRes = getDispoRes(key);
@@ -434,7 +434,7 @@ function triProd(bat,batType,time,sim,quiet) {
                 let key = entry[0];
                 let value = entry[1];
                 let conso = value*time;
-                if (bat.eq === 'prodboost') {
+                if (hasEquip(bat,['prodboost'])) {
                     conso = Math.round(conso*1.5);
                 }
                 if (playerInfos.onShip) {
@@ -497,7 +497,7 @@ function triProd(bat,batType,time,sim,quiet) {
             if (resProd >= 1) {
                 resProd = scrapRecup(resProd);
                 resProd = prodDrop(bat,batType,resProd);
-                if (bat.eq === 'prodboost') {
+                if (hasEquip(bat,['prodboost'])) {
                     resProd = Math.round(resProd*1.5);
                 }
                 // resAdd(res.name,resProd);
@@ -555,7 +555,7 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                 let key = entry[0];
                 let value = entry[1];
                 let conso = value*time;
-                if (bat.eq === 'prodboost') {
+                if (hasEquip(bat,['prodboost'])) {
                     conso = Math.round(conso*1.5);
                 }
                 if (playerInfos.onShip) {
@@ -575,7 +575,7 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                     let key = entry[0];
                     let value = entry[1];
                     let conso = value*time;
-                    if (bat.eq === 'prodboost') {
+                    if (hasEquip(bat,['prodboost'])) {
                         conso = Math.round(conso*1.5);
                     }
                     if (playerInfos.onShip) {
@@ -606,7 +606,7 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                     let key = entry[0];
                     let value = entry[1];
                     let fullProd = value*time;
-                    if (bat.eq === 'prodboost') {
+                    if (hasEquip(bat,['prodboost'])) {
                         fullProd = fullProd*2;
                     }
                     if (playerInfos.onShip) {
