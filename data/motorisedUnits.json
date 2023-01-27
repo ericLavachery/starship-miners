@@ -3695,9 +3695,9 @@
             "ravitBld":"Atelier"
         },
         "protection":[],
-        "equip":["aucun","lunette1","chargeur1","lanceur2","g2motor","snorkel","maxtrans","carkit","e-flash","e-mecano","chenilles","e-treuil","g2tools","e-respod"],
+        "equip":["aucun","lunette1","chargeur1","lanceur","g2motor","snorkel","maxtrans","carkit","e-flash","e-mecano","chenilles","e-treuil","g2tools","e-respod"],
         "log3eq":["snorkel"],
-        "autoEq":["lunette1","chargeur1","lanceur2","g2motor","chenilles"],
+        "autoEq":["lunette1","chargeur1","lanceur","g2motor","chenilles"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -4301,7 +4301,7 @@
             "ravitBld":"Atelier"
         },
         "protection":[],
-        "equip":["aucun","gilet","chargeur1","g2motor","e-flash","theeye","e-mecano","lanceur2","lgkit","repel","e-stab"],
+        "equip":["aucun","gilet","chargeur1","g2motor","e-flash","theeye","e-mecano","lancegren","lgkit","repel","e-stab"],
         "log3eq":["e-stab"],
         "autoEq":["chargeur1","gilet"],
         "moveCost":1.6,

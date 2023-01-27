@@ -2076,26 +2076,26 @@ function weaponAdj(weapon,bat,wn) {
                 }
             }
         }
-        if (hasEquip(bat,['lanceur1'])) {
-            if (!batType.skills.includes('camo')) {
-                thisWeapon.noise = thisWeapon.noise+1;
-            }
-            if (!batType.skills.includes('fly') && bat.eq != 'e-jetpack') {
-                thisWeapon.range = thisWeapon.range+1;
-                thisWeapon.elevation = thisWeapon.elevation+1;
-            } else {
-                thisWeapon.range = 2;
-            }
-        } else if (hasEquip(bat,['helper'])) {
-            if (thisWeapon.name === 'Molotov' || thisWeapon.name === 'Grenade' || thisWeapon.name === 'Dynamite') {
-                if (thisWeapon.range === 0) {
-                    thisWeapon.range = 1;
-                }
-            }
-            if (thisWeapon.name === 'Sling grenade') {
-                thisWeapon.range = thisWeapon.range+1;
-            }
-        }
+        // if (hasEquip(bat,['lanceur1'])) {
+        //     if (!batType.skills.includes('camo')) {
+        //         thisWeapon.noise = thisWeapon.noise+1;
+        //     }
+        //     if (!batType.skills.includes('fly') && bat.eq != 'e-jetpack') {
+        //         thisWeapon.range = thisWeapon.range+1;
+        //         thisWeapon.elevation = thisWeapon.elevation+1;
+        //     } else {
+        //         thisWeapon.range = 2;
+        //     }
+        // } else if (hasEquip(bat,['helper'])) {
+        //     if (thisWeapon.name === 'Molotov' || thisWeapon.name === 'Grenade' || thisWeapon.name === 'Dynamite') {
+        //         if (thisWeapon.range === 0) {
+        //             thisWeapon.range = 1;
+        //         }
+        //     }
+        //     if (thisWeapon.name === 'Sling grenade') {
+        //         thisWeapon.range = thisWeapon.range+1;
+        //     }
+        // }
         if (hasEquip(bat,['lunette','lunette1'])) {
             if (playerInfos.comp.train < 1 && thisWeapon.cost > 1) {
                 thisWeapon.cost = thisWeapon.cost+1;

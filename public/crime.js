@@ -888,11 +888,11 @@ function getCamionEquips(batType) {
         }
     }
     // Sinyaki (dynamite)
-    if (batType.equip.includes('lanceur2') && playerInfos.penit >= 5) {
-        let equip = getEquipByName('lanceur2');
+    if (batType.equip.includes('lancegren') && playerInfos.penit >= 5) {
+        let equip = getEquipByName('lancegren');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
-            camion.push('lanceur2');
+            camion.push('lancegren');
         }
     }
     // détenus (calibre)

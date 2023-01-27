@@ -1170,7 +1170,7 @@ function putHLLUnits(centreTileId,hard) {
                     conselAmmos[3] = 'e-camo';
                 }
                 if (rand.rand(1,2) === 1) {
-                    conselAmmos[3] = 'lanceur2';
+                    conselAmmos[3] = 'lancegren';
                 }
                 if (rand.rand(1,5) === 1) {
                     conselAmmos[3] = 'gilet';

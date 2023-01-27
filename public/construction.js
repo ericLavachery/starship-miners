@@ -596,67 +596,6 @@ function conSelect(unitId,player,noRefresh) {
     bfconst(conselCat,conselTriche,conselUpgrade,true);
 };
 
-function checkSpecialEquip(equip,batType) {
-    let nope = false;
-    if (equip.name.includes('chargeur')) {
-        if (Object.keys(batType.weapon).length >= 3) {
-            if (batType.weapon.name.includes('plasma') || batType.weapon.name.includes('laser') || batType.weapon.name.includes('BFG')) {
-                if (equip.name === 'chargeur' || equip.name === 'chargeur1') {
-                    if (!playerInfos.bldList.includes('Centre de recherches')) {
-                        nope = true;
-                    }
-                }
-            }
-        }
-        if (!nope) {
-            if (Object.keys(batType.weapon2).length >= 3) {
-                if (batType.weapon2.name.includes('plasma') || batType.weapon2.name.includes('laser') || batType.weapon2.name.includes('BFG')) {
-                    if (equip.name === 'chargeur' || equip.name === 'chargeur2') {
-                        if (!playerInfos.bldList.includes('Centre de recherches')) {
-                            nope = true;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    if (equip.name === 'lanceur1') {
-        if (Object.keys(batType.weapon).length >= 3) {
-            if (batType.weapon.name.includes('olotov')) {
-                if (playerInfos.comp.pyro < 2) {
-                    nope = true;
-                }
-            } else {
-                if (playerInfos.comp.explo < 2) {
-                    nope = true;
-                }
-            }
-        }
-    }
-    if (equip.name === 'lanceur2' || equip.name === 'lgkit') {
-        if (Object.keys(batType.weapon2).length >= 3) {
-            if (batType.weapon2.name.includes('olotov')) {
-                if (playerInfos.comp.pyro < 2) {
-                    nope = true;
-                }
-            } else {
-                if (playerInfos.comp.explo < 2) {
-                    nope = true;
-                }
-            }
-        }
-    }
-    if (equip.name.includes('sci-')) {
-        let rechCompName = equip.name.replace('sci-','');
-        let rechComp = getCompByName(rechCompName);
-        let rechCompOK = isFoundCompOK(rechComp);
-        if (!rechCompOK) {
-            nope = true;
-        }
-    }
-    return nope;
-}
-
 function showArmorInfo(batArmor) {
     let apAdj = batArmor.ap;
     if (apAdj >= 1) {
