@@ -446,7 +446,6 @@ function conSelect(unitId,player,noRefresh) {
     let weapName;
     let equipNotes;
     let bonusEqName = getBonusEq(conselUnit);
-    let autoEqList = getBaseAutoEqList(conselUnit);
     let emptyBat = {};
     console.log("bonusEqName="+bonusEqName);
     listNum = 1;
@@ -458,11 +457,6 @@ function conSelect(unitId,player,noRefresh) {
             conselUnit.equip.forEach(function(equip) {
                 batEquip = getEquipByName(equip);
                 let showEq = showEquip(conselUnit,batEquip,emptyBat);
-                if (batEquip.name === 'e-flash') {
-                    if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
-                        showEq = false;
-                    }
-                }
                 compReqOK = checkCompReq(batEquip);
                 if (checkSpecialEquip(batEquip,conselUnit)) {
                     compReqOK = false;
@@ -1128,11 +1122,6 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite) {
             }
             // tdc
             newBat.tdc = [];
-            // if (!conselTriche) {
-            //     if (!conselUnit.skills.includes('penitbat')) {
-            //         newBat.tdc = getBaseAutoEqList(conselUnit);
-            //     }
-            // }
             // Armor
             let armorName = conselAmmos[2];
             if (armorName === 'xxx') {

@@ -631,13 +631,7 @@ function calcVue(bat,batType) {
             vue = 2;
         }
     }
-    let allFlash = false;
-    if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
-        if (batType.crew >=1 || batType.skills.includes('robot') || batType.skills.includes('clone')) {
-            allFlash = true;
-        }
-    }
-    if (batType.skills.includes('flash') || hasEquip(bat,['e-flash']) || bat.eq.includes('kit-') || allFlash || infra === 'Miradors' || infra === 'Murailles') {
+    if (batType.skills.includes('flash') || hasEquip(bat,['e-flash']) || bat.eq.includes('kit-') || infra === 'Miradors' || infra === 'Murailles') {
         if (!bat.tags.includes('camo')) {
             if (hauteur < 2) {
                 hauteur = 2;

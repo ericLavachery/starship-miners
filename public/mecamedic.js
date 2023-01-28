@@ -659,7 +659,7 @@ function getAway(myBat,fromTileId,blob) {
         let batType = getBatType(bat);
         if (batType.skills.includes('transport') && batType.cat === 'buildings' && getAwayTile < 0) {
             let maxSize = batType.transMaxSize;
-            if (hasEquip(bat,['garage','bldkit'])) {
+            if (hasEquip(bat,['garage'])) {
                 maxSize = maxSize*3;
             }
             if (myBatType.size <= maxSize) {
@@ -924,7 +924,7 @@ function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
         } else if (playerInfos.bldList.includes('Garage') && batType.cat != 'buildings' && baseskillCost >= 3) {
             baseskillCost = baseskillCost-1;
         }
-        if (hasEquip(bat,['e-mecano','carkit'])) {
+        if (hasEquip(bat,['e-mecano'])) {
             if (batType.skills.includes('mecano') || batType.skills.includes('selfmecano')) {
                 if (baseskillCost >= 6) {
                     baseskillCost = Math.floor(baseskillCost*3/4);
@@ -977,7 +977,7 @@ function bestMecanoInBld(bldBat) {
         if (bat.loc === "trans" && bat.locId === bldBat.id) {
             let batType = getBatType(bat);
             if (batType.cat != 'buildings' && batType.cat != 'devices') {
-                if (batType.skills.includes('mecano') || (batType.skills.includes('badmecano') && hasEquip(bat,['e-mecano','carkit']))) {
+                if (batType.skills.includes('mecano') || (batType.skills.includes('badmecano') && hasEquip(bat,['e-mecano']))) {
                     maxMeds = 10*bat.apLeft/batType.mecanoCost;
                     if (maxMeds > bestMaxMeds) {
                         bestMaxMeds = maxMeds;
@@ -1109,21 +1109,21 @@ function checkMecanoSkill(bat,batType) {
     } else if (batType.skills.includes('selfmecano')) {
         myMecanoSkill = 'selfmecano';
     } else if (batType.skills.includes('badmecano')) {
-        if (hasEquip(bat,['e-mecano','carkit'])) {
+        if (hasEquip(bat,['e-mecano'])) {
             myMecanoSkill = 'mecano';
         } else {
             myMecanoSkill = 'badmecano';
         }
     } else if (batType.skills.includes('selfbadmecano')) {
-        if (hasEquip(bat,['e-mecano','carkit'])) {
+        if (hasEquip(bat,['e-mecano'])) {
             myMecanoSkill = 'selfmecano';
         } else {
             myMecanoSkill = 'selfbadmecano';
         }
-    } else if (batType.skills.includes('w2mecano') && hasEquip(bat,['e-mecano','carkit'])) {
+    } else if (batType.skills.includes('w2mecano') && hasEquip(bat,['e-mecano'])) {
         myMecanoSkill = 'badmecano';
     } else {
-        if (hasEquip(bat,['e-mecano','carkit'])) {
+        if (hasEquip(bat,['e-mecano'])) {
             if (batType.cat === 'infantry') {
                 myMecanoSkill = 'badmecano';
             } else {

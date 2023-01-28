@@ -546,7 +546,7 @@ function canCamo(bat,batType,tile) {
     if (hasEquip(bat,['silencieux','silencieux1','silencieux2','e-camo'])) {
         iCanCamo = true;
     }
-    if (hasEquip(bat,['kit-milice','kit-guetteur','kit-chouf','kit-sentinelle','trainkitch','trainkitlu','trainkitgi'])) {
+    if (hasEquip(bat,['kit-milice','kit-guetteur','kit-chouf','kit-sentinelle'])) {
         if (playerInfos.comp.cam >= 1) {
             iCanCamo = true;
         }

@@ -303,7 +303,7 @@ function checkTransportId(myBat,myBatType) {
         if (bat.loc === "zone" && bat.tileId === myBat.tileId) {
             batType = getBatType(bat);
             let maxSize = batType.transMaxSize;
-            if (hasEquip(bat,['garage','bldkit'])) {
+            if (hasEquip(bat,['garage'])) {
                 maxSize = maxSize*3;
             }
             if (maxSize >= myBatType.size) {
@@ -340,7 +340,7 @@ function calcTransWithBreak(theTrans,batType) {
 
 function calcTransUnitsLeft(myBat,myBatType) {
     let myBatTransUnitsLeft = myBatType.transUnits;
-    if (hasEquip(myBat,['garage','bldkit'])) {
+    if (hasEquip(myBat,['garage'])) {
         myBatTransUnitsLeft = myBatTransUnitsLeft*2;
     }
     if (hasEquip(myBat,['megatrans'])) {
@@ -533,7 +533,7 @@ function checkEmbarqArmy(transBat,transBatType,firstBat) {
 function embarqArmy(transBat,transBatType,oldTransBat) {
     let transOK = false;
     let maxSize = transBatType.transMaxSize;
-    if (hasEquip(transBat,['garage','bldkit'])) {
+    if (hasEquip(transBat,['garage'])) {
         maxSize = maxSize*3;
     }
     bataillons.forEach(function(bat) {
@@ -590,7 +590,7 @@ function jumpInTrans() {
                         let batType = getBatType(bat);
                         if (resLoad <= 0 || !batType.skills.includes('transorbital')) {
                             let maxSize = batType.transMaxSize;
-                            if (hasEquip(bat,['garage','bldkit'])) {
+                            if (hasEquip(bat,['garage'])) {
                                 maxSize = maxSize*3;
                             }
                             if (batType.transUnits >= 1 && maxSize >= selectedBatType.size) {
@@ -737,7 +737,7 @@ function clickDebarq(tileId) {
                 message = 'Le bataillon de destination ne peut pas acceuillir de troupes.';
             } else {
                 let maxSize = batType.transMaxSize;
-                if (hasEquip(bat,['garage','bldkit'])) {
+                if (hasEquip(bat,['garage'])) {
                     maxSize = maxSize*3;
                 }
                 if (maxSize < batDebarqType.size) {

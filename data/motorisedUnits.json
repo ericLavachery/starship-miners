@@ -188,7 +188,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","lunette1","chargeur1","carrousel2","g2motor","chenilles","carkit","wstab","e-mecano","repel"],
+        "equip":["aucun","lunette1","chargeur1","carrousel2","g2motor","chenilles","wstab","e-mecano","repel"],
         "log3eq":["chenilles"],
         "autoEq":["g2motor","chargeur1","wstab","e-mecano"],
         "moveCost":2,
@@ -248,7 +248,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-moisso-mono"]
         },
         "protection":[],
-        "equip":["aucun","chargeur1","g2motor","snorkel","carkit","wstab","e-flash","theeye","e-mecano","w2-moisso","repel"],
+        "equip":["aucun","chargeur1","g2motor","snorkel","wstab","e-flash","theeye","e-mecano","w2-moisso","repel"],
         "log3eq":["chargeur1"],
         "autoEq":["g2motor","snorkel","wstab","e-mecano"],
         "moveCost":2,
@@ -310,7 +310,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":[],
-        "equip":["aucun","g2motor","snorkel","carkit","moisso","e-flash","e-radar","theeye","e-mecano","repel"],
+        "equip":["aucun","g2motor","snorkel","moisso","e-flash","e-radar","theeye","e-mecano","repel"],
         "log3eq":["g2motor"],
         "autoEq":["snorkel","e-mecano"],
         "moveCost":2,
@@ -368,7 +368,7 @@
             "ravitBld":"Atelier"
         },
         "protection":[],
-        "equip":["aucun","chargeur1","g2motor","arrosoir","chenilles","snorkel","carkit","e-flash","theeye","e-mecano","repel"],
+        "equip":["aucun","chargeur1","g2motor","arrosoir","chenilles","snorkel","e-flash","theeye","e-mecano","repel"],
         "log3eq":["chenilles"],
         "autoEq":["snorkel","chargeur1","g2motor","e-mecano"],
         "moveCost":2,
@@ -427,7 +427,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","lunette1","chargeur1","carrousel2","g2motor","snorkel","carkit","e-flash","waterproof","chenilles","repel"],
+        "equip":["aucun","lunette1","chargeur1","carrousel2","g2motor","snorkel","e-flash","waterproof","chenilles","repel"],
         "log3eq":["snorkel"],
         "autoEq":["chenilles","chargeur1","g2motor","carrousel2"],
         "moveCost":2,
@@ -487,7 +487,7 @@
             "ammo":["guidage"]
         },
         "protection":[],
-        "equip":["aucun","carrousel1","g2motor","e-radar","snorkel","carkit","e-mecano","silencieux2","e-control","repel"],
+        "equip":["aucun","carrousel1","g2motor","e-radar","snorkel","e-mecano","silencieux2","e-control","repel"],
         "log3eq":["silencieux2"],
         "autoEq":["snorkel","g2motor","carrousel1","repel"],
         "moveCost":2,
@@ -552,7 +552,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":[],
-        "equip":["aucun","g2motor","chenilles","snorkel","maxtrans","carkit","belier","moisso","e-flash","e-mecano","e-road"],
+        "equip":["aucun","g2motor","chenilles","snorkel","maxtrans","belier","moisso","e-flash","e-mecano","e-road"],
         "log3eq":["chenilles"],
         "autoEq":["snorkel","g2motor","e-mecano","e-road"],
         "moveCost":2.4,
@@ -620,7 +620,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","chargeur1","w2-lgren","g2motor","chenilles","snorkel","maxtrans","carkit","e-flash","e-mecano","e-road"],
+        "equip":["aucun","chargeur1","w2-lgren","g2motor","chenilles","snorkel","maxtrans","e-flash","e-mecano","e-road"],
         "log3eq":["chenilles"],
         "autoEq":["snorkel","g2motor","chargeur1"],
         "moveCost":2.3,
@@ -686,9 +686,9 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-moisso-mono"]
         },
         "protection":[],
-        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","carkit","e-flash","w2-moisso","e-treuil","e-road","repel"],
+        "equip":["aucun","chargeur1","g2motor","chenilles","snorkel","e-flash","w2-moisso","e-treuil","e-road","repel"],
         "log3eq":["snorkel"],
-        "autoEq":["e-treuil","g2motor","chargeur1","repel"],
+        "autoEq":["e-treuil","g2motor","chenilles","chargeur1","repel"],
         "moveCost":2,
         "maxFlood":1,
         "maxScarp":2,
@@ -1074,7 +1074,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":[],
-        "equip":["aucun","lunette","chargeur","wstabkit","g2motor","chenilles","snorkel","carkit","w2-2ch","e-flash","theeye","e-mecano","e-road"],
+        "equip":["aucun","lunette","chargeur","wstabkit","g2motor","chenilles","snorkel","w2-2ch","e-flash","theeye","e-mecano","e-road"],
         "log3eq":["wstabkit"],
         "autoEq":["lunette","chargeur","chenilles","snorkel"],
         "moveCost":2.4,
@@ -1134,7 +1134,7 @@
             "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
         },
         "protection":[],
-        "equip":["aucun","lunette2","chargeur2","g2motor","chenilles","snorkel","carkit","theeye","e-mecano","e-road","e-radar"],
+        "equip":["aucun","lunette2","chargeur2","g2motor","chenilles","snorkel","theeye","e-mecano","e-road","e-radar"],
         "log3eq":["chenilles"],
         "autoEq":["lunette2","chargeur2","g2motor","snorkel"],
         "moveCost":2.6,
@@ -1318,7 +1318,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-moisso-mono"]
         },
         "protection":[],
-        "equip":["aucun","lunette1","chargeur1","wstabkit","g2motor","carkit","e-flash","theeye","waterproof","e-mecano"],
+        "equip":["aucun","lunette1","chargeur1","wstabkit","g2motor","e-flash","theeye","waterproof","e-mecano"],
         "log3eq":["wstabkit"],
         "autoEq":["lunette1","g2motor","waterproof"],
         "moveCost":2.3,
@@ -1376,7 +1376,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-moisso-mono"]
         },
         "protection":[],
-        "equip":["aucun","g2motor","carkit","e-flash","theeye","waterproof","e-mecano","g2siege"],
+        "equip":["aucun","g2motor","e-flash","theeye","waterproof","e-mecano","g2siege"],
         "log3eq":["g2motor"],
         "autoEq":["e-mecano","waterproof"],
         "moveCost":2.1,
@@ -2562,9 +2562,9 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-moisso-mono"]
         },
         "protection":[],
-        "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","carkit","e-mecano","e-flash","w2-moisso","repel"],
+        "equip":["aucun","lunette1","chargeur1","g2motor","chenilles","snorkel","e-mecano","e-flash","w2-moisso","repel"],
         "log3eq":["chenilles"],
-        "autoEq":["snorkel","lunette1","chargeur1","repel"],
+        "autoEq":["snorkel","g2motor","lunette1","chargeur1","repel"],
         "moveCost":3,
         "maxFlood":0,
         "maxScarp":2,
@@ -2692,7 +2692,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":[],
-        "equip":["aucun","g2motor","chenilles","snorkel","carkit","e-mecano","belier","moisso","e-flash","e-road","e-lifepod"],
+        "equip":["aucun","g2motor","chenilles","snorkel","e-mecano","belier","moisso","e-flash","e-road","e-lifepod"],
         "log3eq":["chenilles"],
         "autoEq":["snorkel","g2motor","chargeur1"],
         "moveCost":3.4,
@@ -2756,7 +2756,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":[],
-        "equip":["aucun","g2motor","chenilles","carkit","moisso","e-flash","e-mecano","e-medic","g2siege","repel","e-road","e-lifepod"],
+        "equip":["aucun","g2motor","chenilles","moisso","e-flash","e-mecano","e-medic","g2siege","repel","e-road","e-lifepod"],
         "log3eq":["chenilles"],
         "autoEq":["e-road","g2motor","g2siege","e-medic"],
         "moveCost":2.4,
@@ -2986,7 +2986,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":[],
-        "equip":["aucun","g2motor","chenilles","snorkel","maxtrans","carkit","belier","moisso","e-flash","e-mecano","e-medic","chargeur1","e-road","e-lifepod"],
+        "equip":["aucun","g2motor","chenilles","snorkel","maxtrans","belier","moisso","e-flash","e-mecano","e-medic","chargeur1","e-road","e-lifepod"],
         "log3eq":["chenilles"],
         "autoEq":["e-mecano","e-medic","chargeur1","e-road","snorkel","g2motor"],
         "moveCost":2,
@@ -3052,7 +3052,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":[],
-        "equip":["aucun","g2motor","chenilles","snorkel","carkit","e-mecano","belier","moisso","e-flash","e-road","e-respod"],
+        "equip":["aucun","g2motor","chenilles","snorkel","e-mecano","belier","moisso","e-flash","e-road","e-respod"],
         "log3eq":["chenilles"],
         "autoEq":["e-mecano","e-road","snorkel","g2motor"],
         "moveCost":3,
@@ -3114,7 +3114,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":[],
-        "equip":["aucun","chargeur2","lunette2","wstab","g2motor","snorkel","carkit","e-flash","e-mecano","e-road","e-lifepod","e-respod"],
+        "equip":["aucun","chargeur2","lunette2","wstab","g2motor","snorkel","e-flash","e-mecano","e-road","e-lifepod","e-respod"],
         "log3eq":["snorkel"],
         "autoEq":["chargeur2","lunette2","wstab","g2motor"],
         "moveCost":3,
@@ -3433,7 +3433,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":[],
-        "equip":["aucun","g2motor","snorkel","chenilles","maxtrans","carkit","belier","moisso","e-flash","e-road","e-mecano"],
+        "equip":["aucun","g2motor","snorkel","chenilles","maxtrans","belier","moisso","e-flash","e-road","e-mecano"],
         "log3eq":["chenilles"],
         "autoEq":["e-mecano","g2motor","snorkel"],
         "moveCost":1.9,
@@ -3499,9 +3499,9 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":[],
-        "equip":["aucun","g2motor","chenilles","snorkel","maxtrans","carkit","e-flash","belier","moisso","e-mecano","e-road"],
+        "equip":["aucun","g2motor","chenilles","snorkel","maxtrans","e-flash","belier","moisso","e-mecano","e-road"],
         "log3eq":["chenilles"],
-        "autoEq":["g2motor","snorkel"],
+        "autoEq":["g2motor","snorkel","e-mecano"],
         "moveCost":1.8,
         "maxFlood":0,
         "maxScarp":2,
@@ -3565,7 +3565,7 @@
             "ravitBld":"Atelier"
         },
         "protection":[],
-        "equip":["aucun","g2motor","chenilles","snorkel","maxtrans","carkit","arbalourde","w2-gaz","e-mecano","e-medic","repel","e-road"],
+        "equip":["aucun","g2motor","chenilles","snorkel","maxtrans","arbalourde","w2-gaz","e-mecano","e-medic","repel","e-road"],
         "log3eq":["chenilles"],
         "autoEq":["g2motor","snorkel","arbalourde","e-mecano","e-medic","repel"],
         "moveCost":2,
@@ -3695,7 +3695,7 @@
             "ravitBld":"Atelier"
         },
         "protection":[],
-        "equip":["aucun","lunette1","chargeur1","lanceur","g2motor","snorkel","maxtrans","carkit","e-flash","e-mecano","chenilles","e-treuil","g2tools","e-respod"],
+        "equip":["aucun","lunette1","chargeur1","lanceur","g2motor","snorkel","maxtrans","e-flash","e-mecano","chenilles","e-treuil","g2tools","e-respod"],
         "log3eq":["snorkel"],
         "autoEq":["lunette1","chargeur1","lanceur","g2motor","chenilles"],
         "moveCost":2,
@@ -3764,7 +3764,7 @@
             "ammo":["lame","lame-tungsten","lame-carbone","lame-moisso-mono"]
         },
         "protection":[],
-        "equip":["aucun","lunette1","chargeur1","wstabkit","g2motor","chenilles","snorkel","carkit","e-flash","e-mecano","g2tools","e-road","e-respod"],
+        "equip":["aucun","lunette1","chargeur1","wstabkit","g2motor","chenilles","snorkel","e-flash","e-mecano","g2tools","e-road","e-respod"],
         "log3eq":["chenilles"],
         "autoEq":["lunette1","wstabkit","g2motor","snorkel"],
         "moveCost":3,
@@ -3834,9 +3834,9 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":[],
-        "equip":["aucun","chargeur1","moisso","g2motor","snorkel","maxtrans","carkit","e-flash","theeye","e-mecano","g2tools","e-road","e-respod"],
+        "equip":["aucun","chargeur1","moisso","g2motor","snorkel","maxtrans","e-flash","theeye","e-mecano","g2tools","e-road","e-respod"],
         "log3eq":["snorkel"],
-        "autoEq":["chargeur1","e-road","g2motor"],
+        "autoEq":["chargeur1","e-road","g2motor","e-mecano"],
         "moveCost":3,
         "maxFlood":1,
         "maxScarp":2,
@@ -3907,9 +3907,9 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":[],
-        "equip":["aucun","arcpoulie","moisso","g2motor","snorkel","maxtrans","carkit","e-flash","theeye","e-mecano","g2tools","e-road","e-respod"],
+        "equip":["aucun","arcpoulie","moisso","g2motor","snorkel","maxtrans","e-flash","theeye","e-mecano","g2tools","e-road","e-respod"],
         "log3eq":["snorkel"],
-        "autoEq":["arcpoulie","e-road","g2motor"],
+        "autoEq":["arcpoulie","e-road","g2motor","e-mecano"],
         "moveCost":3,
         "maxFlood":1,
         "maxScarp":2,
@@ -4301,9 +4301,9 @@
             "ravitBld":"Atelier"
         },
         "protection":[],
-        "equip":["aucun","gilet","chargeur1","g2motor","e-flash","theeye","e-mecano","lancegren","lgkit","repel","e-stab"],
+        "equip":["aucun","gilet","chargeur1","g2motor","e-flash","theeye","e-mecano","lancegren","repel","e-stab"],
         "log3eq":["e-stab"],
-        "autoEq":["chargeur1","gilet"],
+        "autoEq":["chargeur1","lancegren","gilet"],
         "moveCost":1.6,
         "maxFlood":3,
         "maxScarp":3,

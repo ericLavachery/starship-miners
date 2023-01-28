@@ -261,7 +261,7 @@ function skillsInfos(bat,batType,near,nearby) {
                 }
             } else {
                 if ((batType.skills.includes('maycamo') || !batType.skills.includes('camo')) && !ruinHide) {
-                    if (hasEquip(bat,['trainkitlu','trainkitch','trainkitgi','kit-chouf'])) {
+                    if (hasEquip(bat,['kit-chouf'])) {
                         apCost = Math.floor(batType.ap/2.5);
                         apReq = 2;
                     } else if (hasEquip(bat,['kit-guetteur','kit-milice','kit-sentinelle','e-camo'])) {

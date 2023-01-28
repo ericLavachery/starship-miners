@@ -36,7 +36,7 @@ function calcBatFuzz(bat) {
     if (batFuzz >= 6) {
         batFuzz = batFuzz+batFuzz-3;
     }
-    if (hasEquip(bat,['isophon','bldkit'])) {
+    if (hasEquip(bat,['isophon'])) {
         batFuzz = batFuzz-4;
     }
     if (batFuzz < 0) {

@@ -1192,7 +1192,7 @@ function getStealth(bat) {
             }
         }
     }
-    if (hasEquip(bat,['e-camo','kit-sentinelle','kit-milice','kit-chouf','kit-guetteur','trainkitgi','trainkitch','trainkitlu'])) {
+    if (hasEquip(bat,['e-camo','kit-sentinelle','kit-milice','kit-chouf','kit-guetteur'])) {
         if (batType.skills.includes('camo')) {
             batStealth = batStealth+3;
         } else {
@@ -2048,7 +2048,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     // WSTAB
     if (thisWeapon.noStab) {
-        if (hasEquip(bat,['wstab','wstabkit','carkit','e-stab'])) {
+        if (hasEquip(bat,['wstab','wstabkit','e-stab'])) {
             thisWeapon.accuracy = thisWeapon.accuracy+3;
             if (thisWeapon.dca < 1) {
                 thisWeapon.dca = 1;
@@ -2068,7 +2068,7 @@ function weaponAdj(weapon,bat,wn) {
         if (hasEquip(bat,['longtom','longtom1'])) {
             thisWeapon.range = thisWeapon.range+1;
         }
-        if (hasEquip(bat,['chargeur','chargeur1','w2-2ch','lgkit'])) {
+        if (hasEquip(bat,['chargeur','chargeur1','w2-2ch'])) {
             if (thisWeapon.cost < 6 && playerInfos.comp.train < 1) {
                 thisWeapon.accuracy = thisWeapon.accuracy-1;
                 if (thisWeapon.cost >= 3) {
@@ -2076,32 +2076,12 @@ function weaponAdj(weapon,bat,wn) {
                 }
             }
         }
-        // if (hasEquip(bat,['lanceur1'])) {
-        //     if (!batType.skills.includes('camo')) {
-        //         thisWeapon.noise = thisWeapon.noise+1;
-        //     }
-        //     if (!batType.skills.includes('fly') && bat.eq != 'e-jetpack') {
-        //         thisWeapon.range = thisWeapon.range+1;
-        //         thisWeapon.elevation = thisWeapon.elevation+1;
-        //     } else {
-        //         thisWeapon.range = 2;
-        //     }
-        // } else if (hasEquip(bat,['helper'])) {
-        //     if (thisWeapon.name === 'Molotov' || thisWeapon.name === 'Grenade' || thisWeapon.name === 'Dynamite') {
-        //         if (thisWeapon.range === 0) {
-        //             thisWeapon.range = 1;
-        //         }
-        //     }
-        //     if (thisWeapon.name === 'Sling grenade') {
-        //         thisWeapon.range = thisWeapon.range+1;
-        //     }
-        // }
         if (hasEquip(bat,['lunette','lunette1'])) {
             if (playerInfos.comp.train < 1 && thisWeapon.cost > 1) {
                 thisWeapon.cost = thisWeapon.cost+1;
             }
         }
-        if (hasEquip(bat,['lunette','lunette1','trainkitlu','kit-chouf','landerwkit'])) {
+        if (hasEquip(bat,['lunette','lunette1','kit-chouf','landerwkit'])) {
             if (batType.skills.includes('lurange')) {
                 let tgr = getTGuetRange();
                 thisWeapon.range = thisWeapon.range+tgr.range;
@@ -2117,7 +2097,7 @@ function weaponAdj(weapon,bat,wn) {
             }
             thisWeapon.accuracy = thisWeapon.accuracy+accuBonus;
         }
-        if (hasEquip(bat,['silencieux','silencieux1','trainkitlu','kit-chouf'])) {
+        if (hasEquip(bat,['silencieux','silencieux1','kit-chouf'])) {
             thisWeapon.noise = thisWeapon.noise-1;
             thisWeapon.hide = true;
         }
@@ -2141,7 +2121,7 @@ function weaponAdj(weapon,bat,wn) {
                 }
             }
         }
-        if (hasEquip(bat,['lanceur2','trainkitgi','lgkit'])) {
+        if (hasEquip(bat,['lanceur','lancegren'])) {
             if (!batType.skills.includes('camo')) {
                 thisWeapon.noise = thisWeapon.noise+1;
             }
@@ -2215,7 +2195,7 @@ function weaponAdj(weapon,bat,wn) {
     } else if (playerInfos.bldList.includes('Arsenal')) {
         thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.25);
     }
-    if (hasEquip(bat,['gilet','trainkitgi']) && thisWeapon.maxAmmo < 99) {
+    if (hasEquip(bat,['gilet']) && thisWeapon.maxAmmo < 99) {
         thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
         if (thisWeapon.maxAmmo < 16) {
             thisWeapon.maxAmmo = 16;
@@ -2247,21 +2227,6 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.power = thisWeapon.power+1;
         } else if (thisWeapon.name === 'Revolver') {
             thisWeapon.rof = thisWeapon.rof*1.2;
-        }
-    }
-    if (bat.eq === 'trainkitgi') {
-        if (thisWeapon.num === 1 && thisWeapon.isMelee) {
-            thisWeapon.rof = thisWeapon.rof*1.15;
-        }
-    }
-    if (bat.eq === 'trainkitax') {
-        if (thisWeapon.num === 1 && thisWeapon.isMelee) {
-            thisWeapon.rof = thisWeapon.rof*1.15;
-        }
-    }
-    if (bat.eq === 'trainkitch') {
-        if (thisWeapon.num === 2 && thisWeapon.isMelee) {
-            thisWeapon.rof = thisWeapon.rof*1.15;
         }
     }
     if (bat.eq === 'kit-lightning') {
@@ -2768,11 +2733,11 @@ function chargeurAdj(bat,shots,weap) {
     let newShots = shots;
     let hasChargeur = false;
     if (weap.num === 1) {
-        if (hasEquip(bat,['chargeur','chargeur1','w2-2ch','carrousel','carrousel1','kit-milice','trainkitch','landerwkit','lgkit','fakit'])) {
+        if (hasEquip(bat,['chargeur','chargeur1','w2-2ch','carrousel','carrousel1','kit-milice','landerwkit','fakit'])) {
             hasChargeur = true;
         }
     } else {
-        if (hasEquip(bat,['chargeur','chargeur2','w2-2ch','carrousel','carrousel2','kit-chouf','trainkitax'])) {
+        if (hasEquip(bat,['chargeur','chargeur2','w2-2ch','carrousel','carrousel2','kit-chouf'])) {
             hasChargeur = true;
         }
     }
@@ -2811,7 +2776,7 @@ function chargeurAdj(bat,shots,weap) {
         newShots = Math.round(newShots*mult);
     } else if (hasCarrousel) {
         newShots = Math.round(newShots*1.25);
-    } else if (hasEquip(bat,['helper','cyberkit'])) {
+    } else if (hasEquip(bat,['helper'])) {
         if (!weap.isMelee && !weap.name.includes('Javelot')) {
             newShots = Math.round(newShots*1.25);
         }

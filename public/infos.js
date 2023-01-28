@@ -119,7 +119,7 @@ function batInfos(bat,batType,pop) {
     if (hasEquip(bat,['maxtrans'])) {
         resMax = Math.round(resMax/4);
     }
-    if (hasEquip(bat,['garage','bldkit'])) {
+    if (hasEquip(bat,['garage'])) {
         resMax = resMax*2;
         if (resMax < 5000) {
             resMax = 5000;
@@ -419,7 +419,7 @@ function batInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName cy">Drogue</span><span class="paramIcon"></span><span class="paramValue cy">'+myDrugs.toString()+'</span><br>');
         }
     }
-    if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || hasEquip(bat,['permakirin','cyberkit'])) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || hasEquip(bat,['permakirin'])) {
         let regenType = 'lente';
         if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || batType.skills.includes('regeneration') || bat.tags.includes('regeneration')) {
             regenType = 'rapide';
@@ -578,7 +578,7 @@ function batInfos(bat,batType,pop) {
         if (hasEquip(bat,['maxtrans'])) {
             transBase = calcTransWithBreak(transBase,batType);
         }
-        if (hasEquip(bat,['garage','bldkit'])) {
+        if (hasEquip(bat,['garage'])) {
             transBase = transBase*2;
         }
         if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 2) {
@@ -632,11 +632,6 @@ function batInfos(bat,batType,pop) {
     }
     if (bat.logeq != '') {
         $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">'+bat.logeq+'</span><br>');
-    }
-    if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
-        if (noEquip(bat,['e-flash','e-phare'])) {
-            $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">e-flash</span><br>');
-        }
     }
     let tdcDesc = ['Equipements','Bonus compétences'];
     if (batType.skills.includes('penitbat')) {

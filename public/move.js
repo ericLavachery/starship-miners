@@ -11,7 +11,7 @@ function clickMove(tileId) {
             ownBatHere = true;
             batType = getBatType(bat);
             let maxSize = batType.transMaxSize;
-            if (hasEquip(bat,['garage','bldkit'])) {
+            if (hasEquip(bat,['garage'])) {
                 maxSize = maxSize*3;
             }
             if (maxSize >= selectedBatType.size) {
@@ -364,7 +364,7 @@ function moveSelectedBat(tileId,free,jump) {
             camoOut();
         } else {
             if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('emoteur') && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo') || !selectedBatType.skills.includes('camo') || selectedBat.eq === 'e-jetpack') {
-                if (hasEquip(selectedBat,['trainkitlu','trainkitch','trainkitgi','kit-chouf'])) {
+                if (hasEquip(selectedBat,['kit-chouf'])) {
                     camouflage(0);
                 } else {
                     camoOut();
@@ -440,7 +440,7 @@ function moveSelectedBat(tileId,free,jump) {
                         if (selectedBatType.size < 22) {
                             immobChance = immobChance-20;
                         }
-                    } else if (hasEquip(selectedBat,['chenilles','carkit'])) {
+                    } else if (hasEquip(selectedBat,['chenilles'])) {
                         immobChance = immobChance-15;
                     }
                     if (rand.rand(1,100) <= immobChance) {
@@ -535,7 +535,7 @@ function batUnstack() {
             if (!isCharged) {
                 let batType = getBatType(bat);
                 let maxSize = batType.transMaxSize;
-                if (hasEquip(bat,['garage','bldkit'])) {
+                if (hasEquip(bat,['garage'])) {
                     maxSize = maxSize*3;
                 }
                 if (maxSize >= selectedBatType.size) {
@@ -677,16 +677,16 @@ function terrainAccess(batId,targetTileId) {
         let batMaxFlood = batType.maxFlood;
         let batMaxScarp = batType.maxScarp;
         let batMaxVeg = batType.maxVeg;
-        if (batMaxFlood === 0 && hasEquip(bat,['chenilles','carkit'])) {
+        if (batMaxFlood === 0 && hasEquip(bat,['chenilles'])) {
             batMaxFlood = 1;
         }
-        if (batMaxScarp < 2 && hasEquip(bat,['chenilles','carkit'])) {
+        if (batMaxScarp < 2 && hasEquip(bat,['chenilles'])) {
             batMaxScarp = 2;
         }
         if (batMaxFlood >= terFlood && batMaxScarp >= terScarp && batMaxVeg >= terVeg) {
             access = true;
         }
-        if (hasEquip(bat,['snorkel','carkit','waterproof'])) {
+        if (hasEquip(bat,['snorkel','waterproof'])) {
             if (terFlood >= 2) {
                 access = true;
             }
@@ -779,7 +779,7 @@ function calcBaseMoveCost(bat,batType) {
     if (bat.tags.includes('zombie')) {
         baseMoveCost = baseMoveCost*1.5;
     }
-    if (hasEquip(bat,['helper','cyberkit'])) {
+    if (hasEquip(bat,['helper'])) {
         baseMoveCost = baseMoveCost*0.85;
     }
     if (hasEquip(bat,['moisso','w2-moisso'])) {
@@ -838,7 +838,7 @@ function calcMoveCost(targetTileId,diag) {
     let terrain = terrainTypes[terIndex];
     let baseMoveCost = calcBaseMoveCost(selectedBat,selectedBatType);
     let isCatMC = false;
-    if (hasEquip(selectedBat,['chenilles','carkit'])) {
+    if (hasEquip(selectedBat,['chenilles'])) {
         if (selectedBatType.maxFlood >= 1 && selectedBatType.maxScarp >= 2) {
             isCatMC = true;
         }
@@ -865,7 +865,7 @@ function calcMoveCost(targetTileId,diag) {
         moveCost = baseMoveCost+terrain.alienmc;
     } else if (selectedBatType.skills.includes('okwater')) {
         moveCost = baseMoveCost+terrain.larvemc;
-    } else if (selectedBatType.skills.includes('ranger') || hasEquip(selectedBat,['e-ranger','trainkitch','kit-sentinelle','trainkitlu','trainkitgi','trainkitax'])) {
+    } else if (selectedBatType.skills.includes('ranger') || hasEquip(selectedBat,['e-ranger','kit-sentinelle'])) {
         moveCost = baseMoveCost+terrain.rangermc;
     } else if (selectedBatType.skills.includes('caterp') || isCatMC) {
         moveCost = baseMoveCost+terrain.catmc;
@@ -878,7 +878,7 @@ function calcMoveCost(targetTileId,diag) {
     } else {
         moveCost = baseMoveCost+terrain.mc;
     }
-    if (hasEquip(selectedBat,['snorkel','carkit'])) {
+    if (hasEquip(selectedBat,['snorkel'])) {
         if (terrain.flood > selectedBatType.maxFlood) {
             moveCost = moveCost+4;
         }

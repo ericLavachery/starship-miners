@@ -470,7 +470,7 @@ function getMiningRate(bat,fullRate,noMining) {
             miningAdj = 1.7;
         } else if (hasEquip(bat,['hydroextract'])) {
             miningAdj = 1.6;
-        } else if (hasEquip(bat,['tungextract','bldkit'])) {
+        } else if (hasEquip(bat,['tungextract'])) {
             miningAdj = 1.4;
         }
     } else {

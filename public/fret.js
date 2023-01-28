@@ -558,7 +558,7 @@ function checkResSpace(bat) {
     if (hasEquip(bat,['maxtrans'])) {
         resMax = Math.round(resMax/4);
     }
-    if (hasEquip(bat,['garage','bldkit'])) {
+    if (hasEquip(bat,['garage'])) {
         resMax = resMax*2;
         if (resMax < 5000) {
             resMax = 5000;

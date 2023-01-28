@@ -434,7 +434,7 @@ function nextTurnEnd() {
                     triProd(bat,batType,1,false,false);
                 }
                 if (!playerInfos.onShip) {
-                    if (hasEquip(bat,['psol','psol2','bldkit'])) {
+                    if (hasEquip(bat,['psol','psol2'])) {
                         solarPanel(bat,batType);
                     }
                 }
@@ -1226,13 +1226,13 @@ function getAP(bat,batType) {
             newAP = newAP+1;
         }
     }
-    if (hasEquip(bat,['g2motor','carkit'])) {
+    if (hasEquip(bat,['g2motor'])) {
         newAP = newAP+(Math.sqrt(batType.moveCost)*2.5);
     }
     if (batType.skills.includes('heroap') && bat.tags.includes('hero')) {
         newAP = newAP+2;
     }
-    if (hasEquip(bat,['helper','cyberkit'])) {
+    if (hasEquip(bat,['helper'])) {
         newAP = newAP+1;
     }
     if (bat.eq === 'e-lifepod') {
@@ -1502,7 +1502,7 @@ function tagsEffect(bat,batType) {
             bat.apLeft = bat.apLeft-bat.ap;
             if (batType.skills.includes('ranger') || batType.skills.includes('caterp') || hasEquip(bat,['e-ranger'])) {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3*2));
-            } else if (hasEquip(bat,['chenilles','carkit'])) {
+            } else if (hasEquip(bat,['chenilles'])) {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/2));
             } else {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3));
@@ -1564,7 +1564,7 @@ function tagsEffect(bat,batType) {
         }
     }
     // REGENERATION & KIRIN DRUG
-    if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || hasEquip(bat,['permakirin','cyberkit']) || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal') || resistance) {
+    if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || bat.tags.includes('slowreg') || hasEquip(bat,['permakirin']) || bat.tags.includes('regeneration') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg') || batType.skills.includes('fastreg') || batType.skills.includes('heal') || resistance) {
         let regOK = true;
         if (batType.cat === 'aliens') {
             if (batType.skills.includes('reactpoison') && bat.tags.includes('poison')) {
@@ -1883,18 +1883,6 @@ function updateBatProperties(bat,batType) {
     }
     if (bat.eq === 'flash') {
         bat.eq = 'e-flash';
-    }
-    if (bat.eq === 'crimekitch') {
-        bat.eq = 'trainkitch';
-    }
-    if (bat.eq === 'crimekitlu') {
-        bat.eq = 'trainkitlu';
-    }
-    if (bat.eq === 'crimekitgi') {
-        bat.eq = 'trainkitgi';
-    }
-    if (bat.eq === 'crimekitto') {
-        bat.eq = 'trainkitax';
     }
 };
 

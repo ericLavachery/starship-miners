@@ -382,10 +382,6 @@ function solarPanel(bat,batType) {
         energyProd = Math.floor(energyProd*zone[0].ensol/pansolFactor);
         if (hasEquip(bat,['psol'])) {
             energyProd = Math.round(energyProd/2);
-        } else if (hasEquip(bat,['bldkit'])) {
-            if (!batType.equip.includes('psol2')) {
-                energyProd = Math.round(energyProd/2);
-            }
         }
         energyProd = energyCreation(energyProd);
         energyProd = prodDrop(bat,batType,energyProd);

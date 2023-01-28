@@ -106,11 +106,6 @@ function reEquip(batId,noRefresh) {
                     weapName = ' ('+myBatType.weapon.name+')';
                 }
                 let showEq = showEquip(myBatType,batEquip,myBat);
-                if (batEquip.name === 'e-flash') {
-                    if (playerInfos.comp.log === 3 || playerInfos.comp.det >= 3) {
-                        showEq = false;
-                    }
-                }
                 compReqOK = checkCompReq(batEquip);
                 if (checkSpecialEquip(batEquip,myBatType,myBat)) {
                     compReqOK = false;
@@ -247,44 +242,43 @@ function showEquip(batType,batEquip,bat) {
             }
         }
     }
-    // if (Object.keys(bat).length >= 1) {
-    //     if (bat.tdc.includes(batEquip.name)) {
-    //         showEq = false;
-    //     }
-    // }
     return showEq;
 };
 
-function getBaseAutoEqList(batType) {
-    // Pour Triche seulement!
-    // console.log("CHECK AUTO EQs LIST !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    let autoEqList = [];
-    if (batType.autoEq != undefined) {
-        // console.log(batType.autoEq);
-        if (batType.autoEq.length >= 1) {
-            batType.autoEq.forEach(function(equipName) {
-                let equip = getEquipByName(equipName);
-                // console.log(equip);
-                let compReqOK = checkCompReq(equip);
-                if (checkSpecialEquip(equip,batType)) {
+function checkAutoEqCompReq(stuff) {
+    // pour les autoEq, il faut avoir les compReq ET les altCompReq
+    let compReqOK = true;
+    // compReq
+    if (stuff.compReq != undefined) {
+        if (Object.keys(stuff.compReq).length >= 1) {
+            Object.entries(stuff.compReq).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                if (playerInfos.comp[key] < value) {
                     compReqOK = false;
-                }
-                // console.log('compReqOK='+compReqOK);
-                if (compReqOK) {
-                    if (equip.autoComp.length === 2) {
-                        let autoCompName = equip.autoComp[0];
-                        let autoCompLevel = equip.autoComp[1];
-                        if (playerInfos.comp[autoCompName] >= autoCompLevel) {
-                            autoEqList.push(equipName);
-                        }
-                    }
                 }
             });
         }
     }
-    console.log('autoEqList');
-    console.log(autoEqList);
-    return autoEqList;
+    // altCompReq
+    if (stuff.altCompReq != undefined) {
+        if (Object.keys(stuff.altCompReq).length >= 1) {
+            Object.entries(stuff.altCompReq).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                if (playerInfos.comp[key] < value) {
+                    compReqOK = false;
+                }
+            });
+        }
+    }
+    // gangReq
+    if (stuff.gangReq != undefined) {
+        if (!stuff.gangReq.includes(playerInfos.gang)) {
+            compReqOK = false;
+        }
+    }
+    return compReqOK;
 };
 
 function getAutoEqList(bat,batType) {
@@ -299,7 +293,7 @@ function getAutoEqList(bat,batType) {
                 batType.autoEq.forEach(function(equipName) {
                     let equip = getEquipByName(equipName);
                     // console.log(equip);
-                    let compReqOK = checkCompReq(equip);
+                    let compReqOK = checkAutoEqCompReq(equip);
                     if (checkSpecialEquip(equip,batType)) {
                         compReqOK = false;
                     }
@@ -318,37 +312,42 @@ function getAutoEqList(bat,batType) {
             }
         }
     }
+    if ((playerInfos.comp.det >= 3 && playerInfos.comp.log >= 2) || playerInfos.comp.log === 3) {
+        if (batType.equip.includes('e-flash')) {
+            autoEqList.push('e-flash');
+        }
+    }
     console.log('autoEqList');
     console.log(autoEqList);
     return autoEqList;
 };
 
 function getBonusEq(unit) {
-    console.log("CHECK BONUS EQ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    // console.log("CHECK BONUS EQ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     let bonusEqName = '';
     if (unit.log3eq != undefined) {
-        console.log(unit.log3eq);
+        // console.log(unit.log3eq);
         if (unit.log3eq.length >= 1) {
             unit.log3eq.forEach(function(equipName) {
                 if (bonusEqName === '') {
                     let equip = getEquipByName(equipName);
-                    console.log(equip);
+                    // console.log(equip);
                     let compReqOK = checkCompReq(equip);
-                    console.log('compReqOK='+compReqOK);
+                    // console.log('compReqOK='+compReqOK);
                     if (checkSpecialEquip(equip,unit)) {
                         compReqOK = false;
                     }
-                    console.log('compReqOK='+compReqOK);
+                    // console.log('compReqOK='+compReqOK);
                     let bldReqOK = verifBldReq(unit,equip.bldReq);
                     if (compReqOK && bldReqOK) {
-                        if (playerInfos.comp.log === 3 && equipName != 'garage') {
-                            console.log('log3');
+                        if (playerInfos.comp.log === 3) {
+                            // console.log('log3');
                             bonusEqName = equipName;
                         } else if (equip.autoComp.length === 2) {
                             let autoCompName = equip.autoComp[0];
                             let autoCompLevel = equip.autoComp[1];
-                            console.log(autoCompName+'='+autoCompLevel);
-                            console.log(playerInfos.comp[autoCompName]);
+                            // console.log(autoCompName+'='+autoCompLevel);
+                            // console.log(playerInfos.comp[autoCompName]);
                             if (playerInfos.comp[autoCompName] >= autoCompLevel) {
                                 bonusEqName = equipName;
                             }
@@ -668,9 +667,9 @@ function getBatGearStuff(armorName,equipName,batType) {
     } else {
         if ((batType.skills.includes('fly') || equipName === 'e-jetpack') && batArmor.ap < 0) {
             gearStuff[1] = Math.ceil(baseAP+(batArmor.ap*1.5));
-        } else if ((equipName === 'helper' || equipName === 'cyberkit') && batType.moveCost > 3) {
+        } else if ((equipName === 'helper') && batType.moveCost > 3) {
             gearStuff[1] = baseAP+batArmor.ap+2;
-        } else if ((equipName === 'helper' || equipName === 'cyberkit') && (batArmor.ap < -1 || batType.ap < 13)) {
+        } else if ((equipName === 'helper') && (batArmor.ap < -1 || batType.ap < 13)) {
             gearStuff[1] = baseAP+batArmor.ap+1;
         } else if (batType.skills.includes('strong') && (batType.skills.includes('mutant') || playerInfos.bldVM.includes('Salle de sport')) && batArmor.ap < -1) {
             gearStuff[1] = baseAP+batArmor.ap+1;
