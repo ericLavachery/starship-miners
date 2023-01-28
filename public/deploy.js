@@ -286,7 +286,7 @@ function getAutoEqList(bat,batType) {
     let autoEqList = [];
     if (batType.skills.includes('penitbat')) {
         autoEqList = bat.tdc;
-    } else if (bat.vet >= 3 || batType.skills.includes('leader') || batType.skills.includes('cleric') || batType.skills.includes('souschef')) {
+    } else if (bat.vet >= 3 || batType.cat === 'buildings' || batType.skills.includes('leader') || batType.skills.includes('cleric') || batType.skills.includes('souschef')) {
         if (batType.autoEq != undefined) {
             // console.log(batType.autoEq);
             if (batType.autoEq.length >= 1) {
@@ -312,6 +312,23 @@ function getAutoEqList(bat,batType) {
             }
         }
     }
+    // remove less efficient extract modules
+    if (autoEqList.includes('monoextract')) {
+        if (autoEqList.includes('tungextract')) {
+            let index = autoEqList.indexOf('tungextract');
+            autoEqList.splice(index,1);
+        }
+        if (autoEqList.includes('plasmaextract')) {
+            let index = autoEqList.indexOf('plasmaextract');
+            autoEqList.splice(index,1);
+        }
+    } else if (autoEqList.includes('plasmaextract')) {
+        if (autoEqList.includes('tungextract')) {
+            let index = autoEqList.indexOf('tungextract');
+            autoEqList.splice(index,1);
+        }
+    }
+    // add e-flash
     if ((playerInfos.comp.det >= 3 && playerInfos.comp.log >= 2) || playerInfos.comp.log === 3) {
         if (batType.equip.includes('e-flash')) {
             autoEqList.push('e-flash');
