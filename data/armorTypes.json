@@ -588,6 +588,7 @@
         "info":"Double chargeur",
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"log":2,"ind":1,"mat":1},
+        "altCompReq":{"bal":2,"log":1,"ind":1,"mat":2},
         "autoComp":["bal",3],
         "factor":"crew",
         "costs":{"Carbone":6,"Titane":12}
@@ -828,8 +829,8 @@
         "skills":[],
         "info":"Camouflage++",
         "bldReq":["Atelier"],
-        "compReq":{"cam":1,"log":1},
-        "altCompReq":{"train":2,"log":1},
+        "compReq":{"cam":1,"log":2},
+        "altCompReq":{"cam":1,"train":2,"log":1},
         "autoComp":["cam",2],
         "factor":"crew",
         "costs":{"Blendium":8,"Tissus":12},
@@ -1158,9 +1159,7 @@
         "autoComp":[],
         "factor":"thp",
         "costs":{"Scrap":4,"Carbone":9,"Fer":24,"Moteurs":8,"Rhodium":4,"Cuivre":3,"Nickel":3,"Electros":11,"Batteries":5},
-        "deploy":{"Hydrogène":3,"Huile":2,"Energie":6},
-        "icon":3,
-        "popIn":["Usine","Atelier","Garage"]
+        "deploy":{"Hydrogène":3,"Huile":2,"Energie":6}
     },
     {
         "name":"kit-lightning",
@@ -1168,7 +1167,7 @@
         "skills":[],
         "info":"Lightning",
         "bldReq":["Centre de recherches"],
-        "compReq":{"energ":2,"log":2},
+        "compReq":{"energ":2,"log":1},
         "altCompReq":{"energ":3},
         "autoComp":[],
         "factor":"one",
@@ -1740,6 +1739,7 @@
         "info":"Extraction+",
         "bldReq":["Atelier"],
         "compReq":{"ind":1},
+        "altCompReq":{"ext":1,"mat":1},
         "autoComp":["ext",2],
         "factor":"one",
         "costs":{"Tungstène":60,"Titane":20}

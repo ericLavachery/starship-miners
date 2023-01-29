@@ -501,8 +501,9 @@ function batListElement(bat,batType,idOfLander) {
     if (eq.includes('aucun')) {
         eq = '/';
     }
-    if (bat.tdc.includes(bat.eq) || bat.logeq === bat.eq) {
-        $('#be'+bat.id).append('<span class="listRes gff" title="Equipement choisi identique à un autre équipement!">Eq: <span class="rouge">'+eq+'</span></span>&nbsp;');
+    let dEmplois = checkDoubleEquip(bat);
+    if (dEmplois) {
+        $('#be'+bat.id).append('<span class="listRes gff" title="L\'équipement choisi fait double emplois avec un autre équipement!">Eq: <span class="rouge">'+eq+'</span></span>&nbsp;');
     } else {
         $('#be'+bat.id).append('<span class="listRes gff" title="Equipement choisi">Eq: <span class="brunf">'+eq+'</span></span>&nbsp;');
     }
@@ -535,6 +536,19 @@ function batListElement(bat,batType,idOfLander) {
             showCostsDetail(deployCosts,bat);
         }
     }
+};
+
+function checkDoubleEquip(bat) {
+    let dEmplois = false;
+    if (bat.tdc.includes(bat.eq) || bat.logeq === bat.eq) {
+        dEmplois = true;
+    }
+    if (bat.eq.includes('chargeur')) {
+        if (bat.tdc.includes('fakit') || bat.logeq === 'fakit' || bat.tdc.includes('wstabkit') || bat.logeq === 'wstabkit') {
+            dEmplois = true;
+        }
+    }
+    return dEmplois;
 };
 
 function batSouteSelect(batId) {

@@ -107,6 +107,9 @@ function reEquip(batId,noRefresh) {
                 }
                 let showEq = showEquip(myBatType,batEquip,myBat);
                 compReqOK = checkCompReq(batEquip);
+                if (!compReqOK) {
+                    compReqOK = checkRecycledEquip(batEquip,myBat,myBatType);
+                }
                 if (checkSpecialEquip(batEquip,myBatType,myBat)) {
                     compReqOK = false;
                 }
@@ -243,6 +246,71 @@ function showEquip(batType,batEquip,bat) {
         }
     }
     return showEq;
+};
+
+function checkRecycledEquip(stuff,bat,batType) {
+    let compReqOK = false;
+    let recycled = 0;
+    if (bat.vet >= 4 || batType.skills.includes('leader') || batType.skills.includes('prayer')) {
+        compReqOK = true;
+        // compReq
+        recycled = 0;
+        if (stuff.compReq != undefined) {
+            if (Object.keys(stuff.compReq).length >= 1) {
+                Object.entries(stuff.compReq).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (playerInfos.comp[key] < value) {
+                        if (recycled === 0 && key != 'tele') {
+                            let theComp = getCompByName(key);
+                            let compValue = value*(theComp.triPass);
+                            if (playerInfos.comp.tri >= compValue) {
+                                recycled++;
+                            } else {
+                                compReqOK = false;
+                            }
+                        } else {
+                            compReqOK = false;
+                        }
+                    }
+                });
+            }
+        }
+        if (!compReqOK) {
+            // altCompReq
+            recycled = 0;
+            if (stuff.altCompReq != undefined) {
+                if (Object.keys(stuff.altCompReq).length >= 1) {
+                    Object.entries(stuff.altCompReq).map(entry => {
+                        let key = entry[0];
+                        let value = entry[1];
+                        if (playerInfos.comp[key] < value) {
+                            if (recycled === 0 && key != 'tele') {
+                                let theComp = getCompByName(key);
+                                let compValue = value*(theComp.triPass);
+                                if (playerInfos.comp.tri >= compValue) {
+                                    recycled++;
+                                } else {
+                                    compReqOK = false;
+                                }
+                            } else {
+                                compReqOK = false;
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    }
+    if (compReqOK) {
+        if (checkSpecialEquip(stuff,bat,batType)) {
+            compReqOK = false;
+        }
+    }
+    if (compReqOK) {
+        warning('Recyclage','En stock: '+stuff.name+' ('+stuff.info+')');
+    }
+    return compReqOK;
 };
 
 function checkAutoEqCompReq(stuff) {
@@ -410,6 +478,15 @@ function checkSpecialEquip(equip,batType,bat) {
         if (!triche) {
             if (bat != undefined) {
                 if (bat.vet < 4) {
+                    nope = true;
+                }
+            }
+        }
+    }
+    if (equip.name === 'helper' || equip.name === 'theeye') {
+        if (!triche) {
+            if (bat != undefined) {
+                if (bat.vet < 3) {
                     nope = true;
                 }
             }
