@@ -815,7 +815,7 @@ function setPenitLevel() {
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (batType.skills.includes('penitbat')) {
-            let camionEquips = getCamionEquips(batType);
+            let camionEquips = getCamionEquips(bat,batType);
             let changeIt = false;
             if (bat.tdc === undefined) {
                 changeIt = true;
@@ -833,14 +833,15 @@ function setPenitLevel() {
     });
 };
 
-function getCamionEquips(batType) {
+function getCamionEquips(bat,batType) {
     let camion = [];
+    let mafiaLevel = playerInfos.penit+bat.vet-2;
     // tous sauf tôlards
-    if (batType.equip.includes('e-camo') && playerInfos.penit >= 2) {
+    if (batType.equip.includes('e-camo') && mafiaLevel >= 2) {
         camion.push('e-camo');
     }
     // Tôlards (revolver)
-    if (batType.equip.includes('chargeur2') && playerInfos.penit >= 2) {
+    if (batType.equip.includes('chargeur2') && mafiaLevel >= 2) {
         let equip = getEquipByName('chargeur2');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -848,11 +849,11 @@ function getCamionEquips(batType) {
         }
     }
     // tous
-    if (batType.equip.includes('e-ranger') && playerInfos.penit >= 3) {
+    if (batType.equip.includes('e-ranger') && mafiaLevel >= 3) {
         camion.push('e-ranger');
     }
     // Desperados (uzi), Krimulos (pompe), Gangsters (magnum)
-    if (batType.equip.includes('chargeur1') && batType.name != 'Détenus' && playerInfos.penit >= 4) {
+    if (batType.equip.includes('chargeur1') && batType.name != 'Détenus' && mafiaLevel >= 4) {
         let equip = getEquipByName('chargeur1');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -860,7 +861,7 @@ function getCamionEquips(batType) {
         }
     }
     // Détenus (calibre)
-    if (batType.equip.includes('lunette1') && playerInfos.penit >= 4) {
+    if (batType.equip.includes('lunette1') && mafiaLevel >= 4) {
         let equip = getEquipByName('lunette1');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -868,11 +869,11 @@ function getCamionEquips(batType) {
         }
     }
     // Raiders (javelots), Sinyaki (dynamite)
-    if (batType.equip.includes('gilet') && playerInfos.penit >= 4) {
+    if (batType.equip.includes('gilet') && mafiaLevel >= 4) {
         camion.push('gilet');
     }
     // Tôlards
-    if (batType.equip.includes('e-mecano') && playerInfos.penit >= 4) {
+    if (batType.equip.includes('e-mecano') && mafiaLevel >= 4) {
         let equip = getEquipByName('e-mecano');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -880,7 +881,7 @@ function getCamionEquips(batType) {
         }
     }
     // tous
-    if (batType.equip.includes('e-flash') && playerInfos.penit >= 5) {
+    if (batType.equip.includes('e-flash') && mafiaLevel >= 5) {
         let equip = getEquipByName('e-flash');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -888,7 +889,7 @@ function getCamionEquips(batType) {
         }
     }
     // Sinyaki (dynamite)
-    if (batType.equip.includes('lancegren') && playerInfos.penit >= 5) {
+    if (batType.equip.includes('lancegren') && mafiaLevel >= 5) {
         let equip = getEquipByName('lancegren');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -896,7 +897,7 @@ function getCamionEquips(batType) {
         }
     }
     // détenus (calibre)
-    if (batType.equip.includes('silencieux1') && playerInfos.penit >= 5) {
+    if (batType.equip.includes('silencieux1') && mafiaLevel >= 5) {
         let equip = getEquipByName('silencieux1');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -904,7 +905,7 @@ function getCamionEquips(batType) {
         }
     }
     // Détenus (calibre)
-    if (batType.equip.includes('chargeur1') && batType.name === 'Détenus' && playerInfos.penit >= 6) {
+    if (batType.equip.includes('chargeur1') && batType.name === 'Détenus' && mafiaLevel >= 6) {
         let equip = getEquipByName('chargeur1');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -916,7 +917,7 @@ function getCamionEquips(batType) {
         // armor +1
     }
     // tous
-    if (batType.equip.includes('e-medic') && playerInfos.penit >= 7) {
+    if (batType.equip.includes('e-medic') && mafiaLevel >= 7) {
         let equip = getEquipByName('e-medic');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -924,15 +925,15 @@ function getCamionEquips(batType) {
         }
     }
     // Tôlards (torche), Sinyaki (batte)
-    if (batType.weapon.isMelee && playerInfos.penit >= 8) {
+    if (batType.weapon.isMelee && mafiaLevel >= 8) {
         camion.push('fineclub');
     }
     // Gangsters (toothbrush)
-    if (batType.weapon2.isMelee && playerInfos.penit >= 8) {
+    if (batType.weapon2.isMelee && mafiaLevel >= 8) {
         camion.push('fineclub');
     }
     // tous sauf tôlards
-    if (batType.equip.includes('waterproof') && playerInfos.penit >= 8) {
+    if (batType.equip.includes('waterproof') && mafiaLevel >= 8) {
         let equip = getEquipByName('waterproof');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -940,11 +941,11 @@ function getCamionEquips(batType) {
         }
     }
     // Détenus (calibre), Gangsters (magnum)
-    if (!batType.weapon.isMelee && batType.name != 'Krimulos' && batType.name != 'Desperados' && playerInfos.penit >= 10) {
+    if (!batType.weapon.isMelee && batType.name != 'Krimulos' && batType.name != 'Desperados' && mafiaLevel >= 10) {
         camion.push('finegun');
     }
     // Tôlards (revolver)
-    if (!batType.weapon2.isMelee && !batType.weapon2.noBis && batType.name != 'Raiders' && playerInfos.penit >= 10) {
+    if (!batType.weapon2.isMelee && !batType.weapon2.noBis && batType.name != 'Raiders' && mafiaLevel >= 10) {
         camion.push('finegun');
     }
     // tous
@@ -952,7 +953,7 @@ function getCamionEquips(batType) {
         // armor +2
     }
     // tous
-    if (batType.equip.includes('theeye') && playerInfos.penit >= 12) {
+    if (batType.equip.includes('theeye') && mafiaLevel >= 14) {
         let equip = getEquipByName('theeye');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -960,7 +961,7 @@ function getCamionEquips(batType) {
         }
     }
     // Tôlards (torche), Sinyaki (batte), Raiders (javelots)
-    if (batType.equip.includes('helper') && playerInfos.penit >= 14) {
+    if (batType.equip.includes('helper') && mafiaLevel >= 15) {
         let equip = getEquipByName('helper');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {
@@ -968,7 +969,7 @@ function getCamionEquips(batType) {
         }
     }
     // Tôlards, Sinyaki, Gangsters, Détenus
-    if (batType.equip.includes('repel') && playerInfos.penit >= 16) {
+    if (batType.equip.includes('repel') && mafiaLevel >= 17) {
         let equip = getEquipByName('repel');
         let compReqOK = checkCompReq(equip);
         if (compReqOK) {

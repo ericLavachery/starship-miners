@@ -114,7 +114,9 @@ function reEquip(batId,noRefresh) {
                     compReqOK = false;
                 }
                 if ((compReqOK || conselTriche) && showEq) {
-                    if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1) || bonusEqName === equip || autoEqList.includes(equip)) {
+                    if (bonusEqName === equip || autoEqList.includes(equip)) {
+                        $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle bleu"></i></span>');
+                    } else if (myNewGear[3] == equip || (myNewGear[3] === 'xxx' && listNum === 1)) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                     } else {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
@@ -143,7 +145,7 @@ function reEquip(batId,noRefresh) {
                 } else {
                     if (equip === myBat.eq || equip === myBat.logeq) {
                         if (myNewGear[3] === myBat.eq || myNewGear[3] === myBat.logeq) {
-                            $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                            $('#conAmmoList').append('<span class="constIcon"><i class="far fa-check-circle bleu"></i></span>');
                         } else {
                             $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                         }
@@ -245,6 +247,13 @@ function showEquip(batType,batEquip,bat) {
             }
         }
     }
+    if (batEquip.name.includes('chargeur')) {
+        if (Object.keys(bat).length >= 1) {
+            if (bat.tdc.includes('fakit') || bat.logeq === 'fakit' || bat.tdc.includes('wstabkit') || bat.logeq === 'wstabkit') {
+                showEq = false;
+            }
+        }
+    }
     return showEq;
 };
 
@@ -302,14 +311,14 @@ function checkRecycledEquip(stuff,bat,batType) {
             }
         }
     }
-    if (compReqOK) {
-        if (checkSpecialEquip(stuff,bat,batType)) {
-            compReqOK = false;
-        }
-    }
-    if (compReqOK) {
-        warning('Recyclage','En stock: '+stuff.name+' ('+stuff.info+')');
-    }
+    // if (compReqOK) {
+    //     if (checkSpecialEquip(stuff,bat,batType)) {
+    //         compReqOK = false;
+    //     }
+    // }
+    // if (compReqOK && bat.eq != stuff.name) {
+    //     warning('Recyclage','En stock: '+stuff.name+' ('+stuff.info+')');
+    // }
     return compReqOK;
 };
 
@@ -398,7 +407,7 @@ function getAutoEqList(bat,batType) {
     }
     // add e-flash
     if ((playerInfos.comp.det >= 3 && playerInfos.comp.log >= 2) || playerInfos.comp.log === 3) {
-        if (batType.equip.includes('e-flash')) {
+        if (batType.equip.includes('e-flash') && !autoEqList.includes('e-flash')) {
             autoEqList.push('e-flash');
         }
     }
