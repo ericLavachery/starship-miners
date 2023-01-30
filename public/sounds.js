@@ -83,21 +83,26 @@ function webSound() {
 };
 
 function clicSound(num) {
-    // playMove(false);
     let myVol = checkMyVol(playerInfos.volFx-0.2);
     let clicNum = rand.rand(0,7);
+    let theSound = 'clic'+clicNum;
     if (num != undefined) {
-        clicNum = num;
+        if (isNaN(num)) {
+            theSound = num;
+        } else {
+            theSound = 'clic'+num;
+        }
     }
+    console.log('CLIC ===================================');
+    console.log(theSound);
     clicSnd = new Howl({
-        src: ['/static/sounds/fx/clic'+clicNum+'.mp3'],
+        src: ['/static/sounds/fx/'+theSound+'.mp3'],
         volume: myVol
     });
     clicSnd.play();
 };
 
 function warnSound(theSound) {
-    // playMove(false);
     let myVol = checkMyVol(playerInfos.volFx+0.2);
     if (theSound === 'takeoff') {
         myVol = checkMyVol(playerInfos.volFx+0.1);

@@ -270,7 +270,7 @@ function checkRecycledEquip(stuff,bat,batType) {
                     let key = entry[0];
                     let value = entry[1];
                     if (playerInfos.comp[key] < value) {
-                        if (recycled === 0 && key != 'tele') {
+                        if (recycled === 0) {
                             let theComp = getCompByName(key);
                             let compValue = value*(theComp.triPass);
                             if (playerInfos.comp.tri >= compValue) {
@@ -294,7 +294,7 @@ function checkRecycledEquip(stuff,bat,batType) {
                         let key = entry[0];
                         let value = entry[1];
                         if (playerInfos.comp[key] < value) {
-                            if (recycled === 0 && key != 'tele') {
+                            if (recycled === 0) {
                                 let theComp = getCompByName(key);
                                 let compValue = value*(theComp.triPass);
                                 if (playerInfos.comp.tri >= compValue) {

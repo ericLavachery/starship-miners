@@ -208,42 +208,112 @@ function checkMayOut(batType,isBat,bat) {
 
 function checkCanon() {
     let doom = getDoom(true);
+    // CANON WEB (Objectif Spider);
+    let doomStart = 5;
     // à enlever quand il y aura la map spéciale
     // enlever le canon
-    if (playerInfos.aCanon === 'web') {
-        if (doom >= 6) {
-            let chance = 30+((doom-6)*15);
+    if (playerInfos.objectifs.spider === 'actif') {
+        if (doom >= doomStart) {
+            let chance = 30+((doom-doomStart)*15);
             if (rand.rand(1,100) <= chance) {
-                playerInfos.aCanon = 'destroyed';
+                playerInfos.objectifs.spider = 'detruit';
             }
         }
     }
     // à garder
     // mettre le canon
-    if (playerInfos.aCanon === 'none') {
-        if (doom >= 6) {
-            let chance = 40+((doom-6)*40);
+    if (playerInfos.objectifs.spider === 'none') {
+        if (doom >= doomStart) {
+            let chance = 40+((doom-doomStart)*40);
             if (rand.rand(1,100) <= chance) {
-                playerInfos.aCanon = 'web';
+                playerInfos.objectifs.spider = 'actif';
+            }
+        }
+    }
+    // CANON METEOR (Objectif Bug);
+    doomStart = 7;
+    // à enlever quand il y aura la map spéciale
+    // enlever le canon
+    if (playerInfos.objectifs.bug === 'actif') {
+        if (doom >= doomStart) {
+            let chance = 30+((doom-doomStart)*15);
+            if (rand.rand(1,100) <= chance) {
+                playerInfos.objectifs.bug = 'detruit';
+            }
+        }
+    }
+    // à garder
+    // mettre le canon
+    if (playerInfos.objectifs.bug === 'none') {
+        if (doom >= doomStart) {
+            let chance = 40+((doom-doomStart)*40);
+            if (rand.rand(1,100) <= chance) {
+                playerInfos.objectifs.bug = 'actif';
             }
         }
     }
 };
 
 function alienCanon() {
+    // CANON WEB
     let cprov = 'canon';
     if (hasAlien('Uberspinne')) {
         cprov = 'uber';
     }
-    if (playerInfos.aCanon === 'web' || cprov === 'uber') {
-        let freq = 6-Math.floor(zone[0].mapDiff/2);
+    if ((playerInfos.objectifs.spider === 'actif' && !domeProtect) || cprov === 'uber') {
+        let freq = 6-Math.round(zone[0].mapDiff/2);
         if (freq < 2) {freq = 2;}
         if (playerInfos.mapTurn % freq === 0 && playerInfos.mapTurn >= 2) {
-            let canonTiles = getCanonTiles('web','egg',cprov);
+            let canonTiles = getWebCanonTiles(cprov);
             webCanon(canonTiles);
             showMap(zone,true);
         }
     }
+    // CANON METEOR
+    if (playerInfos.objectifs.bug === 'actif' && !domeProtect) {
+        let chance = playerInfos.mapTurn+landingNoise;
+        if (chance > 25) {chance = 25;}
+        if (playerInfos.mapTurn >= 2) {
+            if (rand.rand(1,100) <= chance) {
+                // canon! Autour du lander (le plus gros) / Tire 4 à 5 météors
+                let canonTiles = getMeteorCanonTiles();
+                meteorCanon(canonTiles);
+                showMap(zone,true);
+            }
+        }
+    }
+};
+
+function meteorCanon(canonTiles) {
+    webSound();
+    bataillons.forEach(function(bat) {
+        if (bat.loc === "zone") {
+
+        }
+    });
+};
+
+function getMeteorCanonTiles() {
+    let canonTiles = [];
+    let theTile = -1;
+    let targetTile = -1;
+    let bestTarget = 0;
+    let shufBats = _.shuffle(bataillons);
+    shufBats.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            let batType = getBatType(bat);
+            let targetValue = bat.fuzz;
+            if (batType.skills.includes('transorbital') && targetValue < 5 && targetValue >= 1) {
+                targetValue = 5;
+            }
+            targetValue = targetValue+rand.rand(0,2);
+            if (targetValue > bestTarget) {
+
+                bestTarget = targetValue;
+            }
+        }
+    });
+    return canonTiles;
 };
 
 function webCanon(canonTiles) {
@@ -262,79 +332,77 @@ function webCanon(canonTiles) {
     });
 };
 
-function getCanonTiles(cType,area,cprov) {
+function getWebCanonTiles(cprov) {
     let canonTiles = [];
     let theTile = -1;
     let targetTile = -1;
     // près d'un oeuf en danger
-    if (area === 'egg') {
-        let bestTarget = 0;
-        if (cprov === 'uber' || (aliens.length < playerInfos.mapTurn*2)) {
-            let shufAliens = _.shuffle(aliens);
-            shufAliens.forEach(function(bat) {
+    let bestTarget = 0;
+    if (cprov === 'uber' || (aliens.length < playerInfos.mapTurn*2)) {
+        let shufAliens = _.shuffle(aliens);
+        shufAliens.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                let batType = getBatType(bat);
+                if (batType.skills.includes('ctarg')) {
+                    let thisTarget = 0;
+                    if (bat.squadsLeft < 6) {
+                        thisTarget = thisTarget+50;
+                    } else if (bat.damage >= 1) {
+                        thisTarget = thisTarget+10;
+                    }
+                    if (thisTarget >= 1) {
+                        if (batType.name != 'Uberspinne') {
+                            thisTarget = thisTarget*batType.hp;
+                        } else {
+                            thisTarget = thisTarget*100000;
+                        }
+                    }
+                    if (thisTarget >= bestTarget) {
+                        targetTile = bat.tileId;
+                        bestTarget = thisTarget;
+                    }
+                }
+            }
+        });
+    } else {
+        let shufBats = _.shuffle(bataillons);
+        shufBats.forEach(function(bat) {
+            if (targetTile < 0) {
                 if (bat.loc === "zone") {
                     let batType = getBatType(bat);
-                    if (batType.skills.includes('ctarg')) {
-                        let thisTarget = 0;
-                        if (bat.squadsLeft < 6) {
-                            thisTarget = thisTarget+50;
-                        } else if (bat.damage >= 1) {
-                            thisTarget = thisTarget+10;
-                        }
-                        if (thisTarget >= 1) {
-                            if (batType.name != 'Uberspinne') {
-                                thisTarget = thisTarget*batType.hp;
-                            } else {
-                                thisTarget = thisTarget*100000;
-                            }
-                        }
-                        if (thisTarget >= bestTarget) {
-                            targetTile = bat.tileId;
-                            bestTarget = thisTarget;
-                        }
+                    if (batType.cat === 'buildings' && bat.fuzz >= 1) {
+                        targetTile = bat.tileId;
                     }
-                }
-            });
-        } else {
-            let shufBats = _.shuffle(bataillons);
-            shufBats.forEach(function(bat) {
-                if (targetTile < 0) {
-                    if (bat.loc === "zone") {
-                        let batType = getBatType(bat);
-                        if (batType.cat === 'buildings' && bat.fuzz >= 1) {
-                            targetTile = bat.tileId;
-                        }
-                    }
-                }
-            });
-        }
-        if (targetTile < 0) {
-            targetTile = rand.rand(0,3599);
-        }
-        let shufZone = _.shuffle(zone);
-        if (cprov === 'uber') {
-            theTile = targetTile;
-        } else {
-            shufZone.forEach(function(tile) {
-                if (theTile < 0) {
-                    let distance = calcDistance(tile.id,targetTile);
-                    if (distance <= 4) {
-                        theTile = tile.id;
-                    }
-                }
-            });
-        }
-        shufZone.forEach(function(tile) {
-            let distance = calcDistance(tile.id,theTile);
-            if (distance <= 2) {
-                let chance = 10-(distance*distance)-distance;
-                if (rand.rand(1,10) <= chance) {
-                    canonTiles.push(tile.id);
-                    tile.web = true;
                 }
             }
         });
     }
+    if (targetTile < 0) {
+        targetTile = rand.rand(0,3599);
+    }
+    let shufZone = _.shuffle(zone);
+    if (cprov === 'uber') {
+        theTile = targetTile;
+    } else {
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                let distance = calcDistance(tile.id,targetTile);
+                if (distance <= 4) {
+                    theTile = tile.id;
+                }
+            }
+        });
+    }
+    shufZone.forEach(function(tile) {
+        let distance = calcDistance(tile.id,theTile);
+        if (distance <= 2) {
+            let chance = 10-(distance*distance)-distance;
+            if (rand.rand(1,10) <= chance) {
+                canonTiles.push(tile.id);
+                tile.web = true;
+            }
+        }
+    });
     return canonTiles;
 };
 

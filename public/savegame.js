@@ -283,7 +283,7 @@ function newGame() {
     playerInfos.sci = 0;
     playerInfos.enc = 65;
     playerInfos.encz = [];
-    playerInfos.aCanon = 'none';
+    playerInfos.objectifs.spider = 'none';
     playerInfos.cAdj = 0;
     playerInfos.cLoss = 0;
     playerInfos.cNeed = 1;

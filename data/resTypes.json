@@ -998,6 +998,18 @@
         "kinds": []
     },
     {
+        "id": 79,
+        "name": "Spins",
+        "bld": "",
+        "level": 4,
+        "rarity": 0,
+        "cat": "transfo",
+        "batch": 1,
+        "energie": -1,
+        "equiv": 1000,
+        "kinds": []
+    },
+    {
         "id": 66,
         "name": "Compo1",
         "bld": "",

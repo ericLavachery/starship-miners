@@ -933,7 +933,7 @@ function turnInfo() {
             }
             if (batType.skills.includes('transorbital')) {
                 if (noEquip(bat,['siland'])) {
-                    landingNoise = landingNoise+Math.floor(batType.hp/75*batType.fuzz*batType.fuzz/25)+2;
+                    landingNoise = landingNoise+Math.floor(batType.hp/75/landerHPTuning*batType.fuzz*batType.fuzz/25)+2;
                 }
                 if (playerInfos.onShip || !bat.tags.includes('nomove')) {
                     hasOwnLander = true;

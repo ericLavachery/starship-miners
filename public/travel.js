@@ -584,7 +584,7 @@ function pushSonde(mapNum,mapMax) {
 
 function crashSonde() {
     modeSonde = false;
-    clicSound(11);
+    clicSound(sondecrash);
     loadZone(0);
     showedTilesReset(false);
     miniOut();

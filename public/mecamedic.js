@@ -1042,7 +1042,7 @@ function getMaintenanceCosts(bat,batType) {
         if (key === 'Plastanium') {
             thatCost = Math.ceil(thatCost*3);
         }
-        if (thatCost >= 1 && key != 'Transorb') {
+        if (thatCost >= 1 && key != 'Transorb' && key != 'Spins') {
             maintCosts[key] = thatCost;
         }
     });
@@ -1067,7 +1067,7 @@ function getAvMaintCosts(batType) {
             if (key === 'Plastanium') {
                 thatCost = Math.ceil(thatCost*3);
             }
-            if (thatCost >= 1 && key != 'Transorb') {
+            if (thatCost >= 1 && key != 'Transorb' && key != 'Spins') {
                 maintCosts[key] = thatCost;
             }
         });

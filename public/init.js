@@ -80,9 +80,6 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.eggsKilled === undefined) {
         playerInfos.eggsKilled = 0;
     }
-    if (playerInfos.aCanon === undefined) {
-        playerInfos.aCanon = 'none';
-    }
     if (playerInfos.alienSat === undefined) {
         playerInfos.alienSat = 0;
     }
@@ -172,6 +169,17 @@ socket.on('playerInfos-Load', function(pi) {
     }
     if (playerInfos.travTurns === undefined) {
         playerInfos.travTurns = 8;
+    }
+    if (playerInfos.aCanon === undefined) {
+        playerInfos.aCanon = 'none';
+    }
+    if (playerInfos.objectifs === undefined) {
+        playerInfos.objectifs = {};
+        playerInfos.objectifs.spider = playerInfos.aCanon;
+        playerInfos.objectifs.bug = 'none';
+        playerInfos.objectifs.larve = 'none';
+        playerInfos.objectifs.swarm = 'none';
+        playerInfos.objectifs.resistance = 'none';
     }
     if (playerInfos.missionZone === undefined) {
         playerInfos.missionZone = -1;

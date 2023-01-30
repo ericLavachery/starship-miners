@@ -1639,7 +1639,7 @@ function bastionRes(bastionTileId) {
             } else if (res.name.includes('Compo')) {
                 thatResChance = Math.ceil((resFactor-100)*1.7*res.batch/3);
             } else if (res.cat == 'transfo') {
-                if (res.name != 'Transorb' && res.name != 'Energie' && res.name != 'Energons') {
+                if (res.name != 'Transorb' && res.name != 'Energie' && res.name != 'Energons' && res.name != 'Spins') {
                     thatResChance = Math.ceil(resFactor*1.7*res.batch/3);
                 }
             } else {
@@ -1688,7 +1688,7 @@ function pactole(bastionTileId,withTrans) {
     let resFactor;
     let shufRes = _.shuffle(resTypes);
     shufRes.forEach(function(res) {
-        if (res.name != 'Magma' && res.name != 'Transorb' && res.cat != 'alien' && (res.cat != 'transfo' || withTrans)) {
+        if (res.name != 'Magma' && res.name != 'Transorb' && res.name != 'Spins' && res.cat != 'alien' && (res.cat != 'transfo' || withTrans)) {
             if (res.rarity <= 16) {
                 thatResChance = 0;
                 thatResNum = 0;

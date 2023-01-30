@@ -1931,7 +1931,7 @@ function getResRecup(bat,batType) {
                 if (key === 'Energie') {
                     value = 0;
                 }
-                if (key != 'Transorb') {
+                if (key != 'Transorb' && key != 'Spins') {
                     value = Math.ceil(value/100*recupFactor);
                 } else {
                     value = 0;

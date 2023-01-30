@@ -1733,6 +1733,19 @@
         "costs":{"Scrap":0.7,"Carbone":1,"Zinc":0.3,"Nickel":0.3}
     },
     {
+        "name":"bld-camo",
+        "cat":"equip",
+        "skills":[],
+        "info":"Camouflage de bâtiment",
+        "bldReq":["Soute"],
+        "compReq":{"cam":1,"const":3,"log":2},
+        "altCompReq":{"cam":2,"const":1,"log":1},
+        "autoComp":["cam",3],
+        "factor":"thp",
+        "costs":{"Blendium":4,"Tissus":6},
+        "deploy":{"Végétaux":3}
+    },
+    {
         "name":"tungextract",
         "cat":"equip",
         "skills":[],

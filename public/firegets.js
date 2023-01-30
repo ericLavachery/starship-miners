@@ -1192,7 +1192,7 @@ function getStealth(bat) {
             }
         }
     }
-    if (hasEquip(bat,['e-camo','kit-sentinelle','kit-milice','kit-chouf','kit-guetteur'])) {
+    if (hasEquip(bat,['e-camo','bld-camo','kit-sentinelle','kit-milice','kit-chouf','kit-guetteur'])) {
         if (batType.skills.includes('camo')) {
             batStealth = batStealth+3;
         } else {
@@ -2635,7 +2635,7 @@ function calcTirFurtif(weap,bat,distance) {
                 tirFurtif = Math.round(tirFurtif/1.15);
             }
             let batType = getBatType(bat);
-            if (batType.cat === 'buildings' || batType.cat === 'devices') {
+            if (batType.cat === 'buildings' || batType.cat === 'devices' || batType.skills.includes('transorbital')) {
                 tirFurtif = Math.round(tirFurtif*1.33);
             }
         }

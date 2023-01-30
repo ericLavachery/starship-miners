@@ -141,6 +141,7 @@ function goCommand(chefBatId,gainPA) {
     let chefBat = getBatById(chefBatId);
     chefBat.apLeft = chefBat.apLeft-1;
     chefBat.tags.push('command');
+    clicSound('gogogo');
     doneAction(chefBat);
     doneAction(selectedBat);
     selectedBatArrayUpdate();
@@ -188,6 +189,7 @@ function goTreuil(treuilBatId,gainPA) {
     selectedBat.salvoLeft = 0;
     let treuilBat = getBatById(treuilBatId);
     treuilBat.apLeft = treuilBat.apLeft-4;
+    clicSound('winch');
     doneAction(treuilBat);
     tagDelete(selectedBat,'guet');
     doneAction(selectedBat);
@@ -250,6 +252,7 @@ function goDoxey() {
         if (selectedBat.emo < 0) {
             selectedBat.emo = 0;
         }
+        clicSound('potion');
         doneAction(selectedBat);
         selectedBatArrayUpdate();
         showMap(zone,true);
@@ -276,6 +279,7 @@ function diversion() {
     selectedBat.tags.push('lasso');
     selectedBat.tags.push('lasso');
     selectedBat.tags.push('lasso');
+    clicSound('toxcloches');
     doneAction(selectedBat);
     camoOut();
     selectedBatArrayUpdate();
@@ -461,6 +465,7 @@ function gloireASatan() {
             }
         }
     });
+    clicSound('satan');
     tagDelete(selectedBat,'guet');
     doneAction(selectedBat);
     selectedBatArrayUpdate();
@@ -543,7 +548,7 @@ function canCamo(bat,batType,tile) {
             }
         }
     }
-    if (hasEquip(bat,['silencieux','silencieux1','silencieux2','e-camo'])) {
+    if (hasEquip(bat,['silencieux','silencieux1','silencieux2','e-camo','bld-camo'])) {
         iCanCamo = true;
     }
     if (hasEquip(bat,['kit-milice','kit-guetteur','kit-chouf','kit-sentinelle'])) {
@@ -572,7 +577,7 @@ function calcCamo(bat) {
         }
     }
     // max
-    if (batType.skills.includes('underground') || batType.cat === 'buildings') {
+    if (batType.skills.includes('underground') || batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
         camChance = camChance+75;
         if (camChance > 100) {
             camChance = 100;

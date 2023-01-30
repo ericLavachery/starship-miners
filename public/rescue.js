@@ -380,7 +380,7 @@ function checkRescueRes(diff) {
             } else if (res.name.includes('Compo')) {
                 thatResChance = Math.ceil((resFactor-100)*1.7*res.batch/3);
             } else if (res.cat == 'transfo') {
-                if (res.name != 'Transorb' && res.name != 'Energie' && res.name != 'Energons') {
+                if (res.name != 'Transorb' && res.name != 'Energie' && res.name != 'Energons' && res.name != 'Spins') {
                     thatResChance = Math.ceil(resFactor*1.7*res.batch/3);
                 }
             } else {
@@ -537,7 +537,7 @@ function getUnitResRecup(batType) {
             if (playerInfos.comp.const >= 3 && key === 'Compo3') {
                 value = Math.floor(value*9/6);
             }
-            if (key != 'Transorb') {
+            if (key != 'Transorb' && key != 'Spins') {
                 value = Math.ceil(value/100*recupFactor);
             } else {
                 value = 0;
