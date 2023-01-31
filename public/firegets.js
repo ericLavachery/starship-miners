@@ -153,7 +153,7 @@ function delugeDamage(weap,bat,batType) {
         if (weap.ammo.includes('suicide')) {
             batDeathEffect(bat,true,false,'Bataillon détruit',bat.type+' volatilisé.');
         } else {
-            batDeathEffect(bat,true,false,'Bataillon détruit',bat.type+' brûlé.');
+            batDeathEffect(bat,true,false,'>Bataillon détruit',bat.type+' brûlé.');
         }
         checkDeath(bat,batType,false);
     }
@@ -564,7 +564,7 @@ function batDeathEffect(bat,quiet,gain,title,body) {
                     warning(bat.chief+' est mort','RIP',false,bat.tileId);
                 }
             }
-            warning(title,body);
+            warning('<span class="rq3">'+title+'</span>','<span class="vio">'+body+'</span>');
         }
     } else {
         $('#b'+bat.tileId).empty();
@@ -671,6 +671,7 @@ function newAlienKilled(batType,tileId) {
 };
 
 function saveCrew(deadBatType,deadId,tileId,isNoPrefab) {
+    console.log('SAVE CREW --------------------------------------------------------');
     alienOccupiedTileList();
     playerOccupiedTileList();
     let salvableCits = 0;

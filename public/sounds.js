@@ -107,6 +107,9 @@ function warnSound(theSound) {
     if (theSound === 'takeoff') {
         myVol = checkMyVol(playerInfos.volFx+0.1);
     }
+    if (theSound === 'meteor') {
+        myVol = checkMyVol(playerInfos.volFx+0.4);
+    }
     clicSnd = new Howl({
         src: ['/static/sounds/fx/'+theSound+'.mp3'],
         volume: myVol

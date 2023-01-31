@@ -22,6 +22,7 @@
         "pic":"muraille",
         "cat":"infra",
         "compReq":{"def":3,"const":1},
+        "altCompReq":{"def":2,"const":3,"mat":3},
         "fabTime":26,
         "levels":{"rednecks":12,"blades":12,"bulbos":12,"drogmulojs":12,"tiradores":12,"detruas":12,"brasier":12},
         "costs":{"Compo2":200,"Compo3":60}

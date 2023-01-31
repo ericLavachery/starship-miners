@@ -21,6 +21,7 @@ function fortification(apCost) {
         selectedBat.tags.push('fortif');
     }
     selectedBat.apLeft = selectedBat.apLeft-apCost;
+    clicSound('fortif');
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -333,11 +334,13 @@ function taming(tamingId) {
     let tamedAlien = getAlienById(tamingId);
     let tamingChance = ((selectedBat.vet*4)+selectedBat.apLeft+4)*3;
     if (rand.rand(1,100) > tamingChance) {
+        clicSound('yeebof');
         tamedAlien.apLeft = 15+rand.rand(0,6);
         tamedAlien.salvoLeft = 1;
         tamedAlien.tags.push('rage');
         tamedAlien.tags.push('rage');
     } else {
+        clicSound('yeehaw');
         let petSquadsLeft = tamedAlien.squadsLeft;
         let petDamage = tamedAlien.damage;
         let tileId = tamedAlien.tileId;
@@ -376,6 +379,7 @@ function rage() {
     selectedBat.tags.push('norage');
     selectedBat.tags.push('norage');
     // doneAction(selectedBat);
+    clicSound('rage');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
@@ -399,6 +403,7 @@ function instaKill() {
     } else {
         selectedBat.tags.push('nokill');
     }
+    clicSound('ikill');
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -609,6 +614,9 @@ function camouflage(apCost) {
         if (camDice <= camChance || playerInfos.pseudo === 'Mapedit') {
             camOK = true;
             selectedBat.fuzz = -2;
+            if (apCost > 0) {
+                clicSound('camo');
+            }
         } else {
             if (apCost === 0) {
                 camOK = false;
@@ -617,6 +625,7 @@ function camouflage(apCost) {
                 if (selectedBat.fuzz > -2) {
                     camOK = false;
                     selectedBat.fuzz = naturalFuzz;
+                    clicSound('camofuck');
                 } else {
                     camOK = true;
                     selectedBat.fuzz = -2;
@@ -744,6 +753,7 @@ function ambush(apCost) {
         selectedBat.tags.push('embuscade');
     }
     selectedBat.apLeft = selectedBat.apLeft-apCost;
+    clicSound('ambush');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
@@ -1620,6 +1630,7 @@ function fogStart() {
         selectedBat.tags.push('fog');
     }
     selectedBat.fuzz = 3;
+    clicSound('fogstart');
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     checkFoggedTiles();
@@ -1633,6 +1644,7 @@ function fogStop() {
         tagIndex = selectedBat.tags.indexOf('fog');
         selectedBat.tags.splice(tagIndex,1);
     }
+    clicSound('fogstop');
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     checkFoggedTiles();

@@ -785,6 +785,9 @@ function batInfos(bat,batType,pop) {
                 $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge bigButtons" onclick="fretThrow()"><i class="fas fa-truck-loading"></i></button>&nbsp; Vider</h4></span>');
             }
         }
+        if (playerInfos.pseudo === 'Payall') {
+            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Storm!" class="boutonMauve bigButtons" onclick="stormThis('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Storm!</h4></span>');
+        }
         // let resLoaded = checkResLoad(bat);
         // if (resLoaded >= 1) {
         // }

@@ -272,50 +272,28 @@ function alienCanon() {
     // CANON METEOR
     if (playerInfos.objectifs.bug === 'actif' && !domeProtect) {
         let chance = playerInfos.mapTurn+landingNoise;
-        if (chance > 25) {chance = 25;}
-        // chance = 100;
+        if (chance > 33) {chance = 33;}
+        chance = 100;
         if (playerInfos.mapTurn >= 2) {
             if (rand.rand(1,100) <= chance) {
                 // canon! Autour du lander (le plus gros) / Tire 4 à 5 météors
-                let canonTiles = getMeteorCanonTiles();
-                meteorCanon(canonTiles);
+                meteorCanon();
                 showMap(zone,true);
             }
         }
     }
 };
 
-function meteorCanon(canonTiles) {
+function meteorCanon() {
     warnSound('meteor');
-    bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
-            if (canonTiles.includes(bat.tileId)) {
-                let batType = getBatType(bat);
-                stormDamage(bat,batType,true,false,true);
-                let tile = getTile(bat);
-                if (tile.ruins) {
-                    delete tile.ruins;
-                    delete tile.sh;
-                    delete tile.rt;
-                }
-                if (tile.infra != undefined) {
-                    if (tile.infra === 'Débris' || tile.infra === 'Palissades' || tile.infra === 'Miradors' || tile.infra === 'Terriers') {
-                        delete tile.infra;
-                    }
-                }
-                if (batType.cat != 'buildings' && !batType.skills.includes('transorbital')) {
-                    tile.crat = true;
-                }
-            }
-        }
-    });
-};
-
-function getMeteorCanonTiles() {
     let canonTiles = [];
     let targetTile = -1;
     let bestTarget = 0;
     alienOccupiedTileList();
+    // let piloneTiles = [];
+    // if (hasUnit('Pilône')) {
+    //     piloneTiles = checkPiloneTiles();
+    // }
     let shufBats = _.shuffle(bataillons);
     shufBats.forEach(function(bat) {
         if (bat.loc === "zone") {
@@ -348,13 +326,64 @@ function getMeteorCanonTiles() {
                         let chance = 20-(distance*distance)-distance;
                         if (rand.rand(1,100) <= chance) {
                             canonTiles.push(tile.id);
+                            meteorImpact(tile);
                         }
                     }
                 }
             }
         }
     });
-    return canonTiles;
+    killBatList();
+};
+
+function meteorImpact(tile) {
+    if (tile.ruins) {
+        delete tile.ruins;
+        delete tile.sh;
+        delete tile.rt;
+    }
+    if (tile.infra != undefined) {
+        if (tile.infra === 'Débris') {
+            delete tile.infra;
+        }
+        let wipeChance = 100-(playerInfos.comp.const*playerInfos.comp.const*3)-(playerInfos.comp.def*playerInfos.comp.def*6);
+        // if (tile.infra === 'Miradors') {
+        //     wipeChance = wipeChance;
+        // }
+        if (tile.infra === 'Palissades') {
+            wipeChance = wipeChance+10;
+        }
+        if (tile.infra === 'Remparts') {
+            wipeChance = wipeChance-25;
+        }
+        if (tile.infra === 'Murailles') {
+            wipeChance = wipeChance-40;
+        }
+        // if (tile.infra === 'Terriers') {
+        //     wipeChance = wipeChance;
+        // }
+        if (rand.rand(1,100) <= wipeChance) {
+            delete tile.infra;
+        }
+    }
+    tile.crat = true;
+    let bat = getZoneBatByTileId(tile.id);
+    if (Object.keys(bat).length >= 1) {
+        let batType = getBatType(bat);
+        stormDamage(bat,batType,true,false,true);
+        if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
+            delete tile.crat;
+        }
+    }
+};
+
+function stormThis(batId) {
+    warnSound('meteor');
+    let bat = getBatById(batId);
+    let tile = getTile(bat);
+    meteorImpact(tile);
+    killBatList();
+    showMap(zone,true);
 };
 
 function webCanon(canonTiles) {
@@ -447,7 +476,7 @@ function getWebCanonTiles(cprov) {
     return canonTiles;
 };
 
-function stormProtection(dmg,bat,batType) {
+function stormProtection(dmg,bat,batType,canon) {
     let adjDmg = dmg;
     let tile = getTileById(bat.tileId);
     let stormProtect = 0;
@@ -471,8 +500,13 @@ function stormProtection(dmg,bat,batType) {
     if (terrain.scarp > 0) {
         terProtect = terProtect+(terrain.scarp*terrain.scarp*(10-Math.sqrt(batType.size))/2);
     }
-    if (terrain.flood > 0) {
+    if (terrain.flood > 0 && !canon) {
         terProtect = terProtect+(terrain.flood*5);
+    }
+    if (canon) {
+        if (terrain.veg >= 3 || terrain.scarp >= 3) {
+            terProtect = terProtect+10;
+        }
     }
     if (terProtect > infraProtect) {
         stormProtect = stormProtect+terProtect+(infraProtect/3);
@@ -480,23 +514,23 @@ function stormProtection(dmg,bat,batType) {
         stormProtect = stormProtect+infraProtect+(terProtect/3);
     }
     if (bat.tags.includes('fortif')) {
-        stormProtect = stormProtect*1.25;
+        stormProtect = stormProtect*1.2;
     }
     if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
-        if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
-            adjDmg = adjDmg/1.25;
+        if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack' || canon) {
+            adjDmg = adjDmg*0.75;
         } else {
-            adjDmg = adjDmg/1.67;
+            adjDmg = adjDmg*0.6;
         }
-    } else {
+    } else if (!canon) {
         if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
             adjDmg = adjDmg*1.5;
         }
     }
     if (batType.skills.includes('protectall') || bat.tags.includes('protectall')) {
-        adjDmg = adjDmg/1.5;
+        adjDmg = adjDmg*0.5;
     } else if (batType.skills.includes('resistall') || bat.tags.includes('resistall')) {
-        adjDmg = adjDmg/1.33;
+        adjDmg = adjDmg*0.67;
     }
     adjDmg = Math.ceil(adjDmg*(100-stormProtect)/100);
     return adjDmg;
@@ -504,6 +538,12 @@ function stormProtection(dmg,bat,batType) {
 
 function stormDamage(bat,batType,storm,inMov,canon) {
     let isDead = false;
+    let deathCause = 'Tempête';
+    let deathType = ' brûlés.';
+    if (canon) {
+        deathCause = 'Canon alien';
+        deathType = ' anéantis.';
+    }
     if (!storm) {
         // BOURASQUE
         if (playerInfos.comp.scaph < 3) {
@@ -516,7 +556,7 @@ function stormDamage(bat,batType,storm,inMov,canon) {
                 }
                 stormDmg = Math.ceil(stormDmg/Math.sqrt(batArmour+1));
                 if (stormDmg > 0) {
-                    stormDmg = stormProtection(stormDmg,bat,batType);
+                    stormDmg = stormProtection(stormDmg,bat,batType,canon);
                 }
                 console.log('stormDmg='+stormDmg);
                 let totalDamage = bat.damage+stormDmg;
@@ -529,7 +569,7 @@ function stormDamage(bat,batType,storm,inMov,canon) {
                     bat.apLeft = Math.round(bat.ap/3);
                 }
                 if (bat.squadsLeft <= 0) {
-                    batDeathEffect(bat,true,false,'Tempête',bat.type+' brûlé.');
+                    batDeathEffect(bat,true,false,deathCause,bat.type+deathType);
                     isDead = true;
                     if (inMov) {
                         batDeath(bat,true,false,false);
@@ -538,11 +578,11 @@ function stormDamage(bat,batType,storm,inMov,canon) {
                     }
                 } else if (stormDmg >= 1) {
                     if (batType.cat === 'infantry') {
-                        warning('Tempête',bat.type+' blessés.',false,bat.tileId);
+                        warning(deathCause,bat.type+' blessés.',false,bat.tileId);
                     } else if (batType.cat === 'buildings') {
-                        warning('Tempête',bat.type+' endommagé.',false,bat.tileId);
+                        warning(deathCause,bat.type+' endommagé.',false,bat.tileId);
                     } else {
-                        warning('Tempête',bat.type+' endommagés.',false,bat.tileId);
+                        warning(deathCause,bat.type+' endommagés.',false,bat.tileId);
                     }
                 }
             }
@@ -552,8 +592,16 @@ function stormDamage(bat,batType,storm,inMov,canon) {
         let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
         console.log('numUnits='+numUnits);
         let stormDmg = rand.rand(7*numUnits,20*numUnits);
+        if (playerInfos.pseudo === 'Payall' && canon) {
+            stormDmg = 13.5*numUnits;
+        }
         if (canon) {
             stormDmg = stormDmg*Math.sqrt(batType.hp);
+            if (batType.moveCost < 90) {
+                let baseMoveCost = calcBaseMoveCost(bat,batType);
+                let mvmt = bat.ap/baseMoveCost;
+                stormDmg = stormDmg/mvmt*4;
+            }
         }
         console.log('stormDmg='+stormDmg);
         let batArmour = bat.armor;
@@ -579,7 +627,7 @@ function stormDamage(bat,batType,storm,inMov,canon) {
             stormDmg = stormDmg/3;
         }
         if (stormDmg > 0) {
-            stormDmg = stormProtection(stormDmg,bat,batType);
+            stormDmg = stormProtection(stormDmg,bat,batType,canon);
         }
         console.log('stormDmg(T)='+stormDmg);
         let totalDamage = bat.damage+stormDmg;
@@ -592,7 +640,7 @@ function stormDamage(bat,batType,storm,inMov,canon) {
             bat.apLeft = Math.round(bat.ap/4);
         }
         if (bat.squadsLeft <= 0) {
-            batDeathEffect(bat,true,false,'Tempête',bat.type+' brûlé.');
+            batDeathEffect(bat,true,false,deathCause,bat.type+deathType+' (dégâts: '+stormDmg+')');
             isDead = true;
             if (inMov) {
                 batDeath(bat,true,false,false);
@@ -601,11 +649,11 @@ function stormDamage(bat,batType,storm,inMov,canon) {
             }
         } else if (stormDmg >= 1) {
             if (batType.cat === 'infantry') {
-                warning('Tempête',bat.type+' blessés.',false,bat.tileId);
+                warning(deathCause,bat.type+' blessés. (dégâts: '+stormDmg+')',false,bat.tileId);
             } else if (batType.cat === 'buildings') {
-                warning('Tempête',bat.type+' endommagé.',false,bat.tileId);
+                warning(deathCause,bat.type+' endommagé. (dégâts: '+stormDmg+')',false,bat.tileId);
             } else {
-                warning('Tempête',bat.type+' endommagés.',false,bat.tileId);
+                warning(deathCause,bat.type+' endommagés. (dégâts: '+stormDmg+')',false,bat.tileId);
             }
         }
     }
@@ -616,6 +664,10 @@ function stormDamage(bat,batType,storm,inMov,canon) {
             showBataillon(selectedBat);
         }
     }
+};
+
+function takeDamage(bat,batType,dmg) {
+
 };
 
 function createStormsLists(rebuild,init) {

@@ -1584,7 +1584,7 @@ function blobEat(layBlob) {
     let unitIndex = bataillons.findIndex((obj => obj.id == batId));
     if (unitIndex > -1) {
         bataillons.splice(unitIndex,1);
-        warning('Bataillon englouti',bat.type+' a été détruit par la vomissure.',false,batTileId);
+        warning('<span class="rq3">Bataillon englouti</span>','<span class="vio">'+bat.type+' a été détruit par la vomissure.</span>',false,batTileId);
     }
 };
 

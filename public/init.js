@@ -180,6 +180,26 @@ socket.on('playerInfos-Load', function(pi) {
         playerInfos.objectifs.larve = 'none';
         playerInfos.objectifs.swarm = 'none';
         playerInfos.objectifs.resistance = 'none';
+        playerInfos.objectifs.science = 'none';
+    } else {
+        if (playerInfos.objectifs.spider === undefined) {
+            playerInfos.objectifs.spider = 'none';
+        }
+        if (playerInfos.objectifs.bug === undefined) {
+            playerInfos.objectifs.bug = 'none';
+        }
+        if (playerInfos.objectifs.larve === undefined) {
+            playerInfos.objectifs.larve = 'none';
+        }
+        if (playerInfos.objectifs.swarm === undefined) {
+            playerInfos.objectifs.swarm = 'none';
+        }
+        if (playerInfos.objectifs.resistance === undefined) {
+            playerInfos.objectifs.resistance = 'none';
+        }
+        if (playerInfos.objectifs.science === undefined) {
+            playerInfos.objectifs.science = 'none';
+        }
     }
     if (playerInfos.missionZone === undefined) {
         playerInfos.missionZone = -1;
