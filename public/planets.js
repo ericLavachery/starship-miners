@@ -154,9 +154,9 @@ function planetEffects(bat,batType) {
     // Horst
     if (zone[0].planet === 'Horst' && bat.loc === "zone") {
         if (playerInfos.stList.includes(bat.tileId)) {
-            stormDamage(bat,batType,true,false);
+            stormDamage(bat,batType,true,false,false);
         } else if (playerInfos.sqList.includes(bat.tileId)) {
-            stormDamage(bat,batType,false,false);
+            stormDamage(bat,batType,false,false,false);
         }
     }
 };
@@ -244,7 +244,7 @@ function checkCanon() {
     }
     // à garder
     // mettre le canon
-    if (playerInfos.objectifs.bug === 'none') {
+    if (playerInfos.objectifs.bug === 'none' && playerInfos.objectifs.spider === 'detruit') {
         if (doom >= doomStart) {
             let chance = 40+((doom-doomStart)*40);
             if (rand.rand(1,100) <= chance) {
@@ -273,6 +273,7 @@ function alienCanon() {
     if (playerInfos.objectifs.bug === 'actif' && !domeProtect) {
         let chance = playerInfos.mapTurn+landingNoise;
         if (chance > 25) {chance = 25;}
+        // chance = 100;
         if (playerInfos.mapTurn >= 2) {
             if (rand.rand(1,100) <= chance) {
                 // canon! Autour du lander (le plus gros) / Tire 4 à 5 météors
@@ -285,31 +286,71 @@ function alienCanon() {
 };
 
 function meteorCanon(canonTiles) {
-    webSound();
+    warnSound('meteor');
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
-
+            if (canonTiles.includes(bat.tileId)) {
+                let batType = getBatType(bat);
+                stormDamage(bat,batType,true,false,true);
+                let tile = getTile(bat);
+                if (tile.ruins) {
+                    delete tile.ruins;
+                    delete tile.sh;
+                    delete tile.rt;
+                }
+                if (tile.infra != undefined) {
+                    if (tile.infra === 'Débris' || tile.infra === 'Palissades' || tile.infra === 'Miradors' || tile.infra === 'Terriers') {
+                        delete tile.infra;
+                    }
+                }
+                if (batType.cat != 'buildings' && !batType.skills.includes('transorbital')) {
+                    tile.crat = true;
+                }
+            }
         }
     });
 };
 
 function getMeteorCanonTiles() {
     let canonTiles = [];
-    let theTile = -1;
     let targetTile = -1;
     let bestTarget = 0;
+    alienOccupiedTileList();
     let shufBats = _.shuffle(bataillons);
     shufBats.forEach(function(bat) {
         if (bat.loc === "zone") {
-            let batType = getBatType(bat);
-            let targetValue = bat.fuzz;
-            if (batType.skills.includes('transorbital') && targetValue < 5 && targetValue >= 1) {
-                targetValue = 5;
+            if (bat.fuzz >= -1) {
+                let batType = getBatType(bat);
+                let targetValue = bat.fuzz;
+                if (batType.skills.includes('transorbital') && targetValue < 5 && targetValue >= 1) {
+                    targetValue = 5;
+                }
+                if (targetValue >= 1) {
+                    targetValue = targetValue+rand.rand(0,2);
+                }
+                if (targetValue > bestTarget) {
+                    targetTile = bat.tileId;
+                    bestTarget = targetValue;
+                }
             }
-            targetValue = targetValue+rand.rand(0,2);
-            if (targetValue > bestTarget) {
-
-                bestTarget = targetValue;
+        }
+    });
+    if (targetTile < 0) {
+        targetTile = rand.rand(0,3599);
+    }
+    let shufZone = _.shuffle(zone);
+    shufZone.forEach(function(tile) {
+        if (canonTiles.length < 4) {
+            if (!tile.crat) {
+                if (!alienOccupiedTiles.includes(tile.id)) {
+                    let distance = calcDistance(tile.id,targetTile);
+                    if (distance <= 3) {
+                        let chance = 20-(distance*distance)-distance;
+                        if (rand.rand(1,100) <= chance) {
+                            canonTiles.push(tile.id);
+                        }
+                    }
+                }
             }
         }
     });
@@ -461,7 +502,7 @@ function stormProtection(dmg,bat,batType) {
     return adjDmg;
 };
 
-function stormDamage(bat,batType,storm,inMov) {
+function stormDamage(bat,batType,storm,inMov,canon) {
     let isDead = false;
     if (!storm) {
         // BOURASQUE
@@ -511,6 +552,9 @@ function stormDamage(bat,batType,storm,inMov) {
         let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
         console.log('numUnits='+numUnits);
         let stormDmg = rand.rand(7*numUnits,20*numUnits);
+        if (canon) {
+            stormDmg = stormDmg*Math.sqrt(batType.hp);
+        }
         console.log('stormDmg='+stormDmg);
         let batArmour = bat.armor;
         if (bat.tags.includes('fortif')) {
@@ -521,15 +565,18 @@ function stormDamage(bat,batType,storm,inMov) {
             }
         }
         stormDmg = Math.ceil(stormDmg/Math.sqrt(batArmour+1));
-        if (batArmour >= 14 && playerInfos.comp.scaph >= 3) {
+        if (batArmour >= 14 && playerInfos.comp.scaph >= 3 && !canon) {
             stormDmg = 0;
         }
-        if (batType.skills.includes('resiststorm')) {
+        if (batType.skills.includes('resiststorm') && !canon) {
             stormDmg = 0;
         }
         console.log('stormDmg(a)='+stormDmg);
-        if (playerInfos.comp.scaph >= 3 && batType.cat === 'infantry') {
+        if (playerInfos.comp.scaph >= 3 && batType.cat === 'infantry' && !canon) {
             stormDmg = stormDmg/1.5;
+        }
+        if (batType.cat === 'infantry' && canon) {
+            stormDmg = stormDmg/3;
         }
         if (stormDmg > 0) {
             stormDmg = stormProtection(stormDmg,bat,batType);

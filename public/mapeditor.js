@@ -712,6 +712,7 @@ function clickEdit(tileId) {
                 tile.infra = mped.sinf;
                 delete tile.ruins;
                 delete tile.sh;
+                delete tile.rt;
             } else {
                 delete tile.infra;
             }

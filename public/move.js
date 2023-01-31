@@ -380,9 +380,9 @@ function moveSelectedBat(tileId,free,jump) {
     tileSelect(selectedBat);
     if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst') {
         if (playerInfos.stList.includes(tileId)) {
-            stormDamage(selectedBat,selectedBatType,true,true);
+            stormDamage(selectedBat,selectedBatType,true,true,false);
         } else if (playerInfos.sqList.includes(tileId)) {
-            stormDamage(selectedBat,selectedBatType,false,true);
+            stormDamage(selectedBat,selectedBatType,false,true,false);
         }
     }
     let tile = getTileById(tileId);

@@ -1756,7 +1756,7 @@
     {
         "id":288,
         "name":"Mines wipeout",
-        "pic":"minedel",
+        "pic":"minewipe",
         "cat":"devices",
         "kind":"zero-defense",
         "sort":0,
