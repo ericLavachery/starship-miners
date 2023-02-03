@@ -100,6 +100,7 @@ let viewBorders = [];
 let stormChance = 10 // def 25/1000
 // UNITS
 let souteId = 1;
+let navId = -1;
 let inSoute = false;
 let slId = 2; // selected lander id (en soute)
 let souteFilter = 'all';
@@ -195,6 +196,8 @@ let zombRange = 5;
 let zombifiedTiles = [];
 let roboRange = true;
 let roboTiles = [];
+let piloRange = 3;
+let pilonedTiles = [];
 let startLander = 5;
 let deploySalvos = 4; // on part de 7
 let deployTuning = 6; // on part de 7 - PAS utilisé !!!

@@ -77,8 +77,8 @@ function reEquip(batId,noRefresh) {
     let batEquip;
     let weapName;
     let equipNotes;
-    let bonusEqName = getBonusEq(myBatType);
-    let autoEqList = getAutoEqList(myBat,myBatType);
+    let bonusEqName = getBonusEq(myBatType,false);
+    let autoEqList = getAutoEqList(myBat,myBatType,false);
     listNum = 1;
     // EQUIP ---------------------------------------------
     if (myBatType.equip != undefined) {
@@ -358,7 +358,7 @@ function checkAutoEqCompReq(stuff) {
     return compReqOK;
 };
 
-function getAutoEqList(bat,batType) {
+function getAutoEqList(bat,batType,isStartBat) {
     // console.log("CHECK AUTO EQs LIST !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     let autoEqList = [];
     if (batType.skills.includes('penitbat')) {
@@ -376,6 +376,9 @@ function getAutoEqList(bat,batType) {
                     }
                     // console.log('compReqOK='+compReqOK);
                     let bldReqOK = verifBldReq(batType,equip.bldReq);
+                    if (isStartBat) {
+                        bldReqOK = true;
+                    }
                     if (compReqOK && bldReqOK) {
                         if (equip.autoComp.length === 2) {
                             let autoCompName = equip.autoComp[0];
@@ -416,7 +419,7 @@ function getAutoEqList(bat,batType) {
     return autoEqList;
 };
 
-function getBonusEq(unit) {
+function getBonusEq(unit,isStartBat) {
     // console.log("CHECK BONUS EQ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     let bonusEqName = '';
     if (unit.log3eq != undefined) {
@@ -433,6 +436,9 @@ function getBonusEq(unit) {
                     }
                     // console.log('compReqOK='+compReqOK);
                     let bldReqOK = verifBldReq(unit,equip.bldReq);
+                    if (isStartBat) {
+                        bldReqOK = true;
+                    }
                     if (compReqOK && bldReqOK) {
                         if (playerInfos.comp.log === 3) {
                             // console.log('log3');
@@ -688,8 +694,8 @@ function doReEquip(batId) {
         myBat.ammo2 = myNewGear[1];
         myBat.prt = myNewGear[2];
         myBat.eq = myNewGear[3];
-        myBat.tdc = getAutoEqList(myBat,myBatType);
-        myBat.logeq = getBonusEq(myBatType);
+        myBat.tdc = getAutoEqList(myBat,myBatType,false);
+        myBat.logeq = getBonusEq(myBatType,false);
         if (myBat.logeq === 'g2ai') {
             myBat.ok = '';
         }

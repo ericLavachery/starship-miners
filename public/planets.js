@@ -273,7 +273,7 @@ function alienCanon() {
     if (playerInfos.objectifs.bug === 'actif' && !domeProtect) {
         let chance = playerInfos.mapTurn+landingNoise;
         if (chance > 33) {chance = 33;}
-        chance = 100;
+        // chance = 100;
         if (playerInfos.mapTurn >= 2) {
             if (rand.rand(1,100) <= chance) {
                 // canon! Autour du lander (le plus gros) / Tire 4 à 5 météors
@@ -290,25 +290,23 @@ function meteorCanon() {
     let targetTile = -1;
     let bestTarget = 0;
     alienOccupiedTileList();
-    // let piloneTiles = [];
-    // if (hasUnit('Pilône')) {
-    //     piloneTiles = checkPiloneTiles();
-    // }
     let shufBats = _.shuffle(bataillons);
     shufBats.forEach(function(bat) {
         if (bat.loc === "zone") {
-            if (bat.fuzz >= -1) {
-                let batType = getBatType(bat);
-                let targetValue = bat.fuzz;
-                if (batType.skills.includes('transorbital') && targetValue < 5 && targetValue >= 1) {
-                    targetValue = 5;
-                }
-                if (targetValue >= 1) {
-                    targetValue = targetValue+rand.rand(0,2);
-                }
-                if (targetValue > bestTarget) {
-                    targetTile = bat.tileId;
-                    bestTarget = targetValue;
+            if (!pilonedTiles.includes(bat.tileId)) {
+                if (bat.fuzz >= -1) {
+                    let batType = getBatType(bat);
+                    let targetValue = bat.fuzz;
+                    if (batType.skills.includes('transorbital') && targetValue < 5 && targetValue >= 1) {
+                        targetValue = 5;
+                    }
+                    if (targetValue >= 1) {
+                        targetValue = targetValue+rand.rand(0,2);
+                    }
+                    if (targetValue > bestTarget) {
+                        targetTile = bat.tileId;
+                        bestTarget = targetValue;
+                    }
                 }
             }
         }
@@ -635,9 +633,11 @@ function stormDamage(bat,batType,storm,inMov,canon) {
         let squadsOut = Math.floor(totalDamage/squadHP);
         bat.squadsLeft = bat.squadsLeft-squadsOut;
         bat.damage = totalDamage-(squadsOut*squadHP);
-        bat.apLeft = bat.apLeft-6;
-        if (bat.apLeft > Math.round(bat.ap/4)) {
-            bat.apLeft = Math.round(bat.ap/4);
+        if (!canon) {
+            bat.apLeft = bat.apLeft-6;
+            if (bat.apLeft > Math.round(bat.ap/4)) {
+                bat.apLeft = Math.round(bat.ap/4);
+            }
         }
         if (bat.squadsLeft <= 0) {
             batDeathEffect(bat,true,false,deathCause,bat.type+deathType+' (dégâts: '+stormDmg+')');

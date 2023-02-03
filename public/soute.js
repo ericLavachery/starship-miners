@@ -634,6 +634,7 @@ function landerUnDeploy(landerId) {
 
 function loadBat(batId,transBatId,oldTransBatId) {
     let bat = getBatById(batId);
+    let batType = getBatType(bat);
     let transBat = getBatById(transBatId);
     bat.loc = 'trans';
     bat.locId = transBat.id;

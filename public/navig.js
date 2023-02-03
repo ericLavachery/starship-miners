@@ -144,8 +144,8 @@ function commandes() {
         if (!modeSonde) {
             if (!playerInfos.onStart) {
                 if (!inSoute) {
-                    let hasSonde = hasUnit('Sonde');
-                    let hasImpacteur = hasUnit('Impacteur');
+                    let hasSonde = hasUnit('Sonde',false);
+                    let hasImpacteur = hasUnit('Impacteur',false);
                     if (hasSonde || hasImpacteur) {
                         $('#commandz').append('<hr>');
                         $('#commandz').append('<button type="button" title="Régler une sonde (destination)" class="boutonBrun iconButtons" onclick="editSonde()" onmousedown="clicSound(6)"><i class="fas fa-keyboard"></i></button>');
@@ -334,8 +334,10 @@ function gangNavig() {
             $('#gangInfos').append('<button type="button" title="Supprimer tous les aliens" class="boutonCiel iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');
             $('#gangInfos').append('<br>');
             $('#gangInfos').append('<button type="button" title="Nouvelle zone" class="boutonCiel iconButtons" onclick="generateNewMap(true)"><i class="far fa-map"></i></button>');
-            $('#gangInfos').append('<button type="button" title="Check rencontres" class="boutonCiel iconButtons" onclick="encounterCheck()"><i class="fas fa-city"></i></button>');
-            $('#gangInfos').append('<button type="button" title="Check voisins" class="boutonCiel iconButtons" onclick="lesVoisins()"><i class="fas fa-shuttle-van"></i></button>');
+            // $('#gangInfos').append('<button type="button" title="Check rencontres" class="boutonCiel iconButtons" onclick="encounterCheck()"><i class="fas fa-city"></i></button>');
+            // $('#gangInfos').append('<button type="button" title="Check voisins" class="boutonCiel iconButtons" onclick="lesVoisins()"><i class="fas fa-shuttle-van"></i></button>');
+            $('#gangInfos').append('<button type="button" title="Charger une mission" class="boutonCiel iconButtons" onclick="loadMission()"><i class="ra ra-scroll-unfurled rpg"></i></button>');
+            $('#gangInfos').append('<button type="button" title="Ajouter les unités de base pour une mission" class="boutonCiel iconButtons" onclick="putMissionUnits()"><i class="ra ra-double-team rpg"></i></button>');
             $('#gangInfos').append('<br>');
             if (playerInfos.pseudo === 'Mapedit') {
                 $('#gangInfos').append('<button type="button" title="Retour station forcé" class="boutonGrey iconButtons"><i class="fas fa-space-shuttle"></i></button>');
@@ -344,6 +346,8 @@ function gangNavig() {
             }
             $('#gangInfos').append('<button type="button" title="Supprime le stress de tous les bataillons" class="boutonCiel iconButtons" onclick="coolManCool()"><i class="fas fa-heart"></i></button>');
             $('#gangInfos').append('<button type="button" title="Map Editor" class="boutonVert iconButtons" onclick="editMode()"><i class="fas fa-tree"></i></button>');
+        } else {
+            $('#gangInfos').append('<button type="button" title="Charger une mission" class="boutonCiel iconButtons" onclick="loadMission()"><i class="ra ra-scroll-unfurled rpg"></i></button>');
         }
     } else {
         if (playerInfos.pseudo != 'Mapedit') {

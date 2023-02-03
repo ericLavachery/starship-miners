@@ -629,120 +629,10 @@ function hasAlienWithTag(unitName,tag) {
     return youHaveIt;
 };
 
-function checkPiloneTiles() {
-    let piloneTiles = [];
-    bataillons.forEach(function(bat) {
-        if (bat.loc === 'zone') {
-            if (bat.type === 'Pilône') {
-                let thisTile = bat.tileId;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-1;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+1;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-1-mapSize;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+1-mapSize;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-1+mapSize;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+1+mapSize;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize-2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize-1;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize+1;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize+2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize-2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize-1;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize+1;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize+2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize+2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize-2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize-mapSize-3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize-mapSize-2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize-mapSize-1;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize-mapSize;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize-mapSize+1;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize-mapSize+2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize-mapSize+3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize+mapSize-3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize+mapSize-2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize+mapSize-1;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize+mapSize;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize+mapSize+1;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize+mapSize+2;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize+mapSize+3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize-3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize-3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize-3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+mapSize+3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+mapSize+3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId+3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize+3;
-                piloneTiles.push(thisTile);
-                thisTile = bat.tileId-mapSize-mapSize+3;
-                piloneTiles.push(thisTile);
-            }
-        }
-    });
-    return piloneTiles;
-};
-
 function eggDropTile(eggName,theArea) {
     let theTile = -1;
     let area = 'any';
     let targetTile = -1;
-    let piloneTiles = checkPiloneTiles();
     if (theArea != 'none') {
         area = theArea;
     } else {
@@ -787,7 +677,7 @@ function eggDropTile(eggName,theArea) {
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
                 if (tile.x >= 2 && tile.x <= 59 && tile.y >= 2 && tile.y <= 59) {
-                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
                 }
@@ -849,7 +739,7 @@ function eggDropTile(eggName,theArea) {
                             }
                         }
                     });
-                    if (okTile && !alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                    if (okTile && !alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
                 }
@@ -874,7 +764,7 @@ function eggDropTile(eggName,theArea) {
                                 }
                             }
                         });
-                        if (okTile && !alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                        if (okTile && !alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
                             theTile = tile.id;
                         }
                     }
@@ -894,7 +784,7 @@ function eggDropTile(eggName,theArea) {
                                 }
                             }
                         });
-                        if (okTile && !alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                        if (okTile && !alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
                             theTile = tile.id;
                         }
                     }
@@ -909,7 +799,7 @@ function eggDropTile(eggName,theArea) {
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
                 if (tile.x < 15 || tile.x > 45 || tile.y < 15 || tile.y > 45) {
-                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
                 }
@@ -1078,7 +968,7 @@ function eggDropTile(eggName,theArea) {
             if (theTile < 0) {
                 distance = calcDistance(tile.id,targetTile);
                 if (distance === 2 || distance === 3) {
-                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
                 }
@@ -1089,7 +979,7 @@ function eggDropTile(eggName,theArea) {
                 if (theTile < 0) {
                     distance = calcDistance(tile.id,targetTile);
                     if (distance === 4 || distance === 5) {
-                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
                             theTile = tile.id;
                         }
                     }
@@ -1129,7 +1019,7 @@ function eggDropTile(eggName,theArea) {
             shufZone.forEach(function(tile) {
                 if (theTile < 0) {
                     if (tile.x >= 2 && tile.x <= 59 && tile.y >= 2 && tile.y <= 59) {
-                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
                             theTile = tile.id;
                         }
                     }
@@ -1140,7 +1030,7 @@ function eggDropTile(eggName,theArea) {
                 if (theTile < 0) {
                     distance = calcDistance(tile.id,targetTile);
                     if (distance === 2 || distance === 3) {
-                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
                             theTile = tile.id;
                         }
                     }
@@ -1151,7 +1041,7 @@ function eggDropTile(eggName,theArea) {
                     if (theTile < 0) {
                         distance = calcDistance(tile.id,targetTile);
                         if (distance === 4 || distance === 5) {
-                            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !piloneTiles.includes(tile.id)) {
+                            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
                                 theTile = tile.id;
                             }
                         }
@@ -1684,7 +1574,7 @@ function setCoconStats() {
     coconStats.level = zone[0].mapDiff+Math.floor(playerInfos.mapTurn/35)-1;
     let coconTurbo = Math.round(Math.sqrt(playerInfos.cocons)*2);
     coconStats.turns = 31-coconTurbo-Math.floor((zone[0].mapDiff*1.25)+(playerInfos.fuzzTotal/150));
-    if (hasUnit('Dôme')) {
+    if (hasUnit('Dôme',false)) {
         coconStats.dome = true;
         playerInfos.eggPause = false;
         if (playerInfos.mapTurn >= 35 && coconStats.level < 9) {

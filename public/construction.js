@@ -445,7 +445,7 @@ function conSelect(unitId,player,noRefresh) {
     let batEquip;
     let weapName;
     let equipNotes;
-    let bonusEqName = getBonusEq(conselUnit);
+    let bonusEqName = getBonusEq(conselUnit,false);
     let emptyBat = {};
     console.log("bonusEqName="+bonusEqName);
     listNum = 1;
@@ -1012,7 +1012,7 @@ function conselNeat() {
     }
 };
 
-function putBat(tileId,citoyens,xp,startTag,show,fuite) {
+function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
     console.log('PUTBAT');
     constuctorBatId = selectedBat.id;
     if (conselUnit.cat === 'aliens') {
@@ -1020,6 +1020,9 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite) {
     }
     if (show === undefined) {
         show = true;
+    }
+    if (isStartBat === undefined) {
+        isStartBat = false;
     }
     if (Object.keys(conselUnit).length >= 1) {
         conselNeat();
@@ -1114,14 +1117,18 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite) {
             let batEquip = getEquipByName(equipName);
             newBat.eq = equipName;
             // log3eq
-            if (!conselTriche) {
-                newBat.logeq = getBonusEq(conselUnit);
+            if (!conselTriche || isStartBat) {
+                newBat.logeq = getBonusEq(conselUnit,isStartBat);
                 if (newBat.logeq === 'g2ai') {
                     newBat.ok = '';
                 }
             }
             // tdc
-            newBat.tdc = [];
+            if (isStartBat) {
+                newBat.tdc = getAutoEqList(newBat,conselUnit,true);
+            } else {
+                newBat.tdc = [];
+            }
             // Armor
             let armorName = conselAmmos[2];
             if (armorName === 'xxx') {

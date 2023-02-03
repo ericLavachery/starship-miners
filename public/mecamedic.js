@@ -7,8 +7,10 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     let medicBat = {};
     let medicBatType = {};
     let denom = 'Soins';
+    let isMed = true;
     if (cat != 'infantry') {
         denom = 'Réparations';
+        isMed = false;
     }
     let real = false;
     washReports(false);
@@ -29,18 +31,23 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     let batType;
     let totalAPCost = 0;
     let xpGain = 0.1;
-    let apCost = cost;
     let patientAPCost = medicPatientAP;
     if (selectedBatType.skills.includes('fastcure')) {
         patientAPCost = Math.ceil(patientAPCost/2);
     }
-    if (around) {
-        if (!inBld) {
-            apCost = cost+selectedBatType.squads-selectedBat.squadsLeft;
-        } else {
-            apCost = cost+medicBatType.squads-medicBat.squadsLeft;
-        }
+    let apCost = cost;
+    if (!inBld) {
+        apCost = calcAdjSkillCost(1,apCost,selectedBatType,selectedBat,isMed);
+    } else {
+        apCost = calcAdjSkillCost(1,apCost,medicBatType,medicBat,isMed);
     }
+    // if (around) {
+    //     if (!inBld) {
+    //         apCost = cost+selectedBatType.squads-selectedBat.squadsLeft;
+    //     } else {
+    //         apCost = cost+medicBatType.squads-medicBat.squadsLeft;
+    //     }
+    // }
     let batUnits;
     let newBatUnits;
     let catOK = false;
@@ -227,7 +234,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         oldSquadsLeft = bat.squadsLeft;
                                         squadHP = batType.squadSize*batType.hp;
                                         batHP = squadHP*batType.squads;
-                                        if (batType.cat === 'buildings' || batType.cat === 'devices') {
+                                        if (batType.skills.includes('transorbital')) {
+                                            regen = mecanoHP*5;
+                                        } else if (batType.cat === 'buildings' || batType.cat === 'devices') {
                                             regen = mecanoHP*2;
                                         } else if (batType.skills.includes('robot') && !selectedBatType.skills.includes('roborepair')) {
                                             regen = Math.round(mecanoHP/2.5);
@@ -370,7 +379,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                 oldSquadsLeft = selectedBat.squadsLeft;
                 squadHP = selectedBatType.squadSize*selectedBatType.hp;
                 batHP = squadHP*selectedBatType.squads;
-                if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
+                if (selectedBatType.skills.includes('transorbital')) {
+                    regen = mecanoHP*5;
+                } else if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
                     regen = mecanoHP*2;
                 } else {
                     regen = mecanoHP;
@@ -870,6 +881,9 @@ function diagRepair(repairBatId) {
     let squadHP = selectedBatType.squadSize*selectedBatType.hp;
     let batHP = squadHP*selectedBatType.squads;
     let regen = mecanoHP*2;
+    if (selectedBatType.skills.includes('transorbital')) {
+        regen = mecanoHP*5;
+    }
     let batHPLeft = (selectedBat.squadsLeft*squadHP)-selectedBat.damage+regen;
     selectedBat.squadsLeft = Math.ceil(batHPLeft/squadHP);
     selectedBat.damage = (selectedBat.squadsLeft*squadHP)-batHPLeft;
@@ -890,6 +904,32 @@ function diagRepair(repairBatId) {
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 }
+
+function calcAdjSkillCost(numTargets,baseskillCost,batType,bat,isMed) {
+    let apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
+    let fuckSquads = false;
+    if (batType.cat === 'buildings') {
+        fuckSquads = true;
+    } else if (batType.skills.includes('transorbital')) {
+        if (isMed) {
+            if (hasEquip(bat,['e-medic'])) {
+                fuckSquads = true;
+            }
+        } else {
+            if (hasEquip(bat,['e-mecano'])) {
+                fuckSquads = true;
+            }
+        }
+    }
+    if (fuckSquads) {
+        let theSquads = bat.squadsLeft+3;
+        if (theSquads > batType.squads) {
+            theSquads = batType.squads;
+        }
+        apCost = numTargets*(baseskillCost+batType.squads-theSquads);
+    }
+    return Math.round(apCost);
+};
 
 function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
     let baseskillCost;

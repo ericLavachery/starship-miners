@@ -3461,6 +3461,7 @@
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
         "compReq":{"pyro":2,"ca":2},
+        "altCompReq":{"pyro":1,"ca":3},
         "deploy":{"Scrap":3,"Fuel":2,"Slime":3,"Phosphore":2,"Huile":2},
         "batch":100,
         "icon":1

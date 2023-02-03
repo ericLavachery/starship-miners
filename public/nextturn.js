@@ -860,6 +860,7 @@ function turnInfo() {
     let radarTiles = [];
     let zombifiersTiles = [];
     let roboControlers = [];
+    let piloneTileIds = [];
     let controlRange = 3;
     if (playerInfos.bldList.includes('Centre de com')) {
         controlRange = 12;
@@ -928,6 +929,9 @@ function turnInfo() {
             if (bat.type === 'Necrotrucks') {
                 zombifiersTiles.push(bat.tileId);
             }
+            if (batType.skills.includes('pilone') && !bat.tags.includes('construction')) {
+                piloneTileIds.push(bat.tileId);
+            }
             if (bat.type === 'Scraptrucks') {
                 hasScraptruck = true;
             }
@@ -980,6 +984,7 @@ function turnInfo() {
     foggedTiles = [];
     doggedTiles = [];
     zombifiedTiles = [];
+    pilonedTiles = [];
     roboTiles = [];
     zone.forEach(function(tile) {
         foggersTiles.forEach(function(foggTile) {
@@ -1014,6 +1019,14 @@ function turnInfo() {
                 }
             }
         });
+        piloneTileIds.forEach(function(pilTile) {
+            if (!pilonedTiles.includes(tile.id)) {
+                distance = calcDistance(tile.id,pilTile);
+                if (distance <= piloRange) {
+                    pilonedTiles.push(tile.id);
+                }
+            }
+        });
         roboControlers.forEach(function(controlTile) {
             if (!roboTiles.includes(tile.id)) {
                 distance = calcDistance(tile.id,controlTile);
@@ -1034,6 +1047,8 @@ function turnInfo() {
     console.log(zombifiedTiles);
     console.log('Fogged Tiles');
     console.log(foggedTiles);
+    console.log('Piloned Tiles');
+    console.log(pilonedTiles);
     centerMap();
     if (!playerInfos.onShip) {
         $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
@@ -1118,12 +1133,12 @@ function turnInfo() {
         $('#tour').append('Morts <span class="or" title="'+toNiceString(playerInfos.deadBats)+'">'+playerInfos.unitsLost+'</span> / <span class="neutre" title="Aliens tués">'+playerInfos.aliensKilled+'</span> / <span class="cy" title="Oeufs détruits">'+playerInfos.eggsKilled+'</span>');
     }
     checkVMTileIds();
-    if (domeProtect && aliens.length <= 0) {
+    if (domeProtect && aliens.length <= 0 && hasUnit('Dôme',true)) {
         gameOver = true;
         playRoom('start',true,false);
         calcEndRes(false);
         let score = calcScore();
-        warning('Colonie établie!','Promis, on mettra un truc plus sympa pour la fin du jeu.<br>Vous avez sauvé <span class="cy">'+score.cits+' citoyens</span> en '+score.days+' jours.<br>Votre score est de <span class="cy">'+score.score+'</span>.');
+        warning('<span class="rq3">Colonie établie!</span>','<span class="vio">Promis, on mettra un truc plus sympa pour la fin du jeu.<br>Vous avez sauvé <span class="cy">'+score.cits+' citoyens</span> en '+score.days+' jours.<br>Votre score est de <span class="cy">'+score.score+'</span></span>');
         console.log(score);
     } else {
         let lastStand = checkLastStand();
@@ -1158,7 +1173,7 @@ function checkLastStand() {
     let lastStand = {};
     lastStand.turn = 100+Math.round(playerInfos.pauseSeed/3);
     lastStand.go = false;
-    let lastMission = hasUnit('Dôme');
+    let lastMission = hasUnit('Dôme',false);
     if (domeProtect) {
         if (lastMission) {
             let domeBat = getBatTypeByName('Dôme');

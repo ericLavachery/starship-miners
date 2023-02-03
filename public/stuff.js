@@ -641,11 +641,21 @@ function getStartPack(gang) {
     return pack;
 };
 
-function hasUnit(unitName) {
+function hasUnit(unitName,active) {
     let youHaveIt = false;
-    if (bataillons.some(e => e.type === unitName)) {
-        youHaveIt = true;
+    if (active) {
+        if (bataillons.some(e => e.type === unitName && !e.tags.includes('construction'))) {
+            youHaveIt = true;
+        }
+    } else {
+        if (bataillons.some(e => e.type === unitName)) {
+            youHaveIt = true;
+        }
     }
+    // ages.some(checkAdult);
+    // function checkAdult(age) {
+    //     return age > 18;
+    // }
     // bataillons.forEach(function(bat) {
     //     if (bat.type === unitName) {
     //         youHaveIt = true;
@@ -1153,6 +1163,18 @@ function getBatByTypeIdAndTileId(typeId,tileId) {
         bat = bataillons[index];
     }
     return bat;
+};
+
+function getLastBatCreated() {
+    let myBat = {};
+    let highestId = -1;
+    bataillons.slice().reverse().forEach(function(bat) {
+        if (bat.id > highestId) {
+            highestId = bat.id;
+            myBat = bat;
+        }
+    });
+    return myBat;
 };
 
 function getAlienByName(name) {
