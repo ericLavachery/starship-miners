@@ -11,6 +11,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     if (cat != 'infantry') {
         denom = 'Réparations';
         isMed = false;
+        playSound('repair',0,false);
+    } else {
+        playSound('relief',-0.2,false);
     }
     let real = false;
     washReports(false);

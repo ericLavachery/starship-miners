@@ -454,6 +454,11 @@ function getBatPic(bat,batType) {
     if (batType.skills.includes('garde') && bat.eq === 'e-phare') {
         batPic = 'phare';
     }
+    if (batType.name === 'Minitanks') {
+        if (batType.weapon2.name.includes('plasma')) {
+            batPic = 'minitank-p';
+        }
+    }
     if (batType.pic.includes('-v1')) {
         if (playerInfos.pseudo === 'Mapedit') {
             // reste v1;

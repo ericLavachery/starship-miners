@@ -30,18 +30,22 @@ function putMissionUnits() {
         addMissionBat(tileId,slot,unitXP);
     });
     // playerInfos.mapTurn = 1;
+    let navBat = getBatById(navId);
+    batSelect(navBat,true);
+    showBatInfos(navBat);
+    showTileInfos(navBat.tileId);
     showMap(zone,false);
 };
 
 function addMissionBat(tileId,slot,xp) {
     // ajouter bataillon
-    console.log('ADD BAT');
-    console.log(slot);
+    // console.log('ADD BAT');
+    // console.log(slot);
     let unitIndex = unitTypes.findIndex((obj => obj.name === slot.name));
     if (unitIndex === -1) {
         if (slot.name === 'Infirmiers') {
             slot.name = 'Médecins';
-            console.log(slot);
+            // console.log(slot);
             unitIndex = unitTypes.findIndex((obj => obj.name === slot.name));
         }
     }
@@ -49,7 +53,7 @@ function addMissionBat(tileId,slot,xp) {
     conselPut = false;
     conselAmmos = slot.gear;
     conselTriche = true;
-    console.log(conselUnit);
+    // console.log(conselUnit);
     let isNav = false;
     if (conselUnit.skills.includes('transorbital')) {
         isNav = true;
@@ -57,14 +61,14 @@ function addMissionBat(tileId,slot,xp) {
     putBat(tileId,0,xp,'deploy',false,true,true);
     if (isNav) {
         let navBat = getLastBatCreated();
-        console.log('NAVBAT');
-        console.log(navBat);
+        // console.log('NAVBAT');
+        // console.log(navBat);
         navId = navBat.id;
     } else if (navId >= 0) {
         // embarquer dans la navette
         let newBat = getLastBatCreated();
-        console.log('lastBat');
-        console.log(newBat);
+        // console.log('lastBat');
+        // console.log(newBat);
         loadBat(newBat.id,navId);
     }
 };
@@ -140,8 +144,8 @@ function getMissionBatList() {
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Tour de guet',['marquage','xxx','bulk','lunette']);
     missionBatList.push(newSlot);
-    console.log('MISSION BATS');
-    console.log(missionBatList);
+    // console.log('MISSION BATS');
+    // console.log(missionBatList);
     return missionBatList;
 };
 
@@ -185,5 +189,5 @@ function loadTheMissionBaby() {
     moveMissionZone(missionNum);
     conOut(true);
     playerInfos.okFill = true;
-    startMission();
+    startMission(true);
 };

@@ -64,19 +64,24 @@ function checkMyVol(theVol) {
     return theVol;
 };
 
+function playSound(theSound,theVol,multi) {
+    if (multi === undefined) {
+        multi = true;
+    }
+    let myVol = checkMyVol(playerInfos.volFx+theVol);
+    if (!clicSnd.playing() || multi) {
+        clicSnd = new Howl({
+            src: ['/static/sounds/fx/'+theSound+'.mp3'],
+            volume: myVol
+        });
+        clicSnd.play();
+    }
+};
+
 function eggSound() {
     let myVol = checkMyVol(playerInfos.volFx);
     var sound = new Howl({
         src: ['/static/sounds/fx/egg-fall.mp3'],
-        volume: myVol
-    });
-    sound.play();
-};
-
-function webSound() {
-    let myVol = checkMyVol(playerInfos.volFx);
-    var sound = new Howl({
-        src: ['/static/sounds/fx/web-fall.mp3'],
         volume: myVol
     });
     sound.play();
@@ -93,8 +98,6 @@ function clicSound(num) {
             theSound = 'clic'+num;
         }
     }
-    console.log('CLIC ===================================');
-    console.log(theSound);
     clicSnd = new Howl({
         src: ['/static/sounds/fx/'+theSound+'.mp3'],
         volume: myVol

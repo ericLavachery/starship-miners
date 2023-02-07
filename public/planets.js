@@ -285,7 +285,7 @@ function alienCanon() {
 };
 
 function meteorCanon() {
-    warnSound('meteor');
+    playSound('meteor',0.4);
     let canonTiles = [];
     let targetTile = -1;
     let bestTarget = 0;
@@ -376,7 +376,7 @@ function meteorImpact(tile) {
 };
 
 function stormThis(batId) {
-    warnSound('meteor');
+    playSound('meteor',0.4);
     let bat = getBatById(batId);
     let tile = getTile(bat);
     meteorImpact(tile);
@@ -385,7 +385,7 @@ function stormThis(batId) {
 };
 
 function webCanon(canonTiles) {
-    webSound();
+    playSound('web-fall',0);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (canonTiles.includes(bat.tileId)) {

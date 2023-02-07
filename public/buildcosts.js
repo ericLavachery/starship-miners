@@ -758,7 +758,7 @@ function checkCitCost(batType) {
 };
 
 function payUnitCost(batType) {
-    console.log(batType);
+    // console.log(batType);
     if (batType.costs != undefined) {
         Object.entries(batType.costs).map(entry => {
             let key = entry[0];
@@ -919,8 +919,8 @@ function resSub(resName,number) {
     if (res.cat === 'alien') {
         playerInfos.alienRes[resName] = playerInfos.alienRes[resName]-number;
     } else {
-        console.log('landers');
-        console.log(landers);
+        // console.log('landers');
+        // console.log(landers);
         let revLanders = landers.reverse();
         revLanders.forEach(function(lander) {
             if (number >= 1) {
@@ -1095,7 +1095,7 @@ function checkAllCosts(unit,ammoNames,withDeploy,withFlat) {
                 if (dispoRes < value) {
                     costStatus.ok = false;
                     costStatus.string = costStatus.string+'('+key+': '+dispoRes+' < '+value+') '
-                    console.log(costStatus.string);
+                    // console.log(costStatus.string);
                 }
             });
         }

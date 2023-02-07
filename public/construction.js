@@ -800,8 +800,8 @@ function checkUprankXP(myBat,myBatType) {
 };
 
 function checkUpUnit(batType) {
-    console.log('check uuuuuuuuuuuuuuuuuup');
-    console.log(batType);
+    // console.log('check uuuuuuuuuuuuuuuuuup');
+    // console.log(batType);
     let upUnitOK = {};
     upUnitOK.ok = false;
     upUnitOK.message = '';
@@ -809,10 +809,10 @@ function checkUpUnit(batType) {
     if (batType.skills.includes('upgrade')) {
         upUnitName = batType.bldUp[0];
     }
-    console.log(upUnitName);
+    // console.log(upUnitName);
     if (upUnitName != undefined) {
         let upBatType = getBatTypeByName(upUnitName);
-        console.log(upBatType);
+        // console.log(upBatType);
         let levelOK = true;
         let bldOK = false;
         let compReqOK = checkUnitCompReq(upBatType);
@@ -1013,7 +1013,7 @@ function conselNeat() {
 };
 
 function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
-    console.log('PUTBAT');
+    // console.log('PUTBAT');
     constuctorBatId = selectedBat.id;
     if (conselUnit.cat === 'aliens') {
         conselTriche = true;
@@ -1037,7 +1037,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
             // PAY COSTS !!!
             if (conselUnit.cat != 'aliens') {
                 if (!conselTriche) {
-                    console.log('PAYEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER');
+                    // console.log('PAYEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER');
                     payUnitCost(conselUnit);
                     payFlatCosts(conselUnit,conselAmmos);
                     if (!playerInfos.onShip) {
@@ -1054,7 +1054,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                 }
             }
             let tile = getTileById(tileId);
-            console.log(conselUnit);
+            // console.log(conselUnit);
             let nextId;
             let team;
             if (conselUnit.cat != 'aliens') {
@@ -1420,10 +1420,10 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
             selectedBat.apLeft = selectedBat.apLeft+apCost;
             selectedBatArrayUpdate();
             warning('Construction annulée:','Vous n\'avez pas les ressources nécessaires.'+costStatus.string);
-            console.log('not enough resources !');
+            // console.log('not enough resources !');
         }
     } else {
-        console.log('no conselUnit !');
+        // console.log('no conselUnit !');
     }
     if (conselTriche) {
         conselReset(false);
@@ -1919,7 +1919,7 @@ function getResRecup(bat,batType) {
         if (bat.squadsLeft < batType.squads-1) {
             recupFactor = Math.round(recupFactor*bat.squadsLeft/(batType.squads-1));
         }
-        console.log('hasScraptruck='+hasScraptruck);
+        // console.log('hasScraptruck='+hasScraptruck);
         let totalRes = 0;
         // BAT FLATCOST x%
         if (batType.costs != undefined) {
@@ -2187,13 +2187,13 @@ function autoRoad(tile) {
 };
 
 function putRoad(apCost) {
-    console.log('PUTROAD');
+    // console.log('PUTROAD');
     let tile = getTile(selectedBat);
     let terrain = getTileTerrain(selectedBat.tileId);
     if (tile.infra != undefined && tile.infra != 'Débris') {
         apCost = Math.round(apCost/2);
     }
-    console.log('apCost:'+apCost);
+    // console.log('apCost:'+apCost);
     if (selectedBatType.crew === 0) {
         let workForceId = checkNearWorkforce(selectedBat);
         if (workForceId >= 0) {
@@ -2250,7 +2250,7 @@ function checkRoadsAround(bat) {
 }
 
 function putInfra(infraName) {
-    console.log('INFRASTRUCTURE');
+    // console.log('INFRASTRUCTURE');
     let tile = getTile(selectedBat);
     let terrain = getTileTerrain(selectedBat.tileId);
     let infra = getInfraByName(infraName);
@@ -2268,7 +2268,7 @@ function putInfra(infraName) {
     if (selectedBatType.skills.includes('infast')) {
         apCost = Math.ceil(apCost/3);
     }
-    console.log('apCost:'+apCost);
+    // console.log('apCost:'+apCost);
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     selectedBat.xp = selectedBat.xp+0.4;
     // if (!selectedBat.tags.includes('construction')) {

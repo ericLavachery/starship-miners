@@ -1808,7 +1808,7 @@ function nomoveOut(myBat) {
         playerInfos.gangXP = playerInfos.gangXP+5;
         if (!myBatType.skills.includes('nolist')) {
             warning(myBatType.name,'Ce bataillon passe sous votre contrôle',false,myBat.tileId);
-            clicSound(12);
+            playSound('clic12',-0.2);
         }
         showMap(zone,true);
         if (myBatType.skills.includes('transorbital')) {

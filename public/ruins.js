@@ -51,7 +51,7 @@ function searchRuins(apCost,tileId) {
                 fxSound('fouille'+nf);
             }
         } else {
-            clicSound(16);
+            playSound('clic16',-0.2);
             warning('<span class="rq3">Alerte!</span>','<span class="vio">Les aliens ont fouillé une ruine!</span>',false,tileId);
         }
         tile.sh = -1;

@@ -1200,7 +1200,7 @@ function attack(melee,init) {
                 tagDelete(targetBat,'nomove');
                 targetBat.army = 21;
                 warning(targetBatType.name,'Ce bataillon passe sous votre contrôle',false,targetBat.tileId);
-                clicSound(12);
+                playSound('clic12',-0.2);
             }
         }
     }

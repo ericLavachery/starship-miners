@@ -184,14 +184,14 @@ function commandes() {
             if (playerInfos.onShip) {
                 if (playerInfos.onStart) {
                     $('#commandz').append('<hr>');
-                    $('#commandz').append('<button type="button" title="Sortir de l\'abri" class="boutonRouge iconButtons" onclick="startMission()"><i class="fas fa-dungeon"></i></button>');
+                    $('#commandz').append('<button type="button" title="Sortir de l\'abri" class="boutonRouge iconButtons" onclick="startMission(false)"><i class="fas fa-dungeon"></i></button>');
                 } else {
                     if (zoneFiles.length >= 2) {
                         $('#commandz').append('<hr>');
                         $('#commandz').append('<button type="button" title="Choisir une zone pour la prochaine mission" class="boutonRouge iconButtons" onclick="pickZone()" onmousedown="clicSound(5)"><i class="fas fa-map"></i></button>');
                         if (playerInfos.missionZone >= 1 && isLanderDeployed()) {
                             $('#commandz').append('<button type="button" title="Partir en mission sur la zone '+playerInfos.missionZone+'" class="boutonNoir iconButtons" onclick="showStartLander()" onmousedown="warnSound(`nope`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
-                            $('#commandz').append('<button type="button" title="Partir en mission sur la zone '+playerInfos.missionZone+'" class="boutonRouge iconButtons" onclick="startMission()" onmousedown="warnSound(`takeoff`)" id="takeof2"><i class="fas fa-space-shuttle"></i></button>');
+                            $('#commandz').append('<button type="button" title="Partir en mission sur la zone '+playerInfos.missionZone+'" class="boutonRouge iconButtons" onclick="startMission(false)" onmousedown="warnSound(`takeoff`)" id="takeof2"><i class="fas fa-space-shuttle"></i></button>');
                         }
                     }
                 }

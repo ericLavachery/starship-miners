@@ -21,7 +21,7 @@ function fortification(apCost) {
         selectedBat.tags.push('fortif');
     }
     selectedBat.apLeft = selectedBat.apLeft-apCost;
-    clicSound('fortif');
+    playSound('fortif',-0.1);
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -142,7 +142,7 @@ function goCommand(chefBatId,gainPA) {
     let chefBat = getBatById(chefBatId);
     chefBat.apLeft = chefBat.apLeft-1;
     chefBat.tags.push('command');
-    clicSound('gogogo');
+    playSound('gogogo',-0.2);
     doneAction(chefBat);
     doneAction(selectedBat);
     selectedBatArrayUpdate();
@@ -190,7 +190,7 @@ function goTreuil(treuilBatId,gainPA) {
     selectedBat.salvoLeft = 0;
     let treuilBat = getBatById(treuilBatId);
     treuilBat.apLeft = treuilBat.apLeft-4;
-    clicSound('winch');
+    playSound('winch',-0.2,false);
     doneAction(treuilBat);
     tagDelete(selectedBat,'guet');
     doneAction(selectedBat);
@@ -253,7 +253,7 @@ function goDoxey() {
         if (selectedBat.emo < 0) {
             selectedBat.emo = 0;
         }
-        clicSound('potion');
+        playSound('potion',-0.2);
         doneAction(selectedBat);
         selectedBatArrayUpdate();
         showMap(zone,true);
@@ -280,7 +280,7 @@ function diversion() {
     selectedBat.tags.push('lasso');
     selectedBat.tags.push('lasso');
     selectedBat.tags.push('lasso');
-    clicSound('toxcloches');
+    playSound('toxcloches',-0.2);
     doneAction(selectedBat);
     camoOut();
     selectedBatArrayUpdate();
@@ -334,13 +334,13 @@ function taming(tamingId) {
     let tamedAlien = getAlienById(tamingId);
     let tamingChance = ((selectedBat.vet*4)+selectedBat.apLeft+4)*3;
     if (rand.rand(1,100) > tamingChance) {
-        clicSound('yeebof');
+        playSound('yeebof',-0.2);
         tamedAlien.apLeft = 15+rand.rand(0,6);
         tamedAlien.salvoLeft = 1;
         tamedAlien.tags.push('rage');
         tamedAlien.tags.push('rage');
     } else {
-        clicSound('yeehaw');
+        playSound('yeehaw',-0.2);
         let petSquadsLeft = tamedAlien.squadsLeft;
         let petDamage = tamedAlien.damage;
         let tileId = tamedAlien.tileId;
@@ -369,6 +369,7 @@ function rush(rushAP) {
     selectedBat.apLeft = selectedBat.apLeft+rushAP;
     selectedBat.tags.push('rush');
     selectedBat.tags.push('rush');
+    playSound('rush',-0.1);
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -379,7 +380,7 @@ function rage() {
     selectedBat.tags.push('norage');
     selectedBat.tags.push('norage');
     // doneAction(selectedBat);
-    clicSound('rage');
+    playSound('rage',-0.2);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
@@ -403,7 +404,7 @@ function instaKill() {
     } else {
         selectedBat.tags.push('nokill');
     }
-    clicSound('ikill');
+    playSound('ikill',-0.2);
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -470,7 +471,7 @@ function gloireASatan() {
             }
         }
     });
-    clicSound('satan');
+    playSound('satan',-0.2);
     tagDelete(selectedBat,'guet');
     doneAction(selectedBat);
     selectedBatArrayUpdate();
@@ -615,7 +616,7 @@ function camouflage(apCost) {
             camOK = true;
             selectedBat.fuzz = -2;
             if (apCost > 0) {
-                clicSound('camo');
+                playSound('camo',-0.2);
             }
         } else {
             if (apCost === 0) {
@@ -625,7 +626,7 @@ function camouflage(apCost) {
                 if (selectedBat.fuzz > -2) {
                     camOK = false;
                     selectedBat.fuzz = naturalFuzz;
-                    clicSound('camofuck');
+                    playSound('camofuck',-0.2);
                 } else {
                     camOK = true;
                     selectedBat.fuzz = -2;
@@ -753,7 +754,7 @@ function ambush(apCost) {
         selectedBat.tags.push('embuscade');
     }
     selectedBat.apLeft = selectedBat.apLeft-apCost;
-    clicSound('ambush');
+    playSound('ambush',-0.2);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
@@ -1248,6 +1249,7 @@ function removeWeb(apCost) {
         }
     }
     selectedBat.apLeft = selectedBat.apLeft-apCost;
+    playSound('hose',-0.3);
     tagDelete(selectedBat,'mud');
     doneAction(selectedBat);
     selectedBatArrayUpdate();
@@ -1630,7 +1632,7 @@ function fogStart() {
         selectedBat.tags.push('fog');
     }
     selectedBat.fuzz = 3;
-    clicSound('fogstart');
+    playSound('fogstart',-0.2);
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     checkFoggedTiles();
@@ -1644,7 +1646,7 @@ function fogStop() {
         tagIndex = selectedBat.tags.indexOf('fog');
         selectedBat.tags.splice(tagIndex,1);
     }
-    clicSound('fogstop');
+    playSound('fogstop',-0.2);
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     checkFoggedTiles();

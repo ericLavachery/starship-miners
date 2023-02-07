@@ -194,66 +194,6 @@ function gangEdit() {
     let totalGangComp = getTotalCompCosts();
     $('#conUnitList').append('<span class="constName">Total Compétences : '+toNiceString(totalGangComp)+'</span>');
     $("#conUnitList").animate({scrollTop:0},"fast");
-    showEquip();
-};
-
-function showEquip() {
-    $('#conUnitList').append('<br>');
-    // ARMORS
-    $('#conUnitList').append('<br><span class="constName vert">ARMURES</span><br>');
-    armorTypes.forEach(function(armor) {
-        if (armor.cat === 'armor') {
-            if (armor.compReq != undefined) {
-                let compReqOK = checkCompReq(armor);
-                if (compReqOK) {
-                    $('#conUnitList').append('<span class="constName gf">'+armor.name+' (+'+armor.armor+'/'+armor.ap+') '+armor.skills+'</span><br>');
-                }
-            } else if (!armor.name.includes('aucun')) {
-                $('#conUnitList').append('<span class="constName gff">'+armor.name+' (+'+armor.armor+'/'+armor.ap+') '+armor.skills+'</span><br>');
-            }
-        }
-    });
-    // DROGUES
-    $('#conUnitList').append('<br><span class="constName vert">DROGUES</span><br>');
-    armorTypes.forEach(function(drug) {
-        if (drug.cat === 'drogue') {
-            if (drug.compReq != undefined) {
-                let compReqOK = checkCompReq(drug);
-                if (compReqOK) {
-                    $('#conUnitList').append('<span class="constName gf">'+drug.name+'</span><br>');
-                }
-            } else if (!drug.name.includes('aucun')) {
-                $('#conUnitList').append('<span class="constName gff">'+drug.name+'</span><br>');
-            }
-        }
-    });
-    // EQUIP
-    $('#conUnitList').append('<br><span class="constName vert">EQUIPEMENTS</span><br>');
-    armorTypes.forEach(function(equip) {
-        if (equip.cat === 'equip') {
-            if (equip.compReq != undefined) {
-                let compReqOK = checkCompReq(equip);
-                if (compReqOK) {
-                    $('#conUnitList').append('<span class="constName gf">'+equip.name+'</span><br>');
-                }
-            } else if (!equip.name.includes('aucun')) {
-                $('#conUnitList').append('<span class="constName gff">'+equip.name+'</span><br>');
-            }
-        }
-    });
-    // AMMOS
-    $('#conUnitList').append('<br><span class="constName vert">AMMOS</span><br>');
-    ammoTypes.forEach(function(ammo) {
-        if (ammo.compReq != undefined) {
-            let compReqOK = checkCompReq(ammo);
-            if (compReqOK) {
-                $('#conUnitList').append('<span class="constName gf">'+ammo.name+'</span><br>');
-            }
-        } else if (!ammo.noList) {
-            $('#conUnitList').append('<span class="constName gff">'+ammo.name+'</span><br>');
-        }
-    });
-    $('#conUnitList').append('<br>');
 };
 
 function changeBarbs(stop) {

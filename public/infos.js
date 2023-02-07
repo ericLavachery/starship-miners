@@ -152,7 +152,7 @@ function batInfos(bat,batType,pop) {
     //         tagDelete(bat,'nomove');
     //         bat.army = 21;
     //         warning(batType.name,'Ce bataillon passe sous votre contrôle',false);
-    //         clicSound(12);
+    //         playSound('clic12',-0.2);
     //     }
     // }
     if (near.friends && !friendsAlert) {
@@ -160,12 +160,12 @@ function batInfos(bat,batType,pop) {
             if (noAuthority) {
                 if (!noControlAlert) {
                     warning('Bataillons non contrôlés','Vous avez rejoint un ou plusieurs bataillons d\'un autre groupe.<br><span class="or">Vous ne pouvez pas en prendre contrôle</span> (Votre bataillon n\'inspire pas confiance).');
-                    clicSound(15);
+                    playSound('clic15',-0.2);
                     noControlAlert = true;
                 }
             } else {
                 warning('Bataillons non contrôlés','Vous avez rejoint un ou plusieurs bataillons d\'un autre groupe.<br><span class="cy">Vous pouvez en prendre contrôle</span> en cliquant dessus.');
-                clicSound(13);
+                playSound('clic13',-0.2);
                 friendsAlert = true;
             }
         }

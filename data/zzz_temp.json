@@ -3,6 +3,73 @@
 </div>
 (delay devrait être une classe!)
 
+{
+    "id":101,
+    "name":"Genius",
+    "pic":"genius",
+    "cat":"vehicles",
+    "kind":"zero-tanks",
+    "squads":5,
+    "squadSize":3,
+    "crew":3,
+    "hp":70,
+    "armor":12,
+    "size":24,
+    "stealth":5,
+    "speed":2,
+    "ap":17,
+    "maxSalvo":2,
+    "weapon":{
+        "name":"Mitrailleuse",
+        "cost":3,
+        "range":2,
+        "elevation":1,
+        "noStab":true,
+        "noise":4,
+        "rof":24,
+        "accuracy":17,
+        "dca":1.15,
+        "power":11,
+        "armors":0.77,
+        "aoe":"unit",
+        "sound":"mit_mid",
+        "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+    },
+    "weapon2":{
+        "name":"Boutoir",
+        "cost":2,
+        "range":0,
+        "noFly":true,
+        "noDef":true,
+        "noBig":true,
+        "noBis":true,
+        "free":true,
+        "noDatt":true,
+        "noShield":true,
+        "rof":6,
+        "accuracy":22,
+        "power":14,
+        "aoe":"brochette",
+        "sound":"belier",
+        "ammo":["standard","belier-spike"]
+    },
+    "protection":[],
+    "equip":["aucun","chargeur1","wstab","g2motor","snorkel","belier","moisso","e-flash","e-radar","waterproof","e-control","e-road"],
+    "log3eq":["snorkel"],
+    "autoEq":["e-road","g2motor","chargeur1","e-radar"],
+    "moveCost":2.4,
+    "maxFlood":2,
+    "maxScarp":2,
+    "maxVeg":3,
+    "skills":["b_light","fortif","longshot","defense","mecano","maycamo","ravitaillement","cleaning","dealer","nitro","sudu","light","badcrewsave","recupcit","recupres","caterp","kzin","treuil","routes","hveh"],
+    "mecanoCost":6,
+    "maxSkill":24,
+    "maxDrug":18,
+    "fuzz":2,
+    "deathFx":"planeexploair1",
+    "mvSnd":"tank"
+},
+
 function getBonusEqOld(unit) {
     // console.log("CHECK BONUS EQ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     let bonusEqName = '';

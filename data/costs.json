@@ -793,7 +793,7 @@
     {
         "id":156,
         "name":"Riggers",
-        "levels":{"rednecks":12,"blades":16,"bulbos":9,"drogmulojs":14,"tiradores":13,"detruas":99,"brasier":12},
+        "levels":{"rednecks":13,"blades":16,"bulbos":9,"drogmulojs":14,"tiradores":13,"detruas":99,"brasier":12},
         "bldReq":["Atelier","Centre de recherches"],
         "compReq":{"const":1,"trans":1},
         "compPass":["rednecks","bulbos"],
@@ -1268,7 +1268,7 @@
     {
         "id":101,
         "name":"Genius",
-        "levels":{"rednecks":9,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":99,"detruas":11,"brasier":11},
+        "levels":{"rednecks":9,"blades":99,"bulbos":10,"drogmulojs":10,"tiradores":99,"detruas":10,"brasier":11},
         "bldReq":["Armurerie","Chaîne de montage"],
         "compReq":{"tank":1},
         "costs":{"Fer":110,"Scrap":330,"Carbone":105,"Aluminium":30,"Moteurs":120,"Tungstène":65,"Cuivre":25,"Electros":25,"Batteries":25,"Compo2":100,"Silicium":15,"Huile":35},
@@ -1338,10 +1338,11 @@
     {
         "id":107,
         "name":"Flaktanks",
-        "levels":{"rednecks":17,"blades":99,"bulbos":16,"drogmulojs":16,"tiradores":17,"detruas":15,"brasier":16},
+        "levels":{"rednecks":17,"blades":99,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":15,"brasier":16},
         "bldReq":["Arsenal","Chaîne de montage","Poste radio"],
-        "compReq":{"tank":1},
-        "compHardReq":{"explo":1},
+        "compReq":{"tank":2,"bal":2},
+        "altCompReq":{"tank":1,"arti":2},
+        "compHardReq":{"explo":1,"det":2},
         "costs":{"Fer":189,"Scrap":349,"Carbone":270,"Aluminium":198,"Moteurs":150,"Titane":54,"Tungstène":162,"Cuivre":36,"Electros":18,"Batteries":37,"Compo2":216,"Compo3":81,"Huile":10,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":100},
         "fabTime":100,
@@ -1432,10 +1433,24 @@
         "levels":{"rednecks":15,"blades":99,"bulbos":99,"drogmulojs":19,"tiradores":99,"detruas":13,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "compReq":{"tank":2},
-        "costs":{"Fer":240,"Scrap":192,"Carbone":128,"Moteurs":128,"Titane":16,"Tungstène":224,"Cuivre":16,"Batteries":16,"Compo2":128,"Compo3":96,"Huile":10},
-        "deploy":{"Fuel":85},
+        "compHardReq":{"explo":1},
+        "costs":{"Fer":240,"Scrap":200,"Carbone":140,"Moteurs":140,"Titane":20,"Tungstène":240,"Cuivre":20,"Batteries":20,"Compo2":140,"Compo3":100,"Huile":10},
+        "deploy":{"Fuel":100},
         "fabTime":110,
         "inRuin":3
+    },
+    {
+        "id":307,
+        "name":"Minitanks",
+        "levels":{"rednecks":12,"blades":99,"bulbos":14,"drogmulojs":15,"tiradores":99,"detruas":11,"brasier":99},
+        "bldReq":["Arsenal","Chaîne de montage"],
+        "compReq":{"energ":2},
+        "compPass":["detruas","rednecks"],
+        "compHardReq":{"tank":2},
+        "costs":{"Fer":240,"Scrap":160,"Carbone":120,"Moteurs":120,"Titane":10,"Aluminium":120,"Tungstène":60,"Cuivre":20,"Batteries":20,"Compo2":100,"Compo3":80,"Huile":10},
+        "deploy":{"Fuel":85},
+        "fabTime":100,
+        "inRuin":2
     },
     {
         "id":38,
@@ -1681,7 +1696,7 @@
     {
         "id":120,
         "name":"Megadumps",
-        "levels":{"rednecks":13,"blades":12,"bulbos":13,"drogmulojs":14,"tiradores":14,"detruas":13,"brasier":13},
+        "levels":{"rednecks":13,"blades":12,"bulbos":13,"drogmulojs":13,"tiradores":14,"detruas":13,"brasier":13},
         "bldReq":["Garage","Atelier"],
         "compReq":{"trans":3},
         "costs":{"Fer":96,"Scrap":378,"Carbone":288,"Aluminium":96,"Moteurs":200,"Tungstène":96,"Cuivre":32,"Electros":12,"Batteries":114,"Compo2":390,"Compo3":108,"Mendium":80,"Huile":10},
@@ -1820,7 +1835,7 @@
     {
         "id":134,
         "name":"Taupes",
-        "levels":{"rednecks":17,"blades":16,"bulbos":13,"drogmulojs":17,"tiradores":16,"detruas":99,"brasier":17},
+        "levels":{"rednecks":17,"blades":16,"bulbos":13,"drogmulojs":16,"tiradores":16,"detruas":99,"brasier":17},
         "bldReq":["Centre de recherches","Usine"],
         "compReq":{"robo":1},
         "compPass":["blades","brasier","drogmulojs","rednecks"],

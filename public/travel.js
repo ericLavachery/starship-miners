@@ -1,4 +1,4 @@
-function startMission() {
+function startMission(isTest) {
     $('#unitInfos').empty();
     $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
@@ -7,7 +7,9 @@ function startMission() {
         saveGame();
         events(false,65,true,true);
         // noter les ressources de la station
-        updateVMRes();
+        if (!isTest) {
+            updateVMRes();
+        }
         playerInfos.undarkOnce = [];
         batUnselect();
         // créer db batsInSpace, avec les landers marqués deploy=true et toutes les unités qui sont dedans
@@ -584,7 +586,7 @@ function pushSonde(mapNum,mapMax) {
 
 function crashSonde() {
     modeSonde = false;
-    clicSound(sondecrash);
+    playSound('sondecrash',-0.2);
     loadZone(0);
     showedTilesReset(false);
     miniOut();
