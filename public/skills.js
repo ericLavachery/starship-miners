@@ -850,12 +850,17 @@ function goDrug(apCost,drugName) {
             selectedBat.tags.push(drug.name);
             drugInstantBonus(drug,false);
         }
+        playSound(drug.sound,0);
         payCost(drug.costs);
         doneAction(ravitBat);
         doneAction(selectedBat);
         selectedBatArrayUpdate();
         showBatInfos(selectedBat);
     }
+};
+
+function drugSound(drug) {
+    playSound('ambush',-0.2);
 };
 
 function drugInstantBonus(drug,fromPack) {

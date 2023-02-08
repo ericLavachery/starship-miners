@@ -66,6 +66,7 @@
         "popIn":["Bar"],
         "rarity":15,
         "icon":"fas fa-wine-bottle",
+        "sound":"drinklot",
         "info":"Immunisé à la peur / -2 PA"
     },
     {
@@ -81,6 +82,7 @@
         "popIn":["Hôpital","Pharmacie","Clinique","Bar"],
         "rarity":3,
         "icon":"fas fa-syringe",
+        "sound":"drink",
         "info":"Bonus PA (variable)"
     },
     {
@@ -95,6 +97,7 @@
         "popIn":["Hôpital","Pharmacie","Clinique","Centre de recherches","Laboratoire"],
         "rarity":4,
         "icon":"ra ra-heart-bottle rpg",
+        "sound":"drink",
         "info":"Régénération"
     },
     {
@@ -109,6 +112,7 @@
         "popIn":["Hôpital","Pharmacie","Clinique","Centre de recherches","Laboratoire"],
         "rarity":2,
         "icon":"fas fa-cannabis",
+        "sound":"drinklot",
         "info":"+4 PA / protection poisons et maladies / réduit le stress"
     },
     {
@@ -123,6 +127,7 @@
         "popIn":["Centre de recherches","Laboratoire","Bar"],
         "rarity":1,
         "icon":"ra ra-pills rpg",
+        "sound":"pills",
         "info":"Dégâts reçus réduits / immunisé à la peur / réduit le stress / -1 PA"
     },
     {
@@ -137,6 +142,7 @@
         "popIn":["Centre de recherches","Laboratoire","Bar"],
         "rarity":1,
         "icon":"far fa-eye",
+        "sound":"drink",
         "info":"+6 précision / +3 défense / guérit les maladies"
     },
     {
@@ -151,6 +157,7 @@
         "popIn":["Centre de recherches","Laboratoire","Bar"],
         "rarity":1,
         "icon":"ra ra-player-dodge rpg",
+        "sound":"drink",
         "info":"+3 PA / +1 salve"
     },
     {
@@ -165,6 +172,7 @@
         "popIn":["Centre de recherches","Laboratoire","Bar"],
         "rarity":1,
         "icon":"fas fa-fist-raised",
+        "sound":"drink",
         "info":"Bonus de puissance aux armes de mêlée"
     },
     {
@@ -180,6 +188,7 @@
         "popIn":["Garage","Station service","Aéroport","Port"],
         "rarity":4,
         "icon":"ra ra-bottled-bolt rpg",
+        "sound":"pour",
         "info":"Bonus PA (variable)"
     },
     {
@@ -195,6 +204,7 @@
         "popIn":["Garage","Station service","Aéroport","Port"],
         "rarity":3,
         "icon":"fas fa-tachometer-alt",
+        "sound":"pour",
         "info":"Augmente la rapidité de déplacement"
     },
     {
@@ -209,6 +219,7 @@
         "popIn":["Garage","Station service","Aéroport","Port","Atelier","Usine"],
         "rarity":15,
         "icon":"fa fa-wrench",
+        "sound":"repair",
         "info":"Pièces de rechange pour rafistoler un véhicule"
     },
     {

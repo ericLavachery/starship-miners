@@ -1124,6 +1124,7 @@ function maintenance() {
     if (maintOK) {
         payCost(maintCosts);
         selectedBat.soins = 0;
+        playSound('repair',-0.2);
         selectedBatArrayUpdate();
         goSoute();
         showBatInfos(selectedBat);

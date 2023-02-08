@@ -45,13 +45,28 @@ function extraction(apCost) {
         selectedBat.tags.push('mining');
     }
     selectedBat.apLeft = selectedBat.apLeft-apCost;
-    // camoOut();
+    miningSound();
     tagDelete(selectedBat,'guet');
     tagDelete(selectedBat,'fortif');
     tagDelete(selectedBat,'vise');
     tagDelete(selectedBat,'luckyshot');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
+};
+
+function miningSound() {
+    let mType = selectedBatType.mining.types[0];
+    if (mType === 'Mine') {
+        playSound('mining',-0.2);
+    } else if (mType === 'Derrick') {
+        playSound('motor',0);
+    } else if (mType === 'Scrap') {
+        playSound('fouille3',-0.2);
+    } else if (mType === 'Pompe') {
+        playSound('pump',0);
+    } else if (mType === 'Comptoir') {
+        playSound('chainsaw',-0.2);
+    }
 };
 
 function mining(bat) {
