@@ -1415,7 +1415,7 @@
     {
         "id":239,
         "name":"Coffres",
-        "pic":"coffre",
+        "pic":"coffres",
         "cat":"devices",
         "kind":"zero-trans-fret",
         "sort":1,

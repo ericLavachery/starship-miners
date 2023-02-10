@@ -1011,6 +1011,19 @@ function skillsInfos(bat,batType,near,nearby) {
     }
     $('#unitInfos').append('<span id="line-moves"></span>');
     lineBreak = false;
+    // TAKE CONTROL OF OUTSIDERS
+    if (batType.skills.includes('takeout')) {
+        let nevMove = false;
+        if (zone[0].neverMove != undefined) {
+            if (zone[0].neverMove) {
+                nevMove = true;
+            }
+        }
+        if (!nevMove && !bat.tags.includes('takeout') && !bat.tags.includes('nomove')) {
+            $('#unitInfos').append('<button type="button" title="Prendre le contrôle des résistants" class="boutonRouge iconButtons" onclick="goTakeOut()"><i class="ra ra-ringing-bell rpg"></i> <span class="small">5</span></button>');
+            lineBreak = true;
+        }
+    }
     // COMMANDE
     if (!batType.skills.includes('dome') && !batType.skills.includes('pilone') && !batType.skills.includes('cfo')) {
         let commandOK = false;

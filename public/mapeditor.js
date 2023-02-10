@@ -71,8 +71,9 @@ function mapEditWindow() {
     selectStuff('NoMove','batNoMove2','Bataillon immobilisé (non contrôlé par le joueur)');
     selectStuff('Outsider','batOutsider2','Bataillon outsider (si démantelé, pourrait donner des criminels)');
     selectStuff('NoPrefab','bldNoPrefab2','Ne peut pas être déconstruit (démantèlement seulement / personnel réduit)');
-    selectStuff('Bleed','bleed','Blesser le bataillon');
+    selectStuff('NoPilot','noDriver','Pas de conducteurs (Véhicule sans équipage)');
     // <br>
+    selectStuff('Bleed','bleed','Blesser le bataillon');
     selectStuff('CitChange','lessCit2','Diminuer le nombre de citoyens ou criminels');
     // Landing
     selectStuff('Lander','lander','Point d\'atterrissage lander (ou navette)');
@@ -677,6 +678,8 @@ function clickEdit(tileId) {
             addTagToBatOnTile(tile,'outsider');
         } else if (mped.sinf === 'NoPrefab') {
             addTagToBatOnTile(tile,'noprefab');
+        } else if (mped.sinf === 'NoPilot') {
+            addTagToBatOnTile(tile,'nopilots');
         } else if (mped.sinf === 'Bleed') {
             bleedBat(tile);
         } else if (mped.sinf === 'CitChange') {
@@ -806,10 +809,15 @@ function addTagToBatOnTile(tile,tag) {
         if (batType.cat === 'buildings' || batType.cat === 'devices') {
             tagOK = true;
         }
+    }
+    if (tag === 'nopilots') {
+        tagOK = false;
         if (batType.cat === 'vehicles') {
-            if (batType.crew >= 2) {
-                if (batType.kind === 'zero-trans-fret') {
-                    tagOK = true;
+            if (batType.crew >= 1) {
+                if (batType.kind === 'zero-transports' || batType.kind === 'zero-trans-fret') {
+                    if (batType.transUnits >= 300) {
+                        tagOK = true;
+                    }
                 }
             }
         }
@@ -821,7 +829,7 @@ function addTagToBatOnTile(tile,tag) {
             tagDelete(bat,tag);
         }
     }
-    if (batType.skills.includes('noselfmove')) {
+    if (batType.skills.includes('noselfmove') || bat.tags.includes('nopilots')) {
         tagDelete(bat,'outsider');
         tagDelete(bat,'nomove');
     }
@@ -1093,4 +1101,20 @@ function zonePercCheck() {
     zone[0].pw = percW;
     percR = Math.round(percR/36);
     zone[0].pr = percR;
+};
+
+function roadsKill() {
+    zone.forEach(function(tile) {
+        if (tile.rd != undefined) {
+            delete tile.rd;
+        }
+        if (tile.ruins != undefined) {
+            delete tile.ruins;
+            delete tile.sh;
+            delete tile.rd;
+            delete tile.rt;
+            removeScrapFromRuins(tile);
+        }
+    });
+    showMap(zone,false);
 };

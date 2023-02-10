@@ -1827,7 +1827,7 @@ function nomoveOut(myBat) {
             });
         }
     }
-}
+};
 
 function removeNoMoves(myBat) {
     let nevMove = false;

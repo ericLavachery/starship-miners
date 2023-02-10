@@ -317,6 +317,9 @@ function healEverything() {
                 gearTags.push('outsider');
             }
         }
+        if (bat.tags.includes('nopilots')) {
+            gearTags.push('nopilots');
+        }
         if (bat.tags.includes('schef')) {
             gearTags.push('schef');
         }

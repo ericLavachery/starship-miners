@@ -1836,7 +1836,9 @@ function checkDeath(bat,batType,gain) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 playerInfos.deadBats.push(batType.name);
                 transDestroy(deadId,tileId);
-                saveCrew(batType,deadId,tileId,isNoPrefab);
+                if (!bat.tags.includes('nopilots')) {
+                    saveCrew(batType,deadId,tileId,isNoPrefab);
+                }
                 playMusic('rip',true);
             }
             deadBatsList.push(bat.id);

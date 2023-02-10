@@ -641,7 +641,7 @@ function terrainAccess(batId,targetTileId) {
     let bat = getBatById(batId);
     let batType = getBatType(bat);
     let selfMove = true;
-    if (batType.skills.includes('noselfmove')) {
+    if (batType.skills.includes('noselfmove') || bat.tags.includes('nopilots')) {
         if (batType.transUnits >= 1) {
             selfMove = false;
             if (bat.transIds.length >= 1) {

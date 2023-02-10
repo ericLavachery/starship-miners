@@ -638,6 +638,49 @@ function checkDropSafe(layBatTileId) {
     return tileDrop;
 };
 
+function checkMineRuinsRes(ruinType,coffre,tile) {
+    console.log('MINE RUINS MINED RES');
+    let allRes = getAllRes(tile.id);
+    console.log(allRes);
+    if (Object.keys(allRes).length >= 1) {
+        if (ruinType.name === 'Pompes') {
+            Object.entries(allRes).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                let found = 0;
+                if (key === 'Hydrocarbure' || key === 'Eau') {
+                    found = Math.floor(value*rand.rand(0,3)*rand.rand(3,12)/48);
+                }
+                console.log(key+'='+found);
+                if (found >= 1) {
+                    if (coffre.transRes[key] === undefined) {
+                        coffre.transRes[key] = found;
+                    } else {
+                        coffre.transRes[key] = coffre.transRes[key]+found;
+                    }
+                }
+            });
+        } else {
+            Object.entries(allRes).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                let found = Math.floor(value*rand.rand(0,3)*rand.rand(3,12)/48);
+                if (key === 'Scrap') {
+                    found = 0;
+                }
+                console.log(key+'='+found);
+                if (found >= 1) {
+                    if (coffre.transRes[key] === undefined) {
+                        coffre.transRes[key] = found;
+                    } else {
+                        coffre.transRes[key] = coffre.transRes[key]+found;
+                    }
+                }
+            });
+        }
+    }
+};
+
 function checkResByKind(resKind,coffre,tile,recNum) {
     // resKind : food, science, construction, military, industry, medecine, any
     recNum = recNum+1;
@@ -1106,9 +1149,10 @@ function checkRuinsRes(tile) {
         numRuins = 50;
     }
     let resChance = ruinsResBase-(zone[0].mapDiff*3)+15;
+    // resChance = 100;
     let ruinType = checkRuinType(tile,false);
     console.log('resChance: '+resChance);
-    if (ruinType.checks.length >= 1) {
+    if (ruinType.checks.length >= 1 || ruinType.name === 'Mine' || ruinType.name === 'Pompes') {
         if (rand.rand(1,100) <= resChance) {
             conselTriche = true;
             putBatAround(tile.id,false,'near',239,0,'go');
@@ -1117,9 +1161,14 @@ function checkRuinsRes(tile) {
             if (ruinType === undefined) {
                 checkResByKind('any',coffre,tile,0);
             } else {
-                ruinType.checks.forEach(function(checkKind) {
-                    checkResByKind(checkKind,coffre,tile,0);
-                });
+                if (ruinType.checks.length >= 1) {
+                    ruinType.checks.forEach(function(checkKind) {
+                        checkResByKind(checkKind,coffre,tile,0);
+                    });
+                }
+                if (ruinType.name === 'Mine' || ruinType.name === 'Pompes') {
+                    checkMineRuinsRes(ruinType,coffre,tile);
+                }
             }
         }
     }

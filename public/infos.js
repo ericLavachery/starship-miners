@@ -82,7 +82,7 @@ function batInfos(bat,batType,pop) {
                 }
             }
         }
-        if (batType.skills.includes('noselfmove')) {
+        if (batType.skills.includes('noselfmove') || bat.tags.includes('nopilots')) {
             tagDelete(bat,'outsider');
             tagDelete(bat,'nomove');
         }
@@ -256,7 +256,11 @@ function batInfos(bat,batType,pop) {
         let mvmt = ap/baseMoveCost;
         mvmt = mvmt.toFixedNumber(1);
         if (batType.moveCost > 90) {mvmt = 0;}
-        $('#'+bodyPlace).append('<span class="paramName">Mouvement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">'+mvmt+'</span><br>');
+        if (bat.tags.includes('nopilots') || batType.skills.includes('noselfmove')) {
+            $('#'+bodyPlace).append('<span class="paramName or" title="Sans équipage! Ne peux bouger que si vous embarquez un bataillon">Mouvement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue or">'+mvmt+'</span><br>');
+        } else {
+            $('#'+bodyPlace).append('<span class="paramName">Mouvement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">'+mvmt+'</span><br>');
+        }
     }
     // SQUADS
     let iconCol = 'gff';
@@ -283,6 +287,9 @@ function batInfos(bat,batType,pop) {
     let totalCrew = batType.crew*batType.squadSize*batType.squads;
     if (bat.tags.includes('noprefab')) {
         totalCrew = Math.ceil(totalCrew/2);
+    }
+    if (bat.tags.includes('nopilots')) {
+        totalCrew = 0;
     }
     if (pop) {
         $('#'+bodyPlace).append('<span class="paramName">Personnel</span><span class="paramIcon"><i class="fas fa-user-friends"></i></span><span class="paramValue">'+totalCrew+'</span><br>');

@@ -493,7 +493,9 @@ function batDeath(bat,count,gain,isWiped) {
             if (batType.skills.includes('transport')) {
                 transDestroy(tileId,deadId,isFlying);
             }
-            saveCrew(batType,deadId,tileId,isNoPrefab);
+            if (!bat.tags.includes('nopilots')) {
+                saveCrew(batType,deadId,tileId,isNoPrefab);
+            }
         }
         batIndex = batList.findIndex((obj => obj.id == bat.id));
         batList.splice(batIndex,1);

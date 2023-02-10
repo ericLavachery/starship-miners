@@ -1109,6 +1109,25 @@
         "inRuin":2
     },
     {
+        "id":308,
+        "name":"Bazookas",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":[],
+        "compReq":{},
+        "costs":{"Fer":96,"Scrap":96,"Plomb":48,"Aluminium":96,"Tungstène":48,"Végétaux":96,"Blendium":48},
+        "fabTime":30
+    },
+    {
+        "id":309,
+        "name":"Hussards",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":[],
+        "compReq":{},
+        "costs":{"Fer":270,"Scrap":300,"Bois":60,"Carbone":60,"Moteurs":45,"Soufre":30,"Plomb":30},
+        "deploy":{"Fuel":20},
+        "fabTime":30
+    },
+    {
         "id":302,
         "name":"Rebelles",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},

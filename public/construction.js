@@ -1567,6 +1567,7 @@ function dismantle(batId,fuite) {
         let isLoaded = checkCharged(bat,'load');
         // let resFret = checkResLoad(bat);
         if (!isCharged && !isLoaded) {
+            // removeNoMoves(bat);
             let nearby = nearbyAliens(bat);
             let squadsLost = batType.squads-bat.squadsLeft-1;
             if (squadsLost < 0) {squadsLost = 0;}
@@ -1594,6 +1595,9 @@ function dismantle(batId,fuite) {
             let crew = batType.squads*batType.squadSize*batType.crew;
             if (bat.tags.includes('noprefab')) {
                 crew = Math.ceil(crew/2);
+            }
+            if (bat.tags.includes('nopilots')) {
+                crew = 0;
             }
             let xp = getXp(bat);
             batUnselect();

@@ -657,6 +657,9 @@ function showBataillon(bat) {
         if (bat.tags.includes('noprefab')) {
             tagz = tagz+' (noprefab)';
         }
+        if (bat.tags.includes('nopilots')) {
+            tagz = tagz+' (nopilots)';
+        }
     }
     if (bat.tags.includes('nomove')) {
         uClass = uClass+' nmUnits';

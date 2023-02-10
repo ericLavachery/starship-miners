@@ -344,7 +344,11 @@ function gangNavig() {
             } else {
                 $('#gangInfos').append('<button type="button" title="Retour station forcé" class="boutonRouge iconButtons" onclick="stopMission()"><i class="fas fa-space-shuttle"></i></button>');
             }
-            $('#gangInfos').append('<button type="button" title="Supprime le stress de tous les bataillons" class="boutonCiel iconButtons" onclick="coolManCool()"><i class="fas fa-heart"></i></button>');
+            if (playerInfos.pseudo === 'Mapedit') {
+                $('#gangInfos').append('<button type="button" title="Supprime toutes les ruines et les routes" class="boutonCiel iconButtons" onclick="roadsKill()"><i class="fas fa-paw"></i></button>');
+            } else {
+                $('#gangInfos').append('<button type="button" title="Supprime le stress de tous les bataillons" class="boutonCiel iconButtons" onclick="coolManCool()"><i class="fas fa-heart"></i></button>');
+            }
             $('#gangInfos').append('<button type="button" title="Map Editor" class="boutonVert iconButtons" onclick="editMode()"><i class="fas fa-tree"></i></button>');
         } else {
             $('#gangInfos').append('<button type="button" title="Charger une mission" class="boutonCiel iconButtons" onclick="loadMission()"><i class="ra ra-scroll-unfurled rpg"></i></button>');

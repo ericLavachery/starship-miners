@@ -130,6 +130,17 @@ function checkCommand(myBat) {
     return leSousChef;
 };
 
+function goTakeOut() {
+    selectedBat.apLeft = selectedBat.apLeft-5;
+    if (!selectedBat.tags.includes('takeout')) {
+        selectedBat.tags.push('takeout');
+    }
+    removeNoMoves(selectedBat);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+    showMap(zone,false);
+};
+
 function goCommand(chefBatId,gainPA) {
     selectedBat.apLeft = selectedBat.apLeft+gainPA;
     if (playerInfos.comp.ordre >= 2 && selectedBat.apLeft >= 1) {
