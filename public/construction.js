@@ -1607,7 +1607,7 @@ function dismantle(batId,fuite) {
             $('#b'+bat.tileId).empty();
             let resHere = showRes(bat.tileId);
             $('#b'+bat.tileId).append(resHere);
-            if (batType.skills.includes('recupcit')) {
+            if (batType.skills.includes('recupcit') && crew >= 1) {
                 if (batType.name === 'Technobass') {
                     recupKrimulos(220,tileId,crew,xp,bat.ammo2,bat.eq);
                 } else if (batType.name === 'Juggernauts') {

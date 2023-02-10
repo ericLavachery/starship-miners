@@ -1692,3 +1692,78 @@ function checkFoggedTiles() {
     console.log('foggedTiles');
     console.log(foggedTiles);
 }
+
+function checkTransToCrew(myBat,myBatType) {
+    let reqCit = myBatType.squads*myBatType.squadSize*myBatType.crew;
+    let mostCits = 0;
+    let enoughCits = false;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'trans' && bat.locId === myBat.id && bat.type === 'Citoyens') {
+            if (bat.citoyens > mostCits) {
+                if (bat.citoyens >= reqCit) {
+                    enoughCits = true;
+                    mostCits = bat.citoyens;
+                }
+            }
+        }
+    });
+    return enoughCits;
+};
+
+function putTransToCrew() {
+    let reqCit = selectedBatType.squads*selectedBatType.squadSize*selectedBatType.crew;
+    let citBatId = -1;
+    let mostCits = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'trans' && bat.locId === selectedBat.id && bat.type === 'Citoyens') {
+            if (bat.citoyens > mostCits) {
+                if (bat.citoyens >= reqCit) {
+                    citBatId = bat.id;
+                    mostCits = bat.citoyens;
+                }
+            }
+        }
+    });
+    if (citBatId >= 0) {
+        let citBat = getBatById(citBatId);
+        if (citBat.citoyens-reqCit >= 1) {
+            citBat.citoyens = citBat.citoyens-reqCit;
+            citBat.squadsLeft = Math.ceil(citBat.citoyens/6);
+        } else {
+            deadBatsList = [];
+            deadBatsList.push(citBat.id);
+            killBatList();
+        }
+        tagDelete(selectedBat,'nopilots');
+        selectedBatArrayUpdate();
+        showBatInfos(selectedBat);
+    }
+};
+
+function putCrew() {
+    let dispoCit = getDispoCit();
+    let reqCit = selectedBatType.squads*selectedBatType.squadSize*selectedBatType.crew;
+    if (dispoCit >= reqCit) {
+        tagDelete(selectedBat,'nopilots');
+        selectedBatArrayUpdate();
+        let landersIds = findLandersIds();
+        let restCit = dispoCit-reqCit;
+        deadBatsList = [];
+        bataillons.forEach(function(bat) {
+            if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
+                if (restCit === 0) {
+                    bat.citoyens = 0;
+                    deadBatsList.push(bat.id);
+                } else {
+                    bat.citoyens = restCit;
+                    bat.squadsLeft = Math.ceil(bat.citoyens/6);
+                }
+            }
+        });
+        if (restCit === 0) {
+            killBatList();
+        }
+        goSoute();
+        showBatInfos(selectedBat);
+    }
+};

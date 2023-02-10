@@ -66,6 +66,7 @@ function batInfos(bat,batType,pop) {
         bat.tdc = [];
     }
     updateBatProperties(bat,batType);
+    let selfMove = checkSelfMove(bat,batType);
     levelUp(bat,batType);
     if (!playerInfos.onShip) {
         if (batType.skills.includes('transorbital')) {
@@ -257,7 +258,11 @@ function batInfos(bat,batType,pop) {
         mvmt = mvmt.toFixedNumber(1);
         if (batType.moveCost > 90) {mvmt = 0;}
         if (bat.tags.includes('nopilots') || batType.skills.includes('noselfmove')) {
-            $('#'+bodyPlace).append('<span class="paramName or" title="Sans équipage! Ne peux bouger que si vous embarquez un bataillon">Mouvement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue or">'+mvmt+'</span><br>');
+            if (selfMove) {
+                $('#'+bodyPlace).append('<span class="paramName jaune" title="Sans équipage! Ne peux bouger que si vous embarquez un bataillon.">Mouvement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue jaune">'+mvmt+'</span><br>');
+            } else {
+                $('#'+bodyPlace).append('<span class="paramName or" title="Sans équipage! Ne peux bouger que si vous embarquez un bataillon.">Mouvement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue or">0</span><br>');
+            }
         } else {
             $('#'+bodyPlace).append('<span class="paramName">Mouvement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">'+mvmt+'</span><br>');
         }
@@ -659,7 +664,9 @@ function batInfos(bat,batType,pop) {
     if (!pop) {
         if (!isStacked()) {
             if (!bat.tags.includes('terror')) {
-                weaponsInfos(bat,batType,tile,pop);
+                if (!bat.tags.includes('nopilots')) {
+                    weaponsInfos(bat,batType,tile,pop);
+                }
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
                 skillsInfos(bat,batType,near,nearby);
             }
@@ -672,7 +679,9 @@ function batInfos(bat,batType,pop) {
             }
         }
     } else {
-        weaponsInfos(bat,batType,tile,pop);
+        if (!bat.tags.includes('nopilots')) {
+            weaponsInfos(bat,batType,tile,pop);
+        }
         $('#'+bodyPlace).append('<div class="shSpace"></div>');
     }
     // ARMIES
@@ -724,7 +733,7 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<hr>');
         let demText;
         let fleeText;
-        if (!bat.tags.includes('nomove') && !batType.skills.includes('nodelete') && !decButHere) {
+        if (!bat.tags.includes('nomove') && !batType.skills.includes('nodelete') && !bat.tags.includes('nopilots') && !decButHere) {
             let okKill = checkOkKill(batType);
             if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || (batType.skills.includes('recupcorps') && okKill) || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
                 if (batType.skills.includes('recupcit')) {

@@ -2573,6 +2573,25 @@ function skillsInfos(bat,batType,near,nearby) {
             lineBreak = true;
         }
     }
+    // EQUIPAGE
+    if (bat.tags.includes('nopilots')) {
+        let neededCits = batType.squads*batType.squadSize*batType.crew;
+        if (playerInfos.onShip) {
+            if (inSoute) {
+                let dispoCit = getDispoCit();
+                if (dispoCit >= neededCits) {
+                    $('#unitInfos').append('<button type="button" title="Assigner un équipage ('+neededCits+' citoyens)" class="boutonOrange iconButtons" onclick="putCrew()"><i class="fas fa-users"></i> <span class="small">0</span></button>');
+                    lineBreak = true;
+                }
+            }
+        } else {
+            let enoughCits = checkTransToCrew(bat,batType);
+            if (enoughCits) {
+                $('#unitInfos').append('<button type="button" title="Assigner comme équipage '+neededCits+' citoyens transportés" class="boutonOrange iconButtons" onclick="putTransToCrew()"><i class="fas fa-users"></i> <span class="small">0</span></button>');
+                lineBreak = true;
+            }
+        }
+    }
     // AMMO PACK
     if (tile.ap != undefined) {
         if (!tile.ap.includes('prt_')) {

@@ -636,14 +636,11 @@ function isDiag(myTileIndex,thatTileIndex) {
     return diag;
 };
 
-function terrainAccess(batId,targetTileId) {
-    let access = false;
-    let bat = getBatById(batId);
-    let batType = getBatType(bat);
+function checkSelfMove(bat,batType) {
     let selfMove = true;
     if (batType.skills.includes('noselfmove') || bat.tags.includes('nopilots')) {
+        selfMove = false;
         if (batType.transUnits >= 1) {
-            selfMove = false;
             if (bat.transIds.length >= 1) {
                 bat.transIds.forEach(function(transId) {
                     let inBat = getBatById(transId);
@@ -655,6 +652,14 @@ function terrainAccess(batId,targetTileId) {
             }
         }
     }
+    return selfMove;
+};
+
+function terrainAccess(batId,targetTileId) {
+    let access = false;
+    let bat = getBatById(batId);
+    let batType = getBatType(bat);
+    let selfMove = checkSelfMove(bat,batType);
     if (selfMove) {
         let terrain = getTerrainById(targetTileId);
         let terFlood = terrain.flood;
