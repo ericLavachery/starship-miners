@@ -1763,7 +1763,9 @@ function putCrew() {
         if (restCit === 0) {
             killBatList();
         }
-        goSoute();
+        if (inSoute) {
+            goSoute();
+        }
         showBatInfos(selectedBat);
     }
 };

@@ -148,14 +148,6 @@ function batInfos(bat,batType,pop) {
     }
     let noAuthority = checkNoAuthority(bat,batType);
     let inDanger = checkInDanger(bat,batType);
-    // if (bat.tags.includes('nomove') && !batType.skills.includes('nomove')) {
-    //     if (inDanger) {
-    //         tagDelete(bat,'nomove');
-    //         bat.army = 21;
-    //         warning(batType.name,'Ce bataillon passe sous votre contrôle',false);
-    //         playSound('clic12',-0.2);
-    //     }
-    // }
     if (near.friends && !friendsAlert) {
         if (!bat.tags.includes('nomove')) {
             if (noAuthority) {
@@ -249,6 +241,9 @@ function batInfos(bat,batType,pop) {
                 hourglass = 'half jaune';
             }
         }
+    }
+    if (!selfMove) {
+        $('#'+bodyPlace).append('<span class="paramName or" title="Sans équipage! Embarquez un bataillon pour créer un équipage temporaire. Vous pouvez créer un équipage définitif avec des citoyens (Si vous êtes à côté d\'un lander, dans la soute de la station, où avec des citoyens embarqués).">Equipage</span><span class="paramIcon"><i class="fas fa-users"></i></span><span class="paramValue or">Non</span><br>');
     }
     let roundApLeft = bat.apLeft.toFixedNumber(1);
     $('#'+bodyPlace).append('<span class="paramName">Points d\'action</span><span class="paramIcon"><i class="fas fa-hourglass-'+hourglass+'"></i></span><span class="paramValue">'+roundApLeft+'/'+ap+'</span><br>');
@@ -668,7 +663,7 @@ function batInfos(bat,batType,pop) {
                     weaponsInfos(bat,batType,tile,pop);
                 }
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
-                skillsInfos(bat,batType,near,nearby);
+                skillsInfos(bat,batType,near,nearby,selfMove);
             }
         } else {
             if (!playerInfos.onShip || batType.id === 126 || batType.id === 225) {

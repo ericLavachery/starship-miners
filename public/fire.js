@@ -159,6 +159,11 @@ function combat(melee) {
             stayHidden = true;
         }
     }
+    if (activeTurn != 'player') {
+        if (targetBat.tags.includes('nopilots')) {
+            riposte = false;
+        }
+    }
     if (riposte) {
         console.log('riposte');
         if (initiative) {

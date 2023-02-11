@@ -1,4 +1,4 @@
-function skillsInfos(bat,batType,near,nearby) {
+function skillsInfos(bat,batType,near,nearby,selfMove) {
     let skillMessage;
     let numTargets = 0;
     let apCost;
@@ -26,6 +26,10 @@ function skillsInfos(bat,batType,near,nearby) {
     if (playerInfos.onShip) {
         tagDelete(bat,'construction');
         tagDelete(bat,'construction');
+    }
+    let zeroCrew = true;
+    if (selfMove || playerInfos.pseudo === 'Mapedit') {
+        zeroCrew = false;
     }
     console.log('inMelee='+inMelee);
     // SOUTE
@@ -115,7 +119,7 @@ function skillsInfos(bat,batType,near,nearby) {
     $('#unitInfos').append('<span id="line-defense"></span>');
     lineBreak = false;
     // GUET
-    if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet') && (hasW1 || hasW2) && !playerInfos.onShip) {
+    if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet') && (hasW1 || hasW2) && !playerInfos.onShip && !zeroCrew) {
         balise = 'h4';
         boutonNope = 'boutonGrey';
         colorNope = 'gf';
@@ -168,7 +172,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // FORTIFICATION
-    if (batType.skills.includes('fortif') && !playerInfos.onShip) {
+    if (batType.skills.includes('fortif') && !playerInfos.onShip && !zeroCrew) {
         balise = 'h4';
         boutonNope = 'boutonGrey';
         colorNope = 'gf';
@@ -225,7 +229,7 @@ function skillsInfos(bat,batType,near,nearby) {
     }
     // CAMOUFLAGE
     let camoufOK = true;
-    if (!playerInfos.onShip) {
+    if (!playerInfos.onShip && !zeroCrew) {
         if (canCamo(bat,batType,tile)) {
             let ruinHide = false;
             if ((tile.ruins && batType.size < 20) || (tile.terrain === 'F' && batType.size < 20 && !inMelee) || (tile.infra === 'Terriers' && batType.size < 9)) {
@@ -325,7 +329,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // PASSAGE SECRET
-    if (batType.size <= 9 && batType.cat === 'infantry' && !batType.skills.includes('moto')) {
+    if (batType.size <= 9 && batType.cat === 'infantry' && !batType.skills.includes('moto') && !zeroCrew) {
         if (tile.infra === 'Terriers') {
             let secretPass = checkSecretPass(bat);
             if (secretPass.ok) {
@@ -370,7 +374,7 @@ function skillsInfos(bat,batType,near,nearby) {
     $('#unitInfos').append('<span id="line-fight"></span>');
     lineBreak = false;
     // EMBUSCADE
-    if (batType.skills.includes('embuscade') && !playerInfos.onShip && !bat.tags.includes('datt')) {
+    if (batType.skills.includes('embuscade') && !playerInfos.onShip && !bat.tags.includes('datt') && !zeroCrew) {
         apCost = 4-(playerInfos.comp.train/3.1)-(playerInfos.comp.cam/1.9);
         if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
             apCost = apCost-0.6;
@@ -408,7 +412,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // DOUBLE ATTAQUE
-    if (!playerInfos.onShip && !bat.tags.includes('embuscade')) {
+    if (!playerInfos.onShip && !bat.tags.includes('embuscade') && !zeroCrew) {
         if (batType.skills.includes('datt')) {
             let isTir = false;
             if (batType.skills.includes('tirailleur') && bat.oldTileId != bat.tileId) {
@@ -476,7 +480,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // TIR CIBLE
-    if (!playerInfos.onShip) {
+    if (!playerInfos.onShip && !zeroCrew) {
         if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && hasEquip(bat,['g2ai'])) || (batType.skills.includes('w2cible') && (bat.eq.includes('w2') || playerInfos.comp.def === 3))) {
             let tcBonus = calcCibleBonus(batType);
             apCost = tcBonus.ap;
@@ -539,7 +543,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // LUCKY SHOT
-    if (batType.skills.includes('luckyshot') && !playerInfos.onShip) {
+    if (batType.skills.includes('luckyshot') && !playerInfos.onShip && !zeroCrew) {
         if (hasW2 && batType.weapon.cost > batType.weapon2.rof) {
             apReq = batType.weapon2.cost;
         } else {
@@ -571,17 +575,17 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // INSTAKILL
-    if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill') && batHasTarget && !playerInfos.onShip) {
+    if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill') && batHasTarget && !playerInfos.onShip && !zeroCrew) {
         $('#unitInfos').append('<button type="button" title="Instakill: Uniquement avec une arme de précision!" class="boutonJaune iconButtons" onclick="instaKill()"><i class="fas fa-skull-crossbones"></i> <span class="small">0</span></button>');
         lineBreak = true;
     }
     // BRAVOURE
-    if (bat.tags.includes('hero') && batType.skills.includes('herosalvo') && !bat.tags.includes('nofougue') && batHasTarget && !playerInfos.onShip) {
+    if (bat.tags.includes('hero') && batType.skills.includes('herosalvo') && !bat.tags.includes('nofougue') && batHasTarget && !playerInfos.onShip && !zeroCrew) {
         $('#unitInfos').append('<button type="button" title="Bravoure: Une salve supplémentaire" class="boutonVert iconButtons" onclick="fougue()"><i class="ra ra-player-teleport rpg"></i> <span class="small">0</span></button>');
         lineBreak = true;
     }
     // TORNADE
-    if (bat.tags.includes('hero') && batType.skills.includes('herotornade') && !bat.tags.includes('notorn') && batHasTarget && !playerInfos.onShip) {
+    if (bat.tags.includes('hero') && batType.skills.includes('herotornade') && !bat.tags.includes('notorn') && batHasTarget && !playerInfos.onShip && !zeroCrew) {
         $('#unitInfos').append('<button type="button" title="Tornade: Salves infinies" class="boutonJaune iconButtons" onclick="tornade()"><i class="ra ra-player-teleport rpg"></i> <span class="small">0</span></button>');
         lineBreak = true;
     }
@@ -593,17 +597,17 @@ function skillsInfos(bat,batType,near,nearby) {
     if (batType.skills.includes('rage')) {
         rageOK = true;
     }
-    if (rageOK && !bat.tags.includes('norage') && !playerInfos.onShip) {
+    if (rageOK && !bat.tags.includes('norage') && !playerInfos.onShip && !zeroCrew) {
         $('#unitInfos').append('<button type="button" title="Rage: Bonus de puissance aux armes de mêlée" class="boutonJaune iconButtons" onclick="rage()"><i class="ra ra-muscle-up rpg"></i> <span class="small">0</span></button>');
         lineBreak = true;
     }
     // DIVERSION
-    if (bat.tags.includes('hero') && batType.skills.includes('herolasso') && !bat.tags.includes('lasso') && !playerInfos.onShip) {
+    if (bat.tags.includes('hero') && batType.skills.includes('herolasso') && !bat.tags.includes('lasso') && !playerInfos.onShip && !zeroCrew) {
         $('#unitInfos').append('<button type="button" title="Diversion: Attire tous aliens dans un rayon de 5 cases" class="boutonJaune iconButtons" onclick="diversion()"><i class="ra ra-aware rpg"></i> <span class="small">2</span></button>');
         lineBreak = true;
     }
     // TAMING
-    if (!playerInfos.onShip && !bat.tags.includes('tame')) {
+    if (!playerInfos.onShip && !bat.tags.includes('tame') && !zeroCrew) {
         if ((bat.tags.includes('hero') && batType.skills.includes('herotame')) || batType.skills.includes('taming')) {
             let tamingId = getTamingId(bat,batType);
             if (tamingId >= 0) {
@@ -618,7 +622,7 @@ function skillsInfos(bat,batType,near,nearby) {
     }
     $('#unitInfos').append('<span id="line-medic"></span>');
     lineBreak = false;
-    if (!playerInfos.onShip) {
+    if (!playerInfos.onShip && !zeroCrew) {
         let baseskillCost;
         // MEDIC IN BLD
         let canBeMedBld = checkMedBld(bat,batType);
@@ -946,7 +950,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // NETTOYAGE
-    if ((batType.skills.includes('cleaning') || (batType.cat === 'buildings' && batType.crew >= 1)) && !playerInfos.onShip) {
+    if ((batType.skills.includes('cleaning') || (batType.cat === 'buildings' && batType.crew >= 1)) && !playerInfos.onShip && !zeroCrew) {
         let numWeb = checkWeb(bat.tileId);
         if (numWeb >= 1) {
             apCost = Math.ceil((batType.mecanoCost+1)/1.75*numWeb);
@@ -970,7 +974,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // ENTRETIEN
-    if (playerInfos.onShip) {
+    if (playerInfos.onShip && !zeroCrew) {
         if (bat.soins >= 11) {
             if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
                 let apLoss = checkVehiclesAPSoins(bat,batType);
@@ -986,7 +990,7 @@ function skillsInfos(bat,batType,near,nearby) {
             }
         }
     }
-    if (!playerInfos.onShip) {
+    if (!playerInfos.onShip && !zeroCrew) {
         if (bat.soins >= 11) {
             if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
                 if (checkNearConstructor(bat)) {
@@ -1025,7 +1029,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // COMMANDE
-    if (!batType.skills.includes('dome') && !batType.skills.includes('pilone') && !batType.skills.includes('cfo')) {
+    if (!batType.skills.includes('dome') && !batType.skills.includes('pilone') && !batType.skills.includes('cfo') && !zeroCrew) {
         let commandOK = false;
         // console.log('COMMAND');
         // console.log(near);
@@ -1050,7 +1054,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // PRIERE
-    if (batType.skills.includes('prayer') && !playerInfos.onShip) {
+    if (batType.skills.includes('prayer') && !playerInfos.onShip && !zeroCrew) {
         balise = 'h4';
         boutonNope = 'boutonGrey';
         colorNope = 'gf';
@@ -1078,7 +1082,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // TREUIL
-    if (!playerInfos.onShip && bat.apLeft < 5 && !bat.tags.includes('construction')) {
+    if (!playerInfos.onShip && bat.apLeft < 5 && !bat.tags.includes('construction') && !zeroCrew) {
         if (batType.cat === 'vehicles' && batType.moveCost < 90 && !batType.skills.includes('cyber') && !batType.skills.includes('robot') && !batType.skills.includes('fly')) {
             let leTreuil = checkTreuil(bat);
             if (leTreuil.ok) {
@@ -1088,7 +1092,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // RUSH
-    if (bat.tags.includes('hero') && batType.skills.includes('herorush') && !bat.tags.includes('rush') && !playerInfos.onShip) {
+    if (bat.tags.includes('hero') && batType.skills.includes('herorush') && !bat.tags.includes('rush') && !playerInfos.onShip && !zeroCrew) {
         let rushAP = bat.ap;
         if (bat.apLeft < 0) {
             rushAP = bat.ap-Math.round(bat.apLeft/2);
@@ -1103,7 +1107,7 @@ function skillsInfos(bat,batType,near,nearby) {
     $('#unitInfos').append('<span id="line-drugs"></span>');
     lineBreak = false;
     // DROGUES
-    if (!playerInfos.onShip) {
+    if (!playerInfos.onShip && !zeroCrew) {
         let allDrugs = checkDrugs(bat);
         let drug = {};
         let drugCompOK = false;
@@ -1725,7 +1729,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // DOXEY
-    if (!playerInfos.onShip && near.doxey && batType.cat === 'infantry' && !batType.skills.includes('clone')) {
+    if (!playerInfos.onShip && near.doxey && batType.cat === 'infantry' && !batType.skills.includes('clone') && !zeroCrew) {
         $('#unitInfos').append('<button type="button" title="Elixir du docteur Doxey" class="boutonVert iconButtons" onclick="goDoxey()"><i class="ra ra-flask rpg"></i> <span class="small">0</span></button>');
         lineBreak = true;
     }
@@ -1736,7 +1740,7 @@ function skillsInfos(bat,batType,near,nearby) {
     $('#unitInfos').append('<span id="line-mine"></span>');
     lineBreak = false;
     // EXTRACTION
-    if (batType.skills.includes('extraction') && !playerInfos.onShip) {
+    if (batType.skills.includes('extraction') && !playerInfos.onShip && !zeroCrew) {
         let extractOK = false;
         if (bat.extracted !== undefined) {
             if (bat.extracted.length >= 1) {
@@ -1779,7 +1783,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // CRISTAUX
-    if (batType.skills.includes('extraction') && batType.cat != 'buildings' && !inMelee && !playerInfos.onShip) {
+    if (batType.skills.includes('extraction') && batType.cat != 'buildings' && !inMelee && !playerInfos.onShip && !zeroCrew) {
         if (batType.mining.rate >= 10) {
             if (tile.infra != undefined) {
                 if (tile.infra === 'Crystal') {
@@ -1863,7 +1867,7 @@ function skillsInfos(bat,batType,near,nearby) {
     lineBreak = false;
     let trapType;
     let trapCostOK;
-    if (!playerInfos.onShip) {
+    if (!playerInfos.onShip && !zeroCrew) {
         // POSE PIEGES
         if (batType.skills.includes('trapfosse')) {
             freeConsTile = checkFreeConsTile(bat,batType);
@@ -2178,7 +2182,7 @@ function skillsInfos(bat,batType,near,nearby) {
     $('#unitInfos').append('<span id="line-roads"></span>');
     lineBreak = false;
     // ROUTES / PONTS
-    if ((batType.skills.includes('routes') || hasEquip(bat,['e-road'])) && !playerInfos.onShip) {
+    if ((batType.skills.includes('routes') || hasEquip(bat,['e-road'])) && !playerInfos.onShip && !zeroCrew) {
         let roadsOK = true;
         if (batType.skills.includes('infrahelp') || hasEquip(bat,['e-infra'])) {
             roadsOK = checkRoadsAround(bat);
@@ -2247,7 +2251,7 @@ function skillsInfos(bat,batType,near,nearby) {
     $('#unitInfos').append('<span id="line-infra"></span>');
     lineBreak = false;
     // INFRASTRUCTURE
-    if ((batType.skills.includes('infraz') || near.caserne) && !playerInfos.onShip) {
+    if ((batType.skills.includes('infraz') || near.caserne) && !playerInfos.onShip && !zeroCrew) {
         if ((tile.terrain != 'W' || playerInfos.comp.const >= 2 || playerInfos.comp.const+playerInfos.comp.def >= 3) && tile.terrain != 'R' && tile.terrain != 'L') {
             apReq = getConstAPReq(bat,batType);
             let infra;
@@ -2381,7 +2385,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // DEMENTELEMENT INFRA
-    if (batType.skills.includes('constructeur') && !playerInfos.onShip) {
+    if (batType.skills.includes('constructeur') && !playerInfos.onShip && !zeroCrew) {
         if (tile.infra != undefined) {
             if (tile.infra === 'Miradors' || tile.infra === 'Palissades' || tile.infra === 'Remparts' || tile.infra === 'Murailles' || tile.infra === 'Terriers') {
                 let infra = getInfraByName(tile.infra);
@@ -2409,7 +2413,7 @@ function skillsInfos(bat,batType,near,nearby) {
     $('#unitInfos').append('<span id="line-res"></span>');
     lineBreak = false;
     // FOUILLE DE RUINES
-    if (!playerInfos.onShip) {
+    if (!playerInfos.onShip && !zeroCrew) {
         if ((batType.skills.includes('fouille') || (batType.skills.includes('aifouille') && (hasEquip(bat,['g2ai']) || playerInfos.bldList.includes('Centre de com')))) && tile.ruins && tile.sh >= 1 && !bat.tags.includes('nomove')) {
             apReq = Math.round(5*7/(playerInfos.comp.tri+6));
             apCost = Math.round(1250/bat.squadsLeft/batType.squadSize/batType.crew);
@@ -2460,7 +2464,7 @@ function skillsInfos(bat,batType,near,nearby) {
     }
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
-    if (anyRavit && bat.tags.includes('dU') && batType.skills.includes('dealer') && !playerInfos.onShip) {
+    if (anyRavit && bat.tags.includes('dU') && batType.skills.includes('dealer') && !playerInfos.onShip && !zeroCrew) {
         let apCost = Math.round(batType.ap/3*7/(playerInfos.comp.log+5));
         if (bat.apLeft >= 2) {
             $('#unitInfos').append('<button type="button" title="Faire le plein de drogues" class="boutonVert iconButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>');
@@ -2474,7 +2478,7 @@ function skillsInfos(bat,batType,near,nearby) {
     // RAVITAILLEMENT
     anyRavit = checkRavit(bat);
     console.log('RAVIT: '+anyRavit);
-    if (anyRavit && bat.tags.includes('aU') && !playerInfos.onShip) {
+    if (anyRavit && bat.tags.includes('aU') && !playerInfos.onShip && !zeroCrew) {
         let ravitVolume = calcRavitVolume(bat);
         let ravitFactor = 3;
         if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
@@ -2498,7 +2502,7 @@ function skillsInfos(bat,batType,near,nearby) {
     }
     // STOCKS
     let anyStock = checkStock(bat);
-    if (anyStock && bat.tags.includes('sU') && !playerInfos.onShip) {
+    if (anyStock && bat.tags.includes('sU') && !playerInfos.onShip && !zeroCrew) {
         let apCost = Math.round(batType.ap*1.5*5/(playerInfos.comp.log+5));
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<button type="button" title="Faire le plein de ravitaillements" class="boutonCaca iconButtons" onclick="goStock('+apCost+')"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>');
@@ -2515,7 +2519,7 @@ function skillsInfos(bat,batType,near,nearby) {
     }
     $('#unitInfos').append('<span id="line-const"></span>');
     lineBreak = false;
-    if (!inSoute && !bat.tags.includes('nomove')) {
+    if (!inSoute && !bat.tags.includes('nomove') && !zeroCrew) {
         if (isReloaded || playerInfos.mapTurn != 0 || playerInfos.onShip) {
             // CONSTRUCTION BATIMENTS
             if (batType.skills.includes('constructeur') || batType.skills.includes('producteur')) {
@@ -2557,7 +2561,7 @@ function skillsInfos(bat,batType,near,nearby) {
             equipOK = true;
         }
     }
-    if (equipOK) {
+    if (equipOK && !zeroCrew) {
         apCost = Math.round(batType.ap*1.5);
         apReq = getConstAPReq(bat,batType);
         if ((bat.apLeft >= apReq || playerInfos.onShip) && !inMelee) {
@@ -2580,94 +2584,102 @@ function skillsInfos(bat,batType,near,nearby) {
             if (inSoute) {
                 let dispoCit = getDispoCit();
                 if (dispoCit >= neededCits) {
-                    $('#unitInfos').append('<button type="button" title="Assigner un équipage ('+neededCits+' citoyens)" class="boutonOrange iconButtons" onclick="putCrew()"><i class="fas fa-users"></i> <span class="small">0</span></button>');
+                    $('#unitInfos').append('<button type="button" title="Assigner un équipage ('+neededCits+' citoyens)" class="boutonOrange iconButtons" onclick="putCrew()"><i class="fas fa-users"></i> <span class="small">5</span></button>');
                     lineBreak = true;
                 }
+            }
+        } else if (near.lander) {
+            let dispoCit = getDispoCit();
+            if (dispoCit >= neededCits) {
+                $('#unitInfos').append('<button type="button" title="Assigner un équipage ('+neededCits+' citoyens)" class="boutonOrange iconButtons" onclick="putCrew()"><i class="fas fa-users"></i> <span class="small">5</span></button>');
+                lineBreak = true;
             }
         } else {
             let enoughCits = checkTransToCrew(bat,batType);
             if (enoughCits) {
-                $('#unitInfos').append('<button type="button" title="Assigner comme équipage '+neededCits+' citoyens transportés" class="boutonOrange iconButtons" onclick="putTransToCrew()"><i class="fas fa-users"></i> <span class="small">0</span></button>');
+                $('#unitInfos').append('<button type="button" title="Assigner comme équipage '+neededCits+' citoyens transportés" class="boutonOrange iconButtons" onclick="putTransToCrew()"><i class="fas fa-users"></i> <span class="small">5</span></button>');
                 lineBreak = true;
             }
         }
     }
     // AMMO PACK
-    if (tile.ap != undefined) {
-        if (!tile.ap.includes('prt_')) {
-            let ammoOK = checkAmmoPack(tile.ap,bat,batType,true);
-            if (ammoOK) {
-                apCost = 1;
-                apReq = 0;
-                let tileAmmoPackName = tile.ap;
-                if (tileAmmoPackName === 'molotov-slime' && batType.skills.includes('fireballs')) {
-                    tileAmmoPackName = 'fireslime';
-                } else if (tileAmmoPackName === 'molotov-pyrus' && batType.skills.includes('fireballs')) {
-                    tileAmmoPackName = 'firebug';
-                } else if (tileAmmoPackName === 'molotov-pyratol' && batType.skills.includes('fireballs')) {
-                    tileAmmoPackName = 'fireblast';
+    if (!zeroCrew) {
+        if (tile.ap != undefined) {
+            if (!tile.ap.includes('prt_')) {
+                let ammoOK = checkAmmoPack(tile.ap,bat,batType,true);
+                if (ammoOK) {
+                    apCost = 1;
+                    apReq = 0;
+                    let tileAmmoPackName = tile.ap;
+                    if (tileAmmoPackName === 'molotov-slime' && batType.skills.includes('fireballs')) {
+                        tileAmmoPackName = 'fireslime';
+                    } else if (tileAmmoPackName === 'molotov-pyrus' && batType.skills.includes('fireballs')) {
+                        tileAmmoPackName = 'firebug';
+                    } else if (tileAmmoPackName === 'molotov-pyratol' && batType.skills.includes('fireballs')) {
+                        tileAmmoPackName = 'fireblast';
+                    }
+                    let ammo = getAmmoByName(tileAmmoPackName);
+                    let ammoInfo = showAmmoInfo(ammo.name);
+                    $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tileAmmoPackName+' / '+ammoInfo+')" class="boutonVert iconButtons" onclick="useAmmoPack(`'+tile.ap+'`,true)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
+                    lineBreak = true;
                 }
-                let ammo = getAmmoByName(tileAmmoPackName);
-                let ammoInfo = showAmmoInfo(ammo.name);
-                $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tileAmmoPackName+' / '+ammoInfo+')" class="boutonVert iconButtons" onclick="useAmmoPack(`'+tile.ap+'`,true)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
-                lineBreak = true;
             }
         }
-    }
-    // ARMOR PACK
-    if (tile.ap != undefined) {
-        if (tile.ap.includes('prt_')) {
-            let armorName = tile.ap.replace('prt_','');
-            let armorOK = checkArmorPack(armorName,bat,batType);
-            if (armorOK) {
-                apCost = 3;
-                apReq = 0;
-                let armor = getEquipByName(armorName);
-                let armorInfo = showArmorInfo(armor);
-                $('#unitInfos').append('<button type="button" title="Enfiler les armures ('+armorName+' / '+armorInfo+')" class="boutonVert iconButtons" onclick="useArmorPack(`'+armorName+'`)"><i class="ra ra-vest rpg"></i> <span class="small">'+apCost+'</span></button>');
-                lineBreak = true;
+        // ARMOR PACK
+        if (tile.ap != undefined) {
+            if (tile.ap.includes('prt_')) {
+                let armorName = tile.ap.replace('prt_','');
+                let armorOK = checkArmorPack(armorName,bat,batType);
+                if (armorOK) {
+                    apCost = 3;
+                    apReq = 0;
+                    let armor = getEquipByName(armorName);
+                    let armorInfo = showArmorInfo(armor);
+                    $('#unitInfos').append('<button type="button" title="Enfiler les armures ('+armorName+' / '+armorInfo+')" class="boutonVert iconButtons" onclick="useArmorPack(`'+armorName+'`)"><i class="ra ra-vest rpg"></i> <span class="small">'+apCost+'</span></button>');
+                    lineBreak = true;
+                }
             }
         }
-    }
-    // EQUIPEMENT PACK
-    if (tile.ap != undefined) {
-        if (tile.ap.includes('eq_')) {
-            let equipName = tile.ap.replace('eq_','');
-            let equipackOK = checkEquipPack(equipName,bat,batType);
-            if (equipackOK) {
-                apCost = 3;
-                apReq = 0;
-                let equip = getEquipByName(equipName);
-                let oldEquip = getEquipByName(bat.eq);
-                $('#unitInfos').append('<button type="button" title="Utiliser les équipements ('+equipName+' / '+equip.info+') &mdash; Se débarasser de ('+bat.eq+' / '+oldEquip.info+')" class="boutonVert iconButtons" onclick="useEquipPack(`'+equipName+'`)"><i class="fas fa-compass"></i> <span class="small">'+apCost+'</span></button>');
-                lineBreak = true;
+        // EQUIPEMENT PACK
+        if (tile.ap != undefined) {
+            if (tile.ap.includes('eq_')) {
+                let equipName = tile.ap.replace('eq_','');
+                let equipackOK = checkEquipPack(equipName,bat,batType);
+                if (equipackOK) {
+                    apCost = 3;
+                    apReq = 0;
+                    let equip = getEquipByName(equipName);
+                    let oldEquip = getEquipByName(bat.eq);
+                    $('#unitInfos').append('<button type="button" title="Utiliser les équipements ('+equipName+' / '+equip.info+') &mdash; Se débarasser de ('+bat.eq+' / '+oldEquip.info+')" class="boutonVert iconButtons" onclick="useEquipPack(`'+equipName+'`)"><i class="fas fa-compass"></i> <span class="small">'+apCost+'</span></button>');
+                    lineBreak = true;
+                }
             }
         }
-    }
-    // DRUG PACK
-    if (tile.ap != undefined) {
-        if (tile.ap.includes('drg_')) {
-            let drugName = tile.ap.replace('drg_','');
-            let drugOK = checkDrugPack(drugName,bat,batType);
-            if (drugOK) {
-                let drug = getEquipByName(drugName);
-                apCost = drug.apCost;
-                apReq = 0;
-                if (drugName === 'meca') {
-                    apCost = Math.ceil(bat.ap/2);
-                    apReq = Math.ceil(bat.ap/4);
+        // DRUG PACK
+        if (tile.ap != undefined) {
+            if (tile.ap.includes('drg_')) {
+                let drugName = tile.ap.replace('drg_','');
+                let drugOK = checkDrugPack(drugName,bat,batType);
+                if (drugOK) {
+                    let drug = getEquipByName(drugName);
+                    apCost = drug.apCost;
+                    apReq = 0;
+                    if (drugName === 'meca') {
+                        apCost = Math.ceil(bat.ap/2);
+                        apReq = Math.ceil(bat.ap/4);
+                    }
+                    if (drug.units === 'veh') {
+                        $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert iconButtons" onclick="useDrugPack(`'+drugName+'`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                    } else {
+                        $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert iconButtons" onclick="useDrugPack(`'+drugName+'`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                    }
+                    lineBreak = true;
                 }
-                if (drug.units === 'veh') {
-                    $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert iconButtons" onclick="useDrugPack(`'+drugName+'`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
-                } else {
-                    $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert iconButtons" onclick="useDrugPack(`'+drugName+'`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
-                }
-                lineBreak = true;
             }
         }
     }
     // UPGRADE INFANTRY
-    if (batType.skills.includes('uprank')) {
+    if (batType.skills.includes('uprank') && !zeroCrew) {
         let isInPlace = checkUprankPlace(bat,batType);
         let isXPok = checkUprankXP(bat,batType);
         let upBatType = getBatTypeByName(batType.unitUp);
@@ -2692,7 +2704,7 @@ function skillsInfos(bat,batType,near,nearby) {
         }
     }
     // UPGRADE BUILDING
-    if (batType.skills.includes('upgrade')) {
+    if (batType.skills.includes('upgrade') && !zeroCrew) {
         let isCharged = checkCharged(bat,'trans');
         apReq = 5;
         if (bat.apLeft >= apReq && !nearby.oneTile && !isCharged && craftsOK) {
