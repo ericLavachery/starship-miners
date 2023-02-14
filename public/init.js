@@ -265,6 +265,11 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.sondeDanger < doom) {
         playerInfos.sondeDanger = doom;
     }
+    if (playerInfos.pseudo === 'Mapedit') {
+        if (playerInfos.misDB === undefined) {
+            playerInfos.misDB = [];
+        }
+    }
 });
 // Terrains
 socket.on('mapFilters-Load', function(mf) {
@@ -467,7 +472,17 @@ socket.on('aliens-Load', function(ab) {
 });
 socket.on('zoneFiles-Load', function(zf) {
     zoneFiles = zf;
-    // console.log(aliens);
+});
+socket.on('missionsDB-Load', function(mis) {
+    playerInfos.misDB = mis;
+});
+
+socket.on('load-edited-mission', function(newMission) {
+    zone = newMission[0];
+    bataillons = newMission[1];
+    aliens = newMission[2];
+    saveZone();
+    location.reload();
 });
 
 socket.on('savedZone-Load', function(newZone) {

@@ -210,14 +210,23 @@ function saveAllBats() {
     commandes();
 };
 
+function saveZone() {
+    saveBataillons();
+    saveAliens();
+    saveMap();
+    testConnect(pseudo);
+    commandes();
+};
+
 function saveGame() {
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone" || bat.loc === "trans") {
-            bat.xp = bat.xp.toFixedNumber(2);
-            bat.apLeft = bat.apLeft.toFixedNumber(1);
-        }
+        bat.xp = bat.xp.toFixedNumber(2);
+        bat.apLeft = bat.apLeft.toFixedNumber(1);
     });
     saveBataillons();
+    aliens.forEach(function(bat) {
+        bat.apLeft = bat.apLeft.toFixedNumber(1);
+    });
     saveAliens();
     savePlayerInfos();
     saveMap();

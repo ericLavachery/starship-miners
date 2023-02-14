@@ -50,7 +50,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","nocrime","badcrewsave","transport","routes","longshot","cible","sentinelle","fret","dumper","medic","meleehelp","infrahelp","phare","takeout"],
+        "skills":["fouille","recupcit","nocrime","badcrewsave","transport","routes","longshot","cible","sentinelle","fret","dumper","ravitaillement","stock","reserve","medic","meleehelp","infrahelp","phare","takeout"],
         "mecanoCost":10,
         "mediCost":4,
         "transMaxSize":21,

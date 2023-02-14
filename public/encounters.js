@@ -1784,6 +1784,12 @@ function checkNoAuthority(bat,batType) {
             noAuthority = true;
         }
     }
+    if (bat.tags.includes('nopilots')) {
+        let selfMove = checkSelfMove(bat,batType);
+        if (!selfMove) {
+            noAuthority = true;
+        }
+    }
     if (batType.skills.includes('dog')) {
         noAuthority = true;
     }

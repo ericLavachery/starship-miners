@@ -311,6 +311,23 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.emit('savedMap-Load',savedMap);
         listZoneFiles();
         socket.emit('zoneFiles-Load',zoneFiles);
+        if (socket.pseudo === 'Mapedit') {
+            createMissionsDB();
+            socket.emit('missionsDB-Load',missionsDB);
+        }
+    };
+
+    function createMissionsDB() {
+        missionsDB = [];
+        fs.readdirSync('./data/players/Missions/').forEach(file => {
+            if (file.includes('Mission-map')) {
+                let zoneNum = file.replace('Mission-map','');
+                zoneNum = zoneNum.replace('.json','');
+                missionsDB.push(+zoneNum);
+            }
+        });
+        console.log('Missions:');
+        console.log(missionsDB);
     };
 
     function listZoneFiles() {
@@ -489,6 +506,79 @@ io.sockets.on('connection', function (socket, pseudo) {
     function sendZone() {
         console.log('loading saved map (with bats & aliens)');
         socket.emit('savedZone-Load',[savedMap,bataillons,aliens]);
+    };
+
+    // Load mission in Map Editor
+    socket.on('change-edited-mission', function(missionNum) {
+        const path = './data/players/Missions/'+missionNum+'/Mapedit-currentMap.json';
+        console.log(path);
+        try {
+            if (fs.existsSync(path)) {
+                fs.readFile(path, 'utf8', function (err, data) {
+                    if (err) throw err;
+                    try {
+                        savedMap = JSON.parse(data);
+                        loadMissionBataillons(missionNum);
+                    } catch (e) {
+                        console.error(e);
+                    }
+                });
+            } else {
+                savedMap = [];
+                console.log('path?');
+                loadMissionBataillons(missionNum);
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    });
+    function loadMissionBataillons(missionNum) {
+        const path = './data/players/Missions/'+missionNum+'/Mapedit-bataillons.json';
+        try {
+            if (fs.existsSync(path)) {
+                fs.readFile(path, 'utf8', function (err, data) {
+                    if (err) throw err;
+                    try {
+                        bataillons = JSON.parse(data);
+                        loadMissionAliens(missionNum);
+                    } catch (e) {
+                        console.error(e);
+                    }
+                });
+            } else {
+                bataillons = [];
+                console.log('path?');
+                loadMissionAliens(missionNum);
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    };
+    function loadMissionAliens(missionNum) {
+        const path = './data/players/Missions/'+missionNum+'/Mapedit-aliens.json';
+        try {
+            if (fs.existsSync(path)) {
+                fs.readFile(path, 'utf8', function (err, data) {
+                    if (err) throw err;
+                    try {
+                        aliens = JSON.parse(data);
+                        sendMission();
+                    } catch (e) {
+                        console.error(e);
+                    }
+                });
+            } else {
+                aliens = [];
+                console.log('path?');
+                sendMission();
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    };
+    function sendMission() {
+        console.log('loading mission in editor');
+        socket.emit('load-edited-mission',[savedMap,bataillons,aliens]);
     };
 
     // Save zone as !!!

@@ -128,7 +128,7 @@ function mapEditWindow() {
     }
     $('#conUnitList').append('<span class="constName"><span class="gf">Gibier</span> : <span class="cy klik" onclick="checkGibier()" title="Checker le type de gibier">'+theGame.game+'</span> <span class="bleu" title="Chance/Max">('+theGame.chance+'/'+theGame.max+')</span></span><br>');
     mpedOption('cLand','Atterrissage au centre possible également','Landing centre','Atterrissage uniquement aux points marqués','Landing points');
-    mpedOption('neverMove','Les bataillons avec un tag nomove ne peuvent bouger que si ils sont rejoints','Never move','Les bataillons avec un tag nomove peuvent également bouger dès qu\'un bâtiment (avec un tag nomove) est détruit','Tag nomove normal');
+    mpedOption('neverMove','Les bataillons avec un tag nomove ne se rallient au joueur que si ils sont rejoints','Never move','Les bataillons avec un tag nomove se rallient au joueur dès qu\'un bâtiment (avec un tag nomove) est détruit. / Le bastion de résistants permet de rallier tous les bataillons non contrôlés.','Tag nomove normal');
     mpedOption('flw','Les aliens se dirigent vers le bataillon le plus proche','Follow','Les aliens se comportent normalement','No follow');
     mpedOption('noEggs','Aucun oeuf ne tombe','Sans Oeufs','Des oeufs tombent','Avec Oeufs');
     let meip = 0;
@@ -1117,4 +1117,65 @@ function roadsKill() {
         }
     });
     showMap(zone,false);
+};
+
+function loadEditorMission() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
+    $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName or" id="gentils">CHARGER UNE MISSION</span><br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<select class="boutonGris" id="theStartZone" onchange="editTheMissionBaby()"></select>');
+    $('#theStartZone').empty().append('<option value="0" selected>Mission</option>');
+    let misNum = 50;
+    while (misNum <= 99) {
+        if (playerInfos.misDB.includes(misNum)) {
+            let mType = getMissionType(misNum);
+            $('#theStartZone').append('<option value="'+misNum+'">Mission '+misNum+' - '+mType+'</option>');
+        }
+        if (misNum > 99) {break;}
+        misNum++
+    }
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="butSpace"></span>');
+    $('#conUnitList').append('<br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
+};
+
+function editTheMissionBaby() {
+    let selectorNum = document.getElementById("theStartZone").value;
+    let missionNum = +selectorNum;
+    socket.emit('change-edited-mission',missionNum);
+};
+
+function getMissionType(misNum) {
+    let mType = 'Spécial';
+    if (misNum >= 90) {
+        mType = 'Exil';
+    } else if (misNum >= 85) {
+        mType = 'Spécial';
+    } else if (misNum >= 80) {
+        mType = 'Boss Spider';
+    } else if (misNum >= 75) {
+        mType = 'Boss Bug';
+    } else if (misNum >= 70) {
+        mType = 'Boss Larve';
+    } else if (misNum >= 65) {
+        mType = 'Boss Swarm';
+    } else if (misNum >= 60) {
+        mType = 'Résistance';
+    } else if (misNum >= 55) {
+        mType = 'Spécial';
+    } else if (misNum >= 50) {
+        mType = 'Base Scientifique';
+    }
+    return mType;
 };

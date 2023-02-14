@@ -336,8 +336,12 @@ function gangNavig() {
             $('#gangInfos').append('<button type="button" title="Nouvelle zone" class="boutonCiel iconButtons" onclick="generateNewMap(true)"><i class="far fa-map"></i></button>');
             // $('#gangInfos').append('<button type="button" title="Check rencontres" class="boutonCiel iconButtons" onclick="encounterCheck()"><i class="fas fa-city"></i></button>');
             // $('#gangInfos').append('<button type="button" title="Check voisins" class="boutonCiel iconButtons" onclick="lesVoisins()"><i class="fas fa-shuttle-van"></i></button>');
-            $('#gangInfos').append('<button type="button" title="Charger une mission" class="boutonCiel iconButtons" onclick="loadMission()"><i class="ra ra-scroll-unfurled rpg"></i></button>');
-            $('#gangInfos').append('<button type="button" title="Ajouter les unités de base pour une mission" class="boutonCiel iconButtons" onclick="putMissionUnits()"><i class="ra ra-double-team rpg"></i></button>');
+            if (playerInfos.pseudo === 'Mapedit') {
+                $('#gangInfos').append('<button type="button" title="Editer une autre mission" class="boutonCiel iconButtons" onclick="loadEditorMission()"><i class="ra ra-scroll-unfurled rpg"></i></button>');
+            } else {
+                $('#gangInfos').append('<button type="button" title="Charger une mission" class="boutonCiel iconButtons" onclick="loadMission()"><i class="ra ra-scroll-unfurled rpg"></i></button>');
+                $('#gangInfos').append('<button type="button" title="Ajouter les unités de base pour une mission" class="boutonCiel iconButtons" onclick="putMissionUnits()"><i class="ra ra-double-team rpg"></i></button>');
+            }
             $('#gangInfos').append('<br>');
             if (playerInfos.pseudo === 'Mapedit') {
                 $('#gangInfos').append('<button type="button" title="Retour station forcé" class="boutonGrey iconButtons"><i class="fas fa-space-shuttle"></i></button>');
