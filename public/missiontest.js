@@ -255,13 +255,13 @@ function putMissionLanderRes(navBat) {
     navBat.transRes['Titane'] = 50;
     navBat.transRes['Cuivre'] = 100;
     navBat.transRes['Electros'] = 50;
-    navBat.transRes['Scrap'] = 50;
+    navBat.transRes['Scrap'] = 200;
     navBat.transRes['Végétaux'] = 75;
     navBat.transRes['Nanite'] = 250;
     navBat.transRes['Tungstène'] = 150;
     navBat.transRes['Aluminium'] = 50;
-    navBat.transRes['Compo1'] = 250;
-    navBat.transRes['Compo2'] = 500;
+    navBat.transRes['Compo1'] = 1250;
+    navBat.transRes['Compo2'] = 600;
     navBat.transRes['Batteries'] = 15;
     navBat.transRes['Energie'] = 200;
     navBat.transRes['Drogues'] = 150;

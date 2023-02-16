@@ -555,7 +555,7 @@
         "mecanoCost":7,
         "transMaxSize":19,
         "transUnits":3750,
-        "transRes":3750,
+        "transRes":7000,
         "fuzz":3,
         "hySpeed":5,
         "deathFx":"planeexploground2"
@@ -603,7 +603,7 @@
         "mecanoCost":6,
         "transMaxSize":21,
         "transUnits":4350,
-        "transRes":4350,
+        "transRes":8500,
         "fuzz":3,
         "hySpeed":3,
         "deathFx":"planeexploground2"
@@ -690,7 +690,7 @@
         "mecanoCost":5,
         "transMaxSize":21,
         "transUnits":5000,
-        "transRes":7000,
+        "transRes":10000,
         "fuzz":4,
         "hySpeed":4,
         "deathFx":"planeexploground2"
