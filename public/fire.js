@@ -161,7 +161,10 @@ function combat(melee) {
     }
     if (activeTurn != 'player') {
         if (targetBat.tags.includes('nopilots')) {
-            riposte = false;
+            let selfMove = checkSelfMove(targetBat,targetBatType);
+            if (!selfMove) {
+                riposte = false;
+            }
         }
     }
     if (riposte) {

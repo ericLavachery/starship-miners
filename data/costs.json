@@ -810,7 +810,7 @@
         "compReq":{"cyber":2,"bal":2},
         "compPass":["brasier"],
         "compHardReq":{"pyro":2,"bal":1},
-        "costs":{"Carbone":72,"Aluminium":96,"Rhodium":48,"Titane":160,"Electros":72,"Batteries":72,"Cuivre":36,"Silicium":24,"Huile":48,"Or":48,"Chlore":10,"Tissus":5},
+        "costs":{"Carbone":72,"Aluminium":96,"Rhodium":48,"Titane":160,"Electros":72,"Batteries":72,"Cuivre":36,"Silicium":24,"Végétaux":72,"Blendium":48,"Huile":48,"Or":48,"Chlore":10,"Tissus":5},
         "deploy":{"Energie":70,"Drogues":3,"Tissus":2},
         "fabTime":90
     },

@@ -412,7 +412,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fortif","fouille","berserk","datt","brigands","maycamo","swim","guerrilla","tirailleur","penitbat","herorage","lowstress"],
+        "skills":["a_heavy","fortif","fouille","berserk","datt","brigands","camo","swim","guerrilla","tirailleur","penitbat","herorage","lowstress"],
         "mediCost":9,
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
@@ -4971,6 +4971,21 @@
             "sound":"laser_fusil_x2",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
+        "weapon2alt":{
+            "name":"Pistolet plasma",
+            "gangs":["drogmulojs"],
+            "cost":2,
+            "range":1,
+            "isShort":true,
+            "noise":2,
+            "rof":12,
+            "accuracy":25,
+            "dca":1.2,
+            "power":7,
+            "aoe":"unit",
+            "sound":"plasma_pistol",
+            "ammo":["proto-plasma","plasma","impact","grapeshot","plastanium","uridium"]
+        },
         "protection":[],
         "equip":["aucun","e-flash","e-medic","e-camo","theeye","helper","chargeur2","lunette2","repel"],
         "log3eq":["chargeur2"],
@@ -5097,14 +5112,14 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","e-flash","e-ranger","gilet","e-camo","chargeur2","lunette1","theeye","helper","waterproof","detector","repel"],
+        "equip":["aucun","e-flash","gilet","e-camo","chargeur2","lunette1","theeye","helper","waterproof","detector","repel"],
         "log3eq":["lunette1"],
-        "autoEq":["chargeur2","detector","gilet","e-ranger","theeye"],
+        "autoEq":["chargeur2","detector","gilet","theeye"],
         "moveCost":3,
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","selfbadmedic","meleehelp","cyber","maycamo","barda","herowc","herotornade","elite"],
+        "skills":["a_mid","fouille","fortif","fastguet","datt","selfbadmedic","meleehelp","cyber","camo","guerrilla","ranger","barda","strong","herowc","herotornade","autohero","elite"],
         "mediCost":6,
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"

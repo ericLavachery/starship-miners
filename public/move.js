@@ -655,6 +655,99 @@ function checkSelfMove(bat,batType) {
     return selfMove;
 };
 
+function checkSwim(bat,batType) {
+    let batArmor = getEquipByName(bat.prt);
+    let swimming = bat.vet+playerInfos.comp.train+(batArmor.ap*2)+1;
+    if (batType.skills.includes('swim')) {
+        swimming = swimming+2;
+    } else if (batType.skills.includes('ranger')) {
+        swimming = swimming+1;
+    }
+    if (batType.skills.includes('barda')) {
+        swimming = swimming-1;
+    }
+    if (zone[0].planet != 'Dom' && zone[0].planet != 'Station') {
+        swimming = swimming-1;
+        if (zone[0].planet === 'Kzin') {
+            swimming = swimming-1;
+        }
+    }
+    if (batType.maxFlood < 3 || batArmor.ap >= 3) {
+        swimming = 0;
+    }
+    if (hasEquip(bat,['waterproof'])) {
+        swimming = 3;
+    }
+    return swimming;
+};
+
+function listBatTerrainAccess(bat,batType) {
+    let bta = [];
+    let btas = '<span class="gff">|</span>';
+    let btaf = '';
+    let canSwim = true;
+    if (batType.cat === 'infantry') {
+        let swimming = checkSwim(bat,batType);
+        if (swimming <= 0) {
+            canSwim = false;
+        }
+    }
+    let batMaxFlood = batType.maxFlood;
+    let batMaxScarp = batType.maxScarp;
+    let batMaxVeg = batType.maxVeg;
+    if (batMaxFlood === 0 && hasEquip(bat,['chenilles'])) {
+        batMaxFlood = 1;
+    }
+    if (batMaxScarp < 2 && hasEquip(bat,['chenilles'])) {
+        batMaxScarp = 2;
+    }
+    let canDive = false;
+    if (hasEquip(bat,['snorkel','waterproof'])) {
+        canDive = true;
+    }
+    let canFly = false;
+    if (batType.skills.includes('fly') || hasEquip(bat,['e-jetpack'])) {
+        canFly = true;
+    }
+    terrainTypes.forEach(function(ter) {
+        if (ter.name != 'V' && ter.name != 'X') {
+            let access = false;
+            if (batMaxFlood >= ter.flood && batMaxScarp >= ter.scarp && batMaxVeg >= ter.veg) {
+                access = true;
+            }
+            if (ter.flood >= 2 && canDive) {
+                access = true;
+            }
+            if (ter.flood === 3 && !canSwim) {
+                access = false;
+            }
+            if (bat.tags.includes('genwater')) {
+                if (ter.name === 'W' || (ter.name === 'S' && playerInfos.comp.scaph < 1) || ter.name === 'L' || ter.name === 'R') {
+                    access = false;
+                }
+            }
+            if (batType.skills.includes('nodry')) {
+                if (ter.flood < 1) {
+                    if (ter.veg < 1) {
+                        access = false;
+                    }
+                }
+            }
+            if (canFly) {
+                access = true;
+            }
+            if (access) {
+                let terName = ter.sName;
+                btas = btas+terName+'<span class="gff">|</span>';
+                btaf = btaf+ter.fullName+'&nbsp;';
+            }
+        }
+    });
+    bta.push(btas);
+    bta.push(btaf);
+    return bta;
+}
+
 function terrainAccess(batId,targetTileId) {
     let access = false;
     let bat = getBatById(batId);
@@ -696,21 +789,9 @@ function terrainAccess(batId,targetTileId) {
                 access = true;
             }
         }
-        if (terFlood === 3 && batType.cat === 'infantry' && batType.maxFlood === 3 && noEquip(bat,['waterproof']) && !zone[targetTileId].rd) {
-            let batArmor = getEquipByName(bat.prt);
-            let swimming = bat.vet+playerInfos.comp.train+(batArmor.ap*2)+1;
-            if (batType.skills.includes('swim')) {
-                swimming = swimming+2;
-            } else if (batType.skills.includes('ranger')) {
-                swimming = swimming+1;
-            }
-            if (zone[0].planet != 'Dom') {
-                swimming = swimming-1;
-                if (zone[0].planet === 'Kzin') {
-                    swimming = swimming-1;
-                }
-            }
-            if (swimming <= 0 || batArmor.ap >= 3) {
+        if (terFlood === 3 && !zone[targetTileId].rd && batType.cat === 'infantry') {
+            let swimming = checkSwim(bat,batType);
+            if (swimming <= 0) {
                 access = false;
             }
         }

@@ -1,4 +1,6 @@
 function putMissionUnits() {
+    putMissionStats();
+    putFullBldVM();
     let startTileId = -1;
     let theBest = 0;
     zone.forEach(function(tile) {
@@ -61,14 +63,11 @@ function addMissionBat(tileId,slot,xp) {
     putBat(tileId,0,xp,'deploy',false,true,true);
     if (isNav) {
         let navBat = getLastBatCreated();
-        // console.log('NAVBAT');
-        // console.log(navBat);
+        putMissionLanderRes(navBat);
         navId = navBat.id;
     } else if (navId >= 0) {
         // embarquer dans la navette
         let newBat = getLastBatCreated();
-        // console.log('lastBat');
-        // console.log(newBat);
         loadBat(newBat.id,navId);
     }
 };
@@ -76,12 +75,12 @@ function addMissionBat(tileId,slot,xp) {
 function getMissionBatList() {
     let missionBatList = [];
     // determiner unité, munitions, armure, équipement
-    let newSlot = new SlotConstructor('Navette de secours',['titanium','xxx','aucun','e-mecano']);
+    let newSlot = new SlotConstructor('Thundership',['titanium','xxx','aucun','e-mecano']);
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Rednecks',['uranium','uranium','wendium','chargeur']);
     missionBatList.push(newSlot);
-    newSlot = new SlotConstructor('Rednecks',['snake','snake','duneg','chargeur']);
-    missionBatList.push(newSlot);
+    // newSlot = new SlotConstructor('Rednecks',['snake','snake','duneg','chargeur']);
+    // missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Rednecks',['uranium','uranium','wendium','theeye']);
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Rednecks',['uranium','uranium','duneg','e-camo']);
@@ -90,8 +89,8 @@ function getMissionBatList() {
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Barmen',['gliding','molotov-slime','wendium','lunette1']);
     missionBatList.push(newSlot);
-    newSlot = new SlotConstructor('Barmen',['titanium','molotov-slime','duneg','chargeur1']);
-    missionBatList.push(newSlot);
+    // newSlot = new SlotConstructor('Barmen',['titanium','molotov-slime','duneg','chargeur1']);
+    // missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Marshalls',['explosive','salite','wendium','theeye']);
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Marshalls',['explosive','uranium','wendium','e-camo']);
@@ -102,21 +101,21 @@ function getMissionBatList() {
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Lucky bastards',['gliding','grenade-gaz','duneg','e-camo']);
     missionBatList.push(newSlot);
-    newSlot = new SlotConstructor('Stalkers',['salite','lame-carbone','duneg','lunette1']);
-    missionBatList.push(newSlot);
+    // newSlot = new SlotConstructor('Stalkers',['salite','lame-carbone','duneg','lunette1']);
+    // missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Stalkers',['titanium','lame-carbone','wendium','lunette1']);
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Runners',['ac-flechette','grenade-gaz','duneg','detector']);
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Runners',['ac-uranium','grenade','duneg','detector']);
     missionBatList.push(newSlot);
-    newSlot = new SlotConstructor('Infirmiers',['tungsten','xxx','swarwing','e-camo']);
-    missionBatList.push(newSlot);
-    newSlot = new SlotConstructor('Infirmiers',['tungsten','xxx','swarwing','e-medic']);
+    // newSlot = new SlotConstructor('Infirmiers',['tungsten','xxx','swarwing','e-camo']);
+    // missionBatList.push(newSlot);
+    newSlot = new SlotConstructor('Infirmiers',['tungsten','xxx','kevlar','e-medic']);
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Infirmiers',['tungsten','xxx','kevlar','e-medic']);
     missionBatList.push(newSlot);
-    newSlot = new SlotConstructor('Infirmiers',['tungsten','xxx','kevlar','e-camo']);
+    newSlot = new SlotConstructor('Infirmiers',['tungsten','xxx','swarwing','e-camo']);
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Infirmiers',['tungsten','xxx','kevlar','e-camo']);
     missionBatList.push(newSlot);
@@ -142,6 +141,8 @@ function getMissionBatList() {
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Poudrière',['pn-explosive','grenade','bulk','w2-explo']);
     missionBatList.push(newSlot);
+    newSlot = new SlotConstructor('Infirmerie',['explosive','xxx','bulk','e-infra']);
+    missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Tour de guet',['marquage','xxx','bulk','lunette']);
     missionBatList.push(newSlot);
     // console.log('MISSION BATS');
@@ -152,6 +153,129 @@ function getMissionBatList() {
 function SlotConstructor(theName,theGear) {
     this.name = theName;
     this.gear = theGear;
+};
+
+function putMissionStats() {
+    playerInfos.gang = 'rednecks';
+    playerInfos.gLevel = (zone[0].mapDiff*2)+3;
+    let seize = 0;
+    let dixhuit = 0;
+    if (playerInfos.gLevel >= 16) {seize = 1;}
+    if (playerInfos.gLevel >= 18) {dixhuit = 1;}
+    playerInfos.comp = [];
+    playerInfos.comp.aero = 0;
+    playerInfos.comp.arti = 1;
+    playerInfos.comp.tank = 1+seize;
+    playerInfos.comp.cyber = 1+seize;
+    playerInfos.comp.robo = 0;
+    playerInfos.comp.gen = 0;
+    playerInfos.comp.cam = 1;
+    playerInfos.comp.ca = 2;
+    playerInfos.comp.const = 2;
+    playerInfos.comp.energ = 0+dixhuit;
+    playerInfos.comp.train = 1;
+    playerInfos.comp.ind = 1;
+    playerInfos.comp.med = 0+seize;
+    playerInfos.comp.scaph = 1;
+    playerInfos.comp.tele = 0;
+    playerInfos.comp.trans = 2;
+    playerInfos.comp.tri = 2;
+    playerInfos.comp.vsp = 2;
+    playerInfos.comp.mat = 2;
+    playerInfos.comp.explo = 2+dixhuit;
+    playerInfos.comp.exo = 0;
+    playerInfos.comp.bal = 2+seize;
+    playerInfos.comp.ordre = 0;
+    playerInfos.comp.pyro = 1;
+    playerInfos.comp.log = 2;
+    playerInfos.comp.def = 2+dixhuit;
+    playerInfos.comp.det = 3;
+    playerInfos.comp.ext = 1;
+};
+
+function putFullBldVM() {
+    playerInfos.bldVM = [];
+    playerInfos.bldVM.push('Soute');
+    playerInfos.bldVM.push('Poste de pilotage');
+    playerInfos.bldVM.push('Foyer');
+    playerInfos.bldVM.push('Serres hydroponiques');
+    playerInfos.bldVM.push('Cantine');
+    playerInfos.bldVM.push('Générateur');
+    playerInfos.bldVM.push('Crameur');
+    playerInfos.bldVM.push('Dortoirs');
+    playerInfos.bldVM.push('Station météo');
+    playerInfos.bldVM.push('Vidéotéléphonie');
+    playerInfos.bldVM.push('Unités cryogéniques');
+    playerInfos.bldVM.push('Salle de conférence');
+    playerInfos.bldVM.push('Salle de contrôle');
+    playerInfos.bldVM.push('Salle de jeux');
+    playerInfos.bldVM.push('Chapelle');
+    playerInfos.bldVM.push('Atelier');
+    playerInfos.bldVM.push('Armurerie');
+    playerInfos.bldVM.push('Garage');
+    playerInfos.bldVM.push('Caserne');
+    playerInfos.bldVM.push('Caserne Rednecks');
+    playerInfos.bldVM.push('Mine');
+    playerInfos.bldVM.push('Pompe');
+    playerInfos.bldVM.push('Derrick');
+    playerInfos.bldVM.push('Comptoir');
+    playerInfos.bldVM.push('Poudrière');
+    playerInfos.bldVM.push('Chaîne de montage');
+    playerInfos.bldVM.push('Usine');
+    playerInfos.bldVM.push('Aérodocks');
+    playerInfos.bldVM.push('Arsenal');
+    playerInfos.bldVM.push('Usine d\'armement');
+    playerInfos.bldVM.push('Infirmerie');
+    playerInfos.bldVM.push('Hôpital');
+    playerInfos.bldVM.push('Poste radio');
+    playerInfos.bldVM.push('Centre de com');
+    playerInfos.bldVM.push('QG');
+    playerInfos.bldVM.push('Décharge');
+    playerInfos.bldVM.push('Centre de tri');
+    playerInfos.bldVM.push('Recyclab');
+    playerInfos.bldVM.push('Laboratoire');
+    playerInfos.bldVM.push('Centre de recherches');
+    playerInfos.bldVM.push('Incinérateur');
+    playerInfos.bldVM.push('Sonde géothermique');
+    playerInfos.bldVM.push('Centrale nucléaire');
+    playerInfos.bldVM.push('Centrale SMR');
+    playerInfos.bldVM.push('Bar');
+    playerInfos.bldVM.push('Prisons');
+    playerInfos.bldVM.push('Salle de sport');
+    playerInfos.bldVM.push('Camp d\'entraînement');
+    playerInfos.bldVM.push('Cabines');
+    playerInfos.bldVM.push('Jardin');
+};
+
+function putMissionLanderRes(navBat) {
+    navBat.transRes = {};
+    navBat.transRes['Explosifs'] = 200;
+    navBat.transRes['Fer'] = 150;
+    navBat.transRes['Plomb'] = 75;
+    navBat.transRes['Titane'] = 50;
+    navBat.transRes['Cuivre'] = 100;
+    navBat.transRes['Electros'] = 50;
+    navBat.transRes['Scrap'] = 50;
+    navBat.transRes['Végétaux'] = 75;
+    navBat.transRes['Nanite'] = 250;
+    navBat.transRes['Tungstène'] = 150;
+    navBat.transRes['Aluminium'] = 50;
+    navBat.transRes['Compo1'] = 250;
+    navBat.transRes['Compo2'] = 500;
+    navBat.transRes['Batteries'] = 15;
+    navBat.transRes['Energie'] = 200;
+    navBat.transRes['Drogues'] = 150;
+    navBat.transRes['Zinc'] = 75;
+    navBat.transRes['Or'] = 25;
+    navBat.transRes['Hélium'] = 50;
+    navBat.transRes['Bore'] = 50;
+    navBat.transRes['Octiron'] = 250;
+    navBat.transRes['Huile'] = 125;
+    navBat.transRes['Hydrogène'] = 125;
+    navBat.transRes['Pyratol'] = 200;
+    navBat.transRes['Fuel'] = 50;
+    navBat.transRes['Azote'] = 175;
+    navBat.transRes['Bois'] = 50;
 };
 
 function loadMission() {

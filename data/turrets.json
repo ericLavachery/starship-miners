@@ -514,7 +514,7 @@
     {
         "id":251,
         "name":"Navette de secours",
-        "pic":"secours",
+        "pic":"lander-secours",
         "cat":"vehicles",
         "kind":"zero-vaisseaux",
         "sort":0,
@@ -563,7 +563,7 @@
     {
         "id":108,
         "name":"Thundership",
-        "pic":"lander-thundership",
+        "pic":"lander-thunder",
         "cat":"vehicles",
         "kind":"zero-vaisseaux",
         "sort":14,

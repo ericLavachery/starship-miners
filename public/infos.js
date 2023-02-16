@@ -261,6 +261,10 @@ function batInfos(bat,batType,pop) {
         } else {
             $('#'+bodyPlace).append('<span class="paramName">Mouvement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">'+mvmt+'</span><br>');
         }
+        if (pop) {
+            let bta = listBatTerrainAccess(bat,batType);
+            $('#'+bodyPlace).append('<span class="paramName" title="Terrains accessibles">Terrains</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue" title="'+bta[1]+'">'+bta[0]+'</span><br>');
+        }
     }
     // SQUADS
     let iconCol = 'gff';
@@ -659,7 +663,7 @@ function batInfos(bat,batType,pop) {
     if (!pop) {
         if (!isStacked()) {
             if (!bat.tags.includes('terror')) {
-                if (!bat.tags.includes('nopilots')) {
+                if (selfMove) {
                     weaponsInfos(bat,batType,tile,pop);
                 }
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');

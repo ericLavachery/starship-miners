@@ -2,6 +2,7 @@
     {
         "name":"V",
         "fullName":"Espace",
+        "sName":"Vi",
         "scarp":0,
         "flood":0,
         "veg":0,
@@ -25,6 +26,7 @@
     {
         "name":"X",
         "fullName":"Station",
+        "sName":"St",
         "scarp":0,
         "flood":0,
         "veg":0,
@@ -48,6 +50,7 @@
     {
         "name":"M",
         "fullName":"Montagnes",
+        "sName":"Mt",
         "scarp":3,
         "flood":0,
         "veg":0.5,
@@ -71,6 +74,7 @@
     {
         "name":"H",
         "fullName":"Collines",
+        "sName":"Co",
         "scarp":2,
         "flood":0,
         "veg":1,
@@ -94,6 +98,7 @@
     {
         "name":"P",
         "fullName":"Plaine",
+        "sName":"Pl",
         "scarp":0,
         "flood":0,
         "veg":0,
@@ -117,6 +122,7 @@
     {
         "name":"G",
         "fullName":"Prairie",
+        "sName":"Pr",
         "scarp":0,
         "flood":0,
         "veg":1.5,
@@ -140,6 +146,7 @@
     {
         "name":"B",
         "fullName":"Maquis",
+        "sName":"Mq",
         "scarp":0,
         "flood":0,
         "veg":2,
@@ -163,6 +170,7 @@
     {
         "name":"F",
         "fullName":"Forêt",
+        "sName":"Fo",
         "scarp":0,
         "flood":0,
         "veg":3,
@@ -186,6 +194,7 @@
     {
         "name":"S",
         "fullName":"Marécages",
+        "sName":"Ma",
         "scarp":0,
         "flood":1,
         "veg":1.5,
@@ -209,6 +218,7 @@
     {
         "name":"W",
         "fullName":"Etang",
+        "sName":"Et",
         "scarp":0,
         "flood":2,
         "veg":0,
@@ -232,6 +242,7 @@
     {
         "name":"L",
         "fullName":"Lac",
+        "sName":"La",
         "scarp":0,
         "flood":3,
         "veg":0,
@@ -255,6 +266,7 @@
     {
         "name":"R",
         "fullName":"Rivière",
+        "sName":"Ri",
         "scarp":0,
         "flood":3,
         "veg":0,
