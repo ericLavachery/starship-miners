@@ -2707,6 +2707,26 @@
         "costs":{"Chlore":100,"Zinc":150,"Huile":170,"Titane":25,"Silicium":40}
     },
     {
+        "name":"missionpack",
+        "info":"Pack de mission (ressources alien)",
+        "res":{
+            "Bugium":6000,
+            "Aranium":3000,
+            "Larvium":3000,
+            "Swarmine":2000,
+            "Creatite":2000,
+            "Slime":1000,
+            "Mendium":500,
+            "Blendium":500,
+            "Germium":350,
+            "Wingium":350,
+            "Mephitis":250,
+            "Egidium":100,
+            "Bossium":100,
+            "Pyrus":100
+        }
+    },
+    {
         "name":"startpack",
         "info":"Pack de départ",
         "res":{

@@ -851,7 +851,7 @@
             "cost":3,
             "range":1,
             "rof":16,
-            "accuracy":17,
+            "accuracy":20,
             "power":10,
             "armors":0.7,
             "aoe":"unit",

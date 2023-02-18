@@ -641,6 +641,15 @@ function getStartPack(gang) {
     return pack;
 };
 
+function getResPack(packName) {
+    let pack = {};
+    let index = armorTypes.findIndex((obj => obj.name == packName));
+    if (index > -1) {
+        pack = armorTypes[index];
+    }
+    return pack;
+};
+
 function hasUnit(unitName,active) {
     let youHaveIt = false;
     if (active) {

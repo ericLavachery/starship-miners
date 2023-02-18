@@ -1257,6 +1257,8 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                         } else if (startTag === 'follow') {
                             if (!conselUnit.skills.includes('errant') && !conselUnit.skills.includes('capbld') && !conselUnit.skills.includes('nocap') && !conselUnit.skills.includes('capmen')) {
                                 newBat.tags = ['follow'];
+                            } else {
+                                newBat.tags = [];
                             }
                         } else if (startTag === 'veil') {
                             if (!conselUnit.skills.includes('errant') && !conselUnit.skills.includes('capbld') && !conselUnit.skills.includes('nocap') && !conselUnit.skills.includes('capmen')) {

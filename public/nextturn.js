@@ -875,8 +875,15 @@ function turnInfo() {
     domeProtect = false;
     hasOwnLander = false;
     let uncontrolledBats = false;
+    let uncontrolledResBast = false;
+    uniRes = false;
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
+        if (batType.name === 'Bastion de résistants') {
+            if (bat.tags.includes('nomove')) {
+                uncontrolledResBast = true;
+            }
+        }
         if (playerInfos.mapTurn === 1 && playerInfos.pseudo != 'Mapedit') {
             if (bat.tags.includes('nomove')) {
                 uncontrolledBats = true;
@@ -960,6 +967,9 @@ function turnInfo() {
         } else {
             domeBat.opTurn = playerInfos.mapTurn;
         }
+    }
+    if (!zone[0].neverMove && uncontrolledResBast) {
+        uniRes = true;
     }
     if (uncontrolledBats) {
         warning('Bataillons non contrôlés','Il y a des bataillons d\'autres groupes dans la zone.<br>Vous pouvez en prendre contrôle en les rejoignant avec un de vos propres bataillons.<br>Cela ne fonctionne pas avec un bataillon non combatant (Citoyens, Survivants, Infirmiers etc...), ni avec un bataillon sans humains (Wardogs, Droïdes etc...), ni avec un bataillon en perdition (trop blessé et/ou faible compétence de leadership).');

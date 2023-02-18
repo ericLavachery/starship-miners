@@ -224,6 +224,7 @@ teleStationCost['Argon'] = 50;
 teleStationCost['Bossium'] = 10;
 let defMaxRes = 25000;
 let nextWarn = 1;
+let uniRes = false; // Unified Resistance (quand il y a un Bastion et que le tag nomove est normal)
 // ALIENS
 let showSilh = true;
 let isFFW = false;

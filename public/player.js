@@ -554,8 +554,13 @@ function playerSkillsUTChanges() {
         }
         // TUNING LANDER FRET & HP
         if (unit.skills.includes('transorbital')) {
-            unit.transRes = Math.round(unit.transRes*landerFretTuning);
             unit.hp = Math.round(unit.hp*landerHPTuning);
+            unit.transRes = Math.round(unit.transRes*landerFretTuning);
+            if (unit.skills.includes('rescue')) {
+                if (playerInfos.gMode === 1) {
+                    unit.transRes = Math.round(unit.transRes*1.33);
+                }
+            }
         }
         let repairBonus = false;
         // VOLS SPACIAUX

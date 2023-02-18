@@ -1205,10 +1205,12 @@ function attack(melee,init) {
     if (inDanger) {
         if (targetBat.tags.includes('nomove') && !targetBatType.skills.includes('nomove')) {
             if (totalDamage >= 1) {
-                tagDelete(targetBat,'nomove');
-                targetBat.army = 21;
-                warning(targetBatType.name,'Ce bataillon passe sous votre contrôle',false,targetBat.tileId);
-                playSound('clic12',-0.2);
+                if (!uniRes) {
+                    tagDelete(targetBat,'nomove');
+                    targetBat.army = 21;
+                    warning(targetBatType.name,'Ce bataillon passe sous votre contrôle',false,targetBat.tileId);
+                    playSound('clic12',-0.2);
+                }
             }
         }
     }
