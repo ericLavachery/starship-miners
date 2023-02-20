@@ -2122,8 +2122,8 @@
         "bldUp":["Liberator"],
         "compReq":{"vsp":2},
         "toNum":1,
-        "costs":{"Eau":1000,"Energie":2000,"Huile":50,"Scrap":300,"Tissus":30,"Carbone":100,"Titane":1200,"Aluminium":1300,"Rhodium":200,"Nickel":1000,"Cuivre":1200,"Platine":600,"Silicium":200,"Bore":1300,"Uranium":600,"Oxygène":100,"Hydrogène":700,"Azote":200,"Chlore":25,"Electros":600,"Batteries":225,"Plastanium":50},
-        "deploy":{"Eau":75,"Nourriture":75,"Oxygène":75,"Energie":350,"Huile":10,"Drogues":30,"Chlore":15,"Zinc":15,"Tissus":15,"Uranium":60,"Hydrogène":90,"Plastanium":25}
+        "costs":{"Eau":500,"Energie":1000,"Huile":50,"Scrap":300,"Tissus":30,"Carbone":100,"Titane":600,"Rhodium":200,"Nickel":400,"Cuivre":200,"Platine":300,"Silicium":200,"Bore":800,"Uranium":200,"Oxygène":100,"Hydrogène":700,"Azote":100,"Chlore":25,"Electros":600,"Batteries":225,"Plastanium":50},
+        "deploy":{"Eau":75,"Nourriture":75,"Oxygène":75,"Energie":350,"Huile":10,"Drogues":30,"Chlore":15,"Zinc":15,"Tissus":15,"Uranium":60,"Hydrogène":90,"Plastanium":15}
     },
     {
         "id":109,
@@ -2133,8 +2133,8 @@
         "bldReq":["Soute","Centre de recherches","Usine"],
         "bldCost":"Thundership",
         "compReq":{"vsp":3},
-        "toNum":2,
-        "costs":{"Eau":2000,"Energie":4000,"Huile":125,"Scrap":500,"Tissus":80,"Carbone":150,"Titane":3600,"Aluminium":2200,"Calcium":30,"Rhodium":375,"Nickel":850,"Cuivre":2500,"Platine":1100,"Silicium":300,"Bore":1300,"Uranium":1000,"Oxygène":400,"Hydrogène":950,"Azote":300,"Chlore":100,"Electros":700,"Batteries":300,"Plastanium":70},
+        "toNum":1,
+        "costs":{"Eau":1000,"Energie":2000,"Huile":125,"Scrap":300,"Tissus":80,"Carbone":150,"Titane":3600,"Calcium":30,"Rhodium":375,"Nickel":300,"Cuivre":300,"Platine":700,"Silicium":300,"Bore":1300,"Uranium":500,"Oxygène":200,"Hydrogène":500,"Azote":300,"Chlore":100,"Electros":700,"Batteries":300,"Plastanium":70},
         "deploy":{"Eau":125,"Nourriture":125,"Oxygène":125,"Energie":500,"Huile":15,"Drogues":50,"Chlore":25,"Zinc":25,"Tissus":25,"Uranium":120,"Hydrogène":120,"Plastanium":35}
     },
     {

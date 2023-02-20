@@ -1,0 +1,64 @@
+// Radar and grid lines - using a variety of gradients
+.radar {
+    height: 290px;
+    width: 290px;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: absolute;
+    border-radius: 100%;
+    border: 1px solid rgba(255, 255, 250, .25);
+    // box-shadow: 0 0 0px 10px rgba(255, 255, 250, .25);
+    background-image:
+    // vertical lines
+    linear-gradient(90deg, rgba(255, 255, 250, .25) 1px, transparent 1px),
+    // horizontal lines
+    linear-gradient(rgba(255, 255, 250, .25) 1px, transparent 1px),
+    // diagonal lines
+    repeating-conic-gradient(rgba(250, 255, 250, .25) 0 1deg, rgba(250, 255, 250, 0) 0 45deg),
+    // circular lines
+    repeating-radial-gradient(rgba(250, 255, 250, .25), rgba(250, 255, 250, .25) 1px, black 1px, black 50px);
+    background-size: 50px 50px, 50px 50px, cover, cover;
+    cursor: crosshair;
+
+    // Scanner - using conic gradient and rotation animation
+    &::before{
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 100%;
+        z-index: 20;
+        animation: spin 5000ms linear infinite;
+        background: conic-gradient(grey, transparent, transparent);
+    }
+}
+
+// Invisible grid for placing trail items
+.radar_trail {
+    display: grid;
+    grid-template-columns: repeat(25, 20px);
+    grid-template-rows: repeat(25, 20px);
+    overflow: hidden;
+    border-radius: 100%;
+    // Trail Mask - non-visible clip-path to prevent hovering outside the scanner
+    &::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 100%;
+        z-index: 25;
+        animation: spin 5000ms linear infinite;
+        clip-path: polygon(50% -50%, -100% 100%, 50% 100%)
+    }
+}
+
+// Spin animation
+@keyframes spin {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

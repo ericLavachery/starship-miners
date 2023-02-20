@@ -242,15 +242,26 @@ function scrapMorphing(bat,batType,minedScrap,tile) {
             kindFactor = 0.3;
         }
         resFactor = resFactor*kindFactor;
+        // Spins?
+        if (res.name === 'Spins') {
+            if (batType.name === 'Scrapers') {
+                if (tile.rt.name === 'Centre de recherches') {
+                    resFactor = 9;
+                } else if (tile.rt.name === 'Laboratoire') {
+                    resFactor = 2;
+                }
+            }
+        }
+        console.log('----- '+res.name);
+        console.log('resFactor: '+resFactor);
         if (resFactor >= 1) {
             let resNum = Math.round(morphed*resFactor/rand.rand(3,18)/2);
-            // console.log(res.name);
-            // console.log('resNum: '+resNum);
+            console.log('resNum: '+resNum);
             if (resNum >= 3) {
                 resProd = resNum;
             } else {
                 let resChance = Math.round(100*resFactor/30*morphed/3);
-                // console.log('resChance: '+resChance+'%');
+                console.log('resChance: '+resChance+'%');
                 if (rand.rand(1,100) <= resChance) {
                     resProd = 3;
                 }
@@ -264,7 +275,7 @@ function scrapMorphing(bat,batType,minedScrap,tile) {
             } else {
                 minedThisTurn[res.name] = minedThisTurn[res.name]+resProd;
             }
-            // console.log('resProd: '+resProd);
+            console.log('resProd: '+resProd);
         }
     });
 };

@@ -10,20 +10,22 @@ function mapEditWindow() {
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<h1>MAP EDITOR</h1><br>');
     // map number
-    $('#conUnitList').append('<select class="boutonGris" id="mapNumber" onchange="mapNumAssign(`mapNumber`)"></select>');
-    $('#mapNumber').append('<option value="100" selected>Zone n°??</option>');
-    let mapNum = 50;
-    while (mapNum <= 99) {
-        if (zone[0].number === mapNum) {
-            $('#mapNumber').append('<option value="'+mapNum+'" selected>Zone n°'+mapNum+'</option>');
-        } else {
-            $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+'</option>');
+    if (playerInfos.pseudo === 'Mapedit') {
+        $('#conUnitList').append('<select class="boutonGris" id="mapNumber" onchange="mapNumAssign(`mapNumber`)"></select>');
+        $('#mapNumber').append('<option value="100" selected>Zone n°??</option>');
+        let mapNum = 50;
+        while (mapNum <= 99) {
+            if (zone[0].number === mapNum) {
+                $('#mapNumber').append('<option value="'+mapNum+'" selected>Zone n°'+mapNum+'</option>');
+            } else if (!playerInfos.misDB.includes(mapNum)) {
+                $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+'</option>');
+            }
+            if (mapNum >= 99) {break;}
+            mapNum++
         }
-        if (mapNum >= 99) {break;}
-        mapNum++
+        $('#conUnitList').append('<br>');
+        $('#conUnitList').append('<br>');
     }
-    $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<br>');
     // Terrains
     let mbClass = 'mapedBut';
     if (mped.ster === undefined && mped.sinf === '') {mbClass = 'mapedButSel';}

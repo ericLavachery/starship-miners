@@ -487,6 +487,18 @@ function targetLogic(bat,iter) {
             tFuzz = Math.round(tFuzz*2);
         }
     }
+    if (bat.tags.includes('nopilots') || batType.skills.includes('noselfmove')) {
+        if (!selectedBatType.skills.includes('capbld')) {
+            let selfMove = checkSelfMove(bat,batType);
+            if (!selfMove) {
+                if (iter <= 4 || selectedBatType.skills.includes('nobldtarg')) {
+                    tFuzz = -999;
+                } else {
+                    tFuzz = -95;
+                }
+            }
+        }
+    }
     if (batType.skills.includes('robot')) {
         if (selectedWeap.ammo.includes('psionics')) {
             tFuzz = -95;
@@ -544,7 +556,6 @@ function targetLogic(bat,iter) {
         tFuzz = -95;
     }
     if (selectedBatType.skills.includes('nobldtarg')) {
-        let blockedAlien = false;
         if (iter <= 4) {
             if (batType.cat === 'buildings' || batType.cat === 'devices' || (batType.cat === 'vehicles' && bat.armor >= 5)) {
                 tFuzz = -999;

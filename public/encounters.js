@@ -299,12 +299,12 @@ function tooLate(hard) {
         bastion.squadsLeft = rand.rand(2,5);
         bastion.tags.push('camo');
         bastion.fuzz = -2;
-        bastionRes(centreTileId);
+        bastionRes(158,centreTileId);
         if (hard) {
             if (rand.rand(1,4) === 1) {
-                pactole(centreTileId,true);
+                pactole(158,centreTileId,true);
             } else {
-                bastionRes(centreTileId);
+                bastionRes(158,centreTileId);
             }
         }
         putBastionAliens(hard);
@@ -319,10 +319,10 @@ function zoneIndustrielle(hard) {
     warning('<span class="rq3">Zone industrielle en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         putIndusUnits(centreTileId,hard);
-        bastionRes(centreTileId);
+        bastionRes(3,centreTileId);
         if (hard) {
-            bastionRes(centreTileId);
-            bastionRes(centreTileId);
+            bastionRes(3,centreTileId);
+            bastionRes(3,centreTileId);
         }
         putBastionAliens(hard);
     } else {
@@ -626,9 +626,9 @@ function campDeColons(hard) {
     warning('<span class="rq3">Camp de colons en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         putColonUnits(centreTileId,hard);
-        bastionRes(centreTileId);
+        bastionRes(157,centreTileId);
         if (hard) {
-            bastionRes(centreTileId);
+            bastionRes(157,centreTileId);
         }
         putBastionAliens(hard);
     } else {
@@ -803,9 +803,9 @@ function baseLabo(hard) {
     warning('<span class="rq3">Base scientifique en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         putLaboUnits(centreTileId,hard);
-        bastionRes(centreTileId);
+        bastionRes(206,centreTileId);
         if (hard) {
-            pactole(centreTileId,true);
+            pactole(206,centreTileId,true);
         }
         putBastionAliens(hard);
     } else {
@@ -956,10 +956,10 @@ function bastionDeBrigands(hard) {
     warning('<span class="rq3">Bastion de brigands en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         putHLLUnits(centreTileId,hard);
-        bastionRes(centreTileId);
+        bastionRes(224,centreTileId);
         if (hard) {
-            bastionRes(centreTileId);
-            pactole(centreTileId,false);
+            bastionRes(224,centreTileId);
+            pactole(224,centreTileId,true);
         }
         putBastionAliens(hard);
     } else {
@@ -1306,10 +1306,10 @@ function baseDeResistants(hard) {
     warning('<span class="rq3">Bastion de résistants en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         putBastionUnits(centreTileId,hard);
-        bastionRes(centreTileId);
+        bastionRes(262,centreTileId);
         if (hard) {
-            bastionRes(centreTileId);
-            bastionRes(centreTileId);
+            bastionRes(262,centreTileId);
+            bastionRes(262,centreTileId);
         }
         putBastionAliens(hard);
     } else {
@@ -1621,7 +1621,7 @@ function encounterAmmos(tech) {
     }
 }
 
-function bastionRes(bastionTileId) {
+function bastionRes(bationUnitId,bastionTileId) {
     console.log('SURVIE');
     let coffre = getZoneBatByTileId(bastionTileId);
     let totalRes = 0;
@@ -1678,7 +1678,7 @@ function bastionRes(bastionTileId) {
     });
 };
 
-function pactole(bastionTileId,withTrans) {
+function pactole(bationUnitId,bastionTileId,withTrans) {
     console.log('PACTOLE');
     let coffre = getZoneBatByTileId(bastionTileId);
     let totalRes = 0;
@@ -1688,12 +1688,15 @@ function pactole(bastionTileId,withTrans) {
     let resFactor;
     let shufRes = _.shuffle(resTypes);
     shufRes.forEach(function(res) {
-        if (res.name != 'Magma' && res.name != 'Transorb' && res.name != 'Spins' && res.cat != 'alien' && (res.cat != 'transfo' || withTrans)) {
+        if (res.name != 'Magma' && res.name != 'Transorb' && res.cat != 'alien' && (res.cat != 'transfo' || withTrans) && (res.name != 'Spins' || bationUnitId === 206)) {
             if (res.rarity <= 16) {
                 thatResChance = 0;
                 thatResNum = 0;
                 resFactor = res.rarity+res.rarity+Math.round(zone[0].mapDiff*3);
-                thatResChance = Math.ceil(resFactor/3*res.batch/3);
+                thatResChance = Math.ceil(resFactor/3*res.batch/2);
+                if (res.name === 'Spins') {
+                    thatResChance = 6;
+                }
                 if (res.cat === 'blue') {
                     thatResChance = Math.ceil(thatResChance/2*mapFactor/4);
                 } else if (res.cat === 'blue-sky') {
@@ -1706,8 +1709,8 @@ function pactole(bastionTileId,withTrans) {
                 if (rand.rand(1,maxDice) <= thatResChance) {
                     thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*1.5*rand.rand(4,16))+rand.rand(0,9);
                     thatResNum = Math.ceil(thatResNum*150/mineRateDiv);
-                    if (withTrans && res.cat != 'transfo') {
-                        thatResNum = Math.ceil(thatResNum/1.5);
+                    if (res.name === 'Spins') {
+                        thatResNum = Math.ceil(thatResNum/10);
                     }
                     console.log('!GET : '+res.name+' '+thatResNum);
                     if (coffre.transRes[res.name] === undefined) {

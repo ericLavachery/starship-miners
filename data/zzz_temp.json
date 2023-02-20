@@ -1,3 +1,7 @@
+<div class="radar">
+  <div class="radar_trail"></div>
+</div>
+
 <div class="hover-text">hover me
     <span class="tooltip-text" id="delay">I'm a tooltip!</span>
 </div>
