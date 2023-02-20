@@ -219,6 +219,44 @@ function shotSound(weapon,bat) {
     }
 };
 
+function reloadSound(weap) {
+    if (weap.sound.includes('sniper') || weap.sound.includes('antichar')) {
+        playSound('sniperload',0,true);
+    } else if (weap.sound.includes('calibre_heavy') || weap.sound.includes('laser_fusil')) {
+        playSound('mag',0,true);
+    } else if (weap.sound.includes('calibre_hunt') || weap.sound.includes('magnum')) {
+        playSound('cock',0,true);
+    } else if (weap.sound.includes('calibre_x2') || weap.sound.includes('fpneu') || weap.sound.includes('rainbow') || weap.sound.includes('tromblon')) {
+        playSound('greload',0,true);
+    } else if (weap.sound.includes('pistol_x') || weap.sound.includes('revolver') || weap.sound.includes('uzi')) {
+        playSound('berretta9',0,true);
+    } else if (weap.sound.includes('dynamite') || weap.sound.includes('molotov') || weap.sound.includes('flamme')) {
+        playSound('lighter',0,true);
+    } else if (weap.sound.includes('calibre_sa') || weap.sound.includes('kalach')) {
+        playSound('ar7',0,true);
+    } else if (weap.sound.includes('shotgun') || weap.sound === 'fmag') {
+        playSound('lever',0,true);
+    } else if (weap.sound.includes('calibre_pierce')) {
+        playSound('shotload',0,true);
+    } else if (weap.sound.includes('carabine')) {
+        playSound('winchester',0,true);
+    } else if (weap.sound.includes('bfg') || weap.sound.includes('plas') || weap.sound.includes('raygun')) {
+        playSound('plasload',0,true);
+    } else if (weap.sound.includes('blister') || weap.sound.includes('nailgun')) {
+        playSound('sciload',0,true);
+    } else if (weap.sound.includes('laser_minicanon')) {
+        playSound('laserload',0,true);
+    } else if (weap.sound.includes('laser_canon')) {
+        playSound('laserloadbig',0,true);
+    } else if (weap.sound.includes('xxxxxx')) {
+        playSound('allteams',0,true);
+    } else if (weap.sound.includes('bomb') || weap.sound.includes('miss') || weap.sound.includes('obusier')) {
+        playSound('getready',0,true);
+    } else {
+        playSound('wready',0,true);
+    }
+};
+
 function deathSound(bat) {
     let batType = getBatType(bat);
     let soundDir;

@@ -66,7 +66,7 @@
         "popIn":["Bar"],
         "rarity":15,
         "icon":"fas fa-wine-bottle",
-        "sound":"drinklot",
+        "sound":"drinkhaa",
         "info":"Immunisé à la peur / -2 PA"
     },
     {
@@ -97,7 +97,7 @@
         "popIn":["Hôpital","Pharmacie","Clinique","Centre de recherches","Laboratoire"],
         "rarity":4,
         "icon":"ra ra-heart-bottle rpg",
-        "sound":"drink",
+        "sound":"drinkhhh",
         "info":"Régénération"
     },
     {
@@ -142,7 +142,7 @@
         "popIn":["Centre de recherches","Laboratoire","Bar"],
         "rarity":1,
         "icon":"far fa-eye",
-        "sound":"drink",
+        "sound":"ligne",
         "info":"+6 précision / +3 défense / guérit les maladies"
     },
     {
@@ -157,7 +157,7 @@
         "popIn":["Centre de recherches","Laboratoire","Bar"],
         "rarity":1,
         "icon":"ra ra-player-dodge rpg",
-        "sound":"drink",
+        "sound":"lignetchoum",
         "info":"+3 PA / +1 salve"
     },
     {
@@ -172,7 +172,7 @@
         "popIn":["Centre de recherches","Laboratoire","Bar"],
         "rarity":1,
         "icon":"fas fa-fist-raised",
-        "sound":"drink",
+        "sound":"drinkho",
         "info":"Bonus de puissance aux armes de mêlée"
     },
     {
@@ -188,7 +188,7 @@
         "popIn":["Garage","Station service","Aéroport","Port"],
         "rarity":4,
         "icon":"ra ra-bottled-bolt rpg",
-        "sound":"pour",
+        "sound":"pourstart",
         "info":"Bonus PA (variable)"
     },
     {
@@ -204,7 +204,7 @@
         "popIn":["Garage","Station service","Aéroport","Port"],
         "rarity":3,
         "icon":"fas fa-tachometer-alt",
-        "sound":"pour",
+        "sound":"pourgo",
         "info":"Augmente la rapidité de déplacement"
     },
     {

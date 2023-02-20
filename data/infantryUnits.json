@@ -696,7 +696,7 @@
             "power":10,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"calibre_sniper",
+            "sound":"calibre_sniper_def",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "equip":["aucun","chargeur1","e-ranger","kit-milice","e-jetpack","taserkit","camkit","e-phare","repel"],
@@ -1406,7 +1406,7 @@
             "power":10,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"calibre_sniper",
+            "sound":"calibre_sniper_def",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "weapon2":{
@@ -4112,7 +4112,7 @@
             "power":10,
             "armors":0.75,
             "aoe":"unit",
-            "sound":"calibre_sniper",
+            "sound":"calibre_sniper_def",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":[],

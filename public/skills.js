@@ -1355,6 +1355,7 @@ function checkAmmoPack(ammoName,bat,batType,conv) {
 
 function useAmmoPack(ammoName,conv) {
     let ammoOK = false;
+    let theWeapon = selectedBatType.weapon;
     let hasW1 = checkHasWeapon(1,selectedBatType,selectedBat.eq);
     if (hasW1) {
         if (conv) {
@@ -1389,28 +1390,35 @@ function useAmmoPack(ammoName,conv) {
             if (convAmmo.base.includes(ammoName)) {
                 selectedBat.ammo2 = convAmmo.pref+ammoName;
                 ammoOK = true;
+                theWeapon = selectedBatType.weapon2;
             } else if (ammoName === 'dunium' && selectedBatType.weapon2.ammo.includes('ac-dunium')) {
                 selectedBat.ammo2 = 'ac-dunium';
                 ammoOK = true;
+                theWeapon = selectedBatType.weapon2;
             } else if (ammoName === 'molotov-slime' && selectedBatType.weapon2.ammo.includes('fireslime')) {
                 selectedBat.ammo2 = 'fireslime';
                 ammoOK = true;
+                theWeapon = selectedBatType.weapon2;
             } else if (ammoName === 'molotov-pyrus' && selectedBatType.weapon2.ammo.includes('firebug')) {
                 selectedBat.ammo2 = 'firebug';
                 ammoOK = true;
+                theWeapon = selectedBatType.weapon2;
             } else if (ammoName === 'molotov-pyratol' && selectedBatType.weapon2.ammo.includes('fireblast')) {
                 selectedBat.ammo2 = 'fireblast';
                 ammoOK = true;
+                theWeapon = selectedBatType.weapon2;
             }
         } else {
             if (selectedBatType.weapon2.ammo.includes(ammoName)) {
                 selectedBat.ammo2 = ammoName;
                 ammoOK = true;
+                theWeapon = selectedBatType.weapon2;
             }
         }
     }
     if (ammoOK) {
         selectedBat.apLeft = selectedBat.apLeft-1;
+        reloadSound(theWeapon);
         let tile = getTile(selectedBat);
         delete tile.ap;
     }
@@ -1482,6 +1490,7 @@ function useEquipPack(equipName) {
     }
     if (equipOK) {
         selectedBat.apLeft = selectedBat.apLeft-3;
+        playSound('changing',0,true);
         let tile = getTile(selectedBat);
         delete tile.ap;
     }
@@ -1516,6 +1525,7 @@ function useArmorPack(armorName) {
     }
     if (armorOK) {
         selectedBat.apLeft = selectedBat.apLeft-3;
+        playSound('changing',0,true);
         let tile = getTile(selectedBat);
         delete tile.ap;
     }
@@ -1575,6 +1585,7 @@ function useDrugPack(drugName) {
         selectedBat.tags.push(drug.name);
         selectedBat.tags.push(drug.name);
         drugInstantBonus(drug,true);
+        playSound(drug.sound,0);
         selectedBat.apLeft = selectedBat.apLeft-apCost;
         let tile = getTile(selectedBat);
         delete tile.ap;

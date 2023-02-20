@@ -27,7 +27,7 @@ function moveMode() {
     mped = {};
 };
 
-function fireMode(weapon) {
+function fireMode(weapon,silent) {
     if (stopMe === false) {
         mode = 'fire';
         document.title = pseudo + ' - Attaque';
@@ -35,6 +35,9 @@ function fireMode(weapon) {
         $('#mode').empty().append('Mode Attaque');
         cursorSwitch('.','grid-item','pointer');
         weaponSelect(weapon);
+        if (!silent) {
+            reloadSound(selectedWeap);
+        }
         fireInfos(selectedBat);
         showBatInfos(selectedBat);
         $('#report').empty('');
@@ -63,9 +66,9 @@ function confirmMode() {
         if (Object.keys(selectedBat).length >= 1) {
             if (mode === 'fire') {
                 if (selectedWeap.num === 2) {
-                    fireMode('w2');
+                    fireMode('w2',true);
                 } else {
-                    fireMode('w1');
+                    fireMode('w1',true);
                 }
             } else if (mode === 'move') {
                 moveMode();
