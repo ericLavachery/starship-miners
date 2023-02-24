@@ -222,24 +222,38 @@ function shotSound(weapon,bat) {
 function reloadSound(weap) {
     if (weap.sound.includes('sniper') || weap.sound.includes('antichar')) {
         playSound('sniperload',0,true);
-    } else if (weap.sound.includes('calibre_heavy') || weap.sound.includes('laser_fusil')) {
+    } else if (weap.sound.includes('laser_fusil')) {
         playSound('mag',0,true);
-    } else if (weap.sound.includes('calibre_hunt') || weap.sound.includes('magnum')) {
+    } else if (weap.sound.includes('magnum')) {
         playSound('cock',0,true);
-    } else if (weap.sound.includes('calibre_x2') || weap.sound.includes('fpneu') || weap.sound.includes('rainbow') || weap.sound.includes('tromblon')) {
+    } else if (weap.sound.includes('rainbow')) {
         playSound('greload',0,true);
+    } else if (weap.sound.includes('calibre_hunt') || weap.sound.includes('calibre_x2')) {
+        playSound('basicreload',0,true);
+    } else if (weap.sound.includes('fpneu')) {
+        playSound('hmg',0,true);
+    } else if (weap.sound.includes('calibre_heavy') || weap.sound.includes('tromblon')) {
+        playSound('spreload',0,true);
     } else if (weap.sound.includes('pistol_x') || weap.sound.includes('revolver') || weap.sound.includes('uzi')) {
         playSound('berretta9',0,true);
-    } else if (weap.sound.includes('dynamite') || weap.sound.includes('molotov') || weap.sound.includes('flamme')) {
+    } else if (weap.sound.includes('dynamite') || weap.sound.includes('molotov')) {
         playSound('lighter',0,true);
-    } else if (weap.sound.includes('calibre_sa') || weap.sound.includes('kalach')) {
+    } else if (weap.sound.includes('flamme')) {
+        playSound('lfstart',0,true);
+    } else if (weap.sound.includes('flumme')) {
+        playSound('ltstart',0,true);
+    } else if (weap.sound.includes('calibre_sa')) {
         playSound('ar7',0,true);
+    } else if (weap.sound.includes('kalach')) {
+        playSound('ak47',0,true);
     } else if (weap.sound.includes('shotgun') || weap.sound === 'fmag') {
         playSound('lever',0,true);
     } else if (weap.sound.includes('calibre_pierce')) {
         playSound('shotload',0,true);
     } else if (weap.sound.includes('carabine')) {
         playSound('winchester',0,true);
+    } else if (weap.sound.includes('mit_')) {
+        playSound('mgreload',0,true);
     } else if (weap.sound.includes('bfg') || weap.sound.includes('plas') || weap.sound.includes('raygun')) {
         playSound('plasload',0,true);
     } else if (weap.sound.includes('blister') || weap.sound.includes('nailgun')) {
@@ -248,6 +262,26 @@ function reloadSound(weap) {
         playSound('laserload',0,true);
     } else if (weap.sound.includes('laser_canon')) {
         playSound('laserloadbig',0,true);
+    } else if (weap.sound.includes('balista') || weap.sound.includes('catapult')) {
+        playSound('bendingbig',0,true);
+    } else if (weap.sound.includes('bow')) {
+        playSound('bending',0,true);
+    } else if (weap.sound.includes('belier') || weap.sound.includes('harvest')) {
+        if (weap.power >= 18) {
+            playSound('motroarbig',0,true);
+        } else {
+            playSound('motroar',0,true);
+        }
+    } else if (weap.sound.includes('growl')) {
+        // none
+    } else if (weap.sound.includes('dog_attack')) {
+        // none
+    } else if (weap.isMelee) {
+        playSound('sdraw',0,true);
+    } else if (weap.sound.includes('auto')) {
+        playSound('hydrolight',-1,true);
+    } else if (weap.sound.includes('canon_')) {
+        playSound('hydro',-1,true);
     } else if (weap.sound.includes('xxxxxx')) {
         playSound('allteams',0,true);
     } else if (weap.sound.includes('bomb') || weap.sound.includes('miss') || weap.sound.includes('obusier')) {

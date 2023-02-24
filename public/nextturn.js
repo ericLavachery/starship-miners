@@ -1521,6 +1521,10 @@ function tagsEffect(bat,batType) {
     let totalDamage;
     let squadHP;
     let squadsOut;
+    let allTags = _.countBy(bat.tags);
+    if (allTags.poison === undefined) {
+        allTags.poison = 0;
+    }
     // MUD
     if (bat.tags.includes('mud')) {
         if (batType.moveCost < 90) {
@@ -1617,6 +1621,8 @@ function tagsEffect(bat,batType) {
             } else {
                 regen = Math.round(batHP*slowregPower/100);
             }
+            regen = Math.ceil(regen/(allTags.poison+5)*5);
+            if (regen < 1) {regen = 1;}
             // console.log('regeneration='+regen);
             let batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
             if (batHPLeft > batHP) {
@@ -1788,7 +1794,6 @@ function tagsEffect(bat,batType) {
         }
         // POISON
         if (bat.tags.includes('poison') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron') && !bat.tags.includes('zombie') && bat.squadsLeft >= 1) {
-            let allTags = _.countBy(bat.tags);
             let poisonPower = allTags.poison*poisonDamage;
             if (bat.team === 'player') {
                 poisonPower = Math.round(poisonPower*batType.squads*batType.squadSize/60);

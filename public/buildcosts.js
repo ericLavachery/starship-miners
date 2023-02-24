@@ -608,25 +608,27 @@ function getDeployCosts(unit,ammo,weapNum,type) {
                 Object.entries(unit.costs).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
-                    let adjValue = Math.floor(value*deployFactor);
-                    let minValue = (playerInfos.comp.tri+1)*(playerInfos.comp.tri+1);
-                    if (key === 'Electros' || key === 'Batteries') {
-                        adjValue = Math.floor(adjValue/3)-3;
-                    }
-                    if (key === 'Energie') {
-                        deployCosts[key] = Math.ceil(value/4);
-                    } else if (key === 'Electros' || key === 'Batteries') {
-                        if (adjValue >= 1) {
-                            deployCosts[key] = adjValue;
+                    if (key != 'Spins') {
+                        let adjValue = Math.floor(value*deployFactor);
+                        let minValue = (playerInfos.comp.tri+1)*(playerInfos.comp.tri+1);
+                        if (key === 'Electros' || key === 'Batteries') {
+                            adjValue = Math.floor(adjValue/3)-3;
                         }
-                    } else {
-                        if (unit.skills.includes('ground')) {
+                        if (key === 'Energie') {
+                            deployCosts[key] = Math.ceil(value/4);
+                        } else if (key === 'Electros' || key === 'Batteries') {
                             if (adjValue >= 1) {
                                 deployCosts[key] = adjValue;
                             }
                         } else {
-                            if (adjValue >= minValue) {
-                                deployCosts[key] = adjValue;
+                            if (unit.skills.includes('ground')) {
+                                if (adjValue >= 1) {
+                                    deployCosts[key] = adjValue;
+                                }
+                            } else {
+                                if (adjValue >= minValue) {
+                                    deployCosts[key] = adjValue;
+                                }
                             }
                         }
                     }

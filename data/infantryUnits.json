@@ -4723,7 +4723,7 @@
             "accuracy":20,
             "power":32,
             "aoe":"unit",
-            "sound":"flamme",
+            "sound":"flumme",
             "ammo":["lt-o2","lt-nanite","lt-plastanium","lt-pyrus"],
             "maxAmmo":20,
             "ravitBld":"Atelier"
@@ -6203,7 +6203,7 @@
             "accuracy":24,
             "power":28,
             "aoe":"unit",
-            "sound":"flamme",
+            "sound":"flumme",
             "ammo":["lt-o2","lt-nanite","lt-plastanium","lt-pyrus"],
             "maxAmmo":13,
             "ravitBld":"Atelier"

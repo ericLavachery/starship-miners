@@ -1305,7 +1305,7 @@ function attack(melee,init) {
     if (targetBat.squadsLeft <= 0) {
         defAlive = false;
         let gain = true;
-        if (selectedBat.tags.includes('nomove')) {
+        if (selectedBat.tags.includes('nomove') || selectedBatType.skills.includes('nomove')) {
             gain = false;
         }
         batDeath(targetBat,true,gain,sWipe);
@@ -2120,7 +2120,7 @@ function defense(melee,init) {
     if (selectedBat.squadsLeft <= 0) {
         attAlive = false;
         let gain = true;
-        if (targetBat.tags.includes('nomove')) {
+        if (targetBat.tags.includes('nomove') || targetBatType.skills.includes('nomove')) {
             gain = false;
         }
         batDeath(selectedBat,true,gain,false);

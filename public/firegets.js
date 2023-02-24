@@ -479,7 +479,7 @@ function batDeath(bat,count,gain,isWiped) {
             let cytxp = Math.ceil(batType.squads*batType.squadSize*batType.crew/6);
             playerInfos.gangXP = playerInfos.gangXP+cytxp;
         }
-        if (bat.tags.includes('nomove') && count) {
+        if (bat.tags.includes('nomove') && count && !batType.skills.includes('nomove')) {
             removeNoMoves(bat);
         }
         let batIndex = bataillons.findIndex((obj => obj.id == bat.id));

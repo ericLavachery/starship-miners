@@ -390,6 +390,9 @@ function allowedArmors(unit) {
             protection.push('combo');
         }
     }
+    if (unit.skills.includes('a_heavy')) {
+        protection.push('hplate');
+    }
     if (unit.skills.includes('a_light') || unit.skills.includes('a_mid') || unit.skills.includes('a_heavy')) {
         if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('duneg');

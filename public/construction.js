@@ -1909,13 +1909,20 @@ function getResRecup(bat,batType) {
         let index;
         let batArmor;
         let batEquip;
-        if (playerInfos.bldList.includes('Décharge')) {
+        // TRANSORB / SPINS
+        let spinCost = 0;
+        if (batType.skills.includes('transorbital') || batType.skills.includes('isvsp')) {
+            if (batType.toNum >= 1) {
+                spinCost = batType.toNum;
+            }
+        }
+        if (playerInfos.bldList.includes('Décharge') || spinCost >= 1) {
             bldFactor = bldFactor+1;
         }
         if (playerInfos.comp.tri >= 1) {
             bldFactor = bldFactor+1;
         }
-        if (hasScraptruck || playerInfos.onShip) {
+        if (hasScraptruck || playerInfos.onShip || spinCost >= 1) {
             bldFactor = bldFactor+1;
         }
         recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+1)/8);
@@ -1946,8 +1953,8 @@ function getResRecup(bat,batType) {
                 }
                 if (key != 'Transorb' && key != 'Spins') {
                     value = Math.ceil(value/100*recupFactor);
-                } else {
-                    value = 0;
+                } else if (key === 'Spins') {
+                    value = Math.ceil(spinCost/100*recupFactor);
                 }
                 if (value >= 1) {
                     if (resRecup[key] === undefined) {
@@ -1958,12 +1965,6 @@ function getResRecup(bat,batType) {
                     totalRes = totalRes+value;
                 }
             });
-        }
-        // TRANSORB
-        if (batType.skills.includes('transorbital') || batType.skills.includes('isvsp')) {
-            if (batType.toNum >= 1) {
-                resRecup['Transorb'] = batType.toNum;
-            }
         }
         // BAT DEPLOY x/2%
         if (batType.deploy != undefined) {

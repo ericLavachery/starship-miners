@@ -523,6 +523,7 @@ function getUnitResRecup(batType) {
     }
     recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+1)/6);
     let totalRes = 0;
+    let spinCost = 0;
     // BAT FLATCOST x%
     if (batType.costs != undefined) {
         Object.entries(batType.costs).map(entry => {

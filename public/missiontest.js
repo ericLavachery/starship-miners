@@ -342,10 +342,12 @@ function loadMission() {
     $('#theStartZone').empty().append('<option value="0" selected>Zone</option>');
     $('#theStartZone').append('<option value="80" disabled>Zone 80 - Boss Spider</option>');
     $('#theStartZone').append('<option value="75" disabled>Zone 75 - Boss Bug</option>');
-    $('#theStartZone').append('<option value="70" disabled>Zone 70 - Boss Larve</option>');
+    $('#theStartZone').append('<option value="70" disabled>Zone 70 - Boss Larve</option>'); // 100 à 200 spins
     $('#theStartZone').append('<option value="65" disabled>Zone 65 - Boss Swarm</option>');
     $('#theStartZone').append('<option value="60">Zone 60 - Résistance</option>');
-    $('#theStartZone').append('<option value="55" disabled>Zone 55 - Science</option>');
+    $('#theStartZone').append('<option value="61">Zone 61 - Résistance</option>'); // 65 Spins
+    $('#theStartZone').append('<option value="55" disabled>Zone 55 - Science</option>'); // 100 à 200 spins
+    $('#theStartZone').append('<option value="50" disabled>Zone 50 - Trolley</option>'); // 68 à 180 Spins
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="butSpace"></span>');
     $('#conUnitList').append('<br>');

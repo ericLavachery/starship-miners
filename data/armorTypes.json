@@ -388,6 +388,19 @@
         "popIn":["Caserne","Armurerie"]
     },
     {
+        "name":"hplate",
+        "cat":"armor",
+        "armor":6,
+        "ap":-3,
+        "skills":["resistall"],
+        "bldReq":["Arsenal"],
+        "compReq":{"mat":2,"tri":2,"ca":2},
+        "factor":"thp",
+        "costs":{"Scrap":12,"Titane":6,"Mendium":6,"Bois":4,"Rhodium":2},
+        "icon":2,
+        "popIn":["Caserne","Armurerie"]
+    },
+    {
         "name":"tisal",
         "cat":"armor",
         "armor":4,
@@ -448,7 +461,7 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":3,"ca":3},
         "factor":"thp",
-        "costs":{"Aluminium":6,"Egidium":12},
+        "costs":{"Titane":6,"Egidium":12},
         "icon":3,
         "popIn":["Caserne"]
     },
@@ -907,7 +920,7 @@
         "compReq":{"tele":2,"def":1,"bal":2},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30},
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30,"Spins":4},
         "deploy":{"Plutonium":25,"Energie":100,"Argon":15,"Bossium":3}
     },
     {
@@ -919,7 +932,7 @@
         "compReq":{"tele":2,"def":2,"bal":2,"energ":1},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30},
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30,"Spins":4},
         "deploy":{"Plutonium":25,"Energie":100,"Argon":15,"Bossium":3}
     },
     {
@@ -931,7 +944,7 @@
         "compReq":{"tele":2},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30},
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30,"Spins":4},
         "deploy":{"Plutonium":25,"Energie":100,"Argon":15,"Bossium":3}
     },
     {
@@ -943,7 +956,7 @@
         "compReq":{"tele":3},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Carbone":75,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Cobalt":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":500,"Bossium":100},
+        "costs":{"Carbone":75,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Cobalt":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":500,"Bossium":100,"Spins":7},
         "deploy":{"Plutonium":75,"Energie":300,"Argon":30,"Bossium":6}
     },
     {
@@ -955,7 +968,7 @@
         "compReq":{"tele":2},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500},
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Spins":3},
         "deploy":{"Plutonium":25,"Energie":100}
     },
     {
@@ -967,7 +980,7 @@
         "compReq":{"tele":3},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Cobalt":100,"Electros":200,"Batteries":200,"Energie":500},
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Cobalt":100,"Electros":200,"Batteries":200,"Energie":500,"Spins":5},
         "deploy":{"Plutonium":50,"Energie":200}
     },
     {
@@ -2164,6 +2177,7 @@
         "info":"Autopistol",
         "bldReq":["Arsenal"],
         "compReq":{"log":2,"def":2,"det":2,"bal":2,"robo":1},
+        "altCompReq":{"log":2,"def":2,"det":3,"bal":2,"cyber":2},
         "autoComp":[],
         "factor":"one",
         "costs":{"Carbone":15,"Scrap":15,"Munitions":10,"Tungstène":20,"Fer":75,"Cuivre":20,"Aluminium":30,"Moteurs":5,"Silicium":15,"Electros":15,"Batteries":15},
@@ -2176,6 +2190,7 @@
         "info":"Autopistol",
         "bldReq":["Arsenal"],
         "compReq":{"log":2,"def":2,"det":2,"bal":2,"robo":1},
+        "altCompReq":{"log":2,"def":2,"det":3,"bal":2,"cyber":2},
         "autoComp":[],
         "factor":"one",
         "costs":{"Carbone":15,"Scrap":15,"Munitions":10,"Tungstène":20,"Fer":75,"Cuivre":20,"Aluminium":30,"Moteurs":5,"Silicium":15,"Electros":15,"Batteries":15},
@@ -2187,7 +2202,8 @@
         "skills":[],
         "info":"Tourelles automatiques",
         "bldReq":["Usine d'armement"],
-        "compReq":{"log":2,"def":2,"det":3,"bal":3,"mat":2,"tank":1,"robo":1},
+        "compReq":{"log":2,"def":2,"det":2,"bal":3,"mat":2,"tank":1,"robo":1},
+        "altCompReq":{"log":2,"def":2,"det":3,"bal":3,"mat":2,"tank":1,"cyber":2},
         "autoComp":[],
         "factor":"one",
         "costs":{"Carbone":45,"Scrap":20,"Munitions":40,"Uranium":40,"Fer":150,"Cuivre":60,"Aluminium":60,"Moteurs":15,"Silicium":30,"Electros":45,"Batteries":45},
@@ -2778,6 +2794,7 @@
             "Drogues":250,
             "Batteries":250,
             "Electros":150,
+            "Spins":20,
             "Bugium":300,
             "Aranium":100,
             "Larvium":100,
