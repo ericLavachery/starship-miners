@@ -1841,7 +1841,7 @@
     {
         "id":118,
         "name":"Stakhanov",
-        "levels":{"rednecks":15,"blades":17,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":17},
+        "levels":{"rednecks":15,"blades":16,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":17},
         "bldReq":["Centre de recherches","Usine"],
         "compReq":{"ext":3},
         "compPass":["rednecks"],
@@ -2150,7 +2150,7 @@
     {
         "id":137,
         "name":"Tour de garde",
-        "levels":{"rednecks":17,"blades":16,"bulbos":13,"drogmulojs":17,"tiradores":18,"detruas":17,"brasier":15},
+        "levels":{"rednecks":17,"blades":17,"bulbos":13,"drogmulojs":17,"tiradores":18,"detruas":17,"brasier":16},
         "bldReq":["Usine d'armement","Centre de recherches","Chaîne de montage"],
         "compReq":{"energ":3},
         "compPass":["blades","bulbos","brasier"],
@@ -2217,7 +2217,7 @@
     {
         "id":310,
         "name":"Autoturrets",
-        "levels":{"rednecks":15,"blades":18,"bulbos":15,"drogmulojs":16,"tiradores":14,"detruas":15,"brasier":16},
+        "levels":{"rednecks":14,"blades":16,"bulbos":14,"drogmulojs":15,"tiradores":14,"detruas":14,"brasier":15},
         "bldReq":["Usine d'armement","Centre de com"],
         "compReq":{"def":2,"det":2,"bal":2,"robo":1},
         "altCompReq":{"def":2,"det":3,"bal":2,"cyber":2},

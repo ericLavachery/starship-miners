@@ -1105,6 +1105,121 @@ function zonePercCheck() {
     zone[0].pr = percR;
 };
 
+function mapGlobalEdits(oldTer,newTer) {
+    if (oldTer === undefined) {
+        oldTer = 'P';
+    }
+    if (newTer === undefined) {
+        newTer = 'P';
+    }
+    let oldTerrain = getTerrainByName(oldTer);
+    let newTerrain = getTerrainByName(newTer);
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
+    $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName or">EDITER A LA LOUCHE</span><br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="roadsKill()">Enlever: Ruines et Routes</span></span><br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="constName">Terrains à remplacer:</span><br>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`P`,`'+newTer+'`)">Plaines</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`G`,`'+newTer+'`)">Prairies</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`B`,`'+newTer+'`)">Maquis</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`F`,`'+newTer+'`)">Forêts</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`H`,`'+newTer+'`)">Collines</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`M`,`'+newTer+'`)">Montagnes</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`S`,`'+newTer+'`)">Marécages</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`W`,`'+newTer+'`)">Etangs</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`L`,`'+newTer+'`)">Lacs</span></span>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="constName">Remplacer par:</span><br>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`'+oldTer+'`,`P`)">Plaines</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`'+oldTer+'`,`G`)">Prairies</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`'+oldTer+'`,`B`)">Maquis</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`'+oldTer+'`,`F`)">Forêts</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`'+oldTer+'`,`H`)">Collines</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`'+oldTer+'`,`M`)">Montagnes</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`'+oldTer+'`,`S`)">Marécages</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`'+oldTer+'`,`W`)">Etangs</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`'+oldTer+'`,`L`)">Lacs</span></span>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,100)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 100%</span><br>');
+    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,90)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 90%</span><br>');
+    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,75)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 75%</span><br>');
+    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,50)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 50%</span><br>');
+    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,25)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 25%</span><br>');
+    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,10)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 10%</span><br>');
+    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,5)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 5%</span><br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="butSpace"></span>');
+    $('#conUnitList').append('<br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
+};
+
+function replaceTerrain(oldTer,newTer,pc) {
+    console.log('GLOBAL REPLACE TERRAIN');
+    console.log(oldTer);
+    console.log(newTer);
+    let seedReduce = false;
+    if (oldTer == 'M' || oldTer == 'H') {
+        if (newTer != 'M' && newTer != 'H') {
+            seedReduce = true;
+            console.log('seedReduce');
+        }
+    }
+    let seedExpand = false;
+    if (newTer == 'M' || newTer == 'H') {
+        if (oldTer != 'M' && oldTer != 'H') {
+            seedExpand = true;
+            console.log('seedExpand');
+        }
+    }
+    let removeHF = false;
+    if (oldTer == 'F' || oldTer == 'B' || oldTer == 'S') {
+        if (newTer != 'F' && newTer != 'B' && newTer != 'S') {
+            removeHF = true;
+        }
+    }
+    zone.forEach(function(tile) {
+        if (tile.terrain === oldTer) {
+            if (rand.rand(1,100) <= pc) {
+                if (seedReduce) {
+                    if (tile.seed > 6) {
+                        tile.seed = tile.seed-6;
+                    }
+                }
+                if (seedExpand) {
+                    if (tile.id % 2 == 0) {
+                        tile.seed = tile.seed+6;
+                    }
+                }
+                if (removeHF) {
+                    if (tile.rq != undefined) {
+                        if (tile.rs['Fruits'] != undefined) {
+                            delete tile.rs['Fruits'];
+                        }
+                        if (tile.rs['Huile'] != undefined) {
+                            delete tile.rs['Huile'];
+                        }
+                    }
+                }
+                tile.terrain = newTer;
+            }
+        }
+    });
+    showMap(zone,false);
+    minimap();
+};
+
 function roadsKill() {
     zone.forEach(function(tile) {
         if (tile.rd != undefined) {
@@ -1119,6 +1234,7 @@ function roadsKill() {
         }
     });
     showMap(zone,false);
+    minimap();
 };
 
 function loadEditorMission() {

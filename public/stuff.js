@@ -1238,6 +1238,12 @@ function getTerrainById(tileId) {
     return terrain;
 };
 
+function getTerrainByName(terrainName) {
+    let index = terrainTypes.findIndex((obj => obj.name == terrainName));
+    let terrain = terrainTypes[index];
+    return terrain;
+};
+
 function getTileTerrain(tileId) {
     let tileIndex = zone.findIndex((obj => obj.id == tileId));
     let tile = zone[tileIndex];

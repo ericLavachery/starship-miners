@@ -240,6 +240,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.fndCits === undefined) {
         playerInfos.fndCits = 0;
     }
+    if (playerInfos.fndSpins === undefined) {
+        playerInfos.fndSpins = 0;
+    }
     if (playerInfos.vz === undefined) {
         playerInfos.vz = 0;
     }

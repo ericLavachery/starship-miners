@@ -928,153 +928,206 @@ function checkNearRiver(tile) {
 };
 
 function checkRuinsPack(tile) {
-    if (tile.ap === undefined) {
-        let ruinType = checkRuinType(tile,false);
-        console.log('-------------------------------------------------------- RUINS PACK CHECK: '+ruinType.name);
-        let ruinSize = ruinType.checks.length;
-        if (ruinSize === 0) {
-            ruinSize = 0.5;
-        }
-        if (ruinType.name === 'Bar') {
-            ruinSize = 3;
-        }
-        if (ruinType.name === 'Pharmacie') {
-            ruinSize = 3;
-        }
-        if (ruinType.name === 'Hôpital') {
-            ruinSize = 6;
-        }
-        if (ruinType.name === 'Garage') {
-            ruinSize = 3;
-        }
-        if (ruinType.name === 'Poste de police') {
-            ruinSize = 4;
-        }
-        if (ruinType.name === 'Laboratoire' || ruinType.name === 'Centre de recherches') {
-            ruinSize = ruinSize*3;
-        }
-        let thePack = '';
-        let zoneFactor = Math.ceil((zone[0].mapDiff+8)/1.5);
-        let minAmmoLevel = 1;
-        if (zone[0].mapDiff >= 6) {
-            minAmmoLevel = 2;
-        }
-        let shufArmors = _.shuffle(armorTypes);
-        shufArmors.forEach(function(armor) {
-            if (thePack === '') {
-                if (armor.cat === 'drogue') {
-                    if (armor.popIn.includes(ruinType.name)) {
-                        let chance = armor.rarity*ruinSize;
-                        if (armor.popIn[0] === ruinType.name) {
-                            chance = chance*1.5;
-                        }
-                        chance = Math.ceil(chance);
-                        let dice = 100;
-                        let percent = Math.ceil(chance/dice*100);
-                        console.log(armor.name+' = '+chance+'/'+dice+' = '+percent+'%');
-                        if (rand.rand(1,dice) <= chance) {
-                            thePack = 'drg_'+armor.name;
-                            console.log('YEP!');
-                        }
+    let ruinType = checkRuinType(tile,false);
+    console.log('-------------------------------------------------------- RUINS PACK CHECK: '+ruinType.name);
+    let ruinSize = ruinType.checks.length;
+    if (ruinSize === 0) {
+        ruinSize = 0.5;
+    }
+    if (ruinType.name === 'Bar') {
+        ruinSize = 3;
+    }
+    if (ruinType.name === 'Pharmacie') {
+        ruinSize = 3;
+    }
+    if (ruinType.name === 'Hôpital') {
+        ruinSize = 6;
+    }
+    if (ruinType.name === 'Garage') {
+        ruinSize = 3;
+    }
+    if (ruinType.name === 'Poste de police') {
+        ruinSize = 4;
+    }
+    if (ruinType.name === 'Laboratoire' || ruinType.name === 'Centre de recherches') {
+        ruinSize = ruinSize*3;
+    }
+    let thePack = '';
+    let zoneFactor = Math.ceil((zone[0].mapDiff+8)/1.5);
+    let minAmmoLevel = 1;
+    if (zone[0].mapDiff >= 6) {
+        minAmmoLevel = 2;
+    }
+    let shufArmors = _.shuffle(armorTypes);
+    shufArmors.forEach(function(armor) {
+        if (thePack === '') {
+            if (armor.cat === 'drogue') {
+                if (armor.popIn.includes(ruinType.name)) {
+                    let chance = armor.rarity*ruinSize;
+                    if (armor.popIn[0] === ruinType.name) {
+                        chance = chance*1.5;
                     }
-                }
-                if (armor.cat === 'armor') {
-                    if (armor.icon != undefined) {
-                        if (armor.icon >= 1) {
-                            if (armor.popIn.includes(ruinType.name)) {
-                                let chance = (zoneFactor-(armor.icon*armor.icon))*ruinSize;
-                                if (armor.popIn[0] === ruinType.name) {
-                                    chance = chance*1.5;
-                                }
-                                chance = Math.ceil(chance);
-                                let dice = 2500;
-                                let percent = Math.ceil(chance/dice*100);
-                                console.log(armor.name+' = '+chance+'/'+dice+' = '+percent+'%');
-                                if (rand.rand(1,dice) <= chance) {
-                                    thePack = 'prt_'+armor.name;
-                                    console.log('YEP!');
-                                }
-                            }
-                        }
-                    }
-                }
-                if (armor.cat === 'equip') {
-                    if (armor.icon != undefined) {
-                        if (armor.icon >= 1) {
-                            if (armor.popIn.includes(ruinType.name)) {
-                                let thisSize = ruinSize;
-                                if (ruinType.name === 'Atelier') {
-                                    thisSize = 6;
-                                }
-                                if (ruinType.name === 'Usine') {
-                                    thisSize = 20;
-                                }
-                                let chance = (zoneFactor-(armor.icon*armor.icon))*thisSize;
-                                if (armor.popIn[0] === ruinType.name) {
-                                    chance = chance*1.5;
-                                }
-                                chance = Math.ceil(chance);
-                                let dice = 2500;
-                                let percent = Math.ceil(chance/dice*100);
-                                console.log(armor.name+' = '+chance+'/'+dice+' = '+percent+'%');
-                                if (rand.rand(1,dice) <= chance) {
-                                    thePack = 'eq_'+armor.name;
-                                    console.log('YEP!');
-                                }
-                            }
-                        }
+                    chance = Math.ceil(chance);
+                    let dice = 100;
+                    let percent = Math.ceil(chance/dice*100);
+                    console.log(armor.name+' = '+chance+'/'+dice+' = '+percent+'%');
+                    if (rand.rand(1,dice) <= chance) {
+                        thePack = 'drg_'+armor.name;
+                        console.log('YEP!');
                     }
                 }
             }
-        });
-        let maxAmmoLevel = 0;
-        if (ruinType.name === 'Poste de police' || ruinType.name === 'Prison') {
-            maxAmmoLevel = 1;
-        }
-        if (ruinType.name === 'Caserne' || ruinType.name === 'Armurerie') {
-            maxAmmoLevel = 3;
-        }
-        let shufAmmos = _.shuffle(ammoTypes);
-        shufAmmos.forEach(function(ammo) {
-            if (thePack === '') {
-                if (ammo.icon != undefined) {
-                    if (ammo.icon >= minAmmoLevel) {
-                        let ammoOK = false;
-                        if (ammo.name === 'freeze') {
-                            if (ruinType.name === 'Laboratoire' || ruinType.name === 'Centre de recherches') {
-                                ammoOK = true;
+            if (armor.cat === 'armor') {
+                if (armor.icon != undefined) {
+                    if (armor.icon >= 1) {
+                        if (armor.popIn.includes(ruinType.name)) {
+                            let chance = (zoneFactor-(armor.icon*armor.icon))*ruinSize;
+                            if (armor.popIn[0] === ruinType.name) {
+                                chance = chance*1.5;
                             }
-                        } else if (ammo.icon <= maxAmmoLevel) {
-                            ammoOK = true;
-                        }
-                        if (ammoOK) {
-                            let chance = (zoneFactor+2-(ammo.icon*ammo.icon))*ruinSize;
                             chance = Math.ceil(chance);
-                            let dice = 500;
-                            if (ammo.name === 'freeze') {
-                                dice = 250;
-                            } else if (ammo.name.includes('lame-')) {
-                                dice = 2000;
-                            } else if (ammo.name.includes('-')) {
-                                dice = 1500;
-                            }
+                            let dice = 2500;
                             let percent = Math.ceil(chance/dice*100);
-                            console.log(ammo.name+' = '+chance+'/'+dice+' = '+percent+'%');
+                            console.log(armor.name+' = '+chance+'/'+dice+' = '+percent+'%');
                             if (rand.rand(1,dice) <= chance) {
-                                thePack = ammo.name;
+                                thePack = 'prt_'+armor.name;
                                 console.log('YEP!');
                             }
                         }
                     }
                 }
             }
-        });
-        if (thePack != '') {
-            thePack = replacePack(thePack,false);
-            tile.ap = thePack;
-            showMap(zone,true);
+            if (armor.cat === 'equip') {
+                if (armor.icon != undefined) {
+                    if (armor.icon >= 1) {
+                        if (armor.popIn.includes(ruinType.name)) {
+                            let thisSize = ruinSize;
+                            if (ruinType.name === 'Atelier') {
+                                thisSize = 6;
+                            }
+                            if (ruinType.name === 'Usine') {
+                                thisSize = 20;
+                            }
+                            let chance = (zoneFactor-(armor.icon*armor.icon))*thisSize;
+                            if (armor.popIn[0] === ruinType.name) {
+                                chance = chance*1.5;
+                            }
+                            chance = Math.ceil(chance);
+                            let dice = 2500;
+                            let percent = Math.ceil(chance/dice*100);
+                            console.log(armor.name+' = '+chance+'/'+dice+' = '+percent+'%');
+                            if (rand.rand(1,dice) <= chance) {
+                                thePack = 'eq_'+armor.name;
+                                console.log('YEP!');
+                            }
+                        }
+                    }
+                }
+            }
         }
+    });
+    let maxAmmoLevel = 0;
+    if (ruinType.name === 'Poste de police' || ruinType.name === 'Prison') {
+        maxAmmoLevel = 1;
     }
+    if (ruinType.name === 'Caserne' || ruinType.name === 'Armurerie') {
+        maxAmmoLevel = 3;
+    }
+    let shufAmmos = _.shuffle(ammoTypes);
+    shufAmmos.forEach(function(ammo) {
+        if (thePack === '') {
+            if (ammo.icon != undefined) {
+                if (ammo.icon >= minAmmoLevel) {
+                    let ammoOK = false;
+                    if (ammo.name === 'freeze') {
+                        if (ruinType.name === 'Laboratoire' || ruinType.name === 'Centre de recherches') {
+                            ammoOK = true;
+                        }
+                    } else if (ammo.icon <= maxAmmoLevel) {
+                        ammoOK = true;
+                    }
+                    if (ammoOK) {
+                        let chance = (zoneFactor+2-(ammo.icon*ammo.icon))*ruinSize;
+                        chance = Math.ceil(chance);
+                        let dice = 500;
+                        if (ammo.name === 'freeze') {
+                            dice = 250;
+                        } else if (ammo.name.includes('lame-')) {
+                            dice = 2000;
+                        } else if (ammo.name.includes('-')) {
+                            dice = 1500;
+                        }
+                        let percent = Math.ceil(chance/dice*100);
+                        console.log(ammo.name+' = '+chance+'/'+dice+' = '+percent+'%');
+                        if (rand.rand(1,dice) <= chance) {
+                            thePack = ammo.name;
+                            console.log('YEP!');
+                        }
+                    }
+                }
+            }
+        }
+    });
+    if (thePack != '') {
+        thePack = replacePack(thePack,false);
+        if (tile.ap === undefined) {
+            tile.ap = thePack;
+        } else {
+            let nearTile = checkNearTile(tile);
+            nearTile.ap = thePack;
+        }
+        showMap(zone,true);
+    }
+};
+
+function checkNearTile(oldTile) {
+    let nearTileId = -1;
+    let nearTile = {};
+    zone.forEach(function(tile) {
+        if (tile.terrain != 'W' && tile.terrain != 'L' && tile.terrain != 'R') {
+            if (tile.ap === undefined) {
+                if (tile.x === oldTile.x) {
+                    if (tile.y === oldTile.y || tile.y === oldTile.y-1 || tile.y === oldTile.y+1) {
+                        nearTileId = tile.id;
+                    }
+                } else if (tile.x === oldTile.x-1 || tile.x === oldTile.x+1) {
+                    if (tile.y === oldTile.y) {
+                        nearTileId = tile.id;
+                    }
+                }
+            }
+        }
+    });
+    if (nearTileId < 0) {
+        zone.forEach(function(tile) {
+            if (tile.x === oldTile.x || tile.x === oldTile.x-1 || tile.x === oldTile.x+1) {
+                if (tile.y === oldTile.y || tile.y === oldTile.y-1 || tile.y === oldTile.y+1) {
+                    if (tile.ap === undefined) {
+                        if (tile.terrain != 'W' && tile.terrain != 'L' && tile.terrain != 'R') {
+                            nearTileId = tile.id;
+                        }
+                    }
+                }
+            }
+        });
+    }
+    if (nearTileId < 0) {
+        zone.forEach(function(tile) {
+            if (tile.x === oldTile.x || tile.x === oldTile.x-1 || tile.x === oldTile.x+1) {
+                if (tile.y === oldTile.y || tile.y === oldTile.y-1 || tile.y === oldTile.y+1) {
+                    if (tile.ap === undefined) {
+                        nearTileId = tile.id;
+                    }
+                }
+            }
+        });
+    }
+    if (nearTileId < 0) {
+        nearTile = oldTile;
+    } else {
+        nearTile = getTileById(nearTileId);
+    }
+    return nearTile;
 };
 
 function replacePack(oldPack,edited) {
