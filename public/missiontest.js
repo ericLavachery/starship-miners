@@ -206,6 +206,9 @@ function putMissionStats() {
     playerInfos.comp.ind = 1;
     playerInfos.comp.med = 0+quinze;
     playerInfos.comp.scaph = 1;
+    if (zone[0].pid-2 > playerInfos.comp.scaph) {
+        playerInfos.comp.scaph = zone[0].pid-2;
+    }
     playerInfos.comp.tele = 0;
     playerInfos.comp.trans = 2+seize;
     playerInfos.comp.tri = 2;
@@ -347,7 +350,7 @@ function loadMission() {
     $('#theStartZone').append('<option value="60">Zone 60 - Résistance</option>');
     $('#theStartZone').append('<option value="61">Zone 61 - Résistance</option>'); // 27 Spins
     $('#theStartZone').append('<option value="55" disabled>Zone 55 - Science</option>'); // 150 spins
-    $('#theStartZone').append('<option value="50" disabled>Zone 50 - Trolley</option>'); // 68 à 180 Spins (136)
+    $('#theStartZone').append('<option value="50">Zone 50 - Trolley</option>'); // 68 à 180 Spins (136)
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="butSpace"></span>');
     $('#conUnitList').append('<br>');

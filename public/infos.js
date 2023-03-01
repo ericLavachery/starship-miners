@@ -243,7 +243,12 @@ function batInfos(bat,batType,pop) {
         }
     }
     if (!selfMove) {
-        $('#'+bodyPlace).append('<span class="paramName or" title="Sans équipage! Embarquez un bataillon pour créer un équipage temporaire. Vous pouvez créer un équipage définitif avec des citoyens (Si vous êtes à côté d\'un lander, dans la soute de la station, où avec des citoyens embarqués).">Equipage</span><span class="paramIcon"><i class="fas fa-users"></i></span><span class="paramValue or">Non</span><br>');
+        if (!batType.skills.includes('transorbital')) {
+            let crewNeed = batType.squads*batType.squadSize*batType.crew;
+            $('#'+bodyPlace).append('<span class="paramName or" title="Sans équipage! Embarquez un bataillon pour créer un équipage temporaire. Vous pouvez créer un équipage définitif avec '+crewNeed+' citoyens (Si vous êtes à côté d\'un lander, dans la soute de la station, où avec des citoyens embarqués).">Equipage</span><span class="paramIcon"><i class="fas fa-users"></i></span><span class="paramValue or">Non</span><br>');
+        } else {
+            $('#'+bodyPlace).append('<span class="paramName or" title="Sans équipage! Ce lander ne peut pas décoller!">Equipage</span><span class="paramIcon"><i class="fas fa-users"></i></span><span class="paramValue or">Non</span><br>');
+        }
     }
     let roundApLeft = bat.apLeft.toFixedNumber(1);
     $('#'+bodyPlace).append('<span class="paramName">Points d\'action</span><span class="paramIcon"><i class="fas fa-hourglass-'+hourglass+'"></i></span><span class="paramValue">'+roundApLeft+'/'+ap+'</span><br>');
@@ -732,7 +737,11 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<hr>');
         let demText;
         let fleeText;
-        if (!bat.tags.includes('nomove') && !batType.skills.includes('nodelete') && !bat.tags.includes('nopilots') && !decButHere) {
+        console.log(nearby);
+        let okDis = checkDismantle(bat,batType);
+        // if (!bat.tags.includes('nomove') && !batType.skills.includes('nodelete') && !bat.tags.includes('nopilots') && !decButHere) {
+        // }
+        if (okDis && !decButHere) {
             let okKill = checkOkKill(batType);
             if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || (batType.skills.includes('recupcorps') && okKill) || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
                 if (batType.skills.includes('recupcit')) {

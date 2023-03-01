@@ -2590,13 +2590,13 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     lineBreak = true;
                 }
             }
-        } else if (near.lander) {
+        } else if (near.lander && !batType.skills.includes('transorbital')) {
             let dispoCit = getDispoCit();
             if (dispoCit >= neededCits) {
                 $('#unitInfos').append('<button type="button" title="Assigner un équipage ('+neededCits+' citoyens)" class="boutonOrange iconButtons" onclick="putCrew()"><i class="fas fa-users"></i> <span class="small">5</span></button>');
                 lineBreak = true;
             }
-        } else {
+        } else if (!batType.skills.includes('transorbital')) {
             let enoughCits = checkTransToCrew(bat,batType);
             if (enoughCits) {
                 $('#unitInfos').append('<button type="button" title="Assigner comme équipage '+neededCits+' citoyens transportés" class="boutonOrange iconButtons" onclick="putTransToCrew()"><i class="fas fa-users"></i> <span class="small">5</span></button>');

@@ -823,6 +823,9 @@ function addTagToBatOnTile(tile,tag) {
                 }
             }
         }
+        if (batType.skills.includes('transorbital')) {
+            tagOK = true;
+        }
     }
     if (tagOK) {
         if (!bat.tags.includes(tag)) {
@@ -1209,6 +1212,10 @@ function replaceTerrain(oldTer,newTer,pc) {
                         }
                         if (tile.rs['Huile'] != undefined) {
                             delete tile.rs['Huile'];
+                        }
+                        if (Object.keys(tile.rs).length < 1) {
+                            delete tile.rs;
+                            delete tile.rq;
                         }
                     }
                 }

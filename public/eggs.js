@@ -170,6 +170,9 @@ function checkMaxDroppedEggs() {
         }
         maxDroppedEggs = maxDroppedEggs+overLimit;
     }
+    if (zone[0].meip != undefined) {
+        maxDroppedEggs = maxDroppedEggs+zone[0].meip;
+    }
     if (playerInfos.mapTurn < 25+playerInfos.randSeed) {
         if (zone[0].noEggs != undefined) {
             if (zone[0].noEggs) {
@@ -240,7 +243,7 @@ function checkAlienArtillery() {
     return alienArtillery;
 };
 
-function getDropChance(turn) {
+function getDropChance(turn,maxDE) {
     let adjMapDrop = playerInfos.mapDrop;
     let adjMapTurn = turn+landingNoise-13+zone[0].mapDiff;
     if (adjMapTurn <= 0) {
@@ -255,6 +258,7 @@ function getDropChance(turn) {
     console.log('mapAdjDiff'+playerInfos.mapAdjDiff);
     console.log('dropTurn'+dropTurn);
     let dropChance = Math.round(dropTurn*Math.sqrt(playerInfos.mapAdjDiff)*dropMod);
+    dropChance = dropChance+(maxDE*7)-(playerInfos.droppedEggs*7);
     if (dropChance < 10) {
         dropChance = 0;
     }
@@ -267,11 +271,11 @@ function checkEggsDrop() {
     let drop = false;
     let satDrop = false;
     let eggPauseDice = calcEggPause(false);
-    let dropChance = getDropChance(playerInfos.mapTurn);
     let maxEggsInPlay = checkMaxEggsInPlay();
     console.log('maxEggsInPlay = '+maxEggsInPlay);
     let maxDroppedEggs = checkMaxDroppedEggs();
     console.log('maxDroppedEggs = '+maxDroppedEggs);
+    let dropChance = getDropChance(playerInfos.mapTurn,maxDroppedEggs);
     let dropMessage = 'Nombre d\'oeufs tombés: '+playerInfos.droppedEggs+'/'+maxDroppedEggs;
     if (dropChance < 0) {
         dropChance = 0;
@@ -297,7 +301,7 @@ function checkEggsDrop() {
         dropMessage = 'Dôme actif';
     }
     console.log('dropChance='+dropChance);
-    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
+    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
         warning('Oeufs','Check '+dropChance+'% '+dropMessage);
     }
     if (!domeProtect) {
@@ -313,7 +317,7 @@ function checkEggsDrop() {
                 dropEgg('Cocon','any');
                 satDrop = true;
                 playerInfos.alienSat = 0;
-                if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
+                if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
                     warning('Cocon de saturation','200+ aliens.');
                 }
             } else if (crysalide) {
@@ -339,11 +343,11 @@ function checkEggsDrop() {
                 if (rand.rand(1,eggPauseDice) === 1) {
                     playerInfos.eggPause = false;
                     console.log('END PAUSE! 1/'+eggPauseDice);
-                    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
+                    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
                         warning('Fin de la pause','Check 1/'+eggPauseDice+' réussi.');
                     }
                 } else {
-                    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
+                    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
                         warning('La pause continue','Check 1/'+eggPauseDice+' raté.');
                     }
                 }
@@ -442,7 +446,7 @@ function eggsDrop() {
         if (rand.rand(1,100) <= eggPausePerc && !coconStats.dome) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+eggPausePerc+'%');
-            if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
+            if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
                 warning('Nouvelle pause','Check '+eggPausePerc+'% réussi après la chute de 0 oeuf ('+noEggDrop+'%)');
             }
         }
@@ -599,7 +603,7 @@ function dropEgg(alienUnit,theArea) {
         if (!coconStats.dome && playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+playerInfos.eggsKilled+' eggs killed');
-            if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Xxxxx') {
+            if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
                 warning('Nouvelle pause',playerInfos.eggsKilled+' oeufs tués.');
             }
         }
@@ -662,11 +666,13 @@ function eggDropTile(eggName,theArea) {
         area = 'nedge';
     }
     // Mission coverEggs
-    if (playerInfos.mapTurn < 26+playerInfos.randSeed) {
-        if (eggName === 'Coque' || eggName.includes('Oeuf')) {
-            if (zone[0].coverEggs != undefined) {
-                if (zone[0].coverEggs) {
-                    area = 'acouvert';
+    if (coconStats.volc) {
+        if (playerInfos.mapTurn < 26+playerInfos.randSeed) {
+            if (eggName === 'Coque' || eggName.includes('Oeuf')) {
+                if (zone[0].coverEggs != undefined) {
+                    if (zone[0].coverEggs) {
+                        area = 'acouvert';
+                    }
                 }
             }
         }

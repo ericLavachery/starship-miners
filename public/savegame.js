@@ -229,6 +229,9 @@ function saveGame() {
     });
     saveAliens();
     savePlayerInfos();
+    if (playerInfos.pseudo === 'Mapedit') {
+        zonePercCheck();
+    }
     saveMap();
     if (playerInfos.pseudo === 'Mapedit') {
         socket.emit('save-edited-map',[zone,bataillons,aliens]);

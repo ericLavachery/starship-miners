@@ -640,18 +640,21 @@ function checkSelfMove(bat,batType) {
     let selfMove = true;
     if (batType.skills.includes('noselfmove') || bat.tags.includes('nopilots')) {
         selfMove = false;
-        if (batType.transUnits >= 1) {
-            if (bat.transIds.length >= 1) {
-                bat.transIds.forEach(function(transId) {
-                    let inBat = getBatById(transId);
-                    let inBatType = getBatType(inBat);
-                    if (inBatType.crew >= 1 && !inBatType.skills.includes('dog')) {
-                        selfMove = true;
-                    }
-                });
+        if (!batType.skills.includes('transorbital')) {
+            if (batType.transUnits >= 1) {
+                if (bat.transIds.length >= 1) {
+                    bat.transIds.forEach(function(transId) {
+                        let inBat = getBatById(transId);
+                        let inBatType = getBatType(inBat);
+                        if (inBatType.crew >= 1 && !inBatType.skills.includes('dog')) {
+                            selfMove = true;
+                        }
+                    });
+                }
             }
         }
     }
+    console.log('SELF MOVE = '+selfMove);
     return selfMove;
 };
 

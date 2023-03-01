@@ -1558,6 +1558,26 @@ function putRuinsOfDestroyedBld(name,tileId) {
     }
 };
 
+function checkDismantle(myBat,myBatType) {
+    let okDis = true;
+    if (myBatType.skills.includes('nodelete')) {
+        okDis = false;
+    } else if (myBat.tags.includes('nomove')) {
+        okDis = false;
+    } else if (myBat.tags.includes('nopilots')) {
+        okDis = false;
+        bataillons.forEach(function(bat) {
+            if (!bat.tags.includes('nopilots') && !bat.tags.includes('nomove')) {
+                let distance = calcDistance(myBat.tileId,bat.tileId);
+                if (distance <= 1) {
+                    okDis = true;
+                }
+            }
+        });
+    }
+    return okDis;
+};
+
 function dismantle(batId,fuite) {
     // saveGame();
     selectMode();

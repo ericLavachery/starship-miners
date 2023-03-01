@@ -425,7 +425,7 @@ function createBatsInSpace() {
         if (bat.loc === 'zone') {
             let batType = getBatType(bat);
             if (batType.skills.includes('transorbital') && bat.type != 'Soute') {
-                if (bat.tags.includes('deploy')) {
+                if (bat.tags.includes('deploy') && !bat.tags.includes('nopilots')) {
                     deployedLandersIds.push(bat.id);
                     batsInSpace.push(bat);
                 }
@@ -446,7 +446,7 @@ function removeDeployedBats() {
         if (bat.loc === 'zone') {
             let batType = getBatType(bat);
             if (batType.skills.includes('transorbital') && bat.type != 'Soute') {
-                if (bat.tags.includes('deploy')) {
+                if (bat.tags.includes('deploy') && !bat.tags.includes('nopilots')) {
                     deployedLandersIds.push(bat.id);
                     deadBatsList.push(bat.id);
                 }
@@ -469,7 +469,7 @@ function isLanderDeployed() {
         if (bat.loc === 'zone') {
             let batType = getBatType(bat);
             if (batType.skills.includes('transorbital') && bat.type != 'Soute') {
-                if (bat.tags.includes('deploy')) {
+                if (bat.tags.includes('deploy') && !bat.tags.includes('nopilots')) {
                     landerDeployed = true;
                 }
             }

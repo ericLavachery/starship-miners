@@ -849,7 +849,7 @@ function turnInfo() {
     if (realNumberOfEggs >= maxEggsForPause && !coconStats.dome) {
         playerInfos.eggPause = true;
         console.log('PAUSE! 10+ eggs');
-        if (playerInfos.pseudo === 'Xxxxx') {
+        if (playerInfos.pseudo === 'Test') {
             warning('Nouvelle pause',maxEggsForPause+' oeufs ou plus en jeu.');
         }
     }
@@ -1090,7 +1090,7 @@ function turnInfo() {
             let maxDroppedEggs = checkMaxDroppedEggs();
             let maxEggsInPlay = checkMaxEggsInPlay();
             // dropchance
-            let dropChance = getDropChance(playerInfos.mapTurn);
+            let dropChance = getDropChance(playerInfos.mapTurn,maxDroppedEggs);
             // pause
             if (!domeProtect) {
                 if (playerInfos.droppedEggs < maxDroppedEggs+1 && realNumberOfEggs < maxEggsInPlay && dropChance >= 10 && !playerInfos.eggPause) {
