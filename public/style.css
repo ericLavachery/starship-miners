@@ -1172,6 +1172,12 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
 .mauve {
     color: #c395cb;
 }
+.blk {
+    -webkit-animation: hBlink .5s infinite;  /* Safari 4+ */
+    -moz-animation: hBlink .5s infinite;  /* Fx 5+ */
+    -o-animation: hBlink .5s infinite;  /* Opera 12+ */
+    animation: hBlink .5s infinite;  /* IE 10+, Fx 29+ */
+}
 .low {
     color: #758569;
     font-weight: lighter;

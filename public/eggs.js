@@ -1386,11 +1386,35 @@ function getAKindByTer(terName,pKind,gKind,sKind) {
             kind = 'swarm';
         }
     } else if (terName === 'P') {
-        kind = pKind;
+        if (zone[0].planet === 'Gehenna') {
+            kind = 'swarm';
+        } else if (zone[0].planet === 'Kzin') {
+            kind = 'bug';
+        } else if (zone[0].planet === 'Horst') {
+            kind = 'bug';
+        } else {
+            kind = pKind;
+        }
     } else if (terName === 'G') {
-        kind = gKind;
+        if (zone[0].planet === 'Gehenna') {
+            kind = 'swarm';
+        } else if (zone[0].planet === 'Kzin') {
+            kind = 'spider';
+        } else if (zone[0].planet === 'Horst') {
+            kind = 'swarm';
+        } else {
+            kind = gKind;
+        }
     } else if (terName === 'S') {
-        kind = sKind;
+        if (zone[0].planet === 'Gehenna') {
+            kind = 'spider';
+        } else if (zone[0].planet === 'Kzin') {
+            kind = 'larve';
+        } else if (zone[0].planet === 'Horst') {
+            kind = 'swarm';
+        } else {
+            kind = sKind;
+        }
     } else {
         kind = 'bug';
     }

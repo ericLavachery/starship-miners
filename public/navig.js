@@ -326,8 +326,9 @@ function gangNavig() {
         $('#gangInfos').append('<button type="button" title="Editer le Gang" class="boutonCiel iconButtons" onclick="gangEdit()"><i class="fas fa-users-cog"></i></button>');
         $('#gangInfos').append('<br>');
         $('#gangInfos').append('<button type="button" title="Ajouter un peu de chaque ressource" class="boutonCiel iconButtons" onclick="allResAdd(10)"><i class="fas fa-cart-plus"></i></button>');
+        $('#gangInfos').append('<button type="button" title="Ajouter tous les bâtiments requis dans la station" class="boutonCiel iconButtons" onclick="putFullBldVM()"><i class="fas fa-landmark"></i></button>');
         $('#gangInfos').append('<button type="button" title="Charger une zone sauvegardée" class="boutonCiel iconButtons" onclick="voirZones()"><i class="fas fa-folder-open"></i></button>');
-        $('#gangInfos').append('<button type="button" title="Remettre les compétences à zéro" class="boutonCiel iconButtons" onclick="compReset()"><i class="fas fa-award"></i></button>');
+        // $('#gangInfos').append('<button type="button" title="Remettre les compétences à zéro" class="boutonCiel iconButtons" onclick="compReset()"><i class="fas fa-award"></i></button>');
         if (!modeSonde && !playerInfos.onShip) {
             $('#gangInfos').append('<button type="button" title="Pas de riposte des aliens" class="boutonCiel iconButtons" onclick="noAlienRip()"><i class="fas fa-wheelchair"></i></button>');
             $('#gangInfos').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonCiel iconButtons" onclick="mapReset()"><i class="fas fa-skull-crossbones"></i></button>');
@@ -349,7 +350,7 @@ function gangNavig() {
                 $('#gangInfos').append('<button type="button" title="Retour station forcé" class="boutonRouge iconButtons" onclick="stopMission()"><i class="fas fa-space-shuttle"></i></button>');
             }
             if (playerInfos.pseudo === 'Mapedit') {
-                $('#gangInfos').append('<button type="button" title="Editer à la louche" class="boutonVert iconButtons" onclick="mapGlobalEdits()"><i class="fas fa-paw"></i></button>');
+                $('#gangInfos').append('<button type="button" title="Editer à la louche" class="boutonVert iconButtons" onclick="mapGlobalEdits()"><i class="ra ra-grass-patch rpg"></i></button>');
             } else {
                 $('#gangInfos').append('<button type="button" title="Supprime le stress de tous les bataillons" class="boutonCiel iconButtons" onclick="coolManCool()"><i class="fas fa-heart"></i></button>');
             }

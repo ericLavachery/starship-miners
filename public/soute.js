@@ -729,8 +729,14 @@ function checkPlaceLander(myBat,myBatType,landerId) {
     if (myLander.tags.includes('deploy')) {
         deployInfo[0] = true;
     }
-    if (myLanderType.transMaxSize >= myBatType.size || myBatType.skills.includes('prefab')) {
-        deployInfo[1] = true;
+    if (myBatType.skills.includes('prefab')) {
+        if (myLanderType.transMaxSize*4.5 >= myBatType.size) {
+            deployInfo[1] = true;
+        }
+    } else {
+        if (myLanderType.transMaxSize >= myBatType.size) {
+            deployInfo[1] = true;
+        }
     }
     let batVolume = calcVolume(myBat,myBatType);
     let placeLeft = calcTransUnitsLeft(myLander,myLanderType);

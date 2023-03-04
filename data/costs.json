@@ -2210,7 +2210,7 @@
         "bldReq":["Usine d'armement","Centre de com"],
         "compReq":{"def":2,"det":2,"bal":3,"mat":2,"tank":1,"robo":1},
         "altCompReq":{"def":2,"det":3,"bal":3,"mat":2,"tank":1,"cyber":2},
-        "costs":{"Compo1":120,"Compo2":240,"Compo3":300,"Scrap":120,"Carbone":120,"Tungstène":120,"Titane":120,"Fer":240,"Moteurs":180,"Cuivre":150,"Silicium":120,"Cobalt":90,"Nickel":60,"Electros":240,"Batteries":360,"Spins":60},
+        "costs":{"Compo1":120,"Compo2":240,"Compo3":300,"Scrap":120,"Carbone":120,"Tungstène":120,"Titane":120,"Fer":240,"Moteurs":180,"Cuivre":150,"Silicium":120,"Cobalt":90,"Nickel":60,"Electros":240,"Batteries":360,"Spins":75},
         "fabTime":200,
         "slots":0
     },
@@ -2221,7 +2221,7 @@
         "bldReq":["Usine d'armement","Centre de com"],
         "compReq":{"def":2,"det":2,"bal":2,"robo":1},
         "altCompReq":{"def":2,"det":3,"bal":2,"cyber":2},
-        "costs":{"Compo1":120,"Compo2":180,"Compo3":240,"Scrap":120,"Carbone":90,"Aluminium":90,"Titane":60,"Fer":120,"Moteurs":120,"Cuivre":90,"Silicium":90,"Cobalt":60,"Nickel":30,"Electros":180,"Batteries":180,"Spins":30},
+        "costs":{"Compo1":120,"Compo2":180,"Compo3":240,"Scrap":120,"Carbone":90,"Aluminium":90,"Titane":60,"Fer":120,"Moteurs":120,"Cuivre":90,"Silicium":90,"Cobalt":60,"Nickel":30,"Electros":180,"Batteries":180,"Spins":25},
         "fabTime":150,
         "slots":0
     },

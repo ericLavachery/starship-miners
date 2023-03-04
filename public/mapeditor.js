@@ -19,6 +19,8 @@ function mapEditWindow() {
                 $('#mapNumber').append('<option value="'+mapNum+'" selected>Zone n°'+mapNum+'</option>');
             } else if (!playerInfos.misDB.includes(mapNum)) {
                 $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+'</option>');
+            } else {
+                $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+' &nbsp;&#9940;&nbsp; Ecraser ??</option>');
             }
             if (mapNum >= 99) {break;}
             mapNum++
@@ -118,7 +120,8 @@ function mapEditWindow() {
     } else {
         theTileRuins = 'Habitations';
     }
-    $('#conUnitList').append('<span class="constName"><span class="gf">Planête</span> : <span class="cy klik" onclick="planetToggle(`'+zone[0].planet+'`)" title="Changer de planête">'+zone[0].planet+'</span></span><br>');
+    $('#conUnitList').append('<span class="constName"><span class="gf blk">Planête!</span> : <span class="cy klik" onclick="planetToggle(`'+zone[0].planet+'`,true)" title="Changer de planête (CHANGE les RESSOURCES et RUINES!)">'+zone[0].planet+'</span></span><br>');
+    // $('#conUnitList').append('<span class="constName"><span class="gf">Planête?</span> : <span class="cy klik" onclick="planetToggle(`'+zone[0].planet+'`,false)" title="Changer de planête (SANS CHANGER les ressources et ruines)">'+zone[0].planet+'</span></span><br>');
     $('#conUnitList').append('<span class="constName"><span class="gf">Présense alien</span> : <span class="cy klik" onclick="diffToggle()" title="Changer la présence alien">pa'+zone[0].mapDiff+'</span></span><br>');
     $('#conUnitList').append('<span class="constName"><span class="gf">Ambiance</span> : <span class="cy klik" onclick="roomToggle(`'+zone[0].snd+'`)" title="Changer le type de zone">'+zone[0].snd+'</span> <span class="bleu">(Soleil: '+zone[0].ensol+')</span></span><br>');
     let theGame = {};
@@ -278,7 +281,7 @@ function roomToggle(zound) {
     mapEditWindow();
 };
 
-function planetToggle(plaName) {
+function planetToggle(plaName,resCheck) {
     if (plaName === 'Dom') {
         zone[0].planet = 'Sarak';
         zone[0].pid = 2;
@@ -322,6 +325,10 @@ function planetToggle(plaName) {
     }
     playerInfos.sondeDanger = zone[0].mapDiff;
     playerInfos.mapDiff = zone[0].mapDiff;
+    if (resCheck) {
+        resRecheck();
+    }
+    planetFixAlienKind();
     checkGibier();
     playRoom(zone[0].snd,true,true);
     showMap(zone,true);
@@ -449,8 +456,25 @@ function xKindToggle(myTer,eggType) {
         newEggType = 'bug';
     }
     zone[0][xKind] = newEggType;
+    planetFixAlienKind();
     mapEditWindow();
 };
+
+function planetFixAlienKind() {
+    if (zone[0].planet === 'Gehenna') {
+        zone[0].pKind = 'swarm';
+        zone[0].gKind = 'swarm';
+        zone[0].sKind = 'spider';
+    } else if (zone[0].planet === 'Kzin') {
+        zone[0].pKind = 'bug';
+        zone[0].gKind = 'spider';
+        zone[0].sKind = 'larve';
+    } else if (zone[0].planet === 'Horst') {
+        zone[0].pKind = 'bug';
+        zone[0].gKind = 'swarm';
+        zone[0].sKind = 'swarm';
+    }
+}
 
 function mapRuinsAddList() {
     let sortedRuins = _.sortBy(armorTypes,'name');
@@ -1130,7 +1154,9 @@ function mapGlobalEdits(oldTer,newTer) {
     $('#conUnitList').append('<span class="constName or">EDITER A LA LOUCHE</span><br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="roadsKill()">Enlever: Ruines et Routes</span></span><br>');
+    $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="resRecheck()" title="Nouvelles ressources, ruines et routes">Nouvelles Ressources et Ruines!</span></span><br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="roadsKill()">Enlever Ruines et Routes</span></span><br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="constName">Terrains à remplacer:</span><br>');
     $('#conUnitList').append('<span class="constName"><span class="vert klik" onclick="mapGlobalEdits(`P`,`'+newTer+'`)">Plaines</span>&nbsp;</span>');
@@ -1240,6 +1266,28 @@ function roadsKill() {
             removeScrapFromRuins(tile);
         }
     });
+    showMap(zone,false);
+    minimap();
+};
+
+function resRecheck() {
+    zone.forEach(function(tile) {
+        if (tile.ruins != undefined) {
+            delete tile.ruins;
+            delete tile.sh;
+            delete tile.rd;
+            delete tile.rt;
+            removeScrapFromRuins(tile);
+        }
+        if (tile.rd != undefined) {
+            delete tile.rd;
+        }
+        if (tile.rq != undefined) {
+            delete tile.rq;
+            delete tile.rs;
+        }
+    });
+    addRes(zone);
     showMap(zone,false);
     minimap();
 };

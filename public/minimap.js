@@ -30,10 +30,14 @@ function minimap() {
     } else {
         $('#thenavig').append('<button type="button" title="Montrer les repaires" class="boutonGris miniButtons" onclick="dotsView()"><i class="fas fa-map-pin"></i></button><br>');
     }
+    let ruinsText = 'Montrer les ruines non fouillées';
+    if (playerInfos.pseudo === 'Mapedit') {
+        ruinsText = 'Montrer les ruines';
+    }
     if (miniDots === 'ruins') {
-        $('#thenavig').append('<button type="button" title="Montrer les ruines non fouillées" class="boutonMauve miniButtons" onclick="ruinsView()"><i class="fas fa-city"></i></button><br>');
+        $('#thenavig').append('<button type="button" title="'+ruinsText+'" class="boutonMauve miniButtons" onclick="ruinsView()"><i class="fas fa-city"></i></button><br>');
     } else {
-        $('#thenavig').append('<button type="button" title="Montrer les ruines non fouillées" class="boutonGris miniButtons" onclick="ruinsView()"><i class="fas fa-city"></i></button><br>');
+        $('#thenavig').append('<button type="button" title="'+ruinsText+'" class="boutonGris miniButtons" onclick="ruinsView()"><i class="fas fa-city"></i></button><br>');
     }
     if (!modeSonde) {
         if (miniDots === 'coffres') {
@@ -82,7 +86,7 @@ function minimap() {
         if (tile.y === 1) {
             $('#themmap').append('<br>');
         }
-        if (miniDots === 'ruins' && tile.ruins && tile.sh >= 0) {
+        if (miniDots === 'ruins' && tile.ruins && (tile.sh >= 0 || playerInfos.pseudo === 'Mapedit')) {
             $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
         } else if (miniDots === 'coffres' && tousLesCoffres.includes(tile.id)) {
             $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');

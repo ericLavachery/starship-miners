@@ -57,9 +57,22 @@ function soundVolume(vol,source) {
     commandes();
 };
 
-function checkMyVol(theVol) {
-    if (theVol < 0.1) {theVol = 0.1;}
-    if (theVol > 1) {theVol = 1;}
+function checkMyVol(theVol,isMusic) {
+    if (isMusic) {
+        if (playerInfos.volMu === 0) {
+            theVol = 0;
+        } else {
+            if (theVol < 0.1) {theVol = 0.1;}
+            if (theVol > 1) {theVol = 1;}
+        }
+    } else {
+        if (playerInfos.volFx === 0) {
+            theVol = 0;
+        } else {
+            if (theVol < 0.1) {theVol = 0.1;}
+            if (theVol > 1) {theVol = 1;}
+        }
+    }
     theVol = theVol.toFixedNumber(1);
     return theVol;
 };
@@ -68,7 +81,7 @@ function playSound(theSound,theVol,multi) {
     if (multi === undefined) {
         multi = true;
     }
-    let myVol = checkMyVol(playerInfos.volFx+theVol);
+    let myVol = checkMyVol(playerInfos.volFx+theVol,false);
     if (!clicSnd.playing() || multi) {
         clicSnd = new Howl({
             src: ['/static/sounds/fx/'+theSound+'.mp3'],
@@ -79,7 +92,7 @@ function playSound(theSound,theVol,multi) {
 };
 
 function eggSound() {
-    let myVol = checkMyVol(playerInfos.volFx);
+    let myVol = checkMyVol(playerInfos.volFx,false);
     var sound = new Howl({
         src: ['/static/sounds/fx/egg-fall.mp3'],
         volume: myVol
@@ -88,7 +101,7 @@ function eggSound() {
 };
 
 function clicSound(num) {
-    let myVol = checkMyVol(playerInfos.volFx-0.2);
+    let myVol = checkMyVol(playerInfos.volFx-0.2,false);
     let clicNum = rand.rand(0,7);
     let theSound = 'clic'+clicNum;
     if (num != undefined) {
@@ -106,12 +119,12 @@ function clicSound(num) {
 };
 
 function warnSound(theSound) {
-    let myVol = checkMyVol(playerInfos.volFx+0.2);
+    let myVol = checkMyVol(playerInfos.volFx+0.2,false);
     if (theSound === 'takeoff') {
-        myVol = checkMyVol(playerInfos.volFx+0.1);
+        myVol = checkMyVol(playerInfos.volFx+0.1,false);
     }
     if (theSound === 'meteor') {
-        myVol = checkMyVol(playerInfos.volFx+0.4);
+        myVol = checkMyVol(playerInfos.volFx+0.4,false);
     }
     clicSnd = new Howl({
         src: ['/static/sounds/fx/'+theSound+'.mp3'],
@@ -166,7 +179,7 @@ function okSound(roger) {
         }
     }
     selectedBatArrayUpdate();
-    let myVol = checkMyVol(playerInfos.volFx-0.3);
+    let myVol = checkMyVol(playerInfos.volFx-0.3,false);
     if (selectedBat.an || !okFile.includes('ok') || roger) {
         okSnd = new Howl({
             src: ['/static/sounds/moves/'+okFile+'.mp3'],
@@ -184,7 +197,7 @@ function okSound(roger) {
 };
 
 function playOK(bat) {
-    let myVol = checkMyVol(playerInfos.volFx-0.3);
+    let myVol = checkMyVol(playerInfos.volFx-0.3,false);
     okSnd = new Howl({
         src: ['/static/sounds/moves/'+bat.ok+'.mp3'],
         volume: myVol
@@ -365,7 +378,7 @@ function checkSpawnType(alienType) {
 function spawnSound() {
     if (Object.keys(spawnType).length >= 1) {
         let spawnSound = spawnType.spawnFx;
-        let myVol = checkMyVol(playerInfos.volFx-0.1);
+        let myVol = checkMyVol(playerInfos.volFx-0.1,false);
         var sound = new Howl({
             src: ['/static/sounds/fx/'+spawnSound+'.mp3'],
             volume: myVol
@@ -379,7 +392,7 @@ function spawnSound() {
 function playMusic(piste,interrupt) {
     // let track = [_.sample(musicTracks)];
     if (playerInfos.statMu || !playerInfos.onShip) {
-        let myVol = checkMyVol(playerInfos.volMu+0.3);
+        let myVol = checkMyVol(playerInfos.volMu+0.3,true);
         if (!theMusic.playing() || interrupt) {
             let track = 'amb_trucsympa';
             if (!playerInfos.onShip) {
@@ -434,7 +447,7 @@ function playRoom(piste,interrupt,onloop) {
     if (piste != 'any') {
         track = piste;
     }
-    let myVol = checkMyVol(playerInfos.volFx-0.1);
+    let myVol = checkMyVol(playerInfos.volFx-0.1,false);
     if (!theRoom.playing() || interrupt) {
         theRoom.stop();
         theRoom = new Howl({
@@ -453,7 +466,7 @@ function playRoom(piste,interrupt,onloop) {
 function playMove(play) {
     let isLoop = true;
     let track = 'none';
-    let myVol = checkMyVol(playerInfos.volFx+0.1);
+    let myVol = checkMyVol(playerInfos.volFx+0.1,false);
     if (!play) {
         theMove.stop();
         // theMove.fade(moveVol,0,2000);
@@ -499,7 +512,7 @@ function playFx(piste,stop) {
     if (piste != 'any') {
         track = piste;
     }
-    let myVol = checkMyVol(playerInfos.volFx-0.4);
+    let myVol = checkMyVol(playerInfos.volFx-0.4,false);
     if (stop) {
         theWork.stop();
     } else {
