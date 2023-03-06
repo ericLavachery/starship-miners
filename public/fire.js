@@ -1081,10 +1081,17 @@ function attack(melee,init) {
     // shinda
     if (totalDamage >= 10 || (totalDamage >= 1 && rand.rand(1,2) === 1) || (totalDamage >= 1 && selectedWeap.ammo.includes('hypo'))) {
         if (selectedWeap.ammo.includes('shinda')) {
-            if (targetBatType.skills.includes('mutant') || targetBatType.cat == 'aliens') {
-                targetBat.tags.push('shinda');
-                // console.log('Shinda!');
-                $('#report').append('<span class="report rose">Shinda<br></span>');
+            if (targetBatType.cat == 'aliens') {
+                if (playerInfos.bldList.includes('Biopod') && !targetBat.tags.includes('shinda')) {
+                    genocide(targetBatType);
+                    targetBat.tags.push('shinda');
+                    $('#report').append('<span class="report rose">Shinda genocide<br></span>');
+                } else {
+                    if (!targetBat.tags.includes('shinda')) {
+                        targetBat.tags.push('shinda');
+                    }
+                    $('#report').append('<span class="report rose">Shinda<br></span>');
+                }
             }
         }
     }
@@ -1975,10 +1982,17 @@ function defense(melee,init) {
     // shinda
     if (totalDamage >= 10 || (totalDamage >= 1 && rand.rand(1,2) === 1) || (totalDamage >= 1 && targetWeap.ammo.includes('hypo'))) {
         if (targetWeap.ammo.includes('shinda')) {
-            if (selectedBatType.skills.includes('mutant') || selectedBatType.cat == 'aliens') {
-                selectedBat.tags.push('shinda');
-                // console.log('Shinda!');
-                $('#report').append('<span class="report rose">Shinda<br></span>');
+            if (selectedBatType.cat == 'aliens') {
+                if (playerInfos.bldList.includes('Biopod') && !selectedBat.tags.includes('shinda')) {
+                    selectedBat.tags.push('shinda');
+                    genocide(selectedBatType);
+                    $('#report').append('<span class="report rose">Shinda genocide<br></span>');
+                } else {
+                    if (!selectedBat.tags.includes('shinda')) {
+                        selectedBat.tags.push('shinda');
+                    }
+                    $('#report').append('<span class="report rose">Shinda<br></span>');
+                }
             }
         }
     }

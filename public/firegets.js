@@ -250,10 +250,12 @@ function calcShotsRangeAdj(weapon,attBat,attBatType,defBat,defBatType) {
     if (weapon.ammo.includes('disco')) {
         shotsPerc = shotsPerc-(distance*25);
     }
-    if (weapon.ammo.includes('suicide-deluge')) {
-        shotsPerc = shotsPerc-(distance*12);
-    } else if (weapon.ammo.includes('suicide')) {
-        shotsPerc = shotsPerc-(distance*50);
+    if (!weapon.name.includes('Missile')) {
+        if (weapon.ammo.includes('suicide-deluge')) {
+            shotsPerc = shotsPerc-(distance*12);
+        } else if (weapon.ammo.includes('suicide')) {
+            shotsPerc = shotsPerc-(distance*50);
+        }
     }
     if (weapon.name.includes('Psio')) {
         shotsPerc = shotsPerc-Math.round(distance*7.5);
@@ -2102,7 +2104,9 @@ function weaponAdj(weapon,bat,wn) {
         }
         if (hasEquip(bat,['silencieux','silencieux1','kit-chouf'])) {
             thisWeapon.noise = thisWeapon.noise-1;
-            thisWeapon.hide = true;
+            if (thisWeapon.noise <= 0) {
+                thisWeapon.hide = true;
+            }
         }
     } else if (thisWeapon.num === 2) {
         if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes' && !thisWeapon.isMelee) {
@@ -2167,6 +2171,13 @@ function weaponAdj(weapon,bat,wn) {
         }
         if (hasEquip(bat,['silencieux','silencieux2','kit-chouf'])) {
             thisWeapon.noise = thisWeapon.noise-1;
+            if (thisWeapon.noise <= 0) {
+                thisWeapon.hide = true;
+            }
+        }
+    }
+    if (hasEquip(bat,['e-camo']) && batType.skills.includes('camo')) {
+        if (thisWeapon.noise <= 0) {
             thisWeapon.hide = true;
         }
     }
@@ -2494,6 +2505,12 @@ function weaponAdj(weapon,bat,wn) {
     // needle max range
     if (thisWeapon.ammo.includes('needle') && thisWeapon.range > 1) {
         thisWeapon.range = 1;
+    }
+    // wipeout missile range
+    if (thisWeapon.name === 'Missiles wipeout') {
+        if (playerInfos.bldList.includes('Centre de com')) {
+            thisWeapon.range = 60;
+        }
     }
     // hero rage
     if (bat.tags.includes('rage')) {
@@ -3248,7 +3265,18 @@ function getRipNum(bat,batType) {
         ripNum = 0;
     }
     return ripNum;
-}
+};
+
+function genocide(genoBatType) {
+    aliens.forEach(function(bat) {
+        if (!bat.tags.includes('shinda')) {
+            let batType = getBatType(bat);
+            if (batType.id === genoBatType.id) {
+                bat.tags.push('shinda');
+            }
+        }
+    });
+};
 
 function getRealNoise(weap,batType) {
     let realNoise = 0;

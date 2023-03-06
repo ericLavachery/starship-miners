@@ -2206,7 +2206,7 @@
     {
         "id":301,
         "name":"Autobunkers",
-        "levels":{"rednecks":18,"blades":99,"bulbos":18,"drogmulojs":19,"tiradores":17,"detruas":18,"brasier":18},
+        "levels":{"rednecks":16,"blades":99,"bulbos":16,"drogmulojs":17,"tiradores":16,"detruas":16,"brasier":17},
         "bldReq":["Usine d'armement","Centre de com"],
         "compReq":{"def":2,"det":2,"bal":3,"mat":2,"tank":1,"robo":1},
         "altCompReq":{"def":2,"det":3,"bal":3,"mat":2,"tank":1,"cyber":2},
@@ -2217,7 +2217,7 @@
     {
         "id":310,
         "name":"Autoturrets",
-        "levels":{"rednecks":14,"blades":16,"bulbos":14,"drogmulojs":15,"tiradores":14,"detruas":14,"brasier":15},
+        "levels":{"rednecks":14,"blades":15,"bulbos":14,"drogmulojs":15,"tiradores":14,"detruas":14,"brasier":15},
         "bldReq":["Usine d'armement","Centre de com"],
         "compReq":{"def":2,"det":2,"bal":2,"robo":1},
         "altCompReq":{"def":2,"det":3,"bal":2,"cyber":2},
@@ -2345,10 +2345,20 @@
         "fabTime":35
     },
     {
+        "id":311,
+        "name":"Missiles wipeout",
+        "levels":{"rednecks":18,"blades":99,"bulbos":18,"drogmulojs":18,"tiradores":99,"detruas":18,"brasier":18},
+        "bldReq":["Usine d'armement","Centre de com"],
+        "compReq":{"def":2,"det":3,"bal":2,"mat":2,"explo":2,"robo":1,"arti":1},
+        "altCompReq":{"def":2,"det":3,"bal":2,"mat":2,"explo":2,"cyber":2,"arti":1},
+        "costs":{"Explosifs":300,"Nanite":300,"Plastanium":60,"Fer":120,"Scrap":60,"Carbone":120,"Aluminium":60,"Titane":60,"Rhodium":45,"Silicium":20,"Cuivre":20,"Electros":60,"Batteries":30,"Nickel":30,"Spins":30},
+        "fabTime":150
+    },
+    {
         "id":288,
         "name":"Mines wipeout",
         "levels":{"rednecks":15,"blades":15,"bulbos":14,"drogmulojs":15,"tiradores":16,"detruas":10,"brasier":14},
-        "bldReq":["Atelier"],
+        "bldReq":["Usine d'armement"],
         "compReq":{"explo":2},
         "costs":{"Explosifs":60,"Nanite":120,"Tungstène":60,"Plomb":12,"Titane":12,"Azote":18,"Cuivre":18,"Electros":18},
         "fabTime":70
@@ -2357,7 +2367,7 @@
         "id":43,
         "name":"Champ de mines",
         "levels":{"rednecks":11,"blades":13,"bulbos":10,"drogmulojs":12,"tiradores":13,"detruas":1,"brasier":11},
-        "bldReq":["Atelier"],
+        "bldReq":["Arsenal"],
         "compReq":{"explo":1},
         "costs":{"Explosifs":12,"Fer":12,"Plomb":4,"Titane":4,"Azote":6,"Cuivre":6,"Electros":1},
         "fabTime":35
@@ -2800,6 +2810,15 @@
         "upkeep":{"Energie":20},
         "costs":{"Compo1":60,"Compo2":165,"Compo3":110,"Eau":12,"Energie":2500,"Carbone":400,"Titane":150,"Rhodium":500,"Cuivre":150,"Platine":200,"Bore":1000,"Plutonium":500,"Uranium":250,"Oxygène":250,"Azote":900,"Electros":200,"Batteries":200},
         "fabTime":35,
+        "slots":0
+    },
+    {
+        "id":312,
+        "name":"Biopod",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"gen":2,"exo":3,"ca":4},
+        "costs":{"Compo1":120,"Compo2":180,"Compo3":60,"Eau":600,"Energie":1800,"Or":120,"Platine":180,"Silicium":180,"Creatite":900,"Bossium":180,"Mephitis":120,"Germium":60,"Huile":120,"Argon":90,"Electros":120,"Batteries":360},
+        "fabTime":350,
         "slots":0
     },
     {

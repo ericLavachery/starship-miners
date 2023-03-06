@@ -262,6 +262,9 @@ function weaponsInfos(bat,batType,tile,pop) {
             if (thisWeapon.noise < 2) {
                 let tirFurtif = calcTirFurtif(thisWeapon,bat,1);
                 $('#'+bodyPlace).append('<span class="paramName" title="Chance de rester furtif après avoir attaqué">Tir furtif</span><span class="paramIcon"></span><span class="paramValue">'+tirFurtif+'%</span><br>');
+                if (thisWeapon.hide) {
+                    $('#'+bodyPlace).append('<span class="paramName jaune" title="Pas de riposte si tir furtif réussi">Tir gratuit</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+                }
             }
             if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && hasEquip(bat,['g2ai'])) || (batType.skills.includes('w2cible') && (bat.eq === 'w2-pgun' || bat.eq === 'w2-flaser' || bat.eq === 'w2-laser'))) {
                 if (bat.tags.includes('vise')) {
@@ -520,6 +523,9 @@ function weaponsInfos(bat,batType,tile,pop) {
             if (thisWeapon.noise < 2) {
                 let tirFurtif = calcTirFurtif(thisWeapon,bat,1);
                 $('#'+bodyPlace).append('<span class="paramName" title="Chance de rester furtif après avoir attaqué">Tir furtif</span><span class="paramIcon"></span><span class="paramValue">'+tirFurtif+'%</span><br>');
+                if (thisWeapon.hide) {
+                    $('#'+bodyPlace).append('<span class="paramName jaune" title="Pas de riposte si tir furtif réussi">Tir gratuit</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+                }
             }
             if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && hasEquip(bat,['g2ai'])) || (batType.skills.includes('w2cible') && (bat.eq === 'w2-pgun' || bat.eq === 'w2-flaser' || bat.eq === 'w2-laser'))) {
                 if (bat.tags.includes('vise')) {

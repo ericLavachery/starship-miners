@@ -1013,6 +1013,7 @@
         "info":"Eloigne les aliens",
         "bldReq":["Centre de recherches"],
         "compReq":{"exo":2,"ca":3},
+        "altCompReq":{"exo":3,"ca":2,"cam":3},
         "autoComp":["gen",2],
         "factor":"thp",
         "costs":{"Drogues":12,"Octiron":32,"Mendium":9,"Creatite":12,"Or":6},
