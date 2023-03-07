@@ -338,19 +338,20 @@ function loadMission() {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName or" id="gentils">CHARGER UNE MISSION</span><br>');
+    $('#conUnitList').append('<span class="constName or" id="gentils">JOUER UNE MISSION</span><br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<select class="boutonGris" id="theStartZone" onchange="loadTheMissionBaby()"></select>');
-    $('#theStartZone').empty().append('<option value="0" selected>Zone</option>');
-    $('#theStartZone').append('<option value="80" disabled>Zone 80 - Boss Spider</option>');
-    $('#theStartZone').append('<option value="75" disabled>Zone 75 - Boss Bug</option>');
-    $('#theStartZone').append('<option value="70" disabled>Zone 70 - Boss Larve</option>');
-    $('#theStartZone').append('<option value="65" disabled>Zone 65 - Boss Swarm</option>');
-    $('#theStartZone').append('<option value="60">Zone 60 - Résistance</option>');
-    $('#theStartZone').append('<option value="61">Zone 61 - Résistance</option>'); // 27 Spins
-    $('#theStartZone').append('<option value="55" disabled>Zone 55 - Science</option>'); // 150 spins
-    $('#theStartZone').append('<option value="50">Zone 50 - Trolley</option>'); // 68 à 180 Spins (136)
+    $('#theStartZone').empty().append('<option value="0" selected>Mission</option>');
+    $('#theStartZone').append('<option value="80" disabled>80 - Boss Spider</option>');
+    $('#theStartZone').append('<option value="75" disabled>75 - Boss Bug</option>');
+    $('#theStartZone').append('<option value="70" disabled>70 - Boss Larve</option>');
+    $('#theStartZone').append('<option value="65" disabled>65 - Boss Swarm</option>');
+    $('#theStartZone').append('<option value="60">60 - Résistance (Tupamaros)</option>');
+    $('#theStartZone').append('<option value="61">61 - Résistance (L\'île noire)</option>'); // 27 Spins
+    $('#theStartZone').append('<option value="55" disabled>55 - Science</option>'); // 150 spins
+    $('#theStartZone').append('<option value="50">50 - Trolley (Pluie d\'oeufs)</option>'); // 68 à 180 Spins (136)
+    $('#theStartZone').append('<option value="51">51 - Trolley (Gehenna)</option>'); // 68 à 180 Spins (136)
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="butSpace"></span>');
     $('#conUnitList').append('<br>');
@@ -365,4 +366,29 @@ function loadTheMissionBaby() {
     conOut(true);
     playerInfos.okFill = true;
     startMission(true);
+};
+
+function putMissionTitle() {
+    if (playerInfos.pseudo === 'Mapedit') {
+        if (zone[0].number != undefined) {
+            let mission = getMissionByNum(zone[0].number);
+            mission.name = zone[0].title;
+        }
+    }
+};
+
+function updateMissionsInfo() {
+    let misList = [];
+    playerInfos.misInfo.forEach(function(mission) {
+        misList.push(mission.num);
+    });
+    playerInfos.misDB.forEach(function(misNum) {
+        if (!misList.includes(misNum)) {
+            let newMis = {};
+            newMis.num = misNum;
+            newMis.name = '';
+            playerInfos.misInfo.push(newMis);
+        }
+    });
+    console.log(playerInfos.misInfo);
 };

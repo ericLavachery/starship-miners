@@ -249,6 +249,10 @@ function batInfos(bat,batType,pop) {
         } else {
             $('#'+bodyPlace).append('<span class="paramName or" title="Sans équipage! Ce lander ne peut pas décoller!">Equipage</span><span class="paramIcon"><i class="fas fa-users"></i></span><span class="paramValue or">Non</span><br>');
         }
+    } else {
+        if (batType.skills.includes('transorbital') && bat.tags.includes('nopilots')) {
+            $('#'+bodyPlace).append('<span class="paramName or" title="Sans équipage! Ce lander ne peut pas décoller!">Equipage</span><span class="paramIcon"><i class="fas fa-users"></i></span><span class="paramValue or">Non</span><br>');
+        }
     }
     let roundApLeft = bat.apLeft.toFixedNumber(1);
     $('#'+bodyPlace).append('<span class="paramName">Points d\'action</span><span class="paramIcon"><i class="fas fa-hourglass-'+hourglass+'"></i></span><span class="paramValue">'+roundApLeft+'/'+ap+'</span><br>');

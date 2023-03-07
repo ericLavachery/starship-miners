@@ -1318,6 +1318,12 @@ function getZoneInfoById(zoneNumber) {
     return zoneInfo;
 };
 
+function getMissionByNum(missionNumber) {
+    let index = playerInfos.misInfo.findIndex((obj => obj.num == missionNumber));
+    let mission = playerInfos.misInfo[index];
+    return mission;
+};
+
 function getTrapName(bat,batType) {
     let trapName = 'Mines';
     if (batType.skills.includes('dynamite')) {

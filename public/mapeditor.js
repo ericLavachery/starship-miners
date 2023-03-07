@@ -6,6 +6,7 @@ function mapEditWindow() {
     $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
+    putMissionTitle();
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conUnitList').append('<h1>MAP EDITOR</h1><br>');
@@ -1303,7 +1304,7 @@ function loadEditorMission() {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName or" id="gentils">CHARGER UNE MISSION</span><br>');
+    $('#conUnitList').append('<span class="constName or" id="gentils">EDITER UNE MISSION</span><br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<select class="boutonGris" id="theStartZone" onchange="editTheMissionBaby()"></select>');
@@ -1312,7 +1313,8 @@ function loadEditorMission() {
     while (misNum <= 99) {
         if (playerInfos.misDB.includes(misNum)) {
             let mType = getMissionType(misNum);
-            $('#theStartZone').append('<option value="'+misNum+'">Mission '+misNum+' - '+mType+'</option>');
+            let mission = getMissionByNum(misNum);
+            $('#theStartZone').append('<option value="'+misNum+'">'+misNum+' - '+mType+' - '+mission.name+'</option>');
         }
         if (misNum > 99) {break;}
         misNum++
@@ -1346,9 +1348,9 @@ function getMissionType(misNum) {
     } else if (misNum >= 60) {
         mType = 'Résistance';
     } else if (misNum >= 55) {
-        mType = 'Spécial';
-    } else if (misNum >= 50) {
         mType = 'Base Scientifique';
+    } else if (misNum >= 50) {
+        mType = 'Trolley';
     }
     return mType;
 };

@@ -548,7 +548,7 @@ function embarqArmy(transBat,transBatType,oldTransBat) {
                 if (batWeight <= transUnitsLeft) {
                     let embarqCost = calcEmbarqCost(batType,transBatType);
                     bat.apLeft = bat.apLeft-embarqCost[0]-2;
-                    loadBat(bat.id,transBat.id);
+                    loadBat(bat.id,transBat.id,oldTransBat.id);
                     transOK = true;
                 }
             }

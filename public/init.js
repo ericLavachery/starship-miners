@@ -478,6 +478,10 @@ socket.on('zoneFiles-Load', function(zf) {
 });
 socket.on('missionsDB-Load', function(mis) {
     playerInfos.misDB = mis;
+    if (playerInfos.misInfo === undefined) {
+        playerInfos.misInfo = [];
+    }
+    updateMissionsInfo();
 });
 
 socket.on('load-edited-mission', function(newMission) {
