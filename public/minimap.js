@@ -86,7 +86,9 @@ function minimap() {
         if (tile.y === 1) {
             $('#themmap').append('<br>');
         }
-        if (miniDots === 'ruins' && tile.ruins && (tile.sh >= 0 || playerInfos.pseudo === 'Mapedit')) {
+        if (playerInfos.pseudo === 'Mapedit' && (tile.nav != undefined || tile.land != undefined) && (miniDots === 'units' || miniDots === 'ruins' || miniDots === 'points')) {
+            $('#themmap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
+        } else if (miniDots === 'ruins' && tile.ruins && (tile.sh >= 0 || playerInfos.pseudo === 'Mapedit')) {
             $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');
         } else if (miniDots === 'coffres' && tousLesCoffres.includes(tile.id)) {
             $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');

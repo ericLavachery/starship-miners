@@ -14,10 +14,6 @@ $(document).keypress(function(e) {
     if (e.which == 99) {
         centerMap();
     }
-    // fuck (next unit)
-    if (e.which == 102) {
-        nextBat(true,false);
-    }
     // embarq
     if (e.which == 101) {
         jumpInTrans();

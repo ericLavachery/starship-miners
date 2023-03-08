@@ -576,31 +576,31 @@ function resTransfert(transBat) {
     });
 };
 
-function jumpInTrans() {
-    if (Object.keys(selectedBat).length >= 1) {
-        if (!selectedBat.tags.includes('deb') || selectedBat.salvoLeft >= 1) {
-            let isCharged = checkCharged(selectedBat,'trans');
-            if (!isCharged && selectedBat.apLeft > 0) {
-                let resLoad = checkResLoad(selectedBat);
-                let selectedBatVolume = calcVolume(selectedBat,selectedBatType);
+function checkHopTransId(myBat,myBatType) {
+    let transId = -1;
+    if (myBatType.moveCost < 90) {
+        if (!myBat.tags.includes('deb') || myBat.salvoLeft >= 1) {
+            let isCharged = checkCharged(myBat,'trans');
+            if (!isCharged && myBat.apLeft > 0) {
+                let resLoad = checkResLoad(myBat);
+                let myBatVolume = calcVolume(myBat,myBatType);
                 let bestTrans = 0;
-                let transId = -1;
                 bataillons.forEach(function(bat) {
-                    if (bat.loc === "zone" && selectedBat.id != bat.iId) {
+                    if (bat.loc === "zone" && myBat.id != bat.id) {
                         let batType = getBatType(bat);
                         if (resLoad <= 0 || !batType.skills.includes('transorbital')) {
                             let maxSize = batType.transMaxSize;
                             if (hasEquip(bat,['garage'])) {
                                 maxSize = maxSize*3;
                             }
-                            if (batType.transUnits >= 1 && maxSize >= selectedBatType.size) {
-                                let distance = calcDistance(selectedBat.tileId,bat.tileId);
+                            if (batType.transUnits >= 1 && maxSize >= myBatType.size) {
+                                let distance = calcDistance(myBat.tileId,bat.tileId);
                                 if (distance <= 1) {
                                     let tracking = checkTracking(bat);
-                                    if (!selectedBatType.skills.includes('tracked') || !tracking) {
+                                    if (!myBatType.skills.includes('tracked') || !tracking) {
                                         let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
-                                        if (selectedBatVolume <= batTransUnitsLeft) {
-                                            let thisTrans = getTransScore(bat,batType,selectedBat,selectedBatVolume,batTransUnitsLeft);
+                                        if (myBatVolume <= batTransUnitsLeft) {
+                                            let thisTrans = getTransScore(bat,batType,myBat,myBatVolume,batTransUnitsLeft);
                                             if (thisTrans > bestTrans) {
                                                 transId = bat.id;
                                                 bestTrans = thisTrans;
@@ -612,30 +612,79 @@ function jumpInTrans() {
                         }
                     }
                 });
-                if (transId >= 0) {
-                    let transBat = getBatById(transId);
-                    let transBatType = getBatType(transBat);
-                    let embarqCost = calcEmbarqCost(batType,transBatType);
-                    let apCost = embarqCost[0]+2;
-                    transBat.apLeft = transBat.apLeft-embarqCost[1];
-                    selectedBat.apLeft = selectedBat.apLeft-apCost;
-                    loadBat(selectedBat.id,transBat.id);
-                    doneAction(transBat);
-                    tagDelete(selectedBat,'guet');
-                    camoOut();
-                    stopAutoLoad();
-                    selectedBatArrayUpdate();
-                    showMap(zone,true);
-                    showBataillon(transBat);
-                    batSelect(transBat);
-                    showBatInfos(selectedBat);
-                    showTileInfos(selectedBat.tileId);
-                    selectMode();
+            }
+        }
+    }
+    return transId;
+};
+
+function checkJumpTransId() {
+    let transId = -1;
+    if (Object.keys(selectedBat).length >= 1) {
+        if (selectedBatType.moveCost < 90) {
+            if (!selectedBat.tags.includes('deb') || selectedBat.salvoLeft >= 1) {
+                let isCharged = checkCharged(selectedBat,'trans');
+                if (!isCharged && selectedBat.apLeft > 0) {
+                    let resLoad = checkResLoad(selectedBat);
+                    let selectedBatVolume = calcVolume(selectedBat,selectedBatType);
+                    let bestTrans = 0;
+                    bataillons.forEach(function(bat) {
+                        if (bat.loc === "zone" && selectedBat.id != bat.id) {
+                            let batType = getBatType(bat);
+                            if (resLoad <= 0 || !batType.skills.includes('transorbital')) {
+                                let maxSize = batType.transMaxSize;
+                                if (hasEquip(bat,['garage'])) {
+                                    maxSize = maxSize*3;
+                                }
+                                if (batType.transUnits >= 1 && maxSize >= selectedBatType.size) {
+                                    let distance = calcDistance(selectedBat.tileId,bat.tileId);
+                                    if (distance <= 1) {
+                                        let tracking = checkTracking(bat);
+                                        if (!selectedBatType.skills.includes('tracked') || !tracking) {
+                                            let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
+                                            if (selectedBatVolume <= batTransUnitsLeft) {
+                                                let thisTrans = getTransScore(bat,batType,selectedBat,selectedBatVolume,batTransUnitsLeft);
+                                                if (thisTrans > bestTrans) {
+                                                    transId = bat.id;
+                                                    bestTrans = thisTrans;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
                 }
             }
         }
     }
-}
+    return transId;
+};
+
+function jumpInTrans() {
+    let transId = checkJumpTransId();
+    if (transId >= 0) {
+        let transBat = getBatById(transId);
+        let transBatType = getBatType(transBat);
+        let embarqCost = calcEmbarqCost(batType,transBatType);
+        let apCost = embarqCost[0]+2;
+        transBat.apLeft = transBat.apLeft-embarqCost[1];
+        selectedBat.apLeft = selectedBat.apLeft-apCost;
+        loadBat(selectedBat.id,transBat.id);
+        doneAction(transBat);
+        tagDelete(selectedBat,'guet');
+        camoOut();
+        stopAutoLoad();
+        selectedBatArrayUpdate();
+        showMap(zone,true);
+        showBataillon(transBat);
+        batSelect(transBat);
+        showBatInfos(selectedBat);
+        showTileInfos(selectedBat.tileId);
+        selectMode();
+    }
+};
 
 function getTransScore(bat,batType,myBat,selectedBatVolume,batTransUnitsLeft) {
     let score = Math.round(batTransUnitsLeft/100);

@@ -153,8 +153,11 @@ function getMissionBatList() {
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Jeeps',['explosive','belier-spike','chobham','e-road']);
     missionBatList.push(newSlot);
-    if (playerInfos.gLevel >= 14) {
+    if (playerInfos.gLevel >= 18) {
         newSlot = new SlotConstructor('Obusiers',['obus-heatseeker','uranium','bulk','longtom1']);
+        missionBatList.push(newSlot);
+    } else if (playerInfos.gLevel >= 14) {
+        newSlot = new SlotConstructor('Obusiers',['obus-heat','uranium','bulk','carrousel1']);
         missionBatList.push(newSlot);
     }
     newSlot = new SlotConstructor('Bunkers',['snake','uranium','bulk','chargeur']);
@@ -177,7 +180,7 @@ function SlotConstructor(theName,theGear) {
 
 function putMissionStats() {
     playerInfos.gang = 'rednecks';
-    playerInfos.gLevel = (zone[0].mapDiff*2)+6-playerInfos.gMode;
+    playerInfos.gLevel = (zone[0].mapDiff*2)+5-playerInfos.gMode;
     // PA 4 = level 12
     // PA 5 = level 14
     // PA 6 = level 16
