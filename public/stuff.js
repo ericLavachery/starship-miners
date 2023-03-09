@@ -474,7 +474,7 @@ function nearWhat(myBat,myBatType) {
             }
         }
         if (bat.loc === "zone" && bat.id != myBat.id) {
-            if (batType.skills.includes('transorbital')) {
+            if (isOpLander(bat,batType)) {
                 if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
                     near.lander = true;
                 }
@@ -529,6 +529,26 @@ function nearWhat(myBat,myBatType) {
         }
     });
     return near;
+};
+
+function isLander(bat,batType) {
+    let batIsLander = false;
+    if (batType.skills.includes('transorbital')) {
+        batIsLander = true;
+    }
+    return batIsLander;
+};
+
+function isOpLander(bat,batType) {
+    let batIsLander = false;
+    if (batType.skills.includes('transorbital')) {
+        if (!bat.tags.includes('nomove')) {
+            if (!bat.tags.includes('nopilots')) {
+                batIsLander = true;
+            }
+        }
+    }
+    return batIsLander;
 };
 
 function blockMe(stop) {

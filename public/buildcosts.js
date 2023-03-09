@@ -219,7 +219,7 @@ function findLanders() {
                     landers.push(bat);
                 }
             } else {
-                if (batType.skills.includes('transorbital') || batType.skills.includes('reserve')) {
+                if (isOpLander(bat,batType) || batType.skills.includes('reserve')) {
                     landers.push(bat);
                 }
             }
@@ -237,7 +237,7 @@ function findLandersIds() {
                     landersIds.push(bat.id);
                 }
             } else {
-                if (batType.skills.includes('transorbital')) {
+                if (isOpLander(bat,batType)) {
                     landersIds.push(bat.id);
                 }
             }
@@ -253,7 +253,7 @@ function findTheLander(ownOnly) {
         if (bat.loc === 'zone') {
             if (!bat.tags.includes('nomove') || !ownOnly) {
                 let batType = getBatType(bat);
-                let landerScore = getLanderScore(batType);
+                let landerScore = getLanderScore(bat,batType);
                 if (bestLander < landerScore) {
                     bestLander = landerScore;
                     theLander = bat;
@@ -264,9 +264,9 @@ function findTheLander(ownOnly) {
     return theLander;
 };
 
-function getLanderScore(batType) {
+function getLanderScore(bat,batType) {
     let landerScore = 0;
-    if (batType.skills.includes('transorbital')) {
+    if (isOpLander(bat,batType)) {
         if (batType.name === 'Soute') {
             landerScore = 1;
         } else {

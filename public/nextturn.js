@@ -320,7 +320,7 @@ function nextTurnEnd() {
                     }
                 }
             }
-            if (batType.skills.includes('transorbital') || batType.skills.includes('reserve')) {
+            if (isOpLander(bat,batType) || batType.skills.includes('reserve')) {
                 landers.push(bat);
             }
             if (bat.loc === "zone") {
@@ -942,7 +942,7 @@ function turnInfo() {
             if (bat.type === 'Scraptrucks') {
                 hasScraptruck = true;
             }
-            if (batType.skills.includes('transorbital')) {
+            if (isOpLander(bat,batType)) {
                 if (noEquip(bat,['siland'])) {
                     landingNoise = landingNoise+Math.floor(batType.hp/75/landerHPTuning*batType.fuzz*batType.fuzz/25)+2;
                 }

@@ -111,7 +111,7 @@ function getMissionBatList() {
     newSlot = new SlotConstructor('Lucky bastards',['gliding','grenade-gaz','duneg','e-camo']);
     missionBatList.push(newSlot);
     if (playerInfos.gLevel >= 14) {
-        newSlot = new SlotConstructor('Lucky bastards',['timonium','grenade-gaz','wendium','lancegren']);
+        newSlot = new SlotConstructor('Lucky bastards',['timonium','grenade','wendium','lancegren']);
         missionBatList.push(newSlot);
     } else {
         newSlot = new SlotConstructor('Rednecks',['uranium','uranium','kevlar','chargeur']);
@@ -134,7 +134,14 @@ function getMissionBatList() {
     newSlot = new SlotConstructor('Infirmiers',['tungsten','xxx','kevlar','e-camo']);
     missionBatList.push(newSlot);
     if (playerInfos.gLevel >= 14) {
-        newSlot = new SlotConstructor('Riggers',['lame-carbone','gaz','duneg','w2-gaz']);
+        newSlot = new SlotConstructor('Riggers',['lame-carbone','xxx','duneg','chargeur1']);
+        missionBatList.push(newSlot);
+    } else {
+        newSlot = new SlotConstructor('Mécanos',['explosive','xxx','iso','chenilles']);
+        missionBatList.push(newSlot);
+    }
+    if (playerInfos.gLevel >= 17) {
+        newSlot = new SlotConstructor('Riggers',['lame-carbone','gaz','wendium','w2-gaz']);
         missionBatList.push(newSlot);
     }
     newSlot = new SlotConstructor('Sapeurs',['tungsten','lame-carbone','duneg','e-road']);

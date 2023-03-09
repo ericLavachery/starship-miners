@@ -403,7 +403,7 @@ function checkPDM() {
         shufBats.forEach(function(bat) {
             if (bat.loc === "zone") {
                 batType = getBatType(bat);
-                if (batType.skills.includes('transorbital')) {
+                if (isLander(bat,batType)) {
                     distance = calcDistance(selectedBat.tileId,bat.tileId);
                     if (distance < lePlusProche) {
                         pointDeMire = bat.tileId;

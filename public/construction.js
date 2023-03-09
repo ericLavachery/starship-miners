@@ -944,18 +944,6 @@ function clickConstruct(tileId,free) {
                 }
             }
         }
-        // if (conselUnit.skills.includes('transorbital')) {
-        //     if (tile.x > 31+landerRange || tile.x < 31-landerRange || tile.y > 31+landerRange || tile.y < 31-landerRange) {
-        //         batHere = true;
-        //         message = 'Vous ne pouvez pas poser votre vaisseau à plus de '+landerRange+' cases du centre.';
-        //     } else {
-        //         let tileLandingOK = landerLandingOK(tile,conselUnit);
-        //         if (!tileLandingOK) {
-        //             batHere = true;
-        //             message = 'Vous ne pouvez pas poser votre vaisseau sur ce type de terrain.';
-        //         }
-        //     }
-        // }
         if (!batHere) {
             if (!free && !playerInfos.onShip) {
                 let apCost = prefabCost(selectedBatType,conselUnit,true);

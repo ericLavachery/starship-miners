@@ -148,10 +148,12 @@ function unloadInfos(myBat,myBatUnitType) {
                         ready = false;
                     }
                     let mayOut = checkMayOut(batType,true,bat);
-                    if (myBatUnitType.skills.includes('transorbital') && (batType.id === 126 || batType.id === 225)) {
+                    console.log('SDFGHJKLGHJKYUKIBN');
+                    console.log(myBat);
+                    if (myBatUnitType.skills.includes('transorbital') && !myBat.tags.includes('nomove') && !myBat.tags.includes('nopilots') && (batType.id === 126 || batType.id === 225)) {
                         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer des citoyens d\'un vaisseau" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
-                    } else if (bat.tags.includes('nomove')) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer ce bataillon" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+                    } else if (bat.tags.includes('nomove') && myBat.tags.includes('nomove')) {
+                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer ce bataillon car vous ne le contrôlez pas" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
                     } else if (!mayOut) {
                         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer ce bataillon sur cette planète" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
                     } else if (!ready) {
@@ -877,7 +879,11 @@ function clickDebarq(tileId) {
         }
         showBataillon(batDebarq);
         batSelect(batDebarq,true);
-        moveMode();
+        if (selectedBat.tags.includes('nomove')) {
+            selectMode();
+        } else {
+            moveMode();
+        }
         if (batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') {
             moveSelectedBat(tileId,true,false);
             let tile = getTileById(tileId);
