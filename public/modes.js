@@ -7,7 +7,7 @@ function selectMode() {
     if (selectedBat.id >= 0) {
         tileSelect(selectedBat);
     }
-    showMap(zone,true);
+    showMap(zone,true); // ?????????????? XXXXXXXXXXXXXXXXXXXXXXXXXX
     selectedWeap = {};
     mped = {};
 };

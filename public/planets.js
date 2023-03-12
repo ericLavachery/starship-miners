@@ -257,7 +257,7 @@ function checkCanon() {
 function alienCanon() {
     // CANON WEB
     let cprov = 'canon';
-    if (hasAlien('Uberspinne')) {
+    if (hasAlien('Uberspinne') || hasAlien('Spiderblob')) {
         cprov = 'uber';
     }
     if ((playerInfos.objectifs.spider === 'actif' && !domeProtect) || cprov === 'uber') {
@@ -400,6 +400,17 @@ function webCanon(canonTiles) {
     });
 };
 
+function trueWeb() {
+    if (!targetBat.tags.includes('mud')) {
+        targetBat.tags.push('mud');
+    }
+    if (!targetBat.tags.includes('web')) {
+        targetBat.tags.push('web');
+    }
+    let tile = getTile(targetBat);
+    tile.web = true;
+};
+
 function getWebCanonTiles(cprov) {
     let canonTiles = [];
     let theTile = -1;
@@ -419,7 +430,7 @@ function getWebCanonTiles(cprov) {
                         thisTarget = thisTarget+10;
                     }
                     if (thisTarget >= 1) {
-                        if (batType.name != 'Uberspinne') {
+                        if (!batType.skills.includes('webca')) {
                             thisTarget = thisTarget*batType.hp;
                         } else {
                             thisTarget = thisTarget*100000;

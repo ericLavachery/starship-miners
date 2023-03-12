@@ -174,6 +174,9 @@ function checkRuinsCit(tile) {
             citChance = citChance/3*checkz;
         }
         citChance = Math.ceil(citChance/1.67);
+        if (tile.rt.full) {
+            citChance = Math.ceil(citChance*5);
+        }
     } else {
         citChance = Math.ceil(citChance);
     }
@@ -194,8 +197,17 @@ function putRuinsCit(tile) {
     if (numRuins > 50) {
         numRuins = 50;
     }
+    let crimDice = ruinsCrimChance;
+    if (tile.rt != undefined) {
+        if (tile.rt.name === 'Bidonvilles' || tile.rt.name === 'Bar') {
+            crimDice = 2;
+        }
+        if (tile.rt.name === 'Prison') {
+            crimDice = 1;
+        }
+    }
     let citId = 126;
-    if (rand.rand(1,ruinsCrimChance) === 1) {
+    if (rand.rand(1,crimDice) === 1) {
         citId = 225;
     }
     let badTer = zone[0].pf+zone[0].pw+zone[0].pr+zone[0].ps;
@@ -1206,7 +1218,7 @@ function checkRuinsRes(tile) {
     let ruinType = checkRuinType(tile,false);
     console.log('resChance: '+resChance);
     if (ruinType.checks.length >= 1 || ruinType.name === 'Mine' || ruinType.name === 'Pompes') {
-        if (rand.rand(1,100) <= resChance) {
+        if (rand.rand(1,100) <= resChance || ruinType.full) {
             conselTriche = true;
             putBatAround(tile.id,false,'near',239,0,'go');
             let coffre = getZoneBatByTileId(coffreTileId);

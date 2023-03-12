@@ -80,6 +80,19 @@
         "sound":{"paint":"paint_kill","fragger_throw":"paint_kill"}
     },
     {
+        "name": "web-true",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "armors": 1,
+        "accuracy": 1,
+        "apdamage": 0,
+        "apweb": true,
+        "aoe": "",
+        "info": "Entrave"
+    },
+    {
         "name": "web",
         "range": 1,
         "rof": 1,

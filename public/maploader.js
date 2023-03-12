@@ -28,8 +28,10 @@ function showMap(wmap,justMoved) {
     let tertitle = '';
     let resHere = '';
     let tPic = 'P_001';
-    allZoneRes = [];
-    allCheckedZoneRes = [];
+    if (!justMoved) {
+        allZoneRes = [];
+        allCheckedZoneRes = [];
+    }
     viewBorders = [];
     if (modeSonde) {
         playerInfos.showedTiles = [1830];
@@ -106,7 +108,7 @@ function showMap(wmap,justMoved) {
         }
     });
     if (!justMoved) {
-        selectMode();
+        selectMode(); // ?????????????? XXXXXXXXXXXXXXXXXXXXXXXXXX
         alienOccupiedTileList();
         playerOccupiedTileList();
     }
@@ -284,13 +286,17 @@ function showRes(tileId) {
         if (tile.rt != undefined) {
             ruinType = tile.rt;
         }
+        let fullIndicator = '';
+        if (ruinType.full && playerInfos.pseudo === 'Mapedit') {
+            fullIndicator = '&#9872;';
+        }
         let ruinPic = getRuinsPic(ruinType);
         if (tile.sh === -1) {
             mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType.name+'"><img style="opacity:0.9;" src="/static/img/units/ruins/'+ruinPic+'f.png"></div>';
         } else {
             mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType.name+'"><img style="opacity:0.9;" src="/static/img/units/ruins/'+ruinPic+'.png"></div>';
         }
-        tileText = tileText+'&timesb; Ruines ('+ruinType.name+')&nbsp;&nbsp;&nbsp; ';
+        tileText = tileText+'&timesb; Ruines ('+ruinType.name+fullIndicator+')&nbsp;&nbsp;&nbsp; ';
     }
     if (tile.ap != undefined) {
         if (tile.ap.includes('grenade') || tile.ap.includes('dynamite') || tile.ap.includes('molotov')) {

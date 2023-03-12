@@ -382,7 +382,11 @@ function putMissionTitle() {
     if (playerInfos.pseudo === 'Mapedit') {
         if (zone[0].number != undefined) {
             let mission = getMissionByNum(zone[0].number);
-            mission.name = zone[0].title;
+            if (mission != undefined) {
+                if (Object.keys(mission).length >= 1) {
+                    mission.name = zone[0].title;
+                }
+            }
         }
     }
 };

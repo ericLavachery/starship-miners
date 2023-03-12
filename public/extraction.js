@@ -750,6 +750,8 @@ function resSelect(resId) {
 
 function voirRessources() {
     showResOpen = true;
+    console.log('VRES allZoneRes');
+    console.log(allZoneRes);
     selectMode();
     $("#conUnitList").css("display","block");
     $('#conUnitList').css("height","800px");
@@ -786,6 +788,8 @@ function voirRessources() {
     });
     let resIcon = '';
     let isflagged = '';
+    console.log('SELECT allZoneRes');
+    console.log(allZoneRes);
     let sortedResTypes = _.sortBy(filteredResTypes,'name');
     sortedResTypes.forEach(function(res) {
         resIcon = getResIcon(res);

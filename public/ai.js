@@ -1644,7 +1644,10 @@ function fearFactor(myBat,blob) {
                         }
                         // console.log('fearChance='+fearChance);
                         if (rand.rand(1,100) <= fearChance) {
-                            getAway(bat,myBat.tileId,blob);
+                            let tile = getTile(bat);
+                            if (!tile.web) {
+                                getAway(bat,myBat.tileId,blob);
+                            }
                             addStressFlag(bat,'fear');
                         } else {
                             // console.log('noFear');

@@ -1046,10 +1046,14 @@ function showTileInfos(tileId) {
         }
         // Aménagements
         if (tile.ruins) {
+            let fullIndicator = '';
+            if (ruinType.full && playerInfos.pseudo === 'Mapedit') {
+                fullIndicator = ' &#9872;';
+            }
             if (allowCheat) {
-                $('#tileInfos').append('<span class="paramName cy klik" onclick="searchRuins(0,'+tile.id+')">Ruines</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">'+ruinType.name+'</span><br>');
+                $('#tileInfos').append('<span class="paramName cy klik" onclick="searchRuins(0,'+tile.id+')">Ruines'+fullIndicator+'</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">'+ruinType.name+'</span><br>');
             } else {
-                $('#tileInfos').append('<span class="paramName cy">Ruines</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">'+ruinType.name+'</span><br>');
+                $('#tileInfos').append('<span class="paramName cy">Ruines'+fullIndicator+'</span><span class="paramIcon"><i class="fas fa-city"></i></span><span class="paramValue cy">'+ruinType.name+'</span><br>');
             }
         }
         if (tile.infra != undefined) {

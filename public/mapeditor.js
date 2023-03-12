@@ -16,12 +16,13 @@ function mapEditWindow() {
         $('#mapNumber').append('<option value="100" selected>Zone n°??</option>');
         let mapNum = 50;
         while (mapNum <= 99) {
+            let mType = getMissionType(mapNum);
             if (zone[0].number === mapNum) {
-                $('#mapNumber').append('<option value="'+mapNum+'" selected>Zone n°'+mapNum+'</option>');
+                $('#mapNumber').append('<option value="'+mapNum+'" selected>Zone n°'+mapNum+' ('+mType+')</option>');
             } else if (!playerInfos.misDB.includes(mapNum)) {
-                $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+'</option>');
+                $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+' ('+mType+')</option>');
             } else {
-                $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+' &nbsp;&#9940;&nbsp; Ecraser ??</option>');
+                $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+' ('+mType+') &nbsp;&#9940;&nbsp; Ecraser ??</option>');
             }
             if (mapNum >= 99) {break;}
             mapNum++
@@ -60,6 +61,7 @@ function mapEditWindow() {
     selectStuff('Route','roads','Route (ou Pont)');
     selectStuff('AmmoPack','ammoPacks','Packs de munitions/armures/drogues');
     selectStuff('RuinesVides','ruinEmpty2','Ruines fouillées / Non fouillées (sans changer le type de ruine)');
+    selectStuff('RuinesPleines','ruinNotEmpty','Ruines pleines (100% ressources, 5x% citoyens) / Non fouillées (% normaux)');
     $('#conUnitList').append('<br>');
     // Ressources
     selectStuff('Res','res','Mettre des ressources sur le terrain');
@@ -636,7 +638,23 @@ function clickEdit(tileId) {
         bord = true;
     }
     if (mped.sinf != '') {
-        if (mped.sinf === 'RuinesVides') {
+        if (mped.sinf === 'RuinesPleines') {
+            if (tile.ruins) {
+                if (tile.rt != undefined) {
+                    tile.sh = 10;
+                    if (tile.rt.full != undefined) {
+                        if (tile.rt.full) {
+                            // delete tile.rt.full;
+                            tile.rt.full = false;
+                        } else {
+                            tile.rt.full = true;
+                        }
+                    } else {
+                        tile.rt.full = true;
+                    }
+                }
+            }
+        } else if (mped.sinf === 'RuinesVides') {
             if (tile.ruins) {
                 if (tile.sh >= 0) {
                     tile.sh = -1;

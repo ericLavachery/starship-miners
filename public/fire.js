@@ -1208,6 +1208,9 @@ function attack(melee,init) {
     if (targetBatType.cat === 'aliens') {
         realNoiseAlert(selectedWeap,selectedBatType,selectedBat.tileId);
     }
+    if (selectedWeap.ammo === 'web-true' && targetBatType.cat != 'aliens') {
+        trueWeb();
+    }
     let inDanger = checkInDanger(targetBat,targetBatType);
     if (inDanger) {
         if (targetBat.tags.includes('nomove') && !targetBatType.skills.includes('nomove')) {
