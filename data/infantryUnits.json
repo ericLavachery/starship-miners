@@ -281,7 +281,7 @@
             "cost":4,
             "range":1,
             "isBow":true,
-            "noise":0.1,
+            "noise":0,
             "rof":6,
             "accuracy":17,
             "power":7,
@@ -1002,7 +1002,7 @@
             "spot":true,
             "isBow":true,
             "noBis":true,
-            "noise":0.1,
+            "noise":0,
             "rof":8,
             "accuracy":18,
             "dca":1.25,
@@ -1010,7 +1010,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "equip":["aucun","kit-sentinelle","e-ranger","e-jetpack","e-medic","taserkit","camkit","e-phare","repel","helper"],
         "log3eq":["helper"],
@@ -1714,13 +1714,13 @@
             "cost":4,
             "range":1,
             "isBow":true,
-            "noise":0.1,
+            "noise":0,
             "rof":8,
             "accuracy":18,
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","arbalourde","permakirin","theeye","helper","repel"],
@@ -1765,7 +1765,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1834,13 +1834,13 @@
             "isBow":true,
             "noBis":true,
             "noDatt":true,
-            "noise":0.1,
+            "noise":0,
             "rof":7,
             "accuracy":18,
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "equip":["aucun","e-flash","e-jetpack","e-camo","e-ranger","arbalourde","permakirin","theeye","helper","waterproof"],
         "log3eq":["arbalourde"],
@@ -2017,7 +2017,7 @@
             "cost":4,
             "range":1,
             "isBow":true,
-            "noise":0.1,
+            "noise":0,
             "rof":10,
             "accuracy":17,
             "power":8,
@@ -2027,7 +2027,7 @@
             "maxAmmo":10
         },
         "equip":["aucun","e-flash","e-camo","permakirin","theeye","helper"],
-        "log3eq":["e-camo"],
+        "log3eq":[],
         "autoEq":["helper"],
         "moveCost":3,
         "maxFlood":3,
@@ -3026,7 +3026,7 @@
             "cost":3,
             "range":1,
             "noBis":true,
-            "noise":1,
+            "noise":0,
             "rof":4,
             "accuracy":24,
             "dca":1.5,
@@ -3088,13 +3088,13 @@
             "range":1,
             "elevation":1,
             "isBow":true,
-            "noise":0.1,
+            "noise":0,
             "rof":8,
             "accuracy":17,
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon2":{
             "name":"Poignard",
@@ -3227,7 +3227,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","arbalourde","permakirin","theeye","helper","e-medic","repel"],
@@ -4540,7 +4540,7 @@
             "cost":4,
             "range":1,
             "isBow":true,
-            "noise":0.1,
+            "noise":0,
             "rof":6,
             "accuracy":17,
             "power":14,

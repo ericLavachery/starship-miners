@@ -1359,7 +1359,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"balista2",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -1921,7 +1921,7 @@
             "isBow":true,
             "isMelee":true,
             "bigDef":true,
-            "noise":0.1,
+            "noise":0,
             "rof":32,
             "accuracy":18,
             "power":8,
@@ -2815,7 +2815,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"balista2",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -3615,7 +3615,7 @@
             "range":1,
             "isBow":true,
             "noBis":true,
-            "noise":0.1,
+            "noise":0,
             "rof":6,
             "accuracy":18,
             "power":7,
@@ -3965,7 +3965,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
         },
         "weapon2":{
             "name":"Bélier",

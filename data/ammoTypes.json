@@ -1634,6 +1634,23 @@
         "batch":100
     },
     {
+        "name": "fleche-bio",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1.2,
+        "armors": 0.75,
+        "avar": "mat",
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Virus",
+        "bldReq":["Centre de recherches","Biopod"],
+        "compReq":{"gen":2,"exo":3,"ca":4},
+        "deploy":{"Carbone":4,"Rhodium":1,"Tungstène":2,"Plastanium":1,"Morphite":1,"Creatite":3,"Bossium":1,"Germium":1},
+        "batch":100
+    },
+    {
         "name": "fleche-freeze",
         "range": 1,
         "rof": 1,
@@ -1746,6 +1763,23 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"exo":3,"ca":4},
         "deploy":{"Carbone":2,"Titane":1,"Mephitis":6,"Huile":3,"Argon":3},
+        "batch":100
+    },
+    {
+        "name": "hypo-bio",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1.2,
+        "armors": 0.8,
+        "avar": "mat",
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Virus",
+        "bldReq":["Centre de recherches","Biopod"],
+        "compReq":{"gen":2,"exo":3,"ca":4},
+        "deploy":{"Carbone":4,"Rhodium":1,"Plastanium":1,"Morphite":1,"Creatite":4,"Bossium":1,"Germium":1},
         "batch":100
     },
     {
