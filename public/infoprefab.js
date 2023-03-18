@@ -151,7 +151,8 @@ function recupPrefabFret(bat,batType,tileId,autoDec,landerBat) {
 };
 
 function refabInfos(myBat,myBatUnitType) {
-    if (myBatUnitType.skills.includes('constructeur') && !myBat.tags.includes('nomove') && !myBat.tags.includes('outsider') && !myBat.tags.includes('nopilots')) {
+    // pas les outsiders? xxxxxx ??????
+    if (myBatUnitType.skills.includes('constructeur') && !myBat.tags.includes('nomove') && !myBat.tags.includes('nopilots')) {
         $('#unitInfos').append('<hr>');
         let balise = 'h4';
         let apCost;

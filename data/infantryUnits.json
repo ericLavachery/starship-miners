@@ -1010,7 +1010,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "equip":["aucun","kit-sentinelle","e-ranger","e-jetpack","e-medic","taserkit","camkit","e-phare","repel","helper"],
         "log3eq":["helper"],
@@ -1720,7 +1720,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","arbalourde","permakirin","theeye","helper","repel"],
@@ -1765,7 +1765,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1840,7 +1840,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "equip":["aucun","e-flash","e-jetpack","e-camo","e-ranger","arbalourde","permakirin","theeye","helper","waterproof"],
         "log3eq":["arbalourde"],
@@ -3094,7 +3094,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "weapon2":{
             "name":"Poignard",
@@ -3227,7 +3227,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","arbalourde","permakirin","theeye","helper","e-medic","repel"],
@@ -3572,7 +3572,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"mit_pneu",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
         },
         "weapon2":{
             "name":"Tronçonneuse",
@@ -4154,7 +4154,7 @@
             "armors":1.2,
             "aoe":"unit",
             "sound":"mit_pneu",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
         },
         "weapon2":{
             "name":"Filet",

@@ -408,7 +408,7 @@
             "power":9,
             "aoe":"unit",
             "sound":"mit_pneu",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
         },
         "weapon2":{
             "name":"Autocanon",
@@ -1359,7 +1359,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"balista2",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "weapon2":{
             "name":"Moissonneuse",
@@ -1987,7 +1987,7 @@
             "power":9,
             "aoe":"unit",
             "sound":"mit_pneu",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -2684,7 +2684,7 @@
             "power":12,
             "aoe":"unit",
             "sound":"mit_pneu",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -2815,7 +2815,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"balista2",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -3621,7 +3621,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "weapon2":{
             "name":"Gaz",
@@ -3965,7 +3965,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "weapon2":{
             "name":"Bélier",

@@ -572,6 +572,8 @@ function attack(melee,init) {
             webDamage = Math.ceil(totalHits/1/Math.sqrt(targetBatType.hp+10)); // avant 1.2
         } else if (selectedWeap.ammo.includes('trap')) {
             webDamage = Math.ceil(webDamage/4);
+        } else if (selectedWeap.ammo.includes('flashbang')) {
+            webDamage = rand.rand(20,30)-Math.floor(Math.sqrt(targetBatType.size));
         }
         if (targetBatType.cat != 'aliens') {
             webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);
@@ -786,9 +788,16 @@ function attack(melee,init) {
     // protection all
     if (targetBatType.skills.includes('protectall') || targetBat.tags.includes('protectall')) {
         if (targetBatType.cat === 'aliens') {
-            totalDamage = Math.round(totalDamage/2);
-            if (playerInfos.comp.ca >= 2) {
-                $('#report').append('<span class="report rose">Protection 50%<br></span>');
+            if (selectedWeap.passprotect) {
+                totalDamage = Math.round(totalDamage/1.5);
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Protection 33%<br></span>');
+                }
+            } else {
+                totalDamage = Math.round(totalDamage/2);
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Protection 50%<br></span>');
+                }
             }
         } else {
             totalDamage = Math.round(totalDamage/1.5);
@@ -798,9 +807,11 @@ function attack(melee,init) {
         // résistance all
         if (targetBatType.skills.includes('resistall') || targetBat.tags.includes('resistall')) {
             if (targetBatType.cat === 'aliens') {
-                totalDamage = Math.round(totalDamage/1.5);
-                if (playerInfos.comp.ca >= 2) {
-                    $('#report').append('<span class="report rose">Protection 33%<br></span>');
+                if (!selectedWeap.passprotect) {
+                    totalDamage = Math.round(totalDamage/1.5);
+                    if (playerInfos.comp.ca >= 2) {
+                        $('#report').append('<span class="report rose">Protection 33%<br></span>');
+                    }
                 }
             } else {
                 totalDamage = Math.round(totalDamage/1.34);
@@ -1184,7 +1195,11 @@ function attack(melee,init) {
         }
     }
     if (targetBatType.skills.includes('noaploss')) {
-        apDamage = Math.round(apDamage/5);
+        if (selectedWeap.ammo.includes('flashbang')) {
+            apDamage = Math.round(apDamage/1.25);
+        } else {
+            apDamage = Math.round(apDamage/5);
+        }
     } else if (targetBatType.skills.includes('moreaploss')) {
         apDamage = Math.ceil(apDamage*2);
     }
@@ -1638,6 +1653,8 @@ function defense(melee,init) {
             webDamage = Math.ceil(totalHits/1/Math.sqrt(selectedBatType.hp+10)); // avant 1.2
         } else if (targetWeap.ammo.includes('trap')) {
             webDamage = Math.ceil(webDamage/4);
+        } else if (targetWeap.ammo.includes('flashbang')) {
+            webDamage = rand.rand(20,30)-Math.floor(Math.sqrt(targetBatType.size));
         }
         if (selectedBatType.cat != 'aliens') {
             webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);
@@ -1843,9 +1860,16 @@ function defense(melee,init) {
     // protect all
     if (selectedBatType.skills.includes('protectall') || selectedBat.tags.includes('protectall')) {
         if (selectedBatType.cat === 'aliens') {
-            totalDamage = Math.round(totalDamage/2);
-            if (playerInfos.comp.ca >= 2) {
-                $('#report').append('<span class="report rose">Protection 50%<br></span>');
+            if (targetWeap.passprotect) {
+                totalDamage = Math.round(totalDamage/1.5);
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Protection 33%<br></span>');
+                }
+            } else {
+                totalDamage = Math.round(totalDamage/2);
+                if (playerInfos.comp.ca >= 2) {
+                    $('#report').append('<span class="report rose">Protection 50%<br></span>');
+                }
             }
         } else {
             totalDamage = Math.round(totalDamage/1.5);
@@ -1855,9 +1879,11 @@ function defense(melee,init) {
         // résistance all
         if (selectedBatType.skills.includes('resistall') || selectedBat.tags.includes('resistall')) {
             if (selectedBatType.cat === 'aliens') {
-                totalDamage = Math.round(totalDamage/1.5);
-                if (playerInfos.comp.ca >= 2) {
-                    $('#report').append('<span class="report rose">Protection 33%<br></span>');
+                if (!targetWeap.passprotect) {
+                    totalDamage = Math.round(totalDamage/1.5);
+                    if (playerInfos.comp.ca >= 2) {
+                        $('#report').append('<span class="report rose">Protection 33%<br></span>');
+                    }
                 }
             } else {
                 totalDamage = Math.round(totalDamage/1.34);
@@ -2091,7 +2117,11 @@ function defense(melee,init) {
         }
     }
     if (selectedBatType.skills.includes('noaploss')) {
-        apDamage = Math.round(apDamage/5);
+        if (targetWeap.ammo.includes('flashbang')) {
+            apDamage = Math.round(apDamage/1.25);
+        } else {
+            apDamage = Math.round(apDamage/5);
+        }
     } else if (selectedBatType.skills.includes('moreaploss')) {
         apDamage = Math.ceil(apDamage*2);
     }

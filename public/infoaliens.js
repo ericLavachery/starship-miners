@@ -59,6 +59,10 @@ function showEnemyBatInfos(bat) {
     let alienUnitIndex = alienUnits.findIndex((obj => obj.id == bat.typeId));
     let batType = alienUnits[alienUnitIndex];
     let unitsLeft = bat.squadsLeft*batType.squadSize;
+    let batShowedNum = unitsLeft;
+    if (batType.squads === 6 && batType.squadSize === 1) {
+        batShowedNum = 1;
+    }
     let batShowedName = nomVisible(bat);
     let compCA = playerInfos.comp.ca;
     if (playerInfos.knownAliens.includes(batType.name)) {
@@ -108,7 +112,7 @@ function showEnemyBatInfos(bat) {
         }
         $('#unitInfos').append('<br>');
     }
-    $('#unitInfos').append('<span class="blockTitle"><h3>'+unitsLeft+' '+batShowedName+'</h3></span>');
+    $('#unitInfos').append('<span class="blockTitle"><h3>'+batShowedNum+' '+batShowedName+'</h3></span>');
     // SQUADS
     $('#unitInfos').append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+bat.squadsLeft+'/'+batType.squads+'</span><br>');
     let squadHP = batType.squadSize*batType.hp;
@@ -214,12 +218,9 @@ function showEnemyBatInfos(bat) {
             }
         }
     }
-    if (compCA >= 2) {
-        if (batType.skills.includes('baddef')) {
-            $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">Faible</span><br>');
-        } else {
-            $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">Normale</span><br>');
-        }
+    if (compCA >= 3) {
+        let ripInfos = getAlienRipInfos(batType,compCA);
+        $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">'+ripInfos.value+'</span><br>');
     }
     if (compCA >= 2) {
         if (batType.skills.includes('sentinelle')) {
@@ -421,6 +422,13 @@ function showEnemyBatInfos(bat) {
             if (compCA >= 2) {
                 $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
             }
+            if (compCA >= 3) {
+                if (thisWeapon.noDef) {
+                    $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">Non</span><br>');
+                } else {
+                    $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+                }
+            }
         }
     }
     if (compCA >= 3) {
@@ -460,6 +468,13 @@ function showEnemyBatInfos(bat) {
             if (compCA >= 2) {
                 $('#unitInfos').append('<span class="paramName">Aire d\'effet</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.aoe+'</span><br>');
             }
+            if (compCA >= 3) {
+                if (batType.skills.includes('smartrip')) {
+                    $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+                } else {
+                    $('#unitInfos').append('<span class="paramName">Riposte</span><span class="paramIcon"></span><span class="paramValue">Non</span><br>');
+                }
+            }
         }
     }
     $('#unitInfos').append('<div class="shSpace"></div>');
@@ -473,12 +488,40 @@ function showEnemyBatInfos(bat) {
     if (allowCheat) {
         $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Supprimer (Tu triches!)" class="boutonCiel skillButtons" onclick="deleteAlien('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
     }
-
     // "moveCost": 3,
     // "maxFlood": 3,
     // "maxScarp": 3,
     // "maxVeg": 3,
     // "skills": []
+};
+
+function getAlienRipInfos(batType,compCA) {
+    let ripInfos = {};
+    ripInfos.value = 'Normale';
+    if (batType.weapon.rof >= 1) {
+        if (batType.weapon.noDef) {
+            ripInfos.value = 'Sans';
+        } else {
+            if (batType.skills.includes('baddef')) {
+                ripInfos.value = 'Faible';
+            } else if (!batType.skills.includes('defense')) {
+                if (batType.skills.includes('infrip')) {
+                    ripInfos.value = 'Normale';
+                } else {
+                    ripInfos.value = 'Normale';
+                }
+            } else {
+                if (batType.skills.includes('infrip')) {
+                    ripInfos.value = 'Forte';
+                } else {
+                    ripInfos.value = 'Forte';
+                }
+            }
+        }
+    } else {
+        ripInfos.value = 'Sans';
+    }
+    return ripInfos;
 };
 
 function getArmorEval(armor) {

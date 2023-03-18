@@ -1974,7 +1974,7 @@ function zoneReport(myZone,quiet) {
             warning('Forêts',percF+'%',true);
             warning('Etangs',percW+'%',true);
             warning('Rivières',percR+'%',true);
-            warning('Marécages',percS+'%');
+            warning('Marécages',percS+'%',false,-1,true);
         } else {
             warning('Plaines',percP+'% ('+myZone[0].pKind+')',true);
             warning('Prairies',percG+'% ('+myZone[0].gKind+')',true);

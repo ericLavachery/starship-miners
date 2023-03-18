@@ -354,6 +354,7 @@ function loadMission() {
     $('#conUnitList').append('<select class="boutonGris" id="theStartZone" onchange="loadTheMissionBaby()"></select>');
     $('#theStartZone').empty().append('<option value="0" selected>Mission</option>');
     $('#theStartZone').append('<option value="80" disabled>80 - Boss Spider</option>');
+    $('#theStartZone').append('<option value="84">84 - Boss Spider (Shelob)</option>');
     $('#theStartZone').append('<option value="75" disabled>75 - Boss Bug</option>');
     $('#theStartZone').append('<option value="70" disabled>70 - Boss Larve</option>');
     $('#theStartZone').append('<option value="65" disabled>65 - Boss Swarm</option>');

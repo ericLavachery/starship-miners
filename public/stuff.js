@@ -616,18 +616,6 @@ function warning(title,body,noHand,tileId,closeAll) {
     }
 };
 
-// function warning(title,body,noHand,tileId) {
-//     $('#warnings').append('<span class="warnings"><span class="or">'+title+'<br></span> '+body+'<br></span>');
-//     if (tileId != undefined) {
-//         if (tileId >= -1) {
-//             $('#warnings').append('<span class="warnings"><i class="fas fa-eye cy klik" onclick="warnLink('+tileId+')"></i></span>');
-//         }
-//     }
-//     if (!noHand) {
-//         $('#warnings').append('<i class="far fa-hand-paper wash" onclick="washReports(true)" title="Cacher l\'alerte"></i>');
-//     }
-// };
-
 function warnLink(tileId) {
     let linkBatId = -1;
     let linkBat = {};

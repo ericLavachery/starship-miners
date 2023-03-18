@@ -1028,7 +1028,7 @@ function applyShield(shots) {
     console.log('SHIELD');
     console.log(shieldChance+'%');
     console.log(selectedWeap.ammo);
-    if (activeTurn === 'player' && shieldChance >= 1 && selectedWeap.ammo != 'marquage') {
+    if (activeTurn === 'player' && shieldChance >= 1 && selectedWeap.ammo != 'marquage' && !selectedWeap.ammo.includes('flashbang')) {
         if (!targetBat.tags.includes('shield')) {
             $('#report').append('<span class="report rose">Bouclier '+shieldChance+'%<br></span>');
         }
@@ -2288,6 +2288,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.apWeb = true;
     } else {
         thisWeapon.apWeb = false;
+    }
+    if (ammo.passprotect) {
+        thisWeapon.passprotect = true;
+    } else {
+        thisWeapon.passprotect = false;
     }
     if (thisWeapon.ammo.includes('gliding')) {
         thisWeapon.elevation = thisWeapon.elevation+1;
