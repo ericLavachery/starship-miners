@@ -208,11 +208,15 @@ function checkMayOut(batType,isBat,bat) {
 
 function checkCanon() {
     let doom = getDoom(true);
+    let isTest = false;
+    if (playerInfos.pseudo == 'Payall' || playerInfos.pseudo == 'Test' || playerInfos.pseudo == 'Woktest') {
+        isTest = true;
+    }
     // CANON WEB (Objectif Spider);
     let doomStart = 5;
     // à enlever quand il y aura la map spéciale
     // enlever le canon
-    if (playerInfos.objectifs.spider === 'actif') {
+    if (playerInfos.objectifs.spider === 'actif' && !isTest) {
         if (doom >= doomStart) {
             let chance = 30+((doom-doomStart)*15);
             if (rand.rand(1,100) <= chance) {
@@ -222,7 +226,7 @@ function checkCanon() {
     }
     // à garder
     // mettre le canon
-    if (playerInfos.objectifs.spider === 'none') {
+    if (playerInfos.objectifs.spider === 'none' && !isTest) {
         if (doom >= doomStart) {
             let chance = 40+((doom-doomStart)*40);
             if (rand.rand(1,100) <= chance) {
@@ -234,7 +238,7 @@ function checkCanon() {
     doomStart = 7;
     // à enlever quand il y aura la map spéciale
     // enlever le canon
-    if (playerInfos.objectifs.bug === 'actif') {
+    if (playerInfos.objectifs.bug === 'actif' && !isTest) {
         if (doom >= doomStart) {
             let chance = 30+((doom-doomStart)*15);
             if (rand.rand(1,100) <= chance) {
@@ -244,11 +248,13 @@ function checkCanon() {
     }
     // à garder
     // mettre le canon
-    if (playerInfos.objectifs.bug === 'none' && playerInfos.objectifs.spider === 'detruit') {
-        if (doom >= doomStart) {
-            let chance = 40+((doom-doomStart)*40);
-            if (rand.rand(1,100) <= chance) {
-                playerInfos.objectifs.bug = 'actif';
+    if (playerInfos.objectifs.spider === 'detruit') { // enlever cette ligne!
+        if (playerInfos.objectifs.bug === 'none' && !isTest) {
+            if (doom >= doomStart) {
+                let chance = 40+((doom-doomStart)*40);
+                if (rand.rand(1,100) <= chance) {
+                    playerInfos.objectifs.bug = 'actif';
+                }
             }
         }
     }

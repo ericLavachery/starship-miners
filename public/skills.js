@@ -617,7 +617,7 @@ function calcCamo(bat) {
 
 function camouflage(apCost) {
     console.log('MODE FURTIF');
-    if (apCost <= selectedBat.ap || playerInfos.pseudo === 'Mapedit') {
+    if (apCost <= selectedBat.ap || playerInfos.pseudo === 'Mapedit' || hasEquip(selectedBat,['bld-camo'])) {
         let camChance = calcCamo(selectedBat);
         let camOK = false;
         let camDice = rand.rand(1,100);

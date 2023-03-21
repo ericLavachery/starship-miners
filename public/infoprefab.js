@@ -152,6 +152,10 @@ function recupPrefabFret(bat,batType,tileId,autoDec,landerBat) {
 
 function refabInfos(myBat,myBatUnitType) {
     // pas les outsiders? xxxxxx ??????
+    let fromLander = false;
+    if (myBatUnitType.skills.includes('transorbital')) {
+        fromLander = true;
+    }
     if (myBatUnitType.skills.includes('constructeur') && !myBat.tags.includes('nomove') && !myBat.tags.includes('nopilots')) {
         $('#unitInfos').append('<hr>');
         let balise = 'h4';
@@ -171,6 +175,9 @@ function refabInfos(myBat,myBatUnitType) {
                         }
                     }
                     if (bat.apLeft <= 0) {
+                        depliOK = false;
+                    }
+                    if (batType.skills.includes('landerfab') && !fromLander) {
                         depliOK = false;
                     }
                     if (depliOK) {

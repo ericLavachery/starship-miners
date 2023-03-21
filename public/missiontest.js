@@ -2,6 +2,8 @@ function putMissionUnits() {
     putMissionStats();
     putFullBldVM();
     putMissionAlienRes();
+    objectifsReset();
+    let mType = getMissionType(zone[0].number);
     let startTileId = -1;
     let theBest = 0;
     zone.forEach(function(tile) {
@@ -28,7 +30,7 @@ function putMissionUnits() {
     missionBatList.forEach(function(slot) {
         unitNum++;
         let maxXP = 900;
-        let minXP = Math.floor(maxXP*zone[0].mapDiff*zone[0].mapDiff*zone[0].mapDiff/2000);
+        let minXP = Math.floor(maxXP*mType.pa*mType.pa*mType.pa/2000);
         let unitXP = rand.rand(minXP,maxXP);
         addMissionBat(tileId,slot,unitXP);
     });
@@ -186,8 +188,9 @@ function SlotConstructor(theName,theGear) {
 };
 
 function putMissionStats() {
+    let mType = getMissionType(zone[0].number);
     playerInfos.gang = 'rednecks';
-    playerInfos.gLevel = (zone[0].mapDiff*2)+5-playerInfos.gMode;
+    playerInfos.gLevel = Math.ceil(mType.pa*2.2)+4-playerInfos.gMode;
     // PA 4 = level 12
     // PA 5 = level 14
     // PA 6 = level 16

@@ -16,6 +16,7 @@ function getMorphite(apCost) {
             }
             delete tile.infra;
             selectedBat.apLeft = selectedBat.apLeft-apCost;
+            playSound('mining',-0.2);
             tagDelete(selectedBat,'guet');
             tagDelete(selectedBat,'fortif');
             tagDelete(selectedBat,'vise');
@@ -1039,6 +1040,9 @@ function addAlienRes(bat,isWiped) {
                     }
                 }
             }
+        }
+        if (batType.skills.includes('boss')) {
+            playerInfos.objectifs[batType.kind] = 'detruit';
         }
     }
 };

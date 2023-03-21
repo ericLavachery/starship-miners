@@ -295,7 +295,7 @@ function newGame() {
     playerInfos.sci = 0;
     playerInfos.enc = 65;
     playerInfos.encz = [];
-    playerInfos.objectifs.spider = 'none';
+    objectifsReset();
     playerInfos.cAdj = 0;
     playerInfos.cLoss = 0;
     playerInfos.cNeed = 1;
@@ -312,6 +312,18 @@ function newGame() {
     showMap(zone,false);
     miniOut();
     commandes();
+};
+
+function objectifsReset() {
+    if (playerInfos.objectifs === undefined) {
+        playerInfos.objectifs = {};
+    }
+    playerInfos.objectifs.spider = 'none';
+    playerInfos.objectifs.bug = 'none';
+    playerInfos.objectifs.larve = 'none';
+    playerInfos.objectifs.swarm = 'none';
+    playerInfos.objectifs.resistance = 'none';
+    playerInfos.objectifs.science = 'none';
 };
 
 function mapReset() {

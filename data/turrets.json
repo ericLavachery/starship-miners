@@ -1815,7 +1815,7 @@
         "name":"Missiles wipeout",
         "pic":"misswipe",
         "cat":"devices",
-        "kind":"zero-defense",
+        "kind":"zero-artillerie",
         "sort":75,
         "squads":5,
         "squadSize":4,
@@ -1846,7 +1846,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","noblub","nolist","norepair","nobld","clicput","infrako","noaploss","nostation","okdel","mdev","prefab"],
+        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","noblub","nolist","norepair","nobld","clicput","infrako","noaploss","nostation","okdel","mdev","prefab","landerfab"],
         "fuzz":6,
         "deathFx":"xplode"
     },

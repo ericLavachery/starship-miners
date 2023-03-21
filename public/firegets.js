@@ -606,6 +606,12 @@ function batDeathEffect(bat,quiet,gain,title,body) {
         $('#unitInfos').empty();
         $("#unitInfos").css("display","none");
     }
+    if (bat.team == 'aliens') {
+        let batType = getBatType(bat);
+        if (batType.skills.includes('boss')) {
+            playerInfos.objectifs[batType.kind] = 'detruit';
+        }
+    }
 };
 
 function addBodies(bat,batType,cits) {

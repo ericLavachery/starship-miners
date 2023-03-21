@@ -18,11 +18,11 @@ function mapEditWindow() {
         while (mapNum <= 99) {
             let mType = getMissionType(mapNum);
             if (zone[0].number === mapNum) {
-                $('#mapNumber').append('<option value="'+mapNum+'" selected>Zone n°'+mapNum+' ('+mType+')</option>');
+                $('#mapNumber').append('<option value="'+mapNum+'" selected>Zone n°'+mapNum+' ('+mType.name+' '+Math.floor(mType.pa)+')</option>');
             } else if (!playerInfos.misDB.includes(mapNum)) {
-                $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+' ('+mType+')</option>');
+                $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+' ('+mType.name+' '+Math.floor(mType.pa)+')</option>');
             } else {
-                $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+' ('+mType+') &nbsp;&#9940;&nbsp; Ecraser ??</option>');
+                $('#mapNumber').append('<option value="'+mapNum+'">Zone n°'+mapNum+' ('+mType.name+' '+Math.floor(mType.pa)+') &nbsp;&#9940;&nbsp; Ecraser ??</option>');
             }
             if (mapNum >= 99) {break;}
             mapNum++
@@ -794,6 +794,9 @@ function clickEdit(tileId) {
 
 function bleedBat(tile) {
     let bat = getBatByTileId(tile.id);
+    if (Object.keys(bat).length <= 0) {
+        bat = getAlienByTileId(tile.id);
+    }
     let batType = getBatType(bat);
     if (bat.squadsLeft > 1) {
         bat.squadsLeft = bat.squadsLeft-1;
@@ -1332,7 +1335,7 @@ function loadEditorMission() {
         if (playerInfos.misDB.includes(misNum)) {
             let mType = getMissionType(misNum);
             let mission = getMissionByNum(misNum);
-            $('#theStartZone').append('<option value="'+misNum+'">'+misNum+' - '+mType+' - '+mission.name+'</option>');
+            $('#theStartZone').append('<option value="'+misNum+'">'+misNum+' - '+mType.name+' '+Math.floor(mType.pa)+' - '+mission.name+'</option>');
         }
         if (misNum > 99) {break;}
         misNum++
@@ -1350,25 +1353,36 @@ function editTheMissionBaby() {
 };
 
 function getMissionType(misNum) {
-    let mType = 'Spécial';
+    let mType = {};
+    mType.name = 'Spécial';
+    mType.pa = 4;
     if (misNum >= 90) {
-        mType = 'Exil';
+        mType.name = 'Exil';
+        mType.pa = 1;
     } else if (misNum >= 85) {
-        mType = 'Spécial';
+        mType.name = 'Spécial';
+        mType.pa = 4;
     } else if (misNum >= 80) {
-        mType = 'Boss Spider';
+        mType.name = 'Boss Spider';
+        mType.pa = 6;
     } else if (misNum >= 75) {
-        mType = 'Boss Bug';
+        mType.name = 'Boss Bug';
+        mType.pa = 7;
     } else if (misNum >= 70) {
-        mType = 'Boss Larve';
+        mType.name = 'Boss Larve';
+        mType.pa = 7;
     } else if (misNum >= 65) {
-        mType = 'Boss Swarm';
+        mType.name = 'Boss Swarm';
+        mType.pa = 5;
     } else if (misNum >= 60) {
-        mType = 'Résistance';
+        mType.name = 'Résistance';
+        mType.pa = 4;
     } else if (misNum >= 55) {
-        mType = 'Base Scientifique';
+        mType.name = 'Base Scientifique';
+        mType.pa = 6.5;
     } else if (misNum >= 50) {
-        mType = 'Trolley';
+        mType.name = 'Trolley';
+        mType.pa = 5.5;
     }
     return mType;
 };

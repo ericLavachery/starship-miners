@@ -148,8 +148,6 @@ function unloadInfos(myBat,myBatUnitType) {
                         ready = false;
                     }
                     let mayOut = checkMayOut(batType,true,bat);
-                    console.log('SDFGHJKLGHJKYUKIBN');
-                    console.log(myBat);
                     if (myBatUnitType.skills.includes('transorbital') && !myBat.tags.includes('nomove') && !myBat.tags.includes('nopilots') && (batType.id === 126 || batType.id === 225)) {
                         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer des citoyens d\'un vaisseau" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
                     } else if (bat.tags.includes('nomove') && myBat.tags.includes('nomove')) {
@@ -186,10 +184,13 @@ function unloadInLander() {
             if (bat.loc === "trans" && bat.locId === selectedBat.id) {
                 batType = getBatType(bat);
                 if (batType.moveCost < 90) {
-                    let embarqCost = calcEmbarqCost(batType,landerBatType);
-                    let apCost = embarqCost[0]+3;
-                    bat.apLeft = bat.apLeft-apCost;
-                    loadBat(bat.id,landerId,selectedBat.id);
+                    let embarqOK = checkEmbarqThis(bat,landerBat);
+                    if (embarqOK) {
+                        let embarqCost = calcEmbarqCost(batType,landerBatType);
+                        let apCost = embarqCost[0]+3;
+                        bat.apLeft = bat.apLeft-apCost;
+                        loadBat(bat.id,landerId,selectedBat.id);
+                    }
                 }
             }
         });
@@ -324,6 +325,44 @@ function checkTransportId(myBat,myBatType) {
         }
     });
     return transId;
+};
+
+function checkEmbarqThis(myBat,transBat) {
+    // console.log('CHECK EMBARQ THIS');
+    // console.log(myBat);
+    // console.log(transBat);
+    let embarqOK = false;
+    let myBatType = getBatType(myBat);
+    if (myBatType.moveCost < 90) {
+        // console.log('ok move');
+        let myBatWeight = calcVolume(myBat,myBatType);
+        // console.log('myBatWeight='+myBatWeight);
+        let transBatType = getBatType(transBat);
+        let maxSize = transBatType.transMaxSize;
+        if (hasEquip(transBat,['garage'])) {
+            maxSize = maxSize*3;
+        }
+        // console.log('maxSize='+maxSize);
+        // console.log('myBatType.size='+myBatType.size);
+        if (maxSize >= myBatType.size) {
+            // console.log('ok size');
+            let tracking = checkTracking(transBat);
+            // console.log('tracking='+tracking);
+            if (!myBatType.skills.includes('tracked') || !tracking) {
+                // console.log('ok tracking');
+                let transUnitsLeft = calcTransUnitsLeft(transBat,transBatType);
+                // console.log('transUnitsLeft='+transUnitsLeft);
+                if (transBatType.skills.includes('transveh') && myBatType.cat === 'vehicles' && !myBatType.skills.includes('robot') && !myBatType.skills.includes('cyber')) {
+                    myBatWeight = Math.round(myBatWeight/2);
+                }
+                if (myBatWeight <= transUnitsLeft) {
+                    // console.log('ok trans left');
+                    embarqOK = true;
+                }
+            }
+        }
+    }
+    return embarqOK;
 };
 
 function calcTransWithBreak(theTrans,batType) {
@@ -491,9 +530,6 @@ function embarquement(transId,withRes) {
         transBat.apLeft = transBat.apLeft-embarqCost[1];
         selectedBat.apLeft = selectedBat.apLeft-embarqCost[0];
     }
-    // if (withRes) {
-    //     resTransfert(transBat);
-    // }
     loadBat(selectedBat.id,transBat.id);
     doneAction(transBat);
     tagDelete(selectedBat,'guet');

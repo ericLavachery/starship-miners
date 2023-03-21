@@ -1500,7 +1500,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
         if (batType.cat != 'infantry' || batType.skills.includes('oknitro')) {
             // NITRO
-            if (!bat.tags.includes('construction')) {
+            if (!bat.tags.includes('construction') && batType.moveCost < 90) {
                 if (batType.cat === 'vehicles' || batType.skills.includes('oknitro')) {
                     if (allDrugs.includes('nitro') || bat.tags.includes('nitro')) {
                         drug = getDrugByName('nitro');

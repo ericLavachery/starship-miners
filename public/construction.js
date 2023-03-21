@@ -2082,6 +2082,7 @@ function demolition(apCost) {
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     tile.infra = 'Débris';
+    constructSound();
     showMap(zone,false);
 };
 
@@ -2192,12 +2193,23 @@ function autoRoad(tile) {
             doneAction(selectedBat);
             camoOut();
             tile.rd = true;
+            if (tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
+                constructSound();
+            }
             if (tile.qs != undefined) {
                 delete tile.qs;
             }
         } else if (selectedBat.tags.includes('autoroad')) {
             tagDelete(selectedBat,'autoroad');
         }
+    }
+};
+
+function constructSound() {
+    if (selectedBatType.cat === 'infantry') {
+        playSound('construct-sap',-0.2);
+    } else {
+        playSound('construct-push',-0.2);
     }
 };
 
@@ -2229,6 +2241,9 @@ function putRoad(apCost) {
         putRoadsAround();
     } else {
         tile.rd = true;
+        if (tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
+            constructSound();
+        }
         if (tile.qs != undefined) {
             delete tile.qs;
         }
@@ -2295,6 +2310,7 @@ function putInfra(infraName) {
     camoOut();
     selectedBatArrayUpdate();
     tile.infra = infraName;
+    constructSound();
     // tile.ruins = false;
     // saveMap();
     showMap(zone,false);
