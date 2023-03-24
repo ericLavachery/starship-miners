@@ -1120,6 +1120,36 @@ function aliensCount() {
     return aliensNums;
 };
 
+function webSpawns() {
+    if (hasAlien('Spiderblob')) {
+        alienOccupiedTileList();
+        playerOccupiedTileList();
+        zone.forEach(function(tile) {
+            if (tile.web) {
+                if (rand.rand(1,10) === 1) {
+                    if (!alienOccupiedTiles.includes(tile.id)) {
+                        if (!playerOccupiedTiles.includes(tile.id)) {
+                            alienWebSpawn(tile.id,'Rejetons');
+                            delete tile.web;
+                        }
+                    }
+                }
+            }
+        });
+    }
+};
+
+function alienWebSpawn(tileId,crea,tag) {
+    console.log('WEBSPAWN: '+crea);
+    let unitIndex = alienUnits.findIndex((obj => obj.name == crea));
+    conselUnit = alienUnits[unitIndex];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
+    console.log(conselUnit);
+    if (Object.keys(conselUnit).length >= 1) {
+        putBat(tileId,0,0,tag);
+    }
+};
+
 function spawns() {
     console.log('check pontes');
     let batType;

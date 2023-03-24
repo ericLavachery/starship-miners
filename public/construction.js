@@ -2207,9 +2207,9 @@ function autoRoad(tile) {
 
 function constructSound() {
     if (selectedBatType.cat === 'infantry') {
-        playSound('construct-sap',-0.2);
+        playSound('construct-sap',-0.1);
     } else {
-        playSound('construct-push',-0.2);
+        playSound('construct-push',-0.1);
     }
 };
 

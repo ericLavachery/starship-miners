@@ -4987,7 +4987,7 @@
             "ammo":["proto-plasma","plasma","impact","grapeshot","plastanium","uridium"]
         },
         "protection":[],
-        "equip":["aucun","e-flash","e-medic","e-camo","theeye","helper","chargeur2","lunette2","repel"],
+        "equip":["aucun","e-flash","e-medic","e-camo","e-mecano","theeye","helper","chargeur2","lunette2","repel"],
         "log3eq":["chargeur2"],
         "autoEq":["helper","lunette2"],
         "moveCost":2,
@@ -4996,6 +4996,7 @@
         "maxVeg":3,
         "skills":["a_cyb","fouille","fortif","datt","selfmedic","meleehelp","guerrilla","tirailleur","cyber","camo","berserk","undead","ranger","nostun","resistacide","oknitro","sentinelle","escape","fret","fweight","herorush","herosalvo"],
         "mediCost":10,
+        "mecanoCost":10,
         "transRes":96,
         "fuzz":0,
         "deathFx":"396806__scorpion67890__cyborg-death-1"

@@ -693,7 +693,7 @@
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["b_light","fortif","guerrilla","mecano","maycamo","dealer","nitro","sudu","octiron","light","badcrewsave","fret","fweight","transport","tweight","recupcit","recupres","nochef","lveh"],
+        "skills":["b_light","fortif","guerrilla","mecano","cleaning","maycamo","dealer","nitro","sudu","octiron","light","badcrewsave","fret","fweight","transport","tweight","recupcit","recupres","nochef","lveh"],
         "mecanoCost":5,
         "transMaxSize":4,
         "transUnits":100,
@@ -3849,7 +3849,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["b_heavy","fouille","fortif","recycle","transport","tweight","fret","maycamo","mecano","defense","longshot","dumper","realdumper","extraction","maysm","hscarpmove","light","badcrewsave","recupcit","recupres","ouvert","hveh"],
+        "skills":["b_heavy","fouille","fortif","recycle","transport","tweight","fret","maycamo","mecano","cleaning","defense","longshot","dumper","realdumper","extraction","maysm","hscarpmove","light","badcrewsave","recupcit","recupres","ouvert","hveh"],
         "mecanoCost":10,
         "mining":{
             "level":1,

@@ -11,6 +11,15 @@ function checkRescue() {
 // Effets DETECTION et VSP
 // "Votre navette de secours n'a pas réussi à sauver gnagnagna"
 
+function getRescueByName(rescueName) {
+    let rescue = {};
+    let index = sauvetages.findIndex((obj => obj.name == rescueName));
+    if (index > -1) {
+        rescue = sauvetages[index];
+    }
+    return rescue;
+};
+
 function rescueComp() {
     let rescue = getRescueByName(rescueName);
     if (rescue.comp != undefined) {

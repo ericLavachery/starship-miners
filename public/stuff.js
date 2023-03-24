@@ -1382,15 +1382,6 @@ function getPlanetNameById(pid) {
     }
 };
 
-function getRescueByName(rescueName) {
-    let rescue = {};
-    let index = sauvetages.findIndex((obj => obj.name == rescueName));
-    if (index > -1) {
-        rescue = armorTypes[index];
-    }
-    return rescue;
-};
-
 function tileNaming(tile,withUnit,fromTileId) {
     let tileName = '';
     if (withUnit) {
@@ -1548,4 +1539,15 @@ function calcScore() {
     hs.cits = playerInfos.endRes.Citoyens;
     hs.score = Math.round(100*hs.cits/hs.turns*playerInfos.gMode/3);
     return hs;
+};
+
+function entre(num,min,max) {
+    let number = num;
+    if (min >= 0) {
+        if (number < min) {number = min;}
+    }
+    if (max >= 0) {
+        if (number > max) {number = max;}
+    }
+    return number;
 };

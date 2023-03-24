@@ -263,14 +263,19 @@ function checkCanon() {
 function alienCanon() {
     // CANON WEB
     let cprov = 'canon';
-    if (hasAlien('Uberspinne') || hasAlien('Spiderblob')) {
+    let cblob = 0;
+    if (hasAlien('Uberspinne')) {
         cprov = 'uber';
     }
+    if (hasAlien('Spiderblob')) {
+        cprov = 'uber';
+        cblob = 1;
+    }
     if ((playerInfos.objectifs.spider === 'actif' && !domeProtect) || cprov === 'uber') {
-        let freq = 6-Math.round(zone[0].mapDiff/2);
+        let freq = 6-Math.round(zone[0].mapDiff/2)-cblob;
         if (freq < 2) {freq = 2;}
         if (playerInfos.mapTurn % freq === 0 && playerInfos.mapTurn >= 2) {
-            let canonTiles = getWebCanonTiles(cprov);
+            let canonTiles = getWebCanonTiles(cprov,cblob);
             webCanon(canonTiles);
             showMap(zone,true);
         }
@@ -337,6 +342,7 @@ function meteorCanon() {
             }
         }
     });
+    warning('Canon alien','',false,canonTiles[0],false);
     killBatList();
 };
 
@@ -392,6 +398,7 @@ function stormThis(batId) {
 
 function webCanon(canonTiles) {
     playSound('web-fall',0);
+    warning('Canon alien','',false,canonTiles[0],false);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (canonTiles.includes(bat.tileId)) {
@@ -417,13 +424,23 @@ function trueWeb() {
     tile.web = true;
 };
 
-function getWebCanonTiles(cprov) {
+function getWebCanonTiles(cprov,cblob) {
     let canonTiles = [];
     let theTile = -1;
     let targetTile = -1;
     // près d'un oeuf en danger
     let bestTarget = 0;
-    if (cprov === 'uber' || (aliens.length < playerInfos.mapTurn*2)) {
+    let bldTarget = false;
+    if (cprov === 'uber') {
+        if (cblob === 1 && rand.rand(1,3) === 1) {
+            bldTarget = true;
+        }
+    } else {
+        if (aliens.length > playerInfos.mapTurn*2) {
+            bldTarget = true;
+        }
+    }
+    if (!bldTarget) {
         let shufAliens = _.shuffle(aliens);
         shufAliens.forEach(function(bat) {
             if (bat.loc === "zone") {
@@ -478,13 +495,16 @@ function getWebCanonTiles(cprov) {
             }
         });
     }
+    canonTiles.push(theTile);
     shufZone.forEach(function(tile) {
-        let distance = calcDistance(tile.id,theTile);
-        if (distance <= 2) {
-            let chance = 10-(distance*distance)-distance;
-            if (rand.rand(1,10) <= chance) {
-                canonTiles.push(tile.id);
-                tile.web = true;
+        if (tile.id != theTile) {
+            let distance = calcDistance(tile.id,theTile);
+            if (distance <= 2) {
+                let chance = 10-(distance*distance)-distance;
+                if (rand.rand(1,10) <= chance) {
+                    canonTiles.push(tile.id);
+                    tile.web = true;
+                }
             }
         }
     });

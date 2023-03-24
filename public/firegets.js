@@ -1008,7 +1008,7 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
 function applyShield(shots) {
     let shieldValue = 1;
     let shieldChance = 0;
-    if (targetBatType.skills.includes('shield') || targetBat.tags.includes('permashield')) {
+    if (targetBatType.skills.includes('shield') || targetBatType.skills.includes('permashield') || targetBat.tags.includes('permashield') || targetBatType.skills.includes('fastshield')) {
         if (targetBatType.skills.includes('permashield') || targetBat.tags.includes('permashield')) {
             shieldChance = 100;
         } else {
@@ -1055,6 +1055,9 @@ function applyShield(shots) {
             }
             let avShieldValue = Math.round(shieldValue);
             $('#report').append('<span class="report rose">Bouclier activé (1/'+avShieldValue+')<br></span>');
+        }
+        if (targetBatType.skills.includes('fastshield') && !targetBat.tags.includes('shield')) {
+            targetBat.tags.push('shield');
         }
     }
     return shieldValue;
@@ -2519,8 +2522,9 @@ function weaponAdj(weapon,bat,wn) {
     }
     // wipeout missile range
     if (thisWeapon.name === 'Missiles wipeout') {
+        thisWeapon.range = ((playerInfos.comp.det+playerInfos.comp.arti)*3)+15;
         if (playerInfos.bldList.includes('Centre de com')) {
-            thisWeapon.range = 60;
+            thisWeapon.range = thisWeapon.range*2;
         }
     }
     // hero rage

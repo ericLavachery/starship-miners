@@ -388,7 +388,7 @@ function makeRescueDB() {
     sauvetages.push(newRescue);
     // ---------------------------------------------------------------------
     newRescue.name = "Epave partielle de vaisseau Shuttle";
-    newRescue.txt = "Votre navette de secours revient en tractant les reste d'un vaisseau de type Shuttle,son moteur est explosé, mais il semble qu'il y ait encore des survivants à bord.";
+    newRescue.txt = "Votre navette de secours revient en tractant les reste d'un vaisseau de type Shuttle, son moteur est explosé, mais il semble qu'il y ait encore des survivants à bord.";
     newRescue.nav = true; /
     newRescue.rarity = 0;
     newRescue.cit = [30,1,10];
@@ -396,11 +396,9 @@ function makeRescueDB() {
     newRescue.demUnit = ["Shuttle"];
 	newRescue.comp = [true,3000,"vsp"];
     sauvetages.push(newRescue);
-    //
-	-------------------------------------------------------------------
-	--
+    // ---------------------------------------------------------------------
     newRescue.name = "Epave partielle de vaisseau Dropship";
-    newRescue.txt = "Votre navette de secours revient en tractant les reste d'un vaisseau de type Dropship,son moteur est explosé, mais il semble qu'il y ait encore des survivants à bord.";
+    newRescue.txt = "Votre navette de secours revient en tractant les reste d'un vaisseau de type Dropship, son moteur est explosé, mais il semble qu'il y ait encore des survivants à bord.";
     newRescue.nav = true; /
     newRescue.rarity = 0;
     newRescue.cit = [40,1,10];
@@ -408,12 +406,9 @@ function makeRescueDB() {
     newRescue.demUnit = ["Dropship"];
 	newRescue.comp = [true,3000,"vsp"];
     sauvetages.push(newRescue);
-    //
-
----------------------------------------------------------------------
- --
+    // -----------------------------------------------------------------------
     newRescue.name = "Epave de vaisseau Trolley";
-    newRescue.txt = "Votre navette de secours revient en tractant un vaisseau de type Troley légèrement endomagé,il semble qu'il y ait encore des survivants à bord.";
+    newRescue.txt = "Votre navette de secours revient en tractant un vaisseau de type Troley légèrement endomagé, il semble qu'il y ait encore des survivants à bord.";
 	newRescue.nav = true; /
     newRescue.rarity = 0;
     newRescue.cit = [8,1,12];
@@ -424,9 +419,9 @@ function makeRescueDB() {
     newRescue.event = ["Epidémie",10];
     newRescue.map = 3;
     sauvetages.push(newRescue);
-    //
-	 newRescue.name = "Epave de vaisseau Lander";
-    newRescue.txt = "Votre navette de secours revient en tractant un vaisseau de type Lander légèrement endomagé,il semble qu'il y ait encore des survivants à bord.";
+    // -----------------------------------------------------------------------
+	newRescue.name = "Epave de vaisseau Lander";
+    newRescue.txt = "Votre navette de secours revient en tractant un vaisseau de type Lander légèrement endomagé, il semble qu'il y ait encore des survivants à bord.";
 	newRescue.nav = true; /
     newRescue.rarity = 0;
     newRescue.crim = [10,3,20];

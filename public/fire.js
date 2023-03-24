@@ -1078,6 +1078,7 @@ function attack(melee,init) {
         if (selectedWeap.ammo.includes('toxine') && !targetBat.tags.includes('zombie')) {
             if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
                 poisonVeuve = Math.ceil(totalDamage/(9+playerInfos.comp.ca+unitResist));
+                poisonVeuve = entre(poisonVeuve,2,8);
                 let i = 1;
                 while (i <= poisonVeuve) {
                     targetBat.tags.push('poison');
@@ -1085,7 +1086,7 @@ function attack(melee,init) {
                     i++
                 }
                 // console.log('Toxine!');
-                $('#report').append('<span class="report rose">Toxine<br></span>');
+                $('#report').append('<span class="report rose">Toxine ('+poisonVeuve+')<br></span>');
             }
         }
     }

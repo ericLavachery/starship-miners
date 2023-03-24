@@ -156,6 +156,7 @@ function nextTurn() {
     });
     killAlienList();
     checkEggsDrop();
+    webSpawns();
     spawns();
     spawnSound();
     if (showMini) {

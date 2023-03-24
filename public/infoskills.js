@@ -961,11 +961,12 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
     }
     // NETTOYAGE
-    if ((batType.skills.includes('cleaning') || (batType.cat === 'buildings' && batType.crew >= 1)) && !playerInfos.onShip && !zeroCrew) {
+    if ((batType.skills.includes('cleaning') || (hasEquip(bat,['e-mecano']) && !batType.skills.includes('fly')) || (batType.cat === 'buildings' && batType.crew >= 1)) && !playerInfos.onShip && !zeroCrew) {
         let numWeb = checkWeb(bat.tileId);
         if (numWeb >= 1) {
             apCost = Math.ceil((batType.mecanoCost+1)/1.75*numWeb);
             apReq = Math.ceil(apCost/5);
+            apReq = entre(apReq,2,10);
             if (batType.cat === 'infantry' && tile.web) {
                 apCost = batType.mecanoCost+1;
                 apReq = 1;

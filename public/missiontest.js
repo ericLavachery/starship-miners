@@ -88,7 +88,7 @@ function getMissionBatList() {
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Rednecks',['uranium','uranium','wendium','theeye']);
     missionBatList.push(newSlot);
-    newSlot = new SlotConstructor('Rednecks',['timonium','snake','swarwing','e-camo']);
+    newSlot = new SlotConstructor('Rednecks',['timonium','timonium','swarwing','e-camo']);
     missionBatList.push(newSlot);
     if (playerInfos.gLevel >= 17) {
         newSlot = new SlotConstructor('Noise Angels',['disco','uranium','duneg','chargeur2']);
@@ -305,8 +305,9 @@ function putMissionLanderRes(navBat) {
     navBat.transRes['Nanite'] = 250;
     navBat.transRes['Tungstène'] = 150;
     navBat.transRes['Aluminium'] = 50;
-    navBat.transRes['Compo1'] = 1250;
-    navBat.transRes['Compo2'] = 600;
+    navBat.transRes['Compo1'] = 2500;
+    navBat.transRes['Compo2'] = 1200;
+    navBat.transRes['Compo3'] = 600;
     navBat.transRes['Batteries'] = 15;
     navBat.transRes['Energie'] = 200;
     navBat.transRes['Drogues'] = 150;
