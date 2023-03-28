@@ -272,7 +272,7 @@ function alienCanon() {
         cblob = 1;
     }
     if ((playerInfos.objectifs.spider === 'actif' && !domeProtect) || cprov === 'uber') {
-        let freq = 6-Math.round(zone[0].mapDiff/2)-cblob;
+        let freq = 7-Math.ceil(zone[0].mapDiff/2)-cblob;
         if (freq < 2) {freq = 2;}
         if (playerInfos.mapTurn % freq === 0 && playerInfos.mapTurn >= 2) {
             let canonTiles = getWebCanonTiles(cprov,cblob);
@@ -472,8 +472,12 @@ function getWebCanonTiles(cprov,cblob) {
             if (targetTile < 0) {
                 if (bat.loc === "zone") {
                     let batType = getBatType(bat);
-                    if (batType.cat === 'buildings' && bat.fuzz >= 1) {
-                        targetTile = bat.tileId;
+                    if (bat.fuzz >= 1) {
+                        if (batType.cat === 'buildings' || batType.cat === 'devices') {
+                            if (rand.rand(1,3) === 1 || batType.cat === 'buildings') {
+                                targetTile = bat.tileId;
+                            }
+                        }
                     }
                 }
             }

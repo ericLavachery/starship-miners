@@ -1121,22 +1121,26 @@ function aliensCount() {
 };
 
 function webSpawns() {
+    let hasBlob = false;
     if (hasAlien('Spiderblob')) {
+        hasBlob = true;
         alienOccupiedTileList();
         playerOccupiedTileList();
-        zone.forEach(function(tile) {
-            if (tile.web) {
-                if (rand.rand(1,10) === 1) {
+    }
+    zone.forEach(function(tile) {
+        if (tile.web) {
+            if (rand.rand(1,10) === 1) {
+                if (hasBlob) {
                     if (!alienOccupiedTiles.includes(tile.id)) {
                         if (!playerOccupiedTiles.includes(tile.id)) {
                             alienWebSpawn(tile.id,'Rejetons');
-                            delete tile.web;
                         }
                     }
                 }
+                delete tile.web;
             }
-        });
-    }
+        }
+    });
 };
 
 function alienWebSpawn(tileId,crea,tag) {

@@ -79,7 +79,7 @@ function getMissionBatList() {
     let missionBatList = [];
     // determiner unité, munitions, armure, équipement
     let navName = 'Thundership';
-    if (playerInfos.gLevel < 14) {
+    if (playerInfos.gLevel < 13) {
         navName = 'Navette de secours';
     }
     let newSlot = new SlotConstructor(navName,['titanium','xxx','aucun','e-mecano']);
@@ -94,7 +94,7 @@ function getMissionBatList() {
         newSlot = new SlotConstructor('Noise Angels',['disco','uranium','duneg','chargeur2']);
         missionBatList.push(newSlot);
     } else {
-        newSlot = new SlotConstructor('Rednecks',['uranium','uranium','duneg','e-camo']);
+        newSlot = new SlotConstructor('Stalkers',['titanium','lame-carbone','duneg','lunette1']);
         missionBatList.push(newSlot);
     }
     newSlot = new SlotConstructor('Barmen',['gliding','molotov-slime','wendium','lunette1']);
@@ -127,6 +127,10 @@ function getMissionBatList() {
         newSlot = new SlotConstructor('Runners',['ac-flechette','grenade-gaz','duneg','detector']);
         missionBatList.push(newSlot);
     }
+    if (playerInfos.gLevel >= 14) {
+        newSlot = new SlotConstructor('Mulets',['needle','grenade-flashbang','duneg','w2-grenade']);
+        missionBatList.push(newSlot);
+    }
     newSlot = new SlotConstructor('Infirmiers',['tungsten','xxx','kevlar','e-medic']);
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Infirmiers',['tungsten','xxx','kevlar','e-medic']);
@@ -135,7 +139,7 @@ function getMissionBatList() {
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Infirmiers',['tungsten','xxx','kevlar','e-camo']);
     missionBatList.push(newSlot);
-    if (playerInfos.gLevel >= 14) {
+    if (playerInfos.gLevel >= 13) {
         newSlot = new SlotConstructor('Riggers',['lame-carbone','xxx','duneg','chargeur1']);
         missionBatList.push(newSlot);
     } else {
@@ -149,11 +153,16 @@ function getMissionBatList() {
     newSlot = new SlotConstructor('Sapeurs',['tungsten','lame-carbone','duneg','e-road']);
     missionBatList.push(newSlot);
     if (playerInfos.gLevel >= 16) {
-        newSlot = new SlotConstructor('Minitanks',['uranium','obus-heat','chobham','wstabkit']);
+        newSlot = new SlotConstructor('Minitanks',['uranium','obus-heat','swag','wstabkit']);
         missionBatList.push(newSlot);
     }
-    newSlot = new SlotConstructor('Buggies',['uranium','lame-carbone','swag','w2-moisso']);
-    missionBatList.push(newSlot);
+    if (playerInfos.gLevel >= 13) {
+        newSlot = new SlotConstructor('Minitanks',['explosive','obus-heat','chobham','wstabkit']);
+        missionBatList.push(newSlot);
+    } else {
+        newSlot = new SlotConstructor('Buggies',['uranium','lame-carbone','swag','w2-moisso']);
+        missionBatList.push(newSlot);
+    }
     newSlot = new SlotConstructor('Buggies',['timonium','lame-carbone','swag','w2-moisso']);
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Pickups',['explosive','molotov-feu','swag','snorkel']);
@@ -301,7 +310,7 @@ function putMissionLanderRes(navBat) {
     navBat.transRes['Cuivre'] = 100;
     navBat.transRes['Electros'] = 50;
     navBat.transRes['Scrap'] = 200;
-    navBat.transRes['Végétaux'] = 75;
+    navBat.transRes['Végétaux'] = 300;
     navBat.transRes['Nanite'] = 250;
     navBat.transRes['Tungstène'] = 150;
     navBat.transRes['Aluminium'] = 50;
@@ -310,18 +319,19 @@ function putMissionLanderRes(navBat) {
     navBat.transRes['Compo3'] = 600;
     navBat.transRes['Batteries'] = 15;
     navBat.transRes['Energie'] = 200;
-    navBat.transRes['Drogues'] = 150;
-    navBat.transRes['Zinc'] = 75;
-    navBat.transRes['Or'] = 25;
-    navBat.transRes['Hélium'] = 50;
-    navBat.transRes['Bore'] = 50;
-    navBat.transRes['Octiron'] = 250;
-    navBat.transRes['Huile'] = 125;
-    navBat.transRes['Hydrogène'] = 125;
+    navBat.transRes['Drogues'] = 300;
+    navBat.transRes['Zinc'] = 200;
+    navBat.transRes['Or'] = 150;
+    navBat.transRes['Hélium'] = 150;
+    navBat.transRes['Bore'] = 150;
+    navBat.transRes['Octiron'] = 700;
+    navBat.transRes['Huile'] = 350;
+    navBat.transRes['Hydrogène'] = 250;
     navBat.transRes['Pyratol'] = 200;
-    navBat.transRes['Fuel'] = 50;
-    navBat.transRes['Azote'] = 175;
-    navBat.transRes['Bois'] = 50;
+    navBat.transRes['Fuel'] = 150;
+    navBat.transRes['Azote'] = 200;
+    navBat.transRes['Bois'] = 200;
+    navBat.transRes['Eau'] = 200;
 };
 
 function putMissionAlienRes() {

@@ -319,7 +319,7 @@ function checkRuinsAliens(tile,auto) {
 
 function ruinsAliensInfo(unit,tile) {
     let alienInfo = {};
-    if (unit.class != 'A' && unit.class != 'S' && unit.class != 'X' && unit.class != 'G') {
+    if (unit.class != 'A' && unit.class != 'S' && unit.class != 'X' && unit.class != 'G' && unit.class != 'Z') {
         if (unit.name != 'Asticots' && unit.name != 'Vers' && unit.name != 'Sangsues') {
             if (unit.skills.includes('fouisseur') || unit.size <= 15) {
                 alienInfo.ok = true;

@@ -79,7 +79,7 @@ function showEnemyBatInfos(bat) {
     if (batType.class === 'A') {
         compCA = compCA-2;
     }
-    if (batType.class === 'S') {
+    if (batType.class === 'S' || batType.class === 'Z') {
         compCA = compCA-3;
     }
     if (batType.name === 'Colonie') {

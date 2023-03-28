@@ -305,7 +305,7 @@
             "kit":true,
             "rof":6,
             "accuracy":11,
-            "power":33,
+            "power":28,
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
@@ -1223,7 +1223,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","fouille","noguet","prefab","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","infrako","bigprot","wdev"],
+        "skills":["b_dev","fouille","noguet","prefab","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","infrako","bigprot","wdev","fullaploss"],
         "mecanoCost":12,
         "fuzz":6,
         "deathFx":"explo1"
@@ -1288,7 +1288,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","fouille","noguet","prefab","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","infrako","bigprot","wdev"],
+        "skills":["b_dev","fouille","noguet","prefab","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","infrako","bigprot","wdev","fullaploss"],
         "mecanoCost":12,
         "fuzz":6,
         "deathFx":"explo1"
@@ -1307,7 +1307,7 @@
         "armor":8,
         "size":25,
         "stealth":5,
-        "ap":12,
+        "ap":18,
         "maxSalvo":2,
         "weapon":{
             "name":"Lance",
@@ -1327,7 +1327,7 @@
         "weapon2":{
             "name":"Catapulte",
             "cost":5,
-            "range":3,
+            "range":4,
             "elevation":1,
             "noFly":true,
             "isBow":true,
@@ -1349,7 +1349,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","fouille","maycamo","selfbadrepair","prefab","noshow","routes","flash","badcrewsave","recupcit","badcrewsave","recupres","onedef","bigprot"],
+        "skills":["b_dev","fouille","maycamo","selfbadrepair","prefab","noshow","routes","flash","badcrewsave","recupcit","badcrewsave","recupres","onedef","bigprot","fullaploss"],
         "mecanoCost":10,
         "fuzz":2,
         "deathFx":"explo1"
@@ -1380,7 +1380,7 @@
             "isArt":true,
             "rof":9,
             "accuracy":11,
-            "power":33,
+            "power":28,
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],

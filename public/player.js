@@ -63,7 +63,7 @@ function voirBataillons() {
                     batColor = 'cy';
                 }
                 if (batType.class === 'X') {
-                    if (batType.class === 'egg') {
+                    if (batType.kind === 'egg') {
                         batColor = 'rouge';
                     } else {
                         batColor = 'brun';

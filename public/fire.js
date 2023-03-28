@@ -974,14 +974,14 @@ function attack(melee,init) {
         $('#report').append('<span class="report rose">Blindage troué<br></span>');
     }
     // venin / venom
-    if (selectedBatType.skills.includes('venin') && totalDamage >= 1 && targetBat.apLeft < -5 && targetBatType.cat == 'infantry' && !targetBatType.skills.includes('resistpoison') && !targetBat.tags.includes('zombie')) {
+    if (selectedBatType.skills.includes('venin') && melee && totalDamage >= 1 && targetBat.apLeft < -5 && targetBatType.cat == 'infantry' && !targetBatType.skills.includes('resistpoison') && !targetBat.tags.includes('zombie')) {
         if (!targetBat.tags.includes('venin')) {
             targetBat.tags.push('venin');
         }
         // console.log('Venin!');
         $('#report').append('<span class="report rose">Venin<br></span>');
     }
-    if (selectedBatType.skills.includes('venom') && totalDamage >= 1 && targetBat.apLeft < -2 && targetBatType.cat == 'infantry' && !targetBatType.skills.includes('resistpoison') && !targetBat.tags.includes('zombie')) {
+    if (selectedBatType.skills.includes('venom') && melee && totalDamage >= 1 && targetBat.apLeft < -2 && targetBatType.cat == 'infantry' && !targetBatType.skills.includes('resistpoison') && !targetBat.tags.includes('zombie')) {
         targetBat.tags.push('venin');
         targetBat.tags.push('venin');
         // console.log('Venin!');
@@ -1201,6 +1201,8 @@ function attack(melee,init) {
         } else {
             apDamage = Math.round(apDamage/5);
         }
+    } else if (targetBatType.skills.includes('fullaploss')) {
+        apDamage = Math.ceil(apDamage*5);
     } else if (targetBatType.skills.includes('moreaploss')) {
         apDamage = Math.ceil(apDamage*2);
     }
@@ -2123,6 +2125,8 @@ function defense(melee,init) {
         } else {
             apDamage = Math.round(apDamage/5);
         }
+    } else if (selectedBatType.skills.includes('fullaploss')) {
+        apDamage = Math.ceil(apDamage*5);
     } else if (selectedBatType.skills.includes('moreaploss')) {
         apDamage = Math.ceil(apDamage*2);
     }

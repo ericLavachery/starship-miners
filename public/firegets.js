@@ -1008,9 +1008,11 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
 function applyShield(shots) {
     let shieldValue = 1;
     let shieldChance = 0;
-    if (targetBatType.skills.includes('shield') || targetBatType.skills.includes('permashield') || targetBat.tags.includes('permashield') || targetBatType.skills.includes('fastshield')) {
+    if (targetBatType.skills.includes('shield') || targetBatType.skills.includes('permashield') || targetBat.tags.includes('permashield') || targetBatType.skills.includes('slowshield')) {
         if (targetBatType.skills.includes('permashield') || targetBat.tags.includes('permashield')) {
             shieldChance = 100;
+        } else if (targetBatType.skills.includes('slowshield')) {
+            shieldChance = 0;
         } else {
             shieldChance = 67;
         }
@@ -1056,7 +1058,7 @@ function applyShield(shots) {
             let avShieldValue = Math.round(shieldValue);
             $('#report').append('<span class="report rose">Bouclier activé (1/'+avShieldValue+')<br></span>');
         }
-        if (targetBatType.skills.includes('fastshield') && !targetBat.tags.includes('shield')) {
+        if (targetBatType.skills.includes('slowshield') && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');
         }
     }

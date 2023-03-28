@@ -475,10 +475,14 @@ function targetLogic(bat,iter) {
     }
     let twistedArmor = Math.round(bat.armor*armorPiercing);
     let twistedDamage = selectedWeap.power-twistedArmor;
-    if (averageDamage >= selectedWeap.power/2) {
-        tFuzz = twistedDamage+bat.armor+rand.rand(0,2);
+    if (selectedBatType.skills.includes('igtarglog')) {
+        tFuzz = selectedWeap.power;
     } else {
-        tFuzz = averageDamage;
+        if (averageDamage >= selectedWeap.power/2) {
+            tFuzz = twistedDamage+bat.armor+rand.rand(0,2);
+        } else {
+            tFuzz = averageDamage;
+        }
     }
     if (bat.fuzz <= -2) {
         if (tFuzz > 0) {

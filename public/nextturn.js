@@ -96,7 +96,7 @@ function nextTurn() {
             if (bat.tags.includes('guide') && batType.skills.includes('nolaser')) {
                 tagDelete(bat,'guide');
             }
-            if (bat.tags.includes('fluo') && (batType.skills.includes('hide') || batType.skills.includes('nolaser'))) {
+            if (bat.tags.includes('fluo') && batType.skills.includes('nolaser')) {
                 tagDelete(bat,'fluo');
             }
             tagDelete(bat,'rage');
@@ -811,7 +811,7 @@ function turnInfo() {
                     tagDelete(bat,'invisible');
                 } else {
                     if (!isLarveHide) {
-                        if (batType.kind === 'larve' && !batType.skills.includes('dive') && !batType.skills.includes('hide')) {
+                        if (batType.kind === 'larve' && !batType.skills.includes('dive') && !batType.skills.includes('hide') && (!bat.tags.includes('follow') || playerInfos.mapTurn > bat.creaTurn+2)) {
                             tagDelete(bat,'invisible');
                         }
                     } else {
@@ -1552,6 +1552,9 @@ function tagsEffect(bat,batType) {
         if (bat.apLeft > 0) {
             bat.apLeft = 0;
         }
+        if (batType.skills.includes('fullaploss')) {
+            bat.apLeft = bat.apLeft-rand.rand(6,12);
+        }
         tagDelete(bat,'web');
     }
     // BLAZE DRUG
@@ -1673,9 +1676,13 @@ function tagsEffect(bat,batType) {
             tagDelete(bat,'venin');
         }
         if (bat.tags.includes('poison')) {
-            tagDelete(bat,'poison');
-            tagDelete(bat,'poison');
-            tagDelete(bat,'poison');
+            let numDel = 2+(playerInfos.comp.med*2);
+            let i = 1;
+            while (i <= numDel) {
+                tagDelete(bat,'poison');
+                if (i > 8) {break;}
+                i++
+            }
         }
     }
     // NECRO
