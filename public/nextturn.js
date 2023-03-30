@@ -90,6 +90,14 @@ function nextTurn() {
             if (bat.apLeft > bat.ap) {
                 bat.apLeft = bat.ap;
             }
+            if (spiderMV) {
+                if (batType.kind === 'spider') {
+                    if (batType.class === 'C' || batType.class === 'Z') {
+                        let sbonus = Math.ceil((batType.moveCost*batType.moveCost)/2);
+                        bat.apLeft = bat.apLeft+sbonus;
+                    }
+                }
+            }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
             tagsEffect(bat,batType);

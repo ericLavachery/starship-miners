@@ -88,8 +88,13 @@ function getMissionBatList() {
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Rednecks',['uranium','uranium','wendium','theeye']);
     missionBatList.push(newSlot);
-    newSlot = new SlotConstructor('Rednecks',['timonium','timonium','swarwing','e-camo']);
-    missionBatList.push(newSlot);
+    if (playerInfos.gLevel >= 16) {
+        newSlot = new SlotConstructor('Rednecks',['timonium','timonium','wendium','e-camo']);
+        missionBatList.push(newSlot);
+    } else {
+        newSlot = new SlotConstructor('Rednecks',['uranium','uranium','swarwing','e-camo']);
+        missionBatList.push(newSlot);
+    }
     if (playerInfos.gLevel >= 17) {
         newSlot = new SlotConstructor('Noise Angels',['disco','uranium','duneg','chargeur2']);
         missionBatList.push(newSlot);
@@ -110,10 +115,15 @@ function getMissionBatList() {
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Lucky bastards',['gliding','grenade','wendium','lancegren']);
     missionBatList.push(newSlot);
-    newSlot = new SlotConstructor('Lucky bastards',['gliding','grenade-gaz','duneg','e-camo']);
-    missionBatList.push(newSlot);
+    if (playerInfos.gLevel >= 15) {
+        newSlot = new SlotConstructor('Lucky bastards',['timonium','grenade-nanite','wendium','lancegren']);
+        missionBatList.push(newSlot);
+    } else {
+        newSlot = new SlotConstructor('Lucky bastards',['uranium','grenade','wendium','lancegren']);
+        missionBatList.push(newSlot);
+    }
     if (playerInfos.gLevel >= 14) {
-        newSlot = new SlotConstructor('Lucky bastards',['timonium','grenade','wendium','lancegren']);
+        newSlot = new SlotConstructor('Lucky bastards',['gliding','grenade','duneg','e-camo']);
         missionBatList.push(newSlot);
     } else {
         newSlot = new SlotConstructor('Rednecks',['uranium','uranium','kevlar','chargeur']);
@@ -160,11 +170,16 @@ function getMissionBatList() {
         newSlot = new SlotConstructor('Minitanks',['explosive','obus-heat','chobham','wstabkit']);
         missionBatList.push(newSlot);
     } else {
+        newSlot = new SlotConstructor('Buggies',['uranium','lame-carbone','chobham','w2-moisso']);
+        missionBatList.push(newSlot);
+    }
+    if (playerInfos.gLevel >= 16) {
+        newSlot = new SlotConstructor('Buggies',['timonium','lame-carbone','swag','w2-moisso']);
+        missionBatList.push(newSlot);
+    } else {
         newSlot = new SlotConstructor('Buggies',['uranium','lame-carbone','swag','w2-moisso']);
         missionBatList.push(newSlot);
     }
-    newSlot = new SlotConstructor('Buggies',['timonium','lame-carbone','swag','w2-moisso']);
-    missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Pickups',['explosive','molotov-feu','swag','snorkel']);
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Jeeps',['explosive','belier-spike','swag','e-road']);
@@ -172,7 +187,10 @@ function getMissionBatList() {
     newSlot = new SlotConstructor('Jeeps',['explosive','belier-spike','chobham','e-road']);
     missionBatList.push(newSlot);
     if (playerInfos.gLevel >= 18) {
-        newSlot = new SlotConstructor('Obusiers',['obus-heatseeker','uranium','bulk','longtom1']);
+        newSlot = new SlotConstructor('Obusiers',['obus-plastanium','uranium','bulk','longtom1']);
+        missionBatList.push(newSlot);
+    } else if (playerInfos.gLevel >= 16) {
+        newSlot = new SlotConstructor('Obusiers',['obus-heatseeker','uranium','bulk','carrousel1']);
         missionBatList.push(newSlot);
     } else if (playerInfos.gLevel >= 14) {
         newSlot = new SlotConstructor('Obusiers',['obus-heat','uranium','bulk','carrousel1']);
@@ -324,7 +342,11 @@ function putMissionLanderRes(navBat) {
     navBat.transRes['Or'] = 150;
     navBat.transRes['Hélium'] = 150;
     navBat.transRes['Bore'] = 150;
-    navBat.transRes['Octiron'] = 700;
+    if (zone[0].number < 85 && zone[0].number >= 80) {
+        navBat.transRes['Octiron'] = 700;
+    } else {
+        navBat.transRes['Octiron'] = 400;
+    }
     navBat.transRes['Huile'] = 350;
     navBat.transRes['Hydrogène'] = 250;
     navBat.transRes['Pyratol'] = 200;
@@ -368,6 +390,7 @@ function loadMission() {
     $('#conUnitList').append('<select class="boutonGris" id="theStartZone" onchange="loadTheMissionBaby()"></select>');
     $('#theStartZone').empty().append('<option value="0" selected>Mission</option>');
     $('#theStartZone').append('<option value="80" disabled>80 - Boss Spider</option>');
+    $('#theStartZone').append('<option value="83">83 - Boss Spider (Anansi)</option>');
     $('#theStartZone').append('<option value="84">84 - Boss Spider (Shelob)</option>');
     $('#theStartZone').append('<option value="75" disabled>75 - Boss Bug</option>');
     $('#theStartZone').append('<option value="70" disabled>70 - Boss Larve</option>');

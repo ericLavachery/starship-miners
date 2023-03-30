@@ -1531,20 +1531,30 @@ function isCamoBlock() {
 function alienBonus() {
     bugROF = 1;
     spiderRG = false;
+    spiderMV = false;
     spiderROF = false;
     bugSHIELD = false;
     eggSHIELD = false;
     larveHIDE = false;
-    let batIndex;
-    let batType;
+    let hasBlob = false;
+    if (hasAlien('Spiderblob')) {
+        hasBlob = true;
+    }
+    let isSpiderMap = false;
+    if (zone[0].number < 85 && zone[0].number >= 80) {
+        isSpiderMap = true;
+    }
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
-            batType = getBatType(bat);
+            let batType = getBatType(bat);
             if (batType.skills.includes('bugboost')) {
                 bugROF = 1.5;
             }
             if (batType.skills.includes('spiderrange')) {
                 spiderRG = true;
+            }
+            if (batType.skills.includes('spidermove')) {
+                spiderMV = true;
             }
             if (batType.skills.includes('spiderboost')) {
                 spiderROF = true;
@@ -1558,8 +1568,14 @@ function alienBonus() {
             if (batType.skills.includes('eggshield')) {
                 eggSHIELD = true;
             }
+            if (isSpiderMap && !hasBlob) {
+                delete bat.pdm;
+            }
         }
     });
+    if (isSpiderMap && !hasBlob) {
+        spiderMV = true;
+    }
 };
 
 function infraDestruction() {

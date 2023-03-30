@@ -1452,6 +1452,19 @@ function getAKindByTer(terName,pKind,gKind,sKind) {
     } else {
         kind = 'bug';
     }
+    // BOSS MAPS
+    if (zone[0].number >= 80 && zone[0].number <= 84) {
+        kind = 'spider';
+    }
+    if (zone[0].number >= 75 && zone[0].number <= 79) {
+        kind = 'bug';
+    }
+    if (zone[0].number >= 70 && zone[0].number <= 74) {
+        kind = 'larve';
+    }
+    if (zone[0].number >= 65 && zone[0].number <= 69) {
+        kind = 'swarm';
+    }
     return kind;
 }
 
@@ -2307,27 +2320,6 @@ function checkputEggKind(bat) {
             let terName = getTileTerrainName(bat.tileId);
             eggKind = getAKindByTer(terName,zoneInfos.pKind,zoneInfos.gKind,zoneInfos.sKind);
             bat.tags.push(eggKind);
-            // if (terName === 'M' || terName === 'H') {
-            //     bat.tags.push('bug');
-            //     eggKind = 'bug';
-            // } else if (terName === 'F') {
-            //     bat.tags.push('spider');
-            //     eggKind = 'spider';
-            // } else if (terName === 'R' || terName === 'W' || terName === 'L') {
-            //     bat.tags.push('larve');
-            //     eggKind = 'larve';
-            // } else if (terName === 'B') {
-            //     bat.tags.push('swarm');
-            //     eggKind = 'swarm';
-            // } else if (terName === 'P') {
-            //     eggKind = zoneInfos.pKind;
-            // } else if (terName === 'G') {
-            //     eggKind = zoneInfos.gKind;
-            // } else if (terName === 'S') {
-            //     eggKind = zoneInfos.sKind;
-            // } else {
-            //     eggKind = '';
-            // }
         }
     }
     return eggKind;
