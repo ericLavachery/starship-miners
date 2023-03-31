@@ -41,7 +41,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-mammoth","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":[],
         "equip":["aucun"],
@@ -1727,7 +1727,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-mammoth","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "weapon2bis":{
             "name":"Catapulte",
@@ -1837,7 +1837,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-mammoth","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "weapon2bis":{
             "name":"Catapulte",
@@ -3968,7 +3968,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-mammoth","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":[],
         "equip":["aucun","w1-ggun","w2-ggun","isophon","e-control","lifepod","garage"],

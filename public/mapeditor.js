@@ -6,6 +6,7 @@ function mapEditWindow() {
     $("#unitInfos").css("display","none");
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
+    alienReplaceBase();
     putMissionTitle();
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
@@ -150,6 +151,9 @@ function mapEditWindow() {
         eggsByTerrain('plaines',zone[0].pKind);
         eggsByTerrain('prairies',zone[0].gKind);
         eggsByTerrain('marécages',zone[0].sKind);
+        alienReplace('C',zone[0].rc[0],zone[0].rc[1]);
+        alienReplace('B',zone[0].rb[0],zone[0].rb[1]);
+        alienReplace('A',zone[0].ra[0],zone[0].ra[1]);
     }
     $('#conUnitList').append('<br>');
     if (zone[0].title === undefined) {
@@ -1352,6 +1356,87 @@ function editTheMissionBaby() {
     socket.emit('change-edited-mission',missionNum);
 };
 
+function alienReplace(classe,r1,r2) {
+    let r1view = r1;
+    if (r1view === 'Yapa') {
+        r1view = 'RIEN';
+    }
+    $('#conUnitList').append('<span class="constName"><span class="gf">Remplacer:</span> <span class="cy klik" onclick="alienToggle(0,`'+classe+'`)" title="Changer">'+r1view+'</span> <span class="gf">Par:</span> <span class="cy klik" onclick="alienToggle(1,`'+classe+'`)" title="Changer">'+r2+'</span></span><br>');
+};
+
+function alienToggle(rnum,classe) {
+    let className = 'r'+classe.toLowerCase();
+    let arList = [];
+    if (rnum === 0) {
+        arList.push('Yapa');
+    }
+    let theKind = 'none';
+    if (rnum === 1) {
+        let curAlienZero = zone[0][className][0];
+        console.log('ALIEN ZERO');
+        console.log(curAlienZero);
+        if (curAlienZero != 'Yapa') {
+            let curAlienZeroType = getAlienTypeByName(curAlienZero);
+            theKind = curAlienZeroType.kind;
+        }
+    }
+    let sortedAliensList = _.sortBy(_.sortBy(_.sortBy(alienUnits,'name'),'class'),'kind');
+    sortedAliensList.forEach(function(alienType) {
+        if (alienType.class === classe) {
+            if (theKind === 'none') {
+                arList.push(alienType.name);
+            } else {
+                if (theKind === alienType.kind) {
+                    arList.push(alienType.name);
+                }
+            }
+        }
+    });
+    console.log('ARLIST');
+    console.log(arList);
+    let curAlien = zone[0][className][rnum];
+    let curAlienKind = 'none';
+    if (curAlien != 'Yapa') {
+        let curAlienType = getAlienTypeByName(curAlien);
+        curAlienKind = curAlienType.kind;
+    }
+    console.log(curAlien);
+    let index = arList.indexOf(curAlien);
+    console.log(index);
+    if (index >= 0 && index < arList.length-1) {
+        zone[0][className][rnum] = arList[index+1];
+    } else {
+        zone[0][className][rnum] = arList[0];
+    }
+    if (rnum === 0) {
+        if (zone[0][className][rnum] != 'Yapa') {
+            let newAlienType = getAlienTypeByName(zone[0][className][rnum]);
+            if (curAlienKind != newAlienType.kind) {
+                zone[0][className][1] = zone[0][className][0];
+            }
+        }
+    }
+    mapEditWindow();
+};
+
+function alienReplaceBase() {
+    if (zone[0].rc === undefined) {
+        zone[0].rc = [];
+        zone[0].rc.push('Yapa');
+        zone[0].rc.push('Bugs');
+    }
+    if (zone[0].rb === undefined) {
+        zone[0].rb = [];
+        zone[0].rb.push('Yapa');
+        zone[0].rb.push('Chancres');
+    }
+    if (zone[0].ra === undefined) {
+        zone[0].ra = [];
+        zone[0].ra.push('Yapa');
+        zone[0].ra.push('Scarabs');
+    }
+};
+
 function getMissionType(misNum) {
     let mType = {};
     mType.name = 'Spécial';
@@ -1365,15 +1450,27 @@ function getMissionType(misNum) {
     } else if (misNum >= 80) {
         mType.name = 'Boss Spider';
         mType.pa = 6;
+        zone[0].pKind = 'spider';
+        zone[0].gKind = 'spider';
+        zone[0].sKind = 'spider';
     } else if (misNum >= 75) {
         mType.name = 'Boss Bug';
         mType.pa = 7;
+        zone[0].pKind = 'bug';
+        zone[0].gKind = 'bug';
+        zone[0].sKind = 'bug';
     } else if (misNum >= 70) {
         mType.name = 'Boss Larve';
         mType.pa = 7;
+        zone[0].pKind = 'larve';
+        zone[0].gKind = 'larve';
+        zone[0].sKind = 'larve';
     } else if (misNum >= 65) {
         mType.name = 'Boss Swarm';
         mType.pa = 5;
+        zone[0].pKind = 'swarm';
+        zone[0].gKind = 'swarm';
+        zone[0].sKind = 'swarm';
     } else if (misNum >= 60) {
         mType.name = 'Résistance';
         mType.pa = 4;

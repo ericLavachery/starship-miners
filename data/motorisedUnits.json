@@ -2574,7 +2574,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-mammoth","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":[],
         "equip":["aucun","lunette2","chargeur","g2motor","e-mecano","e-medic","e-phare","e-road","e-lifepod"],
