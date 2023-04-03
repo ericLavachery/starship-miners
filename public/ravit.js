@@ -41,6 +41,9 @@ function calcRavitVolume(bat) {
                 w2maxAmmo = 16;
             }
         }
+        if (hasEquip(bat,['hangard'])) {
+            w2maxAmmo = Math.floor(w2maxAmmo*1.5);
+        }
         if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
             w2maxAmmo = Math.floor(w2maxAmmo*1.35);
             if (w2maxAmmo < 16) {
@@ -75,6 +78,9 @@ function calcRavitVolume(bat) {
             if (w1maxAmmo < 16) {
                 w1maxAmmo = 16;
             }
+        }
+        if (hasEquip(bat,['hangard'])) {
+            w1maxAmmo = Math.floor(w1maxAmmo*1.5);
         }
         if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
             w1maxAmmo = Math.floor(w1maxAmmo*1.35);

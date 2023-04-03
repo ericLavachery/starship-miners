@@ -1188,34 +1188,60 @@ function checkFreeConsTile(bat,batType) {
     return freeTile;
 };
 
-function checkWeb(tileId) {
+function checkWeb(bat,batType) {
     let numWeb = 0;
-    let thisTile = getTileById(tileId);
+    let thisTile = getTileById(bat.tileId);
     if (thisTile.web) {
         numWeb++;
     }
-    thisTile = getTileById(tileId-1);
+    thisTile = getTileById(bat.tileId-1);
     if (thisTile != undefined) {
         if (thisTile.web) {
             numWeb++;
         }
     }
-    thisTile = getTileById(tileId+1);
+    thisTile = getTileById(bat.tileId+1);
     if (thisTile != undefined) {
         if (thisTile.web) {
             numWeb++;
         }
     }
-    thisTile = getTileById(tileId+mapSize);
+    thisTile = getTileById(bat.tileId+mapSize);
     if (thisTile != undefined) {
         if (thisTile.web) {
             numWeb++;
         }
     }
-    thisTile = getTileById(tileId-mapSize);
+    thisTile = getTileById(bat.tileId-mapSize);
     if (thisTile != undefined) {
         if (thisTile.web) {
             numWeb++;
+        }
+    }
+    if (batType.cat === 'buildings') {
+        thisTile = getTileById(bat.tileId-mapSize-1);
+        if (thisTile != undefined) {
+            if (thisTile.web) {
+                numWeb++;
+            }
+        }
+        thisTile = getTileById(bat.tileId-mapSize+1);
+        if (thisTile != undefined) {
+            if (thisTile.web) {
+                numWeb++;
+            }
+        }
+        thisTile = getTileById(bat.tileId+mapSize-1);
+        if (thisTile != undefined) {
+            if (thisTile.web) {
+                numWeb++;
+            }
+        }
+        thisTile = getTileById(bat.tileId+mapSize+1);
+        if (thisTile != undefined) {
+            if (thisTile.web) {
+                numWeb++;
+            }
         }
     }
     return numWeb;
@@ -1256,6 +1282,43 @@ function removeWeb(apCost) {
             }
         }
         thisTile = getTileById(selectedBat.tileId-mapSize);
+        if (thisTile.web) {
+            delete thisTile.web;
+            let hereBat = getZoneBatByTileId(thisTile.id);
+            if (Object.keys(hereBat).length >= 1) {
+                tagDelete(hereBat,'mud');
+            }
+        }
+        if (selectedBatType.cat != 'buildings') {
+            workDone = true;
+        }
+    }
+    if (!workDone) {
+        thisTile = getTileById(selectedBat.tileId-mapSize-1);
+        if (thisTile.web) {
+            delete thisTile.web;
+            let hereBat = getZoneBatByTileId(thisTile.id);
+            if (Object.keys(hereBat).length >= 1) {
+                tagDelete(hereBat,'mud');
+            }
+        }
+        thisTile = getTileById(selectedBat.tileId-mapSize+1);
+        if (thisTile.web) {
+            delete thisTile.web;
+            let hereBat = getZoneBatByTileId(thisTile.id);
+            if (Object.keys(hereBat).length >= 1) {
+                tagDelete(hereBat,'mud');
+            }
+        }
+        thisTile = getTileById(selectedBat.tileId+mapSize-1);
+        if (thisTile.web) {
+            delete thisTile.web;
+            let hereBat = getZoneBatByTileId(thisTile.id);
+            if (Object.keys(hereBat).length >= 1) {
+                tagDelete(hereBat,'mud');
+            }
+        }
+        thisTile = getTileById(selectedBat.tileId+mapSize+1);
         if (thisTile.web) {
             delete thisTile.web;
             let hereBat = getZoneBatByTileId(thisTile.id);
@@ -1572,13 +1635,9 @@ function checkDrugPack(drugName,bat,batType) {
     return drugOK;
 };
 
-function useDrugPack(drugName) {
+function useDrugPack(drugName,apCost) {
     let drug = getEquipByName(drugName);
     let drugOK = checkDrugPack(drugName,selectedBat,selectedBatType);
-    let apCost = drug.apCost;
-    if (drug.apCost >= 10) {
-        apCost = Math.ceil(selectedBat.ap/2);
-    }
     if (drugOK) {
         selectedBat.tags.push(drug.name);
         selectedBat.tags.push(drug.name);

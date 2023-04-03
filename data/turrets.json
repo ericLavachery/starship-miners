@@ -856,7 +856,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-needle","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
         },
         "weapon2":{
             "name":"Canon",
@@ -1217,7 +1217,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":[],
-        "equip":["aucun","w2-vanguard"],
+        "equip":["aucun","w2-vanguard","hangard"],
         "log3eq":[],
         "moveCost":99,
         "maxFlood":-1,
@@ -1282,7 +1282,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":[],
-        "equip":["aucun","w2-thunder"],
+        "equip":["aucun","w2-thunder","hangard"],
         "log3eq":[],
         "moveCost":99,
         "maxFlood":-1,
@@ -1343,7 +1343,7 @@
             "ravitBld":"Atelier"
         },
         "protection":[],
-        "equip":["aucun","theeye","g2siege"],
+        "equip":["aucun","theeye","g2siege","hangard"],
         "log3eq":["g2siege"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1400,7 +1400,7 @@
             "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
         },
         "protection":[],
-        "equip":["aucun","chargeur2","carrousel1","longtom1","theeye"],
+        "equip":["aucun","chargeur2","carrousel1","longtom1","theeye","hangard"],
         "log3eq":["longtom1","chargeur2"],
         "moveCost":99,
         "maxFlood":-1,
@@ -1846,7 +1846,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","noblub","nolist","norepair","nobld","clicput","infrako","noaploss","nostation","okdel","mdev","prefab","landerfab"],
+        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","noblub","norepair","nobld","infrako","noaploss","nostation","mdev","prefab","landerfab","mustcontrol"],
         "fuzz":6,
         "deathFx":"xplode"
     },

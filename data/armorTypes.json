@@ -1893,6 +1893,17 @@
         "costs":{"Compo1":200,"Compo2":50}
     },
     {
+        "name":"hangard",
+        "cat":"equip",
+        "skills":[],
+        "info":"Minitions+",
+        "bldReq":[],
+        "compReq":{"log":2},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Compo1":100,"Compo2":50}
+    },
+    {
         "name":"bldkit",
         "cat":"equip",
         "skills":[],

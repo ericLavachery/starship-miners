@@ -962,9 +962,12 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     }
     // NETTOYAGE
     if ((batType.skills.includes('cleaning') || (hasEquip(bat,['e-mecano']) && !batType.skills.includes('fly')) || (batType.cat === 'buildings' && batType.crew >= 1)) && !playerInfos.onShip && !zeroCrew) {
-        let numWeb = checkWeb(bat.tileId);
+        let numWeb = checkWeb(bat,batType);
         if (numWeb >= 1) {
             apCost = Math.ceil((batType.mecanoCost+1)/1.75*numWeb);
+            if (batType.cat === 'buildings') {
+                apCost = Math.ceil(apCost/1.5);
+            }
             apReq = Math.ceil(apCost/5);
             apReq = entre(apReq,2,10);
             if (batType.cat === 'infantry' && tile.web) {
@@ -2677,13 +2680,15 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     apCost = drug.apCost;
                     apReq = 0;
                     if (drugName === 'meca') {
-                        apCost = Math.ceil(bat.ap/2);
-                        apReq = Math.ceil(bat.ap/4);
+                        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+                        apCost = calcAdjSkillCost(1,baseskillCost,batType,bat,false);
+                        apCost = Math.ceil(apCost/1.5);
+                        apReq = Math.ceil(apCost/2);
                     }
                     if (drug.units === 'veh') {
-                        $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert iconButtons" onclick="useDrugPack(`'+drugName+'`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert iconButtons" onclick="useDrugPack(`'+drugName+'`,'+apCost+')"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                     } else {
-                        $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert iconButtons" onclick="useDrugPack(`'+drugName+'`)"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert iconButtons" onclick="useDrugPack(`'+drugName+'`,'+apCost+')"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                     }
                     lineBreak = true;
                 }

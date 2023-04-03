@@ -81,8 +81,12 @@ function mapEditWindow() {
     selectStuff('NoPrefab','bldNoPrefab2','Ne peut pas être déconstruit (démantèlement seulement / personnel réduit)');
     selectStuff('NoPilot','noDriver','Pas de conducteurs (Véhicule sans équipage)');
     // <br>
+    selectStuff('LevelChange','levelUp','Changer le niveau d\'expérience');
+    selectStuff('MakeChief','chef','Sous-chef (si niveau 3+)');
+    selectStuff('MakeHero','hero','Héro (si niveau 4)');
+    // <br>
     selectStuff('Bleed','bleed','Blesser le bataillon');
-    selectStuff('CitChange','lessCit2','Diminuer le nombre de citoyens ou criminels');
+    selectStuff('CitChange','lessCit2','Changer le nombre de citoyens ou criminels');
     // Landing
     selectStuff('Lander','lander','Point d\'atterrissage lander (ou navette)');
     selectStuff('Navette','navette','Point d\'atterrissage navette seulemment');
@@ -733,6 +737,12 @@ function clickEdit(tileId) {
             bleedBat(tile);
         } else if (mped.sinf === 'CitChange') {
             changeBatCits(tile);
+        } else if (mped.sinf === 'LevelChange') {
+            changeBatLevel(tile);
+        } else if (mped.sinf === 'MakeChief') {
+            changeVetTags(tile,'schef');
+        } else if (mped.sinf === 'MakeHero') {
+            changeVetTags(tile,'hero');
         } else if (mped.sinf === 'Lander') {
             if (!bord) {
                 if (tile.land === undefined) {
@@ -845,6 +855,67 @@ function addTagToAlienOnTile(tile,tag) {
             bat.tags.push(tag);
         } else {
             tagDelete(bat,tag);
+        }
+    }
+};
+
+function changeBatLevel(tile) {
+    let bat = getBatByTileId(tile.id);
+    bat.vet = bat.vet+1;
+    if (bat.vet === 5) {
+        bat.vet = 0;
+    }
+    bat.xp = levelXP[bat.vet]+rand.rand(0,30);
+    if (bat.vet < 4) {
+        tagDelete(bat,'hero');
+        tagDelete(bat,'vet');
+    }
+    if (bat.vet < 3) {
+        tagDelete(bat,'schef');
+    }
+};
+
+function changeVetTags(tile,tag) {
+    let bat = getBatByTileId(tile.id);
+    if (bat.team === 'player') {
+        let batType = getBatType(bat);
+        if (tag === 'schef') {
+            if (bat.tags.includes('schef') || batType.skills.includes('leader') || batType.skills.includes('nochef')) {
+                tagDelete(bat,'hero');
+                tagDelete(bat,'schef');
+                tagDelete(bat,'vet');
+            } else {
+                if (bat.vet >= 3) {
+                    bat.tags.push('schef');
+                    tagDelete(bat,'hero');
+                    tagDelete(bat,'vet');
+                }
+            }
+        }
+        if (tag === 'hero') {
+            if (bat.tags.includes('hero') || batType.skills.includes('nochef')) {
+                tagDelete(bat,'hero');
+                tagDelete(bat,'schef');
+                tagDelete(bat,'vet');
+            } else {
+                if (bat.vet >= 4) {
+                    bat.tags.push('hero');
+                    tagDelete(bat,'schef');
+                    tagDelete(bat,'vet');
+                }
+            }
+        }
+        if (bat.tags.includes('hero')) {
+            tagDelete(bat,'schef');
+            tagDelete(bat,'vet');
+        }
+        if (bat.tags.includes('schef')) {
+            tagDelete(bat,'hero');
+            tagDelete(bat,'vet');
+        }
+        if (bat.tags.includes('vet')) {
+            tagDelete(bat,'schef');
+            tagDelete(bat,'hero');
         }
     }
 };

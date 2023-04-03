@@ -108,7 +108,11 @@ function weaponsInfos(bat,batType,tile,pop) {
                     }
                 }
             }
-            if (bat.salvoLeft >= 1 && apOK && ammoLeft >= 1 && anyTarget && noBisOK && !noFireMelee) {
+            let hasControl = true;
+            if (batType.skills.includes('mustcontrol') && bat.tags.includes('nomove')) {
+                hasControl = false;
+            }
+            if (bat.salvoLeft >= 1 && apOK && ammoLeft >= 1 && anyTarget && noBisOK && !noFireMelee && hasControl) {
                 // assez d'ap et de salve
                 if (cheapWeapCost > thisWeapon.cost) {
                     cheapWeapCost = thisWeapon.cost;
@@ -121,7 +125,9 @@ function weaponsInfos(bat,batType,tile,pop) {
                 }
             } else {
                 // tir impossible
-                if (noFireMelee) {
+                if (!hasControl) {
+                    w1message = 'Pas de tir si vous ne contrôlez pas le bataillon';
+                } else if (noFireMelee) {
                     w1message = 'Tir impossible en mêlée';
                 } else {
                     if (ammoLeft < 1) {
@@ -369,7 +375,11 @@ function weaponsInfos(bat,batType,tile,pop) {
                     }
                 }
             }
-            if (bat.salvoLeft >= 1 && apOK && anyTarget && ammoLeft >= 1 && !noFireMelee && noBisOK) {
+            let hasControl = true;
+            if (batType.skills.includes('mustcontrol') && bat.tags.includes('nomove')) {
+                hasControl = false;
+            }
+            if (bat.salvoLeft >= 1 && apOK && anyTarget && ammoLeft >= 1 && !noFireMelee && noBisOK && hasControl) {
                 // assez d'ap et de salve
                 if (cheapWeapCost > thisWeapon.cost) {
                     cheapWeapCost = thisWeapon.cost;
@@ -382,7 +392,9 @@ function weaponsInfos(bat,batType,tile,pop) {
                 }
             } else {
                 // tir impossible
-                if (noFireMelee) {
+                if (!hasControl) {
+                    w1message = 'Pas de tir si vous ne contrôlez pas le bataillon';
+                } else if (noFireMelee) {
                     w2message = 'Tir impossible en mêlée';
                 } else {
                     if (ammoLeft < 1) {

@@ -1557,8 +1557,9 @@ function tagsEffect(bat,batType) {
     }
     // WEB
     if (bat.tags.includes('web')) {
-        if (bat.apLeft > 0) {
-            bat.apLeft = 0;
+        let maxAP = Math.ceil(Math.sqrt(batType.size))-2;
+        if (bat.apLeft > maxAP) {
+            bat.apLeft = maxAP;
         }
         if (batType.skills.includes('fullaploss')) {
             bat.apLeft = bat.apLeft-rand.rand(6,12);

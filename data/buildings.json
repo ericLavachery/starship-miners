@@ -295,7 +295,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_multi",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-needle","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
         },
         "weapon2":{
             "name":"Rainbow canon",
@@ -429,7 +429,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_multi",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-needle","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
         },
         "weapon2":{
             "name":"Mortier",

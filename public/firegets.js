@@ -2226,6 +2226,9 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.maxAmmo = 16;
         }
     }
+    if (hasEquip(bat,['hangard']) && thisWeapon.maxAmmo < 99) {
+        thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
+    }
     if (hasEquip(bat,['carrousel','carrousel1','carrousel2']) && thisWeapon.maxAmmo < 99) {
         thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.35);
         if (thisWeapon.maxAmmo < 16) {
@@ -2343,7 +2346,7 @@ function weaponAdj(weapon,bat,wn) {
     if (ammo.aoe != '' && thisWeapon.aoe != 'bat') {
         thisWeapon.aoe = ammo.aoe;
     }
-    if (ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit' || ammo.name.includes('web') || ammo.name.includes('marq') || ammo.name.includes('snake') || ammo.name.includes('teflon') || ammo.name.includes('adamantium')) {
+    if (ammo.accuracy < 1 || thisWeapon.isMelee || thisWeapon.aoe != 'unit' || ammo.name.includes('web') || ammo.name.includes('marq') || ammo.name.includes('snake') || ammo.name.includes('teflon') || ammo.name.includes('adamantium') || ammo.name.includes('needle')) {
         thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
         thisWeapon.rof = thisWeapon.rof*ammo.rof;
     } else {

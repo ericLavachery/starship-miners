@@ -1966,7 +1966,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-needle","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
         },
         "equip":["aucun","e-flash","e-ranger","e-camo","lunette2","chargeur2","e-jetpack","permakirin","theeye","waterproof","e-medic"],
         "log3eq":["e-camo"],
@@ -2863,7 +2863,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-needle","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
         },
         "weapon2":{
             "name":"Poignard",
@@ -4031,7 +4031,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-needle","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
         },
         "weapon2":{
             "name":"Rainbow gun",
@@ -4838,7 +4838,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-needle","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
         },
         "weapon2":{
             "name":"LG intégré",
@@ -6907,6 +6907,63 @@
         "transRes":81,
         "fuzz":2,
         "deathFx":"human2"
+    },
+    {
+        "id":314,
+        "name":"Snipers",
+        "pic":"ressniper",
+        "cat":"infantry",
+        "kind":"zero-resistance",
+        "squads":6,
+        "squadSize":8,
+        "crew":1,
+        "hp":6,
+        "armor":0,
+        "size":3,
+        "stealth":13,
+        "ap":14,
+        "maxSalvo":1,
+        "weapon":{
+            "name":"Lame",
+            "cost":1,
+            "range":0,
+            "isMelee":true,
+            "isShort":true,
+            "rof":8,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"lame",
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-poison","lame-c-poison","lame-t-poison","lame-atium","lame-c-atium","lame-t-atium","lame-a-atium","lame-poraz","lame-t-poraz","lame-mono","lame-taser","lame-plasma","lame-adamantite","lame-adamantium"]
+        },
+        "weapon2":{
+            "name":"Fusil de précision",
+            "cost":6,
+            "range":2,
+            "elevation":3,
+            "noMelee":true,
+            "isPrec":true,
+            "rof":6,
+            "accuracy":40,
+            "dca":0.8,
+            "power":10,
+            "armors":0.75,
+            "aoe":"unit",
+            "sound":"calibre_sniper_def",
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+        },
+        "protection":[],
+        "equip":["aucun","e-flash","chargeur2","e-camo","theeye","helper","permakirin","waterproof","e-medic","repel"],
+        "log3eq":["chargeur2"],
+        "autoEq":["theeye","repel","helper"],
+        "moveCost":3,
+        "maxFlood":3,
+        "maxScarp":3,
+        "maxVeg":3,
+        "skills":["a_light","fouille","fortif","datt","camo","cible","guerrilla","tirailleur","fastguet","badmedic","ranger","swim","brigands","herokill","lowstress"],
+        "mediCost":7,
+        "fuzz":0,
+        "deathFx":"162157__mediapaja2009__agony"
     },
     {
         "id":302,

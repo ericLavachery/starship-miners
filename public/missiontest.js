@@ -131,10 +131,10 @@ function getMissionBatList() {
     }
     newSlot = new SlotConstructor('Stalkers',['titanium','lame-carbone','wendium','lunette1']);
     missionBatList.push(newSlot);
-    newSlot = new SlotConstructor('Runners',['ac-uranium','grenade','duneg','detector']);
+    newSlot = new SlotConstructor('Runners',['ac-needle','grenade','duneg','detector']);
     missionBatList.push(newSlot);
     if (playerInfos.gLevel >= 14) {
-        newSlot = new SlotConstructor('Runners',['ac-flechette','grenade-gaz','duneg','detector']);
+        newSlot = new SlotConstructor('Runners',['ac-needle','grenade-gaz','duneg','detector']);
         missionBatList.push(newSlot);
     }
     if (playerInfos.gLevel >= 14) {

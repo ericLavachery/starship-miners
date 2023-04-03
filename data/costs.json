@@ -1128,6 +1128,17 @@
         "fabTime":30
     },
     {
+        "id":314,
+        "name":"Snipers",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":[],
+        "compReq":{},
+        "costs":{"Fer":120,"Soufre":24,"Plomb":24,"Carbone":48,"Silicium":24,"Scrap":48,"Végétaux":120,"Chlore":10,"Tissus":5},
+        "deploy":{"Drogues":3,"Tissus":2},
+        "fabTime":30,
+        "inRuin":2
+    },
+    {
         "id":302,
         "name":"Rebelles",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
