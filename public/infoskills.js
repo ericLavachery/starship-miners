@@ -965,7 +965,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         let numWeb = checkWeb(bat,batType);
         if (numWeb >= 1) {
             apCost = Math.ceil((batType.mecanoCost+1)/1.75*numWeb);
-            if (batType.cat === 'buildings') {
+            if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
                 apCost = Math.ceil(apCost/1.5);
             }
             apReq = Math.ceil(apCost/5);

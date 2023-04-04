@@ -565,7 +565,7 @@ function canCamo(bat,batType,tile) {
             }
         }
     }
-    if (hasEquip(bat,['silencieux','silencieux1','silencieux2','e-camo','bld-camo'])) {
+    if (hasEquip(bat,['silencieux','silencieux1','silencieux2','e-camo','bld-camo','muffler'])) {
         iCanCamo = true;
     }
     if (hasEquip(bat,['kit-milice','kit-guetteur','kit-chouf','kit-sentinelle'])) {
@@ -1218,7 +1218,7 @@ function checkWeb(bat,batType) {
             numWeb++;
         }
     }
-    if (batType.cat === 'buildings') {
+    if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
         thisTile = getTileById(bat.tileId-mapSize-1);
         if (thisTile != undefined) {
             if (thisTile.web) {
@@ -1289,7 +1289,7 @@ function removeWeb(apCost) {
                 tagDelete(hereBat,'mud');
             }
         }
-        if (selectedBatType.cat != 'buildings') {
+        if (selectedBatType.cat != 'buildings' && !selectedBatType.skills.includes('transorbital')) {
             workDone = true;
         }
     }

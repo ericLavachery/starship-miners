@@ -1633,6 +1633,9 @@ function tagsEffect(bat,batType) {
                 regen = Math.round(batHP*regenPower/100);
             } else {
                 regen = Math.round(batHP*slowregPower/100);
+                if (regen > 300) {
+                    regen = 300;
+                }
             }
             regen = Math.ceil(regen/(allTags.poison+5)*5);
             if (regen < 1) {regen = 1;}

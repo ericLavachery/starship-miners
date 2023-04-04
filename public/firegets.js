@@ -1036,7 +1036,7 @@ function applyShield(shots) {
     console.log('SHIELD');
     console.log(shieldChance+'%');
     console.log(selectedWeap.ammo);
-    if (activeTurn === 'player' && shieldChance >= 1 && selectedWeap.ammo != 'marquage' && !selectedWeap.ammo.includes('flashbang')) {
+    if (activeTurn === 'player' && (shieldChance >= 1 || targetBatType.skills.includes('slowshield')) && selectedWeap.ammo != 'marquage' && !selectedWeap.ammo.includes('flashbang')) {
         if (!targetBat.tags.includes('shield')) {
             $('#report').append('<span class="report rose">Bouclier '+shieldChance+'%<br></span>');
         }
@@ -2119,6 +2119,9 @@ function weaponAdj(weapon,bat,wn) {
                 thisWeapon.hide = true;
             }
         }
+        if (hasEquip(bat,['muffler'])) {
+            thisWeapon.noise = thisWeapon.noise-2;
+        }
     } else if (thisWeapon.num === 2) {
         if (batType.skills.includes('detrange') && thisWeapon.range >= 1 && thisWeapon.name != 'Lance-flammes' && !thisWeapon.isMelee) {
             if (hasEquip(bat,['detector','g2ai'])) {
@@ -2185,6 +2188,9 @@ function weaponAdj(weapon,bat,wn) {
             if (thisWeapon.noise <= 0) {
                 thisWeapon.hide = true;
             }
+        }
+        if (hasEquip(bat,['muffler'])) {
+            thisWeapon.noise = thisWeapon.noise-2;
         }
     }
     if (hasEquip(bat,['e-camo']) && batType.skills.includes('camo')) {
@@ -2294,6 +2300,8 @@ function weaponAdj(weapon,bat,wn) {
         if (bat.eq === 'arrosoir') {
             myAmmo = 'fuel';
         }
+    } else if (wn === 'w3') {
+        myAmmo = batType.weapon3.ammo[0];
     }
     let ammoIndex = ammoTypes.findIndex((obj => obj.name == myAmmo));
     let ammo = ammoTypes[ammoIndex];
@@ -2806,6 +2814,9 @@ function chargeurAdj(bat,shots,weap) {
         }
         if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('ulfat') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('BFG') || (weap.name.includes('Blister') && !weap.name.includes('pistol'))) {
             mult = 1.33;
+        }
+        if (weap.name === 'Autopistol' || weap.name === 'Tourelles auto') {
+            mult = 1.25;
         }
         if (bat.eq.includes('kit-chouf')) {
             mult = 2;

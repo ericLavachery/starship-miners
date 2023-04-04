@@ -367,7 +367,11 @@ function getEquipDeployFactor(unit,equip) {
             deployFactor = crew/12;
         } else {
             if (equip.factor === 'crew') {
-                deployFactor = crew/12;
+                if (unit.crew === 0) {
+                    deployFactor = 10;
+                } else {
+                    deployFactor = crew/12;
+                }
             } else if (equip.factor === 'rofpow') {
                 deployFactor = rofpow/250;
             } else if (equip.factor === 'thp') {

@@ -681,6 +681,18 @@
         "costs":{"Electros":3,"Carbone":21,"Aluminium":9,"Scrap":9,"Titane":3}
     },
     {
+        "name":"muffler",
+        "cat":"equip",
+        "skills":[],
+        "info":"Silencieux Camouflage+",
+        "bldReq":["Usine"],
+        "compReq":{"cam":2,"log":2,"bal":1},
+        "autoComp":[],
+        "factor":"crew",
+        "costs":{"Aluminium":3,"Carbone":6,"Huile":3,"Tissus":10,"Blendium":10},
+        "deploy":{"Végétaux":12,"Huile":3}
+    },
+    {
         "name":"silencieux",
         "cat":"equip",
         "skills":[],
@@ -689,7 +701,7 @@
         "compReq":{"cam":1,"log":1,"bal":1},
         "autoComp":["train",2],
         "factor":"crew",
-        "costs":{"Aluminium":6,"Carbone":3,"Tissus":6,"Blendium":6},
+        "costs":{"Aluminium":3,"Carbone":6,"Tissus":6,"Blendium":6},
         "deploy":{"Végétaux":4},
         "icon":1,
         "popIn":["Caserne","Armurerie"]
