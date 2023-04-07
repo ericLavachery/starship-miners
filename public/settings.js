@@ -248,6 +248,7 @@ let larveHIDE = false;
 let eggSHIELD = false;
 let regenPower = 10; // 10%
 let slowregPower = 3; // 3%
+let autoRepPower = 5; // 5%
 let shownEggs = [];
 let vomiChance = 5; // 5% par oeuf manquant
 let coqueChance = 20; // 20% pour une coque

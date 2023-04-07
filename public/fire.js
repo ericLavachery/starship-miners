@@ -1185,10 +1185,13 @@ function attack(melee,init) {
     // jello
     if (selectedWeap.ammo.includes('jello')) {
         if (selectedWeap.ammo.includes('autodes') || selectedWeap.ammo.includes('missile')) {
+            targetBat.tags.push('poison');
+            targetBat.tags.push('poison');
             targetBat.tags.push('jello');
             targetBat.tags.push('jelly');
             $('#report').append('<span class="report rose">Jelly<br></span>');
         } else {
+            targetBat.tags.push('poison');
             if (!targetBat.tags.includes('jello')) {
                 targetBat.tags.push('jello');
             }
@@ -1201,9 +1204,9 @@ function attack(melee,init) {
         } else {
             apDamage = Math.round(apDamage/5);
         }
-    } else if (targetBatType.skills.includes('fullaploss')) {
+    } else if (targetBatType.skills.includes('fullaploss') && selectedWeap.ammo.includes('web')) {
         apDamage = Math.ceil(apDamage*5);
-    } else if (targetBatType.skills.includes('moreaploss')) {
+    } else if (targetBatType.skills.includes('moreaploss') && selectedWeap.ammo.includes('web')) {
         apDamage = Math.ceil(apDamage*2);
     }
     if (targetBat.prt != undefined) {
@@ -2109,10 +2112,13 @@ function defense(melee,init) {
     // jello
     if (targetWeap.ammo.includes('jello')) {
         if (targetWeap.ammo.includes('autodes') || targetWeap.ammo.includes('missile')) {
+            selectedBat.tags.push('poison');
+            selectedBat.tags.push('poison');
             selectedBat.tags.push('jello');
             selectedBat.tags.push('jelly');
             $('#report').append('<span class="report rose">Jelly<br></span>');
         } else {
+            selectedBat.tags.push('poison');
             if (!selectedBat.tags.includes('jello')) {
                 selectedBat.tags.push('jello');
             }
@@ -2125,9 +2131,9 @@ function defense(melee,init) {
         } else {
             apDamage = Math.round(apDamage/5);
         }
-    } else if (selectedBatType.skills.includes('fullaploss')) {
+    } else if (selectedBatType.skills.includes('fullaploss') && targetWeap.ammo.includes('web')) {
         apDamage = Math.ceil(apDamage*5);
-    } else if (selectedBatType.skills.includes('moreaploss')) {
+    } else if (selectedBatType.skills.includes('moreaploss') && targetWeap.ammo.includes('web')) {
         apDamage = Math.ceil(apDamage*2);
     }
     if (selectedBat.prt != undefined) {

@@ -851,8 +851,8 @@ function isHurt(bat) {
 };
 
 function checkRepairBat(tileId) {
-    console.log('CHECK REPAIR BAT');
-    console.log(tileId);
+    // console.log('CHECK REPAIR BAT');
+    // console.log(tileId);
     let bestRepairBat = {};
     let batType;
     let bestRepairCost = 99;
@@ -870,8 +870,8 @@ function checkRepairBat(tileId) {
             }
         }
     });
-    console.log('Repair Bat');
-    console.log(bestRepairBat);
+    // console.log('Repair Bat');
+    // console.log(bestRepairBat);
     return bestRepairBat;
 }
 
@@ -1252,6 +1252,93 @@ function checkMedTrans(bat,batType) {
         }
     }
     return medicTrans;
+};
+
+function checkRegeneration(myBat,myBatType,resistance,allTags) {
+    let ar = {};
+    if (myBat.damage >= 1 || myBat.squadsLeft < myBatType.squads) {
+        if (myBat.tags.includes('kirin') || myBat.tags.includes('genreg') || hasEquip(myBat,['permakirin']) || myBat.tags.includes('regeneration') || myBatType.skills.includes('regeneration') || myBatType.skills.includes('slowreg') || myBat.tags.includes('slowreg') || myBatType.skills.includes('fastreg') || myBatType.skills.includes('heal') || resistance) {
+            let regOK = true;
+            if (myBatType.cat === 'aliens') {
+                if (myBatType.skills.includes('reactpoison') && myBat.tags.includes('poison')) {
+                    regOK = false;
+                }
+                if (myBat.tags.includes('shinda')) {
+                    regOK = false;
+                }
+            } else if (myBat.tags.includes('necro') || myBat.tags.includes('venin')) {
+                regOK = false;
+            }
+            if (regOK) {
+                let squadHP = myBatType.squadSize*myBatType.hp;
+                let myBatHP = squadHP*myBatType.squads;
+                if (myBat.citoyens >= 1) {
+                    myBatHP = myBat.citoyens*myBatType.hp;
+                }
+                let regen;
+                if (myBatType.skills.includes('heal')) {
+                    regen = myBatHP;
+                } else if (myBatType.skills.includes('fastreg')) {
+                    regen = myBatHP/2;
+                } else if (myBat.tags.includes('kirin') || myBat.tags.includes('genreg') || myBatType.skills.includes('regeneration') || myBat.tags.includes('regeneration')) {
+                    regen = myBatHP*regenPower/100;
+                } else if (!resistance) {
+                    regen = myBatHP*slowregPower/100;
+                    if (regen > 300) {
+                        regen = 300;
+                    }
+                } else {
+                    regen = myBatHP*slowregPower/200;
+                    if (regen > 150) {
+                        regen = 150;
+                    }
+                }
+                regen = regen/(allTags.poison+5)*5;
+                regen = Math.ceil(regen*(myBat.squadsLeft+9)/(myBatType.squads+9));
+                if (regen < 1) {regen = 1;}
+                // console.log('regeneration='+regen);
+                let myBatHPLeft = (myBat.squadsLeft*squadHP)-myBat.damage+regen;
+                if (myBatHPLeft > myBatHP) {
+                    myBatHPLeft = myBatHP;
+                }
+                myBat.squadsLeft = Math.ceil(myBatHPLeft/squadHP);
+                myBat.damage = (myBat.squadsLeft*squadHP)-myBatHPLeft;
+                if (myBat.squadsLeft > myBatType.squads) {
+                    myBat.squadsLeft = myBatType.squads;
+                    myBat.damage = 0;
+                }
+            }
+        }
+    }
+    ar.damage = myBat.damage;
+    ar.squadsLeft = myBat.squadsLeft;
+    return ar;
+}
+
+function checkAutoRepair(myBat,myBatType) {
+    let ar = {};
+    if (myBat.damage >= 1 || myBat.squadsLeft < myBatType.squads) {
+        let squadHP = myBatType.squadSize*myBatType.hp;
+        let myBatHP = squadHP*myBatType.squads;
+        let theRep = myBatHP*autoRepPower/100;
+        theRep = Math.ceil(theRep*myBat.squadsLeft/myBatType.squads);
+        console.log('AUTOREPAIR');
+        console.log(myBat);
+        console.log('theRep = '+theRep);
+        let myBatHPLeft = (myBat.squadsLeft*squadHP)-myBat.damage+theRep;
+        if (myBatHPLeft > myBatHP) {
+            myBatHPLeft = myBatHP;
+        }
+        myBat.squadsLeft = Math.ceil(myBatHPLeft/squadHP);
+        myBat.damage = (myBat.squadsLeft*squadHP)-myBatHPLeft;
+        if (myBat.squadsLeft > myBatType.squads) {
+            myBat.squadsLeft = myBatType.squads;
+            myBat.damage = 0;
+        }
+    }
+    ar.damage = myBat.damage;
+    ar.squadsLeft = myBat.squadsLeft;
+    return ar;
 };
 
 function savingThrow(bat,batType,damage,potency) {
