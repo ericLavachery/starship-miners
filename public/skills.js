@@ -1190,70 +1190,103 @@ function checkFreeConsTile(bat,batType) {
 
 function checkWeb(bat,batType) {
     let numWeb = 0;
+    let workDone = false;
     let thisTile = getTileById(bat.tileId);
     if (thisTile.web) {
         numWeb++;
+        workDone = true;
     }
-    thisTile = getTileById(bat.tileId-1);
-    if (thisTile != undefined) {
-        if (thisTile.web) {
-            numWeb++;
+    if (!workDone) {
+        thisTile = getTileById(bat.tileId-1);
+        if (thisTile != undefined) {
+            if (thisTile.web) {
+                numWeb++;
+                workDone = true;
+            }
         }
-    }
-    thisTile = getTileById(bat.tileId+1);
-    if (thisTile != undefined) {
-        if (thisTile.web) {
-            numWeb++;
+        thisTile = getTileById(bat.tileId+1);
+        if (thisTile != undefined) {
+            if (thisTile.web) {
+                numWeb++;
+                workDone = true;
+            }
         }
-    }
-    thisTile = getTileById(bat.tileId+mapSize);
-    if (thisTile != undefined) {
-        if (thisTile.web) {
-            numWeb++;
+        thisTile = getTileById(bat.tileId+mapSize);
+        if (thisTile != undefined) {
+            if (thisTile.web) {
+                numWeb++;
+                workDone = true;
+            }
         }
-    }
-    thisTile = getTileById(bat.tileId-mapSize);
-    if (thisTile != undefined) {
-        if (thisTile.web) {
-            numWeb++;
+        thisTile = getTileById(bat.tileId-mapSize);
+        if (thisTile != undefined) {
+            if (thisTile.web) {
+                numWeb++;
+                workDone = true;
+            }
         }
     }
     if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
-        thisTile = getTileById(bat.tileId-mapSize-1);
-        if (thisTile != undefined) {
-            if (thisTile.web) {
-                numWeb++;
+        if (!workDone) {
+            thisTile = getTileById(bat.tileId-mapSize-1);
+            if (thisTile != undefined) {
+                if (thisTile.web) {
+                    numWeb++;
+                }
             }
-        }
-        thisTile = getTileById(bat.tileId-mapSize+1);
-        if (thisTile != undefined) {
-            if (thisTile.web) {
-                numWeb++;
+            thisTile = getTileById(bat.tileId-mapSize+1);
+            if (thisTile != undefined) {
+                if (thisTile.web) {
+                    numWeb++;
+                }
             }
-        }
-        thisTile = getTileById(bat.tileId+mapSize-1);
-        if (thisTile != undefined) {
-            if (thisTile.web) {
-                numWeb++;
+            thisTile = getTileById(bat.tileId+mapSize-1);
+            if (thisTile != undefined) {
+                if (thisTile.web) {
+                    numWeb++;
+                }
             }
-        }
-        thisTile = getTileById(bat.tileId+mapSize+1);
-        if (thisTile != undefined) {
-            if (thisTile.web) {
-                numWeb++;
+            thisTile = getTileById(bat.tileId+mapSize+1);
+            if (thisTile != undefined) {
+                if (thisTile.web) {
+                    numWeb++;
+                }
             }
         }
     }
     return numWeb;
 };
 
+function checkCleaningCost(bat,batType) {
+    let apCost = batType.mecanoCost+1;
+    let exoComp = 0;
+    if (playerInfos.comp.exo >= playerInfos.comp.ind) {
+        exoComp = playerInfos.comp.exo;
+        if (playerInfos.comp.exo >= 1) {
+            exoComp = exoComp+1;
+        }
+    } else {
+        exoComp = playerInfos.comp.ind;
+    }
+    apCost = Math.ceil(apCost*12/(exoComp+4)/(playerInfos.comp.ca+3));
+    let minCost = 3;
+    if (batType.skills.includes('fly')) {
+        minCost = 2;
+    }
+    if (apCost < minCost) {apCost = minCost;}
+    return apCost;
+};
+
 function removeWeb(apCost) {
+    let apFullCost = 0;
     let workDone = false;
     let thisTile = getTileById(selectedBat.tileId);
     if (thisTile.web) {
         delete thisTile.web;
-        if (selectedBatType.cat === 'infantry') {
-            workDone = true;
+        workDone = true;
+        apFullCost = apFullCost+apCost;
+        if (!selectedBatType.skills.includes('fly')) {
+            apFullCost = apFullCost+apCost;
         }
     }
     if (!workDone) {
@@ -1264,6 +1297,8 @@ function removeWeb(apCost) {
             if (Object.keys(hereBat).length >= 1) {
                 tagDelete(hereBat,'mud');
             }
+            workDone = true;
+            apFullCost = apFullCost+apCost;
         }
         thisTile = getTileById(selectedBat.tileId+1);
         if (thisTile.web) {
@@ -1272,6 +1307,8 @@ function removeWeb(apCost) {
             if (Object.keys(hereBat).length >= 1) {
                 tagDelete(hereBat,'mud');
             }
+            workDone = true;
+            apFullCost = apFullCost+apCost;
         }
         thisTile = getTileById(selectedBat.tileId+mapSize);
         if (thisTile.web) {
@@ -1280,6 +1317,8 @@ function removeWeb(apCost) {
             if (Object.keys(hereBat).length >= 1) {
                 tagDelete(hereBat,'mud');
             }
+            workDone = true;
+            apFullCost = apFullCost+apCost;
         }
         thisTile = getTileById(selectedBat.tileId-mapSize);
         if (thisTile.web) {
@@ -1288,46 +1327,51 @@ function removeWeb(apCost) {
             if (Object.keys(hereBat).length >= 1) {
                 tagDelete(hereBat,'mud');
             }
-        }
-        if (selectedBatType.cat != 'buildings' && !selectedBatType.skills.includes('transorbital')) {
             workDone = true;
+            apFullCost = apFullCost+apCost;
         }
     }
-    if (!workDone) {
-        thisTile = getTileById(selectedBat.tileId-mapSize-1);
-        if (thisTile.web) {
-            delete thisTile.web;
-            let hereBat = getZoneBatByTileId(thisTile.id);
-            if (Object.keys(hereBat).length >= 1) {
-                tagDelete(hereBat,'mud');
+    if (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('transorbital')) {
+        if (!workDone) {
+            thisTile = getTileById(selectedBat.tileId-mapSize-1);
+            if (thisTile.web) {
+                delete thisTile.web;
+                let hereBat = getZoneBatByTileId(thisTile.id);
+                if (Object.keys(hereBat).length >= 1) {
+                    tagDelete(hereBat,'mud');
+                }
+                apFullCost = apFullCost+apCost;
             }
-        }
-        thisTile = getTileById(selectedBat.tileId-mapSize+1);
-        if (thisTile.web) {
-            delete thisTile.web;
-            let hereBat = getZoneBatByTileId(thisTile.id);
-            if (Object.keys(hereBat).length >= 1) {
-                tagDelete(hereBat,'mud');
+            thisTile = getTileById(selectedBat.tileId-mapSize+1);
+            if (thisTile.web) {
+                delete thisTile.web;
+                let hereBat = getZoneBatByTileId(thisTile.id);
+                if (Object.keys(hereBat).length >= 1) {
+                    tagDelete(hereBat,'mud');
+                }
+                apFullCost = apFullCost+apCost;
             }
-        }
-        thisTile = getTileById(selectedBat.tileId+mapSize-1);
-        if (thisTile.web) {
-            delete thisTile.web;
-            let hereBat = getZoneBatByTileId(thisTile.id);
-            if (Object.keys(hereBat).length >= 1) {
-                tagDelete(hereBat,'mud');
+            thisTile = getTileById(selectedBat.tileId+mapSize-1);
+            if (thisTile.web) {
+                delete thisTile.web;
+                let hereBat = getZoneBatByTileId(thisTile.id);
+                if (Object.keys(hereBat).length >= 1) {
+                    tagDelete(hereBat,'mud');
+                }
+                apFullCost = apFullCost+apCost;
             }
-        }
-        thisTile = getTileById(selectedBat.tileId+mapSize+1);
-        if (thisTile.web) {
-            delete thisTile.web;
-            let hereBat = getZoneBatByTileId(thisTile.id);
-            if (Object.keys(hereBat).length >= 1) {
-                tagDelete(hereBat,'mud');
+            thisTile = getTileById(selectedBat.tileId+mapSize+1);
+            if (thisTile.web) {
+                delete thisTile.web;
+                let hereBat = getZoneBatByTileId(thisTile.id);
+                if (Object.keys(hereBat).length >= 1) {
+                    tagDelete(hereBat,'mud');
+                }
+                apFullCost = apFullCost+apCost;
             }
         }
     }
-    selectedBat.apLeft = selectedBat.apLeft-apCost;
+    selectedBat.apLeft = selectedBat.apLeft-apFullCost;
     playSound('hose',-0.3);
     tagDelete(selectedBat,'mud');
     doneAction(selectedBat);

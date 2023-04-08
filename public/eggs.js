@@ -1122,14 +1122,23 @@ function aliensCount() {
 
 function webSpawns() {
     let hasBlob = false;
+    let theBlob = {};
     if (hasAlien('Spiderblob')) {
         hasBlob = true;
+        theBlob = getAlienByName('Spiderblob');
         alienOccupiedTileList();
         playerOccupiedTileList();
     }
     zone.forEach(function(tile) {
         if (tile.web) {
-            if (rand.rand(1,10) === 1) {
+            let chance = 10;
+            if (hasBlob) {
+                let distance = calcDistance(theBlob.tileId,tile.id);
+                if (distance <= 5) {
+                    chance = 3;
+                }
+            }
+            if (rand.rand(1,chance) === 1) {
                 if (hasBlob) {
                     if (!alienOccupiedTiles.includes(tile.id)) {
                         if (!playerOccupiedTiles.includes(tile.id)) {

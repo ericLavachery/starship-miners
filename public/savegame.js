@@ -254,6 +254,7 @@ function compReset() {
 function alienReset() {
     aliens = [];
     showMap(zone,false);
+    unitsView();
 };
 
 function deleteZones() {
@@ -340,9 +341,10 @@ function mapReset() {
     resetStartRes();
     resetEndRes();
     showMap(zone,false);
-    commandes();
     $("#reset2").css("display","none");
     $("#reset1").css("display","inline-block");
+    commandes();
+    unitsView();
 };
 
 function mapSoftReset() {

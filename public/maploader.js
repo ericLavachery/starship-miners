@@ -397,18 +397,20 @@ function showRes(tileId) {
             mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/crater.png"></div>';
         }
     }
-    if (tile.land != undefined) {
-        if (tile.land) {
-            if (isStartZone) {
-                mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/abri.png"></div>';
-            } else {
-                mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/landSpot.png"></div>';
+    if (playerInfos.mapTurn < 2 || playerInfos.pseudo === 'Mapedit') {
+        if (tile.land != undefined) {
+            if (tile.land) {
+                if (isStartZone) {
+                    mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/abri.png"></div>';
+                } else {
+                    mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/landSpot.png"></div>';
+                }
             }
         }
-    }
-    if (tile.nav != undefined) {
-        if (tile.nav) {
-            mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/navSpot.png"></div>';
+        if (tile.nav != undefined) {
+            if (tile.nav) {
+                mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/navSpot.png"></div>';
+            }
         }
     }
     if (playerInfos.showedTiles.includes(tileId)) {

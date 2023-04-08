@@ -1233,7 +1233,7 @@
             "noFly":false,
             "isMelee":false,
             "rof":10,
-            "accuracy":14,
+            "accuracy":9,
             "dca":1.5,
             "power":2,
             "aoe":"unit",

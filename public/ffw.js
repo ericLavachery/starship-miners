@@ -34,6 +34,9 @@ function nextAlien() {
         console.log('selectedBat :');
         console.log(selectedBat);
         closeTargetRange = rand.rand(1,closeTargetRangeDice);
+        if (selectedBat.pdm != undefined && !selectedBat.tags.includes('heard')) {
+            closeTargetRange = rand.rand(closeTargetRangeDice-1,closeTargetRangeDice+2);
+        }
         alienMoveLoop();
     } else {
         batUnselect();
@@ -63,6 +66,9 @@ function ffw() {
         console.log('selectedBat= '+selectedBat.type+' **********');
         console.log(selectedBat);
         closeTargetRange = rand.rand(1,closeTargetRangeDice);
+        if (selectedBat.pdm != undefined && !selectedBat.tags.includes('heard')) {
+            closeTargetRange = rand.rand(closeTargetRangeDice-1,closeTargetRangeDice+2);
+        }
         alienMoveLoop();
         if (Object.keys(selectedBat).length >= 1) {
             if (stopForFight && selectedBat.salvoLeft >= 1 && selectedBat.apLeft >= 1 && selectedBat.squadsLeft >= 1) {

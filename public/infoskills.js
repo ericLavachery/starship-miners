@@ -964,19 +964,15 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     if ((batType.skills.includes('cleaning') || (hasEquip(bat,['e-mecano']) && !batType.skills.includes('fly')) || (batType.cat === 'buildings' && batType.crew >= 1)) && !playerInfos.onShip && !zeroCrew) {
         let numWeb = checkWeb(bat,batType);
         if (numWeb >= 1) {
-            apCost = (batType.mecanoCost+1)/1.75*numWeb;
-            apCost = Math.ceil(apCost*15/(playerInfos.comp.exo+3)/(playerInfos.comp.ca+3));
-            if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
-                apCost = Math.ceil(apCost/1.5);
+            apCost = checkCleaningCost(bat,batType);
+            if (tile.web && !batType.skills.includes('fly')) {
+                numWeb++;
             }
-            apReq = Math.ceil(apCost/5);
+            apFullCost = apCost*numWeb;
+            apReq = Math.ceil(apCost*numWeb/6);
             apReq = entre(apReq,2,10);
-            if (batType.cat === 'infantry' && tile.web) {
-                apCost = batType.mecanoCost+1;
-                apReq = 1;
-            }
             if (bat.apLeft >= apReq && !nearby.oneTile) {
-                $('#unitInfos').append('<button type="button" title="Détruire les toiles" class="boutonGris iconButtons" onclick="removeWeb('+apCost+')"><i class="fas fa-broom"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="Détruire les toiles" class="boutonGris iconButtons" onclick="removeWeb('+apCost+')"><i class="fas fa-broom"></i> <span class="small">'+apFullCost+'</span></button>');
                 lineBreak = true;
             } else {
                 if (nearby.oneTile) {

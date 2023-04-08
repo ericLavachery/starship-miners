@@ -420,6 +420,10 @@ function trueWeb() {
     if (!targetBat.tags.includes('web')) {
         targetBat.tags.push('web');
     }
+    if (targetBatType.cat === 'infantry') {
+        targetBat.tags.push('poison');
+        targetBat.tags.push('poison');
+    }
     let tile = getTile(targetBat);
     tile.web = true;
 };
@@ -428,7 +432,7 @@ function getWebCanonTiles(cprov,cblob) {
     let canonTiles = [];
     let theTile = -1;
     let targetTile = -1;
-    // près d'un oeuf en danger
+    // près d'un oeuf en danger / sur un bâtiment / sur le canon
     let bestTarget = 0;
     let bldTarget = false;
     if (cprov === 'uber') {
@@ -456,7 +460,12 @@ function getWebCanonTiles(cprov,cblob) {
                         if (!batType.skills.includes('webca')) {
                             thisTarget = thisTarget*batType.hp;
                         } else {
-                            thisTarget = thisTarget*100000;
+                            let tile = getTile(bat);
+                            if (tile.web) {
+                                thisTarget = thisTarget*1000;
+                            } else {
+                                thisTarget = thisTarget*100000;
+                            }
                         }
                     }
                     if (thisTarget >= bestTarget) {
@@ -472,7 +481,7 @@ function getWebCanonTiles(cprov,cblob) {
             if (targetTile < 0) {
                 if (bat.loc === "zone") {
                     let batType = getBatType(bat);
-                    if (bat.fuzz >= 1) {
+                    if (bat.fuzz >= 1 && batType.crew >= 1) {
                         if (batType.cat === 'buildings' || batType.cat === 'devices') {
                             if (rand.rand(1,3) === 1 || batType.cat === 'buildings') {
                                 targetTile = bat.tileId;
