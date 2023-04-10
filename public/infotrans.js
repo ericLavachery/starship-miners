@@ -204,7 +204,7 @@ function calcVolume(bat,batType) {
     let batVolume;
     if (Object.keys(batType).length >= 1) {
         if (batType.skills.includes('prefab')) {
-            batVolume = batType.squadSize*batType.squads*batType.crew*2.4;
+            batVolume = batType.squadSize*batType.squads*batType.crew*3.8;
         } else if (bat.citoyens >= 1 && batType.skills.includes('varsquad')) {
             batVolume = bat.citoyens*2.4;
         } else {

@@ -2752,7 +2752,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","camo","ranger","datt","defense","strong","extraction","scrapmorph","cleaning","selfmedic","dynamite","fret","fweight","barda","conscont","heroap","herorange","autohero"],
+        "skills":["a_mid","fouille","fortif","camo","ranger","datt","defense","strong","extraction","scrapmorph","cleaning","selfmedic","dynamite","fret","fweight","barda","conscont","infraz","routes","heroap","herorange","autohero"],
         "mediCost":8,
         "mecanoCost":7,
         "mining":{

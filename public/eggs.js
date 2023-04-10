@@ -1120,10 +1120,13 @@ function aliensCount() {
     return aliensNums;
 };
 
-function webSpawns() {
+function webSpawns(all) {
     let hasBlob = false;
     let theBlob = {};
-    if (hasAlien('Spiderblob')) {
+    if (all) {
+        alienOccupiedTileList();
+        playerOccupiedTileList();
+    } else if (hasAlien('Spiderblob')) {
         hasBlob = true;
         theBlob = getAlienByName('Spiderblob');
         alienOccupiedTileList();
@@ -1132,14 +1135,16 @@ function webSpawns() {
     zone.forEach(function(tile) {
         if (tile.web) {
             let chance = 10;
-            if (hasBlob) {
+            if (all) {
+                chance = 1;
+            } else if (hasBlob) {
                 let distance = calcDistance(theBlob.tileId,tile.id);
                 if (distance <= 5) {
                     chance = 3;
                 }
             }
             if (rand.rand(1,chance) === 1) {
-                if (hasBlob) {
+                if (hasBlob || all) {
                     if (!alienOccupiedTiles.includes(tile.id)) {
                         if (!playerOccupiedTiles.includes(tile.id)) {
                             alienWebSpawn(tile.id,'Rejetons');

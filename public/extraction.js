@@ -1043,6 +1043,9 @@ function addAlienRes(bat,isWiped) {
         }
         if (batType.skills.includes('boss')) {
             playerInfos.objectifs[batType.kind] = 'detruit';
+            if (batType.name === 'Spiderblob') {
+                webSpawns(true);
+            }
         }
     }
 };

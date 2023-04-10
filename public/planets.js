@@ -513,7 +513,7 @@ function getWebCanonTiles(cprov,cblob) {
         if (tile.id != theTile) {
             let distance = calcDistance(tile.id,theTile);
             if (distance <= 2) {
-                let chance = 10-(distance*distance)-distance;
+                let chance = 10+(cblob*4)-(distance*distance)-distance;
                 if (rand.rand(1,10) <= chance) {
                     canonTiles.push(tile.id);
                     tile.web = true;

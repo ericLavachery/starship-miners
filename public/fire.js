@@ -1254,8 +1254,11 @@ function attack(melee,init) {
     // instakill
     if (!targetBatType.skills.includes('nokill')) {
         if (selectedBat.tags.includes('kill') && selectedWeap.isPrec && totalDamage >= 30) {
-            if (targetBatType.class === 'C' || targetBatType.class === 'B' || targetBatType.class === 'G' || targetBatType.kind === 'egg3') {
+            if (targetBatType.class === 'C' || targetBatType.class === 'G') {
                 targetBat.squadsLeft = 0;
+            } else if (targetBatType.class === 'B' || targetBatType.class === 'Z' || targetBatType.kind === 'egg3') {
+                targetBat.squadsLeft = 0;
+                selectedBat.tags.push('nokill');
             } else if (targetBatType.class === 'A') {
                 if (rand.rand(1,6) <= targetBatType.rarity) {
                     targetBat.squadsLeft = 0;

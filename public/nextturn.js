@@ -164,7 +164,7 @@ function nextTurn() {
     });
     killAlienList();
     checkEggsDrop();
-    webSpawns();
+    webSpawns(false);
     spawns();
     spawnSound();
     if (showMini) {
@@ -1536,9 +1536,11 @@ function tagsEffect(bat,batType) {
     }
     // MUD
     if (bat.tags.includes('mud')) {
-        if (batType.moveCost < 90) {
+        if (batType.cat != 'buildings') {
             bat.apLeft = bat.apLeft-bat.ap;
-            if (batType.skills.includes('ranger') || batType.skills.includes('caterp') || hasEquip(bat,['e-ranger'])) {
+            if (batType.moveCost < 90) {
+                bat.apLeft = bat.apLeft+Math.ceil(bat.ap/2);
+            } else if (batType.skills.includes('ranger') || batType.skills.includes('caterp') || hasEquip(bat,['e-ranger'])) {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3*2));
             } else if (hasEquip(bat,['chenilles'])) {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/2));

@@ -1238,7 +1238,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","fouille","noguet","prefab","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","w3range","infrako","bigprot","wdev","fullaploss"],
+        "skills":["b_dev","fouille","noguet","prefab","phat","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","w3range","infrako","bigprot","wdev","fullaploss"],
         "mecanoCost":12,
         "fuzz":6,
         "deathFx":"explo1"
@@ -1316,7 +1316,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","fouille","noguet","prefab","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","w3range","infrako","bigprot","wdev","fullaploss"],
+        "skills":["b_dev","fouille","noguet","prefab","phat","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","w3range","infrako","bigprot","wdev","fullaploss"],
         "mecanoCost":12,
         "fuzz":6,
         "deathFx":"explo1"
@@ -1434,7 +1434,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","fouille","prefab","noshow","defense","routes","flash","badcrewsave","recupcit","badcrewsave","recupres","maycamo","bigprot","wdev"],
+        "skills":["b_dev","fouille","prefab","phat","noshow","defense","routes","flash","badcrewsave","recupcit","badcrewsave","recupres","maycamo","bigprot","wdev"],
         "mecanoCost":10,
         "fuzz":3.5,
         "deathFx":"explo1"
@@ -1874,7 +1874,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","nobld","infrako","noaploss","nostation","mdev","prefab","recupres","landerfab","mustcontrol"],
+        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","nobld","infrako","noaploss","nostation","mdev","prefab","phat","recupres","landerfab","mustcontrol"],
         "fuzz":6,
         "deathFx":"xplode"
     },

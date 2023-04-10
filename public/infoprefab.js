@@ -229,7 +229,10 @@ function prefabCost(pusherType,prefabType,construct) {
 function calcPrefabWeight(batType) {
     let prefabWeight = 0;
     if (batType.skills.includes('prefab')) {
-        prefabWeight = Math.round(batType.squads*batType.squadSize*batType.hp/4);
+        prefabWeight = Math.round(batType.squads*batType.squadSize*batType.hp/4*batType.armor/8);
+        if (batType.skills.includes('phat')) {
+            prefabWeight = Math.round(prefabWeight*2);
+        }
     }
     return prefabWeight;
 };

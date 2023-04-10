@@ -417,7 +417,12 @@ function batListElement(bat,batType,idOfLander) {
             $('#be'+bat.id).append('<span class="listRes vert">('+bat.chief+')</span>');
         }
     }
-    $('#be'+bat.id).append('<span class="listRes gff" title="Volume">('+batVolume+')</span>');
+    if (batType.skills.includes('prefab')) {
+        let batWeight = calcPrefabWeight(batType);
+        $('#be'+bat.id).append('<span class="listRes gff" title="Volume">('+batVolume+'/'+batWeight+')</span>');
+    } else {
+        $('#be'+bat.id).append('<span class="listRes gff" title="Volume">('+batVolume+')</span>');
+    }
     let bxp = Math.round(bat.xp);
     let vetIcon = '';
     let army = '';

@@ -8,8 +8,20 @@ function seveso(tileId,fromMissile) {
                     let distance = calcDistance(bat.tileId,tileId);
                     if (distance <= 1) {
                         bat.tags.push('poison');
+                        if (bat.apLeft >= 1) {
+                            bat.apLeft = Math.floor(bat.apLeft/3);
+                        }
+                        bat.apLeft = bat.apLeft-8;
                         if (fromMissile) {
                             bat.tags.push('poison');
+                            bat.tags.push('poison');
+                            bat.apLeft = bat.apLeft-8;
+                            if (batType.class === 'C' || batType.class === 'B' || batType.class === 'Z') {
+                                bat.squadsLeft = bat.squadsLeft-1;
+                                if (bat.squadsLeft === 0) {
+                                    bat.squadsLeft = 1;
+                                }
+                            }
                         }
                     }
                 }
@@ -19,13 +31,23 @@ function seveso(tileId,fromMissile) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
             let batType = getBatType(bat);
-            if (!bat.tags.includes('zombie') && batType.cat === 'infantry' && (!batType.skills.includes('mutant') || playerInfos.comp.ca < 3)) {
+            if (!bat.tags.includes('zombie') && batType.cat === 'infantry') {
                 if (bat.tileId != tileId) {
                     let distance = calcDistance(bat.tileId,tileId);
                     if (distance <= 1) {
                         bat.tags.push('poison');
+                        if (bat.apLeft >= 1) {
+                            bat.apLeft = Math.floor(bat.apLeft/3);
+                        }
+                        bat.apLeft = bat.apLeft-8;
                         if (fromMissile) {
                             bat.tags.push('poison');
+                            bat.tags.push('poison');
+                            bat.apLeft = bat.apLeft-8;
+                            bat.squadsLeft = bat.squadsLeft-1;
+                            if (bat.squadsLeft === 0) {
+                                bat.squadsLeft = 1;
+                            }
                         }
                     }
                 }
