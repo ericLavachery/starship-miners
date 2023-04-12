@@ -735,7 +735,7 @@ function getAway(myBat,fromTileId,blob) {
         if (!blob) {
             warning('Répulsion',myBat.type+' a pris la fuite...',false,getAwayTile);
         } else {
-            warning('Vomissure',myBat.type+' a dû fuir pour ne pas être digéré par la vomissure de l\'oeuf.',false,getAwayTile);
+            warning('Vomissure',myBat.type+' a dû fuir pour ne pas être digéré par la vomissure.',false,getAwayTile);
         }
     } else {
         if (!blob) {

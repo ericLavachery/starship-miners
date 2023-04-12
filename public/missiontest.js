@@ -217,7 +217,7 @@ function SlotConstructor(theName,theGear) {
 function putMissionStats() {
     let mType = getMissionType(zone[0].number);
     playerInfos.gang = 'rednecks';
-    playerInfos.gLevel = Math.ceil(mType.pa*2.2)+4-playerInfos.gMode;
+    playerInfos.gLevel = Math.ceil((mType.pa*2)+4-playerInfos.gMode);
     let quinze = 0;
     let seize = 0;
     let dixsept = 0;

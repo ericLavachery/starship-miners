@@ -510,6 +510,22 @@ function energyCreation(energyCreated) {
     return energyCreated;
 };
 
+function spinsCreation(spinsCreated) {
+    let komp = (playerInfos.comp.energ*2)+(playerInfos.comp.vsp*2)+playerInfos.comp.mat+playerInfos.comp.tele+playerInfos.comp.det-(playerInfos.comp.tri*2.5);
+    console.log('komp---------------------------------------------------------- '+komp);
+    if (komp < 0) {komp = 0;}
+    const sciNum = bataillons.filter((obj) => obj.type === 'Chercheurs').length;
+    komp = (komp+sciNum)*sciNum;
+    if (playerInfos.comp.mat < 2 || sciNum === 0) {
+        spinsCreated = 0;
+    } else {
+        spinsCreated = spinsCreated*(komp)/78;
+    }
+    if (spinsCreated < 0) {spinsCreated = 0;}
+    console.log('spinsCreated----------------------------------------------------------- '+spinsCreated);
+    return spinsCreated;
+};
+
 function scrapCreation(scrapCreated) {
     let triComp = playerInfos.comp.tri;
     if (playerInfos.bldList.includes('Recyclab')) {

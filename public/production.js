@@ -1,4 +1,4 @@
-function prodDrop(bat,batType,prod) {
+function prodDrop(bat,batType,prod,rnd) {
     droppedProd = prod;
     droppedProd = droppedProd*bat.squadsLeft/batType.squads;
     if (bat.apLeft < bat.ap-4) {
@@ -9,7 +9,9 @@ function prodDrop(bat,batType,prod) {
             droppedProd = droppedProd*(50-bat.soins)/50;
         }
     }
-    droppedProd = Math.ceil(droppedProd);
+    if (rnd) {
+        droppedProd = Math.ceil(droppedProd);
+    }
     return droppedProd;
 };
 
@@ -80,7 +82,7 @@ function geoProd(bat,batType) {
         }
         let energyProd = Math.ceil(magmaHere/2*3)+(tileHeat*10);
         energyProd = energyCreation(energyProd);
-        energyProd = prodDrop(bat,batType,energyProd);
+        energyProd = prodDrop(bat,batType,energyProd,false);
         energyProd = Math.ceil(energyProd/10);
         resAddToBld('Energie',energyProd,bat,batType,false);
         if (!playerInfos.onShip) {
@@ -121,7 +123,7 @@ function cramProd(bat,batType,time,sim,quiet) {
         }
         message = message+key+':<span class="rose">-'+conso+'</span><br>';
         energyProd = energyCreation(crameur.prod*time);
-        energyProd = prodDrop(bat,batType,energyProd);
+        energyProd = prodDrop(bat,batType,energyProd,true);
         modWeekRes('Energie',energyProd);
         if (!sim) {
             resAdd('Energie',energyProd);
@@ -207,6 +209,7 @@ function gasProd(bat,batType) {
                 if (hasEquip(bat,['g2cryo'])) {
                     fullProd = fullProd*2;
                 }
+                fullProd = prodDrop(bat,batType,fullProd,false);
                 if (fullProd < 1) {
                     let prodChance = Math.floor(100*fullProd);
                     if (rand.rand(1,100) <= prodChance) {
@@ -217,7 +220,6 @@ function gasProd(bat,batType) {
                 } else {
                     fullProd = Math.round(fullProd);
                 }
-                fullProd = prodDrop(bat,batType,fullProd);
                 if (fullProd >= 1) {
                     resAddToBld(key,fullProd,bat,batType,false);
                     if (minedThisTurn[key] === undefined) {
@@ -323,8 +325,8 @@ function solarProd(bat,batType,time,sim,quiet) {
                 }
                 energyProd = Math.ceil(energyProd*zone[0].ensol/150);
             }
+            energyProd = prodDrop(bat,batType,energyProd,false);
             energyProd = energyCreation(energyProd);
-            energyProd = prodDrop(bat,batType,energyProd);
             if (playerInfos.onShip) {
                 modWeekRes('Energie',energyProd);
             }
@@ -383,8 +385,8 @@ function solarPanel(bat,batType) {
         if (hasEquip(bat,['psol'])) {
             energyProd = Math.round(energyProd/2);
         }
+        energyProd = prodDrop(bat,batType,energyProd,false);
         energyProd = energyCreation(energyProd);
-        energyProd = prodDrop(bat,batType,energyProd);
         if (energyProd < 1) {
             energyProd = 1;
         }
@@ -492,7 +494,7 @@ function triProd(bat,batType,time,sim,quiet) {
             }
             if (resProd >= 1) {
                 resProd = scrapRecup(resProd);
-                resProd = prodDrop(bat,batType,resProd);
+                resProd = prodDrop(bat,batType,resProd,true);
                 if (hasEquip(bat,['prodboost'])) {
                     resProd = Math.round(resProd*1.5);
                 }
@@ -602,15 +604,25 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                     let key = entry[0];
                     let value = entry[1];
                     let fullProd = value*time;
-                    if (hasEquip(bat,['prodboost'])) {
+                    if (hasEquip(bat,['prodboost']) && key != 'Spins') {
                         fullProd = fullProd*2;
                     }
                     if (playerInfos.onShip) {
-                        fullProd = Math.ceil(fullProd/prodVM);
-                    } else {
-                        fullProd = Math.ceil(fullProd);
+                        fullProd = fullProd/prodVM;
                     }
-                    fullProd = prodDrop(bat,batType,fullProd);
+                    fullProd = prodDrop(bat,batType,fullProd,false);
+                    if (key === 'Spins') {
+                        fullProd = spinsCreation(fullProd);
+                    }
+                    if (key === 'Energie') {
+                        fullProd = energyCreation(fullProd);
+                    }
+                    if (key === 'Scrap') {
+                        fullProd = scrapCreation(fullProd);
+                        if (playerInfos.onShip) {
+                            fullProd = fullProd/5;
+                        }
+                    }
                     if (fullProd < 1) {
                         let prodChance = Math.floor(100*fullProd);
                         if (rand.rand(1,100) <= prodChance) {
@@ -622,15 +634,6 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                         fullProd = Math.round(fullProd);
                     }
                     if (fullProd >= 1) {
-                        if (key === 'Energie') {
-                            fullProd = energyCreation(fullProd);
-                        }
-                        if (key === 'Scrap') {
-                            fullProd = scrapCreation(fullProd);
-                            if (playerInfos.onShip) {
-                                fullProd = Math.ceil(fullProd/5);
-                            }
-                        }
                         // resAdd(key,fullProd);
                         if (playerInfos.onShip) {
                             modWeekRes(key,fullProd);

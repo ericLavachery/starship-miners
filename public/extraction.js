@@ -269,7 +269,7 @@ function scrapMorphing(bat,batType,minedScrap,tile) {
             }
         }
         if (resProd >= 1) {
-            resProd = prodDrop(bat,batType,resProd);
+            resProd = prodDrop(bat,batType,resProd,true);
             resAddToBld(res.name,resProd,bat,batType,true);
             if (minedThisTurn[res.name] === undefined) {
                 minedThisTurn[res.name] = resProd;

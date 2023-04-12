@@ -2362,7 +2362,7 @@
         "bldReq":["Usine d'armement","Centre de com"],
         "compReq":{"det":2,"bal":2,"mat":2,"explo":2,"robo":1,"arti":1},
         "altCompReq":{"det":2,"bal":2,"mat":2,"explo":2,"cyber":2,"arti":1},
-        "costs":{"Explosifs":300,"Nanite":300,"Plastanium":60,"Fer":120,"Scrap":60,"Carbone":120,"Aluminium":60,"Titane":60,"Rhodium":45,"Silicium":20,"Cuivre":20,"Electros":60,"Batteries":30,"Nickel":30,"Spins":30},
+        "costs":{"Explosifs":300,"Nanite":300,"Plastanium":60,"Fer":120,"Scrap":60,"Carbone":120,"Aluminium":60,"Titane":60,"Rhodium":45,"Silicium":20,"Cuivre":20,"Electros":60,"Batteries":30,"Nickel":30,"Spins":50},
         "fabTime":150
     },
     {
@@ -2716,7 +2716,7 @@
         "bldCost":"Laboratoire",
         "compReq":{"det":1,"ca":1},
         "upkeep":{"Energie":12,"Eau":7,"Végétaux":6,"Huile":2.5,"Cuivre":1,"Carbone":1,"Cobalt":0.5},
-        "prod":{"Drogues":4,"Electros":1,"Scrap":5},
+        "prod":{"Drogues":4,"Electros":1,"Scrap":5,"Spins":0.1},
         "costs":{"Compo1":310,"Compo2":280,"Compo3":290,"Eau":1500,"Energie":2400,"Huile":1500,"Carbone":2000,"Phosphore":1500,"Calcium":1000,"Or":1500,"Platine":1500,"Silicium":750,"Zinc":1500,"Bore":1500,"Chlore":2000,"Argon":2000,"Hélium":750,"Atium":250,"Germium":150,"Mephitis":150,"Bossium":50,"Electros":600,"Batteries":300},
         "fabTime":600,
         "slots":6

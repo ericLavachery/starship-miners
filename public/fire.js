@@ -1157,7 +1157,7 @@ function attack(melee,init) {
     if (selectedWeap.ammo.includes('necro')) {
         if (!targetBat.tags.includes('necro')) {
             if (targetBatType.cat === 'infantry' && !targetBat.tags.includes('zombie')) {
-                if (totalDamage >= 10+(playerInfos.comp.ca*2)) {
+                if (totalDamage >= 10+(playerInfos.comp.ca*2) || selectedBatType.name === 'Necroblob') {
                     targetBat.tags.push('necro');
                     targetBat.tags.push('necro');
                     targetBat.tags.push('necro');
@@ -1237,6 +1237,9 @@ function attack(melee,init) {
     }
     if (selectedWeap.ammo === 'web-true' && targetBatType.cat != 'aliens') {
         trueWeb();
+    }
+    if (selectedWeap.ammo === 'storm-true' && targetBatType.cat != 'aliens') {
+        blobStormThis();
     }
     let inDanger = checkInDanger(targetBat,targetBatType);
     if (inDanger) {
@@ -2087,7 +2090,7 @@ function defense(melee,init) {
     if (targetWeap.ammo.includes('necro')) {
         if (!selectedBat.tags.includes('necro')) {
             if (selectedBatType.cat == 'infantry' && !selectedBat.tags.includes('zombie')) {
-                if (totalDamage >= 10+(playerInfos.comp.ca*2)) {
+                if (totalDamage >= 10+(playerInfos.comp.ca*2) || targetBatType.name === 'Necroblob') {
                     selectedBat.tags.push('necro');
                     selectedBat.tags.push('necro');
                     selectedBat.tags.push('necro');

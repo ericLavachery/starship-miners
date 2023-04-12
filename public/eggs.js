@@ -1288,7 +1288,12 @@ function spawns() {
                 coconStats.volc = true;
             } else if (bat.type === 'Vomissure' && bat.tags.includes('bmorph')) {
                 bat.tags.push('morph');
+            } else if (bat.type === 'Necroblob' && rand.rand(1,6) >= bat.squadsLeft) {
+                vomiSpawn(bat);
             } else if (bat.type === 'Dragons' && aliens.length < maxAliens && aliensNums.firebugs < Math.round(maxPonte/1.5)) {
+                alienSpawn(bat,'Firebugs');
+            } else if (bat.type === 'Dragonblob' && aliens.length < maxAliens && aliensNums.firebugs < maxPonte*2) {
+                alienSpawn(bat,'Firebugs');
                 alienSpawn(bat,'Firebugs');
             } else if (bat.type === 'Bigheads' && aliens.length < maxAliens && aliensNums.escarbots < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Escarbots');

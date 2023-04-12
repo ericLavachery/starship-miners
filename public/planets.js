@@ -396,6 +396,51 @@ function stormThis(batId) {
     showMap(zone,true);
 };
 
+function blobStormThis() {
+    playSound('meteor-blob',0.4);
+    let tile = getTile(targetBat);
+    blobMeteorImpact(tile);
+    // killBatList();
+    showMap(zone,true);
+};
+
+function blobMeteorImpact(tile) {
+    if (tile.ruins) {
+        delete tile.ruins;
+        delete tile.sh;
+        delete tile.rt;
+    }
+    if (tile.infra != undefined) {
+        if (tile.infra === 'Débris') {
+            delete tile.infra;
+        }
+        let wipeChance = 100-(playerInfos.comp.const*playerInfos.comp.const*3)-(playerInfos.comp.def*playerInfos.comp.def*6);
+        // if (tile.infra === 'Miradors') {
+        //     wipeChance = wipeChance;
+        // }
+        if (tile.infra === 'Palissades') {
+            wipeChance = wipeChance+10;
+        }
+        if (tile.infra === 'Remparts') {
+            wipeChance = wipeChance-25;
+        }
+        if (tile.infra === 'Murailles') {
+            wipeChance = wipeChance-40;
+        }
+        // if (tile.infra === 'Terriers') {
+        //     wipeChance = wipeChance;
+        // }
+        if (rand.rand(1,100) <= wipeChance) {
+            delete tile.infra;
+        }
+    }
+    tile.crat = true;
+    stormDamage(targetBat,targetBatType,true,false,true);
+    if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('transorbital')) {
+        delete tile.crat;
+    }
+};
+
 function webCanon(canonTiles) {
     playSound('web-fall',0);
     warning('Canon alien','',false,canonTiles[0],false);
@@ -1239,4 +1284,43 @@ function unDarkVision(bat,batType) {
             }
         }
     });
+};
+
+function missionStartAdj(misNum) {
+    let mType = getMissionType(misNum);
+    if (mType.name.includes('Boss')) {
+        let bossName = 'Blob';
+        if (mType.name === 'Boss Spider') {
+            bossName = 'Spiderblob';
+        }
+        if (mType.name === 'Boss Larve') {
+            bossName = 'Skygrub';
+        }
+        if (mType.name === 'Boss Swarm') {
+            bossName = 'Necroblob';
+        }
+        if (mType.name === 'Boss Bug') {
+            bossName = 'Dragonblob';
+        }
+        let bossBat = getAlienByName(bossName);
+        let nearNav = -1;
+        let farNav = -1;
+        zone.forEach(function(tile) {
+            if (tile.nav) {
+                let distance = calcDistance(bossBat.tileId,tile.id);
+                if (distance <= 40) {
+                    nearNav = tile.id;
+                } else if (distance >= 50) {
+                    farNav = tile.id;
+                }
+            }
+        });
+        if (nearNav >= 0 && farNav >= 0) {
+            let nearNavBat = getZoneBatByTileId(nearNav);
+            let nearNavBatType = getBatType(nearNavBat);
+            if (nearNavBatType.skills.includes('transorbital')) {
+                zone[0].meip = zone[0].meip+2;
+            }
+        }
+    }
 };

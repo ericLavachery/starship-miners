@@ -113,6 +113,37 @@ function alienWeaponSelect() {
             weapUsed = 2;
         }
     }
+    if (selectedBatType.name === 'Necroblob') {
+        let blobRange = 12;
+        let blobTerrain = getTerrain(selectedBat);
+        if (blobTerrain === 'H') {
+            blobRange = 14;
+        } else if (blobTerrain === 'M') {
+            blobRange = 15;
+        }
+        let infInRange = false;
+        let mecInRange = false;
+        bataillons.forEach(function(bat) {
+            if (!infInRange || !mecInRange) {
+                if (bat.loc === "zone" && bat.fuzz > -2) {
+                    let distance = calcDistance(selectedBat.tileId,bat.tileId);
+                    if (distance <= blobRange) {
+                        let batType = getBatType(bat);
+                        if (batType.cat === 'infantry' && !bat.tags.includes('necro')) {
+                            infInRange = true;
+                        } else {
+                            mecInRange = true;
+                        }
+                    }
+                }
+            }
+        });
+        if (!infInRange && mecInRange) {
+            weapUsed = 2;
+        } else if (infInRange && !mecInRange) {
+            weapUsed = 1;
+        }
+    }
     if (weapUsed === 2) {
         selectedWeap = JSON.parse(JSON.stringify(selectedBatType.weapon2));
         selectedWeap = weaponAdj(selectedWeap,selectedBat,'w2');

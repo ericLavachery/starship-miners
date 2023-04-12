@@ -828,7 +828,7 @@ function chenilProd(bat,batType,time,sim,quiet) {
             } else {
                 let dogChance = Math.ceil(time/2);
                 dogChance = Math.ceil(dogChance*(playerInfos.comp.med+12)/12*(playerInfos.comp.ordre+12)/12);
-                dogChance = prodDrop(bat,batType,dogChance);
+                dogChance = prodDrop(bat,batType,dogChance,true);
                 console.log('dogChance='+dogChance);
                 if (rand.rand(1,100) <= dogChance) {
                     console.log('DOOOOOOOOOOOOGS');
