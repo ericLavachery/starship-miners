@@ -413,6 +413,13 @@ function showRes(tileId) {
             }
         }
     }
+    if (playerInfos.pseudo === 'Mapedit') {
+        if (tile.cocon != undefined) {
+            if (tile.cocon) {
+                mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/coconSpot.png"></div>';
+            }
+        }
+    }
     if (playerInfos.showedTiles.includes(tileId)) {
         if (tileId === 1830) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/showCenterTile.png"></div>';

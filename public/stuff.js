@@ -225,93 +225,7 @@ function getGangFactors() {
 };
 
 function levelUp(bat,batType) {
-    if (batType.skills.includes('autohero')) {
-        if (bat.tags.includes('schef')) {
-            tagDelete(bat,'schef');
-            bat.tags.push('hero');
-        }
-        if (bat.tags.includes('vet')) {
-            tagDelete(bat,'vet');
-            bat.tags.push('hero');
-        }
-    }
-    let oldGrade = getGrade(bat,batType);
-    bat.xp = bat.xp.toFixedNumber(2);
-    if (bat.xp >= levelXP[4]) {
-        bat.vet = 4;
-    } else if (bat.xp >= levelXP[3]) {
-        bat.vet = 3;
-    } else if (bat.xp >= levelXP[2]) {
-        bat.vet = 2;
-    } else if (bat.xp >= levelXP[1]) {
-        bat.vet = 1;
-    } else {
-        bat.vet = 0;
-    }
-    if (!bat.tags.includes('vet') && !bat.tags.includes('schef') && !bat.tags.includes('hero')) {
-        let grade = getGrade(bat,batType);
-        if (playerInfos.comp.ordre === 3) {
-            if (grade === 'Lieutenant') {
-                if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && batType.crew >= 1) || batType.skills.includes('souschef')) {
-                    heroUp(bat,batType,grade);
-                }
-            }
-            if (grade === 'Général') {
-                heroUp(bat,batType,grade);
-            }
-        }
-        if (grade != oldGrade) {
-            if (grade === 'Lieutenant') {
-                if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && batType.crew >= 1) || batType.skills.includes('souschef')) {
-                    heroUp(bat,batType,grade);
-                }
-            }
-            if (grade === 'Sergent' && rand.rand(1,3) === 1) {
-                if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && batType.crew >= 1) || batType.skills.includes('souschef')) {
-                    heroUp(bat,batType,grade);
-                }
-            }
-            if (grade === 'Général') {
-                heroUp(bat,batType,grade);
-            }
-        }
-    }
-};
-
-function heroUp(bat,batType,grade) {
-    let mayChef = false;
-    if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('penitbat') && !batType.skills.includes('brigands') && !batType.skills.includes('garde') && batType.crew >= 1 && !bat.tags.includes('outsider')) || batType.skills.includes('souschef')) {
-        mayChef = true;
-    }
-    let mayHero = false;
-    if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('garde') && batType.crew >= 1) || batType.skills.includes('souschef')) {
-        mayHero = true;
-    }
-    let chefNum = getChefNum();
-    if (grade === 'Sergent') {
-        if (chefNum === 0 && mayChef) {
-            bat.tags.push('schef');
-        } else {
-            if (rand.rand(1,chefNum*2) === 1 && mayChef) {
-                bat.tags.push('schef');
-            }
-        }
-    } else if (grade === 'Lieutenant') {
-        if (chefNum === 0 && mayChef) {
-            bat.tags.push('schef');
-        } else if (chefNum === 1 && mayHero) {
-            bat.tags.push('hero');
-        } else {
-            if (rand.rand(1,chefNum+1) === 1 && mayChef) {
-                bat.tags.push('schef');
-            } else if (rand.rand(1,5) <= 2 && mayHero) {
-                bat.tags.push('hero');
-            } else if (rand.rand(1,2) === 1 && mayChef && playerInfos.comp.ordre >= 2) {
-                bat.tags.push('schef');
-            } else {
-                bat.tags.push('vet');
-            }
-        }
+    if (playerInfos.pseudo != 'Mapedit') {
         if (batType.skills.includes('autohero')) {
             if (bat.tags.includes('schef')) {
                 tagDelete(bat,'schef');
@@ -322,11 +236,101 @@ function heroUp(bat,batType,grade) {
                 bat.tags.push('hero');
             }
         }
-    } else if (grade === 'Général') {
-        if (rand.rand(1,5) <= 2) {
-            bat.tags.push('hero');
+        let oldGrade = getGrade(bat,batType);
+        bat.xp = bat.xp.toFixedNumber(2);
+        if (bat.xp >= levelXP[4]) {
+            bat.vet = 4;
+        } else if (bat.xp >= levelXP[3]) {
+            bat.vet = 3;
+        } else if (bat.xp >= levelXP[2]) {
+            bat.vet = 2;
+        } else if (bat.xp >= levelXP[1]) {
+            bat.vet = 1;
         } else {
-            bat.tags.push('vet');
+            bat.vet = 0;
+        }
+        if (!bat.tags.includes('vet') && !bat.tags.includes('schef') && !bat.tags.includes('hero')) {
+            let grade = getGrade(bat,batType);
+            if (playerInfos.comp.ordre === 3) {
+                if (grade === 'Lieutenant') {
+                    if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+                        heroUp(bat,batType,grade);
+                    }
+                }
+                if (grade === 'Général') {
+                    heroUp(bat,batType,grade);
+                }
+            }
+            if (grade != oldGrade) {
+                if (grade === 'Lieutenant') {
+                    if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+                        heroUp(bat,batType,grade);
+                    }
+                }
+                if (grade === 'Sergent' && rand.rand(1,3) === 1) {
+                    if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+                        heroUp(bat,batType,grade);
+                    }
+                }
+                if (grade === 'Général') {
+                    heroUp(bat,batType,grade);
+                }
+            }
+        }
+    }
+};
+
+function heroUp(bat,batType,grade) {
+    if (playerInfos.pseudo != 'Mapedit') {
+        let mayChef = false;
+        if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('penitbat') && !batType.skills.includes('brigands') && !batType.skills.includes('garde') && batType.crew >= 1 && !bat.tags.includes('outsider')) || batType.skills.includes('souschef')) {
+            mayChef = true;
+        }
+        let mayHero = false;
+        if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('garde') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+            mayHero = true;
+        }
+        let chefNum = getChefNum();
+        if (grade === 'Sergent') {
+            if (chefNum === 0 && mayChef) {
+                bat.tags.push('schef');
+            } else {
+                if (rand.rand(1,chefNum*2) === 1 && mayChef) {
+                    bat.tags.push('schef');
+                }
+            }
+        } else if (grade === 'Lieutenant') {
+            if (chefNum === 0 && mayChef) {
+                bat.tags.push('schef');
+            } else if (chefNum === 1 && mayHero) {
+                bat.tags.push('hero');
+            } else {
+                if (rand.rand(1,chefNum+1) === 1 && mayChef) {
+                    bat.tags.push('schef');
+                } else if (rand.rand(1,5) <= 2 && mayHero) {
+                    bat.tags.push('hero');
+                } else if (rand.rand(1,2) === 1 && mayChef && playerInfos.comp.ordre >= 2) {
+                    bat.tags.push('schef');
+                } else {
+                    bat.tags.push('vet');
+                }
+            }
+            if (batType.skills.includes('autohero')) {
+                if (bat.tags.includes('schef')) {
+                    tagDelete(bat,'schef');
+                    bat.tags.push('hero');
+                }
+                if (bat.tags.includes('vet')) {
+                    tagDelete(bat,'vet');
+                    bat.tags.push('hero');
+                }
+            }
+        } else if (grade === 'Général') {
+            if (rand.rand(1,5) <= 2) {
+                bat.tags.push('hero');
+            } else {
+                bat.tags.push('vet');
+            }
         }
     }
 };
@@ -1194,6 +1198,18 @@ function getLastBatCreated() {
     return myBat;
 };
 
+function getLastAlienCreated() {
+    let myBat = {};
+    let highestId = -1;
+    aliens.slice().reverse().forEach(function(bat) {
+        if (bat.id > highestId) {
+            highestId = bat.id;
+            myBat = bat;
+        }
+    });
+    return myBat;
+};
+
 function getAlienByName(name) {
     let bat = {};
     let index = aliens.findIndex((obj => obj.type == name));
@@ -1550,4 +1566,9 @@ function entre(num,min,max) {
         if (number > max) {number = max;}
     }
     return number;
+};
+
+function hasHowMany(arr,prop,value) {
+    const numX = arr.filter((obj) => obj[prop] == value).length;
+    return numX;
 };

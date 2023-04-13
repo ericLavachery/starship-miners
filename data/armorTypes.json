@@ -555,7 +555,7 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":4,"ca":3},
         "factor":"thp",
-        "costs":{"Carbone":9,"Azote":3,"Dunium":6,"Wingium":3,"Mendium":6}
+        "costs":{"Carbone":9,"Azote":3,"Dunium":6,"Wingium":3,"Mendium":6,"Spins":0.03}
     },
     {
         "name":"rhodu",
@@ -567,6 +567,28 @@
         "compReq":{"mat":3,"ind":3},
         "factor":"thp",
         "costs":{"Carbone":9,"Azote":3,"Dunium":6,"Rhodium":4}
+    },
+    {
+        "name":"duneg-vsp",
+        "cat":"armor",
+        "armor":2,
+        "ap":0,
+        "skills":["resistall"],
+        "bldReq":["Centre de recherches"],
+        "compReq":{"mat":2,"ca":2,"vsp":2},
+        "factor":"thp",
+        "costs":{"Carbone":12,"Azote":3,"Dunium":2,"Egidium":0.2,"Spins":0.03}
+    },
+    {
+        "name":"autorep-vsp",
+        "cat":"armor",
+        "armor":3,
+        "ap":0,
+        "skills":["resistall","autorepair"],
+        "bldReq":["Centre de recherches"],
+        "compReq":{"mat":4,"ca":3,"vsp":3},
+        "factor":"thp",
+        "costs":{"Carbone":12,"Azote":3,"Dunium":2,"Wingium":1,"Mendium":2,"Spins":0.08}
     },
     {
         "name":"lunette",
@@ -1736,6 +1758,17 @@
         "autoComp":[],
         "factor":"rofpow",
         "costs":{"Fer":90,"Tungstène":60,"Huile":10,"Scrap":3,"Carbone":6,"Silicium":3}
+    },
+    {
+        "name":"lasersat",
+        "cat":"equip",
+        "skills":[],
+        "info":"Commande pour le satéllite laser",
+        "bldReq":["Centre de recherches","QG"],
+        "compReq":{"energ":1,"det":2,"vsp":2},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Carbone":400,"Titane":100,"Cobalt":75,"Cuivre":125,"Platine":100,"Silicium":200,"Electros":125,"Batteries":50,"Spins":75}
     },
     {
         "name":"megafret",

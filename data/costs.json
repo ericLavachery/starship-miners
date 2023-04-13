@@ -1197,7 +1197,7 @@
         "levels":{"rednecks":12,"blades":12,"bulbos":12,"drogmulojs":12,"tiradores":12,"detruas":12,"brasier":12},
         "bldReq":["Chaîne de montage"],
         "compReq":{"ind":1},
-        "altCompReq":{"const":2},
+        "altCompReq":{"const":1},
         "costs":{"Fer":140,"Scrap":244,"Carbone":216,"Aluminium":40,"Moteurs":186,"Tungstène":120,"Electros":70,"Batteries":70,"Compo2":292,"Silicium":24,"Huile":84,"Mendium":104,"Azote":88,"Eau":960,"Zinc":180,"Cuivre":120},
         "deploy":{"Fuel":130,"Energie":220,"Mendium":15,"Huile":55},
         "fabTime":105,

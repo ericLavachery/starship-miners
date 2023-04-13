@@ -522,6 +522,11 @@ function allowedArmors(unit) {
         protection.push('aucun');
         protection.push('acier');
     }
+    if (unit.skills.includes('b_lander')) {
+        protection.push('aucun');
+        protection.push('duneg-vsp');
+        protection.push('autorep-vsp');
+    }
     return protection;
 };
 
@@ -626,8 +631,10 @@ function playerSkillsUTChanges() {
                     unit.costs['Batteries'] = Math.ceil(unit.costs['Batteries']*90/vspDiv);
                 }
             }
+            if (playerInfos.comp.vsp >= 3) {
+                unit.weapon2.kit = false;
+            }
         }
-
         // CONSTRUCTION
         if (playerInfos.comp.const >= 1) {
             if (unit.cat === 'buildings' || unit.cat === 'devices') {
@@ -639,8 +646,8 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.const >= 1 && unit.cat === 'buildings') {
             unit.hp = unit.hp+Math.round(unit.hp/15*playerInfos.comp.const);
         }
-        if (playerInfos.comp.const >= 1 && playerInfos.comp.ind >= 1 && unit.kind === 'zero-construction') {
-            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-(playerInfos.comp.const*2);
+        if (playerInfos.comp.const >= 1 && playerInfos.comp.ind >= 1 && unit.kind === 'zero-construction' && unit.skills.includes('constructeur')) {
+            unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-((playerInfos.comp.const-1)*(playerInfos.comp.const-1))-(playerInfos.comp.const-1);
             if (unit.levels[playerInfos.gang] < 1) {
                 unit.levels[playerInfos.gang] = 1;
             }
@@ -704,6 +711,12 @@ function playerSkillsUTChanges() {
                     if (unit.levels[playerInfos.gang] < 1) {
                         unit.levels[playerInfos.gang] = 1;
                     }
+                }
+            }
+            if (unit.name === 'Mécanos') {
+                unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-playerInfos.comp.trans;
+                if (unit.levels[playerInfos.gang] < 1) {
+                    unit.levels[playerInfos.gang] = 1;
                 }
             }
         }

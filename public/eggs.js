@@ -588,23 +588,57 @@ function dropEgg(alienUnit,theArea) {
     playerOccupiedTileList();
     let dropTile = eggDropTile(alienUnit,theArea);
     if (dropTile >= 0) {
-        if (alienUnit === 'Oeuf voilé') {
-            putBat(dropTile,0,0,'invisible');
-        } else if (alienUnit === 'Vomissure') {
-            putBat(dropTile,0,0,'bmorph');
-        } else if (alienUnit === 'Cocon' && theArea === 'edge') {
-            putBat(dropTile,0,0,'crys');
-        } else {
-            putBat(dropTile,0,0);
+        let eggSquadsLeft = 6;
+        let endo = 'endommagé';
+        console.log('NUMLASETSAT *************************************************** = '+numLaserSat);
+        if (numLaserSat >= 1) {
+            let satAccuracy = playerInfos.comp.det-2;
+            let satPower = playerInfos.comp.energ-1;
+            eggSquadsLeft = rand.rand(0,8-satAccuracy)-satPower;
+            if (alienUnit === 'Oeuf') {
+                numLaserSat = numLaserSat-1;
+            } else if (alienUnit === 'Coque') {
+                eggSquadsLeft = eggSquadsLeft+3;
+                endo = 'endommagée';
+                numLaserSat = numLaserSat-1;
+            } else if (alienUnit === 'Cocon') {
+                eggSquadsLeft = eggSquadsLeft+4;
+                numLaserSat = numLaserSat-1;
+            } else {
+                eggSquadsLeft = 6;
+            }
+            console.log('eggSquadsLeft = '+eggSquadsLeft);
+            if (eggSquadsLeft > 6) {eggSquadsLeft = 6;}
         }
         if (alienUnit.includes('Oeuf') || alienUnit === 'Coque' || alienUnit === 'Cocon') {
             eggDropCount = eggDropCount+1;
         }
-        if (!coconStats.dome && playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
-            playerInfos.eggPause = true;
-            console.log('PAUSE! '+playerInfos.eggsKilled+' eggs killed');
-            if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
-                warning('Nouvelle pause',playerInfos.eggsKilled+' oeufs tués.');
+        if (eggSquadsLeft <= 0) {
+            warning('<span class="rq3">Satéllite Laser</span>','<span class="vio">Oeuf détruit.</span>');
+            numLaserSat = numLaserSat-1;
+        } else {
+            if (alienUnit === 'Oeuf voilé') {
+                putBat(dropTile,0,0,'invisible');
+            } else if (alienUnit === 'Vomissure') {
+                putBat(dropTile,0,0,'bmorph');
+            } else if (alienUnit === 'Cocon' && theArea === 'edge') {
+                putBat(dropTile,0,0,'crys');
+            } else {
+                putBat(dropTile,0,0);
+            }
+            if (eggSquadsLeft < 6) {
+                let newEggBat = getLastAlienCreated();
+                newEggBat.squadsLeft = eggSquadsLeft;
+                if (newEggBat.squadsLeft < 6) {
+                    warning('Satéllite Laser',newEggBat.type+' '+endo+'.',false,dropTile,false);
+                }
+            }
+            if (!coconStats.dome && playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
+                playerInfos.eggPause = true;
+                console.log('PAUSE! '+playerInfos.eggsKilled+' eggs killed');
+                if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
+                    warning('Nouvelle pause',playerInfos.eggsKilled+' oeufs tués.');
+                }
             }
         }
     }
@@ -662,6 +696,16 @@ function eggDropTile(eggName,theArea) {
             }
         }
     }
+    if (eggName === 'Cocon') {
+        if (playerInfos.cocons === 0) {
+            if (zone[0].number >= 50) {
+                const numCoconTargets = zone.filter((obj) => obj.cocon === true).length;
+                if (numCoconTargets >= 1) {
+                    area = 'coctarg';
+                }
+            }
+        }
+    }
     if (area === 'encounter' && encounterTileId < 0) {
         area = 'nedge';
     }
@@ -675,6 +719,34 @@ function eggDropTile(eggName,theArea) {
                     }
                 }
             }
+        }
+    }
+    // COCON TARGET
+    if (area === 'coctarg') {
+        let shufZone = _.shuffle(zone);
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                if (tile.cocon) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        theTile = tile.id;
+                    } else {
+                        targetTile = tile.id;
+                    }
+                }
+            }
+        });
+        if (theTile < 0) {
+            shufZone.forEach(function(tile) {
+                if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                    let distance = calcDistance(targetTile,tile.id);
+                    if (distance <= 3) {
+                        theTile = tile.id;
+                    }
+                }
+            });
+        }
+        if (theTile < 0) {
+            area = 'any';
         }
     }
     // ANY

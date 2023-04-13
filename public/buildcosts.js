@@ -375,7 +375,7 @@ function getEquipDeployFactor(unit,equip) {
             } else if (equip.factor === 'rofpow') {
                 deployFactor = rofpow/250;
             } else if (equip.factor === 'thp') {
-                if (equip.name === 'bld-camo') {
+                if (equip.name === 'bld-camo' || equip.name.includes('-vsp')) {
                     deployFactor = Math.round(Math.sqrt(thp)*1.6);
                 } else {
                     deployFactor = thp/120;

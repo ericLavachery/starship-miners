@@ -84,9 +84,10 @@ function mapEditWindow() {
     selectStuff('LevelChange','levelUp','Changer le niveau d\'expérience');
     selectStuff('MakeChief','chef','Sous-chef (si niveau 3+)');
     selectStuff('MakeHero','hero','Héro (si niveau 4)');
+    selectStuff('CitChange','lessCit2','Changer le nombre de personnes (dans un bataillon de citoyens ou criminels)');
     // <br>
     selectStuff('Bleed','bleed','Blesser le bataillon');
-    selectStuff('CitChange','lessCit2','Changer le nombre de citoyens ou criminels');
+    selectStuff('CoconTarget','coconTarg','Définir la case où tombe le premier cocon');
     // Landing
     selectStuff('Lander','lander','Point d\'atterrissage lander (ou navette)');
     selectStuff('Navette','navette','Point d\'atterrissage navette seulemment');
@@ -765,6 +766,16 @@ function clickEdit(tileId) {
                     }
                 } else {
                     delete tile.nav;
+                }
+            } else {
+                warning('Achtung!','Trop près du bord de la carte.');
+            }
+        } else if (mped.sinf === 'CoconTarget') {
+            if (!bord) {
+                if (tile.cocon === undefined) {
+                    tile.cocon = true;
+                } else {
+                    delete tile.cocon;
                 }
             } else {
                 warning('Achtung!','Trop près du bord de la carte.');
