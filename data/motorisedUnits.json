@@ -2385,7 +2385,7 @@
             "ravitBld":"Arsenal"
         },
         "protection":[],
-        "equip":["aucun","carrousel1","longtom1","g2motor","snorkel"],
+        "equip":["aucun","carrousel1","longtom1","g2motor","snorkel","saclos"],
         "log3eq":["carrousel1"],
         "autoEq":["snorkel"],
         "moveCost":3,
@@ -2482,7 +2482,7 @@
         "weapon":{
             "name":"Missiles Vanguard",
             "cost":6,
-            "range":12,
+            "range":10,
             "noise":4,
             "noMelee":true,
             "noFly":true,
@@ -2517,8 +2517,9 @@
             "ravitBld":"Arsenal"
         },
         "protection":[],
-        "equip":["aucun","g2motor","e-phare","w2-sunburst"],
+        "equip":["aucun","g2motor","e-phare","w2-sunburst","saclos"],
         "log3eq":["e-phare"],
+        "autoEq":["saclos"],
         "moveCost":7,
         "maxFlood":0,
         "maxScarp":1,

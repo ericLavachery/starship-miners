@@ -781,10 +781,10 @@ function turnInfo() {
         isStartZone = true;
     }
     numLaserSat = hasHowMany(bataillons,'eq','lasersat');
+    numLaserSat = entre(numLaserSat,0,1);
     let satROF = playerInfos.comp.vsp-rand.rand(1,2);
     satROF = entre(satROF,1,2);
     numLaserSat = numLaserSat*satROF;
-    numLaserSat = entre(numLaserSat,1,3);
     planetThumb();
     checkNeiTurn();
     let citLoss = getCitLoss();

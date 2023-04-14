@@ -813,6 +813,11 @@ function playerSkillsUTChanges() {
             }
         }
         // BALISTIQUE / ARTIlLERIE
+        if (playerInfos.comp.arti === 2) {
+            if (unit.kind === 'zero-artillerie') {
+                unit.weapon2.kit = false;
+            }
+        }
         if (playerInfos.comp.bal === 3 || playerInfos.comp.arti === 2) {
             if (playerInfos.comp.arti >= 1) {
                 let rangeMult = 1;
@@ -828,12 +833,20 @@ function playerSkillsUTChanges() {
                 }
                 if (Object.keys(unit.weapon).length >= 3) {
                     if (unit.weapon.isArt) {
-                        unit.weapon.range = Math.ceil(unit.weapon.range*rangeMult);
+                        if (unit.weapon.name.includes('Missile')) {
+                            unit.weapon.range = Math.ceil(unit.weapon.range*rangeMult);
+                        } else {
+                            unit.weapon.range = Math.ceil(unit.weapon.range*rangeMult/1.07);
+                        }
                     }
                 }
                 if (Object.keys(unit.weapon2).length >= 3) {
                     if (unit.weapon2.isArt) {
-                        unit.weapon2.range = Math.ceil(unit.weapon2.range*rangeMult);
+                        if (unit.weapon2.name.includes('Missile')) {
+                            unit.weapon2.range = Math.ceil(unit.weapon2.range*rangeMult);
+                        } else {
+                            unit.weapon2.range = Math.ceil(unit.weapon2.range*rangeMult/1.07);
+                        }
                     }
                 }
             }

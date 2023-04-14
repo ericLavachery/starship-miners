@@ -2524,6 +2524,14 @@ function weaponAdj(weapon,bat,wn) {
             }
         }
     }
+    // SACLOS
+    if (hasEquip(bat,['saclos'])) {
+        if (thisWeapon.name.includes('Missile')) {
+            if (thisWeapon.range < 11) {thisWeapon.range = 11;}
+            thisWeapon.range = Math.ceil((thisWeapon.range-10)*1.6)+10;
+            if (thisWeapon.range < 14) {thisWeapon.range = 14;}
+        }
+    }
     // Forêt (range)
     let overInfra = false;
     if (infra === 'Miradors' || infra === 'Murailles' || infra === 'Remparts') {

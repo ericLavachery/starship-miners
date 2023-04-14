@@ -421,9 +421,9 @@
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":[],
-        "equip":["aucun","landerwkit","w2-lcomet","w2-lmit","megafret","megatrans","siland","lifepod","e-mecano","e-medic","lasersat"],
+        "equip":["aucun","landerwkit","w2-lcomet","w2-lmit","megafret","megatrans","siland","lifepod","e-mecano","e-medic","lasersat","saclos"],
         "log3eq":["landerwkit"],
-        "autoEq":["megatrans","e-mecano","e-medic"],
+        "autoEq":["megatrans","e-mecano","e-medic","saclos"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -494,9 +494,9 @@
             "ravitBld":"Arsenal"
         },
         "protection":[],
-        "equip": ["aucun","w2-lcomet","megatrans","respod","lifepod","e-mecano","e-medic","lasersat"],
+        "equip": ["aucun","w2-lcomet","megatrans","respod","lifepod","e-mecano","e-medic","lasersat","saclos"],
         "log3eq":[],
-        "autoEq":["megatrans","e-mecano","e-medic"],
+        "autoEq":["megatrans","e-mecano","e-medic","saclos"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
@@ -678,7 +678,7 @@
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":[],
-        "equip":["aucun","megafret","megatrans","siland","landerwkit","w2-lcomet","w2-lmit","e-control","respod","lifepod","bld-camo","e-mecano","e-medic"],
+        "equip":["aucun","megafret","megatrans","siland","landerwkit","w2-lcomet","w2-lmit","e-control","respod","lifepod","bld-camo","e-mecano","e-medic","saclos"],
         "log3eq":["landerwkit"],
         "autoEq":["megatrans","siland","bld-camo","e-mecano","e-medic"],
         "moveCost":99,
@@ -1202,7 +1202,7 @@
         "weapon2":{
             "name":"Missiles Vanguard",
             "cost":10,
-            "range":12,
+            "range":10,
             "noise":4,
             "noMelee":true,
             "noFly":true,
@@ -1232,7 +1232,7 @@
             "ammo":["uranium"]
         },
         "protection":[],
-        "equip":["aucun","w2-vanguard","hangard"],
+        "equip":["aucun","w2-vanguard","hangard","saclos"],
         "log3eq":[],
         "moveCost":99,
         "maxFlood":-1,
@@ -1310,7 +1310,7 @@
             "ammo":["uranium"]
         },
         "protection":[],
-        "equip":["aucun","w2-thunder","hangard"],
+        "equip":["aucun","w2-thunder","hangard","saclos"],
         "log3eq":[],
         "moveCost":99,
         "maxFlood":-1,

@@ -1573,6 +1573,19 @@
         "costs":{"Carbone":6,"Fer":12,"Aluminium":9}
     },
     {
+        "name":"saclos",
+        "cat":"equip",
+        "skills":[],
+        "info":"Portée++",
+        "bldReq":["Usine d'armement","QG"],
+        "compReq":{"det":3,"bal":3,"arti":2},
+        "altCompReq":{"det":4,"bal":2,"explo":3,"arti":2},
+        "autoComp":["det",5],
+        "factor":"one",
+        "costs":{"Carbone":150,"Titane":50,"Rhodium":50,"Silicium":50,"Cuivre":25,"Electros":50,"Batteries":25,"Nickel":25},
+        "deploy":{"Plastanium":15,"Carbone":30,"Titane":15,"Rhodium":5,"Silicium":15,"Cuivre":10,"Electros":10,"Batteries":5,"Nickel":10}
+    },
+    {
         "name":"longtom",
         "cat":"equip",
         "skills":[],

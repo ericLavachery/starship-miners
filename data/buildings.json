@@ -1861,9 +1861,9 @@
             "ravitBld":"Atelier"
         },
         "protection":[],
-        "equip":["aucun","w2-arti","w2-ggun","w2-treb","psol2","isophon","respod","garage","prodboost"],
+        "equip":["aucun","w2-arti","w2-ggun","w2-treb","psol2","isophon","respod","garage","prodboost","saclos"],
         "log3eq":["psol2"],
-        "autoEq":["garage","isophon"],
+        "autoEq":["garage","isophon","saclos"],
         "moveCost":99,
         "maxFlood":-1,
         "maxScarp":-1,
