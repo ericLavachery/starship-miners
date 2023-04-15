@@ -293,6 +293,100 @@ function alienCanon() {
             }
         }
     }
+    // CANON NECRO
+    if (playerInfos.objectifs.swarm === 'actif' && !domeProtect) {
+        let canonTiles = getNecroCanonTiles();
+        necroCanon(canonTiles,false);
+        if (hasAlien('Necroblob')) {
+            canonTiles = getNecroCanonTiles();
+            necroCanon(canonTiles,true);
+        }
+        showMap(zone,true);
+    }
+};
+
+function necroCanon(canonTiles,silent) {
+    if (!silent) {
+        playSound('web-fall',0);
+    }
+    warning('Canon alien','',false,canonTiles[0],false);
+    aliens.forEach(function(bat) {
+        if (canonTiles.includes(bat.tileId)) {
+            if (!bat.tags.includes('moss')) {
+                bat.tags.push('moss');
+            }
+        }
+    });
+};
+
+function getNecroCanonTiles() {
+    let canonTiles = [];
+    alienOccupiedTileList();
+    let theTile = -1;
+    let targetTile = -1;
+    let testTile = -1;
+    let mostALiens = 0;
+    if (aliens.length >= 1) {
+        let shufAliens = _.shuffle(aliens);
+        shufAliens.forEach(function(bat) {
+            if (targetTile < 0) {
+                if (!bat.tags.includes('moss')) {
+                    let closeAliens = howManyCloseAliens(bat.tileId,3);
+                    if (closeAliens > mostALiens) {
+                        if (closeAliens < 4) {
+                            testTile = bat.tileId;
+                        } else {
+                            targetTile = bat.tileId;
+                        }
+                        mostALiens = closeAliens;
+                    }
+                }
+            }
+        });
+        if (targetTile < 0) {
+            targetTile = testTile;
+        }
+    }
+    if (targetTile < 0) {
+        targetTile = rand.rand(0,3599);
+    }
+    canonTiles.push(targetTile);
+    zone.forEach(function(tile) {
+        if (tile.id != targetTile) {
+            let distance = calcDistance(tile.id,targetTile);
+            if (distance <= 3) {
+                let chance = 15-(distance*distance)-distance;
+                if (rand.rand(1,16) <= chance) {
+                    canonTiles.push(tile.id);
+                    tile.moist = true;
+                }
+            }
+        }
+    });
+    return canonTiles;
+};
+
+function howManyCloseAliens(tileId,dist) {
+    if (alienOccupiedTiles.length < aliens.length) {
+        alienOccupiedTileList();
+        console.log('done');
+    }
+    let howMany = 0;
+    let theTile = getTileById(tileId);
+    let minX = theTile.x-dist;
+    let maxX = theTile.x+dist;
+    let minY = theTile.y-dist;
+    let maxY = theTile.y+dist;
+    let visMap = _.filter(zone, function(tile) {
+        return (tile.x >= minX && tile.x <= maxX && tile.y >= minY && tile.y <= maxY);
+    });
+    visMap.forEach(function(tile) {
+        if (alienOccupiedTiles.includes(tile.id)) {
+            howMany++;
+        }
+    });
+    console.log('HOW MANY ??????????????????????????????????????????????????????? = '+howMany);
+    return howMany;
 };
 
 function meteorCanon() {

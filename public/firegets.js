@@ -618,11 +618,33 @@ function batDeathEffect(bat,quiet,gain,title,body) {
             }
         }
     }
-    if (bat.team === 'aliens' && bat.tags.includes('scion')) {
-        let unitIndex = alienUnits.findIndex((obj => obj.name === 'Scions'));
-        conselUnit = alienUnits[unitIndex];
-        conselAmmos = ['xxx','xxx','xxx','xxx'];
-        putBat(bat.tileId,0,0);
+    if (bat.team === 'aliens') {
+        if (bat.tags.includes('scion')) {
+            let unitIndex = alienUnits.findIndex((obj => obj.name === 'Scions'));
+            conselUnit = alienUnits[unitIndex];
+            conselAmmos = ['xxx','xxx','xxx','xxx'];
+            putBat(bat.tileId,0,0);
+        }
+        if (playerInfos.objectifs.swarm != 'none') {
+            let isMoist = false;
+            if (bat.tags.includes('moss')) {
+                isMoist = true;
+            } else if (bat.type != 'Necros') {
+                let tile = getTile(bat);
+                if (tile.moist) {
+                    isMoist = true;
+                }
+            }
+            if (isMoist) {
+                let batType = getBatType(bat);
+                if (batType.kind != 'game') {
+                    let unitIndex = alienUnits.findIndex((obj => obj.name === 'Necros'));
+                    conselUnit = alienUnits[unitIndex];
+                    conselAmmos = ['xxx','xxx','xxx','xxx'];
+                    putBat(bat.tileId,0,0);
+                }
+            }
+        }
     }
     if (bat.team != 'aliens') {
         $('#unitInfos').empty();

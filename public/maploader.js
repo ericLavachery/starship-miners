@@ -395,6 +395,12 @@ function showRes(tileId) {
             mapIndicators = mapIndicators+'<div class="webz"><img src="/static/img/units/web'+webNum+'.png"></div>';
         } else if (tile.crat) {
             mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/crater.png"></div>';
+        } else if (tile.moist) {
+            let webNum = tile.seed;
+            if (webNum > 6) {
+                webNum = webNum-6;
+            }
+            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/moss'+webNum+'.png"></div>';
         }
     }
     if (playerInfos.mapTurn < 2 || playerInfos.pseudo === 'Mapedit') {

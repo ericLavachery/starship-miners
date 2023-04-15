@@ -74,7 +74,12 @@ function mapEditWindow() {
     selectStuff('Garde','alienPDM2','Garde alien (va rester dans le périmètre)');
     selectStuff('FullShield','alienShield','Cet alien a un bouclier permanent');
     selectStuff('FastMorph','alienFastMorph','Cet alien se transforme plus rapidement (Veilleurs se transforment en Ruche vers le tour 12 / Oeufs, Coques et Vomissures se transforment 2x plus vite)');
-    selectStuff('Toile','webIcon','Toile (Canon Web)');
+    let thisMissionType = getMissionType(zone[0].number);
+    if (thisMissionType.name === 'Boss Swarm') {
+        selectStuff('Moist','moistIcon','Spores (Canon Necro)');
+    } else {
+        selectStuff('Toile','webIcon','Toile (Canon Web)');
+    }
     // <br>
     selectStuff('NoMove','batNoMove2','Bataillon immobilisé (non contrôlé par le joueur)');
     selectStuff('Outsider','batOutsider2','Bataillon outsider (si démantelé, pourrait donner des criminels)');
@@ -701,6 +706,12 @@ function clickEdit(tileId) {
                 tile.web = true;
             } else {
                 delete tile.web;
+            }
+        } else if (mped.sinf === 'Moist') {
+            if (tile.moist === undefined) {
+                tile.moist = true;
+            } else {
+                delete tile.moist;
             }
         } else if (mped.sinf === 'AmmoPack') {
             addAmmoToTile(tile);
