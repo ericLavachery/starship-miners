@@ -993,6 +993,12 @@ function nomVisible(bat) {
             nv = 'Crysalide';
         }
     }
+    if (bat.type === 'Coque' && bat.tags.includes('permashield')) {
+        nv = 'Noyau';
+    }
+    if (bat.type === 'Oeuf' && bat.tags.includes('permashield')) {
+        nv = 'Ovule';
+    }
     if (nv === 'Vers' && playerInfos.comp.ca < 2) {
         nv = 'Asticots';
     }

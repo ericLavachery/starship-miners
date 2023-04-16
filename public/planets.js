@@ -331,14 +331,17 @@ function getNecroCanonTiles() {
         shufAliens.forEach(function(bat) {
             if (targetTile < 0) {
                 if (!bat.tags.includes('moss')) {
-                    let closeAliens = howManyCloseAliens(bat.tileId,3);
-                    if (closeAliens > mostALiens) {
-                        if (closeAliens < 4) {
-                            testTile = bat.tileId;
-                        } else {
-                            targetTile = bat.tileId;
+                    let batType = getBatType(bat);
+                    if (batType.kind != 'game') {
+                        let closeAliens = howManyCloseAliens(bat.tileId,3);
+                        if (closeAliens > mostALiens) {
+                            if (closeAliens < 4) {
+                                testTile = bat.tileId;
+                            } else {
+                                targetTile = bat.tileId;
+                            }
+                            mostALiens = closeAliens;
                         }
-                        mostALiens = closeAliens;
                     }
                 }
             }

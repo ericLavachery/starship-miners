@@ -535,6 +535,11 @@ function showAlien(bat) {
     let myKind = getEggKind(bat);
     // console.log('myKind='+myKind);
     let tagz = ' ';
+    let batShowedNum = unitsLeft;
+    if (batType.squads === 6 && batType.squadSize === 1) {
+        batShowedNum = 1;
+        tagz = tagz+'('+bat.squadsLeft+'/'+batType.squads+') ';
+    }
     if (batType.class === 'X') {
         tagz = tagz+myKind;
     }
@@ -611,9 +616,9 @@ function showAlien(bat) {
             $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
         }
     } else if (batType.kind === 'game') {
-        $('#b'+bat.tileId).append('<div class="gUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64" title="'+unitsLeft+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/gvet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
+        $('#b'+bat.tileId).append('<div class="gUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64" title="'+batShowedNum+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/gvet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
     } else {
-        $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64" title="'+unitsLeft+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
+        $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64" title="'+batShowedNum+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
     }
 };
 
