@@ -341,24 +341,6 @@ function resetComp() {
     return comp;
 };
 
-function alienUnitsChanges() {
-    alienUnits.forEach(function(unit) {
-        unit.hp = unit.hp+alienHPBase;
-        if (Object.keys(unit.weapon).length >= 3) {
-            if (unit.weapon.isMelee) {
-                unit.weapon.rof = Math.ceil(unit.weapon.rof*alienMeleeROF);
-            }
-            unit.weapon.accuracy = unit.weapon.accuracy+alienHitBase;
-        }
-        if (Object.keys(unit.weapon2).length >= 3) {
-            if (unit.weapon2.isMelee) {
-                unit.weapon2.rof = Math.ceil(unit.weapon2.rof*alienMeleeROF);
-            }
-            unit.weapon2.accuracy = unit.weapon2.accuracy+alienHitBase;
-        }
-    });
-};
-
 function allowedArmors(unit) {
     let protection = [];
     if (unit.skills.includes('a_light') || unit.skills.includes('a_mid') || unit.skills.includes('a_heavy')) {
@@ -530,8 +512,29 @@ function allowedArmors(unit) {
     return protection;
 };
 
+function alienUnitsChanges() {
+    // UTC for aliens
+    alienUnits.forEach(function(unit) {
+        unit.team = 'aliens';
+        unit.hp = Math.round(unit.hp*alienHPBase);
+        if (Object.keys(unit.weapon).length >= 3) {
+            if (unit.weapon.isMelee) {
+                unit.weapon.rof = Math.ceil(unit.weapon.rof*alienMeleeROF);
+            }
+            unit.weapon.accuracy = unit.weapon.accuracy+alienHitBase;
+        }
+        if (Object.keys(unit.weapon2).length >= 3) {
+            if (unit.weapon2.isMelee) {
+                unit.weapon2.rof = Math.ceil(unit.weapon2.rof*alienMeleeROF);
+            }
+            unit.weapon2.accuracy = unit.weapon2.accuracy+alienHitBase;
+        }
+    });
+};
+
 function playerSkillsUTChanges() {
     unitTypes.forEach(function(unit) {
+        unit.team = 'player';
         // WEAPON 2 ALT
         if (unit.weapon2alt != undefined) {
             if (unit.weapon2alt.gangs.includes(playerInfos.gang)) {

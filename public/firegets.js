@@ -250,6 +250,7 @@ function isHit(accuracy,minAccu,weapon,attBat,attBatType,defBat,defBatType,steal
     }
     if (toHit === 999) {
         toHit = hitChance;
+        console.log('accuracy='+accuracy+' minAccu='+minAccu+' stealth='+stealth+' cover='+cover+' speed='+speed+' shotDice='+shotDice);
         $('#report').append('<span class="report">Précision '+prec+' >> '+hitChance+'%</span><br><span class="report">Dégâts: </span>');
         // console.log('hitChance '+hitChance);
     }
@@ -280,7 +281,11 @@ function calcShotsRangeAdj(weapon,attBat,attBatType,defBat,defBatType) {
         }
     }
     if (weapon.name.includes('Psio')) {
-        shotsPerc = shotsPerc-Math.round(distance*7.5);
+        if (attBatType.skills.includes('boss')) {
+            shotsPerc = shotsPerc-Math.round(distance*3);
+        } else {
+            shotsPerc = shotsPerc-Math.round(distance*7.5);
+        }
     }
     // console.log('shotsPerc !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
     // console.log(shotsPerc);
@@ -291,7 +296,7 @@ function calcPrecRangeAdj(weapon,attBat,attBatType,defBat,defBatType) {
     let accurange = 0;
     let distance = calcDistance(attBat.tileId,defBat.tileId);
     if (distance === 0) {
-        if (attBatType.cat != 'aliens') {
+        if (attBatType.team === 'player') {
             if (weapon.range === 0) {
                 if (weapon.isMelee || weapon.noShield) {
                     if (!defBatType.weapon.isMelee) {
@@ -626,19 +631,34 @@ function batDeathEffect(bat,quiet,gain,title,body) {
             putBat(bat.tileId,0,0);
         }
         if (playerInfos.objectifs.swarm != 'none') {
-            let isMoist = false;
+            let morphNecro = false;
+            let morphFetid = false;
             if (bat.tags.includes('moss')) {
-                isMoist = true;
-            } else if (bat.type != 'Necros') {
+                if (bat.type != 'Necros') {
+                    morphNecro = true;
+                } else {
+                    morphFetid = true;
+                }
+            } else if (bat.type != 'Necros' && bat.type != 'Fétides') {
                 let tile = getTile(bat);
                 if (tile.moist) {
-                    isMoist = true;
+                    morphNecro = true;
+                    delete tile.moist;
                 }
             }
-            if (isMoist) {
+            if (morphNecro) {
                 let batType = getBatType(bat);
                 if (batType.kind != 'game') {
                     let unitIndex = alienUnits.findIndex((obj => obj.name === 'Necros'));
+                    conselUnit = alienUnits[unitIndex];
+                    conselAmmos = ['xxx','xxx','xxx','xxx'];
+                    putBat(bat.tileId,0,0);
+                }
+            }
+            if (morphFetid) {
+                let batType = getBatType(bat);
+                if (batType.kind != 'game') {
+                    let unitIndex = alienUnits.findIndex((obj => obj.name === 'Fétides'));
                     conselUnit = alienUnits[unitIndex];
                     conselAmmos = ['xxx','xxx','xxx','xxx'];
                     putBat(bat.tileId,0,0);
@@ -688,38 +708,40 @@ function addBodies(bat,batType,cits) {
 
 function newAlienKilled(batType,tileId) {
     if (!isStartZone) {
-        playerInfos.knownAliens.push(batType.name);
-        if (batType.class != 'C') {
-            playerInfos.gangXP = playerInfos.gangXP+batType.killXP;
-            if (batType.class === 'A' || batType.class === 'S' || batType.class === 'X') {
+        if (batType.cat === 'aliens') {
+            playerInfos.knownAliens.push(batType.name);
+            if (batType.class != 'C') {
                 playerInfos.gangXP = playerInfos.gangXP+batType.killXP;
-            }
-        }
-        let xpBonus = batType.killXP;
-        xpBonus = Math.floor(xpBonus*(playerInfos.comp.train+2)/4);
-        if (xpBonus >= 1) {
-            if (Object.keys(selectedBat).length >= 1) {
-                if (selectedBat.team === 'player') {
-                    if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
-                        selectedBat.xp = selectedBat.xp+xpBonus;
-                        selectedBatArrayUpdate();
-                    }
+                if (batType.class === 'A' || batType.class === 'S' || batType.class === 'X') {
+                    playerInfos.gangXP = playerInfos.gangXP+batType.killXP;
                 }
             }
-            bataillons.forEach(function(bat) {
-                if (bat.loc === "zone" || bat.loc === "trans") {
-                    let distance = calcDistance(tileId,bat.tileId);
-                    let batType = getBatType(bat);
-                    if (distance <= 4 || xpBonus >= 25) {
-                        if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
-                            bat.xp = bat.xp+xpBonus;
+            let xpBonus = batType.killXP;
+            xpBonus = Math.floor(xpBonus*(playerInfos.comp.train+2)/4);
+            if (xpBonus >= 1) {
+                if (Object.keys(selectedBat).length >= 1) {
+                    if (selectedBat.team === 'player') {
+                        if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
+                            selectedBat.xp = selectedBat.xp+xpBonus;
+                            selectedBatArrayUpdate();
                         }
                     }
                 }
-            });
-            warning('Alien inconnu tué : '+batType.name,'Toutes vos unités dans la zone ont gagné '+xpBonus+' points d\'expérience');
-        } else {
-            warning('Alien inconnu tué : '+batType.name,'');
+                bataillons.forEach(function(bat) {
+                    if (bat.loc === "zone" || bat.loc === "trans") {
+                        let distance = calcDistance(tileId,bat.tileId);
+                        let batType = getBatType(bat);
+                        if (distance <= 4 || xpBonus >= 25) {
+                            if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
+                                bat.xp = bat.xp+xpBonus;
+                            }
+                        }
+                    }
+                });
+                warning('Alien inconnu tué : '+batType.name,'Toutes vos unités dans la zone ont gagné '+xpBonus+' points d\'expérience');
+            } else {
+                warning('Alien inconnu tué : '+batType.name,'');
+            }
         }
     }
 };
@@ -1238,12 +1260,12 @@ function getStealth(bat) {
     if (zone[0].planet === 'Sarak') {
         batStealth = batStealth+5;
     }
-    if (tile.infra === 'Terriers' && batType.size < 9 && batType.cat != 'aliens') {
+    if (tile.infra === 'Terriers' && batType.size < 9 && batType.team === 'player') {
         batStealth = batStealth+4;
     } else if (tile.ruins) {
         batStealth = batStealth+2;
     }
-    if (batType.cat != 'aliens') {
+    if (batType.team === 'player') {
         if (isOnInfra(bat)) {
             if (playerInfos.comp.cam >= 2) {
                 batStealth = batStealth+3;
@@ -1282,7 +1304,7 @@ function getStealth(bat) {
             terBonus = terBonus+terrain.cover;
         }
     }
-    if (tile.infra === 'Terriers' && batType.size < 9 && batType.cat != 'aliens') {
+    if (tile.infra === 'Terriers' && batType.size < 9 && batType.team === 'player') {
         terBonus = (terBonus/3)+8;
     } else if (tile.ruins) {
         terBonus = (terBonus/3)+8;
@@ -2935,7 +2957,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
                 gmin = 0.5;
                 gmax = 0.85;
             }
-            if (batType.cat != 'aliens') {
+            if (batType.team === 'player') {
                 gmin = gmin+(playerInfos.comp.train/5);
                 gmax = gmax+(playerInfos.comp.train/5);
             }
@@ -2988,7 +3010,7 @@ function mirDestruction(weap,bat,batType,tile,teamOnMir,infraName) {
         } else {
             damage = Math.round(damage/5);
         }
-    } else if (batType.cat != 'aliens') {
+    } else if (batType.team === 'player') {
         damage = 0;
     }
     if (batType.size >= 25) {
@@ -3206,7 +3228,7 @@ function checkEscape(bat,batType) {
     escaping.speed = batType.speed-2;
     if (batType.skills.includes('escape')) {
         escaping.ok = true;
-        if (batType.cat != 'aliens') {
+        if (batType.team === 'player') {
             escaping.speed = batType.speed+bat.vet-4;
         } else {
             escaping.speed = batType.speed-2;
@@ -3218,7 +3240,7 @@ function checkEscape(bat,batType) {
             escaping.speed = escaping.speed+2;
         }
     }
-    if (batType.cat != 'aliens') {
+    if (batType.team === 'player') {
         if (!escaping.ok) {
             if (batType.skills.includes('heroescape') && bat.tags.includes('hero')) {
                 escaping.ok = true;
@@ -3396,7 +3418,7 @@ function getRealNoise(weap,batType) {
 };
 
 function realNoiseAlert(weap,batType,tileId) {
-    if (batType.cat != 'aliens') {
+    if (batType.team === 'player') {
         let realNoise = getRealNoise(weap,batType);
         if (realNoise >= 1) {
             let theChance = Math.round(realNoise*20);

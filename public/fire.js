@@ -70,7 +70,7 @@ function clickFire(tileId) {
 
 function combat(melee) {
     console.log('START COMBAT');
-    if (selectedBatType.cat === 'aliens') {
+    if (selectedBatType.team === 'aliens') {
         showEnemyBatInfos(selectedBat);
     }
     let selectedBatName = nomVisible(selectedBat);
@@ -575,7 +575,7 @@ function attack(melee,init) {
         } else if (selectedWeap.ammo.includes('flashbang')) {
             webDamage = rand.rand(20,30)-Math.floor(Math.sqrt(targetBatType.size));
         }
-        if (targetBatType.cat != 'aliens') {
+        if (targetBatType.team === 'player') {
             webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);
         }
         apDamage = apDamage+webDamage;
@@ -623,7 +623,7 @@ function attack(melee,init) {
             if (selectedWeap.isHot) {
                 infactor = 1.5;
             }
-            if (targetBat.tags.includes('resistfeu') && targetBatType.cat != 'aliens') {
+            if (targetBat.tags.includes('resistfeu') && targetBatType.team === 'player') {
                 infactor = 1;
             } else if (targetBatType.skills.includes('resistfeu') || targetBat.tags.includes('resistfeu')) {
                 infactor = Math.round(infactor/1.25);
@@ -874,7 +874,7 @@ function attack(melee,init) {
             gripFactor = 2;
         }
         let gripChance = ((selectedBat.squadsLeft*5)+gripbonus-(targetBat.vet*3))*gripFactor;
-        if (targetBatType.cat != 'aliens') {
+        if (targetBatType.team === 'player') {
             gripChance = Math.ceil(gripChance/(playerInfos.comp.ca+5)*7);
         }
         if (rand.rand(1,100 <= gripChance)) {
@@ -1157,7 +1157,7 @@ function attack(melee,init) {
     if (selectedWeap.ammo.includes('necro')) {
         if (!targetBat.tags.includes('necro')) {
             if (targetBatType.cat === 'infantry' && !targetBat.tags.includes('zombie')) {
-                if (totalDamage >= 10+(playerInfos.comp.ca*2) || selectedBatType.name === 'Necroblob') {
+                if (totalDamage >= 10+(playerInfos.comp.ca*2) || selectedBatType.skills.includes('necrotouch')) {
                     targetBat.tags.push('necro');
                     targetBat.tags.push('necro');
                     targetBat.tags.push('necro');
@@ -1235,10 +1235,10 @@ function attack(melee,init) {
     if (targetBatType.cat === 'aliens') {
         realNoiseAlert(selectedWeap,selectedBatType,selectedBat.tileId);
     }
-    if (selectedWeap.ammo === 'web-true' && targetBatType.cat != 'aliens') {
+    if (selectedWeap.ammo === 'web-true' && targetBatType.team === 'player') {
         trueWeb();
     }
-    if (selectedWeap.ammo === 'storm-true' && targetBatType.cat != 'aliens') {
+    if (selectedWeap.ammo === 'storm-true' && targetBatType.team === 'player') {
         blobStormThis();
     }
     let inDanger = checkInDanger(targetBat,targetBatType);
@@ -1668,7 +1668,7 @@ function defense(melee,init) {
         } else if (targetWeap.ammo.includes('flashbang')) {
             webDamage = rand.rand(20,30)-Math.floor(Math.sqrt(targetBatType.size));
         }
-        if (selectedBatType.cat != 'aliens') {
+        if (selectedBatType.team === 'player') {
             webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);
         }
         apDamage = apDamage+webDamage;
@@ -1708,7 +1708,7 @@ function defense(melee,init) {
             if (targetWeap.isHot) {
                 infactor = 1.5;
             }
-            if (selectedBat.tags.includes('resistfeu') && selectedBatType.cat != 'aliens') {
+            if (selectedBat.tags.includes('resistfeu') && selectedBatType.team === 'player') {
                 infactor = 1;
             } else if (selectedBatType.skills.includes('resistfeu') || selectedBat.tags.includes('resistfeu')) {
                 infactor = Math.round(infactor/1.25);
@@ -2090,7 +2090,7 @@ function defense(melee,init) {
     if (targetWeap.ammo.includes('necro')) {
         if (!selectedBat.tags.includes('necro')) {
             if (selectedBatType.cat == 'infantry' && !selectedBat.tags.includes('zombie')) {
-                if (totalDamage >= 10+(playerInfos.comp.ca*2) || targetBatType.name === 'Necroblob') {
+                if (totalDamage >= 10+(playerInfos.comp.ca*2) || targetBatType.skills.includes('necrotouch')) {
                     selectedBat.tags.push('necro');
                     selectedBat.tags.push('necro');
                     selectedBat.tags.push('necro');

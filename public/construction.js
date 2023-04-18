@@ -136,7 +136,7 @@ function bfconst(cat,triche,upgrade,retour) {
                 showkind = showkind.replace(/trans-/g,"");
                 $('#conUnitList').append('<br><a href="#gentils"><span class="constName or" id="kind-'+unit.kind+'">'+showkind+'</span></a><br>');
             }
-            if (conselUnit.id === unit.id && conselUnit.cat != 'aliens') {
+            if (conselUnit.id === unit.id && conselUnit.team === 'player') {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
             } else {
                 if (unit.levels[playerInfos.gang] <= 90) {
@@ -265,7 +265,7 @@ function bfconst(cat,triche,upgrade,retour) {
         let allALiensList = alienUnits.slice();
         let sortedAliensList = _.sortBy(_.sortBy(_.sortBy(allALiensList,'name'),'name'),'kind');
         sortedAliensList.forEach(function(unit) {
-            if (conselUnit.id === unit.id && conselUnit.cat === 'aliens') {
+            if (conselUnit.id === unit.id && conselUnit.team === 'aliens') {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
             } else {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle gfff"></i></span>');
@@ -339,7 +339,7 @@ function displayCosts(costs) {
 };
 
 function catColor(unit) {
-    if (unit.cat === 'aliens') {
+    if (unit.team === 'aliens') {
         if (unit.kind === 'bug') {
             return 'rose';
         }
@@ -351,6 +351,12 @@ function catColor(unit) {
         }
         if (unit.kind === 'swarm') {
             return 'jaune';
+        }
+        if (unit.kind === 'game') {
+            return 'ciel';
+        }
+        if (unit.cat === 'vehicles') {
+            return 'marine';
         }
     }
     if (unit.skills.includes('transorbital') && unit.name != 'Soute') {
@@ -1003,7 +1009,7 @@ function conselNeat() {
 function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
     // console.log('PUTBAT');
     constuctorBatId = selectedBat.id;
-    if (conselUnit.cat === 'aliens') {
+    if (conselUnit.team === 'aliens') {
         conselTriche = true;
     }
     if (show === undefined) {
@@ -1015,7 +1021,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
     if (Object.keys(conselUnit).length >= 1) {
         conselNeat();
         let costStatus = {};
-        if (conselUnit.cat != 'aliens') {
+        if (conselUnit.team === 'player') {
             costStatus = checkAllCosts(conselUnit,conselAmmos,true,true);
         } else {
             costStatus.ok = true;
@@ -1023,7 +1029,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
         }
         if (costStatus.ok || conselTriche || conselUpgrade != '') {
             // PAY COSTS !!!
-            if (conselUnit.cat != 'aliens') {
+            if (conselUnit.team === 'player') {
                 if (!conselTriche) {
                     // console.log('PAYEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER');
                     payUnitCost(conselUnit);
@@ -1045,7 +1051,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
             // console.log(conselUnit);
             let nextId;
             let team;
-            if (conselUnit.cat != 'aliens') {
+            if (conselUnit.team === 'player') {
                 if (bataillons.length >= 1) {
                     nextId = playerInfos.nextId;
                     playerInfos.nextId++;
@@ -1070,7 +1076,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
             newBat.typeId = conselUnit.id;
             newBat.team = team;
             newBat.creaTurn = playerInfos.mapTurn;
-            if (conselUnit.cat === 'aliens' && conselUnit.name != 'Cocon') {
+            if (conselUnit.team === 'aliens' && conselUnit.name != 'Cocon') {
                 newBat.creaTurn = newBat.creaTurn+rand.rand(0,2)-1;
             }
             newBat.loc = 'zone';
@@ -1127,7 +1133,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
             let gearStuff = getBatGearStuff(armorName,equipName,conselUnit);
             newBat.armor = gearStuff[0];
             newBat.ap = gearStuff[1];
-            if (conselUnit.cat === 'aliens') {
+            if (conselUnit.team === 'aliens') {
                 newBat.apLeft = Math.floor(newBat.ap/1.5);
                 newBat.oldapLeft = Math.floor(newBat.ap/1.5);
                 newBat.salvoLeft = conselUnit.maxSalvo;
@@ -1239,7 +1245,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
             }
             if (startTag != undefined) {
                 if (startTag != '') {
-                    if (conselUnit.cat === 'aliens') {
+                    if (conselUnit.team === 'aliens') {
                         if (Array.isArray(startTag)) {
                             newBat.tags = startTag;
                         } else if (startTag === 'follow') {
@@ -1275,7 +1281,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
             } else {
                 newBat.tags = [];
             }
-            if (conselUnit.cat === 'aliens' && conselUnit.moveCost < 90 && conselUnit.kind != 'game') {
+            if (conselUnit.team === 'aliens' && conselUnit.moveCost < 90 && conselUnit.kind != 'game') {
                 if (zone[0].flw != undefined) {
                     if (zone[0].flw) {
                         if (!conselUnit.skills.includes('errant') && !conselUnit.skills.includes('capbld') && !conselUnit.skills.includes('nocap') && !conselUnit.skills.includes('capmen')) {
@@ -1371,7 +1377,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
             }
             let gearTags = getBatGearTags(armorName,equipName,conselUnit);
             newBat.tags.push.apply(newBat.tags,gearTags);
-            if (!conselTriche && conselUnit.cat != 'aliens' && !playerInfos.onShip) {
+            if (!conselTriche && conselUnit.team === 'player' && !playerInfos.onShip) {
                 newBat.tags.push('construction');
             }
             if (conselUnit.skills.includes('hide') || (larveHIDE && conselUnit.kind === 'larve' && !conselUnit.skills.includes('fly') && !conselUnit.skills.includes('invisible'))) {

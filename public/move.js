@@ -168,7 +168,7 @@ function putTagAction(bat) {
 };
 
 function doneAction(bat) {
-    if (bat.cat != 'aliens') {
+    if (bat.team === 'player') {
         if (!bat.tags.includes('action')) {
             bat.tags.push('action');
         }
@@ -812,7 +812,7 @@ function terrainAccess(batId,targetTileId) {
                 }
             }
         }
-        if (batType.cat != 'aliens' && !access) {
+        if (batType.team === 'player' && !access) {
             if (zone[targetTileId].ruins) {
                 if (batType.skills.includes('nodry')) {
                     let unitTerrain = getTerrain(bat);

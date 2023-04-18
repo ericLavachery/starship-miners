@@ -772,7 +772,7 @@ function ambush(apCost) {
 
 function calcEmbushBonus(batType) {
     let embushBonus = 1.8;
-    if (batType.cat != 'aliens') {
+    if (batType.team === 'player') {
         embushBonus = embushBonus+(playerInfos.comp.train/6)+(playerInfos.comp.cam/2);
         if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
             embushBonus = embushBonus+0.3;
@@ -783,7 +783,7 @@ function calcEmbushBonus(batType) {
 
 function calcTiraBonus(batType) {
     let tiraBonus = 1.35;
-    if (batType.cat != 'aliens') {
+    if (batType.team === 'player') {
         tiraBonus = tiraBonus+(playerInfos.comp.train/10)+(playerInfos.comp.cam/10);
         if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
             tiraBonus = tiraBonus+0.2;

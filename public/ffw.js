@@ -104,22 +104,40 @@ function alienWeaponSelect() {
             weapUsed = 2;
         }
     }
-    if (selectedBatType.name === 'Torches' && selectedBat.tags.includes('invisible')) {
-        weapUsed = 1;
-    }
     if (selectedBatType.name === 'Surfeuses') {
         let tile = getTile(selectedBat);
         if (tile.terrain === 'S' || tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
             weapUsed = 2;
         }
     }
-    if (selectedBatType.name === 'Necroblob') {
-        let blobRange = 12;
+    if (selectedBatType.skills.includes('byebye')) {
+        let byeChance = 100-(100/(selectedBatType.squads-1)*(selectedBat.squadsLeft-1));
+        if (rand.rand(1,100) <= byeChance) {
+            weapUsed = 2;
+        } else {
+            weapUsed = 1;
+        }
+    }
+    if (selectedBatType.name === 'Torches' && selectedBat.tags.includes('invisible')) {
+        weapUsed = 1;
+    }
+    if (selectedBatType.skills.includes('wselect')) {
+        let blobRange = selectedBatType.weapon.range;
         let blobTerrain = getTerrain(selectedBat);
         if (blobTerrain === 'H') {
-            blobRange = 14;
+            if (selectedBatType.weapon.elevation >= 3) {
+                blobRange = blobRange+2;
+            } else if (selectedBatType.weapon.elevation >= 1) {
+                blobRange = blobRange+1;
+            }
         } else if (blobTerrain === 'M') {
-            blobRange = 15;
+            if (selectedBatType.weapon.elevation >= 3) {
+                blobRange = blobRange+3;
+            } else if (selectedBatType.weapon.elevation >= 2) {
+                blobRange = blobRange+2;
+            } else if (selectedBatType.weapon.elevation >= 1) {
+                blobRange = blobRange+1;
+            }
         }
         let infInRange = false;
         let mecInRange = false;

@@ -2035,7 +2035,7 @@
         "maxVeg":3,
         "skills":["a_heavy","fortif","fastguet","ranger","berserk","datt","undead","genhab","barda","camo","guerrilla","embuscade","herorage"],
         "fuzz":0,
-        "deathFx":"137036__pyrocamancer__beast-death"
+        "deathFx":"mutantdeath"
     },
     {
         "id":17,
@@ -3598,7 +3598,7 @@
         "maxVeg":3,
         "skills":["a_heavy","fouille","fortif","datt","slowreg","mutant","genhab2","maycamo","strong","souschef","herosalvo","lowstress","elite"],
         "fuzz":2,
-        "deathFx":"137036__pyrocamancer__beast-death"
+        "deathFx":"mutantdeath"
     },
     {
         "id":160,
@@ -3644,7 +3644,7 @@
         "maxVeg":3,
         "skills":["a_light","fouille","fortif","datt","camo","regeneration","rage","ranger","swim","snif","mutant","nofear","guerrilla","tirailleur","baddef","fastguet","resistpoison","heroescape","lowstress"],
         "fuzz":0,
-        "deathFx":"137036__pyrocamancer__beast-death"
+        "deathFx":"mutantdeath"
     },
     {
         "id":56,
@@ -4440,7 +4440,7 @@
         "maxVeg":3,
         "skills":["a_light","fouille","fortif","camo","regeneration","embuscade","cible","mutant","ranger","fastguet","guerrilla","baddef","brigands","escape","herorange","lowstress","w3range","elite"],
         "fuzz":0,
-        "deathFx":"137036__pyrocamancer__beast-death"
+        "deathFx":"mutantdeath"
     },
     {
         "id":77,
@@ -4502,7 +4502,7 @@
         "skills":["a_mid","fouille","fortif","datt","mutant","landmine","genhab2","berserk","undead","survivor","noaploss","resistall","defense","brigands","herosalvo","lowstress","elite"],
         "maxSkill":2,
         "fuzz":2,
-        "deathFx":"137036__pyrocamancer__beast-death"
+        "deathFx":"mutantdeath"
     },
     {
         "id":176,
@@ -4558,7 +4558,7 @@
         "maxVeg":3,
         "skills":["a_mid","fouille","fortif","datt","mutant","genhab2","nofear","noaploss","resistall","ranger","berserk","undead","survivor","defense","slowreg","strong","brigands","herorage","lowstress","elite"],
         "fuzz":2,
-        "deathFx":"137036__pyrocamancer__beast-death"
+        "deathFx":"mutantdeath"
     },
     {
         "id":78,
@@ -4618,7 +4618,7 @@
         "skills":["a_light","fouille","fortif","datt","fly","longshot","mutant","genhab3","escape","guerrilla","tirailleur","maycamo","herowc","herolasso"],
         "mediCost":15,
         "fuzz":1,
-        "deathFx":"137036__pyrocamancer__beast-death"
+        "deathFx":"mutantdeath"
     },
     {
         "id":249,
@@ -4678,7 +4678,7 @@
         "skills":["a_light","fouille","fortif","maycamo","datt","fly","longshot","mutant","genhab3","escape","guerrilla","tirailleur","herolasso"],
         "mediCost":15,
         "fuzz":3,
-        "deathFx":"137036__pyrocamancer__beast-death"
+        "deathFx":"mutantdeath"
     },
     {
         "id":85,
@@ -4754,7 +4754,7 @@
         "maxSkill":6,
         "transRes":180,
         "fuzz":1.5,
-        "deathFx":"144469__psychedelic-hands__robot-death"
+        "deathFx":"robodeath2"
     },
     {
         "id":86,
@@ -5180,7 +5180,7 @@
         "maxVeg":3,
         "skills":["a_cyb","fouille","fortif","datt","cyber","hardmove","resistall","kzin","herosalvo","herofortif","detrange","tank"],
         "fuzz":2.5,
-        "deathFx":"144469__psychedelic-hands__robot-death"
+        "deathFx":"robodeath2"
     },
     {
         "id":88,
@@ -5414,7 +5414,7 @@
         "maxVeg":3,
         "skills":["a_heavy","fortif","datt","nochef","robot","aifouille","aicamo","detrange","norepair","regroup"],
         "fuzz":1.5,
-        "deathFx":"195954__minian89__death-blood-splatter"
+        "deathFx":"mutantdeath"
     },
     {
         "id":82,
@@ -5467,7 +5467,7 @@
         "maxVeg":3,
         "skills":["a_rob","fortif","datt","sentinelle","robot","crange","decay","unemun","aifouille","lbot"],
         "fuzz":1,
-        "deathFx":"395378__skylar1146__machinepoweroff"
+        "deathFx":"robodeath"
     },
     {
         "id":136,
@@ -5529,7 +5529,7 @@
         "maxVeg":3,
         "skills":["a_rob","fortif","robot","crange","decay","baddef","light","aicible","aifouille","aicamo","detrange","lbot"],
         "fuzz":1,
-        "deathFx":"395378__skylar1146__machinepoweroff"
+        "deathFx":"robodeath"
     },
     {
         "id":297,
@@ -5541,7 +5541,7 @@
         "squadSize":10,
         "crew":0,
         "hp":6,
-        "armor":5,
+        "armor":6,
         "size":3,
         "volume":0.95,
         "stealth":7,
@@ -5591,7 +5591,7 @@
         "skills":["a_rob","fortif","datt","fastguet","robot","badmecano","crange","decay","light","aifouille","camo","lbot"],
         "mecanoCost":8,
         "fuzz":1,
-        "deathFx":"395378__skylar1146__machinepoweroff"
+        "deathFx":"robodeath"
     },
     {
         "id":183,
@@ -5651,7 +5651,7 @@
         "maxVeg":3,
         "skills":["a_rob","fortif","datt","robot","decay","crange","light","barda","aifouille","detrange","hbot"],
         "fuzz":1,
-        "deathFx":"395378__skylar1146__machinepoweroff"
+        "deathFx":"robodeath"
     },
     {
         "id":83,
@@ -5709,7 +5709,7 @@
         "skills":["a_rob","fortif","datt","robot","crange","decay","sentinelle","mecano","undead","survivor","resistfeu","light","aifouille","roborepair","hbot"],
         "mecanoCost":10,
         "fuzz":2,
-        "deathFx":"144469__psychedelic-hands__robot-death"
+        "deathFx":"robodeath2"
     },
     {
         "id":241,
@@ -5757,7 +5757,7 @@
         "mecanoCost":14,
         "transRes":640,
         "fuzz":2,
-        "deathFx":"505751__thehorriblejoke__computer-breaking-sound"
+        "deathFx":"robodeath3"
     },
     {
         "id":84,
@@ -5818,7 +5818,7 @@
         "skills":["a_rob","fortif","undead","datt","ranger","robot","decay","aifouille","aicamo","w2mecano","detrange","longshot","lbot"],
         "mecanoCost":9,
         "fuzz":0,
-        "deathFx":"505751__thehorriblejoke__computer-breaking-sound"
+        "deathFx":"robodeath3"
     },
     {
         "id":133,
@@ -5876,7 +5876,7 @@
         "maxVeg":3,
         "skills":["a_rob","datt","robot","decay","nodeathcount"],
         "fuzz":0,
-        "deathFx":"505751__thehorriblejoke__computer-breaking-sound"
+        "deathFx":"robodeath3"
     },
     {
         "id":89,
@@ -6335,7 +6335,7 @@
         "maxVeg":3,
         "skills":["a_heavy","dog","lowstress","swim","regeneration","ranger","ricoface","initmelee","resistall","recupcorps","nochef"],
         "fuzz":1.5,
-        "deathFx":"137036__pyrocamancer__beast-death"
+        "deathFx":"mutantdeath"
     },
     {
         "id":264,

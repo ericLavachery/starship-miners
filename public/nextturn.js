@@ -1620,13 +1620,13 @@ function tagsEffect(bat,batType) {
         if (bat.tags.includes('skupiac') || bat.tags.includes('octiron') || bat.tags.includes('zombie')) {
             tagDelete(bat,'maladie');
         } else {
-            if (rand.rand(1,20) <= unitResist && bat.cat != 'aliens') {
+            if (rand.rand(1,20) <= unitResist && bat.team === 'player') {
                 tagDelete(bat,'maladie');
                 warning('',bat.type+' a vaincu la maladie.',false,bat.tileId);
             } else {
                 bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
                 if (bat.squadsLeft < batType.squads || bat.damage >= 1) {
-                    if (rand.rand(1,36) <= (4-unitResist) && bat.cat != 'aliens') {
+                    if (rand.rand(1,36) <= (4-unitResist) && bat.team === 'player') {
                         bat.tags.push('venin');
                         if (!batType.skills.includes('resistpoison')) {
                             warning('',bat.type+' risque de succomber à la maladie.',false,bat.tileId);
@@ -1765,7 +1765,7 @@ function tagsEffect(bat,batType) {
             if (bat.squadsLeft <= 0) {
                 batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le venin.');
             } else {
-                if (batType.cat != 'aliens') {
+                if (batType.team === 'player') {
                     let degDice = 3+Math.floor(playerInfos.comp.ca*1.5)+(unitResist*2);
                     if (unitResist < 4 || playerInfos.comp.ca < 4) {
                         if (rand.rand(1,degDice) === 1) {
@@ -1803,7 +1803,7 @@ function tagsEffect(bat,batType) {
                 batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le poison.');
             } else {
                 let stopPoison = 10;
-                if (batType.cat != 'aliens') {
+                if (batType.team === 'player') {
                     stopPoison = 18-Math.floor(playerInfos.comp.ca*1.5)-(unitResist*2);
                 }
                 let i = 1;

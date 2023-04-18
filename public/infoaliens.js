@@ -12,7 +12,7 @@ function voirAliens() {
     $('#conUnitList').append('<br>');
     let sortedAliens = _.sortBy(alienUnits,'size');
     sortedAliens.forEach(function(unit) {
-        if (unit.kind != 'game') {
+        if (unit.kind != 'game' && batType.cat === 'aliens') {
             let aSize = Math.floor(unit.size);
             let aNum = unit.squads*unit.squadSize;
             let aHP = aNum*unit.hp;
@@ -85,11 +85,11 @@ function showEnemyBatInfos(bat) {
     if (batType.name === 'Colonie') {
         compCA = compCA-2;
     }
-    if (playerInfos.pseudo === 'Mapedit') {
+    if (playerInfos.pseudo === 'Mapedit' || batType.cat != 'aliens') {
         compCA = 10;
     }
     let silSize;
-    if (batType.kind != 'game') {
+    if (batType.kind != 'game' && batType.cat === 'aliens') {
         silSize = getSilSize(batType);
         let silclass = 'silhouette';
         if (batType.skills.includes('silhover')) {

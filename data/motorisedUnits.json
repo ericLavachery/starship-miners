@@ -4209,7 +4209,7 @@
         },
         "transRes":450,
         "fuzz":2,
-        "deathFx":"505751__thehorriblejoke__computer-breaking-sound",
+        "deathFx":"robodeath3",
         "mvSnd":"emotor"
     },
     {
@@ -4269,7 +4269,7 @@
         "skills":["a_rob","noguet","fly","robot","decay","longshot","light","recupres","aifouille","aicamo","w2mecano","detrange"],
         "mecanoCost":6,
         "fuzz":0,
-        "deathFx":"505751__thehorriblejoke__computer-breaking-sound",
+        "deathFx":"robodeath3",
         "mvSnd":"emotor"
     },
     {
@@ -4328,7 +4328,7 @@
         "skills":["a_rob","noguet","fly","robot","decay","longshot","light","recupres","aifouille","aicamo","w2mecano"],
         "mecanoCost":8,
         "fuzz":0,
-        "deathFx":"505751__thehorriblejoke__computer-breaking-sound",
+        "deathFx":"robodeath3",
         "mvSnd":"emotor"
     },
     {
