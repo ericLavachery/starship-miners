@@ -97,7 +97,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                             if (medDice > effSoins && catOK) {
                                 catOK = false;
                                 if (batType.cat === 'infantry') {
-                                    if (bat.tags.includes('poison') || bat.tags.includes('venin') || bat.damage > 0 || bat.squadsLeft < batType.squads || bat.tags.includes('parasite') || bat.tags.includes('maladie')) {
+                                    if (bat.tags.includes('poison') || bat.tags.includes('venin') || bat.damage > 0 || bat.squadsLeft < batType.squads || bat.tags.includes('parasite') || bat.tags.includes('maladie') || bat.tags.includes('vomi') || bat.tags.includes('vomissure')) {
                                         if (effSoins > 0) {
                                             totalAPCost = totalAPCost+apCost;
                                             $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">soins inefficaces<br></span>');
@@ -203,13 +203,21 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         bat.apLeft = bat.apLeft-patientAPCost;
                                         addHealFlag(bat,4);
                                         doneAction(bat);
-                                    } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && bat.tags.includes('maladie') && deep && real) {
-                                        tagDelete(bat,'maladie');
+                                    } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && (bat.tags.includes('maladie') || bat.tags.includes('vomi') || bat.tags.includes('vomissure')) && deep && real) {
+                                        if (bat.tags.includes('vomi') || bat.tags.includes('vomissure')) {
+                                            tagDelete(bat,'vomi');
+                                            tagDelete(bat,'vomi');
+                                            tagDelete(bat,'vomi');
+                                            tagDelete(bat,'vomissure');
+                                            $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">gangrène guérie<br></span>');
+                                        } else {
+                                            tagDelete(bat,'maladie');
+                                            $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">maladie guérie<br></span>');
+                                        }
                                         totalAPCost = totalAPCost+apCost;
                                         console.log('maladie');
                                         console.log('totalAPCost '+totalAPCost);
                                         xpGain = xpGain+0.35;
-                                        $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">maladie guérie<br></span>');
                                         bat.apLeft = bat.apLeft-patientAPCost;
                                         addHealFlag(bat,2);
                                         doneAction(bat);
@@ -362,11 +370,19 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                     totalAPCost = totalAPCost+apCost;
                     addHealFlag(selectedBat,4);
                     $('#report').append('<span class="report">parasite tué<br></span>');
-                } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('maladie') && deep && real) {
-                    tagDelete(selectedBat,'maladie');
+                } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && (selectedBat.tags.includes('maladie') || selectedBat.tags.includes('vomi') || selectedBat.tags.includes('vomissure')) && deep && real) {
+                    if (selectedBat.tags.includes('vomi') || selectedBat.tags.includes('vomissure')) {
+                        tagDelete(selectedBat,'vomi');
+                        tagDelete(selectedBat,'vomi');
+                        tagDelete(selectedBat,'vomi');
+                        tagDelete(selectedBat,'vomissure');
+                        $('#report').append('<span class="report">gangrène guérie<br></span>');
+                    } else {
+                        tagDelete(selectedBat,'maladie');
+                        $('#report').append('<span class="report">maladie guérie<br></span>');
+                    }
                     totalAPCost = totalAPCost+apCost;
                     addHealFlag(selectedBat,2);
-                    $('#report').append('<span class="report">maladie guérie<br></span>');
                 }
             }
         } else {
@@ -466,7 +482,7 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
                 if ((deep || playerInfos.comp.med >= 2) && myBat.tags.includes('venin')) {
                     numTargets = numTargets+1;
                 } else if (deep) {
-                    if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || (myBat.tags.includes('maladie') && real) || myBat.tags.includes('parasite') || myBat.tags.includes('trou')) {
+                    if (myBat.damage > 0 || myBat.squadsLeft < myBatType.squads || myBat.tags.includes('poison') || myBat.tags.includes('venin') || ((myBat.tags.includes('maladie') || myBat.tags.includes('vomi') || myBat.tags.includes('vomissure')) && real) || myBat.tags.includes('parasite') || myBat.tags.includes('trou')) {
                         numTargets = numTargets+1;
                     }
                 } else {
@@ -509,7 +525,7 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
                     let effSoins = checkEffSoins(bat);
                     if (catOK && !batType.skills.includes('norepair') && effSoins >= 50) {
                         if (deep) {
-                            if ((bat.damage > 0 && !fullBat) || (bat.squadsLeft < batType.squads && !fullBat) || bat.tags.includes('poison') || bat.tags.includes('venin') || (bat.tags.includes('maladie') && real) || bat.tags.includes('parasite') || bat.tags.includes('trou')) {
+                            if ((bat.damage > 0 && !fullBat) || (bat.squadsLeft < batType.squads && !fullBat) || bat.tags.includes('poison') || bat.tags.includes('venin') || ((bat.tags.includes('maladie') || bat.tags.includes('vomi') || bat.tags.includes('vomissure')) && real) || bat.tags.includes('parasite') || bat.tags.includes('trou')) {
                                 numTargets = numTargets+1;
                             }
                         } else if (playerInfos.comp.med >= 2 && bat.tags.includes('venin')) {

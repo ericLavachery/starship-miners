@@ -1,5 +1,6 @@
 function alienTurn() {
     $('#report').empty('');
+    ectoControl();
     alienBonus();
     createAlienList();
     // show the alien NEXT button

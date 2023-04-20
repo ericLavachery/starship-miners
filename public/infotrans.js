@@ -102,11 +102,11 @@ function unloadInfos(myBat,myBatUnitType) {
                         damageIcon = '<i class="ra ra-bleeding-hearts"></i>';
                     }
                     let poisonIcon = '';
-                    if (bat.tags.includes('parasite') || bat.tags.includes('venin') || bat.tags.includes('poison')) {
+                    if (bat.tags.includes('parasite') || bat.tags.includes('venin') || bat.tags.includes('poison') || bat.tags.includes('vomissure')) {
                         poisonIcon = '<i class="fas fa-skull-crossbones"></i>';
                     }
                     let maladieIcon = '';
-                    if (bat.tags.includes('maladie')) {
+                    if (bat.tags.includes('maladie') || bat.tags.includes('necro') || bat.tags.includes('vomi')) {
                         maladieIcon = '<i class="fas fa-thermometer"></i>';
                     }
                     let drugIcon = '';

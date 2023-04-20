@@ -303,6 +303,46 @@ function alienCanon() {
         }
         showMap(zone,true);
     }
+    // CANON ECTO
+    if (playerInfos.objectifs.larve === 'actif' && !domeProtect) {
+        let freq = 4;
+        if (hasAlien('Skygrub')) {
+            freq = 3;
+        }
+        if (playerInfos.mapTurn % freq === 0 && playerInfos.mapTurn >= 1) {
+            let canonTiles = getEctoCanonTiles();
+            ectoCanon(canonTiles);
+            showMap(zone,true);
+        }
+    }
+};
+
+function ectoCanon(canonTiles) {
+    playSound('web-fall',0);
+    warning('Canon alien','',false,canonTiles[0],false);
+};
+
+function getEctoCanonTiles() {
+    let canonTiles = [];
+    alienOccupiedTileList();
+    let targetTile = -1;
+    if (targetTile < 0) {
+        targetTile = rand.rand(0,3599);
+    }
+    canonTiles.push(targetTile);
+    zone.forEach(function(tile) {
+        if (tile.id != targetTile) {
+            let distance = calcDistance(tile.id,targetTile);
+            if (distance <= 5) {
+                let chance = 35-(distance*distance)-distance;
+                if (rand.rand(1,200) <= chance) {
+                    canonTiles.push(tile.id);
+                    tile.ecto = true;
+                }
+            }
+        }
+    });
+    return canonTiles;
 };
 
 function necroCanon(canonTiles,silent) {
@@ -332,7 +372,7 @@ function getNecroCanonTiles() {
             if (targetTile < 0) {
                 if (!bat.tags.includes('moss')) {
                     let batType = getBatType(bat);
-                    if (batType.kind != 'game') {
+                    if (batType.kind != 'game' && batType.cat === 'aliens') {
                         let closeAliens = howManyCloseAliens(bat.tileId,3);
                         if (closeAliens > mostALiens) {
                             if (closeAliens < 4) {
@@ -666,6 +706,100 @@ function getWebCanonTiles(cprov,cblob) {
     return canonTiles;
 };
 
+function ectoControl() {
+    deadAliensList = [];
+    aliens.forEach(function(myBat) {
+        let control = false;
+        let myBatType = getBatType(myBat);
+        if (myBatType.skills.includes('roboposs')) {
+            let shufBats = _.shuffle(bataillons);
+            shufBats.forEach(function(bat) {
+                if (!control) {
+                    if (bat.loc === "zone") {
+                        let batType = getBatType(bat);
+                        if (batType.skills.includes('robot')) {
+                            let distance = calcDistance(myBat.tileId,bat.tileId);
+                            if (distance === 0) {
+                                turnThisBot(bat.id);
+                                control = true;
+                                deadAliensList.push(myBat.id);
+                                // console.log('TOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKIT');
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    });
+    killAlienList();
+};
+
+function turnThisBot(batId) {
+    let bot = getBatById(batId);
+    let alienType = getAlienTypeByName(bot.type);
+    if (Object.keys(alienType).length >= 1) {
+        let botSquadsLeft = bot.squadsLeft;
+        let botDamage = bot.damage;
+        let botTileId = bot.tileId;
+        let botAPLeft = bot.apLeft;
+        let botGear = [];
+        botGear.push(bot.ammo);
+        botGear.push(bot.ammo2);
+        botGear.push('xxx');
+        botGear.push('xxx');
+        removeBat(batId);
+        conselUnit = alienType;
+        conselPut = false;
+        conselTriche = true;
+        conselAmmos = botGear;
+        putBat(botTileId,0,0,'',false);
+        let newAlienBot = getBatByTileId(botTileId);
+        newAlienBot.apLeft = botAPLeft;
+        let maxAPLeft = 0-Math.round(newAlienBot.ap/2);
+        if (newAlienBot.apLeft > maxAPLeft) {
+            newAlienBot.apLeft = maxAPLeft;
+        }
+        newAlienBot.squadsLeft = botSquadsLeft;
+        newAlienBot.damage = botDamage;
+        showMap(zone,false);
+        warning('<span class="rq3">Possession</span>','<span class="vio">Des Ectoplames ont pris contrôle de vos '+alienType.name+'!</span>',false,newAlienBot.tileId);
+    }
+};
+
+function morphBatList() {
+    // console.log('LETS MORPH BABY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    console.log(morphedBats);
+    morphedBats.forEach(function(morph) {
+        morphThis(morph.tile,morph.alien);
+    });
+    morphedBats = [];
+};
+
+function morphThis(tileId,alienBatName) {
+    // Transforme un bataillon en alien
+    // console.log('tileId='+tileId);
+    // console.log(alienBatName);
+    let dropTile = -1;
+    let unitIndex = alienUnits.findIndex((obj => obj.name == alienBatName));
+    conselUnit = alienUnits[unitIndex];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
+    if (Object.keys(conselUnit).length >= 1) {
+        // console.log(conselUnit);
+        dropTile = checkDropInPlace(tileId);
+        // console.log('dropTile='+dropTile);
+        if (dropTile >= 0) {
+            putBat(dropTile,0,0);
+            // if (alienBatName === 'Vomissure') {
+            //     putBat(dropTile,0,0,'bmorph');
+            // } else {
+            //     putBat(dropTile,0,0);
+            // }
+        } else {
+            conselReset(true);
+        }
+    }
+};
+
 function stormProtection(dmg,bat,batType,canon) {
     let adjDmg = dmg;
     let tile = getTileById(bat.tileId);
@@ -856,10 +990,6 @@ function stormDamage(bat,batType,storm,inMov,canon) {
             showBataillon(selectedBat);
         }
     }
-};
-
-function takeDamage(bat,batType,dmg) {
-
 };
 
 function createStormsLists(rebuild,init) {

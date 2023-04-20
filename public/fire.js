@@ -1142,8 +1142,23 @@ function attack(melee,init) {
     if (totalDamage >= 1+(playerInfos.comp.ca*2) && selectedWeap.ammo.includes('parasite') && rand.rand(1,selectedBatType.squads) >= selectedBat.squadsLeft) {
         if (targetBatType.cat == 'infantry' || targetBatType.cat == 'aliens') {
             targetBat.tags.push('parasite');
-            // console.log('Parasite!');
             $('#report').append('<span class="report rose">Parasite<br></span>');
+        }
+    }
+    // gangrène
+    if (playerInfos.objectifs.larve === 'actif') {
+        if (selectedBatType.skills.includes('skysick')) {
+            if (totalDamage >= playerInfos.comp.med) {
+                if (targetBatType.skills.includes('mutant') || targetBatType.skills.includes('dog') || targetBatType.skills.includes('clone')) {
+                    if (!targetBat.tags.includes('vomi') && !targetBat.tags.includes('vomissure')) {
+                        targetBat.tags.push('vomi');
+                        targetBat.tags.push('vomi');
+                        targetBat.tags.push('vomi');
+                        targetBat.tags.push('necro');
+                        $('#report').append('<span class="report rose">Gangrène<br></span>');
+                    }
+                }
+            }
         }
     }
     // maladie
@@ -2077,6 +2092,22 @@ function defense(melee,init) {
             selectedBat.tags.push('parasite');
             // console.log('Parasite!');
             $('#report').append('<span class="report rose">Parasite<br></span>');
+        }
+    }
+    // gangrène
+    if (playerInfos.objectifs.larve === 'actif') {
+        if (targetBatType.skills.includes('skysick')) {
+            if (totalDamage >= playerInfos.comp.med) {
+                if (selectedBatType.skills.includes('mutant') || selectedBatType.skills.includes('dog') || selectedBatType.skills.includes('clone')) {
+                    if (!selectedBat.tags.includes('vomi') && !selectedBat.tags.includes('vomissure')) {
+                        selectedBat.tags.push('vomi');
+                        selectedBat.tags.push('vomi');
+                        selectedBat.tags.push('vomi');
+                        selectedBat.tags.push('necro');
+                        $('#report').append('<span class="report rose">Gangrène<br></span>');
+                    }
+                }
+            }
         }
     }
     // maladie

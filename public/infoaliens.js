@@ -12,7 +12,7 @@ function voirAliens() {
     $('#conUnitList').append('<br>');
     let sortedAliens = _.sortBy(alienUnits,'size');
     sortedAliens.forEach(function(unit) {
-        if (unit.kind != 'game' && batType.cat === 'aliens') {
+        if (unit.kind != 'game' && unit.cat === 'aliens') {
             let aSize = Math.floor(unit.size);
             let aNum = unit.squads*unit.squadSize;
             let aHP = aNum*unit.hp;

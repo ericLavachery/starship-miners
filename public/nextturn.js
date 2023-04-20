@@ -167,6 +167,7 @@ function nextTurn() {
     killAlienList();
     checkEggsDrop();
     webSpawns(false);
+    ectoSpawns();
     spawns();
     spawnSound();
     if (showMini) {
@@ -385,28 +386,6 @@ function nextTurnEnd() {
             }
             if (!medicalTransports.includes(bat.id) && batType.transUnits >= 1 && batType.skills.includes('medtrans')) {
                 medicalTransports.push(bat.id);
-            }
-            if (bat.loc === "trans") {
-                let motherBat = getBatById(bat.locId);
-                if (Object.keys(motherBat).length >= 1) {
-                    if (motherBat.loc === 'trans') {
-                        let grandMotherBat = getBatById(motherBat.locId);
-                        console.log('MATRIOCHKA!');
-                        console.log(bat);
-                        console.log(motherBat);
-                        console.log(grandMotherBat);
-                        loadBat(bat.id,grandMotherBat.id,motherBat.id);
-                    } else {
-                        bat.tileId = motherBat.tileId;
-                        bat.oldTileId = motherBat.oldTileId;
-                    }
-                } else {
-                    console.log('ETHERBAT!');
-                    console.log(bat);
-                    bat.loc = "zone";
-                    bat.tileId = 1829;
-                    bat.oldTileId = 1829;
-                }
             }
             updateBatProperties(bat,batType);
             if (bat.autoLoad != undefined && bat.loc === 'zone') {
@@ -756,6 +735,7 @@ function nextTurnEnd() {
     });
     neighbours();
     killBatList();
+    morphBatList();
     console.log('MINED THIS TURN');
     console.log(minedThisTurn);
     playerInfos.mapTurn = playerInfos.mapTurn+1;
@@ -1323,6 +1303,26 @@ function tagsUpdate(bat,batType) {
     if (bat.emo != undefined) {
         batEmo = bat.emo;
     }
+    // vomiTrans
+    if (bat.tags.includes('vomi')) {
+        let turnChance = 1;
+        let medChance = playerInfos.comp.med+1;
+        let genChance = playerInfos.comp.gen+1;
+        if (medChance > genChance) {
+            turnChance = medChance;
+        } else {
+            turnChance = genChance;
+        }
+        if (rand.rand(1,turnChance) === 1) {
+            tagDelete(bat,'vomi');
+        }
+        if (!bat.tags.includes('vomi')) {
+            bat.tags.push('vomissure');
+            warning('<span class="rq3">Attaque génétique</span>','<span class="vio">'+bat.type+' sont sur le point de se transformer.<br>Ils doivent aller à l\'hôpital ou prendre du Skupiac!</span>',false,bat.tileId);
+        } else {
+            warning('Attaque génétique',bat.type+' vont bientôt se transformer.<br>Ils doivent aller à l\'hôpital ou prendre du Skupiac!',false,bat.tileId);
+        }
+    }
     tagDelete(bat,'podcd');
     tagDelete(bat,'deb');
     tagDelete(bat,'chrg');
@@ -1515,7 +1515,7 @@ function blub(bat,batType) {
                 bat.apLeft = Math.round(bat.ap/2);
             }
             if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,false,'Bataillon détruit',bat.type+' noyé.');
+                batDeathEffect(bat,true,false,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' noyé.</span>');
             }
             checkDeath(bat,batType,false);
         }
@@ -1639,6 +1639,19 @@ function tagsEffect(bat,batType) {
             }
         }
     }
+    // VOMISSURE
+    if (bat.tags.includes('vomi')) {
+        bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
+        if (bat.tags.includes('skupiac')) {
+            tagDelete(bat,'vomi');
+        }
+    }
+    if (bat.tags.includes('vomissure')) {
+        bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
+        if (bat.tags.includes('skupiac')) {
+            tagDelete(bat,'vomissure');
+        }
+    }
     // HUNGER GAMES
     if (bat.tags.includes('dying')) {
         bat.apLeft = bat.apLeft-Math.floor(bat.ap/1.3);
@@ -1693,6 +1706,14 @@ function tagsEffect(bat,batType) {
         }
     }
     if (!medicalTransports.includes(bat.locId) || bat.loc != 'trans') {
+        if (bat.tags.includes('vomissure')) {
+            let newMorph = {};
+            newMorph.tile = bat.tileId;
+            newMorph.alien = 'Vomissure';
+            morphedBats.push(newMorph);
+            bat.squadsLeft = 0;
+            batDeathEffect(bat,true,true,'<span class="rq3">Attaque génétique</span>','<span class="vio">'+bat.type+' transformés en Vomissure.</span>');
+        }
         // PARASITE
         if (bat.tags.includes('parasite') && bat.squadsLeft >= 1) {
             let parasiteDeg = Math.round(rand.rand((Math.round(parasiteDamage/3)),parasiteDamage)*batType.squads*batType.squadSize/60);
@@ -1708,7 +1729,11 @@ function tagsEffect(bat,batType) {
             bat.squadsLeft = bat.squadsLeft-squadsOut;
             bat.damage = totalDamage-(squadsOut*squadHP);
             if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le parasite.');
+                let newMorph = {};
+                newMorph.tile = bat.tileId;
+                newMorph.alien = 'Rejetons';
+                morphedBats.push(newMorph);
+                batDeathEffect(bat,true,true,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' tués par le parasite.</span>');
             }
         }
         // SHINDA
@@ -1747,7 +1772,7 @@ function tagsEffect(bat,batType) {
             bat.squadsLeft = bat.squadsLeft-squadsOut;
             bat.damage = totalDamage-(squadsOut*squadHP);
             if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par la drogue.');
+                batDeathEffect(bat,true,true,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' tués par la drogue.</span>');
             }
         }
         // VENIN
@@ -1763,7 +1788,7 @@ function tagsEffect(bat,batType) {
             bat.squadsLeft = bat.squadsLeft-squadsOut;
             bat.damage = totalDamage-(squadsOut*squadHP);
             if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le venin.');
+                batDeathEffect(bat,true,true,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' tués par le venin.</span>');
             } else {
                 if (batType.team === 'player') {
                     let degDice = 3+Math.floor(playerInfos.comp.ca*1.5)+(unitResist*2);
@@ -1800,7 +1825,11 @@ function tagsEffect(bat,batType) {
             bat.squadsLeft = bat.squadsLeft-squadsOut;
             bat.damage = totalDamage-(squadsOut*squadHP);
             if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le poison.');
+                if (batType.team === 'aliens') {
+                    batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le poison.');
+                } else {
+                    batDeathEffect(bat,true,true,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' tués par le poison.</span>');
+                }
             } else {
                 let stopPoison = 10;
                 if (batType.team === 'player') {
@@ -1872,33 +1901,84 @@ function tagDelete(bat,tag) {
 };
 
 function updateBatProperties(bat,batType) {
-    if (bat.transRes === undefined && batType.transRes >= 1) {
-        bat.transRes = {};
-    }
-    if (bat.transIds === undefined && batType.transUnits >= 1) {
-        bat.transIds = [];
-    }
     if (bat.logeq === undefined) {
         bat.logeq = '';
     }
-    if (bat.eq === 'ranger') {
-        bat.eq = 'e-ranger';
+    if (batType.transRes >= 1) {
+        if (bat.transRes === undefined) {
+            bat.transRes = {};
+        }
     }
-    if (bat.eq === 'mecano') {
-        bat.eq = 'e-mecano';
+    if (batType.transUnits >= 1) {
+        if (bat.transIds === undefined) {
+            bat.transIds = [];
+        }
+        if (bat.transIds.length >= 1) {
+            let realTransIds = [];
+            bat.transIds.forEach(function(inBatId) {
+                let batExists = doesBatExists(inBatId);
+                if (batExists) {
+                    realTransIds.push(inBatId);
+                }
+            });
+            if (bat.transIds.length > realTransIds.length) {
+                bat.transIds = realTransIds;
+            }
+        }
     }
-    if (bat.eq === 'medic') {
-        bat.eq = 'e-medic';
+    if (bat.loc === 'trans') {
+        let batExists = doesBatExists(bat.locId);
+        if (!batExists) {
+            let batLocId = findLostBatLocId(bat);
+            if (batLocId >= 0) {
+                bat.locId = batLocId;
+            }
+        }
     }
-    if (bat.eq === 'camo') {
-        bat.eq = 'e-camo';
+    if (bat.loc === "trans") {
+        let motherBat = getBatById(bat.locId);
+        if (Object.keys(motherBat).length >= 1) {
+            if (motherBat.loc === 'trans') {
+                let grandMotherBat = getBatById(motherBat.locId);
+                console.log('MATRIOCHKA!');
+                console.log(bat);
+                console.log(motherBat);
+                console.log(grandMotherBat);
+                loadBat(bat.id,grandMotherBat.id,motherBat.id);
+            } else {
+                bat.tileId = motherBat.tileId;
+                bat.oldTileId = motherBat.oldTileId;
+            }
+        } else {
+            console.log('ETHERBAT!');
+            console.log(bat);
+            bat.loc = "zone";
+            bat.locId = 0;
+            let dropTile = checkDropInPlace(1829);
+            if (dropTile >= 0) {
+                bat.tileId = dropTile;
+                bat.oldTileId = dropTile;
+            } else {
+                bat.tileId = 1829;
+                bat.oldTileId = 1829;
+            }
+        }
     }
-    if (bat.eq === 'jetpack') {
-        bat.eq = 'e-jetpack';
+    if (bat.loc === 'zone') {
+        bat.locId = 0;
     }
-    if (bat.eq === 'flash') {
-        bat.eq = 'e-flash';
-    }
+};
+
+function findLostBatLocId(myBat) {
+    let lostLocId = -1;
+    bataillons.forEach(function(bat) {
+        if (bat.transIds != undefined) {
+            if (bat.transIds.includes(myBat.id)) {
+                lostLocId = bat.id;
+            }
+        }
+    });
+    return lostLocId;
 };
 
 function alienOccupiedTileList() {

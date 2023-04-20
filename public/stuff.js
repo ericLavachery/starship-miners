@@ -387,7 +387,7 @@ function getGrade(bat,batType) {
     return grade;
 };
 
-function isOccupied(tileId) {
+function isOccupiedByFriend(tileId) {
     //  tile occupé par une autre unité que le selectedBat?
     let occu = false;
     let bat = {};
@@ -397,6 +397,29 @@ function isOccupied(tileId) {
     }
     if (Object.keys(bat).length >= 1) {
         occu = true;
+    }
+    return occu;
+};
+
+function isOccupied(tileId) {
+    //  tile occupé par alien ou un bataillon?
+    let occu = false;
+    let bat = {};
+    let index = bataillons.findIndex((obj => obj.tileId == tileId && obj.loc == 'zone'));
+    if (index > -1) {
+        bat = bataillons[index];
+    }
+    if (Object.keys(bat).length >= 1) {
+        occu = true;
+    }
+    if (!occu) {
+        index = aliens.findIndex((obj => obj.tileId == tileId));
+        if (index > -1) {
+            bat = aliens[index];
+        }
+        if (Object.keys(bat).length >= 1) {
+            occu = true;
+        }
     }
     return occu;
 };
@@ -1139,6 +1162,19 @@ function getBatById(batId) {
         bat = bataillons[index];
     }
     return bat;
+};
+
+function doesBatExists(batId) {
+    let exists = false;
+    let bat = {};
+    let index = bataillons.findIndex((obj => obj.id == batId));
+    if (index > -1) {
+        bat = bataillons[index];
+    }
+    if (Object.keys(bat).length >= 1) {
+        exists = true;
+    }
+    return exists;
 };
 
 function getBatByOldId(batOldId) {

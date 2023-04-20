@@ -1191,6 +1191,23 @@ function aliensCount() {
     return aliensNums;
 };
 
+function ectoSpawns() {
+    alienOccupiedTileList();
+    playerOccupiedTileList();
+    zone.forEach(function(tile) {
+        if (tile.ecto) {
+            if (rand.rand(1,2) === 1) {
+                if (!alienOccupiedTiles.includes(tile.id)) {
+                    if (!playerOccupiedTiles.includes(tile.id)) {
+                        alienWebSpawn(tile.id,'Ectoplasmes');
+                    }
+                }
+                delete tile.ecto;
+            }
+        }
+    });
+};
+
 function webSpawns(all) {
     let hasBlob = false;
     let theBlob = {};
@@ -1366,6 +1383,9 @@ function spawns() {
             } else if (bat.type === 'Dragonblob' && aliens.length < maxAliens && aliensNums.firebugs < maxPonte*2) {
                 alienSpawn(bat,'Firebugs');
                 alienSpawn(bat,'Firebugs');
+            } else if (bat.type === 'Skygrub' && aliens.length < maxAliens) {
+                alienSpawn(bat,'Ectoplasmes');
+                alienSpawn(bat,'Ectoplasmes');
             } else if (bat.type === 'Bigheads' && aliens.length < maxAliens && aliensNums.escarbots < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Escarbots');
             } else if (bat.type === 'Mantes' && aliens.length < maxAliens && aliensNums.fourmis < Math.round(maxPonte/1.5)) {
@@ -1647,19 +1667,15 @@ function blobEat(layBlob) {
 
 function checkDropBlob(layBat) {
     let possibleDrops = [];
+    alienOccupiedTileList();
+    playerOccupiedTileList();
     let batHere = false;
     let tileDrop = -1;
     let distance;
     zone.forEach(function(tile) {
         distance = calcDistance(layBat.tileId,tile.id);
         if (distance == 0) {
-            batHere = false;
-            aliens.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.tileId === tile.id) {
-                    batHere = true;
-                }
-            });
-            if (!batHere) {
+            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                 possibleDrops.push(tile.id);
             }
         }
@@ -2415,27 +2431,26 @@ function checkputEggKind(bat) {
     return eggKind;
 };
 
+function checkDropInPlace(layBatTileId) {
+    let tileDrop = layBatTileId;
+    alienOccupiedTileList();
+    playerOccupiedTileList();
+    if (alienOccupiedTiles.includes(tileDrop) || playerOccupiedTiles.includes(tileDrop)) {
+        tileDrop = checkDrop(tileDrop);
+    }
+    return tileDrop;
+};
+
 function checkDrop(layBatTileId) {
+    alienOccupiedTileList();
+    playerOccupiedTileList();
     let possibleDrops = [];
-    let batHere = false;
+    // let batHere = false;
     let tileDrop = -1;
     let shufZone = _.shuffle(zone);
     shufZone.forEach(function(tile) {
         if (isAdjacent(layBatTileId,tile.id)) {
-            batHere = false;
-            bataillons.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.tileId === tile.id) {
-                    batHere = true;
-                }
-            });
-            if (!batHere) {
-                aliens.forEach(function(bat) {
-                    if (bat.loc === "zone" && bat.tileId === tile.id) {
-                        batHere = true;
-                    }
-                });
-            }
-            if (!batHere) {
+            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                 possibleDrops.push(tile.id);
             }
         }
@@ -2445,20 +2460,7 @@ function checkDrop(layBatTileId) {
         shufZone.forEach(function(tile) {
             distance = calcDistance(layBatTileId,tile.id);
             if (distance <= 3 && distance >=2) {
-                batHere = false;
-                bataillons.forEach(function(bat) {
-                    if (bat.loc === "zone" && bat.tileId === tile.id) {
-                        batHere = true;
-                    }
-                });
-                if (!batHere) {
-                    aliens.forEach(function(bat) {
-                        if (bat.loc === "zone" && bat.tileId === tile.id) {
-                            batHere = true;
-                        }
-                    });
-                }
-                if (!batHere) {
+                if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                     possibleDrops.push(tile.id);
                 }
             }

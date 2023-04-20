@@ -259,6 +259,9 @@ function goDoxey() {
             tagDelete(selectedBat,'poison');
             tagDelete(selectedBat,'poison');
             tagDelete(selectedBat,'poison');
+            tagDelete(selectedBat,'vomi');
+            tagDelete(selectedBat,'vomi');
+            tagDelete(selectedBat,'vomi');
             selectedBat.emo = selectedBat.emo-3;
         }
         if (selectedBat.emo < 0) {

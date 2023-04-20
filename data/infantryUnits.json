@@ -2033,7 +2033,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fortif","fastguet","ranger","berserk","datt","undead","genhab","barda","camo","guerrilla","embuscade","herorage"],
+        "skills":["a_heavy","fortif","fastguet","ranger","berserk","datt","undead","mutant","genhab","barda","camo","guerrilla","embuscade","herorage"],
         "fuzz":0,
         "deathFx":"mutantdeath"
     },

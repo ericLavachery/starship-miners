@@ -531,6 +531,11 @@ function batInfos(bat,batType,pop) {
     if (bat.tags.includes('parasite')) {
         $('#'+bodyPlace).append('<span class="paramName or">Parasite</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
+    if (bat.tags.includes('vomissure') || bat.tags.includes('vomi')) {
+        $('#'+bodyPlace).append('<span class="paramName or" title="Attaque génétique">Gangrène</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    } else if (bat.tags.includes('necro')) {
+        $('#'+bodyPlace).append('<span class="paramName or">Nécrotoxine</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    }
     if (bat.tags.includes('maladie')) {
         $('#'+bodyPlace).append('<span class="paramName or">Malade</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
@@ -538,9 +543,6 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName or">Mourrant</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     } else if (bat.tags.includes('hungry')) {
         $('#'+bodyPlace).append('<span class="paramName jaune">Souffrant</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
-    }
-    if (bat.tags.includes('necro')) {
-        $('#'+bodyPlace).append('<span class="paramName or">Nécrotoxine</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     if (bat.tags.includes('trou')) {
         $('#'+bodyPlace).append('<span class="paramName or">Blindage troué</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
@@ -814,7 +816,10 @@ function batInfos(bat,batType,pop) {
             }
         }
         if (playerInfos.pseudo === 'Payall') {
-            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Storm!" class="boutonMauve bigButtons" onclick="stormThis('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Storm!</h4></span>');
+            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Storm!" class="boutonMauve bigButtons" onclick="stormThis('+bat.id+')"><i class="fas fa-meteor"></i></button>&nbsp; Storm!</h4></span>');
+            if (batType.skills.includes('robot')) {
+                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Skygrub Test!" class="boutonMauve bigButtons" onclick="turnThisBot('+bat.id+')"><i class="fas fa-robot"></i></button>&nbsp; Turn!</h4></span>');
+            }
         }
         // let resLoaded = checkResLoad(bat);
         // if (resLoaded >= 1) {

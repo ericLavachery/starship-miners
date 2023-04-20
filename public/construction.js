@@ -2174,7 +2174,7 @@ function toggleAutoRoad(apCost,stop) {
 };
 
 function autoRoad(tile) {
-    let isBatHere = isOccupied(tile.id);
+    let isBatHere = isOccupiedByFriend(tile.id);
     if (!tile.rd && !isBatHere) {
         let terrain = getTerrain(selectedBat);
         let apCost = selectedBatType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;

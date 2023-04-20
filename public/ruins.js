@@ -371,22 +371,15 @@ function coffreDrop(layBatTileId) {
     let nearestDistance = 999;
     let thisDistance = 999;
     let batHere = false;
+    alienOccupiedTileList();
+    playerOccupiedTileList();
     let tileDrop = -1;
     let shufZone = _.shuffle(zone);
     shufZone.forEach(function(tile) {
         if (isAdjacent(layBatTileId,tile.id)) {
             batHere = false;
-            bataillons.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.tileId === tile.id) {
-                    batHere = true;
-                }
-            });
-            if (!batHere) {
-                aliens.forEach(function(bat) {
-                    if (bat.loc === "zone" && bat.tileId === tile.id) {
-                        batHere = true;
-                    }
-                });
+            if (alienOccupiedTiles.includes(tile.id) || playerOccupiedTiles.includes(tile.id)) {
+                batHere = true;
             }
             if (!batHere) {
                 thisDistance = calcDistance(playerInfos.myCenter,tile.id);
@@ -408,17 +401,8 @@ function coffreDrop(layBatTileId) {
             distance = calcDistance(layBatTileId,tile.id);
             if (distance === 2) {
                 batHere = false;
-                bataillons.forEach(function(bat) {
-                    if (bat.loc === "zone" && bat.tileId === tile.id) {
-                        batHere = true;
-                    }
-                });
-                if (!batHere) {
-                    aliens.forEach(function(bat) {
-                        if (bat.loc === "zone" && bat.tileId === tile.id) {
-                            batHere = true;
-                        }
-                    });
+                if (alienOccupiedTiles.includes(tile.id) || playerOccupiedTiles.includes(tile.id)) {
+                    batHere = true;
                 }
                 if (!batHere) {
                     thisDistance = calcDistance(playerInfos.myCenter,tile.id);
@@ -441,22 +425,15 @@ function coffreDrop(layBatTileId) {
 function checkDropAny(layBatTileId) {
     let possibleDrops = [];
     let batHere = false;
+    alienOccupiedTileList();
+    playerOccupiedTileList();
     let tileDrop = -1;
     let shufZone = _.shuffle(zone);
     shufZone.forEach(function(tile) {
         if (isAdjacent(layBatTileId,tile.id)) {
             batHere = false;
-            bataillons.forEach(function(bat) {
-                if (bat.loc === "zone" && bat.tileId === tile.id) {
-                    batHere = true;
-                }
-            });
-            if (!batHere) {
-                aliens.forEach(function(bat) {
-                    if (bat.loc === "zone" && bat.tileId === tile.id) {
-                        batHere = true;
-                    }
-                });
+            if (alienOccupiedTiles.includes(tile.id) || playerOccupiedTiles.includes(tile.id)) {
+                batHere = true;
             }
             if (!batHere) {
                 possibleDrops.push(tile.id);
@@ -469,17 +446,8 @@ function checkDropAny(layBatTileId) {
             distance = calcDistance(layBatTileId,tile.id);
             if (distance <= 2) {
                 batHere = false;
-                bataillons.forEach(function(bat) {
-                    if (bat.loc === "zone" && bat.tileId === tile.id) {
-                        batHere = true;
-                    }
-                });
-                if (!batHere) {
-                    aliens.forEach(function(bat) {
-                        if (bat.loc === "zone" && bat.tileId === tile.id) {
-                            batHere = true;
-                        }
-                    });
+                if (alienOccupiedTiles.includes(tile.id) || playerOccupiedTiles.includes(tile.id)) {
+                    batHere = true;
                 }
                 if (!batHere) {
                     possibleDrops.push(tile.id);
@@ -493,17 +461,8 @@ function checkDropAny(layBatTileId) {
             distance = calcDistance(layBatTileId,tile.id);
             if (distance <= 3) {
                 batHere = false;
-                bataillons.forEach(function(bat) {
-                    if (bat.loc === "zone" && bat.tileId === tile.id) {
-                        batHere = true;
-                    }
-                });
-                if (!batHere) {
-                    aliens.forEach(function(bat) {
-                        if (bat.loc === "zone" && bat.tileId === tile.id) {
-                            batHere = true;
-                        }
-                    });
+                if (alienOccupiedTiles.includes(tile.id) || playerOccupiedTiles.includes(tile.id)) {
+                    batHere = true;
                 }
                 if (!batHere) {
                     possibleDrops.push(tile.id);
@@ -520,6 +479,8 @@ function checkDropAny(layBatTileId) {
 
 function checkDropSafe(layBatTileId) {
     let possibleDrops = [];
+    alienOccupiedTileList();
+    playerOccupiedTileList();
     let batHere = false;
     let tileDrop = -1;
     let shufZone = _.shuffle(zone);
@@ -527,17 +488,8 @@ function checkDropSafe(layBatTileId) {
         if (isAdjacent(layBatTileId,tile.id)) {
             if (tile.rd && tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
                 batHere = false;
-                bataillons.forEach(function(bat) {
-                    if (bat.loc === "zone" && bat.tileId === tile.id) {
-                        batHere = true;
-                    }
-                });
-                if (!batHere) {
-                    aliens.forEach(function(bat) {
-                        if (bat.loc === "zone" && bat.tileId === tile.id) {
-                            batHere = true;
-                        }
-                    });
+                if (alienOccupiedTiles.includes(tile.id) || playerOccupiedTiles.includes(tile.id)) {
+                    batHere = true;
                 }
                 if (!batHere) {
                     possibleDrops.push(tile.id);
@@ -550,17 +502,8 @@ function checkDropSafe(layBatTileId) {
             if (isAdjacent(layBatTileId,tile.id)) {
                 if (tile.rd) {
                     batHere = false;
-                    bataillons.forEach(function(bat) {
-                        if (bat.loc === "zone" && bat.tileId === tile.id) {
-                            batHere = true;
-                        }
-                    });
-                    if (!batHere) {
-                        aliens.forEach(function(bat) {
-                            if (bat.loc === "zone" && bat.tileId === tile.id) {
-                                batHere = true;
-                            }
-                        });
+                    if (alienOccupiedTiles.includes(tile.id) || playerOccupiedTiles.includes(tile.id)) {
+                        batHere = true;
                     }
                     if (!batHere) {
                         possibleDrops.push(tile.id);
@@ -574,17 +517,8 @@ function checkDropSafe(layBatTileId) {
             if (isAdjacent(layBatTileId,tile.id)) {
                 if (tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
                     batHere = false;
-                    bataillons.forEach(function(bat) {
-                        if (bat.loc === "zone" && bat.tileId === tile.id) {
-                            batHere = true;
-                        }
-                    });
-                    if (!batHere) {
-                        aliens.forEach(function(bat) {
-                            if (bat.loc === "zone" && bat.tileId === tile.id) {
-                                batHere = true;
-                            }
-                        });
+                    if (alienOccupiedTiles.includes(tile.id) || playerOccupiedTiles.includes(tile.id)) {
+                        batHere = true;
                     }
                     if (!batHere) {
                         possibleDrops.push(tile.id);
@@ -600,17 +534,8 @@ function checkDropSafe(layBatTileId) {
                 distance = calcDistance(layBatTileId,tile.id);
                 if (distance <= 3 && distance >=2) {
                     batHere = false;
-                    bataillons.forEach(function(bat) {
-                        if (bat.loc === "zone" && bat.tileId === tile.id) {
-                            batHere = true;
-                        }
-                    });
-                    if (!batHere) {
-                        aliens.forEach(function(bat) {
-                            if (bat.loc === "zone" && bat.tileId === tile.id) {
-                                batHere = true;
-                            }
-                        });
+                    if (alienOccupiedTiles.includes(tile.id) || playerOccupiedTiles.includes(tile.id)) {
+                        batHere = true;
                     }
                     if (!batHere) {
                         possibleDrops.push(tile.id);
@@ -625,17 +550,8 @@ function checkDropSafe(layBatTileId) {
             distance = calcDistance(layBatTileId,tile.id);
             if (distance <= 3 && distance >=2) {
                 batHere = false;
-                bataillons.forEach(function(bat) {
-                    if (bat.loc === "zone" && bat.tileId === tile.id) {
-                        batHere = true;
-                    }
-                });
-                if (!batHere) {
-                    aliens.forEach(function(bat) {
-                        if (bat.loc === "zone" && bat.tileId === tile.id) {
-                            batHere = true;
-                        }
-                    });
+                if (alienOccupiedTiles.includes(tile.id) || playerOccupiedTiles.includes(tile.id)) {
+                    batHere = true;
                 }
                 if (!batHere) {
                     possibleDrops.push(tile.id);

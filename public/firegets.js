@@ -648,7 +648,7 @@ function batDeathEffect(bat,quiet,gain,title,body) {
             }
             if (morphNecro) {
                 let batType = getBatType(bat);
-                if (batType.kind != 'game') {
+                if (batType.kind != 'game' && batType.cat === 'aliens') {
                     let unitIndex = alienUnits.findIndex((obj => obj.name === 'Necros'));
                     conselUnit = alienUnits[unitIndex];
                     conselAmmos = ['xxx','xxx','xxx','xxx'];
@@ -657,7 +657,7 @@ function batDeathEffect(bat,quiet,gain,title,body) {
             }
             if (morphFetid) {
                 let batType = getBatType(bat);
-                if (batType.kind != 'game') {
+                if (batType.kind != 'game' && batType.cat === 'aliens') {
                     let unitIndex = alienUnits.findIndex((obj => obj.name === 'Fétides'));
                     conselUnit = alienUnits[unitIndex];
                     conselAmmos = ['xxx','xxx','xxx','xxx'];
