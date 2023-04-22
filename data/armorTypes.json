@@ -582,9 +582,9 @@
     {
         "name":"autorep-vsp",
         "cat":"armor",
-        "armor":3,
+        "armor":4,
         "ap":0,
-        "skills":["resistall","autorepair"],
+        "skills":["protectall","autorepair"],
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":4,"ca":3,"vsp":3},
         "factor":"thp",

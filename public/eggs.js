@@ -8,6 +8,9 @@ function checkStartingAliens() {
             let coloBat = getAlienByName('Colonie');
             alienSpawn(coloBat,'Vomissure','bmorph');
             alienSpawn(coloBat,'Vomissure','bmorph');
+            if (rand.rand(1,2) === 1) {
+                dropEgg('Flytraps','guard');
+            }
             if (zone[0].mapDiff >= 9) {
                 alienSpawn(coloBat,'Vomissure','bmorph');
                 alienSpawn(coloBat,'Vomissure','bmorph');
@@ -17,6 +20,9 @@ function checkStartingAliens() {
                 if (rand.rand(1,2) === 1) {
                     dropEgg('Volcan','guard');
                 }
+                if (rand.rand(1,2) === 1) {
+                    dropEgg('Flytraps','guard');
+                }
             }
             if (zone[0].mapDiff >= 10) {
                 alienSpawn(coloBat,'Ruche');
@@ -24,6 +30,10 @@ function checkStartingAliens() {
                 alienSpawn(coloBat,'Ruche');
                 dropEgg('Volcan','guard');
                 dropEgg('Volcan','guard');
+                dropEgg('Flytraps','guard');
+                if (rand.rand(1,2) === 1) {
+                    dropEgg('Flytraps','guard');
+                }
             }
             numRuches = rand.rand(4,6);
             if (zone[0].mapDiff === 9) {
@@ -74,7 +84,11 @@ function checkStartingAliens() {
     if (!zone[0].visit && zone[0].number < 50) {
         let ii = 1;
         while (ii <= numSent) {
-            dropEgg('Veilleurs','none');
+            if (rand.rand(1,6) === 6) {
+                dropEgg('Flytraps','none');
+            } else {
+                dropEgg('Veilleurs','none');
+            }
             if (ii > 50) {break;}
             ii++
         }
@@ -692,6 +706,12 @@ function eggDropTile(eggName,theArea) {
                 area = 'nocenter';
             } else {
                 area = 'around';
+            }
+        } else if (eggName.includes('Flytraps')) {
+            if (rand.rand(1,4) === 1) {
+                area = 'around';
+            } else {
+                area = 'nocenter';
             }
         }
     }

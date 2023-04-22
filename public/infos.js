@@ -595,7 +595,15 @@ function batInfos(bat,batType,pop) {
         let transLeft = calcTransUnitsLeft(bat,batType);
         let transBase = batType.transUnits;
         if (hasEquip(bat,['megatrans'])) {
-            transBase = Math.round(transBase*1.25);
+            if (batType.skills.includes('rescue')) {
+                transBase = Math.round(transBase*1.1);
+            } else {
+                transBase = Math.round(transBase*1.25);
+            }
+        }
+        if (batType.skills.includes('rescue') && playerInfos.gLevel >= 15) {
+            let gangFactor = 1+((playerInfos.gLevel-14)/50);
+            transBase = Math.round(transBase*gangFactor);
         }
         if (hasEquip(bat,['maxtrans'])) {
             transBase = calcTransWithBreak(transBase,batType);

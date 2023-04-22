@@ -165,7 +165,9 @@ function chooseTarget(iter) {
 function checkAlienFlyTarget(weapon,bat) {
     let isTarget = false;
     let batType = getBatType(bat);
+    console.log('CHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHEK');
     if (weapon.noFly) {
+        console.log('noFly');
         let isFlying = false;
         if (batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') {
             if (bat.apLeft >= -1) {
@@ -194,10 +196,40 @@ function checkAlienFlyTarget(weapon,bat) {
         } else {
             isTarget = true;
         }
+    } else if (weapon.noGround) {
+        console.log('noGround');
+        let isFlying = checkFlying(bat,batType);
+        console.log('isFlying='+isFlying);
+        if (!isFlying) {
+            isTarget = false;
+        } else {
+            isTarget = true;
+        }
     } else {
         isTarget = true;
     }
+    console.log('isTarget='+isTarget);
+    console.log(bat.type);
     return isTarget;
+};
+
+function checkFlying(bat,batType) {
+    let isFlying = false;
+    if (batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') {
+        if (bat.apLeft >= -1) {
+            isFlying = true;
+        }
+    } else if (batType.skills.includes('fly')) {
+        if (bat.apLeft >= -6) {
+            isFlying = true;
+        } else if (hasEquip(bat,['e-stab']) && bat.apLeft >= -15) {
+            isFlying = true;
+        }
+    }
+    if (bat.tags.includes('camo') || bat.tags.includes('fortif') || bat.tags.includes('mining')) {
+        isFlying = false;
+    }
+    return isFlying;
 };
 
 function shootTarget(recul,melee) {
@@ -1293,6 +1325,8 @@ function anyTargetInRange() {
 
 function lockTargetBat(bat) {
     targetBat = JSON.parse(JSON.stringify(bat));
+    console.log('LOCK TARGET');
+    console.log(targetBat.type);
 };
 
 function targetMelee(iter) {

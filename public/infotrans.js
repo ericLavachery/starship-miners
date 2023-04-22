@@ -385,7 +385,15 @@ function calcTransUnitsLeft(myBat,myBatType) {
         myBatTransUnitsLeft = myBatTransUnitsLeft*2;
     }
     if (hasEquip(myBat,['megatrans'])) {
-        myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*1.25);
+        if (myBatType.skills.includes('rescue')) {
+            myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*1.1);
+        } else {
+            myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*1.25);
+        }
+    }
+    if (myBatType.skills.includes('rescue') && playerInfos.gLevel >= 15) {
+        let gangFactor = 1+((playerInfos.gLevel-14)/50);
+        myBatTransUnitsLeft = Math.round(myBatTransUnitsLeft*gangFactor);
     }
     if (hasEquip(myBat,['maxtrans'])) {
         myBatTransUnitsLeft = calcTransWithBreak(myBatTransUnitsLeft,myBatType);

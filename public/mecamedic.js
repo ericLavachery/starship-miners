@@ -225,7 +225,27 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                 } else {
                                     // MECANO (AROUND)
                                     if (bat.squadsLeft === batType.squads && bat.damage > 0) {
-                                        bat.damage = 0;
+                                        // bat.damage = 0;
+                                        oldSquadsLeft = bat.squadsLeft;
+                                        squadHP = batType.squadSize*batType.hp;
+                                        batHP = squadHP*batType.squads;
+                                        if (batType.skills.includes('transorbital')) {
+                                            regen = mecanoHP*5;
+                                        } else if (batType.cat === 'buildings' || batType.cat === 'devices') {
+                                            regen = mecanoHP*2;
+                                        } else if (batType.skills.includes('robot') && !selectedBatType.skills.includes('roborepair')) {
+                                            regen = Math.round(mecanoHP/2.5);
+                                        } else {
+                                            regen = mecanoHP;
+                                        }
+                                        batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
+                                        bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
+                                        bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
+                                        if (bat.squadsLeft > batType.squads) {
+                                            bat.squadsLeft = batType.squads;
+                                            bat.damage = 0;
+                                        }
+                                        newBatUnits = batUnits+batType.squadSize;
                                         totalAPCost = totalAPCost+apCost;
                                         console.log('damage');
                                         console.log('totalAPCost '+totalAPCost);
@@ -238,8 +258,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
                                             bat.apLeft = bat.apLeft-medicPatientAP;
                                         }
-                                        let healCost = Math.round(bat.damage/(batType.hp*batType.squadSize)*2);
-                                        addRepairFlag(bat,healCost);
+                                        // let healCost = Math.round(bat.damage/(batType.hp*batType.squadSize)*2);
+                                        // addRepairFlag(bat,healCost);
+                                        addRepairFlag(bat,2);
                                         doneAction(bat);
                                     } else if (bat.squadsLeft < batType.squads && deep) {
                                         oldSquadsLeft = bat.squadsLeft;
@@ -388,11 +409,30 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
         } else {
             // MECANO (SELF)
             if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage > 0) {
-                selectedBat.damage = 0
+                // selectedBat.damage = 0
+                oldSquadsLeft = selectedBat.squadsLeft;
+                squadHP = selectedBatType.squadSize*selectedBatType.hp;
+                batHP = squadHP*selectedBatType.squads;
+                if (selectedBatType.skills.includes('transorbital')) {
+                    regen = mecanoHP*5;
+                } else if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
+                    regen = mecanoHP*2;
+                } else {
+                    regen = mecanoHP;
+                }
+                batHPLeft = (selectedBat.squadsLeft*squadHP)-selectedBat.damage+regen;
+                selectedBat.squadsLeft = Math.ceil(batHPLeft/squadHP);
+                selectedBat.damage = (selectedBat.squadsLeft*squadHP)-batHPLeft;
+                if (selectedBat.squadsLeft > selectedBatType.squads) {
+                    selectedBat.squadsLeft = selectedBatType.squads;
+                    selectedBat.damage = 0;
+                }
+                newBatUnits = batUnits+selectedBatType.squadSize;
                 totalAPCost = totalAPCost+apCost;
                 $('#report').append('<span class="report cy">'+selectedBat.type+'<br></span><span class="report">dégâts réparés<br>');
-                let healCost = Math.round(selectedBat.damage/(selectedBatType.hp*selectedBatType.squadSize)*2);
-                addRepairFlag(selectedBat,healCost);
+                // let healCost = Math.round(selectedBat.damage/(selectedBatType.hp*selectedBatType.squadSize)*2);
+                // addRepairFlag(selectedBat,healCost);
+                addRepairFlag(selectedBat,2);
                 showBataillon(selectedBat);
             } else if (selectedBat.squadsLeft < selectedBatType.squads && deep) {
                 oldSquadsLeft = selectedBat.squadsLeft;
@@ -989,6 +1029,13 @@ function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
                     baseskillCost = Math.floor(baseskillCost*3/4);
                 } else {
                     baseskillCost = baseskillCost-1;
+                }
+                if (batType.skills.includes('transorbital')) {
+                    if (baseskillCost >= 6) {
+                        baseskillCost = Math.floor(baseskillCost*3/4);
+                    } else {
+                        baseskillCost = baseskillCost-1;
+                    }
                 }
             }
         }
