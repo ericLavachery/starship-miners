@@ -316,7 +316,7 @@
             "sound":"rainbow",
             "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
             "maxAmmo":36,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","w2-rain","e-medic","lifepod","garage","e-radar"],
@@ -583,7 +583,7 @@
             "sound":"dynamite",
             "ammo":["dynamite","dynamite-nitrate","dynamite-nanite"],
             "maxAmmo":24,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","w1-gun","w2-dyna","tungextract","plasmaextract","monoextract","e-medic","psol","isophon","respod","garage","e-infra","bld-camo"],
@@ -1136,7 +1136,7 @@
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
             "maxAmmo":24,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Autopistol",
@@ -1218,7 +1218,7 @@
             "sound":"dynamite",
             "ammo":["dynamite","dynamite-nitrate","dynamite-nanite"],
             "maxAmmo":24,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","w1-gun","w2-dyna","e-medic","psol","isophon","garage","prodboost","e-infra","bld-camo"],
@@ -1330,7 +1330,7 @@
             "sound":"catapult2",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":30,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Tourelles auto",
@@ -1451,7 +1451,7 @@
             "sound":"catapult2",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":30,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Tourelles auto",
@@ -1748,7 +1748,7 @@
             "sound":"catapult2",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":30,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","w2-arti","w2-ggun","w2-treb","psol2","isophon","respod","garage","prodboost"],
@@ -1858,7 +1858,7 @@
             "sound":"catapult2",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":30,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","w2-arti","w2-ggun","w2-treb","psol2","isophon","respod","garage","prodboost","saclos"],
@@ -1996,7 +1996,7 @@
             "sound":"rainbow",
             "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
             "maxAmmo":24,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Tourelles auto",
@@ -2329,7 +2329,7 @@
             "sound":"dynamite",
             "ammo":["dynamite","dynamite-nitrate","dynamite-nanite"],
             "maxAmmo":16,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Autopistol",
@@ -2595,7 +2595,7 @@
             "sound":"rainbow",
             "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
             "maxAmmo":24,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","w1-gun","w2-rain","psol","isophon","e-control","respod","garage","prodboost","e-infra","bld-camo"],
@@ -3572,7 +3572,7 @@
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
             "maxAmmo":16,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Autopistol",

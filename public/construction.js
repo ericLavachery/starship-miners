@@ -1750,7 +1750,7 @@ function recupRaiders(unitId,tileId,citoyens,xp,ammo,equip) {
     let unitIndex = unitTypes.findIndex((obj => obj.id == unitId));
     conselUnit = unitTypes[unitIndex];
     conselPut = false;
-    conselAmmos = [ammo,ammo,'scrap',equip];
+    conselAmmos = [ammo,ammo,'kevlar',equip];
     conselTriche = true;
     let typeId = conselUnit.id;
     putBat(tileId,60,xp);
@@ -1761,7 +1761,7 @@ function recupRaiders(unitId,tileId,citoyens,xp,ammo,equip) {
     let dropTile = checkDrop(tileId);
     conselUnit = unitTypes[unitIndex];
     conselPut = false;
-    conselAmmos = [ammo,ammo,'scrap',equip];
+    conselAmmos = [ammo,ammo,'kevlar',equip];
     conselTriche = true;
     putBat(dropTile,60,xp);
     if (playerInfos.onShip) {

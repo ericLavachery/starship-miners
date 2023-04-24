@@ -591,7 +591,7 @@
         },
         "weapon2":{},
         "protection":[],
-        "equip":["aucun","megafret","siland","e-control","bld-camo","e-mecano","e-medic"],
+        "equip":["aucun","megafret","siland","bld-camo","e-mecano","e-medic"],
         "log3eq":["siland"],
         "autoEq":["bld-camo","e-mecano","e-medic"],
         "moveCost":99,
@@ -657,7 +657,7 @@
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
         },
         "protection":[],
-        "equip":["aucun","megafret","siland","landerwkit","w2-lmit","e-control","respod","lifepod","bld-camo","e-mecano","e-medic","saclos"],
+        "equip":["aucun","megafret","siland","landerwkit","w2-lmit","respod","lifepod","bld-camo","e-mecano","e-medic","saclos"],
         "log3eq":["landerwkit"],
         "autoEq":["siland","bld-camo","e-mecano","e-medic"],
         "moveCost":99,
@@ -682,9 +682,9 @@
         "kind":"zero-defense",
         "sort":200,
         "squads":3,
-        "squadSize":2,
+        "squadSize":3,
         "crew":3,
-        "hp":135,
+        "hp":125,
         "armor":10,
         "size":50,
         "stealth":0,
@@ -760,7 +760,7 @@
         "squads":3,
         "squadSize":2,
         "crew":9,
-        "hp":200,
+        "hp":275,
         "armor":14,
         "size":70,
         "stealth":0,
@@ -898,7 +898,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":36,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Blister canon",
@@ -1017,7 +1017,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":30,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Fusil antichar",
@@ -1347,7 +1347,7 @@
             "sound":"catapult2",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":15,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","theeye","g2siege","hangard"],
@@ -1450,7 +1450,7 @@
             "sound":"rainbow",
             "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
             "maxAmmo":24,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{},
         "protection":[],

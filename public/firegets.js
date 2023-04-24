@@ -2299,7 +2299,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     if (hasEquip(bat,['hangard']) && thisWeapon.maxAmmo < 99) {
-        thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
+        thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*2.5);
     }
     if (hasEquip(bat,['carrousel','carrousel1','carrousel2']) && thisWeapon.maxAmmo < 99) {
         thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.35);

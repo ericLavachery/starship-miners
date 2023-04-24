@@ -276,8 +276,25 @@
         "stealth":12,
         "speed":5,
         "ap":20,
-        "maxSalvo":2,
+        "maxSalvo":1,
         "weapon":{
+            "name":"Scies",
+            "cost":3,
+            "range":0,
+            "isShort":true,
+            "noShield":true,
+            "noGrip":true,
+            "noBis":true,
+            "rof":20,
+            "accuracy":25,
+            "dca":0.75,
+            "power":7,
+            "armors":0.4,
+            "aoe":"unit",
+            "sound":"saw",
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
+        },
+        "weapon2":{
             "name":"Minicanon laser",
             "cost":4,
             "range":3,
@@ -293,24 +310,8 @@
             "maxAmmo":15,
             "ravitBld":"Générateur"
         },
-        "weapon2":{
-            "name":"Bélier",
-            "cost":1,
-            "range":0,
-            "noFly":true,
-            "noDef":true,
-            "noBis":true,
-            "noShield":true,
-            "noBig":true,
-            "rof":5,
-            "accuracy":25,
-            "power":16,
-            "aoe":"brochette",
-            "sound":"belier",
-            "ammo":["standard","belier-spike"]
-        },
         "protection":[],
-        "equip":["aucun","g2motor","snorkel","moisso","e-flash","e-radar","theeye","e-mecano","repel"],
+        "equip":["aucun","g2motor","snorkel","e-flash","e-radar","theeye","e-mecano","repel"],
         "log3eq":["g2motor"],
         "autoEq":["snorkel","e-mecano"],
         "moveCost":2,
@@ -365,7 +366,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":16,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","chargeur1","g2motor","arrosoir","chenilles","snorkel","e-flash","theeye","e-mecano","repel"],
@@ -1340,9 +1341,9 @@
         "squads":5,
         "squadSize":3,
         "crew":3,
-        "hp":50,
+        "hp":48,
         "armor":7,
-        "size":20,
+        "size":19,
         "stealth":5,
         "speed":3,
         "ap":18,
@@ -1495,7 +1496,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":24,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","g2motor","wstabkit","snorkel","e-flash","e-mecano"],
@@ -1864,7 +1865,7 @@
             "sound":"catapult2",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":20,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Bélier",
@@ -1972,6 +1973,7 @@
         "hp":56,
         "armor":12,
         "size":21,
+        "volume":0.95,
         "stealth":9,
         "speed":2,
         "ap":16,
@@ -2606,7 +2608,7 @@
         "hp":50,
         "armor":6,
         "size":18,
-        "volume":0.95,
+        "volume":1,
         "stealth":3,
         "speed":2,
         "ap":22,
@@ -3641,7 +3643,7 @@
             "sound":"rainbow",
             "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
             "maxAmmo":6,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","g2motor","chenilles","snorkel","maxtrans","arbalourde","w2-gaz","e-mecano","e-medic","repel","e-road"],
@@ -3771,7 +3773,7 @@
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
             "maxAmmo":6,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","lunette1","chargeur1","lanceur","g2motor","snorkel","maxtrans","e-flash","e-mecano","chenilles","e-treuil","g2tools","e-respod"],
@@ -4225,7 +4227,7 @@
         "hp":3,
         "armor":3,
         "size":2,
-        "volume":1.5,
+        "volume":1.1,
         "stealth":8,
         "speed":7,
         "ap":12,
@@ -4285,7 +4287,7 @@
         "hp":4,
         "armor":2,
         "size":2,
-        "volume":1.5,
+        "volume":1.1,
         "stealth":8,
         "speed":7,
         "ap":12,
@@ -4377,7 +4379,7 @@
             "sound":"dynamite",
             "ammo":["dynamite","dynamite-nitrate","dynamite-nanite"],
             "maxAmmo":12,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","gilet","chargeur1","g2motor","e-flash","theeye","e-mecano","lancegren","repel","e-stab"],
@@ -4440,7 +4442,7 @@
             "sound":"grenade",
             "ammo":["fireball","fireglue","firemarq","fireslime","firebug","fireblast"],
             "maxAmmo":13,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","chargeur1","gilet","g2motor","e-flash","theeye","e-mecano","repel","e-stab"],

@@ -97,6 +97,21 @@ function getMissionBatList() {
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Tour de guet',['marquage','xxx','bulk','lunette']);
     missionBatList.push(newSlot);
+    if (playerInfos.gLevel === 16 || playerInfos.gLevel === 17) {
+        newSlot = new SlotConstructor('Tour de guet',['marquage-stop','xxx','bulk','lunette']);
+    }
+    if (playerInfos.gLevel < 16) {
+        newSlot = new SlotConstructor('Miliciens',['explosive','titanium','hplate','kit-milice']);
+        missionBatList.push(newSlot);
+    } else if (playerInfos.gLevel === 17) {
+        newSlot = new SlotConstructor('Miliciens',['explosive','salite','aegis','kit-milice']);
+        missionBatList.push(newSlot);
+        newSlot = new SlotConstructor('Miliciens',['explosive','salite','aegis','kit-milice']);
+        missionBatList.push(newSlot);
+    } else if (playerInfos.gLevel === 18) {
+        newSlot = new SlotConstructor('Miliciens',['explosive','salite','aegis','kit-milice']);
+        missionBatList.push(newSlot);
+    }
     if (playerInfos.gLevel < 12) {
         newSlot = new SlotConstructor('Pickups',['explosive','molotov-feu','chobham','snorkel']);
     } else if (playerInfos.gLevel < 16) {
@@ -127,9 +142,17 @@ function getMissionBatList() {
     missionBatList.push(newSlot);
     newSlot = new SlotConstructor('Sapeurs',['tungsten','lame-carbone','soap','e-road']);
     missionBatList.push(newSlot);
-    newSlot = new SlotConstructor('Rednecks',['uranium','uranium','hplate','chargeur']);
+    if (playerInfos.gLevel < 15) {
+        newSlot = new SlotConstructor('Rednecks',['uranium','uranium','hplate','chargeur']);
+    } else {
+        newSlot = new SlotConstructor('Rednecks',['uranium','uranium','aegis','chargeur']);
+    }
     missionBatList.push(newSlot);
-    newSlot = new SlotConstructor('Rednecks',['uranium','uranium','hplate','chargeur']);
+    if (playerInfos.gLevel < 17) {
+        newSlot = new SlotConstructor('Rednecks',['uranium','uranium','hplate','chargeur']);
+    } else {
+        newSlot = new SlotConstructor('Rednecks',['uranium','uranium','aegis','chargeur']);
+    }
     missionBatList.push(newSlot);
     if (playerInfos.gLevel < 16) {
         newSlot = new SlotConstructor('Rednecks',['uranium','uranium','swarwing','e-camo']);
@@ -172,10 +195,10 @@ function getMissionBatList() {
         newSlot = new SlotConstructor('Marshalls',['timonium','timonium','duneg','theeye']);
     }
     missionBatList.push(newSlot);
-    if (playerInfos.gLevel < 18) {
-        newSlot = new SlotConstructor('Stalkers',['titanium','lame-carbone','wendium','lunette1']);
-    } else {
+    if (playerInfos.gLevel === 18) {
         newSlot = new SlotConstructor('Stalkers',['salite','lame-carbone','wendium','lunette1']);
+    } else if (playerInfos.gLevel != 17) {
+        newSlot = new SlotConstructor('Stalkers',['titanium','lame-carbone','wendium','lunette1']);
     }
     missionBatList.push(newSlot);
     if (playerInfos.gLevel < 14) {
@@ -213,6 +236,9 @@ function getMissionBatList() {
     if (playerInfos.gLevel >= 18) {
         newSlot = new SlotConstructor('Noise Angels',['disco','timonium','wendium','chargeur2']);
         missionBatList.push(newSlot);
+    } else if (playerInfos.gLevel >= 17) {
+        newSlot = new SlotConstructor('Wardogs',['dents-carbone','autodes','wendium','w2-goodbye']);
+        missionBatList.push(newSlot);
     }
     if (playerInfos.gLevel < 14) {
         newSlot = new SlotConstructor('Buggies',['uranium','lame-carbone','chobham','chargeur1']);
@@ -231,7 +257,7 @@ function getMissionBatList() {
     }
     missionBatList.push(newSlot);
     if (playerInfos.gLevel >= 17) {
-        newSlot = new SlotConstructor('Minitanks',['obus-plastanium','obus-plastanium','tisal','longtom1']);
+        newSlot = new SlotConstructor('Flaktanks',['obus-plastanium','obus-plastanium','tisal','longtom1']);
         missionBatList.push(newSlot);
     }
     if (playerInfos.gLevel >= 14) {

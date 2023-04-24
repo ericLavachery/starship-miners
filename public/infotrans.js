@@ -213,20 +213,23 @@ function calcVolume(bat,batType) {
         if (bat.eq === 'e-jetpack') {
             batVolume = batVolume*1.2;
         }
-        if (bat.eq === 'kit-garde' || bat.eq === 'kit-sentinelle') {
-            batVolume = batVolume*1.33;
+        if (bat.eq === 'kit-sentinelle') {
+            batVolume = batVolume*1.15;
+        }
+        if (bat.eq === 'kit-garde') {
+            batVolume = batVolume*1.25;
         }
         if (bat.eq === 'kit-artilleur') {
-            batVolume = batVolume*1.33;
+            batVolume = batVolume*1.25;
         }
         if (bat.eq === 'kit-guetteur') {
-            batVolume = batVolume*1.33;
+            batVolume = batVolume*1.3;
         }
         if (bat.eq === 'kit-pompiste') {
-            batVolume = batVolume*1.22;
+            batVolume = batVolume*1.15;
         }
         if (bat.eq === 'e-phare' && batType.cat === 'infantry') {
-            batVolume = batVolume*1.75;
+            batVolume = batVolume*1.5;
         }
     }
     batVolume = Math.floor(batVolume);

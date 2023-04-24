@@ -250,13 +250,13 @@
         "pic":"javelin",
         "cat":"infantry",
         "kind":"blades",
-        "squads":10,
+        "squads":8,
         "squadSize":6,
         "crew":1,
         "hp":7,
         "armor":0,
         "size":3,
-        "volume":1,
+        "volume":0.9,
         "stealth":10,
         "speed":0,
         "ap":14,
@@ -403,7 +403,7 @@
             "sound":"dynamite",
             "ammo":["dynamite","dynamite-nitrate","dynamite-nanite"],
             "maxAmmo":8,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","e-flash","e-ranger","e-camo","gilet","lancegren","helper","e-medic","theeye","repel","waterproof"],
@@ -605,7 +605,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "volume":0.9,
+        "volume":0.8,
         "stealth":6,
         "ap":14,
         "maxSalvo":1,
@@ -662,7 +662,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "volume":0.9,
+        "volume":0.8,
         "stealth":6,
         "ap":14,
         "maxSalvo":1,
@@ -722,7 +722,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "volume":0.9,
+        "volume":0.85,
         "stealth":12,
         "ap":14,
         "maxSalvo":2,
@@ -779,7 +779,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "volume":0.9,
+        "volume":0.8,
         "stealth":7,
         "ap":14,
         "maxSalvo":1,
@@ -839,7 +839,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "volume":0.9,
+        "volume":0.8,
         "stealth":7,
         "ap":15,
         "maxSalvo":2,
@@ -874,7 +874,7 @@
             "sound":"hose",
             "ammo":["fuel"],
             "maxAmmo":10,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","kit-pompiste","e-ranger","e-jetpack","taserkit","camkit","e-phare","repel"],
         "log3eq":["e-ranger"],
@@ -899,7 +899,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "volume":0.9,
+        "volume":0.85,
         "stealth":7,
         "ap":13,
         "maxSalvo":1,
@@ -974,7 +974,7 @@
         "hp":5,
         "armor":0,
         "size":3,
-        "volume":1,
+        "volume":0.85,
         "stealth":12,
         "ap":15,
         "maxSalvo":1,
@@ -1361,7 +1361,7 @@
             "sound":"grenade",
             "ammo":["fireball","fireglue","firemarq","fireslime","firebug","fireblast"],
             "maxAmmo":12,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","e-flash","e-ranger","e-medic","gilet","chargeur1","waterproof","repel"],
@@ -2194,7 +2194,7 @@
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
             "maxAmmo":10,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","e-ranger","gilet","e-camo","lunette1","chargeur1","silencieux1","lanceur","e-jetpack","theeye","helper","waterproof","repel"],
         "log3eq":["lanceur"],
@@ -2487,7 +2487,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":13,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Magnum",
@@ -3692,7 +3692,7 @@
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
             "maxAmmo":10,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","e-flash","lanceur","e-camo","permakirin","theeye","helper","waterproof","e-medic","repel"],
@@ -3919,7 +3919,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":18,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Fusil semi-auto",
@@ -4054,7 +4054,7 @@
             "sound":"rainbow",
             "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
             "maxAmmo":10,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","e-flash","lunette1","chargeur1","w2-gaz","e-jetpack","e-camo","permakirin","theeye","helper","waterproof","e-medic","repel"],
@@ -4144,24 +4144,10 @@
         "ap":16,
         "maxSalvo":2,
         "weapon":{
-            "name":"Mitraillette pneu",
-            "cost":2,
-            "range":1,
-            "noise":1,
-            "rof":24,
-            "accuracy":25,
-            "power":5,
-            "armors":1.2,
-            "aoe":"unit",
-            "sound":"mit_pneu",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
-        },
-        "weapon2":{
             "name":"Filet",
             "cost":4,
             "range":0,
             "isShort":true,
-            "noDef":true,
             "noBis":true,
             "noDatt":true,
             "noShield":true,
@@ -4173,10 +4159,26 @@
             "sound":"filet",
             "ammo":["web-standard","web-spike","web-taser"]
         },
+        "weapon2":{
+            "name":"Carabine pneu",
+            "cost":4,
+            "range":2,
+            "elevation":1,
+            "isPrec":true,
+            "noise":1,
+            "rof":8,
+            "accuracy":35,
+            "dca":1.25,
+            "power":7,
+            "armors":1.2,
+            "aoe":"unit",
+            "sound":"fpneu_x1",
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
+        },
         "protection":[],
-        "equip":["aucun","e-flash","lunette1","chargeur1","silencieux1","e-jetpack","e-camo","permakirin","theeye","helper","e-medic","repel"],
-        "log3eq":["silencieux1"],
-        "autoEq":["lunette1","chargeur1","permakirin","repel"],
+        "equip":["aucun","e-flash","lunette2","chargeur2","silencieux2","e-jetpack","e-camo","permakirin","theeye","helper","e-medic","repel"],
+        "log3eq":["silencieux2"],
+        "autoEq":["lunette2","chargeur2","permakirin","repel"],
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
@@ -4438,7 +4440,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","camo","regeneration","embuscade","cible","mutant","ranger","fastguet","guerrilla","baddef","brigands","escape","herorange","lowstress","w3range","elite"],
+        "skills":["a_light","fouille","fortif","camo","regeneration","embuscade","cible","mutant","snif","ranger","fastguet","guerrilla","baddef","brigands","escape","herorange","lowstress","w3range","elite"],
         "fuzz":0,
         "deathFx":"mutantdeath"
     },
@@ -4605,7 +4607,7 @@
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
             "maxAmmo":10,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","e-flash","gilet","e-medic","e-camo","lunette1","chargeur1","lanceur","repel"],
@@ -4726,7 +4728,7 @@
             "sound":"flumme",
             "ammo":["lt-o2","lt-nanite","lt-plastanium","lt-pyrus"],
             "maxAmmo":20,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Autopistol",
@@ -5051,7 +5053,7 @@
             "sound":"rainbow",
             "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
             "maxAmmo":10,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","e-flash","e-medic","e-mecano","chargeur1","w2-gaz","theeye","helper","detector","repel"],
@@ -5154,7 +5156,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":24,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Fusil antichar",
@@ -5340,7 +5342,7 @@
             "sound":"flamme",
             "ammo":["lf-feu","lf-napalm","lf-slime","lf-pyratol","lf-uridium"],
             "maxAmmo":10,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","e-flash","gilet","theeye","waterproof","detector","e-medic","lunette1","chargeur1","repel"],
@@ -5403,7 +5405,7 @@
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
             "maxAmmo":8,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","gilet","chargeur1","lanceur","theeye","helper","waterproof","detector","g2ai"],
         "log3eq":["chargeur1"],
@@ -5805,7 +5807,7 @@
             "sound":"fragger_throw",
             "ammo":["marquage-spike","marquage-stop"],
             "maxAmmo":6,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","g2motor","waterproof","detector","g2ai","e-mecano"],
@@ -5926,7 +5928,7 @@
             "sound":"rainbow",
             "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],
             "maxAmmo":12,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","e-ranger","gilet","e-camo","chargeur1","e-jetpack","permakirin","theeye","helper","waterproof","e-medic","repel"],
         "log3eq":["e-camo"],
@@ -6104,7 +6106,7 @@
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
             "maxAmmo":12,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","e-ranger","gilet","e-camo","chargeur1","lanceur","e-medic","theeye","helper","waterproof","repel"],
         "log3eq":["chargeur1"],
@@ -6165,7 +6167,7 @@
             "sound":"grenade",
             "ammo":["fireball","fireglue","firemarq","fireslime","firebug","fireblast"],
             "maxAmmo":15,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","e-ranger","gilet","e-camo","lunette1","chargeur1","silencieux1","lanceur","e-jetpack","theeye","helper","waterproof","repel"],
         "log3eq":["lanceur"],
@@ -6207,7 +6209,7 @@
             "sound":"flumme",
             "ammo":["lt-o2","lt-nanite","lt-plastanium","lt-pyrus"],
             "maxAmmo":13,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Pistolet laser",
@@ -6541,7 +6543,7 @@
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
             "maxAmmo":6,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","chargeur1","lunette1","w2-molo"],
         "log3eq":["chargeur1"],
@@ -6893,7 +6895,7 @@
             "sound":"molotov",
             "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
             "maxAmmo":10,
-            "ravitBld":"Atelier"
+            "ravitBld":"Poudrière"
         },
         "equip":["aucun","e-flash","chargeur1","lanceur","e-medic","e-camo","snorkel","theeye","repel"],
         "log3eq":["e-camo"],
