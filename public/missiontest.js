@@ -265,7 +265,7 @@ function getMissionBatList() {
         missionBatList.push(newSlot);
     }
     if (playerInfos.gLevel >= 18) {
-        newSlot = new SlotConstructor('Obusiers',['obus-plastanium','uranium','bulk','longtom1']);
+        newSlot = new SlotConstructor('Obusiers',['obus-uridium','uranium','bulk','longtom1']);
         missionBatList.push(newSlot);
     } else if (playerInfos.gLevel >= 16) {
         newSlot = new SlotConstructor('Obusiers',['obus-heatseeker','uranium','bulk','carrousel1']);
@@ -275,7 +275,7 @@ function getMissionBatList() {
         missionBatList.push(newSlot);
     }
     if (playerInfos.gLevel >= 17) {
-        newSlot = new SlotConstructor('Obusiers',['obus-heatseeker','uranium','bulk','carrousel1']);
+        newSlot = new SlotConstructor('Obusiers',['obus-plastanium','uranium','bulk','carrousel1']);
         missionBatList.push(newSlot);
     }
     if (playerInfos.gLevel >= 15) {

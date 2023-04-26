@@ -1206,7 +1206,7 @@
     {
         "id":1,
         "name":"Scouts",
-        "levels":{"rednecks":99,"blades":99,"bulbos":12,"drogmulojs":12,"tiradores":99,"detruas":9,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":12,"drogmulojs":13,"tiradores":99,"detruas":9,"brasier":99},
         "bldReq":["Armurerie","Garage"],
         "compReq":{"tank":1,"explo":1,"bal":2},
         "costs":{"Fer":220,"Scrap":215,"Carbone":75,"Aluminium":150,"Moteurs":60,"Tungstène":90,"Cuivre":15,"Batteries":25,"Compo2":60,"Cobalt":30,"Hélium":60,"Explosifs":10,"Fuel":40},
@@ -1368,7 +1368,7 @@
     {
         "id":107,
         "name":"Flaktanks",
-        "levels":{"rednecks":17,"blades":99,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":15,"brasier":16},
+        "levels":{"rednecks":17,"blades":99,"bulbos":16,"drogmulojs":16,"tiradores":17,"detruas":15,"brasier":16},
         "bldReq":["Arsenal","Chaîne de montage","Poste radio"],
         "compReq":{"tank":2,"bal":2},
         "altCompReq":{"tank":1,"arti":2},
@@ -1472,7 +1472,7 @@
     {
         "id":307,
         "name":"Minitanks",
-        "levels":{"rednecks":12,"blades":99,"bulbos":14,"drogmulojs":15,"tiradores":99,"detruas":11,"brasier":99},
+        "levels":{"rednecks":12,"blades":99,"bulbos":14,"drogmulojs":99,"tiradores":99,"detruas":11,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "compReq":{"energ":2},
         "compPass":["detruas","rednecks"],
@@ -1614,6 +1614,15 @@
         "fabTime":40
     },
     {
+        "id":313,
+        "name":"Candytrucks",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":5,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Armurerie","Garage"],
+        "costs":{"Fer":27,"Scrap":225,"Carbone":36,"Moteurs":27,"Cuivre":18,"Electros":9,"Batteries":9,"Compo2":36,"Silicium":36,"Drogues":94,"Chlore":48,"Zinc":48,"Titane":12,"Tissus":24},
+        "deploy":{"Fuel":40,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
+        "fabTime":40
+    },
+    {
         "id":61,
         "name":"Injections",
         "levels":{"rednecks":99,"blades":99,"bulbos":12,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
@@ -1715,7 +1724,7 @@
     {
         "id":128,
         "name":"Looters",
-        "levels":{"rednecks":8,"blades":4,"bulbos":6,"drogmulojs":5,"tiradores":7,"detruas":8,"brasier":7},
+        "levels":{"rednecks":8,"blades":4,"bulbos":6,"drogmulojs":6,"tiradores":7,"detruas":8,"brasier":7},
         "bldReq":["Garage","Atelier"],
         "compReq":{"cam":1},
         "costs":{"Fer":24,"Scrap":128,"Carbone":48,"Moteurs":36,"Cuivre":36,"Electros":36,"Batteries":36,"Compo2":36},
@@ -1726,7 +1735,7 @@
     {
         "id":120,
         "name":"Megadumps",
-        "levels":{"rednecks":13,"blades":12,"bulbos":13,"drogmulojs":13,"tiradores":14,"detruas":13,"brasier":13},
+        "levels":{"rednecks":13,"blades":12,"bulbos":13,"drogmulojs":12,"tiradores":14,"detruas":13,"brasier":13},
         "bldReq":["Garage","Atelier"],
         "compReq":{"trans":3},
         "costs":{"Fer":96,"Scrap":378,"Carbone":288,"Aluminium":96,"Moteurs":200,"Tungstène":96,"Cuivre":32,"Electros":12,"Batteries":114,"Compo2":390,"Compo3":108,"Mendium":80,"Huile":10},
@@ -2249,7 +2258,7 @@
     {
         "id":271,
         "name":"Drumfires",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":18,"tiradores":99,"detruas":99,"brasier":14},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":17,"tiradores":99,"detruas":99,"brasier":14},
         "bldReq":["Usine d'armement","Centre de com"],
         "compHardReq":{"arti":1,"pyro":2,"bal":1},
         "costs":{"Fer":108,"Scrap":36,"Carbone":84,"Aluminium":108,"Titane":36,"Rhodium":36,"Silicium":18,"Electros":18,"Batteries":24,"Nickel":36,"Compo2":72,"Uranium":36,"Munitions":18},

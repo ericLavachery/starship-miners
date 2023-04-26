@@ -717,7 +717,7 @@
         "kind":"drogmulojs",
         "sort":175,
         "squads":4,
-        "squadSize":5,
+        "squadSize":4,
         "crew":1,
         "hp":5,
         "armor":0,
@@ -732,7 +732,7 @@
             "range":1,
             "noBis":true,
             "noise":2,
-            "rof":5,
+            "rof":4,
             "accuracy":19,
             "power":7,
             "armors":1.1,
@@ -749,7 +749,7 @@
             "spot":true,
             "noDef":true,
             "noise":1,
-            "rof":15,
+            "rof":16,
             "accuracy":25,
             "power":0,
             "aoe":"unit",
@@ -2259,8 +2259,7 @@
             "aoe":"unit",
             "sound":"mit_mid",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"],
-            "maxAmmo":30,
-            "ravitBld":"Poudrière"
+            "maxAmmo":30
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","e-medic","lunette2","chargeur","theeye","helper","waterproof","repel"],
@@ -2306,8 +2305,7 @@
             "aoe":"unit",
             "sound":"mit_minigun",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"],
-            "maxAmmo":25,
-            "ravitBld":"Poudrière"
+            "maxAmmo":25
         },
         "weapon2":{
             "name":"Minigun",
@@ -2323,8 +2321,7 @@
             "aoe":"unit",
             "sound":"mit_minigun",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"],
-            "maxAmmo":25,
-            "ravitBld":"Poudrière"
+            "maxAmmo":25
         },
         "protection":[],
         "equip":["aucun","e-flash","e-ranger","e-medic","gilet","e-camo","lunette","chargeur","w2-2ch","theeye","helper","waterproof","repel"],
@@ -2945,7 +2942,7 @@
         "maxVeg":3,
         "skills":["a_heavy","fouille","fortif","datt","undead","medic","dealer","bliss","sila","blaze","kirin","octiron","skupiac","starka","camo","herorof"],
         "mediCost":10,
-        "maxDrug":36,
+        "maxDrug":30,
         "fuzz":1,
         "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
