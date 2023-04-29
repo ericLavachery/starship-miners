@@ -231,6 +231,13 @@ function calcVolume(bat,batType) {
         if (bat.eq === 'e-phare' && batType.cat === 'infantry') {
             batVolume = batVolume*1.5;
         }
+        // if (batType.cat === 'infantry') {
+        //     if (!batType.skills.includes('routes')) {
+        //         if (bat.eq === 'e-road') {
+        //             batVolume = batVolume*1.1;
+        //         }
+        //     }
+        // }
     }
     batVolume = Math.floor(batVolume);
     return batVolume;

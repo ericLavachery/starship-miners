@@ -211,6 +211,20 @@
         "crime":-2
     },
     {
+        "id":315,
+        "name":"Monkeys",
+        "levels":{"rednecks":9,"blades":9,"bulbos":9,"drogmulojs":9,"tiradores":9,"detruas":9,"brasier":9},
+        "bldReq":["Garage"],
+        "compReq":{"trans":3},
+        "altCompReq":{"tank":1},
+        "compHardReq":{"trans":2},
+        "compPass":["detruas","rednecks","blades"],
+        "costs":{"Zinc":25,"Chlore":25,"Titane":6,"Fer":12,"Scrap":12,"Silicium":12,"Drogues":37,"Tissus":12},
+        "deploy":{"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
+        "fabTime":25,
+        "crime":-0.1
+    },
+    {
         "id":21,
         "name":"Shooters",
         "levels":{"rednecks":99,"blades":99,"bulbos":2,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
@@ -795,7 +809,8 @@
         "name":"Riggers",
         "levels":{"rednecks":13,"blades":16,"bulbos":9,"drogmulojs":14,"tiradores":13,"detruas":99,"brasier":12},
         "bldReq":["Atelier","Centre de recherches"],
-        "compReq":{"const":1,"trans":1},
+        "compReq":{"trans":2},
+        "altCompReq":{"trans":1,"cyber":2},
         "compPass":["rednecks","bulbos"],
         "compHardReq":{"cyber":1},
         "costs":{"Fer":86,"Scrap":36,"Carbone":72,"Aluminium":36,"Titane":108,"Electros":72,"Batteries":108,"Cuivre":24,"Silicium":18,"Huile":36,"Silicium":16,"Chlore":20,"Zinc":20,"Tungstène":50,"Tissus":10,"Mendium":25},
@@ -897,8 +912,8 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":9,"drogmulojs":99,"tiradores":99,"detruas":11,"brasier":99},
         "bldReq":["Laboratoire","Chaîne de montage"],
         "compReq":{"robo":1},
-        "costs":{"Scrap":60,"Fer":30,"Carbone":120,"Moteurs":100,"Titane":270,"Blendium":60,"Electros":60,"Batteries":90,"Cuivre":60,"Silicium":30},
-        "deploy":{"Energie":90,"Huile":12},
+        "costs":{"Scrap":72,"Fer":36,"Carbone":144,"Moteurs":120,"Titane":320,"Blendium":72,"Electros":72,"Batteries":108,"Cuivre":72,"Silicium":36},
+        "deploy":{"Energie":108,"Huile":12},
         "fabTime":70,
         "inRuin":1
     },
@@ -1019,6 +1034,7 @@
         "name":"Cyclopes",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":15,"brasier":99},
         "bldReq":["Camp d'entraînement","Armurerie"],
+        "compReq":{"det":2,"mat":1,"bal":1,"explo":2},
         "costs":{"Fer":128,"Scrap":64,"Carbone":128,"Silicium":32,"Electros":64,"Batteries":32,"Végétaux":136,"Blendium":64,"Soufre":64,"Plomb":64,"Chlore":20,"Zinc":20,"Tissus":10},
         "deploy":{"Drogues":3,"Tissus":2},
         "fabTime":25

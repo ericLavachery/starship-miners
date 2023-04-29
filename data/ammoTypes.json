@@ -75,7 +75,7 @@
         "aoe": "squad",
         "info": "Marquage",
         "bldReq":["Atelier"],
-        "compReq":{"det":2,"mat":1,"bal":1,"explo":2},
+        "compReq":{"det":2,"mat":1,"bal":1,"explo":3},
         "deploy":{"Fer":1,"Carbone":1,"Cobalt":1,"Silicium":1,"Mercure":1,"Explosifs":2,"Nanite":2},
         "batch":200,
         "sound":{"paint":"paint_kill","fragger_throw":"paint_kill"}

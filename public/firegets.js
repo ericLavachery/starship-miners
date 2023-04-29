@@ -2661,19 +2661,19 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.isElec = false;
     }
+    if (thisWeapon.ammo.includes('explosive') || thisWeapon.ammo === 'missile-sunburst' || thisWeapon.ammo === 'missile-tungsten' || thisWeapon.ammo === 'missile-fleche' || thisWeapon.ammo === 'obus-tungsten' || thisWeapon.ammo === 'obus-fleche') {
+        thisWeapon.isExplo = true;
+    } else {
+        thisWeapon.isExplo = false;
+    }
     if (thisWeapon.ammo.includes('nanite') || thisWeapon.ammo === 'suicide' || thisWeapon.ammo === 'suicide-deluge' || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('autodes') || thisWeapon.ammo.includes('dynamite') || thisWeapon.ammo.includes('bombe') || thisWeapon.ammo.includes('explosif') || thisWeapon.ammo.includes('obus') || thisWeapon.ammo.includes('missile') || thisWeapon.ammo.includes('grenade') || thisWeapon.ammo.includes('disco')) {
-        if (!thisWeapon.ammo.includes('gaz') && !thisWeapon.ammo.includes('incendiaire') && !thisWeapon.ammo.includes('napalm')) {
+        if (!thisWeapon.ammo.includes('gaz') && !thisWeapon.ammo.includes('jello') && !thisWeapon.ammo.includes('incendiaire') && !thisWeapon.ammo.includes('napalm') && !thisWeapon.isExplo) {
             thisWeapon.isBlast = true;
         } else {
             thisWeapon.isBlast = false;
         }
     } else {
         thisWeapon.isBlast = false;
-    }
-    if (thisWeapon.ammo.includes('explosive')) {
-        thisWeapon.isExplo = true;
-    } else {
-        thisWeapon.isExplo = false;
     }
     if (thisWeapon.ammo.includes('gaz')) {
         thisWeapon.isGas = true;

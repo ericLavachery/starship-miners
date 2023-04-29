@@ -988,9 +988,9 @@ function playerSkillsUTChanges() {
             }
             if (unit.skills.includes('barda')) {
                 if (playerInfos.comp.log >= 3) {
-                    unit.volume = 1;
+                    unit.volume = (unit.volume+3)/4;
                 } else {
-                    unit.volume = (unit.volume+2)/3;
+                    unit.volume = (unit.volume+1)/2;
                 }
                 unit.volume = unit.volume.toFixedNumber(2);
             }
