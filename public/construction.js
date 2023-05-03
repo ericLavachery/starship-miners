@@ -606,7 +606,7 @@ function showArmorInfo(batArmor) {
         armorSkills = armorSkills+' slowreg';
     }
     if (batArmor.skills.includes('regeneration')) {
-        armorSkills = armorSkills+' regeneration';
+        armorSkills = armorSkills+' regen';
     }
     if (batArmor.skills.includes('resistacide')) {
         armorSkills = armorSkills+' resistacide';
@@ -619,6 +619,9 @@ function showArmorInfo(batArmor) {
     }
     if (batArmor.skills.includes('protectall')) {
         armorSkills = armorSkills+' protectall';
+    }
+    if (batArmor.skills.includes('dreduct')) {
+        armorSkills = armorSkills+' dreduct';
     }
     if (batArmor.skills.includes('resistelec')) {
         armorSkills = armorSkills+' resistelec';

@@ -937,11 +937,16 @@ function calcDamage(weapon,power,armor,defBat) {
     // bliss drug
     let dmgReduct = 0;
     if (defBat.tags.includes('bliss') && defBatType.cat === 'infantry') {
-        dmgReduct = 3;
+        dmgReduct = 2;
     } else if (defBat.tags.includes('zealot') && defBatType.cat === 'infantry') {
+        dmgReduct = 1;
+    } else if (defBat.prt === 'kapton' || defBat.prt === 'battlesuit' || defBat.prt === 'bonibo') {
         dmgReduct = 1;
     }
     let calculatedDmg = powerDice-modifiedArmor-dmgReduct;
+    if (calculatedDmg <= dmgReduct) {
+        calculatedDmg = 0;
+    }
     if (calculatedDmg < 0) {
         calculatedDmg = 0;
     }
@@ -2855,11 +2860,11 @@ function chargeurAdj(bat,shots,weap) {
     let newShots = shots;
     let hasChargeur = false;
     if (weap.num === 1) {
-        if (hasEquip(bat,['chargeur','chargeur1','w2-2ch','carrousel','carrousel1','kit-milice','landerwkit','fakit'])) {
+        if (hasEquip(bat,['chargeur','chargeur1','w2-2ch','kit-milice','landerwkit','fakit'])) {
             hasChargeur = true;
         }
     } else {
-        if (hasEquip(bat,['chargeur','chargeur2','w2-2ch','carrousel','carrousel2','kit-chouf'])) {
+        if (hasEquip(bat,['chargeur','chargeur2','w2-2ch','kit-chouf'])) {
             hasChargeur = true;
         }
     }

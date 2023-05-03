@@ -376,16 +376,17 @@ function checkEmbarqThis(myBat,transBat) {
 };
 
 function calcTransWithBreak(theTrans,batType) {
-    let break1 = theTrans+Math.round(batType.transRes/4);
-    if (break1 > theTrans*2) {
-        break1 = theTrans*2;
+    let breakRes = theTrans+Math.round(batType.transRes/4);
+    if (breakRes > theTrans*2) {
+        breakRes = theTrans*2;
     }
-    let break2 = Math.round(theTrans*1.25);
-    if (break1 > break2) {
-        theTrans = break1;
-    } else {
-        theTrans = break2;
-    }
+    theTrans = breakRes;
+    // let breakMult = Math.round(theTrans*1.25);
+    // if (breakRes > breakMult) {
+    //     theTrans = breakRes;
+    // } else {
+    //     theTrans = breakMult;
+    // }
     return theTrans;
 }
 

@@ -75,7 +75,7 @@ function mapEditWindow() {
     selectStuff('FullShield','alienShield','Cet alien a un bouclier permanent');
     selectStuff('FastMorph','alienFastMorph','Cet alien se transforme plus rapidement (Veilleurs se transforment en Ruche vers le tour 12 / Oeufs, Coques et Vomissures se transforment 2x plus vite)');
     let thisMissionType = getMissionType(zone[0].number);
-    if (thisMissionType.name === 'Boss Swarm') {
+    if (thisMissionType.name === 'Necroblob') {
         selectStuff('Moist','moistIcon','Spores (Canon Necro)');
     } else {
         selectStuff('Toile','webIcon','Toile (Canon Web)');
@@ -1536,42 +1536,51 @@ function getMissionType(misNum) {
     mType.pa = 4;
     if (misNum >= 90) {
         mType.name = 'Exil';
+        mType.nid = 'exil';
         mType.pa = 1; // 4
     } else if (misNum >= 85) {
         mType.name = 'Spécial';
+        mType.nid = 'special';
         mType.pa = 7.25; // 17
     } else if (misNum >= 80) {
-        mType.name = 'Boss Spider';
+        mType.name = 'Spiderblob';
+        mType.nid = 'spider';
         mType.pa = 6.75; // 16
         zone[0].pKind = 'spider';
         zone[0].gKind = 'spider';
         zone[0].sKind = 'spider';
     } else if (misNum >= 75) {
-        mType.name = 'Boss Bug';
+        mType.name = 'Dragonblob';
+        mType.nid = 'dragon';
         mType.pa = 8; // 18
         zone[0].pKind = 'bug';
         zone[0].gKind = 'bug';
         zone[0].sKind = 'bug';
     } else if (misNum >= 70) {
-        mType.name = 'Boss Larve';
+        mType.name = 'Skygrub';
+        mType.nid = 'sky';
         mType.pa = 6.75; // 16
         zone[0].pKind = 'larve';
         zone[0].gKind = 'larve';
         zone[0].sKind = 'larve';
     } else if (misNum >= 65) {
-        mType.name = 'Boss Swarm';
+        mType.name = 'Necroblob';
+        mType.nid = 'necro';
         mType.pa = 5.75; // 14
         zone[0].pKind = 'swarm';
         zone[0].gKind = 'swarm';
         zone[0].sKind = 'swarm';
     } else if (misNum >= 60) {
         mType.name = 'Résistance';
+        mType.nid = 'resist';
         mType.pa = 4.5; // 11
     } else if (misNum >= 55) {
         mType.name = 'Base Scientifique';
+        mType.nid = 'science';
         mType.pa = 6.25; // 15
     } else if (misNum >= 50) {
         mType.name = 'Trolley';
+        mType.nid = 'trolley';
         mType.pa = 5; // 12
     }
     return mType;

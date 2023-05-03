@@ -745,7 +745,7 @@ function getBatGearStuff(armorName,equipName,batType) {
             gearStuff[0] = gearStuff[0]+1;
         }
     }
-    // armure de base de l'unité?
+    // armure de base de l'unité? => Armure
     if (batType.armor >= 2) {
         if (batType.skills.includes('robot') || batType.skills.includes('cyber') || batType.cat === 'infantry') {
             if (batType.armor > batArmor.armor) {
@@ -767,6 +767,12 @@ function getBatGearStuff(armorName,equipName,batType) {
     let baseAP = batType.ap;
     if (equipName === 'e-jetpack') {
         baseAP = 13;
+    }
+    // weak
+    if (batType.skills.includes('weak')) {
+        if (Math.abs(batArmor.ap) >= 3) {
+            baseAP = baseAP+batArmor.ap+2;
+        }
     }
     if (batType.skills.includes('robot')) {
         gearStuff[1] = baseAP;

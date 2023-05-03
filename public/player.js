@@ -451,6 +451,7 @@ function allowedArmors(unit) {
     if (unit.skills.includes('b_heavy')) {
         if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('bulk');
+            protection.push('sbulk');
         }
     }
     if (unit.skills.includes('b_light') || unit.skills.includes('b_mid') || unit.skills.includes('b_heavy')) {
@@ -469,6 +470,7 @@ function allowedArmors(unit) {
         }
         if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('bulk');
+            protection.push('sbulk');
         }
         if (!unit.skills.includes('resistacide')) {
             protection.push('swag');
@@ -487,6 +489,7 @@ function allowedArmors(unit) {
         }
         if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('bulk');
+            protection.push('sbulk');
         }
         if (!unit.skills.includes('resistacide')) {
             protection.push('swag');
@@ -571,6 +574,17 @@ function playerSkillsUTChanges() {
                 if (playerInfos.gMode === 1) {
                     unit.transRes = Math.round(unit.transRes*1.33);
                 }
+            }
+        }
+        // AUTOKITS
+        if (unit.skills.includes('autokitgaz')) {
+            if (playerInfos.comp.exo >= 2 && playerInfos.comp.ca >= 3) {
+                unit.weapon2.kit = false;
+            }
+        }
+        if (unit.skills.includes('autokitmolo')) {
+            if (playerInfos.comp.pyro >= 1) {
+                unit.weapon2.kit = false;
             }
         }
         let repairBonus = false;

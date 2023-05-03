@@ -1096,7 +1096,7 @@
     {
         "id":286,
         "name":"Twins",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":15,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":16,"drogmulojs":15,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"gen":2},
         "costs":{"Fer":60,"Scrap":120,"Carbone":30,"Plomb":60,"Bois":60,"Silicium":30,"Bugium":84,"Creatite":180,"Bossium":90,"Corps":60,"Calcium":90,"Azote":90,"Mercure":30,"Drogues":180},
@@ -2544,6 +2544,13 @@
         "name":"Silo",
         "costs":{"Compo1":200,"Végétaux":150},
         "fabTime":20,
+        "slots":0
+    },
+    {
+        "id":316,
+        "name":"Baraquement",
+        "costs":{"Compo1":250,"Compo2":100},
+        "fabTime":30,
         "slots":0
     },
     {

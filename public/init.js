@@ -513,6 +513,10 @@ socket.on('zonePreview-Load', function(newZone) {
     showZonePreview();
 });
 
+socket.on('get-missions-teams', function(teams) {
+    putMissionUnits(teams);
+});
+
 socket.on('testcon-failed', function(pseutest) {
     warning('Déconnexion:','Le serveur à été redémarré et vous n\'avez pas actualisé la page.<br>Vos dernières actions n\'ont peut-être pas été enregistrées.');
     alert("Le serveur à été redémarré et vous n'avez pas actualisé la page. Vos dernières actions n'ont peut-être pas été enregistrées.");

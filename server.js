@@ -179,6 +179,7 @@ var playerInfos = {};
 var bataillons = [];
 var savedMap = [];
 var zonePreview = [];
+var missionTeams = [];
 var savedZone = [];
 
 io.sockets.on('connection', function (socket, pseudo) {
@@ -405,6 +406,35 @@ io.sockets.on('connection', function (socket, pseudo) {
             console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
         });
     });
+
+    // Load MISSION TEAMS
+    socket.on('load-missions-teams', function(zoneId) {
+        const path = './data/missionTeams.json';
+        console.log('load missions teams');
+        console.log(path);
+        try {
+            if (fs.existsSync(path)) {
+                fs.readFile(path, 'utf8', function (err, data) {
+                    if (err) throw err;
+                    try {
+                        missionTeams = JSON.parse(data);
+                        sendTeams();
+                    } catch (e) {
+                        console.error(e);
+                    }
+                });
+            } else {
+                console.log('path?');
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    });
+    function sendTeams() {
+        console.log('loading missions teams');
+        // console.log(zonePreview);
+        socket.emit('get-missions-teams',missionTeams);
+    };
 
     // Load zone PREVIEW
     socket.on('load-zone-preview', function(zoneId) {

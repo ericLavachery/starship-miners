@@ -341,7 +341,7 @@ function gangNavig() {
                 $('#gangInfos').append('<button type="button" title="Editer une autre mission" class="boutonCiel iconButtons" onclick="loadEditorMission()"><i class="ra ra-scroll-unfurled rpg"></i></button>');
             } else {
                 $('#gangInfos').append('<button type="button" title="Charger une mission" class="boutonCiel iconButtons" onclick="loadMission()"><i class="ra ra-scroll-unfurled rpg"></i></button>');
-                $('#gangInfos').append('<button type="button" title="Ajouter les unités de base pour une mission" class="boutonCiel iconButtons" onclick="putMissionUnits()"><i class="ra ra-double-team rpg"></i></button>');
+                $('#gangInfos').append('<button type="button" title="Ajouter les unités de base pour une mission" class="boutonCiel iconButtons" onclick="missionTest()"><i class="ra ra-double-team rpg"></i></button>');
             }
             $('#gangInfos').append('<br>');
             if (playerInfos.pseudo === 'Mapedit') {

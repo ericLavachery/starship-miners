@@ -1517,16 +1517,16 @@ function missionStartAdj(misNum) {
     let mType = getMissionType(misNum);
     if (mType.name.includes('Boss')) {
         let bossName = 'Blob';
-        if (mType.name === 'Boss Spider') {
+        if (mType.name === 'Spiderblob') {
             bossName = 'Spiderblob';
         }
-        if (mType.name === 'Boss Larve') {
+        if (mType.name === 'Skygrub') {
             bossName = 'Skygrub';
         }
-        if (mType.name === 'Boss Swarm') {
+        if (mType.name === 'Necroblob') {
             bossName = 'Necroblob';
         }
-        if (mType.name === 'Boss Bug') {
+        if (mType.name === 'Dragonblob') {
             bossName = 'Dragonblob';
         }
         let bossBat = getAlienByName(bossName);
