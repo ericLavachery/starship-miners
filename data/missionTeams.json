@@ -433,7 +433,7 @@
     },
     {
         "unit":"Pickups",
-        "gear":["explosive","molotov-pyratol","tisal","snorkel"],
+        "gear":["explosive","molotov-slime","tisal","snorkel"],
         "missions":["spider","sky","dragon"],
         "gangs":["rednecks"]
     },
@@ -482,24 +482,24 @@
     {
         "unit":"Tour de garde",
         "gear":["plasma","laser","bulk","lunette1"],
-        "missions":["necro","science"],
+        "missions":["necro"],
         "gangs":["bulbos"]
     },
     {
         "unit":"Tour de garde",
         "gear":["plastanium","laser-g2","bulk","e-radar"],
-        "missions":["spider","sky","dragon"],
+        "missions":["science","spider","sky","dragon"],
         "gangs":["bulbos"]
     },
     {
         "unit":"Tour de garde",
-        "gear":["plastanium","laser","bulk","lunette1"],
+        "gear":["plastanium","laser-g2","bulk","lunette1"],
         "missions":["spider","sky","dragon"],
         "gangs":["brasier"]
     },
     {
         "unit":"Tour de garde",
-        "gear":["plastanium","laser","bulk","lunette1"],
+        "gear":["plastanium","laser-g2","bulk","lunette1"],
         "missions":["sky","dragon"],
         "gangs":["blades"]
     },
@@ -632,19 +632,25 @@
     {
         "unit":"Legs",
         "gear":["lame-t-atium","laser","chobham","chargeur1"],
-        "missions":["resist","trolley","necro"],
+        "missions":["resist","trolley","necro","science"],
         "gangs":["blades"]
     },
     {
         "unit":"Legs",
-        "gear":["lame-a-atium","laser","duneg","helper"],
-        "missions":["science","spider","sky","dragon"],
+        "gear":["lame-a-atium","laser-g2","duneg","helper"],
+        "missions":["spider","sky","dragon"],
         "gangs":["blades"]
     },
     {
         "unit":"Legs",
-        "gear":["lame-a-atium","laser","duneg","helper"],
-        "missions":["necro","science","spider","sky","dragon"],
+        "gear":["lame-a-atium","laser","chobham","helper"],
+        "missions":["necro","science"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Legs",
+        "gear":["lame-a-atium","laser-g2","duneg","helper"],
+        "missions":["spider","sky","dragon"],
         "gangs":["blades"]
     },
     {
@@ -692,13 +698,19 @@
     {
         "unit":"Sentinelles",
         "gear":["lame-poraz","fleche-freeze","hplate","kit-sentinelle"],
-        "missions":["resist","trolley","necro","science","spider","sky"],
+        "missions":["resist","trolley","necro","science","spider"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Sentinelles",
+        "gear":["lame-poraz","fleche-freeze","aegis","kit-sentinelle"],
+        "missions":["sky","dragon"],
         "gangs":["blades"]
     },
     {
         "unit":"Sentinelles",
         "gear":["lame-poraz","fleche-freeze","hplate","kit-sentinelle"],
-        "missions":["sky"],
+        "missions":["resist","trolley","necro"],
         "gangs":["blades"]
     },
     {
@@ -985,7 +997,7 @@
     },
     {
         "unit":"Bolts",
-        "gear":["lame-carbone","laser","tisal","e-mecano"],
+        "gear":["lame-carbone","laser-g2","tisal","e-mecano"],
         "missions":["sky"],
         "gangs":["blades"]
     },
@@ -1063,7 +1075,7 @@
     },
     {
         "unit":"Candytrucks",
-        "gear":["uranium","molotov-slime","swag","lanceur"],
+        "gear":["uranium","molotov-flash","swag","lanceur"],
         "missions":["science","spider"],
         "gangs":["drogmulojs"]
     },
@@ -1075,7 +1087,7 @@
     },
     {
         "unit":"Candytrucks",
-        "gear":["timonium","molotov-slime","swag","lanceur"],
+        "gear":["timonium","molotov-flash","swag","lanceur"],
         "missions":["dragon"],
         "gangs":["drogmulojs"]
     },
@@ -1345,44 +1357,62 @@
     },
     {
         "unit":"Cyborgs",
-        "gear":["laser","laser","duneg","chargeur"],
+        "gear":["laser-g2","laser-g2","duneg","chargeur"],
         "missions":["sky","dragon"],
         "gangs":["blades"]
     },
     {
         "unit":"Cyborgs",
         "gear":["laser","laser","chobham","chargeur"],
-        "missions":["resist","trolley","necro","science","spider"],
+        "missions":["resist","trolley","necro","science"],
         "gangs":["brasier"]
     },
     {
         "unit":"Cyborgs",
         "gear":["laser-g2","laser-g2","duneg","chargeur"],
-        "missions":["sky","dragon"],
+        "missions":["spider","sky","dragon"],
         "gangs":["brasier"]
     },
     {
         "unit":"Cyborgs",
         "gear":["laser","laser","chobham","chargeur"],
-        "missions":["resist","trolley","necro"],
+        "missions":["resist","trolley"],
         "gangs":["bulbos"]
     },
     {
         "unit":"Cyborgs",
         "gear":["laser-g2","laser-g2","duneg","chargeur"],
-        "missions":["science","spider","sky"],
+        "missions":["necro","science","spider","sky"],
         "gangs":["bulbos"]
     },
     {
         "unit":"Cyborgs",
         "gear":["laser","laser","chobham","chargeur"],
-        "missions":["trolley","sky"],
+        "missions":["trolley"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Cyborgs",
+        "gear":["laser-g2","laser-g2","chobham","chargeur"],
+        "missions":["sky"],
         "gangs":["drogmulojs"]
     },
     {
         "unit":"Mosquitos",
         "gear":["laser","molotov-feu","wendium","lanceur"],
-        "missions":["resist","trolley","necro","science","spider","sky","dragon"],
+        "missions":["resist","trolley"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Mosquitos",
+        "gear":["laser","molotov-slime","wendium","lanceur"],
+        "missions":["necro","science","spider"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Mosquitos",
+        "gear":["laser-g2","molotov-slime","wendium","lanceur"],
+        "missions":["sky","dragon"],
         "gangs":["blades"]
     },
     {
@@ -1390,6 +1420,192 @@
         "gear":["uranium","grenade-nanite","wendium","lancegren"],
         "missions":["resist","trolley","necro","science","spider","sky","dragon"],
         "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Berserkers",
+        "gear":["lame-t-poraz","molotov-slime","kapton","e-camo"],
+        "missions":["necro","science"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Berserkers",
+        "gear":["lame-t-poraz","molotov-flash","kapton","helper"],
+        "missions":["spider","sky","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Berserkers",
+        "gear":["lame-t-poraz","molotov-flash","kapton","helper"],
+        "missions":["spider","sky","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Exodarks",
+        "gear":["hypo-freeze","hypo-atium","wendium","silencieux"],
+        "missions":["science","spider"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Exodarks",
+        "gear":["hypo-freeze","hypo-atium","wendium","silencieux"],
+        "missions":["necro","science","spider"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Exodarks",
+        "gear":["hypo-freeze","hypo-shinda","wendium","silencieux"],
+        "missions":["sky","dragon"],
+        "gangs":["blades","drogmulojs"]
+    },
+    {
+        "unit":"Exodarks",
+        "gear":["hypo-freeze","hypo-shinda","duneg","silencieux"],
+        "missions":["sky","dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Exodarks",
+        "gear":["hypo-freeze","hypo-shinda","duneg","silencieux"],
+        "missions":["sky"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Exobrutes",
+        "gear":["lame-t-poraz","fleche-freeze","kapton","gilet"],
+        "missions":["necro","science","spider","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Exobios",
+        "gear":["lame-t-atium","obus-heatseeker","kapton","gilet"],
+        "missions":["necro","science","spider"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Exobios",
+        "gear":["lame-a-atium","obus-plastanium","kapton","gilet"],
+        "missions":["dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Trébuchets",
+        "gear":["lame-poraz","boulet-incendiaire","bulk","g2siege"],
+        "missions":["necro","science","spider","sky","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Trébuchets",
+        "gear":["lame-poraz","boulet-incendiaire","bulk","g2siege"],
+        "missions":["sky","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Piquiers",
+        "gear":["lame-poraz","fleche-atium","hplate","arbalourde"],
+        "missions":["resist","trolley"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Piquiers",
+        "gear":["lame-poraz","fleche-freeze","hplate","arbalourde"],
+        "missions":["necro","science","spider"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Piquiers",
+        "gear":["lame-poraz","fleche-freeze","aegis","arbalourde"],
+        "missions":["sky","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Piquiers",
+        "gear":["lame-poraz","fleche-atium","hplate","arbalourde"],
+        "missions":["resist","trolley"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Piquiers",
+        "gear":["lame-poraz","fleche-freeze","hplate","arbalourde"],
+        "missions":["necro","science"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Piquiers",
+        "gear":["lame-poraz","fleche-freeze","aegis","arbalourde"],
+        "missions":["spider","sky"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Wolverines",
+        "gear":["lame-titane","xxx","kevlar","e-camo"],
+        "missions":["resist","trolley","necro"],
+        "gangs":["blades","drogmulojs"]
+    },
+    {
+        "unit":"Wolverines",
+        "gear":["lame-adamantite","xxx","wendium","e-camo"],
+        "missions":["science","spider"],
+        "gangs":["blades","drogmulojs"]
+    },
+    {
+        "unit":"Wolverines",
+        "gear":["lame-adamantium","xxx","wendium","helper"],
+        "missions":["sky","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Wolverines",
+        "gear":["lame-carbone","xxx","kevlar","e-camo"],
+        "missions":["resist","trolley"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Wolverines",
+        "gear":["lame-adamantium","xxx","kapton","helper"],
+        "missions":["sky"],
+        "gangs":["blades","drogmulojs"]
+    },
+    {
+        "unit":"Warriors",
+        "gear":["lame-c-atium","fleche-atium","kevlar","arbalourde"],
+        "missions":["resist","trolley"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Warriors",
+        "gear":["lame-c-atium","fleche-atium","wendium","arbalourde"],
+        "missions":["necro","science","spider"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Warriors",
+        "gear":["lame-a-atium","fleche-shinda","kapton","helper"],
+        "missions":["sky","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Warriors",
+        "gear":["lame-c-atium","fleche-poraz","kevlar","arbalourde"],
+        "missions":["resist","trolley"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Warriors",
+        "gear":["lame-c-atium","fleche-poraz","wendium","arbalourde"],
+        "missions":["necro","science"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Warriors",
+        "gear":["lame-a-atium","fleche-shinda","kapton","helper"],
+        "missions":["sky","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Warriors",
+        "gear":["lame-t-atium","fleche-atium","kevlar","arbalourde"],
+        "missions":["resist"],
+        "gangs":["blades"]
     },
     {
         "unit":"Sapeurs",

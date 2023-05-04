@@ -1063,8 +1063,10 @@ function replacePack(oldPack,edited) {
     if (playerInfos.gang === 'brasier') {
         if (oldPack === 'grenade-antichar') {
             newPack = 'molotov-pyrus';
-        } else if (oldPack === 'grenade-flashbang' || oldPack === 'grenade-incendiaire') {
+        } else if (oldPack === 'grenade-incendiaire') {
             newPack = 'molotov-slime';
+        } else if (oldPack === 'grenade-flashbang') {
+            newPack = 'molotov-flash';
         } else if (oldPack.includes('grenade')) {
             newPack = 'molotov-pyratol';
         }
@@ -1075,6 +1077,8 @@ function replacePack(oldPack,edited) {
             newPack = 'grenade-antichar';
         } else if (oldPack === 'molotov-pyratol') {
             newPack = 'grenade-nanite';
+        } else if (oldPack === 'molotov-flash') {
+            newPack = 'grenade-flashbang';
         }
     } else if (playerInfos.gang === 'blades') {
         if (oldPack === 'grenade-antichar') {
@@ -1116,6 +1120,8 @@ function replacePack(oldPack,edited) {
                 newPack = 'timonium';
             } else if (oldPack === 'molotov-pyratol') {
                 newPack = 'adamantium';
+            } else if (oldPack === 'molotov-flash') {
+                newPack = 'freeze';
             }
         }
     }

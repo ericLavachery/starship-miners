@@ -574,9 +574,18 @@ function attack(melee,init) {
             webDamage = Math.ceil(webDamage/4);
         } else if (selectedWeap.ammo.includes('flashbang')) {
             webDamage = rand.rand(20,30)-Math.floor(Math.sqrt(targetBatType.size));
+        } else if (selectedWeap.ammo === 'molotov-flash') {
+            webDamage = Math.ceil(totalHits*3/Math.sqrt(targetBatType.hp));
         }
         if (targetBatType.team === 'player') {
             webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);
+        }
+        if (selectedWeap.ammo.includes('flashbang') || selectedWeap.ammo === 'molotov-flash') {
+            if (targetBatType.kind === 'larve') {
+                if (targetBatType.skills.includes('nez')) {
+                    webDamage = Math.ceil(webDamage/5);
+                }
+            }
         }
         apDamage = apDamage+webDamage;
     }
@@ -1214,7 +1223,7 @@ function attack(melee,init) {
         }
     }
     if (targetBatType.skills.includes('noaploss')) {
-        if (selectedWeap.ammo.includes('flashbang')) {
+        if (selectedWeap.ammo.includes('flashbang') || selectedWeap.ammo === 'molotov-flash') {
             apDamage = Math.round(apDamage/1.25);
         } else {
             apDamage = Math.round(apDamage/5);
@@ -1682,9 +1691,18 @@ function defense(melee,init) {
             webDamage = Math.ceil(webDamage/4);
         } else if (targetWeap.ammo.includes('flashbang')) {
             webDamage = rand.rand(20,30)-Math.floor(Math.sqrt(targetBatType.size));
+        } else if (targetWeap.ammo === 'molotov-flash') {
+            webDamage = Math.ceil(totalHits*3/Math.sqrt(selectedBatType.hp));
         }
         if (selectedBatType.team === 'player') {
             webDamage = Math.ceil(webDamage/(playerInfos.comp.ca+4)*6);
+        }
+        if (targetWeap.ammo.includes('flashbang') || targetWeap.ammo === 'molotov-flash') {
+            if (selectedBatType.kind === 'larve') {
+                if (selectedBatType.skills.includes('nez')) {
+                    webDamage = Math.ceil(webDamage/5);
+                }
+            }
         }
         apDamage = apDamage+webDamage;
     }
@@ -2163,7 +2181,7 @@ function defense(melee,init) {
         }
     }
     if (selectedBatType.skills.includes('noaploss')) {
-        if (targetWeap.ammo.includes('flashbang')) {
+        if (targetWeap.ammo.includes('flashbang') || targetWeap.ammo === 'molotov-flash') {
             apDamage = Math.round(apDamage/1.25);
         } else {
             apDamage = Math.round(apDamage/5);

@@ -71,7 +71,7 @@
             "armors":1.5,
             "aoe":"unit",
             "sound":"slurp2",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Mandibules",
@@ -85,7 +85,7 @@
             "armors":1.5,
             "aoe":"unit",
             "sound":"slurp4",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "w2chance":3,
         "moveCost":4,
@@ -129,7 +129,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"libdisto",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -233,7 +233,7 @@
             "armors":0.65,
             "aoe":"brochette",
             "sound":"chomp2",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Queue",
@@ -247,7 +247,7 @@
             "armors":1,
             "aoe":"squad",
             "sound":"roar2",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "w2chance":3,
         "moveCost":5,
@@ -290,7 +290,7 @@
             "armors":0.65,
             "aoe":"brochette",
             "sound":"chomp",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Queue",
@@ -304,7 +304,7 @@
             "armors":1,
             "aoe":"squad",
             "sound":"roar",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "w2chance":2,
         "moveCost":7,
@@ -347,7 +347,7 @@
             "armors":0.75,
             "aoe":"brochette",
             "sound":"ghost",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Rostre",
@@ -361,7 +361,7 @@
             "armors":0.3,
             "aoe":"brochette",
             "sound":"ghostspear",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "w2chance":3,
         "moveCost":3,
@@ -406,7 +406,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"growl6",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -493,7 +493,7 @@
             "power":36,
             "aoe":"brochette",
             "sound":"headchopb2",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -758,7 +758,7 @@
             "power":13,
             "aoe":"unit",
             "sound":"shrll3",
-            "ammo":["none"]
+            "ammo":["neant"]
         },
         "weapon2":{
             "name":"Glu",
@@ -902,7 +902,7 @@
             "power":33,
             "aoe":"brochette",
             "sound":"growl3",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -1166,7 +1166,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"bite9",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Rostre",
@@ -1180,7 +1180,7 @@
             "armors":0.4,
             "aoe":"unit",
             "sound":"spear",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "w2chance":3,
         "moveCost":3,
@@ -1223,7 +1223,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"bigbite",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -1426,7 +1426,7 @@
             "power":15,
             "aoe":"unit",
             "sound":"grouille",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Toile",
@@ -1536,7 +1536,7 @@
             "armors":1.5,
             "aoe":"unit",
             "sound":"suck1",
-            "ammo":["creuseur"]
+            "ammo":["neant"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -1579,7 +1579,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"suck1",
-            "ammo":["creuseur"]
+            "ammo":["neant"]
         },
         "weapon2":{
             "name":"Mandibules",
@@ -1592,7 +1592,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"suck2",
-            "ammo":["creuseur"]
+            "ammo":["neant"]
         },
         "w2chance":4,
         "moveCost":4,
@@ -1677,7 +1677,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"shrll4",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Glu",
@@ -1736,7 +1736,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"shrll2",
-            "ammo":["none"]
+            "ammo":["neant"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -1882,7 +1882,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"muddy",
-            "ammo":["none"]
+            "ammo":["neant"]
         },
         "weapon2":{
             "name":"Mandibules",
@@ -2014,7 +2014,7 @@
             "power":11,
             "aoe":"unit",
             "sound":"squishX2",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "w2chance":1,
         "moveCost":5,
@@ -2111,7 +2111,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"jumpbite",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -2198,7 +2198,7 @@
             "power":60,
             "aoe":"brochette",
             "sound":"growl1",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Glair acide",
@@ -2256,7 +2256,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"bourdon",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -2354,7 +2354,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"bite",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Toile",
@@ -2411,7 +2411,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"bite",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Glair",
@@ -2525,7 +2525,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"shrll1",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -2571,7 +2571,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"shrll1",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -2615,7 +2615,7 @@
             "armors":0.3,
             "aoe":"brochette",
             "sound":"ghostspear",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Psionics",
@@ -3568,7 +3568,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"bite",
-            "ammo":["none"]
+            "ammo":["sans"]
         },
         "weapon2":{},
         "w2chance":0,

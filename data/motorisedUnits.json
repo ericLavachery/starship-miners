@@ -2705,7 +2705,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"molotov",
-            "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
+            "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-flash","molotov-pyratol"],
             "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
@@ -3837,7 +3837,7 @@
             "power":8,
             "aoe":"squad",
             "sound":"molotov",
-            "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-pyratol"],
+            "ammo":["molotov-feu","molotov-slime","molotov-pyrus","molotov-flash","molotov-pyratol"],
             "maxAmmo":6,
             "ravitBld":"Poudrière"
         },

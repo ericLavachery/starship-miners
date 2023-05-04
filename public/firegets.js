@@ -936,15 +936,19 @@ function calcDamage(weapon,power,armor,defBat) {
     }
     // bliss drug
     let dmgReduct = 0;
-    if (defBat.tags.includes('bliss') && defBatType.cat === 'infantry') {
-        dmgReduct = 2;
-    } else if (defBat.tags.includes('zealot') && defBatType.cat === 'infantry') {
-        dmgReduct = 1;
-    } else if (defBat.prt === 'kapton' || defBat.prt === 'battlesuit' || defBat.prt === 'bonibo') {
-        dmgReduct = 1;
+    if (!weapon.ammo.includes('neant')) {
+        if (defBatType.skills.includes('dreduct')) {
+            dmgReduct = 2;
+        } else if (defBat.tags.includes('bliss') && defBatType.cat === 'infantry') {
+            dmgReduct = 2;
+        } else if (defBat.tags.includes('zealot') && defBatType.cat === 'infantry') {
+            dmgReduct = 1;
+        } else if (defBat.prt === 'kapton' || defBat.prt === 'battlesuit' || defBat.prt === 'bonibo' || defBat.prt === 'swarwing') {
+            dmgReduct = 1;
+        }
     }
     let calculatedDmg = powerDice-modifiedArmor-dmgReduct;
-    if (calculatedDmg <= dmgReduct) {
+    if (calculatedDmg <= dmgReduct+1) {
         calculatedDmg = 0;
     }
     if (calculatedDmg < 0) {
