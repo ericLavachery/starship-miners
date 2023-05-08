@@ -4,7 +4,7 @@ function missionTest() {
 
 function putMissionUnits(missionTeams) {
     let mType = getMissionType(zone[0].number);
-    putMissionStats(mType);
+    putMissionStats(mType,missionTeams);
     putFullBldVM();
     putMissionAlienRes();
     objectifsReset();
@@ -94,10 +94,12 @@ function getMissionBatList(mType,missionTeams) {
     }
     missionBatList.push(newSlot);
     missionTeams.forEach(function(slot) {
-        if (slot.missions.includes(mType.nid)) {
-            if (slot.gangs.includes(playerInfos.gang)) {
-                newSlot = new SlotConstructor(slot.unit,slot.gear);
-                missionBatList.push(newSlot);
+        if (slot.unit != undefined) {
+            if (slot.missions.includes(mType.nid)) {
+                if (slot.gangs.includes(playerInfos.gang)) {
+                    newSlot = new SlotConstructor(slot.unit,slot.gear);
+                    missionBatList.push(newSlot);
+                }
             }
         }
     });
@@ -111,53 +113,22 @@ function SlotConstructor(theName,theGear) {
     this.gear = theGear;
 };
 
-function putMissionStats(mType) {
-    playerInfos.gang = 'rednecks';
+function putMissionStats(mType,missionTeams) {
+    // playerInfos.gang = 'rednecks';
     playerInfos.gLevel = Math.ceil((mType.pa*2)+4-playerInfos.gMode);
-    let douze = 0;
-    let quatorze = 0;
-    let quinze = 0;
-    let seize = 0;
-    let dixsept = 0;
-    let dixhuit = 0;
-    if (playerInfos.gLevel >= 12) {douze = 1;}
-    if (playerInfos.gLevel >= 14) {quatorze = 1;}
-    if (playerInfos.gLevel >= 15) {quinze = 1;}
-    if (playerInfos.gLevel >= 16) {seize = 1;}
-    if (playerInfos.gLevel >= 17) {dixsept = 1;}
-    if (playerInfos.gLevel >= 18) {dixhuit = 1;}
-    playerInfos.comp = {};
-    playerInfos.comp.aero = 0;
-    playerInfos.comp.arti = 1;
-    playerInfos.comp.tank = 1+quinze;
-    playerInfos.comp.cyber = 1+dixsept;
-    playerInfos.comp.robo = 0;
-    playerInfos.comp.gen = 0;
-    playerInfos.comp.cam = 1;
-    playerInfos.comp.ca = 2;
-    playerInfos.comp.const = 2;
-    playerInfos.comp.energ = 0+dixsept;
-    playerInfos.comp.train = 1;
-    playerInfos.comp.ind = 1;
-    playerInfos.comp.med = 0+quinze;
-    playerInfos.comp.scaph = 1;
+    playerInfos.comp = getMissionComps(mType,missionTeams);
     if (zone[0].pid-2 > playerInfos.comp.scaph) {
         playerInfos.comp.scaph = zone[0].pid-2;
     }
-    playerInfos.comp.tele = 0;
-    playerInfos.comp.trans = 1+quatorze;
-    playerInfos.comp.tri = 2;
-    playerInfos.comp.vsp = 2;
-    playerInfos.comp.mat = 2;
-    playerInfos.comp.explo = 2+dixhuit;
-    playerInfos.comp.exo = 0;
-    playerInfos.comp.bal = 2+seize;
-    playerInfos.comp.ordre = 0;
-    playerInfos.comp.pyro = 1;
-    playerInfos.comp.log = 2;
-    playerInfos.comp.def = 2+dixhuit;
-    playerInfos.comp.det = 3;
-    playerInfos.comp.ext = 1;
+};
+
+function getMissionComps(mType,missionTeams) {
+    let comps = {};
+    let index = missionTeams.findIndex((obj => (obj.gang == playerInfos.gang && obj.mission == mType.nid)));
+    if (index > -1) {
+        comps = missionTeams[index];
+    }
+    return comps.comps;
 };
 
 function putFullBldVM() {

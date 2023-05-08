@@ -884,7 +884,7 @@
     {
         "unit":"Krimulos",
         "gear":["uranium","lame-t-atium","hplate","chargeur1"],
-        "missions":["resist","trolley","necro"],
+        "missions":["resist","trolley"],
         "gangs":["drogmulojs"]
     },
     {
@@ -1069,7 +1069,7 @@
     },
     {
         "unit":"Candytrucks",
-        "gear":["uranium","molotov-slime","chobham","lanceur"],
+        "gear":["uranium","molotov-flash","chobham","lanceur"],
         "missions":["resist","trolley","necro"],
         "gangs":["drogmulojs"]
     },
@@ -1388,7 +1388,7 @@
     {
         "unit":"Cyborgs",
         "gear":["laser","laser","chobham","chargeur"],
-        "missions":["trolley"],
+        "missions":["trolley","necro"],
         "gangs":["drogmulojs"]
     },
     {
@@ -1472,19 +1472,25 @@
     {
         "unit":"Exobrutes",
         "gear":["lame-t-poraz","fleche-freeze","kapton","gilet"],
-        "missions":["necro","science","spider","dragon"],
+        "missions":["necro","science"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Exobrutes",
+        "gear":["lame-t-poraz","fleche-freeze","kaptane","gilet"],
+        "missions":["spider","dragon"],
         "gangs":["blades"]
     },
     {
         "unit":"Exobios",
         "gear":["lame-t-atium","obus-heatseeker","kapton","gilet"],
-        "missions":["necro","science","spider"],
+        "missions":["necro","science"],
         "gangs":["drogmulojs"]
     },
     {
         "unit":"Exobios",
-        "gear":["lame-a-atium","obus-plastanium","kapton","gilet"],
-        "missions":["dragon"],
+        "gear":["lame-a-atium","obus-plastanium","kaptane","gilet"],
+        "missions":["spider","dragon"],
         "gangs":["drogmulojs"]
     },
     {
@@ -1608,9 +1614,244 @@
         "gangs":["blades"]
     },
     {
+        "unit":"Amazones",
+        "gear":["fleche-atium","lame-t-atium","kevlar","arcpoulie"],
+        "missions":["resist","trolley","necro"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Amazones",
+        "gear":["fleche-poraz","lame-t-atium","wendium","arcpoulie"],
+        "missions":["resist","trolley","necro"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Amazones",
+        "gear":["fleche-freeze","lame-a-atium","wendium","arcpoulie"],
+        "missions":["science","spider","sky"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Scyths",
+        "gear":["lame-t-atium","fleche-atium","wendium","repel"],
+        "missions":["necro","science"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Scyths",
+        "gear":["lame-a-atium","fleche-shinda","kapton","repel"],
+        "missions":["spider","sky","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Scyths",
+        "gear":["lame-plasma","fleche-shinda","duneg","repel"],
+        "missions":["sky","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Rétiaires",
+        "gear":["web-taser","pn-uranium","wendium","lunette2"],
+        "missions":["trolley","necro"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Rétiaires",
+        "gear":["web-taser","pn-salite","duneg","lunette2"],
+        "missions":["science","spider","sky","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Rétiaires",
+        "gear":["web-taser","pn-uranium","wendium","lunette2"],
+        "missions":["necro","science","spider"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Rétiaires",
+        "gear":["web-taser","pn-timonium","swing","lunette2"],
+        "missions":["sky","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Blastoxs",
+        "gear":["lame-carbone","ac-explosive","kevlar","chargeur2"],
+        "missions":["resist","trolley"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Blastoxs",
+        "gear":["lame-carbone","ac-dunium","wendium","chargeur2"],
+        "missions":["necro","science","sky"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Blastoxs",
+        "gear":["lame-carbone","ac-uranium","kapton","chargeur2"],
+        "missions":["resist","trolley","necro"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Blastoxs",
+        "gear":["lame-carbone","ac-timonium","kapton","chargeur2"],
+        "missions":["sky"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Blastoxs",
+        "gear":["lame-carbone","ac-needle","kevlar","chargeur2"],
+        "missions":["resist","trolley"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Toxs",
+        "gear":["lame-c-atium","uranium","kevlar","chargeur2"],
+        "missions":["resist","trolley"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Toxs",
+        "gear":["lame-c-atium","uranium","wendium","chargeur2"],
+        "missions":["necro","science","spider"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Toxs",
+        "gear":["lame-c-atium","timonium","wendium","chargeur2"],
+        "missions":["sky","dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Toxs",
+        "gear":["lame-t-atium","explosive","kapton","chargeur2"],
+        "missions":["resist","trolley","necro"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Toxs",
+        "gear":["lame-a-atium","dunium","kapton","helper"],
+        "missions":["science","sky"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Toxs",
+        "gear":["lame-t-atium","freeze","kevlar","e-camo"],
+        "missions":["resist"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Toxs",
+        "gear":["lame-a-atium","freeze","kapton","repel"],
+        "missions":["sky"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Psys",
+        "gear":["ac-uranium","gaz-pluto","wendium","chargeur1"],
+        "missions":["science","spider"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Psys",
+        "gear":["ac-timonium","gaz-pluto","swing","chargeur1"],
+        "missions":["sky","dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Psys",
+        "gear":["ac-salite","gaz-pluto","kapton","chargeur1"],
+        "missions":["spider","sky","dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Spectres",
+        "gear":["uranium","gaz","kevlar","e-camo"],
+        "missions":["resist","trolley"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Spectres",
+        "gear":["uranium","gaz-pluto","wendium","e-camo"],
+        "missions":["necro","science","spider"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Spectres",
+        "gear":["uranium","gaz-uridium","wendium","e-camo"],
+        "missions":["sky","dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Spectres",
+        "gear":["uranium","gaz","kevlar","e-camo"],
+        "missions":["resist","trolley"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Spectres",
+        "gear":["uranium","gaz-pluto","kapton","e-camo"],
+        "missions":["necro","science","spider"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Spectres",
+        "gear":["uranium","gaz-uridium","kapton","e-camo"],
+        "missions":["sky","dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Warclones",
+        "gear":["uranium","grenade","hplate","chargeur1"],
+        "missions":["trolley","necro","science"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Warclones",
+        "gear":["salite","grenade-incendiaire","hplate","chargeur1"],
+        "missions":["spider","dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Warclones",
+        "gear":["adamantium","grenade-nanite","kaptane","chargeur1"],
+        "missions":["dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Twins",
+        "gear":["titanium","lame-taser","wendium","lunette1"],
+        "missions":["necro","science"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Twins",
+        "gear":["salite","lame-taser","kaptane","lunette1"],
+        "missions":["spider","dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Kamiclones",
+        "gear":["lame-t-atium","autodes-nanite","swarwing","repel"],
+        "missions":["sky"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Kamiclones",
+        "gear":["lame-t-atium","autodes-nanite","swarwing","repel"],
+        "missions":["sky"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Kamiclones",
+        "gear":["lame-t-atium","autodes-nanite","swarwing","repel"],
+        "missions":["sky"],
+        "gangs":["drogmulojs"]
+    },
+    {
         "unit":"Sapeurs",
         "gear":["tungsten","lame-carbone","duneg","e-road"],
         "missions":["resist","trolley","necro","science","spider","sky","dragon"],
         "gangs":["rednecks","blades","bulbos","drogmulojs","tiradores","detruas","brasier"]
-    }
+    },
+    {"gang":"rednecks","mission":"resist","comps":{"aero":0,"arti":0,"tank":1,"cyber":1,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":1,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":1,"mat":2,"explo":2,"pyro":1,"bal":2,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"rednecks","mission":"trolley","comps":{"aero":0,"arti":0,"tank":1,"cyber":1,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":1,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":2,"mat":2,"explo":2,"pyro":2,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"rednecks","mission":"necro","comps":{"aero":0,"arti":1,"tank":1,"cyber":1,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":2,"pyro":2,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"rednecks","mission":"science","comps":{"aero":0,"arti":1,"tank":2,"cyber":1,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":3,"pyro":2,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"rednecks","mission":"spider","comps":{"aero":0,"arti":1,"tank":2,"cyber":2,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":3,"pyro":2,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"rednecks","mission":"sky","comps":{"aero":1,"arti":1,"tank":2,"cyber":2,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":3,"pyro":2,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"rednecks","mission":"dragon","comps":{"aero":1,"arti":1,"tank":2,"cyber":2,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":2,"vsp":2,"mat":3,"explo":3,"pyro":2,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":3,"ext":1}},{"gang":"blades","mission":"resist","comps":{"aero":0,"arti":0,"tank":0,"cyber":0,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":2,"ind":0,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":2,"mat":2,"explo":0,"pyro":1,"bal":1,"ordre":0,"exo":2,"log":2,"def":2,"det":2,"ext":1}},{"gang":"blades","mission":"trolley","comps":{"aero":0,"arti":0,"tank":0,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":2,"ind":0,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":2,"mat":2,"explo":0,"pyro":1,"bal":2,"ordre":0,"exo":3,"log":2,"def":2,"det":2,"ext":1}},{"gang":"blades","mission":"necro","comps":{"aero":1,"arti":0,"tank":0,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":2,"ind":0,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":0,"pyro":1,"bal":2,"ordre":0,"exo":3,"log":2,"def":2,"det":2,"ext":1}},{"gang":"blades","mission":"science","comps":{"aero":1,"arti":0,"tank":0,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":2,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":1,"pyro":2,"bal":2,"ordre":0,"exo":3,"log":2,"def":2,"det":2,"ext":1}},{"gang":"blades","mission":"spider","comps":{"aero":1,"arti":0,"tank":0,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":2,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":1,"pyro":2,"bal":2,"ordre":0,"exo":3,"log":2,"def":2,"det":3,"ext":1}},{"gang":"blades","mission":"sky","comps":{"aero":1,"arti":0,"tank":0,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":2,"ind":1,"med":2,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":1,"pyro":2,"bal":2,"ordre":1,"exo":3,"log":2,"def":2,"det":3,"ext":1}},{"gang":"blades","mission":"dragon","comps":{"aero":1,"arti":0,"tank":0,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":4,"const":2,"energ":1,"train":2,"ind":1,"med":2,"scaph":1,"tele":0,"trans":2,"tri":2,"vsp":2,"mat":3,"explo":1,"pyro":2,"bal":2,"ordre":1,"exo":3,"log":2,"def":2,"det":3,"ext":1}},{"gang":"bulbos","mission":"resist","comps":{"aero":0,"arti":0,"tank":1,"cyber":1,"robo":1,"gen":0,"cam":1,"ca":3,"const":2,"energ":2,"train":0,"ind":1,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":2,"mat":2,"explo":1,"pyro":0,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"bulbos","mission":"trolley","comps":{"aero":0,"arti":0,"tank":1,"cyber":1,"robo":1,"gen":0,"cam":1,"ca":3,"const":2,"energ":2,"train":0,"ind":2,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":2,"mat":2,"explo":1,"pyro":1,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":3,"ext":1}},{"gang":"bulbos","mission":"necro","comps":{"aero":0,"arti":0,"tank":2,"cyber":2,"robo":1,"gen":0,"cam":1,"ca":3,"const":2,"energ":2,"train":0,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":2,"pyro":1,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":3,"ext":1}},{"gang":"bulbos","mission":"science","comps":{"aero":0,"arti":1,"tank":2,"cyber":2,"robo":2,"gen":0,"cam":1,"ca":3,"const":2,"energ":2,"train":0,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":2,"pyro":1,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":3,"ext":1}},{"gang":"bulbos","mission":"spider","comps":{"aero":1,"arti":1,"tank":2,"cyber":2,"robo":2,"gen":0,"cam":1,"ca":3,"const":2,"energ":2,"train":0,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":2,"pyro":1,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":3,"ext":1}},{"gang":"bulbos","mission":"sky","comps":{"aero":1,"arti":1,"tank":2,"cyber":2,"robo":2,"gen":0,"cam":1,"ca":3,"const":2,"energ":2,"train":1,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":2,"pyro":1,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":3,"ext":1}},{"gang":"bulbos","mission":"dragon","comps":{"aero":1,"arti":1,"tank":2,"cyber":2,"robo":2,"gen":0,"cam":1,"ca":3,"const":2,"energ":3,"train":1,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":2,"vsp":2,"mat":3,"explo":2,"pyro":1,"bal":2,"ordre":2,"exo":0,"log":2,"def":2,"det":3,"ext":1}},{"gang":"drogmulojs","mission":"resist","comps":{"aero":0,"arti":0,"tank":1,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":0,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":1,"mat":2,"explo":0,"pyro":1,"bal":2,"ordre":0,"exo":2,"log":2,"def":2,"det":2,"ext":1}},{"gang":"drogmulojs","mission":"trolley","comps":{"aero":0,"arti":0,"tank":1,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":0,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":2,"mat":2,"explo":1,"pyro":1,"bal":2,"ordre":0,"exo":3,"log":2,"def":2,"det":2,"ext":1}},{"gang":"drogmulojs","mission":"necro","comps":{"aero":0,"arti":1,"tank":1,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":0,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":1,"pyro":1,"bal":2,"ordre":0,"exo":3,"log":2,"def":2,"det":2,"ext":1}},{"gang":"drogmulojs","mission":"science","comps":{"aero":0,"arti":1,"tank":1,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":1,"pyro":1,"bal":2,"ordre":1,"exo":3,"log":2,"def":2,"det":2,"ext":1}},{"gang":"drogmulojs","mission":"spider","comps":{"aero":1,"arti":1,"tank":1,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":1,"pyro":1,"bal":2,"ordre":1,"exo":3,"log":2,"def":2,"det":2,"ext":1}},{"gang":"drogmulojs","mission":"sky","comps":{"aero":1,"arti":1,"tank":2,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":2,"pyro":2,"bal":2,"ordre":1,"exo":3,"log":2,"def":2,"det":2,"ext":1}},{"gang":"drogmulojs","mission":"dragon","comps":{"aero":1,"arti":1,"tank":2,"cyber":1,"robo":0,"gen":2,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":2,"pyro":2,"bal":2,"ordre":1,"exo":3,"log":2,"def":2,"det":3,"ext":1}},{"gang":"tiradores","mission":"resist","comps":{"aero":0,"arti":0,"tank":1,"cyber":1,"robo":1,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":0,"ind":1,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":2,"mat":2,"explo":1,"pyro":0,"bal":2,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"tiradores","mission":"trolley","comps":{"aero":0,"arti":0,"tank":1,"cyber":1,"robo":1,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":2,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":2,"mat":2,"explo":2,"pyro":0,"bal":2,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"tiradores","mission":"necro","comps":{"aero":0,"arti":0,"tank":1,"cyber":1,"robo":2,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":2,"pyro":0,"bal":3,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"tiradores","mission":"science","comps":{"aero":1,"arti":0,"tank":1,"cyber":1,"robo":2,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":2,"pyro":0,"bal":3,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"tiradores","mission":"spider","comps":{"aero":1,"arti":0,"tank":2,"cyber":1,"robo":2,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":2,"pyro":0,"bal":3,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"tiradores","mission":"sky","comps":{"aero":1,"arti":0,"tank":2,"cyber":1,"robo":2,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":2,"pyro":1,"bal":3,"ordre":1,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"tiradores","mission":"dragon","comps":{"aero":1,"arti":0,"tank":2,"cyber":1,"robo":2,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":2,"vsp":2,"mat":3,"explo":2,"pyro":1,"bal":3,"ordre":1,"exo":0,"log":2,"def":2,"det":3,"ext":1}},{"gang":"detruas","mission":"resist","comps":{"aero":0,"arti":1,"tank":1,"cyber":0,"robo":1,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":0,"ind":0,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":1,"mat":2,"explo":2,"pyro":0,"bal":2,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"detruas","mission":"trolley","comps":{"aero":0,"arti":1,"tank":1,"cyber":0,"robo":1,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":0,"ind":1,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":2,"mat":2,"explo":2,"pyro":1,"bal":2,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"detruas","mission":"necro","comps":{"aero":0,"arti":1,"tank":2,"cyber":0,"robo":1,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":0,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":3,"pyro":1,"bal":2,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"detruas","mission":"science","comps":{"aero":0,"arti":1,"tank":2,"cyber":0,"robo":1,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":3,"pyro":2,"bal":2,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"detruas","mission":"spider","comps":{"aero":0,"arti":1,"tank":2,"cyber":0,"robo":1,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":3,"pyro":2,"bal":2,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"detruas","mission":"sky","comps":{"aero":0,"arti":1,"tank":2,"cyber":0,"robo":1,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":3,"pyro":3,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":3,"ext":1}},{"gang":"detruas","mission":"dragon","comps":{"aero":0,"arti":2,"tank":2,"cyber":0,"robo":1,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":1,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":3,"pyro":3,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":3,"ext":1}},{"gang":"brasier","mission":"resist","comps":{"aero":0,"arti":0,"tank":1,"cyber":1,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":1,"train":0,"ind":1,"med":1,"scaph":1,"tele":0,"trans":1,"tri":1,"vsp":2,"mat":2,"explo":1,"pyro":2,"bal":2,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"brasier","mission":"trolley","comps":{"aero":0,"arti":0,"tank":1,"cyber":1,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":2,"train":0,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":1,"pyro":3,"bal":2,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"brasier","mission":"necro","comps":{"aero":0,"arti":1,"tank":1,"cyber":2,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":2,"train":0,"ind":1,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":1,"pyro":3,"bal":2,"ordre":0,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"brasier","mission":"science","comps":{"aero":0,"arti":1,"tank":1,"cyber":2,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":2,"train":0,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":2,"pyro":3,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"brasier","mission":"spider","comps":{"aero":1,"arti":1,"tank":1,"cyber":2,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":2,"train":0,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":2,"explo":2,"pyro":3,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"brasier","mission":"sky","comps":{"aero":1,"arti":1,"tank":2,"cyber":2,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":2,"train":0,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":2,"pyro":3,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":2,"ext":1}},{"gang":"brasier","mission":"dragon","comps":{"aero":1,"arti":1,"tank":2,"cyber":2,"robo":0,"gen":0,"cam":1,"ca":3,"const":2,"energ":2,"train":0,"ind":2,"med":1,"scaph":1,"tele":0,"trans":2,"tri":1,"vsp":2,"mat":3,"explo":3,"pyro":3,"bal":2,"ordre":1,"exo":0,"log":2,"def":2,"det":3,"ext":1}}
 ]

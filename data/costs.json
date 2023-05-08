@@ -664,7 +664,7 @@
         "compHardReq":{"bal":1},
         "unitCost":"Warriors",
         "costs":{"Scrap":128,"Carbone":64,"Aluminium":128,"Titane":64,"Cuivre":64,"Batteries":64,"Végétaux":192,"Blendium":64,"Fer":32,"Soufre":32,"Plomb":32,"Drogues":85,"Or":64,"Chlore":21,"Zinc":21,"Tissus":42},
-        "deploy":{"Energie":10,"Drogues":7,"Chlore":3,"Zinc":3,"Tissus":3},
+        "deploy":{"Energie":10,"Drogues":9,"Chlore":3,"Zinc":3,"Tissus":3,"Bore":4,"Larvium":16},
         "fabTime":50
     },
     {
@@ -880,7 +880,7 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":8},
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"cyber":1},
-        "costs":{"Corps":48,"Scrap":48,"Carbone":24,"Aluminium":24,"Titane":72,"Moteurs":24,"Electros":16,"Batteries":12,"Cuivre":12,"Silicium":12},
+        "costs":{"Corps":48,"Scrap":48,"Carbone":24,"Aluminium":24,"Titane":168,"Moteurs":48,"Electros":16,"Batteries":12,"Cuivre":12,"Silicium":12},
         "deploy":{"Fuel":36},
         "fabTime":45
     },

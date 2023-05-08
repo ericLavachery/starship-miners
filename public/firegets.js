@@ -934,21 +934,10 @@ function calcDamage(weapon,power,armor,defBat) {
     } else {
         powerDice = 0;
     }
-    // bliss drug
-    let dmgReduct = 0;
-    if (!weapon.ammo.includes('neant')) {
-        if (defBatType.skills.includes('dreduct')) {
-            dmgReduct = 2;
-        } else if (defBat.tags.includes('bliss') && defBatType.cat === 'infantry') {
-            dmgReduct = 2;
-        } else if (defBat.tags.includes('zealot') && defBatType.cat === 'infantry') {
-            dmgReduct = 1;
-        } else if (defBat.prt === 'kapton' || defBat.prt === 'battlesuit' || defBat.prt === 'bonibo' || defBat.prt === 'swarwing') {
-            dmgReduct = 1;
-        }
-    }
+    // bliss drug / damage reduction
+    let dmgReduct = getDamageRed(weapon.sound,defBat,defBatType);
     let calculatedDmg = powerDice-modifiedArmor-dmgReduct;
-    if (calculatedDmg <= dmgReduct+1) {
+    if (calculatedDmg <= dmgReduct+1 && dmgReduct >= 1) {
         calculatedDmg = 0;
     }
     if (calculatedDmg < 0) {
@@ -970,6 +959,22 @@ function calcDamage(weapon,power,armor,defBat) {
         }
     }
     return calculatedDmg;
+};
+
+function getDamageRed(sound,defBat,defBatType) {
+    let dmgReduct = 0;
+    if (!sound.includes('suck')) {
+        if (defBatType.skills.includes('dreduct')) {
+            dmgReduct = 2;
+        } else if (defBat.tags.includes('bliss') && defBatType.cat === 'infantry') {
+            dmgReduct = 2;
+        } else if (defBat.tags.includes('zealot') && defBatType.cat === 'infantry') {
+            dmgReduct = 1;
+        } else if (defBat.prt === 'kapton' || defBat.prt === 'battlesuit' || defBat.prt === 'bonibo' || defBat.prt === 'swarwing') {
+            dmgReduct = 1;
+        }
+    }
+    return dmgReduct;
 };
 
 function getModifiedArmor(armor,armorModifier) {
@@ -2437,6 +2442,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.accuracy = Math.round(thisWeapon.accuracy*ammo.accuracy);
         } else {
             thisWeapon.rof = thisWeapon.rof*ammo.rof;
+            thisWeapon.accuracy = Math.round(thisWeapon.accuracy*(((ammo.accuracy-1)/3)+1));
         }
     }
     // helper
@@ -3076,7 +3082,9 @@ function checkDisease(giveBatType,damage,haveBat,haveBatType,terrain) {
     if (!haveBat.tags.includes('maladie')) {
         if (giveBatType.skills.includes('maladie') || giveBatType.skills.includes('chancre')) {
             if ((haveBatType.cat == 'infantry' && !haveBatType.skills.includes('mutant') && !haveBat.tags.includes('zombie')) || haveBatType.cat == 'aliens') {
-                let getChance = (damage*5)+7-unitResist;
+                let dmgReduct = getDamageRed('sans',haveBat,haveBatType);
+                let disResist = unitResist+(dmgReduct*3);
+                let getChance = (damage*5)+7-disResist;
                 if (giveBatType.skills.includes('chancre')) {
                     getChance = getChance*3;
                 } else {
@@ -3085,11 +3093,11 @@ function checkDisease(giveBatType,damage,haveBat,haveBatType,terrain) {
                 if (terrain.name === 'S') {
                     getChance = getChance+25;
                 }
-                if (getChance > 42-(unitResist*3) && !giveBatType.skills.includes('chancre')) {
-                    getChance = 42-(unitResist*3);
+                if (getChance > 42-(disResist*3) && !giveBatType.skills.includes('chancre')) {
+                    getChance = 42-(disResist*3);
                 }
-                if (getChance < 13-unitResist && damage >= 1) {
-                    getChance = 13-unitResist;
+                if (getChance < 13-disResist && damage >= 1) {
+                    getChance = 13-disResist;
                 }
                 if (rand.rand(1,100) <= getChance) {
                     getIt = true;

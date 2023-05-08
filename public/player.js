@@ -252,6 +252,24 @@ function changePlayerInfo(dropMenuId,infoName,from) {
             if (playerInfos.gang === 'rednecks' && playerInfos.comp.ext === 0) {
                 playerInfos.comp.ext = 1;
             }
+            if (playerInfos.gang === 'drogmulojs' && playerInfos.comp.tri === 0) {
+                playerInfos.comp.tri = 1;
+            }
+            if (playerInfos.gang === 'bulbos' && playerInfos.comp.det === 0) {
+                playerInfos.comp.det = 1;
+            }
+            if (playerInfos.gang === 'detruas' && playerInfos.comp.explo === 0) {
+                playerInfos.comp.explo = 1;
+            }
+            if (playerInfos.gang === 'brasier' && playerInfos.comp.pyro === 0) {
+                playerInfos.comp.pyro = 1;
+            }
+            if (playerInfos.gang === 'tiradores' && playerInfos.comp.bal === 0) {
+                playerInfos.comp.bal = 1;
+            }
+            if (playerInfos.gang === 'blades' && playerInfos.comp.cam === 0) {
+                playerInfos.comp.cam = 1;
+            }
             moveMissionZone(playerInfos.missionZone);
             conOut(true);
             commandes();
@@ -371,6 +389,7 @@ function allowedArmors(unit) {
         if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('combo');
         }
+        protection.push('kaptane');
     }
     if (unit.skills.includes('a_heavy')) {
         protection.push('hplate');
@@ -1348,15 +1367,15 @@ function maxGangCompCosts() {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
-        if (playerInfos.gLevel >= 18) {
+        if (playerInfos.gLevel >= 17) {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
-        if (playerInfos.gLevel >= 20) {
+        if (playerInfos.gLevel >= 19) {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
-        if (playerInfos.gLevel >= 22) {
+        if (playerInfos.gLevel >= 21) {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }

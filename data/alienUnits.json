@@ -196,7 +196,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","fastreg","capfar","inflammable","noaploss","ricochet","smartrip"],
+        "skills":["fly","fastreg","capfar","inflammable","noaploss","ricochet","dreduct","smartrip"],
         "deathFx":"death2",
         "spawnFx":"spawn-lib",
         "fxPriority":4,
@@ -254,7 +254,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","nez","fouisseur","capbld","reactpoison","reactblast","noaploss","okwater","resistelec","morph","destructeur"],
+        "skills":["regeneration","nez","fouisseur","capbld","reactpoison","reactblast","dreduct","noaploss","okwater","resistelec","morph","destructeur"],
         "deathFx":"death2",
         "killRes":{"Bugium":1,"Larvium":10,"Mendium":5},
         "killXP":3,
@@ -311,7 +311,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["regeneration","capbld","fouisseur","nez","reactpoison","reactblast","noaploss","okwater","resistelec","destructeur","baddef","silhover"],
+        "skills":["regeneration","capbld","fouisseur","nez","reactpoison","reactblast","dreduct","noaploss","okwater","resistelec","destructeur","baddef","silhover"],
         "deathFx":"death2",
         "killRes":{"Bugium":3,"Mendium":15,"Larvium":30},
         "killXP":10,
@@ -501,7 +501,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["shield","minaccu","slowreg","nez","reactpoison","noaploss","infrip","destructeur","resistall","dread","nojello","aimcfo","silhover"],
+        "skills":["shield","minaccu","slowreg","nez","reactpoison","noaploss","infrip","destructeur","resistall","dreduct","dread","nojello","aimcfo","silhover"],
         "deathFx":"death3",
         "spawnFx":"spawn-mante",
         "fxPriority":7,
@@ -591,7 +591,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fear","ponte","heal","noaploss","protectall","sentinelle","initmelee","silhover"],
+        "skills":["fear","ponte","heal","noaploss","protectall","dreduct","sentinelle","initmelee","silhover"],
         "deathFx":"death3",
         "spawnFx":"spawn-glaireuse",
         "fxPriority":8,
@@ -758,7 +758,7 @@
             "power":13,
             "aoe":"unit",
             "sound":"shrll3",
-            "ammo":["neant"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Glu",
@@ -1024,7 +1024,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capmen","nobldtarg","regeneration","minaccu","inflammable","resistpoison","survivor","noaploss","sentinelle","smartrip","infrip","initmelee","flee"],
+        "skills":["capmen","nobldtarg","regeneration","minaccu","inflammable","resistpoison","dreduct","survivor","noaploss","sentinelle","smartrip","infrip","initmelee","flee"],
         "deathFx":"death2",
         "spawnFx":"spawn-veuve",
         "fxPriority":6,
@@ -1117,10 +1117,10 @@
             "range":1,
             "noFly":false,
             "isMelee":true,
-            "rof":12,
+            "rof":18,
             "accuracy":15,
-            "power":4,
-            "armors":1.5,
+            "power":3,
+            "armors":1.3,
             "aoe":"unit",
             "sound":"mouche",
             "ammo":["poison"]
@@ -1187,7 +1187,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["chancre","venin","regeneration","shield","minaccu","destructeur","sentinelle","noaploss","flee"],
+        "skills":["chancre","venin","regeneration","shield","dreduct","minaccu","destructeur","sentinelle","noaploss","flee"],
         "deathFx":"death1",
         "killRes":{"Bugium":4,"Mendium":2,"Germium":6,"Egidium":3,"Mephitis":2},
         "killXP":7,
@@ -1536,7 +1536,7 @@
             "armors":1.5,
             "aoe":"unit",
             "sound":"suck1",
-            "ammo":["neant"]
+            "ammo":["sans"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -1579,7 +1579,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"suck1",
-            "ammo":["neant"]
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Mandibules",
@@ -1592,7 +1592,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"suck2",
-            "ammo":["neant"]
+            "ammo":["sans"]
         },
         "w2chance":4,
         "moveCost":4,
@@ -1642,7 +1642,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["resistpoison","resistblast","resistfeu","infkill","nojello","dard"],
+        "skills":["resistpoison","resistblast","resistfeu","infkill","nojello","dard","dreduct"],
         "deathFx":"death1",
         "killRes":{"Bugium":1,"Swarmine":5,"Mephitis":1},
         "killXP":2
@@ -1698,7 +1698,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["grip","venom","tail","ponte","minaccu","terror","resistpoison","resistblast","resistfeu","protectall","sentinelle","initmelee","noaploss","smartrip","infrip","nojello","aimcfo","silhover"],
+        "skills":["grip","venom","tail","ponte","minaccu","terror","resistpoison","resistblast","dreduct","resistfeu","protectall","sentinelle","initmelee","noaploss","smartrip","infrip","nojello","aimcfo","silhover"],
         "deathFx":"death3",
         "spawnFx":"spawn-androk",
         "fxPriority":5,
@@ -1736,7 +1736,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"shrll2",
-            "ammo":["neant"]
+            "ammo":["sans"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -1744,7 +1744,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["minaccu","fear","eatpoison","regeneration","defense","nez","dive","nojello","silhover"],
+        "skills":["minaccu","fear","eatpoison","regeneration","dreduct","defense","nez","dive","nojello","silhover"],
         "deathFx":"death3",
         "spawnFx":"spawn-gal",
         "fxPriority":3,
@@ -1881,8 +1881,8 @@
             "accuracy":15,
             "power":4,
             "aoe":"unit",
-            "sound":"muddy",
-            "ammo":["neant"]
+            "sound":"suck4",
+            "ammo":["sans"]
         },
         "weapon2":{
             "name":"Mandibules",
@@ -1902,7 +1902,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["capmen","sentinelle","nojello"],
+        "skills":["capmen","sentinelle","nojello","dreduct"],
         "deathFx":"death1",
         "killRes":{"Bugium":1,"Swarmine":6,"Germium":4},
         "killXP":3,
@@ -1963,7 +1963,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["dread","capmen","nojello","slowreg","wselect","necrotouch"],
+        "skills":["dread","capmen","nojello","slowreg","dreduct","wselect","necrotouch"],
         "deathFx":"death2",
         "killRes":{"Bugium":10,"Swarmine":22,"Mendium":3,"Slime":7,"Germium":16},
         "killXP":12
@@ -2054,7 +2054,7 @@
             "accuracy":15,
             "power":3,
             "aoe":"unit",
-            "sound":"suck3",
+            "sound":"slurp3",
             "ammo":["poison"]
         },
         "weapon2":{
@@ -2067,7 +2067,7 @@
             "accuracy":15,
             "power":5,
             "aoe":"unit",
-            "sound":"suck4",
+            "sound":"slurp5",
             "ammo":["necro"]
         },
         "w2chance":3,
@@ -2264,7 +2264,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["fly","capfar","grip","venom","reactpoison","resistall","escape","nojello"],
+        "skills":["fly","capfar","grip","venom","reactpoison","resistall","dreduct","escape","nojello"],
         "deathFx":"death1",
         "killRes":{"Bugium":1,"Swarmine":3,"Wingium":14},
         "killXP":6
@@ -2864,7 +2864,7 @@
     {
         "id":68,
         "name":"Skygrub",
-        "pic":"fantomes-visible",
+        "pic":"skygrub",
         "cat":"aliens",
         "kind":"larve",
         "class":"S",
@@ -3319,7 +3319,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","inflammable","noaploss","nolaser","infrip","freeshot","igtarglog","minaccu","eggprotect","xpfeast","smartrip","aimcfo","silhover","ctarg"],
+        "skills":["isegg","ponte","inflammable","noaploss","nolaser","infrip","freeshot","igtarglog","minaccu","eggprotect","dreduct","xpfeast","smartrip","aimcfo","silhover","ctarg"],
         "deathFx":"xplode",
         "killRes":{"Bugium":3,"Creatite":12,"Slime":18},
         "killXP":25,
@@ -3534,7 +3534,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["gamecap","flee","dive","nodry","hover","infkill","noaploss","nojello"],
+        "skills":["gamecap","flee","dive","nodry","hover","dreduct","infkill","noaploss","nojello"],
         "deathFx":"death2",
         "killRes":{"Gibier":170},
         "killXP":3
@@ -4010,7 +4010,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["robot"],
+        "skills":["robot","dreduct"],
         "deathFx":"mutantdeath",
         "killRes":{},
         "killXP":0

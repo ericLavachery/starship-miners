@@ -583,7 +583,7 @@ function attack(melee,init) {
         if (selectedWeap.ammo.includes('flashbang') || selectedWeap.ammo === 'molotov-flash') {
             if (targetBatType.kind === 'larve') {
                 if (targetBatType.skills.includes('nez')) {
-                    webDamage = Math.ceil(webDamage/5);
+                    webDamage = 0;
                 }
             }
         }
@@ -1001,8 +1001,9 @@ function attack(melee,init) {
     if (targetBatType.cat === 'aliens') {
         minDamage = minDamage+7-(playerInfos.comp.ca*2)-(playerInfos.comp.exo*2);
     } else {
-        minDamage = minDamage+playerInfos.comp.ca+unitResist;
-        if (selectedBatType.skills.includes('dard')) {
+        let dmgReduct = getDamageRed(selectedWeap.sound,targetBat,targetBatType);
+        minDamage = minDamage+playerInfos.comp.ca+unitResist+(dmgReduct*2);
+        if (selectedBatType.skills.includes('dard') && dmgReduct === 0) {
             minDamage = Math.round(minDamage/2);
         }
     }
@@ -1700,7 +1701,7 @@ function defense(melee,init) {
         if (targetWeap.ammo.includes('flashbang') || targetWeap.ammo === 'molotov-flash') {
             if (selectedBatType.kind === 'larve') {
                 if (selectedBatType.skills.includes('nez')) {
-                    webDamage = Math.ceil(webDamage/5);
+                    webDamage = 0;
                 }
             }
         }
@@ -1979,8 +1980,9 @@ function defense(melee,init) {
     if (selectedBatType.cat === 'aliens') {
         minDamage = minDamage+7-(playerInfos.comp.ca*2)-(playerInfos.comp.exo*2);
     } else {
-        minDamage = minDamage+playerInfos.comp.ca+unitResist;
-        if (targetBatType.skills.includes('dard')) {
+        let dmgReduct = getDamageRed(targetWeap.sound,selectedBat,selectedBatType);
+        minDamage = minDamage+playerInfos.comp.ca+unitResist+(dmgReduct*2);
+        if (targetBatType.skills.includes('dard') && dmgReduct === 0) {
             minDamage = Math.round(minDamage/2);
         }
     }

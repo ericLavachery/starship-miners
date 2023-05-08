@@ -323,6 +323,11 @@ function showEnemyBatInfos(bat) {
         }
     }
     if (compCA >= 3) {
+        if (batType.skills.includes('dreduct')) {
+            $('#unitInfos').append('<span class="paramName" title="Ignore les petits dégâts (3-)">Réduction dégâts</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+        }
+    }
+    if (compCA >= 3) {
         if (bat.tags.includes('resistfeu') || batType.skills.includes('resistfeu')) {
             $('#unitInfos').append('<span class="paramName">Résistance feu</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
         }

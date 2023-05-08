@@ -388,6 +388,20 @@
         "popIn":["Caserne","Armurerie"]
     },
     {
+        "name":"kaptane",
+        "cat":"armor",
+        "armor":4,
+        "ap":-2,
+        "skills":["resistfeu","dreduct"],
+        "bldReq":["Laboratoire"],
+        "compReq":{"mat":3,"pyro":1,"ca":3},
+        "altCompReq":{"mat":2,"pyro":3,"ca":2},
+        "factor":"thp",
+        "costs":{"Carbone":6,"Titane":8,"Azote":4,"Bossium":3,"Nickel":6,"Bore":6},
+        "icon":3,
+        "popIn":["Caserne","Armurerie"]
+    },
+    {
         "name":"hplate",
         "cat":"armor",
         "armor":5,
