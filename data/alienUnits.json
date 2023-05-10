@@ -3888,21 +3888,8 @@
             "sound":"saw",
             "ammo":["lame-carbone"]
         },
-        "weapon2":{
-            "name":"Fragger",
-            "cost":1,
-            "range":2,
-            "isShort":true,
-            "noDef":true,
-            "noDatt":true,
-            "rof":20,
-            "accuracy":17,
-            "power":6,
-            "aoe":"brochette",
-            "sound":"fragger_throw",
-            "ammo":["marquage-spike"]
-        },
-        "w2chance":6,
+        "weapon2":{},
+        "w2chance":0,
         "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,

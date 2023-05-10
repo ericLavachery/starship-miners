@@ -12,10 +12,16 @@ function seveso(tileId,fromMissile) {
                             bat.apLeft = Math.floor(bat.apLeft/3);
                         }
                         bat.apLeft = bat.apLeft-8;
-                        if (fromMissile) {
+                        if (fromMissile != 'no') {
                             bat.tags.push('poison');
                             bat.tags.push('poison');
                             bat.apLeft = bat.apLeft-8;
+                            if (fromMissile === 'flit') {
+                                if (!bat.tags.includes('shinda')) {
+                                    bat.tags.push('shinda');
+                                }
+                                bat.apLeft = bat.apLeft-8;
+                            }
                             if (batType.class === 'C' || batType.class === 'B' || batType.class === 'Z') {
                                 bat.squadsLeft = bat.squadsLeft-1;
                                 if (bat.squadsLeft === 0) {
@@ -40,7 +46,7 @@ function seveso(tileId,fromMissile) {
                             bat.apLeft = Math.floor(bat.apLeft/3);
                         }
                         bat.apLeft = bat.apLeft-8;
-                        if (fromMissile) {
+                        if (fromMissile != 'no') {
                             bat.tags.push('poison');
                             bat.tags.push('poison');
                             bat.apLeft = bat.apLeft-8;
@@ -1767,7 +1773,7 @@ function checkGuidage(weapon,alien) {
     let guideTarget = false;
     if (alien.tags.includes('guide')) {
         if (weapon.ammo.includes('missile')) {
-            if (!weapon.name.includes('Comet') && !weapon.name.includes('Thunder')) {
+            if (!weapon.name.includes('Comet') && !weapon.name.includes('Thunder') && !weapon.name.includes('Flit')) {
                 guideTarget = true;
             }
             if (weapon.ammo === 'missile-homing') {
@@ -2301,24 +2307,26 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.cost = thisWeapon.cost-1;
         }
     }
-    if (playerInfos.bldList.includes('Usine d\'armement')) {
-        thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.5);
-    } else if (playerInfos.bldList.includes('Arsenal')) {
-        thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.25);
-    }
-    if (hasEquip(bat,['gilet']) && thisWeapon.maxAmmo < 99) {
-        thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
-        if (thisWeapon.maxAmmo < 16) {
-            thisWeapon.maxAmmo = 16;
+    if (thisWeapon.maxAmmo > 1) {
+        if (playerInfos.bldList.includes('Usine d\'armement')) {
+            thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.5);
+        } else if (playerInfos.bldList.includes('Arsenal')) {
+            thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.25);
         }
-    }
-    if (hasEquip(bat,['hangard']) && thisWeapon.maxAmmo < 99) {
-        thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*2.5);
-    }
-    if (hasEquip(bat,['carrousel','carrousel1','carrousel2']) && thisWeapon.maxAmmo < 99) {
-        thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.35);
-        if (thisWeapon.maxAmmo < 16) {
-            thisWeapon.maxAmmo = 16;
+        if (hasEquip(bat,['gilet']) && thisWeapon.maxAmmo < 99) {
+            thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
+            if (thisWeapon.maxAmmo < 16) {
+                thisWeapon.maxAmmo = 16;
+            }
+        }
+        if (hasEquip(bat,['hangard']) && thisWeapon.maxAmmo < 99) {
+            thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*2.5);
+        }
+        if (hasEquip(bat,['carrousel','carrousel1','carrousel2']) && thisWeapon.maxAmmo < 99) {
+            thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.35);
+            if (thisWeapon.maxAmmo < 16) {
+                thisWeapon.maxAmmo = 16;
+            }
         }
     }
     if (bat.tdc.includes('fineclub')) {
@@ -2681,7 +2689,7 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.isExplo = false;
     }
-    if (thisWeapon.ammo.includes('nanite') || thisWeapon.ammo === 'suicide' || thisWeapon.ammo === 'suicide-deluge' || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('autodes') || thisWeapon.ammo.includes('dynamite') || thisWeapon.ammo.includes('bombe') || thisWeapon.ammo.includes('explosif') || thisWeapon.ammo.includes('obus') || thisWeapon.ammo.includes('missile') || thisWeapon.ammo.includes('grenade') || thisWeapon.ammo.includes('disco')) {
+    if (thisWeapon.ammo.includes('nanite') || thisWeapon.ammo === 'suicide' || thisWeapon.ammo === 'suicide-deluge' || thisWeapon.ammo.includes('mine') || thisWeapon.ammo.includes('autodes') || thisWeapon.ammo.includes('dynamite') || thisWeapon.ammo.includes('bombe') || thisWeapon.ammo.includes('explosif') || thisWeapon.ammo.includes('obus') || thisWeapon.ammo.includes('missile') || thisWeapon.ammo.includes('grenade') || thisWeapon.ammo.includes('disco') || thisWeapon.ammo === 'marquage-kill') {
         if (!thisWeapon.ammo.includes('gaz') && !thisWeapon.ammo.includes('jello') && !thisWeapon.ammo.includes('incendiaire') && !thisWeapon.ammo.includes('napalm') && !thisWeapon.isExplo) {
             thisWeapon.isBlast = true;
         } else {

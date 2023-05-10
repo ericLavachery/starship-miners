@@ -1103,7 +1103,7 @@ function attack(melee,init) {
     // shinda & bio
     if (totalDamage >= 10 || (totalDamage >= 1 && rand.rand(1,2) === 1) || (totalDamage >= 1 && selectedWeap.ammo.includes('hypo'))) {
         // shinda
-        if (selectedWeap.ammo.includes('shinda')) {
+        if (selectedWeap.ammo.includes('shinda') || selectedWeap.ammo.includes('gaz-flit')) {
             if (!targetBat.tags.includes('shinda')) {
                 targetBat.tags.push('shinda');
             }
@@ -1443,9 +1443,12 @@ function attack(melee,init) {
     if (selectedWeap.ammo.includes('-deluge')) {
         deluge(selectedWeap,delugeTileId,false);
     } else if (selectedWeap.ammo.includes('-gaz') && selectedWeap.ammo != 'grenade-gaz') {
-        let fromMissile = false;
-        if (selectedWeap.ammo === 'missile-gaz') {
-            fromMissile = true;
+        let fromMissile = 'no';
+        if (selectedWeap.ammo.includes('missile-gaz')) {
+            fromMissile = 'yes';
+            if (selectedWeap.ammo.includes('gaz-flit')) {
+                fromMissile = 'flit';
+            }
         }
         seveso(delugeTileId,fromMissile);
     }
@@ -2064,7 +2067,7 @@ function defense(melee,init) {
     // shinda & bio
     if (totalDamage >= 10 || (totalDamage >= 1 && rand.rand(1,2) === 1) || (totalDamage >= 1 && targetWeap.ammo.includes('hypo'))) {
         // shinda
-        if (targetWeap.ammo.includes('shinda')) {
+        if (targetWeap.ammo.includes('shinda') || targetWeap.ammo.includes('gaz-flit')) {
             if (!selectedBat.tags.includes('shinda')) {
                 selectedBat.tags.push('shinda');
             }
@@ -2294,9 +2297,12 @@ function defense(melee,init) {
     targetBatArrayUpdate();
     escaped = false;
     if (targetWeap.ammo.includes('-gaz') && targetWeap.ammo != 'grenade-gaz') {
-        let fromMissile = false;
-        if (targetWeap.ammo === 'missile-gaz') {
-            fromMissile = true;
+        let fromMissile = 'no';
+        if (targetWeap.ammo.includes('missile-gaz')) {
+            fromMissile = 'yes';
+            if (targetWeap.ammo.includes('gaz-flit')) {
+                fromMissile = 'flit';
+            }
         }
         seveso(delugeTileId,fromMissile);
     }

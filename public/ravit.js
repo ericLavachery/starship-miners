@@ -30,24 +30,26 @@ function calcRavitVolume(bat) {
     let w1maxAmmo = batType.weapon.maxAmmo;
     let w2maxAmmo = batType.weapon2.maxAmmo;
     if (batType.weapon2.maxAmmo < 99) {
-        if (playerInfos.bldList.includes('Usine d\'armement')) {
-            w2maxAmmo = Math.round(w2maxAmmo*1.5);
-        } else if (playerInfos.bldList.includes('Arsenal')) {
-            w2maxAmmo = Math.round(w2maxAmmo*1.25);
-        }
-        if (hasEquip(bat,['gilet'])) {
-            w2maxAmmo = Math.floor(w2maxAmmo*1.5);
-            if (w2maxAmmo < 16) {
-                w2maxAmmo = 16;
+        if (batType.weapon2.maxAmmo > 1) {
+            if (playerInfos.bldList.includes('Usine d\'armement')) {
+                w2maxAmmo = Math.round(w2maxAmmo*1.5);
+            } else if (playerInfos.bldList.includes('Arsenal')) {
+                w2maxAmmo = Math.round(w2maxAmmo*1.25);
             }
-        }
-        if (hasEquip(bat,['hangard'])) {
-            w2maxAmmo = Math.floor(w2maxAmmo*2.5);
-        }
-        if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
-            w2maxAmmo = Math.floor(w2maxAmmo*1.35);
-            if (w2maxAmmo < 16) {
-                w2maxAmmo = 16;
+            if (hasEquip(bat,['gilet'])) {
+                w2maxAmmo = Math.floor(w2maxAmmo*1.5);
+                if (w2maxAmmo < 16) {
+                    w2maxAmmo = 16;
+                }
+            }
+            if (hasEquip(bat,['hangard'])) {
+                w2maxAmmo = Math.floor(w2maxAmmo*2.5);
+            }
+            if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
+                w2maxAmmo = Math.floor(w2maxAmmo*1.35);
+                if (w2maxAmmo < 16) {
+                    w2maxAmmo = 16;
+                }
             }
         }
         if (batType.weapon2.name === 'Bombes') {
@@ -59,6 +61,9 @@ function calcRavitVolume(bat) {
         } else if (bat.ammo2.includes('missile')) {
             ammoVolume = 8*batType.weapon2.power;
             ravitVolume[2] = 'missile';
+        } else if (bat.ammo2 === 'marquage-scr') {
+            ammoVolume = 4*batType.weapon2.power;
+            ravitVolume[2] = 'missile';
         } else if (batType.weapon2.ammo.includes('standard')) {
             ammoVolume = 0.05*batType.weapon2.power;
         } else {
@@ -68,24 +73,26 @@ function calcRavitVolume(bat) {
         ammoLeft = calcAmmos(bat,w2maxAmmo);
         ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/w2maxAmmo);
     } else if (batType.weapon.maxAmmo < 99) {
-        if (playerInfos.bldList.includes('Usine d\'armement')) {
-            w1maxAmmo = Math.round(w1maxAmmo*1.5);
-        } else if (playerInfos.bldList.includes('Arsenal')) {
-            w1maxAmmo = Math.round(w1maxAmmo*1.25);
-        }
-        if (hasEquip(bat,['gilet'])) {
-            w1maxAmmo = Math.floor(w1maxAmmo*1.5);
-            if (w1maxAmmo < 16) {
-                w1maxAmmo = 16;
+        if (batType.weapon.maxAmmo > 1) {
+            if (playerInfos.bldList.includes('Usine d\'armement')) {
+                w1maxAmmo = Math.round(w1maxAmmo*1.5);
+            } else if (playerInfos.bldList.includes('Arsenal')) {
+                w1maxAmmo = Math.round(w1maxAmmo*1.25);
             }
-        }
-        if (hasEquip(bat,['hangard'])) {
-            w1maxAmmo = Math.floor(w1maxAmmo*2.5);
-        }
-        if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
-            w1maxAmmo = Math.floor(w1maxAmmo*1.35);
-            if (w1maxAmmo < 16) {
-                w1maxAmmo = 16;
+            if (hasEquip(bat,['gilet'])) {
+                w1maxAmmo = Math.floor(w1maxAmmo*1.5);
+                if (w1maxAmmo < 16) {
+                    w1maxAmmo = 16;
+                }
+            }
+            if (hasEquip(bat,['hangard'])) {
+                w1maxAmmo = Math.floor(w1maxAmmo*2.5);
+            }
+            if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
+                w1maxAmmo = Math.floor(w1maxAmmo*1.35);
+                if (w1maxAmmo < 16) {
+                    w1maxAmmo = 16;
+                }
             }
         }
         if (batType.weapon.name === 'Bombes') {
@@ -96,6 +103,9 @@ function calcRavitVolume(bat) {
             ammoVolume = 1*batType.weapon.power;
         } else if (bat.ammo.includes('missile')) {
             ammoVolume = 8*batType.weapon.power;
+            ravitVolume[2] = 'missile';
+        } else if (bat.ammo === 'marquage-scr') {
+            ammoVolume = 4*batType.weapon.power;
             ravitVolume[2] = 'missile';
         } else if (batType.weapon.ammo.includes('standard')) {
             ammoVolume = 0.05*batType.weapon.power;

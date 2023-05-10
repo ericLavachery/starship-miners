@@ -2016,7 +2016,7 @@
             "armors":0.4,
             "aoe":"unit",
             "sound":"saw",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-adamantite","lame-adamantium","lame-mono"]
         },
         "weapon2":{
             "name":"Blaster",
@@ -2315,7 +2315,7 @@
             "noise":4,
             "noMelee":true,
             "rof":28,
-            "accuracy":17,
+            "accuracy":16,
             "dca":0.7,
             "power":11,
             "armors":0.77,
@@ -2332,7 +2332,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","maycamo","recupcit","barda","herorange"],
+        "skills":["a_light","fouille","fortif","datt","maycamo","recupcit","barda","herorange"],
         "mediCost":9,
         "fuzz":2,
         "deathFx":"human1"
@@ -2505,7 +2505,7 @@
             "power":18,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium","obus-deluge"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
             "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
@@ -3453,7 +3453,7 @@
             "armors":0.4,
             "aoe":"unit",
             "sound":"saw",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-adamantite","lame-adamantium","lame-mono"]
         },
         "weapon2":{
             "name":"Canon magnétique",
@@ -3650,7 +3650,7 @@
             "armors":0.5,
             "aoe":"brochette",
             "sound":"chainsaw",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-adamantite","lame-adamantium","lame-mono"]
         },
         "equip":["aucun","e-flash","e-ranger","e-camo","chargeur1","silencieux1","e-jetpack","waterproof"],
         "log3eq":["silencieux1"],
@@ -3824,7 +3824,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","selfmedic","dealer","starka","leader","fly","jetpack","fastguet","longshot","survivor","inflammable","unemun","maycamo","baddef","oknitro","herosalvo"],
+        "skills":["a_mid","fouille","fortif","selfmedic","dealer","starka","leader","fly","jetpack","fastguet","longshot","survivor","inflammable","unemun","maycamo","baddef","oknitro","herosalvo"],
         "maxDrug":8,
         "mediCost":8,
         "fuzz":3.5,
@@ -4551,7 +4551,7 @@
             "power":22,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
             "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
@@ -4774,7 +4774,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"saw2",
-            "ammo":["lame","lame-tungsten","lame-carbone"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-adamantite","lame-adamantium"]
         },
         "weapon2":{
             "name":"Lance thermique",
@@ -5093,7 +5093,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"nailgun",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-adamantite","lame-adamantium","lame-mono"]
         },
         "weapon2":{
             "name":"Rainbow gun",
@@ -5184,7 +5184,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","fastguet","datt","selfbadmedic","meleehelp","cyber","camo","guerrilla","ranger","barda","strong","herowc","herotornade","autohero","elite"],
+        "skills":["a_heavy","fouille","fortif","fastguet","datt","selfbadmedic","meleehelp","cyber","camo","guerrilla","ranger","barda","strong","herowc","herotornade","autohero","elite"],
         "mediCost":6,
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
@@ -5837,7 +5837,7 @@
         "stealth":7,
         "speed":4,
         "ap":19,
-        "maxSalvo":1,
+        "maxSalvo":2,
         "weapon":{
             "name":"Scies",
             "cost":1,
@@ -5845,6 +5845,7 @@
             "isShort":true,
             "noShield":true,
             "noGrip":true,
+            "noBis":true,
             "dca":0.75,
             "rof":15,
             "accuracy":25,
@@ -5852,23 +5853,24 @@
             "armors":0.4,
             "aoe":"unit",
             "sound":"saw",
-            "ammo":["lame","lame-tungsten","lame-carbone","lame-mono"]
+            "ammo":["lame","lame-tungsten","lame-carbone","lame-titane","lame-adamantite","lame-adamantium","lame-mono"]
         },
         "weapon2":{
             "name":"Fragger",
             "cost":1,
-            "range":2,
+            "range":1,
             "isShort":true,
             "noDef":true,
             "noDatt":true,
+            "noBis":true,
             "rof":20,
             "accuracy":20,
-            "power":6,
+            "power":12,
             "aoe":"brochette",
             "sound":"fragger_throw",
-            "ammo":["marquage-spike","marquage-stop"],
-            "maxAmmo":6,
-            "ravitBld":"Poudrière"
+            "ammo":["marquage-scr"],
+            "maxAmmo":1,
+            "ravitBld":"Arsenal"
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","g2motor","waterproof","detector","g2ai","e-mecano"],
@@ -6041,8 +6043,9 @@
             "noDatt":true,
             "noMelee":true,
             "rof":9,
-            "accuracy":13,
+            "accuracy":17,
             "power":24,
+            "armors":0.8,
             "aoe":"squad",
             "sound":"canon_big_x2",
             "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
@@ -6320,7 +6323,7 @@
             "cost":1,
             "range":2,
             "elevation":4,
-            "spot":true,
+            "vision":true,
             "noise":1,
             "rof":12,
             "accuracy":25,
@@ -6896,7 +6899,7 @@
             "power":18,
             "aoe":"squad",
             "sound":"rpg",
-            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-incendiaire","obus-heatseeker","obus-plastanium","obus-deluge"],
+            "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium","obus-deluge"],
             "maxAmmo":10,
             "ravitBld":"Poudrière"
         },

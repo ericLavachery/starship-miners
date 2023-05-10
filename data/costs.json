@@ -2274,12 +2274,20 @@
     {
         "id":271,
         "name":"Drumfires",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":17,"tiradores":99,"detruas":99,"brasier":14},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":14},
         "bldReq":["Usine d'armement","Centre de com"],
         "compHardReq":{"arti":1,"pyro":2,"bal":1},
         "costs":{"Fer":108,"Scrap":36,"Carbone":84,"Aluminium":108,"Titane":36,"Rhodium":36,"Silicium":18,"Electros":18,"Batteries":24,"Nickel":36,"Compo2":72,"Uranium":36,"Munitions":18},
-        "fabTime":70,
-        "inRuin":1
+        "fabTime":70
+    },
+    {
+        "id":317,
+        "name":"Flitguns",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":17,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Usine d'armement","Centre de com"],
+        "compHardReq":{"arti":1,"exo":3,"bal":1},
+        "costs":{"Fer":108,"Scrap":36,"Carbone":84,"Aluminium":108,"Titane":36,"Rhodium":36,"Silicium":18,"Electros":18,"Batteries":24,"Nickel":36,"Compo2":72,"Uranium":36,"Munitions":18},
+        "fabTime":70
     },
     {
         "id":145,

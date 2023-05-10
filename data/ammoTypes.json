@@ -30,7 +30,7 @@
         "range": 1.1,
         "rof": 0.5,
         "power": 2,
-        "powermult": 1,
+        "powermult": 2,
         "armors": 0.3,
         "avar": "mat",
         "accuracy": 1,
@@ -41,7 +41,7 @@
         "compReq":{"det":2,"mat":1,"bal":1},
         "deploy":{"Fer":3,"Munitions":1,"Carbone":1,"Cobalt":1,"Silicium":1,"Mercure":1},
         "batch":200,
-        "sound":{"paint":"paint_spike","fragger_throw":"fragger_spike"}
+        "sound":{"paint":"paint_spike"}
     },
     {
         "name": "marquage-stop",
@@ -60,7 +60,7 @@
         "compReq":{"det":3,"energ":1,"pyro":1,"ca":2},
         "deploy":{"Fer":2,"Potassium":1,"Carbone":1,"Soufre":1,"Oxygène":3,"Azote":1,"Chlore":1,"Mercure":1},
         "batch":200,
-        "sound":{"paint":"paint_flash","fragger_throw":"fragger_spike"}
+        "sound":{"paint":"paint_flash"}
     },
     {
         "name": "marquage-kill",
@@ -79,6 +79,23 @@
         "deploy":{"Fer":1,"Carbone":1,"Cobalt":1,"Silicium":1,"Mercure":1,"Explosifs":2,"Nanite":2},
         "batch":200,
         "sound":{"paint":"paint_kill","fragger_throw":"paint_kill"}
+    },
+    {
+        "name": "marquage-scr",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "armors": 0.2,
+        "avar": "mat",
+        "accuracy": 1,
+        "apdamage": 0.05,
+        "aoe": "brochette",
+        "info": "Marquage",
+        "bldReq":["Atelier"],
+        "compReq":{"det":2,"mat":1,"bal":1},
+        "deploy":{"Titane":3,"Munitions":1,"Carbone":1,"Cobalt":1,"Silicium":1,"Mercure":1},
+        "batch":50
     },
     {
         "name": "web-true",
@@ -2887,8 +2904,8 @@
         "range": 1.1,
         "rof": 1,
         "power": 0,
-        "powermult": 1,
-        "armors": 0.2,
+        "powermult": 1.2,
+        "armors": 0.1,
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "brochette",
@@ -3125,7 +3142,7 @@
         "range": 1.1,
         "rof": 1,
         "power": 0,
-        "powermult": 1.2,
+        "powermult": 1,
         "armors": 0.25,
         "accuracy": 1,
         "apdamage": 0,
@@ -3251,6 +3268,22 @@
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"bal":1,"explo":1,"exo":1,"ca":3,"arti":1},
         "deploy":{"Carbone":2,"Aluminium":2,"Nickel":1,"Oxygène":2,"Explosifs":1,"Fuel":1,"Chlore":6,"Atium":3,"Mephitis":1,"Végétaux":3,"Electros":2,"Batteries":1},
+        "batch":100
+    },
+    {
+        "name": "missile-gaz-flit",
+        "range": 1,
+        "rof": 0.8,
+        "power": 0,
+        "powermult": 0.3,
+        "armors": 0,
+        "accuracy": 2,
+        "apdamage": 0.1,
+        "passprotect": true,
+        "aoe": "bat",
+        "bldReq":["Arsenal","Laboratoire"],
+        "compReq":{"bal":2,"explo":1,"exo":3,"ca":4,"arti":1},
+        "deploy":{"Carbone":2,"Aluminium":2,"Nickel":1,"Oxygène":2,"Explosifs":1,"Fuel":1,"Mephitis":2,"Argon":4,"Huile":3,"Végétaux":3,"Electros":2,"Batteries":1},
         "batch":100
     },
     {
