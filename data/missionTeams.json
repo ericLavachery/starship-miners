@@ -2934,6 +2934,54 @@
         "gangs":["brasier"]
     },
     {
+        "unit":"Blocks",
+        "gear":["uranium","molotov-slime","kevlar","lanceur"],
+        "missions":["resist","trolley"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Blocks",
+        "gear":["uranium","molotov-pyratol","wendium","lanceur"],
+        "missions":["necro","science","spider"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Blocks",
+        "gear":["uranium","molotov-pyrus","duneg","lanceur"],
+        "missions":["sky","dragon"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Blocks",
+        "gear":["uranium","molotov-slime","kevlar","lanceur"],
+        "missions":["resist","trolley"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Blocks",
+        "gear":["uranium","molotov-pyratol","wendium","lanceur"],
+        "missions":["necro","science","spider"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Blocks",
+        "gear":["adamantium","molotov-pyratol","kapton","lanceur"],
+        "missions":["sky","dragon"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Blocks",
+        "gear":["uranium","molotov-pyratol","wendium","lanceur"],
+        "missions":["trolley","necro","science"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Blocks",
+        "gear":["timonium","molotov-pyrus","kapton","lanceur"],
+        "missions":["spider","sky","dragon"],
+        "gangs":["brasier"]
+    },
+    {
         "unit":"Sapeurs",
         "gear":["tungsten","lame-carbone","duneg","e-road"],
         "missions":["resist","trolley","necro","science","spider","sky","dragon"],

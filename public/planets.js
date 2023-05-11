@@ -1514,7 +1514,7 @@ function unDarkVision(bat,batType) {
 };
 
 function missionStartAdj(misNum) {
-    let mType = getMissionType(misNum);
+    let mType = getMissionType(misNum,true);
     if (mType.name.includes('Boss')) {
         let bossName = 'Blob';
         if (mType.name === 'Spiderblob') {

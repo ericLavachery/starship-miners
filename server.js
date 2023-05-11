@@ -312,10 +312,10 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.emit('savedMap-Load',savedMap);
         listZoneFiles();
         socket.emit('zoneFiles-Load',zoneFiles);
-        if (socket.pseudo === 'Mapedit') {
-            createMissionsDB();
-            socket.emit('missionsDB-Load',missionsDB);
-        }
+        createMissionsDB();
+        socket.emit('missionsDB-Load',missionsDB);
+        // if (socket.pseudo === 'Mapedit' || socket.pseudo.includes('test') || socket.pseudo.includes('Test')) {
+        // }
     };
 
     function createMissionsDB() {

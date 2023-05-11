@@ -17,7 +17,7 @@ function mapEditWindow() {
         $('#mapNumber').append('<option value="100" selected>Zone n°??</option>');
         let mapNum = 50;
         while (mapNum <= 99) {
-            let mType = getMissionType(mapNum);
+            let mType = getMissionType(mapNum,true);
             if (zone[0].number === mapNum) {
                 $('#mapNumber').append('<option value="'+mapNum+'" selected>Zone n°'+mapNum+' ('+mType.name+' '+Math.floor(mType.pa)+')</option>');
             } else if (!playerInfos.misDB.includes(mapNum)) {
@@ -74,7 +74,7 @@ function mapEditWindow() {
     selectStuff('Garde','alienPDM2','Garde alien (va rester dans le périmètre)');
     selectStuff('FullShield','alienShield','Cet alien a un bouclier permanent');
     selectStuff('FastMorph','alienFastMorph','Cet alien se transforme plus rapidement (Veilleurs se transforment en Ruche vers le tour 12 / Oeufs, Coques et Vomissures se transforment 2x plus vite)');
-    let thisMissionType = getMissionType(zone[0].number);
+    let thisMissionType = getMissionType(zone[0].number,false);
     if (thisMissionType.name === 'Necroblob') {
         selectStuff('Moist','moistIcon','Spores (Canon Necro)');
     } else {
@@ -1430,7 +1430,7 @@ function loadEditorMission() {
     let misNum = 50;
     while (misNum <= 99) {
         if (playerInfos.misDB.includes(misNum)) {
-            let mType = getMissionType(misNum);
+            let mType = getMissionType(misNum,true);
             let mission = getMissionByNum(misNum);
             $('#theStartZone').append('<option value="'+misNum+'">'+misNum+' - '+mType.name+' '+Math.floor(mType.pa)+' - '+mission.name+'</option>');
         }
@@ -1530,10 +1530,23 @@ function alienReplaceBase() {
     }
 };
 
-function getMissionType(misNum) {
+function getMissionTitle(misNum) {
+    let title = 'Indéfini';
+    if (misNum === 83) {title = 'Anansi';}
+    if (misNum === 84) {title = 'Shelob';}
+    if (misNum === 60) {title = 'Tupamaros';}
+    if (misNum === 61) {title = 'L\'île noire';}
+    if (misNum === 50) {title = 'Pluie d\'oeufs';}
+    if (misNum === 51) {title = 'Gehenna';}
+    return title;
+};
+
+function getMissionType(misNum,forInfo) {
     let mType = {};
     mType.name = 'Spécial';
+    mType.nid = 'special';
     mType.pa = 4;
+    mType.title = getMissionTitle(misNum);
     if (misNum >= 90) {
         mType.name = 'Exil';
         mType.nid = 'exil';
@@ -1546,30 +1559,38 @@ function getMissionType(misNum) {
         mType.name = 'Spiderblob';
         mType.nid = 'spider';
         mType.pa = 6.75; // 16
-        zone[0].pKind = 'spider';
-        zone[0].gKind = 'spider';
-        zone[0].sKind = 'spider';
+        if (!forInfo) {
+            zone[0].pKind = 'spider';
+            zone[0].gKind = 'spider';
+            zone[0].sKind = 'spider';
+        }
     } else if (misNum >= 75) {
         mType.name = 'Dragonblob';
         mType.nid = 'dragon';
         mType.pa = 8; // 18
-        zone[0].pKind = 'bug';
-        zone[0].gKind = 'bug';
-        zone[0].sKind = 'bug';
+        if (!forInfo) {
+            zone[0].pKind = 'bug';
+            zone[0].gKind = 'bug';
+            zone[0].sKind = 'bug';
+        }
     } else if (misNum >= 70) {
         mType.name = 'Skygrub';
         mType.nid = 'sky';
         mType.pa = 6.75; // 16
-        zone[0].pKind = 'larve';
-        zone[0].gKind = 'larve';
-        zone[0].sKind = 'larve';
+        if (!forInfo) {
+            zone[0].pKind = 'larve';
+            zone[0].gKind = 'larve';
+            zone[0].sKind = 'larve';
+        }
     } else if (misNum >= 65) {
         mType.name = 'Necroblob';
         mType.nid = 'necro';
         mType.pa = 5.75; // 14
-        zone[0].pKind = 'swarm';
-        zone[0].gKind = 'swarm';
-        zone[0].sKind = 'swarm';
+        if (!forInfo) {
+            zone[0].pKind = 'swarm';
+            zone[0].gKind = 'swarm';
+            zone[0].sKind = 'swarm';
+        }
     } else if (misNum >= 60) {
         mType.name = 'Résistance';
         mType.nid = 'resist';

@@ -3,7 +3,7 @@ function missionTest() {
 };
 
 function putMissionUnits(missionTeams) {
-    let mType = getMissionType(zone[0].number);
+    let mType = getMissionType(zone[0].number,false);
     putMissionStats(mType,missionTeams);
     putFullBldVM();
     putMissionAlienRes();
@@ -189,7 +189,7 @@ function putMissionLanderRes(navBat) {
     navBat.transRes = {};
     navBat.transRes['Explosifs'] = 200;
     navBat.transRes['Fer'] = 150;
-    navBat.transRes['Plomb'] = 75;
+    navBat.transRes['Plomb'] = 100;
     navBat.transRes['Titane'] = 50;
     navBat.transRes['Cuivre'] = 100;
     navBat.transRes['Electros'] = 50;
@@ -203,23 +203,21 @@ function putMissionLanderRes(navBat) {
     navBat.transRes['Compo3'] = 600;
     navBat.transRes['Batteries'] = 15;
     navBat.transRes['Energie'] = 200;
-    navBat.transRes['Drogues'] = 300;
-    navBat.transRes['Zinc'] = 200;
-    navBat.transRes['Or'] = 150;
-    navBat.transRes['Hélium'] = 150;
-    navBat.transRes['Bore'] = 150;
-    if (zone[0].number < 85 && zone[0].number >= 80) {
-        navBat.transRes['Octiron'] = 700;
-    } else {
-        navBat.transRes['Octiron'] = 400;
-    }
-    navBat.transRes['Huile'] = 350;
-    navBat.transRes['Hydrogène'] = 250;
+    navBat.transRes['Drogues'] = 1000;
+    navBat.transRes['Zinc'] = 500;
+    navBat.transRes['Or'] = 300;
+    navBat.transRes['Mercure'] = 300;
+    navBat.transRes['Hélium'] = 500;
+    navBat.transRes['Plastanium'] = 300;
+    navBat.transRes['Bore'] = 800;
+    navBat.transRes['Octiron'] = 700;
+    navBat.transRes['Huile'] = 500;
+    navBat.transRes['Hydrogène'] = 300;
     navBat.transRes['Pyratol'] = 200;
     navBat.transRes['Fuel'] = 150;
-    navBat.transRes['Azote'] = 200;
+    navBat.transRes['Azote'] = 300;
     navBat.transRes['Bois'] = 200;
-    navBat.transRes['Eau'] = 200;
+    navBat.transRes['Eau'] = 300;
 };
 
 function putMissionAlienRes() {
@@ -255,17 +253,28 @@ function loadMission() {
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<select class="boutonGris" id="theStartZone" onchange="loadTheMissionBaby()"></select>');
     $('#theStartZone').empty().append('<option value="0" selected>Mission</option>');
-    $('#theStartZone').append('<option value="80" disabled>80 - Spiderblob</option>');
-    $('#theStartZone').append('<option value="83">83 - Spiderblob (Anansi)</option>');
-    $('#theStartZone').append('<option value="84">84 - Spiderblob (Shelob)</option>');
-    $('#theStartZone').append('<option value="75" disabled>75 - Dragonblob</option>');
-    $('#theStartZone').append('<option value="70" disabled>70 - Skygrub</option>');
-    $('#theStartZone').append('<option value="65" disabled>65 - Necroblob</option>');
-    $('#theStartZone').append('<option value="60">60 - Résistance (Tupamaros)</option>');
-    $('#theStartZone').append('<option value="61">61 - Résistance (L\'île noire)</option>'); // 27 Spins
-    $('#theStartZone').append('<option value="55" disabled>55 - Science</option>'); // 150 spins
-    $('#theStartZone').append('<option value="50">50 - Trolley (Pluie d\'oeufs)</option>'); // 68 à 180 Spins (136)
-    $('#theStartZone').append('<option value="51">51 - Trolley (Gehenna)</option>'); // 68 à 180 Spins (136)
+    let i = 50;
+    while (i <= 84) {
+        let mType = getMissionType(i,true);
+        if (playerInfos.misDB.includes(i)) {
+            $('#theStartZone').append('<option value="'+i+'">'+i+' - '+mType.name+' ('+mType.title+')</option>');
+        } else {
+            $('#theStartZone').append('<option value="'+i+'" disabled>'+i+' - '+mType.name+' ('+mType.title+')</option>');
+        }
+        if (i > 84) {break;}
+        i++
+    }
+    // $('#theStartZone').append('<option value="80" disabled>80 - Spiderblob</option>');
+    // $('#theStartZone').append('<option value="83">83 - Spiderblob (Anansi)</option>');
+    // $('#theStartZone').append('<option value="84">84 - Spiderblob (Shelob)</option>');
+    // $('#theStartZone').append('<option value="75" disabled>75 - Dragonblob</option>');
+    // $('#theStartZone').append('<option value="70" disabled>70 - Skygrub</option>');
+    // $('#theStartZone').append('<option value="65" disabled>65 - Necroblob</option>');
+    // $('#theStartZone').append('<option value="60">60 - Résistance (Tupamaros)</option>');
+    // $('#theStartZone').append('<option value="61">61 - Résistance (L\'île noire)</option>');
+    // $('#theStartZone').append('<option value="55" disabled>55 - Science</option>');
+    // $('#theStartZone').append('<option value="50">50 - Trolley (Pluie d\'oeufs)</option>');
+    // $('#theStartZone').append('<option value="51">51 - Trolley (Gehenna)</option>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="butSpace"></span>');
     $('#conUnitList').append('<br>');

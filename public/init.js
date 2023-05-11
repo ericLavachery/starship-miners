@@ -268,10 +268,8 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.sondeDanger < doom) {
         playerInfos.sondeDanger = doom;
     }
-    if (playerInfos.pseudo === 'Mapedit') {
-        if (playerInfos.misDB === undefined) {
-            playerInfos.misDB = [];
-        }
+    if (playerInfos.misDB === undefined) {
+        playerInfos.misDB = [];
     }
 });
 // Terrains
