@@ -1904,6 +1904,9 @@ function updateBatProperties(bat,batType) {
     if (bat.logeq === undefined) {
         bat.logeq = '';
     }
+    if (bat.tdc === undefined) {
+        bat.tdc = [];
+    }
     if (batType.transRes >= 1) {
         if (bat.transRes === undefined) {
             bat.transRes = {};

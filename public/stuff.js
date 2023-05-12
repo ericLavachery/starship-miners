@@ -1580,7 +1580,11 @@ function coolManCool() {
 function noAlienRip() {
     // triche: pas de riposte alien
     aliens.forEach(function(bat) {
-        bat.apLeft = -10;
+        bat.apLeft = -20;
+    });
+    bataillons.forEach(function(bat) {
+        bat.apLeft = 300;
+        bat.salvoLeft = 20;
     });
 };
 

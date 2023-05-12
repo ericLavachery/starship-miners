@@ -264,17 +264,6 @@ function loadMission() {
         if (i > 84) {break;}
         i++
     }
-    // $('#theStartZone').append('<option value="80" disabled>80 - Spiderblob</option>');
-    // $('#theStartZone').append('<option value="83">83 - Spiderblob (Anansi)</option>');
-    // $('#theStartZone').append('<option value="84">84 - Spiderblob (Shelob)</option>');
-    // $('#theStartZone').append('<option value="75" disabled>75 - Dragonblob</option>');
-    // $('#theStartZone').append('<option value="70" disabled>70 - Skygrub</option>');
-    // $('#theStartZone').append('<option value="65" disabled>65 - Necroblob</option>');
-    // $('#theStartZone').append('<option value="60">60 - Résistance (Tupamaros)</option>');
-    // $('#theStartZone').append('<option value="61">61 - Résistance (L\'île noire)</option>');
-    // $('#theStartZone').append('<option value="55" disabled>55 - Science</option>');
-    // $('#theStartZone').append('<option value="50">50 - Trolley (Pluie d\'oeufs)</option>');
-    // $('#theStartZone').append('<option value="51">51 - Trolley (Gehenna)</option>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="butSpace"></span>');
     $('#conUnitList').append('<br>');
