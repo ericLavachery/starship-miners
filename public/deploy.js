@@ -520,6 +520,9 @@ function checkSpecialEquip(equip,batType,bat) {
 
 function hasEquip(bat,equipList) {
     let hasAny = false;
+    if (bat.tdc === undefined) {
+        bat.tdc = [];
+    }
     equipList.forEach(function(equipName) {
         if (bat.eq === equipName || bat.logeq === equipName || bat.tdc.includes(equipName)) {
             hasAny = true;
