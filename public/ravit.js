@@ -162,7 +162,7 @@ function checkRavit(myBat) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 let batType = getBatType(bat);
                 let ravitDistance = 1;
-                if (batType.skills.includes('autoapprov')) {
+                if (batType.skills.includes('autoapprov') && bat.apLeft >= Math.round(batType.ap/3*2)) {
                     ravitDistance = 2;
                 }
                 ravitTypeOK = false;
@@ -215,7 +215,7 @@ function goRavit(apCost) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
                 let ravitDistance = 1;
-                if (batType.skills.includes('autoapprov')) {
+                if (batType.skills.includes('autoapprov') && bat.apLeft >= Math.round(batType.ap/3*2)) {
                     ravitDistance = 2;
                 }
                 ravitTypeOK = false;
@@ -322,7 +322,7 @@ function checkRavitDrug(myBat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
             let ravitDistance = 1;
-            if (batType.skills.includes('autoapprov')) {
+            if (batType.skills.includes('autoapprov') && bat.apLeft >= Math.round(batType.ap/3*2)) {
                 ravitDistance = 2;
             }
             if (batType.skills.includes('ravitaillement')) {
@@ -346,7 +346,7 @@ function goRavitDrug(apCost) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
                 let ravitDistance = 1;
-                if (batType.skills.includes('autoapprov')) {
+                if (batType.skills.includes('autoapprov') && bat.apLeft >= Math.round(batType.ap/3*2)) {
                     ravitDistance = 2;
                 }
                 if (batType.skills.includes('ravitaillement')) {
@@ -383,7 +383,7 @@ function checkStock(myBat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             let batType = getBatType(bat);
             let ravitDistance = 1;
-            if (batType.skills.includes('autoapprov')) {
+            if (batType.skills.includes('autoapprov') && bat.apLeft >= Math.round(batType.ap/3*2)) {
                 ravitDistance = 2;
             }
             if (batType.skills.includes('stock')) {
@@ -405,7 +405,7 @@ function goStock(apCost) {
             if (bat.loc === "zone" || bat.loc === "trans") {
                 batType = getBatType(bat);
                 let ravitDistance = 1;
-                if (batType.skills.includes('autoapprov')) {
+                if (batType.skills.includes('autoapprov') && bat.apLeft >= Math.round(batType.ap/3*2)) {
                     ravitDistance = 2;
                 }
                 if (batType.skills.includes('stock')) {

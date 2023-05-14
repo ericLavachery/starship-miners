@@ -430,7 +430,7 @@ function nextTurnEnd() {
                 }
             }
             // AUTORAVIT
-            if (batType.skills.includes('autoapprov') && bat.tags.includes('sU')) {
+            if (batType.skills.includes('autoapprov') && bat.tags.includes('sU') && bat.apLeft >= Math.round(batType.ap/3*2)) {
                 stockTileIds.forEach(function(tileId) {
                     if (bat.tags.includes('sU')) {
                         let stockDist = calcDistance(bat.tileId,tileId);

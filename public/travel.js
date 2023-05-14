@@ -402,20 +402,26 @@ function healEverything() {
 };
 
 function resToLander(transBat) {
-    let landerBatId = transBat.locId;
-    let landerBat = getBatById(landerBatId);
-    Object.entries(transBat.transRes).map(entry => {
-        let key = entry[0];
-        let value = entry[1];
-        if (value >= 1) {
-            if (landerBat.transRes[key] === undefined) {
-                landerBat.transRes[key] = value;
-            } else {
-                landerBat.transRes[key] = landerBat.transRes[key]+value;
+    if (transBat.loc === 'trans') {
+        if (transBat.locId >= 0) {
+            let landerBat = getBatById(transBat.locId);
+            let landerBatType = getBatType(landerBat);
+            if (landerBatType.skills.includes('transorbital')) {
+                Object.entries(transBat.transRes).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (value >= 1) {
+                        if (landerBat.transRes[key] === undefined) {
+                            landerBat.transRes[key] = value;
+                        } else {
+                            landerBat.transRes[key] = landerBat.transRes[key]+value;
+                        }
+                    }
+                    delete transBat.transRes[key];
+                });
             }
         }
-        delete transBat.transRes[key];
-    });
+    }
 };
 
 function createBatsInSpace() {

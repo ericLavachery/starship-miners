@@ -775,8 +775,13 @@ function attack(melee,init) {
     // sensibilité poison (gaz)
     if (targetBatType.skills.includes('reactpoison') || targetBat.tags.includes('reactpoison')) {
         if (selectedWeap.isGas) {
-            totalDamage = Math.round(totalDamage*2);
-            apDamage = Math.round(apDamage*2);
+            if (selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('autodes')) {
+                totalDamage = Math.round(totalDamage*1.5);
+                apDamage = Math.round(apDamage*2);
+            } else {
+                totalDamage = Math.round(totalDamage*2);
+                apDamage = Math.round(apDamage*2);
+            }
             if (playerInfos.comp.ca >= 3) {
                 $('#report').append('<span class="report rose">Sensibilité au poison x2<br></span>');
             }
@@ -1887,8 +1892,13 @@ function defense(melee,init) {
     // sensibilité poison (gaz)
     if (selectedBatType.skills.includes('reactpoison') || selectedBat.tags.includes('reactpoison')) {
         if (targetWeap.isGas) {
-            totalDamage = Math.round(totalDamage*2);
-            apDamage = Math.round(apDamage*2);
+            if (targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('autodes')) {
+                totalDamage = Math.round(totalDamage*1.5);
+                apDamage = Math.round(apDamage*2);
+            } else {
+                totalDamage = Math.round(totalDamage*2);
+                apDamage = Math.round(apDamage*2);
+            }
             if (playerInfos.comp.ca >= 3) {
                 $('#report').append('<span class="report rose">Sensibilité au poison x2<br></span>');
             }

@@ -32,6 +32,11 @@ function seveso(tileId,fromMissile) {
                     }
                 }
             }
+            if (batType.skills.includes('eatpoison')) {
+                if (!bat.tags.includes('regeneration')) {
+                    bat.tags.push('regeneration');
+                }
+            }
         }
     });
     bataillons.forEach(function(bat) {
@@ -2581,8 +2586,13 @@ function weaponAdj(weapon,bat,wn) {
                 // ammo range
                 if (thisWeapon.range === 0 && ammo.range > 1) {
                     thisWeapon.range = 1;
-                } else {
+                } else if (ammo.range > 1) {
                     thisWeapon.range = Math.ceil(thisWeapon.range*ammo.range);
+                } else if (ammo.range < 1 && thisWeapon.range >= 4) {
+                    thisWeapon.range = Math.floor(thisWeapon.range*ammo.range);
+                    if (thisWeapon.range < 3) {
+                        thisWeapon.range = 3;
+                    }
                 }
                 // hero range
                 if (bat.tags.includes('hero') && batType.skills.includes('herorange')) {
