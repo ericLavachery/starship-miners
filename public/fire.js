@@ -1194,6 +1194,11 @@ function attack(melee,init) {
                     // console.log('Nécrotoxine!');
                     $('#report').append('<span class="report rose">Nécrotoxine<br></span>');
                 }
+            } else if (targetBatType.cat === 'aliens') {
+                if (totalDamage >= targetBatType.size-(playerInfos.comp.exo*20) && totalDamage >= 1 && !targetBatType.skills.includes('eatpoison')) {
+                    targetBat.tags.push('necro');
+                    $('#report').append('<span class="report rose">Nécrotoxine<br></span>');
+                }
             }
         }
     }
@@ -1240,7 +1245,7 @@ function attack(melee,init) {
         apDamage = Math.ceil(apDamage*2);
     }
     if (targetBat.prt != undefined) {
-        if (targetBat.prt === 'swing' || targetBat.prt === 'soap') {
+        if (targetBat.prt === 'swing' || targetBat.prt === 'soap' || targetBat.prt === 'silk') {
             apDamage = Math.round(apDamage/3);
         }
     }
@@ -2161,6 +2166,11 @@ function defense(melee,init) {
                     // console.log('Nécrotoxine!');
                     $('#report').append('<span class="report rose">Nécrotoxine<br></span>');
                 }
+            } else if (selectedBatType.cat === 'aliens') {
+                if (totalDamage >= selectedBatType.size-(playerInfos.comp.exo*20) && totalDamage >= 1 && !selectedBatType.skills.includes('eatpoison')) {
+                    selectedBat.tags.push('necro');
+                    $('#report').append('<span class="report rose">Nécrotoxine<br></span>');
+                }
             }
         }
     }
@@ -2207,7 +2217,7 @@ function defense(melee,init) {
         apDamage = Math.ceil(apDamage*2);
     }
     if (selectedBat.prt != undefined) {
-        if (selectedBat.prt === 'swing' || selectedBat.prt === 'soap') {
+        if (selectedBat.prt === 'swing' || selectedBat.prt === 'soap' || selectedBat.prt === 'silk') {
             apDamage = Math.round(apDamage/3);
         }
     }

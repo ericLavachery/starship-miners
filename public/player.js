@@ -389,6 +389,7 @@ function allowedArmors(unit) {
         if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('combo');
         }
+        protection.push('silk');
         protection.push('kaptane');
     }
     if (unit.skills.includes('a_heavy')) {
@@ -401,6 +402,7 @@ function allowedArmors(unit) {
         protection.push('tisal');
         protection.push('swing');
         protection.push('adamantite');
+        protection.push('dragscale');
         if (!unit.skills.includes('fly') && !unit.skills.includes('dog')) {
             protection.push('battlesuit');
         }
@@ -466,6 +468,7 @@ function allowedArmors(unit) {
         if (!unit.skills.includes('resistfeu')) {
             protection.push('bonibo');
         }
+        protection.push('silk');
     }
     if (unit.skills.includes('b_heavy')) {
         if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
@@ -478,6 +481,7 @@ function allowedArmors(unit) {
         protection.push('rhodu');
         protection.push('autorep');
         protection.push('adamantite');
+        protection.push('dragscale');
     }
     if (unit.cat === 'buildings') {
         protection.push('aucun');
@@ -3255,131 +3259,4 @@ function calcCompPoints(nextGangLevel) {
         }
     }
     return theCompPoints;
-};
-
-function getMissionType(misNum,forInfo) {
-    let mType = {};
-    mType.name = 'Spécial';
-    mType.nid = 'special';
-    mType.pa = 4;
-    mType.title = getMissionTitle(misNum);
-    if (misNum >= 90) {
-        mType.name = 'Exil';
-        mType.nid = 'exil';
-        mType.pa = 1; // 4
-    } else if (misNum >= 85) {
-        mType.name = 'Spécial';
-        mType.nid = 'special';
-        mType.pa = 5.5; // 13
-    } else if (misNum >= 80) {
-        mType.name = 'Spiderblob';
-        mType.nid = 'spider';
-        mType.pa = 7; // 16
-        if (!forInfo) {
-            zone[0].pKind = 'spider';
-            zone[0].gKind = 'spider';
-            zone[0].sKind = 'spider';
-        }
-    } else if (misNum >= 75) {
-        mType.name = 'Dragonblob';
-        mType.nid = 'dragon';
-        mType.pa = 8; // 18
-        if (!forInfo) {
-            zone[0].pKind = 'bug';
-            zone[0].gKind = 'bug';
-            zone[0].sKind = 'bug';
-        }
-    } else if (misNum >= 70) {
-        mType.name = 'Skygrub';
-        mType.nid = 'sky';
-        mType.pa = 7.5; // 17
-        if (!forInfo) {
-            zone[0].pKind = 'larve';
-            zone[0].gKind = 'larve';
-            zone[0].sKind = 'larve';
-        }
-    } else if (misNum >= 65) {
-        mType.name = 'Necroblob';
-        mType.nid = 'necro';
-        mType.pa = 6; // 14
-        if (!forInfo) {
-            zone[0].pKind = 'swarm';
-            zone[0].gKind = 'swarm';
-            zone[0].sKind = 'swarm';
-        }
-    } else if (misNum >= 60) {
-        mType.name = 'Résistance';
-        mType.nid = 'resist';
-        mType.pa = 4.5; // 11
-    } else if (misNum >= 55) {
-        mType.name = 'Base Scientifique';
-        mType.nid = 'science';
-        mType.pa = 6.5; // 15
-    } else if (misNum >= 50) {
-        mType.name = 'Trolley';
-        mType.nid = 'trolley';
-        mType.pa = 5; // 12
-    }
-    return mType;
-};
-
-function getMissionTitle(misNum) {
-    let title = 'Indéfini';
-    // EXIL
-    if (misNum === 99) {title = 'Ile';}
-    if (misNum === 98) {title = 'Ville';}
-    if (misNum === 97) {title = 'Chemins';}
-    if (misNum === 96) {title = '';}
-    if (misNum === 95) {title = '';}
-    if (misNum === 94) {title = '';}
-    if (misNum === 93) {title = 'Le Grand Tour';}
-    if (misNum === 92) {title = 'Caché';}
-    if (misNum === 91) {title = 'Grenouilles';}
-    if (misNum === 90) {title = 'Place Forte';}
-    // SPIDERBLOB
-    if (misNum === 84) {title = 'Shelob';}
-    if (misNum === 83) {title = 'Anansi';}
-    if (misNum === 82) {title = '';}
-    if (misNum === 81) {title = '';}
-    if (misNum === 80) {title = '';}
-    // DRAGONBLOB
-    if (misNum === 79) {title = '';}
-    if (misNum === 78) {title = '';}
-    if (misNum === 77) {title = '';}
-    if (misNum === 76) {title = '';}
-    if (misNum === 75) {title = '';}
-    // SKYGRUB
-    if (misNum === 74) {title = '';}
-    if (misNum === 73) {title = '';}
-    if (misNum === 72) {title = '';}
-    if (misNum === 71) {title = '';}
-    if (misNum === 70) {title = '';}
-    // NECROBLOB
-    if (misNum === 69) {title = '';}
-    if (misNum === 68) {title = '';}
-    if (misNum === 67) {title = '';}
-    if (misNum === 66) {title = '';}
-    if (misNum === 65) {title = '';}
-    // RESISTANCE
-    if (misNum === 64) {title = '';}
-    if (misNum === 63) {title = '';}
-    if (misNum === 62) {title = '';}
-    if (misNum === 61) {title = 'L\'île noire';}
-    if (misNum === 60) {title = 'Tupamaros';}
-    // SCIENTIFIQUES
-    if (misNum === 59) {title = '';}
-    if (misNum === 58) {title = '';}
-    if (misNum === 57) {title = '';}
-    if (misNum === 56) {title = '';}
-    if (misNum === 55) {title = '';}
-    // TROLLEY
-    if (misNum === 54) {title = '';}
-    if (misNum === 53) {title = '';}
-    if (misNum === 52) {title = '';}
-    if (misNum === 51) {title = 'Gehenna';}
-    if (misNum === 50) {title = 'Pluie d\'oeufs';}
-    if (title === '') {
-        title = 'Indéfini';
-    }
-    return title;
 };

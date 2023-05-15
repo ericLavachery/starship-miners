@@ -465,7 +465,7 @@ function batInfos(bat,batType,pop) {
     if (bat.tags.includes('zombie')) {
         $('#'+bodyPlace).append('<span class="paramName or">Zombie</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
-    if (batType.skills.includes('dreduct') || bat.prt === 'kapton' || bat.prt === 'battlesuit' || bat.prt === 'bonibo' || bat.prt === 'swarwing' || (bat.tags.includes('zealot') && batType.cat === 'infantry') || (bat.tags.includes('bliss') && batType.cat === 'infantry')) {
+    if (batType.skills.includes('dreduct') || bat.prt === 'kapton' || bat.prt === 'battlesuit' || bat.prt === 'bonibo' || bat.prt === 'swarwing' || bat.prt === 'silk' || (bat.tags.includes('zealot') && batType.cat === 'infantry') || (bat.tags.includes('bliss') && batType.cat === 'infantry')) {
         $('#'+bodyPlace).append('<span class="paramName jaune" title="Ignore les petits dégâts">Réduction dégâts</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
     if (bat.tags.includes('resistfeu') || batType.skills.includes('resistfeu')) {

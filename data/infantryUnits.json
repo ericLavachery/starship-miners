@@ -160,7 +160,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Poignard",
@@ -216,7 +216,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"magnum_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Toothbrush",
@@ -274,7 +274,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"axe_x2",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze","fleche-necro"]
         },
         "weapon2":{
             "name":"Javelots (lancé)",
@@ -287,7 +287,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"jav",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"],
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze","fleche-necro"],
             "maxAmmo":10
         },
         "protection":[],
@@ -330,7 +330,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"calibre_pierce_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Poignard",
@@ -444,7 +444,7 @@
             "armors":1.25,
             "aoe":"unit",
             "sound":"uzi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
         },
         "weapon2":{
             "name":"Poignard",
@@ -514,7 +514,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"revolver_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-ranger","chargeur2","e-road","helper","e-medic","e-mecano","theeye","repel"],
@@ -636,7 +636,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"mit_light1",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "equip":["aucun","kit-garde","e-ranger","e-jetpack","taserkit","camkit","e-phare","repel"],
         "log3eq":["e-ranger"],
@@ -678,7 +678,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"revolver_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Fusil de précision",
@@ -696,7 +696,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"calibre_sniper_def",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "equip":["aucun","chargeur1","e-ranger","kit-milice","e-jetpack","taserkit","camkit","e-phare","repel"],
         "log3eq":["e-ranger"],
@@ -737,7 +737,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Marquage",
@@ -795,7 +795,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"revolver_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Minicanon plasma",
@@ -1009,7 +1009,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "equip":["aucun","kit-sentinelle","e-ranger","e-jetpack","e-medic","taserkit","camkit","e-phare","repel","helper"],
         "log3eq":["helper"],
@@ -1051,7 +1051,7 @@
             "armors":1.25,
             "aoe":"brochette",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","snake","incendiaire","tungsten","uranium","timonium","salite","adamantium","ac-dunium","freeze"]
+            "ammo":["standard","scrap","snake","incendiaire","dragon","tungsten","uranium","timonium","salite","adamantium","bugshells","ac-dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Shotgun (distance)",
@@ -1063,7 +1063,7 @@
             "armors":1.75,
             "aoe":"unit",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","snake","incendiaire","tungsten","uranium","timonium","salite","adamantium","ac-dunium","freeze"]
+            "ammo":["standard","scrap","snake","incendiaire","dragon","tungsten","uranium","timonium","salite","adamantium","bugshells","ac-dunium","freeze","necro"]
         },
         "equip":["aucun","e-flash","e-camo","chargeur","e-jetpack","e-medic","theeye","helper","waterproof"],
         "log3eq":["chargeur"],
@@ -1160,7 +1160,7 @@
             "armors":1.25,
             "aoe":"unit",
             "sound":"pistol_x2",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
         },
         "weapon2":{
             "name":"Pistolet plasma",
@@ -1221,7 +1221,7 @@
             "armors":1.25,
             "aoe":"unit",
             "sound":"pistol_x2",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
         },
         "weapon2":{
             "name":"Magnum",
@@ -1236,7 +1236,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"magnum_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-ranger","e-medic","w2-magnum","e-camo","waterproof","repel"],
@@ -1406,7 +1406,7 @@
             "armors":1.25,
             "aoe":"unit",
             "sound":"pistol_x2",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
         },
         "weapon2":{
             "name":"Molotov",
@@ -1470,7 +1470,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"calibre_sniper_def",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Revolver",
@@ -1485,7 +1485,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"revolver_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "equip":["aucun","e-flash","e-ranger","chargeur1","silencieux2","e-camo","permakirin","theeye","helper","waterproof","e-medic","repel"],
         "log3eq":["chargeur1"],
@@ -1547,7 +1547,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-mammoth","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","dragon","dragon","ac-mammoth","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-freeze","necro"]
         },
         "equip":["aucun","e-flash","e-ranger","chargeur2","lunette2","e-camo","permakirin","theeye","helper","waterproof","e-medic","repel"],
         "log3eq":["chargeur2"],
@@ -1592,7 +1592,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Carabine",
@@ -1609,7 +1609,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","e-jetpack","chargeur","lunette","silencieux","w2-2ch","theeye","waterproof","repel"],
@@ -1657,7 +1657,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Poignard",
@@ -1711,7 +1711,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Fusil semi-auto",
@@ -1725,7 +1725,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-ranger","lunette2","silencieux2","fakit","chargeur1","e-camo","theeye","waterproof","repel"],
@@ -1783,7 +1783,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","arbalourde","permakirin","theeye","helper","repel"],
@@ -1828,7 +1828,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1903,7 +1903,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "equip":["aucun","e-flash","e-jetpack","e-camo","e-ranger","arbalourde","permakirin","theeye","helper","waterproof"],
         "log3eq":["arbalourde"],
@@ -1962,7 +1962,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"revolver_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "protection":[],
         "equip":["aucun","e-flash","chargeur2","silencieux2","e-jetpack","e-camo","permakirin","theeye","helper","waterproof","e-medic","g2tools","repel"],
@@ -2029,7 +2029,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-needle","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","dragon","dragon","ac-needle","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-dunium","ac-freeze","necro","ac-flechette"]
         },
         "equip":["aucun","e-flash","e-ranger","e-camo","lunette2","chargeur2","e-jetpack","permakirin","theeye","waterproof","e-medic"],
         "log3eq":["e-camo"],
@@ -2086,7 +2086,7 @@
             "power":8,
             "aoe":"unit",
             "sound":"jav",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-freeze"],
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-freeze","fleche-necro"],
             "maxAmmo":10
         },
         "equip":["aucun","e-flash","e-camo","permakirin","theeye","helper"],
@@ -2124,7 +2124,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Baïonnette",
@@ -2181,7 +2181,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"revolver_multi",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Revolvers",
@@ -2197,7 +2197,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"revolver_multi",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","chargeur","silencieux","e-jetpack","w2-2ch","theeye","e-medic","repel"],
@@ -2240,7 +2240,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Molotov",
@@ -2304,7 +2304,7 @@
             "armors":1.25,
             "aoe":"unit",
             "sound":"pistol_x4",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
         },
         "weapon2":{
             "name":"Mitrailleuse",
@@ -2321,7 +2321,7 @@
             "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"],
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"],
             "maxAmmo":30
         },
         "protection":[],
@@ -2367,7 +2367,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"mit_minigun",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"],
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"],
             "maxAmmo":25
         },
         "weapon2":{
@@ -2383,7 +2383,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"mit_minigun",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"],
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"],
             "maxAmmo":25
         },
         "protection":[],
@@ -2429,7 +2429,7 @@
             "armors":1.25,
             "aoe":"unit",
             "sound":"pistol_x4",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
         },
         "weapon2":{
             "name":"Mortier léger",
@@ -2489,7 +2489,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"RPG",
@@ -2564,7 +2564,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"magnum_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "equip":["aucun","e-flash","e-ranger","gilet","e-camo","chargeur2","theeye","waterproof"],
         "log3eq":["gilet"],
@@ -2602,7 +2602,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -2661,7 +2661,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -2724,7 +2724,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Foreuse",
@@ -2791,7 +2791,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Foreuse",
@@ -2861,7 +2861,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_hunt",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Pioche",
@@ -2926,7 +2926,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-needle","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","dragon","dragon","ac-needle","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-dunium","ac-freeze","necro","ac-flechette"]
         },
         "weapon2":{
             "name":"Poignard",
@@ -2982,7 +2982,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"calibre_pierce_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Hache",
@@ -3038,7 +3038,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Lasso",
@@ -3157,7 +3157,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "weapon2":{
             "name":"Poignard",
@@ -3214,7 +3214,7 @@
             "armors":1.25,
             "aoe":"unit",
             "sound":"uzi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
         },
         "weapon2":{
             "name":"Hache",
@@ -3290,7 +3290,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-homing","fleche-plastanium","fleche-uridium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","arbalourde","permakirin","theeye","helper","e-medic","repel"],
@@ -3335,7 +3335,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"revolver_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -3395,7 +3395,7 @@
             "armors":0.9,
             "aoe":"unit",
             "sound":"mit_light2",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Poignard",
@@ -3470,7 +3470,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"fmag",
-            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-timonium","ac-salite","ac-adamantium","ac-freeze","ac-dunium"]
+            "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","dragon","dragon","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-freeze","necro","ac-dunium"]
         },
         "equip":["aucun","e-flash","e-ranger","chargeur2","silencieux2","e-camo","e-medic","permakirin","theeye","waterproof","repel"],
         "log3eq":["chargeur2"],
@@ -3513,7 +3513,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"mit_light1",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Lance grenade",
@@ -3857,7 +3857,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Minicanon",
@@ -3996,7 +3996,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "equip":["aucun","e-flash","lunette2","silencieux2","e-camo","gilet","theeye","helper","e-medic"],
         "log3eq":["lunette2"],
@@ -4037,7 +4037,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Fusil semi-auto",
@@ -4051,7 +4051,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "equip":["aucun","e-flash","chargeur1","fakit","silencieux2","e-medic","e-camo","theeye","helper"],
         "log3eq":["fakit"],
@@ -4094,7 +4094,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-needle","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","dragon","dragon","ac-needle","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-dunium","ac-freeze","necro","ac-flechette"]
         },
         "weapon2":{
             "name":"Rainbow gun",
@@ -4159,7 +4159,7 @@
             "armors":1.25,
             "aoe":"unit",
             "sound":"uzi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
         },
         "weapon2":{
             "name":"Fusil de précision",
@@ -4175,7 +4175,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"calibre_sniper_def",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","chargeur","e-jetpack","theeye","helper","waterproof","repel"],
@@ -4278,7 +4278,7 @@
             "armors":1.25,
             "aoe":"unit",
             "sound":"uzi",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","sm-dunium","sm-freeze"]
+            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
         },
         "weapon2":{
             "name":"Canon laser",
@@ -4340,7 +4340,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"revolver_multi",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Fusil antichar",
@@ -4358,7 +4358,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar",
-            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-mammoth","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","dragon","dragon","ac-mammoth","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-freeze","necro"]
         },
         "protection":[],
         "equip":["aucun","e-flash","chargeur","silencieux1","lunette2","e-jetpack","e-camo","theeye","helper","waterproof","repel"],
@@ -4398,7 +4398,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"LG intégré",
@@ -4610,7 +4610,7 @@
             "power":14,
             "aoe":"unit",
             "sound":"jav",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze"],
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-freeze","fleche-necro"],
             "maxAmmo":12
         },
         "protection":[],
@@ -4712,7 +4712,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"magnum_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -4902,7 +4902,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","ac-needle","ac-timonium","ac-salite","ac-adamantium","ac-dunium","ac-freeze","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","dragon","dragon","ac-needle","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-dunium","ac-freeze","necro","ac-flechette"]
         },
         "weapon2":{
             "name":"LG intégré",
@@ -4961,7 +4961,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"calibre_pierce_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Baïonnette",
@@ -5232,7 +5232,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"calibre_antichar_x3",
-            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","ac-mammoth","ac-timonium","ac-salite","ac-adamantium","ac-freeze"]
+            "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","dragon","ac-mammoth","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-freeze","necro"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-ranger","gilet","lunette2","chargeur2","waterproof","detector"],
@@ -5346,7 +5346,7 @@
             "armors":0.9,
             "aoe":"unit",
             "sound":"mit_light2",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "protection":[],
         "equip":["aucun","e-flash","lunette2","chargeur2","theeye","waterproof","detector","repel"],
@@ -5505,7 +5505,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Fusil semi-auto",
@@ -5519,7 +5519,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","lunette2","chargeur1","fakit","g2motor","waterproof","g2ai"],
@@ -5565,7 +5565,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"fmag_small",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Marquage",
@@ -5745,7 +5745,7 @@
             "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
-            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Lame",
@@ -5969,7 +5969,7 @@
             "armors":1.25,
             "aoe":"brochette",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","snake","incendiaire","tungsten","uranium","timonium","salite","adamantium","ac-dunium","freeze"]
+            "ammo":["standard","scrap","snake","incendiaire","dragon","tungsten","uranium","timonium","salite","adamantium","bugshells","ac-dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Rainbow gun",
@@ -6031,7 +6031,7 @@
             "armors":1.25,
             "aoe":"brochette",
             "sound":"calibre_shotgun",
-            "ammo":["standard","scrap","snake","incendiaire","tungsten","uranium","timonium","salite","adamantium","ac-dunium","freeze"]
+            "ammo":["standard","scrap","snake","incendiaire","dragon","tungsten","uranium","timonium","salite","adamantium","bugshells","ac-dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Canon",
@@ -6152,7 +6152,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"calibre_pierce_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Molotov",
@@ -6213,7 +6213,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_hunt",
-            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Sling grenade",
@@ -6592,7 +6592,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Molotov",
@@ -6652,7 +6652,7 @@
             "armors":0.9,
             "aoe":"unit",
             "sound":"mit_light1",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"LG intégré",
@@ -6714,7 +6714,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_carabine",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Baïonnette",
@@ -6769,7 +6769,7 @@
             "armors":1.1,
             "aoe":"unit",
             "sound":"calibre_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Poignard",
@@ -6883,7 +6883,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"revolver_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"RPG",
@@ -6945,7 +6945,7 @@
             "armors":0.85,
             "aoe":"unit",
             "sound":"magnum_x2",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze","flechette"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
         "weapon2":{
             "name":"Molotov",
@@ -7019,7 +7019,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"calibre_sniper_def",
-            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "protection":[],
         "equip":["aucun","e-flash","chargeur2","e-camo","theeye","helper","permakirin","waterproof","e-medic","repel"],
@@ -7058,7 +7058,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Fusil semi-auto",
@@ -7072,7 +7072,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "protection":[],
         "equip":["aucun","e-flash","chargeur1","lunette2","silencieux2","fakit","e-camo","theeye","waterproof","e-medic","repel"],
@@ -7111,7 +7111,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{},
         "protection":[],
@@ -7149,7 +7149,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Grenade",
@@ -7204,7 +7204,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Fusil semi-auto",
@@ -7218,7 +7218,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","gliding","timonium","salite","adamantium","dunium","freeze"]
+            "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "equip":["aucun","e-flash","silencieux2","e-medic","e-camo","theeye","helper"],
         "log3eq":["silencieux2"],

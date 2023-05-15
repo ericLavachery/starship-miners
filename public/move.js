@@ -395,7 +395,7 @@ function moveSelectedBat(tileId,free,jump) {
                 selectedBat.tags.push('mud');
             }
             let newAP = 0-rand.rand(1,Math.ceil(selectedBat.ap/2));
-            if (selectedBat.prt === 'swing' || selectedBat.prt === 'soap') {
+            if (selectedBat.prt === 'swing' || selectedBat.prt === 'soap' || selectedBat.prt === 'silk') {
                 newAP = newAP+7;
             }
             if (newAP < selectedBat.apLeft-2) {

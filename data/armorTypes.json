@@ -75,7 +75,7 @@
         "apCost":0,
         "bldReq":[],
         "bldVMReq":["Infirmerie"],
-        "compReq":{"ca":1},
+        "compReq":{"ca":2},
         "altCompReq":{"med":1},
         "costs":{"Drogues":1,"Zinc":1,"Swarmine":1},
         "units":"inf",
@@ -369,6 +369,7 @@
         "skills":["soap"],
         "bldReq":["Laboratoire"],
         "compReq":{"mat":1,"ca":4},
+        "altKillReq": "Spiderblob",
         "factor":"thp",
         "costs":{"Carbone":12,"Azote":6,"Wingium":3,"Aranium":6},
         "icon":2,
@@ -386,6 +387,18 @@
         "costs":{"Aluminium":9,"Titane":9},
         "icon":1,
         "popIn":["Caserne","Armurerie"]
+    },
+    {
+        "name":"silk",
+        "cat":"armor",
+        "armor":4,
+        "ap":-2,
+        "skills":["soap","dreduct"],
+        "bldReq":["Laboratoire"],
+        "compReq":{"ca":10},
+        "altKillReq": "Spiderblob",
+        "factor":"thp",
+        "costs":{"Titane":9,"Bossium":4,"Aranium":18}
     },
     {
         "name":"kaptane",
@@ -466,6 +479,19 @@
         "costs":{"Aluminium":6,"Adamantium":12,"Argon":3},
         "icon":3,
         "popIn":["Caserne","Armurerie"]
+    },
+    {
+        "name":"dragscale",
+        "cat":"armor",
+        "armor":4,
+        "ap":-1,
+        "skills":["resistfeu","protectall"],
+        "bldReq":["Arsenal"],
+        "compReq":{"ca":10},
+        "gangReq":["brasier"],
+        "altKillReq": "Dragonblob",
+        "factor":"thp",
+        "costs":{"Carbone":6,"Adamantium":9,"Bossium":6}
     },
     {
         "name":"aegis",
@@ -917,6 +943,7 @@
         "bldReq":["Atelier"],
         "compReq":{"cam":1,"log":2},
         "altCompReq":{"cam":1,"train":2,"log":1},
+        "altKillReq": "Skygrub",
         "autoComp":["cam",2],
         "factor":"crew",
         "costs":{"Blendium":8,"Tissus":12},
@@ -1854,7 +1881,7 @@
         "autoComp":["cam",3],
         "factor":"thp",
         "costs":{"Blendium":4,"Tissus":6},
-        "deploy":{"Végétaux":3}
+        "deploy":{"Végétaux":3,"Blendium":1}
     },
     {
         "name":"tungextract",

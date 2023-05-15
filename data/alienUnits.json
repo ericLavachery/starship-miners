@@ -449,7 +449,7 @@
             "accuracy":16,
             "power":3,
             "aoe":"unit",
-            "sound":"electricity",
+            "sound":"flash",
             "ammo":["web-electric"]
         },
         "weapon2":{},
@@ -458,7 +458,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["hide","errant","okwater","guerrilla","regeneration","protectall","resistblast","flee","initmelee","roboposs"],
+        "skills":["hide","errant","okwater","guerrilla","regeneration","protectall","resistblast","reactelec","flee","initmelee","roboposs"],
         "deathFx":"death2",
         "killRes":{"Mendium":5,"Blendium":10,"Larvium":12,"Germium":9,"Bossium":1},
         "killXP":6,
@@ -1895,7 +1895,7 @@
             "power":4,
             "aoe":"unit",
             "sound":"tsss",
-            "ammo":["necro"]
+            "ammo":["necrotox"]
         },
         "w2chance":2,
         "moveCost":3,
@@ -1940,7 +1940,7 @@
             "power":4,
             "aoe":"brochette",
             "sound":"squish8",
-            "ammo":["necro"]
+            "ammo":["necrotox"]
         },
         "weapon2":{
             "name":"Jet d'acide",
@@ -2068,7 +2068,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"slurp5",
-            "ammo":["necro"]
+            "ammo":["necrotox"]
         },
         "w2chance":3,
         "moveCost":2,
@@ -2782,7 +2782,7 @@
             "power":4,
             "aoe":"brochette",
             "sound":"squish8",
-            "ammo":["necro"]
+            "ammo":["necrotox"]
         },
         "weapon2":{
             "name":"Jet d'acide",
@@ -3650,7 +3650,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"kalach",
-            "ammo":["bugshells"]
+            "ammo":["alienshells"]
         },
         "weapon2":{
             "name":"Fusil semi-auto",
@@ -3664,7 +3664,7 @@
             "power":6,
             "aoe":"unit",
             "sound":"calibre_sa",
-            "ammo":["bugshells"]
+            "ammo":["alienshells"]
         },
         "w2chance":3,
         "moveCost":3,
@@ -3709,7 +3709,7 @@
             "armors":0.5,
             "aoe":"unit",
             "sound":"fmag_small",
-            "ammo":["bugshells"]
+            "ammo":["alienshells"]
         },
         "weapon2":{},
         "w2chance":0,
@@ -3841,7 +3841,7 @@
             "armors":0.77,
             "aoe":"unit",
             "sound":"mit_mid",
-            "ammo":["bugshells"]
+            "ammo":["alienshells"]
         },
         "weapon2":{},
         "w2chance":0,

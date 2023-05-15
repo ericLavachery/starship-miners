@@ -311,14 +311,6 @@ function checkRecycledEquip(stuff,bat,batType) {
             }
         }
     }
-    // if (compReqOK) {
-    //     if (checkSpecialEquip(stuff,bat,batType)) {
-    //         compReqOK = false;
-    //     }
-    // }
-    // if (compReqOK && bat.eq != stuff.name) {
-    //     warning('Recyclage','En stock: '+stuff.name+' ('+stuff.info+')');
-    // }
     return compReqOK;
 };
 
@@ -347,6 +339,12 @@ function checkAutoEqCompReq(stuff) {
                     compReqOK = false;
                 }
             });
+        }
+    }
+    // altKillReq
+    if (stuff.altKillReq != undefined) {
+        if (playerInfos.knownAliens.includes(stuff.altKillReq)) {
+            compReqOK = true;
         }
     }
     // gangReq

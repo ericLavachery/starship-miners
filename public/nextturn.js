@@ -1554,7 +1554,7 @@ function tagsEffect(bat,batType) {
             } else {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3));
             }
-            if (bat.prt === 'swing' || bat.prt === 'soap') {
+            if (bat.prt === 'swing' || bat.prt === 'soap' || bat.prt === 'silk') {
                 let batTile = getTile(bat);
                 if (batTile.web) {
                     tagDelete(bat,'mud');
@@ -1683,7 +1683,11 @@ function tagsEffect(bat,batType) {
                 }
             }
         }
-        if (rand.rand(3,48) <= unitResist) {
+        if (bat.team === 'aliens') {
+            if (batType.skills.includes('nokill')) {
+                tagDelete(bat,'necro');
+            }
+        } else if (rand.rand(3,48) <= unitResist) {
             tagDelete(bat,'necro');
             if (!bat.tags.includes('necro')) {
                 warning('',bat.type+' a éliminé la nécrotoxine.',false,bat.tileId);

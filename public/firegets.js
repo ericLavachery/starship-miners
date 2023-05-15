@@ -981,7 +981,7 @@ function getDamageRed(sound,defBat,defBatType) {
             dmgReduct = 2;
         } else if (defBat.tags.includes('zealot') && defBatType.cat === 'infantry') {
             dmgReduct = 1;
-        } else if (defBat.prt === 'kapton' || defBat.prt === 'battlesuit' || defBat.prt === 'bonibo' || defBat.prt === 'swarwing') {
+        } else if (defBat.prt === 'kapton' || defBat.prt === 'battlesuit' || defBat.prt === 'bonibo' || defBat.prt === 'swarwing' || defBat.prt === 'silk') {
             dmgReduct = 1;
         }
     }
@@ -2438,8 +2438,9 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon.apdamage = ammo.apdamage;
     let thisAmmoArmors = ammo.armors;
     if (ammo.avar != undefined) {
-        if (playerInfos.comp[ammo.avar] >= 2) {
-            thisAmmoArmors = thisAmmoArmors*2.75/(playerInfos.comp[ammo.avar]+2);
+        let avarComp = playerInfos.comp[ammo.avar];
+        if (avarComp >= 2) {
+            thisAmmoArmors = thisAmmoArmors*2.75/(avarComp+2);
         }
     }
     thisWeapon.armors = thisWeapon.armors*thisAmmoArmors;
@@ -2677,7 +2678,7 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.noDef = true;
     }
     // Type d'attaques
-    if (thisWeapon.ammo.includes('feu') || thisWeapon.ammo.includes('incendiaire') || thisWeapon.ammo.includes('napalm') || thisWeapon.ammo.includes('fire') || thisWeapon.ammo.includes('pyratol') || thisWeapon.ammo.includes('lf-') || thisWeapon.ammo.includes('lt-') || thisWeapon.ammo.includes('molotov') || thisWeapon.ammo.includes('laser')) {
+    if (thisWeapon.ammo.includes('feu') || thisWeapon.ammo.includes('incendiaire') || thisWeapon.ammo.includes('dragon') || thisWeapon.ammo.includes('napalm') || thisWeapon.ammo.includes('fire') || thisWeapon.ammo.includes('pyratol') || thisWeapon.ammo.includes('lf-') || thisWeapon.ammo.includes('lt-') || thisWeapon.ammo.includes('molotov') || thisWeapon.ammo.includes('laser')) {
         if (thisWeapon.ammo.includes('laser') || thisWeapon.ammo === 'incendiaire' || thisWeapon.ammo === 'ac-incendiaire' || thisWeapon.ammo === 'sm-incendiaire' || thisWeapon.ammo === 'fleche-incendiaire') {
             thisWeapon.isHot = true;
             thisWeapon.isFire = false;
@@ -2689,7 +2690,7 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.isHot = false;
         thisWeapon.isFire = false;
     }
-    if (thisWeapon.ammo.includes('electric') || thisWeapon.ammo.includes('taser') || thisWeapon.ammo.includes('eflash')) {
+    if (thisWeapon.ammo.includes('electric') || thisWeapon.ammo.includes('taser') || thisWeapon.ammo.includes('eflash') || thisWeapon.ammo === 'marquage-stop') {
         thisWeapon.isElec = true;
     } else {
         thisWeapon.isElec = false;

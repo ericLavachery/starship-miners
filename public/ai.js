@@ -546,7 +546,7 @@ function targetLogic(bat,iter) {
         }
     }
     if (batType.cat != 'infantry') {
-        if (selectedWeap.ammo.includes('toxine') || selectedWeap.ammo.includes('necro')) {
+        if (selectedWeap.ammo.includes('toxine') || selectedWeap.ammo.includes('necrotox')) {
             tFuzz = -95;
         }
         if (selectedWeap.ammo.includes('poison')) {

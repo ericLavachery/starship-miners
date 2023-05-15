@@ -159,7 +159,7 @@ function showEnemyBatInfos(bat) {
     }
     if (compCA >= 3) {
         if (Object.keys(batType.weapon).length >= 1) {
-            if (batType.weapon.ammo.includes('necro') || btweap2ammo.includes('necro')) {
+            if (batType.weapon.ammo.includes('necrotox') || btweap2ammo.includes('necrotox')) {
                 $('#unitInfos').append('<span class="paramName">Nécrotoxine</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
             }
         }

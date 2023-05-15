@@ -752,6 +752,12 @@ function checkCompReq(stuff) {
             }
         }
     }
+    // altKillReq
+    if (stuff.altKillReq != undefined) {
+        if (playerInfos.knownAliens.includes(stuff.altKillReq)) {
+            compReqOK = true;
+        }
+    }
     // gangReq
     if (stuff.gangReq != undefined) {
         if (!stuff.gangReq.includes(playerInfos.gang)) {
@@ -1147,8 +1153,8 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                         newBat.oldapLeft = newBat.ap;
                     } else {
                         if (fuite) {
-                            newBat.apLeft = 5;
-                            newBat.oldapLeft = 5;
+                            newBat.apLeft = 7;
+                            newBat.oldapLeft = 7;
                         } else {
                             newBat.apLeft = -8;
                             newBat.oldapLeft = -8;

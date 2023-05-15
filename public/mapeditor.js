@@ -1431,8 +1431,8 @@ function loadEditorMission() {
     while (misNum <= 99) {
         if (playerInfos.misDB.includes(misNum)) {
             let mType = getMissionType(misNum,true);
-            let mission = getMissionByNum(misNum);
-            $('#theStartZone').append('<option value="'+misNum+'">'+misNum+' - '+mType.name+' '+Math.floor(mType.pa)+' - '+mission.name+'</option>');
+            // let mission = getMissionByNum(misNum);
+            $('#theStartZone').append('<option value="'+misNum+'">'+misNum+' - '+mType.name+' '+Math.floor(mType.pa)+' - '+mType.title+'</option>');
         }
         if (misNum > 99) {break;}
         misNum++

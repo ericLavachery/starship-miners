@@ -50,6 +50,7 @@
         "power": 2,
         "powermult": 1,
         "armors": 1,
+        "avar": "energ",
         "accuracy": 1,
         "apdamage": 0,
         "passprotect": true,
@@ -58,6 +59,7 @@
         "info": "Marquage",
         "bldReq":["Laboratoire"],
         "compReq":{"det":3,"energ":1,"pyro":1,"ca":2},
+        "altKillReq": "Ectoplasmes",
         "deploy":{"Fer":2,"Potassium":1,"Carbone":1,"Soufre":1,"Oxygène":3,"Azote":1,"Chlore":1,"Mercure":1},
         "batch":200,
         "sound":{"paint":"paint_flash"}
@@ -275,7 +277,7 @@
         "icon":1
     },
     {
-        "name": "bugshells",
+        "name": "alienshells",
         "range": 1,
         "rof": 1,
         "power": 0,
@@ -285,10 +287,27 @@
         "apdamage": 0,
         "aoe": "",
         "bldReq":["Laboratoire"],
-        "compReq":{"ca":5},
-        "deploy":{"Bugium":2,"Pyrus":0.2,"Swarmine":1,"Larvium":1},
-        "batch":100,
-        "icon":1
+        "compReq":{"ca":10},
+        "deploy":{"Bugium":2,"Pyrus":0.3,"Swarmine":1,"Larvium":1},
+        "batch":100
+    },
+    {
+        "name": "bugshells",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1.33,
+        "armors": 0.5,
+        "avar": "ca",
+        "accuracy": 1,
+        "apdamage": 0,
+        "passprotect": true,
+        "aoe": "",
+        "bldReq":["Laboratoire"],
+        "compReq":{"ca":10},
+        "altKillReq": "Skygrub",
+        "deploy":{"Bugium":2,"Pyrus":0.3,"Swarmine":1,"Larvium":1},
+        "batch":100
     },
     {
         "name": "titanium",
@@ -351,9 +370,46 @@
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
+        "altKillReq": "Dragonblob",
         "deploy":{"Munitions":1,"Aluminium":1,"Phosphore":2},
         "batch":100,
         "icon":1
+    },
+    {
+        "name": "dragon",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1.7,
+        "armors": 0.5,
+        "avar": "pyro",
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Incendiaire",
+        "bldReq":["Arsenal"],
+        "compReq":{"ca":10},
+        "altKillReq": "Dragonblob",
+        "deploy":{"Munitions":1,"Pyrus":1,"Bugium":1,"Hydrogène":3},
+        "batch":100
+    },
+    {
+        "name": "necro",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "armors": 0.4,
+        "avar": "mat",
+        "accuracy": 1,
+        "apdamage": 0.05,
+        "aoe": "",
+        "info": "Nécrotoxine",
+        "bldReq":["Usine d'armement"],
+        "compReq":{"ca":10},
+        "altKillReq": "Necroblob",
+        "deploy":{"Munitions":1,"Timonium":2,"Mercure":1,"Germium":4,"Bossium":1},
+        "batch":100
     },
     {
         "name": "needle",
@@ -452,6 +508,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
+        "altCompReq":{"bal":2,"mat":3},
         "deploy":{"Munitions":1,"Salite":2},
         "batch":100,
         "icon":3
@@ -581,6 +638,7 @@
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
+        "altKillReq": "Dragonblob",
         "deploy":{"Munitions":1,"Aluminium":1,"Phosphore":2},
         "batch":100
     },
@@ -692,6 +750,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
+        "altCompReq":{"bal":2,"mat":3},
         "deploy":{"Munitions":1,"Salite":2},
         "batch":100
     },
@@ -865,6 +924,7 @@
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
+        "altKillReq": "Dragonblob",
         "deploy":{"Munitions":1,"Aluminium":1,"Phosphore":2},
         "batch":100
     },
@@ -895,6 +955,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
+        "altCompReq":{"bal":2,"mat":3},
         "deploy":{"Munitions":1,"Salite":2},
         "batch":100
     },
@@ -1110,6 +1171,7 @@
         "info": "Incendiaire",
         "bldReq":["Armurerie"],
         "compReq":{"bal":2,"pyro":2},
+        "altKillReq": "Dragonblob",
         "deploy":{"Plomb":4,"Aluminium":4,"Phosphore":4,"Oxygène":1},
         "batch":200
     },
@@ -1156,6 +1218,7 @@
         "aoe": "",
         "bldReq":["Arsenal"],
         "compReq":{"bal":3,"mat":1},
+        "altCompReq":{"bal":2,"mat":3},
         "deploy":{"Fer":2,"Plomb":2,"Salite":4,"Oxygène":1},
         "batch":200
     },
@@ -1285,6 +1348,7 @@
         "info": "Incendiaire",
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":3,"mat":2,"pyro":2},
+        "altCompReq":{"bal":2,"mat":3,"pyro":3},
         "deploy":{"Fer":1,"Soufre":2,"Plutonium":1,"Aluminium":1,"Phosphore":2,"Salite":2},
         "batch":100
     },
@@ -1325,6 +1389,7 @@
         "power": 0,
         "powermult": 1,
         "armors": 1,
+        "avar": "energ",
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
@@ -1340,7 +1405,8 @@
         "rof": 1,
         "power": 2,
         "powermult": 1.28,
-        "armors": 0.85,
+        "armors": 1,
+        "avar": "energ",
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
@@ -1357,7 +1423,8 @@
         "rof": 1,
         "power": 2,
         "powermult": 1.28,
-        "armors": 0.75,
+        "armors": 1,
+        "avar": "energ",
         "accuracy": 1,
         "apdamage": 0,
         "passprotect": true,
@@ -1454,6 +1521,7 @@
         "aoe": "",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":3,"energ":1},
+        "altCompReq":{"bal":2,"energ":2},
         "deploy":{"Platine":2,"Hydrogène":2,"Larvium":1,"Aranium":1},
         "batch":100
     },
@@ -1560,6 +1628,7 @@
         "aoe": "",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":3,"energ":1},
+        "compReq":{"bal":2,"energ":2},
         "deploy":{"Platine":2,"Hydrogène":2,"Larvium":1,"Aranium":1},
         "batch":100
     },
@@ -1663,7 +1732,26 @@
         "info": "Incendiaire",
         "bldReq":["Atelier"],
         "compReq":{"pyro":1},
+        "altKillReq": "Dragonblob",
         "deploy":{"Bois":5,"Fer":3,"Phosphore":3,"Huile":2},
+        "batch":100
+    },
+    {
+        "name": "fleche-dragon",
+        "range": 1,
+        "rof": 1,
+        "power": 2,
+        "powermult": 1.7,
+        "armors": 0.5,
+        "avar": "pyro",
+        "accuracy": 1.5,
+        "apdamage": 0,
+        "aoe": "",
+        "info": "Incendiaire",
+        "bldReq":["Arsenal"],
+        "compReq":{"ca":10},
+        "altKillReq": "Dragonblob",
+        "deploy":{"Carbone":5,"Titane":2,"Pyrus":1,"Bugium":1,"Hydrogène":3},
         "batch":100
     },
     {
@@ -1783,6 +1871,24 @@
         "batch":100
     },
     {
+        "name": "fleche-necro",
+        "range": 1,
+        "rof": 1,
+        "power": 2,
+        "powermult": 1.2,
+        "armors": 0.65,
+        "avar": "mat",
+        "accuracy": 1,
+        "apdamage": 0.07,
+        "aoe": "",
+        "info": "Nécrotoxine",
+        "bldReq":["Usine d'armement"],
+        "compReq":{"ca":10},
+        "altKillReq": "Necroblob",
+        "deploy":{"Carbone":4,"Timonium":2,"Mercure":1,"Germium":5,"Bossium":1},
+        "batch":100
+    },
+    {
         "name": "fleche-homing",
         "range": 1.4,
         "rof": 1,
@@ -1820,7 +1926,7 @@
         "rof": 1,
         "power": 0,
         "powermult": 1.8,
-        "armors": 0.35,
+        "armors": 0.3,
         "avar": "energ",
         "accuracy": 1,
         "apdamage": 0.02,
@@ -2780,6 +2886,7 @@
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":1,"exo":1,"ca":4},
+        "altCompReq":{"explo":1,"exo":3,"ca":3},
         "costs":{"Argon":2,"Azote":8,"Plastanium":2,"Végétaux":4},
         "batch":50
     },
@@ -2989,6 +3096,7 @@
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":1,"exo":1,"ca":4},
+        "altCompReq":{"explo":1,"exo":3,"ca":3},
         "deploy":{"Carbone":2,"Scrap":2,"Fer":1,"Argon":2,"Azote":8,"Plastanium":2,"Végétaux":4,"Explosifs":1},
         "batch":100
     },
@@ -3299,6 +3407,7 @@
         "aoe": "bat",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"bal":1,"explo":1,"exo":1,"ca":4,"arti":1},
+        "altCompReq":{"bal":1,"explo":1,"exo":3,"ca":3,"arti":1},
         "deploy":{"Carbone":2,"Aluminium":2,"Nickel":1,"Explosifs":1,"Fuel":1,"Argon":2,"Azote":8,"Plastanium":2,"Végétaux":4,"Electros":2,"Batteries":1},
         "batch":100
     },
@@ -3546,6 +3655,7 @@
         "aoe": "squad",
         "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"ca":4},
+        "altCompReq":{"exo":3,"ca":3},
         "deploy":{"Carbone":1,"Scrap":3,"Fer":1,"Aluminium":1,"Argon":2,"Azote":8,"Plastanium":2,"Végétaux":4,"Explosifs":1},
         "batch":100,
         "icon":2
@@ -3648,6 +3758,7 @@
         "apdamage": 0,
         "aoe": "",
         "compReq":{"exo":1,"ca":4},
+        "altCompReq":{"exo":3,"ca":3},
         "deploy":{"Carbone":5,"Scrap":5,"Plastanium":4,"Argon":4,"Azote":12,"Végétaux":8},
         "batch":100
     },
@@ -4152,7 +4263,7 @@
         "aoe": ""
     },
     {
-        "name": "necro",
+        "name": "necrotox",
         "range": 1,
         "rof": 1,
         "power": 0,

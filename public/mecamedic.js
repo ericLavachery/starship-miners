@@ -1326,7 +1326,7 @@ function checkRegeneration(myBat,myBatType,resistance,allTags) {
                 if (myBatType.skills.includes('reactpoison') && myBat.tags.includes('poison')) {
                     regOK = false;
                 }
-                if (myBat.tags.includes('shinda')) {
+                if (myBat.tags.includes('shinda') || myBat.tags.includes('necro')) {
                     regOK = false;
                 }
             } else if (myBat.tags.includes('necro') || myBat.tags.includes('venin')) {
