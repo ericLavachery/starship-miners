@@ -887,15 +887,8 @@ function calcDamage(weapon,power,armor,defBat) {
             armor = armor+playerInfos.comp.def-1;
         }
     }
-    if (weapon.ammo.includes('teflon')) {
-        armor = armor-3;
-    }
-    if (weapon.ammo.includes('needle')) {
-        armor = armor-5;
-    }
-    if (armor < 0) {
-        armor = 0;
-    }
+    armor = armor-weapon.aignore;
+    if (armor < 0) {armor = 0;}
     let armorModifier = weapon.armors;
     // creuseur
     if (defBat.tags.includes('trou')) {
@@ -2409,8 +2402,15 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.passprotect = false;
     }
-    if (thisWeapon.ammo.includes('gliding')) {
-        thisWeapon.elevation = thisWeapon.elevation+1;
+    if (ammo.aignore != undefined) {
+        thisWeapon.aignore = ammo.aignore;
+    } else {
+        thisWeapon.aignore = 0;
+    }
+    if (ammo.elevation != undefined) {
+        if (thisWeapon.range >= 1 && !thisWeapon.isShort) {
+            thisWeapon.elevation = thisWeapon.elevation+ammo.elevation;
+        }
     }
     if (playerInfos.comp.pyro === 3) {
         if (thisWeapon.ammo.includes('feu') || thisWeapon.ammo.includes('incendiaire') || thisWeapon.ammo.includes('napalm') || thisWeapon.ammo.includes('fire') || thisWeapon.ammo.includes('pyratol') || thisWeapon.ammo.includes('lf-') || thisWeapon.ammo.includes('lt-') || thisWeapon.ammo.includes('molotov')) {
@@ -2638,8 +2638,10 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.range = 1;
     }
     // needle max range
-    if (thisWeapon.ammo.includes('needle') && thisWeapon.range > 1) {
-        thisWeapon.range = 1;
+    if (ammo.maxrange != undefined) {
+        if (thisWeapon.range > ammo.maxrange) {
+            thisWeapon.range = ammo.maxrange;
+        }
     }
     // wipeout missile range
     if (thisWeapon.name === 'Missiles wipeout') {
