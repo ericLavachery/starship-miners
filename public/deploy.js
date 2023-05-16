@@ -20,6 +20,7 @@ function reEquip(batId,noRefresh) {
     $('#conAmmoList').append('<br>');
     let batArmor;
     let armorSkills = '';
+    let fullArmorSkills = '';
     let listNum = 1;
     let bldReqOK = false;
     let compReqOK = false;
@@ -39,6 +40,7 @@ function reEquip(batId,noRefresh) {
             myBatType.protection.forEach(function(armor) {
                 batArmor = getEquipByName(armor);
                 armorSkills = showArmorInfo(batArmor);
+                fullArmorSkills = showFullArmorInfo(batArmor);
                 compReqOK = checkCompReq(batArmor);
                 if (compReqOK) {
                     if (myNewGear[2] == armor || (myNewGear[2] === 'xxx' && listNum === 1)) {
@@ -56,9 +58,9 @@ function reEquip(batId,noRefresh) {
                         prodSign = '';
                     }
                     if ((bldReqOK && costsOK) || conselTriche) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'" onclick="deployArmor(`'+armor+'`,`'+myBat.id+'`)">'+armor+prodSign+' <span class="gff">'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik" title="'+fullArmorSkills+toBldString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'" onclick="deployArmor(`'+armor+'`,`'+myBat.id+'`)">'+armor+prodSign+' <span class="gff">'+armorSkills+'</span></span><br>');
                     } else {
-                        $('#conAmmoList').append('<span class="constName klik gff" title="'+toNiceString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'">'+armor+prodSign+' <span class="gff">'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik gff" title="'+fullArmorSkills+toBldString(batArmor.bldReq)+' '+displayCosts(flatCosts)+'">'+armor+prodSign+' <span class="gff">'+armorSkills+'</span></span><br>');
                     }
                 } else {
                     if (armor === myBat.prt) {
@@ -67,7 +69,7 @@ function reEquip(batId,noRefresh) {
                         } else {
                             $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                         }
-                        $('#conAmmoList').append('<span class="constName gff" title="'+toNiceString(batArmor.bldReq)+'">'+armor+' <span class="gff">'+armorSkills+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName gff" title="'+fullArmorSkills+toBldString(batArmor.bldReq)+'">'+armor+' <span class="gff">'+armorSkills+'</span></span><br>');
                     }
                 }
                 listNum++;
@@ -136,11 +138,11 @@ function reEquip(batId,noRefresh) {
                         prodSign = '';
                     }
                     if (bonusEqName === equip) {
-                        $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip,myBatType,true)+' / '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName" title="'+showEquipInfo(equip,myBatType,true)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else if ((bldReqOK && costsOK) || conselTriche) {
-                        $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip,myBatType,true)+' / '+displayCosts(flatCosts)+'" onclick="deployEquip(`'+equip+'`,'+myBat.id+')">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName klik" title="'+showEquipInfo(equip,myBatType,true)+' '+displayCosts(flatCosts)+'" onclick="deployEquip(`'+equip+'`,'+myBat.id+')">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     } else {
-                        $('#conAmmoList').append('<span class="constName gff" title="'+showEquipInfo(equip,myBatType,true)+' / '+toNiceString(batEquip.bldReq)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName gff" title="'+showEquipInfo(equip,myBatType,true)+' '+toBldString(batEquip.bldReq)+' '+displayCosts(flatCosts)+'">'+equip+prodSign+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     }
                 } else {
                     if (equip === myBat.eq || equip === myBat.logeq) {
@@ -149,7 +151,7 @@ function reEquip(batId,noRefresh) {
                         } else {
                             $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                         }
-                        $('#conAmmoList').append('<span class="constName gff" title="'+showEquipInfo(equip,myBatType,true)+' / '+toNiceString(batEquip.bldReq)+'">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
+                        $('#conAmmoList').append('<span class="constName gff" title="'+showEquipInfo(equip,myBatType,true)+' / '+toBldString(batEquip.bldReq)+'">'+equip+' <span class="gff">'+weapName+' '+equipNotes+'</span></span><br>');
                     }
                 }
                 listNum++;
@@ -185,7 +187,7 @@ function reEquip(batId,noRefresh) {
                         if ((bldReqOK && costsOK) || conselTriche) {
                             $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+displayCosts(deployCosts)+'" onclick="deployAmmo(`'+ammo+'`,`w1`,`'+myBat.id+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
                         } else {
-                            $('#conAmmoList').append('<span class="constName gff" title="'+toNiceString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName gff" title="'+toBldString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
                         }
                     }
                     listNum++;
@@ -221,7 +223,7 @@ function reEquip(batId,noRefresh) {
                         if ((bldReqOK && costsOK) || conselTriche) {
                             $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+displayCosts(deployCosts)+'" onclick="deployAmmo(`'+ammo+'`,`w2`,`'+myBat.id+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
                         } else {
-                            $('#conAmmoList').append('<span class="constName gff" title="'+toNiceString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName gff" title="'+toBldString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
                         }
                     }
                     listNum++;

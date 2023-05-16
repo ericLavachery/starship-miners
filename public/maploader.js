@@ -296,36 +296,36 @@ function showRes(tileId) {
         } else {
             mapIndicators = mapIndicators+'<div class="ruins" title="'+ruinType.name+'"><img style="opacity:0.9;" src="/static/img/units/ruins/'+ruinPic+'.png"></div>';
         }
-        tileText = tileText+'&timesb; Ruines ('+ruinType.name+fullIndicator+')&nbsp;&nbsp;&nbsp; ';
+        tileText = tileText+'&#127962; Ruines ('+ruinType.name+fullIndicator+')&nbsp;&nbsp;&nbsp; ';
     }
     if (tile.ap != undefined) {
         if (tile.ap.includes('grenade') || tile.ap.includes('dynamite') || tile.ap.includes('molotov')) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apgren.png"></div>';
-            tileText = tileText+'(Munitions:&nbsp; '+tile.ap+')';
+            tileText = tileText+'&#127890; (Munitions:&nbsp; '+tile.ap+')';
         } else if (tile.ap.includes('lame-')) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aplame.png"></div>';
-            tileText = tileText+'(Lames:&nbsp; '+tile.ap+')';
+            tileText = tileText+'&#127890; (Lames:&nbsp; '+tile.ap+')';
         } else if (tile.ap === 'drg_sudu' || tile.ap === 'drg_nitro') {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apnitro.png"></div>';
-            tileText = tileText+'(Tuning:&nbsp; '+tile.ap.replace('drg_','')+')';
+            tileText = tileText+'&#127890; (Tuning:&nbsp; '+tile.ap.replace('drg_','')+')';
         } else if (tile.ap === 'drg_meca') {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apmeca.png"></div>';
-            tileText = tileText+'(Tuning:&nbsp; '+tile.ap.replace('drg_','')+')';
+            tileText = tileText+'&#127890; (Tuning:&nbsp; '+tile.ap.replace('drg_','')+')';
         } else if (tile.ap === 'drg_starka' || tile.ap === 'drg_kirin' || tile.ap === 'drg_octiron') {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apmed.png"></div>';
-            tileText = tileText+'(Drogues:&nbsp; '+tile.ap.replace('drg_','')+')';
+            tileText = tileText+'&#127890; (Drogues:&nbsp; '+tile.ap.replace('drg_','')+')';
         } else if (tile.ap.includes('drg_')) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apdrug.png"></div>';
-            tileText = tileText+'(Drogues:&nbsp; '+tile.ap.replace('drg_','')+')';
+            tileText = tileText+'&#127890; (Drogues:&nbsp; '+tile.ap.replace('drg_','')+')';
         } else if (tile.ap.includes('eq_')) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apequip.png""></div>';
-            tileText = tileText+'(Equipements:&nbsp; '+tile.ap.replace('eq_','')+')';
+            tileText = tileText+'&#127890; (Equipements:&nbsp; '+tile.ap.replace('eq_','')+')';
         } else if (tile.ap.includes('prt_')) {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/aparmor.png""></div>';
-            tileText = tileText+'(Armures:&nbsp; '+tile.ap.replace('prt_','')+')';
+            tileText = tileText+'&#127890; (Armures:&nbsp; '+tile.ap.replace('prt_','')+')';
         } else {
             mapIndicators = mapIndicators+'<div class="mark"><img src="/static/img/units/apslugs.png"></div>';
-            tileText = tileText+'(Munitions:&nbsp; '+tile.ap+')';
+            tileText = tileText+'&#127890; (Munitions:&nbsp; '+tile.ap+')';
         }
         tileText = tileText+'&nbsp;&nbsp;&nbsp; ';
     }
@@ -335,7 +335,7 @@ function showRes(tileId) {
             res = res.replace(/"/g,"");
             res = res.replace(/{/g,"");
             res = res.replace(/}/g,"");
-            res = res.replace(/,/g," &nbsp;&horbar;&nbsp; ");
+            res = res.replace(/,/g," &nbsp;&#128313;&nbsp; ");
             res = res.replace(/:/g," ");
             if (playerInfos.comp.det >= 3 || !modeSonde) {
                 // tout voir
@@ -348,7 +348,7 @@ function showRes(tileId) {
         // mapIndicators = mapIndicators+'<div class="mapInfos" title="'+res+'">';
         mapIndicators = mapIndicators+'<div class="mapInfos">';
         if (tile.rq != undefined) {
-            tileText = tileText+'(Ressources:&nbsp; '+res+') ';
+            tileText = tileText+'&#9935;&nbsp; ('+res+') ';
         }
     }
     if (tile.rd) {

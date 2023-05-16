@@ -591,7 +591,7 @@ function mapPackAddList() {
         if (armor.cat === 'armor') {
             let armorIcon = getRarityIcon(armor);
             if (armorIcon != '') {
-                let armorInfo = showArmorInfo(armor);
+                let armorInfo = showFullArmorInfo(armor);
                 let col = 'klik';
                 if (theTilePacks === 'prt_'+armor.name) {
                     col = 'cy klik';

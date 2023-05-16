@@ -101,6 +101,18 @@ function toNiceString(myArray) {
     return newString;
 };
 
+function toBldString(myArray) {
+    let newString = '';
+    if (myArray instanceof Array) {
+        newString = myArray.toString();
+        newString = newString.replace(/,/g,', ');
+    }
+    if (newString != '') {
+        newString = '&#127963;'+newString;
+    }
+    return newString;
+};
+
 function toCoolString(myObject,nocro) {
     let newString = '';
     if (myObject != undefined) {

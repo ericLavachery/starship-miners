@@ -1107,7 +1107,7 @@ function showTileInfos(tileId) {
             } else if (tile.ap.includes('prt_')) {
                 let armorName = tile.ap.replace('prt_','');
                 let armor = getEquipByName(armorName);
-                let armorInfo = showArmorInfo(armor);
+                let armorInfo = showFullArmorInfo(armor);
                 $('#tileInfos').append('<span class="paramName cy">Armures</span><span class="paramIcon"><i class="ra ra-vest rpg"></i></span><span class="paramValue cy" title="'+armorInfo+'">'+armorName+'</span><br>');
             } else if (tile.ap.includes('eq_')) {
                 let equipName = tile.ap.replace('eq_','');

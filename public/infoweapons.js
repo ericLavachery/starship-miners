@@ -615,27 +615,33 @@ function showAmmoInfo(ammoName) {
     let ammo = ammoTypes[ammoIndex];
     let ammoInfo = '';
     if (ammo.range > 1.2) {
-        ammoInfo = ammoInfo+'Portée++ ';
+        ammoInfo = ammoInfo+'Portée++ &#9889; ';
     } else if (ammo.range > 1) {
-        ammoInfo = ammoInfo+'Portée+ ';
+        ammoInfo = ammoInfo+'Portée+ &#9889; ';
+    }
+    if (ammo.maxrange != undefined) {
+        ammoInfo = ammoInfo+'PortéeMax '+ammo.maxrange+' &#9889; ';
+    }
+    if (ammo.elevation != undefined) {
+        ammoInfo = ammoInfo+'Elevation+ &#9889; ';
     }
     if (ammo.rof >= 1.3) {
-        ammoInfo = ammoInfo+'Cadence++ ';
+        ammoInfo = ammoInfo+'Cadence++ &#9889; ';
     } else if (ammo.rof > 1) {
-        ammoInfo = ammoInfo+'Cadence+ ';
+        ammoInfo = ammoInfo+'Cadence+ &#9889; ';
     }
     if (ammo.rof < 1) {
-        ammoInfo = ammoInfo+'Cadence- ';
+        ammoInfo = ammoInfo+'Cadence- &#9889; ';
     }
     if (ammo.power >= 9) {
-        ammoInfo = ammoInfo+'Puissance+++ ';
+        ammoInfo = ammoInfo+'Puissance+++ &#9889; ';
     } else if (ammo.power >= 3 || ammo.powermult >= 1.4) {
-        ammoInfo = ammoInfo+'Puissance++ ';
+        ammoInfo = ammoInfo+'Puissance++ &#9889; ';
     } else if (ammo.power > 0 || ammo.powermult > 1) {
-        ammoInfo = ammoInfo+'Puissance+ ';
+        ammoInfo = ammoInfo+'Puissance+ &#9889; ';
     }
     if (ammo.power < 0 || ammo.powermult < 1) {
-        ammoInfo = ammoInfo+'Puissance- ';
+        ammoInfo = ammoInfo+'Puissance- &#9889; ';
     }
     if (ammo.armors < 0.2) {
         ammoInfo = ammoInfo+'Pénétration+++ ';
@@ -643,39 +649,48 @@ function showAmmoInfo(ammoName) {
         ammoInfo = ammoInfo+'Pénétration++ ';
     } else if (ammo.armors < 1) {
         ammoInfo = ammoInfo+'Pénétration+ ';
-    }
-    if (ammo.armors >= 1.4) {
+    } else if (ammo.armors >= 1.4) {
         ammoInfo = ammoInfo+'Pénétration-- ';
     } else if (ammo.armors > 1) {
         ammoInfo = ammoInfo+'Pénétration- ';
+    } else if (ammo.avar != undefined) {
+        ammoInfo = ammoInfo+'Pénétration ';
+    }
+    if (ammo.avar != undefined) {
+        ammoInfo = ammoInfo+'('+ammo.avar+'&#9872;) &#9889; ';
+    } else {
+        ammoInfo = ammoInfo+'&#9889; ';
+    }
+    if (ammo.aignore != undefined) {
+        ammoInfo = ammoInfo+'IgnoreArmure '+ammo.aignore+'- &#9889; ';
     }
     if (ammo.accuracy > 1.3) {
-        ammoInfo = ammoInfo+'Précision++ ';
+        ammoInfo = ammoInfo+'Précision++ &#9889; ';
     } else if (ammo.accuracy > 1) {
-        ammoInfo = ammoInfo+'Précision+ ';
+        ammoInfo = ammoInfo+'Précision+ &#9889; ';
     }
     if (ammo.accuracy < 1) {
-        ammoInfo = ammoInfo+'Précision- ';
+        ammoInfo = ammoInfo+'Précision- &#9889; ';
     }
     if (ammo.apdamage > 0) {
-        ammoInfo = ammoInfo+'Entrave ';
+        ammoInfo = ammoInfo+'Entrave &#9889; ';
     }
     if (ammo.aoe != '') {
         if (ammo.aoe == 'unit') {
-            ammoInfo = ammoInfo+'AOE Unité ';
+            ammoInfo = ammoInfo+'AOE Unité &#9889; ';
         }
         if (ammo.aoe == 'brochette') {
-            ammoInfo = ammoInfo+'AOE Unité(s) ';
+            ammoInfo = ammoInfo+'AOE Unité(s) &#9889; ';
         }
         if (ammo.aoe == 'squad') {
-            ammoInfo = ammoInfo+'AOE Escouade ';
+            ammoInfo = ammoInfo+'AOE Escouade &#9889; ';
         }
         if (ammo.aoe == 'bat') {
-            ammoInfo = ammoInfo+'AOE Bataillon ';
+            ammoInfo = ammoInfo+'AOE Bataillon &#9889; ';
         }
     }
     if (ammo.info != undefined) {
-        ammoInfo = ammoInfo+ammo.info+' ';
+        ammoInfo = ammoInfo+ammo.info+' &#9889; ';
     }
     return ammoInfo;
 };
