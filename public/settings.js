@@ -296,7 +296,7 @@ let eggDropCount = 0;
 // SOUNDS
 let musicChance = 2;
 let musicTracks = ['amb_ambiant1','parallel_dimensions','amb_ambiant3','amb_trucsympa','amb_ambiant2','biosphere','amb_ambiant4','it_is_raped'];
-let stationTracks = ['lh_oblivion','lh_bobdub','lh_twodogs','lh_whengone','lh_hanap'];
+let stationTracks = ['lh_twodogs','lh_oblivion','lh_bobdub','lh_whengone','lh_hanap'];
 let trackNum = rand.rand(0,3)*2;
 if (playerInfos.onShip) {
     trackNum = rand.rand(0,4);

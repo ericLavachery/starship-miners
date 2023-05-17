@@ -224,7 +224,11 @@ function landerList() {
     $('#list_lander').empty();
     let landerBat = getBatById(slId);
     if (!landerBat.tags.includes('deploy')) {
-        $('#list_lander').append('<br><span class="listRes or">&nbsp Ce vaisseau n\'est pas déployé</span>');
+        if (playerInfos.missionZone === -1) {
+            $('#list_lander').append('<br><span class="listRes or">&nbsp Vous ne pouvez pas déployer ce lander.<br>&nbsp Vous devez d\'abord choisir une zone de destination.<br><br></span>');
+        } else {
+            $('#list_lander').append('<br><span class="listRes or">&nbsp Ce vaisseau n\'est pas déployé.<br><br></span>');
+        }
     }
     let landersIds = getStationLandersIds();
     souteBatList('infantry',playerInfos.gang,'','robot',landersIds,slId);
@@ -609,6 +613,8 @@ function landerDeploy(landerId) {
     let landerBat = getBatById(landerId);
     let landerBatType = getBatType(landerBat);
     let deployCosts = calcLanderDeploy(landerBatType);
+    // console.log('DEPLOYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
+    // console.log(deployCosts);
     let enoughRes = checkCost(deployCosts);
     if (enoughRes) {
         payCost(deployCosts);
@@ -628,6 +634,8 @@ function landerUnDeploy(landerId) {
     let landerBat = getBatById(landerId);
     let landerBatType = getBatType(landerBat);
     let deployCosts = calcLanderDeploy(landerBatType);
+    // console.log('un-DEPLOYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
+    // console.log(deployCosts);
     addCost(deployCosts,1);
     tagDelete(landerBat,'deploy');
     commandes();
@@ -635,6 +643,21 @@ function landerUnDeploy(landerId) {
         goSoute();
     }
     showBatInfos(landerBat);
+};
+
+function unDeployAllLanders() {
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.skills.includes('transorbital') && bat.tags.includes('deploy')) {
+            let deployCosts = calcLanderDeploy(batType);
+            addCost(deployCosts,1);
+            tagDelete(bat,'deploy');
+        }
+    });
+    commandes();
+    if (inSoute) {
+        goSoute();
+    }
 };
 
 function loadBat(batId,transBatId,oldTransBatId) {

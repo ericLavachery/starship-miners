@@ -87,7 +87,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Renvoyer le bataillon dans la soute" class="boutonMarine bigButtons" onclick="batUndeploy('+bat.id+')"><i class="fas fa-sign-out-alt fa-flip-horizontal"></i></button>&nbsp; Renvoyer</h4></span>');
         }
     }
-    if (playerInfos.onShip && batType.skills.includes('transorbital') && batType.name != 'Soute' && inSoute) {
+    if (playerInfos.onShip && batType.skills.includes('transorbital') && batType.name != 'Soute' && inSoute && playerInfos.missionZone >= 1) {
         let deployCosts = calcLanderDeploy(batType);
         let enoughRes = checkCost(deployCosts);
         let costString = '';
@@ -99,16 +99,24 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             batSoins = 0;
         }
         if (!bat.tags.includes('deploy')) {
-            if (enoughRes && batSoins < 30) {
+            let landerTypeOK = true;
+            if (playerInfos.missionZone >= 50) {
+                if (!batType.skills.includes('rescue')) {
+                    landerTypeOK = false;
+                }
+            }
+            if (enoughRes && batSoins < 30 && landerTypeOK) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Inclure ce lander dans la prochaine mission '+costString+'" class="boutonRouge bigButtons" onclick="landerDeploy('+bat.id+')"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
             } else {
-                if (batSoins >= 30) {
+                if (!landerTypeOK) {
+                    $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="La zone de destination choisie ne peut être atteinte qu\'avec une navette de secours" class="boutonGrey bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
+                } else if (batSoins >= 30) {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Lander trop endommagé, ne peut pas partir" class="boutonGrey bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
                 } else {
                     $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ressources insuffisantes pour inclure ce lander dans la prochaine mission '+costString+'" class="boutonGrey bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployer</h4></span>');
                 }
             }
-            $('#unitInfos').append('<span class="blockTitle"><h3><button type="button" title="Ne pas inclure ce lander dans la prochaine mission" class="boutonOK bigButtons gf"><i class="fas fa-bed"></i></button>&nbsp; Rester</h3></span>');
+            $('#unitInfos').append('<span class="blockTitle"><h3><button type="button" title="Ce lander ne sera pas inclu dans la prochaine mission" class="boutonOK bigButtons gf"><i class="fas fa-bed"></i></button>&nbsp; Rester</h3></span>');
         } else {
             $('#unitInfos').append('<span class="blockTitle"><h3><button type="button" title="Ce lander sera inclu dans la prochaine mission" class="boutonOK bigButtons gf"><i class="fas fa-plane-departure"></i></button>&nbsp; Déployé</h3></span>');
             $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Ne pas inclure ce lander dans la prochaine mission" class="boutonRouge bigButtons" onclick="landerUnDeploy('+bat.id+')"><i class="fas fa-bed"></i></button>&nbsp; Rester</h4></span>');

@@ -679,7 +679,7 @@ function pickZone() {
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<div id="zoneDetail"></div>');
     zoneFiles.forEach(function(zoneId) {
-        if (zoneId != 0) {
+        if (zoneId != 0 && zoneId < 90) {
             let showInfo = '{Rien}';
             let zoneInfo = getZoneInfo(zoneId);
             if (zoneInfo.mapDiff != undefined) {
@@ -700,6 +700,7 @@ function pickZone() {
 
 function putMissionZone(zoneId) {
     playerInfos.missionZone = zoneId;
+    unDeployAllLanders();
     conWindowOut();
     commandes();
 };
