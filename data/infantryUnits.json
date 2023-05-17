@@ -182,7 +182,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fortif","datt","fouille","maycamo","brigands","penitbat","herofortif"],
+        "skills":["a_heavy","fortif","datt","fouille","maycamo","brigands","penitbat","herofortif"],
         "mediCost":9,
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
@@ -523,7 +523,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fortif","fouille","brigands","berserk","datt","guerrilla","tirailleur","swim","penitbat","herolasso","lowstress","recupcorps"],
+        "skills":["a_heavy","fortif","fouille","brigands","berserk","datt","guerrilla","tirailleur","swim","penitbat","herolasso","lowstress","recupcorps"],
         "mediCost":9,
         "mecanoCost":12,
         "fuzz":1,
@@ -1793,7 +1793,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","camo","guerrilla","tirailleur","datt","ranger","swim","uprank","herorage","herofana"],
+        "skills":["a_mid","fouille","fortif","camo","guerrilla","tirailleur","datt","ranger","swim","uprank","herorage","herofana"],
         "mediCost":9,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
@@ -3659,7 +3659,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","datt","slowreg","mutant","genhab2","maycamo","strong","souschef","herosalvo","lowstress","elite"],
+        "skills":["a_mid","fouille","fortif","datt","slowreg","mutant","genhab2","maycamo","strong","souschef","herosalvo","lowstress","elite"],
         "fuzz":2,
         "deathFx":"mutantdeath"
     },
@@ -3705,7 +3705,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","camo","regeneration","rage","ranger","swim","snif","mutant","nofear","guerrilla","tirailleur","baddef","fastguet","resistpoison","heroescape","lowstress"],
+        "skills":["a_mid","fouille","fortif","datt","camo","regeneration","rage","ranger","swim","snif","mutant","nofear","guerrilla","tirailleur","baddef","fastguet","resistpoison","heroescape","lowstress"],
         "fuzz":0,
         "deathFx":"mutantdeath"
     },

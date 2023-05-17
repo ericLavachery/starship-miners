@@ -974,7 +974,7 @@ function getDamageRed(sound,defBat,defBatType) {
             dmgReduct = 2;
         } else if (defBat.tags.includes('zealot') && defBatType.cat === 'infantry') {
             dmgReduct = 1;
-        } else if (defBat.prt === 'kapton' || defBat.prt === 'battlesuit' || defBat.prt === 'bonibo' || defBat.prt === 'swarwing' || defBat.prt === 'silk') {
+        } else if (defBat.prt === 'kapton' || defBat.prt === 'kaptane' || defBat.prt.includes('suit') || defBat.prt === 'bonibo' || defBat.prt === 'swarwing' || defBat.prt === 'silk') {
             dmgReduct = 1;
         }
     }

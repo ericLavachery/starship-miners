@@ -334,6 +334,21 @@ function attack(melee,init) {
         shots = Math.round(shots/1.25);
         attFactor = Math.round(attFactor/1.25);
     }
+    // porcupine armor
+    if ((targetBat.prt === 'porcupine' || targetBat.prt === 'blowfish') && selectedWeap.range === 0) {
+        shots = Math.ceil(shots/1.33);
+        attFactor = Math.round(attFactor/1.33);
+        if (targetBat.prt === 'blowfish') {
+            if (!selectedBatType.skills.includes('resistpoison') && !selectedBat.tags.includes('resistpoison') && !selectedBatType.skills.includes('eatpoison')) {
+                selectedBat.tags.push('poison');
+            }
+            if (selectedBatType.skills.includes('eatpoison')) {
+                if (!selectedBat.tags.includes('regeneration')) {
+                    selectedBat.tags.push('regeneration');
+                }
+            }
+        }
+    }
     // HORST BOOST
     if (zone[0].planet === 'Horst' && selectedBatType.cat === 'aliens') {
         shots = Math.round(shots*1.25);
@@ -1533,6 +1548,11 @@ function defense(melee,init) {
     if (selectedWeap.noGrip && targetWeap.range === 0 && targetBatType.size >= 3) {
         shots = Math.ceil(shots/1.25);
         defFactor = Math.round(defFactor/1.25);
+    }
+    // porcupine armor
+    if ((selectedBat.prt === 'porcupine' || selectedBat.prt === 'blowfish') && targetWeap.range === 0) {
+        shots = Math.ceil(shots/1.33);
+        defFactor = Math.round(defFactor/1.33);
     }
     // ESCAPE
     escaped = false;

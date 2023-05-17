@@ -628,6 +628,9 @@ function showArmorInfo(batArmor) {
     if (batArmor.skills.includes('soap')) {
         armorSkills = armorSkills+' r.grip';
     }
+    if (batArmor.skills.includes('spikes')) {
+        armorSkills = armorSkills+' spikes';
+    }
     return armorSkills;
 };
 
@@ -636,34 +639,44 @@ function showFullArmorInfo(batArmor) {
     if (apAdj >= 1) {
         apAdj = '+'+apAdj;
     }
-    let armorSkills = '(+'+batArmor.armor+'/'+apAdj+') &#9889; ';
+    let armorSkills = '(+'+batArmor.armor+'/'+apAdj+') ';
     if (batArmor.skills.includes('slowreg')) {
-        armorSkills = armorSkills+'régénération lente &#9889; ';
+        armorSkills = armorSkills+'&#9889; régénération lente ';
     }
     if (batArmor.skills.includes('regeneration')) {
-        armorSkills = armorSkills+'régénération &#9889; ';
+        armorSkills = armorSkills+'&#9889; régénération ';
     }
     if (batArmor.skills.includes('resistacide')) {
-        armorSkills = armorSkills+'résistance acide &#9889; ';
+        armorSkills = armorSkills+'&#9889; résistance acide ';
     }
     if (batArmor.skills.includes('resistfeu')) {
-        armorSkills = armorSkills+'résistance feu &#9889; ';
+        armorSkills = armorSkills+'&#9889; résistance feu ';
     }
     if (batArmor.skills.includes('resistall')) {
-        armorSkills = armorSkills+'résistance globale &#9889; ';
+        armorSkills = armorSkills+'&#9889; résistance globale ';
     }
     if (batArmor.skills.includes('protectall')) {
-        armorSkills = armorSkills+'protection globale &#9889; ';
+        armorSkills = armorSkills+'&#9889; protection globale ';
     }
     if (batArmor.skills.includes('dreduct')) {
-        armorSkills = armorSkills+'réduction de dégâts &#9889; ';
+        armorSkills = armorSkills+'&#9889; réduction de dégâts ';
     }
     if (batArmor.skills.includes('resistelec')) {
-        armorSkills = armorSkills+'résistance électricité &#9889; ';
+        armorSkills = armorSkills+'&#9889; résistance électricité ';
     }
     if (batArmor.skills.includes('soap')) {
-        armorSkills = armorSkills+'résistance entrave &#9889; ';
+        armorSkills = armorSkills+'&#9889; résistance entrave ';
     }
+    if (batArmor.skills.includes('spikes')) {
+        armorSkills = armorSkills+'&#9889; protection mêlée ';
+    }
+    if (batArmor.skills.includes('poison')) {
+        armorSkills = armorSkills+'&#9889; poison ';
+    }
+    if (batArmor.skills.includes('camoloss')) {
+        armorSkills = armorSkills+'&#9889; déplacement non furtif ';
+    }
+    armorSkills = armorSkills+'&nbsp;';
     return armorSkills;
 };
 

@@ -389,6 +389,10 @@ function allowedArmors(unit) {
         if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
             protection.push('combo');
         }
+        if (!unit.skills.includes('dog')) {
+            protection.push('porcupine');
+            protection.push('blowfish');
+        }
         protection.push('silk');
         protection.push('kaptane');
     }
@@ -405,6 +409,8 @@ function allowedArmors(unit) {
         protection.push('dragscale');
         if (!unit.skills.includes('fly') && !unit.skills.includes('dog')) {
             protection.push('battlesuit');
+            protection.push('turbosuit');
+            protection.push('medsuit');
         }
     }
     if (unit.skills.includes('a_heavy')) {
@@ -439,6 +445,8 @@ function allowedArmors(unit) {
         protection.push('aucune');
         protection.push('chobham');
         protection.push('battlesuit');
+        protection.push('turbosuit');
+        protection.push('medsuit');
     }
 
     if (unit.skills.includes('b_light') || unit.skills.includes('b_mid') || unit.skills.includes('b_heavy')) {
