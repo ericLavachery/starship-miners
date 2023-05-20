@@ -1,5 +1,6 @@
 function events(afterMission,time,sim,quiet) {
     console.log('EVENTS: afterMission='+afterMission+' time='+time+' sim='+sim+' quiet='+quiet);
+    checkMissionAlert();
     checkReserve();
     updateBldList();
     resetWeekRes();

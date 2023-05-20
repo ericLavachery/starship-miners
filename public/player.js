@@ -359,6 +359,14 @@ function resetComp() {
     return comp;
 };
 
+function playerSkillsUTAmmos() {
+    // Système pour les munitions
+    // wsys = 'fa' dans UnitTypes
+    // wsys = ['fa','carab','blast'] dans AmmoTypes
+    // loop ammos: create ammoLists.carab = ['titanium','standard','salite']
+    // loop units: unit.weapon2.ammos = ammoLists[unit.weapon2.wsys]
+};
+
 function allowedArmors(unit) {
     let protection = [];
     if (unit.skills.includes('a_light') || unit.skills.includes('a_mid') || unit.skills.includes('a_heavy')) {
@@ -1220,6 +1228,7 @@ function playerSkillsATChanges() {
 };
 
 function maxGangCompCosts() {
+    // C'est PAAAAAAS le bon !!!
     let maxComp = [10,0];
     maxComp[0] = maxComp[0]+playerInfos.gLevel;
     if (playerInfos.gang === 'rednecks') {
@@ -3086,12 +3095,15 @@ function addComp(compId,nextComp) {
 };
 
 function calcCompPoints(nextGangLevel) {
+    // C'est le bon !!!
     let theCompPoints = 0;
     if (nextGangLevel === 0) {
         if (playerInfos.gang === 'bulbos') {
-            theCompPoints = 10;
+            theCompPoints = 12;
+        } else if (playerInfos.gang === 'drogmulojs') {
+            theCompPoints = 11;
         } else {
-            theCompPoints = 8;
+            theCompPoints = 10;
         }
     } else {
         if (playerInfos.gang === 'rednecks') {
@@ -3184,9 +3196,9 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 16) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 18) {
+            } else if (nextGangLevel === 17) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 20) {
+            } else if (nextGangLevel === 19) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 22) {
                 theCompPoints = 2;

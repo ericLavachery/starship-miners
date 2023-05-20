@@ -175,12 +175,13 @@ socket.on('playerInfos-Load', function(pi) {
     }
     if (playerInfos.objectifs === undefined) {
         playerInfos.objectifs = {};
-        playerInfos.objectifs.spider = playerInfos.aCanon;
-        playerInfos.objectifs.bug = 'none';
-        playerInfos.objectifs.larve = 'none';
-        playerInfos.objectifs.swarm = 'none';
         playerInfos.objectifs.resistance = 'none';
+        playerInfos.objectifs.trolley = 'none';
+        playerInfos.objectifs.swarm = 'none';
         playerInfos.objectifs.science = 'none';
+        playerInfos.objectifs.spider = playerInfos.aCanon;
+        playerInfos.objectifs.larve = 'none';
+        playerInfos.objectifs.bug = 'none';
     } else {
         if (playerInfos.objectifs.spider === undefined) {
             playerInfos.objectifs.spider = 'none';
@@ -199,6 +200,9 @@ socket.on('playerInfos-Load', function(pi) {
         }
         if (playerInfos.objectifs.science === undefined) {
             playerInfos.objectifs.science = 'none';
+        }
+        if (playerInfos.objectifs.trolley === undefined) {
+            playerInfos.objectifs.trolley = 'none';
         }
     }
     if (playerInfos.missionZone === undefined) {
@@ -270,6 +274,9 @@ socket.on('playerInfos-Load', function(pi) {
     }
     if (playerInfos.misDB === undefined) {
         playerInfos.misDB = [];
+    }
+    if (playerInfos.alerte === undefined) {
+        playerInfos.alerte = {};
     }
 });
 // Terrains
@@ -422,6 +429,7 @@ socket.on('unitDV-Load', function(udv) {
 // ammoTypes
 socket.on('ammoTypes-Load', function(at) {
     ammoTypes = at;
+    // playerSkillsUTAmmos();
     // console.log(ammoTypes);
 });
 // armorTypes

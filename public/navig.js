@@ -189,9 +189,19 @@ function commandes() {
                     if (zoneFiles.length >= 2) {
                         $('#commandz').append('<hr>');
                         $('#commandz').append('<button type="button" title="Choisir une zone pour la prochaine mission" class="boutonRouge iconButtons" onclick="pickZone()" onmousedown="clicSound(5)"><i class="fas fa-map"></i></button>');
-                        if (playerInfos.missionZone >= 1 && isLanderDeployed()) {
-                            $('#commandz').append('<button type="button" title="Partir en mission sur la zone '+playerInfos.missionZone+'" class="boutonNoir iconButtons" onclick="showStartLander()" onmousedown="warnSound(`nope`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
-                            $('#commandz').append('<button type="button" title="Partir en mission sur la zone '+playerInfos.missionZone+'" class="boutonRouge iconButtons" onclick="startMission(false)" onmousedown="warnSound(`takeoff`)" id="takeof2"><i class="fas fa-space-shuttle"></i></button>');
+                        if (playerInfos.missionZone >= 1) {
+                            if (isLanderDeployed()) {
+                                if (playerInfos.okFill) {
+                                    $('#commandz').append('<button type="button" title="Partir en mission sur la zone '+playerInfos.missionZone+'" class="boutonNoir iconButtons" onclick="showStartLander()" onmousedown="warnSound(`ignition`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
+                                    $('#commandz').append('<button type="button" title="Partir en mission sur la zone '+playerInfos.missionZone+'" class="boutonRouge iconButtons" onclick="startMission(false)" onmousedown="warnSound(`takeoff`)" id="takeof2"><i class="fas fa-space-shuttle"></i></button>');
+                                } else {
+                                    $('#commandz').append('<button type="button" title="Partir en mission: Vous n\'avez pas chargé de ressources!" class="boutonNoir iconButtons" onmousedown="warnSound(`error2`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
+                                }
+                            } else {
+                                $('#commandz').append('<button type="button" title="Partir en mission: Vous devez d\'abord déployer un lander et y mettre des bataillons!" class="boutonNoir iconButtons" onmousedown="warnSound(`error2`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
+                            }
+                        } else {
+                            $('#commandz').append('<button type="button" title="Partir en mission: Vous devez d\'abord choisir une zone!" class="boutonNoir iconButtons" onmousedown="warnSound(`error2`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
                         }
                     }
                 }
@@ -205,7 +215,7 @@ function commandes() {
                     if (isStartZone) {
                         returnText = 'Rejoindre la station spatiale';
                     }
-                    $('#commandz').append('<button type="button" title="'+returnText+'" class="boutonNoir iconButtons pipi" onclick="showStartLander()" onmousedown="warnSound(`nope`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
+                    $('#commandz').append('<button type="button" title="'+returnText+'" class="boutonNoir iconButtons pipi" onclick="showStartLander()" onmousedown="warnSound(`ignition`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
                     $('#commandz').append('<button type="button" title="'+returnText+'" class="boutonRouge iconButtons" onclick="stopMission()" onmousedown="warnSound(`takeoff`)" id="takeof2"><i class="fas fa-space-shuttle"></i></button>');
                 }
             }

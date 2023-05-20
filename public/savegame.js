@@ -99,10 +99,8 @@ function saveCurrentZoneAs(zoneNumber) {
 function saveMapForReturn() {
     let zoneNum = zone[0].number;
     let isMission = false;
-    if (zone[0].edited != undefined) {
-        if (zone[0].edited) {
-            isMission = true;
-        }
+    if (zoneNum >= 50) {
+        isMission = true;
     }
     // savePlayerInfos();
     zone[0].visit = true;
@@ -121,18 +119,22 @@ function saveAliensForReturn(zoneNum,isMission) {
         bat.creaTurn = 0;
         if (batType.moveCost >= 90) {
             if (batType.name === 'Cocon') {
-                deadAliensList.push(bat.id);
+                if (isMission) {
+                    alienMorph(bat,'Volcan',false);
+                } else {
+                    deadAliensList.push(bat.id);
+                }
             }
             if (batType.name === 'Vomissure') {
                 deadAliensList.push(bat.id);
             }
             if (batType.name === 'Ruche') {
-                if (rand.rand(1,100) <= 50) {
+                if (rand.rand(1,100) <= 50 && !isMission) {
                     deadAliensList.push(bat.id);
                 }
             }
             if (batType.name === 'Volcan') {
-                if (rand.rand(1,100) <= 25) {
+                if (rand.rand(1,100) <= 25 && !isMission) {
                     deadAliensList.push(bat.id);
                 }
             }
@@ -142,10 +144,16 @@ function saveAliensForReturn(zoneNum,isMission) {
                 }
             }
             if (batType.name === 'Oeuf voilé' || batType.name === 'Oeuf') {
-                if (rand.rand(1,100) <= 50) {
-                    alienMorph(bat,'Ruche',false);
+                if (isMission) {
+                    if (rand.rand(1,100) <= 50) {
+                        alienMorph(bat,'Ruche',false);
+                    }
                 } else {
-                    deadAliensList.push(bat.id);
+                    if (rand.rand(1,100) <= 50) {
+                        alienMorph(bat,'Ruche',false);
+                    } else {
+                        deadAliensList.push(bat.id);
+                    }
                 }
             }
             if (batType.name === 'Coque') {
@@ -155,8 +163,24 @@ function saveAliensForReturn(zoneNum,isMission) {
                     deadAliensList.push(bat.id);
                 }
             }
+            if (batType.name === 'Cocon') {
+                deadAliensList.push(bat.id);
+            }
         } else {
-            deadAliensList.push(bat.id);
+            if (isMission) {
+                let stays = false;
+                if (batType.skills.includes('stay')) {
+                    stays = true;
+                }
+                if (bat.pdm != undefined) {
+                    stays = true;
+                }
+                if (!stays) {
+                    deadAliensList.push(bat.id);
+                }
+            } else {
+                deadAliensList.push(bat.id);
+            }
         }
     });
     killAlienList();
@@ -393,11 +417,14 @@ function showMapReset() {
 };
 
 function showStartLander() {
+    playMusic('silence',true);
+    // let myVol = checkMyVol(playerInfos.volMu+0.3,true);
+    // theMusic.fade(myVol,0.0,3000);
     setTimeout(function (){
         commandes();
         $("#takeof1").css("display","none");
         $("#takeof2").css("display","inline-block");
-    }, 1500);
+    }, 5500);
 };
 
 function resetReserve() {

@@ -177,7 +177,11 @@ function landingList() {
                     zone[0].mapDiff = zone[0].mapDiff-1;
                 }
             }
-            checkCanon();
+            if (playerInfos.pseudo === 'Woklup') {
+                checkCanon();
+            } else {
+                checkMissions();
+            }
             showMap(zone,true);
             isReloaded = false;
         }

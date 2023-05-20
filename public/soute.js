@@ -223,6 +223,8 @@ function souteList() {
 function landerList() {
     $('#list_lander').empty();
     let landerBat = getBatById(slId);
+    let landerBatType = getBatType(landerBat);
+    $('#list_lander').append('<div class="souteLanderBlock"><img src="/static/img/units/'+landerBatType.cat+'/'+landerBatType.pic+'.png" width="48"></div>');
     if (!landerBat.tags.includes('deploy')) {
         if (playerInfos.missionZone === -1) {
             $('#list_lander').append('<br><span class="listRes or">&nbsp Vous ne pouvez pas déployer ce lander.<br>&nbsp Vous devez d\'abord choisir une zone de destination.<br><br></span>');
@@ -613,8 +615,6 @@ function landerDeploy(landerId) {
     let landerBat = getBatById(landerId);
     let landerBatType = getBatType(landerBat);
     let deployCosts = calcLanderDeploy(landerBatType);
-    // console.log('DEPLOYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
-    // console.log(deployCosts);
     let enoughRes = checkCost(deployCosts);
     if (enoughRes) {
         payCost(deployCosts);
@@ -632,12 +632,12 @@ function landerDeploy(landerId) {
 
 function landerUnDeploy(landerId) {
     let landerBat = getBatById(landerId);
-    let landerBatType = getBatType(landerBat);
-    let deployCosts = calcLanderDeploy(landerBatType);
-    // console.log('un-DEPLOYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
-    // console.log(deployCosts);
-    addCost(deployCosts,1);
-    tagDelete(landerBat,'deploy');
+    if (landerBat.tags.includes('deploy')) {
+        let landerBatType = getBatType(landerBat);
+        let deployCosts = calcLanderDeploy(landerBatType);
+        addCost(deployCosts,1);
+        tagDelete(landerBat,'deploy');
+    }
     commandes();
     if (inSoute) {
         goSoute();
@@ -647,11 +647,13 @@ function landerUnDeploy(landerId) {
 
 function unDeployAllLanders() {
     bataillons.forEach(function(bat) {
-        let batType = getBatType(bat);
-        if (batType.skills.includes('transorbital') && bat.tags.includes('deploy')) {
-            let deployCosts = calcLanderDeploy(batType);
-            addCost(deployCosts,1);
-            tagDelete(bat,'deploy');
+        if (bat.tags.includes('deploy')) {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('transorbital')) {
+                let deployCosts = calcLanderDeploy(batType);
+                addCost(deployCosts,1);
+                tagDelete(bat,'deploy');
+            }
         }
     });
     commandes();

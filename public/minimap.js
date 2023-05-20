@@ -88,7 +88,7 @@ function minimap() {
         if (tile.y === 1) {
             $('#themmap').append('<br>');
         }
-        if (playerInfos.pseudo === 'Mapedit' && (tile.nav != undefined || tile.land != undefined) && (miniDots === 'units' || miniDots === 'ruins' || miniDots === 'points')) {
+        if ((playerInfos.pseudo === 'Mapedit' || playerInfos.mapTurn <= 1) && (tile.nav != undefined || tile.land != undefined) && (miniDots === 'units' || miniDots === 'ruins' || miniDots === 'points')) {
             $('#themmap').append('<span class="mini mSelect" onclick="centerFromMinimap('+tile.id+')"></span>');
         } else if (miniDots === 'ruins' && tile.ruins && (tile.sh >= 0 || playerInfos.pseudo === 'Mapedit')) {
             $('#themmap').append('<span class="mini mPoints" onclick="centerFromMinimap('+tile.id+')"></span>');

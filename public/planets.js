@@ -206,7 +206,150 @@ function checkMayOut(batType,isBat,bat) {
     return mayOut;
 };
 
+function checkMissions() {
+    // à l'atterrissage sur une zone!
+    let doom = getDoom(false);
+    let nextMission = getNextMission(doom);
+    if (nextMission.num >= 50) {
+        // placer les fichiers de la zone !!!!!!!!!!
+        moveMissionZone(nextMission.num);
+        let mType = getMissionType(nextMission.num,true);
+        playerInfos.alerte.title = 'Nouvelle mission';
+        playerInfos.alerte.body = mType.name+': '+mType.title;
+    }
+};
+
+function checkMissionAlert() {
+    if (playerInfos.alerte.title != undefined) {
+        if (playerInfos.onShip) {
+            doMissionAlert();
+        } else {
+            if (playerInfos.mapTurn >= 19) {
+                doMissionAlert();
+            }
+        }
+    }
+};
+
+function doMissionAlert() {
+    warning('<span class="rq3">'+playerInfos.alerte.title+'</span>','<span class="vio">'+playerInfos.alerte.body+'</span>',false);
+    playerInfos.alerte = {};
+};
+
+function getNextMission(doom) {
+    let nextMission = {};
+    nextMission.num = -1;
+    nextMission.nid = 'none';
+    nextMission.pa = 99;
+    let found = false;
+    if (doom >= 4.4) {
+        if (playerInfos.objectifs.resistance === 'none') {
+            nextMission.num = getNextMissionNum(60,64);
+            if (nextMission.num >= 50) {
+                found = true;
+                nextMission.nid = 'resist';
+                nextMission.pa = 4.5; // 11
+                playerInfos.objectifs.resistance = 'actif';
+            }
+        }
+    }
+    if (!found) {
+        if (doom >= 5) {
+            if (playerInfos.objectifs.trolley === 'none') {
+                nextMission.num = getNextMissionNum(50,54);
+                if (nextMission.num >= 50) {
+                    found = true;
+                    nextMission.nid = 'trolley';
+                    nextMission.pa = 5; // 12
+                    playerInfos.objectifs.trolley = 'actif';
+                }
+            }
+        }
+    }
+    if (!found) {
+        if (doom >= 5.8) {
+            if (playerInfos.objectifs.swarm === 'none') {
+                nextMission.num = getNextMissionNum(65,69);
+                if (nextMission.num >= 50) {
+                    found = true;
+                    nextMission.nid = 'necro';
+                    nextMission.pa = 6; // 14
+                    playerInfos.objectifs.swarm = 'actif';
+                }
+            }
+        }
+    }
+    if (!found) {
+        if (doom >= 6.4) {
+            if (playerInfos.objectifs.science === 'none') {
+                nextMission.num = getNextMissionNum(55,59);
+                if (nextMission.num >= 50) {
+                    found = true;
+                    nextMission.nid = 'science';
+                    nextMission.pa = 6.5; // 15
+                    playerInfos.objectifs.science = 'actif';
+                }
+            }
+        }
+    }
+    if (!found) {
+        if (doom >= 7) {
+            if (playerInfos.objectifs.spider === 'none') {
+                nextMission.num = getNextMissionNum(80,84);
+                if (nextMission.num >= 50) {
+                    found = true;
+                    nextMission.nid = 'spider';
+                    nextMission.pa = 7; // 16
+                    playerInfos.objectifs.spider = 'actif';
+                }
+            }
+        }
+    }
+    if (!found) {
+        if (doom >= 7.6) {
+            if (playerInfos.objectifs.larve === 'none') {
+                nextMission.num = getNextMissionNum(70,74);
+                if (nextMission.num >= 50) {
+                    found = true;
+                    nextMission.nid = 'sky';
+                    nextMission.pa = 7.5; // 17
+                    playerInfos.objectifs.larve = 'actif';
+                }
+            }
+        }
+    }
+    if (!found) {
+        if (doom >= 8.2) {
+            if (playerInfos.objectifs.bug === 'none') {
+                nextMission.num = getNextMissionNum(75,79);
+                if (nextMission.num >= 50) {
+                    found = true;
+                    nextMission.nid = 'dragon';
+                    nextMission.pa = 8; // 18
+                    playerInfos.objectifs.bug = 'actif';
+                }
+            }
+        }
+    }
+    return nextMission;
+};
+
+function getNextMissionNum(minNum,maxNum) {
+    let misNum = -1;
+    let availableMissions = _.shuffle(playerInfos.misDB);
+    availableMissions.forEach(function(thatMission) {
+        if (misNum < 0) {
+            if (thatMission >= minNum && thatMission <= maxNum) {
+                misNum = thatMission;
+            }
+        }
+    });
+    return misNum;
+};
+
 function checkCanon() {
+    // à l'atterrissage sur une zone!
+    // OLD VERSION
     let doom = getDoom(true);
     let isTest = false;
     if (playerInfos.pseudo == 'Payall' || playerInfos.pseudo == 'Test' || playerInfos.pseudo == 'Woktest') {

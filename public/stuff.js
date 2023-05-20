@@ -653,6 +653,9 @@ function warning(title,body,noHand,tileId,closeAll) {
             $('#warn'+warnNumber).append('<i class="far fa-hand-paper wash" onclick="washThisWarning('+warnNumber+')" title="Supprimer cette alerte"></i>');
         }
     }
+    if (title.includes('rq3')) {
+        playSound('attention',0,false);
+    }
 };
 
 function warnLink(tileId) {

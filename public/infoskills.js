@@ -360,7 +360,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
     }
     // EMBARQUER
-    if (!zeroCrew) {
+    if (!zeroCrew && !playerInfos.onShip) {
         let jumpTransId = checkHopTransId(bat,batType);
         if (jumpTransId >= 0) {
             let jumpTransBat = getBatById(jumpTransId);
