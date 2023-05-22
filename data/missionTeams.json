@@ -12,6 +12,12 @@
         "gangs":["rednecks","blades","bulbos","drogmulojs","tiradores","detruas","brasier"]
     },
     {
+        "unit":"Bar",
+        "gear":["uranium","molotov-flash","bulk","w2-molo"],
+        "missions":["resist","trolley","necro","science","spider","sky","dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
         "unit":"Poudrière",
         "gear":["pn-titanium","grenade","bulk","w2-explo"],
         "missions":["resist","trolley","necro","science","spider","sky","dragon"],

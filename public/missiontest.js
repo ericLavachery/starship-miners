@@ -7,7 +7,7 @@ function putMissionUnits(missionTeams) {
     putMissionStats(mType,missionTeams);
     putFullBldVM();
     putMissionAlienRes();
-    objectifsReset();
+    putObjectifs(mType);
     let startTileId = -1;
     let theBest = 0;
     zone.forEach(function(tile) {
@@ -307,6 +307,75 @@ function updateMissionsInfo() {
         }
     });
     console.log(playerInfos.misInfo);
+};
+
+function putObjectifs(mType) {
+    if (playerInfos.objectifs === undefined) {
+        playerInfos.objectifs = {};
+    }
+    if (mType.nid === 'resist') {
+        playerInfos.objectifs.resistance = 'actif';
+        playerInfos.objectifs.trolley = 'none';
+        playerInfos.objectifs.swarm = 'none';
+        playerInfos.objectifs.science = 'none';
+        playerInfos.objectifs.spider = 'none';
+        playerInfos.objectifs.larve = 'none';
+        playerInfos.objectifs.bug = 'none';
+    }
+    if (mType.nid === 'trolley') {
+        playerInfos.objectifs.resistance = 'detruit';
+        playerInfos.objectifs.trolley = 'actif';
+        playerInfos.objectifs.swarm = 'none';
+        playerInfos.objectifs.science = 'none';
+        playerInfos.objectifs.spider = 'none';
+        playerInfos.objectifs.larve = 'none';
+        playerInfos.objectifs.bug = 'none';
+    }
+    if (mType.nid === 'necro') {
+        playerInfos.objectifs.resistance = 'detruit';
+        playerInfos.objectifs.trolley = 'detruit';
+        playerInfos.objectifs.swarm = 'actif';
+        playerInfos.objectifs.science = 'none';
+        playerInfos.objectifs.spider = 'none';
+        playerInfos.objectifs.larve = 'none';
+        playerInfos.objectifs.bug = 'none';
+    }
+    if (mType.nid === 'science') {
+        playerInfos.objectifs.resistance = 'detruit';
+        playerInfos.objectifs.trolley = 'detruit';
+        playerInfos.objectifs.swarm = 'detruit';
+        playerInfos.objectifs.science = 'actif';
+        playerInfos.objectifs.spider = 'none';
+        playerInfos.objectifs.larve = 'none';
+        playerInfos.objectifs.bug = 'none';
+    }
+    if (mType.nid === 'spider') {
+        playerInfos.objectifs.resistance = 'detruit';
+        playerInfos.objectifs.trolley = 'detruit';
+        playerInfos.objectifs.swarm = 'detruit';
+        playerInfos.objectifs.science = 'detruit';
+        playerInfos.objectifs.spider = 'actif';
+        playerInfos.objectifs.larve = 'none';
+        playerInfos.objectifs.bug = 'none';
+    }
+    if (mType.nid === 'sky') {
+        playerInfos.objectifs.resistance = 'detruit';
+        playerInfos.objectifs.trolley = 'detruit';
+        playerInfos.objectifs.swarm = 'detruit';
+        playerInfos.objectifs.science = 'detruit';
+        playerInfos.objectifs.spider = 'detruit';
+        playerInfos.objectifs.larve = 'actif';
+        playerInfos.objectifs.bug = 'none';
+    }
+    if (mType.nid === 'dragon') {
+        playerInfos.objectifs.resistance = 'detruit';
+        playerInfos.objectifs.trolley = 'detruit';
+        playerInfos.objectifs.swarm = 'detruit';
+        playerInfos.objectifs.science = 'detruit';
+        playerInfos.objectifs.spider = 'detruit';
+        playerInfos.objectifs.larve = 'detruit';
+        playerInfos.objectifs.bug = 'actif';
+    }
 };
 
 function getMissionType(misNum,forInfo) {

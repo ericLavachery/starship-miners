@@ -27,7 +27,7 @@ function alienMoveLoop() {
         // console.log('!!! Start Loop !!!');
         let iter = 1;
         while (iter <= 20) {
-            console.log('loop '+iter+' || ap:'+selectedBat.apLeft+' salvo:'+selectedBat.salvoLeft);
+            // console.log('loop '+iter+' || ap:'+selectedBat.apLeft+' salvo:'+selectedBat.salvoLeft);
             if (selectedBat.apLeft >= 1 && selectedBat.salvoLeft >= 1) {
                 if (attAlive && defAlive) {
                     if (stopForFight) {
@@ -165,9 +165,9 @@ function chooseTarget(iter) {
 function checkAlienFlyTarget(weapon,bat) {
     let isTarget = false;
     let batType = getBatType(bat);
-    console.log('CHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHEK');
+    // console.log('CHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHEK');
     if (weapon.noFly) {
-        console.log('noFly');
+        // console.log('noFly');
         let isFlying = false;
         if (batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') {
             if (bat.apLeft >= -1) {
@@ -197,9 +197,9 @@ function checkAlienFlyTarget(weapon,bat) {
             isTarget = true;
         }
     } else if (weapon.noGround) {
-        console.log('noGround');
+        // console.log('noGround');
         let isFlying = checkFlying(bat,batType);
-        console.log('isFlying='+isFlying);
+        // console.log('isFlying='+isFlying);
         if (!isFlying) {
             isTarget = false;
         } else {
@@ -208,8 +208,8 @@ function checkAlienFlyTarget(weapon,bat) {
     } else {
         isTarget = true;
     }
-    console.log('isTarget='+isTarget);
-    console.log(bat.type);
+    // console.log('isTarget='+isTarget);
+    // console.log(bat.type);
     return isTarget;
 };
 
@@ -657,7 +657,7 @@ function isBldLike(bat,batType) {
 function anyCloseTarget(iter) {
     newPointDeMire = -1;
     let closeRange = closeTargetRange;
-    console.log('closeRange='+closeRange);
+    // console.log('closeRange='+closeRange);
     if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0) {
         closeRange = closeRange-1;
     } else if (selectedBat.squadsLeft >= selectedBatType.squads/2) {
@@ -681,11 +681,11 @@ function anyCloseTarget(iter) {
                             if ((bat.fuzz >= minFuzz.unit && !bldLike) || (bat.fuzz >= minFuzz.bld && bldLike)) {
                                 if ((!batType.skills.includes('fly') && bat.eq != 'e-jetpack') || !selectedWeap.noFly) {
                                     distance = calcDistance(selectedBat.tileId,bat.tileId);
-                                    console.log(bat.type);
-                                    console.log('distance='+distance);
+                                    // console.log(bat.type);
+                                    // console.log('distance='+distance);
                                     if (distance <= closeRange) {
                                         tLogic = targetLogic(bat,iter);
-                                        console.log('tLogic='+tLogic);
+                                        // console.log('tLogic='+tLogic);
                                         if (tLogic > bestLogic) {
                                             bestLogic = tLogic;
                                             newPointDeMire = bat.tileId;
@@ -703,7 +703,7 @@ function anyCloseTarget(iter) {
         pointDeMire = newPointDeMire;
         // console.log('new PDM: '+pointDeMire);
     }
-    console.log('pointDeMire='+pointDeMire);
+    // console.log('pointDeMire='+pointDeMire);
 };
 
 function anyFarTarget(iter) {
@@ -1325,8 +1325,8 @@ function anyTargetInRange() {
 
 function lockTargetBat(bat) {
     targetBat = JSON.parse(JSON.stringify(bat));
-    console.log('LOCK TARGET');
-    console.log(targetBat.type);
+    // console.log('LOCK TARGET');
+    // console.log(targetBat.type);
 };
 
 function targetMelee(iter) {

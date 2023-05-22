@@ -1686,7 +1686,7 @@
         "id":303,
         "name":"Dingys",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
-        "bldReq":["Atelier"],
+        "bldReq":[],
         "compReq":{"trans":1},
         "costs":{"Fer":32,"Scrap":32,"Bois":160},
         "deploy":{},

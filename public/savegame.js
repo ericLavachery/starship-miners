@@ -349,6 +349,7 @@ function objectifsReset() {
     playerInfos.objectifs.swarm = 'none';
     playerInfos.objectifs.resistance = 'none';
     playerInfos.objectifs.science = 'none';
+    playerInfos.objectifs.trolley = 'none';
 };
 
 function mapReset() {

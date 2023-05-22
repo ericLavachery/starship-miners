@@ -5769,7 +5769,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","fortif","datt","robot","crange","decay","sentinelle","mecano","undead","survivor","resistfeu","light","aifouille","roborepair","hbot"],
+        "skills":["a_rob","fortif","datt","robot","crange","decay","sentinelle","selfmecano","undead","survivor","resistfeu","light","aifouille","roborepair","hbot"],
         "mecanoCost":10,
         "fuzz":2,
         "deathFx":"robodeath2"
