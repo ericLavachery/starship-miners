@@ -117,6 +117,16 @@ function saveAliensForReturn(zoneNum,isMission) {
     aliens.forEach(function(bat) {
         let batType = getBatType(bat);
         bat.creaTurn = 0;
+        if (batType.skills.includes('heal') || batType.skills.includes('fastreg') || batType.skills.includes('slowreg') || batType.skills.includes('regeneration') || bat.tags.includes('regeneration')) {
+            bat.squadsLeft = batType.squads;
+            bat.damage = 0;
+        }
+        let i = 0;
+        while (i <= 50) {
+            tagDelete(bat,'poison');
+            if (i > 50 || !bat.tags.includes('poison')) {break;}
+            i++
+        }
         if (batType.moveCost >= 90) {
             if (batType.name === 'Cocon') {
                 if (isMission) {

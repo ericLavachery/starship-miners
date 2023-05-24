@@ -577,7 +577,7 @@
             "sound":"lightning",
             "ammo":["electricity"],
             "maxAmmo":15,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","e-flash","e-ranger","e-camo","e-jetpack","permakirin","theeye","helper","kit-lightning","detector"],
@@ -3814,7 +3814,7 @@
             "sound":"bfg2",
             "ammo":["bfg","bfg-g2"],
             "maxAmmo":8,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","e-flash","gilet","e-camo","chargeur1","permakirin","theeye","waterproof","e-medic","repel"],
@@ -4295,7 +4295,7 @@
             "sound":"laser_canon_x1",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":12,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","chargeur1","chargeur2","gilet","theeye","waterproof","e-medic","repel"],
@@ -5277,7 +5277,7 @@
             "sound":"shriek",
             "ammo":["disco"],
             "maxAmmo":20,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Fusil plasma",
@@ -5334,7 +5334,7 @@
             "sound":"shriek",
             "ammo":["disco"],
             "maxAmmo":20,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{
             "name":"Fusil mitrailleur",

@@ -2212,7 +2212,7 @@
             "sound":"laser_canon_x1",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":36,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Tourelles auto",
@@ -2311,7 +2311,7 @@
             "sound":"laser_canon_x1",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":36,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","w1-ggun","w2-arti","w2-laser","psol2","isophon","lifepod","garage","e-radar"],
@@ -2706,7 +2706,7 @@
             "sound":"laser_canon_x1",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":36,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","w1-plasma","w2-laser","psol2","isophon","e-control","respod","garage","prodboost","e-infra","e-radar"],
@@ -2944,7 +2944,7 @@
             "sound":"laser_canon_x1",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":36,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "weapon3":{
             "name":"Tourelles auto",

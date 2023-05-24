@@ -380,9 +380,10 @@ function putObjectifs(mType) {
 
 function getMissionType(misNum,forInfo) {
     let mType = {};
-    mType.name = 'Spécial';
-    mType.nid = 'special';
+    mType.name = 'Normal';
+    mType.nid = 'normal';
     mType.pa = 4;
+    mType.boss = false;
     mType.title = getMissionTitle(misNum);
     if (misNum >= 90) {
         mType.name = 'Exil';
@@ -396,6 +397,7 @@ function getMissionType(misNum,forInfo) {
         mType.name = 'Spiderblob';
         mType.nid = 'spider';
         mType.pa = 7; // 16
+        mType.boss = true;
         if (!forInfo) {
             zone[0].pKind = 'spider';
             zone[0].gKind = 'spider';
@@ -405,6 +407,7 @@ function getMissionType(misNum,forInfo) {
         mType.name = 'Dragonblob';
         mType.nid = 'dragon';
         mType.pa = 8; // 18
+        mType.boss = true;
         if (!forInfo) {
             zone[0].pKind = 'bug';
             zone[0].gKind = 'bug';
@@ -414,6 +417,7 @@ function getMissionType(misNum,forInfo) {
         mType.name = 'Skygrub';
         mType.nid = 'sky';
         mType.pa = 7.5; // 17
+        mType.boss = true;
         if (!forInfo) {
             zone[0].pKind = 'larve';
             zone[0].gKind = 'larve';
@@ -423,6 +427,7 @@ function getMissionType(misNum,forInfo) {
         mType.name = 'Necroblob';
         mType.nid = 'necro';
         mType.pa = 6; // 14
+        mType.boss = true;
         if (!forInfo) {
             zone[0].pKind = 'swarm';
             zone[0].gKind = 'swarm';

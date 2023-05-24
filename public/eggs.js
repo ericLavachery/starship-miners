@@ -314,6 +314,10 @@ function checkEggsDrop() {
         dropChance = 0;
         dropMessage = 'Dôme actif';
     }
+    let mType = getMissionType(misNum,true);
+    if (playerInfos.mapTurn === 1 && dropChance >= 1 && mType.boss) {
+        dropChance = 100;
+    }
     console.log('dropChance='+dropChance);
     if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
         warning('Oeufs','Check '+dropChance+'% '+dropMessage);

@@ -308,7 +308,7 @@
             "sound":"laser_minicanon_x2",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":15,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","g2motor","snorkel","e-flash","e-radar","theeye","e-mecano","repel"],
@@ -1007,7 +1007,7 @@
             "sound":"raygun",
             "ammo":["bfg","bfg-g2"],
             "maxAmmo":20,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","g2motor","snorkel","e-mecano","e-radar"],
@@ -2722,7 +2722,7 @@
         "maxDrug":48,
         "maxSkill":999,
         "transMaxSize":4,
-        "transUnits":175,
+        "transUnits":220,
         "fuzz":3,
         "deathFx":"S_CarExplosion02",
         "mvSnd":"car"
@@ -4614,7 +4614,7 @@
             "sound":"laser_minicanon_x2",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":16,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "weapon2":{},
         "protection":[],

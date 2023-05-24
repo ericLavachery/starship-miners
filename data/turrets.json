@@ -791,7 +791,7 @@
             "sound":"laser_canon_x1",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"],
             "maxAmmo":24,
-            "ravitBld":"Générateur"
+            "ravitBld":"Poudrière"
         },
         "protection":[],
         "equip":["aucun","lunette1","chargeur1","e-radar"],
