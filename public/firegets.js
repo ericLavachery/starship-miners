@@ -644,17 +644,19 @@ function batDeathEffect(bat,quiet,gain,title,body) {
         if (playerInfos.objectifs.swarm != 'none') {
             let morphNecro = false;
             let morphFetid = false;
-            if (bat.tags.includes('moss')) {
-                if (bat.type != 'Necros') {
-                    morphNecro = true;
-                } else {
-                    morphFetid = true;
-                }
-            } else if (bat.type != 'Necros' && bat.type != 'Fétides') {
-                let tile = getTile(bat);
-                if (tile.moist) {
-                    morphNecro = true;
-                    delete tile.moist;
+            if (bat.type != 'Fétides') {
+                if (bat.tags.includes('moss')) {
+                    if (bat.type === 'Necros' || bat.type === 'Necroblob') {
+                        morphFetid = true;
+                    } else {
+                        morphNecro = true;
+                    }
+                } else if (bat.type != 'Necros') {
+                    let tile = getTile(bat);
+                    if (tile.moist) {
+                        morphNecro = true;
+                        delete tile.moist;
+                    }
                 }
             }
             if (morphNecro) {

@@ -314,7 +314,7 @@ function checkEggsDrop() {
         dropChance = 0;
         dropMessage = 'Dôme actif';
     }
-    let mType = getMissionType(misNum,true);
+    let mType = getMissionType(zone[0].number,true);
     if (playerInfos.mapTurn === 1 && dropChance >= 1 && mType.boss) {
         dropChance = 100;
     }

@@ -1894,7 +1894,7 @@
             "accuracy":15,
             "power":4,
             "aoe":"unit",
-            "sound":"tsss",
+            "sound":"suck5",
             "ammo":["necrotox"]
         },
         "w2chance":2,
