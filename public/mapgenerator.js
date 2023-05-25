@@ -89,7 +89,13 @@ function regionChange() {
     generateNewMap(true);
 };
 
-function generateNewMap(filterCheck) {
+function regionChoice(regionName) {
+    let region = getRegionByName(regionName);
+    filterBase = region;
+    generateNewMap(false,true);
+};
+
+function generateNewMap(filterCheck,louche) {
     zone = [];
     playerInfos.sondeMaps = playerInfos.sondeMaps+1;
     let fastChance = Math.round(playerInfos.comp.vsp*playerInfos.comp.vsp*6);
@@ -127,6 +133,9 @@ function generateNewMap(filterCheck) {
     minimap();
     commandes();
     ruinsView();
+    if (louche) {
+        mapGlobalEdits();
+    }
 };
 
 function createMap(size) {

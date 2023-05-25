@@ -609,6 +609,18 @@
         "unit":"Obusiers",
         "gear":["obus-plastanium","uranium","bulk","longtom1"],
         "missions":["sky","dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Obusiers",
+        "gear":["obus-gaz","uranium","bulk","longtom1"],
+        "missions":["spider"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Obusiers",
+        "gear":["obus-plastanium","uranium","bulk","longtom1"],
+        "missions":["sky","dragon"],
         "gangs":["rednecks"]
     },
     {
@@ -1736,7 +1748,7 @@
     {
         "unit":"Blastoxs",
         "gear":["lame-titane","ac-dunium","wendium","chargeur2"],
-        "missions":["necro","science","sky"],
+        "missions":["necro","science"],
         "gangs":["drogmulojs"]
     },
     {
@@ -1862,12 +1874,6 @@
     {
         "unit":"Warclones",
         "gear":["salite","grenade-incendiaire","hplate","chargeur1"],
-        "missions":["spider","dragon"],
-        "gangs":["drogmulojs"]
-    },
-    {
-        "unit":"Warclones",
-        "gear":["adamantium","grenade-nanite","kaptane","chargeur1"],
         "missions":["dragon"],
         "gangs":["drogmulojs"]
     },
@@ -1983,6 +1989,12 @@
         "unit":"Drumfires",
         "gear":["missile-hellfire","missile-nanite","sbulk","hangard"],
         "missions":["spider","sky"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Drumfires",
+        "gear":["missile-deluge","missile-fleche","sbulk","hangard"],
+        "missions":["dragon"],
         "gangs":["brasier"]
     },
     {
@@ -2936,7 +2948,7 @@
     {
         "unit":"Blocks",
         "gear":["uranium","molotov-pyrus","duneg","lanceur"],
-        "missions":["sky","dragon"],
+        "missions":["sky"],
         "gangs":["brasier"]
     },
     {

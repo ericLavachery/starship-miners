@@ -2044,7 +2044,7 @@ function getResRecup(bat,batType) {
                 if (key != 'Transorb' && key != 'Spins') {
                     value = Math.ceil(value/100*recupFactor);
                 } else if (key === 'Spins') {
-                    value = Math.ceil(spinCost/100*recupFactor);
+                    value = Math.ceil(spinCost/135*(recupFactor+25));
                 }
                 if (value >= 1) {
                     if (resRecup[key] === undefined) {

@@ -481,7 +481,7 @@ function getMissionTitle(misNum) {
     if (misNum === 71) {title = '';}
     if (misNum === 70) {title = '';}
     // NECROBLOB
-    if (misNum === 69) {title = '';}
+    if (misNum === 69) {title = 'Zatchlas';}
     if (misNum === 68) {title = '';}
     if (misNum === 67) {title = '';}
     if (misNum === 66) {title = '';}

@@ -1117,6 +1117,15 @@ function getAmmoByName(ammoName) {
     return ammo;
 };
 
+function getRegionByName(regionName) {
+    let region = {};
+    let index = mapFilters.findIndex((obj => obj.name == regionName));
+    if (index > -1) {
+        region = mapFilters[index];
+    }
+    return region;
+};
+
 function getBatType(bat) {
     let batType = {};
     let index;
