@@ -606,7 +606,7 @@ function batDeathEffect(bat,quiet,gain,title,body) {
                     warning(bat.chief+' est mort','RIP',false,bat.tileId);
                 }
             }
-            warning('<span class="rq3">'+title+'</span>','<span class="vio">'+body+'</span>');
+            warning(title,body);
         }
     } else {
         $('#b'+bat.tileId).empty();

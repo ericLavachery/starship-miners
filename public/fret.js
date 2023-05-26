@@ -197,11 +197,13 @@ function loadRes(retour) {
 function checkResTeleport(inBat,outBat) {
     // console.log('CHECK TELEPORT');
     let teleOK = false;
-    if (playerInfos.comp.tele >= 1) {
-        let inBatType = getBatType(inBat);
-        let outBatType = getBatType(outBat);
-        if ((inBatType.skills.includes('teleport') || inBat.eq === 'e-respod' || inBat.eq === 'respod') && (outBatType.skills.includes('teleport') || outBat.eq === 'e-respod' || outBat.eq === 'respod')) {
-            teleOK = true;
+    if (playerInfos.comp.tele >= 1 || (inBat.tags.includes('outsider') && outBat.tags.includes('outsider'))) {
+        if (!inBat.tags.includes('nomove') && !outBat.tags.includes('nomove')) {
+            let inBatType = getBatType(inBat);
+            let outBatType = getBatType(outBat);
+            if ((inBatType.skills.includes('teleport') || inBat.eq === 'e-respod' || inBat.eq === 'respod') && (outBatType.skills.includes('teleport') || outBat.eq === 'e-respod' || outBat.eq === 'respod')) {
+                teleOK = true;
+            }
         }
     }
     // console.log(teleOK);
