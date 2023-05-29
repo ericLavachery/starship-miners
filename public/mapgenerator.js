@@ -33,7 +33,6 @@ function generateVM() {
     filterParams(true);
     createVM(mapSize);
     washReports(true);
-    // zoneReport(zone,false);
     let ensolFactor = rand.rand(28,32);
     let ensolBonus = rand.rand(20,60);
     zone[0].ensol = Math.round(100*ensolFactor/10)+ensolBonus;
@@ -1837,8 +1836,20 @@ function zoneReport(myZone,quiet) {
     myZone[0].pw = percW;
     percR = Math.round(percR/36);
     myZone[0].pr = percR;
-    if (percS < 30) {
-        myZone[0].sKind = 'larve';
+    if (!quiet && myZone[0].planet === 'Dom') {
+        if (percS+percR+percW >= 40) {
+            myZone[0].sKind = 'larve';
+        }
+        if (percB+percG >= 40) {
+            myZone[0].pKind = 'swarm';
+            myZone[0].gKind = 'swarm';
+        } else if (percF+percG+percS >= 40) {
+            myZone[0].pKind = 'spider';
+            myZone[0].gKind = 'spider';
+        } else if (percM+percH >= 35) {
+            myZone[0].pKind = 'bug';
+            myZone[0].gKind = 'bug';
+        }
     }
     let rain = false;
     let sndEnsolBonus = 100;

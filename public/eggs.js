@@ -325,6 +325,7 @@ function checkEggsDrop() {
     if (!domeProtect) {
         let crysalide = checkCrysalide();
         let alienArtillery = checkAlienArtillery();
+        if (zone[0].c1turn === undefined) {zone[0].c1turn = 99;}
         if (zone[0].mapDiff >= 1 || playerInfos.mapTurn >= 25) {
             let dropCheckDice = rand.rand(1,100);
             console.log('dropCheckDice='+dropCheckDice);
@@ -353,6 +354,13 @@ function checkEggsDrop() {
                 }
                 satDrop = true;
                 playerInfos.alienSat = 0;
+            } else if (playerInfos.mapTurn >= zone[0].c1turn) {
+                dropEgg('Cocon','any');
+                satDrop = true;
+                if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
+                    warning('Cocon prédéterminé','Prévu pour le tour '+zone[0].c1turn);
+                }
+                zone[0].c1turn = 99;
             }
         }
         if (drop || playerInfos.eggPause) {

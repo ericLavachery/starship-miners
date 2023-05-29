@@ -155,6 +155,8 @@ function mapEditWindow() {
         meip = zone[0].meip;
     }
     $('#conUnitList').append('<span class="constName"><span class="gf" title="Maximum d\'oeufs en jeu (en plus de la normale)">Max Eggs</span> : <span class="cy klik" onclick="addMaxEggs(false)" title="Diminuer">&ddarr;</span> <span class="bleu">+'+meip+'</span> <span class="cy klik" onclick="addMaxEggs(true)" title="Augmenter">&uuarr;</span></span><br>');
+    if (zone[0].c1turn === undefined) {zone[0].c1turn = 99;}
+    $('#conUnitList').append('<span class="constName"><span class="gf" title="Cocon supplémentaire au tour '+zone[0].c1turn+'">Bonus Cocon</span> : <span class="cy klik" onclick="changeCoconTurn(false)" title="Diminuer">&ddarr;</span> <span class="bleu">tour '+zone[0].c1turn+'</span> <span class="cy klik" onclick="changeCoconTurn(true)" title="Augmenter">&uuarr;</span></span><br>');
     mpedOption('coverEggs','Les oeufs tombent toujours à couvert (près d\'une ruche, volcan ou colonie)','Oeufs à couvert','Les oeufs tombent normalement','Oeufs partout');
     $('#conUnitList').append('<span class="constName"><span class="gf">Zone spéciale?</span> : <span class="cy klik" onclick="zoneTypeToggle(`'+zoneInfos.type+'`)" title="Changer le type de zone">'+zoneInfos.type+'</span></span><br>');
     if (zoneInfos.type === 'normal') {
@@ -350,6 +352,30 @@ function planetToggle(plaName,resCheck) {
     playRoom(zone[0].snd,true,true);
     showMap(zone,true);
     planetThumb();
+    mapEditWindow();
+};
+
+function changeCoconTurn(up) {
+    if (up) {
+        if (zone[0].c1turn >= 50) {
+            zone[0].c1turn = 99;
+        } else if (zone[0].c1turn >= 25) {
+            zone[0].c1turn = zone[0].c1turn+5;
+        } else {
+            zone[0].c1turn++;
+        }
+    } else {
+        if (zone[0].c1turn >= 55) {
+            zone[0].c1turn = 50;
+        } else if (zone[0].c1turn >= 30) {
+            zone[0].c1turn = zone[0].c1turn-5;
+        } else {
+            zone[0].c1turn--;
+        }
+    }
+    if (zone[0].c1turn < 2) {
+        zone[0].c1turn = 2;
+    }
     mapEditWindow();
 };
 

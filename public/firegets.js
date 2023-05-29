@@ -1702,7 +1702,7 @@ function crossTarget(alien) {
         ct = 'Jelly';
     } else if (alien.tags.includes('inflammable')) {
         ct = 'Fire';
-    } else if (alien.tags.includes('stun')) {
+    } else if (alien.tags.includes('stun') || alien.tags.includes('freeze')) {
         ct = 'Stun';
     } else if (alien.tags.includes('fluo')) {
         ct = 'Fluo';
