@@ -2098,7 +2098,9 @@ function eggSpawn(bat,fromEgg) {
     }
     let eggLife = eggLifeStart+Math.floor(zone[0].mapDiff*eggLifeStart/17)+bat.squadsLeft-6;
     if (bat.type === 'Coque' || bat.type === 'Oeuf voilé') {
-        eggLife = coqLifeStart+Math.floor(zone[0].mapDiff*coqLifeStart/14)+bat.squadsLeft-6;
+        if (!bat.tags.includes('permashield')) {
+            eggLife = coqLifeStart+Math.floor(zone[0].mapDiff*coqLifeStart/14)+bat.squadsLeft-6;
+        }
         if (bat.tags.includes('colo')) {
             eggLife = eggLife-4;
         }

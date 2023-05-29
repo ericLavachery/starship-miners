@@ -255,7 +255,7 @@ function weaponsInfos(bat,batType,tile,pop) {
             if (bat.ammo.includes('lame')) {
                 noman = 'Type de lame';
             }
-            $('#'+bodyPlace).append('<span class="paramName">'+noman+'</span><span class="paramIcon"></span><span class="paramValue lcy">'+showAmmo(bat.ammo)+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName">'+noman+'</span><span class="paramIcon"></span><span class="paramValue lcy klik" onclick="equipDetails(`'+bat.ammo+'`,true)">'+showAmmo(bat.ammo)+'</span><br>');
             if (baseAmmo < 99) {
                 if (ammoLeft <= batType.maxSalvo) {
                     $('#'+bodyPlace).append('<span class="paramName or">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue or">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
@@ -526,7 +526,7 @@ function weaponsInfos(bat,batType,tile,pop) {
             if (bat.ammo2.includes('lame')) {
                 noman = 'Type de lame';
             }
-            $('#'+bodyPlace).append('<span class="paramName">'+noman+'</span><span class="paramIcon"></span><span class="paramValue lcy">'+showAmmo(bat.ammo2)+'</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName">'+noman+'</span><span class="paramIcon"></span><span class="paramValue lcy klik" onclick="equipDetails(`'+bat.ammo2+'`,true)">'+showAmmo(bat.ammo2)+'</span><br>');
             if (baseAmmo < 99) {
                 if (ammoLeft <= batType.maxSalvo) {
                     $('#'+bodyPlace).append('<span class="paramName or">Munitions restantes</span><span class="paramIcon"></span><span class="paramValue or">'+ammoLeft+'/'+thisWeapon.maxAmmo+'</span><br>');
@@ -710,5 +710,6 @@ function showEquipInfo(equipName,unit,long) {
             equipInfo = equipInfo+equip.info+' ';
         }
     }
+    equipInfo = equipInfo.replace(/ \/ /g,' &#9889; ');
     return equipInfo;
 };

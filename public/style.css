@@ -303,6 +303,11 @@ hr.craft {
     /* margin-right: 8px; */
     font-weight: bold;
 }
+.basicText {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+}
 .unitPic {
     display: inline-block;
     margin-top: -8px;

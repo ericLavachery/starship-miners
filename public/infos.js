@@ -658,13 +658,13 @@ function batInfos(bat,batType,pop) {
     if (batType.cat === 'infantry') {
         protection = 'Armure';
     }
-    $('#'+bodyPlace).append('<span class="paramName">'+protection+'</span><span class="paramIcon"></span><span class="paramValue lcy">'+batprt+' <span class="neutre">(a'+bat.armor+')</span></span><br>');
+    $('#'+bodyPlace).append('<span class="paramName">'+protection+'</span><span class="paramIcon"></span><span class="paramValue lcy klik" onclick="equipDetails(`'+batprt+'`)">'+batprt+' <span class="neutre">(a'+bat.armor+')</span></span><br>');
     let bateq = bat.eq;
     if (!bateq.includes('aucun')) {
-        $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">'+bateq+'</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy klik" onclick="equipDetails(`'+bateq+'`)">'+bateq+'</span><br>');
     }
     if (bat.logeq != '') {
-        $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy">'+bat.logeq+'</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName">Equipement</span><span class="paramIcon"></span><span class="paramValue lcy klik" onclick="equipDetails(`'+bat.logeq+'`)">'+bat.logeq+'</span><br>');
     }
     let tdcDesc = ['Equipements','Bonus compétences'];
     if (batType.skills.includes('penitbat')) {

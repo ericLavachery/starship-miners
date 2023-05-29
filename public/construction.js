@@ -601,12 +601,6 @@ function showArmorInfo(batArmor) {
         apAdj = '+'+apAdj;
     }
     let armorSkills = '(+'+batArmor.armor+'/'+apAdj+') ';
-    if (batArmor.skills.includes('slowreg')) {
-        armorSkills = armorSkills+' s.reg';
-    }
-    if (batArmor.skills.includes('regeneration')) {
-        armorSkills = armorSkills+' reg';
-    }
     if (batArmor.skills.includes('resistacide')) {
         armorSkills = armorSkills+' r.acide';
     }
@@ -631,6 +625,15 @@ function showArmorInfo(batArmor) {
     if (batArmor.skills.includes('spikes')) {
         armorSkills = armorSkills+' spikes';
     }
+    if (batArmor.skills.includes('autorepair')) {
+        armorSkills = armorSkills+' autorep';
+    }
+    if (batArmor.skills.includes('slowreg')) {
+        armorSkills = armorSkills+' s.reg';
+    }
+    if (batArmor.skills.includes('regeneration')) {
+        armorSkills = armorSkills+' reg';
+    }
     return armorSkills;
 };
 
@@ -640,12 +643,6 @@ function showFullArmorInfo(batArmor) {
         apAdj = '+'+apAdj;
     }
     let armorSkills = '(+'+batArmor.armor+'/'+apAdj+') ';
-    if (batArmor.skills.includes('slowreg')) {
-        armorSkills = armorSkills+'&#9889; régénération lente ';
-    }
-    if (batArmor.skills.includes('regeneration')) {
-        armorSkills = armorSkills+'&#9889; régénération ';
-    }
     if (batArmor.skills.includes('resistacide')) {
         armorSkills = armorSkills+'&#9889; résistance acide ';
     }
@@ -672,6 +669,15 @@ function showFullArmorInfo(batArmor) {
     }
     if (batArmor.skills.includes('poison')) {
         armorSkills = armorSkills+'&#9889; poison ';
+    }
+    if (batArmor.skills.includes('autorepair')) {
+        armorSkills = armorSkills+'&#9889; réparation automatique ';
+    }
+    if (batArmor.skills.includes('slowreg')) {
+        armorSkills = armorSkills+'&#9889; régénération lente ';
+    }
+    if (batArmor.skills.includes('regeneration')) {
+        armorSkills = armorSkills+'&#9889; régénération ';
     }
     if (batArmor.skills.includes('camoloss')) {
         armorSkills = armorSkills+'&#9889; déplacement non furtif ';

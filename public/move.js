@@ -751,12 +751,12 @@ function listBatTerrainAccess(bat,batType) {
     return bta;
 }
 
-function terrainAccess(batId,targetTileId) {
+function terrainAccess(batId,targetTileId,selfMoveExcluded) {
     let access = false;
     let bat = getBatById(batId);
     let batType = getBatType(bat);
     let selfMove = checkSelfMove(bat,batType);
-    if (selfMove) {
+    if (selfMove || selfMoveExcluded) {
         let terrain = getTerrainById(targetTileId);
         let terFlood = terrain.flood;
         if (terrain.name === 'R' && zone[targetTileId].seed >= 4) {

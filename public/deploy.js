@@ -1,3 +1,55 @@
+function equipDetails(stuffName,isAmmo) {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","400px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
+    $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    let stuff = {};
+    if (isAmmo) {
+        stuff = getAmmoByName(stuffName);
+    } else {
+        stuff = getEquipByName(stuffName);
+    }
+    let baseInfo = '';
+    let pageTitle = 'EQUIPEMENT';
+    if (isAmmo) {
+        pageTitle = 'MUNITION';
+        baseInfo = showAmmoInfo(stuffName);
+    } else if (stuff.cat === 'armor') {
+        pageTitle = 'ARMURE';
+        baseInfo = showFullArmorInfo(stuff);
+    } else if (stuff.cat === 'drogue') {
+        pageTitle = 'DROGUE';
+        if (stuff.info != undefined) {
+            baseInfo = stuff.info;
+            baseInfo = baseInfo.replace(/ \/ /g,' &#9889; ');
+        }
+    } else if (stuff.cat === 'infra') {
+        pageTitle = 'INFRASTRUCTURE';
+        if (stuff.info != undefined) {
+            baseInfo = stuff.info;
+            baseInfo = baseInfo.replace(/ \/ /g,' &#9889; ');
+        }
+    } else if (stuff.cat === 'equip') {
+        if (stuff.info != undefined) {
+            baseInfo = stuff.info;
+            baseInfo = baseInfo.replace(/ \/ /g,' &#9889; ');
+        }
+    }
+    $('#conUnitList').append('<span class="constName vert">'+pageTitle+': <span class="or">&ldquo;'+stuff.name+'&rdquo;</span></span><br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="basicText">'+baseInfo+'</span><br>');
+
+
+
+    $('#conUnitList').append('<br><br>');
+};
+
 function reEquip(batId,noRefresh) {
     let myBat = getBatById(batId);
     let myBatType = getBatType(myBat);

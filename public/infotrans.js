@@ -872,7 +872,7 @@ function clickDebarq(tileId) {
     if (distance > 1) {
         teleStats = checkBatTeleport(selectedBat,batDebarq,tileId);
     }
-    if ((distance <= 1 || playerInfos.onShip || teleStats.ok) && !ownBatHere && ((terrainAccess(batDebarq.id,tileId || teleStats.ok)) || batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') && !alienOccupiedTiles.includes(tileId)) {
+    if ((distance <= 1 || playerInfos.onShip || teleStats.ok) && !ownBatHere && (terrainAccess(batDebarq.id,tileId,true) || teleStats.ok || batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') && !alienOccupiedTiles.includes(tileId)) {
         tileOK = true;
     } else {
         batDebarq = {};

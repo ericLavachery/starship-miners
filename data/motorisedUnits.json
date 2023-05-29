@@ -3334,7 +3334,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["b_light","fouille","fret","fweight","transport","scav","camo","emoteur","dumper","realdumper","light","accu","brigands","recupcit","recupres","caterp","nochef","lveh"],
+        "skills":["b_light","fouille","guerrilla","fret","fweight","transport","scav","camo","emoteur","dumper","realdumper","light","accu","brigands","recupcit","recupres","caterp","nochef","lveh"],
         "mecanoCost":12,
         "transMaxSize":4,
         "transUnits":175,

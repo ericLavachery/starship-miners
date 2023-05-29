@@ -497,7 +497,7 @@ function getMissionTitle(misNum) {
     if (misNum === 58) {title = '';}
     if (misNum === 57) {title = '';}
     if (misNum === 56) {title = '';}
-    if (misNum === 55) {title = '';}
+    if (misNum === 55) {title = 'Concordia';}
     // TROLLEY
     if (misNum === 54) {title = '';}
     if (misNum === 53) {title = '';}

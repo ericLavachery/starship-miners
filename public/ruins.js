@@ -30,6 +30,7 @@ function searchRuins(apCost,tileId) {
         if (!auto) {
             checkRuinsComp(tile);
         }
+        checkRuinsCar(tile);
         if (zone[0].mapDiff >= 2) {
             checkRuinsUnit(tile);
         }
@@ -1194,6 +1195,79 @@ function checkMinMapDiff(unit) {
     level = level-2;
     minMapDiff = Math.round((level-2)/2);
     return minMapDiff;
+};
+
+function checkRuinsCar(tile) {
+    let ruinType = checkRuinType(tile,false);
+    let allChecks = _.countBy(tile.rt.checks);
+    let busChance = 7;
+    let dumpChance = 0;
+    let carChance = tile.rt.checks.length-1;
+    if (carChance < 1) {carChance = 1;}
+    if (tile.rt.checks.includes('auto')) {
+        carChance = carChance*(allChecks.auto+1);
+    }
+    if (tile.rt.checks.includes('food')) {
+        carChance = carChance*(allChecks.food+0.5);
+    }
+    carChance = Math.round(carChance)*2;
+    if (tile.rt.name === 'Garage') {
+        carChance = 20;
+    }
+    let indusChecks = 0;
+    if (tile.rt.checks.includes('industry')) {
+        if (tile.rt.checks.includes('any') && !tile.rt.checks.includes('science')) {
+            indusChecks = indusChecks+((allChecks.industry+1)*(allChecks.any+1));
+        } else {
+            indusChecks = indusChecks+allChecks.industry+1;
+        }
+    } else {
+        if (tile.rt.checks.includes('any') && !tile.rt.checks.includes('science')) {
+            indusChecks = indusChecks+allChecks.any+3;
+        }
+    }
+    if (tile.rt.checks.includes('construction')) {
+        indusChecks = indusChecks+(allChecks.construction*allChecks.construction);
+    }
+    if (indusChecks >= 1) {
+        dumpChance = indusChecks*5;
+    }
+    let minCarChance = Math.floor(indusChecks*indusChecks/3);
+    if (carChance < minCarChance) {
+        if (carChance*2 < minCarChance) {
+            dumpChance = 100;
+        }
+        carChance = minCarChance;
+    }
+    if (tile.rt.name === 'Ecole') {
+        busChance = 75;
+    }
+    if (tile.rt.name === 'Prison') {
+        busChance = 50;
+    }
+    console.log('BASE VEHICLES');
+    console.log('carChance: '+carChance);
+    console.log('busChance: '+busChance);
+    console.log('dumpChance: '+dumpChance);
+    if (tile.rt.full) {
+        carChance = carChance*5;
+    }
+    let foundUnitId = 140;
+    if (busChance >= dumpChance) {
+        if (rand.rand(1,100) <= busChance) {
+            foundUnitId = 164;
+        }
+    } else {
+        if (rand.rand(1,100) <= dumpChance) {
+            foundUnitId = 81;
+        }
+    }
+    if (rand.rand(1,100) <= carChance) {
+        conselTriche = true;
+        putBatAround(tile.id,false,'noWater',foundUnitId,0,'nopilots');
+        console.log('FOUND! '+batType.name);
+        playerOccupiedTileList();
+    }
 };
 
 function checkRuinsUnit(tile) {

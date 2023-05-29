@@ -1298,7 +1298,13 @@ function attack(melee,init) {
     }
     let inDanger = checkInDanger(targetBat,targetBatType);
     if (inDanger) {
-        if (targetBat.tags.includes('nomove') && !targetBatType.skills.includes('nomove')) {
+        let nevMove = false;
+        if (zone[0].neverMove != undefined) {
+            if (zone[0].neverMove) {
+                nevMove = true;
+            }
+        }
+        if (targetBat.tags.includes('nomove') && !targetBatType.skills.includes('nomove') && !nevMove) {
             if (totalDamage >= 1) {
                 if (!uniRes) {
                     tagDelete(targetBat,'nomove');
