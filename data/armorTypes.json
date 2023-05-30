@@ -1059,7 +1059,7 @@
         "compReq":{"tele":2,"def":1,"bal":2},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30,"Spins":4},
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30,"Spins":5},
         "deploy":{"Plutonium":25,"Energie":100,"Argon":15,"Bossium":3}
     },
     {
@@ -1071,7 +1071,7 @@
         "compReq":{"tele":2,"def":2,"bal":2,"energ":1},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30,"Spins":4},
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30,"Spins":5},
         "deploy":{"Plutonium":25,"Energie":100,"Argon":15,"Bossium":3}
     },
     {
@@ -1083,7 +1083,7 @@
         "compReq":{"tele":2},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30,"Spins":4},
+        "costs":{"Carbone":150,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":150,"Bossium":30,"Spins":5},
         "deploy":{"Plutonium":25,"Energie":100,"Argon":15,"Bossium":3}
     },
     {
@@ -1095,7 +1095,7 @@
         "compReq":{"tele":3},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Carbone":75,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Cobalt":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":500,"Bossium":100,"Spins":7},
+        "costs":{"Carbone":75,"Platine":100,"Titane":75,"Plutonium":75,"Cuivre":100,"Cobalt":100,"Electros":200,"Batteries":200,"Energie":500,"Argon":500,"Bossium":100,"Spins":8},
         "deploy":{"Plutonium":75,"Energie":300,"Argon":30,"Bossium":6}
     },
     {

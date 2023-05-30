@@ -128,7 +128,19 @@ function nextTurn() {
                 bat.tags.push('jelly');
                 bat.tags.push('jelly');
             }
-            if (rand.rand(1,3) === 1) {
+            let freezeResistance = 3;
+            if (batType.cat === 'aliens') {
+                if (batType.class === 'C') {
+                    freezeResistance = 4;
+                } else if (batType.class === 'A' || batType.class === 'S') {
+                    freezeResistance = 2;
+                } else if (batType.class === 'X') {
+                    freezeResistance = 1;
+                }
+            } else {
+                freezeResistance = 1;
+            }
+            if (rand.rand(1,freezeResistance) === 1) {
                 tagDelete(bat,'freeze');
             }
             if (playerInfos.mapTurn > bat.creaTurn+7 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !batType.skills.includes('healhide') && !larveHIDE) {

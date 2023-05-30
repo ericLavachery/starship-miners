@@ -2047,10 +2047,14 @@ function getResRecup(bat,batType) {
                 if (key === 'Energie') {
                     value = 0;
                 }
-                if (key != 'Transorb' && key != 'Spins') {
+                if (key != 'Spins') {
                     value = Math.ceil(value/100*recupFactor);
                 } else if (key === 'Spins') {
-                    value = Math.ceil(spinCost/135*(recupFactor+25));
+                    if (spinCost > 0) {
+                        value = Math.ceil(spinCost/135*(recupFactor+25)*(playerInfos.comp.vsp+12)/14);
+                    } else {
+                        value = Math.floor(value/75*playerInfos.comp.det);
+                    }
                 }
                 if (value >= 1) {
                     if (resRecup[key] === undefined) {
@@ -2067,7 +2071,11 @@ function getResRecup(bat,batType) {
             Object.entries(batType.deploy).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
-                value = Math.floor(value/100*recupFactor/2);
+                if (key != 'Spins') {
+                    value = Math.floor(value/100*recupFactor/2);
+                } else {
+                    value = Math.floor(value/75*playerInfos.comp.det);
+                }
                 if (value >= 1) {
                     if (resRecup[key] === undefined) {
                         resRecup[key] = value;
@@ -2085,7 +2093,11 @@ function getResRecup(bat,batType) {
                 Object.entries(batArmor.costs).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
-                    value = Math.floor(value/100*recupFactor);
+                    if (key != 'Spins') {
+                        value = Math.floor(value/100*recupFactor);
+                    } else {
+                        value = Math.floor(value/75*playerInfos.comp.det);
+                    }
                     if (value >= 1) {
                         if (resRecup[key] === undefined) {
                             resRecup[key] = value;
@@ -2104,7 +2116,11 @@ function getResRecup(bat,batType) {
                 Object.entries(batEquip.costs).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
-                    value = Math.floor(value/100*recupFactor);
+                    if (key != 'Spins') {
+                        value = Math.floor(value/100*recupFactor);
+                    } else {
+                        value = Math.floor(value/75*playerInfos.comp.det);
+                    }
                     if (value >= 1) {
                         if (resRecup[key] === undefined) {
                             resRecup[key] = value;

@@ -1153,18 +1153,14 @@ function attack(melee,init) {
         if (totalDamage >= 50 || totalDamage >= Math.round(targetBatType.hp*targetBatType.squadSize/2) || (totalDamage >= 1 && selectedWeap.ammo.includes('hypo-'))) {
             if (selectedWeap.ammo.includes('freeze')) {
                 if (targetBatType.cat === 'aliens') {
+                    let allTags = _.countBy(targetBat.tags);
                     if (!targetBat.tags.includes('freeze')) {
                         targetBat.tags.push('freeze');
                         targetBat.tags.push('freeze');
-                        targetBat.tags.push('freeze');
-                    } else {
+                    } else if (allTags.freeze < 2) {
                         targetBat.tags.push('freeze');
                     }
                     if (selectedWeap.ammo === 'hypo-freeze') {
-                        targetBat.tags.push('freeze');
-                        targetBat.tags.push('freeze');
-                        targetBat.tags.push('freeze');
-                        targetBat.tags.push('freeze');
                         targetBat.tags.push('freeze');
                     }
                     // console.log('Bossium Freeze!');
@@ -2137,16 +2133,15 @@ function defense(melee,init) {
     if (selectedBatType.cat === 'aliens' && selectedBatType.kind != 'game') {
         if (totalDamage >= 50 || totalDamage >= Math.round(selectedBatType.hp*selectedBatType.squadSize/2) || (totalDamage >= 1 && targetWeap.ammo.includes('hypo-'))) {
             if (targetWeap.ammo.includes('freeze')) {
+                let allTags = _.countBy(selectedBat.tags);
                 if (selectedBatType.cat === 'aliens') {
                     if (!selectedBat.tags.includes('freeze')) {
                         selectedBat.tags.push('freeze');
                         selectedBat.tags.push('freeze');
-                    } else {
+                    } else if (allTags.freeze < 2)  {
                         selectedBat.tags.push('freeze');
                     }
                     if (targetWeap.ammo === 'hypo-freeze') {
-                        selectedBat.tags.push('freeze');
-                        selectedBat.tags.push('freeze');
                         selectedBat.tags.push('freeze');
                     }
                     // console.log('Bossium Freeze!');
