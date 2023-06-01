@@ -6561,7 +6561,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["a_light","fouille","fortif","camo","clone","nodeathcount","lowmed","lowstress"],
-        "fuzz":-1,
+        "fuzz":0,
         "cloneSlot":1
     },
     {

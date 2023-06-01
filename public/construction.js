@@ -2051,7 +2051,7 @@ function getResRecup(bat,batType) {
                     value = Math.ceil(value/100*recupFactor);
                 } else if (key === 'Spins') {
                     if (spinCost > 0) {
-                        value = Math.ceil(spinCost/135*(recupFactor+25)*(playerInfos.comp.vsp+12)/14);
+                        value = Math.ceil(spinCost/135*(recupFactor+25)*(playerInfos.comp.vsp+15)/17);
                     } else {
                         value = Math.floor(value/75*playerInfos.comp.det);
                     }

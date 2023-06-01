@@ -643,6 +643,9 @@ function nextTurnEnd() {
             if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo')) {
                 bat.fuzz = batType.fuzz;
             }
+            if (bat.tags.includes('nopilots')) {
+                bat.fuzz = -1;
+            }
             planetEffects(bat,batType);
             tagsEffect(bat,batType);
             tagsUpdate(bat,batType);
@@ -909,6 +912,9 @@ function turnInfo() {
         }
         if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo')) {
             bat.fuzz = batType.fuzz;
+        }
+        if (bat.tags.includes('nopilots')) {
+            bat.fuzz = -1;
         }
         if (!batType.skills.includes('nodeathcount')) {
             numHumans++;
@@ -1876,14 +1882,14 @@ function checkDeath(bat,batType,gain) {
         }
         let batType = getBatType(bat);
         if (bat.team == 'player') {
-            if (!batType.skills.includes('nodeathcount')) {
+            if (!batType.skills.includes('nodeathcount') && !bat.tags.includes('nopilots')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 playerInfos.deadBats.push(batType.name);
-                transDestroy(deadId,tileId);
-                if (!bat.tags.includes('nopilots')) {
-                    saveCrew(batType,deadId,tileId,isNoPrefab);
-                }
                 playMusic('rip',true);
+            }
+            transDestroy(deadId,tileId);
+            if (!bat.tags.includes('nopilots')) {
+                saveCrew(batType,deadId,tileId,isNoPrefab);
             }
             deadBatsList.push(bat.id);
         } else if (batType.kind == 'game') {

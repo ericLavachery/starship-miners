@@ -620,6 +620,9 @@ function calcMinFuzz() {
         minFuzz.unit = 0;
         minFuzz.bld = 0;
     }
+    if (minFuzz.unit === 0 && selectedBatType.skills.includes('destructeur')) {
+        minFuzz.unit = -1;
+    }
     return minFuzz;
 };
 

@@ -213,7 +213,7 @@ function showEnemyBatInfos(bat) {
     }
     if (compCA >= 3) {
         if (Object.keys(batType.weapon).length >= 1) {
-            if (batType.weapon.ammo.includes('destructeur') || btweap2ammo.includes('creuseur')) {
+            if (batType.weapon.ammo.includes('destructeur')) {
                 $('#unitInfos').append('<span class="paramName">Destructeur</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
             }
         }

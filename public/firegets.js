@@ -525,7 +525,7 @@ function batDeath(bat,count,gain,isWiped) {
         let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
         bataillons.splice(batIndex,1);
         if (count) {
-            if (!batType.skills.includes('nodeathcount')) {
+            if (!batType.skills.includes('nodeathcount') && !bat.tags.includes('nopilots')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 playerInfos.deadBats.push(batType.name);
                 playMusic('rip',true);
@@ -826,7 +826,7 @@ function transDestroy(tileId,deadId,isFlying) {
             warning('RIP',batType.name+' sont morts dans l\'accident');
             let batIndex = bataillons.findIndex((obj => obj.id == bat.id));
             bataillons.splice(batIndex,1);
-            if (!batType.skills.includes('nodeathcount')) {
+            if (!batType.skills.includes('nodeathcount') && !bat.tags.includes('nopilots')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 playerInfos.deadBats.push(batType.name);
             }
