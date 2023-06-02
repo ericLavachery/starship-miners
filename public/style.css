@@ -127,8 +127,34 @@ h6 {
 .small {
     font-size: 13px;
 }
+.eyeLink {
+    margin: 0 0 0 0;
+    color: #fbffab;
+    font-size: 20px;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
+.eyeLink:hover {
+    color: #6be9b4;
+    cursor: pointer;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
+.washTop {
+    margin: 0 0 8px 0;
+    color: #d5cabd;
+    font-size: 24px;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
+.washTop:hover {
+    color: #6be9b4;
+    cursor: pointer;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000000;
+}
 .washAll {
-    margin: 0 0 0 107px;
+    margin: 0 0 6px 70px;
     color: #f77a28;
     font-size: 24px;
     -webkit-text-stroke: 1px;
@@ -141,7 +167,7 @@ h6 {
     -webkit-text-stroke-color: #000000;
 }
 .wash {
-    margin: 0 0 0 107px;
+    margin: 0 0 6px 70px;
     color: #fbffab;
     font-size: 24px;
     -webkit-text-stroke: 1px;

@@ -916,6 +916,11 @@ function doUpgrade() {
         if (selectedBat.vmt != undefined) {
             myBatTileId = selectedBat.vmt;
         }
+        if (!selectedBatType.skills.includes('transorbital')) {
+            let resRecup = getResRecup(selectedBat,selectedBatType);
+            console.log('UPGRADE RECUP ======================================= ???');
+            console.log(resRecup);
+        }
         removeBat(selectedBat.id);
         putBat(myBatTileId,0,myBatXP);
     }

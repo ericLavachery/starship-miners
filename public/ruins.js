@@ -786,7 +786,7 @@ function checkRuinType(tile,quiet) {
             let nearRiver = checkNearRiver(tile);
             ruinType.name = 'Mine';
             ruinType.checks = ['any'];
-            let checkDice1 = rand.rand(1,40);
+            let checkDice1 = rand.rand(1,55);
             if (Object.keys(tile.rs).length <= 1) {
                 checkDice1 = rand.rand(2,22);
             }

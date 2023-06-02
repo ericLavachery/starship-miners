@@ -622,6 +622,7 @@ function blockThem(stop) {
 function washReports(warningsAlso) {
     if (warningsAlso) {
         $('#warnings').empty();
+        $('#warnings').append('<i class="far fa-hand-paper washTop" onclick="washReports(true)" title="Supprimer toutes les alertes"></i> &nbsp; <h6>Messages</h6><br>');
         friendsAlert = false;
     }
     $('#report').empty();
@@ -639,18 +640,18 @@ function warning(title,body,noHand,tileId,closeAll) {
     $('#warnings').append('<span class="warnings" id="warn'+warnNumber+'"><span class="or">'+title+'<br></span> '+body+'<br></span>');
     if (tileId != undefined) {
         if (tileId > -1) {
-            $('#warn'+warnNumber).append('<span class="warnings"><i class="fas fa-eye cy klik" onclick="warnLink('+tileId+')"></i></span>');
+            $('#warn'+warnNumber).append('<span class="warnings"><i class="fas fa-eye eyeLink klik" onclick="warnLink('+tileId+')"></i></span>');
         }
     }
     if (!noHand) {
         if (closeAll != undefined) {
             if (closeAll) {
-                $('#warn'+warnNumber).append('<i class="far fa-hand-paper washAll" onclick="washReports(true)" title="Supprimer toutes les alertes"></i>');
+                $('#warn'+warnNumber).append('<i class="far fa-hand-paper washAll" onclick="washReports(true)" title="Supprimer toutes les alertes"></i><br>');
             } else {
-                $('#warn'+warnNumber).append('<i class="far fa-hand-paper wash" onclick="washThisWarning('+warnNumber+')" title="Supprimer cette alerte"></i>');
+                $('#warn'+warnNumber).append('<i class="far fa-hand-paper wash" onclick="washThisWarning('+warnNumber+')" title="Supprimer cette alerte"></i><br>');
             }
         } else {
-            $('#warn'+warnNumber).append('<i class="far fa-hand-paper wash" onclick="washThisWarning('+warnNumber+')" title="Supprimer cette alerte"></i>');
+            $('#warn'+warnNumber).append('<i class="far fa-hand-paper wash" onclick="washThisWarning('+warnNumber+')" title="Supprimer cette alerte"></i><br>');
         }
     }
     if (title.includes('rq3')) {

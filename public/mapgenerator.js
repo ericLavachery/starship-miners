@@ -121,6 +121,7 @@ function generateNewMap(filterCheck,louche) {
     addRivers(zone);
     addRes(zone);
     deepWaters(zone);
+    destroyedRuins(zone);
     washReports(true);
     zone[1830].terrain = 'P';
     zone[1830].seed = 1;
@@ -2099,6 +2100,115 @@ function atomColour(tile,inMaped) {
         } else {
             tile.rq = 1;
         }
+    }
+};
+
+function destroyedRuins(zone) {
+    let aroundTilesIds = [];
+    let thisTile = -1;
+    zone.forEach(function(tile) {
+        if (tile.ruins) {
+            checkRuinType(tile,true);
+            if (rand.rand(1,2) === 1 || tile.rt.checks.length >= 4) {
+                thisTile = tile.id-1;
+                if (thisTile >= 0 && thisTile <= 3599) {
+                    if (!aroundTilesIds.includes(thisTile)) {
+                        aroundTilesIds.push(thisTile);
+                    }
+                }
+            }
+            if (rand.rand(1,2) === 1 || tile.rt.checks.length >= 4) {
+                thisTile = tile.id+1;
+                if (thisTile >= 0 && thisTile <= 3599) {
+                    if (!aroundTilesIds.includes(thisTile)) {
+                        aroundTilesIds.push(thisTile);
+                    }
+                }
+            }
+            if (rand.rand(1,2) === 1 || tile.rt.checks.length >= 4) {
+                thisTile = tile.id-mapSize;
+                if (thisTile >= 0 && thisTile <= 3599) {
+                    if (!aroundTilesIds.includes(thisTile)) {
+                        aroundTilesIds.push(thisTile);
+                    }
+                }
+            }
+            if (rand.rand(1,2) === 1 || tile.rt.checks.length >= 4) {
+                thisTile = tile.id+mapSize;
+                if (thisTile >= 0 && thisTile <= 3599) {
+                    if (!aroundTilesIds.includes(thisTile)) {
+                        aroundTilesIds.push(thisTile);
+                    }
+                }
+            }
+            if (rand.rand(1,2) === 1 || tile.rt.checks.length >= 4) {
+                thisTile = tile.id-mapSize-1;
+                if (thisTile >= 0 && thisTile <= 3599) {
+                    if (!aroundTilesIds.includes(thisTile)) {
+                        aroundTilesIds.push(thisTile);
+                    }
+                }
+            }
+            if (rand.rand(1,2) === 1 || tile.rt.checks.length >= 4) {
+                thisTile = tile.id-mapSize+1;
+                if (thisTile >= 0 && thisTile <= 3599) {
+                    if (!aroundTilesIds.includes(thisTile)) {
+                        aroundTilesIds.push(thisTile);
+                    }
+                }
+            }
+            if (rand.rand(1,2) === 1 || tile.rt.checks.length >= 4) {
+                thisTile = tile.id+mapSize-1;
+                if (thisTile >= 0 && thisTile <= 3599) {
+                    if (!aroundTilesIds.includes(thisTile)) {
+                        aroundTilesIds.push(thisTile);
+                    }
+                }
+            }
+            if (rand.rand(1,2) === 1 || tile.rt.checks.length >= 4) {
+                thisTile = tile.id+mapSize+1;
+                if (thisTile >= 0 && thisTile <= 3599) {
+                    if (!aroundTilesIds.includes(thisTile)) {
+                        aroundTilesIds.push(thisTile);
+                    }
+                }
+            }
+        }
+    });
+    if (aroundTilesIds.length >= 1) {
+        aroundTilesIds.forEach(function(tileId) {
+            let tile = getTileById(tileId);
+            if (Object.keys(tile).length >= 1) {
+                if (!tile.ruins) {
+                    if (tile.infra === undefined) {
+                        if (tile.terrain != 'W' && tile.terrain != 'L' && tile.terrain != 'R') {
+                            if (rand.rand(1,2) === 1) {
+                                tile.infra = 'Débris';
+                                if (rand.rand(1,2) === 1) {
+                                    tile.rd = true;
+                                }
+                            } else if (rand.rand(1,8) === 1) {
+                                tile.ruins = true;
+                                tile.sh = -1;
+                                tile.rd = true;
+                                delete tile.infra;
+                                addScrapToRuins(tile);
+                                checkRuinType(tile,true);
+                            } else if (rand.rand(1,15) === 1) {
+                                tile.infra = 'Miradors';
+                                tile.rd = true;
+                            } else if (rand.rand(1,25) === 1) {
+                                tile.infra = 'Palissades';
+                                tile.rd = true;
+                            } else if (rand.rand(1,50) === 1) {
+                                tile.infra = 'Terriers';
+                                tile.rd = true;
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 };
 

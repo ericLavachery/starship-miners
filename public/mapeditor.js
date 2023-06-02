@@ -1430,6 +1430,9 @@ function roadsKill() {
             delete tile.rt;
             removeScrapFromRuins(tile);
         }
+        if (tile.infra != undefined) {
+            delete tile.infra;
+        }
     });
     showMap(zone,false);
     minimap();
@@ -1446,6 +1449,9 @@ function resRecheck() {
         }
         if (tile.rd != undefined) {
             delete tile.rd;
+        }
+        if (tile.infra != undefined) {
+            delete tile.infra;
         }
         if (tile.rq != undefined) {
             delete tile.rq;
