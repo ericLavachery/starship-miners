@@ -5184,7 +5184,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","fastguet","datt","selfbadmedic","meleehelp","cyber","camo","guerrilla","ranger","barda","strong","herowc","herotornade","autohero","elite"],
+        "skills":["a_heavy","fouille","fortif","fastguet","datt","selfbadmedic","meleehelp","cyber","camo","guerrilla","ranger","barda","strong","resistelec","herowc","herotornade","autohero","elite"],
         "mediCost":6,
         "fuzz":1,
         "deathFx":"396806__scorpion67890__cyborg-death-1"

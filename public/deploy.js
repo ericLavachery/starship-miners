@@ -414,7 +414,9 @@ function getAutoEqList(bat,batType,isStartBat) {
     // console.log("CHECK AUTO EQs LIST !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     let autoEqList = [];
     if (batType.skills.includes('penitbat')) {
-        autoEqList = bat.tdc;
+        if (bat.tdc != undefined) {
+            autoEqList = bat.tdc;
+        }
     } else if (bat.vet >= 3 || batType.cat === 'buildings' || batType.skills.includes('leader') || batType.skills.includes('cleric') || batType.skills.includes('souschef')) {
         if (batType.autoEq != undefined) {
             // console.log(batType.autoEq);
@@ -444,6 +446,8 @@ function getAutoEqList(bat,batType,isStartBat) {
             }
         }
     }
+    console.log('autoEqList');
+    console.log(autoEqList);
     // remove less efficient extract modules
     if (autoEqList.includes('monoextract')) {
         if (autoEqList.includes('tungextract')) {

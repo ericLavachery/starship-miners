@@ -691,13 +691,20 @@ function attack(melee,init) {
         totalDamage = Math.round(totalDamage/10);
         apDamage = Math.round(apDamage/10);
     }
-    if (targetBatType.skills.includes('resistelec') || targetBat.tags.includes('resistelec')) {
-        if (selectedWeap.isElec) {
-            apDamage = Math.round(apDamage/4);
+    if (selectedWeap.isElec) {
+        if (targetBatType.skills.includes('resistelec') || targetBat.tags.includes('resistelec')) {
+            totalDamage = Math.round(totalDamage/2);
+            apDamage = Math.round(apDamage/8);
             if (playerInfos.comp.ca >= 2) {
                 $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
             }
             // console.log('résistance électricité!');
+        }
+        if (targetBatType.skills.includes('resistall') || targetBat.tags.includes('resistall')) {
+            apDamage = Math.round(apDamage/3);
+        }
+        if (targetBatType.skills.includes('protectall') || targetBat.tags.includes('protectall')) {
+            apDamage = Math.round(apDamage/5);
         }
     }
     // sensibilité électricité
@@ -1826,14 +1833,20 @@ function defense(melee,init) {
         totalDamage = Math.round(totalDamage/10);
         apDamage = Math.round(apDamage/10);
     }
-    if (selectedBatType.skills.includes('resistelec') || selectedBat.tags.includes('resistelec')) {
-        if (targetWeap.isElec) {
+    if (targetWeap.isElec) {
+        if (selectedBatType.skills.includes('resistelec') || selectedBat.tags.includes('resistelec')) {
             totalDamage = Math.round(totalDamage/2);
-            apDamage = Math.round(apDamage/4);
+            apDamage = Math.round(apDamage/8);
             if (playerInfos.comp.ca >= 2) {
                 $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
             }
             // console.log('résistance électricité!');
+        }
+        if (selectedBatType.skills.includes('resistall') || selectedBat.tags.includes('resistall')) {
+            apDamage = Math.round(apDamage/3);
+        }
+        if (selectedBatType.skills.includes('protectall') || selectedBat.tags.includes('protectall')) {
+            apDamage = Math.round(apDamage/5);
         }
     }
     // sensibilité électricité

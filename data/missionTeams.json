@@ -158,61 +158,121 @@
     {
         "unit":"Riggers",
         "gear":["lame-titane","gaz-pluto","duneg","w2-gaz"],
-        "missions":["spider","sky","dragon"],
+        "missions":["spider","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Riggers",
+        "gear":["lame-titane","gaz-pluto","tisal","w2-gaz"],
+        "missions":["sky"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Riggers",
+        "gear":["lame-titane","gaz-pluto","tisal","w2-gaz"],
+        "missions":["sky"],
         "gangs":["blades"]
     },
     {
         "unit":"Riggers",
         "gear":["lame-titane","gaz-pluto","duneg","w2-gaz"],
-        "missions":["sky","dragon"],
+        "missions":["dragon"],
         "gangs":["blades"]
     },
     {
         "unit":"Riggers",
         "gear":["lame-titane","gaz-pluto","duneg","w2-gaz"],
-        "missions":["necro","science","spider","sky","dragon"],
+        "missions":["necro","science","spider","dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Riggers",
+        "gear":["lame-titane","gaz-pluto","tisal","w2-gaz"],
+        "missions":["sky"],
         "gangs":["drogmulojs"]
     },
     {
         "unit":"Riggers",
         "gear":["lame-titane","gaz-pluto","duneg","w2-gaz"],
-        "missions":["science","spider","sky","dragon"],
+        "missions":["science","spider","dragon"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Riggers",
+        "gear":["lame-titane","gaz-pluto","tisal","w2-gaz"],
+        "missions":["sky"],
         "gangs":["drogmulojs"]
     },
     {
         "unit":"Riggers",
         "gear":["lame-titane","gaz","wendium","e-mecano"],
-        "missions":["resist","trolley","necro","science","spider","sky","dragon"],
+        "missions":["resist","trolley","necro","science","spider","dragon"],
+        "gangs":["bulbos"]
+    },
+    {
+        "unit":"Riggers",
+        "gear":["lame-titane","gaz","tisal","e-mecano"],
+        "missions":["sky"],
         "gangs":["bulbos"]
     },
     {
         "unit":"Riggers",
         "gear":["lame-titane","gaz","duneg","e-mecano"],
-        "missions":["resist","trolley","necro","science","spider","sky","dragon"],
+        "missions":["resist","trolley","necro","science","spider","dragon"],
+        "gangs":["bulbos"]
+    },
+    {
+        "unit":"Riggers",
+        "gear":["lame-titane","gaz","tisal","e-mecano"],
+        "missions":["sky"],
         "gangs":["bulbos"]
     },
     {
         "unit":"Riggers",
         "gear":["lame-titane","gaz","wendium","e-mecano"],
-        "missions":["trolley","necro","science","spider","sky","dragon"],
+        "missions":["trolley","necro","science","spider","dragon"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Riggers",
+        "gear":["lame-titane","gaz","tisal","e-mecano"],
+        "missions":["sky"],
         "gangs":["brasier"]
     },
     {
         "unit":"Riggers",
         "gear":["lame-titane","gaz","duneg","e-mecano"],
-        "missions":["necro","science","spider","sky","dragon"],
+        "missions":["necro","science","spider","dragon"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Riggers",
+        "gear":["lame-titane","gaz","tisal","e-mecano"],
+        "missions":["sky"],
         "gangs":["brasier"]
     },
     {
         "unit":"Riggers",
         "gear":["lame-titane","gaz","wendium","e-mecano"],
-        "missions":["necro","science","spider","sky","dragon"],
+        "missions":["necro","science","spider","dragon"],
+        "gangs":["rednecks","tiradores"]
+    },
+    {
+        "unit":"Riggers",
+        "gear":["lame-titane","gaz","tisal","e-mecano"],
+        "missions":["sky"],
         "gangs":["rednecks","tiradores"]
     },
     {
         "unit":"Riggers",
         "gear":["lame-titane","gaz","duneg","e-mecano"],
-        "missions":["spider","sky","dragon"],
+        "missions":["spider","dragon"],
+        "gangs":["rednecks","tiradores"]
+    },
+    {
+        "unit":"Riggers",
+        "gear":["lame-titane","gaz","tisal","e-mecano"],
+        "missions":["sky"],
         "gangs":["rednecks","tiradores"]
     },
     {
@@ -398,25 +458,49 @@
     {
         "unit":"Jeeps",
         "gear":["tungsten","belier-spike","swag","e-road"],
-        "missions":["resist","trolley","necro","science","spider","sky","dragon"],
+        "missions":["resist","trolley","necro","science","spider","dragon"],
         "gangs":["blades","bulbos","drogmulojs","tiradores","brasier"]
     },
     {
         "unit":"Jeeps",
         "gear":["tungsten","belier-spike","swag","e-road"],
-        "missions":["resist","trolley","necro","science","spider","sky","dragon"],
+        "missions":["resist","trolley","necro","science","spider","dragon"],
         "gangs":["bulbos","drogmulojs","tiradores","brasier"]
     },
     {
         "unit":"Jeeps",
         "gear":["explosive","belier-spike","swag","e-road"],
-        "missions":["resist","trolley","necro","science","spider","sky","dragon"],
+        "missions":["resist","trolley","necro","science","spider","dragon"],
         "gangs":["rednecks","detruas"]
     },
     {
         "unit":"Jeeps",
         "gear":["explosive","belier-spike","swag","e-road"],
-        "missions":["resist","trolley","necro","science","spider","sky","dragon"],
+        "missions":["resist","trolley","necro","science","spider","dragon"],
+        "gangs":["rednecks","detruas"]
+    },
+    {
+        "unit":"Jeeps",
+        "gear":["tungsten","belier-spike","tisal","e-road"],
+        "missions":["sky"],
+        "gangs":["blades","bulbos","drogmulojs","tiradores","brasier"]
+    },
+    {
+        "unit":"Jeeps",
+        "gear":["tungsten","belier-spike","tisal","e-road"],
+        "missions":["sky"],
+        "gangs":["bulbos","drogmulojs","tiradores","brasier"]
+    },
+    {
+        "unit":"Jeeps",
+        "gear":["explosive","belier-spike","tisal","e-road"],
+        "missions":["sky"],
+        "gangs":["rednecks","detruas"]
+    },
+    {
+        "unit":"Jeeps",
+        "gear":["explosive","belier-spike","tisal","e-road"],
+        "missions":["sky"],
         "gangs":["rednecks","detruas"]
     },
     {
@@ -464,7 +548,13 @@
     {
         "unit":"Spycars",
         "gear":["fleche-freeze","gaz-pluto","swag","maxtrans"],
-        "missions":["necro","science","spider","sky","dragon"],
+        "missions":["necro","science","spider","dragon"],
+        "gangs":["blades","drogmulojs"]
+    },
+    {
+        "unit":"Spycars",
+        "gear":["fleche-freeze","gaz-pluto","tisal","maxtrans"],
+        "missions":["sky"],
         "gangs":["blades","drogmulojs"]
     },
     {
@@ -476,25 +566,49 @@
     {
         "unit":"Spycars",
         "gear":["fleche-freeze","gaz-pluto","swag","e-road"],
-        "missions":["necro","science","spider","sky","dragon"],
+        "missions":["necro","science","spider","dragon"],
         "gangs":["blades"]
     },
     {
         "unit":"Spycars",
         "gear":["fleche-tungsten","gaz","swag","maxtrans"],
-        "missions":["necro","science","spider","sky","dragon"],
+        "missions":["necro","science","spider","dragon"],
         "gangs":["bulbos","detruas"]
     },
     {
         "unit":"Spycars",
         "gear":["fleche-incendiaire","gaz","swag","maxtrans"],
-        "missions":["trolley","necro","science","spider","sky","dragon"],
+        "missions":["trolley","necro","science","spider","dragon"],
         "gangs":["brasier"]
     },
     {
         "unit":"Spycars",
         "gear":["fleche-tungsten","gaz","swag","maxtrans"],
-        "missions":["science","spider","sky","dragon"],
+        "missions":["science","spider","dragon"],
+        "gangs":["tiradores"]
+    },
+    {
+        "unit":"Spycars",
+        "gear":["fleche-freeze","gaz-pluto","tisal","e-road"],
+        "missions":["sky"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Spycars",
+        "gear":["fleche-tungsten","gaz","tisal","maxtrans"],
+        "missions":["sky"],
+        "gangs":["bulbos","detruas"]
+    },
+    {
+        "unit":"Spycars",
+        "gear":["fleche-incendiaire","gaz","tisal","maxtrans"],
+        "missions":["sky"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Spycars",
+        "gear":["fleche-tungsten","gaz","tisal","maxtrans"],
+        "missions":["sky"],
         "gangs":["tiradores"]
     },
     {
@@ -602,13 +716,25 @@
     {
         "unit":"Obusiers",
         "gear":["obus-plastanium","uranium","bulk","longtom1"],
-        "missions":["spider","sky","dragon"],
+        "missions":["spider","dragon"],
         "gangs":["rednecks","drogmulojs"]
     },
     {
         "unit":"Obusiers",
+        "gear":["obus-plastanium","uranium","iso","longtom1"],
+        "missions":["sky"],
+        "gangs":["rednecks","drogmulojs"]
+    },
+    {
+        "unit":"Obusiers",
+        "gear":["obus-plastanium","uranium","iso","longtom1"],
+        "missions":["sky"],
+        "gangs":["drogmulojs"]
+    },
+    {
+        "unit":"Obusiers",
         "gear":["obus-plastanium","uranium","bulk","longtom1"],
-        "missions":["sky","dragon"],
+        "missions":["dragon"],
         "gangs":["drogmulojs"]
     },
     {
@@ -619,8 +745,14 @@
     },
     {
         "unit":"Obusiers",
+        "gear":["obus-plastanium","uranium","iso","longtom1"],
+        "missions":["sky"],
+        "gangs":["rednecks"]
+    },
+    {
+        "unit":"Obusiers",
         "gear":["obus-plastanium","uranium","bulk","longtom1"],
-        "missions":["sky","dragon"],
+        "missions":["dragon"],
         "gangs":["rednecks"]
     },
     {
@@ -632,7 +764,13 @@
     {
         "unit":"Obusiers",
         "gear":["obus-plastanium","explosive","bulk","longtom1"],
-        "missions":["spider","sky","dragon"],
+        "missions":["spider","dragon"],
+        "gangs":["detruas"]
+    },
+    {
+        "unit":"Obusiers",
+        "gear":["obus-plastanium","explosive","iso","longtom1"],
+        "missions":["sky"],
         "gangs":["detruas"]
     },
     {
@@ -643,8 +781,14 @@
     },
     {
         "unit":"Obusiers",
+        "gear":["obus-deluge","uranium","iso","longtom1"],
+        "missions":["sky"],
+        "gangs":["detruas"]
+    },
+    {
+        "unit":"Obusiers",
         "gear":["obus-deluge","uranium","bulk","longtom1"],
-        "missions":["sky","dragon"],
+        "missions":["dragon"],
         "gangs":["detruas"]
     },
     {
@@ -716,7 +860,13 @@
     {
         "unit":"Noise Angels",
         "gear":["disco","dunium","wendium","chargeur2"],
-        "missions":["spider","sky"],
+        "missions":["spider"],
+        "gangs":["rednecks"]
+    },
+    {
+        "unit":"Noise Angels",
+        "gear":["disco","dunium","tisal","chargeur2"],
+        "missions":["sky"],
         "gangs":["rednecks"]
     },
     {
@@ -1412,7 +1562,13 @@
     {
         "unit":"Fog",
         "gear":["gaz-pluto","xxx","duneg","aucun"],
-        "missions":["science","spider","sky","dragon"],
+        "missions":["science","spider","dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Fog",
+        "gear":["gaz-pluto","xxx","tisal","aucun"],
+        "missions":["sky"],
         "gangs":["blades"]
     },
     {
@@ -1562,13 +1718,25 @@
     {
         "unit":"Trébuchets",
         "gear":["lame-poraz","boulet-incendiaire","bulk","g2siege"],
-        "missions":["necro","science","spider","sky","dragon"],
+        "missions":["necro","science","spider","dragon"],
         "gangs":["blades"]
     },
     {
         "unit":"Trébuchets",
         "gear":["lame-poraz","boulet-incendiaire","bulk","g2siege"],
-        "missions":["sky","dragon"],
+        "missions":["dragon"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Trébuchets",
+        "gear":["lame-poraz","boulet-incendiaire","iso","g2siege"],
+        "missions":["sky"],
+        "gangs":["blades"]
+    },
+    {
+        "unit":"Trébuchets",
+        "gear":["lame-poraz","boulet-incendiaire","iso","g2siege"],
+        "missions":["sky"],
         "gangs":["blades"]
     },
     {
@@ -1922,7 +2090,13 @@
     {
         "unit":"Seraphs",
         "gear":["disco","uridium","kapton","chargeur2"],
-        "missions":["sky","dragon"],
+        "missions":["dragon"],
+        "gangs":["bulbos"]
+    },
+    {
+        "unit":"Seraphs",
+        "gear":["disco","uridium","tisal","chargeur2"],
+        "missions":["sky"],
         "gangs":["bulbos"]
     },
     {
@@ -1963,7 +2137,7 @@
     },
     {
         "unit":"Squash",
-        "gear":["missile-nanite","missile-vanguard","sbulk","hangard"],
+        "gear":["missile-nanite","missile-vanguard","iso","hangard"],
         "missions":["sky"],
         "gangs":["bulbos","detruas"]
     },
@@ -1988,7 +2162,13 @@
     {
         "unit":"Drumfires",
         "gear":["missile-hellfire","missile-nanite","sbulk","hangard"],
-        "missions":["spider","sky"],
+        "missions":["spider"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Drumfires",
+        "gear":["missile-hellfire","missile-nanite","iso","hangard"],
+        "missions":["sky"],
         "gangs":["brasier"]
     },
     {
@@ -2336,7 +2516,13 @@
     {
         "unit":"Speeders",
         "gear":["uranium","obus-nanite","swag","e-stab"],
-        "missions":["science","spider","sky","dragon"],
+        "missions":["science","spider","dragon"],
+        "gangs":["tiradores"]
+    },
+    {
+        "unit":"Speeders",
+        "gear":["uranium","obus-nanite","tisal","e-stab"],
+        "missions":["sky"],
         "gangs":["tiradores"]
     },
     {
@@ -2581,7 +2767,7 @@
     },
     {
         "unit":"Spritz",
-        "gear":["obus-plastanium","obus-plastanium","combo","longtom1"],
+        "gear":["obus-plastanium","obus-plastanium","tisal","longtom1"],
         "missions":["sky"],
         "gangs":["detruas"]
     },
