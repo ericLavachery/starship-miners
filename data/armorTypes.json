@@ -334,7 +334,7 @@
         "cat":"armor",
         "armor":4,
         "ap":-1,
-        "skills":["resistelec"],
+        "skills":["resistelec","dreduct"],
         "bldReq":["Armurerie"],
         "compReq":{"mat":2,"energ":1},
         "factor":"thp",

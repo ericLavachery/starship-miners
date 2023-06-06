@@ -53,7 +53,7 @@ function saveMapAs(zoneNumber) {
     if (!zoneFiles.includes(nextZoneNum)) {
         zoneFiles.push(nextZoneNum);
     }
-    savePlayerInfos();
+    // savePlayerInfos();
     socket.emit('save-map-as',[zone,nextZoneNum]);
     aliens = [];
     socket.emit('save-aliens-as',[aliens,nextZoneNum]);
@@ -235,13 +235,6 @@ function saveBataillonsForReturn(zoneNum,isMission) {
     });
     killBatList();
     socket.emit('save-bataillons-as',[bataillons,zoneNum]);
-};
-
-function saveAllBats() {
-    saveBataillons();
-    saveAliens();
-    savePlayerInfos();
-    commandes();
 };
 
 function saveZone() {

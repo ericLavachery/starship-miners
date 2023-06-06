@@ -644,8 +644,11 @@ function nextTurnEnd() {
             if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo')) {
                 bat.fuzz = batType.fuzz;
             }
-            if (bat.tags.includes('nopilots')) {
-                bat.fuzz = -1;
+            if (bat.tags.includes('nopilots') || batType.skills.includes('noselfmove')) {
+                let selfMove = checkSelfMove(bat,batType);
+                if (!selfMove) {
+                    bat.fuzz = -1;
+                }
             }
             planetEffects(bat,batType);
             tagsEffect(bat,batType);
@@ -914,8 +917,11 @@ function turnInfo() {
         if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo')) {
             bat.fuzz = batType.fuzz;
         }
-        if (bat.tags.includes('nopilots')) {
-            bat.fuzz = -1;
+        if (bat.tags.includes('nopilots') || batType.skills.includes('noselfmove')) {
+            let selfMove = checkSelfMove(bat,batType);
+            if (!selfMove) {
+                bat.fuzz = -1;
+            }
         }
         if (!batType.skills.includes('nodeathcount')) {
             numHumans++;
@@ -1670,6 +1676,7 @@ function tagsEffect(bat,batType) {
         bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
         if (bat.tags.includes('skupiac')) {
             tagDelete(bat,'vomissure');
+            warning('',bat.type+' ont été sauvés de la gangrène par le skupiac.',false,bat.tileId);
         }
     }
     // HUNGER GAMES
@@ -1696,7 +1703,7 @@ function tagsEffect(bat,batType) {
     // NECRO
     if (bat.tags.includes('necro')) {
         if (bat.tags.includes('octiron')) {
-            if (rand.rand(1,4) === 1) {
+            if (rand.rand(1,6) === 1) {
                 tagDelete(bat,'necro');
                 if (!bat.tags.includes('necro')) {
                     warning('',bat.type+' a éliminé la nécrotoxine.',false,bat.tileId);

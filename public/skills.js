@@ -955,6 +955,7 @@ function drugInstantBonus(drug,fromPack) {
         } else if (lostSquads >= 1 && playerInfos.comp.trans >= 1) {
             selectedBat.squadsLeft = selectedBat.squadsLeft+1;
         }
+        tagDelete(selectedBat,'trou');
         console.log('repair kit bonus');
     }
 };
@@ -1699,7 +1700,7 @@ function checkDrugPack(drugName,bat,batType) {
                 drugOK = true;
             }
         }
-        if (batType.cat === 'vehicles' && !batType.skills.includes('cyber') && !batType.skills.includes('robot') && !batType.skills.includes('emoteur') && batType.moveCost < 90) {
+        if (batType.cat === 'vehicles' && !batType.skills.includes('cyber') && !batType.skills.includes('robot') && batType.moveCost < 90) {
             if (drug.name === 'sudu') {
                 drugOK = true;
             }
@@ -1728,9 +1729,15 @@ function useDrugPack(drugName,apCost) {
     let drug = getEquipByName(drugName);
     let drugOK = checkDrugPack(drugName,selectedBat,selectedBatType);
     if (drugOK) {
-        selectedBat.tags.push(drug.name);
-        selectedBat.tags.push(drug.name);
-        selectedBat.tags.push(drug.name);
+        if (drugName != 'starka' && drugName != 'nitro') {
+            selectedBat.tags.push(drug.name);
+            selectedBat.tags.push(drug.name);
+            selectedBat.tags.push(drug.name);
+        } else {
+            tagDelete(selectedBat,drugName);
+            tagDelete(selectedBat,drugName);
+            tagDelete(selectedBat,drugName);
+        }
         selectedBat.tags.push(drug.name);
         drugInstantBonus(drug,true);
         playSound(drug.sound,0);

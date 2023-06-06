@@ -279,7 +279,7 @@
     },
     {
         "name": "alienshells",
-        "range": 1,
+        "range": 1.1,
         "rof": 1,
         "power": 0,
         "powermult": 1,

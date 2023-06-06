@@ -1506,7 +1506,12 @@ function alienReplace(classe,r1,r2) {
     if (r1view === 'Yapa') {
         r1view = 'RIEN';
     }
-    $('#conUnitList').append('<span class="constName"><span class="gf">Remplacer:</span> <span class="cy klik" onclick="alienToggle(0,`'+classe+'`)" title="Changer">'+r1view+'</span> <span class="gf">Par:</span> <span class="cy klik" onclick="alienToggle(1,`'+classe+'`)" title="Changer">'+r2+'</span></span><br>');
+    let rar = 0;
+    let alien = getAlienTypeByName(r1);
+    if (Object.keys(alien).length >= 1) {
+        rar = alien.rarity;
+    }
+    $('#conUnitList').append('<span class="constName"><span class="gf">Remplacer:</span> <span class="cy klik" onclick="alienToggle(0,`'+classe+'`)" title="Changer">'+r1view+'</span> ('+rar+') <span class="gf">Par:</span> <span class="cy klik" onclick="alienToggle(1,`'+classe+'`)" title="Changer">'+r2+'</span></span><br>');
 };
 
 function alienToggle(rnum,classe) {

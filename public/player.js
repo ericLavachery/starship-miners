@@ -198,7 +198,7 @@ function gangEdit() {
 
 function changeBarbs(stop) {
     playerInfos.stopBarbs = stop;
-    savePlayerInfos();
+    // savePlayerInfos();
     gangNavig();
     gangEdit();
 };
@@ -288,7 +288,7 @@ function changeComp(dropMenuId,compName) {
     let value = document.getElementById(dropMenuId).value;
     playerInfos.comp[compName] = +value;
     maxGangCompCosts();
-    savePlayerInfos();
+    // savePlayerInfos();
     gangNavig();
     gangEdit();
 };

@@ -112,6 +112,9 @@ function weaponsInfos(bat,batType,tile,pop) {
             if (batType.skills.includes('mustcontrol') && bat.tags.includes('nomove')) {
                 hasControl = false;
             }
+            if (batType.skills.includes('camocontrol') && bat.tags.includes('nomove') && bat.fuzz <= -2) {
+                hasControl = false;
+            }
             if (bat.salvoLeft >= 1 && apOK && ammoLeft >= 1 && anyTarget && noBisOK && !noFireMelee && hasControl) {
                 // assez d'ap et de salve
                 if (cheapWeapCost > thisWeapon.cost) {

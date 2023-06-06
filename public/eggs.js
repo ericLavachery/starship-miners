@@ -1376,7 +1376,7 @@ function spawns() {
                 }
             } else if (bat.squadsLeft >= 5 && bat.type === 'Asticots' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Moucherons',false);
-                if (libMorph <= 20) {
+                if (libMorph <= 20 && zone[0].number < 50) {
                     libGenMorph++;
                 }
             } else if (transList.includes('Vers') && bat.type === 'Vers' && !bat.tags.includes('morph')) {
@@ -1387,7 +1387,7 @@ function spawns() {
                 }
             } else if (bat.squadsLeft >= 5 && bat.type === 'Vers' && bat.tags.includes('morph')) {
                 alienMorph(bat,'Lucioles',false);
-                if (libMorph <= 20) {
+                if (libMorph <= 20 && zone[0].number < 50) {
                     libGenMorph++;
                 }
             } else if (wurmMorph <= 40 && rand.rand(1,wurmMorph) === 1 && bat.squadsLeft >= 3 && bat.type === 'Larves') {

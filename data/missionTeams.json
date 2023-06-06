@@ -32,7 +32,13 @@
     {
         "unit":"Poste radio",
         "gear":["titanium","xxx","bulk","garage"],
-        "missions":["resist","trolley","necro","science","spider"],
+        "missions":["resist","trolley","necro","science"],
+        "gangs":["bulbos"]
+    },
+    {
+        "unit":"Poste radio",
+        "gear":["titanium","xxx","bulk","e-radar"],
+        "missions":["spider","sky"],
         "gangs":["bulbos"]
     },
     {
@@ -62,8 +68,20 @@
     {
         "unit":"Tour de guet",
         "gear":["marquage","xxx","bulk","lunette"],
-        "missions":["resist","trolley","necro","science","spider","sky","dragon"],
+        "missions":["resist","trolley","necro","science","spider","dragon"],
         "gangs":["blades","tiradores"]
+    },
+    {
+        "unit":"Tour de guet",
+        "gear":["marquage-stop","xxx","bulk","lunette"],
+        "missions":["sky"],
+        "gangs":["tiradores"]
+    },
+    {
+        "unit":"Tour de guet",
+        "gear":["marquage-stop","xxx","bulk","e-radar"],
+        "missions":["sky"],
+        "gangs":["blades"]
     },
     {
         "unit":"Tour de guet",
@@ -74,8 +92,20 @@
     {
         "unit":"Tour de guet",
         "gear":["marquage-kill","xxx","bulk","lunette"],
-        "missions":["sky","dragon"],
+        "missions":["dragon"],
         "gangs":["rednecks","bulbos","drogmulojs","brasier"]
+    },
+    {
+        "unit":"Tour de guet",
+        "gear":["marquage-kill","xxx","bulk","e-radar"],
+        "missions":["sky"],
+        "gangs":["bulbos","brasier"]
+    },
+    {
+        "unit":"Tour de guet",
+        "gear":["marquage-kill","xxx","bulk","lunette"],
+        "missions":["sky"],
+        "gangs":["rednecks","drogmulojs"]
     },
     {
         "unit":"Tour de guet",
@@ -92,14 +122,32 @@
     {
         "unit":"Tour de guet",
         "gear":["marquage-stop","xxx","bulk","lunette"],
-        "missions":["spider","sky"],
+        "missions":["spider"],
         "gangs":["blades","rednecks","bulbos"]
+    },
+    {
+        "unit":"Tour de guet",
+        "gear":["marquage-stop","xxx","bulk","e-radar"],
+        "missions":["sky"],
+        "gangs":["blades","bulbos"]
     },
     {
         "unit":"Tour de guet",
         "gear":["marquage-stop","xxx","bulk","lunette"],
         "missions":["sky"],
-        "gangs":["drogmulojs","tiradores","brasier"]
+        "gangs":["rednecks"]
+    },
+    {
+        "unit":"Tour de guet",
+        "gear":["marquage-stop","xxx","bulk","lunette"],
+        "missions":["sky"],
+        "gangs":["drogmulojs","tiradores"]
+    },
+    {
+        "unit":"Tour de guet",
+        "gear":["marquage-stop","xxx","bulk","e-radar"],
+        "missions":["sky"],
+        "gangs":["brasier"]
     },
     {
         "unit":"Tour de guet",

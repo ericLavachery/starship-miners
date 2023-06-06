@@ -28,7 +28,7 @@ function turnMap(map) {
 
 function generateVM() {
     zone = [];
-    savePlayerInfos();
+    // savePlayerInfos();
     checkFilter();
     filterParams(true);
     createVM(mapSize);

@@ -773,9 +773,15 @@ function attack(melee,init) {
         }
     }
     // résistance poison (gaz)
-    if (targetBatType.skills.includes('resistpoison') || targetBatType.skills.includes('eatpoison') || targetBat.tags.includes('resistpoison')) {
+    if (targetBatType.skills.includes('resistpoison') || targetBatType.skills.includes('eatpoison') || targetBat.tags.includes('resistpoison') || targetBatType.kind === 'robot') {
         if (selectedWeap.isGas) {
-            if (targetBatType.skills.includes('eatpoison')) {
+            if (targetBatType.kind === 'robot' && !selectedWeap.isBlast) {
+                totalDamage = 0;
+                apDamage = 0;
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+                }
+            } else if (targetBatType.skills.includes('eatpoison')) {
                 totalDamage = 0;
                 apDamage = 0;
                 if (!targetBat.tags.includes('regeneration')) {
@@ -1913,9 +1919,15 @@ function defense(melee,init) {
         }
     }
     // résistance poison (gaz)
-    if (selectedBatType.skills.includes('resistpoison') || selectedBatType.skills.includes('eatpoison') || selectedBat.tags.includes('resistpoison')) {
+    if (selectedBatType.skills.includes('resistpoison') || selectedBatType.skills.includes('eatpoison') || selectedBat.tags.includes('resistpoison') || selectedBatType.kind === 'robot') {
         if (targetWeap.isGas) {
-            if (selectedBatType.skills.includes('eatpoison')) {
+            if (selectedBatType.kind === 'robot' && !targetWeap.isBlast) {
+                totalDamage = 0;
+                apDamage = 0;
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+                }
+            } else if (selectedBatType.skills.includes('eatpoison')) {
                 totalDamage = 0;
                 apDamage = 0;
                 if (!selectedBat.tags.includes('regeneration')) {

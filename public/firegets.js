@@ -976,7 +976,7 @@ function getDamageRed(sound,defBat,defBatType) {
             dmgReduct = 2;
         } else if (defBat.tags.includes('zealot') && defBatType.cat === 'infantry') {
             dmgReduct = 1;
-        } else if (defBat.prt === 'kapton' || defBat.prt === 'kaptane' || defBat.prt.includes('suit') || defBat.prt === 'bonibo' || defBat.prt === 'swarwing' || defBat.prt === 'silk') {
+        } else if (defBat.prt === 'kapton' || defBat.prt === 'kaptane' || defBat.prt.includes('suit') || defBat.prt === 'bonibo' || defBat.prt === 'swarwing' || defBat.prt === 'silk' || defBat.prt === 'tisal') {
             dmgReduct = 1;
         }
     }
@@ -3079,6 +3079,9 @@ function mirDestruction(weap,bat,batType,tile,teamOnMir,infraName) {
         } else {
             breakChance = 0;
         }
+    }
+    if (zone[0].number >= 70 && zone[0].number <= 74) {
+        breakChance = 0;
     }
     // console.log('breakChance='+breakChance);
     if (rand.rand(1,100) <= breakChance) {
