@@ -535,7 +535,7 @@ function targetLogic(bat,iter) {
             }
         }
     }
-    if (batType.skills.includes('robot')) {
+    if (batType.skills.includes('robot') || batType.crew === 0) {
         if (selectedWeap.ammo.includes('psionics')) {
             tFuzz = -95;
         }

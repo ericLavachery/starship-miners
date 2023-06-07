@@ -766,29 +766,20 @@ function attack(melee,init) {
     }
     // psionics résistance robots
     if (selectedWeap.ammo.includes('psionics')) {
-        if (targetBatType.skills.includes('robot')) {
+        if (targetBatType.skills.includes('robot') || targetBatType.crew === 0) {
             totalDamage = 0;
             apDamage = 0;
             $('#report').append('<span class="report rose">Résistance psionique 100%<br></span>');
         }
     }
     // résistance poison (gaz)
-    if (targetBatType.skills.includes('resistpoison') || targetBatType.skills.includes('eatpoison') || targetBat.tags.includes('resistpoison') || targetBatType.kind === 'robot') {
-        if (selectedWeap.isGas) {
-            if (targetBatType.kind === 'robot' && !selectedWeap.isBlast) {
-                totalDamage = 0;
-                apDamage = 0;
+    if (selectedWeap.isGas) {
+        if (targetBatType.skills.includes('resistpoison') || targetBat.tags.includes('resistpoison')) {
+            if (selectedWeap.isBlast) {
+                totalDamage = Math.round(totalDamage/1.5);
+                apDamage = Math.round(apDamage/2);
                 if (playerInfos.comp.ca >= 3) {
-                    $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
-                }
-            } else if (targetBatType.skills.includes('eatpoison')) {
-                totalDamage = 0;
-                apDamage = 0;
-                if (!targetBat.tags.includes('regeneration')) {
-                    targetBat.tags.push('regeneration');
-                }
-                if (playerInfos.comp.ca >= 3) {
-                    $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+                    $('#report').append('<span class="report rose">Résistance au poison 50%<br></span>');
                 }
             } else {
                 totalDamage = Math.round(totalDamage/2);
@@ -797,13 +788,46 @@ function attack(melee,init) {
                     $('#report').append('<span class="report rose">Résistance au poison 50%<br></span>');
                 }
             }
-            // console.log('résistance au gaz!');
+        } else if (targetBatType.kind === 'robot') {
+            if (selectedWeap.isBlast) {
+                totalDamage = Math.round(totalDamage/2);
+                apDamage = 0;
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+                }
+            } else {
+                totalDamage = 0;
+                apDamage = 0;
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+                }
+            }
+        } else if (targetBatType.skills.includes('eatpoison')) {
+            if (selectedWeap.isBlast) {
+                totalDamage = Math.round(totalDamage/2);
+                apDamage = 0;
+                if (!targetBat.tags.includes('regeneration')) {
+                    targetBat.tags.push('regeneration');
+                }
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 150%<br></span>');
+                }
+            } else {
+                totalDamage = 0;
+                apDamage = 0;
+                if (!targetBat.tags.includes('regeneration')) {
+                    targetBat.tags.push('regeneration');
+                }
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 150%<br></span>');
+                }
+            }
         }
     }
     // sensibilité poison (gaz)
     if (targetBatType.skills.includes('reactpoison') || targetBat.tags.includes('reactpoison')) {
         if (selectedWeap.isGas) {
-            if (selectedWeap.ammo.includes('missile') || selectedWeap.ammo.includes('obus') || selectedWeap.ammo.includes('autodes')) {
+            if (selectedWeap.isBlast) {
                 totalDamage = Math.round(totalDamage*1.5);
                 apDamage = Math.round(apDamage*2);
             } else {
@@ -1912,29 +1936,20 @@ function defense(melee,init) {
     }
     // psionics résistance robots
     if (targetWeap.ammo.includes('psionics')) {
-        if (selectedBatType.skills.includes('robot')) {
+        if (selectedBatType.skills.includes('robot') || selectedBatType.crew === 0) {
             totalDamage = 0;
             apDamage = 0;
             $('#report').append('<span class="report rose">Résistance psionique 100%<br></span>');
         }
     }
     // résistance poison (gaz)
-    if (selectedBatType.skills.includes('resistpoison') || selectedBatType.skills.includes('eatpoison') || selectedBat.tags.includes('resistpoison') || selectedBatType.kind === 'robot') {
-        if (targetWeap.isGas) {
-            if (selectedBatType.kind === 'robot' && !targetWeap.isBlast) {
-                totalDamage = 0;
-                apDamage = 0;
+    if (targetWeap.isGas) {
+        if (selectedBatType.skills.includes('resistpoison') || selectedBat.tags.includes('resistpoison')) {
+            if (targetWeap.isBlast) {
+                totalDamage = Math.round(totalDamage/1.5);
+                apDamage = Math.round(apDamage/2);
                 if (playerInfos.comp.ca >= 3) {
-                    $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
-                }
-            } else if (selectedBatType.skills.includes('eatpoison')) {
-                totalDamage = 0;
-                apDamage = 0;
-                if (!selectedBat.tags.includes('regeneration')) {
-                    selectedBat.tags.push('regeneration');
-                }
-                if (playerInfos.comp.ca >= 3) {
-                    $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+                    $('#report').append('<span class="report rose">Résistance au poison 50%<br></span>');
                 }
             } else {
                 totalDamage = Math.round(totalDamage/2);
@@ -1943,13 +1958,46 @@ function defense(melee,init) {
                     $('#report').append('<span class="report rose">Résistance au poison 50%<br></span>');
                 }
             }
-            // console.log('résistance au gaz!');
+        } else if (selectedBatType.kind === 'robot') {
+            if (targetWeap.isBlast) {
+                totalDamage = Math.round(totalDamage/2);
+                apDamage = 0;
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+                }
+            } else {
+                totalDamage = 0;
+                apDamage = 0;
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 100%<br></span>');
+                }
+            }
+        } else if (selectedBatType.skills.includes('eatpoison')) {
+            if (targetWeap.isBlast) {
+                totalDamage = Math.round(totalDamage/2);
+                apDamage = 0;
+                if (!selectedBat.tags.includes('regeneration')) {
+                    selectedBat.tags.push('regeneration');
+                }
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 150%<br></span>');
+                }
+            } else {
+                totalDamage = 0;
+                apDamage = 0;
+                if (!selectedBat.tags.includes('regeneration')) {
+                    selectedBat.tags.push('regeneration');
+                }
+                if (playerInfos.comp.ca >= 3) {
+                    $('#report').append('<span class="report rose">Résistance au poison 150%<br></span>');
+                }
+            }
         }
     }
     // sensibilité poison (gaz)
     if (selectedBatType.skills.includes('reactpoison') || selectedBat.tags.includes('reactpoison')) {
         if (targetWeap.isGas) {
-            if (targetWeap.ammo.includes('missile') || targetWeap.ammo.includes('obus') || targetWeap.ammo.includes('autodes')) {
+            if (targetWeap.isBlast) {
                 totalDamage = Math.round(totalDamage*1.5);
                 apDamage = Math.round(apDamage*2);
             } else {

@@ -1156,7 +1156,7 @@ function playerSkillsUTChanges() {
                 }
             }
         }
-        if (playerInfos.comp.det >= 3) {
+        if (playerInfos.comp.det >= 3 || playerInfos.knownAliens.includes('Ectoplasmes')) {
             if (Object.keys(unit.weapon).length >= 3) {
                 if (unit.weapon.name.includes('Marquage') || unit.weapon.name.includes('Guidage')) {
                     unit.weapon.vision = true;
@@ -1167,6 +1167,8 @@ function playerSkillsUTChanges() {
                     unit.weapon2.vision = true;
                 }
             }
+        }
+        if (playerInfos.comp.det >= 3) {
             if (unit.skills.includes('detsalvo')) {
                 unit.maxSalvo = playerInfos.comp.det;
             }
