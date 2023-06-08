@@ -2182,6 +2182,10 @@ function destroyedRuins(zone) {
                 if (!tile.ruins) {
                     if (tile.infra === undefined) {
                         if (tile.terrain != 'W' && tile.terrain != 'L' && tile.terrain != 'R') {
+                            let atChance = 20;
+                            if (tile.terrain === 'M' || tile.terrain === 'H') {
+                                atChance = 10;
+                            }
                             if (rand.rand(1,2) === 1) {
                                 tile.infra = 'Débris';
                                 if (rand.rand(1,2) === 1) {
@@ -2194,6 +2198,12 @@ function destroyedRuins(zone) {
                                 delete tile.infra;
                                 addScrapToRuins(tile);
                                 checkRuinType(tile,true);
+                            } else if (rand.rand(1,atChance) === 1) {
+                                if (rand.rand(1,5) === 1) {
+                                    addThisRuinsToTile(tile,'Autoturrets',15);
+                                } else {
+                                    addThisRuinsToTile(tile,'Autoturrets',-1);
+                                }
                             } else if (rand.rand(1,15) === 1) {
                                 tile.infra = 'Miradors';
                                 tile.rd = true;
@@ -2210,6 +2220,27 @@ function destroyedRuins(zone) {
             }
         });
     }
+};
+
+function addThisRuinsToTile(tile,ruinsName,sh) {
+    if (sh === undefined) {sh = -1;}
+    tile.ruins = true;
+    tile.sh = sh;
+    tile.rd = true;
+    delete tile.infra;
+    addScrapToRuins(tile);
+    let ruinType = {};
+    let theRuin = getEquipByName(ruinsName);
+    if (Object.keys(theRuin).length >= 1) {
+        ruinType.name = theRuin.name;
+        ruinType.checks = theRuin.checks;
+        ruinType.scrap = theRuin.scrap;
+    } else {
+        ruinType.name = ruinsName;
+        ruinType.checks = ['any'];
+        ruinType.scrap = 200;
+    }
+    tile.rt = ruinType;
 };
 
 function deepWaters(zone) {

@@ -360,7 +360,7 @@ function batInfos(bat,batType,pop) {
             }
         }
     }
-    let batFuzz = calcBatFuzz(bat);
+    let batFuzz = calcBatAttraction(bat);
     if (pop) {
         $('#'+bodyPlace).append('<span class="paramName">Attraction</span><span class="paramIcon"></span><span class="paramValue">'+batFuzz+'</span><br>');
     }

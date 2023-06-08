@@ -9,7 +9,7 @@ function canIHit(bat,weap,alien,batInMelee) {
     return iCanHit;
 };
 
-function calcBatFuzz(bat) {
+function calcBatAttraction(bat) {
     let batFuzz = bat.fuzz+2;
     if (bat.fuzz === undefined) {
         batFuzz = 4;
@@ -43,6 +43,19 @@ function calcBatFuzz(bat) {
         batFuzz = 0;
     }
     return batFuzz;
+};
+
+function getBatFuzz(bat,batType) {
+    let fuzz = bat.fuzz;
+    let selfMove = checkSelfMove(bat,batType);
+    if (batType.skills.includes('notarget')) {
+        fuzz = -2;
+    } else if (!selfMove) {
+        fuzz = -1;
+    } else if (!bat.tags.includes('camo')) {
+        fuzz = batType.fuzz;
+    }
+    return fuzz;
 };
 
 function scrollToBottom() {

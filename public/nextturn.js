@@ -638,18 +638,17 @@ function nextTurnEnd() {
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
-            if (batType.skills.includes('notarget') && bat.fuzz > -2) {
-                bat.fuzz = -2;
-            }
-            if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo')) {
-                bat.fuzz = batType.fuzz;
-            }
-            if (bat.tags.includes('nopilots') || batType.skills.includes('noselfmove')) {
-                let selfMove = checkSelfMove(bat,batType);
-                if (!selfMove) {
-                    bat.fuzz = -1;
-                }
-            }
+            bat.fuzz = getBatFuzz(bat,batType);
+            // if (batType.skills.includes('notarget') && bat.fuzz > -2) {
+            //     bat.fuzz = -2;
+            // }
+            // let selfMove = checkSelfMove(bat,batType);
+            // if (!selfMove) {
+            //     bat.fuzz = -1;
+            // }
+            // if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo') && selfMove) {
+            //     bat.fuzz = batType.fuzz;
+            // }
             planetEffects(bat,batType);
             tagsEffect(bat,batType);
             tagsUpdate(bat,batType);
@@ -914,15 +913,16 @@ function turnInfo() {
                 }
             }
         }
-        if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo')) {
-            bat.fuzz = batType.fuzz;
-        }
-        if (bat.tags.includes('nopilots') || batType.skills.includes('noselfmove')) {
-            let selfMove = checkSelfMove(bat,batType);
-            if (!selfMove) {
-                bat.fuzz = -1;
-            }
-        }
+        bat.fuzz = getBatFuzz(bat,batType);
+        // if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo')) {
+        //     bat.fuzz = batType.fuzz;
+        // }
+        // if (bat.tags.includes('nopilots') || batType.skills.includes('noselfmove')) {
+        //     let selfMove = checkSelfMove(bat,batType);
+        //     if (!selfMove) {
+        //         bat.fuzz = -1;
+        //     }
+        // }
         if (!batType.skills.includes('nodeathcount')) {
             numHumans++;
         }
@@ -941,7 +941,7 @@ function turnInfo() {
                     nPil++;
                 }
             }
-            batFuzz = calcBatFuzz(bat);
+            batFuzz = calcBatAttraction(bat);
             fuzzTotal = fuzzTotal+batFuzz;
             if (bat.type === 'Fog' && bat.tags.includes('fog')) {
                 foggersTiles.push(bat.tileId);

@@ -2603,6 +2603,15 @@
         "costs":{}
     },
     {
+        "name":"Autoturrets",
+        "cat":"ruins",
+        "pic":"ruins14",
+        "list":1,
+        "rolls":["r0"],
+        "checks":["military"],
+        "scrap":200
+    },
+    {
         "name":"Mine",
         "cat":"ruins",
         "pic":"ruins7",

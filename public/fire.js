@@ -2210,9 +2210,6 @@ function defense(melee,init) {
                 if (selectedBatType.cat === 'aliens') {
                     if (!selectedBat.tags.includes('freeze')) {
                         selectedBat.tags.push('freeze');
-                        selectedBat.tags.push('freeze');
-                    } else if (allTags.freeze < 2)  {
-                        selectedBat.tags.push('freeze');
                     }
                     if (targetWeap.ammo === 'hypo-freeze') {
                         selectedBat.tags.push('freeze');

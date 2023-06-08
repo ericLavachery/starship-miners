@@ -649,9 +649,9 @@ function dropEgg(alienUnit,theArea) {
                 putBat(dropTile,0,0,'bmorph');
             } else if (alienUnit === 'Cocon' && theArea === 'edge') {
                 putBat(dropTile,0,0,'crys');
-            } else if (alienUnit === 'Coque' && rand.rand(2,81) <= zone[0].mapDiff) {
+            } else if (alienUnit === 'Coque' && rand.rand(2,101) <= zone[0].mapDiff) {
                 putBat(dropTile,0,0,'permashield');
-            } else if (alienUnit === 'Oeuf' && rand.rand(2,81) <= zone[0].mapDiff) {
+            } else if (alienUnit === 'Oeuf' && rand.rand(2,101) <= zone[0].mapDiff) {
                 putBat(dropTile,0,0,'permashield');
             } else {
                 putBat(dropTile,0,0);

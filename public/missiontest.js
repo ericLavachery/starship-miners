@@ -198,9 +198,9 @@ function putMissionLanderRes(navBat) {
     navBat.transRes['Nanite'] = 250;
     navBat.transRes['Tungstène'] = 150;
     navBat.transRes['Aluminium'] = 50;
-    navBat.transRes['Compo1'] = 2500;
-    navBat.transRes['Compo2'] = 1200;
-    navBat.transRes['Compo3'] = 600;
+    navBat.transRes['Compo1'] = 3500;
+    navBat.transRes['Compo2'] = 2500;
+    navBat.transRes['Compo3'] = 1000;
     navBat.transRes['Batteries'] = 15;
     navBat.transRes['Energie'] = 200;
     navBat.transRes['Drogues'] = 1000;
