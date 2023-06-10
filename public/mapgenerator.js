@@ -2182,10 +2182,6 @@ function destroyedRuins(zone) {
                 if (!tile.ruins) {
                     if (tile.infra === undefined) {
                         if (tile.terrain != 'W' && tile.terrain != 'L' && tile.terrain != 'R') {
-                            let atChance = 20;
-                            if (tile.terrain === 'M' || tile.terrain === 'H') {
-                                atChance = 10;
-                            }
                             if (rand.rand(1,2) === 1) {
                                 tile.infra = 'Débris';
                                 if (rand.rand(1,2) === 1) {
@@ -2198,7 +2194,22 @@ function destroyedRuins(zone) {
                                 delete tile.infra;
                                 addScrapToRuins(tile);
                                 checkRuinType(tile,true);
-                            } else if (rand.rand(1,atChance) === 1) {
+                            } else if (rand.rand(1,15) === 1) {
+                                let elevate = false;
+                                if (tile.rq === undefined) {
+                                    elevate = true;
+                                } else {
+                                    if (tile.rq <= 0) {
+                                        elevate = true;
+                                    }
+                                }
+                                if (elevate) {
+                                    if (tile.terrain != 'H' && tile.terrain != 'M') {
+                                        tile.terrain = 'H';
+                                    } else if (tile.terrain != 'M') {
+                                        tile.terrain = 'M';
+                                    }
+                                }
                                 if (rand.rand(1,5) === 1) {
                                     addThisRuinsToTile(tile,'Autoturrets',15);
                                 } else {

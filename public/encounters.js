@@ -2031,3 +2031,40 @@ function getHuntType() {
     }
     return huntType;
 };
+
+function putTurret(tile) {
+    delete tile.ruins;
+    delete tile.sh;
+    delete tile.rt;
+    removeScrapFromRuins(tile);
+    if (rand.rand(1,8) === 1) {
+        conselUnit = getBatTypeById(301);
+        conselAmmos = ['uranium','xxx','bulk','bld-camo'];
+    } else {
+        conselUnit = getBatTypeById(310);
+        conselAmmos = ['uranium','xxx','bulk','muffler'];
+    }
+    conselPut = false;
+    conselTriche = true;
+    putBat(tile.id,0,rand.rand(50,1000),'camobld',false);
+};
+
+function workingTurrets() {
+    if (!zone[0].visit && zone[0].number < 50) {
+        let turretsNum = 0;
+        let shufZone = _.shuffle(zone);
+        shufZone.forEach(function(tile) {
+            if (tile.ruins && turretsNum < 4) {
+                if (tile.rt != undefined) {
+                    if (tile.rt.name === 'Autoturrets') {
+                        let turretDice = 9+(turretsNum*3);
+                        if (rand.rand(1,turretDice) === 1) {
+                            putTurret(tile);
+                            turretsNum++;
+                        }
+                    }
+                }
+            }
+        });
+    }
+};

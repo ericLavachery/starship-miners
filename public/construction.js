@@ -1332,7 +1332,13 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                             newBat.tags = [startTag];
                         }
                     } else {
-                        if (startTag === 'fortifguet') {
+                        if (startTag === 'camoinf') {
+                            newBat.tags = ['nomove','guet','camo'];
+                            newBat.fuzz = -2;
+                        } else if (startTag === 'camobld') {
+                            newBat.tags = ['nomove','guet','camo','noprefab'];
+                            newBat.fuzz = -2;
+                        } else if (startTag === 'fortifguet') {
                             newBat.tags = ['guet','fortif'];
                         } else if (startTag === 'fgnomove') {
                             newBat.tags = ['guet','fortif','nomove'];
@@ -2059,6 +2065,14 @@ function getResRecup(bat,batType) {
                         value = Math.ceil(spinCost/135*(recupFactor+25)*(playerInfos.comp.vsp+15)/17);
                     } else {
                         value = Math.floor(value/75*playerInfos.comp.det);
+                    }
+                }
+                // random turrets
+                if (batType.name === 'Autoturrets' && bat.eq === 'muffler' && bat.tags.includes('outsider')) {
+                    if (key != 'Spins') {
+                        value = Math.round(value/3);
+                    } else {
+                        value = 0;
                     }
                 }
                 if (value >= 1) {

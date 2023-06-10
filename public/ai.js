@@ -1616,7 +1616,11 @@ function alienBonus() {
 };
 
 function infraDestruction() {
-    if (selectedBat.apLeft >= 4 && rand.rand(1,2) === 1) {
+    let skyMap = false;
+    if (zone[0].number >= 70 && zone[0].number <= 74) {
+        skyMap = true;
+    }
+    if (selectedBat.apLeft >= 4 && rand.rand(1,2) === 1 && !skyMap) {
         let tile = getTile(selectedBat);
         let destroySize = 999;
         if (tile.infra != undefined) {

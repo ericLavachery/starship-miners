@@ -95,6 +95,7 @@ function checkStartingAliens() {
     }
     // Encounters
     encounterCheck();
+    workingTurrets();
     // Starting Units
     putStartUnits();
     // Gibier

@@ -4489,7 +4489,7 @@
             "rof":9,
             "accuracy":20,
             "dca":1.25,
-            "power":6,
+            "power":5,
             "aoe":"brochette",
             "sound":"squish",
             "ammo":["spitbug"]

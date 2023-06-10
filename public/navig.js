@@ -362,7 +362,7 @@ function gangNavig() {
             if (playerInfos.pseudo === 'Mapedit') {
                 $('#gangInfos').append('<button type="button" title="Editer à la louche" class="boutonVert iconButtons" onclick="mapGlobalEdits()"><i class="ra ra-grass-patch rpg"></i></button>');
             } else {
-                $('#gangInfos').append('<button type="button" title="Supprime le stress de tous les bataillons" class="boutonCiel iconButtons" onclick="coolManCool()"><i class="fas fa-heart"></i></button>');
+                $('#gangInfos').append('<button type="button" title="Tourelles?" class="boutonRouge iconButtons" onclick="workingTurrets()"><i class="fas fa-toilet-paper"></i></button>');
             }
             $('#gangInfos').append('<button type="button" title="Map Editor" class="boutonVert iconButtons" onclick="editMode()"><i class="fas fa-tree"></i></button>');
         } else {
