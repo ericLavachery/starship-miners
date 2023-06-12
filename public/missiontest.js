@@ -475,7 +475,7 @@ function getMissionTitle(misNum) {
     if (misNum === 76) {title = '';}
     if (misNum === 75) {title = '';}
     // SKYGRUB
-    if (misNum === 74) {title = '';}
+    if (misNum === 74) {title = 'Médusa';}
     if (misNum === 73) {title = '';}
     if (misNum === 72) {title = '';}
     if (misNum === 71) {title = '';}

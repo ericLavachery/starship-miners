@@ -3235,7 +3235,13 @@
     },
     {
         "unit":"Sapeurs",
-        "gear":["tungsten","lame-carbone","duneg","e-road"],
+        "gear":["tungsten","lame-carbone","duneg","e-repair"],
+        "missions":["dragon"],
+        "gangs":["rednecks","blades","bulbos","drogmulojs","tiradores","detruas","brasier"]
+    },
+    {
+        "unit":"Sapeurs",
+        "gear":["tungsten","lame-carbone","duneg","e-repair"],
         "missions":["resist","trolley","necro","science","spider","sky","dragon"],
         "gangs":["rednecks","blades","bulbos","drogmulojs","tiradores","detruas","brasier"]
     },

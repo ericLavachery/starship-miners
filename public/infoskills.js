@@ -952,13 +952,18 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
         }
         // REPAIR DIAG
-        if ((batType.cat === 'buildings' || batType.cat === 'devices') && !batType.skills.includes('nobld') && !batType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batType.squads) && !nearby.oneTile) {
+        if ((batType.cat === 'buildings' || batType.cat === 'devices' || batType.skills.includes('transorbital')) && !batType.skills.includes('nobld') && !batType.skills.includes('norepair') && (bat.damage >= 1 || bat.squadsLeft < batType.squads) && !nearby.oneTile) {
             let repairBat = checkRepairBat(bat.tileId);
             if (Object.keys(repairBat).length >= 1) {
                 let repairBatType = getBatType(repairBat);
+                let batRepairCost = repairBatType.mecanoCost;
+                if (hasEquip(repairBat,['e-repair'])) {
+                    batRepairCost = Math.floor(batRepairCost/3);
+                }
+                if (batRepairCost < 2) {batRepairCost = 2;}
                 apCost = 0;
                 if (repairBat.apLeft >= 1) {
-                    $('#unitInfos').append('<button type="button" title="Réparer le bâtiment avec '+repairBat.type+' ('+repairBatType.mecanoCost+' AP)" class="boutonBleu iconButtons" onclick="diagRepair('+repairBat.id+')"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>');
+                    $('#unitInfos').append('<button type="button" title="Réparer le bâtiment avec '+repairBat.type+' ('+batRepairCost+' AP)" class="boutonBleu iconButtons" onclick="diagRepair('+repairBat.id+')"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>');
                     lineBreak = true;
                 } else {
                     skillMessage = "Pas assez de PA";

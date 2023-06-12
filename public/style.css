@@ -464,6 +464,9 @@ hr.craft {
     margin-top: -3px;
     z-index: -5;
 }
+.cloudz {
+    opacity: 0.5;
+}
 .webz {
     position: absolute;
     margin-left: 0px;

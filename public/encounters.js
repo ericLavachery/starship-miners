@@ -2047,20 +2047,25 @@ function putTurret(tile) {
     conselPut = false;
     conselTriche = true;
     putBat(tile.id,0,rand.rand(50,1000),'camobld',false);
+    playerOccupiedTiles.push(tile.id);
 };
 
 function workingTurrets() {
+    alienOccupiedTileList();
+    playerOccupiedTileList();
     if (!zone[0].visit && zone[0].number < 50) {
         let turretsNum = 0;
         let shufZone = _.shuffle(zone);
         shufZone.forEach(function(tile) {
-            if (tile.ruins && turretsNum < 4) {
-                if (tile.rt != undefined) {
-                    if (tile.rt.name === 'Autoturrets') {
-                        let turretDice = 9+(turretsNum*3);
-                        if (rand.rand(1,turretDice) === 1) {
-                            putTurret(tile);
-                            turretsNum++;
+            if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                if (tile.ruins && turretsNum < 4) {
+                    if (tile.rt != undefined) {
+                        if (tile.rt.name === 'Autoturrets') {
+                            let turretDice = 9+(turretsNum*3);
+                            if (rand.rand(1,turretDice) === 1) {
+                                putTurret(tile);
+                                turretsNum++;
+                            }
                         }
                     }
                 }

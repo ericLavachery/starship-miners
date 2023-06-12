@@ -1313,46 +1313,54 @@ function mapGlobalEdits(oldTer,newTer) {
         } else {
             kol = 'verf';
         }
-        $('#conUnitList').append('<span class="constName"><span class="'+kol+' klik" title="Nouvelle carte dans la région '+filter.name+'" onclick="regionChoice(`'+filter.name+'`)">'+filter.name+'</span> &#128313; </span>');
+        let regionOK = true;
+        if (filter.sauf != undefined) {
+            if (filter.sauf.includes(zone[0].planet)) {
+                regionOK = false;
+            }
+        }
+        if (regionOK) {
+            $('#conUnitList').append('<span class="constName"><span class="'+kol+' klik" title="Nouvelle carte dans la région '+filter.name+'" onclick="regionChoice(`'+filter.name+'`)">'+filter.name+'</span> &#128313; </span>');
+        }
     });
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="constName or">EDITER A LA LOUCHE</span><br>');
     $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="constName">Terrains à remplacer:</span><br>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`P`,`'+newTer+'`)">Plaines</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`G`,`'+newTer+'`)">Prairies</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`B`,`'+newTer+'`)">Maquis</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`F`,`'+newTer+'`)">Forêts</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`H`,`'+newTer+'`)">Collines</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`M`,`'+newTer+'`)">Montagnes</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`S`,`'+newTer+'`)">Marécages</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`W`,`'+newTer+'`)">Etangs</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`L`,`'+newTer+'`)">Lacs</span></span>');
+    $('#conUnitList').append('<span class="basicText">Terrains à remplacer:</span><br>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`P`,`'+newTer+'`)">Plaines</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`G`,`'+newTer+'`)">Prairies</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`B`,`'+newTer+'`)">Maquis</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`F`,`'+newTer+'`)">Forêts</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`H`,`'+newTer+'`)">Collines</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`M`,`'+newTer+'`)">Montagnes</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`S`,`'+newTer+'`)">Marécages</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`W`,`'+newTer+'`)">Etangs</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`L`,`'+newTer+'`)">Lacs</span></span>');
     $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="constName">Remplacer par:</span><br>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`P`)">Plaines</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`G`)">Prairies</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`B`)">Maquis</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`F`)">Forêts</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`H`)">Collines</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`M`)">Montagnes</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`S`)">Marécages</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`W`)">Etangs</span>&nbsp;</span>');
-    $('#conUnitList').append('<span class="constName"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`L`)">Lacs</span></span>');
+    $('#conUnitList').append('<span class="basicText">Remplacer par:</span><br>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`P`)">Plaines</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`G`)">Prairies</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`B`)">Maquis</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`F`)">Forêts</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`H`)">Collines</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`M`)">Montagnes</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`S`)">Marécages</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`W`)">Etangs</span>&nbsp;</span>');
+    $('#conUnitList').append('<span class="basicText"><span class="verf klik" onclick="mapGlobalEdits(`'+oldTer+'`,`L`)">Lacs</span></span>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,100)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 100%</span><br>');
-    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,90)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 90%</span><br>');
-    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,75)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 75%</span><br>');
-    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,50)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 50%</span><br>');
-    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,25)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 25%</span><br>');
-    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,10)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 10%</span><br>');
-    $('#conUnitList').append('<span class="constName">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,5)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 5%</span><br>');
+    $('#conUnitList').append('<span class="basicText">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,100)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 100%</span><br>');
+    $('#conUnitList').append('<span class="basicText">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,90)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 90%</span><br>');
+    $('#conUnitList').append('<span class="basicText">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,75)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 75%</span><br>');
+    $('#conUnitList').append('<span class="basicText">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,50)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 50%</span><br>');
+    $('#conUnitList').append('<span class="basicText">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,25)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 25%</span><br>');
+    $('#conUnitList').append('<span class="basicText">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,10)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 10%</span><br>');
+    $('#conUnitList').append('<span class="basicText">Remplacer: <span class="cy klik" onclick="replaceTerrain(`'+oldTer+'`,`'+newTer+'`,5)">'+oldTerrain.fullName+' >> '+newTerrain.fullName+'</span> 5%</span><br>');
     $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="resRecheck()" title="Nouvelles ressources, ruines et routes">Nouvelles Ressources et Ruines!</span></span><br>');
+    $('#conUnitList').append('<span class="basicText"><span class="cy klik" onclick="resRecheck()" title="Nouvelles ressources, ruines et routes">Nouvelles Ressources et Ruines!</span></span><br>');
     $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="constName"><span class="cy klik" onclick="roadsKill()">Enlever Ruines et Routes</span></span><br>');
+    $('#conUnitList').append('<span class="basicText"><span class="cy klik" onclick="roadsKill()">Enlever Ruines et Routes</span></span><br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="butSpace"></span>');
     $('#conUnitList').append('<br>');
@@ -1503,15 +1511,17 @@ function editTheMissionBaby() {
 
 function alienReplace(classe,r1,r2) {
     let r1view = r1;
+    let desc = 'Remplacer les '+r1+' par des '+r2;
     if (r1view === 'Yapa') {
         r1view = 'RIEN';
+        desc = 'Ne pas remplacer';
     }
     let rar = 0;
     let alien = getAlienTypeByName(r1);
     if (Object.keys(alien).length >= 1) {
         rar = alien.rarity;
     }
-    $('#conUnitList').append('<span class="constName"><span class="gf">Remplacer:</span> <span class="cy klik" onclick="alienToggle(0,`'+classe+'`)" title="Changer">'+r1view+'</span> ('+rar+') <span class="gf">Par:</span> <span class="cy klik" onclick="alienToggle(1,`'+classe+'`)" title="Changer">'+r2+'</span></span><br>');
+    $('#conUnitList').append('<span class="basicText"><span class="cy klik" onclick="alienToggle(0,`'+classe+'`)" title="'+desc+'">'+r1view+'</span> ('+rar+') <span class="gf" title="'+desc+'">&#10145;</span> <span class="cy klik" onclick="alienToggle(1,`'+classe+'`)" title="'+desc+'">'+r2+'</span></span><br>');
 };
 
 function alienToggle(rnum,classe) {

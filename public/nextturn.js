@@ -1083,7 +1083,8 @@ function turnInfo() {
     console.log(pilonedTiles);
     centerMap();
     if (!playerInfos.onShip) {
-        $('#tour').empty().append('Tour '+playerInfos.mapTurn+'<br>');
+        $('#tour').empty().append('<span title="">Zone '+zone[0].number+'</span> / ');
+        $('#tour').append('Tour '+playerInfos.mapTurn+'<br>');
         $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
         if (playerInfos.mapTurn <= 1 && zone[0].mapDiff != playerInfos.sondeDanger) {
             $('#tour').append('<span class="wblynk">Présence Alien '+zone[0].mapDiff+'</span><br>');

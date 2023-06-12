@@ -948,6 +948,19 @@
         "popIn":["Atelier","Caserne","Armurerie"]
     },
     {
+        "name":"e-repair",
+        "cat":"equip",
+        "skills":[],
+        "info":"Réparations+ (Bâtiments)",
+        "bldReq":["Chaîne de montage"],
+        "compReq":{"const":1,"ind":1},
+        "altCompReq":{"const":2},
+        "autoComp":["const",3],
+        "factor":"crew",
+        "costs":{"Fer":6,"Carbone":3,"Tungstène":3,"Electros":3,"Batteries":3},
+        "deploy":{"Huile":4,"Energie":16,"Compo1":16,"Compo2":16,"Compo3":8}
+    },
+    {
         "name":"e-mecano",
         "cat":"equip",
         "skills":[],

@@ -44,13 +44,6 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     } else {
         apCost = calcAdjSkillCost(1,apCost,medicBatType,medicBat,isMed);
     }
-    // if (around) {
-    //     if (!inBld) {
-    //         apCost = cost+selectedBatType.squads-selectedBat.squadsLeft;
-    //     } else {
-    //         apCost = cost+medicBatType.squads-medicBat.squadsLeft;
-    //     }
-    // }
     let batUnits;
     let newBatUnits;
     let catOK = false;
@@ -81,7 +74,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                         if (distance <= medRange) {
                             batType = getBatType(bat);
                             batUnits = bat.squadsLeft*batType.squadSize;
-                            if (batType.cat === cat || (batType.cat === 'devices' && cat === 'buildings') || (batType.cat === 'devices' && cat === 'vehicles')) {
+                            if (batType.cat === cat || (batType.cat === 'devices' && cat === 'buildings') || (batType.cat === 'devices' && cat === 'vehicles') || (batType.skills.includes('transorbital') && cat === 'buildings')) {
                                 catOK = true;
                             } else if (cat === 'any') {
                                 catOK = true;
@@ -323,7 +316,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
             }
         });
     }
-    if (selectedBatType.cat === cat || (selectedBatType.cat === 'devices' && cat === 'buildings') || (selectedBatType.cat === 'devices' && cat === 'vehicles')) {
+    if (selectedBatType.cat === cat || (selectedBatType.cat === 'devices' && cat === 'buildings') || (selectedBatType.cat === 'devices' && cat === 'vehicles') || (selectedBatType.skills.includes('transorbital') && cat === 'buildings')) {
         catOK = true;
     } else if (cat === 'any') {
         catOK = true;
@@ -552,7 +545,7 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
                     if (batHPLeft >= batHP) {
                         fullBat = true;
                     }
-                    if (batType.cat === cat || (batType.cat === 'devices' && cat === 'buildings') || (batType.cat === 'devices' && cat === 'vehicles')) {
+                    if (batType.cat === cat || (batType.cat === 'devices' && cat === 'buildings') || (batType.cat === 'devices' && cat === 'vehicles') || (batType.skills.includes('transorbital') && cat === 'buildings')) {
                         catOK = true;
                     } else if (cat === 'any') {
                         catOK = true;
@@ -917,9 +910,14 @@ function checkRepairBat(tileId) {
             if (bat.tileId === tileId || bat.tileId === tileId+1 || bat.tileId === tileId-1 || bat.tileId === tileId+mapSize || bat.tileId === tileId-mapSize || bat.tileId === tileId+mapSize+1 || bat.tileId === tileId-mapSize+1 || bat.tileId === tileId+mapSize-1 || bat.tileId === tileId-mapSize-1) {
                 console.log(bat);
                 batType = getBatType(bat);
+                let batRepairCost = batType.mecanoCost;
+                if (hasEquip(bat,['e-repair'])) {
+                    batRepairCost = Math.floor(batRepairCost/3);
+                }
+                if (batRepairCost < 2) {batRepairCost = 2;}
                 if (batType.cat != 'buildings' && batType.cat != 'devices') {
-                    if (batType.skills.includes('repair') && bat.apLeft >= Math.round(batType.mecanoCost/2) && batType.mecanoCost < bestRepairCost) {
-                        bestRepairCost = batType.mecanoCost;
+                    if (batType.skills.includes('repair') && bat.apLeft >= Math.round(batRepairCost/2) && batRepairCost < bestRepairCost) {
+                        bestRepairCost = batRepairCost;
                         bestRepairBat = bat;
                     }
                 }
@@ -934,7 +932,12 @@ function checkRepairBat(tileId) {
 function diagRepair(repairBatId) {
     let repairBat = getBatById(repairBatId);
     let repairBatType = getBatType(repairBat);
-    repairBat.apLeft = repairBat.apLeft-repairBatType.mecanoCost;
+    let batRepairCost = repairBatType.mecanoCost;
+    if (hasEquip(repairBat,['e-repair'])) {
+        batRepairCost = Math.floor(batRepairCost/3);
+    }
+    if (batRepairCost < 2) {batRepairCost = 2;}
+    repairBat.apLeft = repairBat.apLeft-batRepairCost;
     let batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
     let oldSquadsLeft = selectedBat.squadsLeft;
     let squadHP = selectedBatType.squadSize*selectedBatType.hp;
@@ -975,7 +978,7 @@ function calcAdjSkillCost(numTargets,baseskillCost,batType,bat,isMed) {
                 fuckSquads = true;
             }
         } else {
-            if (hasEquip(bat,['e-mecano'])) {
+            if (hasEquip(bat,['e-mecano','e-repair'])) {
                 fuckSquads = true;
             }
         }
@@ -1038,6 +1041,8 @@ function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
                     }
                 }
             }
+        } else if (hasEquip(bat,['e-repair'])) {
+            baseskillCost = Math.floor(baseskillCost/3);
         }
     }
     if (inBld) {
@@ -1046,9 +1051,7 @@ function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
             baseskillCost = baseskillCost-1;
         }
     }
-    if (baseskillCost < 2) {
-        baseskillCost = 2;
-    }
+    if (baseskillCost < 2) {baseskillCost = 2;}
     return baseskillCost;
 };
 
