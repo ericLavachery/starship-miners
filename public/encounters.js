@@ -2055,13 +2055,15 @@ function workingTurrets() {
     playerOccupiedTileList();
     if (!zone[0].visit && zone[0].number < 50) {
         let turretsNum = 0;
+        let baseDice = 12-Math.ceil(zone[0].mapDiff/2);
+        let maxTurrets = Math.ceil(zone[0].mapDiff/3)+rand.rand(0,4);
         let shufZone = _.shuffle(zone);
         shufZone.forEach(function(tile) {
             if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
-                if (tile.ruins && turretsNum < 4) {
+                if (tile.ruins && turretsNum < maxTurrets) {
                     if (tile.rt != undefined) {
                         if (tile.rt.name === 'Autoturrets') {
-                            let turretDice = 9+(turretsNum*3);
+                            let turretDice = baseDice+(turretsNum*3);
                             if (rand.rand(1,turretDice) === 1) {
                                 putTurret(tile);
                                 turretsNum++;

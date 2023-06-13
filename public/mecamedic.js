@@ -993,9 +993,9 @@ function calcAdjSkillCost(numTargets,baseskillCost,batType,bat,isMed) {
     return Math.round(apCost);
 };
 
-function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
+function calcBaseSkillCost(bat,batType,skill,inBld,bldBat) {
     let baseskillCost;
-    if (medik) {
+    if (skill === 'medic') {
         baseskillCost = batType.mediCost;
         if (playerInfos.bldList.includes('Hôpital') && batType.cat != 'buildings') {
             if (baseskillCost >= 5) {
@@ -1013,7 +1013,7 @@ function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
                 baseskillCost = baseskillCost-1;
             }
         }
-    } else {
+    } else if (skill === 'mecano') {
         baseskillCost = batType.mecanoCost;
         if (playerInfos.bldList.includes('Usine') && batType.cat != 'buildings') {
             if (baseskillCost >= 5) {
@@ -1041,7 +1041,21 @@ function calcBaseSkillCost(bat,batType,medik,inBld,bldBat) {
                     }
                 }
             }
-        } else if (hasEquip(bat,['e-repair'])) {
+        }
+    } else if (skill === 'repair') {
+        baseskillCost = batType.mecanoCost;
+        if (playerInfos.bldList.includes('Usine') && batType.cat != 'buildings') {
+            if (baseskillCost >= 5) {
+                baseskillCost = Math.ceil(baseskillCost/2);
+            } else {
+                baseskillCost = baseskillCost-1;
+            }
+        } else if (playerInfos.bldList.includes('Chaîne de montage') && batType.cat != 'buildings') {
+            baseskillCost = Math.round(baseskillCost*3/4);
+        } else if (playerInfos.bldList.includes('Atelier') && batType.cat != 'buildings' && baseskillCost >= 3) {
+            baseskillCost = baseskillCost-1;
+        }
+        if (hasEquip(bat,['e-repair'])) {
             baseskillCost = Math.floor(baseskillCost/3);
         }
     }

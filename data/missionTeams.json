@@ -477,19 +477,13 @@
         "unit":"Mulets",
         "gear":["explosive","grenade-flashbang","wendium","w2-grenade"],
         "missions":["science","spider","sky","dragon"],
-        "gangs":["detruas","brasier"]
+        "gangs":["detruas"]
     },
     {
         "unit":"Mulets",
         "gear":["explosive","grenade-flashbang","wendium","w2-grenade"],
         "missions":["science","spider","sky","dragon"],
         "gangs":["detruas","brasier","rednecks"]
-    },
-    {
-        "unit":"Mulets",
-        "gear":["tungsten","xxx","kevlar","e-ranger"],
-        "missions":["resist","trolley","necro"],
-        "gangs":["brasier"]
     },
     {
         "unit":"Mulets",
@@ -709,6 +703,18 @@
     },
     {
         "unit":"Flaktanks",
+        "gear":["obus-plastanium","obus-plastanium","tisal","longtom1"],
+        "missions":["sky"],
+        "gangs":["detruas","bulbos","drogmulojs","rednecks"]
+    },
+    {
+        "unit":"Flaktanks",
+        "gear":["obus-plastanium","obus-plastanium","tisal","snorkel"],
+        "missions":["sky"],
+        "gangs":["tiradores"]
+    },
+    {
+        "unit":"Flaktanks",
         "gear":["obus-plastanium","obus-plastanium","tisal","snorkel"],
         "missions":["sky"],
         "gangs":["tiradores"]
@@ -717,12 +723,6 @@
         "unit":"Minitanks",
         "gear":["uranium","obus-heat","swag","wstabkit"],
         "missions":["necro","science","spider"],
-        "gangs":["rednecks","detruas"]
-    },
-    {
-        "unit":"Minitanks",
-        "gear":["uranium","obus-heat","tisal","wstabkit"],
-        "missions":["sky"],
         "gangs":["rednecks","detruas"]
     },
     {
@@ -741,12 +741,6 @@
         "unit":"Minitanks",
         "gear":["uranium","cn-plastanium","swag","wstabkit"],
         "missions":["necro","science","spider"],
-        "gangs":["bulbos"]
-    },
-    {
-        "unit":"Minitanks",
-        "gear":["uranium","cn-plastanium","tisal","wstabkit"],
-        "missions":["sky"],
         "gangs":["bulbos"]
     },
     {
@@ -1020,6 +1014,12 @@
         "gangs":["tiradores"]
     },
     {
+        "unit":"Gardes",
+        "gear":["lame-carbone","salite","aegis","kit-garde"],
+        "missions":["sky"],
+        "gangs":["tiradores"]
+    },
+    {
         "unit":"Artilleurs",
         "gear":["marquage","obus-heat","hplate","kit-artilleur"],
         "missions":["resist","necro"],
@@ -1164,12 +1164,6 @@
         "gangs":["tiradores"]
     },
     {
-        "unit":"Desperados",
-        "gear":["sm-dunium","lame-titane","nano","chargeur1"],
-        "missions":["sky"],
-        "gangs":["tiradores"]
-    },
-    {
         "unit":"Sinyaki",
         "gear":["club-spike-carb","dynamite-nitrate","nano","chargeur1"],
         "missions":["resist","trolley"],
@@ -1309,12 +1303,6 @@
     },
     {
         "unit":"Scouts",
-        "gear":["uranium","obus-plastanium","iso","carrousel2"],
-        "missions":["sky"],
-        "gangs":["drogmulojs"]
-    },
-    {
-        "unit":"Scouts",
         "gear":["salite","obus-plastanium","swag","carrousel2"],
         "missions":["dragon"],
         "gangs":["drogmulojs"]
@@ -1389,12 +1377,6 @@
         "unit":"Spears",
         "gear":["pn-uranium","obus-heatseeker","chobham","carrousel2"],
         "missions":["necro","science","spider"],
-        "gangs":["tiradores"]
-    },
-    {
-        "unit":"Spears",
-        "gear":["pn-salite","obus-heatseeker","iso","carrousel2"],
-        "missions":["sky"],
         "gangs":["tiradores"]
     },
     {
@@ -2078,7 +2060,7 @@
     {
         "unit":"Spectres",
         "gear":["uranium","gaz-uridium","kapton","e-camo"],
-        "missions":["sky","dragon"],
+        "missions":["dragon"],
         "gangs":["drogmulojs"]
     },
     {
@@ -2103,12 +2085,6 @@
         "unit":"Twins",
         "gear":["salite","lame-taser","kaptane","lunette1"],
         "missions":["spider","dragon"],
-        "gangs":["drogmulojs"]
-    },
-    {
-        "unit":"Kamiclones",
-        "gear":["lame-t-atium","autodes-nanite","swarwing","repel"],
-        "missions":["sky"],
         "gangs":["drogmulojs"]
     },
     {
@@ -3042,6 +3018,12 @@
         "gangs":["brasier"]
     },
     {
+        "unit":"Slings",
+        "gear":["salite","fireblast","wendium","lanceur"],
+        "missions":["science","spider","sky"],
+        "gangs":["brasier"]
+    },
+    {
         "unit":"Cages",
         "gear":["lf-slime","uranium","hplate","lunette2"],
         "missions":["resist"],
@@ -3050,6 +3032,12 @@
     {
         "unit":"Hot girls",
         "gear":["lf-slime","uranium","hplate","gilet"],
+        "missions":["resist","trolley","necro"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Hot girls",
+        "gear":["lf-slime","uranium","wendium","gilet"],
         "missions":["resist","trolley","necro"],
         "gangs":["brasier"]
     },
@@ -3231,6 +3219,12 @@
         "unit":"Blocks",
         "gear":["timonium","molotov-pyrus","kapton","lanceur"],
         "missions":["spider","sky","dragon"],
+        "gangs":["brasier"]
+    },
+    {
+        "unit":"Bigman",
+        "gear":["lame-adamantium","lt-pyrus","chobham","e-repair"],
+        "missions":["dragon"],
         "gangs":["brasier"]
     },
     {

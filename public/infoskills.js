@@ -651,7 +651,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             // console.log(medicBat);
             if (Object.keys(medicBat).length >= 1) {
                 numTargets = numMedicTargets(medicBat,'infantry',true,true,bat);
-                baseskillCost = calcBaseSkillCost(medicBat,medicBatType,true,true,bat);
+                baseskillCost = calcBaseSkillCost(medicBat,medicBatType,'medic',true,bat);
                 apCost = numTargets*(baseskillCost+medicBatType.squads-medicBat.squadsLeft);
                 if (apCost === 0) {apCost = baseskillCost;}
                 if (numTargets >= 1) {
@@ -669,7 +669,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         let fullStarka = getStarkaIntox(bat);
         if (myMedicSkill === 'medic') {
             numTargets = numMedicTargets(bat,'infantry',true,true,bat);
-            baseskillCost = calcBaseSkillCost(bat,batType,true,false);
+            baseskillCost = calcBaseSkillCost(bat,batType,'medic',false);
             // apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,true);
             if (apCost === 0) {apCost = baseskillCost;}
@@ -695,7 +695,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         // BAD MEDIC
         if (myMedicSkill === 'badmedic') {
             numTargets = numMedicTargets(bat,'infantry',true,false,bat);
-            baseskillCost = calcBaseSkillCost(bat,batType,true,false);
+            baseskillCost = calcBaseSkillCost(bat,batType,'medic',false);
             // apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,true);
             if (apCost === 0) {apCost = baseskillCost;}
@@ -721,7 +721,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         // SELF MEDIC
         if (myMedicSkill === 'selfmedic') {
             numTargets = numMedicTargets(bat,'infantry',false,true,bat);
-            baseskillCost = calcBaseSkillCost(bat,batType,true,false);
+            baseskillCost = calcBaseSkillCost(bat,batType,'medic',false);
             // apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,true);
             if (apCost === 0) {apCost = baseskillCost;}
@@ -747,7 +747,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         // FIRST AID (SELF BAD MEDIC)
         if (myMedicSkill === 'selfbadmedic') {
             numTargets = numMedicTargets(bat,'infantry',false,false,bat);
-            baseskillCost = calcBaseSkillCost(bat,batType,true,false);
+            baseskillCost = calcBaseSkillCost(bat,batType,'medic',false);
             // apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,true);
             if (apCost === 0) {apCost = baseskillCost;}
@@ -777,7 +777,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             // console.log(medicBat);
             if (Object.keys(medicBat).length >= 1) {
                 numTargets = numMedicTargets(medicBat,'vehicles',true,true,bat);
-                baseskillCost = calcBaseSkillCost(medicBat,medicBatType,false,true,bat);
+                baseskillCost = calcBaseSkillCost(medicBat,medicBatType,'mecano',true,bat);
                 apCost = numTargets*(baseskillCost+medicBatType.squads-medicBat.squadsLeft);
                 if (apCost === 0) {apCost = baseskillCost;}
                 if (numTargets >= 1) {
@@ -794,7 +794,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         let myMecanoSkill = checkMecanoSkill(bat,batType);
         if (myMecanoSkill === 'mecano') {
             numTargets = numMedicTargets(bat,'vehicles',true,true,bat);
-            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            baseskillCost = calcBaseSkillCost(bat,batType,'mecano',false);
             // apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,false);
             if (apCost === 0) {apCost = baseskillCost;}
@@ -818,7 +818,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         // BAD MECANO
         if (myMecanoSkill === 'badmecano') {
             numTargets = numMedicTargets(bat,'vehicles',true,false,bat);
-            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            baseskillCost = calcBaseSkillCost(bat,batType,'mecano',false);
             // apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,false);
             if (apCost === 0) {apCost = baseskillCost;}
@@ -842,7 +842,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         // SELF BAD MECANO
         if (myMecanoSkill === 'selfbadmecano') {
             numTargets = numMedicTargets(bat,'vehicles',false,false,bat);
-            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            baseskillCost = calcBaseSkillCost(bat,batType,'mecano',false);
             // apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,false);
             if (apCost === 0) {apCost = baseskillCost;}
@@ -864,7 +864,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         // SELF MECANO
         if (myMecanoSkill === 'selfmecano') {
             numTargets = numMedicTargets(bat,'vehicles',false,true,bat);
-            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            baseskillCost = calcBaseSkillCost(bat,batType,'mecano',false);
             // apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,false);
             if (apCost === 0) {apCost = baseskillCost;}
@@ -886,7 +886,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         // REPAIR
         if (batType.skills.includes('repair')) {
             numTargets = numMedicTargets(bat,'buildings',true,true,bat);
-            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            baseskillCost = calcBaseSkillCost(bat,batType,'repair',false);
             // apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,false);
             if (apCost === 0) {apCost = baseskillCost;}
@@ -910,7 +910,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         // SELF BAD REPAIR
         if (batType.skills.includes('selfbadrepair')) {
             numTargets = numMedicTargets(bat,'buildings',false,false,bat);
-            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            baseskillCost = calcBaseSkillCost(bat,batType,'repair',false);
             // apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,false);
             if (apCost === 0) {apCost = baseskillCost;}
@@ -932,7 +932,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         // SELF REPAIR
         if (batType.skills.includes('selfrepair')) {
             numTargets = numMedicTargets(bat,'buildings',false,true,bat);
-            baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+            baseskillCost = calcBaseSkillCost(bat,batType,'repair',false);
             // apCost = numTargets*(baseskillCost+batType.squads-bat.squadsLeft);
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,false);
             if (apCost === 0) {apCost = baseskillCost;}
@@ -2690,7 +2690,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     apCost = drug.apCost;
                     apReq = 0;
                     if (drugName === 'meca') {
-                        baseskillCost = calcBaseSkillCost(bat,batType,false,false);
+                        baseskillCost = calcBaseSkillCost(bat,batType,'mecano',false);
                         apCost = calcAdjSkillCost(1,baseskillCost,batType,bat,false);
                         apCost = Math.ceil(apCost/1.5);
                         apReq = Math.ceil(apCost/2);

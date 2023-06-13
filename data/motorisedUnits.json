@@ -407,7 +407,7 @@
             "noise":2,
             "rof":16,
             "accuracy":26,
-            "dca":1,
+            "dca":1.1,
             "power":9,
             "aoe":"unit",
             "sound":"mit_pneu",
