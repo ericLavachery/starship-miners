@@ -528,3 +528,9 @@ socket.on('testcon-failed', function(pseutest) {
     alert("Le serveur à été redémarré et vous n'avez pas actualisé la page. Vos dernières actions n'ont peut-être pas été enregistrées.");
     console.log('pseudo test failed! *********************************');
 });
+
+// BACKUP SAVED
+socket.on('backup-saved', function(hi) {
+    justReloaded = false;
+    commandes();
+});

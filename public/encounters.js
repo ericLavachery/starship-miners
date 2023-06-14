@@ -2047,6 +2047,16 @@ function putTurret(tile) {
     conselPut = false;
     conselTriche = true;
     putBat(tile.id,0,rand.rand(50,1000),'camobld',false);
+    let tBat = getLastBatCreated();
+    if (tBat.type === 'Autobunkers' || tBat.type === 'Autoturrets') {
+        let d1 = rand.rand(1,4);
+        let d2 = rand.rand(1,4);
+        if (d1 > d2) {
+            tBat.squadsLeft = d1;
+        } else {
+            tBat.squadsLeft = d2;
+        }
+    }
     playerOccupiedTiles.push(tile.id);
 };
 

@@ -1,5 +1,6 @@
 function goSoute() {
     inSoute = true;
+    justReloaded = false;
     if (playerInfos.onShip) {
         playRoom('soute',true,true);
         playFx('work',false);

@@ -249,10 +249,12 @@ function saveGame() {
     bataillons.forEach(function(bat) {
         bat.xp = bat.xp.toFixedNumber(2);
         bat.apLeft = bat.apLeft.toFixedNumber(1);
+        bat.oldapLeft = bat.oldapLeft.toFixedNumber(1);
     });
     saveBataillons();
     aliens.forEach(function(bat) {
         bat.apLeft = bat.apLeft.toFixedNumber(1);
+        bat.oldapLeft = bat.oldapLeft.toFixedNumber(1);
     });
     saveAliens();
     savePlayerInfos();
@@ -265,6 +267,11 @@ function saveGame() {
     }
     testConnect(pseudo);
     commandes();
+};
+
+function saveBackup() {
+    // saveGame();
+    socket.emit('save-backup',playerInfos);
 };
 
 function saveAndReload() {
@@ -318,6 +325,7 @@ function newGame() {
     playerInfos.allTurns = 0;
     playerInfos.zoneDB = [];
     playerInfos.resFlags = [];
+    playerInfos.deadBats = [];
     playerInfos.notes = [];
     playerInfos.sciRech = 0;
     playerInfos.sci = 0;

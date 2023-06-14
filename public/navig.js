@@ -99,7 +99,11 @@ function commandes() {
                 }
             }
             if (saveOK) {
-                $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveGame()" onmousedown="clicSound(8)"><i class="far fa-save"></i> &nbsp;<span class="notsosmall">Save</span></button>');
+                if (justReloaded) {
+                    $('#commandz').append('<button type="button" title="Backup de cette partie (écrase le précédent)" class="boutonRose iconButtons" onclick="saveBackup()" onmousedown="clicSound(17)"><i class="fas fa-hdd"></i> &nbsp;<span class="notsosmall">Bckp</span></button>');
+                } else {
+                    $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveGame()" onmousedown="clicSound(8)"><i class="far fa-save"></i> &nbsp;<span class="notsosmall">Save</span></button>');
+                }
             }
 
         }

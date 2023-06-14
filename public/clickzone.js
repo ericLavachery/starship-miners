@@ -206,6 +206,7 @@ function batSelect(bat,roger) {
     // stop move sound
     // playMove(false);
     // remove selection on old selected unit
+    justReloaded = false;
     batDebarq = {};
     nextTurnOK = true;
     $('html,body').scrollTop(0);

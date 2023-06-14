@@ -188,7 +188,11 @@ io.sockets.on('connection', function (socket, pseudo) {
         pseudo = ent.encode(pseudo);
         socket.pseudo = pseudo;
         console.log('login : '+pseudo);
-        const path = './data/players/'+pseudo+'-playerInfos.json'
+        var dir = './data/players/'+socket.pseudo;
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+        }
+        const path = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-playerInfos.json'
         try {
             if (fs.existsSync(path)) {
                 fs.readFile(path, 'utf8', function (err, data) {
@@ -210,7 +214,7 @@ io.sockets.on('connection', function (socket, pseudo) {
     });
 
     function loadMap() {
-        const path = './data/players/'+socket.pseudo+'-currentMap.json'
+        const path = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-currentMap.json'
         try {
             if (fs.existsSync(path)) {
                 fs.readFile(path, 'utf8', function (err, data) {
@@ -232,7 +236,7 @@ io.sockets.on('connection', function (socket, pseudo) {
     };
 
     function loadBataillons() {
-        const path = './data/players/'+socket.pseudo+'-bataillons.json'
+        const path = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-bataillons.json'
         try {
             if (fs.existsSync(path)) {
                 fs.readFile(path, 'utf8', function (err, data) {
@@ -254,7 +258,7 @@ io.sockets.on('connection', function (socket, pseudo) {
     };
 
     function loadAliens() {
-        const path = './data/players/'+socket.pseudo+'-aliens.json'
+        const path = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-aliens.json'
         try {
             if (fs.existsSync(path)) {
                 fs.readFile(path, 'utf8', function (err, data) {
@@ -333,7 +337,7 @@ io.sockets.on('connection', function (socket, pseudo) {
 
     function listZoneFiles() {
         zoneFiles = [];
-        fs.readdirSync('./data/players/').forEach(file => {
+        fs.readdirSync('./data/players/'+socket.pseudo+'/').forEach(file => {
             if (file.includes(socket.pseudo+'-map')) {
                 let zoneNum = file.replace(socket.pseudo+'-map','');
                 zoneNum = zoneNum.replace('.json','');
@@ -349,7 +353,7 @@ io.sockets.on('connection', function (socket, pseudo) {
         listZoneFiles();
         console.log(zoneFiles);
         zoneFiles.forEach(function(zoneId) {
-            var fileToBeRemoved = './data/players/'+socket.pseudo+'-map'+zoneId+'.json';
+            var fileToBeRemoved = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-map'+zoneId+'.json';
             console.log(fileToBeRemoved);
             fs.unlink(fileToBeRemoved, function(err) {
                 if(err && err.code == 'ENOENT') {
@@ -360,7 +364,7 @@ io.sockets.on('connection', function (socket, pseudo) {
                     console.info("File removed");
                 }
             });
-            fileToBeRemoved = './data/players/'+socket.pseudo+'-bataillons'+zoneId+'.json';
+            fileToBeRemoved = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-bataillons'+zoneId+'.json';
             console.log(fileToBeRemoved);
             fs.unlink(fileToBeRemoved, function(err) {
                 if(err && err.code == 'ENOENT') {
@@ -371,7 +375,7 @@ io.sockets.on('connection', function (socket, pseudo) {
                     console.info("File removed");
                 }
             });
-            fileToBeRemoved = './data/players/'+socket.pseudo+'-aliens'+zoneId+'.json';
+            fileToBeRemoved = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-aliens'+zoneId+'.json';
             console.log(fileToBeRemoved);
             fs.unlink(fileToBeRemoved, function(err) {
                 if(err && err.code == 'ENOENT') {
@@ -388,23 +392,55 @@ io.sockets.on('connection', function (socket, pseudo) {
     // Put specific mission in data/players
     socket.on('move-mission-zone', function(zoneId) {
         let fileToBeMoved = './data/players/Missions/Mission-map'+zoneId+'.json';
-        let fileToBeCreated = './data/players/'+socket.pseudo+'-map'+zoneId+'.json';
+        let fileToBeCreated = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-map'+zoneId+'.json';
         fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
             if (err) throw err;
             console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
         });
         fileToBeMoved = './data/players/Missions/Mission-bataillons'+zoneId+'.json';
-        fileToBeCreated = './data/players/'+socket.pseudo+'-bataillons'+zoneId+'.json';
+        fileToBeCreated = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-bataillons'+zoneId+'.json';
         fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
             if (err) throw err;
             console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
         });
         fileToBeMoved = './data/players/Missions/Mission-aliens'+zoneId+'.json';
-        fileToBeCreated = './data/players/'+socket.pseudo+'-aliens'+zoneId+'.json';
+        fileToBeCreated = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-aliens'+zoneId+'.json';
         fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
             if (err) throw err;
             console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
         });
+    });
+
+    socket.on('save-backup', function(pi) {
+        let dir = './data/players/'+socket.pseudo+'/bkp';
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+        }
+        let fileToBeMoved = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-currentMap.json';
+        let fileToBeCreated = './data/players/'+socket.pseudo+'/bkp/'+socket.pseudo+'-currentMap.json';
+        fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
+            if (err) throw err;
+            console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
+        });
+        fileToBeMoved = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-aliens.json';
+        fileToBeCreated = './data/players/'+socket.pseudo+'/bkp/'+socket.pseudo+'-aliens.json';
+        fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
+            if (err) throw err;
+            console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
+        });
+        fileToBeMoved = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-bataillons.json';
+        fileToBeCreated = './data/players/'+socket.pseudo+'/bkp/'+socket.pseudo+'-bataillons.json';
+        fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
+            if (err) throw err;
+            console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
+        });
+        fileToBeMoved = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-playerInfos.json';
+        fileToBeCreated = './data/players/'+socket.pseudo+'/bkp/'+socket.pseudo+'-playerInfos.json';
+        fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
+            if (err) throw err;
+            console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
+        });
+        socket.emit('backup-saved','hi');
     });
 
     // Load MISSION TEAMS
@@ -438,7 +474,7 @@ io.sockets.on('connection', function (socket, pseudo) {
 
     // Load zone PREVIEW
     socket.on('load-zone-preview', function(zoneId) {
-        const path = './data/players/'+socket.pseudo+'-map'+zoneId+'.json';
+        const path = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-map'+zoneId+'.json';
         console.log('load zone preview');
         console.log(path);
         try {
@@ -467,7 +503,7 @@ io.sockets.on('connection', function (socket, pseudo) {
 
     // Load zone
     socket.on('load-saved-map', function(zoneId) {
-        const path = './data/players/'+socket.pseudo+'-map'+zoneId+'.json';
+        const path = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-map'+zoneId+'.json';
         console.log(path);
         try {
             if (fs.existsSync(path)) {
@@ -490,7 +526,7 @@ io.sockets.on('connection', function (socket, pseudo) {
         }
     });
     function loadZoneBataillons(zoneId) {
-        const path = './data/players/'+socket.pseudo+'-bataillons'+zoneId+'.json';
+        const path = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-bataillons'+zoneId+'.json';
         try {
             if (fs.existsSync(path)) {
                 fs.readFile(path, 'utf8', function (err, data) {
@@ -512,7 +548,7 @@ io.sockets.on('connection', function (socket, pseudo) {
         }
     };
     function loadZoneAliens(zoneId) {
-        const path = './data/players/'+socket.pseudo+'-aliens'+zoneId+'.json';
+        const path = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-aliens'+zoneId+'.json';
         try {
             if (fs.existsSync(path)) {
                 fs.readFile(path, 'utf8', function (err, data) {
@@ -615,7 +651,7 @@ io.sockets.on('connection', function (socket, pseudo) {
     socket.on('save-map-as', function(zone) {
         let jsonmap = JSON.stringify(zone[0]);
         let mapname = socket.pseudo+'-map'+zone[1]+'.json';
-        fs.writeFile('./data/players/'+mapname, jsonmap, 'utf8', (err) => {
+        fs.writeFile('./data/players/'+socket.pseudo+'/'+mapname, jsonmap, 'utf8', (err) => {
             if (err) throw err;
             console.log('Map saved to '+mapname);
         });
@@ -624,7 +660,7 @@ io.sockets.on('connection', function (socket, pseudo) {
     socket.on('save-aliens-as', function(aliens) {
         let json = JSON.stringify(aliens[0]);
         let filename = socket.pseudo+'-aliens'+aliens[1]+'.json'
-        fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+        fs.writeFile('./data/players/'+socket.pseudo+'/'+filename, json, 'utf8', (err) => {
             if (err) throw err;
             console.log('Aliens saved to '+filename);
         });
@@ -633,7 +669,7 @@ io.sockets.on('connection', function (socket, pseudo) {
     socket.on('save-bataillons-as', function(bataillons) {
         let json = JSON.stringify(bataillons[0]);
         let filename = socket.pseudo+'-bataillons'+bataillons[1]+'.json'
-        fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+        fs.writeFile('./data/players/'+socket.pseudo+'/'+filename, json, 'utf8', (err) => {
             if (err) throw err;
             console.log('Bataillons saved to '+filename);
         });
@@ -695,9 +731,13 @@ io.sockets.on('connection', function (socket, pseudo) {
     // Save zone
     socket.on('save-map', function(zone) {
         if (socket.pseudo != undefined) {
+            var dir = './data/players/'+socket.pseudo;
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
             let jsonmap = JSON.stringify(zone);
             let mapname = socket.pseudo+'-currentMap.json';
-            fs.writeFile('./data/players/'+mapname, jsonmap, 'utf8', (err) => {
+            fs.writeFile('./data/players/'+socket.pseudo+'/'+mapname, jsonmap, 'utf8', (err) => {
                 if (err) throw err;
                 console.log('Map saved to '+mapname);
             });
@@ -706,9 +746,13 @@ io.sockets.on('connection', function (socket, pseudo) {
     // Save Bataillons
     socket.on('save-bataillons', function(bataillons) {
         if (socket.pseudo != undefined) {
+            var dir = './data/players/'+socket.pseudo;
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
             let json = JSON.stringify(bataillons);
             let filename = socket.pseudo+'-bataillons.json'
-            fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+            fs.writeFile('./data/players/'+socket.pseudo+'/'+filename, json, 'utf8', (err) => {
                 if (err) throw err;
                 console.log('Bataillons saved to '+filename);
             });
@@ -717,9 +761,13 @@ io.sockets.on('connection', function (socket, pseudo) {
     // Save Aliens
     socket.on('save-aliens', function(aliens) {
         if (socket.pseudo != undefined) {
+            var dir = './data/players/'+socket.pseudo;
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
             let json = JSON.stringify(aliens);
             let filename = socket.pseudo+'-aliens.json'
-            fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+            fs.writeFile('./data/players/'+socket.pseudo+'/'+filename, json, 'utf8', (err) => {
                 if (err) throw err;
                 console.log('Aliens saved to '+filename);
             });
@@ -728,9 +776,13 @@ io.sockets.on('connection', function (socket, pseudo) {
     // Save playerInfos
     socket.on('save-playerInfos', function(playerInfos) {
         if (socket.pseudo != undefined) {
+            var dir = './data/players/'+socket.pseudo;
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
             let json = JSON.stringify(playerInfos);
             let filename = socket.pseudo+'-playerInfos.json'
-            fs.writeFile('./data/players/'+filename, json, 'utf8', (err) => {
+            fs.writeFile('./data/players/'+socket.pseudo+'/'+filename, json, 'utf8', (err) => {
                 if (err) throw err;
                 console.log('Player infos saved to '+filename+' on turn '+playerInfos.mapTurn);
             });
@@ -741,12 +793,12 @@ io.sockets.on('connection', function (socket, pseudo) {
     socket.on('save-playerLog', function(playerInfos) {
         if (socket.pseudo != undefined) {
             let json = JSON.stringify(playerInfos);
-            var dir = './data/players/'+socket.pseudo;
+            var dir = './data/players/'+socket.pseudo+'/logs';
             if (!fs.existsSync(dir)){
                 fs.mkdirSync(dir);
             }
             let filename = socket.pseudo+'-playerLog-'+playerInfos.gangXP+'.json';
-            fs.writeFile('./data/players/'+socket.pseudo+'/'+filename, json, 'utf8', (err) => {
+            fs.writeFile('./data/players/'+socket.pseudo+'/logs/'+filename, json, 'utf8', (err) => {
                 if (err) throw err;
                 console.log('Player infos saved to '+filename+' on turn '+playerInfos.mapTurn);
             });
