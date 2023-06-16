@@ -3042,6 +3042,10 @@ function gangLevelUp(retour) {
         let nextComp = playerInfos.comp[comp.name]+1;
         let compCost = comp.lvlCosts[nextComp];
         let colour = 'neutre';
+        let lvlColour = 'gff';
+        if (nowComp >= 1) {
+            lvlColour = 'cy';
+        }
         let costColour = 'rose';
         if (compCost >= 2) {
             costColour = 'rouge';
@@ -3072,7 +3076,7 @@ function gangLevelUp(retour) {
                 }
             }
         }
-        $('#conUnitList').append('<span class="paramName '+colour+'">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût">('+compCost+')</span><span class="paramCompValue cy" title="Niveau actuel">'+nowComp+'<span class="gff">/'+comp.maxLevel+'</span></span>');
+        $('#conUnitList').append('<span class="paramName '+colour+'" title="'+comp.desc+'">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût: '+compCost+'">('+compCost+')</span><span class="paramCompValue '+lvlColour+'" title="Niveau actuel">'+nowComp+'<span class="gff" title="Niveau maximum">/'+comp.maxLevel+'</span></span>');
         if (comp.levels[playerInfos.gang] <= nextGangLevel && comp.maxLevel >= nextComp) {
             if (compCost === 1 || (myCompPoints >= 2 && nextGangLevel >= 1)) {
                 if (myCompPoints >= compCost && !rechOnly) {

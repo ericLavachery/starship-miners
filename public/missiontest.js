@@ -453,7 +453,7 @@ function getMissionTitle(misNum) {
     let title = 'Indéfini';
     // EXIL
     if (misNum === 99) {title = 'Douves';}
-    if (misNum === 98) {title = 'Ville';}
+    if (misNum === 98) {title = '';}
     if (misNum === 97) {title = 'Chemins';}
     if (misNum === 96) {title = '';}
     if (misNum === 95) {title = '';}

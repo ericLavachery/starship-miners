@@ -7,7 +7,8 @@
         "maxLevel":2,
         "lvlCosts":[0,2,1],
         "rechCost":2,
-        "triPass":10
+        "triPass":10,
+        "desc":"Artillerie"
     },
     {
         "id":2,
@@ -17,7 +18,8 @@
         "maxLevel":2,
         "lvlCosts":[0,1,1],
         "rechCost":2,
-        "triPass":10
+        "triPass":10,
+        "desc":"Véhicules blindés"
     },
     {
         "id":3,
@@ -27,7 +29,8 @@
         "maxLevel":2,
         "lvlCosts":[0,2,1],
         "rechCost":2,
-        "triPass":10
+        "triPass":10,
+        "desc":"Aéronautique"
     },
     {
         "id":4,
@@ -37,7 +40,8 @@
         "maxLevel":2,
         "lvlCosts":[0,1,1],
         "rechCost":2,
-        "triPass":10
+        "triPass":10,
+        "desc":"Génétique (mutants, clones...)"
     },
     {
         "id":5,
@@ -47,7 +51,8 @@
         "maxLevel":2,
         "lvlCosts":[0,1,1],
         "rechCost":2,
-        "triPass":10
+        "triPass":10,
+        "desc":"Cybernétique"
     },
     {
         "id":6,
@@ -57,7 +62,8 @@
         "maxLevel":2,
         "lvlCosts":[0,2,1],
         "rechCost":2,
-        "triPass":10
+        "triPass":10,
+        "desc":"Robotique"
     },
     {
         "id":7,
@@ -68,7 +74,8 @@
         "lvlCosts":[0,1,1,1],
         "rechFirst":true,
         "rechCost":1.5,
-        "triPass":10
+        "triPass":10,
+        "desc":"Téléportation (ressources, unités)"
     },
     {
         "id":8,
@@ -78,7 +85,8 @@
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,1],
         "rechCost":0.7,
-        "triPass":10
+        "triPass":10,
+        "desc":"Vols spaciaux (Landers, navettes de secours, sondes...)"
     },
     {
         "id":9,
@@ -88,7 +96,8 @@
         "maxLevel":3,
         "lvlCosts":[0,1,1,1],
         "rechCost":0.5,
-        "triPass":3
+        "triPass":3,
+        "desc":"Scaphandres (accès aux différentes planêtes)"
     },
     {
         "id":10,
@@ -98,7 +107,8 @@
         "maxLevel":5,
         "lvlCosts":[0,1,1,1,1,2],
         "rechCost":0.85,
-        "triPass":2
+        "triPass":2,
+        "desc":"Technologies de l'information"
     },
     {
         "id":11,
@@ -110,7 +120,8 @@
         "rechLast":true,
         "rechPass":["bulbos"],
         "rechCost":1,
-        "triPass":3
+        "triPass":3,
+        "desc":"Médecine"
     },
     {
         "id":12,
@@ -120,7 +131,8 @@
         "maxLevel":3,
         "lvlCosts":[0,1,1,1],
         "rechCost":0.85,
-        "triPass":10
+        "triPass":10,
+        "desc":"Leadership, maintien de l'ordre"
     },
     {
         "id":13,
@@ -130,7 +142,8 @@
         "maxLevel":3,
         "lvlCosts":[0,1,1,2],
         "rechCost":1.25,
-        "triPass":3
+        "triPass":3,
+        "desc":"Entraînement"
     },
     {
         "id":14,
@@ -140,7 +153,8 @@
         "maxLevel":3,
         "lvlCosts":[0,1,2,1],
         "rechCost":1,
-        "triPass":3
+        "triPass":3,
+        "desc":"Camouflage (infanteries, véhicules, bâtiments...)"
     },
     {
         "id":15,
@@ -150,7 +164,8 @@
         "maxLevel":4,
         "lvlCosts":[0,1,1,1,1],
         "rechCost":1,
-        "triPass":10
+        "triPass":10,
+        "desc":"Recyclage"
     },
     {
         "id":16,
@@ -160,7 +175,8 @@
         "maxLevel":3,
         "lvlCosts":[0,1,1,2],
         "rechCost":1.25,
-        "triPass":4
+        "triPass":4,
+        "desc":"Industrie (craftings...)"
     },
     {
         "id":17,
@@ -170,7 +186,8 @@
         "maxLevel":3,
         "lvlCosts":[0,1,1,1],
         "rechCost":1.25,
-        "triPass":2
+        "triPass":2,
+        "desc":"Construction (bâtiments, infrastructures...)"
     },
     {
         "id":18,
@@ -180,7 +197,8 @@
         "maxLevel":3,
         "lvlCosts":[0,1,1,2],
         "rechCost":1,
-        "triPass":3
+        "triPass":3,
+        "desc":"Energie (efficacité des centrales, lasers, munitions plasma...)"
     },
     {
         "id":19,
@@ -190,7 +208,8 @@
         "maxLevel":3,
         "lvlCosts":[0,1,1,2],
         "rechCost":1,
-        "triPass":3
+        "triPass":3,
+        "desc":"Extraction (efficacité des mines, mineurs, derricks, pompes...)"
     },
     {
         "id":20,
@@ -200,7 +219,8 @@
         "maxLevel":3,
         "lvlCosts":[0,1,1,2],
         "rechCost":0.85,
-        "triPass":2
+        "triPass":2,
+        "desc":"Transports (transport de ressources et unités, véhicules de transport, mécanique...)"
     },
     {
         "id":21,
@@ -210,7 +230,8 @@
         "maxLevel":3,
         "lvlCosts":[0,1,1,2],
         "rechCost":1,
-        "triPass":3
+        "triPass":3,
+        "desc":"Logistique (équipements...)"
     },
     {
         "id":22,
@@ -222,7 +243,8 @@
         "rechLast":true,
         "rechPass":["tiradores"],
         "rechCost":1,
-        "triPass":3
+        "triPass":3,
+        "desc":"Balistique (munitions...)"
     },
     {
         "id":23,
@@ -234,7 +256,8 @@
         "rechLast":true,
         "rechPass":["detruas"],
         "rechCost":1,
-        "triPass":10
+        "triPass":10,
+        "desc":"Explosifs"
     },
     {
         "id":24,
@@ -246,7 +269,8 @@
         "rechLast":true,
         "rechPass":["brasier"],
         "rechCost":1,
-        "triPass":3
+        "triPass":3,
+        "desc":"Pyrotechnie (Lances-flammes, cocktails molotovs, munitions incendiaires, armures anti-feu...)"
     },
     {
         "id":25,
@@ -257,7 +281,8 @@
         "lvlCosts":[0,1,1,1,1,1],
         "rechLast":true,
         "rechCost":0.85,
-        "triPass":1.3
+        "triPass":1.3,
+        "desc":"Connaissance alien"
     },
     {
         "id":26,
@@ -269,7 +294,8 @@
         "rechLast":true,
         "rechPass":["blades","drogmulojs"],
         "rechCost":0.85,
-        "triPass":10
+        "triPass":10,
+        "desc":"Exochimie (drogues, poisons...)"
     },
     {
         "id":27,
@@ -281,7 +307,8 @@
         "rechLast":true,
         "rechPass":["blades"],
         "rechCost":1.25,
-        "triPass":4
+        "triPass":4,
+        "desc":"Matériaux (armures, munitions, équipements...)"
     },
     {
         "id":28,
@@ -291,6 +318,7 @@
         "maxLevel":3,
         "lvlCosts":[0,1,1,2],
         "rechCost":1.25,
-        "triPass":10
+        "triPass":10,
+        "desc":"Défenses (armes des bâtiments...)"
     }
 ]

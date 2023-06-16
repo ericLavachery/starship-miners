@@ -1027,6 +1027,7 @@ function nomVisible(bat) {
 function showTileInfos(tileId) {
     $("#tileInfos").css("display","block");
     $('#tileInfos').empty();
+    justReloaded = false;
     selectedTile = tileId;
     let tileIndex = zone.findIndex((obj => obj.id == tileId));
     let tile = zone[tileIndex];
