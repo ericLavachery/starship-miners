@@ -206,6 +206,42 @@ function checkMayOut(batType,isBat,bat) {
     return mayOut;
 };
 
+function checkMayOutInSoute(bat,batType) {
+    let mayOut = true;
+    if (playerInfos.missionPlanet === 4) {
+        if (playerInfos.comp.scaph < 2 || batType.skills.includes('dog')) {
+            mayOut = false;
+            if (batType.name === 'Pets' || batType.name === 'Klogs') {
+                mayOut = true;
+            }
+            if (batType.cat === 'buildings') {
+                mayOut = true;
+            }
+            if (batType.cat === 'devices' && batType.crew === 0) {
+                mayOut = true;
+            }
+            if (batType.cat === 'vehicles') {
+                if (batType.skills.includes('kzin') || batType.skills.includes('transorbital') || batType.skills.includes('robot')) {
+                    mayOut = true;
+                }
+            }
+            if (batType.cat === 'infantry') {
+                if (batType.skills.includes('kzin') || batType.skills.includes('mutant')) {
+                    mayOut = true;
+                }
+            }
+        }
+        if (batType.skills.includes('fly')) {
+            if (batType.cat != 'infantry') {
+                if (noEquip(bat,['e-stab','g2motor']) && !batType.skills.includes('stab')) {
+                    mayOut = false;
+                }
+            }
+        }
+    }
+    return mayOut;
+};
+
 function checkMissions() {
     // à l'atterrissage sur une zone!
     let doom = getDoom(false);

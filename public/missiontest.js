@@ -274,6 +274,7 @@ function loadTheMissionBaby() {
     let selectorNum = document.getElementById("theStartZone").value;
     let missionNum = +selectorNum;
     playerInfos.missionZone = missionNum;
+    playerInfos.missionPlanet = -1;
     moveMissionZone(missionNum);
     conOut(true);
     playerInfos.okFill = true;

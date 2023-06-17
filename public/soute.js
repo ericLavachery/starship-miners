@@ -337,8 +337,9 @@ function batListElement(bat,batType,idOfLander) {
     let deployCosts = getAllDeployCosts(batType,[bat.ammo,bat.ammo2,bat.prt,bat.eq,bat.logeq]);
     let enoughRes = checkCost(deployCosts);
     let deployInfo = checkPlaceLander(bat,batType,slId);
+    let mayOut = checkMayOutInSoute(bat,batType);
     let deployOK = true;
-    if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2] || bat.eq === 'camkit' || bat.eq === 'taserkit' || batType.skills.includes('nodeploy') || bat.tags.includes('dying')) {
+    if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2] || !mayOut || bat.eq === 'camkit' || bat.eq === 'taserkit' || batType.skills.includes('nodeploy') || bat.tags.includes('dying')) {
         deployOK = false;
     }
     if (batType.cat === 'buildings' || batType.cat === 'devices') {
@@ -546,6 +547,9 @@ function batListElement(bat,batType,idOfLander) {
                 $('#be'+bat.id).append('<span class="listRes marine klik" title="Renvoyer le bataillon dans la soute" onclick="batUndeploy('+bat.id+')"><i class="fas fa-sign-out-alt fa-flip-horizontal"></i></span>&nbsp;');
             }
             showCostsDetail(deployCosts,bat);
+        }
+        if (!mayOut) {
+            $('#be'+bat.id).append('<span class="listRes rouge">Ce bataillon ne peut pas aller sur Kzin.</span>');
         }
     }
 };

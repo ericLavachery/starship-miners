@@ -336,7 +336,8 @@ function newGame() {
     playerInfos.cLoss = 0;
     playerInfos.cNeed = 1;
     // playerInfos.missionZone = -1;
-    playerInfos.missionZone = 97;
+    playerInfos.missionZone = 99;
+    playerInfos.missionPlanet = 1;
     playerInfos.okFill = true;
     resetReserve();
     resetStartRes();

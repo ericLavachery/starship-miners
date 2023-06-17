@@ -244,9 +244,11 @@ function changePlayerInfo(dropMenuId,infoName,from) {
             }
             if (playerInfos.missionZone === undefined) {
                 playerInfos.missionZone = 99;
+                playerInfos.missionPlanet = 1;
             } else {
                 if (playerInfos.missionZone < 90) {
                     playerInfos.missionZone = 99;
+                    playerInfos.missionPlanet = 1;
                 }
             }
             if (playerInfos.gang === 'rednecks' && playerInfos.comp.ext === 0) {

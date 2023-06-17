@@ -208,6 +208,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.missionZone === undefined) {
         playerInfos.missionZone = -1;
     }
+    if (playerInfos.missionPlanet === undefined) {
+        playerInfos.missionPlanet = -1;
+    }
     if (playerInfos.zoneDB === undefined) {
         playerInfos.zoneDB = [];
     }

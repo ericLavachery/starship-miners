@@ -85,6 +85,7 @@ function stopMission() {
     playerInfos.crafts = 0;
     playerInfos.vz = 999;
     playerInfos.missionZone = -1;
+    playerInfos.missionPlanet = -1;
     playerInfos.nmi = playerInfos.nmi+1;
     inSoute = false;
     modeLanding = true;
@@ -682,10 +683,12 @@ function pickZone() {
     $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE ZONE POUR VOTRE PROCHAINE MISSION</span><br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<div id="zoneDetail"></div>');
+    console.log('CHOISIR UNE ZONE POUR VOTRE PROCHAINE MISSION');
     zoneFiles.forEach(function(zoneId) {
         if (zoneId != 0 && zoneId < 90) {
             let showInfo = '{Rien}';
             let zoneInfo = getZoneInfo(zoneId);
+            console.log(zoneInfo);
             if (zoneInfo.mapDiff != undefined) {
                 showInfo = toZoneString(zoneInfo);
             }
@@ -693,7 +696,17 @@ function pickZone() {
             if (zoneInfo.name != undefined) {
                 zoneName = zoneInfo.name;
             }
-            $('#conUnitList').append('<span class="paramName cy klik" onclick="putMissionZone('+zoneId+')">Choisir '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span><br>');
+            let planetCol = 'brunf';
+            if (zoneInfo.planet === 'Sarak') {
+                planetCol = 'noir';
+            } else if (zoneInfo.planet === 'Gehenna') {
+                planetCol = 'verf';
+            } else if (zoneInfo.planet === 'Kzin') {
+                planetCol = 'vio';
+            } else if (zoneInfo.planet === 'Horst') {
+                planetCol = 'rouge';
+            }
+            $('#conUnitList').append('<span class="paramName cy klik" onclick="putMissionZone('+zoneId+','+zoneInfo.pid+')">Choisir '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span> <span class="'+planetCol+'" title="Planète: '+zoneInfo.planet+'">&#9864;</span><br>');
         }
     });
     $('#conUnitList').append('<br>');
@@ -702,8 +715,9 @@ function pickZone() {
     $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
-function putMissionZone(zoneId) {
+function putMissionZone(zoneId,pid) {
     playerInfos.missionZone = zoneId;
+    playerInfos.missionPlanet = pid;
     unDeployAllLanders();
     conWindowOut();
     commandes();
@@ -834,7 +848,7 @@ function toZoneString(zoneInfo) {
         delete zoneInfo.ensol;
     }
     let newString = toCoolString(zoneInfo);
-    console.log(newString);
+    // console.log(newString);
     newString = newString.replace("true","Oui");
     newString = newString.replace("false","Non");
     newString = newString.replace("mapDiff","Présence Alien");
