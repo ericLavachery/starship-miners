@@ -4189,7 +4189,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isvsp","prefab","nodeploy","noshow","recupres"],
+        "skills":["isvsp","nodeploy","noshow","recupres"],
         "mecanoCost":10,
         "fuzz":3,
         "deathFx":"S_Explosion02"
@@ -4219,7 +4219,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isvsp","prefab","nodeploy","noshow","recupres"],
+        "skills":["isvsp","nodeploy","noshow","recupres"],
         "mecanoCost":10,
         "fuzz":3,
         "deathFx":"S_Explosion02"
