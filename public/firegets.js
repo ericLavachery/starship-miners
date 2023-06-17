@@ -1284,6 +1284,8 @@ function getStealth(bat) {
         batStealth = batStealth+4;
     } else if (tile.ruins) {
         batStealth = batStealth+2;
+    } else if (tile.infra === 'Débris') {
+        batStealth = batStealth+2;
     }
     if (batType.team === 'player') {
         if (isOnInfra(bat)) {

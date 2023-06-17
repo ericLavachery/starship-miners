@@ -318,7 +318,7 @@ function viewPop() {
                 $('#batloop').append('Morts <span class="or" title="'+toNiceString(playerInfos.deadBats)+'">'+playerInfos.unitsLost+'</span> <span class="neutre"Morts en mission: &dagger; '+toNiceString(playerInfos.deadBats)+'">('+playerInfos.deadBats[0]+')</span><br>');
             }
             $('#batloop').append('<span class="jaune">Doomclock: '+doomsday+'</span><br>');
-            if (!inSoute) {
+            if (!inSoute && !modeSonde) {
                 $('#batloop').append('<button type="button" title="Simuler 3 semaines (1 mission)" class="boutonVert iconButtons" onclick="events(false,65,true,false)"><i class="far fa-clock"></i></button>');
                 $('#batloop').append('<button type="button" title="Attendre 3 jours" class="boutonRouge iconButtons" onclick="events(false,9,false,false)"><i class="far fa-clock"></i></button>');
                 $('#batloop').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false,21,false,false)"><i class="far fa-clock"></i></button>');

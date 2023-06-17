@@ -301,6 +301,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     }
                 }
             }
+            let camChance = calcCamo(bat);
             balise = 'h4';
             boutonNope = 'boutonGrey';
             colorNope = 'gf';
@@ -314,7 +315,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 bouton = 'boutonGris';
             }
             if (bat.apLeft >= apReq && bat.fuzz >= -1 && camoufOK) {
-                $('#unitInfos').append('<button type="button" title="Mode furtif ('+apReq+' PA requis)" class="'+bouton+' iconButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="Mode furtif ('+apReq+' PA requis) '+camChance+'%" class="'+bouton+' iconButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else if (bat.fuzz <= -2) {
                 if (bat.tags.includes('nomove')) {
@@ -2762,25 +2763,27 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     }
     let unloadOK = false;
     if (!inSoute && batType.name != 'Soute') {
-        if (playerInfos.onShip || playerInfos.mapTurn >= 1) {
-            unloadOK = true;
-        }
+        unloadOK = true;
+        // if (playerInfos.onShip || playerInfos.mapTurn >= 1) {
+        // }
     }
+    // DEBARQUER
     if (unloadOK) {
-        // DEBARQUER
         $('#unitInfos').append('<a name="letransport"></a>');
         unloadInfos(bat,batType);
-        // DECONSTRUIRE VERS LANDER (si à côté)
-        if (!playerInfos.onShip) {
-            if (batType.skills.includes('prefab') && bat.apLeft >= 5 && !bat.tags.includes('noprefab')) {
-                let isLoaded = checkCharged(bat,'load');
-                let isCharged = checkCharged(bat,'trans');
-                if (!isLoaded && !isCharged) {
-                    if (near.lander) {
-                        decButHere = true;
-                        let apCost = Math.round(6*batType.fabTime/30);
-                        $('#unitInfos').append('<hr>');
-                        $('#unitInfos').append('<button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine iconButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'&nbsp; Déconstruction</span></button>');
+        if (playerInfos.onShip || playerInfos.mapTurn >= 1) {
+            // DECONSTRUIRE VERS LANDER (si à côté)
+            if (!playerInfos.onShip) {
+                if (batType.skills.includes('prefab') && bat.apLeft >= 5 && !bat.tags.includes('noprefab')) {
+                    let isLoaded = checkCharged(bat,'load');
+                    let isCharged = checkCharged(bat,'trans');
+                    if (!isLoaded && !isCharged) {
+                        if (near.lander) {
+                            decButHere = true;
+                            let apCost = Math.round(6*batType.fabTime/30);
+                            $('#unitInfos').append('<hr>');
+                            $('#unitInfos').append('<button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine iconButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'&nbsp; Déconstruction</span></button>');
+                        }
                     }
                 }
             }
