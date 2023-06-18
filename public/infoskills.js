@@ -2779,10 +2779,14 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     let isCharged = checkCharged(bat,'trans');
                     if (!isLoaded && !isCharged) {
                         if (near.lander) {
-                            decButHere = true;
-                            let apCost = Math.round(6*batType.fabTime/30);
-                            $('#unitInfos').append('<hr>');
-                            $('#unitInfos').append('<button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine iconButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'&nbsp; Déconstruction</span></button>');
+                            let landerBat = findTheLander(true);
+                            let prefabSizeOK = checkPrefabSize(bat,batType,landerBat);
+                            if (prefabSizeOK) {
+                                decButHere = true;
+                                let apCost = Math.round(6*batType.fabTime/30);
+                                $('#unitInfos').append('<hr>');
+                                $('#unitInfos').append('<button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine iconButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'&nbsp; Déconstruction</span></button>');
+                            }
                         }
                     }
                 }

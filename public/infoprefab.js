@@ -8,6 +8,7 @@ function defabInfos(bat,batType) {
         let prefabBatName = prefabBat.type;
         let isLoaded = checkCharged(prefabBat,'load');
         let isCharged = checkCharged(prefabBat,'trans');
+        let prefabSizeOK = checkPrefabSize(prefabBat,prefabBatType,landerBat);
         let haveLander = false;
         if (Object.keys(landerBat).length >= 1) {
             haveLander = true;
@@ -29,12 +30,14 @@ function defabInfos(bat,batType) {
             if (prefabBat.apLeft < 0) {
                 apOK = false;
             }
-            if (depliOK && !isLoaded && !isCharged && damageOK && apOK && haveLander) {
+            if (depliOK && !isLoaded && !isCharged && damageOK && apOK && haveLander && prefabSizeOK) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris iconButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
             } else {
                 let koMessage = "Vous ne pouvez pas déconstruire ce bâtiment";
                 if (!haveLander) {
                     koMessage = "Vous ne pouvez pas déconstruire de bâtiments si vous n'avez pas de lander";
+                } else if (!prefabSizeOK) {
+                    koMessage = "Ce bâtiment est trop grand pour le lander";
                 } else if (!damageOK) {
                     koMessage = "Ce bâtiment est trop endommagé pour être déconstruit";
                 } else if (!apOK) {
@@ -50,6 +53,19 @@ function defabInfos(bat,batType) {
             }
         }
     }
+};
+
+function checkPrefabSize(prefabBat,prefabBatType,landerBat) {
+    let prefabSizeOK = false;
+    let landerBatType = getBatType(landerBat);
+    if (prefabBatType.skills.includes('prefab')) {
+        if (landerBatType.transMaxSize*4.5 >= prefabBatType.size) {
+            prefabSizeOK = true;
+        }
+    } else {
+        prefabSizeOK = true;
+    }
+    return prefabSizeOK;
 };
 
 function checkPrefabId(myBat,myBatType) {

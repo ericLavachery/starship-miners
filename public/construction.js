@@ -228,6 +228,7 @@ function bfconst(cat,triche,upgrade,retour) {
                     yhPrint = ' <span title="'+yh[unit.name]+'/&infin;">('+yh[unit.name]+')</span>';
                 }
             }
+            let descLink = ' <span class="klik" title="Détail" onclick="unitDetail('+unit.id+')">&#128065;</span>';
             if (!directProd && conselUpgrade != 'bld' && conselUpgrade != 'inf' && !triche) {
                 let fromUnitName = 'Tagada';
                 if (unit.bldCost != 'none') {
@@ -236,25 +237,25 @@ function bfconst(cat,triche,upgrade,retour) {
                     fromUnitName = unit.unitCost;
                 }
                 color = 'gff';
-                $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Se construit en transformant: '+fromUnitName+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');
+                $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Se construit en transformant: '+fromUnitName+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
             } else if ((bldOK && costOK && uMaxOK) || triche) {
                 if (pDistOK && pNumOK) {
                     color = catColor(unit);
-                    $('#conUnitList').append('<span class="constName klik '+color+deco+'" onclick="conSelect('+unit.id+',`player`,false)"><span title="'+toBldString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName klik '+color+deco+'" onclick="conSelect('+unit.id+',`player`,false)"><span title="'+toBldString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
                 } else if (!pNumOK) {
                     color = 'gff';
-                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Vous devez avoir 4 Pilônes pour construire un Dôme">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Vous devez avoir 4 Pilônes pour construire un Dôme">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
                 } else if (!pDistOK) {
                     color = 'gff';
-                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Vous ne pouvez pas construire un Pilône ou un Dôme à moins de 25 cases d\'un Pilône existant">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Vous ne pouvez pas construire un Pilône ou un Dôme à moins de 25 cases d\'un Pilône existant">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
                 }
             } else {
                 if (!uMaxOK) {
                     color = 'gff';
-                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+maxInfo.text+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+maxInfo.text+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
                 } else {
                     color = 'gff';
-                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+toBldString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span><br>');
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+toBldString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
                 }
             }
             lastKind = unit.kind;

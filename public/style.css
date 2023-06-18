@@ -884,6 +884,15 @@ td {
     height: 800px;
     /* min-height: 81px; */
 }
+#intro {
+    /* background-image: url(/static/img/plate-vdork-small.jpg); */
+    /* background-position: 0% 0%; */
+    scroll-behavior: auto;
+    scrollbar-color: #4C4845 #17161A;
+    overflow-y: scroll;
+    /* display: none; */
+    max-width: 550px;
+}
 #conUnitList,#conAmmoList {
     background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 0%;
