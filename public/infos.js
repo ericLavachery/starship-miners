@@ -891,6 +891,9 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('berserk')) {
         allSkills = allSkills+'<span class="paramValue" title="Si blessé: Cadence de tir 150% mais dégâts reçu 150%">Berserk</span>'+sepa;
     }
+    if (batType.skills.includes('undead')) {
+        allSkills = allSkills+'<span class="paramValue" title="Les escouades blessées peuvent continuer à attaquer (la cadence de tir ne diminue pas)">Undead</span>'+sepa;
+    }
     if (batType.skills.includes('embuscade')) {
         allSkills = allSkills+'<span class="paramValue" title="Cadence de tir doublée. Possible seulement en mode furtif. L\'unité doit bouger pour pouvoir en bénéficier à nouveau.">Embuscade</span>'+sepa;
     }
@@ -899,6 +902,9 @@ function batFullInfos(bat,batType) {
     }
     if (batType.skills.includes('tirailleur')) {
         allSkills = allSkills+'<span class="paramValue" title="Bonus défensif et offensif lorsque le bataillon est en mouvement.">Tirailleur</span>'+sepa;
+    }
+    if (batType.skills.includes('escape') || batType.skills.includes('dogescape')) {
+        allSkills = allSkills+'<span class="paramValue" title="Permet parfois d\'éviter une partie des dégâts d\'un tir à distance">Evasion</span>'+sepa;
     }
     if (batType.skills.includes('camo')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut se mettre en mode furtif">Furtivité</span>'+sepa;
@@ -934,6 +940,12 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('tracked')) {
         allSkills = allSkills+'<span class="paramValue" title="Seulement 1 de ces bataillons peut être transporté dans un véhicule de transport de troupes">Tractable</span>'+sepa;
     }
+    if (batType.skills.includes('tweight')) {
+        allSkills = allSkills+'<span class="paramValue" title="Transporter des bataillons avec cette unité diminuera sa vitesse de déplacement">Surcharge (trans)</span>'+sepa;
+    }
+    if (batType.skills.includes('fweight')) {
+        allSkills = allSkills+'<span class="paramValue" title="Transporter des ressources avec cette unité diminuera sa vitesse de déplacement">Surcharge (fret)</span>'+sepa;
+    }
     if (batType.skills.includes('constructeur')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut construire des bâtiments et dispositifs">Constructeur</span>'+sepa;
     }
@@ -953,8 +965,8 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('prayer')) {
         allSkills = allSkills+'<span class="paramValue" title="Donne +3 PA à toutes les unités du gang pendant 1 tour, et +1 PA jusqu\'à la fin de la prière">Prière</span>'+sepa;
     }
-    if (batType.skills.includes('undead')) {
-        allSkills = allSkills+'<span class="paramValue" title="Les escouades blessées peuvent continuer à attaquer (la cadence de tir ne diminue pas)">Undead</span>'+sepa;
+    if (batType.skills.includes('cleric')) {
+        allSkills = allSkills+'<span class="paramValue" title="Les bataillons proche de l\'adepte sont immunisés à la peur">Aura</span>'+sepa;
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
@@ -967,6 +979,30 @@ function batFullInfos(bat,batType) {
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('transcrap')) {
+        allSkills = allSkills+'<span class="paramValue" title="Transforme le scrap en ressources">Transcrap</span>'+sepa;
+    }
+    if (batType.skills.includes('craft')) {
+        allSkills = allSkills+'<span class="paramValue" title="Augmente le nombre de crafts que vous pouvez faire en 3 jours">Crafting</span>'+sepa;
+    }
+    if (batType.skills.includes('control')) {
+        allSkills = allSkills+'<span class="paramValue" title="Centre de contrôle pour les robots">Contrôle (robots)</span>'+sepa;
+    }
+    if (batType.skills.includes('crange')) {
+        allSkills = allSkills+'<span class="paramValue" title="Ces robots ne peuvent se déplacer seuls qu\'à une certaine distance d\'un centre de contrôle">Connecté</span>'+sepa;
+    }
+    if (batType.skills.includes('cleaning') || (batType.cat === 'buildings' && batType.crew >= 1)) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut nettoyer les toiles, spores etc...">Nettoyage</span>'+sepa;
+    }
+    if (batType.skills.includes('conscont')) {
+        allSkills = allSkills+'<span class="paramValue" title="Confection de containers">Coffres</span>'+sepa;
     }
     if (batType.skills.includes('autoapprov')) {
         allSkills = allSkills+'<span class="paramValue" title="Réapprovisionnement automatique si à 4 cases ou moins d\'un stock">Mulet</span>'+sepa;

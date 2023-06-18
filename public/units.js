@@ -25,6 +25,9 @@ function unitInfos(batType) {
         $('#'+headPlace).append('<span class="blockTitle"><h2>'+unitsLeft+' '+batType.name+'</h2></span>');
     }
     $('#'+bodyPlace).append('<div class="shSpace"></div>');
+    // TYPE D'UNITE
+    let typun = getFullUnitType(batType);
+    $('#'+bodyPlace).append('<span class="paramName">Type</span><span class="paramIcon"></span><span class="paramValue">'+typun+'</span><br>');
     // AP
     let ap = batType.ap;
     let hourglass = 'start';
@@ -87,13 +90,7 @@ function unitInfos(batType) {
         let possibleDrugs = getUnitPossibleDrugs(batType);
         $('#'+bodyPlace).append('<span class="paramName">Drogues</span><span class="paramIcon"></span><span class="paramValue">'+possibleDrugs+'</span><br>');
     }
-    if (batType.skills.includes('landmine') || batType.skills.includes('dynamite') || batType.skills.includes('trapap') || batType.skills.includes('trapdard') || batType.skills.includes('trapfosse')) {
-        let trapName = getUnitTrapName(batType);
-        $('#'+bodyPlace).append('<span class="paramName">'+trapName+'</span><span class="paramIcon"></span><span class="paramValue">'+batType.maxSkill+'</span><br>');
-    }
-    if (batType.skills.includes('barbs')) {
-        $('#'+bodyPlace).append('<span class="paramName">Barbelés</span><span class="paramIcon"></span><span class="paramValue">'+batType.maxSkill+'</span><br>');
-    }
+    // MECAMEDIC
     if (batType.skills.includes('medic') || batType.skills.includes('badmedic') || batType.skills.includes('selfbadmedic') || batType.skills.includes('selfmedic')) {
         let times = Math.ceil(batType.ap/batType.mediCost);
         let medicTitle = 'Complets';
@@ -141,6 +138,38 @@ function unitInfos(batType) {
         }
         repairTitle = repairTitle+' | &times;'+times;
         $('#'+bodyPlace).append('<span class="paramName">Réparations</span><span class="paramIcon"></span><span class="paramValue" title="'+repairDesc+'">Bâtiments: '+repairTitle+'</span><br>');
+    }
+    // ECLAIRAGE
+    let vue = 0;
+    if (batType.crew >=1 || batType.skills.includes('robot') || batType.skills.includes('clone')) {
+        vue = 1;
+    }
+    if (batType.skills.includes('light')) {
+        vue = 2;
+    }
+    if (batType.skills.includes('flash') || batType.skills.includes('bigflash')) {
+        vue = 3;
+    }
+    if (batType.skills.includes('phare')) {
+        vue = 4;
+        if (playerInfos.comp.energ >= 2 && playerInfos.comp.det >= 2) {
+            vue++;
+        }
+        if (playerInfos.comp.energ >= 3 && playerInfos.comp.det >= 4) {
+            vue++;
+        }
+    }
+    $('#'+bodyPlace).append('<span class="paramName">Eclairage</span><span class="paramIcon"></span><span class="paramValue" title="Distance d\'éclairage">'+vue+'</span><br>');
+    // POSE DISPOSITIFS
+    if (batType.skills.includes('landmine') || batType.skills.includes('dynamite') || batType.skills.includes('trapap') || batType.skills.includes('trapdard') || batType.skills.includes('trapfosse')) {
+        let trapName = getUnitTrapName(batType);
+        $('#'+bodyPlace).append('<span class="paramName">'+trapName+'</span><span class="paramIcon"></span><span class="paramValue">'+batType.maxSkill+'</span><br>');
+    }
+    if (batType.skills.includes('barbs')) {
+        $('#'+bodyPlace).append('<span class="paramName">Barbelés</span><span class="paramIcon"></span><span class="paramValue">'+batType.maxSkill+'</span><br>');
+    }
+    if (batType.skills.includes('conscont')) {
+        $('#'+bodyPlace).append('<span class="paramName">Coffres</span><span class="paramIcon"></span><span class="paramValue" title="Confection de containers">Oui</span><br>');
     }
 
     // WEAPONS & SKILLS
@@ -261,6 +290,34 @@ function weaponsUnitInfos(batType) {
         unitWeaponDisplay(batType.weapon2,batType);
     }
 
+};
+
+function getFullUnitType(batType) {
+    let typun = 'Infanterie';
+    if (batType.cat === 'buildings') {
+        typun = 'Bâtiment';
+    } else if (batType.cat === 'devices') {
+        typun = 'Dispositifs';
+    } else if (batType.cat === 'vehicles') {
+        if (batType.skills.includes('robot')) {
+            typun = 'Robots';
+        } else if (batType.skills.includes('cyber')) {
+            typun = 'Cyber-robots';
+        } else if (batType.skills.includes('transorbital')) {
+            typun = 'Lander';
+        } else {
+            typun = 'Véhicules';
+        }
+    } else if (batType.cat === 'infantry') {
+        if (batType.skills.includes('cyber')) {
+            typun = 'Cyborgs';
+        } else if (batType.skills.includes('dog')) {
+            typun = 'Animaux';
+        } else if (batType.skills.includes('clone')) {
+            typun = 'Clones';
+        }
+    }
+    return typun;
 };
 
 function allUnitsSkills() {
