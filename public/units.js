@@ -67,7 +67,7 @@ function unitInfos(batType) {
     // AUTOSKILLS
     if (batType.skills.includes('ravitaillement')) {
         if (batType.skills.includes('stockmed')) {
-            $('#'+bodyPlace).append('<span class="paramName">Officine</span><span class="paramIcon"></span><span class="paramValue">999/999</span><br>');
+            $('#'+bodyPlace).append('<span class="paramName">Officine</span><span class="paramIcon"></span><span class="paramValue">999</span><br>');
         } else {
             $('#'+bodyPlace).append('<span class="paramName">Ravitaillements</span><span class="paramIcon"></span><span class="paramValue">'+batType.maxSkill+'</span><br>');
         }
@@ -84,13 +84,63 @@ function unitInfos(batType) {
     }
     if (batType.skills.includes('dealer')) {
         $('#'+bodyPlace).append('<span class="paramName">Drogues</span><span class="paramIcon"></span><span class="paramValue">'+batType.maxDrug+'</span><br>');
+        let possibleDrugs = getUnitPossibleDrugs(batType);
+        $('#'+bodyPlace).append('<span class="paramName">Drogues</span><span class="paramIcon"></span><span class="paramValue">'+possibleDrugs+'</span><br>');
     }
     if (batType.skills.includes('landmine') || batType.skills.includes('dynamite') || batType.skills.includes('trapap') || batType.skills.includes('trapdard') || batType.skills.includes('trapfosse')) {
         let trapName = getUnitTrapName(batType);
         $('#'+bodyPlace).append('<span class="paramName">'+trapName+'</span><span class="paramIcon"></span><span class="paramValue">'+batType.maxSkill+'</span><br>');
     }
-    if (batType.skills.includes('constructeur')) {
+    if (batType.skills.includes('barbs')) {
         $('#'+bodyPlace).append('<span class="paramName">Barbelés</span><span class="paramIcon"></span><span class="paramValue">'+batType.maxSkill+'</span><br>');
+    }
+    if (batType.skills.includes('medic') || batType.skills.includes('badmedic') || batType.skills.includes('selfbadmedic') || batType.skills.includes('selfmedic')) {
+        let times = Math.ceil(batType.ap/batType.mediCost);
+        let medicTitle = 'Complets';
+        let medicDesc = 'Peut soigner totalement les infanteries';
+        if (batType.skills.includes('selfmedic')) {
+            medicTitle = 'Complets (perso)';
+            medicDesc = 'Peut se soigner totalement (mais pas les autres bataillons)';
+        } else if (batType.skills.includes('badmedic')) {
+            medicTitle = 'Premiers soins';
+            medicDesc = 'Peut apporter les premiers soins aux infanteries';
+        } else if (batType.skills.includes('selfbadmedic')) {
+            medicTitle = 'Premiers soins (perso)';
+            medicDesc = 'Peut s\'apporter les premiers soins (mais pas aux autres bataillons)';
+        }
+        medicTitle = medicTitle+' | &times;'+times;
+        $('#'+bodyPlace).append('<span class="paramName">Soins</span><span class="paramIcon"></span><span class="paramValue" title="'+medicDesc+'">'+medicTitle+'</span><br>');
+    }
+    if (batType.skills.includes('mecano') || batType.skills.includes('badmecano') || batType.skills.includes('selfbadmecano') || batType.skills.includes('selfmecano')) {
+        let times = Math.ceil(batType.ap/batType.mecanoCost);
+        let mecanoTitle = 'Totale';
+        let mecanoDesc = 'Peut réparer totalement les véhicules';
+        if (batType.skills.includes('selfmecano')) {
+            mecanoTitle = 'Totale (perso)';
+            mecanoDesc = 'Peut se réparer totalement (mais pas les autres véhicules)';
+        } else if (batType.skills.includes('badmecano')) {
+            mecanoTitle = 'Rafistolage';
+            mecanoDesc = 'Peut rafistoler les véhicules';
+        } else if (batType.skills.includes('selfbadmecano')) {
+            mecanoTitle = 'Rafistolage (perso)';
+            mecanoDesc = 'Peut se rafistoler (mais pas les autres véhicules)';
+        }
+        mecanoTitle = mecanoTitle+' | &times;'+times;
+        $('#'+bodyPlace).append('<span class="paramName">Réparations</span><span class="paramIcon"></span><span class="paramValue" title="'+mecanoDesc+'">Véhicules: '+mecanoTitle+'</span><br>');
+    }
+    if (batType.skills.includes('repair') || batType.skills.includes('selfbadrepair') || batType.skills.includes('selfrepair')) {
+        let times = Math.ceil(batType.ap/batType.mecanoCost);
+        let repairTitle = 'Totale';
+        let repairDesc = 'Peut réparer totalement les bâtiments';
+        if (batType.skills.includes('selfrepair')) {
+            repairTitle = 'Totale (perso)';
+            repairDesc = 'Peut se réparer totalement (mais pas les autres bâtiments)';
+        } else if (batType.skills.includes('selfbadrepair')) {
+            repairTitle = 'Rafistolage (perso)';
+            repairDesc = 'Peut se rafistoler (mais pas les autres bâtiments)';
+        }
+        repairTitle = repairTitle+' | &times;'+times;
+        $('#'+bodyPlace).append('<span class="paramName">Réparations</span><span class="paramIcon"></span><span class="paramValue" title="'+repairDesc+'">Bâtiments: '+repairTitle+'</span><br>');
     }
 
     // WEAPONS & SKILLS
@@ -101,6 +151,19 @@ function unitInfos(batType) {
     // "maxFlood": 3,
     // "maxScarp": 3,
     // "maxVeg": 3,
+};
+
+function getUnitPossibleDrugs(batType) {
+    let possibleDrugs = '';
+    armorTypes.forEach(function(drug) {
+        if (drug.cat === 'drogue' && drug.name != 'meca') {
+            if (batType.skills.includes(drug.name)) {
+                possibleDrugs = possibleDrugs+'| <span title="'+drug.info+'">'+drug.name+'</span> ';
+            }
+        }
+    });
+    possibleDrugs = possibleDrugs+'|';
+    return possibleDrugs;
 };
 
 function unitWeaponDisplay(thisWeapon,batType) {
@@ -198,4 +261,18 @@ function weaponsUnitInfos(batType) {
         unitWeaponDisplay(batType.weapon2,batType);
     }
 
+};
+
+function allUnitsSkills() {
+    let allSkills = [];
+    unitTypes.forEach(function(unit) {
+        if (unit.skills.length >= 1) {
+            unit.skills.forEach(function(skill) {
+                if (!allSkills.includes(skill)) {
+                    allSkills.push(skill);
+                }
+            });
+        }
+    });
+    console.log(allSkills);
 };

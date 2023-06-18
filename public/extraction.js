@@ -552,6 +552,7 @@ function getMiningRate(bat,fullRate,noMining) {
 };
 
 function getResMiningRate(bat,res,value,fullRate,forInfos) {
+    // si changements ici, aussi changer dans infos.js
     let batType = getBatType(bat);
     let resHere = value;
     let extComp = (playerInfos.comp.ext/2)+1;

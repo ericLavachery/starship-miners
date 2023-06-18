@@ -862,7 +862,7 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Peut faire le guet. Cadence de tir 100% en défense">Guet</span>'+sepa;
     }
     if (batType.skills.includes('fastguet')) {
-        allSkills = allSkills+'<span class="paramValue" title="Peut faire le guet rapidement. Cadence de tir 100% en défense">Guet rapide</span>'+sepa;
+        allSkills = allSkills+'<span class="paramValue" title="Peut se mettre en mode guet plus facilement (moins de PA). Cadence de tir 100% en défense">Guet rapide</span>'+sepa;
     }
     if (batType.skills.includes('sentinelle')) {
         allSkills = allSkills+'<span class="paramValue" title="Toujours en guet: Cadence de tir 100% en défense">Sentinelle</span>'+sepa;
@@ -968,8 +968,8 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('autoapprov')) {
+        allSkills = allSkills+'<span class="paramValue" title="Réapprovisionnement automatique si à 4 cases ou moins d\'un stock">Mulet</span>'+sepa;
     }
     if (batType.skills.includes('recherche')) {
         allSkills = allSkills+'<span class="paramValue" title="Recherche de compétences">Recherche</span>'+sepa;
@@ -982,6 +982,11 @@ function batFullInfos(bat,batType) {
         $('#popbody').append('<span class="blockTitle"><h4>Extraction de ressources</h4></span><br>');
         if (isBat) {
             let allMiningRates = getAllMiningRates(bat,batType);
+            $('#popbody').append('<span class="paramValue gf">'+toCoolString(allMiningRates)+'</span>');
+            console.log('MINING RATES');
+            console.log(allMiningRates);
+        } else {
+            let allMiningRates = getUnitMiningRates(batType);
             $('#popbody').append('<span class="paramValue gf">'+toCoolString(allMiningRates)+'</span>');
             console.log('MINING RATES');
             console.log(allMiningRates);
@@ -1000,6 +1005,86 @@ function batFullInfos(bat,batType) {
     $('#popbody').append('<span class="paramValue">'+costString+'</span>');
     $('#popbody').append('<div class="shSpace"></div>');
     $('#popbody').append('<div class="shSpace"></div>');
+};
+
+function getUnitMiningRates(batType) {
+    let allMiningRates = {};
+    let sortedRes = _.sortBy(_.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'level'),'cat'),'bld');
+    sortedRes.reverse();
+    sortedRes.forEach(function(res) {
+        if (res.bld != '') {
+            let resRate = getResUnitMiningRate(batType,res,250,true);
+            if (playerInfos.comp.ext === 1) {
+                resRate = getResUnitMiningRate(batType,res,260,true);
+            } else if (playerInfos.comp.ext === 2) {
+                resRate = getResUnitMiningRate(batType,res,270,true);
+            } else if (playerInfos.comp.ext === 3) {
+                resRate = getResUnitMiningRate(batType,res,290,true);
+            }
+            if (resRate >= 1) {
+                allMiningRates[res.name] = resRate;
+            }
+        }
+    });
+    return allMiningRates;
+};
+
+function getResUnitMiningRate(batType,res,value,fullRate) {
+    let resHere = value;
+    let extComp = (playerInfos.comp.ext/2)+1;
+    if (playerInfos.comp.ext === 3) {
+        extComp = extComp+0.2;
+    }
+    let invExtComp = 7.7-extComp;
+    if (playerInfos.comp.tri >= 1 && res.name === 'Scrap') {
+        resHere = Math.round(resHere*(playerInfos.comp.tri+8)/8);
+    }
+    let minRes = minResForRate;
+    if (res.name === 'Scrap') {
+        minRes = Math.round(minRes*1.5);
+    }
+    let maxRes = maxResForRate;
+    if (res.name === 'Scrap' || res.name === 'Végétaux' || res.name === 'Bois' || res.name === 'Eau') {
+        maxRes = Math.round(maxRes*1.25);
+    }
+    if (resHere < minRes && res.cat != 'zero') {
+        resHere = minRes;
+    }
+    if (resHere > maxRes) {
+        resHere = Math.round((resHere-maxRes)/invExtComp*2.5)+maxRes;
+    }
+    let noMining = false;
+    if (res.bld === 'Comptoir' || res.bld === 'Pompe') {
+        noMining = true;
+    }
+    let batRate = batType.mining.rate;
+    let miningLevel = batType.mining.level;
+    let resRate = Math.ceil(resHere*batRate/mineRateDiv);
+    // console.log(res.name);
+    // console.log('resRate='+resRate);
+    // ADJ SUBTYPE & LEVELS
+    if (!batType.mining.types.includes(res.bld)) {
+        if (batType.mining.subTypes.includes(res.bld)) {
+            resRate = Math.ceil(resRate/2.5);
+        } else {
+            resRate = 0;
+        }
+        if (batType.mining.level === 1 && (res.bld === 'Mine' || res.bld === 'Derrick')) {
+            resRate = Math.ceil(resRate/1.5);
+        }
+    }
+    if (batType.mining.types[0] != res.bld) {
+        if (res.level > miningLevel) {
+            resRate = 0;
+        } else if (res.level >= 3) {
+            resRate = Math.ceil(resRate/2);
+        }
+    }
+    if (value <= 0) {
+        resRate = 0;
+    }
+    // console.log('resRate='+resRate);
+    return resRate;
 };
 
 function nomVisible(bat) {
