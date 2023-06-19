@@ -702,7 +702,7 @@ function calcCrimeRate(mesCitoyens) {
             if (batType.cat === 'buildings' || batType.name === 'Technobass') {
                 if (batType.crime >= 1) {
                     countMe = true;
-                } else if (batType.name === 'Prisons' || batType.name === 'Cabines' || batType.name === 'Technobass' || batType.name === 'Ascenceur') {
+                } else if (batType.name === 'Prisons' || batType.name === 'Cabines' || batType.name === 'Technobass' || batType.name === 'Ascenseur') {
                     if (!outOfOrder) {
                         countMe = true;
                     }
