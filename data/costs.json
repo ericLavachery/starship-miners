@@ -473,7 +473,8 @@
         "bldReq":["Garage"],
         "costs":{"Fer":196,"Scrap":280,"Bois":56,"Moteurs":42,"Végétaux":20,"Chlore":10,"Tissus":5},
         "deploy":{"Fuel":20,"Drogues":3,"Tissus":2},
-        "fabTime":20
+        "fabTime":20,
+        "info":"Les chevaliers se défendent de préférence avec leurs lances lorsqu'ils sont fortifiés."
     },
     {
         "id":41,
@@ -2315,7 +2316,8 @@
         "compHardReq":{"exo":1,"ca":1},
         "costs":{"Fer":90,"Carbone":135,"Aluminium":162,"Titane":135,"Tungstène":72,"Silicium":36,"Cuivre":72,"Electros":90,"Batteries":90,"Compo2":132,"Potassium":180,"Végétaux":180},
         "deploy":{"Energie":45,"Potassium":90,"Végétaux":90,"Titane":45},
-        "fabTime":45
+        "fabTime":45,
+        "info":"Ce dispositif crée un brouillard qui limite la vue à 1 case (pour vos bataillons et les aliens)."
     },
     {
         "id":239,
@@ -2519,6 +2521,7 @@
         "upkeep":{"Energie":4},
         "costs":{"Compo1":200,"Eau":18,"Hélium":300,"Carbone":75,"Fer":75,"Titane":35,"Moteurs":10,"Cuivre":25,"Electros":35,"Batteries":10},
         "fabTime":35,
+        "info":"Récupère les gaz dans l'atmosphère. La production de ce bâtiment dépend de la composition de l'atmosphère.",
         "slots":0
     },
     {
@@ -2909,6 +2912,7 @@
         "upkeep":{"Viande":0.3},
         "costs":{"Compo1":120,"Compo2":30,"Eau":50,"Fer":150},
         "fabTime":25,
+        "info":"Produit des bataillons de Wardogs.",
         "slots":2
     },
     {

@@ -844,6 +844,11 @@ function batInfos(bat,batType,pop) {
 };
 
 function batFullInfos(bat,batType) {
+    if (batType.info != undefined) {
+        $('#popbody').append('<div class="shSpace"></div>');
+        $('#popbody').append('<span class="blockTitle"><h4>Description</h4></span><br>');
+        $('#popbody').append('<span class="basicText">'+batType.info+'</span><br><br>');
+    }
     $('#popbody').append('<div class="shSpace"></div>');
     $('#popbody').append('<span class="blockTitle"><h4>Habilités spéciales</h4></span><br>');
     let isBat = false;
@@ -974,6 +979,35 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('cleric')) {
         allSkills = allSkills+'<span class="paramValue" title="Les bataillons proche de l\'adepte sont immunisés à la peur">Aura</span>'+sepa;
     }
+    if (batType.skills.includes('brigands')) {
+        if (batType.skills.includes('gcrim')) {
+            allSkills = allSkills+'<span class="paramValue" title="Augmente grandement la criminalité">Bandit</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Augmente la criminalité">Escroc</span>'+sepa;
+        }
+    }
+    if (batType.crime != undefined) {
+        if (batType.crime < 0) {
+            let crimePts = 0-batType.crime;
+            if (batType.skills.includes('fo')) {
+                allSkills = allSkills+'<span class="paramValue" title="Agît comme force de l\'ordre ('+crimePts+' pts)">Police</span>'+sepa;
+            } else {
+                allSkills = allSkills+'<span class="paramValue" title="Fait baisser la pénibilité ('+crimePts+' pts)">Commodité</span>'+sepa;
+            }
+        }
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
     }
@@ -991,6 +1025,18 @@ function batFullInfos(bat,batType) {
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('genhab') || batType.skills.includes('genhab2') || batType.skills.includes('genhab3')) {
+        allSkills = allSkills+'<span class="paramValue" title="Surprise :)">Variance génétique</span>'+sepa;
+    }
+    if (batType.skills.includes('exhelp')) {
+        allSkills = allSkills+'<span class="paramValue" title="Vous pouvez augmenter l\'efficacité de ce bâtiment en y embarquant un bataillon de Mineurs, Scrapers ou Sapeurs">Assistance</span>'+sepa;
     }
     if (batType.skills.includes('transcrap')) {
         allSkills = allSkills+'<span class="paramValue" title="Transforme le scrap en ressources">Transcrap</span>'+sepa;
