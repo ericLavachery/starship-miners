@@ -81,10 +81,12 @@ function unitInfos(batType) {
     }
     if (batType.transUnits >= 1) {
         let transBase = batType.transUnits;
-        $('#'+bodyPlace).append('<span class="paramName">Transport</span><span class="paramIcon"></span><span class="paramValue">'+transBase+'</span><br>');
+        let numBats = transBase/180;
+        numBats = numBats.toFixedNumber(1);
+        $('#'+bodyPlace).append('<span class="paramName">Transport</span><span class="paramIcon"></span><span class="paramValue" title="'+numBats+' bataillons d\'infanterie | Taille max: '+batType.transMaxSize+'">'+transBase+' <span class="gf">(volume des bataillons)</span></span><br>');
     }
     if (batType.transRes >= 1) {
-        $('#'+bodyPlace).append('<span class="paramName">Fret</span><span class="paramIcon"></span><span class="paramValue">'+resMax+'</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName">Fret</span><span class="paramIcon"></span><span class="paramValue">'+resMax+' <span class="gf">(ressources)</span></span><br>');
     }
     if (batType.skills.includes('reserve') || batType.skills.includes('transorbital')) {
         $('#'+bodyPlace).append('<span class="paramName">Réserve</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');

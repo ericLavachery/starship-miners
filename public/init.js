@@ -281,6 +281,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.alerte === undefined) {
         playerInfos.alerte = {};
     }
+    if (playerInfos.para === undefined) {
+        playerInfos.para = 3+Math.ceil(playerInfos.comp.train/2.1)+playerInfos.comp.aero;
+    }
 });
 // Terrains
 socket.on('mapFilters-Load', function(mf) {

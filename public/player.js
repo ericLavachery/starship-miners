@@ -2762,10 +2762,10 @@ function addStartPack() {
     addFreeBat(1835,'Vidéotéléphonie');
     addFreeBat(1953,'Unités cryogéniques');
     addFreeBat(1713,'Salle de conférence');
-    addFreeBat(1645,'Ascenceur');
-    addFreeBat(1655,'Ascenceur');
-    addFreeBat(2005,'Ascenceur');
-    addFreeBat(2015,'Ascenceur');
+    addFreeBat(1645,'Ascenseur');
+    addFreeBat(1655,'Ascenseur');
+    addFreeBat(2005,'Ascenseur');
+    addFreeBat(2015,'Ascenseur');
     addFreeBat(1709,'Bureaux');
     addFreeBat(1774,'Salle de contrôle');
     addFreeBat(1711,'Salle de jeux');

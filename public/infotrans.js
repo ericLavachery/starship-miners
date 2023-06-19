@@ -149,7 +149,11 @@ function unloadInfos(myBat,myBatUnitType) {
                     }
                     let mayOut = checkMayOut(batType,true,bat);
                     if (!playerInfos.onShip && playerInfos.mapTurn < 1) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer avant le tour 1" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+                        if (playerInfos.gang === 'tiradores' && batType.cat === 'infantry' && playerInfos.para >= 1) {
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Parachuter '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA '+moreInfos+'" class="'+butCol+' iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-parachute-box"></i> <span class="small">'+apCost+'</span></button> <img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="32" class="dunit" onclick="batDetail('+bat.id+')" title="Détail du bataillon">&nbsp; '+batType.name+armyNum+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+                        } else {
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer avant le tour 1" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+                        }
                     } else if (myBatUnitType.skills.includes('transorbital') && !myBat.tags.includes('nomove') && !myBat.tags.includes('nopilots') && (batType.id === 126 || batType.id === 225)) {
                         $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer des citoyens d\'un vaisseau" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
                     } else if (bat.tags.includes('nomove') && myBat.tags.includes('nomove')) {
@@ -871,18 +875,49 @@ function clickDebarq(tileId) {
     let teleStats = {};
     teleStats.ok = false;
     teleStats.message = '';
+    let paraOK = false;
+    let isPara = false;
+    let paraMessage = '';
     if (distance > 1) {
-        teleStats = checkBatTeleport(selectedBat,batDebarq,tileId);
-    }
-    if ((distance <= 1 || playerInfos.onShip || teleStats.ok) && !ownBatHere && (terrainAccess(batDebarq.id,tileId,true) || teleStats.ok || batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') && !alienOccupiedTiles.includes(tileId)) {
-        tileOK = true;
-    } else {
-        batDebarq = {};
-        showBatInfos(selectedBat);
-        if (teleStats.message != '') {
-            warning('Téléportation avortée',teleStats.message);
+        let paraDistance = 11+Math.ceil(playerInfos.comp.train*1.4)+(playerInfos.comp.aero*2);
+        if (playerInfos.gang === 'tiradores' && playerInfos.mapTurn === 0 && !playerInfos.onShip && playerInfos.para >= 1) {
+            if (distance <= paraDistance) {
+                paraMessage = '';
+                paraOK = true;
+            } else {
+                paraMessage = '<span class="vio">Distance maximum de parachutage: '+paraDistance+'</span>';
+            }
+            isPara = true;
         } else {
-            warning('Débarquement avorté','Vous ne pouvez pas débarquer ce bataillon à cet endroit. '+message+teleStats.message);
+            teleStats = checkBatTeleport(selectedBat,batDebarq,tileId);
+        }
+    }
+    if ((distance <= 1 || playerInfos.onShip || teleStats.ok || paraOK) && !ownBatHere && (terrainAccess(batDebarq.id,tileId,true) || teleStats.ok || batDebarqType.cat === 'buildings' || batDebarqType.cat === 'devices') && !alienOccupiedTiles.includes(tileId)) {
+        tileOK = true;
+        if (isPara) {
+            playerInfos.para = playerInfos.para-1;
+        }
+    } else {
+        if (isPara) {
+            batDebarq = {};
+            showBatInfos(selectedBat);
+            if (paraMessage != '') {
+                warning('Parachutage avorté','Vous ne pouvez pas parachuter ce bataillon à cet endroit. '+paraMessage);
+            } else {
+                warning('Parachutage avorté','Vous ne pouvez pas parachuter ce bataillon à cet endroit. '+message);
+            }
+        } else if (playerInfos.comp.train >= 1) {
+            batDebarq = {};
+            showBatInfos(selectedBat);
+            if (teleStats.message != '') {
+                warning('Téléportation avortée',teleStats.message);
+            } else {
+                warning('Débarquement avorté','Vous ne pouvez pas débarquer ce bataillon à cet endroit. '+message);
+            }
+        } else {
+            batDebarq = {};
+            showBatInfos(selectedBat);
+            warning('Débarquement avorté','Vous ne pouvez pas débarquer ce bataillon à cet endroit. '+message);
         }
     }
     if (tileOK) {

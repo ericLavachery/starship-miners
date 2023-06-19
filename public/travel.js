@@ -28,6 +28,7 @@ function startMission(isTest) {
         playerInfos.travTurns = 0;
         playerInfos.crafts = 0;
         playerInfos.vz = 0;
+        playerInfos.para = 3+Math.ceil(playerInfos.comp.train/2.1)+playerInfos.comp.aero;
         inSoute = false;
         modeLanding = true;
         // en mode landing: fenêtre avec les landers qui sont dans batsInSpace
@@ -87,6 +88,7 @@ function stopMission() {
     playerInfos.missionZone = -1;
     playerInfos.missionPlanet = -1;
     playerInfos.nmi = playerInfos.nmi+1;
+    playerInfos.para = 0;
     inSoute = false;
     modeLanding = true;
     landingList();

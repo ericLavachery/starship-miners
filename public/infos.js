@@ -885,7 +885,7 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="2 ripostes supplémentaires">Ripostes multiples</span>'+sepa;
     }
     if (batType.skills.includes('cible')) {
-        allSkills = allSkills+'<span class="paramValue" title="Peut faire un tir ciblé: Précision augmentée mais cadence de tir diminuée">Tir ciblé</span>'+sepa;
+        allSkills = allSkills+'<span class="paramValue" title="Peut faire un tir bullseye: Puissance et précision augmentée mais cadence de tir diminuée">Bullseye</span>'+sepa;
     }
     if (batType.skills.includes('longshot')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut attaquer n\'importe quelle unité à sa portée (pas de restriction due à la mêlée)">Tir choisi</span>'+sepa;
