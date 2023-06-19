@@ -2866,6 +2866,7 @@
     {
         "id":312,
         "name":"Biopod",
+        "levels":{"rednecks":99,"blades":18,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Centre de recherches"],
         "compReq":{"gen":2,"exo":3,"ca":4},
         "altCompReq":{"gen":2,"exo":3,"ca":3,"med":2},

@@ -61,9 +61,9 @@ function commandes() {
             if (!modeSonde) {
                 if (playerInfos.onShip) {
                     if (!inSoute) {
-                        $('#commandz').append('<button type="button" title="Aller dans la soute" class="boutonGris iconButtons" onclick="goSoute()" onmousedown="clicSound(6)"><i class="fas fa-warehouse"></i></button>');
+                        $('#commandz').append('<button type="button" title="Aller dans la soute" class="boutonMarine iconButtons" onclick="goSoute()" onmousedown="clicSound(6)"><i class="fas fa-warehouse"></i></button>');
                     } else {
-                        $('#commandz').append('<button type="button" title="Revenir sur la carte de la station" class="boutonGris iconButtons" onclick="goStation()" onmousedown="clicSound(7)"><i class="fas fa-chess-board"></i></button>');
+                        $('#commandz').append('<button type="button" title="Revenir sur la carte de la station" class="boutonMarine iconButtons" onclick="goStation()" onmousedown="clicSound(7)"><i class="fas fa-chess-board"></i></button>');
                     }
                 }
                 if (!isStartZone) {
@@ -192,20 +192,20 @@ function commandes() {
                 } else {
                     if (zoneFiles.length >= 2) {
                         $('#commandz').append('<hr>');
-                        $('#commandz').append('<button type="button" title="Choisir une zone pour la prochaine mission" class="boutonRouge iconButtons" onclick="pickZone()" onmousedown="clicSound(5)"><i class="fas fa-map"></i></button>');
+                        $('#commandz').append('<button type="button" title="Choisir une zone pour la prochaine mission" class="boutonNoir iconButtons" onclick="pickZone()" onmousedown="clicSound(5)"><i class="fas fa-map"></i></button>');
                         if (playerInfos.missionZone >= 1) {
                             if (isLanderDeployed()) {
                                 if (playerInfos.okFill) {
                                     $('#commandz').append('<button type="button" title="Partir en mission sur la zone '+playerInfos.missionZone+'" class="boutonNoir iconButtons" onclick="showStartLander()" onmousedown="warnSound(`ignition`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
                                     $('#commandz').append('<button type="button" title="Partir en mission sur la zone '+playerInfos.missionZone+'" class="boutonRouge iconButtons" onclick="startMission(false)" onmousedown="warnSound(`takeoff`)" id="takeof2"><i class="fas fa-space-shuttle"></i></button>');
                                 } else {
-                                    $('#commandz').append('<button type="button" title="Partir en mission: Vous n\'avez pas chargé de ressources!" class="boutonNoir iconButtons" onmousedown="warnSound(`error2`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
+                                    $('#commandz').append('<button type="button" title="Partir en mission: Vous n\'avez pas chargé de ressources!" class="boutonGrey iconButtons" onmousedown="warnSound(`error2`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
                                 }
                             } else {
-                                $('#commandz').append('<button type="button" title="Partir en mission: Vous devez d\'abord déployer un lander et y mettre des bataillons!" class="boutonNoir iconButtons" onmousedown="warnSound(`error2`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
+                                $('#commandz').append('<button type="button" title="Partir en mission: Vous devez d\'abord déployer un lander et y mettre des bataillons!" class="boutonGrey iconButtons" onmousedown="warnSound(`error2`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
                             }
                         } else {
-                            $('#commandz').append('<button type="button" title="Partir en mission: Vous devez d\'abord choisir une zone!" class="boutonNoir iconButtons" onmousedown="warnSound(`error2`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
+                            $('#commandz').append('<button type="button" title="Partir en mission: Vous devez d\'abord choisir une zone!" class="boutonGrey iconButtons" onmousedown="warnSound(`error2`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
                         }
                     }
                 }
@@ -228,8 +228,6 @@ function commandes() {
             if (playerInfos.onShip) {
                 if (!inSoute) {
                     $('#commandz').append('<hr>');
-                    $('#commandz').append('<button type="button" title="Nouvelle campagne?" class="boutonRose iconButtons" onclick="showMapReset()" onmousedown="warnSound(`nope`)" id="reset1"><i class="fas fa-power-off"></i></button>');
-                    $('#commandz').append('<button type="button" title="Nouvelle campagne!" class="boutonRouge iconButtons" onclick="newGame()" onmousedown="clicSound(8)" id="reset2"><i class="fas fa-recycle"></i></button>');
                     if (bataillons.length === 0) {
                         $('#commandz').append('<button type="button" title="Ajouter le pack de ressources" class="boutonRose iconButtons blynk" onclick="addStartPack()" onmousedown="clicSound()"><i class="fas fa-coins"></i></button>');
                     } else {
@@ -241,10 +239,14 @@ function commandes() {
                                 $('#commandz').append('<button type="button" title="Voir vos compétences" class="boutonRose iconButtons" onclick="gangLevelView()" onmousedown="clicSound(2)"><i class="fas fa-award"></i></button>');
                             }
                             $('#commandz').append('<button type="button" title="Voir toutes les unités du gang" class="boutonRose iconButtons" onclick="gangUnitsList()" onmousedown="clicSound(2)"><i class="fas fa-user-astronaut"></i></button>');
+                            $('#commandz').append('<button type="button" title="Voir tous les bâtiments" class="boutonRose iconButtons" onclick="gangBldList()" onmousedown="clicSound(2)"><i class="fas fa-school"></i></button>');
                         } else {
                             $('#commandz').append('<button type="button" title="Choisir un gang" class="boutonRose iconButtons blynk" onclick="gangChoice()" onmousedown="clicSound(2)"><i class="fas fa-mask"></i></button>');
                         }
                     }
+                    $('#commandz').append('<br>');
+                    $('#commandz').append('<button type="button" title="Nouvelle campagne?" class="boutonRose iconButtons" onclick="showMapReset()" onmousedown="warnSound(`nope`)" id="reset1"><i class="fas fa-power-off"></i></button>');
+                    $('#commandz').append('<button type="button" title="Nouvelle campagne!" class="boutonRouge iconButtons" onclick="newGame()" onmousedown="clicSound(8)" id="reset2"><i class="fas fa-recycle"></i></button>');
                 }
             } else {
                 if (!isReloaded && playerInfos.mapTurn === 0) {

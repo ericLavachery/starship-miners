@@ -1,3 +1,32 @@
+function gangBldList() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","1000px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
+    $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName or">BATIMENTS</span><br>');
+    $('#conUnitList').append('<br>');
+    let sortedUnits = _.sortBy(unitTypes,'name');
+    sortedUnits.forEach(function(unit) {
+        if (unit.levels[playerInfos.gang] < 50) {
+            if (unit.cat === 'buildings') {
+                let color = catColor(unit);
+                if (unit.bldReq.includes('Station')) {
+                    color = 'gff';
+                }
+                $('#conUnitList').append('<span class="paramName '+color+' klik" title="" onclick="unitDetail('+unit.id+')">'+unit.name+'</span><br>');
+            }
+        }
+    });
+    $('#conUnitList').append('<br><br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
+};
+
 function gangUnitsList(gangName) {
     if (gangName === undefined) {
         gangName = playerInfos.gang;

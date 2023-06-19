@@ -131,7 +131,7 @@ function batInfos(bat,batType,pop) {
         vetIcon = '<img src="/static/img/vet'+bat.vet+'.png" width="15">';
     }
     if (pop) {
-        $('#'+headPlace).append('<img src="/static/img/units/'+batType.cat+'/'+batPic+'.png">&nbsp;');
+        $('#'+headPlace).append('<img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" onclick="unitDetail('+batType.id+')" title="Voir le détail du type d\'unité">&nbsp;');
         $('#'+headPlace).append('<span class="blockTitle"><h2>'+unitsLeft+' '+batType.name+'</h2></span>');
     } else {
         $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3> '+vetIcon+'</span>');
@@ -859,7 +859,9 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Meilleur bonus de fortification">Fortification avancée</span>'+sepa;
     }
     if (!batType.skills.includes('noguet') && !batType.skills.includes('sentinelle') && !batType.skills.includes('fastguet')) {
-        allSkills = allSkills+'<span class="paramValue" title="Peut faire le guet. Cadence de tir 100% en défense">Guet</span>'+sepa;
+        if (batType.cat != 'buildings' || batType.crew >= 1) {
+            allSkills = allSkills+'<span class="paramValue" title="Peut faire le guet. Cadence de tir 100% en défense">Guet</span>'+sepa;
+        }
     }
     if (batType.skills.includes('fastguet')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut se mettre en mode guet plus facilement (moins de PA). Cadence de tir 100% en défense">Guet rapide</span>'+sepa;
@@ -957,7 +959,11 @@ function batFullInfos(bat,batType) {
         }
     }
     if (batType.skills.includes('fouille')) {
-        allSkills = allSkills+'<span class="paramValue" title="Peut fouiller les ruines">Fouille</span>'+sepa;
+        if (batType.moveCost > 90) {
+            allSkills = allSkills+'<span class="paramValue" title="Fouilles automatiquement les ruines">Fouille</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Peut fouiller les ruines">Fouille</span>'+sepa;
+        }
     }
     if (batType.skills.includes('leader')) {
         allSkills = allSkills+'<span class="paramValue" title="Donne +1 PA à toutes les unités du gang de manière permanente">Leadership</span>'+sepa;

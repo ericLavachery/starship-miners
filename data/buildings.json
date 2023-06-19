@@ -4286,7 +4286,7 @@
         "mecanoCost":10,
         "transMaxSize":100,
         "transUnits":1000000,
-        "transRes":10000000,
+        "transRes":1000000,
         "fuzz":3,
         "deathFx":"S_Explosion02"
     },
@@ -4443,7 +4443,7 @@
     },
     {
         "id":278,
-        "name":"Ascenceur",
+        "name":"Ascenseur",
         "pic":"ascenceur",
         "cat":"buildings",
         "kind":"zero-vm",

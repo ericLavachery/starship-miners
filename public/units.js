@@ -41,11 +41,15 @@ function unitInfos(batType) {
     $('#'+bodyPlace).append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+batType.squads+'</span><br>');
     $('#'+bodyPlace).append('<span class="paramName">Unités/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+batType.squadSize+'</span><br>');
     let totalCrew = batType.crew*batType.squadSize*batType.squads;
-    $('#'+bodyPlace).append('<span class="paramName">Personnel</span><span class="paramIcon"><i class="fas fa-user-friends"></i></span><span class="paramValue">'+totalCrew+'</span><br>');
+    let crewType = 'Citoyens';
+    if (batType.skills.includes('brigands')) {
+        crewType = 'Criminels';
+    }
+    $('#'+bodyPlace).append('<span class="paramName">Personnel</span><span class="paramIcon"><i class="fas fa-user-friends"></i></span><span class="paramValue">'+totalCrew+' '+crewType+'</span><br>');
     // PROTECTION
     let squadHP = batType.squadSize*batType.hp;
     let batHP = squadHP*batType.squads;
-    $('#'+bodyPlace).append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue">'+batType.hp+' / '+squadHP+' / '+batHP+'</span><br>');
+    $('#'+bodyPlace).append('<span class="paramName">Points de vie</span><span class="paramIcon"></span><span class="paramValue"><span title="PV unité">'+batType.hp+'</span> / <span title="PV escouade">'+squadHP+'</span> / <span title="PV bataillon">'+batHP+'</span></span><br>');
     $('#'+bodyPlace).append('<span class="paramName">Armure</span><span class="paramIcon"><i class="fas fa-shield-alt"></i></span><span class="paramValue">'+batType.armor+'</span><br>');
     $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+batType.stealth+'</span><br>');
     $('#'+bodyPlace).append('<span class="paramName">Attraction</span><span class="paramIcon"></span><span class="paramValue">'+batType.fuzz+'</span><br>');

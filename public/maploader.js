@@ -340,6 +340,7 @@ function showRes(tileId) {
             if (playerInfos.comp.det >= 3 || !modeSonde) {
                 // tout voir
             } else {
+                res = res.replace(/&nbsp;&#128313;&nbsp;/g,"");
                 res = res.replace(/\d+/g,"");
             }
         }

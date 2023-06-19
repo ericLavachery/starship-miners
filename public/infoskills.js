@@ -2545,14 +2545,23 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     }
     $('#unitInfos').append('<span id="line-const"></span>');
     lineBreak = false;
-    if (!inSoute && !bat.tags.includes('nomove') && !zeroCrew) {
+    let buttonSize = 'iconButtons';
+    let okBuild = true;
+    if (batType.name === 'Soute') {
+        buttonSize = 'bigButtons';
+    } else {
+        if (playerInfos.onShip) {
+            okBuild = false;
+        }
+    }
+    if (!inSoute && !bat.tags.includes('nomove') && !zeroCrew && okBuild) {
         if (isReloaded || playerInfos.mapTurn != 0 || playerInfos.onShip) {
             // CONSTRUCTION BATIMENTS
             if (batType.skills.includes('constructeur') || batType.skills.includes('producteur')) {
                 apReq = getConstAPReq(bat,batType);
                 if (bat.apLeft >= apReq && !nearby.oneTile && craftsOK) {
                     if ((batType.skills.includes('constructeur') && batType.skills.includes('producteur')) || batType.skills.includes('transorbital')) {
-                        $('#unitInfos').append('<button type="button" title="Production (bâtiments & unités)" class="boutonOrange iconButtons" onclick="bfconst(`all`,false,``,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Production (bâtiments & unités)" class="boutonOrange '+buttonSize+'" onclick="bfconst(`all`,false,``,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
                     } else if (batType.skills.includes('constructeur')) {
                         $('#unitInfos').append('<button type="button" title="Construction (bâtiments)" class="boutonOrange iconButtons" onclick="bfconst(`buildings`,false,``,false)"><i class="fas fa-cogs"></i> <span class="small">'+apReq+'</span></button>');
                     } else if (batType.skills.includes('producteur')) {
@@ -2586,6 +2595,9 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         if (checkNearConstructor(bat)) {
             equipOK = true;
         }
+    }
+    if (batType.name === 'Soute') {
+        equipOK = false;
     }
     if (equipOK && !zeroCrew) {
         apCost = Math.round(batType.ap*1.5);
