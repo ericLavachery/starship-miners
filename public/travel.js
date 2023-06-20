@@ -60,16 +60,16 @@ function isUnitPara(batType) {
             isPara = true;
         } else if (batType.cat === 'vehicles') {
             if (playerInfos.comp.aero >= 1) {
-                if (batType.size <= 18 && vehOK) {
+                if (batType.size <= 18) {
                     isPara = true;
                 }
             } else if (playerInfos.comp.train >= 1) {
                 if (playerInfos.comp.log >= 2) {
-                    if (batType.size <= 18 && vehOK) {
+                    if (batType.size <= 18) {
                         isPara = true;
                     }
                 } else if (playerInfos.comp.log >= 1) {
-                    if (batType.size <= 16 && vehOK) {
+                    if (batType.size <= 16) {
                         isPara = true;
                     }
                 }
