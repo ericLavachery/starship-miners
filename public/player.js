@@ -2726,6 +2726,36 @@ function startBatGear(unit) {
     return gear;
 };
 
+function replacerSondes() {
+    let nextSondeTileId = 1521;
+    let nextImpactTileId = 1539;
+    let souteBat = getBatById(souteId);
+    bataillons.forEach(function(bat) {
+        if (bat.type === 'Sonde' || bat.type === 'Impacteur') {
+            if (bat.loc === 'trans') {
+                if (bat.locId === souteId) {
+                    bat.loc = 'zone';
+                    bat.locId = 0;
+                    if (souteBat.transIds.includes(bat.id)) {
+                        let tagIndex = souteBat.transIds.indexOf(bat.id);
+                        souteBat.transIds.splice(tagIndex,1);
+                    }
+                    if (bat.type === 'Sonde') {
+                        bat.tileId = nextSondeTileId;
+                        bat.oldTileId = nextSondeTileId;
+                        nextSondeTileId = nextSondeTileId+60;
+                    }
+                    if (bat.type === 'Impacteur') {
+                        bat.tileId = nextImpactTileId;
+                        bat.oldTileId = nextImpactTileId;
+                        nextImpactTileId = nextImpactTileId+60;
+                    }
+                }
+            }
+        }
+    });
+};
+
 function addStartPack() {
     addFreeBat(1830,'Soute');
     // addFreeBat(1770,'Stocks');
@@ -2743,21 +2773,21 @@ function addStartPack() {
     addFreeBat(1827,'Dortoirs');
     addFreeBat(1887,'Dortoirs');
     addFreeBat(1947,'Dortoirs');
-    addFreeBat(2007,'Sonde');
-    addFreeBat(2008,'Sonde');
-    addFreeBat(2009,'Sonde');
-    addFreeBat(2010,'Sonde');
-    addFreeBat(2011,'Sonde');
-    addFreeBat(2067,'Sonde');
-    addFreeBat(2068,'Sonde');
-    addFreeBat(2069,'Sonde');
-    addFreeBat(2070,'Sonde');
-    addFreeBat(2071,'Sonde');
-    addFreeBat(1587,'Impacteur');
-    addFreeBat(1588,'Impacteur');
-    addFreeBat(1589,'Impacteur');
-    addFreeBat(1590,'Impacteur');
-    addFreeBat(1591,'Impacteur');
+    addFreeBat(1521,'Sonde');
+    addFreeBat(1581,'Sonde');
+    addFreeBat(1641,'Sonde');
+    addFreeBat(1701,'Sonde');
+    addFreeBat(1761,'Sonde');
+    addFreeBat(1821,'Sonde');
+    addFreeBat(1881,'Sonde');
+    addFreeBat(1941,'Sonde');
+    addFreeBat(2001,'Sonde');
+    addFreeBat(2061,'Sonde');
+    addFreeBat(1539,'Impacteur');
+    addFreeBat(1599,'Impacteur');
+    addFreeBat(1659,'Impacteur');
+    addFreeBat(1719,'Impacteur');
+    addFreeBat(1779,'Impacteur');
     addFreeBat(1894,'Station météo');
     addFreeBat(1835,'Vidéotéléphonie');
     addFreeBat(1953,'Unités cryogéniques');

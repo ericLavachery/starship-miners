@@ -78,10 +78,12 @@ function commandes() {
                 $('#commandz').append('<button type="button" title="Réserve" class="boutonGris iconButtons" onclick="voirReserve()" onmousedown="clicSound()"><i class="fas fa-piggy-bank"></i></button>');
                 $('#commandz').append('<br>');
             }
-            if (!inSoute) {
-                $('#commandz').append('<button type="button" title="Minimap" class="boutonGris iconButtons" onclick="minimap()" onmousedown="clicSound(5)"><i class="far fa-map"></i></button>');
-            } else {
-                $('#commandz').append('<button type="button" title="Minimap: Revenir sur la carte de la station" class="boutonGrey iconButtons gf" onclick="goStation()" onmousedown="clicSound(7)"><i class="far fa-map"></i></button>');
+            if (!justReloaded) {
+                if (!inSoute) {
+                    $('#commandz').append('<button type="button" title="Minimap" class="boutonGris iconButtons" onclick="minimap()" onmousedown="clicSound(5)"><i class="far fa-map"></i></button>');
+                } else {
+                    $('#commandz').append('<button type="button" title="Minimap: Revenir sur la carte de la station" class="boutonGrey iconButtons gf" onclick="goStation()" onmousedown="clicSound(7)"><i class="far fa-map"></i></button>');
+                }
             }
             if (modeSonde) {
                 $('#commandz').append('<br>');
@@ -99,11 +101,14 @@ function commandes() {
                 }
             }
             if (saveOK) {
-                if (justReloaded) {
-                    $('#commandz').append('<button type="button" title="Backup de cette partie (écrase le précédent)" class="boutonRose iconButtons" onclick="saveBackup()" onmousedown="clicSound(17)"><i class="fas fa-hdd"></i> &nbsp;<span class="notsosmall">Bckp</span></button>');
-                } else {
-                    $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveGame()" onmousedown="clicSound(8)"><i class="far fa-save"></i> &nbsp;<span class="notsosmall">Save</span></button>');
+                if (playerInfos.pseudo != 'Mapedit') {
+                    if (justReloaded) {
+                        $('#commandz').append('<button type="button" title="Backup de cette partie (écrase le précédent)" class="boutonRose iconButtons" onclick="saveBackup()" onmousedown="clicSound(17)"><i class="fas fa-hdd"></i></button>');
+                    }
+                    $('#commandz').append('<button type="button" title="Nouvelle campagne?" class="boutonRouge iconButtons" onclick="showMapReset()" onmousedown="clicSound(18)" id="reset1"><i class="fas fa-power-off"></i></button>');
+                    $('#commandz').append('<button type="button" title="Nouvelle campagne!" class="boutonRouge iconButtons" onclick="newGame()" onmousedown="clicSound(8)" id="reset2"><i class="fas fa-recycle"></i></button>');
                 }
+                $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveGame()" onmousedown="clicSound(8)"><i class="far fa-save"></i></button>');
             }
 
         }
@@ -211,7 +216,7 @@ function commandes() {
                 }
             } else {
                 $('#commandz').append('<hr>');
-                if (!isStartZone) {
+                if (!isStartZone && playerInfos.pseudo != 'Mapedit') {
                     $('#commandz').append('<button type="button" title="Rapport de mission (estimation)" class="boutonRose iconButtons" onclick="missionResults(false)" onmousedown="clicSound(1)"><i class="fas fa-balance-scale"></i></button>');
                 }
                 if (hasOwnLander) {
@@ -244,9 +249,6 @@ function commandes() {
                             $('#commandz').append('<button type="button" title="Choisir un gang" class="boutonRose iconButtons blynk" onclick="gangChoice()" onmousedown="clicSound(2)"><i class="fas fa-mask"></i></button>');
                         }
                     }
-                    $('#commandz').append('<br>');
-                    $('#commandz').append('<button type="button" title="Nouvelle campagne?" class="boutonRose iconButtons" onclick="showMapReset()" onmousedown="warnSound(`nope`)" id="reset1"><i class="fas fa-power-off"></i></button>');
-                    $('#commandz').append('<button type="button" title="Nouvelle campagne!" class="boutonRouge iconButtons" onclick="newGame()" onmousedown="clicSound(8)" id="reset2"><i class="fas fa-recycle"></i></button>');
                 }
             } else {
                 if (!isReloaded && playerInfos.mapTurn === 0) {
