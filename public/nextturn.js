@@ -2056,16 +2056,98 @@ function alertAllBats() {
 };
 
 function createBatList() {
-    let allBatList = bataillons.slice();
-    let zoneBatList = _.filter(allBatList, function(bat) {
-        return (bat.loc == 'zone' && !bat.tags.includes('nolist'));
-    });
-    batList = _.sortBy(zoneBatList,'fuzz');
-    batList.reverse();
-    batList = _.sortBy(_.sortBy(_.sortBy(_.sortBy(batList,'tileId'),'type'),'sort'),'army');
-    batList.reverse();
-    commandes();
+    console.log('BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATLIST');
+    // let allBatList = bataillons.slice();
+    // let zoneBatList = _.filter(allBatList, function(bat) {
+    //     return (bat.loc == 'zone' && !bat.tags.includes('nolist'));
+    // });
+    // batList = _.sortBy(zoneBatList,'fuzz');
+    // batList.reverse();
+    // batList = _.sortBy(_.sortBy(_.sortBy(_.sortBy(batList,'tileId'),'type'),'sort'),'army');
+    // batList.reverse();
     // console.log(batList);
+    let allBatList = bataillons.slice();
+    batList = _.filter(allBatList, function(bat) {
+        return (bat.loc == 'zone' && !bat.tags.includes('nolist') && bat.sort >= 1000);
+    });
+    batList = _.sortBy(batList,'sort');
+    batList.reverse();
+    console.log(batList);
+    let lowSortedBatList = _.filter(allBatList, function(bat) {
+        return (bat.loc == 'zone' && !bat.tags.includes('nolist') && bat.sort < 1000);
+    });
+    lowSortedBatList = _.sortBy(_.sortBy(_.sortBy(_.sortBy(lowSortedBatList,'tileId'),'type'),'sort'),'army');
+    lowSortedBatList.reverse();
+    batList.push(...lowSortedBatList);
+    console.log(batList);
+    commandes();
+};
+
+function getNextSort() {
+    let lessSort = 2001;
+    bataillons.forEach(function(bat) {
+        if (bat.sort < lessSort && bat.sort >= 1000) {
+            lessSort = bat.sort;
+        }
+    });
+    lessSort--;
+    return lessSort;
+};
+
+function inSuperList() {
+    let lessSort = getNextSort();
+    selectedBat.sort = lessSort;
+    clicSound(14);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
+function outSuperList() {
+    if (selectedBatType.sort === undefined) {
+        selectedBat.sort = selectedBat.range*10;
+        if (selectedBatType.transUnits >= 10 && selectedBatType.cat === 'vehicles' && selectedBat.sort < 25) {
+            selectedBat.sort = 25;
+        }
+        if (selectedBatType.skills.includes('medic') && selectedBatType.cat === 'infantry' && selectedBat.sort < 11) {
+            selectedBat.sort = 11;
+        }
+    } else {
+        selectedBat.sort = selectedBatType.sort;
+    }
+    clicSound(14);
+    selectedBatArrayUpdate();
+    showBatInfos(selectedBat);
+};
+
+function killSuperList() {
+    if (selectedBatType.sort === undefined) {
+        selectedBat.sort = selectedBat.range*10;
+        if (selectedBatType.transUnits >= 10 && selectedBatType.cat === 'vehicles' && selectedBat.sort < 25) {
+            selectedBat.sort = 25;
+        }
+        if (selectedBatType.skills.includes('medic') && selectedBatType.cat === 'infantry' && selectedBat.sort < 11) {
+            selectedBat.sort = 11;
+        }
+    } else {
+        selectedBat.sort = selectedBatType.sort;
+    }
+    selectedBatArrayUpdate();
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.sort === undefined) {
+            bat.sort = bat.range*10;
+            if (batType.transUnits >= 10 && batType.cat === 'vehicles' && bat.sort < 25) {
+                bat.sort = 25;
+            }
+            if (batType.skills.includes('medic') && batType.cat === 'infantry' && bat.sort < 11) {
+                bat.sort = 11;
+            }
+        } else {
+            bat.sort = batType.sort;
+        }
+    });
+    clicSound(14);
+    showBatInfos(selectedBat);
 };
 
 function nextBat(removeActiveBat,removeForever) {

@@ -282,7 +282,7 @@ socket.on('playerInfos-Load', function(pi) {
         playerInfos.alerte = {};
     }
     if (playerInfos.para === undefined) {
-        playerInfos.para = 3+Math.ceil(playerInfos.comp.train/2.1)+playerInfos.comp.aero;
+        playerInfos.para = 0;
     }
 });
 // Terrains
@@ -385,16 +385,24 @@ socket.on('savedMap-Load', function(sm) {
         }
         if (bat.loc === "zone" || bat.loc === "trans") {
             thisBatType = getBatType(bat);
-            if (thisBatType.sort === undefined) {
-                bat.sort = bat.range*10;
-                if (thisBatType.transUnits >= 10 && thisBatType.cat === 'vehicles' && bat.sort < 25) {
-                    bat.sort = 25;
+            let initSort = false;
+            if (bat.sort === undefined) {
+                initSort = true;
+            } else if (bat.sort < 1000) {
+                initSort = true;
+            }
+            if (initSort) {
+                if (thisBatType.sort === undefined) {
+                    bat.sort = bat.range*10;
+                    if (thisBatType.transUnits >= 10 && thisBatType.cat === 'vehicles' && bat.sort < 25) {
+                        bat.sort = 25;
+                    }
+                    if (thisBatType.skills.includes('medic') && thisBatType.cat === 'infantry' && bat.sort < 11) {
+                        bat.sort = 11;
+                    }
+                } else {
+                    bat.sort = thisBatType.sort;
                 }
-                if (thisBatType.skills.includes('medic') && thisBatType.cat === 'infantry' && bat.sort < 11) {
-                    bat.sort = 11;
-                }
-            } else {
-                bat.sort = thisBatType.sort;
             }
         }
     });

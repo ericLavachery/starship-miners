@@ -149,8 +149,10 @@ function unloadInfos(myBat,myBatUnitType) {
                     }
                     let mayOut = checkMayOut(batType,true,bat);
                     if (!playerInfos.onShip && playerInfos.mapTurn < 1) {
-                        if (playerInfos.gang === 'tiradores' && batType.cat === 'infantry' && playerInfos.para >= 1 && myBatUnitType.skills.includes('transorbital')) {
-                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Parachuter '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA '+moreInfos+'" class="'+butCol+' iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-parachute-box"></i> <span class="small">'+apCost+'</span></button> <img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="32" class="dunit" onclick="batDetail('+bat.id+')" title="Détail du bataillon">&nbsp; '+batType.name+armyNum+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+                        let isPara = isUnitPara(batType);
+                        if (isPara && playerInfos.para >= 1 && myBatUnitType.skills.includes('transorbital') && !myBatUnitType.skills.includes('rescue')) {
+                            let paraDistance = calcParaDist();
+                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Parachuter '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA '+moreInfos+' ('+paraDistance+' cases)" class="'+butCol+' iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-parachute-box"></i> <span class="small">'+apCost+'</span></button> <img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="32" class="dunit" onclick="batDetail('+bat.id+')" title="Détail du bataillon">&nbsp; '+batType.name+armyNum+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
                         } else {
                             $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer avant le tour 1" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batType.name+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
                         }
@@ -237,13 +239,6 @@ function calcVolume(bat,batType) {
         if (bat.eq === 'e-phare' && batType.cat === 'infantry') {
             batVolume = batVolume*1.5;
         }
-        // if (batType.cat === 'infantry') {
-        //     if (!batType.skills.includes('routes')) {
-        //         if (bat.eq === 'e-road') {
-        //             batVolume = batVolume*1.1;
-        //         }
-        //     }
-        // }
     }
     batVolume = Math.floor(batVolume);
     return batVolume;
@@ -879,8 +874,9 @@ function clickDebarq(tileId) {
     let isPara = false;
     let paraMessage = '';
     if (distance > 1) {
-        let paraDistance = 11+Math.ceil(playerInfos.comp.train*1.4)+(playerInfos.comp.aero*2);
-        if (playerInfos.gang === 'tiradores' && playerInfos.mapTurn === 0 && !playerInfos.onShip && playerInfos.para >= 1) {
+        let paraDistance = calcParaDist();
+        // let isPara = isUnitPara(batDebarqType);
+        if (playerInfos.mapTurn === 0 && !playerInfos.onShip && playerInfos.para >= 1) {
             if (distance <= paraDistance) {
                 paraMessage = '';
                 paraOK = true;

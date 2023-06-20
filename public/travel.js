@@ -28,7 +28,7 @@ function startMission(isTest) {
         playerInfos.travTurns = 0;
         playerInfos.crafts = 0;
         playerInfos.vz = 0;
-        playerInfos.para = 3+Math.ceil(playerInfos.comp.train/2.1)+playerInfos.comp.aero;
+        playerInfos.para = calcParaNum();
         inSoute = false;
         modeLanding = true;
         // en mode landing: fenêtre avec les landers qui sont dans batsInSpace
@@ -41,6 +41,59 @@ function startMission(isTest) {
     } else {
         warning('Ressources','Vous ne voulez pas partir sans ressources...')
     }
+};
+
+function calcParaNum() {
+    let paraNum = 0;
+    if (playerInfos.gang === 'tiradores') {
+        paraNum = 3+Math.ceil(playerInfos.comp.train/2.1)+playerInfos.comp.aero;
+    } else if (playerInfos.comp.aero >= 2) {
+        paraNum = 1;
+    }
+    return paraNum;
+};
+
+function isUnitPara(batType) {
+    let isPara = false;
+    if (playerInfos.gang === 'tiradores') {
+        if (batType.cat === 'infantry') {
+            isPara = true;
+        } else if (batType.cat === 'vehicles') {
+            if (playerInfos.comp.aero >= 1) {
+                if (batType.size <= 18 && vehOK) {
+                    isPara = true;
+                }
+            } else if (playerInfos.comp.train >= 1) {
+                if (playerInfos.comp.log >= 2) {
+                    if (batType.size <= 18 && vehOK) {
+                        isPara = true;
+                    }
+                } else if (playerInfos.comp.log >= 1) {
+                    if (batType.size <= 16 && vehOK) {
+                        isPara = true;
+                    }
+                }
+            }
+        }
+    } else if (playerInfos.comp.aero >= 2) {
+        if (batType.cat === 'infantry') {
+            isPara = true;
+        }
+    }
+    return isPara;
+};
+
+function calcParaDist() {
+    let paraDistance = 0;
+    if (playerInfos.gang === 'tiradores') {
+        paraDistance = 11+Math.ceil(playerInfos.comp.train*1.4)+(playerInfos.comp.aero*2);
+        if (playerInfos.comp.aero >= 2) {
+            paraDistance = paraDistance+3;
+        }
+    } else if (playerInfos.comp.aero >= 2) {
+        paraDistance = 7+Math.ceil(playerInfos.comp.train*1.4);
+    }
+    return paraDistance;
 };
 
 function updateVMRes() {
