@@ -843,11 +843,25 @@ function batInfos(bat,batType,pop) {
     // "maxVeg": 3,
 };
 
+function getInfoAdd(batType) {
+    let infoAdd = '';
+    if (batType.skills.includes('landerfab')) {
+        infoAdd = infoAdd+'Ne peut être déployé qu\'à côté d\'un lander.<br>';
+    }
+    return infoAdd;
+};
+
 function batFullInfos(bat,batType) {
-    if (batType.info != undefined) {
+    let infoAdd = getInfoAdd(batType);
+    if (batType.info != undefined || infoAdd.length >= 2) {
+        let infoBase = '';
+        if (batType.info != undefined) {
+            infoBase = batType.info;
+            infoAdd = '<br>'+infoAdd;
+        }
         $('#popbody').append('<div class="shSpace"></div>');
         $('#popbody').append('<span class="blockTitle"><h4>Description</h4></span><br>');
-        $('#popbody').append('<span class="basicText">'+batType.info+'</span><br><br>');
+        $('#popbody').append('<span class="basicText">'+infoBase+infoAdd+'</span><br><br>');
     }
     $('#popbody').append('<div class="shSpace"></div>');
     $('#popbody').append('<span class="blockTitle"><h4>Habilités spéciales</h4></span><br>');
@@ -930,7 +944,11 @@ function batFullInfos(bat,batType) {
         }
     }
     if (batType.skills.includes('fly')) {
-        allSkills = allSkills+'<span class="paramValue">Volant</span>'+sepa;
+        if (batType.skills.includes('jetpack')) {
+            allSkills = allSkills+'<span class="paramValue" title="Jetpack: Volant mais considéré au sol si les PA sont négatifs">Jetpack</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue">Volant</span>'+sepa;
+        }
     }
     if (batType.skills.includes('hover')) {
         allSkills = allSkills+'<span class="paramValue">Amphibie</span>'+sepa;
@@ -996,8 +1014,16 @@ function batFullInfos(bat,batType) {
             }
         }
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    let kzinOK = false;
+    if (batType.skills.includes('kzin') || batType.cat === 'buildings' || (batType.cat === 'devices' && batType.crew === 0) || batType.skills.includes('mutant') || batType.skills.includes('robot') || batType.skills.includes('transorbital')) {
+        kzinOK = true;
+    }
+    if (kzinOK) {
+        if (batType.skills.includes('fly') && batType.cat != 'infantry') {
+            allSkills = allSkills+'<span class="paramValue" title="Peut aller sur la planète Kzin à condition d\'avoir un stabilisateur ou un moteur de seconde génération">Kzin</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Peut aller sur la planète Kzin sans scaphandre">Kzin</span>'+sepa;
+        }
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
@@ -1020,17 +1046,15 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('infraz')) {
+        if (batType.skills.includes('infast')) {
+            allSkills = allSkills+'<span class="paramValue" title="Construction rapide d\'infrastructures">Infra-fast</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Construction d\'infrastructures">Infra</span>'+sepa;
+        }
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
-    }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
-    }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('infrahelp')) {
+        allSkills = allSkills+'<span class="paramValue" title="Toutes les infanteries autour du bâtiment peuvent construire des infrastructures">Infra-help</span>'+sepa;
     }
     if (batType.skills.includes('genhab') || batType.skills.includes('genhab2') || batType.skills.includes('genhab3')) {
         allSkills = allSkills+'<span class="paramValue" title="Surprise :)">Variance génétique</span>'+sepa;

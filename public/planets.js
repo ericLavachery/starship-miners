@@ -166,9 +166,6 @@ function checkMayOut(batType,isBat,bat) {
     if (zone[0].planet === 'Kzin') {
         if (playerInfos.comp.scaph < 2 || batType.skills.includes('dog')) {
             mayOut = false;
-            if (batType.name === 'Pets' || batType.name === 'Klogs') {
-                mayOut = true;
-            }
             if (batType.cat === 'buildings') {
                 mayOut = true;
             }
@@ -211,9 +208,6 @@ function checkMayOutInSoute(bat,batType) {
     if (playerInfos.missionPlanet === 4) {
         if (playerInfos.comp.scaph < 2 || batType.skills.includes('dog')) {
             mayOut = false;
-            if (batType.name === 'Pets' || batType.name === 'Klogs') {
-                mayOut = true;
-            }
             if (batType.cat === 'buildings') {
                 mayOut = true;
             }

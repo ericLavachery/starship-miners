@@ -58,7 +58,7 @@ function isUnitPara(batType) {
     if (playerInfos.gang === 'tiradores') {
         if (batType.cat === 'infantry') {
             isPara = true;
-        } else if (batType.cat === 'vehicles') {
+        } else if (batType.cat === 'vehicles' && batType.crew >= 1) {
             if (playerInfos.comp.aero >= 1) {
                 if (batType.size <= 18) {
                     isPara = true;

@@ -6402,7 +6402,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","dog","lowstress","swim","regeneration","ranger","ricoface","initmelee","resistall","recupcorps","nochef"],
+        "skills":["a_heavy","dog","lowstress","swim","regeneration","ranger","kzin","ricoface","initmelee","resistall","recupcorps","nochef"],
         "fuzz":1.5,
         "deathFx":"mutantdeath"
     },
@@ -6503,7 +6503,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","dog","dogescape","dreduct","lowmed","lowstress","escape","ranger","genhab2","guerrilla","tirailleur","recupcorps","nochef"],
+        "skills":["a_mid","dog","dogescape","dreduct","lowmed","lowstress","escape","ranger","kzin","genhab2","guerrilla","tirailleur","recupcorps","nochef"],
         "fuzz":1,
         "cloneSlot":2,
         "deathFx":"dog_death"
