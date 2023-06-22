@@ -2770,13 +2770,15 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
     }
     // RE-SORT
-    if (bat.sort >= 1000) {
-        let placeInSuperList = 2001-bat.sort;
-        $('#unitInfos').append('<button type="button" title="Ce bataillon est le bataillon n°'+placeInSuperList+' dans la liste (ceci prévaut sur le numéro d\'armée)" class="boutonGrey iconButtons cy"><i class="far fa-list-alt"></i> <span class="small">'+placeInSuperList+'</span></button>');
-        $('#unitInfos').append('<button type="button" title="Retourner ce bataillon à sa place de départ dans la liste (en fonction du numéro d\'armée)" class="boutonGris iconButtons" onclick="outSuperList()"><i class="fas fa-step-backward"></i></button>');
-        $('#unitInfos').append('<button type="button" title="Retourner TOUS les bataillons à leurs places de départ dans la liste (en fonction du numéro d\'armée)" class="boutonGris iconButtons" onclick="killSuperList()"><i class="fas fa-fast-backward"></i></button>');
-    } else {
-        $('#unitInfos').append('<button type="button" title="Ce bataillon devient le bataillon suivant de la liste (ceci prévaut sur le numéro d\'armée)" class="boutonGris iconButtons" onclick="inSuperList()"><i class="far fa-list-alt"></i></button>');
+    if (!playerInfos.onShip) {
+        if (bat.sort >= 1000) {
+            let placeInSuperList = 2001-bat.sort;
+            $('#unitInfos').append('<button type="button" title="Ce bataillon est le bataillon n°'+placeInSuperList+' dans la liste (ceci prévaut sur le numéro d\'armée)" class="boutonGrey iconButtons cy"><i class="far fa-list-alt"></i> <span class="small">'+placeInSuperList+'</span></button>');
+            $('#unitInfos').append('<button type="button" title="Retourner ce bataillon à sa place de départ dans la liste (en fonction du numéro d\'armée)" class="boutonGris iconButtons" onclick="outSuperList()"><i class="fas fa-step-backward"></i></button>');
+            $('#unitInfos').append('<button type="button" title="Retourner TOUS les bataillons à leurs places de départ dans la liste (en fonction du numéro d\'armée)" class="boutonGris iconButtons" onclick="killSuperList()"><i class="fas fa-fast-backward"></i></button>');
+        } else {
+            $('#unitInfos').append('<button type="button" title="Ce bataillon devient le bataillon suivant de la liste (ceci prévaut sur le numéro d\'armée)" class="boutonGris iconButtons" onclick="inSuperList()"><i class="far fa-list-alt"></i></button>');
+        }
     }
     lineBreak = true;
     // LIGNE FINALE ---------------------------------------------------------------------------------------------------------------

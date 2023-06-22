@@ -937,9 +937,6 @@ function attack(melee,init) {
         if (selectedBatType.name == 'Androks' || selectedBatType.name == 'Homards' || selectedBatType.name == 'Ecrevisses') {
             gripbonus = 40;
         }
-        // if (selectedBatType.name == 'Bourdons') {
-        //     gripbonus = -20;
-        // }
         let gripFactor = 1;
         if (selectedBatType.skills.includes('eatpoison') && selectedBat.tags.includes('regeneration')) {
             gripFactor = 2;

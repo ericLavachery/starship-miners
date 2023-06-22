@@ -843,6 +843,15 @@ function batInfos(bat,batType,pop) {
 
 function getInfoAdd(batType) {
     let infoAdd = '';
+    if (batType.skills.includes('zombify')) {
+        infoAdd = infoAdd+'Les bataillons d\'infanterie qui meurent à proximité de ces véhicules sont automatiquement ramenés à la vie. Enfin, presque...<br>';
+    }
+    if (batType.skills.includes('recycle')) {
+        infoAdd = infoAdd+'Ces véhicules augmentent la production de scrap des bâtiments, et augmentent la récupération de ressources lors du démantèlement d\'un autre bataillon.<br>';
+    }
+    if (batType.skills.includes('transveh')) {
+        infoAdd = infoAdd+'Ces véhicules sont fait pour transporter d\'autres véhicules.<br>';
+    }
     if (batType.skills.includes('landerfab')) {
         infoAdd = infoAdd+'Ce bataillon ne peut être déployé qu\'à côté d\'un lander.<br>';
     }
@@ -878,6 +887,9 @@ function getInfoAdd(batType) {
     }
     if (batType.skills.includes('reeq')) {
         infoAdd = infoAdd+'Les bataillons proches peuvent changer leurs équipements, armures et munitions.<br>';
+    }
+    if (batType.skills.includes('zerogrip')) {
+        infoAdd = infoAdd+'Les hommes de cette infanterie sont dans des cages démontables. Ils bénéficient d\'une très bonne protection lorsque les cages sont montées (lorsque le bataillon est fortifié).<br>';
     }
     return infoAdd;
 };
@@ -934,8 +946,8 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('gooddef')) {
         allSkills = allSkills+'<span class="paramValue" title="2 ripostes supplémentaires">Ripostes multiples</span>'+sepa;
     }
-    if (batType.skills.includes('cible')) {
-        allSkills = allSkills+'<span class="paramValue" title="Peut faire un tir bullseye: Puissance et précision augmentée mais cadence de tir diminuée">Bullseye</span>'+sepa;
+    if (batType.skills.includes('cible') || batType.skills.includes('w2cible')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut faire un tir bullseye avec une arme de précision: Puissance et précision augmentée mais cadence de tir diminuée">Bullseye</span>'+sepa;
     }
     if (batType.skills.includes('maycible')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut faire un tir bullseye (à condition d\'avoir 1+ en entraînement): Puissance et précision augmentée mais cadence de tir diminuée">Bullseye</span>'+sepa;
@@ -950,7 +962,10 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue">Lucky Shot</span>'+sepa;
     }
     if (batType.skills.includes('berserk')) {
-        allSkills = allSkills+'<span class="paramValue" title="Si blessé: Cadence de tir 150% mais dégâts reçu 150%">Berserk</span>'+sepa;
+        allSkills = allSkills+'<span class="paramValue" title="Si blessé: Cadence de tir 150% mais dégâts reçu 150%">Frénésie</span>'+sepa;
+    }
+    if (batType.skills.includes('superberserk')) {
+        allSkills = allSkills+'<span class="paramValue" title="Si ce bataillon à perdu la moitié de ses escouades: Salves infinies">Berserk</span>'+sepa;
     }
     if (batType.skills.includes('undead')) {
         allSkills = allSkills+'<span class="paramValue" title="Les escouades blessées peuvent continuer à attaquer (la cadence de tir ne diminue pas)">Undead</span>'+sepa;
@@ -1080,17 +1095,17 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('necrocure')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons infectés par la nécrotoxine">Necrocure</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('survivor')) {
+        allSkills = allSkills+'<span class="paramValue" title="Survit à la première attaque fatale">Survivant</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('swim')) {
+        allSkills = allSkills+'<span class="paramValue" title="Nagent mieux que les autres infanteries">Natation</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('taming')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut apprivoiser les Meatballs">Dressage</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('treuil')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut tirer les autres véhicule (leur passer des PA)">Treuil</span>'+sepa;
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
@@ -1169,6 +1184,12 @@ function batFullInfos(bat,batType) {
         $('#popbody').append('<span class="paramValue">'+toCoolString(allProds,true,true)+'</span><br>');
         let allProdCosts = getAllProdCosts(batType,65);
         $('#popbody').append('<span class="paramValue gf"><span class="mauve">Coûts de production:</span> '+toCoolString(allProdCosts,true)+'</span>');
+        $('#popbody').append('<div class="shSpace"></div>');
+    } else if (batType.skills.includes('upkeep')) {
+        $('#popbody').append('<div class="shSpace"></div>');
+        $('#popbody').append('<span class="blockTitle"><h4>Coûts de fonctionnement</h4></span><br>');
+        let allProdCosts = getAllProdCosts(batType,65);
+        $('#popbody').append('<span class="paramValue gf">'+toCoolString(allProdCosts,true)+'</span>');
         $('#popbody').append('<div class="shSpace"></div>');
     }
     // MINING
