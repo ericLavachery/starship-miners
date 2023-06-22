@@ -126,13 +126,17 @@ function toBldString(myArray) {
     return newString;
 };
 
-function toCoolString(myObject,nocro) {
+function toCoolString(myObject,nocro,diams) {
     let newString = '';
     if (myObject != undefined) {
         newString = JSON.stringify(myObject);
         newString = newString.replace(/"/g,'');
         newString = newString.replace(/:/g,'=');
-        newString = newString.replace(/,/g,', ');
+        if (diams) {
+            newString = newString.replace(/,/g,' 🔹 ');
+        } else {
+            newString = newString.replace(/,/g,', ');
+        }
     }
     if (newString === '{}') {
         newString = '{Rien}';

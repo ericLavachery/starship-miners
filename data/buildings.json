@@ -178,7 +178,7 @@
             "accuracy":23,
             "dca":1.25,
             "power":8,
-            "armors":0.5,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"axe_x2",
             "ammo":["lame-carbone"]

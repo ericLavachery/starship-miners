@@ -310,7 +310,11 @@ function getFullUnitType(batType) {
         } else if (batType.skills.includes('cyber')) {
             typun = 'Cyber-robots';
         } else if (batType.skills.includes('transorbital')) {
-            typun = 'Lander';
+            if (batType.skills.includes('rescue')) {
+                typun = 'Lander (Navette)';
+            } else {
+                typun = 'Lander';
+            }
         } else {
             typun = 'Véhicules';
         }

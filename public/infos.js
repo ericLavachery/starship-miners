@@ -756,8 +756,6 @@ function batInfos(bat,batType,pop) {
         let fleeText;
         console.log(nearby);
         let okDis = checkDismantle(bat,batType);
-        // if (!bat.tags.includes('nomove') && !batType.skills.includes('nodelete') && !bat.tags.includes('nopilots') && !decButHere) {
-        // }
         if (okDis && !decButHere) {
             let okKill = checkOkKill(batType);
             if (batType.skills.includes('recupres') || batType.skills.includes('recupcit') || (batType.skills.includes('recupcorps') && okKill) || batType.cat === 'buildings' || batType.skills.includes('okdel')) {
@@ -846,7 +844,40 @@ function batInfos(bat,batType,pop) {
 function getInfoAdd(batType) {
     let infoAdd = '';
     if (batType.skills.includes('landerfab')) {
-        infoAdd = infoAdd+'Ne peut être déployé qu\'à côté d\'un lander.<br>';
+        infoAdd = infoAdd+'Ce bataillon ne peut être déployé qu\'à côté d\'un lander.<br>';
+    }
+    if (batType.skills.includes('clone')) {
+        infoAdd = infoAdd+'Les clones sont de plus en plus difficiles à soigner, et finissent par dépérir.<br>';
+    }
+    if (batType.skills.includes('norepair')) {
+        if (batType.skills.includes('regroup')) {
+            infoAdd = infoAdd+'Ce bataillon ne peut pas être réparé, mais vous pouvez regrouper plusieurs bataillons endommagés pour en faire 1 bataillon neuf.<br>';
+        } else {
+            infoAdd = infoAdd+'Ce bataillon ne peut pas être réparé.<br>';
+        }
+    }
+    if (batType.skills.includes('scrapmorph')) {
+        infoAdd = infoAdd+'Quand ce bataillon extrait du scrap d\'une ruine, il en transforme directement une partie en diverses ressources (dépendant du type de ruine).<br>';
+    } else if (batType.skills.includes('maysm')) {
+        infoAdd = infoAdd+'Si vous avez 4 en recyclage: Quand ce bataillon extrait du scrap d\'une ruine, il en transforme directement une partie en diverses ressources (dépendant du type de ruine).<br>';
+    }
+    if (batType.skills.includes('transcrap')) {
+        infoAdd = infoAdd+'Ce bâtiment transforme le scrap en diverses ressources.<br>';
+    }
+    if (batType.skills.includes('nostatprod')) {
+        infoAdd = infoAdd+'Ce bâtiment ne peut pas produire dans la station.<br>';
+    }
+    if (batType.skills.includes('nocrime')) {
+        infoAdd = infoAdd+'Ce bataillon ne se démantèle jamais en criminels.<br>';
+    }
+    if (batType.skills.includes('nostation')) {
+        infoAdd = infoAdd+'Ce bataillon ne peut pas être construit dans la station.<br>';
+    }
+    if (batType.skills.includes('roborepair')) {
+        infoAdd = infoAdd+'Ce bataillon peut réparer les robots sans malus.<br>';
+    }
+    if (batType.skills.includes('reeq')) {
+        infoAdd = infoAdd+'Les bataillons proches peuvent changer leurs équipements, armures et munitions.<br>';
     }
     return infoAdd;
 };
@@ -869,7 +900,7 @@ function batFullInfos(bat,batType) {
     if (Object.keys(bat).length >= 1) {
         isBat = true;
     }
-    let sepa = ' &nbsp;&middot;&nbsp; '
+    let sepa = ' &nbsp;&#9889;&nbsp; '
     let allSkills = sepa;
     if (batType.skills.includes('fortif')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut se fortifier">Fortification</span>'+sepa;
@@ -906,8 +937,17 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('cible')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut faire un tir bullseye: Puissance et précision augmentée mais cadence de tir diminuée">Bullseye</span>'+sepa;
     }
+    if (batType.skills.includes('maycible')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut faire un tir bullseye (à condition d\'avoir 1+ en entraînement): Puissance et précision augmentée mais cadence de tir diminuée">Bullseye</span>'+sepa;
+    }
+    if (batType.skills.includes('rage')) {
+        allSkills = allSkills+'<span class="paramValue" title="Bonus de puissance aux armes de mêlée (lorsque l\'habileté est déclenchée)">Rage</span>'+sepa;
+    }
     if (batType.skills.includes('longshot')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut attaquer n\'importe quelle unité à sa portée (pas de restriction due à la mêlée)">Tir choisi</span>'+sepa;
+    }
+    if (batType.skills.includes('luckyshot')) {
+        allSkills = allSkills+'<span class="paramValue">Lucky Shot</span>'+sepa;
     }
     if (batType.skills.includes('berserk')) {
         allSkills = allSkills+'<span class="paramValue" title="Si blessé: Cadence de tir 150% mais dégâts reçu 150%">Berserk</span>'+sepa;
@@ -974,6 +1014,9 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('constructeur')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut construire des bâtiments et dispositifs">Constructeur</span>'+sepa;
     }
+    if (batType.skills.includes('producteur')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut construire des véhicules et infanteries">Producteur</span>'+sepa;
+    }
     if (batType.skills.includes('routes')) {
         if (batType.moveCost < 99) {
             allSkills = allSkills+'<span class="paramValue" title="Peut construire des routes">Routes</span>'+sepa;
@@ -1004,6 +1047,9 @@ function batFullInfos(bat,batType) {
             allSkills = allSkills+'<span class="paramValue" title="Augmente la criminalité">Escroc</span>'+sepa;
         }
     }
+    if (batType.skills.includes('penitbat')) {
+        allSkills = allSkills+'<span class="paramValue" title="Ce bataillon obtient des équipements gratuits. Au plus haut est votre taux de criminalité et au plus vous avez de bataillons de ce type, au mieux ils seront équipés.">Mafia</span>'+sepa;
+    }
     if (batType.crime != undefined) {
         if (batType.crime < 0) {
             let crimePts = 0-batType.crime;
@@ -1025,8 +1071,14 @@ function batFullInfos(bat,batType) {
             allSkills = allSkills+'<span class="paramValue" title="Peut aller sur la planète Kzin sans scaphandre">Kzin</span>'+sepa;
         }
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('lowstress')) {
+        allSkills = allSkills+'<span class="paramValue" title="Ce bataillon est moins sujet au stress">Maîtrise</span>'+sepa;
+    }
+    if (batType.skills.includes('medrange')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons à une distance de 2 cases">Ambulance</span>'+sepa;
+    }
+    if (batType.skills.includes('necrocure')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons infectés par la nécrotoxine">Necrocure</span>'+sepa;
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
@@ -1045,6 +1097,30 @@ function batFullInfos(bat,batType) {
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    }
+    if (batType.skills.includes('radar')) {
+        allSkills = allSkills+'<span class="paramValue" title="Permet de repérer les aliens furtifs et invisibles (distance variable)">Radar</span>'+sepa;
+    }
+    if (batType.skills.includes('snif')) {
+        allSkills = allSkills+'<span class="paramValue" title="Permet de repérer les aliens furtifs et invisibles (2 cases)">Pisteur</span>'+sepa;
+    }
+    if (batType.skills.includes('prefab')) {
+        allSkills = allSkills+'<span class="paramValue" title="Ce bâtiment peut être démonté et remonté avec un lander ou un pusher">Préfabriqué</span>'+sepa;
     }
     if (batType.skills.includes('infraz')) {
         if (batType.skills.includes('infast')) {
@@ -1061,9 +1137,6 @@ function batFullInfos(bat,batType) {
     }
     if (batType.skills.includes('exhelp')) {
         allSkills = allSkills+'<span class="paramValue" title="Vous pouvez augmenter l\'efficacité de ce bâtiment en y embarquant un bataillon de Mineurs, Scrapers ou Sapeurs">Assistance</span>'+sepa;
-    }
-    if (batType.skills.includes('transcrap')) {
-        allSkills = allSkills+'<span class="paramValue" title="Transforme le scrap en ressources">Transcrap</span>'+sepa;
     }
     if (batType.skills.includes('craft')) {
         allSkills = allSkills+'<span class="paramValue" title="Augmente le nombre de crafts que vous pouvez faire en 3 jours">Crafting</span>'+sepa;
@@ -1088,26 +1161,32 @@ function batFullInfos(bat,batType) {
     }
     $('#popbody').append('<span class="paramValue">'+allSkills+'</span>');
     $('#popbody').append('<div class="shSpace"></div>');
+    // PRODUCTION
+    if (batType.skills.includes('prodres')) {
+        $('#popbody').append('<div class="shSpace"></div>');
+        $('#popbody').append('<span class="blockTitle"><h4>Production de ressources</h4></span><br>');
+        let allProds = getAllProds(batType,65);
+        $('#popbody').append('<span class="paramValue">'+toCoolString(allProds,true,true)+'</span><br>');
+        let allProdCosts = getAllProdCosts(batType,65);
+        $('#popbody').append('<span class="paramValue gf"><span class="mauve">Coûts de production:</span> '+toCoolString(allProdCosts,true)+'</span>');
+        $('#popbody').append('<div class="shSpace"></div>');
+    }
     // MINING
     if (batType.skills.includes('extraction')) {
         $('#popbody').append('<div class="shSpace"></div>');
         $('#popbody').append('<span class="blockTitle"><h4>Extraction de ressources</h4></span><br>');
         if (isBat) {
             let allMiningRates = getAllMiningRates(bat,batType);
-            $('#popbody').append('<span class="paramValue gf">'+toCoolString(allMiningRates)+'</span>');
-            console.log('MINING RATES');
-            console.log(allMiningRates);
+            $('#popbody').append('<span class="paramValue">'+toCoolString(allMiningRates,true,true)+'</span>');
         } else {
             let allMiningRates = getUnitMiningRates(batType);
-            $('#popbody').append('<span class="paramValue gf">'+toCoolString(allMiningRates)+'</span>');
-            console.log('MINING RATES');
-            console.log(allMiningRates);
+            $('#popbody').append('<span class="paramValue">'+toCoolString(allMiningRates,true,true)+'</span>');
         }
         $('#popbody').append('<div class="shSpace"></div>');
     }
     // COSTS
     $('#popbody').append('<div class="shSpace"></div>');
-    $('#popbody').append('<span class="blockTitle"><h4>Coûts</h4></span><br>');
+    $('#popbody').append('<span class="blockTitle"><h4>Coûts de construction</h4></span><br>');
     let costString = '';
     if (batType.costs != undefined) {
         costString = displayCosts(batType.costs);
@@ -1117,6 +1196,51 @@ function batFullInfos(bat,batType) {
     $('#popbody').append('<span class="paramValue">'+costString+'</span>');
     $('#popbody').append('<div class="shSpace"></div>');
     $('#popbody').append('<div class="shSpace"></div>');
+};
+
+function getAllProds(batType,time) {
+    let allProds = {};
+    if (batType.prod != undefined) {
+        Object.entries(batType.prod).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            let fullProd = value*time;
+            if (!batType.skills.includes('nostatprod')) {
+                fullProd = fullProd/prodVM;
+            }
+            if (key === 'Spins') {
+                fullProd = spinsCreation(fullProd);
+            }
+            if (key === 'Energie') {
+                fullProd = energyCreation(fullProd);
+            }
+            if (key === 'Scrap') {
+                fullProd = scrapCreation(fullProd);
+                fullProd = fullProd/5;
+            }
+            fullProd = Math.ceil(fullProd);
+            if (fullProd >= 1) {
+                allProds[key] = fullProd;
+            }
+        });
+    }
+    return allProds;
+};
+
+function getAllProdCosts(batType,time) {
+    let allProdCosts = {};
+    if (batType.upkeep != undefined) {
+        Object.entries(batType.upkeep).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            let fullProd = value*time;
+            fullProd = Math.ceil(fullProd);
+            if (fullProd >= 1) {
+                allProdCosts[key] = fullProd;
+            }
+        });
+    }
+    return allProdCosts;
 };
 
 function getUnitMiningRates(batType) {
