@@ -301,9 +301,17 @@ function weaponsUnitInfos(batType) {
 function getFullUnitType(batType) {
     let typun = 'Infanterie';
     if (batType.cat === 'buildings') {
-        typun = 'Bâtiment';
+        if (batType.skills.includes('prefab')) {
+            typun = 'Bâtiment préfabriqué';
+        } else {
+            typun = 'Bâtiment';
+        }
     } else if (batType.cat === 'devices') {
-        typun = 'Dispositifs';
+        if (batType.skills.includes('prefab')) {
+            typun = 'Dispositifs préfabriqués';
+        } else {
+            typun = 'Dispositifs';
+        }
     } else if (batType.cat === 'vehicles') {
         if (batType.skills.includes('robot')) {
             typun = 'Robots';

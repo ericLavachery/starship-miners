@@ -843,6 +843,12 @@ function batInfos(bat,batType,pop) {
 
 function getInfoAdd(batType) {
     let infoAdd = '';
+    if (batType.skills.includes('cram')) {
+        infoAdd = infoAdd+'Ce bâtiment vous permet de brûler des ressources pour en faire de l\'énergie<br>';
+    }
+    if (batType.skills.includes('geo')) {
+        infoAdd = infoAdd+'Ce bâtiment produit de l\'énergie grâce à une sonde dans le sol. Son rendement est bien meilleur sur un terrain où il y a du Magma.<br>';
+    }
     if (batType.skills.includes('zombify')) {
         infoAdd = infoAdd+'Les bataillons d\'infanterie qui meurent à proximité de ces véhicules sont automatiquement ramenés à la vie. Enfin, presque...<br>';
     }
@@ -891,6 +897,9 @@ function getInfoAdd(batType) {
     if (batType.skills.includes('zerogrip')) {
         infoAdd = infoAdd+'Les hommes de cette infanterie sont dans des cages démontables. Ils bénéficient d\'une très bonne protection lorsque les cages sont montées (lorsque le bataillon est fortifié).<br>';
     }
+    if (batType.skills.includes('nofear')) {
+        infoAdd = infoAdd+'Ce bataillon est immunisé à la peur.<br>';
+    }
     return infoAdd;
 };
 
@@ -900,6 +909,9 @@ function batFullInfos(bat,batType) {
         let infoBase = '';
         if (batType.info != undefined) {
             infoBase = batType.info;
+            if (batType.redInfo != undefined) {
+                infoBase = infoBase+'<br><span class="hjaune">'+batType.redInfo+'</span>';
+            }
             infoAdd = '<br>'+infoAdd;
         }
         $('#popbody').append('<div class="shSpace"></div>');
@@ -1107,14 +1119,38 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('treuil')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut tirer les autres véhicule (leur passer des PA)">Treuil</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('inflammable')) {
+        allSkills = allSkills+'<span class="paramValue" title="Prends plus de dégâts du feu">Inflammable</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('resistfeu')) {
+        allSkills = allSkills+'<span class="paramValue" title="Prends moins de dégâts du feu">Résistance Feu</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('resistpoison')) {
+        allSkills = allSkills+'<span class="paramValue" title="Immunisé aux poisons normaux, meilleures défenses contre les autres">Résistance Poison</span>'+sepa;
+    }
+    if (batType.skills.includes('resistacide')) {
+        allSkills = allSkills+'<span class="paramValue" title="Prends moins de dégâts de l\'acide">Résistance Acide</span>'+sepa;
+    }
+    if (batType.skills.includes('resistelec')) {
+        allSkills = allSkills+'<span class="paramValue" title="Prends moins de dégâts électriques">Résistance Electricité</span>'+sepa;
+    }
+    if (batType.skills.includes('resistall') || batType.skills.includes('protectall')) {
+        allSkills = allSkills+'<span class="paramValue" title="Prends moins de dégâts (toutes sources)">Résistance globale</span>'+sepa;
+    }
+    if (batType.skills.includes('noaploss')) {
+        allSkills = allSkills+'<span class="paramValue" title="Les attaques qui réduisent les PA ne font que très peu d\'effet">Protection Entrave</span>'+sepa;
+    }
+    if (batType.skills.includes('noblub')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut être construit dans l\'eau / Ne se noie pas">Waterproof</span>'+sepa;
+    }
+    if (batType.skills.includes('slowreg')) {
+        allSkills = allSkills+'<span class="paramValue">Régénération lente</span>'+sepa;
+    }
+    if (batType.skills.includes('regeneration')) {
+        allSkills = allSkills+'<span class="paramValue">Régénération rapide</span>'+sepa;
+    }
+    if (batType.skills.includes('dreduct')) {
+        allSkills = allSkills+'<span class="paramValue" title="Ignore les petits dégâts">Réduction de dégâts</span>'+sepa;
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
@@ -1182,6 +1218,13 @@ function batFullInfos(bat,batType) {
         $('#popbody').append('<span class="blockTitle"><h4>Production de ressources</h4></span><br>');
         let allProds = getAllProds(batType,65);
         $('#popbody').append('<span class="paramValue">'+toCoolString(allProds,true,true)+'</span><br>');
+        let allProdCosts = getAllProdCosts(batType,65);
+        $('#popbody').append('<span class="paramValue gf"><span class="mauve">Coûts de production:</span> '+toCoolString(allProdCosts,true)+'</span>');
+        $('#popbody').append('<div class="shSpace"></div>');
+    } else if (batType.skills.includes('solar')) {
+        $('#popbody').append('<div class="shSpace"></div>');
+        $('#popbody').append('<span class="blockTitle"><h4>Production de ressources</h4></span><br>');
+        $('#popbody').append('<span class="paramValue"><span class="mauve">Dans la station:</span> Energie=3400 | <span class="mauve">En zone:</span> Variable</span><br>');
         let allProdCosts = getAllProdCosts(batType,65);
         $('#popbody').append('<span class="paramValue gf"><span class="mauve">Coûts de production:</span> '+toCoolString(allProdCosts,true)+'</span>');
         $('#popbody').append('<div class="shSpace"></div>');

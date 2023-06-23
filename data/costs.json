@@ -2555,7 +2555,8 @@
         "name":"Silo",
         "costs":{"Compo1":200,"Végétaux":150},
         "fabTime":20,
-        "slots":0
+        "slots":0,
+        "info":"Bâtiment de stockage de ressources."
     },
     {
         "id":316,
@@ -2839,7 +2840,7 @@
         "name":"Champ de force",
         "levels":{"rednecks":14,"blades":14,"bulbos":14,"drogmulojs":14,"tiradores":14,"detruas":14,"brasier":14},
         "bldEquiv":[],
-        "bldReq":["Centrale SMR"],
+        "bldReq":["Centrale SMR","Station"],
         "upkeep":{"Energie":60,"Plutonium":15,"Eau":60},
         "costs":{"Compo1":180,"Compo2":270,"Compo3":165,"Eau":36,"Energie":5000,"Carbone":1000,"Titane":300,"Potassium":2000,"Cuivre":500,"Platine":400,"Mercure":600,"Plutonium":1000,"Uranium":500,"Uridium":50,"Oxygène":1000,"Azote":1800,"Electros":400,"Batteries":400,"Spins":10},
         "fabTime":70,
@@ -2854,7 +2855,9 @@
         "upkeep":{"Energie":80,"Plutonium":20,"Eau":80},
         "costs":{"Compo1":210,"Compo2":540,"Compo3":360,"Eau":60,"Energie":25000,"Carbone":2000,"Titane":600,"Potassium":5000,"Rhodium":3000,"Cuivre":1000,"Platine":1200,"Mercure":1500,"Bore":3000,"Plutonium":2000,"Uranium":1000,"Uridium":200,"Oxygène":1000,"Azote":3000,"Electros":500,"Batteries":1000},
         "fabTime":100,
-        "slots":0
+        "slots":0,
+        "info":"Ce bâtiment empêche la chutte des oeufs des aliens. Pour le construire vous devez avoir sur place 4 Pilônes. Chacuns des 5 bâtiments doivent se trouver à 25 cases minimum les uns des autres.",
+        "redInfo":"Si vous parvenez à construire un Dôme sur la planète Dom et que vous tuez tous les aliens dans la zone, vous avez gagné la partie"
     },
     {
         "id":200,
@@ -2938,7 +2941,8 @@
         "compReq":{"ordre":2},
         "costs":{"Compo1":240,"Compo2":90,"Eau":100,"Drogues":400,"Scrap":300,"Calcium":50,"Or":200,"Zinc":200,"Bore":200,"Chlore":50},
         "fabTime":200,
-        "slots":3
+        "slots":3,
+        "info":"Ce bâtiment transforme des criminels en citoyens."
     },
     {
         "id":227,

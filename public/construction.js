@@ -341,41 +341,46 @@ function displayCosts(costs) {
 };
 
 function catColor(unit) {
+    let unitCol = 'gf';
     if (unit.team === 'aliens') {
         if (unit.kind === 'bug') {
-            return 'rose';
+            unitCol = 'rose';
         }
         if (unit.kind === 'spider') {
-            return 'vert';
+            unitCol = 'vert';
         }
         if (unit.kind === 'larve') {
-            return 'brun';
+            unitCol = 'brun';
         }
         if (unit.kind === 'swarm') {
-            return 'jaune';
+            unitCol = 'jaune';
         }
         if (unit.kind === 'game') {
-            return 'ciel';
+            unitCol = 'ciel';
         }
         if (unit.cat === 'vehicles') {
-            return 'marine';
+            unitCol = 'marine';
         }
     }
     if (unit.skills.includes('transorbital') && unit.name != 'Soute') {
-        return 'bleu';
+        unitCol = 'bleu';
     }
     if (unit.cat === 'infantry') {
-        return 'jaune';
+        unitCol = 'jaune';
     }
     if (unit.cat === 'vehicles') {
-        return 'vert';
+        unitCol = 'vert';
     }
     if (unit.cat === 'buildings') {
-        return 'rose';
+        unitCol = 'rose';
     }
     if (unit.cat === 'devices') {
-        return 'vio';
+        unitCol = 'vio';
     }
+    if (unit.name === "Dôme") {
+        unitCol = 'hjaune';
+    }
+    return unitCol;
 };
 
 function conSelect(unitId,player,noRefresh) {

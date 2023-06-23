@@ -1158,6 +1158,11 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
     font-weight: bold;
     background-color: #ffff00;
 }
+.hjaune {
+    color: #ffff00;
+    font-weight: bold;
+    background-color: #363d42;
+}
 .rouge {
     color: #b41947;
 }
