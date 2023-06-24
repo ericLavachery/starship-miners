@@ -1167,6 +1167,9 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('kzin') || batType.cat === 'buildings' || (batType.cat === 'devices' && batType.crew === 0) || batType.skills.includes('mutant') || batType.skills.includes('robot') || batType.skills.includes('transorbital')) {
         kzinOK = true;
     }
+    if (!batType.skills.includes('prefab') && batType.cat === 'buildings') {
+        kzinOK = false;
+    }
     if (kzinOK) {
         if (batType.skills.includes('fly') && batType.cat != 'infantry') {
             allSkills = allSkills+'<span class="paramValue" title="Peut aller sur la planète Kzin à condition d\'avoir un stabilisateur ou un moteur de seconde génération">Kzin</span>'+sepa;

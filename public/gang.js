@@ -130,7 +130,14 @@ function gangUnitsList(gangName) {
                 lvlcol = 'gf';
             }
         }
-        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+bldNeed+'" onclick="unitDetail('+unit.id+')">'+unit.name+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue '+compcol+'">'+compNeed+'</span><br>');
+        let unitName = unit.name;
+        if (unitName.includes('Caserne')) {
+            unitName = 'Caserne';
+        }
+        if (unitName.includes('Navette')) {
+            unitName = 'Navette';
+        }
+        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+bldNeed+'" onclick="unitDetail('+unit.id+')">'+unitName+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue '+compcol+'">'+compNeed+'</span><br>');
     });
     $('#conUnitList').append('<br><br>');
     $("#conUnitList").animate({scrollTop:0},"fast");

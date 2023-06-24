@@ -2521,7 +2521,7 @@
         "upkeep":{"Energie":4},
         "costs":{"Compo1":200,"Eau":18,"Hélium":300,"Carbone":75,"Fer":75,"Titane":35,"Moteurs":10,"Cuivre":25,"Electros":35,"Batteries":10},
         "fabTime":35,
-        "info":"Récupère les gaz dans l'atmosphère. La production de ce bâtiment dépend de la composition de l'atmosphère.",
+        "info":"Récupère les gaz dans l'atmosphère. La production de ce bâtiment dépend donc de la composition de l'atmosphère de la planète sur laquelle il est déployé.",
         "slots":0
     },
     {
@@ -2563,7 +2563,8 @@
         "name":"Baraquement",
         "costs":{"Compo1":250,"Compo2":100},
         "fabTime":30,
-        "slots":0
+        "slots":0,
+        "info":"Un simple bâtiment, rapide à monter et démonter, et qui vous permet de mettre beaucoups de bataillons à l'abri."
     },
     {
         "id":197,

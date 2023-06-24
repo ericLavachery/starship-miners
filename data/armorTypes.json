@@ -220,7 +220,7 @@
         "rarity":15,
         "icon":"fa fa-wrench",
         "sound":"repair",
-        "info":"Pièces de rechange pour rafistoler un véhicule"
+        "info":"Pièces de rechange pour réparer un véhicule"
     },
     {
         "name":"aucune",

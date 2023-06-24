@@ -1132,10 +1132,10 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","fret","dumper","underground","maycamo","transport","nodeathcount","routes","noblub","prefab","noshow","notrash"],
+        "skills":["fouille","fret","dumper","underground","maycamo","transport","nodeathcount","routes","prefab","noshow","notrash"],
         "mecanoCost":12,
         "transMaxSize":50,
-        "transUnits":3000,
+        "transUnits":2000,
         "transRes":1500,
         "fuzz":3,
         "deathFx":"S_Explosion02"
