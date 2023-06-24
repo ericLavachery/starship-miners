@@ -16,7 +16,7 @@ function gangBldList() {
         if (unit.levels[playerInfos.gang] < 50) {
             if (unit.cat === 'buildings') {
                 let color = catColor(unit);
-                if (unit.bldReq.includes('Station')) {
+                if (unit.bldReq.includes('Station') && color != 'hjaune') {
                     color = 'gff';
                 }
                 $('#conUnitList').append('<span class="paramName '+color+' klik" title="" onclick="unitDetail('+unit.id+')">'+unit.name+'</span><br>');

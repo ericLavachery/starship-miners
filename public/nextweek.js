@@ -754,12 +754,12 @@ function calcTotalCitoyens(cryoOut) {
             } else {
                 mesCitoyens.cit = mesCitoyens.cit+unitCits;
             }
-            if (!batType.skills.includes('dog') && !batType.skills.includes('clone')) {
+            if (!batType.skills.includes('dog') && !batType.skills.includes('clone') && !bat.tags.includes('zombie')) {
                 mesCitoyens.real = mesCitoyens.real+unitCits;
             } else {
                 mesCitoyens.false = mesCitoyens.false+unitCits;
             }
-            if (batType.skills.includes('dog')) {
+            if (batType.skills.includes('dog') || bat.tags.includes('zombie')) {
                 mesCitoyens.dogs = mesCitoyens.dogs+Math.ceil(unitCits/3*batType.size);
             }
         }

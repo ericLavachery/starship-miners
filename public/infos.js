@@ -843,8 +843,62 @@ function batInfos(bat,batType,pop) {
 
 function getInfoAdd(batType) {
     let infoAdd = '';
+    if (batType.name === 'Camp d\'entraînement') {
+        infoAdd = infoAdd+'Le Camp d\'entraînement fait gagner des points d\'expérience à vos bataillons lorsqu\'ils sont au repos, en zone et dans la station spatiale. En zone, ils gagnent encore plus d\'expérience si ils sont à l\'intérieur du camp.<br>';
+        infoAdd = infoAdd+'La plupart des habilités de combat de vos bataillons gagnent en efficacité (bullseye, embuscade, guet...).<br>';
+    }
+    if (batType.name === 'Salle de sport') {
+        infoAdd = infoAdd+'La Salle de sport fait gagner quelques points d\'expérience à vos bataillons lorsqu\'ils sont au repos dans la station spatiale.<br>';
+    }
+    if (batType.name === 'Station météo') {
+        infoAdd = infoAdd+'La Station météo permet de voir l\'ensoleillement et les précipitations sur une zone.<br>';
+        infoAdd = infoAdd+'Elle permet également de localiser les tempêtes sur la planète Horst.<br>';
+    }
+    if (batType.name === 'Usine') {
+        infoAdd = infoAdd+'La présence d\'une Usine réduit grandement les coûts en PA des habilités de réparation (véhicules et bâtiments) de tous les bataillons.<br>';
+    }
+    if (batType.name === 'Chaîne de montage') {
+        infoAdd = infoAdd+'La présence d\'une Chaîne de montage réduit les coûts en PA des habilités de réparation (véhicules et bâtiments) de tous les bataillons.<br>';
+    }
+    if (batType.name === 'Atelier') {
+        infoAdd = infoAdd+'La présence d\'un Atelier réduit légèrement les coûts en PA des habilités de réparation de bâtiments de tous les bataillons.<br>';
+    }
+    if (batType.name === 'Garage') {
+        infoAdd = infoAdd+'La présence d\'un Garage réduit légèrement les coûts en PA des habilités de réparation de véhicules de tous les bataillons.<br>';
+        infoAdd = infoAdd+'Tous vos véhicules non volants gagnent 1 PA par tour.<br>';
+    }
+    if (batType.name === 'Aérodocks') {
+        infoAdd = infoAdd+'Tous vos véhicules volants augmentent leurs PA par tour de 15%.<br>';
+    }
+    if (batType.name === 'Hôpital') {
+        infoAdd = infoAdd+'La présence d\'un Hôpital réduit grandement les coûts en PA des habilités de soins de tous les bataillons.<br>';
+    }
+    if (batType.name === 'Infirmerie') {
+        infoAdd = infoAdd+'La présence d\'une Infirmerie réduit les coûts en PA des habilités de soins de tous les bataillons.<br>';
+    }
     if (batType.skills.includes('cram')) {
-        infoAdd = infoAdd+'Ce bâtiment vous permet de brûler des ressources pour en faire de l\'énergie<br>';
+        infoAdd = infoAdd+'Ce bâtiment vous permet de brûler des ressources pour en faire de l\'énergie.<br>';
+    }
+    if (batType.skills.includes('monitoring')) {
+        infoAdd = infoAdd+'Sans ce bâtiment, l\'équipement camkit des forces de l\'ordre ne sert à rien.<br>';
+    }
+    if (batType.name === 'Biopod') {
+        infoAdd = infoAdd+'Les flèches bio, combinées avec le biopod, exterminent tous les aliens d\'un même type: Vous infectez 1 bug (ou tout autre race d\'alien), et tous les bugs présents dans la zone à ce moment vont périr à petit feu.<br>';
+    }
+    if (batType.name === 'Recyclab') {
+        infoAdd = infoAdd+'Le Recyclab vous permet de purifier l\'eau que vous pompez dans les régions où elle est empoisonnée.<br>';
+    }
+    if (batType.name === 'Laboratoire') {
+        infoAdd = infoAdd+'Le Laboratoire vous permet d\'avoir 1 bataillon de chercheurs supplémentaire.<br>';
+    }
+    if (batType.name === 'Centre de recherches') {
+        let bonusSci = 2;
+        if (playerInfos.gang === 'bulbos') {
+            bonusSci = bonusSci+Math.floor(playerInfos.comp.det/2.5);
+        } else {
+            bonusSci = bonusSci+Math.floor(playerInfos.comp.det/5);
+        }
+        infoAdd = infoAdd+'Le Centre de recherches vous permet d\'avoir '+bonusSci+' bataillons de chercheurs supplémentaires (non cummulatif avec le Laboratoire).<br>Il vous permet également d\'aller sur la planète Gehenna.<br>';
     }
     if (batType.skills.includes('geo')) {
         infoAdd = infoAdd+'Ce bâtiment produit de l\'énergie grâce à une sonde dans le sol. Son rendement est bien meilleur sur un terrain où il y a du Magma.<br>';
@@ -854,6 +908,9 @@ function getInfoAdd(batType) {
     }
     if (batType.skills.includes('recycle')) {
         infoAdd = infoAdd+'Ces véhicules augmentent la production de scrap des bâtiments, et augmentent la récupération de ressources lors du démantèlement d\'un autre bataillon.<br>';
+    }
+    if (batType.name === "Usine d'armement") {
+        infoAdd = infoAdd+'Ces bâtiment permet à vos bataillons de se ravitailler en missiles lorsqu\'ils sont à côté d\'un stock (Lander, Poudrière...).<br>';
     }
     if (batType.skills.includes('transveh')) {
         infoAdd = infoAdd+'Ces véhicules sont fait pour transporter d\'autres véhicules.<br>';
@@ -877,7 +934,8 @@ function getInfoAdd(batType) {
         infoAdd = infoAdd+'Si vous avez 4 en recyclage: Quand ce bataillon extrait du scrap d\'une ruine, il en transforme directement une partie en diverses ressources (dépendant du type de ruine).<br>';
     }
     if (batType.skills.includes('transcrap')) {
-        infoAdd = infoAdd+'Ce bâtiment transforme le scrap en diverses ressources.<br>';
+        let scrapRez = getScrapResList(batType.name);
+        infoAdd = infoAdd+'Ce bâtiment permet de récupérer différentes ressources dans le scrap <span class="gf">('+toNiceString(scrapRez)+')</span>.<br>';
     }
     if (batType.skills.includes('nostatprod')) {
         infoAdd = infoAdd+'Ce bâtiment ne peut pas produire dans la station.<br>';
@@ -900,14 +958,32 @@ function getInfoAdd(batType) {
     if (batType.skills.includes('nofear')) {
         infoAdd = infoAdd+'Ce bataillon est immunisé à la peur.<br>';
     }
+    if (batType.name === 'Poste radio') {
+        infoAdd = infoAdd+'Grâce aux renseignement donnés sur la position des ennemis, ce bâtiment augmente la furtivité de vos bataillons.<br>';
+    }
+    if (batType.name === 'Centre de com' || batType.name === 'QG') {
+        infoAdd = infoAdd+'Grâce aux renseignement précis donnés sur la position des ennemis, ce bâtiment augmente grandement la furtivité de vos bataillons.<br>';
+    }
+    if (batType.name === 'Centre de com' || batType.name === 'QG') {
+        infoAdd = infoAdd+'Distance de contrôle des robots doublée (passe de 6 à 12 cases pour tous les centres de contrôle).<br>';
+        infoAdd = infoAdd+'Permet à vos la plupart de vos robots de fouiller les ruines.<br>';
+        infoAdd = infoAdd+'Indispensable pour pouvoir atterrir sur la planète Horst.<br>';
+    }
+    if (batType.name === 'Poste radio' || batType.name === 'Centre de com' || batType.name === 'QG') {
+        infoAdd = infoAdd+'Indispensable pour pouvoir atterrir sur la planète Sarak.<br>';
+        infoAdd = infoAdd+'Permet à vos bataillons de recevoir l\'ordre d\'un chef dans toute la zone (habilité |commande|).<br>';
+    }
+    if (batType.name === 'QG') {
+        infoAdd = infoAdd+'Tous vos bataillons augmentent leurs PA par tour de 10%.<br>';
+    }
     return infoAdd;
 };
 
 function batFullInfos(bat,batType) {
     let infoAdd = getInfoAdd(batType);
-    if (batType.info != undefined || infoAdd.length >= 2) {
+    if (batType.info != undefined || batType.redInfo != undefined || infoAdd.length >= 2) {
         let infoBase = '';
-        if (batType.info != undefined) {
+        if (batType.info != undefined || batType.redInfo != undefined) {
             infoBase = batType.info;
             if (batType.redInfo != undefined) {
                 infoBase = infoBase+'<br><span class="hjaune">'+batType.redInfo+'</span>';
@@ -1151,6 +1227,18 @@ function batFullInfos(bat,batType) {
     }
     if (batType.skills.includes('dreduct')) {
         allSkills = allSkills+'<span class="paramValue" title="Ignore les petits dégâts">Réduction de dégâts</span>'+sepa;
+    }
+    if (batType.skills.includes('hyg')) {
+        allSkills = allSkills+'<span class="paramValue" title="Améliore la résistance naturelle de vos bataillons contre les poisons, maladies etc...">Hygiène</span>'+sepa;
+    }
+    if (batType.skills.includes('repostress')) {
+        allSkills = allSkills+'<span class="paramValue" title="Améliore la rémission psychologique en période de repos (jours passés dans la station)">Détente</span>'+sepa;
+    }
+    if (batType.skills.includes('repoheal')) {
+        allSkills = allSkills+'<span class="paramValue" title="Améliore la rémission physique en période de repos (jours passés dans la station)">Rémission</span>'+sepa;
+    }
+    if (batType.skills.includes('xxxxx')) {
+        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;

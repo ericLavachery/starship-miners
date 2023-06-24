@@ -2640,7 +2640,8 @@
         "prod":{"Munitions":2,"Explosifs":0.75,"Scrap":3},
         "costs":{"Compo1":285,"Compo2":165,"Compo3":110,"Eau":300,"Energie":600,"Hydrocarbure":300,"Fuel":500,"Huile":500,"Scrap":1500,"Titane":500,"Tungstène":1500,"Fer":2000,"Potassium":1500,"Hydrogène":500,"Azote":500,"Electros":150,"Batteries":140},
         "fabTime":200,
-        "slots":3
+        "slots":3,
+        "info":"Augmente les réserves de munitions de tous vos bataillons de 25%."
     },
     {
         "id":192,
@@ -2651,7 +2652,8 @@
         "prod":{"Munitions":4,"Explosifs":1.5,"Scrap":8},
         "costs":{"Compo1":390,"Compo2":360,"Compo3":360,"Eau":540,"Energie":1200,"Hydrocarbure":600,"Fuel":1000,"Huile":500,"Scrap":1500,"Titane":1500,"Tungstène":3000,"Fer":3000,"Potassium":2000,"Platine":300,"Plutonium":500,"Hydrogène":1500,"Azote":1500,"Egidium":100,"Wingium":200,"Electros":400,"Batteries":300},
         "fabTime":500,
-        "slots":6
+        "slots":6,
+        "info":"Augmente les réserves de munitions de tous vos bataillons de 50%."
     },
     {
         "id":150,
@@ -2751,7 +2753,8 @@
         "prod":{"Drogues":2,"Scrap":1},
         "costs":{"Compo1":225,"Compo2":75,"Eau":200,"Energie":300,"Huile":50,"Carbone":50,"Phosphore":50,"Calcium":100,"Or":50,"Silicium":150,"Zinc":150,"Bore":25,"Chlore":50,"Electros":50,"Batteries":50},
         "fabTime":75,
-        "slots":2
+        "slots":2,
+        "info":"Augmente les réserves de drogue de tous vos bataillons de 50%."
     },
     {
         "id":207,
@@ -2763,7 +2766,8 @@
         "prod":{"Drogues":4,"Electros":1,"Scrap":5,"Spins":0.1},
         "costs":{"Compo1":310,"Compo2":280,"Compo3":290,"Eau":1500,"Energie":2400,"Huile":1500,"Carbone":2000,"Phosphore":1500,"Calcium":1000,"Or":1500,"Platine":1500,"Silicium":750,"Zinc":1500,"Bore":1500,"Chlore":2000,"Argon":2000,"Hélium":750,"Atium":250,"Germium":150,"Mephitis":150,"Bossium":50,"Electros":600,"Batteries":300},
         "fabTime":600,
-        "slots":6
+        "slots":6,
+        "info":"Augmente les réserves de drogue de tous vos bataillons de 100%."
     },
     {
         "id":172,
@@ -2838,9 +2842,9 @@
     {
         "id":174,
         "name":"Champ de force",
-        "levels":{"rednecks":14,"blades":14,"bulbos":14,"drogmulojs":14,"tiradores":14,"detruas":14,"brasier":14},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldEquiv":[],
-        "bldReq":["Centrale SMR","Station"],
+        "bldReq":["Centrale SMR"],
         "upkeep":{"Energie":60,"Plutonium":15,"Eau":60},
         "costs":{"Compo1":180,"Compo2":270,"Compo3":165,"Eau":36,"Energie":5000,"Carbone":1000,"Titane":300,"Potassium":2000,"Cuivre":500,"Platine":400,"Mercure":600,"Plutonium":1000,"Uranium":500,"Uridium":50,"Oxygène":1000,"Azote":1800,"Electros":400,"Batteries":400,"Spins":10},
         "fabTime":70,
@@ -3019,7 +3023,9 @@
         "bldReq":["Station"],
         "costs":{},
         "fabTime":200,
-        "slots":0
+        "slots":0,
+        "info":"La Soute ne peut pas être démantelée.",
+        "redInfo":"Elle vous permet de produire tous vos nouveaux bataillons.<br>N'oubliez pas de transférer dans la Soute les ressources que vous avez ramenées dans votre Lander après une mission."
     },
     {
         "id":290,

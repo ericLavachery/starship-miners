@@ -406,6 +406,42 @@ function solarPanel(bat,batType) {
     }
 };
 
+function getScrapResList(batName) {
+    let list = [];
+    resTypes.forEach(function(res) {
+        let resProd = 0;
+        let resFactor = 0;
+        if (res.rlab != undefined) {
+            let scrapLevel = 2;
+            if (res.bld != 'Derrick') {
+                if (res.cramBld === undefined && res.rlab >= 4) {
+                    if (res.rlab >= 7 || res.rarity >= 20) {
+                        scrapLevel = 1;
+                    }
+                }
+                if (res.level === 1 || res.level === 4) {
+                    scrapLevel = 1;
+                }
+            }
+            if (batName === 'Recyclab') {
+                resFactor = (res.rlab+playerInfos.comp.tri-3)*2.5;
+            } else if (scrapLevel === 1) {
+                resFactor = res.rlab+playerInfos.comp.tri-3;
+            }
+            if (res.name === 'Fuel' || res.name === 'Nourriture') {
+                resFactor = resFactor/10;
+            }
+            if (res.bld === 'Derrick') {
+                resFactor = resFactor/2;
+            }
+        }
+        if (resFactor >= 1) {
+            list.push(res.name);
+        }
+    });
+    return list;
+};
+
 function triProd(bat,batType,time,sim,quiet) {
     console.log('UPKEEP');
     console.log(batType.name);

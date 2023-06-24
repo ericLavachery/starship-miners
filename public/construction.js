@@ -377,7 +377,7 @@ function catColor(unit) {
     if (unit.cat === 'devices') {
         unitCol = 'vio';
     }
-    if (unit.name === "Dôme") {
+    if (unit.name === "Dôme" || unit.name === "Soute") {
         unitCol = 'hjaune';
     }
     return unitCol;

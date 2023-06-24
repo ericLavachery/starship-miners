@@ -1344,7 +1344,7 @@ function getStealth(bat) {
     } else if (playerInfos.bldList.includes('Centre de com')) {
         batStealth = batStealth+4;
     } else if (playerInfos.bldList.includes('Poste radio')) {
-        batStealth = batStealth+2;
+        batStealth = batStealth+1;
     }
     let vetStealth = bat.vet*vetBonus.stealth;
     batStealth = batStealth+vetStealth;
