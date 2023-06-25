@@ -260,7 +260,7 @@ function calcUnitVolume(batType) {
     let batVolume;
     if (Object.keys(batType).length >= 1) {
         if (batType.skills.includes('prefab')) {
-            batVolume = Math.round(batType.squadSize*batType.squads*batType.crew*2.4);
+            batVolume = Math.round(batType.squadSize*batType.squads*batType.crew*3.8);
         } else if (batType.skills.includes('varsquad')) {
             batVolume = Math.round(72*2.4);
         } else {
@@ -644,6 +644,7 @@ function checkHopTransId(myBat,myBatType) {
             if (!isCharged && myBat.apLeft > 0) {
                 let resLoad = checkResLoad(myBat);
                 let myBatVolume = calcVolume(myBat,myBatType);
+                let selfMove = checkSelfMove(myBat,myBatType);
                 let bestTrans = 0;
                 bataillons.forEach(function(bat) {
                     if (bat.loc === "zone" && myBat.id != bat.id) {
@@ -660,7 +661,7 @@ function checkHopTransId(myBat,myBatType) {
                                     if (!myBatType.skills.includes('tracked') || !tracking) {
                                         let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
                                         if (myBatVolume <= batTransUnitsLeft) {
-                                            let thisTrans = getTransScore(bat,batType,myBat,myBatVolume,batTransUnitsLeft);
+                                            let thisTrans = getTransScore(bat,batType,myBat,myBatVolume,batTransUnitsLeft,selfMove);
                                             if (thisTrans > bestTrans) {
                                                 transId = bat.id;
                                                 bestTrans = thisTrans;
@@ -687,6 +688,7 @@ function checkJumpTransId() {
                 if (!isCharged && selectedBat.apLeft > 0) {
                     let resLoad = checkResLoad(selectedBat);
                     let selectedBatVolume = calcVolume(selectedBat,selectedBatType);
+                    let selfMove = checkSelfMove(selectedBat,selectedBatType);
                     let bestTrans = 0;
                     bataillons.forEach(function(bat) {
                         if (bat.loc === "zone" && selectedBat.id != bat.id) {
@@ -703,7 +705,7 @@ function checkJumpTransId() {
                                         if (!selectedBatType.skills.includes('tracked') || !tracking) {
                                             let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
                                             if (selectedBatVolume <= batTransUnitsLeft) {
-                                                let thisTrans = getTransScore(bat,batType,selectedBat,selectedBatVolume,batTransUnitsLeft);
+                                                let thisTrans = getTransScore(bat,batType,selectedBat,selectedBatVolume,batTransUnitsLeft,selfMove);
                                                 if (thisTrans > bestTrans) {
                                                     transId = bat.id;
                                                     bestTrans = thisTrans;
@@ -753,7 +755,7 @@ function jumpInTrans() {
     }
 };
 
-function getTransScore(bat,batType,myBat,selectedBatVolume,batTransUnitsLeft) {
+function getTransScore(bat,batType,myBat,selectedBatVolume,batTransUnitsLeft,selfMove) {
     let score = Math.round(batTransUnitsLeft/100);
     if (selectedBatVolume+180 <= batTransUnitsLeft) {
         score = score+10;
@@ -764,8 +766,14 @@ function getTransScore(bat,batType,myBat,selectedBatVolume,batTransUnitsLeft) {
     if (bat.army === myBat.army) {
         score = score+1000;
     }
-    if (batType.skills.includes('transorbital')) {
+    if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 3) {
         score = score+10000;
+    }
+    if (!selfMove) {
+        let anybody = anybodyHere(bat);
+        if (!anybody) {
+            score = 0;
+        }
     }
     return score;
 }

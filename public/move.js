@@ -707,33 +707,44 @@ function checkSwim(bat,batType) {
     return swimming;
 };
 
-function listBatTerrainAccess(bat,batType) {
+function listBatTerrainAccess(batType,isBat,bat) {
     let bta = [];
     let btas = '<span class="gff">|</span>';
     let btaf = '';
     let canSwim = true;
     if (batType.cat === 'infantry') {
-        let swimming = checkSwim(bat,batType);
-        if (swimming <= 0) {
-            canSwim = false;
+        if (isBat) {
+            let swimming = checkSwim(bat,batType);
+            if (swimming <= 0) {
+                canSwim = false;
+            }
         }
     }
     let batMaxFlood = batType.maxFlood;
     let batMaxScarp = batType.maxScarp;
     let batMaxVeg = batType.maxVeg;
-    if (batMaxFlood === 0 && hasEquip(bat,['chenilles'])) {
-        batMaxFlood = 1;
-    }
-    if (batMaxScarp < 2 && hasEquip(bat,['chenilles'])) {
-        batMaxScarp = 2;
+    if (isBat) {
+        if (batMaxFlood === 0 && hasEquip(bat,['chenilles'])) {
+            batMaxFlood = 1;
+        }
+        if (batMaxScarp < 2 && hasEquip(bat,['chenilles'])) {
+            batMaxScarp = 2;
+        }
     }
     let canDive = false;
-    if (hasEquip(bat,['snorkel','waterproof'])) {
-        canDive = true;
+    if (isBat) {
+        if (hasEquip(bat,['snorkel','waterproof'])) {
+            canDive = true;
+        }
     }
     let canFly = false;
-    if (batType.skills.includes('fly') || hasEquip(bat,['e-jetpack'])) {
+    if (batType.skills.includes('fly')) {
         canFly = true;
+    }
+    if (isBat) {
+        if (hasEquip(bat,['e-jetpack'])) {
+            canFly = true;
+        }
     }
     terrainTypes.forEach(function(ter) {
         if (ter.name != 'V' && ter.name != 'X') {
@@ -747,9 +758,11 @@ function listBatTerrainAccess(bat,batType) {
             if (ter.flood === 3 && !canSwim) {
                 access = false;
             }
-            if (bat.tags.includes('genwater')) {
-                if (ter.name === 'W' || (ter.name === 'S' && playerInfos.comp.scaph < 1) || ter.name === 'L' || ter.name === 'R') {
-                    access = false;
+            if (isBat) {
+                if (bat.tags.includes('genwater')) {
+                    if (ter.name === 'W' || (ter.name === 'S' && playerInfos.comp.scaph < 1) || ter.name === 'L' || ter.name === 'R') {
+                        access = false;
+                    }
                 }
             }
             if (batType.skills.includes('nodry')) {

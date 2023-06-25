@@ -271,7 +271,7 @@ function batInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName">Mouvement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">'+mvmt+'</span><br>');
         }
         if (pop) {
-            let bta = listBatTerrainAccess(bat,batType);
+            let bta = listBatTerrainAccess(batType,true,bat);
             $('#'+bodyPlace).append('<span class="paramName" title="Terrains accessibles">Terrains</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue" title="'+bta[1]+'">'+bta[0]+'</span><br>');
         }
     }

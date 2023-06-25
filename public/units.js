@@ -37,6 +37,8 @@ function unitInfos(batType) {
     mvmt = mvmt.toFixedNumber(1);
     if (batType.moveCost > 90) {mvmt = 0;}
     $('#'+bodyPlace).append('<span class="paramName">Mouvement</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue">'+mvmt+'</span><br>');
+    let bta = listBatTerrainAccess(batType,false);
+    $('#'+bodyPlace).append('<span class="paramName" title="Terrains accessibles">Terrains</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue" title="'+bta[1]+'">'+bta[0]+'</span><br>');
     // SQUADS
     $('#'+bodyPlace).append('<span class="paramName">Escouades</span><span class="paramIcon"><i class="fas fa-heart"></i></span><span class="paramValue">'+batType.squads+'</span><br>');
     $('#'+bodyPlace).append('<span class="paramName">Unités/Escouade</span><span class="paramIcon"></span><span class="paramValue">'+batType.squadSize+'</span><br>');
