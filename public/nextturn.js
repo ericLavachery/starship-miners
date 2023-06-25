@@ -9,7 +9,7 @@ function nextTurn() {
     // stopMe = true;
     blockMe(true);
     $('#warnings').empty();
-    $('#warnings').append('<i class="far fa-hand-paper washTop" onclick="washReports(true)" title="Supprimer toutes les alertes"></i> &nbsp; <h6>Messages</h6><br>');
+    $('#warnings').append('<i class="far fa-hand-paper washTop" onclick="washReports(true)" title="Supprimer toutes les alertes"></i> &nbsp; <h4>Messages</h4><br>');
     if (aliens.length >= 200) {
         playerInfos.alienSat = playerInfos.alienSat+1;
     }

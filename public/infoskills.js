@@ -361,12 +361,15 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
     }
     // EMBARQUER
-    if (!zeroCrew && !playerInfos.onShip) {
+    if (!playerInfos.onShip) {
         let jumpTransId = checkHopTransId(bat,batType);
         if (jumpTransId >= 0) {
             let jumpTransBat = getBatById(jumpTransId);
-            $('#unitInfos').append('<button type="button" title="Embarquer dans: '+jumpTransBat.type+'" class="boutonRose iconButtons" onclick="jumpInTrans()"><i class="fas fa-truck"></i> <span class="small">1</span></button>');
-            lineBreak = true;
+            let anybody = anybodyHere(jumpTransBat);
+            if (anybody || !zeroCrew) {
+                $('#unitInfos').append('<button type="button" title="Embarquer dans: '+jumpTransBat.type+'" class="boutonRose iconButtons" onclick="jumpInTrans()"><i class="fas fa-truck"></i> <span class="small">1</span></button>');
+                lineBreak = true;
+            }
         }
     }
     // FOG

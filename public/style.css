@@ -56,7 +56,7 @@ body {
 #takeof2 {
     display: none;
 }
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5 {
     font-size: 17px;
     /* font-weight: bold; */
     display: inline;
@@ -80,7 +80,7 @@ h3 {
     padding: 0px 0px 5px 0px;
 }
 h4 {
-    color: #cacf9c;
+    color: #c4cb83;
     margin: 0;
     padding: 0px 0px 5px 0px;
 }
@@ -94,9 +94,16 @@ h5 {
     animation: hBlink .5s infinite;  /* IE 10+, Fx 29+ */
 }
 h6 {
-    color: #d5cabd;
-    margin: 0;
-    padding: 0px 0px 5px 0px;
+    font-size: 21px;
+    display: inline;
+    font-weight: normal;
+    font-family: 'Special Elite', 'Arial', cursive;
+    color: #FFFFFF;
+    /* margin: 0; */
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    padding-left: 10px;
 }
 @-webkit-keyframes hBlink {
   0%, 49% {

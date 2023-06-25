@@ -658,6 +658,29 @@ function checkSelfMove(bat,batType) {
     return selfMove;
 };
 
+function anybodyHere(bat) {
+    // est-ce qu'il y a des gens dans ce bâtiment?
+    let anybody = false;
+    let batType = getBatType(bat);
+    if (batType.cat === 'buildings') {
+        if (batType.crew >= 1) {
+            anybody = true;
+        }
+        if (batType.transUnits >= 1) {
+            if (bat.transIds.length >= 1) {
+                bat.transIds.forEach(function(transId) {
+                    let inBat = getBatById(transId);
+                    let inBatType = getBatType(inBat);
+                    if (inBatType.crew >= 1 && !inBatType.skills.includes('dog')) {
+                        anybody = true;
+                    }
+                });
+            }
+        }
+    }
+    return anybody;
+};
+
 function checkSwim(bat,batType) {
     let batArmor = getEquipByName(bat.prt);
     let swimming = bat.vet+playerInfos.comp.train+(batArmor.ap*2)+1;

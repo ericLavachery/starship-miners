@@ -131,8 +131,8 @@ function batInfos(bat,batType,pop) {
         vetIcon = '<img src="/static/img/vet'+bat.vet+'.png" width="15">';
     }
     if (pop) {
-        $('#'+headPlace).append('<img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" onclick="unitDetail('+batType.id+')" title="Voir le détail du type d\'unité">&nbsp;');
-        $('#'+headPlace).append('<span class="blockTitle"><h2>'+unitsLeft+' '+batType.name+'</h2></span>');
+        $('#'+headPlace).append('<img style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" onclick="unitDetail('+batType.id+')" title="Voir le détail du type d\'unité">&nbsp;');
+        $('#'+headPlace).append('<span class="blockTitle"><h6>'+unitsLeft+' '+batType.name+'</h6></span>');
     } else {
         $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3> '+vetIcon+'</span>');
     }
@@ -1220,7 +1220,11 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Les attaques qui réduisent les PA ne font que très peu d\'effet">Protection Entrave</span>'+sepa;
     }
     if (batType.skills.includes('noblub')) {
-        allSkills = allSkills+'<span class="paramValue" title="Peut être construit dans l\'eau / Ne se noie pas">Waterproof</span>'+sepa;
+        if (batType.cat === 'buildings' || batType.cat === 'devices') {
+            allSkills = allSkills+'<span class="paramValue" title="Peut être construit dans l\'eau">Waterproof</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Ne se noie pas">Waterproof</span>'+sepa;
+        }
     }
     if (batType.skills.includes('slowreg')) {
         allSkills = allSkills+'<span class="paramValue">Régénération lente</span>'+sepa;
@@ -1340,15 +1344,17 @@ function batFullInfos(bat,batType) {
         $('#popbody').append('<div class="shSpace"></div>');
     }
     // COSTS
-    $('#popbody').append('<div class="shSpace"></div>');
-    $('#popbody').append('<span class="blockTitle"><h4>Coûts de construction</h4></span><br>');
-    let costString = '';
-    if (batType.costs != undefined) {
-        costString = displayCosts(batType.costs);
+    if (!isBat) {
+        $('#popbody').append('<div class="shSpace"></div>');
+        $('#popbody').append('<span class="blockTitle"><h4>Coûts de construction</h4></span><br>');
+        let costString = '';
+        if (batType.costs != undefined) {
+            costString = displayCosts(batType.costs);
+        }
+        costString = costString.replace('{','');
+        costString = costString.replace('}','');
+        $('#popbody').append('<span class="paramValue">'+costString+'</span>');
     }
-    costString = costString.replace('{','');
-    costString = costString.replace('}','');
-    $('#popbody').append('<span class="paramValue">'+costString+'</span>');
     $('#popbody').append('<div class="shSpace"></div>');
     $('#popbody').append('<div class="shSpace"></div>');
 };

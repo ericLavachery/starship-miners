@@ -639,7 +639,7 @@ function blockThem(stop) {
 function washReports(warningsAlso) {
     if (warningsAlso) {
         $('#warnings').empty();
-        $('#warnings').append('<i class="far fa-hand-paper washTop" onclick="washReports(true)" title="Supprimer toutes les alertes"></i> &nbsp; <h6>Messages</h6><br>');
+        $('#warnings').append('<i class="far fa-hand-paper washTop" onclick="washReports(true)" title="Supprimer toutes les alertes"></i> &nbsp; <h4>Messages</h4><br>');
         friendsAlert = false;
     }
     $('#report').empty();
