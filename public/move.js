@@ -662,7 +662,7 @@ function anybodyHere(bat) {
     // est-ce qu'il y a des gens dans ce bâtiment?
     let anybody = false;
     let batType = getBatType(bat);
-    if (batType.cat === 'buildings') {
+    if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
         if (batType.crew >= 1) {
             anybody = true;
         }

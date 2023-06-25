@@ -729,8 +729,11 @@ function jumpInTrans() {
         let transBatType = getBatType(transBat);
         let anybody = anybodyHere(transBat);
         let selfMove = checkSelfMove(selectedBat,selectedBatType);
+        console.log('selfMove='+selfMove);
+        console.log('anybody='+anybody);
+        console.log(transBatType);
         if (anybody || selfMove) {
-            let embarqCost = calcEmbarqCost(batType,transBatType);
+            let embarqCost = calcEmbarqCost(selectedBatType,transBatType);
             let apCost = embarqCost[0]+2;
             transBat.apLeft = transBat.apLeft-embarqCost[1];
             selectedBat.apLeft = selectedBat.apLeft-apCost;
