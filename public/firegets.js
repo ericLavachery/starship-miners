@@ -751,9 +751,9 @@ function newAlienKilled(batType,tileId) {
                         }
                     }
                 });
-                warning('Alien inconnu tué : '+batType.name,'Toutes vos unités dans la zone ont gagné '+xpBonus+' points d\'expérience');
+                warning('Alien inconnu tué : '+batType.name,'Toutes vos unités dans la zone ont gagné <span class="vio">'+xpBonus+' points d\'expérience.</span><br><span class="gf">Ressources récupérées: '+toCoolString(batType.killRes,true,false)+'</span>');
             } else {
-                warning('Alien inconnu tué : '+batType.name,'');
+                warning('Alien inconnu tué : '+batType.name,'<span class="gf">Ressources récupérées: '+toCoolString(batType.killRes,true,false)+'</span>');
             }
         }
     }

@@ -489,9 +489,9 @@ function showEnemyBatInfos(bat) {
             $('#unitInfos').append('<div class="shSpace"></div>');
         }
     }
-    $('#unitInfos').append('<span class="paramValue"><span class="mauve" title="Variable, en fonction de votre compétence en connaissance alien">Ressources à récupérer:</span> '+toCoolString(batType.killRes,true,true)+'</span><br>');
-    $('#unitInfos').append('<div class="shSpace"></div>');
     if (playerInfos.knownAliens.includes(batType.name)) {
+        $('#unitInfos').append('<span class="paramValue"><span class="mauve" title="Variable, en fonction de votre compétence en connaissance alien">Ressources à récupérer:</span> '+toCoolString(batType.killRes,true,true)+'</span><br>');
+        $('#unitInfos').append('<div class="shSpace"></div>');
     }
     // DISMANTLE
     if (allowCheat) {
