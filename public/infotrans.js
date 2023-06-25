@@ -727,22 +727,26 @@ function jumpInTrans() {
     if (transId >= 0) {
         let transBat = getBatById(transId);
         let transBatType = getBatType(transBat);
-        let embarqCost = calcEmbarqCost(batType,transBatType);
-        let apCost = embarqCost[0]+2;
-        transBat.apLeft = transBat.apLeft-embarqCost[1];
-        selectedBat.apLeft = selectedBat.apLeft-apCost;
-        loadBat(selectedBat.id,transBat.id);
-        doneAction(transBat);
-        tagDelete(selectedBat,'guet');
-        camoOut();
-        stopAutoLoad();
-        selectedBatArrayUpdate();
-        showMap(zone,true);
-        showBataillon(transBat);
-        batSelect(transBat);
-        showBatInfos(selectedBat);
-        showTileInfos(selectedBat.tileId);
-        selectMode();
+        let anybody = anybodyHere(transBat);
+        let selfMove = checkSelfMove(selectedBat,selectedBatType);
+        if (anybody || selfMove) {
+            let embarqCost = calcEmbarqCost(batType,transBatType);
+            let apCost = embarqCost[0]+2;
+            transBat.apLeft = transBat.apLeft-embarqCost[1];
+            selectedBat.apLeft = selectedBat.apLeft-apCost;
+            loadBat(selectedBat.id,transBat.id);
+            doneAction(transBat);
+            tagDelete(selectedBat,'guet');
+            camoOut();
+            stopAutoLoad();
+            selectedBatArrayUpdate();
+            showMap(zone,true);
+            showBataillon(transBat);
+            batSelect(transBat);
+            showBatInfos(selectedBat);
+            showTileInfos(selectedBat.tileId);
+            selectMode();
+        }
     }
 };
 
