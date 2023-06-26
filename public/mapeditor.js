@@ -23,7 +23,7 @@ function mapEditWindow() {
             } else if (!playerInfos.misDB.includes(mapNum)) {
                 $('#mapNumber').append('<option value="'+mapNum+'">'+mapNum+' ('+mType.name+' '+Math.floor(mType.pa)+')</option>');
             } else {
-                $('#mapNumber').append('<option value="'+mapNum+'">'+mapNum+' ('+mType.name+' '+Math.floor(mType.pa)+') &nbsp;&#9940;&nbsp; Ecraser ??</option>');
+                $('#mapNumber').append('<option value="'+mapNum+'">'+mapNum+' ('+mType.name+' '+Math.floor(mType.pa)+') &nbsp;&#128683;&nbsp; Ecraser ??</option>');
             }
             if (mapNum >= 99) {break;}
             mapNum++

@@ -3155,7 +3155,8 @@
         "bldReq":["Station"],
         "costs":{"Compo1":100,"Compo2":200,"Fer":200,"Carbone":75,"Aluminium":75,"Zinc":50,"Silicium":25},
         "fabTime":1,
-        "slots":0
+        "slots":0,
+        "info":"Vous pouvez démonter la structure interne de la station, mais ça va être moins joli après."
     },
     {
         "id":236,
@@ -3163,6 +3164,7 @@
         "bldReq":["Station"],
         "costs":{"Compo1":100,"Bois":100,"Bore":100,"Carbone":100,"Calcium":75,"Silicium":50,"Nickel":25},
         "fabTime":1,
-        "slots":0
+        "slots":0,
+        "info":"Vous pouvez démonter l'isolation, mais vous dépenserez plus d'énergie pour chauffer la station après."
     }
 ]

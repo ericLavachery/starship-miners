@@ -2938,7 +2938,7 @@ function gangLevelView() {
             colour = 'cy';
             costColour = 'noir';
         }
-        $('#conUnitList').append('<span class="paramName '+colour+'">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût">('+compCost+')</span><span class="paramCompValue cy" title="Niveau actuel">'+nowComp+'<span class="gff">/'+comp.maxLevel+'</span></span>');
+        $('#conUnitList').append('<span class="paramName '+colour+'" title="'+comp.desc+'">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût">('+compCost+')</span><span class="paramCompValue cy" title="Niveau actuel">'+nowComp+'<span class="gff">/'+comp.maxLevel+'</span></span>');
     });
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="ListRes"></span><br>');

@@ -191,9 +191,9 @@ function bfconst(cat,triche,upgrade,retour) {
                 let enoughCit = checkCitCost(unit);
                 if (!enoughCit) {
                     if (!unit.skills.includes('brigands')) {
-                        citAlert = ' &#128119;{&#9940;Citoyens:'+unitCits+'!}';
+                        citAlert = ' &#128119;{&#128683;Citoyens:'+unitCits+'!}';
                     } else {
-                        citAlert = ' &#128119;{&#9940;Criminels:'+unitCits+'!}';
+                        citAlert = ' &#128119;{&#128683;Criminels:'+unitCits+'!}';
                     }
                 } else {
                     if (!unit.skills.includes('brigands')) {
@@ -324,7 +324,7 @@ function displayCosts(costs) {
             let key = entry[0];
             let value = entry[1];
             if (value > playerInfos.reserve[key]) {
-                costString = costString+'&#9940;'+key;
+                costString = costString+'&#128683;'+key;
             } else {
                 costString = costString+key;
             }

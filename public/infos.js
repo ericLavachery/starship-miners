@@ -812,10 +812,14 @@ function batInfos(bat,batType,pop) {
                     demText = '(détruire)';
                 }
                 let resRecup = getResRecup(bat,batType);
-                if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
+                if (playerInfos.onShip) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+' '+toCoolString(resRecup)+'" class="boutonRouge bigButtons" onclick="dismantle('+bat.id+',false)"><i class="fas fa-people-carry"></i></button>&nbsp; Démanteler</h4></span>');
+                } else {
+                    if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
+                        $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+' '+toCoolString(resRecup)+'" class="boutonRouge bigButtons" onclick="dismantle('+bat.id+',false)"><i class="fas fa-people-carry"></i></button>&nbsp; Démanteler</h4></span>');
+                    }
+                    $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler sans récupérer les ressources (et donc sans perdre de PA) '+fleeText+'" class="boutonRouge bigButtons" onclick="dismantle('+bat.id+',true)"><i class="fas fa-running"></i></button>&nbsp; Abandonner</h4></span>');
                 }
-                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler sans récupérer les ressources (et donc sans perdre de PA) '+fleeText+'" class="boutonRouge bigButtons" onclick="dismantle('+bat.id+',true)"><i class="fas fa-running"></i></button>&nbsp; Abandonner</h4></span>');
             }
         }
         if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Mapedit' || allowCheat) {
@@ -1360,6 +1364,30 @@ function batFullInfos(bat,batType) {
         }
         $('#popbody').append('<div class="shSpace"></div>');
     }
+    // EQUIPEMENTS
+    if (batType.equip != undefined) {
+        if (batType.equip.length >= 2) {
+            let equipString = displayUnitEquips(batType);
+            $('#popbody').append('<div class="shSpace"></div>');
+            $('#popbody').append('<span class="blockTitle"><h4>Equipements disponibles</h4></span><br>');
+            $('#popbody').append('<span class="paramValue">'+equipString+'</span><br>');
+            $('#popbody').append('<div class="shSpace"></div>');
+        }
+    }
+    // ARMURES
+    if (batType.protection != undefined) {
+        if (batType.protection.length >= 2) {
+            let armorString = displayUnitArmors(batType);
+            $('#popbody').append('<div class="shSpace"></div>');
+            if (batType.cat === 'infantry' || (batType.cat === 'infantry' && batType.skills.includes('robot'))) {
+                $('#popbody').append('<span class="blockTitle"><h4>Armures disponibles</h4></span><br>');
+            } else {
+                $('#popbody').append('<span class="blockTitle"><h4>Blindages disponibles</h4></span><br>');
+            }
+            $('#popbody').append('<span class="paramValue">'+armorString+'</span><br>');
+            $('#popbody').append('<div class="shSpace"></div>');
+        }
+    }
     // COSTS
     if (!isBat) {
         $('#popbody').append('<div class="shSpace"></div>');
@@ -1383,6 +1411,40 @@ function batFullInfos(bat,batType) {
     }
     $('#popbody').append('<div class="shSpace"></div>');
     $('#popbody').append('<div class="shSpace"></div>');
+};
+
+function displayUnitArmors(batType) {
+    let sepa = ' &nbsp;&#128206;&nbsp; ';
+    let armorString = '';
+    armorTypes.forEach(function(stuff) {
+        if (stuff.cat === 'armor' && !stuff.name.includes('aucun')) {
+            if (batType.protection.includes(stuff.name)) {
+                let armorInfo = showFullArmorInfo(stuff);
+                armorString = armorString+sepa+'<span title="'+armorInfo+'">'+stuff.name+'</span>';
+            }
+        }
+    });
+    armorString = armorString+sepa;
+    return armorString;
+};
+
+function displayUnitEquips(batType) {
+    let sepa = ' &nbsp;&#128206;&nbsp; ';
+    let equipString = '';
+    armorTypes.forEach(function(stuff) {
+        if (stuff.cat === 'equip' && !stuff.name.includes('aucun')) {
+            if (batType.equip.includes(stuff.name)) {
+                let equipInfo = '';
+                if (stuff.info != undefined) {
+                    equipInfo = stuff.info;
+                    equipInfo = equipInfo.replace(/ \/ /g,' &#9889; ');
+                }
+                equipString = equipString+sepa+'<span title="'+equipInfo+'">'+stuff.name+'</span>';
+            }
+        }
+    });
+    equipString = equipString+sepa;
+    return equipString;
 };
 
 function displayUnitReqs(unit,full) {
