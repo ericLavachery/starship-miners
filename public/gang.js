@@ -19,7 +19,8 @@ function gangBldList() {
                 if (unit.bldReq.includes('Station') && color != 'hjaune') {
                     color = 'gff';
                 }
-                $('#conUnitList').append('<span class="paramName '+color+' klik" title="" onclick="unitDetail('+unit.id+')">'+unit.name+'</span><br>');
+                let reqString = displayUnitReqs(unit,false);
+                $('#conUnitList').append('<span class="paramName '+color+' klik" title="'+reqString+'" onclick="unitDetail('+unit.id+')">'+unit.name+'</span><br>');
             }
         }
     });
@@ -68,6 +69,7 @@ function gangUnitsList(gangName) {
                 newUnit.cat = unit.cat;
                 newUnit.kind = unit.kind;
                 newUnit.skills = unit.skills;
+                // newUnit.compPass = unit.compPass;
                 let newCompReq = {};
                 if (unit.compHardReq != undefined) {
                     if (Object.keys(unit.compHardReq).length >= 1) {
@@ -104,7 +106,8 @@ function gangUnitsList(gangName) {
     sortedGangUnits = _.sortBy(sortedGangUnits,'sort');
     sortedGangUnits = _.sortBy(sortedGangUnits,'level');
     sortedGangUnits.forEach(function(unit) {
-        let color = catColor(unit);
+        let fullUnit = getBatTypeByName(unit.name);
+        let color = catColor(fullUnit);
         let lvlcol = 'cy';
         let compcol = 'gf';
         if (playerInfos.gLevel < unit.level) {
@@ -130,6 +133,7 @@ function gangUnitsList(gangName) {
                 lvlcol = 'gf';
             }
         }
+        let reqString = displayUnitReqs(fullUnit,false);
         let unitName = unit.name;
         if (unitName.includes('Caserne')) {
             unitName = 'Caserne';
@@ -137,7 +141,10 @@ function gangUnitsList(gangName) {
         if (unitName.includes('Navette')) {
             unitName = 'Navette';
         }
-        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+bldNeed+'" onclick="unitDetail('+unit.id+')">'+unitName+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue '+compcol+'">'+compNeed+'</span><br>');
+        if (unitName.includes('Champ de mines')) {
+            unitName = 'Mines';
+        }
+        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+reqString+'" onclick="unitDetail('+unit.id+')">'+unitName+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue '+compcol+'">'+compNeed+'</span><br>');
     });
     $('#conUnitList').append('<br><br>');
     $("#conUnitList").animate({scrollTop:0},"fast");

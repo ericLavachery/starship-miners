@@ -966,7 +966,7 @@ function getInfoAdd(batType) {
     }
     if (batType.name === 'Centre de com' || batType.name === 'QG') {
         infoAdd = infoAdd+'Distance de contrôle des robots doublée (passe de 6 à 12 cases pour tous les centres de contrôle).<br>';
-        infoAdd = infoAdd+'Permet à vos la plupart de vos robots de fouiller les ruines.<br>';
+        infoAdd = infoAdd+'Permet à la plupart de vos robots de fouiller les ruines.<br>';
         infoAdd = infoAdd+'Indispensable pour pouvoir atterrir sur la planète Horst.<br>';
     }
     if (batType.name === 'Poste radio' || batType.name === 'Centre de com' || batType.name === 'QG') {
@@ -1308,26 +1308,38 @@ function batFullInfos(bat,batType) {
     $('#popbody').append('<span class="paramValue">'+allSkills+'</span>');
     $('#popbody').append('<div class="shSpace"></div>');
     // PRODUCTION
-    if (batType.skills.includes('prodres')) {
+    let onlyScrap = false;
+    if (batType.prod != undefined) {
+        if (Object.keys(batType.prod).length === 1) {
+            Object.entries(batType.prod).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                if (key === 'Scrap') {
+                    onlyScrap = true;
+                }
+            });
+        }
+    }
+    if (batType.skills.includes('prodres') && !onlyScrap) {
         $('#popbody').append('<div class="shSpace"></div>');
         $('#popbody').append('<span class="blockTitle"><h4>Production de ressources</h4></span><br>');
         let allProds = getAllProds(batType,65);
-        $('#popbody').append('<span class="paramValue">'+toCoolString(allProds,true,true)+'</span><br>');
+        $('#popbody').append('<span class="paramValue">'+toCoolString(allProds,true,true)+' <span class="gf">(3 semaines)</span></span><br>');
         let allProdCosts = getAllProdCosts(batType,65);
-        $('#popbody').append('<span class="paramValue gf"><span class="mauve">Coûts de production:</span> '+toCoolString(allProdCosts,true)+'</span>');
+        $('#popbody').append('<span class="paramValue gf"><span class="mauve">Coûts de production:</span> '+toCoolString(allProdCosts,true)+' <span class="gf">(3 semaines)</span></span>');
         $('#popbody').append('<div class="shSpace"></div>');
     } else if (batType.skills.includes('solar')) {
         $('#popbody').append('<div class="shSpace"></div>');
         $('#popbody').append('<span class="blockTitle"><h4>Production de ressources</h4></span><br>');
-        $('#popbody').append('<span class="paramValue"><span class="mauve">Dans la station:</span> Energie=3400 | <span class="mauve">En zone:</span> Variable</span><br>');
+        $('#popbody').append('<span class="paramValue"><span class="mauve">Dans la station:</span> Energie=3400 | <span class="mauve">En zone:</span> Variable <span class="gf">(3 semaines)</span></span><br>');
         let allProdCosts = getAllProdCosts(batType,65);
-        $('#popbody').append('<span class="paramValue gf"><span class="mauve">Coûts de production:</span> '+toCoolString(allProdCosts,true)+'</span>');
+        $('#popbody').append('<span class="paramValue gf"><span class="mauve">Coûts de production:</span> '+toCoolString(allProdCosts,true)+' <span class="gf">(3 semaines)</span></span>');
         $('#popbody').append('<div class="shSpace"></div>');
     } else if (batType.skills.includes('upkeep')) {
         $('#popbody').append('<div class="shSpace"></div>');
         $('#popbody').append('<span class="blockTitle"><h4>Coûts de fonctionnement</h4></span><br>');
         let allProdCosts = getAllProdCosts(batType,65);
-        $('#popbody').append('<span class="paramValue gf">'+toCoolString(allProdCosts,true)+'</span>');
+        $('#popbody').append('<span class="paramValue gf">'+toCoolString(allProdCosts,true)+' <span class="gf">(3 semaines)</span></span>');
         $('#popbody').append('<div class="shSpace"></div>');
     }
     // MINING
@@ -1347,16 +1359,140 @@ function batFullInfos(bat,batType) {
     if (!isBat) {
         $('#popbody').append('<div class="shSpace"></div>');
         $('#popbody').append('<span class="blockTitle"><h4>Coûts de construction</h4></span><br>');
+        let reqString = displayUnitReqs(batType,true);
         let costString = '';
         if (batType.costs != undefined) {
             costString = displayCosts(batType.costs);
         }
         costString = costString.replace('{','');
         costString = costString.replace('}','');
-        $('#popbody').append('<span class="paramValue">'+costString+'</span>');
+        if (reqString.length >= 2) {
+            $('#popbody').append('<span class="paramValue">'+reqString+'</span>');
+            $('#popbody').append('<br>');
+        }
+        $('#popbody').append('<span class="paramValue"><span class="mauve">Ressources:</span> '+costString+'</span>');
     }
     $('#popbody').append('<div class="shSpace"></div>');
     $('#popbody').append('<div class="shSpace"></div>');
+};
+
+function displayUnitReqs(unit,full) {
+    let unitReqs = '';
+    let baseUnitReqs = '';
+    if (unit.bldReq != undefined) {
+        if (unit.bldReq.length >= 1) {
+            unitReqs = unitReqs+'<span class="mauve">Bâtiments requis:</span> &#127963; '+toNiceString(unit.bldReq)+'<br><div class="shSpace"></div>';
+            baseUnitReqs = baseUnitReqs+'&#127963; '+toNiceString(unit.bldReq);
+        }
+    }
+    let compReq1 = {};
+    let compReq2 = {};
+    if (!unit.compPass.includes(playerInfos.gang)) {
+        if (unit.compReq != undefined) {
+            if (Object.keys(unit.compReq).length >= 1) {
+                Object.entries(unit.compReq).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    compReq1[key] = value;
+                });
+            }
+        }
+        // altCompReq
+        if (unit.altCompReq != undefined) {
+            if (Object.keys(unit.altCompReq).length >= 1) {
+                compReqOK = true;
+                Object.entries(unit.altCompReq).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    compReq2[key] = value;
+                });
+            }
+        }
+    }
+    if (unit.compHardReq != undefined) {
+        if (Object.keys(unit.compHardReq).length >= 1) {
+            Object.entries(unit.compHardReq).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                if (compReq1[key] != undefined) {
+                    if (compReq1[key] < value) {
+                        compReq1[key] = value;
+                    }
+                } else {
+                    compReq1[key] = value;
+                }
+                if (Object.keys(compReq2).length >= 1) {
+                    if (compReq2[key] != undefined) {
+                        if (compReq2[key] < value) {
+                            compReq2[key] = value;
+                        }
+                    } else {
+                        compReq2[key] = value;
+                    }
+                }
+            });
+        }
+    }
+    console.log('CompReq1');
+    console.log(compReq1);
+    console.log('CompReq2');
+    console.log(compReq2);
+    let isCompReq = false;
+    if (Object.keys(compReq1).length >= 1) {
+        let stringReq1 = toCoolString(compReq1,true,false);
+        stringReq1 = replaceCompNamesByFullNames(stringReq1);
+        unitReqs = unitReqs+'<span class="mauve">Compétences requises:</span> &#128161; '+stringReq1+'<br>';
+        baseUnitReqs = baseUnitReqs+' &#128161; '+stringReq1;
+        isCompReq = true;
+    }
+    if (Object.keys(compReq2).length >= 1) {
+        let stringReq2 = toCoolString(compReq2,true,false);
+        stringReq2 = replaceCompNamesByFullNames(stringReq2);
+        unitReqs = unitReqs+'<span class="mauve">Alternative:</span> &#128161; '+stringReq2+'<br>';
+        baseUnitReqs = baseUnitReqs+' &#128161; '+stringReq2;
+        isCompReq = true;
+    }
+    if (isCompReq) {
+        unitReqs = unitReqs+'<div class="shSpace"></div>';
+    }
+    if (full) {
+        return unitReqs;
+    } else {
+        return baseUnitReqs;
+    }
+};
+
+function replaceCompNamesByFullNames(string) {
+    let newString = string;
+    newString = newString.replace(/arti=/g,'Artillerie=');
+    newString = newString.replace(/aero=/g,'Aéronautique=');
+    newString = newString.replace(/gen=/g,'Génétique=');
+    newString = newString.replace(/cyber=/g,'Cybernétique=');
+    newString = newString.replace(/robo=/g,'Robotique=');
+    newString = newString.replace(/tele=/g,'Téléportation=');
+    newString = newString.replace(/vsp=/g,'VolsSpaciaux=');
+    newString = newString.replace(/scaph=/g,'Scaphandres=');
+    newString = newString.replace(/det=/g,'Détection=');
+    newString = newString.replace(/med=/g,'Médecine=');
+    newString = newString.replace(/ordre=/g,'Leadership=');
+    newString = newString.replace(/train=/g,'Entraînement=');
+    newString = newString.replace(/cam=/g,'Camouflage=');
+    newString = newString.replace(/tri=/g,'Recyclage=');
+    newString = newString.replace(/ind=/g,'Industrie=');
+    newString = newString.replace(/const=/g,'Construction=');
+    newString = newString.replace(/energ=/g,'Energie=');
+    newString = newString.replace(/ext=/g,'Extraction=');
+    newString = newString.replace(/trans=/g,'Transports=');
+    newString = newString.replace(/log=/g,'Logistique=');
+    newString = newString.replace(/bal=/g,'Balistique=');
+    newString = newString.replace(/explo=/g,'Explosifs=');
+    newString = newString.replace(/pyro=/g,'Pyrotechnie=');
+    newString = newString.replace(/exo=/g,'Exochimie=');
+    newString = newString.replace(/mat=/g,'Matériaux=');
+    newString = newString.replace(/def=/g,'Défenses=');
+    newString = newString.replace(/tank=/g,'Blindés=');
+    newString = newString.replace(/ca=/g,'ConnaissanceAlien=');
+    return newString;
 };
 
 function getAllProds(batType,time) {

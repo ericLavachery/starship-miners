@@ -362,9 +362,6 @@ function catColor(unit) {
             unitCol = 'marine';
         }
     }
-    if (unit.skills.includes('transorbital') && unit.name != 'Soute') {
-        unitCol = 'bleu';
-    }
     if (unit.cat === 'infantry') {
         unitCol = 'jaune';
     }
@@ -376,6 +373,9 @@ function catColor(unit) {
     }
     if (unit.cat === 'devices') {
         unitCol = 'vio';
+    }
+    if (unit.skills.includes('transorbital') && unit.name != 'Soute') {
+        unitCol = 'bleu';
     }
     if (unit.name === "Dôme" || unit.name === "Soute") {
         unitCol = 'hjaune';
