@@ -8,6 +8,8 @@ function unitDetail(unitId) {
 };
 
 function unitInfos(batType) {
+    $('.modal-header').css('background-image','url(/static/img/oldmetal-jaune.jpg)');
+    $('.modal-footer').css('background-image','url(/static/img/oldmetal-jaune.jpg)');
     let headPlace = 'pophead';
     let bodyPlace = 'popbody';
     $('#'+headPlace).empty();
