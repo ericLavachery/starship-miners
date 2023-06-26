@@ -885,6 +885,9 @@ function getInfoAdd(batType) {
     if (batType.name === 'Biopod') {
         infoAdd = infoAdd+'Les flèches bio, combinées avec le biopod, exterminent tous les aliens d\'un même type: Vous infectez 1 bug (ou tout autre race d\'alien), et tous les bugs présents dans la zone à ce moment vont périr à petit feu.<br>';
     }
+    if (batType.name === 'Décharge') {
+        infoAdd = infoAdd+'La Décharge vous permet de récupérer une plus grande partie du scrap produit par vos bâtiments et vos citoyens.<br>';
+    }
     if (batType.name === 'Recyclab') {
         infoAdd = infoAdd+'Le Recyclab vous permet de purifier l\'eau que vous pompez dans les régions où elle est empoisonnée.<br>';
     }
@@ -1359,18 +1362,22 @@ function batFullInfos(bat,batType) {
     if (!isBat) {
         $('#popbody').append('<div class="shSpace"></div>');
         $('#popbody').append('<span class="blockTitle"><h4>Coûts de construction</h4></span><br>');
-        let reqString = displayUnitReqs(batType,true);
-        let costString = '';
-        if (batType.costs != undefined) {
-            costString = displayCosts(batType.costs);
+        if (batType.bldReq.includes('Station')) {
+            $('#popbody').append('<span class="paramValue">Ce bâtiment ne peut pas être construit.</span>');
+        } else {
+            let reqString = displayUnitReqs(batType,true);
+            let costString = '';
+            if (batType.costs != undefined) {
+                costString = displayCosts(batType.costs);
+            }
+            costString = costString.replace('{','');
+            costString = costString.replace('}','');
+            if (reqString.length >= 2) {
+                $('#popbody').append('<span class="paramValue">'+reqString+'</span>');
+                $('#popbody').append('<br>');
+            }
+            $('#popbody').append('<span class="paramValue"><span class="mauve">Ressources:</span> '+costString+'</span>');
         }
-        costString = costString.replace('{','');
-        costString = costString.replace('}','');
-        if (reqString.length >= 2) {
-            $('#popbody').append('<span class="paramValue">'+reqString+'</span>');
-            $('#popbody').append('<br>');
-        }
-        $('#popbody').append('<span class="paramValue"><span class="mauve">Ressources:</span> '+costString+'</span>');
     }
     $('#popbody').append('<div class="shSpace"></div>');
     $('#popbody').append('<div class="shSpace"></div>');
