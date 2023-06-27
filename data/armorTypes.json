@@ -335,7 +335,7 @@
         "armor":4,
         "ap":-1,
         "skills":["resistelec","dreduct"],
-        "bldReq":["Armurerie"],
+        "bldReq":["Centre de recherches"],
         "compReq":{"mat":2,"energ":1},
         "factor":"thp",
         "costs":{"Carbone":2,"Titane":9,"Salite":9},

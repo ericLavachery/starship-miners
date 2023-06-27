@@ -1419,7 +1419,7 @@ function displayUnitArmors(batType) {
     armorTypes.forEach(function(stuff) {
         if (stuff.cat === 'armor' && !stuff.name.includes('aucun')) {
             if (batType.protection.includes(stuff.name)) {
-                let armorInfo = showFullArmorInfo(stuff);
+                let armorInfo = showFullArmorInfo(stuff,true);
                 armorString = armorString+sepa+'<span title="'+armorInfo+'">'+stuff.name+'</span>';
             }
         }
@@ -1434,17 +1434,106 @@ function displayUnitEquips(batType) {
     armorTypes.forEach(function(stuff) {
         if (stuff.cat === 'equip' && !stuff.name.includes('aucun')) {
             if (batType.equip.includes(stuff.name)) {
-                let equipInfo = '';
-                if (stuff.info != undefined) {
-                    equipInfo = stuff.info;
-                    equipInfo = equipInfo.replace(/ \/ /g,' &#9889; ');
+                let w2OK = true;
+                if (stuff.name.includes('w2-') && !stuff.name.includes('auto')) {
+                    if (batType.weapon2.equip != undefined) {
+                        if (batType.weapon2.equip != stuff.name) {
+                            w2OK = false;
+                        }
+                    }
                 }
-                equipString = equipString+sepa+'<span title="'+equipInfo+'">'+stuff.name+'</span>';
+                if (w2OK) {
+                    let equipInfo = '';
+                    if (stuff.info != undefined) {
+                        equipInfo = stuff.info;
+                        equipInfo = equipInfo.replace(/ \/ /g,' &#9889; ');
+                        if (stuff.bldReq != undefined) {
+                            if (stuff.bldReq.length >= 1) {
+                                equipInfo = equipInfo+'&nbsp; &#127963; '+toNiceString(stuff.bldReq)+' &nbsp;';
+                            }
+                        }
+                        let compReqs = getCompReqs(stuff,false);
+                        if (Object.keys(compReqs.base).length >= 1) {
+                            let stringReq1 = toCoolString(compReqs.base,true,false);
+                            stringReq1 = replaceCompNamesByFullNames(stringReq1);
+                            equipInfo = equipInfo+' &#128161;'+stringReq1;
+                        }
+                        if (Object.keys(compReqs.alt).length >= 1) {
+                            let stringReq2 = toCoolString(compReqs.alt,true,false);
+                            stringReq2 = replaceCompNamesByFullNames(stringReq2);
+                            equipInfo = equipInfo+' &#128161;'+stringReq2;
+                        }
+                    }
+                    equipString = equipString+sepa+'<span title="'+equipInfo+'">'+stuff.name+'</span>';
+                }
             }
         }
     });
     equipString = equipString+sepa;
     return equipString;
+};
+
+function getCompReqs(stuff,isUnit) {
+    let compReqs = {};
+    compReqs.base = {};
+    compReqs.alt = {};
+    let pass = false;
+    if (isUnit) {
+        if (stuff.compPass.includes(playerInfos.gang)) {
+            pass = true;
+        }
+    }
+    if (!pass) {
+        if (stuff.compReq != undefined) {
+            if (Object.keys(stuff.compReq).length >= 1) {
+                Object.entries(stuff.compReq).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    compReqs.base[key] = value;
+                });
+            }
+        }
+        // altCompReq
+        if (stuff.altCompReq != undefined) {
+            if (Object.keys(stuff.altCompReq).length >= 1) {
+                compReqOK = true;
+                Object.entries(stuff.altCompReq).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    compReqs.alt[key] = value;
+                });
+            }
+        }
+    }
+    if (stuff.compHardReq != undefined) {
+        if (Object.keys(stuff.compHardReq).length >= 1) {
+            Object.entries(stuff.compHardReq).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                if (compReqs.base[key] != undefined) {
+                    if (compReqs.base[key] < value) {
+                        compReqs.base[key] = value;
+                    }
+                } else {
+                    compReqs.base[key] = value;
+                }
+                if (Object.keys(compReqs.alt).length >= 1) {
+                    if (compReqs.alt[key] != undefined) {
+                        if (compReqs.alt[key] < value) {
+                            compReqs.alt[key] = value;
+                        }
+                    } else {
+                        compReqs.alt[key] = value;
+                    }
+                }
+            });
+        }
+    }
+    // console.log('compReqs.base');
+    // console.log(compReqs.base);
+    // console.log('compReqs.alt');
+    // console.log(compReqs.alt);
+    return compReqs;
 };
 
 function displayUnitReqs(unit,full) {
@@ -1456,68 +1545,17 @@ function displayUnitReqs(unit,full) {
             baseUnitReqs = baseUnitReqs+'&#127963; '+toNiceString(unit.bldReq);
         }
     }
-    let compReq1 = {};
-    let compReq2 = {};
-    if (!unit.compPass.includes(playerInfos.gang)) {
-        if (unit.compReq != undefined) {
-            if (Object.keys(unit.compReq).length >= 1) {
-                Object.entries(unit.compReq).map(entry => {
-                    let key = entry[0];
-                    let value = entry[1];
-                    compReq1[key] = value;
-                });
-            }
-        }
-        // altCompReq
-        if (unit.altCompReq != undefined) {
-            if (Object.keys(unit.altCompReq).length >= 1) {
-                compReqOK = true;
-                Object.entries(unit.altCompReq).map(entry => {
-                    let key = entry[0];
-                    let value = entry[1];
-                    compReq2[key] = value;
-                });
-            }
-        }
-    }
-    if (unit.compHardReq != undefined) {
-        if (Object.keys(unit.compHardReq).length >= 1) {
-            Object.entries(unit.compHardReq).map(entry => {
-                let key = entry[0];
-                let value = entry[1];
-                if (compReq1[key] != undefined) {
-                    if (compReq1[key] < value) {
-                        compReq1[key] = value;
-                    }
-                } else {
-                    compReq1[key] = value;
-                }
-                if (Object.keys(compReq2).length >= 1) {
-                    if (compReq2[key] != undefined) {
-                        if (compReq2[key] < value) {
-                            compReq2[key] = value;
-                        }
-                    } else {
-                        compReq2[key] = value;
-                    }
-                }
-            });
-        }
-    }
-    console.log('CompReq1');
-    console.log(compReq1);
-    console.log('CompReq2');
-    console.log(compReq2);
+    let compReqs = getCompReqs(unit,true);
     let isCompReq = false;
-    if (Object.keys(compReq1).length >= 1) {
-        let stringReq1 = toCoolString(compReq1,true,false);
+    if (Object.keys(compReqs.base).length >= 1) {
+        let stringReq1 = toCoolString(compReqs.base,true,false);
         stringReq1 = replaceCompNamesByFullNames(stringReq1);
         unitReqs = unitReqs+'<span class="mauve">Compétences requises:</span> &#128161; '+stringReq1+'<br>';
         baseUnitReqs = baseUnitReqs+' &#128161; '+stringReq1;
         isCompReq = true;
     }
-    if (Object.keys(compReq2).length >= 1) {
-        let stringReq2 = toCoolString(compReq2,true,false);
+    if (Object.keys(compReqs.alt).length >= 1) {
+        let stringReq2 = toCoolString(compReqs.alt,true,false);
         stringReq2 = replaceCompNamesByFullNames(stringReq2);
         unitReqs = unitReqs+'<span class="mauve">Alternative:</span> &#128161; '+stringReq2+'<br>';
         baseUnitReqs = baseUnitReqs+' &#128161; '+stringReq2;
@@ -1797,7 +1835,7 @@ function showTileInfos(tileId) {
             } else if (tile.ap.includes('prt_')) {
                 let armorName = tile.ap.replace('prt_','');
                 let armor = getEquipByName(armorName);
-                let armorInfo = showFullArmorInfo(armor);
+                let armorInfo = showFullArmorInfo(armor,false);
                 $('#tileInfos').append('<span class="paramName cy">Armures</span><span class="paramIcon"><i class="ra ra-vest rpg"></i></span><span class="paramValue cy" title="'+armorInfo+'">'+armorName+'</span><br>');
             } else if (tile.ap.includes('eq_')) {
                 let equipName = tile.ap.replace('eq_','');

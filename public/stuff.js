@@ -945,7 +945,7 @@ function maxUnits(unit) {
         maxInfo.max = maxOf.tank;
         if (numOf[unit.name] >= maxInfo.max && numOf[unit.name] >= 2) {
             maxInfo.ko = true;
-            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire une usine d\'armements supplémentaire';
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire une usine d\'armement supplémentaire';
         }
     }
     if (unit.skills.includes('hveh')) {

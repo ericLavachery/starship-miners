@@ -432,7 +432,7 @@ function conSelect(unitId,player,noRefresh) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                     }
                     armorSkills = showArmorInfo(batArmor);
-                    fullArmorSkills = showFullArmorInfo(batArmor);
+                    fullArmorSkills = showFullArmorInfo(batArmor,false);
                     flatCosts = getCosts(conselUnit,batArmor,0,'equip');
                     deployCosts = getDeployCosts(conselUnit,batArmor,0,'equip');
                     mergeObjects(flatCosts,deployCosts);
@@ -643,12 +643,12 @@ function showArmorInfo(batArmor) {
     return armorSkills;
 };
 
-function showFullArmorInfo(batArmor) {
+function showFullArmorInfo(batArmor,withReqs) {
     let apAdj = batArmor.ap;
     if (apAdj >= 1) {
         apAdj = '+'+apAdj;
     }
-    let armorSkills = '(+'+batArmor.armor+'/'+apAdj+') ';
+    let armorSkills = '(+'+batArmor.armor+' Armure /'+apAdj+' PA) ';
     if (batArmor.skills.includes('resistacide')) {
         armorSkills = armorSkills+'&#9889; résistance acide ';
     }
@@ -689,6 +689,24 @@ function showFullArmorInfo(batArmor) {
         armorSkills = armorSkills+'&#9889; déplacement non furtif ';
     }
     armorSkills = armorSkills+'&nbsp;';
+    if (withReqs) {
+        if (batArmor.bldReq != undefined) {
+            if (batArmor.bldReq.length >= 1) {
+                armorSkills = armorSkills+' &#127963; '+toNiceString(batArmor.bldReq)+' &nbsp;';
+            }
+        }
+        let compReqs = getCompReqs(batArmor,false);
+        if (Object.keys(compReqs.base).length >= 1) {
+            let stringReq1 = toCoolString(compReqs.base,true,false);
+            stringReq1 = replaceCompNamesByFullNames(stringReq1);
+            armorSkills = armorSkills+' &#128161;'+stringReq1;
+        }
+        if (Object.keys(compReqs.alt).length >= 1) {
+            let stringReq2 = toCoolString(compReqs.alt,true,false);
+            stringReq2 = replaceCompNamesByFullNames(stringReq2);
+            armorSkills = armorSkills+' &#128161;'+stringReq2;
+        }
+    }
     return armorSkills;
 };
 

@@ -22,7 +22,7 @@ function equipDetails(stuffName,isAmmo) {
         baseInfo = showAmmoInfo(stuffName);
     } else if (stuff.cat === 'armor') {
         pageTitle = 'ARMURE';
-        baseInfo = showFullArmorInfo(stuff);
+        baseInfo = showFullArmorInfo(stuff,false);
     } else if (stuff.cat === 'drogue') {
         pageTitle = 'DROGUE';
         if (stuff.info != undefined) {
@@ -92,7 +92,7 @@ function reEquip(batId,noRefresh) {
             myBatType.protection.forEach(function(armor) {
                 batArmor = getEquipByName(armor);
                 armorSkills = showArmorInfo(batArmor);
-                fullArmorSkills = showFullArmorInfo(batArmor);
+                fullArmorSkills = showFullArmorInfo(batArmor,false);
                 compReqOK = checkCompReq(batArmor);
                 if (compReqOK) {
                     if (myNewGear[2] == armor || (myNewGear[2] === 'xxx' && listNum === 1)) {

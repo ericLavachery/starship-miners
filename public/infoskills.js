@@ -2675,7 +2675,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     apCost = 3;
                     apReq = 0;
                     let armor = getEquipByName(armorName);
-                    let armorInfo = showFullArmorInfo(armor);
+                    let armorInfo = showFullArmorInfo(armor,false);
                     $('#unitInfos').append('<button type="button" title="Enfiler les armures ('+armorName+' / '+armorInfo+')" class="boutonVert iconButtons" onclick="useArmorPack(`'+armorName+'`)"><i class="ra ra-vest rpg"></i> <span class="small">'+apCost+'</span></button>');
                     lineBreak = true;
                 }

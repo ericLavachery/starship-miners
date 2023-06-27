@@ -237,6 +237,15 @@ h6 {
     width: 18px;
     display: inline-block;
 }
+.paramEmo {
+    text-align: center;
+    margin-right: 3px;
+    color: #c4cb83;
+    background-color: #000000;
+    width: 17px;
+    font-size: 13px;
+    display: inline-block;
+}
 .paramValue {
     display: inline-block;
     font-weight: bold;
