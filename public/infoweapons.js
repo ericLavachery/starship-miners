@@ -85,7 +85,7 @@ function weaponsInfos(bat,batType,tile,pop) {
                 colBouton = 'cy';
                 colIcon = 'cy';
             } else if (selectedWeap.num != undefined) {
-                balise = 'h6';
+                balise = 'h4';
                 leBouton = 'boutonGrey';
                 colBouton = 'gf';
                 colIcon = 'gff';
@@ -350,7 +350,7 @@ function weaponsInfos(bat,batType,tile,pop) {
                 colBouton = 'cy';
                 colIcon = 'cy';
             } else if (selectedWeap.num != undefined) {
-                balise = 'h6';
+                balise = 'h4';
                 leBouton = 'boutonGrey';
                 colBouton = 'gf';
                 colIcon = 'gff';
