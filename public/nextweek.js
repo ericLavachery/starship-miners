@@ -282,11 +282,54 @@ function eventProduction(afterMission,time,sim,quiet) {
     }
 };
 
+function getGangRechAdj() {
+    let rech = {};
+    rech.good = [];
+    rech.bad = [];
+    if (playerInfos.comp.gang === 'rednecks') {
+        rech.good.push('ext');
+        rech.bad.push('tele');
+        rech.bad.push('exo');
+    }
+    if (playerInfos.comp.gang === 'blades') {
+        rech.good.push('cam');
+        rech.bad.push('ind');
+    }
+    if (playerInfos.comp.gang === 'bulbos') {
+        rech.good.push('tele');
+        rech.good.push('ind');
+        rech.bad.push('train');
+    }
+    if (playerInfos.comp.gang === 'drogmulojs') {
+        rech.good.push('tri');
+        rech.good.push('cam');
+        rech.bad.push('ordre');
+        rech.bad.push('ind');
+    }
+    if (playerInfos.comp.gang === 'tiradores') {
+        rech.good.push('vsp');
+        rech.bad.push('cam');
+        rech.bad.push('tele');
+        rech.bad.push('med');
+        rech.bad.push('ordre');
+    }
+    if (playerInfos.comp.gang === 'detruas') {
+        rech.good.push('ind');
+        rech.bad.push('med');
+    }
+    if (playerInfos.comp.gang === 'brasier') {
+        rech.good.push('ordre');
+        rech.bad.push('train');
+    }
+    return rechAdj;
+};
+
 function rechercheSci(bat,time) {
     if (bat.sciRech === undefined) {
         bat.sciRech = playerInfos.sciRech+rand.rand(0,300);
     }
     if (bat.eq.includes('sci-')) {
+        let rechGang = getGangRechAdj();
         console.log('RECHERCHE');
         let rechCompName = bat.eq.replace('sci-','');
         console.log(rechCompName);
@@ -296,8 +339,14 @@ function rechercheSci(bat,time) {
         let rechCompOK = isFoundCompOK(rechComp);
         console.log(rechCompOK);
         if (rechCompOK) {
-            let findChance = Math.round(time*rand.rand(14,18)/4/rechComp.rechCost);
-            let findLimit = Math.round(2000*rechComp.rechCost);
+            let rechAdj = 1;
+            if (rechGang.good.includes(rechComp.name)) {
+                rechAdj = 0.85;
+            } else if (rechGang.bad.includes(rechComp.name)) {
+                rechAdj = 1.3;
+            }
+            let findChance = Math.round(time*rand.rand(14,18)/4/rechComp.rechCost*rechAdj);
+            let findLimit = Math.round(2000*rechComp.rechCost*rechAdj);
             if (rand.rand(1,10000) <= findChance+bat.sciRech || bat.sciRech >= findLimit) {
                 playerInfos.comp[rechCompName] = playerInfos.comp[rechCompName]+1;
                 bat.sciRech = 0;

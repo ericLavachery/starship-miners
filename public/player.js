@@ -1863,7 +1863,7 @@ function calcStartRes() {
                 playerInfos.startRes['Citoyens'] = playerInfos.startRes['Citoyens']+bat.citoyens;
             } else {
                 let unitCits = batType.squads*batType.crew*batType.squadSize;
-                if (batType.skills.includes('clone') || batType.skills.includes('dog')) {
+                if (batType.skills.includes('clone') || batType.skills.includes('dog') || bat.tags.includes('nopilots')) {
                     unitCits = 0;
                 }
                 playerInfos.startRes['Citoyens'] = playerInfos.startRes['Citoyens']+unitCits;
@@ -1954,7 +1954,7 @@ function calcEndRes(onlyLanders) {
                     playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+bat.citoyens;
                 } else {
                     let unitCits = batType.squads*batType.crew*batType.squadSize;
-                    if (batType.skills.includes('clone') || batType.skills.includes('dog')) {
+                    if (batType.skills.includes('clone') || batType.skills.includes('dog') || bat.tags.includes('nopilots')) {
                         unitCits = 0;
                     }
                     playerInfos.endRes['Citoyens'] = playerInfos.endRes['Citoyens']+unitCits;

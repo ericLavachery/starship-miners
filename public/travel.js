@@ -46,9 +46,9 @@ function startMission(isTest) {
 function calcParaNum() {
     let paraNum = 0;
     if (playerInfos.gang === 'tiradores') {
-        paraNum = 3+Math.ceil(playerInfos.comp.train/2.1)+playerInfos.comp.aero;
-    } else if (playerInfos.comp.aero >= 2) {
-        paraNum = 1;
+        paraNum = Math.ceil(players.gLevel/4.75)+Math.ceil(playerInfos.comp.train/2.1)+playerInfos.comp.aero;
+    } else if (playerInfos.comp.aero >= 1) {
+        paraNum = Math.ceil(playerInfos.comp.train/2.1)+playerInfos.comp.aero-1;
     }
     return paraNum;
 };

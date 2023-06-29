@@ -905,7 +905,7 @@ function showTileRes(theTileRes) {
 
 function getResIcon(res) {
     let resIcon;
-    if (res.cat.includes('sky')) {
+    if (res.cat.includes('sky') || res.name === 'Spins') {
         resIcon = '&starf;';
     } else if (res.rarity <= 20 || res.cat === 'blue') {
         resIcon = '&star;';

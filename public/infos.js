@@ -1284,6 +1284,9 @@ function batFullInfos(bat,batType) {
             allSkills = allSkills+'<span class="paramValue" title="Construction d\'infrastructures">Infra</span>'+sepa;
         }
     }
+    if (batType.skills.includes('inframir')) {
+        allSkills = allSkills+'<span class="paramValue" title="Construction de Miradors">Miradors</span>'+sepa;
+    }
     if (batType.skills.includes('infrahelp')) {
         allSkills = allSkills+'<span class="paramValue" title="Toutes les infanteries autour du bâtiment peuvent construire des infrastructures">Infra-help</span>'+sepa;
     }

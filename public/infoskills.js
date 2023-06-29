@@ -2280,8 +2280,12 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     $('#unitInfos').append('<span id="line-infra"></span>');
     lineBreak = false;
     // INFRASTRUCTURE
-    if ((batType.skills.includes('infraz') || near.caserne) && !playerInfos.onShip && !zeroCrew) {
+    if ((batType.skills.includes('infraz') || batType.skills.includes('inframir') || near.caserne) && !playerInfos.onShip && !zeroCrew) {
         if ((tile.terrain != 'W' || playerInfos.comp.const >= 2 || playerInfos.comp.const+playerInfos.comp.def >= 3) && tile.terrain != 'R' && tile.terrain != 'L') {
+            let mirOnly = false;
+            if (batType.skills.includes('inframir') && !near.caserne) {
+                mirOnly = true;
+            }
             apReq = getConstAPReq(bat,batType);
             let infra;
             let infraCostOK;
@@ -2317,7 +2321,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     lineBreak = true;
                 }
             }
-            if (tile.infra != 'Palissades') {
+            if (tile.infra != 'Palissades' && !mirOnly) {
                 infra = getInfraByName('Palissades');
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
@@ -2340,7 +2344,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     lineBreak = true;
                 }
             }
-            if (tile.infra != 'Remparts' && playerInfos.comp.def >= 1) {
+            if (tile.infra != 'Remparts' && playerInfos.comp.def >= 1 && !mirOnly) {
                 infra = getInfraByName('Remparts');
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.const) {
@@ -2363,7 +2367,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     lineBreak = true;
                 }
             }
-            if (tile.infra != 'Murailles' && playerInfos.comp.def >= 3 && playerInfos.comp.const >= 1) {
+            if (tile.infra != 'Murailles' && playerInfos.comp.def >= 3 && playerInfos.comp.const >= 1 && !mirOnly) {
                 infra = getInfraByName('Murailles');
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
@@ -2386,7 +2390,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     lineBreak = true;
                 }
             }
-            if (tile.infra != 'Terriers' && playerInfos.comp.const >= 1) {
+            if (tile.infra != 'Terriers' && playerInfos.comp.const >= 1 && !mirOnly) {
                 infra = getInfraByName('Terriers');
                 if (infra.levels[playerInfos.gang] < 90) {
                     infraCostOK = checkCost(infra.costs);
