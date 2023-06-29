@@ -971,7 +971,7 @@ function missionRes() {
     armorTypes.forEach(function(infra) {
         if (infra.fabTime != undefined) {
             prodOK = true;
-            if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
+            if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
                 prodOK = false;
             }
             let compReqOK = checkCompReq(infra);
@@ -1098,25 +1098,27 @@ function missionRes() {
     $('#fillList').append('<br><span class="constName or">PACKS UPKEEP (10 Tours)</span><br>');
     unitTypes.forEach(function(unit) {
         if (unit.skills.includes('prefab')) {
-            if (unit.upkeep != undefined) {
-                if (prepaBld[unit.name] === undefined) {
-                    showPrep = '';
-                } else {
-                    showPrep = '('+prepaBld[unit.name]+')';
-                }
-                let upCosts = {};
-                Object.entries(unit.upkeep).map(entry => {
-                    let key = entry[0];
-                    let value = entry[1];
-                    let upValue = Math.ceil(value)*10;
-                    upCosts[key] = upValue;
-                });
-                costString = displayCosts(upCosts);
-                costsOK = checkCost(upCosts);
-                if (!costsOK) {
-                    $('#fillList').append('<span class="constName gff" title="'+costString+'">&cross; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
-                } else {
-                    $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResUpkeep(`'+unit.name+'`,10)">&check; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+            if (playerInfos.bldVM.includes(unit.name)) {
+                if (unit.upkeep != undefined) {
+                    if (prepaBld[unit.name] === undefined) {
+                        showPrep = '';
+                    } else {
+                        showPrep = '('+prepaBld[unit.name]+')';
+                    }
+                    let upCosts = {};
+                    Object.entries(unit.upkeep).map(entry => {
+                        let key = entry[0];
+                        let value = entry[1];
+                        let upValue = Math.ceil(value)*10;
+                        upCosts[key] = upValue;
+                    });
+                    costString = displayCosts(upCosts);
+                    costsOK = checkCost(upCosts);
+                    if (!costsOK) {
+                        $('#fillList').append('<span class="constName gff" title="'+costString+'">&cross; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                    } else {
+                        $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResUpkeep(`'+unit.name+'`,10)">&check; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                    }
                 }
             }
         }

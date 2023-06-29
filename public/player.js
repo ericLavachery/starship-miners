@@ -209,6 +209,9 @@ function changePlayerInfo(dropMenuId,infoName,from) {
     console.log(from);
     let value = document.getElementById(dropMenuId).value;
     console.log(value);
+    if (infoName === 'mapTurn' && value === "0") {
+        playerInfos.para = calcParaNum();
+    }
     if (value === 'true') {
         playerInfos[infoName] = true;
     } else if (value === 'false') {
@@ -227,6 +230,7 @@ function changePlayerInfo(dropMenuId,infoName,from) {
             }
         }
     }
+    console.log('infoName');
     console.log(infoName);
     console.log(from);
     if (from === 'gangChoice') {
@@ -3002,16 +3006,6 @@ function gangChoice() {
         if (i > 99) {break;}
         i++
     }
-    // $('#theStartZone').append('<option value="99">Zone 99 - Ile</option>');
-    // $('#theStartZone').append('<option value="98">Zone 98 - Ville</option>');
-    // $('#theStartZone').append('<option value="97">Zone 97 - Chemins</option>');
-    // $('#theStartZone').append('<option value="96" disabled>Zone 96</option>');
-    // $('#theStartZone').append('<option value="95" disabled>Zone 95</option>');
-    // $('#theStartZone').append('<option value="94" disabled>Zone 94</option>');
-    // $('#theStartZone').append('<option value="93">Zone 93 - Le Grand Tour</option>');
-    // $('#theStartZone').append('<option value="92">Zone 92 - Caché</option>');
-    // $('#theStartZone').append('<option value="91">Zone 91 - Grenouilles</option>');
-    // $('#theStartZone').append('<option value="90">Zone 90 - Place Forte</option>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="butSpace"></span>');
     $('#conUnitList').append('<br>');

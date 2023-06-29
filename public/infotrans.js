@@ -888,7 +888,7 @@ function clickDebarq(tileId) {
     let paraOK = false;
     let isPara = false;
     let paraMessage = '';
-    if (distance > 1 || playerInfos.mapTurn < 1) {
+    if (distance > 1 || playerInfos.mapTurn === 0) {
         let paraDistance = calcParaDist();
         // let isPara = isUnitPara(batDebarqType);
         if (playerInfos.mapTurn === 0 && !playerInfos.onShip && playerInfos.para >= 1) {

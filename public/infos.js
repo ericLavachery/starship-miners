@@ -1279,13 +1279,19 @@ function batFullInfos(bat,batType) {
     }
     if (batType.skills.includes('infraz')) {
         if (batType.skills.includes('infast')) {
-            allSkills = allSkills+'<span class="paramValue" title="Construction rapide d\'infrastructures">Infra-fast</span>'+sepa;
+            allSkills = allSkills+'<span class="paramValue" title="Construction rapide d\'infrastructures (Miradors, Palissades etc...)">Infra-fast</span>'+sepa;
         } else {
-            allSkills = allSkills+'<span class="paramValue" title="Construction d\'infrastructures">Infra</span>'+sepa;
+            allSkills = allSkills+'<span class="paramValue" title="Construction d\'infrastructures (Miradors, Palissades etc...)">Infrastructures</span>'+sepa;
         }
     }
-    if (batType.skills.includes('inframir')) {
+    if (batType.skills.includes('mir')) {
         allSkills = allSkills+'<span class="paramValue" title="Construction de Miradors">Miradors</span>'+sepa;
+    }
+    if (batType.skills.includes('pal')) {
+        allSkills = allSkills+'<span class="paramValue" title="Construction de Palissades">Palissades</span>'+sepa;
+    }
+    if (batType.skills.includes('trou')) {
+        allSkills = allSkills+'<span class="paramValue" title="Construction de Terriers">Terriers</span>'+sepa;
     }
     if (batType.skills.includes('infrahelp')) {
         allSkills = allSkills+'<span class="paramValue" title="Toutes les infanteries autour du bâtiment peuvent construire des infrastructures">Infra-help</span>'+sepa;
