@@ -1324,6 +1324,9 @@ function spawns() {
     if (zone[0].type === 'roaches') {
         cafDice = 3;
     }
+    if (isStartZone) {
+        cafDice = 7;
+    }
     let shufAliens = _.shuffle(aliens);
     shufAliens.forEach(function(bat) {
         if (bat.loc === "zone") {

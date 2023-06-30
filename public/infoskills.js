@@ -350,13 +350,16 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 }
                 apCost = secretPass.ap;
                 if (bat.apLeft >= apReq) {
-                    $('#unitInfos').append('<button type="button" title="Passage secret (aller au terrier indiqué)" class="boutonRose iconButtons" onclick="goSecretPass()"><i class="fas fa-door-open"></i> <span class="small">'+apCost+'</span></button>');
+                    $('#unitInfos').append('<button type="button" title="Passage secret (aller au terrier marqué)" class="boutonRose iconButtons" onclick="goSecretPass()"><i class="fas fa-door-open"></i> <span class="small">'+apCost+'</span></button>');
                     lineBreak = true;
                 } else {
                     skillMessage = "Passage secret: Pas assez de PA";
                     $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-door-open"></i> <span class="small">'+apCost+'</span></button>');
                     lineBreak = true;
                 }
+            } else {
+                $('#unitInfos').append('<button type="button" title="Passage secret (marquez un autre Terrier proche pour y accéder)" class="boutonGris iconButtons"><i class="fas fa-door-open"></i></button>');
+                lineBreak = true;
             }
         }
     }
@@ -2280,7 +2283,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     $('#unitInfos').append('<span id="line-infra"></span>');
     lineBreak = false;
     // INFRASTRUCTURE
-    if ((batType.skills.includes('infraz') || batType.skills.includes('mir') || batType.skills.includes('pal') || batType.skills.includes('trou') || near.caserne) && !playerInfos.onShip && !zeroCrew) {
+    if ((batType.skills.includes('infraz') || (batType.skills.includes('infbld') && near.bld) || (batType.skills.includes('mir') && near.bld) || (batType.skills.includes('pal') && near.bld) || batType.skills.includes('trou') || near.caserne) && !playerInfos.onShip && !zeroCrew) {
         if ((tile.terrain != 'W' || playerInfos.comp.const >= 2 || playerInfos.comp.const+playerInfos.comp.def >= 3) && tile.terrain != 'R' && tile.terrain != 'L') {
             let oneOnly = 'all';
             if (batType.skills.includes('mir') && !near.caserne) {
@@ -2295,6 +2298,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             apReq = getConstAPReq(bat,batType);
             let infra;
             let infraCostOK;
+            let compReqOK;
             let defaultMessage;
             if (bat.apLeft < apReq) {
                 defaultMessage = 'Pas assez de PA (réserve de '+apReq+' requise)';
@@ -2306,17 +2310,20 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             $('#infraButtons').empty();
             if (tile.infra != 'Miradors' && (oneOnly === 'all' || oneOnly === 'mir')) {
                 infra = getInfraByName('Miradors');
+                compReqOK = checkCompReq(infra);
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
                     prodOK = false;
                 } else {
                     prodOK = true;
                 }
-                if (infraCostOK && prodOK && bat.apLeft >= apReq && !nearby.oneTile) {
+                if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
                     $('#infraButtons').append('<button type="button" title="Construction (Miradors) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
                     lineBreak = true;
                 } else {
-                    if (!prodOK) {
+                    if (!compReqOK) {
+                        skillMessage = "Compétences insuffisantes";
+                    } else if (!prodOK) {
                         skillMessage = "Niveau insuffisant";
                     } else if (!infraCostOK) {
                         skillMessage = "Pas assez de ressources "+displayCosts(infra.costs);
@@ -2329,17 +2336,20 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
             if (tile.infra != 'Palissades' && (oneOnly === 'all' || oneOnly === 'pal')) {
                 infra = getInfraByName('Palissades');
+                compReqOK = checkCompReq(infra);
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
                     prodOK = false;
                 } else {
                     prodOK = true;
                 }
-                if (infraCostOK && prodOK && bat.apLeft >= apReq && !nearby.oneTile) {
+                if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
                     $('#infraButtons').append('<button type="button" title="Construction (Palissades) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
                     lineBreak = true;
                 } else {
-                    if (!prodOK) {
+                    if (!compReqOK) {
+                        skillMessage = "Compétences insuffisantes";
+                    } else if (!prodOK) {
                         skillMessage = "Niveau insuffisant";
                     } else if (!infraCostOK) {
                         skillMessage = "Pas assez de ressources "+displayCosts(infra.costs);
@@ -2350,19 +2360,22 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     lineBreak = true;
                 }
             }
-            if (tile.infra != 'Remparts' && playerInfos.comp.def >= 1 && oneOnly === 'all') {
+            if (tile.infra != 'Remparts' && oneOnly === 'all') {
                 infra = getInfraByName('Remparts');
+                compReqOK = checkCompReq(infra);
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.const) {
                     prodOK = false;
                 } else {
                     prodOK = true;
                 }
-                if (infraCostOK && prodOK && bat.apLeft >= apReq && !nearby.oneTile) {
+                if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
                     $('#infraButtons').append('<button type="button" title="Construction (Remparts) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
                     lineBreak = true;
                 } else {
-                    if (!prodOK) {
+                    if (!compReqOK) {
+                        skillMessage = "Compétences insuffisantes";
+                    } else if (!prodOK) {
                         skillMessage = "Niveau insuffisant";
                     } else if (!infraCostOK) {
                         skillMessage = "Pas assez de ressources "+displayCosts(infra.costs);
@@ -2373,19 +2386,22 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     lineBreak = true;
                 }
             }
-            if (tile.infra != 'Murailles' && playerInfos.comp.def >= 3 && playerInfos.comp.const >= 1 && oneOnly === 'all') {
+            if (tile.infra != 'Murailles' && oneOnly === 'all') {
                 infra = getInfraByName('Murailles');
+                compReqOK = checkCompReq(infra);
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
                     prodOK = false;
                 } else {
                     prodOK = true;
                 }
-                if (infraCostOK && prodOK && bat.apLeft >= apReq && !nearby.oneTile) {
+                if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
                     $('#infraButtons').append('<button type="button" title="Construction (Murailles) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
                     lineBreak = true;
                 } else {
-                    if (!prodOK) {
+                    if (!compReqOK) {
+                        skillMessage = "Compétences insuffisantes";
+                    } else if (!prodOK) {
                         skillMessage = "Niveau insuffisant";
                     } else if (!infraCostOK) {
                         skillMessage = "Pas assez de ressources "+displayCosts(infra.costs);
@@ -2396,20 +2412,23 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     lineBreak = true;
                 }
             }
-            if (tile.infra != 'Terriers' && playerInfos.comp.const >= 1 && (oneOnly === 'all' || oneOnly === 'trou')) {
+            if (tile.infra != 'Terriers' && (oneOnly === 'all' || oneOnly === 'trou')) {
                 infra = getInfraByName('Terriers');
                 if (infra.levels[playerInfos.gang] < 90) {
                     infraCostOK = checkCost(infra.costs);
+                    compReqOK = checkCompReq(infra);
                     if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
                         prodOK = false;
                     } else {
                         prodOK = true;
                     }
-                    if (infraCostOK && prodOK && bat.apLeft >= apReq && !nearby.oneTile) {
+                    if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
                         $('#infraButtons').append('<button type="button" title="Construction (Terriers) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Terriers`)"><span class="small">Te</span></button>');
                         lineBreak = true;
                     } else {
-                        if (!prodOK) {
+                        if (!compReqOK) {
+                            skillMessage = "Compétences insuffisantes";
+                        } else if (!prodOK) {
                             skillMessage = "Niveau insuffisant";
                         } else if (!infraCostOK) {
                             skillMessage = "Pas assez de ressources "+displayCosts(infra.costs);

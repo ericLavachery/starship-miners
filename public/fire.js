@@ -1334,7 +1334,7 @@ function attack(melee,init) {
                 nevMove = true;
             }
         }
-        if (targetBat.tags.includes('nomove') && !targetBatType.skills.includes('nomove') && !nevMove) {
+        if (targetBat.tags.includes('nomove') && !targetBatType.skills.includes('nomove') && (!nevMove || targetBatType.skills.includes('nofight'))) {
             if (totalDamage >= 1) {
                 if (!uniRes) {
                     tagDelete(targetBat,'nomove');

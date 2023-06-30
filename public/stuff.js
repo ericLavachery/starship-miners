@@ -511,6 +511,7 @@ function nearWhat(myBat,myBatType) {
     }
     let near = {};
     near.caserne = false;
+    near.bld = false;
     near.control = false;
     near.friends = false;
     near.schef = false;
@@ -526,6 +527,13 @@ function nearWhat(myBat,myBatType) {
                     if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
                         near.caserne = true;
                     }
+                }
+            }
+        }
+        if (bat.loc === "zone" && bat.id != myBat.id) {
+            if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
+                if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
+                    near.bld = true;
                 }
             }
         }

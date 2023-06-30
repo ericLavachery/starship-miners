@@ -182,7 +182,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fortif","datt","fouille","maycamo","brigands","penitbat","infraz","herofortif"],
+        "skills":["a_heavy","fortif","datt","fouille","maycamo","brigands","penitbat","infbld","herofortif"],
         "mediCost":9,
         "mecanoCost":15,
         "fuzz":1,
@@ -300,6 +300,7 @@
         "maxVeg":3,
         "skills":["a_light","fortif","trou","fouille","camo","brigands","trapfosse","unemun","swim","guerrilla","tirailleur","baddef","penitbat","herowc","lowstress"],
         "mediCost":9,
+        "mecanoCost":12,
         "maxSkill":2,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
@@ -414,6 +415,7 @@
         "maxVeg":3,
         "skills":["a_heavy","fortif","trou","fouille","berserk","datt","brigands","camo","swim","guerrilla","tirailleur","penitbat","herorage","lowstress"],
         "mediCost":9,
+        "mecanoCost":15,
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -524,7 +526,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fortif","fouille","brigands","berserk","datt","guerrilla","tirailleur","swim","penitbat","infraz","herolasso","lowstress","recupcorps"],
+        "skills":["a_heavy","fortif","fouille","brigands","berserk","datt","guerrilla","tirailleur","swim","penitbat","infbld","herolasso","lowstress","recupcorps"],
         "mediCost":9,
         "mecanoCost":14,
         "fuzz":1,
@@ -1075,6 +1077,7 @@
         "maxVeg":3,
         "skills":["a_heavy","fouille","fortif","pal","fastguet","datt","maycamo","ranger","unemun","herosalvo","heroap"],
         "mediCost":9,
+        "mecanoCost":15,
         "fuzz":1,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -1435,7 +1438,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","barda","autokitmolo","mecano","maycamo","dealer","nitro","sudu","nochef","nofight"],
+        "skills":["a_light","fouille","fortif","barda","autokitmolo","mecano","maycamo","dealer","nitro","sudu","nochef"],
         "mecanoCost":4,
         "maxDrug":12,
         "fuzz":1,
@@ -1622,6 +1625,7 @@
         "maxVeg":3,
         "skills":["a_light","fouille","fortif","ranger","swim","mir","camo","guerrilla","tirailleur","selfbadmedic","dealer","octiron","kirin","cible","herosalvo","autohero"],
         "mediCost":6,
+        "mecanoCost":15,
         "maxDrug":6,
         "fuzz":0,
         "deathFx":"195954__minian89__death-blood-splatter"
@@ -1683,6 +1687,7 @@
         "maxVeg":3,
         "skills":["a_light","fouille","fortif","mir","cible","ranger","camo","embuscade","baddef","selfbadmedic","dealer","octiron","souschef","herosalvo"],
         "mediCost":9,
+        "mecanoCost":15,
         "maxDrug":6,
         "fuzz":0,
         "deathFx":"195954__minian89__death-blood-splatter"
@@ -1916,6 +1921,7 @@
         "maxVeg":3,
         "skills":["a_heavy","fouille","fortif","pal","datt","maycamo","barda","herorip"],
         "mediCost":9,
+        "mecanoCost":15,
         "fuzz":0,
         "deathFx":"human2"
     },
@@ -2040,8 +2046,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","berserk","datt","undead","maycamo","strong","herosalvo"],
+        "skills":["a_heavy","fouille","fortif","pal","berserk","datt","undead","maycamo","strong","herosalvo"],
         "mediCost":10,
+        "mecanoCost":15,
         "fuzz":1,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -2149,8 +2156,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","datt","maycamo","strong","defense","herorange"],
+        "skills":["a_heavy","fouille","fortif","pal","datt","maycamo","strong","defense","herorange"],
         "mediCost":9,
+        "mecanoCost":15,
         "fuzz":1.5,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
@@ -2953,6 +2961,7 @@
         "maxVeg":3,
         "skills":["a_mid","fouille","fortif","pal","datt","maycamo","landmine","barda","herorof"],
         "mediCost":10,
+        "mecanoCost":15,
         "maxSkill":4,
         "fuzz":1,
         "deathFx":"human3"
@@ -6243,8 +6252,9 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","datt","fireballs","maycamo","selfbadmedic","uprank","herosalvo"],
+        "skills":["a_heavy","fouille","fortif","mir","datt","fireballs","maycamo","selfbadmedic","uprank","herosalvo"],
         "mediCost":9,
+        "mecanoCost":15,
         "fuzz":0.5,
         "deathFx":"human1"
     },
