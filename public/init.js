@@ -7,6 +7,10 @@ $(document).on("dragstart", function() {
      return false;
 });
 
+window.onerror = (event) => {
+    jsErrorWarning(event);
+};
+
 // Player
 socket.on('playerInfos-Load', function(pi) {
     playerInfos = pi;

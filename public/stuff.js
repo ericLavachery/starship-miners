@@ -659,6 +659,11 @@ function washThisWarning(warnNumber) {
     $('#report').empty();
 };
 
+function jsErrorWarning(theError) {
+    playSound('jumpscare2',0);
+    warning('<h5>ERREUR JAVASCRIPT</h5>','<span class="hjaune">NE SAUVEGARDEZ PAS! Prenez une photo de l\'erreur dans la console. Notez l\'action que vous venez de faire. Rapportez de bug.</span><br>'+theError,false);
+};
+
 function warning(title,body,noHand,tileId,closeAll) {
     let warnNumber = nextWarn;
     nextWarn++;
