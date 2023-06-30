@@ -238,6 +238,7 @@ function getGangFactors() {
     let gangFacts = {};
     gangFacts.cit = 1;
     gangFacts.bod = 1;
+    gangFacts.hunt = 1;
     gangFacts.taupe = false;
     if (playerInfos.gang != undefined) {
         if (playerInfos.gang === 'rednecks') {
@@ -248,6 +249,9 @@ function getGangFactors() {
         }
         if (playerInfos.gang === 'blades' || playerInfos.gang === 'brasier' || playerInfos.gang === 'drogmulojs' || playerInfos.gang === 'rednecks') {
             gangFacts.taupe = true;
+        }
+        if (playerInfos.gang === 'blades') {
+            gangFacts.hunt = 1.25;
         }
     }
     return gangFacts;

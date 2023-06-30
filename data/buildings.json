@@ -969,7 +969,7 @@
             "armors":1.2,
             "aoe":"unit",
             "sound":"fpneu_x3",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze","pn-flechette"]
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze","pn-flechette"]
         },
         "weapon2":{
             "name":"Lance grenade",

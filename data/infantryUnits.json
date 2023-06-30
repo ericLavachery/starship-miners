@@ -257,7 +257,7 @@
         "hp":7,
         "armor":0,
         "size":3,
-        "volume":0.9,
+        "volume":0.89,
         "stealth":10,
         "speed":0,
         "ap":14,
@@ -3647,7 +3647,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"mit_pneu",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
         },
         "weapon2":{
             "name":"Tronçonneuse",
@@ -4247,7 +4247,7 @@
             "armors":1.2,
             "aoe":"unit",
             "sound":"fpneu_x1",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
         },
         "protection":[],
         "equip":["aucun","e-flash","lunette2","chargeur2","silencieux2","e-jetpack","e-camo","permakirin","theeye","helper","e-medic","repel"],
@@ -6838,7 +6838,7 @@
             "armors":1.2,
             "aoe":"unit",
             "sound":"fpneu_x3",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze","pn-flechette"]
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-salite","pn-dunium","pn-freeze","pn-flechette"]
         },
         "weapon2":{
             "name":"Grenade",

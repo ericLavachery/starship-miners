@@ -1014,6 +1014,7 @@ function addAlienRes(bat,isWiped) {
         let killRes = 0;
         let caComp = (playerInfos.comp.ca+3)*(playerInfos.comp.ca+3)/36;
         let triComp = 6/(7-playerInfos.comp.tri);
+        let gangFacts = getGangFactors();
         if (Object.keys(batType.killRes).length >= 1) {
             for (var prop in batType.killRes) {
                 if (Object.prototype.hasOwnProperty.call(batType.killRes,prop)) {
@@ -1032,7 +1033,7 @@ function addAlienRes(bat,isWiped) {
                     if (prop != 'Gibier') {
                         killRes = Math.ceil(killRes*alienResFactor/10);
                     } else {
-                        killRes = Math.ceil(killRes);
+                        killRes = Math.ceil(killRes*gangFacts.hunt);
                     }
                     if (playerInfos.alienRes[prop] >=1) {
                         playerInfos.alienRes[prop] = playerInfos.alienRes[prop]+killRes;

@@ -1124,7 +1124,11 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Transporter des ressources avec cette unité diminuera sa vitesse de déplacement">Surcharge (fret)</span>'+sepa;
     }
     if (batType.skills.includes('constructeur')) {
-        allSkills = allSkills+'<span class="paramValue" title="Peut construire des bâtiments et dispositifs">Constructeur</span>'+sepa;
+        if (batType.cat === 'infantry') {
+            allSkills = allSkills+'<span class="paramValue" title="Peut construire des petits bâtiments et dispositifs">Constructeur</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Peut construire des bâtiments et dispositifs">Constructeur</span>'+sepa;
+        }
     }
     if (batType.skills.includes('producteur')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut construire des véhicules et infanteries">Producteur</span>'+sepa;

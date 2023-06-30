@@ -345,6 +345,11 @@ function showRes(tileId) {
                 res = res.replace(/&nbsp;&#128313;&nbsp;/g,"");
                 res = res.replace(/\d+/g,"");
             }
+            if (playerInfos.resFlags.length >= 1) {
+                playerInfos.resFlags.forEach(function(resName) {
+                    res = res.replace(resName,resName+'&#10071;');
+                });
+            }
         }
     }
     let hasMapInfos = false;
