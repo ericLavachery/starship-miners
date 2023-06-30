@@ -1,5 +1,6 @@
 function events(afterMission,time,sim,quiet) {
     console.log('EVENTS: afterMission='+afterMission+' time='+time+' sim='+sim+' quiet='+quiet);
+    afterMissionFirstReset();
     replacerSondes();
     checkMissionAlert();
     checkReserve();
@@ -41,6 +42,23 @@ function events(afterMission,time,sim,quiet) {
     if (!sim) {
         afterMissionReset(time);
     }
+};
+
+function afterMissionFirstReset() {
+    playerInfos.mapDrop = 0;
+    playerInfos.cocons = 0;
+    playerInfos.fndCits = 0;
+    playerInfos.sondeMaps = 0;
+    playerInfos.eggPause = false;
+    playerInfos.droppedEggs = 0;
+    playerInfos.aliensKilled = 0;
+    playerInfos.eggsKilled = 0;
+    playerInfos.alienSat = 0;
+    playerInfos.fuzzTotal = 0;
+    playerInfos.pauseSeed = rand.rand(1,8);
+    playerInfos.myCenter = 1830;
+    playerInfos.undarkOnce = [];
+    playerInfos.showedTiles = [];
 };
 
 function afterMissionReset(time) {
@@ -321,7 +339,7 @@ function getGangRechAdj() {
         rech.good.push('ordre');
         rech.bad.push('train');
     }
-    return rechAdj;
+    return rech;
 };
 
 function rechercheSci(bat,time) {

@@ -2,6 +2,7 @@ function goSoute() {
     inSoute = true;
     justReloaded = false;
     if (playerInfos.onShip) {
+        playerInfos.mapTurn = 0;
         playRoom('soute',true,true);
         playFx('work',false);
     }
