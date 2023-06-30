@@ -274,9 +274,11 @@ function showRes(tileId) {
         }
     }
     let tileText = '';
-    if (tile.tileName !== undefined && tile.tileName != '') {
-        let showTileName = tile.tileName.toUpperCase();
-        tileText = tileText+showTileName+'&nbsp;&nbsp;&nbsp; ';
+    if (tile.tileName != undefined) {
+        if (tile.tileName != '') {
+            let showTileName = tile.tileName.toUpperCase();
+            tileText = tileText+showTileName+'&nbsp;&nbsp;&nbsp; ';
+        }
     }
     if (tile.ruins) {
         let ruinType = {};

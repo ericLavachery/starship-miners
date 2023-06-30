@@ -1069,8 +1069,14 @@ function missionRes() {
     armorTypes.forEach(function(drug) {
         if (drug.cat != undefined) {
             if (drug.cat === 'drogue') {
+                let excluOK = true;
+                if (drug.exclu != undefined) {
+                    if (drug.exclu != playerInfos.gang) {
+                        excluOK = false;
+                    }
+                }
                 let drugCompOK = checkCompReq(drug);
-                if (drugCompOK) {
+                if (drugCompOK && excluOK) {
                     if (prepaBld[drug.name] === undefined) {
                         showPrep = '';
                     } else {
