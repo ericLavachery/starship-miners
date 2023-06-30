@@ -347,8 +347,18 @@ function showRes(tileId) {
             }
         }
     }
-    if (tile.rd || tile.qs || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
-        // mapIndicators = mapIndicators+'<div class="mapInfos" title="'+res+'">';
+    let hasMapInfos = false;
+    let hasTileName = false;
+    if (tile.rd || tile.qs || tile.rq != undefined) {
+        hasMapInfos = true;
+    }
+    if (tile.tileName != undefined) {
+        if (tile.tileName != '') {
+            hasMapInfos = true;
+            hasTileName = true;
+        }
+    }
+    if (hasMapInfos) {
         mapIndicators = mapIndicators+'<div class="mapInfos">';
         if (tile.rq != undefined) {
             tileText = tileText+'&#9935;&nbsp; ('+res+') ';
@@ -359,13 +369,13 @@ function showRes(tileId) {
     } else if (tile.qs) {
         mapIndicators = mapIndicators+'<i class="fas fa-water road"></i>';
     }
-    if (tile.tileName !== undefined && tile.tileName != '') {
+    if (hasTileName) {
         mapIndicators = mapIndicators+'<i class="fas fa-map-marker-alt inficon"></i>';
     }
     if (tile.rq != undefined) {
         mapIndicators = mapIndicators+'<i class="fas fa-atom inficon rq'+tile.rq+'"></i>';
     }
-    if (tile.rd || tile.rq != undefined || (tile.tileName !== undefined && tile.tileName != '')) {
+    if (hasMapInfos) {
         mapIndicators = mapIndicators+'</div>';
     }
     if (tile.infra === 'Miradors' && view) {

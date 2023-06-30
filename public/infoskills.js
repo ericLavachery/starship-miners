@@ -1774,7 +1774,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     // EXTRACTION
     if (batType.skills.includes('extraction') && !playerInfos.onShip && !zeroCrew) {
         let extractOK = false;
-        if (bat.extracted !== undefined) {
+        if (bat.extracted != undefined) {
             if (bat.extracted.length >= 1) {
                 extractOK = true;
             }

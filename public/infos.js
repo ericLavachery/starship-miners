@@ -1781,8 +1781,10 @@ function showTileInfos(tileId) {
     $('#tileInfos').append('<span class="blockTitle"><h3>'+terrain.fullName+'</h3></span>');
     $('#tileInfos').append('<div class="shSpace"></div>');
     // NOM
-    if (tile.tileName !== undefined && tile.tileName !== null && tile.tileName != '') {
-        $('#tileInfos').append('<span class="paramIcon"><i class="fas fa-map-signs"></i></span><span class="fullLine or"><b>'+tile.tileName+'</b></span><br>');
+    if (tile.tileName != undefined) {
+        if (tile.tileName != '') {
+            $('#tileInfos').append('<span class="paramIcon"><i class="fas fa-map-signs"></i></span><span class="fullLine or"><b>'+tile.tileName+'</b></span><br>');
+        }
     }
     if (view) {
     }
@@ -1904,7 +1906,7 @@ function showTileInfos(tileId) {
         }
     }
     if (playerInfos.comp.det >= 1 || !modeSonde) {
-        if (tile.rs !== undefined) {
+        if (tile.rs != undefined) {
             let tileIndex;
             let res;
             let bldReq;
