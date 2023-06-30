@@ -438,9 +438,40 @@ io.sockets.on('connection', function (socket, pseudo) {
         fileToBeCreated = './data/players/'+socket.pseudo+'/bkp/'+socket.pseudo+'-playerInfos.json';
         fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
             if (err) throw err;
-            console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
+            console.log('Backup: '+fileToBeMoved+' was copied to '+fileToBeCreated);
         });
         socket.emit('backup-saved','hi');
+    });
+
+    socket.on('save-autobackup', function(pi) {
+        let dir = './data/players/'+socket.pseudo+'/autobkp';
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+        }
+        let fileToBeMoved = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-currentMap.json';
+        let fileToBeCreated = './data/players/'+socket.pseudo+'/autobkp/'+socket.pseudo+'-currentMap.json';
+        fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
+            if (err) throw err;
+            console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
+        });
+        fileToBeMoved = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-aliens.json';
+        fileToBeCreated = './data/players/'+socket.pseudo+'/autobkp/'+socket.pseudo+'-aliens.json';
+        fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
+            if (err) throw err;
+            console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
+        });
+        fileToBeMoved = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-bataillons.json';
+        fileToBeCreated = './data/players/'+socket.pseudo+'/autobkp/'+socket.pseudo+'-bataillons.json';
+        fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
+            if (err) throw err;
+            console.log(fileToBeMoved+' was copied to '+fileToBeCreated);
+        });
+        fileToBeMoved = './data/players/'+socket.pseudo+'/'+socket.pseudo+'-playerInfos.json';
+        fileToBeCreated = './data/players/'+socket.pseudo+'/autobkp/'+socket.pseudo+'-playerInfos.json';
+        fs.copyFile(fileToBeMoved, fileToBeCreated, (err) => {
+            if (err) throw err;
+            console.log('AutoBackup: '+fileToBeMoved+' was copied to '+fileToBeCreated);
+        });
     });
 
     // Load MISSION TEAMS

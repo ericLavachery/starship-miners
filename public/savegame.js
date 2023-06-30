@@ -273,6 +273,10 @@ function saveBackup() {
     // saveGame();
     socket.emit('save-backup',playerInfos);
 };
+function saveAutoBackup() {
+    // saveGame();
+    socket.emit('save-autobackup',playerInfos);
+};
 
 function saveAndReload() {
     saveGame();
@@ -431,6 +435,7 @@ function showMapReset() {
 
 function showStartLander() {
     playMusic('silence',true);
+    saveAutoBackup();
     // let myVol = checkMyVol(playerInfos.volMu+0.3,true);
     // theMusic.fade(myVol,0.0,3000);
     setTimeout(function (){
