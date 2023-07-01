@@ -16,6 +16,7 @@ if (yOffset == null) {
     yOffsetForced = yOffset;
 }
 let justReloaded = true;
+let pageError = false;
 // MAP GENERATOR
 let mped = {};
 let theTileRes = {};

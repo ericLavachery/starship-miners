@@ -102,13 +102,15 @@ function commandes() {
             }
             if (saveOK) {
                 if (playerInfos.pseudo != 'Mapedit') {
-                    if (justReloaded) {
+                    if (justReloaded && !pageError) {
                         $('#commandz').append('<button type="button" title="Backup de cette partie (écrase le précédent)" class="boutonRose iconButtons" onclick="saveBackup()" onmousedown="clicSound(17)"><i class="fas fa-hdd"></i></button>');
                     }
                     $('#commandz').append('<button type="button" title="Nouvelle campagne?" class="boutonRouge iconButtons" onclick="showMapReset()" onmousedown="clicSound(18)" id="reset1"><i class="fas fa-power-off"></i></button>');
                     $('#commandz').append('<button type="button" title="Nouvelle campagne!" class="boutonRouge iconButtons" onclick="newGame()" onmousedown="clicSound(8)" id="reset2"><i class="fas fa-recycle"></i></button>');
                 }
-                $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveGame()" onmousedown="clicSound(8)"><i class="far fa-save"></i></button>');
+                if (!pageError) {
+                    $('#commandz').append('<button type="button" title="Sauvegarder le jeu" class="boutonVert iconButtons" onclick="saveGame()" onmousedown="clicSound(8)"><i class="far fa-save"></i></button>');
+                }
             }
 
         }
