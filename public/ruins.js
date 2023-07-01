@@ -77,6 +77,7 @@ function checkRuinsComp(tile) {
         let foundComp = {};
         let compOK = false;
         let compChance = ruinsCompBase;
+        compChance = 1000;
         let ruinType = checkRuinType(tile,false);
         if (ruinType.name === 'Université' || ruinType.name === 'Bibliothèque' || ruinType.name === 'Médiathèque' || ruinType.name === 'Laboratoire' || ruinType.name === 'Centre de recherches') {
             compChance = compChance*5;
@@ -129,15 +130,22 @@ function testRuinsComp() {
 function isFoundCompOK(foundComp) {
     let compOK = true;
     let playerCompLvl = playerInfos.comp[foundComp.name];
-    console.log('comp='+foundComp.name);
-    console.log('playerCompLvl='+playerCompLvl);
-    console.log('maxLevel='+foundComp.maxLevel);
-    console.log('lvlCosts='+foundComp.lvlCosts[playerCompLvl+1]);
+    let gangRech = getGangRechAdj();
+    // console.log('comp='+foundComp.name);
+    // console.log('playerCompLvl='+playerCompLvl);
+    // console.log('maxLevel='+foundComp.maxLevel);
+    // console.log('lvlCosts='+foundComp.lvlCosts[playerCompLvl+1]);
     if (playerCompLvl >= foundComp.maxLevel) {
+        // pas si déjà au max
         compOK = false;
-    } else if (foundComp.lvlCosts[playerCompLvl+1] === 2) {
+    } else if (foundComp.lvlCosts[playerCompLvl+1] === 2 && (!gangRech.good.includes(foundComp.name) || rand.rand(1,100) > 25)) {
+        // pas si il coûte 2 (mais 25% ok si GOOD)
         compOK = false;
-    } else if (playerCompLvl === 4) {
+    } else if (playerCompLvl >= foundComp.maxLevel-1 && !gangRech.good.includes(foundComp.name) && foundComp.name != 'scaph') {
+        // pas le dernier sauf si GOOD ou scaph
+        compOK = false;
+    } else if (gangRech.bad.includes(foundComp.name) && rand.rand(1,100) > 50) {
+        // 50% non si BAD
         compOK = false;
     }
     return compOK;

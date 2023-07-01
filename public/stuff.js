@@ -254,7 +254,53 @@ function getGangFactors() {
             gangFacts.hunt = 1.25;
         }
     }
+    gangFacts.rech = getGangRechAdj();
     return gangFacts;
+};
+
+function getGangRechAdj() {
+    let rech = {};
+    rech.good = [];
+    rech.bad = [];
+    if (playerInfos.gang === 'rednecks') {
+        rech.good.push('ext');
+        rech.bad.push('tele');
+        rech.bad.push('exo');
+    }
+    if (playerInfos.gang === 'blades') {
+        rech.good.push('cam');
+        rech.good.push('mat');
+        rech.bad.push('ind');
+    }
+    if (playerInfos.gang === 'bulbos') {
+        rech.good.push('tele');
+        rech.good.push('ind');
+        rech.good.push('vsp');
+        rech.bad.push('train');
+    }
+    if (playerInfos.gang === 'drogmulojs') {
+        rech.good.push('tri');
+        rech.good.push('ca');
+        rech.bad.push('ordre');
+        rech.bad.push('ind');
+    }
+    if (playerInfos.gang === 'tiradores') {
+        rech.good.push('vsp');
+        rech.bad.push('cam');
+        rech.bad.push('tele');
+        rech.bad.push('med');
+        rech.bad.push('ordre');
+    }
+    if (playerInfos.gang === 'detruas') {
+        rech.good.push('ind');
+        rech.bad.push('med');
+    }
+    if (playerInfos.gang === 'brasier') {
+        rech.good.push('ordre');
+        rech.good.push('energ');
+        rech.bad.push('train');
+    }
+    return rech;
 };
 
 function levelUp(bat,batType) {
