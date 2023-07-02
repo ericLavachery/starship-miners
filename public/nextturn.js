@@ -1840,6 +1840,8 @@ function tagsEffect(bat,batType) {
             }
             if (batType.skills.includes('reactpoison') || bat.tags.includes('reactpoison')) {
                 poisonPower = poisonPower*3;
+                let poisonHinder = Math.sqrt(allTags.poison)+1;
+                bat.apLeft = bat.apLeft-Math.floor(bat.ap*poisonHinder/6);
             }
             if (batType.cat === 'aliens') {
                 poisonPower = Math.round(poisonPower*1.5);

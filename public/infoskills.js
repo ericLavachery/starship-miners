@@ -2267,12 +2267,16 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
         // AUTOROAD
         if (batType.moveCost < 90) {
-            if (bat.tags.includes('autoroad')) {
-                $('#unitInfos').append('<button type="button" title="Stopper la construction automatique de routes" class="boutonOK iconButtons cy" onclick="toggleAutoRoad('+apCost+',true)"><i class="fas fa-road"></i> <span class="small">Stop</span></button>');
-                lineBreak = true;
-            } else {
-                $('#unitInfos').append('<button type="button" title="Construction automatique de routes" class="boutonNoir iconButtons" onclick="toggleAutoRoad('+apCost+',false)"><i class="fas fa-road"></i> <span class="small">Auto</span></button>');
-                lineBreak = true;
+            let roadCosts = getRoadCosts(tile);
+            let roadCostsOK = checkCost(roadCosts);
+            if (roadCostsOK) {
+                if (bat.tags.includes('autoroad')) {
+                    $('#unitInfos').append('<button type="button" title="Stopper la construction automatique de routes" class="boutonOK iconButtons cy" onclick="toggleAutoRoad('+apCost+',true)"><i class="fas fa-road"></i> <span class="small">Stop</span></button>');
+                    lineBreak = true;
+                } else {
+                    $('#unitInfos').append('<button type="button" title="Construction automatique de routes" class="boutonNoir iconButtons" onclick="toggleAutoRoad('+apCost+',false)"><i class="fas fa-road"></i> <span class="small">Auto</span></button>');
+                    lineBreak = true;
+                }
             }
         }
     }
@@ -2830,7 +2834,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         if (playerInfos.onShip || playerInfos.mapTurn >= 1) {
             // DECONSTRUIRE VERS LANDER (si à côté)
             if (!playerInfos.onShip) {
-                if (batType.skills.includes('prefab') && bat.apLeft >= 5 && !bat.tags.includes('noprefab')) {
+                if (batType.skills.includes('prefab') && bat.apLeft >= 1 && !bat.tags.includes('noprefab')) {
                     let isLoaded = checkCharged(bat,'load');
                     let isCharged = checkCharged(bat,'trans');
                     if (!isLoaded && !isCharged) {

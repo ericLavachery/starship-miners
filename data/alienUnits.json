@@ -1231,7 +1231,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["resistfeu","sentinelle","arboost"],
+        "skills":["resistfeu","reactpoison","sentinelle","arboost"],
         "deathFx":"death2",
         "killRes":{"Bugium":5},
         "killXP":3

@@ -645,6 +645,11 @@ function checkCitCaves() {
         if (playerInfos.mapTurn < 15) {
             chance = chance-Math.ceil((15-playerInfos.mapTurn)/2);
         }
+        if (zone[0].caves != undefined) {
+            chance = chance-Math.floor(zone[0].caves);
+        }
+        chance = chance-playerInfos.fndcits+3;
+        chance = entre(chance,1,7);
         // chance = 100;
         if (chance >= 1 && fruitTiles >= 1) {
             if (rand.rand(1,100) <= chance) {
