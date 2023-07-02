@@ -517,10 +517,19 @@ function getBatPic(bat,batType) {
                     bat.pv = picNum2;
                 }
             }
+            if (bat.type === 'Tacots' && bat.eq === 'g2motor') {
+                bat.pv = 4;
+            }
             batPic = batPic.replace('-v1','-v'+bat.pv);
             if (batPic === 'bus-v4') {
                 bat.chief = 'Priscilla';
                 bat.ok = 'ok4';
+            }
+            if (batPic === 'tacot-v4') {
+                if (bat.eq === 'aucun') {
+                    bat.eq = 'g2motor';
+                    bat.ap = bat.ap+4;
+                }
             }
         }
     }

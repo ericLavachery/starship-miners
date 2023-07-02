@@ -1275,7 +1275,7 @@ function getAP(bat,batType) {
         }
     }
     if (hasEquip(bat,['g2motor'])) {
-        newAP = newAP+(Math.sqrt(batType.moveCost)*2.5);
+        newAP = newAP+(Math.sqrt(batType.moveCost)*2.65);
     }
     if (batType.skills.includes('heroap') && bat.tags.includes('hero')) {
         newAP = newAP+2;

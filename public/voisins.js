@@ -605,15 +605,13 @@ function placeNeighbours(nearTileId,koTerrains) {
 function checkCitCaves() {
     console.log('---------------------------- checkCitCaves');
     let hasCaves = true;
-    if (zone[0].edited != undefined) {
-        if (zone[0].edited) {
-            hasCaves = false;
-        }
-    }
     if (zone[0].caves != undefined) {
         if (zone[0].caves >= 3) {
             hasCaves = false;
         }
+    }
+    if (zone[0].visit) {
+        hasCaves = false;
     }
     if (hasCaves) {
         let fruitTiles = 0;
@@ -648,8 +646,9 @@ function checkCitCaves() {
         if (zone[0].caves != undefined) {
             chance = chance-Math.floor(zone[0].caves);
         }
-        chance = chance-playerInfos.fndcits+3;
+        chance = chance-playerInfos.fndCits+3;
         chance = entre(chance,1,7);
+        console.log('chance '+chance);
         // chance = 100;
         if (chance >= 1 && fruitTiles >= 1) {
             if (rand.rand(1,100) <= chance) {

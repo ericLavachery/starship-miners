@@ -306,6 +306,7 @@ function moveMissionZone(theZoneId) {
 };
 
 function newGame() {
+    saveAutoBackup();
     bataillons = [];
     saveBataillons();
     aliens = [];

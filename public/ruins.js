@@ -370,10 +370,32 @@ function putBatAround(tileId,alien,dropWhere,unitId,numCit,tag) {
             unitIndex = alienUnits.findIndex((obj => obj.id == unitId));
             conselUnit = alienUnits[unitIndex];
         }
-        conselAmmos = ['xxx','xxx','xxx','xxx'];
+        let carCivilEquip = getCarCivilEquip(unitId);
+        conselAmmos = ['xxx','xxx','xxx',carCivilEquip];
         coffreTileId = dropTile;
         putBat(dropTile,numCit,0,tag);
     }
+};
+
+function getCarCivilEquip(unitId) {
+    let carCivilEquip = 'xxx';
+    if (unitId === 81 || unitId === 140 || unitId === 164) {
+        if (rand.rand(1,6) === 1) {
+            let dice = rand.rand(1,3);
+            if (dice === 1) {
+                carCivilEquip = 'g2motor';
+            } else if (dice === 2) {
+                carCivilEquip = 'chenilles';
+            } else {
+                if (unitId === 81) {
+                    carCivilEquip = 'e-road';
+                } else {
+                    carCivilEquip = 'maxtrans';
+                }
+            }
+        }
+    }
+    return carCivilEquip;
 };
 
 function coffreDrop(layBatTileId) {

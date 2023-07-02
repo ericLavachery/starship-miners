@@ -3735,7 +3735,7 @@
     {
         "id":141,
         "name":"Jeeps",
-        "pic":"jeeps",
+        "pic":"jeep-v1",
         "cat":"vehicles",
         "kind":"zero-transports",
         "squads":4,
