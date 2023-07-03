@@ -20,14 +20,20 @@ function clickFire(tileId) {
         if (isMelee) {
             // en mêlée : choix limité de cibles
             if (sideBySideTiles(selectedBat.tileId,tileId,true)) {
-                if (alienBatHere && checkFlyTarget(selectedWeap,targetBat,targetBatType)) {
-                    // console.log(targetBat);
-                    tagDelete(targetBat,'invisible');
-                    tileTarget(targetBat);
-                    combat(true);
-                    selectMode();
-                    showBatInfos(selectedBat);
-                    $(".targ").remove();
+                if (alienBatHere) {
+                    if (checkFlyTarget(selectedWeap,targetBat,targetBatType)) {
+                        // console.log(targetBat);
+                        tagDelete(targetBat,'invisible');
+                        tileTarget(targetBat);
+                        combat(true);
+                        selectMode();
+                        showBatInfos(selectedBat);
+                        $(".targ").remove();
+                    } else {
+                        targetBat = {};
+                        targetBatType = {};
+                        targetWeap = {};
+                    }
                 } else {
                     targetBat = {};
                     targetBatType = {};
@@ -40,20 +46,28 @@ function clickFire(tileId) {
             }
         } else {
             // hors mêlée
-            guidageOK = false;
-            if (Object.keys(targetBat).length >= 1) {
-                guidageOK = checkGuidage(selectedWeap,targetBat);
-            }
-            if (isInRange(selectedBat,tileId,selectedWeap,targetBat) || guidageOK) {
-                let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,targetBat,targetBatType,guidageOK);
-                if (alienBatHere && checkFlyTarget(selectedWeap,targetBat,targetBatType) && hiddenOK) {
-                    // console.log(targetBat);
-                    tagDelete(targetBat,'invisible');
-                    tileTarget(targetBat);
-                    combat(false);
-                    selectMode();
-                    showBatInfos(selectedBat);
-                    $(".targ").remove();
+            if (alienBatHere) {
+                guidageOK = false;
+                let alienInRange = false;
+                if (Object.keys(targetBat).length >= 1) {
+                    guidageOK = checkGuidage(selectedWeap,targetBat);
+                    alienInRange = isInRange(selectedBat,tileId,selectedWeap,targetBat);
+                }                
+                if (alienInRange || guidageOK) {
+                    let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,targetBat,targetBatType,guidageOK);
+                    if (alienBatHere && checkFlyTarget(selectedWeap,targetBat,targetBatType) && hiddenOK) {
+                        // console.log(targetBat);
+                        tagDelete(targetBat,'invisible');
+                        tileTarget(targetBat);
+                        combat(false);
+                        selectMode();
+                        showBatInfos(selectedBat);
+                        $(".targ").remove();
+                    } else {
+                        targetBat = {};
+                        targetBatType = {};
+                        targetWeap = {};
+                    }
                 } else {
                     targetBat = {};
                     targetBatType = {};

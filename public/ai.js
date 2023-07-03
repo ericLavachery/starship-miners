@@ -593,7 +593,13 @@ function targetLogic(bat,iter) {
     }
     if (selectedBatType.skills.includes('nobldtarg')) {
         if (iter <= 4) {
-            if (batType.cat === 'buildings' || batType.cat === 'devices' || (batType.cat === 'vehicles' && bat.armor >= 5)) {
+            let vJbul = batType.armor;
+            if (batType.cat === 'vehicles') {
+                if (batType.size >= 9) {
+                    vJbul = vJbul+Math.ceil(Math.sqrt(batType.size-8));
+                }
+            }
+            if (batType.cat === 'buildings' || batType.cat === 'devices' || (batType.cat === 'vehicles' && vJbul > 8)) {
                 tFuzz = -999;
             }
         }
