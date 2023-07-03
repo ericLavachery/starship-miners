@@ -49,7 +49,7 @@
 }
 
 .modal-body {
-	padding: 50px 45px 10px 40px;
+	padding: 20px 45px 20px 40px;
 	background-image: url(/static/img/modalbg.jpg);
 	color: #d5cabd;
 	font-size: 14px;

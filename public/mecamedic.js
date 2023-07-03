@@ -307,6 +307,8 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         }
                                         addRepairFlag(bat,2);
                                         doneAction(bat);
+                                    } else {
+                                        $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report jaune">bataillon trop entammé<br></span>');
                                     }
                                 }
                             }
@@ -463,6 +465,8 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                 totalAPCost = totalAPCost+apCost;
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">trous bouchés<br></span>');
                 addRepairFlag(selectedBat,2);
+            } else {
+                $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report jaune">bataillon trop entammé<br></span>');
             }
         }
     }

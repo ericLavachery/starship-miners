@@ -707,7 +707,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,true);
             if (apCost === 0) {apCost = baseskillCost;}
             if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !fullStarka && (!inMelee || batType.skills.includes('meleehelp'))) {
-                $('#unitInfos').append('<button type="button" title="Donner les premiers soins aux infanteries adjacentes" class="boutonBleu iconButtons" onclick="medic(`infantry`,'+baseskillCost+',true,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="Donner les premiers soins aux infanteries adjacentes" class="boutonBleu iconButtons" onclick="medic(`infantry`,'+baseskillCost+',true,false)"><i class="fas fa-band-aid"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
                 if (inMelee) {
@@ -721,7 +721,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         skillMessage = "Pas assez de PA";
                     }
                 }
-                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-band-aid"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             }
         }
@@ -759,7 +759,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,true);
             if (apCost === 0) {apCost = baseskillCost;}
             if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !fullStarka && (!inMelee || batType.skills.includes('meleehelp'))) {
-                $('#unitInfos').append('<button type="button" title="Premiers soins" class="boutonBleu iconButtons" onclick="medic(`infantry`,'+baseskillCost+',false,false)"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="Premiers soins" class="boutonBleu iconButtons" onclick="medic(`infantry`,'+baseskillCost+',false,false)"><i class="fas fa-band-aid"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
                 if (inMelee) {
@@ -773,7 +773,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         skillMessage = "Pas assez de PA";
                     }
                 }
-                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="far fa-heart"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-band-aid"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             }
         }
@@ -830,7 +830,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,false);
             if (apCost === 0) {apCost = baseskillCost;}
             if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!nearby.oneTile || batType.skills.includes('meleehelp'))) {
-                $('#unitInfos').append('<button type="button" title="Rafistoler les véhicules adjacents" class="boutonBleu iconButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="Rafistoler les véhicules adjacents" class="boutonBleu iconButtons" onclick="medic(`vehicles`,'+baseskillCost+',true,false)"><i class="fas fa-oil-can"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
                 if (nearby.oneTile) {
@@ -842,7 +842,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         skillMessage = "Pas assez de PA";
                     }
                 }
-                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-oil-can"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             }
         }
@@ -854,7 +854,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,false);
             if (apCost === 0) {apCost = baseskillCost;}
             if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && (!nearby.oneTile || batType.skills.includes('meleehelp'))) {
-                $('#unitInfos').append('<button type="button" title="Retaper le véhicule" class="boutonBleu iconButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,false)"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="Retaper le véhicule" class="boutonBleu iconButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,false)"><i class="fas fa-oil-can"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
                 if (numTargets <= 0) {
@@ -864,7 +864,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
-                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-oil-can"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             }
         }
@@ -922,7 +922,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             apCost = calcAdjSkillCost(numTargets,baseskillCost,batType,bat,false);
             if (apCost === 0) {apCost = baseskillCost;}
             if (bat.apLeft >= baseskillCost/2 && numTargets >= 1 && !nearby.oneTile) {
-                $('#unitInfos').append('<button type="button" title="Réparer le bâtiment" class="boutonBleu iconButtons" onclick="medic(`buildings`,'+baseskillCost+',false,false)"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="Rafistoler le bâtiment" class="boutonBleu iconButtons" onclick="medic(`buildings`,'+baseskillCost+',false,false)"><i class="fas fa-paint-roller"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
                 if (numTargets <= 0) {
@@ -932,7 +932,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 } else {
                     skillMessage = "Pas assez de PA";
                 }
-                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fa fa-hammer"></i> <span class="small">'+apCost+'</span></button>');
+                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-paint-roller"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             }
         }

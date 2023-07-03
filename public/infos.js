@@ -216,6 +216,10 @@ function batInfos(bat,batType,pop) {
             chiefName = bat.chief;
         }
     }
+    if (pop) {
+        $('#'+bodyPlace).append('<span class="basicText mauve">Ceci est la description de ce bataillon en particulier.<br>Cliquez sur l\'image pour voir la description complète du type d\'unité.</span><br>');
+        $('#'+bodyPlace).append('<div class="shSpace"></div>');
+    }
     if ((grade != batType.name && grade != 'Caporal') || vetStatus != '' || armyNum != '' || chargeIcon != '' || fretIcon != '' || chiefName != '') {
         if (chiefName != '') {
             $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+' '+bat.chief+vetStatus+armyNum+fretIcon+chargeIcon+'</span><br>');
@@ -224,6 +228,17 @@ function batInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+vetStatus+armyNum+fretIcon+chargeIcon+'</span><br>');
             $('#'+bodyPlace).append('<div class="shSpace"></div>');
         }
+    }
+    // TYPE D'UNITE
+    if (pop) {
+        let typun = getFullUnitType(batType);
+        if (typun.name.includes('préfabriqué')) {
+            if (bat.tags.includes('noprefab')) {
+                typun.name = typun.name.replace(' préfabriqués','');
+                typun.name = typun.name.replace(' préfabriqué','');
+            }
+        }
+        $('#'+bodyPlace).append('<span class="paramName">Type</span><span class="paramIcon"></span><span class="paramValue">'+typun.name+'</span><br>');
     }
     let allTags = _.countBy(bat.tags);
     // AP
@@ -385,6 +400,9 @@ function batInfos(bat,batType,pop) {
         } else {
             $('#'+bodyPlace).append('<span class="paramName jaune" title="Ne peux pas prendre contrôle d\'un bataillon d\'un autre groupe">Sans autorité</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
         }
+    }
+    if (bat.tags.includes('noprefab') && batType.skills.includes('prefab')) {
+        $('#'+bodyPlace).append('<span class="paramName jaune" title="Ne peut pas être démonté et remonté. Vous pouvez seulement le démanteler.">Préfabriqué</span><span class="paramIcon"></span><span class="paramValue jaune">Non</span><br>');
     }
     if (bat.tags.includes('construction')) {
         $('#'+bodyPlace).append('<span class="paramName or">Opérationel</span><span class="paramIcon"></span><span class="paramValue or">Non</span><br>');

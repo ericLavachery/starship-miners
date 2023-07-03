@@ -22,9 +22,9 @@ function unitInfos(batType) {
     }
     $('#'+headPlace).append('<img style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png">&nbsp;');
     if (batType.skills.includes('nonumname')) {
-        $('#'+headPlace).append('<span class="blockTitle"><h6>'+batType.name+'</h6></span>');
+        $('#'+headPlace).append('<span class="blockTitle"><h6>'+batType.name+'</h6> <span class="cy">(description du type d\'unité)</span></span>');
     } else {
-        $('#'+headPlace).append('<span class="blockTitle"><h6>'+unitsLeft+' '+batType.name+'</h6></span>');
+        $('#'+headPlace).append('<span class="blockTitle"><h6>'+unitsLeft+' '+batType.name+'</h6> <span class="cy">(description du type d\'unité)</span></span>');
     }
     $('#'+bodyPlace).append('<div class="shSpace"></div>');
     // TYPE D'UNITE
