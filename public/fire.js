@@ -52,7 +52,7 @@ function clickFire(tileId) {
                 if (Object.keys(targetBat).length >= 1) {
                     guidageOK = checkGuidage(selectedWeap,targetBat);
                     alienInRange = isInRange(selectedBat,tileId,selectedWeap,targetBat);
-                }                
+                }
                 if (alienInRange || guidageOK) {
                     let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,targetBat,targetBatType,guidageOK);
                     if (alienBatHere && checkFlyTarget(selectedWeap,targetBat,targetBatType) && hiddenOK) {
@@ -1458,14 +1458,15 @@ function attack(melee,init) {
         }
         batDeath(targetBat,true,gain,sWipe);
         $('#report').append('<br><span class="report cy">Bataillon ('+targetBatName+') détruit<br></span>');
+        let deadBat = JSON.parse(JSON.stringify(targetBat));
         if (!isFFW) {
             setTimeout(function (){
                 setTimeout(function (){
-                    batDeathEffect(targetBat,false,gain,'','');
+                    batDeathEffect(deadBat,false,gain,'','');
                 }, soundDuration);
             }, 200);
         } else {
-            batDeathEffect(targetBat,false,gain,'','');
+            batDeathEffect(deadBat,false,gain,'','');
         }
     } else {
         // targetBatArrayUpdate();
@@ -1479,16 +1480,17 @@ function attack(melee,init) {
         attAlive = false;
         batDeath(selectedBat,true,false,true);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBatName+') détruit<br></span>');
+        let deadBat = JSON.parse(JSON.stringify(selectedBat));
         if (!isFFW) {
             setTimeout(function (){
                 setTimeout(function (){
-                    batDeathEffect(selectedBat,false,false,'Bataillon détruit','Suicide');
+                    batDeathEffect(deadBat,false,false,'Bataillon détruit','Suicide');
                     $('#unitInfos').empty();
                     $("#unitInfos").css("display","none");
                 }, soundDuration);
             }, 200);
         } else {
-            batDeathEffect(selectedBat,false,false,'Bataillon détruit','Suicide');
+            batDeathEffect(deadBat,false,false,'Bataillon détruit','Suicide');
         }
         $('#unitInfos').empty();
         $("#unitInfos").css("display","none");
@@ -2382,14 +2384,15 @@ function defense(melee,init) {
         }
         batDeath(selectedBat,true,gain,false);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBatName+') détruit<br></span>');
+        let deadBat = JSON.parse(JSON.stringify(selectedBat));
         if (!isFFW) {
             setTimeout(function (){
                 setTimeout(function (){
-                    batDeathEffect(selectedBat,false,gain,'','');
+                    batDeathEffect(deadBat,false,gain,'','');
                 }, soundDuration);
             }, 200);
         } else {
-            batDeathEffect(selectedBat,false,gain,'','');
+            batDeathEffect(deadBat,false,gain,'','');
         }
     } else {
         // selectedBatArrayUpdate();
