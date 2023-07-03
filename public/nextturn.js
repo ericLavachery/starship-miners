@@ -774,7 +774,7 @@ function nextTurnEnd() {
     // testConnect(pseudo);
 };
 
-function turnInfo() {
+function turnInfo(first) {
     console.log('TURN INFO');
     if (zone[0].number >= 90) {
         isStartZone = true;
@@ -1197,6 +1197,9 @@ function turnInfo() {
                 }
             }
         }
+    }
+    if (first) {
+        createBatList();
     }
     // feedZoneDB();
     // feedZoneDBwith(zone);

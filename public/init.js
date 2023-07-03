@@ -329,7 +329,7 @@ socket.on('savedMap-Load', function(sm) {
     }
     getColonyTiles();
     checkUndark();
-    turnInfo();
+    turnInfo(true);
     getMapInfos();
     createStormsLists(false,true);
     commandes();
@@ -437,7 +437,7 @@ socket.on('comps-Load', function(cmp) {
 socket.on('bataillons-Load', function(bt) {
     bataillons = bt;
     // console.log(bataillons);
-    createBatList();
+    // createBatList();
 });
 // UnitTypes Default Values
 socket.on('unitDV-Load', function(udv) {
