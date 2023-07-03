@@ -857,7 +857,9 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 $('#unitInfos').append('<button type="button" title="Retaper le véhicule" class="boutonBleu iconButtons" onclick="medic(`vehicles`,'+baseskillCost+',false,false)"><i class="fas fa-oil-can"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
-                if (numTargets <= 0) {
+                if (batType.squads > bat.squadsLeft) {
+                    skillMessage = "Ce véhicule a subit trop de dégâts";
+                } else if (numTargets <= 0) {
                     skillMessage = "Ce véhicule n'a pas subit de dégâts";
                 } else if (nearby.oneTile) {
                     skillMessage = "Pas de réparations en mêlée";
@@ -925,7 +927,9 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 $('#unitInfos').append('<button type="button" title="Rafistoler le bâtiment" class="boutonBleu iconButtons" onclick="medic(`buildings`,'+baseskillCost+',false,false)"><i class="fas fa-paint-roller"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else {
-                if (numTargets <= 0) {
+                if (batType.squads > bat.squadsLeft) {
+                    skillMessage = "Ce bâtiment a subit trop de dégâts";
+                } else if (numTargets <= 0) {
                     skillMessage = "Ce bâtiment n'a pas subit de dégâts";
                 } else if (nearby.oneTile) {
                     skillMessage = "Pas de réparations en mêlée";
