@@ -2367,6 +2367,7 @@
         "bldReq":["Atelier"],
         "compReq":{"cam":1},
         "compPass":["blades"],
+        "compHardReq":{"ca":2},
         "costs":{"Végétaux":36,"Fer":12,"Bois":36,"Tungstène":12,"Huile":4,"Calcium":12},
         "fabTime":60
     },
@@ -2377,6 +2378,7 @@
         "bldReq":["Atelier"],
         "compReq":{"cam":1},
         "compPass":["blades"],
+        "compHardReq":{"ca":1},
         "costs":{"Végétaux":18,"Fer":9,"Bois":18,"Scrap":9,"Huile":4,"Calcium":12},
         "fabTime":25
     },
@@ -2389,7 +2391,7 @@
         "compPass":["blades"],
         "compHardReq":{"exo":3,"ca":3},
         "costs":{"Végétaux":36,"Fer":6,"Bois":18,"Scrap":9,"Titane":9,"Argon":6,"Mephitis":36,"Atium":12,"Huile":9},
-        "fabTime":35
+        "fabTime":30
     },
     {
         "id":311,

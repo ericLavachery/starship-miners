@@ -1919,7 +1919,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 }
                 trapType = getBatTypeByName('Fosses');
                 trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(batType.ap*1.5*5/(playerInfos.comp.def+4));
+                apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
                 apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.def+4));
                 if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
                     $('#unitInfos').append('<button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`trap-fosse`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Fosses</span></button>');
@@ -1953,8 +1953,8 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 }
                 trapType = getBatTypeByName('Pièges');
                 trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(batType.ap*1.25*5/(playerInfos.comp.def+4));
-                apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.def+4));
+                apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
+                apReq = Math.round(batType.ap/2*5/(playerInfos.comp.def+4));
                 if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
                     $('#unitInfos').append('<button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`trap-ap`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Pièges</span></button>');
                     lineBreak = true;
@@ -1987,8 +1987,8 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 }
                 trapType = getBatTypeByName('Dardières');
                 trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(batType.ap*1.25*5/(playerInfos.comp.def+4));
-                apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.def+4));
+                apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
+                apReq = Math.round(batType.ap/2*5/(playerInfos.comp.def+4));
                 if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
                     $('#unitInfos').append('<button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`trap-dard`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Dardières</span></button>');
                     lineBreak = true;

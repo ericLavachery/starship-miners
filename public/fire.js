@@ -199,7 +199,7 @@ function combat(melee) {
             if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('freeshot') || targetBatType.skills.includes('after') || targetBat.eq.includes('w2-auto') || targetBat.eq.includes('w3-auto')) {
                 minimumFireAP = -999;
             }
-            if ((defAlive && attAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
+            if ((defAlive && attAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap' || targetWeap.ammo === 'shinda') {
                 defense(melee,false);
                 if (!isFFW) {
                     soundWeap = targetWeap;
@@ -639,7 +639,7 @@ function attack(melee,init) {
         $('#report').append('<span class="report rose">Arrosé<br></span>');
     }
     // disco
-    if (selectedWeap.ammo.includes('disco') || selectedWeap.ammo.includes('psionics') || selectedWeap.ammo.includes('suicide')) {
+    if (selectedWeap.ammo.includes('disco') || selectedWeap.ammo.includes('psionics') || selectedWeap.ammo === 'suicide' || selectedWeap.ammo === 'suicide-deluge') {
         let webDamage = totalHits;
         let distFactor = calcShotsRangeAdj(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType);
         if (selectedWeap.ammo.includes('suicide')) {
@@ -1114,13 +1114,14 @@ function attack(melee,init) {
                             targetBat.tags.push('poison');
                             targetBat.tags.push('poison');
                             targetBat.tags.push('poison');
-                            targetBat.tags.push('poison');
                         }
                         if (playerInfos.comp.exo >= 2) {
                             targetBat.tags.push('poison');
                             targetBat.tags.push('poison');
+                            targetBat.tags.push('poison');
                         }
                         if (playerInfos.comp.exo >= 3) {
+                            targetBat.tags.push('poison');
                             targetBat.tags.push('poison');
                             targetBat.tags.push('poison');
                         }
@@ -1318,7 +1319,7 @@ function attack(melee,init) {
         $('#report').append('<span class="report">Points d\'actions: -'+apDamage+'<br></span>');
     }
     // Champs de mines
-    if (targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
+    if (targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap' || targetWeap.ammo === 'shinda') {
         minesExploded = Math.floor(totalDamage/targetBatType.hp);
         if (minesExploded > targetBatType.squadSize*targetBatType.squads) {
             minesExploded = targetBatType.squadSize*targetBatType.squads;
@@ -1673,7 +1674,7 @@ function defense(melee,init) {
     // console.log(tile.infra+'+++++++++++++++++++++++');
     // console.log('shots='+shots);
     // Champs de mines
-    if (targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap') {
+    if (targetWeap.ammo === 'mine' || targetWeap.ammo === 'trap' || targetWeap.ammo === 'shinda') {
         shots = minesExploded;
         // console.log('shots: '+shots);
     }
@@ -1803,7 +1804,7 @@ function defense(melee,init) {
         $('#report').append('<span class="report rose">Arrosé<br></span>');
     }
     // disco
-    if (targetWeap.ammo.includes('disco') || targetWeap.ammo.includes('psionics') || targetWeap.ammo.includes('suicide')) {
+    if (targetWeap.ammo.includes('disco') || targetWeap.ammo.includes('psionics') || targetWeap.ammo === 'suicide' || targetWeap.ammo === 'suicide-deluge') {
         let webDamage = totalHits;
         let distFactor = calcShotsRangeAdj(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType);
         if (targetWeap.ammo.includes('suicide')) {
@@ -2151,13 +2152,14 @@ function defense(melee,init) {
                             selectedBat.tags.push('poison');
                             selectedBat.tags.push('poison');
                             selectedBat.tags.push('poison');
-                            selectedBat.tags.push('poison');
                         }
                         if (playerInfos.comp.exo >= 2) {
                             selectedBat.tags.push('poison');
                             selectedBat.tags.push('poison');
+                            selectedBat.tags.push('poison');
                         }
                         if (playerInfos.comp.exo >= 3) {
+                            selectedBat.tags.push('poison');
                             selectedBat.tags.push('poison');
                             selectedBat.tags.push('poison');
                         }

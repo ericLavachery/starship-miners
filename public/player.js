@@ -1064,7 +1064,7 @@ function playerSkillsUTChanges() {
         }
         // ENTRAINEMENT
         if (unit.name === 'Dardières' || unit.name === 'Pièges') {
-            let trapJump = Math.floor((playerInfos.comp.train+playerInfos.comp.bal)/2);
+            let trapJump = Math.floor((playerInfos.comp.train+playerInfos.comp.const)/2);
             if (trapJump >= 1) {
                 unit.weapon2.range = unit.weapon2.range+trapJump;
             }

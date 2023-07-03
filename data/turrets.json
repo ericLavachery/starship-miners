@@ -1801,7 +1801,7 @@
             "power":4,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"bow",
+            "sound":"trap",
             "ammo":["trap"]
         },
         "weapon2":{
@@ -1814,7 +1814,7 @@
             "power":4,
             "armors":0.5,
             "aoe":"unit",
-            "sound":"bow",
+            "sound":"traps",
             "ammo":["trap-suicide"]
         },
         "protection":[],
@@ -1853,7 +1853,7 @@
             "accuracy":50,
             "power":8,
             "aoe":"unit",
-            "sound":"bow",
+            "sound":"trap",
             "ammo":["shinda"]
         },
         "weapon2":{
@@ -1865,7 +1865,7 @@
             "accuracy":25,
             "power":8,
             "aoe":"unit",
-            "sound":"spear",
+            "sound":"traps",
             "ammo":["shinda-suicide"]
         },
         "protection":[],
