@@ -170,7 +170,7 @@
         "bldReq":[],
         "bldVMReq":["Laboratoire"],
         "compReq":{"ca":1,"exo":1},
-        "costs":{"Drogues":1,"Zinc":1,"Creatite":3,"Bugium":12},
+        "costs":{"Drogues":1,"Zinc":1,"Creatite":3,"Bugium":6},
         "units":"inf",
         "popIn":["Centre de recherches","Laboratoire","Bar"],
         "rarity":1,
