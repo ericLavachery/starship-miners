@@ -791,6 +791,9 @@ function calcTiraBonus(batType) {
         if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
             tiraBonus = tiraBonus+0.2;
         }
+        if (batType.skills.includes('charge')) {
+            tiraBonus = tiraBonus+0.5;
+        }
     } else {
         tiraBonus = tiraBonus+0.15;
     }

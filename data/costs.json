@@ -3086,7 +3086,7 @@
         "name":"Unités cryogéniques",
         "bldReq":["Station"],
         "upkeep":{"Energie":1},
-        "costs":{"Compo2":150,"Compo3":100,"Eau":750,"Carbone":150,"Tissus":75,"Calcium":250,"Or":250,"Mercure":150,"Cuivre":150,"Oxygène":750,"Hélium":500,"Argon":150,"Zinc":150,"Bore":150,"Drogues":200,"Chlore":200,"Electros":100,"Batteries":150},
+        "costs":{"Compo2":150,"Compo3":100,"Eau":750,"Carbone":150,"Tissus":75,"Calcium":250,"Or":250,"Mercure":150,"Cuivre":150,"Oxygène":750,"Hélium":500,"Argon":150,"Zinc":150,"Bore":150,"Drogues":200,"Chlore":200,"Electros":100,"Batteries":150,"Spins":60},
         "fabTime":1,
         "slots":2
     },
@@ -3129,7 +3129,7 @@
         "id":281,
         "name":"Salle de jeux",
         "bldReq":["Station"],
-        "costs":{"Compo1":150,"Compo2":75,"Huile":25,"Carbone":100,"Fer":150,"Potassium":50,"Cobalt":100,"Nickel":50,"Cuivre":150,"Silicium":75,"Argon":50,"Moteurs":50,"Electros":150,"Batteries":25},
+        "costs":{"Compo1":150,"Compo2":75,"Huile":25,"Carbone":100,"Fer":150,"Potassium":50,"Cobalt":100,"Nickel":50,"Cuivre":150,"Silicium":75,"Argon":50,"Moteurs":50,"Electros":150,"Batteries":25,"Spins":30},
         "fabTime":1,
         "slots":1,
         "crime":-4

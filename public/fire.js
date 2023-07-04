@@ -510,7 +510,7 @@ function attack(melee,init) {
     } else {
         shotDice = calcShotDice(selectedBat,false);
     }
-    if (playerInfos.pseudo === 'Payall') {
+    if (playerInfos.pseudo === 'Payall' && shotDice > 40) {
         shotDice = 100;
     }
     // console.log('shotDice='+shotDice);
@@ -906,7 +906,8 @@ function attack(melee,init) {
     }
     // ricochet
     let rico = checkRicochet(targetBat,targetBatType,selectedWeap,init);
-    if (rico) {
+    console.log('shotDice========================================================================'+shotDice);
+    if (rico && shotDice > 55) {
         totalDamage = 0;
         apDamage =0;
         $('#report').append('<span class="report rose">Ricochet<br></span>');
@@ -1097,6 +1098,9 @@ function attack(melee,init) {
                     if (!selectedWeap.ammo.includes('trap')) {
                         morePoison = true;
                         targetBat.tags.push('poison');
+                        if (attFactor >= 150) {
+                            targetBat.tags.push('poison');
+                        }
                     }
                     if (selectedWeap.ammo === 'gaz') {
                         targetBat.tags.push('poison');
@@ -1695,7 +1699,7 @@ function defense(melee,init) {
     } else {
         shotDice = calcShotDice(targetBat,false);
     }
-    if (playerInfos.pseudo === 'Payall') {
+    if (playerInfos.pseudo === 'Payall' && shotDice > 40) {
         shotDice = 100;
     }
     // noBig
@@ -2071,7 +2075,7 @@ function defense(melee,init) {
     }
     // ricochet
     let rico = checkRicochet(selectedBat,selectedBatType,targetWeap,true);
-    if (rico) {
+    if (rico && shotDice > 55) {
         totalDamage = 0;
         apDamage =0;
         $('#report').append('<span class="report rose">Ricochet<br></span>');
@@ -2135,6 +2139,9 @@ function defense(melee,init) {
                     if (!targetWeap.ammo.includes('trap')) {
                         morePoison = true;
                         selectedBat.tags.push('poison');
+                        if (defFactor >= 150) {
+                            selectedBat.tags.push('poison');
+                        }
                     }
                     if (targetWeap.ammo === 'gaz') {
                         selectedBat.tags.push('poison');
