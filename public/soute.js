@@ -612,15 +612,125 @@ function batUndeployFrom(batId,fromId) {
     loadBat(bat.id,souteId,fromId);
 };
 
-function calcLanderDeploy(landerBatType) {
+function calcLanderDeploy(landerBatType,quiet) {
     let deployCosts = landerBatType.deploy;
-    return deployCosts;
+    // playerInfos.missionPlanet
+    // modifier pour la distance
+    // kzin, horst, dom, gehenna, sarak
+    let distanceFactor = 1;
+    if (playerInfos.missionPlanet === 5) {
+        // Horst
+        distanceFactor = 1.7;
+    } else if (playerInfos.missionPlanet === 4) {
+        // Kzin
+        distanceFactor = 2;
+    } else if (playerInfos.missionPlanet === 3) {
+        // Gehenna
+        distanceFactor = 0.8;
+    } else if (playerInfos.missionPlanet === 2) {
+        // Sarak
+        distanceFactor = 0.3;
+    }
+    let affectedRes = [];
+    affectedRes.push('Energie');
+    affectedRes.push('Plutonium');
+    affectedRes.push('Hydrogène');
+    affectedRes.push('Uranium');
+    affectedRes.push('Plastanium');
+    let newCosts = {};
+    let plastaNeed = 0;
+    Object.entries(deployCosts).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        if (key === 'Plastanium') {
+            let dispoRes = getDispoRes(key);
+            if (dispoRes < value) {
+                plastaNeed = Math.ceil(value*distanceFactor);
+                value = 0;
+            }
+        }
+        if (affectedRes.includes(key)) {
+            newCosts[key] = Math.ceil(value*distanceFactor);
+        } else {
+            newCosts[key] = Math.ceil(value);
+        }
+    });
+    if (plastaNeed >= 1) {
+        let hydroNeed = plastaNeed*10;
+        let powerNeed = plastaNeed*40;
+        newCosts['Hydrogène'] = newCosts['Hydrogène']+hydroNeed;
+        newCosts['Energie'] = newCosts['Energie']+powerNeed;
+        if (!quiet) {
+            warning('<span class="rq3">Défaut de ressources</span>','<span class="vio">Les '+plastaNeed+' Plastanium requis pour le décollage devront être remplacés par '+hydroNeed+' Hydrogène et '+powerNeed+' Energie.</span>');
+        }
+    }
+    // ajouter les scaphandres (en fonction de la taille du lander)
+    // gehenna : oxygène
+    // sarak : energie
+    // horst : entretien combis (kapton) / energie / oxygène
+    // kzin : entretien combis (titane)
+    let landerSizeFactor = landerBatType.transUnits/9000;
+    if (playerInfos.missionPlanet === 5) {
+        // Horst
+        if (newCosts['Oxygène'] != undefined) {
+            newCosts['Oxygène'] = newCosts['Oxygène']+Math.ceil(landerSizeFactor*100);
+        } else {
+            newCosts['Oxygène'] = Math.ceil(landerSizeFactor*100);
+        }
+        if (newCosts['Energie'] != undefined) {
+            newCosts['Energie'] = newCosts['Energie']+Math.ceil(landerSizeFactor*200);
+        } else {
+            newCosts['Energie'] = Math.ceil(landerSizeFactor*200);
+        }
+        if (newCosts['Carbone'] != undefined) {
+            newCosts['Carbone'] = newCosts['Carbone']+Math.ceil(landerSizeFactor*45);
+        } else {
+            newCosts['Carbone'] = Math.ceil(landerSizeFactor*45);
+        }
+        if (newCosts['Aluminium'] != undefined) {
+            newCosts['Aluminium'] = newCosts['Aluminium']+Math.ceil(landerSizeFactor*15);
+        } else {
+            newCosts['Aluminium'] = Math.ceil(landerSizeFactor*15);
+        }
+        if (newCosts['Nickel'] != undefined) {
+            newCosts['Nickel'] = newCosts['Nickel']+Math.ceil(landerSizeFactor*15);
+        } else {
+            newCosts['Nickel'] = Math.ceil(landerSizeFactor*15);
+        }
+    } else if (playerInfos.missionPlanet === 4) {
+        // Kzin
+        if (newCosts['Aluminium'] != undefined) {
+            newCosts['Aluminium'] = newCosts['Aluminium']+Math.ceil(landerSizeFactor*20);
+        } else {
+            newCosts['Aluminium'] = Math.ceil(landerSizeFactor*20);
+        }
+        if (newCosts['Titane'] != undefined) {
+            newCosts['Titane'] = newCosts['Titane']+Math.ceil(landerSizeFactor*20);
+        } else {
+            newCosts['Titane'] = Math.ceil(landerSizeFactor*20);
+        }
+    } else if (playerInfos.missionPlanet === 3) {
+        // Gehenna
+        if (newCosts['Oxygène'] != undefined) {
+            newCosts['Oxygène'] = newCosts['Oxygène']+Math.ceil(landerSizeFactor*100);
+        } else {
+            newCosts['Oxygène'] = Math.ceil(landerSizeFactor*100);
+        }
+    } else if (playerInfos.missionPlanet === 2) {
+        // Sarak
+        if (newCosts['Energie'] != undefined) {
+            newCosts['Energie'] = newCosts['Energie']+Math.ceil(landerSizeFactor*50);
+        } else {
+            newCosts['Energie'] = Math.ceil(landerSizeFactor*50);
+        }
+    }
+    return newCosts;
 }
 
 function landerDeploy(landerId) {
     let landerBat = getBatById(landerId);
     let landerBatType = getBatType(landerBat);
-    let deployCosts = calcLanderDeploy(landerBatType);
+    let deployCosts = calcLanderDeploy(landerBatType,true);
     let enoughRes = checkCost(deployCosts);
     if (enoughRes) {
         payCost(deployCosts);
@@ -640,7 +750,7 @@ function landerUnDeploy(landerId) {
     let landerBat = getBatById(landerId);
     if (landerBat.tags.includes('deploy')) {
         let landerBatType = getBatType(landerBat);
-        let deployCosts = calcLanderDeploy(landerBatType);
+        let deployCosts = calcLanderDeploy(landerBatType,true);
         addCost(deployCosts,1);
         tagDelete(landerBat,'deploy');
     }
@@ -656,7 +766,7 @@ function unDeployAllLanders() {
         if (bat.tags.includes('deploy')) {
             let batType = getBatType(bat);
             if (batType.skills.includes('transorbital')) {
-                let deployCosts = calcLanderDeploy(batType);
+                let deployCosts = calcLanderDeploy(batType,true);
                 addCost(deployCosts,1);
                 tagDelete(bat,'deploy');
             }

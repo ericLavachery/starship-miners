@@ -1426,11 +1426,11 @@ function batFullInfos(bat,batType) {
     if (!isBat) {
         $('#popbody').append('<div class="shSpace"></div>');
         $('#popbody').append('<span class="blockTitle"><h4>Coûts de construction</h4></span><br>');
+        let costString = '';
         if (batType.bldReq.includes('Station')) {
             $('#popbody').append('<span class="paramValue">Ce bâtiment ne peut pas être construit.</span>');
         } else {
             let reqString = displayUnitReqs(batType,true);
-            let costString = '';
             if (batType.costs != undefined) {
                 costString = displayCosts(batType.costs);
             }
@@ -1440,7 +1440,13 @@ function batFullInfos(bat,batType) {
                 $('#popbody').append('<span class="paramValue">'+reqString+'</span>');
                 $('#popbody').append('<br>');
             }
-            $('#popbody').append('<span class="paramValue"><span class="mauve">Ressources:</span> '+costString+'</span>');
+            $('#popbody').append('<span class="paramValue"><span class="mauve">Ressources:</span> '+costString+'</span><br>');
+        }
+        if (playerInfos.onShip) {
+            if (costString.includes('&#128683;')) {
+                $('#popbody').append('<div class="shSpace"></div>');
+                $('#popbody').append('<span class="paramValue"><span class="vert klik" onclick="tagAllMissingRes('+batType.id+')">>>>Taguer toutes les ressources manquantes</span></span><br>');
+            }
         }
     }
     $('#popbody').append('<div class="shSpace"></div>');

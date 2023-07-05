@@ -196,6 +196,22 @@ function tagRes(resId) {
     voirReserve();
 };
 
+function tagAllMissingRes(unitId) {
+    let batType = getBatTypeById(unitId);
+    if (batType.costs != undefined) {
+        Object.entries(batType.costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            let dispoRes = getDispoRes(key);
+            if (dispoRes < value) {
+                if (!playerInfos.resFlags.includes(key)) {
+                    playerInfos.resFlags.push(key);
+                }
+            }
+        });
+    }
+};
+
 function checkReserve() {
     findLanders();
     let dispoRes;

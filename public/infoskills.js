@@ -88,7 +88,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
     }
     if (playerInfos.onShip && batType.skills.includes('transorbital') && batType.name != 'Soute' && inSoute && playerInfos.missionZone >= 1) {
-        let deployCosts = calcLanderDeploy(batType);
+        let deployCosts = calcLanderDeploy(batType,false);
         let enoughRes = checkCost(deployCosts);
         let costString = '';
         if (deployCosts != undefined) {
