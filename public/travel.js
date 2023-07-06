@@ -330,6 +330,88 @@ function atterrissageSurZone(landerBat,landerBatType,tileId) {
     // console.log(batsInSpace);
 };
 
+function showLanderLandingTiles() {
+    zone.forEach(function(tile) {
+        if (landerLandingOK(tile) && !playerInfos.showedTiles.includes(tile.id)) {
+            playerInfos.showedTiles.push(tile.id);
+        }
+    });
+}
+
+function landerLandingOK(tile,landerBatType) {
+    let tileOK = false;
+    let centreLand = true;
+    if (zone[0].cLand != undefined) {
+        if (!zone[0].cLand) {
+            centreLand = false;
+        }
+    }
+    if (centreLand) {
+        let landerRange = getLanderRange();
+        let distance = calcDistanceSquare(tile.id,1830);
+        if (distance <= landerRange) {
+            tileOK = landingTerrainOK(tile);
+        }
+    } else {
+        tileOK = false;
+        if (tile.land) {
+            tileOK = true;
+        } else if (tile.nav) {
+            if (landerBatType != undefined) {
+                if (landerBatType.skills.includes('rescue')) {
+                    tileOK = true;
+                }
+            } else {
+                tileOK = true;
+            }
+        }
+    }
+    return tileOK;
+};
+
+function landingTerrainOK(tile) {
+    // console.log(tile);
+    let terOK = true;
+    if (tile.terrain === 'R' || tile.terrain === 'L') {
+        terOK = false;
+    }
+    if (tile.terrain === 'W') {
+        if (playerInfos.comp.vsp < 4) {
+            terOK = false;
+        }
+    }
+    if (tile.terrain === 'M') {
+        if (tile.rd) {
+            if (playerInfos.comp.vsp < 3) {
+                terOK = false;
+            }
+        } else {
+            if (playerInfos.comp.vsp < 4) {
+                terOK = false;
+            }
+        }
+    }
+    if (tile.terrain === 'F') {
+        if (tile.rd) {
+            if (playerInfos.comp.vsp < 2) {
+                terOK = false;
+            }
+        } else {
+            if (playerInfos.comp.vsp < 3) {
+                terOK = false;
+            }
+        }
+    }
+    if (tile.terrain === 'S' || tile.terrain === 'H') {
+        if (!tile.rd) {
+            if (playerInfos.comp.vsp < 1) {
+                terOK = false;
+            }
+        }
+    }
+    return terOK;
+};
+
 function healEverything() {
     // toutes les unités vont dans la soute
     // toutes les unités sont soignées et perdent leurs tags temporaires
