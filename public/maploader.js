@@ -33,8 +33,9 @@ function showMap(wmap,justMoved) {
         allCheckedZoneRes = [];
     }
     viewBorders = [];
-    if (modeSonde) {
+    if (modeSonde || modeLanding) {
         playerInfos.showedTiles = [1830];
+        showLanderLandingTiles();
     }
     let visMap = _.filter(wmap, function(tile) {
         return (tile.x >= minX && tile.x <= maxX && tile.y >= minY && tile.y <= maxY);
@@ -52,9 +53,6 @@ function showMap(wmap,justMoved) {
         }
         if (tile.x === minX || tile.x === maxX || tile.y === minY || tile.y === maxY) {
             viewBorders.push(tile.id);
-        }
-        if ((modeSonde || modeLanding) && landerLandingOK(tile) && !playerInfos.showedTiles.includes(tile.id)) {
-            playerInfos.showedTiles.push(tile.id);
         }
         resHere = showRes(tile.id);
         if (tile.seed >= 10) {
@@ -150,11 +148,17 @@ function mapEffectIn() {
 };
 
 function showLanderLandingTiles() {
+    console.log('showLanderLandingTiles ------------------------------------------------------------------------');
     zone.forEach(function(tile) {
         if (landerLandingOK(tile) && !playerInfos.showedTiles.includes(tile.id)) {
             playerInfos.showedTiles.push(tile.id);
         }
     });
+    console.log('showedTiles');
+    console.log(playerInfos.showedTiles);
+    if (playerInfos.showedTiles.includes(2182)) {
+        console.log('RIVER IN 2182');
+    }
 }
 
 function landerLandingOK(tile,landerBatType) {
@@ -174,14 +178,14 @@ function landerLandingOK(tile,landerBatType) {
     } else {
         tileOK = false;
         if (tile.land) {
-            tileOK = landingTerrainOK(tile);
+            tileOK = true;
         } else if (tile.nav) {
             if (landerBatType != undefined) {
                 if (landerBatType.skills.includes('rescue')) {
-                    tileOK = landingTerrainOK(tile);
+                    tileOK = true;
                 }
             } else {
-                tileOK = landingTerrainOK(tile);
+                tileOK = true;
             }
         }
     }
@@ -189,29 +193,30 @@ function landerLandingOK(tile,landerBatType) {
 };
 
 function landingTerrainOK(tile) {
+    // console.log(tile);
     let terOK = true;
     if (tile.terrain === 'R' || tile.terrain === 'L') {
-        tileOK = false;
+        terOK = false;
     }
     if (playerInfos.comp.vsp < 4) {
         if (tile.terrain === 'W') {
-            tileOK = false;
+            terOK = false;
         }
     }
     if (playerInfos.comp.vsp < 3) {
         if (tile.terrain === 'M') {
-            tileOK = false;
+            terOK = false;
         }
     }
     if (!tile.rd) {
         if (playerInfos.comp.vsp < 2) {
             if (tile.terrain === 'F') {
-                tileOK = false;
+                terOK = false;
             }
         }
         if (playerInfos.comp.vsp < 1) {
             if (tile.terrain === 'S' || tile.terrain === 'H') {
-                tileOK = false;
+                terOK = false;
             }
         }
     }
