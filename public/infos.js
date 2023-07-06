@@ -1445,7 +1445,7 @@ function batFullInfos(bat,batType) {
         if (playerInfos.onShip) {
             if (costString.includes('&#128683;')) {
                 $('#popbody').append('<div class="shSpace"></div>');
-                $('#popbody').append('<span class="paramValue"><span class="vert klik" onclick="tagAllMissingRes('+batType.id+')">>>>Taguer toutes les ressources manquantes</span></span><br>');
+                $('#popbody').append('<span class="paramValue"><span class="vert klik" onclick="tagAllMissingRes('+batType.id+')" title="Cliquez ici pour taguer les ressources qu\'il vous manque pour construire cette unité. Les ressources taguées seront mises en évidence sur les cartes.">>>>Taguer les ressources manquantes</span></span><br>');
             }
         }
     }

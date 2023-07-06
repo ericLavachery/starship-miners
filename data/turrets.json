@@ -1744,9 +1744,9 @@
             "noFly":true,
             "rof":1,
             "accuracy":14,
-            "power":21,
+            "power":11,
             "aoe":"unit",
-            "sound":"spear",
+            "sound":"bite",
             "ammo":["trap"]
         },
         "weapon2":{

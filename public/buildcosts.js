@@ -41,6 +41,8 @@ function voirReserve() {
             maxRes = playerInfos.maxRes[res.name];
         }
         let resCol = '';
+        let tagEmo = '&#9989;';
+        let tagTxt = 'Taguer cette ressource';
         if (maxRes < dispoRes && (res.cat != 'alien' || res.name === 'Gibier') && playerInfos.onShip && !inSoute) {
             if (isPerish) {
                 resCol = ' or';
@@ -48,6 +50,8 @@ function voirReserve() {
                 resCol = ' ciel';
             }
         } else if (playerInfos.resFlags.includes(res.name)) {
+            tagEmo = '&#10062;';
+            tagTxt = 'Enlever le tag sur cette ressource';
             resCol = ' jaune';
         } else if (res.cat === 'alien') {
             resCol = ' gff';
@@ -56,9 +60,9 @@ function voirReserve() {
             dispoRes = 0;
         }
         if (playerInfos.onShip && (!inSoute || souteTab != 'rez')) {
-            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Taguer cette ressource ('+res.name+')" onclick="tagRes('+res.id+')">&CircleDot;</span>');
+            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="'+tagTxt+' ('+res.name+')" onclick="tagRes('+res.id+')">'+tagEmo+'</span>');
             if (res.cat != 'alien' && !isPerish) {
-                $('#conUnitList').append('&nbsp; <span class="paramValue brunf" title="Maximum de stockage ('+res.name+')">'+maxRes+'</span> &nbsp;<span class="paramValue klik" title="Augmenter le maximum de stockage ('+res.name+')" onclick="maxResEdit('+res.id+',true)">&uHar;</span> &nbsp;<span class="paramValue klik" title="Diminuer le maximum de stockage ('+res.name+')" onclick="maxResEdit('+res.id+',false)">&dHar;</span><br>');
+                $('#conUnitList').append('&nbsp; <span class="paramValue brunf" title="Maximum de stockage ('+res.name+')">'+maxRes+'</span> &nbsp;<span class="paramValue klik" title="Augmenter le maximum de stockage ('+res.name+')" onclick="maxResEdit('+res.id+',true)">&#9195;</span> &nbsp;<span class="paramValue klik" title="Diminuer le maximum de stockage ('+res.name+')" onclick="maxResEdit('+res.id+',false)">&#9196;</span><br>');
             } else if (res.name === 'Gibier' || isPerish) {
                 $('#conUnitList').append('&nbsp; <span class="paramValue brun" title="Maximum de stockage ('+res.name+')">'+maxRes+'</span><br>');
             } else {
@@ -172,10 +176,23 @@ function maxResEdit(resId,up) {
         maxRes = playerInfos.maxRes[res.name];
     }
     if (up) {
-        maxRes = Math.ceil(maxRes*1.1);
+        if (maxRes < 15000) {
+            maxRes = maxRes+1000;
+        } else if (maxRes < 27000) {
+            maxRes = maxRes+2000;
+        } else {
+            maxRes = maxRes+3000;
+        }
     } else {
-        maxRes = Math.floor(maxRes/1.1);
+        if (maxRes <= 15000) {
+            maxRes = maxRes-1000;
+        } else if (maxRes <= 27000) {
+            maxRes = maxRes-2000;
+        } else {
+            maxRes = maxRes-3000;
+        }
     }
+    if (maxRes < 1000) {maxRes = 1000;}
     if (res.max != undefined) {
         if (maxRes > res.max) {
             maxRes = res.max;

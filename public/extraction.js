@@ -870,7 +870,7 @@ function voirRessources() {
             }
         });
     }
-    $("#conUnitList").animate({scrollTop:0},"fast");
+    // $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
 function showTileRes(theTileRes) {
