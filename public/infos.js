@@ -1275,8 +1275,8 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('repoheal')) {
         allSkills = allSkills+'<span class="paramValue" title="Améliore la rémission physique en période de repos (jours passés dans la station)">Rémission</span>'+sepa;
     }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
+    if (batType.skills.includes('chasse')) {
+        allSkills = allSkills+'<span class="paramValue" title="Récupèrent du Gibier en forêt lorsqu\'ils sont inactifs et éloignés du Lander">Chasse</span>'+sepa;
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;

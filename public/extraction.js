@@ -442,6 +442,38 @@ function getTerrainRes(terrain,tile) {
     return srs;
 };
 
+function getHuntingRes(bat,batType) {
+    if (batType.skills.includes('chasse')) {
+        if (bat.salvoLeft >= 1) {
+            let tile = getTile(bat);
+            if (tile.terrain === 'F') {
+                let vf = getVegFactor();
+                let gf = vf.wood+vf.veg;
+                let huntGib = gf;
+                if (batType.skills.includes('pistage')) {
+                    huntGib = huntGib*1.5;
+                } else if (batType.skills.includes('affut')) {
+                    huntGib = huntGib*0.75;
+                }
+                let gibRes = Math.round(huntGib/300);
+                if (gibRes < 1) {
+                    if (rand.rand(1,300) <= huntGib) {
+                        gibRes = 1;
+                    }
+                }
+                if (gibRes >= 1) {
+                    if (minedThisTurn['Gibier'] === undefined) {
+                        minedThisTurn['Gibier'] = gibRes;
+                    } else {
+                        minedThisTurn['Gibier'] = minedThisTurn['Gibier']+gibRes;
+                    }
+                    resAdd('Gibier',gibRes);
+                }
+            }
+        }
+    }
+};
+
 function checkPotable(myZone,tileId) {
     let myTerrain = 'P';
     if (tileId >= 0) {

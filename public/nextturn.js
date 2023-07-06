@@ -634,21 +634,14 @@ function nextTurnEnd() {
                             bat.xp = bat.xp+0.3;
                         }
                     }
+                    if (distFromLander >= 13) {
+                        getHuntingRes(bat,batType);
+                    }
                 }
             }
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
             bat.fuzz = getBatFuzz(bat,batType);
-            // if (batType.skills.includes('notarget') && bat.fuzz > -2) {
-            //     bat.fuzz = -2;
-            // }
-            // let selfMove = checkSelfMove(bat,batType);
-            // if (!selfMove) {
-            //     bat.fuzz = -1;
-            // }
-            // if (bat.fuzz <= -2 && !batType.skills.includes('notarget') && !bat.tags.includes('camo') && selfMove) {
-            //     bat.fuzz = batType.fuzz;
-            // }
             planetEffects(bat,batType);
             tagsEffect(bat,batType);
             tagsUpdate(bat,batType);
