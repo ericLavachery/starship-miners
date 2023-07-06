@@ -498,6 +498,8 @@ function checkPotable(myZone,tileId) {
 
 function getMiningRate(bat,fullRate,noMining) {
     let batType = getBatType(bat);
+    console.log('batType');
+    console.log(batType);
     let miningAdj = 1;
     if (!noMining) {
         if (batType.weapon2.name === 'Foreuse' || batType.weapon2.name === 'Pioche') {
@@ -678,11 +680,11 @@ function getAllMiningRates(bat,batType) {
         if (res.bld != '') {
             let resRate = getResMiningRate(bat,res,250,true,true);
             if (playerInfos.comp.ext === 1) {
-                resRate = getResMiningRate(selectedBat,res,260,true,false);
+                resRate = getResMiningRate(bat,res,260,true,false);
             } else if (playerInfos.comp.ext === 2) {
-                resRate = getResMiningRate(selectedBat,res,270,true,false);
+                resRate = getResMiningRate(bat,res,270,true,false);
             } else if (playerInfos.comp.ext === 3) {
-                resRate = getResMiningRate(selectedBat,res,290,true,false);
+                resRate = getResMiningRate(bat,res,290,true,false);
             }
             if (resRate >= 1) {
                 allMiningRates[res.name] = resRate;
