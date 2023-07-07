@@ -288,12 +288,26 @@ function unitWeaponDisplay(thisWeapon,batType) {
     if (thisWeapon.isMelee || thisWeapon.noShield) {
         $('#'+bodyPlace).append('<span class="paramName">Passe les boucliers</span><span class="paramEmo">&nbsp;</span><span class="paramValue">Oui</span><br>');
     }
-
     let noise = 3;
     if (thisWeapon.noise != undefined) {
         noise = thisWeapon.noise;
     }
-    $('#'+bodyPlace).append('<span class="paramName">Bruit</span><span class="paramEmo">&nbsp;</span><span class="paramValue">'+noise+'</span><br>');
+    $('#'+bodyPlace).append('<span class="paramName">Discrétion</span><span class="paramEmo">&nbsp;</span><span class="paramValue">'+noise+'</span><br>');
+    // RAVIT
+    if (thisWeapon.maxAmmo != undefined) {
+        $('#'+bodyPlace).append('<span class="paramName" title="Nombre de tirs avant ravitaillement">Munitions</span><span class="paramEmo">&nbsp;</span><span class="paramValue">'+thisWeapon.maxAmmo+'</span><br>');
+        if (thisWeapon.ravitBld != undefined) {
+            let ravitBlds = thisWeapon.ravitBld;
+            if (!ravitBlds.includes('Poudrière')) {
+                ravitBlds = ravitBlds+', Poudrière';
+            }
+            $('#'+bodyPlace).append('<span class="paramName" title="Bâtiment(s) requis pour le ravitaillement">Bâtiment(s)</span><span class="paramEmo">&nbsp;</span><span class="paramValue">'+ravitBlds+'</span><br>');
+        }
+    }
+    // MUNITIONS
+    let ammoString = displayWeaponAmmos(batType,thisWeapon);
+    $('#'+bodyPlace).append('<span class="paramValue">'+ammoString+'</span><br>');
+    $('#popbody').append('<div class="shSpace"></div>');
 
     // thisWeapon.kit = weapon.kit;
 

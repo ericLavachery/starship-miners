@@ -267,6 +267,13 @@ function weaponsInfos(bat,batType,tile,pop) {
                 }
                 ravitVolume = calcRavitVolume(bat);
                 $('#'+bodyPlace).append('<span class="paramName" title="Volume du ravitaillement">Volume</span><span class="paramIcon"></span><span class="paramValue">'+ravitVolume[1]+'/'+ravitVolume[0]+'</span><br>');
+                if (batType.weapon.ravitBld != undefined) {
+                    let ravitBlds = batType.weapon.ravitBld;
+                    if (!ravitBlds.includes('Poudrière')) {
+                        ravitBlds = ravitBlds+', Poudrière';
+                    }
+                    $('#'+bodyPlace).append('<span class="paramName" title="Bâtiment(s) requis pour le ravitaillement">Bâtiment(s)</span><span class="paramIcon"></span><span class="paramValue">'+ravitBlds+'</span><br>');
+                }
             }
             if (thisWeapon.noise < 2) {
                 let tirFurtif = calcTirFurtif(thisWeapon,bat,1);
@@ -538,6 +545,13 @@ function weaponsInfos(bat,batType,tile,pop) {
                 }
                 ravitVolume = calcRavitVolume(bat);
                 $('#'+bodyPlace).append('<span class="paramName" title="Volume du ravitaillement">Volume</span><span class="paramIcon"></span><span class="paramValue">'+ravitVolume[1]+'/'+ravitVolume[0]+'</span><br>');
+                if (batType.weapon2.ravitBld != undefined) {
+                    let ravitBlds = batType.weapon2.ravitBld;
+                    if (!ravitBlds.includes('Poudrière')) {
+                        ravitBlds = ravitBlds+', Poudrière';
+                    }
+                    $('#'+bodyPlace).append('<span class="paramName" title="Bâtiment(s) requis pour le ravitaillement">Bâtiment(s)</span><span class="paramIcon"></span><span class="paramValue">'+ravitBlds+'</span><br>');
+                }
             }
             if (thisWeapon.noise < 2) {
                 let tirFurtif = calcTirFurtif(thisWeapon,bat,1);
@@ -674,7 +688,22 @@ function showAmmoInfo(ammoName) {
         ammoInfo = ammoInfo+'&#9889; Précision- ';
     }
     if (ammo.apdamage > 0) {
-        ammoInfo = ammoInfo+'&#9889; Entrave ';
+        ammoInfo = ammoInfo+'&#9889; Entrave (perte de PA) ';
+    }
+    if (ammo.name.includes('plastanium')) {
+        ammoInfo = ammoInfo+'&#9889; Dégâts x2 dans l\'eau ';
+    }
+    if (ammo.name.includes('jello')) {
+        ammoInfo = ammoInfo+'&#9889; Ramollissement (des armures alien) ';
+    }
+    if (ammo.name.includes('marq')) {
+        ammoInfo = ammoInfo+'&#9889; Marquage ';
+    }
+    if (ammo.name.includes('-bio')) {
+        ammoInfo = ammoInfo+'&#9889; Génocide ';
+    }
+    if (ammo.name.includes('-necro')) {
+        ammoInfo = ammoInfo+'&#9889; Anti-régénération ';
     }
     if (ammo.aoe != '') {
         if (ammo.aoe == 'unit') {
@@ -687,7 +716,11 @@ function showAmmoInfo(ammoName) {
             ammoInfo = ammoInfo+'&#9889; AOE Escouade ';
         }
         if (ammo.aoe == 'bat') {
-            ammoInfo = ammoInfo+'&#9889; AOE Bataillon ';
+            if (ammo.name.includes('deluge') || (ammo.name.includes('-gaz') && ammo.name != 'grenade-gaz')) {
+                ammoInfo = ammoInfo+'&#9889; AOE 9 cases ';
+            } else {
+                ammoInfo = ammoInfo+'&#9889; AOE Bataillon ';
+            }
         }
     }
     if (ammo.info != undefined) {

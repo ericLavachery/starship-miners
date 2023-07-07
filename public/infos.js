@@ -1398,28 +1398,30 @@ function batFullInfos(bat,batType) {
         }
         $('#popbody').append('<div class="shSpace"></div>');
     }
-    // EQUIPEMENTS
-    if (batType.equip != undefined) {
-        if (batType.equip.length >= 2) {
-            let equipString = displayUnitEquips(batType);
-            $('#popbody').append('<div class="shSpace"></div>');
-            $('#popbody').append('<span class="blockTitle"><h4>Equipements disponibles</h4></span><br>');
-            $('#popbody').append('<span class="paramValue">'+equipString+'</span><br>');
-            $('#popbody').append('<div class="shSpace"></div>');
-        }
-    }
-    // ARMURES
-    if (batType.protection != undefined) {
-        if (batType.protection.length >= 2) {
-            let armorString = displayUnitArmors(batType);
-            $('#popbody').append('<div class="shSpace"></div>');
-            if (batType.cat === 'infantry' || (batType.cat === 'infantry' && batType.skills.includes('robot'))) {
-                $('#popbody').append('<span class="blockTitle"><h4>Armures disponibles</h4></span><br>');
-            } else {
-                $('#popbody').append('<span class="blockTitle"><h4>Blindages disponibles</h4></span><br>');
+    if (!isBat) {
+        // EQUIPEMENTS
+        if (batType.equip != undefined) {
+            if (batType.equip.length >= 2) {
+                let equipString = displayUnitEquips(batType);
+                $('#popbody').append('<div class="shSpace"></div>');
+                $('#popbody').append('<span class="blockTitle"><h4>Equipements disponibles</h4></span><br>');
+                $('#popbody').append('<span class="paramValue">'+equipString+'</span><br>');
+                $('#popbody').append('<div class="shSpace"></div>');
             }
-            $('#popbody').append('<span class="paramValue">'+armorString+'</span><br>');
-            $('#popbody').append('<div class="shSpace"></div>');
+        }
+        // ARMURES
+        if (batType.protection != undefined) {
+            if (batType.protection.length >= 2) {
+                let armorString = displayUnitArmors(batType);
+                $('#popbody').append('<div class="shSpace"></div>');
+                if (batType.cat === 'infantry' || (batType.cat === 'infantry' && batType.skills.includes('robot'))) {
+                    $('#popbody').append('<span class="blockTitle"><h4>Armures disponibles</h4></span><br>');
+                } else {
+                    $('#popbody').append('<span class="blockTitle"><h4>Blindages disponibles</h4></span><br>');
+                }
+                $('#popbody').append('<span class="paramValue">'+armorString+'</span><br>');
+                $('#popbody').append('<div class="shSpace"></div>');
+            }
         }
     }
     // COSTS
@@ -1451,6 +1453,41 @@ function batFullInfos(bat,batType) {
     }
     $('#popbody').append('<div class="shSpace"></div>');
     $('#popbody').append('<div class="shSpace"></div>');
+};
+
+function displayWeaponAmmos(batType,thisWeapon) {
+    let weapName = 'weapon';
+    if (batType.weapon2.rof >= 1) {
+        if (batType.weapon2.name === thisWeapon.name) {
+            weapName = 'weapon2';
+        }
+    }
+    let sepa = ' &nbsp;&#128206;&nbsp; ';
+    let ammoString = '';
+    ammoTypes.forEach(function(stuff) {
+        if (batType[weapName].ammo.includes(stuff.name)) {
+            let ammoInfo = showAmmoInfo(stuff.name);
+            if (stuff.bldReq != undefined) {
+                if (stuff.bldReq.length >= 1) {
+                    ammoInfo = ammoInfo+'&nbsp; &#127963; '+toNiceString(stuff.bldReq)+' &nbsp;';
+                }
+            }
+            let compReqs = getCompReqs(stuff,false);
+            if (Object.keys(compReqs.base).length >= 1) {
+                let stringReq1 = toCoolString(compReqs.base,true,false);
+                stringReq1 = replaceCompNamesByFullNames(stringReq1);
+                ammoInfo = ammoInfo+' &#128161;'+stringReq1;
+            }
+            if (Object.keys(compReqs.alt).length >= 1) {
+                let stringReq2 = toCoolString(compReqs.alt,true,false);
+                stringReq2 = replaceCompNamesByFullNames(stringReq2);
+                ammoInfo = ammoInfo+' &#128161;'+stringReq2;
+            }
+            ammoString = ammoString+sepa+'<span title="'+ammoInfo+'">'+stuff.name+'</span>';
+        }
+    });
+    ammoString = ammoString+sepa;
+    return ammoString;
 };
 
 function displayUnitArmors(batType) {
