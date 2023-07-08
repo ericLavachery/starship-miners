@@ -607,6 +607,21 @@ function nextTurnEnd() {
             if (batType.skills.includes('nostun') && bat.apLeft < 1) {
                 bat.apLeft = 1;
             }
+            if (landerTileId >= 0) {
+                if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
+                    let distFromLander = calcDistance(bat.tileId,landerTileId);
+                    if (distFromLander >= 17) {
+                        bat.xp = bat.xp+0.3;
+                        let parcours = calcDistance(bat.tileId,bat.oldTileId);
+                        if (parcours > 2) {
+                            bat.xp = bat.xp+0.3;
+                        }
+                    }
+                    if (distFromLander >= 13) {
+                        getHuntingRes(bat,batType);
+                    }
+                }
+            }
             if (noStuck && batType.maxSalvo <= 2) {
                 bat.salvoLeft = 0;
             } else {
@@ -621,21 +636,6 @@ function nextTurnEnd() {
                 if (bat.soins != undefined) {
                     if (bat.soins >= 11) {
                         bat.apLeft = bat.apLeft-checkVehiclesAPSoins(bat,batType);
-                    }
-                }
-            }
-            if (landerTileId >= 0) {
-                if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
-                    let distFromLander = calcDistance(bat.tileId,landerTileId);
-                    if (distFromLander >= 17) {
-                        bat.xp = bat.xp+0.3;
-                        let parcours = calcDistance(bat.tileId,bat.oldTileId);
-                        if (parcours > 2) {
-                            bat.xp = bat.xp+0.3;
-                        }
-                    }
-                    if (distFromLander >= 13) {
-                        getHuntingRes(bat,batType);
                     }
                 }
             }

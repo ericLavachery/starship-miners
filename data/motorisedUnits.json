@@ -3692,7 +3692,7 @@
             "accuracy":18,
             "power":7,
             "aoe":"unit",
-            "sound":"bow",
+            "sound":"crossbow2_x2",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "weapon2":{

@@ -59,8 +59,9 @@ function voirReserve() {
         if (dispoRes < 0) {
             dispoRes = 0;
         }
+        let resInfo = showResInfo(res.name,true);
         if (playerInfos.onShip && (!inSoute || souteTab != 'rez')) {
-            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="'+tagTxt+' ('+res.name+')" onclick="tagRes('+res.id+')">'+tagEmo+'</span>');
+            $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="'+tagTxt+' ('+res.name+')" onclick="tagRes('+res.id+')">'+tagEmo+'</span>');
             if (res.cat != 'alien' && !isPerish) {
                 $('#conUnitList').append('&nbsp; <span class="paramValue brunf" title="Maximum de stockage ('+res.name+')">'+maxRes+'</span> &nbsp;<span class="paramValue klik" title="Augmenter le maximum de stockage ('+res.name+')" onclick="maxResEdit('+res.id+',true)">&#9195;</span> &nbsp;<span class="paramValue klik" title="Diminuer le maximum de stockage ('+res.name+')" onclick="maxResEdit('+res.id+',false)">&#9196;</span><br>');
             } else if (res.name === 'Gibier' || isPerish) {
@@ -69,11 +70,11 @@ function voirReserve() {
                 $('#conUnitList').append('<br>');
             }
         } else if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 50) {
-            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span><br>');
+            $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span><br>');
         } else if (res.cat === 'alien' || minedRes <= 0) {
-            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span></span><br>');
+            $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span></span><br>');
         } else {
-            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span><br>');
+            $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span><br>');
         }
         playerInfos.reserve[res.name] = dispoRes;
     });
@@ -113,10 +114,11 @@ function voirReserveStation() {
         if (dispoRes < 0) {
             dispoRes = 0;
         }
+        let resInfo = showResInfo(res.name,true);
         if (res.cat === 'alien' || minedRes <= 0) {
-            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span></span><br>');
+            $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span></span><br>');
         } else {
-            $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span><br>');
+            $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span> +('+minedRes+')</span><br>');
         }
     });
     $('#conUnitList').append('<br><br>');

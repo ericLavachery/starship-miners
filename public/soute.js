@@ -1,6 +1,7 @@
 function goSoute() {
     inSoute = true;
     justReloaded = false;
+    conOut(true);
     if (playerInfos.onShip) {
         playerInfos.mapTurn = 0;
         playRoom('soute',true,true);

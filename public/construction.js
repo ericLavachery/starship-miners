@@ -879,6 +879,74 @@ function showAmmoInfo(ammoName,withReqs) {
     return ammoInfo;
 };
 
+function showResInfo(resName,full) {
+    let res = getResByName(resName);
+    let resInfo = getResIcon(res);
+    resInfo = resInfo+getResCat(res,full);
+    if (full) {
+        if (res.bld.length >= 1) {
+            if (res.name === 'Scrap') {
+                resInfo = resInfo+'\n&#9935; Collecteur approprié: COMPTOIR';
+            } else if (res.name != 'Magma') {
+                resInfo = resInfo+'\n&#9935; Collecteur approprié: '+res.bld.toUpperCase();
+            }
+        }
+        let showPlanets = true;
+        if (res.cat === 'alien') {
+            showPlanets = false;
+        }
+        if (res.cat === 'transfo' && res.name != 'Morphite') {
+            showPlanets = false;
+        }
+        if (showPlanets) {
+            // let resPlanets = '\n&#127759; Dom=1, Sarak=1, Gehenna=1, Kzin=1, Horst=1';
+            let resPlanets = '';
+            if (res.planets != undefined) {
+                resPlanets = '\n&#127759; '+toCoolString(res.planets,true,false);
+            }
+            resInfo = resInfo+resPlanets;
+        }
+    }
+    return resInfo;
+};
+
+function getResCat(res,full) {
+    let resCat = '';
+    if (res.cat === 'alien') {
+        resCat = resCat+' ressource ALIEN';
+        if (full) {
+            resCat = resCat+' (se collecte automatiquement en tuant des aliens)';
+        }
+    } else if (res.cat === 'transfo' && res.name != 'Morphite') {
+        resCat = resCat+' ressource TRANSFORMEE';
+        if (full) {
+            resCat = resCat+' (s\'obtient par crafting ou démantèlement d\'unités)';
+        }
+    } else if (res.cat === 'zero' || res.name === 'Morphite' || res.name === 'Scrap' || res.bld === 'Comptoir') {
+        resCat = resCat+' ressource de SURFACE';
+        if (full) {
+            if (res.name === 'Morphite') {
+                resCat = resCat+' (se collecte en surface, d\'un seul coup)';
+            } else if (res.name === 'Corps') {
+                resCat = resCat+' (se collecte automatiquement quand vous perdez des bataillons)';
+            } else {
+                resCat = resCat+' (se collecte à la surface)';
+            }
+        }
+    } else if (res.name === 'Magma') {
+        resCat = resCat+' ressource du SOUS-SOL';
+        if (full) {
+            resCat = resCat+' (ne se collecte jamais, augmente l\'efficacité des Sondes Géothermiques sur place)';
+        }
+    } else {
+        resCat = resCat+' ressource du SOUS-SOL';
+        if (full) {
+            resCat = resCat+' (se mine)';
+        }
+    }
+    return resCat;
+};
+
 function selectAmmo(ammo,weapon,unitId) {
     if (conselUnit.skills.includes('unemun')) {
         conselAmmos[0] = ammo;

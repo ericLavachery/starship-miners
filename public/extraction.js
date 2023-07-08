@@ -253,16 +253,16 @@ function scrapMorphing(bat,batType,minedScrap,tile) {
                 }
             }
         }
-        console.log('----- '+res.name);
-        console.log('resFactor: '+resFactor);
+        // console.log('----- '+res.name);
+        // console.log('resFactor: '+resFactor);
         if (resFactor >= 1) {
             let resNum = Math.round(morphed*resFactor/rand.rand(3,18)/2);
-            console.log('resNum: '+resNum);
+            // console.log('resNum: '+resNum);
             if (resNum >= 3) {
                 resProd = resNum;
             } else {
                 let resChance = Math.round(100*resFactor/30*morphed/3);
-                console.log('resChance: '+resChance+'%');
+                // console.log('resChance: '+resChance+'%');
                 if (rand.rand(1,100) <= resChance) {
                     resProd = 3;
                 }
@@ -276,7 +276,7 @@ function scrapMorphing(bat,batType,minedScrap,tile) {
             } else {
                 minedThisTurn[res.name] = minedThisTurn[res.name]+resProd;
             }
-            console.log('resProd: '+resProd);
+            // console.log('resProd: '+resProd);
         }
     });
 };
@@ -445,29 +445,35 @@ function getTerrainRes(terrain,tile) {
 function getHuntingRes(bat,batType) {
     if (batType.skills.includes('chasse')) {
         if (bat.salvoLeft >= 1 && bat.loc === 'zone') {
-            let tile = getTile(bat);
-            if (tile.terrain === 'F') {
-                let vf = getVegFactor();
-                let gf = vf.wood+vf.veg;
-                let huntGib = gf;
-                if (batType.skills.includes('pistage')) {
-                    huntGib = huntGib*1.5;
-                } else if (batType.skills.includes('affut')) {
-                    huntGib = huntGib*0.75;
-                }
-                let gibRes = Math.round(huntGib/200);
-                if (gibRes < 1) {
-                    if (rand.rand(1,200) <= huntGib) {
-                        gibRes = 1;
+            if (zone[0].planet != 'Gehenna') {
+                let tile = getTile(bat);
+                if (tile.terrain === 'F') {
+                    let vf = getVegFactor();
+                    let gf = vf.wood+vf.veg;
+                    let huntGib = gf;
+                    if (batType.skills.includes('pistage')) {
+                        huntGib = huntGib*1.5;
+                    } else if (batType.skills.includes('affut')) {
+                        huntGib = huntGib*0.75;
                     }
-                }
-                if (gibRes >= 1) {
-                    if (minedThisTurn['Gibier'] === undefined) {
-                        minedThisTurn['Gibier'] = gibRes;
-                    } else {
-                        minedThisTurn['Gibier'] = minedThisTurn['Gibier']+gibRes;
+                    if (zone[0].planet === 'Horst') {
+                        huntGib = huntGib*0.33;
                     }
-                    resAdd('Gibier',gibRes);
+                    let gibRes = Math.round(huntGib/200);
+                    if (gibRes < 1) {
+                        if (rand.rand(1,200) <= huntGib) {
+                            gibRes = 1;
+                        }
+                    }
+                    if (gibRes >= 1) {
+                        console.log('Chasse: '+batType.name+' '+gibRes+' Gibier');
+                        if (minedThisTurn['Gibier'] === undefined) {
+                            minedThisTurn['Gibier'] = gibRes;
+                        } else {
+                            minedThisTurn['Gibier'] = minedThisTurn['Gibier']+gibRes;
+                        }
+                        resAdd('Gibier',gibRes);
+                    }
                 }
             }
         }
@@ -498,8 +504,8 @@ function checkPotable(myZone,tileId) {
 
 function getMiningRate(bat,fullRate,noMining) {
     let batType = getBatType(bat);
-    console.log('batType');
-    console.log(batType);
+    // console.log('batType');
+    // console.log(batType);
     let miningAdj = 1;
     if (!noMining) {
         if (batType.weapon2.name === 'Foreuse' || batType.weapon2.name === 'Pioche') {
@@ -786,8 +792,8 @@ function resSelect(resId) {
 
 function voirRessources() {
     showResOpen = true;
-    console.log('VRES allZoneRes');
-    console.log(allZoneRes);
+    // console.log('VRES allZoneRes');
+    // console.log(allZoneRes);
     selectMode();
     $("#conUnitList").css("display","block");
     $('#conUnitList').css("height","800px");
@@ -824,8 +830,8 @@ function voirRessources() {
     });
     let resIcon = '';
     let isflagged = '';
-    console.log('SELECT allZoneRes');
-    console.log(allZoneRes);
+    // console.log('SELECT allZoneRes');
+    // console.log(allZoneRes);
     let sortedResTypes = _.sortBy(filteredResTypes,'name');
     sortedResTypes.forEach(function(res) {
         resIcon = getResIcon(res);
