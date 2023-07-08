@@ -1466,23 +1466,7 @@ function displayWeaponAmmos(batType,thisWeapon) {
     let ammoString = '';
     ammoTypes.forEach(function(stuff) {
         if (batType[weapName].ammo.includes(stuff.name)) {
-            let ammoInfo = showAmmoInfo(stuff.name);
-            if (stuff.bldReq != undefined) {
-                if (stuff.bldReq.length >= 1) {
-                    ammoInfo = ammoInfo+'&nbsp; &#127963; '+toNiceString(stuff.bldReq)+' &nbsp;';
-                }
-            }
-            let compReqs = getCompReqs(stuff,false);
-            if (Object.keys(compReqs.base).length >= 1) {
-                let stringReq1 = toCoolString(compReqs.base,true,false);
-                stringReq1 = replaceCompNamesByFullNames(stringReq1);
-                ammoInfo = ammoInfo+' &#128161;'+stringReq1;
-            }
-            if (Object.keys(compReqs.alt).length >= 1) {
-                let stringReq2 = toCoolString(compReqs.alt,true,false);
-                stringReq2 = replaceCompNamesByFullNames(stringReq2);
-                ammoInfo = ammoInfo+' &#128161;'+stringReq2;
-            }
+            let ammoInfo = showAmmoInfo(stuff.name,true);
             ammoString = ammoString+sepa+'<span title="'+ammoInfo+'">'+stuff.name+'</span>';
         }
     });
@@ -1520,27 +1504,7 @@ function displayUnitEquips(batType) {
                     }
                 }
                 if (w2OK) {
-                    let equipInfo = '';
-                    if (stuff.info != undefined) {
-                        equipInfo = stuff.info;
-                        equipInfo = equipInfo.replace(/ \/ /g,' &#9889; ');
-                        if (stuff.bldReq != undefined) {
-                            if (stuff.bldReq.length >= 1) {
-                                equipInfo = equipInfo+'&nbsp; &#127963; '+toNiceString(stuff.bldReq)+' &nbsp;';
-                            }
-                        }
-                        let compReqs = getCompReqs(stuff,false);
-                        if (Object.keys(compReqs.base).length >= 1) {
-                            let stringReq1 = toCoolString(compReqs.base,true,false);
-                            stringReq1 = replaceCompNamesByFullNames(stringReq1);
-                            equipInfo = equipInfo+' &#128161;'+stringReq1;
-                        }
-                        if (Object.keys(compReqs.alt).length >= 1) {
-                            let stringReq2 = toCoolString(compReqs.alt,true,false);
-                            stringReq2 = replaceCompNamesByFullNames(stringReq2);
-                            equipInfo = equipInfo+' &#128161;'+stringReq2;
-                        }
-                    }
+                    let equipInfo = showEquipFullInfo(stuff.name,true);
                     equipString = equipString+sepa+'<span title="'+equipInfo+'">'+stuff.name+'</span>';
                 }
             }

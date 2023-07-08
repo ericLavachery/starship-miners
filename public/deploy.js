@@ -766,7 +766,7 @@ function doReEquip(batId) {
         myBat.tags.push.apply(myBat.tags,gearTags);
         payCost(totalCosts);
         addCost(totalRecup,1);
-        if (!playerInfos.onShip) {
+        if (!playerInfos.onShip && !myBatType.skills.includes('clicput')) {
             myBat.apLeft = myBat.apLeft-myBat.ap;
         }
         if (equipChanged) {

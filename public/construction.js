@@ -648,7 +648,7 @@ function showFullArmorInfo(batArmor,withReqs) {
     if (apAdj >= 1) {
         apAdj = '+'+apAdj;
     }
-    let armorSkills = '(+'+batArmor.armor+' Armure /'+apAdj+' PA) ';
+    let armorSkills = '(+'+batArmor.armor+' Armure / '+apAdj+' PA) ';
     if (batArmor.skills.includes('resistacide')) {
         armorSkills = armorSkills+'&#9889; résistance acide ';
     }
@@ -692,22 +692,191 @@ function showFullArmorInfo(batArmor,withReqs) {
     if (withReqs) {
         if (batArmor.bldReq != undefined) {
             if (batArmor.bldReq.length >= 1) {
-                armorSkills = armorSkills+' &#127963; '+toNiceString(batArmor.bldReq)+' &nbsp;';
+                armorSkills = armorSkills+'\n&#127963; '+toNiceString(batArmor.bldReq)+' &nbsp;';
             }
         }
         let compReqs = getCompReqs(batArmor,false);
         if (Object.keys(compReqs.base).length >= 1) {
             let stringReq1 = toCoolString(compReqs.base,true,false);
             stringReq1 = replaceCompNamesByFullNames(stringReq1);
-            armorSkills = armorSkills+' &#128161;'+stringReq1;
+            armorSkills = armorSkills+'\n&#128161;'+stringReq1;
         }
         if (Object.keys(compReqs.alt).length >= 1) {
             let stringReq2 = toCoolString(compReqs.alt,true,false);
             stringReq2 = replaceCompNamesByFullNames(stringReq2);
-            armorSkills = armorSkills+' &#128161;'+stringReq2;
+            armorSkills = armorSkills+'\n&#128161;'+stringReq2;
         }
     }
     return armorSkills;
+};
+
+function showEquipInfo(equipName,unit,long) {
+    let equipIndex = armorTypes.findIndex((obj => obj.name == equipName));
+    let equip = armorTypes[equipIndex];
+    let equipInfo = '';
+    if (equip.info != undefined) {
+        if (equip.info === 'Arme 1') {
+            equipInfo = equipInfo+unit.weapon.name+' ';
+        } else if (equip.info === 'Arme 2') {
+            if (long) {
+                equipInfo = equipInfo+unit.weapon.name+' + '+unit.weapon2.name+' ';
+            } else {
+                equipInfo = equipInfo+unit.weapon2.name+' ';
+            }
+        } else {
+            equipInfo = equipInfo+equip.info+' ';
+        }
+    }
+    equipInfo = equipInfo.replace(/ \/ /g,' &#9889; ');
+    return equipInfo;
+};
+
+function showEquipFullInfo(equipName,withReqs) {
+    let stuff = getEquipByName(equipName);
+    let equipInfo = '';
+    if (stuff.info != undefined) {
+        equipInfo = stuff.info;
+        equipInfo = equipInfo.replace(/ \/ /g,' &#9889; ');
+        if (withReqs) {
+            if (stuff.bldReq != undefined) {
+                if (stuff.bldReq.length >= 1) {
+                    equipInfo = equipInfo+'\n&#127963; '+toNiceString(stuff.bldReq)+' &nbsp;';
+                }
+            }
+            let compReqs = getCompReqs(stuff,false);
+            if (Object.keys(compReqs.base).length >= 1) {
+                let stringReq1 = toCoolString(compReqs.base,true,false);
+                stringReq1 = replaceCompNamesByFullNames(stringReq1);
+                equipInfo = equipInfo+'\n&#128161;'+stringReq1;
+            }
+            if (Object.keys(compReqs.alt).length >= 1) {
+                let stringReq2 = toCoolString(compReqs.alt,true,false);
+                stringReq2 = replaceCompNamesByFullNames(stringReq2);
+                equipInfo = equipInfo+'\n&#128161;'+stringReq2;
+            }
+        }
+    }
+    return equipInfo;
+};
+
+function showAmmoInfo(ammoName,withReqs) {
+    let ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoName));
+    let ammo = ammoTypes[ammoIndex];
+    let ammoInfo = '';
+    if (ammo.range > 1.2) {
+        ammoInfo = ammoInfo+'&#9889; Portée++ ';
+    } else if (ammo.range > 1) {
+        ammoInfo = ammoInfo+'&#9889; Portée+ ';
+    }
+    if (ammo.maxrange != undefined) {
+        ammoInfo = ammoInfo+'&#9889; PortéeMax '+ammo.maxrange+' ';
+    }
+    if (ammo.elevation != undefined) {
+        ammoInfo = ammoInfo+'&#9889; Elevation+ ';
+    }
+    if (ammo.rof >= 1.3) {
+        ammoInfo = ammoInfo+'&#9889; Cadence++ ';
+    } else if (ammo.rof > 1) {
+        ammoInfo = ammoInfo+'&#9889; Cadence+ ';
+    }
+    if (ammo.rof < 1) {
+        ammoInfo = ammoInfo+'&#9889; Cadence- ';
+    }
+    if (ammo.power >= 9) {
+        ammoInfo = ammoInfo+'&#9889; Puissance+++ ';
+    } else if (ammo.power >= 3 || ammo.powermult >= 1.4) {
+        ammoInfo = ammoInfo+'&#9889; Puissance++ ';
+    } else if (ammo.power > 0 || ammo.powermult > 1) {
+        ammoInfo = ammoInfo+'&#9889; Puissance+ ';
+    }
+    if (ammo.power < 0 || ammo.powermult < 1) {
+        ammoInfo = ammoInfo+'&#9889; Puissance- ';
+    }
+    if (ammo.armors < 0.2) {
+        ammoInfo = ammoInfo+'&#9889; Pénétration+++ ';
+    } else if (ammo.armors < 0.5) {
+        ammoInfo = ammoInfo+'&#9889; Pénétration++ ';
+    } else if (ammo.armors < 1) {
+        ammoInfo = ammoInfo+'&#9889; Pénétration+ ';
+    } else if (ammo.armors >= 1.4) {
+        ammoInfo = ammoInfo+'&#9889; Pénétration-- ';
+    } else if (ammo.armors > 1) {
+        ammoInfo = ammoInfo+'&#9889; Pénétration- ';
+    } else if (ammo.avar != undefined) {
+        ammoInfo = ammoInfo+'&#9889; Pénétration ';
+    }
+    if (ammo.avar != undefined) {
+        ammoInfo = ammoInfo+'('+ammo.avar+'&#9872;) ';
+    }
+    if (ammo.aignore != undefined) {
+        ammoInfo = ammoInfo+'&#9889; IgnoreArmure '+ammo.aignore+'- ';
+    }
+    if (ammo.accuracy > 1.3) {
+        ammoInfo = ammoInfo+'&#9889; Précision++ ';
+    } else if (ammo.accuracy > 1) {
+        ammoInfo = ammoInfo+'&#9889; Précision+ ';
+    }
+    if (ammo.accuracy < 1) {
+        ammoInfo = ammoInfo+'&#9889; Précision- ';
+    }
+    if (ammo.apdamage > 0) {
+        ammoInfo = ammoInfo+'&#9889; Entrave (perte de PA) ';
+    }
+    if (ammo.name.includes('plastanium')) {
+        ammoInfo = ammoInfo+'&#9889; Dégâts x2 dans l\'eau ';
+    }
+    if (ammo.name.includes('jello')) {
+        ammoInfo = ammoInfo+'&#9889; Ramollissement (des armures alien) ';
+    }
+    if (ammo.name.includes('marq')) {
+        ammoInfo = ammoInfo+'&#9889; Marquage ';
+    }
+    if (ammo.name.includes('-bio')) {
+        ammoInfo = ammoInfo+'&#9889; Génocide ';
+    }
+    if (ammo.name.includes('-necro')) {
+        ammoInfo = ammoInfo+'&#9889; Anti-régénération ';
+    }
+    if (ammo.aoe != '') {
+        if (ammo.aoe == 'unit') {
+            ammoInfo = ammoInfo+'&#9889; AOE Unité ';
+        }
+        if (ammo.aoe == 'brochette') {
+            ammoInfo = ammoInfo+'&#9889; AOE Unité(s) ';
+        }
+        if (ammo.aoe == 'squad') {
+            ammoInfo = ammoInfo+'&#9889; AOE Escouade ';
+        }
+        if (ammo.aoe == 'bat') {
+            if (ammo.name.includes('deluge') || (ammo.name.includes('-gaz') && ammo.name != 'grenade-gaz')) {
+                ammoInfo = ammoInfo+'&#9889; AOE 9 cases ';
+            } else {
+                ammoInfo = ammoInfo+'&#9889; AOE Bataillon ';
+            }
+        }
+    }
+    if (ammo.info != undefined) {
+        ammoInfo = ammoInfo+'&#9889; '+ammo.info+' ';
+    }
+    if (withReqs) {
+        if (ammo.bldReq != undefined) {
+            if (ammo.bldReq.length >= 1) {
+                ammoInfo = ammoInfo+'\n&#127963; '+toNiceString(ammo.bldReq)+' &nbsp;';
+            }
+        }
+        let compReqs = getCompReqs(ammo,false);
+        if (Object.keys(compReqs.base).length >= 1) {
+            let stringReq1 = toCoolString(compReqs.base,true,false);
+            stringReq1 = replaceCompNamesByFullNames(stringReq1);
+            ammoInfo = ammoInfo+'\n&#128161;'+stringReq1;
+        }
+        if (Object.keys(compReqs.alt).length >= 1) {
+            let stringReq2 = toCoolString(compReqs.alt,true,false);
+            stringReq2 = replaceCompNamesByFullNames(stringReq2);
+            ammoInfo = ammoInfo+'\n&#128161;'+stringReq2;
+        }
+    }
+    return ammoInfo;
 };
 
 function selectAmmo(ammo,weapon,unitId) {

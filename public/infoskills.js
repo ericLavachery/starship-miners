@@ -2640,8 +2640,12 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         equipOK = false;
     }
     if (equipOK && !zeroCrew) {
-        apCost = Math.round(batType.ap*1.5);
+        apCost = Math.round(batType.ap);
         apReq = getConstAPReq(bat,batType);
+        if (batType.skills.includes('clicput')) {
+            apCost = 0;
+            apReq = 0;
+        }
         if ((bat.apLeft >= apReq || playerInfos.onShip) && !inMelee) {
             $('#unitInfos').append('<button type="button" title="Changer de munitions, équipement ou armure ('+apCost+' PA)" class="boutonOrange iconButtons" onclick="reEquip('+bat.id+',false,false)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apReq+'</span></button>');
             lineBreak = true;

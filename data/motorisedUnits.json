@@ -3200,7 +3200,7 @@
             "ammo":["standard","belier-spike"]
         },
         "protection":[],
-        "equip":["aucun","g2motor","chenilles","snorkel","e-mecano","belier","moisso","e-flash","e-road","e-respod"],
+        "equip":["aucun","g2motor","chenilles","snorkel","e-mecano","belier","moisso","e-flash","e-road","e-treuil","e-respod"],
         "log3eq":["chenilles"],
         "autoEq":["e-mecano","e-road","snorkel","g2motor"],
         "moveCost":3,
