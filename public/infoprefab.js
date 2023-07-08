@@ -105,6 +105,7 @@ function deconstruction(prefabId) {
             // prefabBat.extracted = [];
             recupPrefabFret(prefabBat,prefabBatType,tileId,false,-1);
             tagDelete(selectedBat,'guet');
+            doneAction(selectedBat);
             selectedBatArrayUpdate();
             showBatInfos(selectedBat);
             showMap(zone,true);
