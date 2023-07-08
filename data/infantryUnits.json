@@ -1498,7 +1498,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","datt","camo","chasse","affut","uprank","cible","herosalvo","autohero"],
+        "skills":["a_heavy","fouille","fortif","datt","camo","chasse","uprank","cible","herosalvo","autohero"],
         "mediCost":10,
         "fuzz":0,
         "deathFx":"human1"
@@ -1800,7 +1800,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","camo","guerrilla","tirailleur","datt","cible","ranger","swim","uprank","herorage","herofana"],
+        "skills":["a_mid","fouille","fortif","camo","chasse","guerrilla","tirailleur","datt","cible","ranger","swim","uprank","herorage","herofana"],
         "mediCost":9,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
@@ -6522,7 +6522,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","dog","dogescape","dreduct","lowmed","lowstress","escape","ranger","chasse","kzin","genhab2","guerrilla","tirailleur","recupcorps","nochef"],
+        "skills":["a_mid","dog","dogescape","dreduct","lowmed","lowstress","escape","ranger","kzin","genhab2","guerrilla","tirailleur","recupcorps","nochef"],
         "fuzz":1,
         "cloneSlot":2,
         "deathFx":"dog_death"

@@ -1276,7 +1276,13 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Améliore la rémission physique en période de repos (jours passés dans la station)">Rémission</span>'+sepa;
     }
     if (batType.skills.includes('chasse')) {
-        allSkills = allSkills+'<span class="paramValue" title="Récupèrent du Gibier en forêt lorsqu\'ils sont inactifs et éloignés du Lander">Chasse</span>'+sepa;
+        if (batType.skills.includes('affut')) {
+            allSkills = allSkills+'<span class="paramValue" title="Récupèrent vaguement du Gibier en forêt lorsqu\'ils sont inactifs et éloignés du Lander">Braconnage</span>'+sepa;
+        } else if (batType.skills.includes('pistage')) {
+            allSkills = allSkills+'<span class="paramValue" title="Récupèrent du Gibier en forêt lorsqu\'ils sont inactifs et éloignés du Lander">Chasse</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Récupèrent un peu de Gibier en forêt lorsqu\'ils sont inactifs et éloignés du Lander">Chasse</span>'+sepa;
+        }
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;

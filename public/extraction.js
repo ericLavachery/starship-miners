@@ -444,7 +444,7 @@ function getTerrainRes(terrain,tile) {
 
 function getHuntingRes(bat,batType) {
     if (batType.skills.includes('chasse')) {
-        if (bat.salvoLeft >= 1) {
+        if (bat.salvoLeft >= 1 && bat.loc === 'zone') {
             let tile = getTile(bat);
             if (tile.terrain === 'F') {
                 let vf = getVegFactor();
@@ -455,9 +455,9 @@ function getHuntingRes(bat,batType) {
                 } else if (batType.skills.includes('affut')) {
                     huntGib = huntGib*0.75;
                 }
-                let gibRes = Math.round(huntGib/300);
+                let gibRes = Math.round(huntGib/200);
                 if (gibRes < 1) {
-                    if (rand.rand(1,300) <= huntGib) {
+                    if (rand.rand(1,200) <= huntGib) {
                         gibRes = 1;
                     }
                 }
