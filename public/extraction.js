@@ -451,8 +451,10 @@ function getHuntingRes(bat,batType) {
                     let vf = getVegFactor();
                     let gf = vf.wood+vf.veg;
                     let huntGib = gf;
+                    let minHunt = 1;
                     if (batType.skills.includes('pistage')) {
                         huntGib = huntGib*1.5;
+                        minHunt = 2;
                     } else if (batType.skills.includes('affut')) {
                         huntGib = huntGib*0.75;
                     }
@@ -466,6 +468,7 @@ function getHuntingRes(bat,batType) {
                         }
                     }
                     if (gibRes >= 1) {
+                        if (gibRes < minHunt) {gibRes = minHunt;}
                         console.log('Chasse: '+batType.name+' '+gibRes+' Gibier');
                         if (minedThisTurn['Gibier'] === undefined) {
                             minedThisTurn['Gibier'] = gibRes;

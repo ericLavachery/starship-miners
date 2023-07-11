@@ -314,7 +314,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             if (bat.tags.includes('mining')) {
                 bouton = 'boutonGris';
             }
-            if (bat.apLeft >= apReq && bat.fuzz >= -1 && camoufOK) {
+            if (bat.apLeft >= apReq && bat.fuzz >= -1 && camoufOK && camChance >= 1) {
                 $('#unitInfos').append('<button type="button" title="Mode furtif ('+apReq+' PA requis) '+camChance+'%" class="'+bouton+' iconButtons" onclick="camouflage('+apCost+')"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             } else if (bat.fuzz <= -2) {
@@ -327,6 +327,8 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             } else {
                 if (!camoufOK) {
                     skillMessage = "Mode furtif: Impossible en mêlée";
+                } else if (camChance < 1) {
+                    skillMessage = "Mode furtif: Impossible ici (chance "+camChance+"%)";
                 } else {
                     skillMessage = "Mode furtif: Pas assez de PA (réserve de "+apReq+" requise)";
                 }
