@@ -1927,6 +1927,7 @@
     {
         "id":74,
         "name":"Autogires chicken",
+        "pName":"Autogires",
         "levels":{"rednecks":9,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Atelier"],
         "costs":{"Scrap":144,"Carbone":48,"Aluminium":72,"Moteurs":24,"Cuivre":8,"Batteries":24,"Explosifs":8,"Fuel":48},
@@ -2142,6 +2143,7 @@
     {
         "id":251,
         "name":"Navette de secours",
+        "pName":"Navette",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Soute"],
         "bldUp":["Thundership"],
@@ -2432,6 +2434,7 @@
     {
         "id":262,
         "name":"Bastion de résistants",
+        "pName":"Bastion",
         "bldEquiv":["Atelier","Armurerie","Poudrière"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
@@ -2441,6 +2444,7 @@
     {
         "id":253,
         "name":"Caserne Rednecks",
+        "pName":"Caserne",
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":8,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
@@ -2450,6 +2454,7 @@
     {
         "id":254,
         "name":"Caserne Blades",
+        "pName":"Caserne",
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":96,"Scrap":192,"Fer":192,"Bois":192,"Aluminium":96,"Carbone":96,"Titane":48,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":200,"Zinc":16,"Silicium":64},
@@ -2459,6 +2464,7 @@
     {
         "id":255,
         "name":"Caserne Bulbos",
+        "pName":"Caserne",
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
@@ -2468,6 +2474,7 @@
     {
         "id":256,
         "name":"Caserne Drogmulojs",
+        "pName":"Caserne",
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":8,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":96,"Scrap":192,"Fer":144,"Carbone":48,"Bois":48,"Tungstène":24,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":100,"Zinc":30,"Silicium":30},
@@ -2477,6 +2484,7 @@
     {
         "id":257,
         "name":"Caserne Tiradores",
+        "pName":"Caserne",
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":8,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":90,"Scrap":180,"Fer":90,"Carbone":135,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
@@ -2486,6 +2494,7 @@
     {
         "id":258,
         "name":"Caserne Detruas",
+        "pName":"Caserne",
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":168,"Fer":126,"Carbone":42,"Bois":42,"Tungstène":21,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
@@ -2495,6 +2504,7 @@
     {
         "id":259,
         "name":"Caserne Brasier",
+        "pName":"Caserne",
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":8},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Aluminium":42,"Carbone":84,"Titane":42,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
@@ -2601,6 +2611,7 @@
     {
         "id":198,
         "name":"Chaîne de montage",
+        "pName":"Ch. montage",
         "bldReplace":["Usine"],
         "bldEquiv":["Atelier"],
         "bldUp":["Usine"],
@@ -2650,6 +2661,7 @@
     {
         "id":192,
         "name":"Usine d'armement",
+        "pName":"U. armement",
         "bldEquiv":["Armurerie","Arsenal"],
         "bldCost":"Arsenal",
         "upkeep":{"Energie":24,"Fer":2.4,"Soufre":4.8,"Plomb":4.8,"Carbone":0.3,"Hydrogène":0.6,"Azote":0.6,"Oxygène":0.3},
@@ -2764,6 +2776,7 @@
     {
         "id":207,
         "name":"Centre de recherches",
+        "pName":"C. recherches",
         "bldEquiv":["Laboratoire"],
         "bldCost":"Laboratoire",
         "compReq":{"det":1,"ca":1},
@@ -2815,6 +2828,7 @@
     {
         "id":209,
         "name":"Sonde géothermique",
+        "pName":"Sonde géo",
         "bldEquiv":["Générateur","Centrale SMR"],
         "upkeep":{"Eau":5},
         "costs":{"Compo1":260,"Compo2":40,"Eau":75,"Hydrogène":15,"Oxygène":15,"Fer":35,"Tungstène":35,"Nickel":20,"Cuivre":100,"Azote":50,"Electros":25,"Batteries":50,"Energie":120},
@@ -2824,6 +2838,7 @@
     {
         "id":211,
         "name":"Centrale nucléaire",
+        "pName":"C. nucléaire",
         "bldEquiv":["Générateur","Centrale SMR"],
         "bldReq":["Générateur"],
         "compReq":{"energ":1},
@@ -2946,6 +2961,7 @@
     {
         "id":226,
         "name":"Camp de rééducation",
+        "pName":"C. rééducation",
         "bldReq":["Soute","Salle de sport"],
         "compReq":{"ordre":2},
         "costs":{"Compo1":240,"Compo2":90,"Eau":100,"Drogues":400,"Scrap":300,"Calcium":50,"Or":200,"Zinc":200,"Bore":200,"Chlore":50},
@@ -2965,6 +2981,7 @@
     {
         "id":201,
         "name":"Camp d'entraînement",
+        "pName":"C. entraînement",
         "upkeep":{"Energie":1,"Munitions":5,"Fer":5,"Bois":10},
         "prod":{"Scrap":5},
         "costs":{"Compo1":285,"Compo2":165,"Compo3":55,"Eau":300,"Energie":200,"Aluminium":120,"Fer":1200,"Bois":1200,"Munitions":1200,"Explosifs":300,"Végétaux":1200,"Calcium":150,"Or":30,"Drogues":150,"Chlore":150,"Batteries":80},
@@ -3043,6 +3060,7 @@
     {
         "id":228,
         "name":"Serres hydroponiques",
+        "pName":"Serres",
         "bldUp":["Jardin"],
         "bldReq":["Soute"],
         "upkeep":{"Azote":1,"Potassium":1},
@@ -3084,6 +3102,7 @@
     {
         "id":276,
         "name":"Unités cryogéniques",
+        "pName":"Cryo",
         "bldReq":["Station"],
         "upkeep":{"Energie":1},
         "costs":{"Compo2":150,"Compo3":100,"Eau":750,"Carbone":150,"Tissus":75,"Calcium":250,"Or":250,"Mercure":150,"Cuivre":150,"Oxygène":750,"Hélium":500,"Argon":150,"Zinc":150,"Bore":150,"Drogues":200,"Chlore":200,"Electros":100,"Batteries":150,"Spins":60},
@@ -3093,6 +3112,7 @@
     {
         "id":277,
         "name":"Salle de conférence",
+        "pName":"S. conférence",
         "bldReq":["Station"],
         "costs":{"Compo1":200,"Compo2":100,"Carbone":100,"Tissus":100,"Fer":300,"Bois":300,"Electros":25},
         "fabTime":1,
@@ -3120,6 +3140,7 @@
     {
         "id":280,
         "name":"Salle de contrôle",
+        "pName":"S. contrôle",
         "bldReq":["Station"],
         "costs":{"Compo1":150,"Compo2":75,"Carbone":150,"Cuivre":200,"Platine":25,"Silicium":75,"Electros":100,"Batteries":50},
         "fabTime":1,

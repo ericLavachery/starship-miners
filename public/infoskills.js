@@ -2320,6 +2320,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             $('#infraButtons').empty();
             if (tile.infra != 'Miradors' && (oneOnly === 'all' || oneOnly === 'mir')) {
                 infra = getInfraByName('Miradors');
+                let infraInfo = showInfraInfo(infra.name,true);
                 compReqOK = checkCompReq(infra);
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
@@ -2328,7 +2329,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     prodOK = true;
                 }
                 if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
-                    $('#infraButtons').append('<button type="button" title="Construction (Miradors) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
                     lineBreak = true;
                 } else {
                     if (!compReqOK) {
@@ -2340,12 +2341,13 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     } else {
                         skillMessage = defaultMessage;
                     }
-                    $('#infraButtons').append('<button type="button" title="Miradors: '+skillMessage+'" class="boutonGrey iconButtons gf"><span class="small">Mi</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey iconButtons gf"><span class="small">Mi</span></button>');
                     lineBreak = true;
                 }
             }
             if (tile.infra != 'Palissades' && (oneOnly === 'all' || oneOnly === 'pal')) {
                 infra = getInfraByName('Palissades');
+                let infraInfo = showInfraInfo(infra.name,true);
                 compReqOK = checkCompReq(infra);
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
@@ -2354,7 +2356,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     prodOK = true;
                 }
                 if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
-                    $('#infraButtons').append('<button type="button" title="Construction (Palissades) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
                     lineBreak = true;
                 } else {
                     if (!compReqOK) {
@@ -2366,12 +2368,13 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     } else {
                         skillMessage = defaultMessage;
                     }
-                    $('#infraButtons').append('<button type="button" title="Palissades: '+skillMessage+'" class="boutonGrey iconButtons gf"><span class="small">Pa</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey iconButtons gf"><span class="small">Pa</span></button>');
                     lineBreak = true;
                 }
             }
             if (tile.infra != 'Remparts' && oneOnly === 'all') {
                 infra = getInfraByName('Remparts');
+                let infraInfo = showInfraInfo(infra.name,true);
                 compReqOK = checkCompReq(infra);
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.const) {
@@ -2380,7 +2383,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     prodOK = true;
                 }
                 if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
-                    $('#infraButtons').append('<button type="button" title="Construction (Remparts) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
                     lineBreak = true;
                 } else {
                     if (!compReqOK) {
@@ -2392,12 +2395,13 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     } else {
                         skillMessage = defaultMessage;
                     }
-                    $('#infraButtons').append('<button type="button" title="Remparts: '+skillMessage+'" class="boutonGrey iconButtons gf"><span class="small">Re</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey iconButtons gf"><span class="small">Re</span></button>');
                     lineBreak = true;
                 }
             }
             if (tile.infra != 'Murailles' && oneOnly === 'all') {
                 infra = getInfraByName('Murailles');
+                let infraInfo = showInfraInfo(infra.name,true);
                 compReqOK = checkCompReq(infra);
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
@@ -2406,7 +2410,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     prodOK = true;
                 }
                 if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
-                    $('#infraButtons').append('<button type="button" title="Construction (Murailles) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
                     lineBreak = true;
                 } else {
                     if (!compReqOK) {
@@ -2418,12 +2422,13 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     } else {
                         skillMessage = defaultMessage;
                     }
-                    $('#infraButtons').append('<button type="button" title="Murailles: '+skillMessage+'" class="boutonGrey iconButtons gf"><span class="small">Mu</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey iconButtons gf"><span class="small">Mu</span></button>');
                     lineBreak = true;
                 }
             }
             if (tile.infra != 'Terriers' && (oneOnly === 'all' || oneOnly === 'trou')) {
                 infra = getInfraByName('Terriers');
+                let infraInfo = showInfraInfo(infra.name,true);
                 if (infra.levels[playerInfos.gang] < 90) {
                     infraCostOK = checkCost(infra.costs);
                     compReqOK = checkCompReq(infra);
@@ -2433,7 +2438,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         prodOK = true;
                     }
                     if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
-                        $('#infraButtons').append('<button type="button" title="Construction (Terriers) '+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Terriers`)"><span class="small">Te</span></button>');
+                        $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGris iconButtons" onclick="putInfra(`Terriers`)"><span class="small">Te</span></button>');
                         lineBreak = true;
                     } else {
                         if (!compReqOK) {
@@ -2445,7 +2450,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         } else {
                             skillMessage = defaultMessage;
                         }
-                        $('#infraButtons').append('<button type="button" title="Terriers: '+skillMessage+'" class="boutonGrey iconButtons gf"><span class="small">Te</span></button>');
+                        $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey iconButtons gf"><span class="small">Te</span></button>');
                         lineBreak = true;
                     }
                 }

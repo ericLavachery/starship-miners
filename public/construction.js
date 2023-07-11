@@ -759,6 +759,37 @@ function showEquipFullInfo(equipName,withReqs) {
     return equipInfo;
 };
 
+function showInfraInfo(infraName,withReqs) {
+    console.log('SHOWINFRAINFO ??????????????????????????????????????????????');
+    let stuff = getInfraByName(infraName);
+    let infraInfo = stuff.name;
+    if (stuff.info != undefined) {
+        infraInfo = infraInfo+' &#9889; '+stuff.info;
+        infraInfo = infraInfo.replace(/ \/ /g,' &#9889; ');
+        infraInfo = infraInfo+' &#9889;';
+        if (withReqs) {
+            if (stuff.bldReq != undefined) {
+                if (stuff.bldReq.length >= 1) {
+                    infraInfo = infraInfo+'\n&#127963; '+toNiceString(stuff.bldReq)+' &nbsp;';
+                }
+            }
+            let compReqs = getCompReqs(stuff,false);
+            console.log(compReqs);
+            if (Object.keys(compReqs.base).length >= 1) {
+                let stringReq1 = toCoolString(compReqs.base,true,false);
+                stringReq1 = replaceCompNamesByFullNames(stringReq1);
+                infraInfo = infraInfo+'\n&#128161;'+stringReq1;
+            }
+            if (Object.keys(compReqs.alt).length >= 1) {
+                let stringReq2 = toCoolString(compReqs.alt,true,false);
+                stringReq2 = replaceCompNamesByFullNames(stringReq2);
+                infraInfo = infraInfo+'\n&#128161;'+stringReq2;
+            }
+        }
+    }
+    return infraInfo;
+};
+
 function showAmmoInfo(ammoName,withReqs) {
     let ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoName));
     let ammo = ammoTypes[ammoIndex];

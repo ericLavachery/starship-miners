@@ -128,6 +128,13 @@ function batInfos(bat,batType,pop) {
             resMax = 5000;
         }
     }
+    let infraImg = '';
+    if (tile.infra != undefined) {
+        let infra = getInfraByName(tile.infra);
+        let infraInfo = showInfraInfo(infra.name,true);
+        infraImg = '<img style="vertical-align:-12px;" src="/static/img/units/'+infra.pic+'.png" width="48" class="tunit" title="'+infraInfo+'">';
+    }
+    let unitPrintName = getUnitPrintName(batType,true);
     let vetIcon = '';
     if (bat.vet >= 1) {
         vetIcon = '<img src="/static/img/vet'+bat.vet+'.png" width="15">';
@@ -136,7 +143,7 @@ function batInfos(bat,batType,pop) {
         $('#'+headPlace).append('<img style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" onclick="unitDetail('+batType.id+')" title="Voir le détail du type d\'unité">&nbsp;');
         $('#'+headPlace).append('<span class="blockTitle"><h6>'+unitsLeft+' '+batType.name+'</h6></span>');
     } else {
-        $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3> '+vetIcon+'</span>');
+        $('#'+headPlace).append('<span class="blockTitle"><h3><img style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+unitPrintName+'</h3> '+vetIcon+infraImg+'</span>');
     }
     $('#'+bodyPlace).append('<div class="shSpace"></div>');
     let near = nearWhat(bat,batType);
@@ -1856,11 +1863,8 @@ function showTileInfos(tileId) {
             }
         }
         if (tile.infra != undefined) {
-            let infraDesc = "";
-            if (tile.infra === 'Terriers') {
-                infraDesc = "Vos infanteries peuvent se déplacer furtivement d'un terrier à l'autre (à 7 cases max). Placer un marqueur sur le terrier de destination.";
-            }
-            $('#tileInfos').append('<span class="paramName cy">Infrastructure</span><span class="paramIcon"><i class="ra ra-tower rpg"></i></span><span class="paramValue cy" title="'+infraDesc+'">'+tile.infra+'</span><br>');
+            let infraInfo = showInfraInfo(tile.infra,true);
+            $('#tileInfos').append('<span class="paramName cy">Infrastructure</span><span class="paramIcon"><i class="ra ra-tower rpg"></i></span><span class="paramValue cy" title="'+infraInfo+'">'+tile.infra+'</span><br>');
         }
         if (tile.rd != undefined) {
             if (tile.rd) {

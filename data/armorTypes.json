@@ -6,7 +6,8 @@
         "compReq":{},
         "fabTime":11,
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
-        "costs":{"Compo1":125}
+        "costs":{"Compo1":125},
+        "info":"Protection 33% / Elevation +1 / Pas de restriction de cible due à la mêlée"
     },
     {
         "name":"Remparts",
@@ -15,7 +16,8 @@
         "compReq":{"def":1,"const":1},
         "fabTime":18,
         "levels":{"rednecks":8,"blades":8,"bulbos":8,"drogmulojs":8,"tiradores":8,"detruas":8,"brasier":8},
-        "costs":{"Compo1":50,"Compo2":150}
+        "costs":{"Compo1":50,"Compo2":150},
+        "info":"Protection 45% / Elevation +1 / Pas de diminution de portée en forêt / Pas de restriction de cible due à la mêlée / Solide"
     },
     {
         "name":"Murailles",
@@ -25,7 +27,8 @@
         "altCompReq":{"def":2,"const":3,"mat":3},
         "fabTime":26,
         "levels":{"rednecks":13,"blades":13,"bulbos":13,"drogmulojs":13,"tiradores":13,"detruas":13,"brasier":13},
-        "costs":{"Compo2":200,"Compo3":60}
+        "costs":{"Compo2":200,"Compo3":60},
+        "info":"Protection 60% / Elevation +1 / Portée +1 / Pas de diminution de portée en forêt / Pas de restriction de cible due à la mêlée / Très solide"
     },
     {
         "name":"Miradors",
@@ -34,7 +37,8 @@
         "compReq":{},
         "fabTime":9,
         "levels":{"rednecks":5,"blades":5,"bulbos":4,"drogmulojs":5,"tiradores":5,"detruas":7,"brasier":5},
-        "costs":{"Compo1":85}
+        "costs":{"Compo1":85},
+        "info":"Protection 25% / Elevation +1 / Portée +1 / Pas de diminution de portée en forêt / Pas de restriction de cible due à la mêlée / Fragile"
     },
     {
         "name":"Terriers",
@@ -43,7 +47,8 @@
         "compReq":{"const":1,"cam":1},
         "fabTime":18,
         "levels":{"rednecks":8,"blades":7,"bulbos":11,"drogmulojs":10,"tiradores":10,"detruas":10,"brasier":10},
-        "costs":{"Compo1":75,"Compo2":25,"Végétaux":75}
+        "costs":{"Compo1":75,"Compo2":25,"Végétaux":75},
+        "info":"Accès au mode furtif / Déplacement furtif d'un terrier à l'autre (Placez un marqueur sur le terrier de destination: 7 cases max)"
     },
     {
         "name":"Débris",
@@ -52,7 +57,8 @@
         "cat":"infra",
         "fabTime":6,
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
-        "costs":{}
+        "costs":{},
+        "info":"Restes d'un bâtiment ou infrastructure"
     },
     {
         "name":"moloko",

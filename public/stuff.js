@@ -1209,6 +1209,14 @@ function getRegionByName(regionName) {
     return region;
 };
 
+function getUnitPrintName(batType,small) {
+    let unitPrintName = batType.name;
+    if (batType.pName != undefined) {
+        unitPrintName = batType.pName;
+    }
+    return unitPrintName;
+};
+
 function getBatType(bat) {
     let batType = {};
     let index;

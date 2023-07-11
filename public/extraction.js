@@ -461,7 +461,7 @@ function getHuntingRes(bat,batType) {
                     if (zone[0].planet === 'Horst') {
                         huntGib = huntGib*0.33;
                     }
-                    let gibRes = Math.round(huntGib/200);
+                    let gibRes = Math.round(huntGib/150);
                     if (gibRes < 1) {
                         if (rand.rand(1,200) <= huntGib) {
                             gibRes = 1;
