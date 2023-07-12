@@ -340,6 +340,7 @@ function newGame() {
     playerInfos.cAdj = 0;
     playerInfos.cLoss = 0;
     playerInfos.cNeed = 1;
+    playerInfos.nmi = 1;
     // playerInfos.missionZone = -1;
     playerInfos.missionZone = 99;
     playerInfos.missionPlanet = 1;

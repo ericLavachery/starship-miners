@@ -621,6 +621,18 @@ function playerSkillsUTChanges() {
                 }
             }
         }
+        // DEALERS
+        if (unit.cat != 'infantry' && unit.kind === 'zero-medecine' && unit.skills.includes('dealer') && playerInfos.comp.med >= 1) {
+            if (playerInfos.gang === 'blades') {
+                unit.skills.push('sila');
+            }
+            if (playerInfos.gang === 'drogmulojs') {
+                unit.skills.push('sila');
+                unit.skills.push('bliss');
+                unit.skills.push('skupiac');
+                unit.skills.push('blaze');
+            }
+        }
         // AUTOKITS
         if (unit.skills.includes('autokitgaz')) {
             if (playerInfos.comp.exo >= 2 && playerInfos.comp.ca >= 3) {

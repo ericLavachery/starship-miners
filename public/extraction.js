@@ -463,7 +463,7 @@ function getHuntingRes(bat,batType) {
                     }
                     let gibRes = Math.round(huntGib/150);
                     if (gibRes < 1) {
-                        if (rand.rand(1,200) <= huntGib) {
+                        if (rand.rand(1,150) <= huntGib) {
                             gibRes = 1;
                         }
                     }

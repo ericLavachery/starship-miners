@@ -100,9 +100,37 @@ function checkNeiTurn() {
 };
 
 function neighbours() {
+    if (playerInfos.mapTurn === 30) {
+        let numEvents = getNumEvents();
+        numEvents = Math.floor(numEvents*numEvents/2);
+        numEvents = entre(numEvents,1,100);
+        if (rand.rand(1,numEvents) === 1) {
+            let turnz = rand.rand(1,10);
+            playerInfos.vz = 31+turnz;
+            let card = rand.rand(1,4);
+            if (card === 1) {
+                playerInfos.vc = 'nord';
+            } else if (card === 2) {
+                playerInfos.vc = 'sud';
+            } else if (card === 3) {
+                playerInfos.vc = 'ouest';
+            } else {
+                playerInfos.vc = 'est';
+            }
+        }
+    }
     if (playerInfos.vz <= playerInfos.mapTurn) {
         lesVoisins();
     }
+};
+
+function getNumEvents() {
+    let caves = 0;
+    if (zone[0].caves != undefined) {
+        caves = zone[0].caves;
+    }
+    let numEvents = playerInfos.fndCits+caves;
+    return numEvents;
 };
 
 function lesVoisins() {
@@ -116,7 +144,10 @@ function lesVoisins() {
     let transVol = 0;
     let transOK = false;
     let transDice = 0;
-    let transChance = (playerInfos.mapDiff*3)+15;
+    let numEvents = getNumEvents();
+    let eventsBonus = 50-(numEvents*10);
+    if (eventsBonus < 1) {eventsBonus = 0}
+    let transChance = (playerInfos.mapDiff*3)+15+eventsBonus;
     if (rand.rand(1,100) <= transChance) {
         transDice = rand.rand(1,26);
         if (transDice <= 4) {
@@ -645,12 +676,14 @@ function checkCitCaves() {
         }
         if (zone[0].caves != undefined) {
             chance = chance-Math.floor(zone[0].caves);
+        } else if (playerInfos.mapTurn >= 30) {
+            chance = chance+3;
         }
         chance = chance-playerInfos.fndCits+3;
         chance = entre(chance,1,7);
         console.log('chance '+chance);
         // chance = 100;
-        if (chance >= 1 && fruitTiles >= 1) {
+        if (chance >= 1) {
             if (rand.rand(1,100) <= chance) {
                 playerOccupiedTileList();
                 alienOccupiedTileList();

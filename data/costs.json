@@ -2853,8 +2853,8 @@
         "name":"Centrale SMR",
         "bldEquiv":["Générateur"],
         "bldReq":["Générateur"],
-        "upkeep":{"Uranium":2,"Eau":3},
-        "prod":{"Energie":55},
+        "upkeep":{"Uranium":3,"Eau":5},
+        "prod":{"Energie":85},
         "costs":{"Compo1":205,"Compo2":245,"Compo3":270,"Eau":1000,"Energie":1600,"Carbone":1500,"Titane":300,"Plomb":300,"Nickel":300,"Cuivre":250,"Platine":375,"Bore":375,"Uranium":250,"Hydrogène":500,"Electros":125,"Batteries":350},
         "fabTime":300,
         "slots":3

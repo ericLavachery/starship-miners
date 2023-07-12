@@ -219,7 +219,7 @@ socket.on('playerInfos-Load', function(pi) {
         playerInfos.zoneDB = [];
     }
     if (playerInfos.nmi === undefined) {
-        playerInfos.nmi = playerInfos.zoneDB.length;
+        playerInfos.nmi = 1;
     }
     if (playerInfos.rescueDB === undefined) {
         playerInfos.rescueDB = [];

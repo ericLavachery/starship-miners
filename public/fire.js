@@ -1098,7 +1098,7 @@ function attack(melee,init) {
                     if (!selectedWeap.ammo.includes('trap')) {
                         morePoison = true;
                         targetBat.tags.push('poison');
-                        if (attFactor >= 150) {
+                        if (attFactor >= 150 && selectedBatType.cat != 'aliens') {
                             targetBat.tags.push('poison');
                         }
                     }
@@ -2139,7 +2139,7 @@ function defense(melee,init) {
                     if (!targetWeap.ammo.includes('trap')) {
                         morePoison = true;
                         selectedBat.tags.push('poison');
-                        if (defFactor >= 150) {
+                        if (defFactor >= 150 && targetBatType.cat != 'aliens') {
                             selectedBat.tags.push('poison');
                         }
                     }
