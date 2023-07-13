@@ -1,7 +1,7 @@
 function soundCheck() {
     selectMode();
     $("#conUnitList").css("display","block");
-    $('#conUnitList').css("height","800px");
+    $('#conUnitList').css("height","260px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
     $("#unitInfos").css("display","none");
@@ -9,11 +9,12 @@ function soundCheck() {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName or">SONS</span><br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<h3>Volumes</h3><br>');
     let theVol = 10;
     // volFx
     $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="constName">EFFETS</span><br>');
+    $('#conUnitList').append('<h2>Effets</h2><br>');
     if (playerInfos.volFx > 0) {
         $('#conUnitList').append('<button type="button" title="Stopper les effets" class="boutonRouge iconButtons" onclick="soundVolume(`mute`,`volFx`)"><i class="fas fa-volume-mute"></i></button>');
     } else {
@@ -26,7 +27,7 @@ function soundCheck() {
     $('#conUnitList').append('<br>');
     // volAmb
     $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="constName">AMBIANCE</span><br>');
+    $('#conUnitList').append('<h2>Ambiance</h2><br>');
     if (playerInfos.volAmb > 0) {
         $('#conUnitList').append('<button type="button" title="Stopper l\'ambiance sonore" class="boutonRouge iconButtons" onclick="soundVolume(`mute`,`volAmb`)"><i class="fas fa-volume-mute"></i></button>');
     } else {
@@ -40,7 +41,7 @@ function soundCheck() {
     // volMu
     if (!playerInfos.onShip) {
         $('#conUnitList').append('<br>');
-        $('#conUnitList').append('<span class="constName">MUSIQUE</span><br>');
+        $('#conUnitList').append('<h2>Musique</h2><br>');
         if (playerInfos.volMu > 0) {
             $('#conUnitList').append('<button type="button" title="Stopper la musique" class="boutonRouge iconButtons" onclick="soundVolume(`mute`,`volMu`)"><i class="fas fa-volume-mute"></i></button>');
         } else {
@@ -54,7 +55,7 @@ function soundCheck() {
     } else {
         // volRadio
         $('#conUnitList').append('<br>');
-        $('#conUnitList').append('<span class="constName">RADIO</span><br>');
+        $('#conUnitList').append('<h2>Radio</h2><br>');
         if (playerInfos.volRadio > 0) {
             $('#conUnitList').append('<button type="button" title="Stopper la musique" class="boutonRouge iconButtons" onclick="soundVolume(`mute`,`volRadio`)"><i class="fas fa-volume-mute"></i></button>');
         } else {
@@ -120,6 +121,24 @@ function soundMute(source,mute) {
     }
 };
 
+function soundFade(source,down) {
+    let volAdj = 0.1;
+    if (down) {
+        volAdj = -0.1;
+    }
+    let newVol = playerInfos[source]+volAdj;
+    if (newVol < 0.1) {
+        newVol = 0.1;
+    }
+    if (source === 'volRadio') {
+        theRadio.fade(playerInfos[source],newVol,500);
+    } else if (source === 'volMu') {
+        theMusic.fade(playerInfos[source],newVol,500);
+    } else if (source === 'volAmb') {
+        theRoom.fade(playerInfos[source],newVol,500);
+    }
+};
+
 function soundVolume(vol,source,quiet) {
     console.log(source);
     if (vol === 'mute') {
@@ -134,12 +153,14 @@ function soundVolume(vol,source,quiet) {
     } else {
         if (vol === 'down') {
             console.log('down');
+            soundFade(source,true);
             playerInfos[source] = playerInfos[source]-0.1;
-            if (playerInfos[source] < 0) {
-                playerInfos[source] = 0;
+            if (playerInfos[source] < 0.1) {
+                playerInfos[source] = 0.1;
             }
         } else if (vol === 'up') {
             console.log('up');
+            soundFade(source,false);
             playerInfos[source] = playerInfos[source]+0.1;
             if (playerInfos[source] > 1) {
                 playerInfos[source] = 1;
