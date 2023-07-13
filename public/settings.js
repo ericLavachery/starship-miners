@@ -304,7 +304,10 @@ if (playerInfos.onShip) {
     trackNum = rand.rand(0,4);
 }
 let theMusic = new Howl({
-    src: ['/static/sounds/music/amb_trucsympa.mp3']
+    src: ['/static/sounds/music/silence.mp3']
+});
+let theRadio = new Howl({
+    src: ['/static/sounds/music/silence.mp3']
 });
 let theRoom = new Howl({
     src: ['/static/sounds/rooms/station.mp3']

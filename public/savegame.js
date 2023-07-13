@@ -345,6 +345,15 @@ function newGame() {
     playerInfos.missionZone = 99;
     playerInfos.missionPlanet = 1;
     playerInfos.okFill = true;
+    playerInfos.deployRes = {};
+    playerInfos.deployRes['Energie'] = 700;
+    playerInfos.deployRes['Huile'] = 20;
+    playerInfos.deployRes['Drogues'] = 60;
+    playerInfos.deployRes['Chlore'] = 30;
+    playerInfos.deployRes['Zinc'] = 30;
+    playerInfos.deployRes['Tissus'] = 30;
+    playerInfos.deployRes['Plutonium'] = 120;
+    playerInfos.deployRes['Hydrogène'] = 60;
     resetReserve();
     resetStartRes();
     resetEndRes();
@@ -355,6 +364,56 @@ function newGame() {
     showMap(zone,false);
     miniOut();
     commandes();
+};
+
+function saveDeployRes() {
+    let deployRes = getDeployRes();
+    let enoughRes = checkCost(deployRes);
+    if (enoughRes) {
+        payCost(deployRes);
+        playerInfos.deployRes = deployRes;
+    } else {
+        warning('<span class="rq3">Ressources insuffisantes</span>','<span class="vio">Vous n\'avez pas les moyens de réserver les ressources pour un déploiement.</span>');
+    }
+    let landerId = getBiggestLander();
+    let lander = getBatById(landerId);
+    showBatInfos(lander);
+};
+
+function useDeployRes() {
+    if (Object.keys(playerInfos.deployRes).length >= 1) {
+        addCost(playerInfos.deployRes,1);
+        playerInfos.deployRes = {};
+    } else {
+        warning('<span class="rq3">Réserve vide</span>','<span class="vio">Vous n\'avez pas réservé les ressources pour un déploiement.</span>');
+    }
+    let landerId = getBiggestLander();
+    let lander = getBatById(landerId);
+    showBatInfos(lander);
+};
+
+function getDeployRes() {
+    let soute = getBatById(souteId);
+    let landerId = getBiggestLander();
+    let lander = getBatById(landerId);
+    let landerBatType = getBatType(lander);
+    let deployRes = landerBatType.deploy;
+    return deployRes;
+};
+
+function getBiggestLander() {
+    let landerId = -1;
+    let biggest = 0;
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.skills.includes('transorbital') && batType.name != 'Soute') {
+            if (biggest < batType.transUnits) {
+                biggest = batType.transUnits;
+                landerId = bat.id;
+            }
+        }
+    });
+    return landerId;
 };
 
 function objectifsReset() {
@@ -438,7 +497,7 @@ function showMapReset() {
 function showStartLander() {
     playMusic('silence',true);
     saveAutoBackup();
-    // let myVol = checkMyVol(playerInfos.volMu+0.3,true);
+    // let myVol = checkMyVol(playerInfos.volMu+0.3,'volMu');
     // theMusic.fade(myVol,0.0,3000);
     setTimeout(function (){
         commandes();

@@ -129,6 +129,8 @@ function setSouteTab(tab) {
 function landerMenu() {
     $('#menu_lander').empty();
     souteTabsMenu('menu_lander');
+    $('#menu_lander').append('<span class="menuTab klik" onclick="batSouteSelect(1)">Soute <span class="brunf">(Voir détail)</span></span>');
+    $('#menu_lander').append('<span class="menuTab gf"> &nbsp;&nbsp;</span>');
     let landersIds = getStationLandersIds();
     landersIds.forEach(function(landerId) {
         let landerBat = getBatById(landerId);
@@ -574,6 +576,7 @@ function batSouteSelect(batId) {
     selectedBat = JSON.parse(JSON.stringify(bat));
     // console.log(selectedBat);
     checkSelectedBatType();
+    playRadio('any',false);
     // showBatInfos(selectedBat);
     goSoute();
 };

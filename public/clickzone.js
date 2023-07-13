@@ -211,7 +211,11 @@ function batSelect(bat,roger) {
     nextTurnOK = true;
     $('html,body').scrollTop(0);
     washReports(false);
-    playMusic('any',false);
+    if (playerInfos.onShip) {
+        playRadio('any',false);
+    } else {
+        playMusic('any',false);
+    }
     tileUnselect();
     if (bat.tags.includes('nolist')) {
         tagDelete(bat,'nolist');

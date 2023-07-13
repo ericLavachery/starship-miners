@@ -272,6 +272,12 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.volMu === undefined) {
         playerInfos.volMu = 0.4;
     }
+    if (playerInfos.volRadio === undefined) {
+        playerInfos.volRadio = 0.4;
+    }
+    if (playerInfos.volAmb === undefined) {
+        playerInfos.volAmb = 0.4;
+    }
     if (playerInfos.statMu === undefined) {
         playerInfos.statMu = true;
     }
@@ -287,6 +293,17 @@ socket.on('playerInfos-Load', function(pi) {
     }
     if (playerInfos.para === undefined) {
         playerInfos.para = 0;
+    }
+    if (playerInfos.deployRes === undefined) {
+        playerInfos.deployRes = {};
+        playerInfos.deployRes['Energie'] = 700;
+        playerInfos.deployRes['Huile'] = 20;
+        playerInfos.deployRes['Drogues'] = 60;
+        playerInfos.deployRes['Chlore'] = 30;
+        playerInfos.deployRes['Zinc'] = 30;
+        playerInfos.deployRes['Tissus'] = 30;
+        playerInfos.deployRes['Plutonium'] = 120;
+        playerInfos.deployRes['Hydrogène'] = 60;
     }
 });
 // Terrains

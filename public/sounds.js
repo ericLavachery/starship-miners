@@ -1,77 +1,167 @@
-function soundVolume(vol,source) {
-    if (source === 'music') {
-        console.log('music');
-        if (vol === 'mute') {
-            console.log('mute');
-            if (playerInfos.volMu === 0) {
-                theMusic.mute(false);
-                playerInfos.volMu = 0.4;
-            } else {
-                theMusic.mute(true);
-                playerInfos.volMu = 0;
-            }
-        } else {
-            if (vol === 'down') {
-                console.log('down');
-                playerInfos.volMu = playerInfos.volMu-0.1;
-                if (playerInfos.volMu < 0) {
-                    playerInfos.volMu = 0;
-                }
-            } else if (vol === 'up') {
-                console.log('up');
-                playerInfos.volMu = playerInfos.volMu+0.1;
-                if (playerInfos.volMu > 1) {
-                    playerInfos.volMu = 1;
-                }
-            }
-        }
-        console.log(playerInfos.volMu);
-    } else if (source === 'fx') {
-        console.log('fx');
-        if (vol === 'mute') {
-            console.log('mute');
-            if (playerInfos.volFx === 0) {
-                playerInfos.volFx = 0.6;
-            } else {
-                playerInfos.volFx = 0;
-            }
-        } else {
-            if (vol === 'down') {
-                console.log('down');
-                playerInfos.volFx = playerInfos.volFx-0.1;
-                if (playerInfos.volFx < 0) {
-                    playerInfos.volFx = 0;
-                }
-            } else if (vol === 'up') {
-                console.log('up');
-                playerInfos.volFx = playerInfos.volFx+0.1;
-                if (playerInfos.volFx > 1) {
-                    playerInfos.volFx = 1;
-                }
-            }
-        }
-        console.log(playerInfos.volFx);
+function soundCheck() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
+    $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName or">SONS</span><br>');
+    let theVol = 10;
+    // volFx
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="constName">EFFETS</span><br>');
+    if (playerInfos.volFx > 0) {
+        $('#conUnitList').append('<button type="button" title="Stopper les effets" class="boutonRouge iconButtons" onclick="soundVolume(`mute`,`volFx`)"><i class="fas fa-volume-mute"></i></button>');
+    } else {
+        $('#conUnitList').append('<button type="button" title="Redémarrer les effets" class="boutonVert iconButtons" onclick="soundVolume(`mute`,`volFx`)"><i class="fas fa-play"></i></button>');
     }
-    playerInfos.volFx = playerInfos.volFx.toFixedNumber(1);
-    playerInfos.volMu = playerInfos.volMu.toFixedNumber(1);
+    $('#conUnitList').append('<button type="button" title="Diminuer le volume des effets" class="boutonGris iconButtons" onclick="soundVolume(`down`,`volFx`)"><i class="fas fa-volume-down"></i></button>');
+    $('#conUnitList').append('<button type="button" title="Augmenter le volume des effets" class="boutonGris iconButtons" onclick="soundVolume(`up`,`volFx`)"><i class="fas fa-volume-up"></i></button>');
+    theVol = Math.round(playerInfos.volFx*10);
+    $('#conUnitList').append('<button type="button" title="Volume" class="boutonBleu iconButtons">'+theVol+'</button>');
+    $('#conUnitList').append('<br>');
+    // volAmb
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="constName">AMBIANCE</span><br>');
+    if (playerInfos.volAmb > 0) {
+        $('#conUnitList').append('<button type="button" title="Stopper l\'ambiance sonore" class="boutonRouge iconButtons" onclick="soundVolume(`mute`,`volAmb`)"><i class="fas fa-volume-mute"></i></button>');
+    } else {
+        $('#conUnitList').append('<button type="button" title="Redémarrer l\'ambiance sonore" class="boutonVert iconButtons" onclick="soundVolume(`mute`,`volAmb`)"><i class="fas fa-play"></i></button>');
+    }
+    $('#conUnitList').append('<button type="button" title="Diminuer le volume de l\'ambiance sonore" class="boutonGris iconButtons" onclick="soundVolume(`down`,`volAmb`)"><i class="fas fa-volume-down"></i></button>');
+    $('#conUnitList').append('<button type="button" title="Augmenter le volume de l\'ambiance sonore" class="boutonGris iconButtons" onclick="soundVolume(`up`,`volAmb`)"><i class="fas fa-volume-up"></i></button>');
+    theVol = Math.round(playerInfos.volAmb*10);
+    $('#conUnitList').append('<button type="button" title="Volume" class="boutonBleu iconButtons">'+theVol+'</button>');
+    $('#conUnitList').append('<br>');
+    // volMu
+    if (!playerInfos.onShip) {
+        $('#conUnitList').append('<br>');
+        $('#conUnitList').append('<span class="constName">MUSIQUE</span><br>');
+        if (playerInfos.volMu > 0) {
+            $('#conUnitList').append('<button type="button" title="Stopper la musique" class="boutonRouge iconButtons" onclick="soundVolume(`mute`,`volMu`)"><i class="fas fa-volume-mute"></i></button>');
+        } else {
+            $('#conUnitList').append('<button type="button" title="Redémarrer la musique" class="boutonVert iconButtons" onclick="soundVolume(`mute`,`volMu`)"><i class="fas fa-play"></i></button>');
+        }
+        $('#conUnitList').append('<button type="button" title="Diminuer le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`down`,`volMu`)"><i class="fas fa-volume-down"></i></button>');
+        $('#conUnitList').append('<button type="button" title="Augmenter le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`up`,`volMu`)"><i class="fas fa-volume-up"></i></button>');
+        theVol = Math.round(playerInfos.volMu*10);
+        $('#conUnitList').append('<button type="button" title="Volume" class="boutonBleu iconButtons">'+theVol+'</button>');
+        $('#conUnitList').append('<br>');
+    } else {
+        // volRadio
+        $('#conUnitList').append('<br>');
+        $('#conUnitList').append('<span class="constName">RADIO</span><br>');
+        if (playerInfos.volRadio > 0) {
+            $('#conUnitList').append('<button type="button" title="Stopper la musique" class="boutonRouge iconButtons" onclick="soundVolume(`mute`,`volRadio`)"><i class="fas fa-volume-mute"></i></button>');
+        } else {
+            $('#conUnitList').append('<button type="button" title="Redémarrer la musique" class="boutonVert iconButtons" onclick="soundVolume(`mute`,`volRadio`)"><i class="fas fa-play"></i></button>');
+        }
+        $('#conUnitList').append('<button type="button" title="Diminuer le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`down`,`volRadio`)"><i class="fas fa-volume-down"></i></button>');
+        $('#conUnitList').append('<button type="button" title="Augmenter le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`up`,`volRadio`)"><i class="fas fa-volume-up"></i></button>');
+        theVol = Math.round(playerInfos.volRadio*10);
+        $('#conUnitList').append('<button type="button" title="Volume" class="boutonBleu iconButtons">'+theVol+'</button>');
+        $('#conUnitList').append('<br>');
+    }
+
+    $('#conUnitList').append('<br><br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
+};
+
+function soundAllStop() {
+    theMusic.stop();
+    theRadio.stop();
+    theRoom.stop();
+    playerInfos.volMu = 0;
+    playerInfos.volAmb = 0;
+    playerInfos.volRadio = 0;
+    playerInfos.volFx = 0;
+    soundCheck();
     commandes();
 };
 
-function checkMyVol(theVol,isMusic) {
-    if (isMusic) {
-        if (playerInfos.volMu === 0) {
-            theVol = 0;
+function soundAllGo() {
+    playerInfos.volMu = 0.4;
+    playerInfos.volRadio = 0.4;
+    playerInfos.volAmb = 0.4;
+    playerInfos.volFx = 0.4;
+    if (playerInfos.onShip) {
+        playRadio('any',false);
+    } else {
+        playMusic('any',false);
+    }
+    theRoom.play();
+    soundCheck();
+    commandes();
+};
+
+function soundMute(source,mute) {
+    if (source === 'volMu') {
+        if (mute) {
+            theMusic.stop();
         } else {
-            if (theVol < 0.1) {theVol = 0.1;}
-            if (theVol > 1) {theVol = 1;}
+            playMusic('any',false);
+        }
+    } else if (source === 'volRadio') {
+        if (mute) {
+            theRadio.stop();
+        } else {
+            playRadio('any',false);
+        }
+    } else if (source === 'volAmb') {
+        if (mute) {
+            theRoom.stop();
+        } else {
+            theRoom.play();
+        }
+    }
+};
+
+function soundVolume(vol,source,quiet) {
+    console.log(source);
+    if (vol === 'mute') {
+        console.log('mute');
+        if (playerInfos[source] === 0) {
+            playerInfos[source] = 0.4;
+            soundMute(source,false);
+        } else {
+            soundMute(source,true);
+            playerInfos[source] = 0;
         }
     } else {
-        if (playerInfos.volFx === 0) {
-            theVol = 0;
-        } else {
-            if (theVol < 0.1) {theVol = 0.1;}
-            if (theVol > 1) {theVol = 1;}
+        if (vol === 'down') {
+            console.log('down');
+            playerInfos[source] = playerInfos[source]-0.1;
+            if (playerInfos[source] < 0) {
+                playerInfos[source] = 0;
+            }
+        } else if (vol === 'up') {
+            console.log('up');
+            playerInfos[source] = playerInfos[source]+0.1;
+            if (playerInfos[source] > 1) {
+                playerInfos[source] = 1;
+            }
         }
+    }
+    console.log(playerInfos[source]);
+    playerInfos.volFx = playerInfos.volFx.toFixedNumber(1);
+    playerInfos.volMu = playerInfos.volMu.toFixedNumber(1);
+    playerInfos.volRadio = playerInfos.volRadio.toFixedNumber(1);
+    playerInfos.volAmb = playerInfos.volAmb.toFixedNumber(1);
+    if (!quiet) {
+        soundCheck();
+    }
+};
+
+function checkMyVol(theVol,source) {
+    if (playerInfos[source] === 0) {
+        theVol = 0;
+    } else {
+        if (theVol < 0.1) {theVol = 0.1;}
+        if (theVol > 1) {theVol = 1;}
     }
     theVol = theVol.toFixedNumber(1);
     return theVol;
@@ -81,7 +171,7 @@ function playSound(theSound,theVol,multi) {
     if (multi === undefined) {
         multi = true;
     }
-    let myVol = checkMyVol(playerInfos.volFx+theVol,false);
+    let myVol = checkMyVol(playerInfos.volFx+theVol,'volFx');
     if (!clicSnd.playing() || multi) {
         clicSnd = new Howl({
             src: ['/static/sounds/fx/'+theSound+'.mp3'],
@@ -92,7 +182,7 @@ function playSound(theSound,theVol,multi) {
 };
 
 function eggSound() {
-    let myVol = checkMyVol(playerInfos.volFx,false);
+    let myVol = checkMyVol(playerInfos.volFx,'volFx');
     var sound = new Howl({
         src: ['/static/sounds/fx/egg-fall.mp3'],
         volume: myVol
@@ -101,7 +191,7 @@ function eggSound() {
 };
 
 function clicSound(num) {
-    let myVol = checkMyVol(playerInfos.volFx-0.2,false);
+    let myVol = checkMyVol(playerInfos.volFx-0.2,'volFx');
     let clicNum = rand.rand(0,7);
     let theSound = 'clic'+clicNum;
     if (num != undefined) {
@@ -119,12 +209,12 @@ function clicSound(num) {
 };
 
 function warnSound(theSound) {
-    let myVol = checkMyVol(playerInfos.volFx+0.2,false);
+    let myVol = checkMyVol(playerInfos.volFx+0.2,'volFx');
     if (theSound === 'takeoff') {
-        myVol = checkMyVol(playerInfos.volFx+0.1,false);
+        myVol = checkMyVol(playerInfos.volFx+0.1,'volFx');
     }
     if (theSound === 'meteor') {
-        myVol = checkMyVol(playerInfos.volFx+0.4,false);
+        myVol = checkMyVol(playerInfos.volFx+0.4,'volFx');
     }
     clicSnd = new Howl({
         src: ['/static/sounds/fx/'+theSound+'.mp3'],
@@ -179,7 +269,7 @@ function okSound(roger) {
         }
     }
     selectedBatArrayUpdate();
-    let myVol = checkMyVol(playerInfos.volFx-0.3,false);
+    let myVol = checkMyVol(playerInfos.volFx-0.3,'volFx');
     if (selectedBat.an || !okFile.includes('ok') || roger) {
         okSnd = new Howl({
             src: ['/static/sounds/moves/'+okFile+'.mp3'],
@@ -197,7 +287,7 @@ function okSound(roger) {
 };
 
 function playOK(bat) {
-    let myVol = checkMyVol(playerInfos.volFx-0.3,false);
+    let myVol = checkMyVol(playerInfos.volFx-0.3,'volFx');
     okSnd = new Howl({
         src: ['/static/sounds/moves/'+bat.ok+'.mp3'],
         volume: myVol
@@ -378,7 +468,7 @@ function checkSpawnType(alienType) {
 function spawnSound() {
     if (Object.keys(spawnType).length >= 1) {
         let spawnSound = spawnType.spawnFx;
-        let myVol = checkMyVol(playerInfos.volFx-0.1,false);
+        let myVol = checkMyVol(playerInfos.volFx-0.1,'volFx');
         var sound = new Howl({
             src: ['/static/sounds/fx/'+spawnSound+'.mp3'],
             volume: myVol
@@ -392,32 +482,20 @@ function spawnSound() {
 function playMusic(piste,interrupt) {
     // let track = [_.sample(musicTracks)];
     if (playerInfos.statMu || !playerInfos.onShip) {
-        let myVol = checkMyVol(playerInfos.volMu+0.3,true);
+        let myVol = checkMyVol(playerInfos.volMu+0.3,'volMu');
         if (!theMusic.playing() || interrupt) {
             let track = 'amb_trucsympa';
-            if (!playerInfos.onShip) {
-                if (trackNum > musicTracks.length-1) {
-                    trackNum = 0;
-                }
-                track = musicTracks[trackNum];
-                trackNum = trackNum+1;
-                if (trackNum > musicTracks.length-1) {
-                    trackNum = 0;
-                }
-            } else {
-                if (trackNum > stationTracks.length-1) {
-                    trackNum = 0;
-                }
-                track = stationTracks[trackNum];
-                trackNum = trackNum+1;
-                if (trackNum > stationTracks.length-1) {
-                    trackNum = 0;
-                }
+            if (trackNum > musicTracks.length-1) {
+                trackNum = 0;
+            }
+            track = musicTracks[trackNum];
+            trackNum = trackNum+1;
+            if (trackNum > musicTracks.length-1) {
+                trackNum = 0;
             }
             if (piste != 'any') {
                 track = piste;
             }
-            // theMusic.stop();
             theMusic.fade(myVol,0.0,3000);
             theMusic = new Howl({
                 src: ['/static/sounds/music/'+track+'.mp3'],
@@ -425,6 +503,37 @@ function playMusic(piste,interrupt) {
                 volume: myVol
             });
             theMusic.play();
+            // console.log('PLAYING: '+track);
+        } else {
+            // console.log('ALREADY PLAYING');
+        }
+    }
+};
+
+function playRadio(piste,interrupt) {
+    // let track = [_.sample(musicTracks)];
+    if (playerInfos.statMu || !playerInfos.onShip) {
+        let myVol = checkMyVol(playerInfos.volRadio+0.3,'volRadio');
+        if (!theRadio.playing() || interrupt) {
+            let track = 'amb_trucsympa';
+            if (trackNum > stationTracks.length-1) {
+                trackNum = 0;
+            }
+            track = stationTracks[trackNum];
+            trackNum = trackNum+1;
+            if (trackNum > stationTracks.length-1) {
+                trackNum = 0;
+            }
+            if (piste != 'any') {
+                track = piste;
+            }
+            theRadio.fade(myVol,0.0,3000);
+            theRadio = new Howl({
+                src: ['/static/sounds/music/'+track+'.mp3'],
+                preload: true,
+                volume: myVol
+            });
+            theRadio.play();
             // console.log('PLAYING: '+track);
         } else {
             // console.log('ALREADY PLAYING');
@@ -447,7 +556,7 @@ function playRoom(piste,interrupt,onloop) {
     if (piste != 'any') {
         track = piste;
     }
-    let myVol = checkMyVol(playerInfos.volFx-0.1,false);
+    let myVol = checkMyVol(playerInfos.volAmb-0.1,'volAmb');
     if (!theRoom.playing() || interrupt) {
         theRoom.stop();
         theRoom = new Howl({
@@ -466,7 +575,7 @@ function playRoom(piste,interrupt,onloop) {
 function playMove(play) {
     let isLoop = true;
     let track = 'none';
-    let myVol = checkMyVol(playerInfos.volFx+0.1,false);
+    let myVol = checkMyVol(playerInfos.volFx+0.1,'volFx');
     if (!play) {
         theMove.stop();
         // theMove.fade(moveVol,0,2000);
@@ -512,7 +621,7 @@ function playFx(piste,stop) {
     if (piste != 'any') {
         track = piste;
     }
-    let myVol = checkMyVol(playerInfos.volFx-0.4,false);
+    let myVol = checkMyVol(playerInfos.volFx-0.4,'volFx');
     if (stop) {
         theWork.stop();
     } else {

@@ -2666,6 +2666,15 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             lineBreak = true;
         }
     }
+    // RESERVE DEPLOY
+    if (batType.name === 'Soute' && playerInfos.onShip && inSoute) {
+        if (Object.keys(playerInfos.deployRes).length >= 1) {
+            $('#unitInfos').append('<button type="button" title="Utiliser la réserve de ressources pour le déploiement" class="boutonMarine bigButtons" onclick="useDeployRes()"><i class="fas fa-piggy-bank"></i> <i class="fas fa-sign-out-alt"></i></button>');
+        } else {
+            $('#unitInfos').append('<button type="button" title="Sauvegarder une réserve de ressources pour le déploiement" class="boutonCaca bigButtons" onclick="saveDeployRes()"><i class="fas fa-piggy-bank"></i> <i class="fas fa-sign-in-alt"></i></button>');
+        }
+        lineBreak = true;
+    }
     // EQUIPAGE
     if (bat.tags.includes('nopilots')) {
         let neededCits = batType.squads*batType.squadSize*batType.crew;
