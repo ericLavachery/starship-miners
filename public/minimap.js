@@ -1,7 +1,7 @@
 function minimap() {
     showMini = true;
-    console.log('MINI allZoneRes');
-    console.log(allZoneRes);
+    // console.log('MINI allZoneRes');
+    // console.log(allZoneRes);
     if (allZoneRes.length === 0) {
         checkRes = true;
     } else {

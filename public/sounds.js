@@ -67,8 +67,7 @@ function soundCheck() {
         $('#conUnitList').append('<button type="button" title="Volume" class="boutonBleu iconButtons">'+theVol+'</button>');
         $('#conUnitList').append('<br>');
     }
-
-    $('#conUnitList').append('<br><br>');
+    $('#conUnitList').append('<br>');
     $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
@@ -123,13 +122,9 @@ function soundMute(source,mute) {
 
 function soundFade(source,down) {
     let volAdj = 0.1;
-    if (down) {
-        volAdj = -0.1;
-    }
+    if (down) {volAdj = -0.1;}
     let newVol = playerInfos[source]+volAdj;
-    if (newVol < 0.1) {
-        newVol = 0.1;
-    }
+    if (newVol < 0.1) {newVol = 0.1;}
     if (source === 'volRadio') {
         theRadio.fade(playerInfos[source],newVol,500);
     } else if (source === 'volMu') {

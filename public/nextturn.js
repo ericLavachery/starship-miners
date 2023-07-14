@@ -522,7 +522,7 @@ function nextTurnEnd() {
                 mining(bat);
             }
             if (batType.skills.includes('unload')) {
-                console.log('AUTO-UNLOAD'+bat.type);
+                // console.log('AUTO-UNLOAD'+bat.type);
                 autoUnload(bat);
             }
             if (bat.autoLoad != undefined && bat.loc === 'zone') {
@@ -2054,30 +2054,20 @@ function alertAllBats() {
 };
 
 function createBatList() {
-    console.log('BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATLIST');
-    // let allBatList = bataillons.slice();
-    // let zoneBatList = _.filter(allBatList, function(bat) {
-    //     return (bat.loc == 'zone' && !bat.tags.includes('nolist'));
-    // });
-    // batList = _.sortBy(zoneBatList,'fuzz');
-    // batList.reverse();
-    // batList = _.sortBy(_.sortBy(_.sortBy(_.sortBy(batList,'tileId'),'type'),'sort'),'army');
-    // batList.reverse();
-    // console.log(batList);
     let allBatList = bataillons.slice();
     batList = _.filter(allBatList, function(bat) {
         return (bat.loc == 'zone' && !bat.tags.includes('nolist') && bat.sort >= 1000);
     });
     batList = _.sortBy(batList,'sort');
     batList.reverse();
-    console.log(batList);
+    // console.log(batList);
     let lowSortedBatList = _.filter(allBatList, function(bat) {
         return (bat.loc == 'zone' && !bat.tags.includes('nolist') && bat.sort < 1000);
     });
     lowSortedBatList = _.sortBy(_.sortBy(_.sortBy(_.sortBy(lowSortedBatList,'tileId'),'type'),'sort'),'army');
     lowSortedBatList.reverse();
     batList.push(...lowSortedBatList);
-    console.log(batList);
+    // console.log(batList);
     commandes();
 };
 

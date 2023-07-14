@@ -451,25 +451,38 @@ function getHuntingRes(bat,batType) {
                     let vf = getVegFactor();
                     let gf = vf.wood+vf.veg;
                     let huntGib = gf;
-                    let minHunt = 1;
                     if (batType.skills.includes('pistage')) {
-                        huntGib = huntGib*1.5;
-                        minHunt = 2;
+                        huntGib = huntGib*1.75;
                     } else if (batType.skills.includes('affut')) {
                         huntGib = huntGib*0.75;
                     }
                     if (zone[0].planet === 'Horst') {
                         huntGib = huntGib*0.33;
                     }
-                    let gibRes = Math.round(huntGib/150);
-                    if (gibRes < 1) {
-                        if (rand.rand(1,150) <= huntGib) {
-                            gibRes = 1;
-                        }
+                    huntGib = Math.round(huntGib);
+                    let hgRest = huntGib;
+                    let gibRes = 0;
+                    if (hgRest >= 200) {
+                        gibRes++;
+                        hgRest = hgRest-200;
+                    }
+                    if (hgRest >= 200) {
+                        gibRes++;
+                        hgRest = hgRest-200;
+                    }
+                    if (hgRest >= 200) {
+                        gibRes++;
+                        hgRest = hgRest-200;
+                    }
+                    if (hgRest >= 200) {
+                        gibRes++;
+                        hgRest = hgRest-200;
+                    }
+                    if (rand.rand(1,200) <= hgRest) {
+                        gibRes++;
                     }
                     if (gibRes >= 1) {
-                        if (gibRes < minHunt) {gibRes = minHunt;}
-                        console.log('Chasse: '+batType.name+' '+gibRes+' Gibier');
+                        console.log('Chasse: '+batType.name+' '+gibRes+' Gibier ('+huntGib+')');
                         if (minedThisTurn['Gibier'] === undefined) {
                             minedThisTurn['Gibier'] = gibRes;
                         } else {

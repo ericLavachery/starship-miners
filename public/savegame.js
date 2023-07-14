@@ -495,7 +495,11 @@ function showMapReset() {
 };
 
 function showStartLander() {
-    playMusic('silence',true);
+    if (playerInfos.onShip) {
+        playRadio('silence',true);
+    } else {
+        playMusic('silence',true);
+    }
     saveAutoBackup();
     // let myVol = checkMyVol(playerInfos.volMu+0.3,'volMu');
     // theMusic.fade(myVol,0.0,3000);

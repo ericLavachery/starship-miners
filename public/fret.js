@@ -456,8 +456,8 @@ function resSelectLoad(value,pickValue,resId,batId) {
 
 function autoUnload(bat) {
     let bestDumper = getBestDumper(bat);
-    console.log('best dumper');
-    console.log(bestDumper);
+    // console.log('best dumper');
+    // console.log(bestDumper);
     if (Object.keys(bestDumper).length >= 1) {
         if (bestDumper.id != bat.id) {
             let resSpace = checkResSpace(bestDumper);

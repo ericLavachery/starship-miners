@@ -654,7 +654,7 @@ function checkSelfMove(bat,batType) {
         // if (!batType.skills.includes('transorbital')) {
         // }
     }
-    console.log('SELF MOVE = '+selfMove);
+    // console.log('SELF MOVE = '+selfMove);
     return selfMove;
 };
 
