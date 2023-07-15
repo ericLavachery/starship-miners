@@ -1,55 +1,3 @@
-function equipDetails(stuffName,isAmmo) {
-    selectMode();
-    $("#conUnitList").css("display","block");
-    $('#conUnitList').css("height","400px");
-    $("#conAmmoList").css("display","none");
-    $('#unitInfos').empty();
-    $("#unitInfos").css("display","none");
-    $('#tileInfos').empty();
-    $("#tileInfos").css("display","none");
-    $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
-    let stuff = {};
-    if (isAmmo) {
-        stuff = getAmmoByName(stuffName);
-    } else {
-        stuff = getEquipByName(stuffName);
-    }
-    let baseInfo = '';
-    let pageTitle = 'EQUIPEMENT';
-    if (isAmmo) {
-        pageTitle = 'MUNITION';
-        baseInfo = showAmmoInfo(stuffName);
-    } else if (stuff.cat === 'armor') {
-        pageTitle = 'ARMURE';
-        baseInfo = showFullArmorInfo(stuff,false);
-    } else if (stuff.cat === 'drogue') {
-        pageTitle = 'DROGUE';
-        if (stuff.info != undefined) {
-            baseInfo = stuff.info;
-            baseInfo = baseInfo.replace(/ \/ /g,' &#9889; ');
-        }
-    } else if (stuff.cat === 'infra') {
-        pageTitle = 'INFRASTRUCTURE';
-        if (stuff.info != undefined) {
-            baseInfo = stuff.info;
-            baseInfo = baseInfo.replace(/ \/ /g,' &#9889; ');
-        }
-    } else if (stuff.cat === 'equip') {
-        if (stuff.info != undefined) {
-            baseInfo = stuff.info;
-            baseInfo = baseInfo.replace(/ \/ /g,' &#9889; ');
-        }
-    }
-    $('#conUnitList').append('<span class="constName vert">'+pageTitle+': <span class="or">&ldquo;'+stuff.name+'&rdquo;</span></span><br>');
-    $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="basicText">'+baseInfo+'</span><br>');
-
-
-
-    $('#conUnitList').append('<br><br>');
-};
-
 function reEquip(batId,noRefresh) {
     let myBat = getBatById(batId);
     let myBatType = getBatType(myBat);
@@ -92,7 +40,7 @@ function reEquip(batId,noRefresh) {
             myBatType.protection.forEach(function(armor) {
                 batArmor = getEquipByName(armor);
                 armorSkills = showArmorInfo(batArmor);
-                fullArmorSkills = showFullArmorInfo(batArmor,false);
+                fullArmorSkills = showFullArmorInfo(batArmor,false,false);
                 compReqOK = checkCompReq(batArmor);
                 if (compReqOK) {
                     if (myNewGear[2] == armor || (myNewGear[2] === 'xxx' && listNum === 1)) {
@@ -237,7 +185,7 @@ function reEquip(batId,noRefresh) {
                             prodSign = '';
                         }
                         if ((bldReqOK && costsOK) || conselTriche) {
-                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+displayCosts(deployCosts)+'" onclick="deployAmmo(`'+ammo+'`,`w1`,`'+myBat.id+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo,false,false)+' '+displayCosts(deployCosts)+'" onclick="deployAmmo(`'+ammo+'`,`w1`,`'+myBat.id+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
                         } else {
                             $('#conAmmoList').append('<span class="constName gff" title="'+toBldString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
                         }
@@ -273,7 +221,7 @@ function reEquip(batId,noRefresh) {
                             prodSign = '';
                         }
                         if ((bldReqOK && costsOK) || conselTriche) {
-                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+displayCosts(deployCosts)+'" onclick="deployAmmo(`'+ammo+'`,`w2`,`'+myBat.id+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo,false,false)+' '+displayCosts(deployCosts)+'" onclick="deployAmmo(`'+ammo+'`,`w2`,`'+myBat.id+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
                         } else {
                             $('#conAmmoList').append('<span class="constName gff" title="'+toBldString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
                         }

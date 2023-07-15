@@ -2924,44 +2924,6 @@ function addFreeBat(tileId,unitName) {
     putBat(tileId,0,0);
 }
 
-function gangLevelView() {
-    selectMode();
-    $("#conUnitList").css("display","block");
-    $('#conUnitList').css("height","700px");
-    $("#conAmmoList").css("display","none");
-    $('#unitInfos').empty();
-    $("#unitInfos").css("display","none");
-    $('#tileInfos').empty();
-    $("#tileInfos").css("display","none");
-    $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="ListRes or">COMPETENCES</span><br>');
-    $('#conUnitList').append('<span class="ListRes">Gang: '+playerInfos.gang+'</span><br>');
-    $('#conUnitList').append('<span class="ListRes">Expérience: '+playerInfos.gangXP+'</span><br>');
-    $('#conUnitList').append('<span class="ListRes">Niveau de gang: '+playerInfos.gLevel+'</span><br>');
-    $('#conUnitList').append('<br>');
-    gangComps.forEach(function(comp) {
-        let nowComp = playerInfos.comp[comp.name];
-        let nextComp = playerInfos.comp[comp.name]+1;
-        let compCost = comp.lvlCosts[nextComp];
-        let colour = 'neutre';
-        let costColour = 'gff';
-        if (compCost >= 2) {
-            costColour = 'gf';
-        }
-        if (comp.maxLevel < nextComp) {
-            compCost = 0;
-            colour = 'cy';
-            costColour = 'noir';
-        }
-        $('#conUnitList').append('<span class="paramName '+colour+'" title="'+comp.desc+'">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût">('+compCost+')</span><span class="paramCompValue cy" title="Niveau actuel">'+nowComp+'<span class="gff">/'+comp.maxLevel+'</span></span>');
-    });
-    $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="ListRes"></span><br>');
-    $('#conUnitList').append('<br>');
-    $("#conUnitList").animate({scrollTop:0},"fast");
-};
-
 function checkGangLevel() {
     let nextGangLevel = -1;
     let level = 0;
@@ -3057,7 +3019,7 @@ function gangLevelUp(retour) {
         myCompPoints = calcCompPoints(nextGangLevel);
     }
     $("#conUnitList").css("display","block");
-    $('#conUnitList').css("height","700px");
+    $('#conUnitList').css("height","600px");
     $("#conAmmoList").css("display","none");
     $('#unitInfos').empty();
     $("#unitInfos").css("display","none");
@@ -3066,11 +3028,11 @@ function gangLevelUp(retour) {
     $('#conUnitList').empty();
     if (myCompPoints <= 0 && retour) {
         $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
-        $('#conUnitList').append('<span class="ListRes cy">VOUS AVEZ DEPENSE TOUS VOS POINTS</span><br>');
+        $('#conUnitList').append('<h3>VOUS AVEZ DEPENSE TOUS VOS POINTS</h3><br>');
         playerInfos.gLevel++;
         commandes();
     } else {
-        $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE COMPETENCE</span><br>');
+        $('#conUnitList').append('<h1>CHOISIR UNE COMPETENCE</h1><br>');
     }
     $('#conUnitList').append('<span class="ListRes">Niveau de gang: '+nextGangLevel+'</span><br>');
     $('#conUnitList').append('<span class="ListRes">Points à dépenser: '+myCompPoints+'</span><br>');
@@ -3114,7 +3076,7 @@ function gangLevelUp(retour) {
                 }
             }
         }
-        $('#conUnitList').append('<span class="paramName '+colour+'" title="'+comp.desc+'">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût: '+compCost+'">('+compCost+')</span><span class="paramCompValue '+lvlColour+'" title="Niveau actuel">'+nowComp+'<span class="gff" title="Niveau maximum">/'+comp.maxLevel+'</span></span>');
+        $('#conUnitList').append('<span class="paramName '+colour+' klik" title="'+comp.desc+'" onclick="compDetail('+comp.id+')">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût: '+compCost+'">('+compCost+')</span><span class="paramCompValue '+lvlColour+'" title="Niveau actuel">'+nowComp+'<span class="gff" title="Niveau maximum">/'+comp.maxLevel+'</span></span>');
         if (comp.levels[playerInfos.gang] <= nextGangLevel && comp.maxLevel >= nextComp) {
             if (compCost === 1 || (myCompPoints >= 2 && nextGangLevel >= 1)) {
                 if (myCompPoints >= compCost && !rechOnly) {
@@ -3127,6 +3089,263 @@ function gangLevelUp(retour) {
     $('#conUnitList').append('<span class="ListRes"></span><br>');
     $('#conUnitList').append('<br>');
     $("#conUnitList").animate({scrollTop:0},"fast");
+};
+
+function gangLevelView() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","600px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
+    $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<h3>COMPETENCES</h3><br>');
+    $('#conUnitList').append('<span class="ListRes">Gang: '+playerInfos.gang+'</span><br>');
+    $('#conUnitList').append('<span class="ListRes">Expérience: '+playerInfos.gangXP+'</span><br>');
+    $('#conUnitList').append('<span class="ListRes">Niveau de gang: '+playerInfos.gLevel+'</span><br>');
+    $('#conUnitList').append('<br>');
+    gangComps.forEach(function(comp) {
+        let nowComp = playerInfos.comp[comp.name];
+        let nextComp = playerInfos.comp[comp.name]+1;
+        let compCost = comp.lvlCosts[nextComp];
+        let colour = 'neutre';
+        let costColour = 'gff';
+        if (compCost >= 2) {
+            costColour = 'gf';
+        }
+        if (comp.maxLevel < nextComp) {
+            compCost = 0;
+            colour = 'cy';
+            costColour = 'noir';
+        }
+        $('#conUnitList').append('<span class="paramName '+colour+' klik" title="'+comp.desc+'" onclick="compDetail('+comp.id+')">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût">('+compCost+')</span><span class="paramCompValue cy" title="Niveau actuel">'+nowComp+'<span class="gff">/'+comp.maxLevel+'</span></span>');
+    });
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="ListRes"></span><br>');
+    $('#conUnitList').append('<br>');
+    $("#conUnitList").animate({scrollTop:0},"fast");
+};
+
+function checkListedItem(stuff,comp) {
+    let listMe = false;
+    if (stuff.compReq != undefined) {
+        if (stuff.compReq[comp.name] != undefined) {
+            listMe = true;
+        }
+    }
+    if (stuff.altCompReq != undefined) {
+        if (stuff.altCompReq[comp.name] != undefined) {
+            listMe = true;
+        }
+    }
+    return listMe;
+};
+
+function compDetail(compId) {
+    $("#tileInfos").css("display","block");
+    $('#tileInfos').empty();
+    let comp = getCompById(compId);
+    let nextCompLevel = playerInfos.comp[comp.name]+1;
+    let printCompLevel = nextCompLevel;
+    if (nextCompLevel > comp.maxLevel) {
+        printCompLevel = '(max)';
+    }
+    $('#tileInfos').append('<span class="blockTitle"><h1>'+comp.fullName+' '+printCompLevel+'</h1></span>');
+    if (comp.desc != comp.fullName) {
+        $('#tileInfos').append('<span class="fullLine brunf"><b>'+comp.desc+'</b></span>');
+    }
+    if (nextCompLevel > comp.maxLevel) {
+        $('#tileInfos').append('<span class="fullLine vert"><b>Vous avez déjà le maximum dans cette compétence</b></span><br>');
+    } else {
+        $('#tileInfos').append('<span class="fullLine vert"><b>Liste des éléments auxquels vous auriez accès avec ce niveau en '+comp.fullName+'</b></span><br>');
+    }
+    $('#tileInfos').append('<span class="fullLine gf">(Sont listés seulement les éléments auxquels cette compétence pourrait donner accès)</span><br>');
+    $('#tileInfos').append('<span class="fullLine or">Note: Cette partie est en construction. Pour l\'instant, rien n\'indique si des unités de votre gang ont accès à ces éléments!</span><br>');
+    // $('#tileInfos').append('<div class="shSpace"></div>');
+    let sepa = ' &nbsp;&#128206;&nbsp; ';
+    let messageOK = 'DEJA ACCESSIBLE \n';
+    let messageUP = 'ACCESSIBLE AVEC CE NIVEAU EN '+comp.fullName.toUpperCase()+' \n';
+    let messageKO = 'INACCESSIBLE \n';
+    // ARMURES
+    $('#tileInfos').append('<br>');
+    $('#tileInfos').append('<span class="fullLine cy"><b>Armures</b></span><br>');
+    armorTypes.forEach(function(stuff) {
+        if (stuff.cat === 'armor' && !stuff.name.includes('aucun')) {
+            let listMe = checkListedItem(stuff,comp);
+            if (listMe) {
+                let stuffInfo = showFullArmorInfo(stuff,true,false);
+                let compReqOK = checkCompReq(stuff);
+                if (compReqOK) {
+                    stuffInfo = messageOK+stuffInfo;
+                    $('#tileInfos').append(sepa);
+                    $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                } else {
+                    let upCompReqOK = checkUpCompReq(stuff,comp);
+                    if (upCompReqOK) {
+                        stuffInfo = messageUP+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    } else {
+                        stuffInfo = messageKO+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    }
+                }
+            }
+        }
+    });
+    $('#tileInfos').append(sepa);
+    $('#tileInfos').append('<br>');
+    // EQUIPEMENTS
+    $('#tileInfos').append('<br>');
+    $('#tileInfos').append('<span class="fullLine cy"><b>Equipements</b></span><br>');
+    armorTypes.forEach(function(stuff) {
+        if (stuff.cat === 'equip' && !stuff.name.includes('aucun')) {
+            let listMe = checkListedItem(stuff,comp);
+            if (listMe) {
+                let stuffInfo = showEquipFullInfo(stuff.name,true,false);
+                let compReqOK = checkCompReq(stuff);
+                if (compReqOK) {
+                    stuffInfo = messageOK+stuffInfo;
+                    $('#tileInfos').append(sepa);
+                    $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                } else {
+                    let upCompReqOK = checkUpCompReq(stuff,comp);
+                    if (upCompReqOK) {
+                        stuffInfo = messageUP+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    } else {
+                        stuffInfo = messageKO+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    }
+                }
+            }
+        }
+    });
+    $('#tileInfos').append(sepa);
+    $('#tileInfos').append('<br>');
+    // INFRASTRUCTURES
+    $('#tileInfos').append('<br>');
+    $('#tileInfos').append('<span class="fullLine cy"><b>Infrastructures</b></span><br>');
+    armorTypes.forEach(function(stuff) {
+        if (stuff.cat === 'infra' && stuff.name != 'Débris') {
+            let listMe = checkListedItem(stuff,comp);
+            if (listMe) {
+                let stuffInfo = showInfraInfo(stuff.name,true,false);
+                let compReqOK = checkCompReq(stuff);
+                if (compReqOK) {
+                    stuffInfo = messageOK+stuffInfo;
+                    $('#tileInfos').append(sepa);
+                    $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                } else {
+                    let upCompReqOK = checkUpCompReq(stuff,comp);
+                    if (upCompReqOK) {
+                        stuffInfo = messageUP+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    } else {
+                        stuffInfo = messageKO+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    }
+                }
+            }
+        }
+    });
+    $('#tileInfos').append(sepa);
+    $('#tileInfos').append('<br>');
+    // DROGUES
+    $('#tileInfos').append('<br>');
+    $('#tileInfos').append('<span class="fullLine cy"><b>Drogues</b></span><br>');
+    armorTypes.forEach(function(stuff) {
+        if (stuff.cat === 'drogue' && stuff.name != 'meca') {
+            let listMe = checkListedItem(stuff,comp);
+            if (listMe) {
+                let stuffInfo = stuff.info;
+                let compReqOK = checkCompReq(stuff);
+                if (compReqOK) {
+                    stuffInfo = messageOK+stuffInfo;
+                    $('#tileInfos').append(sepa);
+                    $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                } else {
+                    let upCompReqOK = checkUpCompReq(stuff,comp);
+                    if (upCompReqOK) {
+                        stuffInfo = messageUP+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    } else {
+                        stuffInfo = messageKO+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    }
+                }
+            }
+        }
+    });
+    $('#tileInfos').append(sepa);
+    $('#tileInfos').append('<br>');
+    // MUNITIONS
+    $('#tileInfos').append('<br>');
+    $('#tileInfos').append('<span class="fullLine cy"><b>Munitions</b></span><br>');
+    ammoTypes.forEach(function(stuff) {
+        let listMe = checkListedItem(stuff,comp);
+        if (listMe) {
+            let stuffInfo = showAmmoInfo(stuff.name,true,false);
+            let compReqOK = checkCompReq(stuff);
+            if (compReqOK) {
+                stuffInfo = messageOK+stuffInfo;
+                $('#tileInfos').append(sepa);
+                $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
+            } else {
+                let upCompReqOK = checkUpCompReq(stuff,comp);
+                if (upCompReqOK) {
+                    stuffInfo = messageUP+stuffInfo;
+                    $('#tileInfos').append(sepa);
+                    $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                } else {
+                    stuffInfo = messageKO+stuffInfo;
+                    $('#tileInfos').append(sepa);
+                    $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                }
+            }
+        }
+    });
+    $('#tileInfos').append(sepa);
+    $('#tileInfos').append('<br>');
+    // CRAFTINGS
+    $('#tileInfos').append('<br>');
+    $('#tileInfos').append('<span class="fullLine cy"><b>Crafting</b></span><br>');
+    let newCrafts = 0;
+    crafting.forEach(function(stuff) {
+        let listMe = checkListedItem(stuff,comp);
+        if (listMe) {
+            let compReqOK = checkCompReq(stuff);
+            if (!compReqOK) {
+                let upCompReqOK = checkUpCompReq(stuff,comp);
+                if (upCompReqOK) {
+                    newCrafts++;
+                }
+            }
+        }
+    });
+    $('#tileInfos').append(sepa);
+    if (newCrafts >= 2) {
+        $('#tileInfos').append('<span class="ListRes vert">'+newCrafts+' nouveaux craftings</span>');
+    } else if (newCrafts >= 1) {
+        $('#tileInfos').append('<span class="ListRes vert">'+newCrafts+' nouveau crafting</span>');
+    } else {
+        $('#tileInfos').append('<span class="ListRes gff">'+newCrafts+' nouveau crafting</span>');
+    }
+    $('#tileInfos').append(sepa);
+    $('#tileInfos').append('<br>');
+
+    $('#tileInfos').append('<br>');
+    $("#tileInfos").animate({scrollTop:0},"fast");
 };
 
 function addComp(compId,nextComp) {

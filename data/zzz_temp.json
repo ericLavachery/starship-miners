@@ -11,6 +11,111 @@
 (delay devrait être une classe!)
 
 {
+    "name":"lanceur2",
+    "cat":"equip",
+    "skills":[],
+    "info":"Portée+ / Elévation+",
+    "bldReq":["Arsenal"],
+    "compReq":{"bal":999,"log":1,"pyro":2},
+    "autoComp":[],
+    "factor":"crew",
+    "costs":{"Scrap":12,"Fer":12,"Aluminium":24}
+},
+{
+    "name":"lgkit",
+    "cat":"equip",
+    "skills":[],
+    "info":"Chargeur / Lance grenade",
+    "bldReq":["Arsenal"],
+    "compReq":{"bal":999,"log":2},
+    "autoComp":["bal",3],
+    "factor":"crew",
+    "costs":{"Scrap":15,"Fer":15,"Aluminium":24,"Carbone":5}
+},
+{
+    "name":"trainkitch",
+    "cat":"equip",
+    "skills":[],
+    "info":"Déplacement+ / Cadence++ / (Camouflage+)",
+    "bldReq":["Atelier"],
+    "compReq":{"log":999,"train":1,"bal":2},
+    "autoComp":[],
+    "factor":"crew",
+    "costs":{"Scrap":3,"Carbone":9,"Blendium":8,"Tissus":12,"Titane":18},
+    "deploy":{"Végétaux":8}
+},
+{
+    "name":"trainkitlu",
+    "cat":"equip",
+    "skills":[],
+    "info":"Déplacement+ / Précision++ / Elévation+ / (Camouflage+)",
+    "bldReq":["Atelier"],
+    "compReq":{"log":999,"train":1,"bal":1,"det":2},
+    "autoComp":[],
+    "factor":"crew",
+    "costs":{"Scrap":3,"Carbone":12,"Blendium":10,"Tissus":18,"Titane":6,"Silicium":6,"Aluminium":6},
+    "deploy":{"Végétaux":8}
+},
+{
+    "name":"trainkitgi",
+    "cat":"equip",
+    "skills":[],
+    "info":"Déplacement+ / Munitions+ (grenades) / Portée+ (grenades) / Cadence+ (mêlée) / (Camouflage+)",
+    "bldReq":["Atelier"],
+    "compReq":{"log":999,"train":1,"bal":2,"mat":1},
+    "autoComp":[],
+    "factor":"crew",
+    "costs":{"Scrap":18,"Carbone":6,"Blendium":8,"Tissus":15,"Fer":12,"Aluminium":24,"Titane":6},
+    "deploy":{"Végétaux":8}
+},
+{
+    "name":"trainkitax",
+    "cat":"equip",
+    "skills":[],
+    "info":"Déplacement+ / Cadence++ (tir) / Cadence+ (mêlée)",
+    "bldReq":["Atelier"],
+    "compReq":{"log":999,"train":1,"bal":2,"mat":1},
+    "autoComp":[],
+    "factor":"crew",
+    "costs":{"Scrap":3,"Carbone":9,"Titane":18}
+},
+{
+    "name":"cyberkit",
+    "cat":"equip",
+    "skills":[],
+    "info":"Helper + TheEye + Regeneration lente",
+    "bldReq":["Laboratoire"],
+    "compReq":{"log":999,"det":3,"mat":3,"cyber":1,"exo":1,"ca":3,"med":2},
+    "autoComp":[],
+    "factor":"crew",
+    "costs":{"Adamantium":4,"Titane":14,"Electros":14,"Hélium":2,"Silicium":9,"Batteries":4,"Bossium":6,"Plastanium":3,"Drogues":12,"Octiron":24,"Mendium":9},
+    "deploy":{"Energie":12,"Drogues":2,"Mendium":3}
+},
+{
+    "name":"carkit",
+    "cat":"equip",
+    "skills":[],
+    "info":"Snorkel + Chenilles + G2Motor + Mécano + Stabilisateur",
+    "bldReq":["Usine"],
+    "compReq":{"log":999,"trans":2,"energ":1,"mat":2},
+    "autoComp":[],
+    "factor":"thp",
+    "costs":{"Scrap":4,"Carbone":9,"Fer":24,"Moteurs":8,"Rhodium":4,"Cuivre":3,"Nickel":3,"Electros":11,"Batteries":5},
+    "deploy":{"Hydrogène":3,"Huile":2,"Energie":6}
+},
+{
+    "name":"bldkit",
+    "cat":"equip",
+    "skills":[],
+    "info":"Espace++ / Panneaux / Isolation phonique / (Extraction+)",
+    "bldReq":["Usine"],
+    "compReq":{"const":999,"energ":1,"log":2,"ind":1},
+    "autoComp":[],
+    "factor":"one",
+    "costs":{"Compo1":200,"Compo2":50,"Scrap":60,"Végétaux":60,"Bois":60,"Tungstène":60,"Electros":30,"Batteries":30,"Silicium":80,"Carbone":25,"Hydrogène":25,"Oxygène":12,"Batteries":8}
+},
+
+{
     "id":101,
     "name":"Genius",
     "pic":"genius",

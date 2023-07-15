@@ -2320,7 +2320,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             $('#infraButtons').empty();
             if (tile.infra != 'Miradors' && (oneOnly === 'all' || oneOnly === 'mir')) {
                 infra = getInfraByName('Miradors');
-                let infraInfo = showInfraInfo(infra.name,true);
+                let infraInfo = showInfraInfo(infra.name,true,false);
                 compReqOK = checkCompReq(infra);
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
@@ -2347,7 +2347,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
             if (tile.infra != 'Palissades' && (oneOnly === 'all' || oneOnly === 'pal')) {
                 infra = getInfraByName('Palissades');
-                let infraInfo = showInfraInfo(infra.name,true);
+                let infraInfo = showInfraInfo(infra.name,true,false);
                 compReqOK = checkCompReq(infra);
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.def+playerInfos.comp.const) {
@@ -2374,7 +2374,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
             if (tile.infra != 'Remparts' && oneOnly === 'all') {
                 infra = getInfraByName('Remparts');
-                let infraInfo = showInfraInfo(infra.name,true);
+                let infraInfo = showInfraInfo(infra.name,true,false);
                 compReqOK = checkCompReq(infra);
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel+playerInfos.comp.const) {
@@ -2401,7 +2401,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
             if (tile.infra != 'Murailles' && oneOnly === 'all') {
                 infra = getInfraByName('Murailles');
-                let infraInfo = showInfraInfo(infra.name,true);
+                let infraInfo = showInfraInfo(infra.name,true,false);
                 compReqOK = checkCompReq(infra);
                 infraCostOK = checkCost(infra.costs);
                 if (infra.levels[playerInfos.gang] > playerInfos.gLevel) {
@@ -2428,7 +2428,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
             if (tile.infra != 'Terriers' && (oneOnly === 'all' || oneOnly === 'trou')) {
                 infra = getInfraByName('Terriers');
-                let infraInfo = showInfraInfo(infra.name,true);
+                let infraInfo = showInfraInfo(infra.name,true,false);
                 if (infra.levels[playerInfos.gang] < 90) {
                     infraCostOK = checkCost(infra.costs);
                     compReqOK = checkCompReq(infra);
@@ -2717,7 +2717,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         tileAmmoPackName = 'fireblast';
                     }
                     let ammo = getAmmoByName(tileAmmoPackName);
-                    let ammoInfo = showAmmoInfo(ammo.name);
+                    let ammoInfo = showAmmoInfo(ammo.name,false,false);
                     $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tileAmmoPackName+' / '+ammoInfo+')" class="boutonVert iconButtons" onclick="useAmmoPack(`'+tile.ap+'`,true)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
                     lineBreak = true;
                 }
@@ -2732,7 +2732,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     apCost = 3;
                     apReq = 0;
                     let armor = getEquipByName(armorName);
-                    let armorInfo = showFullArmorInfo(armor,false);
+                    let armorInfo = showFullArmorInfo(armor,false,false);
                     $('#unitInfos').append('<button type="button" title="Enfiler les armures ('+armorName+' / '+armorInfo+')" class="boutonVert iconButtons" onclick="useArmorPack(`'+armorName+'`)"><i class="ra ra-vest rpg"></i> <span class="small">'+apCost+'</span></button>');
                     lineBreak = true;
                 }

@@ -131,7 +131,7 @@ function batInfos(bat,batType,pop) {
     let infraImg = '';
     if (tile.infra != undefined) {
         let infra = getInfraByName(tile.infra);
-        let infraInfo = showInfraInfo(infra.name,true);
+        let infraInfo = showInfraInfo(infra.name,true,false);
         infraImg = '<img style="vertical-align:-12px;" src="/static/img/units/'+infra.pic+'.png" width="48" class="tunit" title="'+infraInfo+'">';
     }
     let unitPrintName = getUnitPrintName(batType,true);
@@ -1479,7 +1479,7 @@ function displayWeaponAmmos(batType,thisWeapon) {
     let ammoString = '';
     ammoTypes.forEach(function(stuff) {
         if (batType[weapName].ammo.includes(stuff.name)) {
-            let ammoInfo = showAmmoInfo(stuff.name,true);
+            let ammoInfo = showAmmoInfo(stuff.name,true,false);
             ammoString = ammoString+sepa+'<span title="'+ammoInfo+'">'+stuff.name+'</span>';
         }
     });
@@ -1493,7 +1493,7 @@ function displayUnitArmors(batType) {
     armorTypes.forEach(function(stuff) {
         if (stuff.cat === 'armor' && !stuff.name.includes('aucun')) {
             if (batType.protection.includes(stuff.name)) {
-                let armorInfo = showFullArmorInfo(stuff,true);
+                let armorInfo = showFullArmorInfo(stuff,true,false);
                 armorString = armorString+sepa+'<span title="'+armorInfo+'">'+stuff.name+'</span>';
             }
         }
@@ -1517,7 +1517,7 @@ function displayUnitEquips(batType) {
                     }
                 }
                 if (w2OK) {
-                    let equipInfo = showEquipFullInfo(stuff.name,true);
+                    let equipInfo = showEquipFullInfo(stuff.name,true,false);
                     equipString = equipString+sepa+'<span title="'+equipInfo+'">'+stuff.name+'</span>';
                 }
             }
@@ -1525,69 +1525,6 @@ function displayUnitEquips(batType) {
     });
     equipString = equipString+sepa;
     return equipString;
-};
-
-function getCompReqs(stuff,isUnit) {
-    let compReqs = {};
-    compReqs.base = {};
-    compReqs.alt = {};
-    let pass = false;
-    if (isUnit) {
-        if (stuff.compPass.includes(playerInfos.gang)) {
-            pass = true;
-        }
-    }
-    if (!pass) {
-        if (stuff.compReq != undefined) {
-            if (Object.keys(stuff.compReq).length >= 1) {
-                Object.entries(stuff.compReq).map(entry => {
-                    let key = entry[0];
-                    let value = entry[1];
-                    compReqs.base[key] = value;
-                });
-            }
-        }
-        // altCompReq
-        if (stuff.altCompReq != undefined) {
-            if (Object.keys(stuff.altCompReq).length >= 1) {
-                compReqOK = true;
-                Object.entries(stuff.altCompReq).map(entry => {
-                    let key = entry[0];
-                    let value = entry[1];
-                    compReqs.alt[key] = value;
-                });
-            }
-        }
-    }
-    if (stuff.compHardReq != undefined) {
-        if (Object.keys(stuff.compHardReq).length >= 1) {
-            Object.entries(stuff.compHardReq).map(entry => {
-                let key = entry[0];
-                let value = entry[1];
-                if (compReqs.base[key] != undefined) {
-                    if (compReqs.base[key] < value) {
-                        compReqs.base[key] = value;
-                    }
-                } else {
-                    compReqs.base[key] = value;
-                }
-                if (Object.keys(compReqs.alt).length >= 1) {
-                    if (compReqs.alt[key] != undefined) {
-                        if (compReqs.alt[key] < value) {
-                            compReqs.alt[key] = value;
-                        }
-                    } else {
-                        compReqs.alt[key] = value;
-                    }
-                }
-            });
-        }
-    }
-    // console.log('compReqs.base');
-    // console.log(compReqs.base);
-    // console.log('compReqs.alt');
-    // console.log(compReqs.alt);
-    return compReqs;
 };
 
 function displayUnitReqs(unit,full) {
@@ -1623,39 +1560,6 @@ function displayUnitReqs(unit,full) {
     } else {
         return baseUnitReqs;
     }
-};
-
-function replaceCompNamesByFullNames(string) {
-    let newString = string;
-    newString = newString.replace(/arti=/g,'Artillerie=');
-    newString = newString.replace(/aero=/g,'Aéronautique=');
-    newString = newString.replace(/gen=/g,'Génétique=');
-    newString = newString.replace(/cyber=/g,'Cybernétique=');
-    newString = newString.replace(/robo=/g,'Robotique=');
-    newString = newString.replace(/tele=/g,'Téléportation=');
-    newString = newString.replace(/vsp=/g,'VolsSpaciaux=');
-    newString = newString.replace(/scaph=/g,'Scaphandres=');
-    newString = newString.replace(/det=/g,'Détection=');
-    newString = newString.replace(/med=/g,'Médecine=');
-    newString = newString.replace(/ordre=/g,'Leadership=');
-    newString = newString.replace(/train=/g,'Entraînement=');
-    newString = newString.replace(/cam=/g,'Camouflage=');
-    newString = newString.replace(/tri=/g,'Recyclage=');
-    newString = newString.replace(/ind=/g,'Industrie=');
-    newString = newString.replace(/const=/g,'Construction=');
-    newString = newString.replace(/energ=/g,'Energie=');
-    newString = newString.replace(/ext=/g,'Extraction=');
-    newString = newString.replace(/trans=/g,'Transports=');
-    newString = newString.replace(/log=/g,'Logistique=');
-    newString = newString.replace(/bal=/g,'Balistique=');
-    newString = newString.replace(/explo=/g,'Explosifs=');
-    newString = newString.replace(/pyro=/g,'Pyrotechnie=');
-    newString = newString.replace(/exo=/g,'Exochimie=');
-    newString = newString.replace(/mat=/g,'Matériaux=');
-    newString = newString.replace(/def=/g,'Défenses=');
-    newString = newString.replace(/tank=/g,'Blindés=');
-    newString = newString.replace(/ca=/g,'ConnaissanceAlien=');
-    return newString;
 };
 
 function getAllProds(batType,time) {
@@ -1863,7 +1767,7 @@ function showTileInfos(tileId) {
             }
         }
         if (tile.infra != undefined) {
-            let infraInfo = showInfraInfo(tile.infra,true);
+            let infraInfo = showInfraInfo(tile.infra,true,false);
             $('#tileInfos').append('<span class="paramName cy">Infrastructure</span><span class="paramIcon"><i class="ra ra-tower rpg"></i></span><span class="paramValue cy" title="'+infraInfo+'">'+tile.infra+'</span><br>');
         }
         if (tile.rd != undefined) {
@@ -1888,7 +1792,7 @@ function showTileInfos(tileId) {
             } else if (tile.ap.includes('prt_')) {
                 let armorName = tile.ap.replace('prt_','');
                 let armor = getEquipByName(armorName);
-                let armorInfo = showFullArmorInfo(armor,false);
+                let armorInfo = showFullArmorInfo(armor,false,false);
                 $('#tileInfos').append('<span class="paramName cy">Armures</span><span class="paramIcon"><i class="ra ra-vest rpg"></i></span><span class="paramValue cy" title="'+armorInfo+'">'+armorName+'</span><br>');
             } else if (tile.ap.includes('eq_')) {
                 let equipName = tile.ap.replace('eq_','');
@@ -1896,7 +1800,7 @@ function showTileInfos(tileId) {
                 $('#tileInfos').append('<span class="paramName cy">Equipements</span><span class="paramIcon"><i class="fas fa-compass"></i></span><span class="paramValue cy" title="'+equip.info+'">'+equipName+'</span><br>');
             } else {
                 let ammo = getAmmoByName(tile.ap);
-                let ammoInfo = showAmmoInfo(ammo.name);
+                let ammoInfo = showAmmoInfo(ammo.name,false,false);
                 if (tile.ap.includes('grenade') || tile.ap.includes('dynamite') || tile.ap.includes('molotov')) {
                     $('#tileInfos').append('<span class="paramName cy">Munitions</span><span class="paramIcon"><i class="ra ra-grenade rpg"></i></span><span class="paramValue cy" title="'+ammoInfo+'">'+tile.ap+'</span><br>');
                 } else if (tile.ap.includes('lame-')) {

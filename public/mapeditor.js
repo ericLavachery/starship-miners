@@ -602,7 +602,7 @@ function mapPackAddList() {
             if (ammo.name.includes('sm-')) {
                 ammoDesc = '6 mm';
             }
-            let ammoInfo = showAmmoInfo(ammo.name);
+            let ammoInfo = showAmmoInfo(ammo.name,false,false);
             let col = 'klik';
             if (theTilePacks === ammo.name) {
                 col = 'cy klik';
@@ -617,7 +617,7 @@ function mapPackAddList() {
         if (armor.cat === 'armor') {
             let armorIcon = getRarityIcon(armor);
             if (armorIcon != '') {
-                let armorInfo = showFullArmorInfo(armor,false);
+                let armorInfo = showFullArmorInfo(armor,false,false);
                 let col = 'klik';
                 if (theTilePacks === 'prt_'+armor.name) {
                     col = 'cy klik';

@@ -317,29 +317,6 @@ function youHave() {
     return yh;
 };
 
-function displayCosts(costs) {
-    let costString = '&#9935; {'
-    if (costs != undefined) {
-        Object.entries(costs).map(entry => {
-            let key = entry[0];
-            let value = entry[1];
-            if (value > playerInfos.reserve[key]) {
-                costString = costString+'&#128683;'+key;
-            } else {
-                costString = costString+key;
-            }
-            costString = costString+':'+value+'/'+playerInfos.reserve[key];
-            if (value > playerInfos.reserve[key]) {
-                costString = costString+'!';
-            }
-            costString = costString+' &#128313; ';
-        });
-    }
-    costString = costString.slice(0,-10);
-    costString = costString+'}';
-    return costString;
-};
-
 function catColor(unit) {
     let unitCol = 'gf';
     if (unit.team === 'aliens') {
@@ -432,7 +409,7 @@ function conSelect(unitId,player,noRefresh) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                     }
                     armorSkills = showArmorInfo(batArmor);
-                    fullArmorSkills = showFullArmorInfo(batArmor,false);
+                    fullArmorSkills = showFullArmorInfo(batArmor,false,false);
                     flatCosts = getCosts(conselUnit,batArmor,0,'equip');
                     deployCosts = getDeployCosts(conselUnit,batArmor,0,'equip');
                     mergeObjects(flatCosts,deployCosts);
@@ -551,7 +528,7 @@ function conSelect(unitId,player,noRefresh) {
                             prodSign = '';
                         }
                         if ((bldReqOK && costsOK) || conselTriche) {
-                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+displayCosts(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo,false,false)+' '+displayCosts(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w1`,`'+unitId+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
                         } else {
                             $('#conAmmoList').append('<span class="constName gff" title="'+toBldString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
                         }
@@ -588,7 +565,7 @@ function conSelect(unitId,player,noRefresh) {
                             prodSign = '';
                         }
                         if ((bldReqOK && costsOK) || conselTriche) {
-                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo)+' '+displayCosts(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo,false,false)+' '+displayCosts(deployCosts)+'" onclick="selectAmmo(`'+ammo+'`,`w2`,`'+unitId+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
                         } else {
                             $('#conAmmoList').append('<span class="constName gff" title="'+toBldString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
                         }
@@ -643,73 +620,6 @@ function showArmorInfo(batArmor) {
     return armorSkills;
 };
 
-function showFullArmorInfo(batArmor,withReqs) {
-    let apAdj = batArmor.ap;
-    if (apAdj >= 1) {
-        apAdj = '+'+apAdj;
-    }
-    let armorSkills = '(+'+batArmor.armor+' Armure / '+apAdj+' PA) ';
-    if (batArmor.skills.includes('resistacide')) {
-        armorSkills = armorSkills+'&#9889; résistance acide ';
-    }
-    if (batArmor.skills.includes('resistfeu')) {
-        armorSkills = armorSkills+'&#9889; résistance feu ';
-    }
-    if (batArmor.skills.includes('resistall')) {
-        armorSkills = armorSkills+'&#9889; résistance globale ';
-    }
-    if (batArmor.skills.includes('protectall')) {
-        armorSkills = armorSkills+'&#9889; protection globale ';
-    }
-    if (batArmor.skills.includes('dreduct')) {
-        armorSkills = armorSkills+'&#9889; réduction de dégâts ';
-    }
-    if (batArmor.skills.includes('resistelec')) {
-        armorSkills = armorSkills+'&#9889; résistance électricité ';
-    }
-    if (batArmor.skills.includes('soap')) {
-        armorSkills = armorSkills+'&#9889; résistance entrave ';
-    }
-    if (batArmor.skills.includes('spikes')) {
-        armorSkills = armorSkills+'&#9889; protection mêlée ';
-    }
-    if (batArmor.skills.includes('poison')) {
-        armorSkills = armorSkills+'&#9889; poison ';
-    }
-    if (batArmor.skills.includes('autorepair')) {
-        armorSkills = armorSkills+'&#9889; réparation automatique ';
-    }
-    if (batArmor.skills.includes('slowreg')) {
-        armorSkills = armorSkills+'&#9889; régénération lente ';
-    }
-    if (batArmor.skills.includes('regeneration')) {
-        armorSkills = armorSkills+'&#9889; régénération ';
-    }
-    if (batArmor.skills.includes('camoloss')) {
-        armorSkills = armorSkills+'&#9889; déplacement non furtif ';
-    }
-    armorSkills = armorSkills+'&nbsp;';
-    if (withReqs) {
-        if (batArmor.bldReq != undefined) {
-            if (batArmor.bldReq.length >= 1) {
-                armorSkills = armorSkills+'\n&#127963; '+toNiceString(batArmor.bldReq)+' &nbsp;';
-            }
-        }
-        let compReqs = getCompReqs(batArmor,false);
-        if (Object.keys(compReqs.base).length >= 1) {
-            let stringReq1 = toCoolString(compReqs.base,true,false);
-            stringReq1 = replaceCompNamesByFullNames(stringReq1);
-            armorSkills = armorSkills+'\n&#128161;'+stringReq1;
-        }
-        if (Object.keys(compReqs.alt).length >= 1) {
-            let stringReq2 = toCoolString(compReqs.alt,true,false);
-            stringReq2 = replaceCompNamesByFullNames(stringReq2);
-            armorSkills = armorSkills+'\n&#128161;'+stringReq2;
-        }
-    }
-    return armorSkills;
-};
-
 function showEquipInfo(equipName,unit,long) {
     let equipIndex = armorTypes.findIndex((obj => obj.name == equipName));
     let equip = armorTypes[equipIndex];
@@ -729,253 +639,6 @@ function showEquipInfo(equipName,unit,long) {
     }
     equipInfo = equipInfo.replace(/ \/ /g,' &#9889; ');
     return equipInfo;
-};
-
-function showEquipFullInfo(equipName,withReqs) {
-    let stuff = getEquipByName(equipName);
-    let equipInfo = '';
-    if (stuff.info != undefined) {
-        equipInfo = stuff.info;
-        equipInfo = equipInfo.replace(/ \/ /g,' &#9889; ');
-        if (withReqs) {
-            if (stuff.bldReq != undefined) {
-                if (stuff.bldReq.length >= 1) {
-                    equipInfo = equipInfo+'\n&#127963; '+toNiceString(stuff.bldReq)+' &nbsp;';
-                }
-            }
-            let compReqs = getCompReqs(stuff,false);
-            if (Object.keys(compReqs.base).length >= 1) {
-                let stringReq1 = toCoolString(compReqs.base,true,false);
-                stringReq1 = replaceCompNamesByFullNames(stringReq1);
-                equipInfo = equipInfo+'\n&#128161;'+stringReq1;
-            }
-            if (Object.keys(compReqs.alt).length >= 1) {
-                let stringReq2 = toCoolString(compReqs.alt,true,false);
-                stringReq2 = replaceCompNamesByFullNames(stringReq2);
-                equipInfo = equipInfo+'\n&#128161;'+stringReq2;
-            }
-        }
-    }
-    return equipInfo;
-};
-
-function showInfraInfo(infraName,withReqs) {
-    // console.log('SHOWINFRAINFO ??????????????????????????????????????????????');
-    let stuff = getInfraByName(infraName);
-    let infraInfo = stuff.name;
-    if (stuff.info != undefined) {
-        infraInfo = infraInfo+' &#9889; '+stuff.info;
-        infraInfo = infraInfo.replace(/ \/ /g,' &#9889; ');
-        infraInfo = infraInfo+' &#9889;';
-        if (withReqs) {
-            if (stuff.bldReq != undefined) {
-                if (stuff.bldReq.length >= 1) {
-                    infraInfo = infraInfo+'\n&#127963; '+toNiceString(stuff.bldReq)+' &nbsp;';
-                }
-            }
-            let compReqs = getCompReqs(stuff,false);
-            // console.log(compReqs);
-            if (Object.keys(compReqs.base).length >= 1) {
-                let stringReq1 = toCoolString(compReqs.base,true,false);
-                stringReq1 = replaceCompNamesByFullNames(stringReq1);
-                infraInfo = infraInfo+'\n&#128161;'+stringReq1;
-            }
-            if (Object.keys(compReqs.alt).length >= 1) {
-                let stringReq2 = toCoolString(compReqs.alt,true,false);
-                stringReq2 = replaceCompNamesByFullNames(stringReq2);
-                infraInfo = infraInfo+'\n&#128161;'+stringReq2;
-            }
-        }
-    }
-    return infraInfo;
-};
-
-function showAmmoInfo(ammoName,withReqs) {
-    let ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoName));
-    let ammo = ammoTypes[ammoIndex];
-    let ammoInfo = '';
-    if (ammo.range > 1.2) {
-        ammoInfo = ammoInfo+'&#9889; Portée++ ';
-    } else if (ammo.range > 1) {
-        ammoInfo = ammoInfo+'&#9889; Portée+ ';
-    }
-    if (ammo.maxrange != undefined) {
-        ammoInfo = ammoInfo+'&#9889; PortéeMax '+ammo.maxrange+' ';
-    }
-    if (ammo.elevation != undefined) {
-        ammoInfo = ammoInfo+'&#9889; Elevation+ ';
-    }
-    if (ammo.rof >= 1.3) {
-        ammoInfo = ammoInfo+'&#9889; Cadence++ ';
-    } else if (ammo.rof > 1) {
-        ammoInfo = ammoInfo+'&#9889; Cadence+ ';
-    }
-    if (ammo.rof < 1) {
-        ammoInfo = ammoInfo+'&#9889; Cadence- ';
-    }
-    if (ammo.power >= 9) {
-        ammoInfo = ammoInfo+'&#9889; Puissance+++ ';
-    } else if (ammo.power >= 3 || ammo.powermult >= 1.4) {
-        ammoInfo = ammoInfo+'&#9889; Puissance++ ';
-    } else if (ammo.power > 0 || ammo.powermult > 1) {
-        ammoInfo = ammoInfo+'&#9889; Puissance+ ';
-    }
-    if (ammo.power < 0 || ammo.powermult < 1) {
-        ammoInfo = ammoInfo+'&#9889; Puissance- ';
-    }
-    if (ammo.armors < 0.2) {
-        ammoInfo = ammoInfo+'&#9889; Pénétration+++ ';
-    } else if (ammo.armors < 0.5) {
-        ammoInfo = ammoInfo+'&#9889; Pénétration++ ';
-    } else if (ammo.armors < 1) {
-        ammoInfo = ammoInfo+'&#9889; Pénétration+ ';
-    } else if (ammo.armors >= 1.4) {
-        ammoInfo = ammoInfo+'&#9889; Pénétration-- ';
-    } else if (ammo.armors > 1) {
-        ammoInfo = ammoInfo+'&#9889; Pénétration- ';
-    } else if (ammo.avar != undefined) {
-        ammoInfo = ammoInfo+'&#9889; Pénétration ';
-    }
-    if (ammo.avar != undefined) {
-        ammoInfo = ammoInfo+'('+ammo.avar+'&#9872;) ';
-    }
-    if (ammo.aignore != undefined) {
-        ammoInfo = ammoInfo+'&#9889; IgnoreArmure '+ammo.aignore+'- ';
-    }
-    if (ammo.accuracy > 1.3) {
-        ammoInfo = ammoInfo+'&#9889; Précision++ ';
-    } else if (ammo.accuracy > 1) {
-        ammoInfo = ammoInfo+'&#9889; Précision+ ';
-    }
-    if (ammo.accuracy < 1) {
-        ammoInfo = ammoInfo+'&#9889; Précision- ';
-    }
-    if (ammo.apdamage > 0) {
-        ammoInfo = ammoInfo+'&#9889; Entrave (perte de PA) ';
-    }
-    if (ammo.name.includes('plastanium')) {
-        ammoInfo = ammoInfo+'&#9889; Dégâts x2 dans l\'eau ';
-    }
-    if (ammo.name.includes('jello')) {
-        ammoInfo = ammoInfo+'&#9889; Ramollissement (des armures alien) ';
-    }
-    if (ammo.name.includes('marq')) {
-        ammoInfo = ammoInfo+'&#9889; Marquage ';
-    }
-    if (ammo.name.includes('-bio')) {
-        ammoInfo = ammoInfo+'&#9889; Génocide ';
-    }
-    if (ammo.name.includes('-necro')) {
-        ammoInfo = ammoInfo+'&#9889; Anti-régénération ';
-    }
-    if (ammo.aoe != '') {
-        if (ammo.aoe == 'unit') {
-            ammoInfo = ammoInfo+'&#9889; AOE Unité ';
-        }
-        if (ammo.aoe == 'brochette') {
-            ammoInfo = ammoInfo+'&#9889; AOE Unité(s) ';
-        }
-        if (ammo.aoe == 'squad') {
-            ammoInfo = ammoInfo+'&#9889; AOE Escouade ';
-        }
-        if (ammo.aoe == 'bat') {
-            if (ammo.name.includes('deluge') || (ammo.name.includes('-gaz') && ammo.name != 'grenade-gaz')) {
-                ammoInfo = ammoInfo+'&#9889; AOE 9 cases ';
-            } else {
-                ammoInfo = ammoInfo+'&#9889; AOE Bataillon ';
-            }
-        }
-    }
-    if (ammo.info != undefined) {
-        ammoInfo = ammoInfo+'&#9889; '+ammo.info+' ';
-    }
-    if (withReqs) {
-        if (ammo.bldReq != undefined) {
-            if (ammo.bldReq.length >= 1) {
-                ammoInfo = ammoInfo+'\n&#127963; '+toNiceString(ammo.bldReq)+' &nbsp;';
-            }
-        }
-        let compReqs = getCompReqs(ammo,false);
-        if (Object.keys(compReqs.base).length >= 1) {
-            let stringReq1 = toCoolString(compReqs.base,true,false);
-            stringReq1 = replaceCompNamesByFullNames(stringReq1);
-            ammoInfo = ammoInfo+'\n&#128161;'+stringReq1;
-        }
-        if (Object.keys(compReqs.alt).length >= 1) {
-            let stringReq2 = toCoolString(compReqs.alt,true,false);
-            stringReq2 = replaceCompNamesByFullNames(stringReq2);
-            ammoInfo = ammoInfo+'\n&#128161;'+stringReq2;
-        }
-    }
-    return ammoInfo;
-};
-
-function showResInfo(resName,full) {
-    let res = getResByName(resName);
-    let resInfo = getResIcon(res);
-    resInfo = resInfo+getResCat(res,full);
-    if (full) {
-        if (res.bld.length >= 1) {
-            if (res.name === 'Scrap') {
-                resInfo = resInfo+'\n&#9935; Collecteur approprié: COMPTOIR';
-            } else if (res.name != 'Magma') {
-                resInfo = resInfo+'\n&#9935; Collecteur approprié: '+res.bld.toUpperCase();
-            }
-        }
-        let showPlanets = true;
-        if (res.cat === 'alien') {
-            showPlanets = false;
-        }
-        if (res.cat === 'transfo' && res.name != 'Morphite') {
-            showPlanets = false;
-        }
-        if (showPlanets) {
-            // let resPlanets = '\n&#127759; Dom=1, Sarak=1, Gehenna=1, Kzin=1, Horst=1';
-            let resPlanets = '';
-            if (res.planets != undefined) {
-                resPlanets = '\n&#127759; '+toCoolString(res.planets,true,false);
-            }
-            resInfo = resInfo+resPlanets;
-        }
-    }
-    return resInfo;
-};
-
-function getResCat(res,full) {
-    let resCat = '';
-    if (res.cat === 'alien') {
-        resCat = resCat+' ressource ALIEN';
-        if (full) {
-            resCat = resCat+' (se collecte automatiquement en tuant des aliens)';
-        }
-    } else if (res.cat === 'transfo' && res.name != 'Morphite') {
-        resCat = resCat+' ressource TRANSFORMEE';
-        if (full) {
-            resCat = resCat+' (s\'obtient par crafting ou démantèlement d\'unités)';
-        }
-    } else if (res.cat === 'zero' || res.name === 'Morphite' || res.name === 'Scrap' || res.bld === 'Comptoir') {
-        resCat = resCat+' ressource de SURFACE';
-        if (full) {
-            if (res.name === 'Morphite') {
-                resCat = resCat+' (se collecte en surface, d\'un seul coup)';
-            } else if (res.name === 'Corps') {
-                resCat = resCat+' (se collecte automatiquement quand vous perdez des bataillons)';
-            } else {
-                resCat = resCat+' (se collecte à la surface)';
-            }
-        }
-    } else if (res.name === 'Magma') {
-        resCat = resCat+' ressource du SOUS-SOL';
-        if (full) {
-            resCat = resCat+' (ne se collecte jamais, augmente l\'efficacité des Sondes Géothermiques sur place)';
-        }
-    } else {
-        resCat = resCat+' ressource du SOUS-SOL';
-        if (full) {
-            resCat = resCat+' (se mine)';
-        }
-    }
-    return resCat;
 };
 
 function selectAmmo(ammo,weapon,unitId) {
@@ -1092,6 +755,52 @@ function checkCompReq(stuff) {
                     let key = entry[0];
                     let value = entry[1];
                     if (playerInfos.comp[key] < value) {
+                        compReqOK = false;
+                    }
+                });
+            }
+        }
+    }
+    // altKillReq
+    if (stuff.altKillReq != undefined) {
+        if (playerInfos.knownAliens.includes(stuff.altKillReq)) {
+            compReqOK = true;
+        }
+    }
+    // gangReq
+    if (stuff.gangReq != undefined) {
+        if (!stuff.gangReq.includes(playerInfos.gang)) {
+            compReqOK = false;
+        }
+    }
+    return compReqOK;
+};
+
+function checkUpCompReq(stuff,comp) {
+    let compReqOK = true;
+    let playerComps = JSON.parse(JSON.stringify(playerInfos.comp));
+    playerComps[comp.name] = playerComps[comp.name]+1;
+    // compReq
+    if (stuff.compReq != undefined) {
+        if (Object.keys(stuff.compReq).length >= 1) {
+            Object.entries(stuff.compReq).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                if (playerComps[key] < value) {
+                    compReqOK = false;
+                }
+            });
+        }
+    }
+    // altCompReq
+    if (!compReqOK) {
+        if (stuff.altCompReq != undefined) {
+            if (Object.keys(stuff.altCompReq).length >= 1) {
+                compReqOK = true;
+                Object.entries(stuff.altCompReq).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (playerComps[key] < value) {
                         compReqOK = false;
                     }
                 });

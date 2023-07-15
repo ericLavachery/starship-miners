@@ -145,7 +145,7 @@ function lesVoisins() {
     let transOK = false;
     let transDice = 0;
     let numEvents = getNumEvents();
-    let eventsBonus = 50-(numEvents*10);
+    let eventsBonus = 60-(numEvents*10);
     if (eventsBonus < 1) {eventsBonus = 0}
     let transChance = (playerInfos.mapDiff*3)+15+eventsBonus;
     if (rand.rand(1,100) <= transChance) {
@@ -676,10 +676,8 @@ function checkCitCaves() {
         }
         if (zone[0].caves != undefined) {
             chance = chance-Math.floor(zone[0].caves);
-        } else if (playerInfos.mapTurn >= 30) {
-            chance = chance+3;
         }
-        chance = chance-playerInfos.fndCits+3;
+        chance = chance-playerInfos.fndCits+2;
         chance = entre(chance,1,7);
         console.log('chance '+chance);
         // chance = 100;
@@ -726,6 +724,7 @@ function putCitCave(caveTileId) {
     } else {
         zone[0].caves = zone[0].caves+1;
     }
+    playerInfos.fndCits = playerInfos.fndCits+1;
     if (rand.rand(1,3) === 1) {
         warning('<span class="rq3">Survivants en vue!</span>','<span class="vio">Des survivants sont sortis de leur sous-terrain.</span>',false,caveTileId);
         let citId = 287;

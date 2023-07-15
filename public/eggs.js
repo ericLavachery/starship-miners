@@ -1462,7 +1462,7 @@ function spawns() {
                     }
                 }
                 if (bat.tags.includes('invisible')) {
-                    if (playerInfos.mapTurn >= 7 && rand.rand(1,6) === 1) {
+                    if (playerInfos.mapTurn >= 7 && rand.rand(1,12) === 1) {
                         veilSpawn(bat);
                     }
                 } else {
