@@ -325,7 +325,7 @@ function moveSelectedBat(tileId,free,jump) {
     // remove tags
     if (selectedBat.tags.includes('blub')) {
         let terrain = getTerrainById(tileId);
-        if (terrain.name != 'R' && terrain.name != 'L') {
+        if (terrain.name != 'R' && terrain.name != 'L' && terrain.name != 'W') {
             tagIndex = selectedBat.tags.indexOf('blub');
             selectedBat.tags.splice(tagIndex,1);
         }

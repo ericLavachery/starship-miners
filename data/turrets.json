@@ -1823,7 +1823,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_none","after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako","noaploss","nostation","okdel","oninfra"],
+        "skills":["b_none","after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako","bigblub","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
         "deathFx":"none"
     },
@@ -1874,7 +1874,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_none","after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako","noaploss","nostation","okdel","oninfra"],
+        "skills":["b_none","after","nodeathcount","notarget","halfcover","nolist","norepair","nobld","clicput","infrako","bigblub","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
         "deathFx":"none"
     },

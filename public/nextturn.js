@@ -1518,40 +1518,77 @@ function boostDown(bat,addict) {
 };
 
 function blub(bat,batType) {
-    let isBlub = true;
+    // console.log('BLUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUB');
     let terrain = getTerrain(bat);
+    let tile = getTile(bat);
+    let blubTile = false;
+    if (terrain.name === 'L' || (terrain.name === 'R' && tile.seed <= 3) || terrain.name === 'W') {
+        if (!tile.rd) {
+            blubTile = true;
+        }
+    }
+    let blubBat = true;
+    if ((batType.skills.includes('fly') && !batType.skills.includes('jetpack')) || batType.skills.includes('hover') || batType.skills.includes('noblub')) {
+        blubBat = false;
+    }
+    if (hasEquip(bat,['waterproof'])) {
+        blubBat = false;
+    }
     if (bat.tags.includes('blub')) {
-        let tile = getTile(bat);
-        if ((terrain.name != 'L' && terrain.name != 'R') || tile.rd) {
+        if (!blubTile || !blubBat) {
             tagDelete(bat,'blub');
         } else {
-            let totalDamage = bat.damage+rand.rand((Math.round(blubDamage/3)),blubDamage);
+            // console.log(batType.name);
+            let blubPower = batType.hp*batType.squadSize*batType.squads/8;
             if (batType.skills.includes('bigblub')) {
-                totalDamage = totalDamage*10;
+                blubPower = blubPower*5;
             }
-            console.log('blubDamage='+totalDamage);
+            if (batType.cat === 'buildings') {
+                blubPower = blubPower/3;
+            }
+            if (terrain.name === 'W') {
+                blubPower = blubPower/3;
+            }
+            if (batType.skills.includes('swim')) {
+                blubPower = blubPower/2;
+            }
+            if (zone[0].planet === 'Kzin') {
+                blubPower = blubPower*2;
+            }
+            if (batType.cat === 'infantry') {
+                let batArmor = getEquipByName(bat.prt);
+                let armorAPmalus = -batArmor.ap;
+                // console.log('armorAP = '+armorAPmalus);
+                if (armorAPmalus >= 2) {
+                    blubPower = blubPower*armorAPmalus/1.5;
+                }
+            }
+            blubPower = Math.round(blubPower);
+            // console.log(blubPower);
+            let blubPowerDice = rand.rand(Math.round(blubPower/2),Math.round(blubPower*1.5));
+            let totalDamage = bat.damage+blubPowerDice;
+            // console.log('blubPowerDice='+blubPowerDice);
             let squadHP = batType.squadSize*batType.hp;
             let squadsOut = Math.floor(totalDamage/squadHP);
             bat.squadsLeft = bat.squadsLeft-squadsOut;
             bat.damage = totalDamage-(squadsOut*squadHP);
-            if (bat.apLeft > Math.round(bat.ap/2)) {
-                bat.apLeft = Math.round(bat.ap/2);
+            if (batType.cat != 'buildings') {
+                if (bat.apLeft > Math.round(bat.ap/2)) {
+                    bat.apLeft = Math.round(bat.ap/2);
+                }
             }
             if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,false,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' noyé.</span>');
+                if (batType.cat != 'buildings') {
+                    batDeathEffect(bat,true,false,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' innondé.</span>');
+                } else {
+                    batDeathEffect(bat,true,false,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' noyé.</span>');
+                }
             }
             checkDeath(bat,batType,false);
         }
     } else {
-        if (terrain.name === 'L' || terrain.name === 'R') {
-            let tile = getTile(bat);
-            if ((tile.seed <= 3 || terrain.name === 'L') && !tile.rd) {
-                if (noEquip(bat,['waterproof'])) {
-                    if ((!batType.skills.includes('fly') && !batType.skills.includes('hover') && !batType.skills.includes('noblub')) || batType.skills.includes('jetpack')) {
-                        bat.tags.push('blub');
-                    }
-                }
-            }
+        if (blubTile && blubBat) {
+            bat.tags.push('blub');
         }
     }
 };

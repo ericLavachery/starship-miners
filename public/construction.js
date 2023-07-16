@@ -1010,7 +1010,7 @@ function clickConstruct(tileId,free) {
                 message = 'Pas de construction sur une case occupée par un alien';
             }
         });
-        if (conselUnit.cat === 'buildings') {
+        if (conselUnit.cat === 'buildings' && !conselTriche) {
             let tile = getTileById(tileId);
             if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L') {
                 if (!conselUnit.skills.includes('noblub')) {

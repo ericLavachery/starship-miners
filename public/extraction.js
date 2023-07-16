@@ -454,7 +454,7 @@ function getHuntingRes(bat,batType) {
                     if (batType.skills.includes('pistage')) {
                         huntGib = huntGib*1.75;
                     } else if (batType.skills.includes('affut')) {
-                        huntGib = huntGib*0.75;
+                        huntGib = huntGib*0.67;
                     }
                     if (zone[0].planet === 'Horst') {
                         huntGib = huntGib*0.33;

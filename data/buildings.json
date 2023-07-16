@@ -835,7 +835,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","maycible","extraction","exhelp","fret","recupcit","crewsave","dumper","transport","inflammable","routes","prodres","upkeep","noblub","longshot","nostatprod","prefab","noshow","ground"],
+        "skills":["fouille","maycible","extraction","exhelp","fret","recupcit","crewsave","dumper","transport","inflammable","routes","prodres","upkeep","longshot","nostatprod","prefab","noshow","ground"],
         "mecanoCost":12,
         "mediCost":12,
         "mining":{
@@ -1084,7 +1084,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","fret","dumper","realdumper","underground","camo","unload","transport","nodeathcount","routes","noblub","prefab","noshow","notrash"],
+        "skills":["fouille","fret","dumper","realdumper","underground","camo","unload","transport","nodeathcount","routes","prefab","noshow","notrash"],
         "mecanoCost":12,
         "transMaxSize":9,
         "transUnits":1500,
