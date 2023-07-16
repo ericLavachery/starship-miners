@@ -272,10 +272,13 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.volMu === undefined) {
         playerInfos.volMu = 0.2;
     }
-    if (playerInfos.volRadio === undefined) {
-        playerInfos.volRadio = 0.4;
-    }
     if (playerInfos.volAmb === undefined) {
+        playerInfos.volAmb = 0.5;
+    }
+    if (playerInfos.volRadio === undefined) {
+        playerInfos.volRadio = 0.3;
+        playerInfos.volMu = 0.2;
+        playerInfos.volFx = 0.4;
         playerInfos.volAmb = 0.5;
     }
     if (playerInfos.statMu === undefined) {

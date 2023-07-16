@@ -985,6 +985,55 @@ function playerSkillsUTChanges() {
         if (energComp >= 3) {
             energComp = 4;
         }
+        if (unit.kind === 'zero-energie' && playerInfos.comp.energ >= 1) {
+            let energPlantBonus = false;
+            if (unit.compReq === undefined) {
+                energPlantBonus = true;
+            } else {
+                if (unit.compReq.energ === undefined) {
+                    energPlantBonus = true;
+                } else {
+                    if (unit.compReq.energ < playerInfos.comp.energ) {
+                        energPlantBonus = true;
+                    }
+                }
+            }
+            if (energPlantBonus) {
+                if (unit.costs['Tungstène'] != undefined) {
+                    unit.costs['Tungstène'] = Math.ceil(unit.costs['Tungstène']*0.75);
+                }
+                if (unit.costs['Carbone'] != undefined) {
+                    unit.costs['Carbone'] = Math.ceil(unit.costs['Carbone']*0.75);
+                }
+                if (unit.costs['Nickel'] != undefined) {
+                    unit.costs['Nickel'] = Math.ceil(unit.costs['Nickel']*0.75);
+                }
+                if (unit.costs['Batteries'] != undefined) {
+                    unit.costs['Batteries'] = Math.ceil(unit.costs['Batteries']*0.75);
+                }
+                if (unit.costs['Bore'] != undefined) {
+                    unit.costs['Bore'] = Math.ceil(unit.costs['Bore']*0.75);
+                }
+                if (unit.costs['Rhodium'] != undefined) {
+                    unit.costs['Rhodium'] = Math.ceil(unit.costs['Rhodium']*0.75);
+                }
+                if (unit.costs['Cuivre'] != undefined) {
+                    unit.costs['Cuivre'] = Math.ceil(unit.costs['Cuivre']*0.75);
+                }
+                if (unit.costs['Plutonium'] != undefined) {
+                    unit.costs['Plutonium'] = Math.ceil(unit.costs['Plutonium']*0.75);
+                }
+                if (unit.costs['Uranium'] != undefined) {
+                    unit.costs['Uranium'] = Math.ceil(unit.costs['Uranium']*0.75);
+                }
+                if (unit.costs['Platine'] != undefined) {
+                    unit.costs['Platine'] = Math.ceil(unit.costs['Platine']*0.5);
+                }
+                if (unit.costs['Energie'] != undefined) {
+                    unit.costs['Energie'] = Math.ceil(unit.costs['Energie']*0.5);
+                }
+            }
+        }
         if (playerInfos.comp.energ >= 2) {
             let energWeapBonus = false;
             if (unit.compReq === undefined) {

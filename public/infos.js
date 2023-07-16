@@ -203,17 +203,35 @@ function batInfos(bat,batType,pop) {
         armyNum = '';
     }
     let isCharged = checkCharged(bat,'trans');
+    let restSpace = 0;
     let chargeIcon = '';
     if (isCharged) {
-        chargeIcon = ' &nbsp;<i class="fas fa-truck marine" onclick="scrollToAnchor(`transBats`)"></i>';
+        chargeIcon = ' &nbsp;<i class="fas fa-user-friends marine" onclick="scrollToAnchor(`transBats`)" title="Contient des bataillons"></i>';
     }
     let fretIcon = '';
     if (batType.transRes >= 1) {
+        restSpace = checkResSpace(bat);
         if (Object.keys(bat.transRes).length >= 1) {
-            if (!near.loader && batType.moveCost > 90) {
-                fretIcon = ' &nbsp;<i class="fas fa-truck-loading rouge" onclick="scrollToBottom()"></i>';
+            if (restSpace < 1) {
+                if (!near.loader && batType.skills.includes('transorbital')) {
+                    fretIcon = ' &nbsp;<i class="fas fa-pallet rouge" onclick="scrollToBottom()" title="Lander en fin de réseau mais plein!"></i>';
+                } else if (!near.loader && batType.moveCost > 90) {
+                    fretIcon = ' &nbsp;<i class="fas fa-truck-loading rouge" onclick="scrollToBottom()" title="Déconnecté du réseau et plein!"></i>';
+                } else if (batType.moveCost > 90) {
+                    fretIcon = ' &nbsp;<i class="fas fa-truck-loading cacab" onclick="scrollToBottom()" title="Connecté au réseau mais plein (encombrement?)"></i>';
+                } else {
+                    fretIcon = ' &nbsp;<i class="fas fa-truck-loading rouge" onclick="scrollToBottom()" title="Chargé à bloc"></i>';
+                }
             } else {
-                fretIcon = ' &nbsp;<i class="fas fa-truck-loading caca" onclick="scrollToBottom()"></i>';
+                if (!near.loader && batType.skills.includes('transorbital')) {
+                    fretIcon = ' &nbsp;<i class="fas fa-pallet vert" onclick="scrollToBottom()" title="Lander en fin de réseau"></i>';
+                } else if (!near.loader && batType.moveCost > 90) {
+                    fretIcon = ' &nbsp;<i class="fas fa-truck-loading orange" onclick="scrollToBottom()" title="Déconnecté du réseau!"></i>';
+                } else if (batType.moveCost > 90) {
+                    fretIcon = ' &nbsp;<i class="fas fa-truck-loading caca" onclick="scrollToBottom()" title="Connecté au réseau"></i>';
+                } else {
+                    fretIcon = ' &nbsp;<i class="fas fa-truck-loading caca" onclick="scrollToBottom()" title="Contient des ressources"></i>';
+                }
             }
         }
     }
@@ -656,7 +674,7 @@ function batInfos(bat,batType,pop) {
         }
     }
     if (batType.transRes >= 1) {
-        let restSpace = checkResSpace(bat);
+        // let restSpace = checkResSpace(bat);
         if (restSpace < 1) {tagColor = 'or';} else {tagColor = 'caca';}
         $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Fret</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+restSpace+'/'+resMax+'</span><br>');
     }

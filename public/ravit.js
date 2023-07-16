@@ -166,7 +166,7 @@ function checkRavit(myBat) {
                     ravitDistance = 2;
                 }
                 ravitTypeOK = false;
-                if (bldRav === batType.name || batType.bldEquiv.includes(bldRav) || !batType.skills.includes('ravitprod') || batType.skills.includes('ravitall')) {
+                if (bldRav === batType.name || bldRav === '' || batType.bldEquiv.includes(bldRav) || !batType.skills.includes('ravitprod') || batType.skills.includes('ravitall')) {
                     ravitTypeOK = true;
                 }
                 if (batType.skills.includes('ravitaillement') && !batType.skills.includes('stockmed') && ravitTypeOK) {
