@@ -86,7 +86,14 @@ function afterMissionReset(time) {
 };
 
 function calcTurnXP(turns) {
-    let xp = Math.ceil(Math.sqrt(turns)*gangXPFactor);
+    let xp = 0;
+    if (turns > 45) {
+        let overTurns = turns-45;
+        xp = 6.7+(overTurns*0.074);
+    } else {
+        xp = Math.sqrt(turns);
+    }
+    xp = Math.round(xp*gangXPFactor);
     return xp;
 };
 

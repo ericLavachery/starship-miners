@@ -444,7 +444,7 @@ function getTerrainRes(terrain,tile) {
 
 function getHuntingRes(bat,batType) {
     if (batType.skills.includes('chasse')) {
-        if (bat.salvoLeft >= 1 && bat.loc === 'zone') {
+        if (bat.salvoLeft >= 1 && bat.apLeft >= Math.floor(bat.ap/1.5) && bat.loc === 'zone') {
             if (zone[0].planet != 'Gehenna') {
                 let tile = getTile(bat);
                 if (tile.terrain === 'F') {
@@ -461,7 +461,7 @@ function getHuntingRes(bat,batType) {
                     }
                     huntGib = Math.round(huntGib);
                     let hgRest = huntGib;
-                    let hgDiv = 150;
+                    let hgDiv = 180;
                     let gibRes = 0;
                     if (hgRest >= hgDiv) {
                         gibRes++;

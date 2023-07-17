@@ -2912,7 +2912,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["b_mid","fortif","guerrilla","hardmove","transport","camo","emoteur","selfbadmecano","badmedic","dealer","starka","kirin","sila","fret","fweight","dumper","light","accu","badcrewsave","recupcit","nocrime","recupres","onedef","ouvert","nochef","hveh"],
+        "skills":["b_mid","fortif","guerrilla","longshot","hardmove","transport","camo","emoteur","selfbadmecano","badmedic","dealer","starka","kirin","sila","fret","fweight","dumper","light","accu","badcrewsave","recupcit","nocrime","recupres","onedef","ouvert","nochef","hveh"],
         "mediCost":10,
         "mecanoCost":10,
         "transMaxSize":11,
