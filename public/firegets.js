@@ -2287,9 +2287,13 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     if (hasEquip(bat,['g2siege'])) {
-        if (thisWeapon.name.includes('Baliste') || thisWeapon.name.includes('Catapulte')) {
+        if (thisWeapon.name.includes('Baliste')) {
             thisWeapon.range = thisWeapon.range+1;
-            thisWeapon.rof = thisWeapon.rof*1.4;
+            thisWeapon.rof = thisWeapon.rof*1.5;
+            thisWeapon.noBis = false;
+        }
+        if (thisWeapon.name.includes('Catapulte')) {
+            thisWeapon.range = thisWeapon.range+1;
             thisWeapon.noBis = false;
         }
     }

@@ -452,7 +452,7 @@ function getHuntingRes(bat,batType) {
                     let gf = vf.wood+vf.veg;
                     let huntGib = gf;
                     if (batType.skills.includes('pistage')) {
-                        huntGib = huntGib*1.75;
+                        huntGib = huntGib*1.5;
                     } else if (batType.skills.includes('affut')) {
                         huntGib = huntGib*0.67;
                     }
@@ -461,24 +461,25 @@ function getHuntingRes(bat,batType) {
                     }
                     huntGib = Math.round(huntGib);
                     let hgRest = huntGib;
+                    let hgDiv = 150;
                     let gibRes = 0;
-                    if (hgRest >= 200) {
+                    if (hgRest >= hgDiv) {
                         gibRes++;
-                        hgRest = hgRest-200;
+                        hgRest = hgRest-hgDiv;
                     }
-                    if (hgRest >= 200) {
+                    if (hgRest >= hgDiv) {
                         gibRes++;
-                        hgRest = hgRest-200;
+                        hgRest = hgRest-hgDiv;
                     }
-                    if (hgRest >= 200) {
+                    if (hgRest >= hgDiv) {
                         gibRes++;
-                        hgRest = hgRest-200;
+                        hgRest = hgRest-hgDiv;
                     }
-                    if (hgRest >= 200) {
+                    if (hgRest >= hgDiv) {
                         gibRes++;
-                        hgRest = hgRest-200;
+                        hgRest = hgRest-hgDiv;
                     }
-                    if (rand.rand(1,200) <= hgRest) {
+                    if (rand.rand(1,hgDiv) <= hgRest) {
                         gibRes++;
                     }
                     if (gibRes >= 1) {

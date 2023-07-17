@@ -1863,7 +1863,7 @@
             "rof":3,
             "accuracy":13,
             "power":23,
-            "aoe":"brochette",
+            "aoe":"squad",
             "sound":"catapult2",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":20,
