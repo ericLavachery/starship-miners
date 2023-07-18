@@ -288,7 +288,7 @@ function tooLate(hard) {
     warning('<span class="rq3">Restes d\'une base en vue!</span>','',false,encounterTileId);
     if (centreTileId >= 0) {
         // Silo
-        conselUnit = getBatTypeById(158);
+        conselUnit = getBatTypeByName('Silo');
         conselAmmos = ['xxx','xxx','aucun','aucun'];
         conselPut = false;
         conselTriche = true;
@@ -346,10 +346,10 @@ function putIndusUnits(centreTileId,hard) {
         conselUnit = getBatTypeById(198);
         conselAmmos = ['tungsten','xxx','acier','w1-gun'];
     } else if (hard) {
-        conselUnit = getBatTypeById(3);
+        conselUnit = getBatTypeByName('Atelier');
         conselAmmos = ['tungsten','xxx','acier','w1-gun'];
     } else {
-        conselUnit = getBatTypeById(3);
+        conselUnit = getBatTypeByName('Atelier');
         conselAmmos = ['standard','xxx','aucun','w1-gun'];
     }
     conselPut = false;
@@ -369,7 +369,7 @@ function putIndusUnits(centreTileId,hard) {
     // COMPTOIR
     if (rand.rand(1,4) === 1 || hard) {
         dropTile = checkDropSafe(centreTileId);
-        conselUnit = getBatTypeById(157);
+        conselUnit = getBatTypeByName('Comptoir');
         conselPut = false;
         conselTriche = true;
         if (hard) {
@@ -400,7 +400,7 @@ function putIndusUnits(centreTileId,hard) {
     if (numUnits < 2 || hard) {
         if (rand.rand(1,baseChance) === 1) {
             dropTile = checkDropSafe(centreTileId);
-            conselUnit = getBatTypeById(123);
+            conselUnit = getBatTypeByName('Pompe');
             conselPut = false;
             conselTriche = true;
             if (rand.rand(1,2) === 1 && hard) {
@@ -429,7 +429,7 @@ function putIndusUnits(centreTileId,hard) {
     }
     // MINE
     dropTile = checkDropSafe(centreTileId);
-    conselUnit = getBatTypeById(9);
+    conselUnit = getBatTypeByName('Mine');
     conselPut = false;
     conselTriche = true;
     if (hard) {
@@ -466,7 +466,7 @@ function putIndusUnits(centreTileId,hard) {
     // MINE 2
     if (rand.rand(1,2) === 1 && hard) {
         dropTile = checkDropSafe(centreTileId);
-        conselUnit = getBatTypeById(9);
+        conselUnit = getBatTypeByName('Mine');
         conselPut = false;
         conselTriche = true;
         if (rand.rand(1,2) === 1) {
@@ -755,7 +755,9 @@ function putColonUnits(centreTileId,hard) {
     }
     // SAPEURS
     let minSapeurs = 1-Math.floor(numWeap/3);
+    minSapeurs = entre(minSapeurs,0,1);
     let maxSapeurs = 3-Math.floor(numWeap/2);
+    maxSapeurs = entre(maxSapeurs,1,2);
     numUnits = rand.rand(minSapeurs,maxSapeurs);
     if (!hard) {
         numUnits = 1;
@@ -765,10 +767,15 @@ function putColonUnits(centreTileId,hard) {
         let thisTile = getTileById(dropTile);
         if (hard) {
             thisTile.infra = 'Palissades';
+        }
+        if (rand.rand(1,2) === 1) {
             conselUnit = getBatTypeById(112);
+            conselAmmos = ['perfo','lame','scrap','aucun'];
+        } else {
+            conselUnit = getBatTypeById(315);
+            conselAmmos = ['perfo','molotov-feu','scrap','aucun'];
         }
         conselPut = false;
-        conselAmmos = ['perfo','lame','scrap','aucun'];
         conselTriche = true;
         putBat(dropTile,0,rand.rand(25,100),'fgnomove',false);
         playerOccupiedTiles.push(dropTile);

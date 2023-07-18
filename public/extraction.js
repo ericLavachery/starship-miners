@@ -670,7 +670,9 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     if (!batType.mining.types.includes(res.bld)) {
         if (batType.mining.subTypes.includes(res.bld)) {
             if (hasEquip(bat,['g2tools'])) {
-                resRate = Math.ceil(resRate/1.5);
+                let umr = batType.mining.rate;
+                umr = entre(umr,10,40);
+                resRate = Math.ceil(resRate/0.36/Math.sqrt(umr));
             } else {
                 resRate = Math.ceil(resRate/2.5);
             }

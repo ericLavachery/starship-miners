@@ -263,7 +263,7 @@ function commandes() {
         }
     }
     // $('#commandz').append('<button type="button" title="Tout soigner (comme au retour de mission)" class="boutonCiel iconButtons" onclick="healEverything()"><i class="fas fa-briefcase-medical"></i></button>');
-    if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Woklup' || playerInfos.pseudo === 'Bob' || playerInfos.pseudo === 'Mapedit') {
+    if (isAdmin.low) {
         gangNavig();
     }
 };
@@ -325,7 +325,7 @@ function viewPop() {
 
 function gangNavig() {
     $('#gangInfos').empty();
-    if (allowCheat || playerInfos.pseudo === 'Mapedit' || playerInfos.pseudo === 'Payall') {
+    if (allowCheat || isAdmin.deep) {
         allowCheat = true;
         if (playerInfos.pseudo != 'Mapedit') {
             $('#gangInfos').append('<button type="button" title="Désactiver le mode triche" class="boutonCiel iconButtons" onclick="toggleCheat()"><i class="fas fa-poo"></i></button>');

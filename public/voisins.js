@@ -257,8 +257,20 @@ function lesVoisins() {
         putNeighbour(neiBatType);
     }
     if (neiRoad[0] && !neiRoad[1]) {
-        let neiBatType = getBatTypeById(112);
-        putNeighbour(neiBatType);
+        let roadDice = rand.rand(1,3);
+        if (roadDice === 1) {
+            // Sapeurs
+            let neiBatType = getBatTypeByName('Sapeurs');
+            putNeighbour(neiBatType);
+        } else if (roadDice === 2) {
+            // Mulets
+            let neiBatType = getBatTypeByName('Mulets');
+            putNeighbour(neiBatType);
+        } else {
+            // Mineurs
+            let neiBatType = getBatTypeByName('Mineurs');
+            putNeighbour(neiBatType);
+        }
     }
     if (lastNeiTileId >= 0) {
         warning('<span class="rq3">Convoi de survivants en vue</span>','<span class="vio">Attirés par le bruit, des survivants sont venus à votre rencontre.</span>',false,lastNeiTileId);
@@ -412,10 +424,13 @@ function checkPietonId(transBat) {
         let bt = getBatTypeByName('Mineurs');
         pietonBatTypeId = bt.id;
         neiRoad[1] = true;
-    } else if (pietonDice <= 14) {
+    } else if (pietonDice <= 13 && !inVeh) {
         let bt = getBatTypeByName('Sapeurs');
         pietonBatTypeId = bt.id;
         neiRoad[1] = true;
+    } else if (pietonDice <= 15) {
+        let bt = getBatTypeByName('Monkeys');
+        pietonBatTypeId = bt.id;
     } else if (pietonDice <= 16 && !inHosto) {
         let bt = getBatTypeByName('Criminels');
         pietonBatTypeId = bt.id;
@@ -500,6 +515,9 @@ function checkNeighbourGear(neiBatType) {
     }
     if (neiBatType.name === 'Sapeurs') {
         gear = ['perfo','lame','kevlar','aucun'];
+    }
+    if (neiBatType.name === 'Monkeys') {
+        gear = ['perfo','molotov-feu','kevlar','aucun'];
     }
     if (neiBatType.name === 'Mulets') {
         gear = ['perfo','grenade','kevlar','e-road'];

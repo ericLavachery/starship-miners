@@ -1,3 +1,22 @@
+function isPlayerAdmin() {
+    isAdmin = {};
+    isAdmin.deep = false;
+    isAdmin.low = false;
+    isAdmin.fire = false;
+    if (playerInfos.pseudo.includes('Test') || playerInfos.pseudo.includes('test') || playerInfos.pseudo.includes('Tuto')) {
+        isAdmin.low = true;
+    }
+    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Bob' || playerInfos.pseudo === 'Woklup' || playerInfos.pseudo === 'Mapedit') {
+        isAdmin.low = true;
+    }
+    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Mapedit') {
+        isAdmin.deep = true;
+    }
+    if (playerInfos.pseudo === 'Payall') {
+        isAdmin.fire = true;
+    }
+};
+
 function canIHit(bat,weap,alien,batInMelee) {
     let iCanHit = false;
     let alienType = getBatType(alien);
@@ -1101,7 +1120,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('maxlevel')) {
-        maxInfo.max = Math.floor((playerInfos.comp.log/2)+(playerInfos.gLevel/8)+0.5);
+        maxInfo.max = Math.floor((playerInfos.comp.log/2)+(playerInfos.gLevel/6)+0.5);
         if (numOf[unit.name] >= maxInfo.max) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez monter de niveau et/ou augmenter votre compétence de logistique';

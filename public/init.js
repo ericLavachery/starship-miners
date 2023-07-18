@@ -14,6 +14,7 @@ window.onerror = (event) => {
 // Player
 socket.on('playerInfos-Load', function(pi) {
     playerInfos = pi;
+    isPlayerAdmin();
     if (playerInfos.numHTiles > 1 && playerInfos.numVTiles > 1) {
         numHTiles = playerInfos.numHTiles;
         numVTiles = playerInfos.numVTiles;
@@ -359,9 +360,6 @@ socket.on('savedMap-Load', function(sm) {
         minimap();
     }
     checkReserve();
-    if (playerInfos.pseudo != 'Test' && playerInfos.pseudo != 'Payall') {
-        // playMusic('start',true);
-    }
     if (playerInfos.onShip) {
         playRoom('station',true,true);
     } else {

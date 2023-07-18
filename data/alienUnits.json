@@ -3054,7 +3054,7 @@
         "maxVeg":-1,
         "skills":["inflammable","noaploss","shield","eggprotect","morph","xpplus","silhover"],
         "deathFx":"xplodewet",
-        "killRes":{"Creatite":16,"Bossium":3,"Egidium":2,"Bugium":4,"Swarmine":4,"Larvium":4,"Aranium":4},
+        "killRes":{"Creatite":15,"Bossium":5,"Egidium":2,"Bugium":5,"Swarmine":5,"Larvium":5,"Aranium":5},
         "killXP":5
     },
     {

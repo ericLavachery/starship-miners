@@ -769,6 +769,7 @@ function nextTurnEnd() {
 
 function turnInfo(first) {
     console.log('TURN INFO');
+    isPlayerAdmin();
     if (zone[0].number >= 90) {
         isStartZone = true;
     }
@@ -857,7 +858,7 @@ function turnInfo(first) {
     if (realNumberOfEggs >= maxEggsForPause && !coconStats.dome && zone[0].number < 50) {
         playerInfos.eggPause = true;
         console.log('PAUSE! 10+ eggs');
-        if (playerInfos.pseudo === 'Test') {
+        if (isAdmin.deep) {
             warning('Nouvelle pause',maxEggsForPause+' oeufs ou plus en jeu.');
         }
     }

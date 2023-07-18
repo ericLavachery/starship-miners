@@ -382,7 +382,7 @@ function checkCanon() {
     // OLD VERSION
     let doom = getDoom(true);
     let isTest = false;
-    if (playerInfos.pseudo == 'Payall' || playerInfos.pseudo == 'Test' || playerInfos.pseudo == 'Woktest') {
+    if (playerInfos.pseudo == 'Payall' || playerInfos.pseudo.includes('Test') || playerInfos.pseudo.includes('test')) {
         isTest = true;
     }
     // CANON WEB (Objectif Spider);
@@ -1089,7 +1089,7 @@ function stormDamage(bat,batType,storm,inMov,canon) {
         let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
         console.log('numUnits='+numUnits);
         let stormDmg = rand.rand(7*numUnits,20*numUnits);
-        if (playerInfos.pseudo === 'Payall' && canon) {
+        if (isAdmin.fire && canon) {
             stormDmg = 13.5*numUnits;
         }
         if (canon) {

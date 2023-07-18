@@ -510,7 +510,7 @@ function attack(melee,init) {
     } else {
         shotDice = calcShotDice(selectedBat,false);
     }
-    if (playerInfos.pseudo === 'Payall' && shotDice > 40) {
+    if (isAdmin.fire && shotDice > 40) {
         shotDice = 100;
     }
     // console.log('shotDice='+shotDice);
@@ -1699,7 +1699,7 @@ function defense(melee,init) {
     } else {
         shotDice = calcShotDice(targetBat,false);
     }
-    if (playerInfos.pseudo === 'Payall' && shotDice > 40) {
+    if (isAdmin.fire && shotDice > 40) {
         shotDice = 100;
     }
     // noBig

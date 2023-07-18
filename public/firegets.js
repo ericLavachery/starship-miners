@@ -1129,9 +1129,9 @@ function applyShield(shots) {
         if (rand.rand(1,100) <= shieldChance && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');
         }
-        if (targetBat.tags.includes('shield') || playerInfos.pseudo === 'Payall') {
+        if (targetBat.tags.includes('shield') || isAdmin.fire) {
             shieldValue = rand.rand(6,14);
-            if (playerInfos.pseudo === 'Payall') {
+            if (isAdmin.fire) {
                 shieldValue = 10;
             }
             if (selectedWeap.noShield) {

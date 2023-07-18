@@ -865,7 +865,7 @@ function batInfos(bat,batType,pop) {
                 }
             }
         }
-        if (playerInfos.pseudo === 'Test' || playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Mapedit' || allowCheat) {
+        if (isAdmin.deep || allowCheat) {
             $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel bigButtons" onclick="removeBat('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
         }
         if ((batType.transRes >= 1 && batType.name != 'Soute' && batType.name != 'Stocks') || (batType.transRes >= 1 && allowCheat)) {
@@ -873,7 +873,7 @@ function batInfos(bat,batType,pop) {
                 $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge bigButtons" onclick="fretThrow()"><i class="fas fa-truck-loading"></i></button>&nbsp; Vider</h4></span>');
             }
         }
-        if (playerInfos.pseudo === 'Payall') {
+        if (isAdmin.fire) {
             $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Storm!" class="boutonMauve bigButtons" onclick="stormThis('+bat.id+')"><i class="fas fa-meteor"></i></button>&nbsp; Storm!</h4></span>');
             if (batType.skills.includes('robot')) {
                 $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Skygrub Test!" class="boutonMauve bigButtons" onclick="turnThisBot('+bat.id+')"><i class="fas fa-robot"></i></button>&nbsp; Turn!</h4></span>');

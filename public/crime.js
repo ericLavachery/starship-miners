@@ -4,14 +4,14 @@ function checkCrimes(crimeRate,time,afterMission) {
     console.log('KRYMEZ --------------------------------------------------------------------------------------------------------------');
     console.log('playerInfos.crime='+playerInfos.crime);
     if (playerInfos.pseudo === 'Xxxxxx') {
-        let testSev = 1;
-        crimeVol(testSev,afterMission); // 6
-        crimeHoldUp(testSev,afterMission); // 3
-        crimeVandalisme(testSev,afterMission); // 3
-        crimeBagarre(testSev,afterMission); // 4
-        crimeMeurtre(testSev,afterMission); // 2
-        crimeIncendie(testSev,afterMission); // 2
-        crimeEmeute(testSev,afterMission); // 1
+        // let testSev = 1;
+        // crimeVol(testSev,afterMission); // 6
+        // crimeHoldUp(testSev,afterMission); // 3
+        // crimeVandalisme(testSev,afterMission); // 3
+        // crimeBagarre(testSev,afterMission); // 4
+        // crimeMeurtre(testSev,afterMission); // 2
+        // crimeIncendie(testSev,afterMission); // 2
+        // crimeEmeute(testSev,afterMission); // 1
     } else if (playerInfos.crime >= 5) {
         let adjTime = time;
         if (afterMission) {

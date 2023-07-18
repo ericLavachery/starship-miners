@@ -3994,10 +3994,10 @@
         "mecanoCost":12,
         "mining":{
             "level":2,
-            "rate":20,
+            "rate":25,
             "multi":false,
-            "types":["Scrap"],
-            "subTypes":["Pompe","Comptoir","Mine","Derrick"]
+            "types":["Scrap","Comptoir"],
+            "subTypes":["Pompe","Mine","Derrick"]
         },
         "transMaxSize":9,
         "transUnits":250,
@@ -4067,7 +4067,7 @@
         "mecanoCost":12,
         "mining":{
             "level":2,
-            "rate":25,
+            "rate":32,
             "multi":false,
             "types":["Comptoir","Scrap"],
             "subTypes":["Mine","Pompe","Derrick"]

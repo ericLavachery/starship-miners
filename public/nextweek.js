@@ -677,7 +677,7 @@ function eventCitoyens(time,sim,quiet) {
     let citNeed = getCitNeed();
     // let gangFacts = getGangFactors();
     console.log('$$$$$$$$$$$$$$$$$$$$$ citNeed = '+citNeed);
-    let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,18)*gangFacts.cit*(playerInfos.comp.med+30)*(playerInfos.comp.vsp+30)/10000);
+    let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,18)*gangFacts.cit*(playerInfos.comp.med+30)*(playerInfos.comp.vsp+30)*navCitFactor/100000);
     let citId = 126;
     let citName = 'Citoyens';
     if (rand.rand(1,ruinsCrimChance) === 1) {
@@ -806,14 +806,14 @@ function eventCrime(time,sim,quiet,afterMission) {
     let mesCitoyens = calcTotalCitoyens(false);
     let population = mesCitoyens.crim+mesCitoyens.cit;
     let crimeRate = calcCrimeRate(mesCitoyens);
-    if (!sim || playerInfos.pseudo === 'Test') {
+    if (!sim) {
         playerInfos.crime = crimeRate.total;
         setPenitLevel();
     }
     if (!quiet) {
         warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false,-1,true)
     }
-    if (!sim || playerInfos.pseudo === 'Test') {
+    if (!sim) {
         checkCrimes(crimeRate,time,afterMission);
     }
 };

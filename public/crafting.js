@@ -82,7 +82,7 @@ function craftWindow(retour) {
             craftCol = 'sky';
         }
         if (craft.bg === craftList || craftList === '#ALL') {
-            if ((compReqOK || playerInfos.pseudo === 'Test') && !oldCraft) {
+            if (compReqOK && !oldCraft) {
                 $('#conUnitList').append('<div class="craftsBlock" style="background-color:'+craft.bg+';" id="crf'+craft.id+'"></div>');
                 if (craftOK) {
                     $('#crf'+craft.id).append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');

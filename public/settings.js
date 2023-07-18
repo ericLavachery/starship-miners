@@ -78,6 +78,7 @@ let ruinsCompBase = 5; // 4 sur 350
 let ruinsUnitBase = 5; // 4 sur 300
 let ruinsResBase = 50; // 33%
 let ruinsCitBase = 50; // def 50
+let navCitFactor = 8; // def 10 (+ = + de cits)
 let coffreTileId = -1;
 let encounterTileId = -1;
 let lastNeiTileId = -1;
@@ -131,6 +132,10 @@ let gangLevelCit = [0,1000,1400,1800,2200,2600,3000,3400,3800,4200,4600,5000,540
 let gangXPFactor = 25;
 let myCompPoints = 0;
 // ACTIONS
+let isAdmin = {};
+isAdmin.deep = false;
+isAdmin.low = false;
+isAdmin.fire = false;
 let allowCheat = false;
 let allowDSE = false;
 let moveTuning = 1.2; // moveCost x moveTuning

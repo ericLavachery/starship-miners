@@ -320,7 +320,7 @@ function checkEggsDrop() {
         dropChance = 100;
     }
     console.log('dropChance='+dropChance);
-    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
+    if (isAdmin.deep) {
         warning('Oeufs','Check '+dropChance+'% '+dropMessage);
     }
     if (!domeProtect) {
@@ -337,7 +337,7 @@ function checkEggsDrop() {
                 dropEgg('Cocon','any');
                 satDrop = true;
                 playerInfos.alienSat = 0;
-                if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
+                if (isAdmin.deep) {
                     warning('Cocon de saturation','200+ aliens.');
                 }
             } else if (crysalide) {
@@ -358,7 +358,7 @@ function checkEggsDrop() {
             } else if (playerInfos.mapTurn >= zone[0].c1turn) {
                 dropEgg('Cocon','any');
                 satDrop = true;
-                if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
+                if (isAdmin.deep) {
                     warning('Cocon prédéterminé','Prévu pour le tour '+zone[0].c1turn);
                 }
                 zone[0].c1turn = 99;
@@ -370,11 +370,11 @@ function checkEggsDrop() {
                 if (rand.rand(1,eggPauseDice) === 1) {
                     playerInfos.eggPause = false;
                     console.log('END PAUSE! 1/'+eggPauseDice);
-                    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
+                    if (isAdmin.deep) {
                         warning('Fin de la pause','Check 1/'+eggPauseDice+' réussi.');
                     }
                 } else {
-                    if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
+                    if (isAdmin.deep) {
                         warning('La pause continue','Check 1/'+eggPauseDice+' raté.');
                     }
                 }
@@ -473,7 +473,7 @@ function eggsDrop() {
         if (rand.rand(1,100) <= eggPausePerc && !coconStats.dome) {
             playerInfos.eggPause = true;
             console.log('PAUSE! '+eggPausePerc+'%');
-            if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
+            if (isAdmin.deep) {
                 warning('Nouvelle pause','Check '+eggPausePerc+'% réussi après la chute de 0 oeuf ('+noEggDrop+'%)');
             }
         }
@@ -667,7 +667,7 @@ function dropEgg(alienUnit,theArea) {
             if (!coconStats.dome && playerInfos.eggsKilled >=1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) >= 1 && (playerInfos.eggsKilled-playerInfos.pauseSeed) % pauseCount === 0) {
                 playerInfos.eggPause = true;
                 console.log('PAUSE! '+playerInfos.eggsKilled+' eggs killed');
-                if (playerInfos.pseudo === 'Payall' || playerInfos.pseudo === 'Test') {
+                if (isAdmin.deep) {
                     warning('Nouvelle pause',playerInfos.eggsKilled+' oeufs tués.');
                 }
             }

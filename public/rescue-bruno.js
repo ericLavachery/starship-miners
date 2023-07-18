@@ -151,7 +151,7 @@ function makeRescueDB() {
     newRescue.cit = [5,2,46];
     newRescue.bat = ["Mineurs",0,1,15];
     newRescue.bat2 = ["Mineurs",0,1,15];
-	newRescue.bat3 = ["Sapeurs",0,1,15];
+	newRescue.bat3 = ["Monkeys",0,1,15];
     newRescue.demUnit = ["Usine","Centre de tri"];
     sauvetages.push(newRescue);
     // ---------------------------------------------------------------------

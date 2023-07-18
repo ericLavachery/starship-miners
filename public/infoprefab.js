@@ -83,9 +83,20 @@ function checkPrefabId(myBat,myBatType) {
     return prefabId;
 };
 
+function getDefabAPCost(prefabBat,prefabBatType) {
+    let apCost;
+    let theFabTime = prefabBatType.fabTime;
+    theFabTime = entre(theFabTime,10,1000);
+    if (prefabBatType.cat === 'buildings') {
+        apCost = Math.round(prefabBat.ap/2)+Math.round(Math.sqrt(theFabTime)*prefabBat.ap/2.3);
+    } else {
+        apCost = Math.round(Math.sqrt(theFabTime)*prefabBat.ap/2.3);
+    }
+    return apCost;
+};
+
 function deconstruction(prefabId) {
-    let prefabIndex = bataillons.findIndex((obj => obj.id == prefabId));
-    let prefabBat = bataillons[prefabIndex];
+    let prefabBat = getBatById(prefabId);
     let prefabBatType = getBatType(prefabBat);
     let tileId = prefabBat.tileId;
     let landerBat = findTheLander(true);
@@ -94,11 +105,9 @@ function deconstruction(prefabId) {
             if (!playerInfos.onShip) {
                 let apCost = prefabCost(selectedBatType,prefabBatType,false);
                 selectedBat.apLeft = selectedBat.apLeft-apCost;
-                if (prefabBatType.cat === 'buildings') {
-                    prefabBat.apLeft = 0-Math.round(prefabBat.ap*2)-2;
-                } else {
-                    prefabBat.apLeft = 0-Math.round(prefabBat.ap/2);
-                }
+                let defabCost = getDefabAPCost(prefabBat,prefabBatType);
+                prefabBat.apLeft = prefabBat.apLeft-defabCost;
+                // prefabBat.apLeft = 0-Math.round(prefabBat.ap/2);
             }
             loadBat(prefabBat.id,landerBat.id);
             // tagDelete(prefabBat,'mining');
@@ -115,19 +124,15 @@ function deconstruction(prefabId) {
 };
 
 function autoDeconstruction(prefabId) {
-    let prefabIndex = bataillons.findIndex((obj => obj.id == prefabId));
-    let prefabBat = bataillons[prefabIndex];
+    let prefabBat = getBatById(prefabId);
     let prefabBatType = getBatType(prefabBat);
     let tileId = prefabBat.tileId;
     let landerBat = findTheLander(false);
     if (!prefabBat.tags.includes('noprefab')) {
         if (Object.keys(landerBat).length >= 1) {
             if (!playerInfos.onShip) {
-                if (prefabBatType.cat === 'buildings') {
-                    prefabBat.apLeft = 0-Math.round(prefabBat.ap*2)-2;
-                } else {
-                    prefabBat.apLeft = 0-Math.round(prefabBat.ap/2);
-                }
+                let defabCost = getDefabAPCost(prefabBat,prefabBatType);
+                prefabBat.apLeft = prefabBat.apLeft-defabCost;
             }
             loadBat(prefabBat.id,landerBat.id);
             // tagDelete(prefabBat,'mining');
