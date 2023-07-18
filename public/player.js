@@ -3206,192 +3206,196 @@ function compDetail(compId) {
     if (comp.desc != comp.fullName) {
         $('#tileInfos').append('<span class="fullLine brunf"><b>'+comp.desc+'</b></span>');
     }
-    if (nextCompLevel > comp.maxLevel) {
-        $('#tileInfos').append('<span class="fullLine vert"><b>Vous avez déjà le maximum dans cette compétence</b></span><br>');
+    if (!isAdmin.low) {
+        $('#tileInfos').append('<br><br><h4>&#127959; En construction...</h4><br>');
     } else {
-        $('#tileInfos').append('<span class="fullLine vert"><b>Liste des éléments auxquels vous auriez accès avec ce niveau en '+comp.fullName+'</b></span><br>');
+        if (nextCompLevel > comp.maxLevel) {
+            $('#tileInfos').append('<span class="fullLine vert"><b>Vous avez déjà le maximum dans cette compétence</b></span><br>');
+        } else {
+            $('#tileInfos').append('<span class="fullLine vert"><b>Liste des éléments auxquels vous auriez accès avec ce niveau en '+comp.fullName+'</b></span><br>');
+        }
+        $('#tileInfos').append('<span class="fullLine gf">(Sont listés seulement les éléments auxquels cette compétence pourrait donner accès)</span><br>');
+        $('#tileInfos').append('<span class="fullLine or">Note: Cette partie est en construction. Pour l\'instant, rien n\'indique si des unités de votre gang ont accès à ces éléments!</span><br>');
+        // $('#tileInfos').append('<div class="shSpace"></div>');
+        let sepa = ' &nbsp;&#128206;&nbsp; ';
+        let messageOK = 'DEJA ACCESSIBLE \n';
+        let messageUP = 'ACCESSIBLE AVEC CE NIVEAU EN '+comp.fullName.toUpperCase()+' \n';
+        let messageKO = 'INACCESSIBLE \n';
+        // ARMURES
+        $('#tileInfos').append('<br>');
+        $('#tileInfos').append('<span class="fullLine cy"><b>Armures</b></span><br>');
+        armorTypes.forEach(function(stuff) {
+            if (stuff.cat === 'armor' && !stuff.name.includes('aucun')) {
+                let listMe = checkListedItem(stuff,comp);
+                if (listMe) {
+                    let stuffInfo = showFullArmorInfo(stuff,true,false);
+                    let compReqOK = checkCompReq(stuff);
+                    if (compReqOK) {
+                        stuffInfo = messageOK+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    } else {
+                        let upCompReqOK = checkUpCompReq(stuff,comp);
+                        if (upCompReqOK) {
+                            stuffInfo = messageUP+stuffInfo;
+                            $('#tileInfos').append(sepa);
+                            $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                        } else {
+                            stuffInfo = messageKO+stuffInfo;
+                            $('#tileInfos').append(sepa);
+                            $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                        }
+                    }
+                }
+            }
+        });
+        $('#tileInfos').append(sepa);
+        $('#tileInfos').append('<br>');
+        // EQUIPEMENTS
+        $('#tileInfos').append('<br>');
+        $('#tileInfos').append('<span class="fullLine cy"><b>Equipements</b></span><br>');
+        armorTypes.forEach(function(stuff) {
+            if (stuff.cat === 'equip' && !stuff.name.includes('aucun')) {
+                let listMe = checkListedItem(stuff,comp);
+                if (listMe) {
+                    let stuffInfo = showEquipFullInfo(stuff.name,true,false);
+                    let compReqOK = checkCompReq(stuff);
+                    if (compReqOK) {
+                        stuffInfo = messageOK+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    } else {
+                        let upCompReqOK = checkUpCompReq(stuff,comp);
+                        if (upCompReqOK) {
+                            stuffInfo = messageUP+stuffInfo;
+                            $('#tileInfos').append(sepa);
+                            $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                        } else {
+                            stuffInfo = messageKO+stuffInfo;
+                            $('#tileInfos').append(sepa);
+                            $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                        }
+                    }
+                }
+            }
+        });
+        $('#tileInfos').append(sepa);
+        $('#tileInfos').append('<br>');
+        // INFRASTRUCTURES
+        $('#tileInfos').append('<br>');
+        $('#tileInfos').append('<span class="fullLine cy"><b>Infrastructures</b></span><br>');
+        armorTypes.forEach(function(stuff) {
+            if (stuff.cat === 'infra' && stuff.name != 'Débris') {
+                let listMe = checkListedItem(stuff,comp);
+                if (listMe) {
+                    let stuffInfo = showInfraInfo(stuff.name,true,false);
+                    let compReqOK = checkCompReq(stuff);
+                    if (compReqOK) {
+                        stuffInfo = messageOK+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    } else {
+                        let upCompReqOK = checkUpCompReq(stuff,comp);
+                        if (upCompReqOK) {
+                            stuffInfo = messageUP+stuffInfo;
+                            $('#tileInfos').append(sepa);
+                            $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                        } else {
+                            stuffInfo = messageKO+stuffInfo;
+                            $('#tileInfos').append(sepa);
+                            $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                        }
+                    }
+                }
+            }
+        });
+        $('#tileInfos').append(sepa);
+        $('#tileInfos').append('<br>');
+        // DROGUES
+        $('#tileInfos').append('<br>');
+        $('#tileInfos').append('<span class="fullLine cy"><b>Drogues</b></span><br>');
+        armorTypes.forEach(function(stuff) {
+            if (stuff.cat === 'drogue' && stuff.name != 'meca') {
+                let listMe = checkListedItem(stuff,comp);
+                if (listMe) {
+                    let stuffInfo = stuff.info;
+                    let compReqOK = checkCompReq(stuff);
+                    if (compReqOK) {
+                        stuffInfo = messageOK+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    } else {
+                        let upCompReqOK = checkUpCompReq(stuff,comp);
+                        if (upCompReqOK) {
+                            stuffInfo = messageUP+stuffInfo;
+                            $('#tileInfos').append(sepa);
+                            $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                        } else {
+                            stuffInfo = messageKO+stuffInfo;
+                            $('#tileInfos').append(sepa);
+                            $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                        }
+                    }
+                }
+            }
+        });
+        $('#tileInfos').append(sepa);
+        $('#tileInfos').append('<br>');
+        // MUNITIONS
+        $('#tileInfos').append('<br>');
+        $('#tileInfos').append('<span class="fullLine cy"><b>Munitions</b></span><br>');
+        ammoTypes.forEach(function(stuff) {
+            let listMe = checkListedItem(stuff,comp);
+            if (listMe) {
+                let stuffInfo = showAmmoInfo(stuff.name,true,false);
+                let compReqOK = checkCompReq(stuff);
+                if (compReqOK) {
+                    stuffInfo = messageOK+stuffInfo;
+                    $('#tileInfos').append(sepa);
+                    $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                } else {
+                    let upCompReqOK = checkUpCompReq(stuff,comp);
+                    if (upCompReqOK) {
+                        stuffInfo = messageUP+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    } else {
+                        stuffInfo = messageKO+stuffInfo;
+                        $('#tileInfos').append(sepa);
+                        $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
+                    }
+                }
+            }
+        });
+        $('#tileInfos').append(sepa);
+        $('#tileInfos').append('<br>');
+        // CRAFTINGS
+        $('#tileInfos').append('<br>');
+        $('#tileInfos').append('<span class="fullLine cy"><b>Crafting</b></span><br>');
+        let newCrafts = 0;
+        crafting.forEach(function(stuff) {
+            let listMe = checkListedItem(stuff,comp);
+            if (listMe) {
+                let compReqOK = checkCompReq(stuff);
+                if (!compReqOK) {
+                    let upCompReqOK = checkUpCompReq(stuff,comp);
+                    if (upCompReqOK) {
+                        newCrafts++;
+                    }
+                }
+            }
+        });
+        $('#tileInfos').append(sepa);
+        if (newCrafts >= 2) {
+            $('#tileInfos').append('<span class="ListRes vert">'+newCrafts+' nouveaux craftings</span>');
+        } else if (newCrafts >= 1) {
+            $('#tileInfos').append('<span class="ListRes vert">'+newCrafts+' nouveau crafting</span>');
+        } else {
+            $('#tileInfos').append('<span class="ListRes gff">'+newCrafts+' nouveau crafting</span>');
+        }
+        $('#tileInfos').append(sepa);
+        $('#tileInfos').append('<br>');
     }
-    $('#tileInfos').append('<span class="fullLine gf">(Sont listés seulement les éléments auxquels cette compétence pourrait donner accès)</span><br>');
-    $('#tileInfos').append('<span class="fullLine or">Note: Cette partie est en construction. Pour l\'instant, rien n\'indique si des unités de votre gang ont accès à ces éléments!</span><br>');
-    // $('#tileInfos').append('<div class="shSpace"></div>');
-    let sepa = ' &nbsp;&#128206;&nbsp; ';
-    let messageOK = 'DEJA ACCESSIBLE \n';
-    let messageUP = 'ACCESSIBLE AVEC CE NIVEAU EN '+comp.fullName.toUpperCase()+' \n';
-    let messageKO = 'INACCESSIBLE \n';
-    // ARMURES
-    $('#tileInfos').append('<br>');
-    $('#tileInfos').append('<span class="fullLine cy"><b>Armures</b></span><br>');
-    armorTypes.forEach(function(stuff) {
-        if (stuff.cat === 'armor' && !stuff.name.includes('aucun')) {
-            let listMe = checkListedItem(stuff,comp);
-            if (listMe) {
-                let stuffInfo = showFullArmorInfo(stuff,true,false);
-                let compReqOK = checkCompReq(stuff);
-                if (compReqOK) {
-                    stuffInfo = messageOK+stuffInfo;
-                    $('#tileInfos').append(sepa);
-                    $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                } else {
-                    let upCompReqOK = checkUpCompReq(stuff,comp);
-                    if (upCompReqOK) {
-                        stuffInfo = messageUP+stuffInfo;
-                        $('#tileInfos').append(sepa);
-                        $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                    } else {
-                        stuffInfo = messageKO+stuffInfo;
-                        $('#tileInfos').append(sepa);
-                        $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                    }
-                }
-            }
-        }
-    });
-    $('#tileInfos').append(sepa);
-    $('#tileInfos').append('<br>');
-    // EQUIPEMENTS
-    $('#tileInfos').append('<br>');
-    $('#tileInfos').append('<span class="fullLine cy"><b>Equipements</b></span><br>');
-    armorTypes.forEach(function(stuff) {
-        if (stuff.cat === 'equip' && !stuff.name.includes('aucun')) {
-            let listMe = checkListedItem(stuff,comp);
-            if (listMe) {
-                let stuffInfo = showEquipFullInfo(stuff.name,true,false);
-                let compReqOK = checkCompReq(stuff);
-                if (compReqOK) {
-                    stuffInfo = messageOK+stuffInfo;
-                    $('#tileInfos').append(sepa);
-                    $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                } else {
-                    let upCompReqOK = checkUpCompReq(stuff,comp);
-                    if (upCompReqOK) {
-                        stuffInfo = messageUP+stuffInfo;
-                        $('#tileInfos').append(sepa);
-                        $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                    } else {
-                        stuffInfo = messageKO+stuffInfo;
-                        $('#tileInfos').append(sepa);
-                        $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                    }
-                }
-            }
-        }
-    });
-    $('#tileInfos').append(sepa);
-    $('#tileInfos').append('<br>');
-    // INFRASTRUCTURES
-    $('#tileInfos').append('<br>');
-    $('#tileInfos').append('<span class="fullLine cy"><b>Infrastructures</b></span><br>');
-    armorTypes.forEach(function(stuff) {
-        if (stuff.cat === 'infra' && stuff.name != 'Débris') {
-            let listMe = checkListedItem(stuff,comp);
-            if (listMe) {
-                let stuffInfo = showInfraInfo(stuff.name,true,false);
-                let compReqOK = checkCompReq(stuff);
-                if (compReqOK) {
-                    stuffInfo = messageOK+stuffInfo;
-                    $('#tileInfos').append(sepa);
-                    $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                } else {
-                    let upCompReqOK = checkUpCompReq(stuff,comp);
-                    if (upCompReqOK) {
-                        stuffInfo = messageUP+stuffInfo;
-                        $('#tileInfos').append(sepa);
-                        $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                    } else {
-                        stuffInfo = messageKO+stuffInfo;
-                        $('#tileInfos').append(sepa);
-                        $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                    }
-                }
-            }
-        }
-    });
-    $('#tileInfos').append(sepa);
-    $('#tileInfos').append('<br>');
-    // DROGUES
-    $('#tileInfos').append('<br>');
-    $('#tileInfos').append('<span class="fullLine cy"><b>Drogues</b></span><br>');
-    armorTypes.forEach(function(stuff) {
-        if (stuff.cat === 'drogue' && stuff.name != 'meca') {
-            let listMe = checkListedItem(stuff,comp);
-            if (listMe) {
-                let stuffInfo = stuff.info;
-                let compReqOK = checkCompReq(stuff);
-                if (compReqOK) {
-                    stuffInfo = messageOK+stuffInfo;
-                    $('#tileInfos').append(sepa);
-                    $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                } else {
-                    let upCompReqOK = checkUpCompReq(stuff,comp);
-                    if (upCompReqOK) {
-                        stuffInfo = messageUP+stuffInfo;
-                        $('#tileInfos').append(sepa);
-                        $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                    } else {
-                        stuffInfo = messageKO+stuffInfo;
-                        $('#tileInfos').append(sepa);
-                        $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                    }
-                }
-            }
-        }
-    });
-    $('#tileInfos').append(sepa);
-    $('#tileInfos').append('<br>');
-    // MUNITIONS
-    $('#tileInfos').append('<br>');
-    $('#tileInfos').append('<span class="fullLine cy"><b>Munitions</b></span><br>');
-    ammoTypes.forEach(function(stuff) {
-        let listMe = checkListedItem(stuff,comp);
-        if (listMe) {
-            let stuffInfo = showAmmoInfo(stuff.name,true,false);
-            let compReqOK = checkCompReq(stuff);
-            if (compReqOK) {
-                stuffInfo = messageOK+stuffInfo;
-                $('#tileInfos').append(sepa);
-                $('#tileInfos').append('<span class="ListRes gff" title="'+stuffInfo+'">'+stuff.name+'</span>');
-            } else {
-                let upCompReqOK = checkUpCompReq(stuff,comp);
-                if (upCompReqOK) {
-                    stuffInfo = messageUP+stuffInfo;
-                    $('#tileInfos').append(sepa);
-                    $('#tileInfos').append('<span class="ListRes vert" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                } else {
-                    stuffInfo = messageKO+stuffInfo;
-                    $('#tileInfos').append(sepa);
-                    $('#tileInfos').append('<span class="ListRes rouge" title="'+stuffInfo+'">'+stuff.name+'</span>');
-                }
-            }
-        }
-    });
-    $('#tileInfos').append(sepa);
-    $('#tileInfos').append('<br>');
-    // CRAFTINGS
-    $('#tileInfos').append('<br>');
-    $('#tileInfos').append('<span class="fullLine cy"><b>Crafting</b></span><br>');
-    let newCrafts = 0;
-    crafting.forEach(function(stuff) {
-        let listMe = checkListedItem(stuff,comp);
-        if (listMe) {
-            let compReqOK = checkCompReq(stuff);
-            if (!compReqOK) {
-                let upCompReqOK = checkUpCompReq(stuff,comp);
-                if (upCompReqOK) {
-                    newCrafts++;
-                }
-            }
-        }
-    });
-    $('#tileInfos').append(sepa);
-    if (newCrafts >= 2) {
-        $('#tileInfos').append('<span class="ListRes vert">'+newCrafts+' nouveaux craftings</span>');
-    } else if (newCrafts >= 1) {
-        $('#tileInfos').append('<span class="ListRes vert">'+newCrafts+' nouveau crafting</span>');
-    } else {
-        $('#tileInfos').append('<span class="ListRes gff">'+newCrafts+' nouveau crafting</span>');
-    }
-    $('#tileInfos').append(sepa);
-    $('#tileInfos').append('<br>');
 
     $('#tileInfos').append('<br>');
     $("#tileInfos").animate({scrollTop:0},"fast");
