@@ -647,23 +647,23 @@ function editSonde() {
     } else {
         $('#thePlanet').append('<option value="1">Dom</option>');
     }
-    if (playerInfos.comp.vsp >= 1 && playerInfos.bldList.includes('Poste radio')) {
+    if (playerInfos.comp.vsp >= 1) {
         if (2 === playerInfos.sondePlanet) {
             $('#thePlanet').append('<option value="2" selected>Sarak</option>');
         } else {
             $('#thePlanet').append('<option value="2">Sarak</option>');
         }
     } else {
-        $('#thePlanet').append('<option value="2" title="Minimum: Poste radio / Vols spatiaux 1 / Présence alien 4+" disabled>Sarak</option>');
+        $('#thePlanet').append('<option value="2" title="Minimum: Vols spatiaux 1 / Présence alien 4+" disabled>Sarak</option>');
     }
-    if (playerInfos.bldList.includes('Centre de recherches')) {
+    if (playerInfos.bldList.includes('Laboratoire')) {
         if (3 === playerInfos.sondePlanet) {
             $('#thePlanet').append('<option value="3" selected>Gehenna</option>');
         } else {
             $('#thePlanet').append('<option value="3">Gehenna</option>');
         }
     } else {
-        $('#thePlanet').append('<option value="3" title="Minimum: Centre de recherches / Présence alien 4+" disabled>Gehenna</option>');
+        $('#thePlanet').append('<option value="3" title="Minimum: Laboratoire / Présence alien 4+" disabled>Gehenna</option>');
     }
     if (playerInfos.comp.vsp >= 2 && playerInfos.bldList.includes('Sonde')) {
         if (4 === playerInfos.sondePlanet) {
@@ -672,7 +672,7 @@ function editSonde() {
             $('#thePlanet').append('<option value="4">Kzin</option>');
         }
     } else {
-        $('#thePlanet').append('<option value="4" title="Minimum: Sonde / Vols spatiaux 2 / Présence alien 4+" disabled>Kzin</option>');
+        $('#thePlanet').append('<option value="4" title="Minimum: Sonde & Vols spatiaux 2 / Présence alien 4+" disabled>Kzin</option>');
     }
     if (playerInfos.comp.vsp >= 1 && playerInfos.bldList.includes('Centre de com') && playerInfos.bldList.includes('Sonde')) {
         if (5 === playerInfos.sondePlanet) {
@@ -681,7 +681,7 @@ function editSonde() {
             $('#thePlanet').append('<option value="5">Horst</option>');
         }
     } else {
-        $('#thePlanet').append('<option value="5" title="Minimum: Sonde / Centre de com / Vols spatiaux 1 / Présence alien 4+" disabled>Horst</option>');
+        $('#thePlanet').append('<option value="5" title="Minimum: Sonde & Centre de com & Vols spatiaux 1 / Présence alien 4+" disabled>Horst</option>');
     }
     $('#conUnitList').append('<span class="butSpace"></span>');
     // PRESENCE ALIEN

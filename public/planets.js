@@ -2,22 +2,66 @@ function planetsDesc() {
     let thisPlanet = 'Dom';
     $('#conUnitList').append('<span class="ListRes cy">DOM</span><br>');
     $('#conUnitList').append('<span class="ListRes">Planète habitable.</span><br>');
+    $('#conUnitList').append('<span class="ListRes ciel">Vous pouvez y attérir.</span><br>');
+    $('#conUnitList').append('<span class="ListRes vert">Pas besoin de scaphandres.</span><br>');
     planetResDesc(thisPlanet);
     thisPlanet = 'Sarak';
     $('#conUnitList').append('<span class="ListRes cy">SARAK</span><br>');
     $('#conUnitList').append('<span class="ListRes">Planète habitable. Brouillard dense.</span><br>');
+    if (playerInfos.comp.vsp >= 1) {
+        $('#conUnitList').append('<span class="ListRes ciel">Vous pouvez y attérir.</span><br>');
+    } else {
+        $('#conUnitList').append('<span class="ListRes pipi">Vous devez augmenter votre compétence en vols spaciaux pour pouvoir y attérir.</span><br>');
+    }
+    $('#conUnitList').append('<span class="ListRes vert">Pas besoin de scaphandres.</span><br>');
     planetResDesc(thisPlanet);
     thisPlanet = 'Gehenna';
     $('#conUnitList').append('<span class="ListRes cy">GEHENNA</span><br>');
     $('#conUnitList').append('<span class="ListRes">Planète inhabitable. Empoisonnée par les végétaux.</span><br>');
+    if (playerInfos.bldList.includes('Laboratoire')) {
+        $('#conUnitList').append('<span class="ListRes ciel">Vous pouvez y attérir.</span><br>');
+    } else {
+        $('#conUnitList').append('<span class="ListRes pipi">Vous devez avoir un Laboratoire pour pouvoir y attérir.</span><br>');
+    }
+    if (playerInfos.comp.scaph >= 1) {
+        $('#conUnitList').append('<span class="ListRes vert">Vous avez les scaphandres nécessaires.</span><br>');
+    } else {
+        $('#conUnitList').append('<span class="ListRes rouge">Vous n\'avez pas les scaphandres nécessaires.<br>Vous pouvez quand même y aller, mais il serait bien d\'avoir de bons outils de lutte contre le poison.</span><br>');
+    }
     planetResDesc(thisPlanet);
     thisPlanet = 'Kzin';
     $('#conUnitList').append('<span class="ListRes cy">KZIN</span><br>');
     $('#conUnitList').append('<span class="ListRes">Planète inhabitable. Gravité et pression intense. Sables mouvants.</span><br>');
+    if (playerInfos.comp.vsp >= 2 && playerInfos.bldList.includes('Sonde')) {
+        $('#conUnitList').append('<span class="ListRes ciel">Vous pouvez y attérir.</span><br>');
+    } else if (playerInfos.comp.vsp >= 2) {
+        $('#conUnitList').append('<span class="ListRes pipi">Vous n\'avez pas de sonde. (On ne peut pas y envoyer un impacteur).</span><br>');
+    } else {
+        $('#conUnitList').append('<span class="ListRes pipi">Vous devez augmenter votre compétence en vols spaciaux pour pouvoir y attérir.</span><br>');
+    }
+    if (playerInfos.comp.scaph >= 2) {
+        $('#conUnitList').append('<span class="ListRes vert">Vous avez les scaphandres nécessaires.</span><br>');
+    } else {
+        $('#conUnitList').append('<span class="ListRes rouge">Vous n\'avez pas les scaphandres nécessaires.<br>Vous pouvez quand même y aller, mais seulement avec des bâtiments et certains véhicules.</span><br>');
+    }
     planetResDesc(thisPlanet);
     thisPlanet = 'Horst';
     $('#conUnitList').append('<span class="ListRes cy">HORST</span><br>');
     $('#conUnitList').append('<span class="ListRes">Planète inhabitable. Chaleur intense. Tempêtes.</span><br>');
+    if (playerInfos.comp.vsp >= 1 && playerInfos.bldList.includes('Centre de com') && playerInfos.bldList.includes('Sonde')) {
+        $('#conUnitList').append('<span class="ListRes ciel">Vous pouvez y attérir.</span><br>');
+    } else if (playerInfos.comp.vsp >= 1 && playerInfos.bldList.includes('Centre de com')) {
+        $('#conUnitList').append('<span class="ListRes pipi">Vous n\'avez pas de sonde. (On ne peut pas y envoyer un impacteur).</span><br>');
+    } else if (playerInfos.comp.vsp >= 1) {
+        $('#conUnitList').append('<span class="ListRes pipi">Vous devez avoir un Centre de com pour pouvoir y attérir.</span><br>');
+    } else {
+        $('#conUnitList').append('<span class="ListRes pipi">Vous devez augmenter votre compétence en vols spaciaux pour pouvoir y attérir.</span><br>');
+    }
+    if (playerInfos.comp.scaph >= 3) {
+        $('#conUnitList').append('<span class="ListRes vert">Vous avez les scaphandres nécessaires.</span><br>');
+    } else {
+        $('#conUnitList').append('<span class="ListRes rouge">Vous n\'avez pas les scaphandres nécessaires.<br>Vous pouvez quand même y aller, mais vous allez déguster.</span><br>');
+    }
     planetResDesc(thisPlanet);
 };
 
