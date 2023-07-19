@@ -1642,7 +1642,7 @@ function bastionRes(bationUnitId,bastionTileId) {
             thatResNum = 0;
             resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
             if (res.name == 'Nourriture') {
-                thatResChance = Math.ceil(resFactor*6*res.batch/3);
+                thatResChance = Math.ceil(resFactor*6*res.batch/2);
             } else if (res.name.includes('Compo')) {
                 thatResChance = Math.ceil((resFactor-100)*1.7*res.batch/3);
             } else if (res.cat == 'transfo') {
@@ -1653,7 +1653,7 @@ function bastionRes(bationUnitId,bastionTileId) {
                 if (res.name === 'Huile') {
                     thatResChance = Math.ceil(150*res.batch/3);
                 } else if (res.name === 'Eau') {
-                    thatResChance = Math.ceil(400*res.batch/3);
+                    thatResChance = Math.ceil(400*res.batch/2);
                 } else {
                     thatResChance = Math.ceil(resFactor/3*res.batch/3);
                 }
@@ -1673,6 +1673,9 @@ function bastionRes(bationUnitId,bastionTileId) {
             if (rand.rand(1,500) <= thatResChance) {
                 thatResNum = Math.ceil(Math.sqrt(Math.sqrt(thatResChance))*mapFactor*1.5*rand.rand(4,16))+rand.rand(0,9);
                 thatResNum = Math.ceil(thatResNum*150/mineRateDiv);
+                if (res.name == 'Nourriture' || res.name == 'Eau') {
+                    thatResNum = thatResNum*2;
+                }
                 console.log('!GET : '+res.name+' '+thatResNum);
                 if (coffre.transRes[res.name] === undefined) {
                     coffre.transRes[res.name] = thatResNum;
@@ -1953,7 +1956,7 @@ function letsHunt(multi) {
     } else {
         if (rand.rand(1,100) <= huntType.chance) {
             dropEgg(huntType.game,'none');
-            if (rand.rand(1,3) === 1) {
+            if (rand.rand(1,2) === 1) {
                 let gameBat = getAlienByName(huntType.game);
                 alienSpawn(gameBat,huntType.game);
             }

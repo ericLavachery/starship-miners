@@ -2782,7 +2782,7 @@
         "compReq":{"det":1,"ca":1},
         "upkeep":{"Energie":12,"Eau":7,"Végétaux":6,"Huile":2.5,"Cuivre":1,"Carbone":1,"Cobalt":0.5},
         "prod":{"Drogues":4,"Electros":1,"Scrap":5,"Spins":0.1},
-        "costs":{"Compo1":310,"Compo2":280,"Compo3":290,"Eau":1500,"Energie":2400,"Huile":1500,"Carbone":2000,"Phosphore":1500,"Calcium":1000,"Or":1500,"Platine":1500,"Silicium":750,"Zinc":1500,"Bore":1500,"Chlore":2000,"Argon":2000,"Hélium":750,"Atium":250,"Germium":150,"Mephitis":150,"Bossium":50,"Electros":600,"Batteries":300},
+        "costs":{"Compo1":310,"Compo2":280,"Compo3":290,"Eau":1500,"Energie":2400,"Huile":1500,"Carbone":2000,"Phosphore":1500,"Calcium":1000,"Or":1500,"Platine":1500,"Silicium":750,"Zinc":1500,"Bore":1500,"Chlore":2000,"Argon":2000,"Hélium":750,"Atium":250,"Germium":150,"Mephitis":150,"Bossium":30,"Electros":600,"Batteries":300},
         "fabTime":600,
         "slots":6,
         "info":"Augmente les réserves de drogue de tous vos bataillons de 100%."

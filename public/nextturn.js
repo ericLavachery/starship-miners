@@ -28,8 +28,9 @@ function nextTurn() {
         checkStartingAliens();
     } else if (playerInfos.mapTurn === 1) {
         missionStartAdj(zone[0].number);
-    } else if (aliens.length < 50 && !isStartZone) {
-        if (rand.rand(1,4) === 1) {
+    } else if (aliens.length <= 75 && !isStartZone) {
+        let gibDice = Math.ceil((aliens.length+15)/14);
+        if (rand.rand(1,gibDice) === 1) {
             letsHunt(false);
         }
     }
