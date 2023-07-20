@@ -935,7 +935,12 @@ function attack(melee,init) {
         selectedBat.tags.push('aU');
     }
     if (selectedWeap.noBis) {
-        selectedBat.tags.push('noBis'+selectedWeap.num);
+        if (selectedBatType.skills.includes('noweapbis')) {
+            selectedBat.tags.push('noBis1');
+            selectedBat.tags.push('noBis2');
+        } else {
+            selectedBat.tags.push('noBis'+selectedWeap.num);
+        }
     }
     // console.log('Previous Damage : '+targetBat.damage);
     // console.log('Damage : '+totalDamage);

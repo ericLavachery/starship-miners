@@ -2290,11 +2290,23 @@ function weaponAdj(weapon,bat,wn) {
         if (thisWeapon.name.includes('Baliste')) {
             thisWeapon.range = thisWeapon.range+1;
             thisWeapon.rof = thisWeapon.rof*1.5;
-            thisWeapon.noBis = false;
+            if (batType.maxSalvo === 1) {
+                thisWeapon.rof = thisWeapon.rof*1.5;
+            } else if (batType.maxSalvo === 2) {
+                thisWeapon.noBis = false;
+            } else {
+                thisWeapon.rof = thisWeapon.rof*1.5;
+            }
         }
         if (thisWeapon.name.includes('Catapulte')) {
             thisWeapon.range = thisWeapon.range+1;
-            thisWeapon.noBis = false;
+            if (batType.maxSalvo === 1) {
+                thisWeapon.rof = thisWeapon.rof*1.5;
+            } else if (batType.maxSalvo === 2) {
+                thisWeapon.noBis = false;
+            } else {
+                thisWeapon.rof = thisWeapon.rof*1.5;
+            }
         }
     }
     if (hasEquip(bat,['theeye','ciberkit'])) {

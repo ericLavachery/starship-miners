@@ -966,7 +966,7 @@
         "level": 4,
         "rarity": 90,
         "cat": "transfo",
-        "batch": 6,
+        "batch": 8,
         "energie": -1,
         "equiv": 3.5,
         "kinds": ["food"],

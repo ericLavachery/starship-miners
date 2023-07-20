@@ -1642,7 +1642,7 @@ function bastionRes(bationUnitId,bastionTileId) {
             thatResNum = 0;
             resFactor = res.rarity+Math.round(zone[0].mapDiff*3);
             if (res.name == 'Nourriture') {
-                thatResChance = Math.ceil(resFactor*6*res.batch/2);
+                thatResChance = Math.ceil(resFactor*6*res.batch/3);
             } else if (res.name.includes('Compo')) {
                 thatResChance = Math.ceil((resFactor-100)*1.7*res.batch/3);
             } else if (res.cat == 'transfo') {
@@ -1653,7 +1653,7 @@ function bastionRes(bationUnitId,bastionTileId) {
                 if (res.name === 'Huile') {
                     thatResChance = Math.ceil(150*res.batch/3);
                 } else if (res.name === 'Eau') {
-                    thatResChance = Math.ceil(400*res.batch/2);
+                    thatResChance = Math.ceil(400*res.batch/3);
                 } else {
                     thatResChance = Math.ceil(resFactor/3*res.batch/3);
                 }
@@ -1664,6 +1664,14 @@ function bastionRes(bationUnitId,bastionTileId) {
                 } else if (res.cat === 'sky') {
                     thatResChance = Math.ceil(thatResChance/2*mapFactor/4);
                 }
+            }
+            if (res.kinds != undefined) {
+                if (res.kinds.includes('food')) {
+                    thatResChance = thatResChance*2;
+                }
+            }
+            if (res.name === 'Scrap') {
+                thatResChance = thatResChance*3;
             }
             if (res.planets != undefined) {
                 let planetName = zone[0].planet;

@@ -951,14 +951,17 @@ function drugInstantBonus(drug,fromPack) {
     if (drug.name === 'meca') {
         selectedBat.damage = 0;
         let lostSquads = selectedBatType.squads-selectedBat.squadsLeft;
-        if (lostSquads >= 3 && playerInfos.comp.trans >= 3) {
+        if (playerInfos.comp.trans >= 3) {
+            selectedBat.squadsLeft = selectedBatType.squads;
+        } else if (lostSquads >= 3 && playerInfos.comp.trans >= 2) {
             selectedBat.squadsLeft = selectedBat.squadsLeft+3;
-        } else if (lostSquads >= 2 && playerInfos.comp.trans >= 2) {
+        } else if (lostSquads >= 2 && playerInfos.comp.trans >= 1) {
             selectedBat.squadsLeft = selectedBat.squadsLeft+2;
-        } else if (lostSquads >= 1 && playerInfos.comp.trans >= 1) {
+        } else if (lostSquads >= 1) {
             selectedBat.squadsLeft = selectedBat.squadsLeft+1;
         }
         tagDelete(selectedBat,'trou');
+        selectedBat.soins = 0;
         console.log('repair kit bonus');
     }
 };
