@@ -1406,7 +1406,7 @@
             "accuracy":15,
             "power":16,
             "aoe":"squad",
-            "sound":"catapult2",
+            "sound":"catapult3",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":15,
             "ravitBld":"Poudrière"
@@ -1433,7 +1433,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","fouille","maycamo","selfbadrepair","prefab","noshow","routes","flash","badcrewsave","recupcit","badcrewsave","recupres","onedef","bigprot","w3melee","noweapbis","fullaploss"],
+        "skills":["b_dev","fouille","maycamo","selfbadrepair","prefab","noshow","routes","flash","badcrewsave","recupcit","badcrewsave","recupres","onedef","bigprot","w3melee","noweapbis","fullaploss","wsi"],
         "mecanoCost":10,
         "fuzz":2,
         "deathFx":"explo1"

@@ -1864,7 +1864,7 @@
             "accuracy":13,
             "power":22,
             "aoe":"squad",
-            "sound":"catapult2",
+            "sound":"catapult3",
             "ammo":["boulet","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
             "maxAmmo":20,
             "ravitBld":"Poudrière"

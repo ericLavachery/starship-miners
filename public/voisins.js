@@ -105,7 +105,7 @@ function neighbours() {
         numEvents = Math.floor(numEvents*numEvents/2);
         numEvents = entre(numEvents,1,100);
         if (rand.rand(1,numEvents) === 1) {
-            let turnz = rand.rand(1,10);
+            let turnz = rand.rand(1,12);
             playerInfos.vz = 31+turnz;
             let card = rand.rand(1,4);
             if (card === 1) {
@@ -145,7 +145,7 @@ function lesVoisins() {
     let transOK = false;
     let transDice = 0;
     let numEvents = getNumEvents();
-    let eventsBonus = 60-(numEvents*10);
+    let eventsBonus = 42-(numEvents*7);
     if (eventsBonus < 1) {eventsBonus = 0}
     let transChance = (playerInfos.mapDiff*3)+15+eventsBonus;
     if (rand.rand(1,100) <= transChance) {
