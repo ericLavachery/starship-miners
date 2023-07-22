@@ -3618,7 +3618,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["gamecap","flee","okwater","dive","creep","okwater","tirailleur","escape","sentinelle","nojello"],
+        "skills":["gamecap","flee","okwater","dive","creep","nobldtarg","okwater","tirailleur","escape","sentinelle","nojello"],
         "deathFx":"death1",
         "killRes":{"Gibier":50},
         "killXP":2

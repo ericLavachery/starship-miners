@@ -155,14 +155,16 @@ function nextTurn() {
                 if (playerInfos.mapTurn > bat.creaTurn+1) {
                     tagDelete(bat,'invisible');
                 }
-                if (aliens.length >= 100 && rand.rand(1,5) === 1) {
+                if (aliens.length >= 100 && rand.rand(1,2) === 1) {
                     bat.squadsLeft = 0;
                     checkDeath(bat,batType,false);
                 }
                 let tile = getTile(bat);
-                if (tile.x === 1 || tile.x === 60 || tile.y === 1 || tile.y === 60) {
-                    bat.squadsLeft = 0;
-                    checkDeath(bat,batType,false);
+                if (bat.squadsLeft < batType.squads) {
+                    if (tile.x === 1 || tile.x === 60 || tile.y === 1 || tile.y === 60) {
+                        bat.squadsLeft = 0;
+                        checkDeath(bat,batType,false);
+                    }
                 }
             }
             if (bat.tags.includes('heard')) {

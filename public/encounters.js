@@ -307,7 +307,7 @@ function tooLate(hard) {
                 bastionRes(158,centreTileId);
             }
         }
-        putBastionAliens(hard);
+        putBastionAliens(false);
     } else {
         console.log('No good tile!');
     }
