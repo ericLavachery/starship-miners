@@ -29,6 +29,7 @@ function canIHit(bat,weap,alien,batInMelee) {
 };
 
 function calcBatAttraction(bat) {
+    let batType = getBatType(bat);
     let batFuzz = bat.fuzz+2;
     if (bat.fuzz === undefined) {
         batFuzz = 4;
@@ -48,6 +49,22 @@ function calcBatAttraction(bat) {
     }
     if (bat.eq === 'w1-gun' || bat.eq === 'w1-plasma' || bat.eq === 'w2-brol' || bat.eq === 'w2-fire' || bat.eq === 'w2-molo' || bat.eq === 'w2-laser' || bat.eq === 'kit-guetteur') {
         batFuzz = batFuzz+1;
+    }
+    if (batType.cat != 'buildings') {
+        if (batType.weapon.rof >= 1) {
+            if (batType.weapon.name === 'Catapulte') {
+                if (bat.ammo === 'boulet-explosif' || bat.ammo === 'boulet-slime' || bat.ammo === 'boulet-nanite') {
+                    batFuzz = batFuzz+1.5;
+                }
+            }
+        }
+        if (batType.weapon2.rof >= 1) {
+            if (batType.weapon2.name === 'Catapulte') {
+                if (bat.ammo2 === 'boulet-explosif' || bat.ammo2 === 'boulet-slime' || bat.ammo2 === 'boulet-nanite') {
+                    batFuzz = batFuzz+1.5;
+                }
+            }
+        }
     }
     if (playerInfos.comp.cam >= 1) {
         batFuzz = batFuzz-0.5-(playerInfos.comp.cam*0.5);
