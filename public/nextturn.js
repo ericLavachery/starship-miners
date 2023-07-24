@@ -660,7 +660,7 @@ function nextTurnEnd() {
             }
             bat.xp = bat.xp.toFixedNumber(2);
             if (bat.tags.includes('zombie')) {
-                bat.xp = 150;
+                bat.xp = levelXP[1];
             }
             bat.apLeft = bat.apLeft.toFixedNumber(1);
             // nolist
@@ -1115,7 +1115,7 @@ function turnInfo(first) {
             if (!domeProtect) {
                 if (playerInfos.droppedEggs < maxDroppedEggs+1 && realNumberOfEggs < maxEggsInPlay && dropChance >= 10 && !playerInfos.eggPause) {
                     if (allCoconTurns[playerInfos.cocons] <= playerInfos.mapTurn || playerInfos.alienSat >= coconSatLimit-1) {
-                        $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Cocon en approche</span><br>');
+                        $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Oeufs en approche</span><br>');
                     } else {
                         $('#tour').append('<span class="wblynk" title="Oeuf(s) en approche">Oeufs en approche</span><br>');
                     }
@@ -1279,6 +1279,9 @@ function getAP(bat,batType) {
     }
     if (batType.skills.includes('heroap') && bat.tags.includes('hero')) {
         newAP = newAP+2;
+    }
+    if (bat.tags.includes('zombie')) {
+        newAP = newAP-2;
     }
     if (hasEquip(bat,['helper'])) {
         newAP = newAP+1;

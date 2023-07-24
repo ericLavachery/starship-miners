@@ -155,7 +155,7 @@
             "accuracy":23,
             "power":7,
             "aoe":"unit",
-            "sound":"calibre_sa",
+            "sound":"calibre_sa_multi",
             "ammo":["standard","hollow","perfo","teflon","titanium","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
@@ -1365,7 +1365,7 @@
         "pic":"trebu",
         "cat":"devices",
         "kind":"blades",
-        "sort":44,
+        "sort":64,
         "squads":4,
         "squadSize":4,
         "crew":2,
