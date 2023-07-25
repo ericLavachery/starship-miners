@@ -26,6 +26,9 @@ button, select {
 	text-decoration:none;
     margin: 0 0 0 0;
 }
+.colBut {
+    color: #ededed;
+}
 select {
     padding:3px 10px;
 	min-width: 87px;

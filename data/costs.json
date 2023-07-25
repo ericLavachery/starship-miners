@@ -2335,7 +2335,7 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
         "compReq":{"trans":1},
-        "costs":{"Compo1":150,"Scrap":75,"Carbone":75,"Moteurs":20,"Cuivre":30,"Electros":10,"Batteries":20,"Energie":150},
+        "costs":{"Compo1":150,"Scrap":75,"Carbone":75,"Moteurs":30,"Cuivre":15,"Electros":10,"Batteries":15,"Energie":150},
         "fabTime":20
     },
     {

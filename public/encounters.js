@@ -1864,7 +1864,7 @@ function removeNoMoves(myBat) {
         }
     }
     if (!nevMove) {
-        if (myBat.type != 'Silo') {
+        if (myBat.type != 'Silo' && myBat.cat === 'buildings') {
             bataillons.forEach(function(bat) {
                 let batType = getBatType(bat);
                 if (bat.tags.includes('nomove') && !batType.skills.includes('nomove')) {

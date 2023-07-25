@@ -161,12 +161,14 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
         apReqGuet = apReq;
         let bouton = 'boutonBrun';
+        let colorBof = 'colBut';
         if (bat.tags.includes('mining')) {
-            bouton = 'boutonGris';
+            bouton = 'boutonGrey';
+            colorBof = 'gf';
         }
         if ((bat.apLeft >= apReq || bat.apLeft >= bat.ap-2) && !bat.tags.includes('guet') && !batType.skills.includes('sentinelle') && noEquip(bat,['detector','g2ai']) && !batType.skills.includes('initiative') && !batType.skills.includes('after')) {
             // assez d'ap
-            $('#unitInfos').append('<button type="button" title="Faire le guet ('+apReq+' PA requis)" class="'+bouton+' iconButtons" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apCost+'</span></button>');
+            $('#unitInfos').append('<button type="button" title="Faire le guet ('+apReq+' PA requis)" class="'+bouton+' iconButtons '+colorBof+'" onclick="guet()"><i class="fas fa-binoculars"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
         } else {
             if (batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai']) || batType.skills.includes('initiative') || batType.skills.includes('after')) {
