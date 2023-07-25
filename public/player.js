@@ -379,7 +379,9 @@ function allowedArmors(unit) {
         protection.push('aucune');
         protection.push('scrap');
         protection.push('kevlar');
-        protection.push('swarwing');
+        if (!unit.skills.includes('dreduct')) {
+            protection.push('swarwing');
+        }
     }
     if (unit.skills.includes('a_heavy')) {
         protection.push('acier');

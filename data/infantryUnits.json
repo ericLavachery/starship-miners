@@ -6499,7 +6499,7 @@
         "volume":0.85,
         "stealth":2,
         "speed":5,
-        "ap":14,
+        "ap":16,
         "maxSalvo":2,
         "weapon":{
             "name":"Morsure",
@@ -6518,7 +6518,7 @@
         "protection":[],
         "equip":["aucun","helper","theeye","repel","permakirin"],
         "log3eq":[],
-        "moveCost":2.1,
+        "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,

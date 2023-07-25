@@ -54,7 +54,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_lander","fouille","transorbital","ravitaillement","stock","transport","longshot","freeshot","mecano","cleaning","badmedic","fret","bastion","gooddef","dumper","routes","phare","constructeur","accu","recupcit","recupres","noblub","reeq","infrahelp"],
+        "skills":["b_lander","fouille","transorbital","ravitaillement","stock","transport","longshot","freeshot","mecano","cleaning","badmedic","fret","bastion","gooddef","dumper","routes","phare","constructeur","accu","nocrime","recupcit","recupres","noblub","reeq","infrahelp"],
         "mediCost":9,
         "mecanoCost":9,
         "transMaxSize":32,

@@ -1113,7 +1113,7 @@ function putHLLUnits(centreTileId,hard) {
         if (playerInfos.gang === 'blades') {
             // Trébuchet
             conselUnit = getBatTypeById(145);
-            conselAmmos = ['lame-poison','boulet-explosif','aucun','g2siege'];
+            conselAmmos = ['boulet-explosif','boulet-explosif','aucun','g2siege'];
             putBat(dropTile,0,rand.rand(25,100),'nomove',false);
             thisUnit = getZoneBatByTileId(dropTile);
             thisUnit.squadsLeft = rand.rand(3,4);

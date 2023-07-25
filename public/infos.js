@@ -1463,6 +1463,31 @@ function batFullInfos(bat,batType) {
         if (batType.bldReq.includes('Station')) {
             $('#popbody').append('<span class="paramValue">Ce bâtiment ne peut pas être construit.</span>');
         } else {
+            $('#popbody').append('<span class="paramValue"><span class="mauve">Niveau de gang requis:</span> <i class="fas fa-award cy"></i> '+batType.levels[playerInfos.gang]+'</span><br>');
+            $('#popbody').append('<div class="shSpace"></div>');
+            let maxInfo = maxUnits(batType);
+            if (maxInfo.max < 90) {
+                let yh = youHave();
+                let maxType = batType.name;
+                let yourNum = yh[batType.name];
+                if (maxInfo.maxText != '') {
+                    maxType = capitalizeFirstLetter(maxInfo.maxText);
+                    yourNum = maxInfo.num;
+                }
+                $('#popbody').append('<span class="paramValue"><span class="mauve">Maximum:</span> '+maxInfo.max+' '+maxType+' <span class="gff">(vous avez: </span>'+yourNum+'<span class="gff">)</span></span><br>');
+                if (maxInfo.ko) {
+                    $('#popbody').append('<span class="listRes gf">'+maxInfo.text+'</span><br>');
+                }
+                $('#popbody').append('<div class="shSpace"></div>');
+            }
+            if (batType.bldCost != 'none') {
+                $('#popbody').append('<span class="paramValue"><span class="mauve">Se construit en transformant:</span> <i class="fas fa-chevron-circle-up bleu"></i> '+batType.bldCost+'</span><br>');
+                $('#popbody').append('<div class="shSpace"></div>');
+            }
+            if (batType.unitCost != 'none') {
+                $('#popbody').append('<span class="paramValue"><span class="mauve">Se crée en transformant:</span> <i class="fas fa-chevron-circle-up bleu"></i> '+batType.unitCost+'</span><br>');
+                $('#popbody').append('<div class="shSpace"></div>');
+            }
             let reqString = displayUnitReqs(batType,true);
             if (batType.costs != undefined) {
                 costString = displayCosts(batType.costs);

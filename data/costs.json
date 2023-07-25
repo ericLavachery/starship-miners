@@ -1064,7 +1064,7 @@
         "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Chenil","Laboratoire"],
         "compReq":{"gen":1},
-        "costs":{"Creatite":180,"Gibier":225,"Calcium":90,"Azote":90,"Mercure":36,"Drogues":72},
+        "costs":{"Creatite":180,"Gibier":162,"Calcium":90,"Azote":90,"Mercure":36,"Drogues":72},
         "fabTime":45
     },
     {
