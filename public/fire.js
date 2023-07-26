@@ -289,6 +289,11 @@ function combat(melee) {
             camoOut();
         }
     }
+    setTimeout(function (){
+        if (stopThem && stopForFight) {
+            blockThem(false);
+        }
+    }, 1500);
 };
 
 function attack(melee,init) {

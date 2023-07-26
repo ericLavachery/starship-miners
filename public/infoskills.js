@@ -221,11 +221,13 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             apReq = 0;
         }
         let bouton = 'boutonBrun';
+        let colorBof = 'colBut';
         if (bat.tags.includes('mining')) {
-            bouton = 'boutonGris';
+            bouton = 'boutonGrey';
+            colorBof = 'gf';
         }
         if ((bat.apLeft >= apReq || bat.apLeft >= bat.ap-2) && !bat.tags.includes('fortif') && (!nearby.oneTile || playerInfos.pseudo === 'Mapedit')) {
-            $('#unitInfos').append('<button type="button" title="Se fortifier ('+apReq+' PA requis)" class="'+bouton+' iconButtons" onclick="fortification('+apCost+')"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>');
+            $('#unitInfos').append('<button type="button" title="Se fortifier ('+apReq+' PA requis)" class="'+bouton+' iconButtons '+colorBof+'" onclick="fortification('+apCost+')"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
         } else {
             if (nearby.oneTile) {

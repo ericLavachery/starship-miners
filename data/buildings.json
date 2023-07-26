@@ -146,7 +146,7 @@
             "isBow":true,
             "isPrec":true,
             "noise":0,
-            "rof":12,
+            "rof":16,
             "accuracy":20,
             "dca":1.25,
             "power":8,
@@ -157,8 +157,7 @@
         "weapon2":{
             "name":"Baliste",
             "cost":4,
-            "range":3,
-            "elevation":1,
+            "range":4,
             "isBow":true,
             "noBis":true,
             "rof":8,
