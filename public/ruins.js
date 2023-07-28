@@ -867,7 +867,7 @@ function checkRuinType(tile,quiet) {
                 }
             }
             tile.rt = ruinType;
-            tile.rs['Scrap'] = Math.ceil(ruinType.scrap*rand.rand(8,14)/10)+rand.rand(0,9);
+            tile.rs['Scrap'] = Math.ceil(ruinType.scrap*rand.rand(6,16)/10)+rand.rand(0,9);
             if (!quiet) {
                 warning(ruinType.name,'Ressources: '+toNiceString(ruinType.checks)+' / Scrap: '+tile.rs['Scrap']);
             }

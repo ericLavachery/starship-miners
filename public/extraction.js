@@ -647,6 +647,9 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     }
     let multiExtractAdj = 1;
     if (!forInfos) {
+        if (bat.extracted != undefined) {
+
+        }
         if (bat.extracted.length >= 2) {
             multiExtractAdj = 1-((bat.extracted.length-1)/12);
         } else if (batType.mining.multi) {
@@ -705,11 +708,11 @@ function getAllMiningRates(bat,batType) {
         if (res.bld != '') {
             let resRate = getResMiningRate(bat,res,250,true,true);
             if (playerInfos.comp.ext === 1) {
-                resRate = getResMiningRate(bat,res,260,true,false);
+                resRate = getResMiningRate(bat,res,260,true,true);
             } else if (playerInfos.comp.ext === 2) {
-                resRate = getResMiningRate(bat,res,270,true,false);
+                resRate = getResMiningRate(bat,res,270,true,true);
             } else if (playerInfos.comp.ext === 3) {
-                resRate = getResMiningRate(bat,res,290,true,false);
+                resRate = getResMiningRate(bat,res,290,true,true);
             }
             if (resRate >= 1) {
                 allMiningRates[res.name] = resRate;

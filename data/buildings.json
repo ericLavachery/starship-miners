@@ -56,6 +56,7 @@
         "transMaxSize":21,
         "transUnits":2500,
         "transRes":5000,
+        "maxSkill":36,
         "fuzz":8,
         "deathFx":"S_Explosion02"
     },
@@ -1590,9 +1591,10 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","crewsave","transport","routes","producteur","longshot","fret","dumper","mecano","selfbadrepair","dealer","nitro","sudu","cible","prefab","maxaero"],
+        "skills":["fouille","recupcit","crewsave","transport","routes","producteur","longshot","fret","dumper","ravitaillement","mecano","selfbadrepair","dealer","nitro","sudu","cible","prefab","maxaero"],
         "mecanoCost":6,
         "maxDrug":18,
+        "maxSkill":36,
         "transMaxSize":50,
         "transUnits":3000,
         "transRes":3000,
@@ -1811,7 +1813,7 @@
         "transUnits":1500,
         "transRes":3000,
         "maxSkill":36,
-        "fuzz":5,
+        "fuzz":6.5,
         "deathFx":"S_Explosion02"
     },
     {
@@ -1921,7 +1923,7 @@
         "transUnits":2500,
         "transRes":4000,
         "maxSkill":48,
-        "fuzz":5,
+        "fuzz":7,
         "deathFx":"S_Explosion02"
     },
     {
@@ -4028,10 +4030,11 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","medic","medtrans","selfbadrepair","badmecano","dealer","kirin","octiron","starka","recupcit","crewsave","transport","routes","producteur","upkeep","updisable","prodres","longshot","w2cible","fret","dumper","prefab","trash","infrahelp","phare","max1"],
+        "skills":["fouille","medic","medtrans","selfbadrepair","badmecano","ravitaillement","dealer","kirin","octiron","starka","recupcit","crewsave","transport","routes","producteur","upkeep","updisable","prodres","longshot","w2cible","fret","dumper","prefab","trash","infrahelp","phare","max1"],
         "mecanoCost":10,
         "mediCost":6,
         "maxDrug":30,
+        "maxSkill":36,
         "transMaxSize":50,
         "transUnits":3000,
         "transRes":3000,

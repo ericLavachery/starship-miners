@@ -635,7 +635,7 @@
         "compReq":{"mat":1,"energ":1,"ca":2},
         "altCompReq":{"mat":2,"ca":3},
         "factor":"thp",
-        "costs":{"Bois":6,"Tissus":6,"Silicium":6,"Larvium":4,"Wingium":4}
+        "costs":{"Bois":6,"Tissus":6,"Silicium":6,"Larvium":4,"Wingium":0.5}
     },
     {
         "name":"swag",

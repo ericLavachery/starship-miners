@@ -338,24 +338,25 @@ function catColor(unit) {
         if (unit.cat === 'vehicles') {
             unitCol = 'marine';
         }
-    }
-    if (unit.cat === 'infantry') {
-        unitCol = 'jaune';
-    }
-    if (unit.cat === 'vehicles') {
-        unitCol = 'vert';
-    }
-    if (unit.cat === 'buildings') {
-        unitCol = 'rose';
-    }
-    if (unit.cat === 'devices') {
-        unitCol = 'vio';
-    }
-    if (unit.skills.includes('transorbital') && unit.name != 'Soute') {
-        unitCol = 'bleu';
-    }
-    if (unit.name === "Dôme" || unit.name === "Soute") {
-        unitCol = 'hjaune';
+    } else {
+        if (unit.cat === 'infantry') {
+            unitCol = 'jaune';
+        }
+        if (unit.cat === 'vehicles') {
+            unitCol = 'vert';
+        }
+        if (unit.cat === 'buildings') {
+            unitCol = 'rose';
+        }
+        if (unit.cat === 'devices') {
+            unitCol = 'vio';
+        }
+        if (unit.skills.includes('transorbital') && unit.name != 'Soute') {
+            unitCol = 'bleu';
+        }
+        if (unit.name === "Dôme" || unit.name === "Soute") {
+            unitCol = 'hjaune';
+        }
     }
     return unitCol;
 };
