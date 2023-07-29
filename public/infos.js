@@ -1358,6 +1358,9 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('exhelp')) {
         allSkills = allSkills+'<span class="paramValue" title="Vous pouvez augmenter l\'efficacité de ce bâtiment en y embarquant un bataillon de Mineurs, Scrapers ou Sapeurs">Assistance</span>'+sepa;
     }
+    if (batType.skills.includes('helpex')) {
+        allSkills = allSkills+'<span class="paramValue" title="Vous pouvez augmenter l\'efficacité d\'une Mine, un Derrick ou un Comptoir en y embarquant ce bataillon">Assistance</span>'+sepa;
+    }
     if (batType.skills.includes('craft')) {
         allSkills = allSkills+'<span class="paramValue" title="Augmente le nombre de crafts que vous pouvez faire en 3 jours">Crafting</span>'+sepa;
     }

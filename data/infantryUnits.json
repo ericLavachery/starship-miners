@@ -2762,7 +2762,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","maycamo","datt","extraction","cleaning","selfbadmedic","dynamite","fret","fweight","barda","conscont","uprank","nochef"],
+        "skills":["a_light","fouille","fortif","maycamo","datt","extraction","helpex","cleaning","selfbadmedic","dynamite","fret","fweight","barda","conscont","uprank","nochef"],
         "mediCost":10,
         "mecanoCost":12,
         "mining":{
@@ -2829,7 +2829,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","camo","ranger","datt","defense","strong","extraction","scrapmorph","cleaning","selfmedic","dynamite","fret","fweight","barda","conscont","infraz","routes","heroap","herorange","autohero"],
+        "skills":["a_mid","fouille","fortif","camo","ranger","datt","defense","strong","extraction","helpex","scrapmorph","cleaning","selfmedic","dynamite","fret","fweight","barda","conscont","infraz","routes","heroap","herorange","autohero"],
         "mediCost":8,
         "mecanoCost":7,
         "mining":{
@@ -2899,7 +2899,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","extraction","selfbadmedic","camo","ranger","fret","fweight","barda","conscont","constructeur","cleaning","infraz","routes","repair","nochef"],
+        "skills":["a_light","fouille","fortif","datt","extraction","helpex","selfbadmedic","camo","ranger","fret","fweight","barda","conscont","constructeur","cleaning","infraz","routes","repair","nochef"],
         "mediCost":9,
         "mecanoCost":11,
         "mining":{
