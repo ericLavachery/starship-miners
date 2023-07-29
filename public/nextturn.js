@@ -1125,7 +1125,11 @@ function turnInfo(first) {
                 }
                 if (playerInfos.vue >= 4 && playerInfos.comp.ca >= 2 && allCoconTurns[playerInfos.cocons]-10 <= playerInfos.mapTurn) {
                     let approxTurn = Math.round(allCoconTurns[playerInfos.cocons]/5)*5;
-                    $('#tour').append('<span class="'+turnCol+'" title="Cocon prévu aux alentours du tour '+approxTurn+'">Cocon en approche</span><br>');
+                    if (approxTurn <= playerInfos.mapTurn) {
+                        $('#tour').append('<span class="'+turnCol+'" title="Cocon prévu d\'un tour à l\'autre">Cocon imminent</span><br>');
+                    } else {
+                        $('#tour').append('<span class="'+turnCol+'" title="Cocon prévu aux alentours du tour '+approxTurn+'">Cocon en approche</span><br>');
+                    }
                 }
             }
         }
@@ -1374,8 +1378,12 @@ function tagsUpdate(bat,batType) {
         tagDelete(bat,'tame');
     }
     tagDelete(bat,'rage');
-    if (rand.rand(1,3) === 1) {
+    if (batType.skills.includes('rage')) {
         tagDelete(bat,'norage');
+    } else {
+        if (rand.rand(1,3) === 1) {
+            tagDelete(bat,'norage');
+        }
     }
     tagDelete(bat,'nofougue');
     tagDelete(bat,'kill');

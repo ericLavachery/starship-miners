@@ -376,6 +376,10 @@ function conSelect(unitId,player,noRefresh) {
         let unitIndex = alienUnits.findIndex((obj => obj.id == unitId));
         conselUnit = alienUnits[unitIndex];
     }
+    let forBld = false;
+    if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices') {
+        forBld = true;
+    }
     // console.log(conselUnit);
     $('#conAmmoList').empty();
     $('#conAmmoList').append('<br>');
@@ -410,7 +414,7 @@ function conSelect(unitId,player,noRefresh) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                     }
                     armorSkills = showArmorInfo(batArmor);
-                    fullArmorSkills = showFullArmorInfo(batArmor,false,false);
+                    fullArmorSkills = showFullArmorInfo(batArmor,forBld,false,false);
                     flatCosts = getCosts(conselUnit,batArmor,0,'equip');
                     deployCosts = getDeployCosts(conselUnit,batArmor,0,'equip');
                     mergeObjects(flatCosts,deployCosts);

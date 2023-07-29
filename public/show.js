@@ -22,7 +22,7 @@ function equipDetails(stuffName,isAmmo) {
         baseInfo = showAmmoInfo(stuffName,true,true);
     } else if (stuff.cat === 'armor') {
         pageTitle = 'ARMURE';
-        baseInfo = showFullArmorInfo(stuff,true,true);
+        baseInfo = showFullArmorInfo(stuff,false,true,true);
     } else if (stuff.cat === 'drogue') {
         pageTitle = 'DROGUE';
         if (stuff.info != undefined) {
@@ -49,12 +49,15 @@ function equipDetails(stuffName,isAmmo) {
     $('#conUnitList').append('<br><br>');
 };
 
-function showFullArmorInfo(batArmor,withReqs,withCosts) {
+function showFullArmorInfo(batArmor,forBld,withReqs,withCosts) {
     let apAdj = batArmor.ap;
     if (apAdj >= 1) {
         apAdj = '+'+apAdj;
     }
     let armorSkills = '(+'+batArmor.armor+' Armure / '+apAdj+' PA) ';
+    if (forBld) {
+        armorSkills = '(+'+batArmor.armor+' Armure) ';
+    }
     if (batArmor.skills.includes('resistacide')) {
         armorSkills = armorSkills+'&#9889; résistance acide ';
     }

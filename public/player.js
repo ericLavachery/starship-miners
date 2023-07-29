@@ -3230,7 +3230,7 @@ function compDetail(compId) {
             if (stuff.cat === 'armor' && !stuff.name.includes('aucun')) {
                 let listMe = checkListedItem(stuff,comp);
                 if (listMe) {
-                    let stuffInfo = showFullArmorInfo(stuff,true,false);
+                    let stuffInfo = showFullArmorInfo(stuff,false,true,false);
                     let compReqOK = checkCompReq(stuff);
                     if (compReqOK) {
                         stuffInfo = messageOK+stuffInfo;

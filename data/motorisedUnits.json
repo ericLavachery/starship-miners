@@ -1723,7 +1723,7 @@
             "noFly":true,
             "rof":10,
             "accuracy":15,
-            "power":26,
+            "power":25,
             "aoe":"squad",
             "sound":"canon_mid_x2",
             "ammo":["obus-scrap","obus","obus-tungsten","obus-heat","obus-fleche","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-plastanium"],

@@ -18,6 +18,10 @@ function reEquip(batId,noRefresh) {
     $('#conAmmoList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
     $('#conAmmoList').append('<br><h3>'+myBatType.name+'</h3><br>');
     $('#conAmmoList').append('<br>');
+    let forBld = false;
+    if (myBatType.cat === 'buildings' || myBatType.cat === 'devices') {
+        forBld = true;
+    }
     let batArmor;
     let armorSkills = '';
     let fullArmorSkills = '';
@@ -40,7 +44,7 @@ function reEquip(batId,noRefresh) {
             myBatType.protection.forEach(function(armor) {
                 batArmor = getEquipByName(armor);
                 armorSkills = showArmorInfo(batArmor);
-                fullArmorSkills = showFullArmorInfo(batArmor,false,false);
+                fullArmorSkills = showFullArmorInfo(batArmor,forBld,false,false);
                 compReqOK = checkCompReq(batArmor);
                 if (compReqOK) {
                     if (myNewGear[2] == armor || (myNewGear[2] === 'xxx' && listNum === 1)) {
@@ -756,9 +760,9 @@ function getBatGearStuff(armorName,equipName,batType) {
     if (batType.armor >= 2) {
         if (batType.skills.includes('robot') || batType.skills.includes('cyber') || batType.cat === 'infantry') {
             if (batType.armor > batArmor.armor) {
-                gearStuff[0] = batType.armor+Math.ceil(batArmor.armor);
+                gearStuff[0] = batType.armor+Math.ceil(batArmor.armor/2);
             } else {
-                gearStuff[0] = batArmor.armor+Math.ceil(batType.armor);
+                gearStuff[0] = batArmor.armor+Math.ceil(batType.armor/2);
             }
         }
     }

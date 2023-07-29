@@ -1536,10 +1536,14 @@ function displayWeaponAmmos(batType,thisWeapon) {
 function displayUnitArmors(batType) {
     let sepa = ' &nbsp;&#128206;&nbsp; ';
     let armorString = '';
+    let forBld = false;
+    if (batType.cat === 'buildings' || batType.cat === 'devices') {
+        forBld = true;
+    }
     armorTypes.forEach(function(stuff) {
         if (stuff.cat === 'armor' && !stuff.name.includes('aucun')) {
             if (batType.protection.includes(stuff.name)) {
-                let armorInfo = showFullArmorInfo(stuff,true,false);
+                let armorInfo = showFullArmorInfo(stuff,forBld,true,false);
                 armorString = armorString+sepa+'<span title="'+armorInfo+'">'+stuff.name+'</span>';
             }
         }
@@ -1838,7 +1842,7 @@ function showTileInfos(tileId) {
             } else if (tile.ap.includes('prt_')) {
                 let armorName = tile.ap.replace('prt_','');
                 let armor = getEquipByName(armorName);
-                let armorInfo = showFullArmorInfo(armor,false,false);
+                let armorInfo = showFullArmorInfo(armor,false,false,false);
                 $('#tileInfos').append('<span class="paramName cy">Armures</span><span class="paramIcon"><i class="ra ra-vest rpg"></i></span><span class="paramValue cy" title="'+armorInfo+'">'+armorName+'</span><br>');
             } else if (tile.ap.includes('eq_')) {
                 let equipName = tile.ap.replace('eq_','');
