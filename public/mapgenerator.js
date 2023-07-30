@@ -123,8 +123,17 @@ function generateNewMap(filterCheck,louche) {
     deepWaters(zone);
     destroyedRuins(zone);
     washReports(true);
-    zone[1830].terrain = 'P';
-    zone[1830].seed = 1;
+    zone[1830].rd = true;
+    // if (landingTerrainOK(zone[1830])) {
+    //     zone[1830].rd = true;
+    // } else {
+    //     zone[1830].rd = true;
+    //     if (zone[1830].terrain === 'F') {
+    //         zone[1830].terrain = 'B';
+    //     } else {
+    //         zone[1830].terrain = 'P';
+    //     }
+    // }
     zoneReport(zone,false);
     writeMapStyles();
     showMap(zone,false);

@@ -61,6 +61,16 @@
         "info":"Restes d'un bâtiment ou infrastructure"
     },
     {
+        "name":"Crystal",
+        "pic":"crystal",
+        "compReq":{},
+        "cat":"infra",
+        "fabTime":6,
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "costs":{},
+        "info":"Crystal de morphite"
+    },
+    {
         "name":"moloko",
         "cat":"drogue",
         "apCost":6,

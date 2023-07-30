@@ -409,6 +409,9 @@ function landingTerrainOK(tile) {
             }
         }
     }
+    if (tile.id === 1830) {
+        terOK = true;
+    }
     return terOK;
 };
 

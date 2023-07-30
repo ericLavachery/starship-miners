@@ -4,6 +4,7 @@ function planetsDesc() {
     $('#conUnitList').append('<span class="ListRes">Planète habitable.</span><br>');
     $('#conUnitList').append('<span class="ListRes ciel">Vous pouvez y attérir.</span><br>');
     $('#conUnitList').append('<span class="ListRes vert">Pas besoin de scaphandres.</span><br>');
+    $('#conUnitList').append('<span class="ListRes"><span class="or">Aliens présents:</span> Bugs, Spiders, Swarms, Larves.</span><br>');
     planetResDesc(thisPlanet);
     thisPlanet = 'Sarak';
     $('#conUnitList').append('<span class="ListRes cy">SARAK</span><br>');
@@ -14,6 +15,7 @@ function planetsDesc() {
         $('#conUnitList').append('<span class="ListRes pipi">Vous devez augmenter votre compétence en vols spaciaux pour pouvoir y attérir.</span><br>');
     }
     $('#conUnitList').append('<span class="ListRes vert">Pas besoin de scaphandres.</span><br>');
+    $('#conUnitList').append('<span class="ListRes"><span class="or">Aliens présents:</span> Bugs, Spiders, Swarms, Larves.</span><br>');
     planetResDesc(thisPlanet);
     thisPlanet = 'Gehenna';
     $('#conUnitList').append('<span class="ListRes cy">GEHENNA</span><br>');
@@ -28,6 +30,7 @@ function planetsDesc() {
     } else {
         $('#conUnitList').append('<span class="ListRes rouge">Vous n\'avez pas les scaphandres nécessaires.<br>Vous pouvez quand même y aller, mais il serait bien d\'avoir de bons outils de lutte contre le poison.</span><br>');
     }
+    $('#conUnitList').append('<span class="ListRes"><span class="or">Aliens présents:</span> Spiders, Swarms, Larves.</span><br>');
     planetResDesc(thisPlanet);
     thisPlanet = 'Kzin';
     $('#conUnitList').append('<span class="ListRes cy">KZIN</span><br>');
@@ -44,6 +47,7 @@ function planetsDesc() {
     } else {
         $('#conUnitList').append('<span class="ListRes rouge">Vous n\'avez pas les scaphandres nécessaires.<br>Vous pouvez quand même y aller, mais seulement avec des bâtiments et certains véhicules.</span><br>');
     }
+    $('#conUnitList').append('<span class="ListRes"><span class="or">Aliens présents:</span> Bugs, Spiders, Larves.</span><br>');
     planetResDesc(thisPlanet);
     thisPlanet = 'Horst';
     $('#conUnitList').append('<span class="ListRes cy">HORST</span><br>');
@@ -62,6 +66,7 @@ function planetsDesc() {
     } else {
         $('#conUnitList').append('<span class="ListRes rouge">Vous n\'avez pas les scaphandres nécessaires.<br>Vous pouvez quand même y aller, mais vous allez déguster.</span><br>');
     }
+    $('#conUnitList').append('<span class="ListRes"><span class="or">Aliens présents:</span> Bugs, Swarms.</span><br>');
     planetResDesc(thisPlanet);
 };
 
@@ -1713,7 +1718,7 @@ function unDarkVision(bat,batType) {
             radarDistance = radarDistance+3;
         } else {
             let batTile = getTile(bat);
-            let batTerrain = getTerrain(tile);
+            let batTerrain = getTerrain(bat);
             radarDistance = radarDistance+batTerrain.scarp;
         }
     }

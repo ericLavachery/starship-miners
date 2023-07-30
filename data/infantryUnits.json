@@ -3722,7 +3722,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","camo","chasse","pistage","regeneration","rage","ranger","swim","snif","mutant","nofear","guerrilla","embuscade","baddef","fastguet","resistpoison","heroescape","lowstress"],
+        "skills":["a_mid","fouille","fortif","datt","camo","fastcam","chasse","pistage","regeneration","rage","ranger","swim","snif","mutant","nofear","guerrilla","embuscade","baddef","fastguet","resistpoison","heroescape","lowstress"],
         "fuzz":0,
         "deathFx":"mutantdeath"
     },
@@ -4519,7 +4519,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","camo","regeneration","embuscade","cible","mutant","snif","ranger","fastguet","guerrilla","baddef","brigands","escape","herorange","lowstress","w3range","elite"],
+        "skills":["a_light","fouille","fortif","camo","fastcam","regeneration","embuscade","cible","mutant","snif","ranger","fastguet","guerrilla","baddef","brigands","escape","herorange","lowstress","w3range","elite"],
         "fuzz":0,
         "deathFx":"mutantdeath"
     },
