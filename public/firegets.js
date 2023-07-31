@@ -2805,14 +2805,18 @@ function calcTirFurtif(weap,bat,distance) {
     let tirFurtif = 0;
     if (bat.fuzz <= -2) {
         if (weap.noise < 2 || (weap.noise < 4 && distance >= 3)) {
+            let batType = getBatType(bat);
             tirFurtif = calcCamo(bat);
-            tirFurtif = tirFurtif+(distance*20)-20;
+            let distAdj = distance;
+            if (batType.skills.includes('meleecam') && distance === 0) {
+                distAdj = distAdj+2;
+            }
+            tirFurtif = tirFurtif+(distAdj*20)-20;
             if (weap.noise > 0) {
                 tirFurtif = Math.round(tirFurtif/(weap.noise+3)*4/1.5);
             } else {
                 tirFurtif = Math.round(tirFurtif/1.15);
             }
-            let batType = getBatType(bat);
             if (batType.cat === 'buildings' || batType.cat === 'devices' || batType.skills.includes('transorbital')) {
                 tirFurtif = Math.round(tirFurtif*1.33);
             }

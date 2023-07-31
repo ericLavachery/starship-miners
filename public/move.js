@@ -276,7 +276,7 @@ function moveSelectedBat(tileId,free,jump) {
     // if (selectedBatType.cat != 'alien') {
     //     playMove(true);
     // }
-    let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
+    // let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
     // remove unit and redraw old tile
     tileUnselect();
     redrawTile(selectedBat.tileId,false);
@@ -468,10 +468,6 @@ function moveSelectedBat(tileId,free,jump) {
             }
         }
     }
-    showBataillon(selectedBat);
-    showBatInfos(selectedBat);
-    // update arrays
-    selectedBatArrayUpdate();
     if (selectedBatType.skills.includes('snif')) {
         updateDogTiles(selectedBat.tileId);
     }
@@ -485,6 +481,10 @@ function moveSelectedBat(tileId,free,jump) {
         }
     }
     getRoboTiles();
+    showBataillon(selectedBat);
+    showBatInfos(selectedBat);
+    // update arrays
+    selectedBatArrayUpdate();
 };
 
 function isMapViewBorder(tileId) {

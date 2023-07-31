@@ -413,7 +413,9 @@ function showRes(tileId) {
         }
     }
     if (mode === 'select' || mode === 'edit') {
-        if (tileText.includes('&timesb;') || tileText.includes('(')) {
+        // if (tileText.includes('&timesb;') || tileText.includes('(')) {
+        // }
+        if (tileText != '') {
             mapIndicators = mapIndicators+'<div class="markover" title="'+tileText+'"></div>';
         }
     }
@@ -653,10 +655,10 @@ function showBataillon(bat) {
         uClass = uClass+' nmUnits';
     }
     if (mode === 'move') {
-        $('#b'+bat.tileId).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
+        $('#b'+bat.tileId).append('<div class="'+uClass+'" id="xk'+bat.id+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
     } else {
         if (!modeSonde) {
-            $('#b'+bat.tileId).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+tagz+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
+            $('#b'+bat.tileId).append('<div class="'+uClass+'" id="xk'+bat.id+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+tagz+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
         } else {
             $('#b'+bat.tileId).append('<div class="'+uClass+'"></div><div class="degInfos"></div><div class="batInfos"></div>'+resHere);
         }

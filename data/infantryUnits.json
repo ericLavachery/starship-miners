@@ -2742,7 +2742,7 @@
         },
         "weapon2":{
             "name":"Foreuse",
-            "cost":5,
+            "cost":8,
             "range":0,
             "isShort":true,
             "noShield":true,
@@ -2809,7 +2809,7 @@
         },
         "weapon2":{
             "name":"Foreuse",
-            "cost":4,
+            "cost":8,
             "range":0,
             "isShort":true,
             "noShield":true,
@@ -3702,6 +3702,7 @@
             "name":"Ergots",
             "cost":2,
             "range":0,
+            "noise":0,
             "isMelee":true,
             "isShort":true,
             "noGrip":true,
@@ -3722,7 +3723,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","camo","fastcam","chasse","pistage","regeneration","rage","ranger","swim","snif","mutant","nofear","guerrilla","embuscade","baddef","fastguet","resistpoison","heroescape","lowstress"],
+        "skills":["a_mid","fouille","fortif","datt","camo","fastcam","meleecam","chasse","pistage","regeneration","rage","ranger","swim","snif","mutant","nofear","guerrilla","embuscade","baddef","fastguet","resistpoison","heroescape","lowstress"],
         "fuzz":0,
         "deathFx":"mutantdeath"
     },

@@ -308,6 +308,9 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             if (batType.skills.includes('fastcam') && apReq > 1) {
                 apReq = 1;
             }
+            if (batType.skills.includes('fastcam') && apCost > 2) {
+                apCost = Math.ceil(apCost/1.5);
+            }
             let camChance = calcCamo(bat);
             balise = 'h4';
             boutonNope = 'boutonGrey';

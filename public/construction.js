@@ -2287,7 +2287,7 @@ function toggleAutoRoad(apCost,stop) {
             selectedBat.tags.push('autoroad');
         }
         let tile = getTile(selectedBat);
-        if (!tile.rd) {
+        if (!tile.rd && selectedBat.apLeft >= 1) {
             putRoad(apCost);
         }
     }
