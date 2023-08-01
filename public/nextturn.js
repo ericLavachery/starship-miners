@@ -1381,7 +1381,7 @@ function tagsUpdate(bat,batType) {
     if (batType.skills.includes('rage')) {
         tagDelete(bat,'norage');
     } else {
-        if (rand.rand(1,3) === 1) {
+        if (rand.rand(1,2) === 1) {
             tagDelete(bat,'norage');
         }
     }

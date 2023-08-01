@@ -393,6 +393,7 @@ function rage() {
     selectedBat.tags.push('rage');
     selectedBat.tags.push('norage');
     selectedBat.tags.push('norage');
+    selectedBat.tags.push('norage');
     // doneAction(selectedBat);
     playSound('rage',-0.2);
     selectedBatArrayUpdate();

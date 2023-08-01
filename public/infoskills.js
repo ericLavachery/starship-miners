@@ -2289,7 +2289,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 if (bat.tags.includes('autoroad')) {
                     $('#unitInfos').append('<button type="button" title="Stopper la construction automatique de routes" class="boutonOK iconButtons cy" onclick="toggleAutoRoad('+apCost+',true)"><i class="fas fa-road"></i> <span class="small">Stop</span></button>');
                     lineBreak = true;
-                } else {
+                } else if (bat.apLeft >= apReq) {
                     $('#unitInfos').append('<button type="button" title="Construction automatique de routes" class="boutonNoir iconButtons" onclick="toggleAutoRoad('+apCost+',false)"><i class="fas fa-road"></i> <span class="small">Auto</span></button>');
                     lineBreak = true;
                 }
