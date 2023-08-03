@@ -919,7 +919,7 @@
             "ammo":["standard"]
         },
         "protection":[],
-        "equip":["aucun","w1-gun","w2-ggun","w2-autopistol","autoextract","e-medic","psol","isophon","respod","garage","e-infra","bld-camo"],
+        "equip":["aucun","w1-gun","w2-ggun","w2-autopistol","autoextract","g2tools","e-medic","psol","isophon","respod","garage","e-infra","bld-camo"],
         "log3eq":["psol"],
         "autoEq":["garage","e-infra","isophon","e-medic","autoextract"],
         "moveCost":99,
@@ -931,7 +931,7 @@
         "mediCost":8,
         "mining":{
             "level":1,
-            "rate":40,
+            "rate":45,
             "multi":true,
             "types":["Comptoir","Scrap"],
             "subTypes":["Pompe","Mine"]

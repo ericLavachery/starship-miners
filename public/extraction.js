@@ -597,7 +597,7 @@ function getMiningRate(bat,fullRate,noMining) {
     }
     miningAdj = miningAdj*helpInside;
     let batMining = batType.mining.rate;
-    if (hasEquip(bat,['g2tools'])) {
+    if (hasEquip(bat,['g2tools']) && noEquip(bat,['autoextract'])) {
         batMining = batMining+5;
     }
     if (fullRate) {
@@ -674,8 +674,12 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
         if (batType.mining.subTypes.includes(res.bld)) {
             if (hasEquip(bat,['g2tools'])) {
                 let umr = batType.mining.rate;
-                umr = entre(umr,10,40);
-                resRate = Math.ceil(resRate/0.36/Math.sqrt(umr));
+                umr = entre(umr,10,48);
+                if (hasEquip(bat,['autoextract'])) {
+                    resRate = Math.ceil(resRate/3.7);
+                } else {
+                    resRate = Math.ceil(resRate/0.36/Math.sqrt(umr));
+                }
             } else {
                 resRate = Math.ceil(resRate/2.5);
             }

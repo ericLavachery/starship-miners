@@ -69,17 +69,27 @@ function voirBataillons() {
                         batColor = 'brun';
                     }
                 }
-                $('#conUnitList').append('<span class="ListRes '+batColor+' klik" onclick="warnLink('+bat.tileId+')">'+bat.type+'</span>&nbsp;&nbsp;');
-                if (bat.damage >= 1 || bat.squadsLeft < batType.squads) {
-                    $('#conUnitList').append('<span class="ListRes" title="Blessé"><i class="ra ra-bleeding-hearts"></i></span>&nbsp;&nbsp;');
+                let isVisible = true;
+                if (zone[0].dark && !undarkNow.includes(bat.tileId) && !bat.tags.includes('fluo')) {
+                    isVisible = checkEggInDark(bat.tileId);
                 }
-                if (bat.tags.includes('poison') || bat.tags.includes('shinda')) {
-                    $('#conUnitList').append('<span class="ListRes" title="Empoisonné"><i class="fas fa-skull-crossbones"></i></span>&nbsp;&nbsp;');
+                let nv = nomVisible(bat);
+                if (isVisible) {
+                    $('#conUnitList').append('<span class="ListRes '+batColor+' klik" onclick="warnLink('+bat.tileId+')">'+nv+'</span>&nbsp;&nbsp;');
+                    if (bat.damage >= 1 || bat.squadsLeft < batType.squads) {
+                        $('#conUnitList').append('<span class="ListRes" title="Blessé"><i class="ra ra-bleeding-hearts"></i></span>&nbsp;&nbsp;');
+                    }
+                    if (bat.tags.includes('poison') || bat.tags.includes('shinda')) {
+                        $('#conUnitList').append('<span class="ListRes" title="Empoisonné"><i class="fas fa-skull-crossbones"></i></span>&nbsp;&nbsp;');
+                    }
+                    if (bat.tags.includes('stun')) {
+                        $('#conUnitList').append('<span class="ListRes" title="Stun"><i class="fas fa-thermometer"></i></span>&nbsp;&nbsp;');
+                    }
+                    $('#conUnitList').append('<br>');
+                } else if (playerInfos.vue >= 4) {
+                    $('#conUnitList').append('<span class="ListRes '+batColor+'">'+nv+' <span class="gff">(emplacement inconnu)</span></span>&nbsp;&nbsp;');
+                    $('#conUnitList').append('<br>');
                 }
-                if (bat.tags.includes('stun')) {
-                    $('#conUnitList').append('<span class="ListRes" title="Stun"><i class="fas fa-thermometer"></i></span>&nbsp;&nbsp;');
-                }
-                $('#conUnitList').append('<br>');
             }
         }
     });
