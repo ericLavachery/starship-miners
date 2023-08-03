@@ -604,6 +604,15 @@ hr.craft {
     position: absolute;
     /* margin: 1px 1px 1px 1px; */
 }
+.pUnitsNoPrefab {
+    background-color: rgba(221, 248, 252, 0.3);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(249, 223, 188, 1);
+    border-radius: 8px;
+    position: absolute;
+    /* margin: 1px 1px 1px 1px; */
+}
 .pUnits {
     background-color: rgba(221, 248, 252, 0.3);
     border-style: solid;

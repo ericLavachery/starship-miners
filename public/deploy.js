@@ -578,7 +578,7 @@ function checkHasWeapon(num,batType,eq) {
 }
 
 function checkAmmoReqs(bat,batType) {
-    if (playerInfos.onShip) {
+    if (playerInfos.onShip && inSoute) {
         let ammo = getAmmoByName(bat.ammo);
         let compReqOK = checkCompReq(ammo);
         let bldReqOK = verifBldReq(batType,ammo.bldReq);

@@ -618,10 +618,16 @@ function showBataillon(bat) {
     }
     let uClass = 'pUnits';
     if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
-        if (bat.fuzz <= -2 && bat.type != 'Fosses') {
-            uClass = 'pUnitsCamoFortif';
+        if (batType.name === 'Soute') {
+            uClass = 'pUnitsNoPrefab';
+        } else if (playerInfos.onShip && !batType.skills.includes('prefab') && !batType.skills.includes('transorbital')) {
+            uClass = 'pUnitsNoPrefab';
         } else {
-            uClass = 'pUnitsFortif';
+            if (bat.fuzz <= -2 && bat.type != 'Fosses') {
+                uClass = 'pUnitsCamoFortif';
+            } else {
+                uClass = 'pUnitsFortif';
+            }
         }
     } else {
         if (bat.fuzz <= -2 && bat.type != 'Fosses') {

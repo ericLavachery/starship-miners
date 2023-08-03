@@ -1,6 +1,8 @@
 function clickTile(tileId) {
     if (stopMe === false) {
-        if (modeLanding) {
+        if (changeVMTid >= 0) {
+            clickVMT(tileId);
+        } else if (modeLanding) {
             clickLanding(tileId);
         } else if (Object.keys(batDebarq).length >= 1) {
             clickDebarq(tileId);
@@ -52,7 +54,7 @@ function clickSelect(tileId) {
             if (bat.tileId === tileId && bat.loc === "zone") {
                 if (!goMove) {
                     showBatInfos(bat);
-                    if (selectedBat.id == bat.id && selectedBatType.moveCost < 99 && !selectedBat.tags.includes('nomove')) {
+                    if (selectedBat.id == bat.id && checkCanMove(selectedBat)) {
                         if (selectedBatType.skills.includes('fly') || selectedBat.eq === 'e-jetpack') {
                             jump = true;
                         }

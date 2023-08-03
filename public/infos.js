@@ -29,7 +29,10 @@ function showBatPrefab(bat) {
     }
     $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3></span>');
     $('#'+bodyPlace).append('<span class="constName jaune">Accès par la soute</span><br>');
-    $('#'+bodyPlace).append('<button type="button" title="Aller dans la soute" class="boutonGris iconButtons" onclick="goSoutePrefab('+bat.id+')" onmousedown="clicSound()"><i class="fas fa-warehouse"></i></button>');
+    $('#'+bodyPlace).append('<button type="button" title="Aller dans la soute" class="boutonMarine iconButtons" onclick="goSoutePrefab('+bat.id+')" onmousedown="clicSound()"><i class="fas fa-warehouse"></i></button>');
+    $('#'+bodyPlace).append('<br>');
+    $('#'+bodyPlace).append('<span class="constName">Déplacer ce bâtiment</span><br>');
+    $('#'+bodyPlace).append('<button type="button" title="Cliquez ici, puis cliquez sur la carte" class="boutonGris iconButtons" onclick="movePrefab('+bat.id+')" onmousedown="clicSound()"><i class="fas fa-arrows-alt"></i></button>');
     $("#unitInfos").animate({scrollTop:0},"fast");
 };
 

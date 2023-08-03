@@ -110,6 +110,18 @@ function clickMove(tileId) {
     }
 };
 
+function checkCanMove(bat) {
+    let canMove = false;
+    let batType = getBatType(bat);
+    if (batType.moveCost < 99 && !bat.tags.includes('nomove')) {
+        canMove = true;
+    }
+    // if (playerInfos.onShip && batType.name != 'Soute') {
+    //     canMove = true;
+    // }
+    return canMove;
+}
+
 function roboAccess(tileId) {
     let access = true;
     if (selectedBatType.skills.includes('crange') && roboRange) {
@@ -1039,9 +1051,9 @@ function calcMoveCost(targetTileId,diag) {
     }
     // moveCost = moveCost*moveTuning;
     moveCost = moveCost.toFixedNumber(1);
-    // if (playerInfos.onShip) {
-    //     moveCost = 0;
-    // }
+    if (playerInfos.onShip) {
+        moveCost = 0;
+    }
     // console.log('*** moveCost : '+moveCost);
     return moveCost;
 };
@@ -1061,4 +1073,41 @@ function moveInsideBats(transBat) {
             bat.oldTileId = transBat.tileId;
         }
     });
+};
+
+function movePrefab(batId) {
+    cursorSwitch('.','grid-item','copy');
+    changeVMTid = batId;
+    batUnselect();
+};
+
+function movingPrefab(bat,tileId) {
+    cursorSwitch('.','grid-item','insp');
+    playSound('construct-push',-0.3);
+    let oldVMT = bat.vmt;
+    bat.vmt = tileId;
+    changeVMTid = -1;
+    redrawTile(tileId,false);
+    redrawTile(oldVMT,false);
+};
+
+function clickVMT(tileId) {
+    let movingBat = getBatById(changeVMTid);
+    let tileOK = true;
+    bataillons.forEach(function(bat) {
+        if (bat.vmt != undefined) {
+            if (bat.vmt === tileId) {
+                tileOK = false;
+            }
+        }
+        if (bat.tileId === tileId) {
+            tileOK = false;
+        }
+    });
+    if (!tileOK) {
+        cursorSwitch('.','grid-item','insp');
+        changeVMTid = -1;
+    } else {
+        movingPrefab(movingBat,tileId);
+    }
 };

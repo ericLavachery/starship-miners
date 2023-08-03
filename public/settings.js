@@ -109,6 +109,7 @@ let slId = 2; // selected lander id (en soute)
 let souteFilter = 'all';
 let souteTab = 'unitz';
 let modeLanding = false;
+let changeVMTid = -1;
 let unitTypes = [];
 let unitDV = {}
 let bataillons = [];

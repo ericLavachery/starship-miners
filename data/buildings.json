@@ -1086,7 +1086,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","fret","dumper","realdumper","underground","camo","unload","transport","nodeathcount","routes","prefab","noshow","notrash"],
+        "skills":["fouille","fret","dumper","underground","camo","unload","transport","nodeathcount","routes","prefab","noshow","notrash"],
         "mecanoCost":12,
         "transMaxSize":9,
         "transUnits":1500,
