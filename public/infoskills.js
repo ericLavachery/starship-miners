@@ -2236,14 +2236,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             roadsOK = checkRoadsAround(bat);
         }
         if (!tile.rd || !roadsOK) {
-            apCost = batType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
-            if (hasEquip(bat,['e-road'])) {
-                if (batType.skills.includes('routes')) {
-                    apCost = apCost/1.5;
-                } else if (batType.mecanoCost < 12) {
-                    apCost = 12*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
-                }
-            }
+            apCost = getRoadAPCost(bat,batType,tile,false);
             apReq = Math.ceil(apCost/10);
             apCost = Math.round(apCost);
             let roadCosts = getRoadCosts(tile);
@@ -2289,7 +2282,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 if (bat.tags.includes('autoroad')) {
                     $('#unitInfos').append('<button type="button" title="Stopper la construction automatique de routes" class="boutonOK iconButtons cy" onclick="toggleAutoRoad('+apCost+',true)"><i class="fas fa-road"></i> <span class="small">Stop</span></button>');
                     lineBreak = true;
-                } else if (bat.apLeft >= apReq) {
+                } else {
                     $('#unitInfos').append('<button type="button" title="Construction automatique de routes" class="boutonNoir iconButtons" onclick="toggleAutoRoad('+apCost+',false)"><i class="fas fa-road"></i> <span class="small">Auto</span></button>');
                     lineBreak = true;
                 }

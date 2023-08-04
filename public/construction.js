@@ -2303,14 +2303,7 @@ function autoRoad(tile) {
     let isBatHere = isOccupiedByFriend(tile.id);
     if (!tile.rd && !isBatHere) {
         let terrain = getTerrain(selectedBat);
-        let apCost = selectedBatType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
-        if (hasEquip(selectedBat,['e-road'])) {
-            if (selectedBatType.skills.includes('routes')) {
-                apCost = apCost/1.5;
-            } else if (selectedBatType.mecanoCost < 12) {
-                apCost = 12*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
-            }
-        }
+        let apCost = getRoadAPCost(selectedBat,selectedBatType,tile,false);
         if (tile.infra != undefined && tile.infra != 'Débris') {
             apCost = Math.round(apCost/2);
         } else {
@@ -2337,6 +2330,31 @@ function autoRoad(tile) {
     }
 };
 
+function autoRoadNextTurn(tile,bat,batType) {
+    if (!tile.rd && bat.tags.includes('autoroad')) {
+        let terrain = getTerrain(bat);
+        let apCost = getRoadAPCost(bat,batType,tile,false);
+        if (tile.infra != undefined && tile.infra != 'Débris') {
+            apCost = Math.round(apCost/2);
+        } else {
+            apCost = Math.round(apCost);
+        }
+        let roadCosts = getRoadCosts(tile);
+        let roadCostsOK = checkCost(roadCosts);
+        if (roadCostsOK) {
+            bat.apLeft = bat.apLeft-apCost;
+            bat.xp = bat.xp+(terrain.roadBuild/30);
+            payCost(roadCosts);
+            tile.rd = true;
+            if (tile.qs != undefined) {
+                delete tile.qs;
+            }
+        } else {
+            tagDelete(bat,'autoroad');
+        }
+    }
+};
+
 function constructSound() {
     if (selectedBatType.cat === 'infantry') {
         playSound('construct-sap',-0.1);
@@ -2345,7 +2363,23 @@ function constructSound() {
     }
 };
 
-function putRoad(apCost) {
+function getRoadAPCost(bat,batType,tile,round) {
+    let terrain = getTerrainById(tile.id);
+    let apCost = batType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
+    if (hasEquip(bat,['e-road'])) {
+        if (batType.skills.includes('routes')) {
+            apCost = apCost/1.5;
+        } else if (batType.mecanoCost < 12) {
+            apCost = 12*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
+        }
+    }
+    if (round) {
+        apCost = Math.round(apCost);
+    }
+    return apCost;
+};
+
+function putRoad(apCost,quiet) {
     // console.log('PUTROAD');
     let tile = getTile(selectedBat);
     let terrain = getTileTerrain(selectedBat.tileId);
@@ -2373,8 +2407,10 @@ function putRoad(apCost) {
         putRoadsAround();
     } else {
         tile.rd = true;
-        if (tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
-            constructSound();
+        if (!quiet) {
+            if (tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
+                constructSound();
+            }
         }
         if (tile.qs != undefined) {
             delete tile.qs;

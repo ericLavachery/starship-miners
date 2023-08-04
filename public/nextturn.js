@@ -1612,6 +1612,7 @@ function tagsEffect(bat,batType) {
     let totalDamage;
     let squadHP;
     let squadsOut;
+    let tile = getTile(bat);
     let allTags = _.countBy(bat.tags);
     if (allTags.poison === undefined) {
         allTags.poison = 0;
@@ -1630,8 +1631,7 @@ function tagsEffect(bat,batType) {
                 bat.apLeft = bat.apLeft+rand.rand(0,Math.ceil(bat.ap/3));
             }
             if (bat.prt === 'swing' || bat.prt === 'soap' || bat.prt === 'silk') {
-                let batTile = getTile(bat);
-                if (batTile.web) {
+                if (tile.web) {
                     tagDelete(bat,'mud');
                 }
             }
@@ -1928,6 +1928,8 @@ function tagsEffect(bat,batType) {
             }
         }
     }
+    // AUTOROAD
+    autoRoadNextTurn(tile,bat,batType);
     checkDeath(bat,batType,true);
 };
 
