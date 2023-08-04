@@ -1034,6 +1034,9 @@ function clickConstruct(tileId,free) {
                 camoOut();
                 selectedBatArrayUpdate();
             }
+            if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices' && !conselUnit.skills.includes('clicput') && !conselTriche) {
+                constructSound();
+            }
             putBat(tileId,0,0);
             if (conselTriche) {
                 bfconst(conselCat,conselTriche,conselUpgrade,true);

@@ -110,6 +110,7 @@ function deconstruction(prefabId) {
                 // prefabBat.apLeft = 0-Math.round(prefabBat.ap/2);
             }
             loadBat(prefabBat.id,landerBat.id);
+            constructSound();
             // tagDelete(prefabBat,'mining');
             // prefabBat.extracted = [];
             recupPrefabFret(prefabBat,prefabBatType,tileId,false,-1);
@@ -135,6 +136,7 @@ function autoDeconstruction(prefabId) {
                 prefabBat.apLeft = prefabBat.apLeft-defabCost;
             }
             loadBat(prefabBat.id,landerBat.id);
+            playSound('construct-push',-0.1);
             // tagDelete(prefabBat,'mining');
             // prefabBat.extracted = [];
             recupPrefabFret(prefabBat,prefabBatType,tileId,true,landerBat);

@@ -1076,9 +1076,11 @@ function moveInsideBats(transBat) {
 };
 
 function movePrefab(batId) {
-    cursorSwitch('.','grid-item','copy');
+    cursorSwitch('.','grid-item','thor');
     changeVMTid = batId;
     batUnselect();
+    let movingBat = getBatById(changeVMTid);
+    warning('Déplacer '+movingBat.type,'Cliquez sur la carte');
 };
 
 function movingPrefab(bat,tileId) {
@@ -1092,18 +1094,28 @@ function movingPrefab(bat,tileId) {
 };
 
 function clickVMT(tileId) {
-    let movingBat = getBatById(changeVMTid);
     let tileOK = true;
-    bataillons.forEach(function(bat) {
-        if (bat.vmt != undefined) {
-            if (bat.vmt === tileId) {
+    let movingBat = getBatById(changeVMTid);
+    let tile = getTileById(tileId);
+    if (tile.terrain != 'X') {
+        tileOK = false;
+        warning('Déplacement avorté','Jeter dans l\'espace?');
+    }
+    if (tileOK) {
+        bataillons.forEach(function(bat) {
+            if (bat.vmt != undefined) {
+                if (bat.vmt === tileId) {
+                    tileOK = false;
+                }
+            }
+            if (bat.tileId === tileId) {
                 tileOK = false;
             }
+        });
+        if (!tileOK) {
+            warning('Déplacement avorté','Il y a déjà un bâtiment à cet endroit');
         }
-        if (bat.tileId === tileId) {
-            tileOK = false;
-        }
-    });
+    }
     if (!tileOK) {
         cursorSwitch('.','grid-item','insp');
         changeVMTid = -1;

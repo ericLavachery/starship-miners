@@ -938,6 +938,7 @@ function clickDebarq(tileId) {
                 let apCost = prefabCost(selectedBatType,batDebarqType,false);
                 selectedBat.apLeft = selectedBat.apLeft-apCost;
                 selectedBat.xp = selectedBat.xp+(Math.sqrt(batDebarqType.fabTime)/20);
+                constructSound();
             }
         } else {
             if (selectedBat.transIds.includes(batDebarq.id)) {
