@@ -1980,7 +1980,7 @@
         "bldReq":["Chaîne de montage"],
         "compReq":{"const":1,"log":1,"cam":1},
         "altCompReq":{"mat":1,"log":2,"cam":1},
-        "autoComp":["const",2],
+        "autoComp":["const",3],
         "factor":"thp",
         "costs":{"Silicium":1,"Scrap":2,"Végétaux":2,"Bois":2}
     },

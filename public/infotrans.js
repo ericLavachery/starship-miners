@@ -641,7 +641,11 @@ function checkHopTransId(myBat,myBatType) {
     if (myBatType.moveCost < 90) {
         if (!myBat.tags.includes('deb') || myBat.salvoLeft >= 1) {
             let isCharged = checkCharged(myBat,'trans');
-            if (!isCharged && myBat.apLeft > 0) {
+            let enoughAP = false;
+            if (myBat.apLeft > 0 || (myBat.apLeft > -4 && myBatType.skills.includes('guerrilla'))) {
+                enoughAP = true;
+            }
+            if (!isCharged && enoughAP) {
                 let resLoad = checkResLoad(myBat);
                 let myBatVolume = calcVolume(myBat,myBatType);
                 let selfMove = checkSelfMove(myBat,myBatType);
@@ -685,7 +689,11 @@ function checkJumpTransId() {
         if (selectedBatType.moveCost < 90) {
             if (!selectedBat.tags.includes('deb') || selectedBat.salvoLeft >= 1) {
                 let isCharged = checkCharged(selectedBat,'trans');
-                if (!isCharged && selectedBat.apLeft > 0) {
+                let enoughAP = false;
+                if (selectedBat.apLeft > 0 || (selectedBat.apLeft > -4 && selectedBatType.skills.includes('guerrilla'))) {
+                    enoughAP = true;
+                }
+                if (!isCharged && enoughAP) {
                     let resLoad = checkResLoad(selectedBat);
                     let selectedBatVolume = calcVolume(selectedBat,selectedBatType);
                     let selfMove = checkSelfMove(selectedBat,selectedBatType);

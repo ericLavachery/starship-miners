@@ -2532,7 +2532,7 @@
         "maxVeg":3,
         "skills":["a_heavy","fouille","fortif","maycamo","datt","strong","defense","barda","herorange"],
         "mediCost":9,
-        "fuzz":1.5,
+        "fuzz":2,
         "deathFx":"195954__minian89__death-blood-splatter"
     },
     {
@@ -3622,7 +3622,7 @@
         "skills":["a_mid","fouille","fortif","camo","medic","realmed","fly","jetpack","longshot","inflammable","dealer","starka","kirin","octiron","oknitro","cible","heropotion","elite"],
         "mediCost":4,
         "maxDrug":20,
-        "fuzz":0,
+        "fuzz":2.5,
         "deathFx":"human2"
     },
     {
@@ -3785,7 +3785,7 @@
         "maxVeg":3,
         "skills":["a_mid","fouille","fortif","datt","camo","selfmedic","embuscade","berserk","undead","superberserk","nofear","fly","jetpack","longshot","inflammable","baddef","oknitro","herorage","herosalvo","elite"],
         "mediCost":12,
-        "fuzz":1,
+        "fuzz":2.5,
         "deathFx":"162157__mediapaja2009__agony"
     },
     {
@@ -4325,7 +4325,7 @@
         "maxVeg":3,
         "skills":["a_light","fouille","fortif","datt","selfmedic","leader","fly","jetpack","longshot","survivor","inflammable","maycamo","oknitro","herosalvo","heroap"],
         "mediCost":10,
-        "fuzz":2,
+        "fuzz":2.5,
         "deathFx":"162157__mediapaja2009__agony"
     },
     {
@@ -5148,7 +5148,7 @@
         "mecanoCost":4,
         "mediCost":8,
         "maxDrug":16,
-        "fuzz":1,
+        "fuzz":2,
         "deathFx":"396806__scorpion67890__cyborg-death-1"
     },
     {

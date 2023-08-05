@@ -126,6 +126,14 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     // LIGNE 1 -----------------------------------------------------------------------------------------------------------------------------------
     $('#unitInfos').append('<span id="line-defense"></span>');
     lineBreak = false;
+    // MARQUEUR
+    if (playerInfos.showedTiles.includes(tile.id)) {
+        $('#unitInfos').append('<button type="button" title="Effacer le marqueur" class="boutonGris iconSMButtons" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-eraser"></i></button>');
+        lineBreak = true;
+    } else {
+        $('#unitInfos').append('<button type="button" title="Mettre un marqueur" class="boutonGris iconSMButtons" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-map-pin"></i></button>');
+        lineBreak = true;
+    }
     // GUET
     if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet') && (hasW1 || hasW2) && !playerInfos.onShip && !zeroCrew) {
         balise = 'h4';
@@ -382,7 +390,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             let jumpTransBat = getBatById(jumpTransId);
             let anybody = anybodyHere(jumpTransBat);
             if (anybody || !zeroCrew) {
-                $('#unitInfos').append('<button type="button" title="Embarquer dans: '+jumpTransBat.type+'" class="boutonRose iconButtons" onclick="jumpInTrans()"><i class="fas fa-truck"></i> <span class="small">1</span></button>');
+                $('#unitInfos').append('<button type="button" title="Embarquer dans: '+jumpTransBat.type+'" class="boutonMarine iconButtons" onclick="jumpInTrans()"><i class="fas fa-truck"></i></button>');
                 lineBreak = true;
             }
         }
@@ -2286,6 +2294,10 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     $('#unitInfos').append('<button type="button" title="Construction automatique de routes" class="boutonNoir iconButtons" onclick="toggleAutoRoad('+apCost+',false)"><i class="fas fa-road"></i> <span class="small">Auto</span></button>');
                     lineBreak = true;
                 }
+            } else {
+                skillMessage = "Pas assez de ressources "+displayCosts(roadCosts);
+                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-road"></i> <span class="small">Auto</span></button>');
+                lineBreak = true;
             }
         }
     }

@@ -2150,7 +2150,7 @@ function missionResults(onlyLanders,sCount,hCount) {
             }
             minedTotal = minedTotal+Math.round(minedRes*res.equiv);
             balance = balance+Math.round(resResult*res.equiv);
-            if (resResult != 0) {
+            if (resResult != 0 || minedRes != 0) {
                 resColour = 'gf';
                 if (resResult < 0) {
                     resColour = 'or';
@@ -2192,7 +2192,7 @@ function missionResults(onlyLanders,sCount,hCount) {
                     }
                 }
             }
-            if (resResult === 0) {
+            if (resResult === 0 && minedRes === 0) {
                 let resColour = 'gf';
                 if (minedRes <= 0) {
                     $('#conUnitList').append('<span class="paramResName'+resCol+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="'+resColour+'">'+resResult+'</span></span><br>');

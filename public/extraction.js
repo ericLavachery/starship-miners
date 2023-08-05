@@ -293,12 +293,14 @@ function getAllRes(tileId) {
         if (srs['Bois'] != undefined) {
             smallFruits = smallFruits+Math.round(srs['Bois']/45);
         }
-        if (tile.id % 7 != 0 && tile.id % 9 != 0) {
-            smallFruits = 0;
-        } else if (tile.id % 11 === 0) {
-            smallFruits = smallFruits+rand.rand(10,60);
-        } else {
-            smallFruits = smallFruits+rand.rand(0,20)-10;
+        if (smallFruits >= 10) {
+            if (tile.id % 7 != 0 && tile.id % 9 != 0) {
+                smallFruits = 0;
+            } else if (tile.id % 11 === 0) {
+                smallFruits = smallFruits+rand.rand(10,60);
+            } else {
+                smallFruits = smallFruits+rand.rand(0,20)-10;
+            }
         }
     }
     // console.log('terrain res');

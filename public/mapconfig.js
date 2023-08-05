@@ -170,7 +170,7 @@ function showedTilesReset(keepCenter) {
     }
 };
 
-function toggleMark(tileId) {
+function toggleMark(tileId,fromBat,batId) {
     if (playerInfos.showedTiles.includes(tileId)) {
         let tagIndex = playerInfos.showedTiles.indexOf(tileId);
         playerInfos.showedTiles.splice(tagIndex,1);
@@ -179,6 +179,10 @@ function toggleMark(tileId) {
     }
     showMap(zone,true);
     showTileInfos(tileId);
+    if (fromBat) {
+        let bat = getBatById(batId);
+        showBatInfos(bat);
+    }
     if (showMini) {
         minimap();
     }

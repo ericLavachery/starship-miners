@@ -1138,7 +1138,7 @@
         "transMaxSize":50,
         "transUnits":2000,
         "transRes":1500,
-        "fuzz":3,
+        "fuzz":1,
         "deathFx":"S_Explosion02"
     },
     {

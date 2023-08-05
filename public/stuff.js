@@ -32,48 +32,94 @@ function calcBatAttraction(bat) {
     let batType = getBatType(bat);
     let batFuzz = bat.fuzz+2;
     if (bat.fuzz === undefined) {
-        batFuzz = 4;
-        bat.fuzz = 1.5;
+        batFuzz = 3;
+        bat.fuzz = 1;
     }
-    if (bat.eq === 'w2-lcomet') {
-        batFuzz = batFuzz+3.5;
-    }
-    if (bat.eq === 'e-jetpack' || bat.eq === 'w2-arti') {
-        batFuzz = batFuzz+2.5;
-    }
-    if (bat.eq === 'w2-dyna' || bat.eq === 'w2-explo' || bat.eq === 'w2-autogun' || bat.eq === 'w2-canon' || bat.eq === 'kit-artilleur') {
-        batFuzz = batFuzz+2;
-    }
-    if (bat.eq === 'w2-lmit' || bat.eq === 'w1-ggun' || bat.eq === 'w2-ggun' || bat.eq === 'w2-rain' || bat.eq === 'w2-autopistol' || bat.eq === 'w3-autopistol' || bat.eq === 'kit-garde' || bat.eq === 'kit-lightning' || bat.eq === 'w2-acanon' || bat.eq === 'w2-mortier') {
-        batFuzz = batFuzz+1.5;
-    }
-    if (bat.eq === 'w1-gun' || bat.eq === 'w1-plasma' || bat.eq === 'w2-brol' || bat.eq === 'w2-fire' || bat.eq === 'w2-molo' || bat.eq === 'w2-laser' || bat.eq === 'kit-guetteur') {
-        batFuzz = batFuzz+1;
+    if (batType.fuzz < 0) {
+        batFuzz = 0;
     }
     if (batType.cat != 'buildings') {
+        let cataexplo = false;
         if (batType.weapon.rof >= 1) {
             if (batType.weapon.name === 'Catapulte') {
                 if (bat.ammo === 'boulet-explosif' || bat.ammo === 'boulet-slime' || bat.ammo === 'boulet-nanite') {
-                    batFuzz = batFuzz+1.5;
+                    cataexplo = true;
                 }
             }
         }
-        if (batType.weapon2.rof >= 1) {
-            if (batType.weapon2.name === 'Catapulte') {
-                if (bat.ammo2 === 'boulet-explosif' || bat.ammo2 === 'boulet-slime' || bat.ammo2 === 'boulet-nanite') {
-                    batFuzz = batFuzz+1.5;
+        if (!cataexplo) {
+            if (batType.weapon2.rof >= 1) {
+                if (batType.weapon2.name === 'Catapulte') {
+                    if (bat.ammo2 === 'boulet-explosif' || bat.ammo2 === 'boulet-slime' || bat.ammo2 === 'boulet-nanite') {
+                        cataexplo = true;
+                    }
                 }
+            }
+        }
+        if (cataexplo) {
+            if (batFuzz < 5) {
+                batFuzz = 5;
+            } else {
+                batFuzz = batFuzz+1;
             }
         }
     }
-    if (playerInfos.comp.cam >= 1) {
-        batFuzz = batFuzz-0.5-(playerInfos.comp.cam*0.5);
+    if (bat.eq === 'e-jetpack') {
+        if (batFuzz < 5) {
+            batFuzz = 5;
+        } else {
+            batFuzz = batFuzz+1;
+        }
+    }
+    if (bat.eq === 'w2-lcomet') {
+        if (batFuzz < 10) {
+            batFuzz = 10;
+        } else {
+            batFuzz = batFuzz+2.5;
+        }
+    }
+    if (bat.eq === 'w2-arti' || bat.eq === 'w2-mortier') {
+        if (batFuzz < 7.5) {
+            batFuzz = 7.5;
+        } else {
+            batFuzz = batFuzz+2;
+        }
+    }
+    if (bat.eq === 'w2-dyna' || bat.eq === 'w2-explo' || bat.eq === 'w2-autogun' || bat.eq === 'w2-canon' || bat.eq === 'kit-artilleur') {
+        if (batFuzz < 4.5) {
+            batFuzz = 4.5;
+        } else {
+            batFuzz = batFuzz+1;
+        }
+    }
+    if (bat.eq === 'w2-lmit' || bat.eq === 'w1-ggun' || bat.eq === 'w2-ggun' || bat.eq === 'w2-rain' || bat.eq === 'w2-autopistol' || bat.eq === 'w3-autopistol' || bat.eq === 'kit-garde' || bat.eq === 'kit-lightning' || bat.eq === 'w2-acanon') {
+        if (batFuzz < 3.5) {
+            batFuzz = 3.5;
+        } else {
+            batFuzz = batFuzz+0.5;
+        }
+    }
+    if (bat.eq === 'w1-gun' || bat.eq === 'w1-plasma' || bat.eq === 'w2-brol' || bat.eq === 'w2-fire' || bat.eq === 'w2-molo' || bat.eq === 'w2-laser' || bat.eq === 'kit-guetteur') {
+        if (batFuzz < 3) {
+            batFuzz = 3;
+        }
+    }
+    if (playerInfos.comp.cam >= 3) {
+        batFuzz = batFuzz-1.5;
+    } else if (playerInfos.comp.cam >= 2) {
+        if (batType.size <= 54 && batType.cat != 'buildings') {
+            batFuzz = batFuzz-1.5;
+        }
+    } else if (playerInfos.comp.cam >= 1) {
+        if (batType.size <= 21 && batType.cat != 'buildings') {
+            batFuzz = batFuzz-1;
+        }
     }
     if (batFuzz >= 6) {
-        batFuzz = batFuzz+batFuzz-3;
+        batFuzz = Math.ceil(batFuzz*3)*0.5;
     }
     if (hasEquip(bat,['isophon'])) {
-        batFuzz = batFuzz-4;
+        batFuzz = batFuzz-2;
     }
     if (batFuzz < 0) {
         batFuzz = 0;

@@ -505,6 +505,21 @@ function playMusic(piste,interrupt) {
                 trackNum = 0;
             }
             track = musicTracks[trackNum];
+            if (aliens.length < 100) {
+                if (track === 'amb_ambiant3') {
+                    track = 'amb_ambiant1';
+                }
+                if (track === 'amb_ambiant4') {
+                    track = 'amb_ambiant2';
+                }
+            } else if (aliens.length >= 150) {
+                if (track === 'amb_ambiant1') {
+                    track = 'amb_ambiant3';
+                }
+                if (track === 'amb_ambiant2') {
+                    track = 'amb_ambiant4';
+                }
+            }
             trackNum = trackNum+1;
             if (trackNum > musicTracks.length-1) {
                 trackNum = 0;
