@@ -1825,7 +1825,7 @@ function tagsEffect(bat,batType) {
             } else {
                 let shindaDamage = Math.round(Math.sqrt(batType.hp)*30);
                 if (batType.skills.includes('reactpoison') || bat.tags.includes('reactpoison')) {
-                    shindaDamage = shindaDamage*3;
+                    shindaDamage = shindaDamage*2;
                 }
                 if (batType.moveCost >= 90) {
                     shindaDamage = Math.ceil(shindaDamage/2);

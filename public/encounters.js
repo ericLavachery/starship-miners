@@ -307,9 +307,84 @@ function tooLate(hard) {
                 bastionRes(158,centreTileId);
             }
         }
+        destroyedBase(centreTileId,true,hard);
         putBastionAliens(false);
     } else {
         console.log('No good tile!');
+    }
+};
+
+function destroyedBase(centreTileId,destroyed,hard) {
+    let aroundTilesIds = [];
+    let shufZone = _.shuffle(zone);
+    shufZone.forEach(function(tile) {
+        let distance = calcDistance(centreTileId,tile.id);
+        if (distance <= 3) {
+            if (isOccupied(tile.id)) {
+                // occupied
+            } else {
+                let chance = (distance*distance)+2;
+                if (destroyed) {
+                    chance = Math.ceil(chance/2);
+                } else if (hard) {
+                    chance = Math.ceil(chance/1.5);
+                }
+                if (rand.rand(1,chance) === 1) {
+                    aroundTilesIds.push(tile.id);
+                }
+            }
+        }
+    });
+    let numRu = 3;
+    if (hard) {
+        if (destroyed) {
+            numRu = 0;
+        } else {
+            numRu = 1;
+        }
+    } else {
+        if (destroyed) {
+            numRu = 0;
+        }
+    }
+    if (aroundTilesIds.length >= 1) {
+        aroundTilesIds.forEach(function(tileId) {
+            let tile = getTileById(tileId);
+            if (Object.keys(tile).length >= 1) {
+                if (!tile.ruins) {
+                    if (tile.infra === undefined) {
+                        if (tile.terrain != 'W' && tile.terrain != 'L' && tile.terrain != 'R') {
+                            if (rand.rand(1,4) === 1 || numRu < 3) {
+                                tile.ruins = true;
+                                tile.sh = 15;
+                                tile.rd = true;
+                                delete tile.infra;
+                                addScrapToRuins(tile);
+                                checkRuinType(tile,true);
+                                if (destroyed) {
+                                    tile.rt.full = true;
+                                }
+                                numRu++;
+                            } else if (rand.rand(1,2) === 1) {
+                                tile.infra = 'Débris';
+                                if (rand.rand(1,2) === 1) {
+                                    tile.rd = true;
+                                }
+                            } else if (rand.rand(1,5) === 1) {
+                                tile.infra = 'Miradors';
+                                tile.rd = true;
+                            } else if (rand.rand(1,25) === 1) {
+                                tile.infra = 'Palissades';
+                                tile.rd = true;
+                            } else if (rand.rand(1,50) === 1) {
+                                tile.infra = 'Terriers';
+                                tile.rd = true;
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 };
 
@@ -324,6 +399,7 @@ function zoneIndustrielle(hard) {
             bastionRes(3,centreTileId);
             bastionRes(3,centreTileId);
         }
+        destroyedBase(centreTileId,false,hard);
         putBastionAliens(hard);
     } else {
         console.log('No good tile!');
@@ -630,6 +706,7 @@ function campDeColons(hard) {
         if (hard) {
             bastionRes(157,centreTileId);
         }
+        destroyedBase(centreTileId,false,hard);
         putBastionAliens(hard);
     } else {
         console.log('No good tile!');
@@ -814,6 +891,7 @@ function baseLabo(hard) {
         if (hard) {
             pactole(206,centreTileId,true);
         }
+        destroyedBase(centreTileId,false,hard);
         putBastionAliens(hard);
     } else {
         console.log('No good tile!');
@@ -968,6 +1046,7 @@ function bastionDeBrigands(hard) {
             bastionRes(224,centreTileId);
             pactole(224,centreTileId,true);
         }
+        destroyedBase(centreTileId,false,hard);
         putBastionAliens(hard);
     } else {
         console.log('No good tile!');
@@ -1318,6 +1397,7 @@ function baseDeResistants(hard) {
             bastionRes(262,centreTileId);
             bastionRes(262,centreTileId);
         }
+        destroyedBase(centreTileId,false,hard);
         putBastionAliens(hard);
     } else {
         console.log('No good tile!');

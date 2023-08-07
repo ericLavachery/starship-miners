@@ -45,7 +45,7 @@
         "pic":"terrier",
         "cat":"infra",
         "compReq":{"const":1,"cam":1},
-        "fabTime":18,
+        "fabTime":32,
         "levels":{"rednecks":8,"blades":7,"bulbos":11,"drogmulojs":10,"tiradores":10,"detruas":10,"brasier":10},
         "costs":{"Compo1":75,"Compo2":25,"Végétaux":75},
         "info":"Accès au mode furtif / Déplacement furtif d'un terrier à l'autre (Placez un marqueur sur le terrier de destination: 7 cases max)"

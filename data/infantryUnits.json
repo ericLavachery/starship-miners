@@ -3720,10 +3720,10 @@
         "log3eq":["theeye"],
         "autoEq":["helper"],
         "moveCost":2.8,
-        "maxFlood":3,
+        "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","camo","fastcam","meleecam","chasse","pistage","regeneration","rage","ranger","swim","snif","mutant","nofear","guerrilla","embuscade","baddef","fastguet","resistpoison","heroescape","lowstress"],
+        "skills":["a_mid","datt","camo","fastcam","meleecam","chasse","pistage","regeneration","rage","ranger","snif","mutant","nofear","guerrilla","embuscade","baddef","fastguet","resistpoison","heroescape","lowstress","elite"],
         "fuzz":0,
         "deathFx":"mutantdeath"
     },

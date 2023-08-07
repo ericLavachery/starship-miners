@@ -154,8 +154,8 @@ function goCommand(chefBatId,gainPA) {
     chefBat.apLeft = chefBat.apLeft-1;
     chefBat.tags.push('command');
     playSound('gogogo',-0.2);
-    doneAction(chefBat);
-    doneAction(selectedBat);
+    // doneAction(chefBat);
+    // doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };

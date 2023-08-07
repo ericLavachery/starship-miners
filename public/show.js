@@ -226,7 +226,7 @@ function showAmmoInfo(ammoName,withReqs,withCosts) {
     if (ammo.name.includes('-bio')) {
         ammoInfo = ammoInfo+'&#9889; Génocide ';
     }
-    if (ammo.name.includes('-necro')) {
+    if (ammo.name.includes('-necro') || ammo.name.includes('-shinda')) {
         ammoInfo = ammoInfo+'&#9889; Anti-régénération ';
     }
     if (ammo.aoe != '') {
