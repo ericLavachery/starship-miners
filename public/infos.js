@@ -248,6 +248,16 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="basicText mauve">Ceci est la description de ce bataillon en particulier.<br>Cliquez sur l\'image pour voir la description complète du type d\'unité.</span><br>');
         $('#'+bodyPlace).append('<div class="shSpace"></div>');
     }
+    if (playerInfos.onShip && inSoute) {
+        if (bat.army != undefined) {
+            if (bat.army > 0) {
+                if (souteFilter != 'army' || armyFilter != bat.army) {
+                    $('#'+bodyPlace).append('<span class="constName vert klik" onclick="showArmy('+bat.army+')">Voir dans son armée</span><br>');
+                    $('#'+bodyPlace).append('<div class="shSpace"></div>');
+                }
+            }
+        }
+    }
     if ((grade != batType.name && grade != 'Caporal') || vetStatus != '' || armyNum != '' || chargeIcon != '' || fretIcon != '' || chiefName != '') {
         if (chiefName != '') {
             $('#'+bodyPlace).append('<span class="constName '+gradeColor+'">'+grade+' '+bat.chief+vetStatus+armyNum+fretIcon+chargeIcon+'</span><br>');

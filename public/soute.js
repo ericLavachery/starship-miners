@@ -110,6 +110,22 @@ function souteMenu() {
         }
         if (souteFilter === 'army') {
             $('#menu_soute').append('<span class="menuTab cy">Armées</span>');
+            $('#menu_soute').append('<br>');
+            if (armyFilter === 0) {
+                $('#menu_soute').append('<span class="menuTab cy">Toutes</span> &nbsp');
+            } else {
+                $('#menu_soute').append('<span class="menuTab klik" onclick="setArmyFilter(0)">Toutes</span> &nbsp');
+            }
+            let i = 1;
+            while (i <= 20) {
+                if (armyFilter === i) {
+                    $('#menu_soute').append('<span class="menuTab cy">'+i+'</span> &nbsp');
+                } else {
+                    $('#menu_soute').append('<span class="menuTab klik" onclick="setArmyFilter('+i+')">'+i+'</span> &nbsp');
+                }
+                if (i > 20) {break;}
+                i++
+            }
         } else {
             $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`army`)">Armées</span>');
         }
@@ -118,6 +134,18 @@ function souteMenu() {
 
 function setSouteFilter(filter) {
     souteFilter = filter;
+    goSoute();
+};
+
+function setArmyFilter(filter) {
+    armyFilter = filter;
+    souteFilter = 'army';
+    goSoute();
+};
+
+function showArmy(armyNum) {
+    armyFilter = armyNum;
+    souteFilter = 'army';
     goSoute();
 };
 
@@ -323,6 +351,17 @@ function souteArmyList(landersIds,idOfLander) {
         }
         if (batType.cat === 'devices' || batType.cat === 'buildings') {
             showMe = false;
+        }
+        if (souteFilter === 'army') {
+            if (armyFilter > 0) {
+                if (bat.army != undefined) {
+                    if (bat.army != armyFilter) {
+                        showMe = false;
+                    }
+                } else {
+                    showMe = false;
+                }
+            }
         }
         if (showMe) {
             if (bat.loc === 'zone' && idOfLander < 0) {

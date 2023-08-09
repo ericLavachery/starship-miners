@@ -462,7 +462,7 @@ function eventBouffe(time,sim,quiet) {
         // Serres 1 emplacement
         if (bat.type === 'Serres hydroponiques') {
             if (!bat.tags.includes('construction')) {
-                plantesProd = plantesProd+Math.round(25*time/21);
+                plantesProd = plantesProd+Math.round(15*time/21);
             } else {
                 tagDelete(bat,'construction');
             }
@@ -470,7 +470,7 @@ function eventBouffe(time,sim,quiet) {
         // Jardin 2 emplacements mais 3x prod
         if (bat.type === 'Jardin') {
             if (!bat.tags.includes('construction')) {
-                plantesProd = plantesProd+Math.round(70*time/21);
+                plantesProd = plantesProd+Math.round(50*time/21);
             } else {
                 tagDelete(bat,'construction');
             }

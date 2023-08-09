@@ -2203,7 +2203,7 @@ function weaponAdj(weapon,bat,wn) {
         }
         if (hasEquip(bat,['silencieux','silencieux1','kit-chouf'])) {
             thisWeapon.noise = thisWeapon.noise-1;
-            if (thisWeapon.noise <= 0) {
+            if (thisWeapon.noise <= 0 && !thisWeapon.isMelee) {
                 thisWeapon.hide = true;
             }
         }
@@ -2273,7 +2273,7 @@ function weaponAdj(weapon,bat,wn) {
         }
         if (hasEquip(bat,['silencieux','silencieux2','kit-chouf'])) {
             thisWeapon.noise = thisWeapon.noise-1;
-            if (thisWeapon.noise <= 0) {
+            if (thisWeapon.noise <= 0 && !thisWeapon.isMelee) {
                 thisWeapon.hide = true;
             }
         }
@@ -2282,7 +2282,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     if (hasEquip(bat,['e-camo']) && batType.skills.includes('camo')) {
-        if (thisWeapon.noise <= 0) {
+        if (thisWeapon.noise <= 0 && !thisWeapon.isMelee) {
             thisWeapon.hide = true;
         }
     }

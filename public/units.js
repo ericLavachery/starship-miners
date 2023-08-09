@@ -48,7 +48,11 @@ function unitInfos(batType) {
     $('#'+bodyPlace).append('<span class="paramName">Unités/Escouade</span><span class="paramEmo">&nbsp;</span><span class="paramValue">'+batType.squadSize+'</span><br>');
     let totalCrew = batType.crew*batType.squadSize*batType.squads;
     let crewType = 'Citoyens';
-    if (batType.skills.includes('brigands')) {
+    if (batType.skills.includes('dog')) {
+        crewType = 'Chiens';
+    } else if (batType.skills.includes('clone')) {
+        crewType = 'Clones';
+    } else if (batType.skills.includes('brigands')) {
         crewType = 'Criminels';
     }
     $('#'+bodyPlace).append('<span class="paramName">Personnel</span><span class="paramEmo">&#128101;</span><span class="paramValue">'+totalCrew+' '+crewType+'</span><br>');

@@ -608,14 +608,7 @@ function showBataillon(bat) {
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     let degNum = getDamageBar(bat);
-    let activityBar = 'nope';
-    if (bat.tags.includes('mining')) {
-        activityBar = 'mining';
-    } else {
-        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai']) || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
-            activityBar = 'guet';
-        }
-    }
+    let activityBar = getActivityBar(bat,batType);
     let uClass = 'pUnits';
     if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
         if (batType.name === 'Soute') {
@@ -669,6 +662,34 @@ function showBataillon(bat) {
             $('#b'+bat.tileId).append('<div class="'+uClass+'"></div><div class="degInfos"></div><div class="batInfos"></div>'+resHere);
         }
     }
+};
+
+function getActivityBar(bat,batType) {
+    let activityBar = 'abar-nope';
+    if (batType.mining != undefined) {
+        if (bat.tags.includes('mining')) {
+            activityBar = 'abar-prod';
+        } else if (!playerInfos.onShip && batType.kind === 'zero-extraction') {
+            activityBar = 'abar-warn';
+        }
+    }
+    if (activityBar === 'abar-nope') {
+        if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar') || batType.skills.includes('cram') || batType.skills.includes('dogprod') || batType.skills.includes('transcrap') || batType.skills.includes('cryogen') || batType.skills.includes('cryocit')) {
+            if (bat.tags.includes('prodres')) {
+                activityBar = 'abar-prod';
+            } else {
+                activityBar = 'abar-warn';
+            }
+        }
+    }
+    if (activityBar === 'abar-nope') {
+        if (!playerInfos.onShip) {
+            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai']) || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
+                activityBar = 'abar-guet';
+            }
+        }
+    }
+    return activityBar;
 };
 
 function updateDogTiles(tileId) {
@@ -792,14 +813,7 @@ function showPrefab(bat) {
     $('#b'+bat.vmt).empty();
     let resHere = showRes(bat.vmt);
     let degNum = getDamageBar(bat);
-    let activityBar = 'nope';
-    if (bat.tags.includes('mining')) {
-        activityBar = 'mining';
-    } else {
-        if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai']) || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
-            activityBar = 'guet';
-        }
-    }
+    let activityBar = getActivityBar(bat,batType);
     let uClass = 'pUnits';
     if (batType.cat === 'buildings') {
         if (bat.fuzz <= -2) {

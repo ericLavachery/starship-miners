@@ -127,12 +127,14 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     $('#unitInfos').append('<span id="line-defense"></span>');
     lineBreak = false;
     // MARQUEUR
-    if (playerInfos.showedTiles.includes(tile.id)) {
-        $('#unitInfos').append('<button type="button" title="Effacer le marqueur" class="boutonGris iconSMButtons" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-eraser"></i></button>');
-        lineBreak = true;
-    } else {
-        $('#unitInfos').append('<button type="button" title="Mettre un marqueur" class="boutonGris iconSMButtons" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-map-pin"></i></button>');
-        lineBreak = true;
+    if (!playerInfos.onShip) {
+        if (playerInfos.showedTiles.includes(tile.id)) {
+            $('#unitInfos').append('<button type="button" title="Effacer le marqueur" class="boutonGris iconSMButtons" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-eraser"></i></button>');
+            lineBreak = true;
+        } else {
+            $('#unitInfos').append('<button type="button" title="Mettre un marqueur" class="boutonGris iconSMButtons" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-map-pin"></i></button>');
+            lineBreak = true;
+        }
     }
     // GUET
     if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet') && (hasW1 || hasW2) && !playerInfos.onShip && !zeroCrew) {
