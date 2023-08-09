@@ -328,6 +328,11 @@ function souteArmyList(landersIds,idOfLander) {
     if (idOfLander >= 0) {
         colId = 'list_lander';
     }
+    let armyBats = [];
+    let numTrans = 0;
+    let numInf = 0;
+    let armyTransVol = 0;
+    let armyTransSize = 0;
     let sortedBats = bataillons.slice();
     sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'id'),'type'),'army');
     sortedBats = sortedBats.reverse();
@@ -368,8 +373,89 @@ function souteArmyList(landersIds,idOfLander) {
                 loadBat(bat.id,souteId);
             }
             batListElement(bat,batType,idOfLander);
+            // calculer les transports et infanteries! xxxxxx
+            // sauf si 2 bigTrans -> message "faites 2 armées"
+            if (armyFilter >= 1) {
+                let newArmyBat = addNewArmyBat(bat,batType);
+                if (newArmyBat.cat != 'out') {
+                    armyBats.push(newArmyBat);
+                }
+                if (newArmyBat.cat === 'trans') {
+                    numTrans++;
+                    armyTransVol = newArmyBat.transUnits;
+                    armyTransSize = newArmyBat.transMaxSize;
+                }
+                if (newArmyBat.cat === 'inf') {
+                    numInf++;
+                }
+            }
         }
     });
+    if (armyFilter >= 1) {
+        if (numTrans === 1 && numInf >= 1) {
+            checkArmyTrans(armyBats,armyTransSize,armyTransVol);
+        } else if (numInf >= 1) {
+            if (numTrans > 1) {
+                $('#list_soute').append('<br><span class="listRes gf">&nbsp Plusieurs véhicules de transport dans la même armée:<br> &nbsp Pas de calcul des places.<br></span>');
+            }
+        }
+    }
+};
+
+function checkArmyTrans(armyBats,armyTransSize,armyTransVol) {
+    let armyTransLeft = armyTransVol;
+    let notInTrans = [];
+    let tooBigForTrans = [];
+    let transName = 'véhicules';
+    let sortedBats = armyBats.slice();
+    sortedBats = _.sortBy(sortedBats,'volume');
+    sortedBats = sortedBats.reverse();
+    sortedBats.forEach(function(bat) {
+        if (bat.cat === 'inf') {
+            if (bat.size <= armyTransSize) {
+                if (armyTransLeft >= bat.volume) {
+                    armyTransLeft = armyTransLeft-bat.volume;
+                } else {
+                    notInTrans.push(bat.name);
+                }
+            } else {
+                tooBigForTrans.push(bat.name);
+            }
+        } else if (bat.cat === 'trans') {
+            transName = bat.name;
+        }
+    });
+    if (notInTrans.length === 0 && tooBigForTrans.length === 0) {
+        $('#list_soute').append('<br><span class="listRes cy">&nbsp Tous les bataillons rentrent dans les '+transName+'</span>');
+    } else {
+        $('#list_soute').append('<br><span class="listRes or">&nbsp Ces bataillons ne rentrent pas dans les '+transName+':</span>');
+    }
+    if (tooBigForTrans.length >= 1) {
+        let nitList = toNiceString(tooBigForTrans);
+        $('#list_soute').append('<br><span class="listRes blanc">&nbsp '+nitList+' <span class="gf">(trop grands)</span></span>');
+    }
+    if (notInTrans.length >= 1) {
+        let nitList = toNiceString(notInTrans);
+        $('#list_soute').append('<br><span class="listRes blanc">&nbsp '+nitList+' <span class="gf">(manque de place)</span></span>');
+    }
+};
+
+function addNewArmyBat(bat,batType) {
+    let newArmyBat = {};
+    newArmyBat.name = batType.name;
+    newArmyBat.id = bat.id;
+    newArmyBat.size = batType.size;
+    newArmyBat.volume = calcVolume(bat,batType);
+    newArmyBat.transUnits = calcBatTransUnits(bat,batType);
+    newArmyBat.transMaxSize = batType.transMaxSize;
+    if (newArmyBat.transUnits >= 500) {
+        newArmyBat.cat = 'trans';
+    } else if (newArmyBat.size <= 9) {
+        newArmyBat.cat = 'inf';
+    } else {
+        newArmyBat.cat = 'out';
+    }
+    return newArmyBat;
 };
 
 function batListElement(bat,batType,idOfLander) {

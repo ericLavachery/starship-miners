@@ -431,6 +431,20 @@ function calcTransUnitsLeft(myBat,myBatType) {
     return myBatTransUnitsLeft;
 };
 
+function calcBatTransUnits(myBat,myBatType) {
+    let myBatTransUnitsLeft = myBatType.transUnits;
+    if (myBatTransUnitsLeft >= 1) {
+        if (hasEquip(myBat,['garage'])) {
+            myBatTransUnitsLeft = myBatTransUnitsLeft*2;
+        }
+        if (hasEquip(myBat,['maxtrans'])) {
+            myBatTransUnitsLeft = calcTransWithBreak(myBatTransUnitsLeft,myBatType);
+        }
+    }
+    // console.log('myBatTransUnitsLeft'+myBatTransUnitsLeft);
+    return myBatTransUnitsLeft;
+};
+
 function checkLanderResSpace(bat) {
     let batType = getBatType(bat);
     let resLoaded = checkResLoad(bat);

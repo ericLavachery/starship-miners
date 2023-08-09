@@ -1509,6 +1509,9 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
     } else {
         conselReset(true);
     }
+    if (playerInfos.onShip && !inSoute) {
+        souteFilter = 'all';
+    }
 };
 
 function checkXPBonus(myBatType) {
