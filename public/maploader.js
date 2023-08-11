@@ -574,15 +574,15 @@ function showAlien(bat) {
             if (degNum >= 7) {
                 $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/invisible.png" width="64"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
             } else {
-                $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
+                $('#b'+bat.tileId).append('<div class="iUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="9"></div>'+resHere);
             }
         } else {
             $('#b'+bat.tileId).append('<div class="iUnits"></div><div class="aliInfos"></div><div class="degInfos"></div>'+resHere);
         }
     } else if (batType.kind === 'game') {
-        $('#b'+bat.tileId).append('<div class="gUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64" title="'+batShowedNum+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/gvet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
+        $('#b'+bat.tileId).append('<div class="gUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64" title="'+batShowedNum+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/gvet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="9"></div>'+resHere);
     } else {
-        $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64" title="'+batShowedNum+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"></div>'+resHere);
+        $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64" title="'+batShowedNum+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="9"></div>'+resHere);
     }
 };
 
@@ -593,6 +593,11 @@ function showBataillon(bat) {
         if (bat.chief != '') {
             let grade = getGrade(bat,batType);
             nomComplet = nomComplet+' ('+grade+' '+bat.chief+')';
+        }
+    }
+    if (bat.army != undefined) {
+        if (bat.army >= 1) {
+            nomComplet = nomComplet+' (a'+bat.army+')';
         }
     }
     let batPic = getBatPic(bat,batType);
@@ -609,6 +614,7 @@ function showBataillon(bat) {
     let resHere = showRes(bat.tileId);
     let degNum = getDamageBar(bat);
     let activityBar = getActivityBar(bat,batType);
+    let transBar = getTransBar(bat,batType);
     let uClass = 'pUnits';
     if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
         if (batType.name === 'Soute') {
@@ -654,14 +660,23 @@ function showBataillon(bat) {
         uClass = uClass+' nmUnits';
     }
     if (mode === 'move') {
-        $('#b'+bat.tileId).append('<div class="'+uClass+'" id="xk'+bat.id+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
+        $('#b'+bat.tileId).append('<div class="'+uClass+'" id="xk'+bat.id+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="9"><img src="/static/img/'+activityBar+'.png" width="9"><img src="/static/img/'+transBar+'.png" width="9"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
     } else {
         if (!modeSonde) {
-            $('#b'+bat.tileId).append('<div class="'+uClass+'" id="xk'+bat.id+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+tagz+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
+            $('#b'+bat.tileId).append('<div class="'+uClass+'" id="xk'+bat.id+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+tagz+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="9"><img src="/static/img/'+activityBar+'.png" width="9"><img src="/static/img/'+transBar+'.png" width="9"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
         } else {
             $('#b'+bat.tileId).append('<div class="'+uClass+'"></div><div class="degInfos"></div><div class="batInfos"></div>'+resHere);
         }
     }
+};
+
+function getTransBar(bat,batType) {
+    let transBar = 'abar-empty';
+    let isCharged = checkCharged(bat,'trans');
+    if (isCharged) {
+        transBar = 'abar-trans';
+    }
+    return transBar;
 };
 
 function getActivityBar(bat,batType) {
@@ -684,7 +699,7 @@ function getActivityBar(bat,batType) {
     }
     if (activityBar === 'abar-nope') {
         if (!playerInfos.onShip) {
-            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai']) || batType.skills.includes('initiative') || batType.skills.includes('noguet') || Object.keys(batType.weapon).length <= 0) {
+            if (bat.tags.includes('guet') || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai']) || batType.skills.includes('initiative')) {
                 activityBar = 'abar-guet';
             }
         }
@@ -835,7 +850,7 @@ function showPrefab(bat) {
         }
     }
     if (!modeSonde) {
-        $('#b'+bat.vmt).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="7"><img src="/static/img/'+activityBar+'.png" width="7"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
+        $('#b'+bat.vmt).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="9"><img src="/static/img/'+activityBar+'.png" width="9"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
     } else {
         $('#b'+bat.vmt).append('<div class="'+uClass+'"></div><div class="degInfos"></div><div class="batInfos"></div>'+resHere);
     }

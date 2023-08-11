@@ -446,7 +446,7 @@ hr.craft {
     -webkit-text-stroke-color: #404040;
     text-align: left;
     position: absolute;
-    margin-left: 2px;
+    margin-left: -3px;
     margin-top: -3px;
 }
 .batInfos {
@@ -456,8 +456,8 @@ hr.craft {
     -webkit-text-stroke-color: #404040;
     text-align: left;
     position: absolute;
-    margin-left: 16px;
-    margin-top: -3px;
+    margin-left: -1px;
+    margin-top: 15px;
 }
 .aliInfos {
     font-size: 10px;
