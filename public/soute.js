@@ -407,6 +407,9 @@ function checkArmyTrans(armyBats,armyTransSize,armyTransVol) {
     let notInTrans = [];
     let tooBigForTrans = [];
     let transName = 'véhicules';
+    let miniTransVol = 0;
+    let miniTransSize = 0;
+    let miniName = 'véhicules';
     let sortedBats = armyBats.slice();
     sortedBats = _.sortBy(sortedBats,'volume');
     sortedBats = sortedBats.reverse();
@@ -423,12 +426,40 @@ function checkArmyTrans(armyBats,armyTransSize,armyTransVol) {
             }
         } else if (bat.cat === 'trans') {
             transName = bat.name;
+        } else if (bat.cat === 'mini' && bat.transUnits > miniTransVol) {
+            miniName = bat.name;
+            miniTransVol = bat.transUnits;
+            miniTransSize = bat.transMaxSize;
         }
     });
+    let batsInMini = false;
+    if (notInTrans.length >= 1 && miniTransVol >= 70) {
+        let miniTransLeft = miniTransVol;
+        sortedBats.forEach(function(bat) {
+            if (bat.cat === 'inf' && notInTrans.includes(bat.name)) {
+                if (bat.size <= miniTransSize) {
+                    if (miniTransLeft >= bat.volume) {
+                        miniTransLeft = miniTransLeft-bat.volume;
+                        let index = notInTrans.indexOf(bat.name);
+                        notInTrans.splice(index,1);
+                        batsInMini = true;
+                    }
+                }
+            }
+        });
+    }
     if (notInTrans.length === 0 && tooBigForTrans.length === 0) {
-        $('#list_soute').append('<br><span class="listRes cy">&nbsp Tous les bataillons rentrent dans les '+transName+'</span>');
+        if (batsInMini) {
+            $('#list_soute').append('<br><span class="listRes cy">&nbsp Tous les bataillons rentrent dans les véhicules.</span>');
+        } else {
+            $('#list_soute').append('<br><span class="listRes cy">&nbsp Tous les bataillons rentrent dans les '+transName+'.</span>');
+        }
     } else {
-        $('#list_soute').append('<br><span class="listRes or">&nbsp Ces bataillons ne rentrent pas dans les '+transName+':</span>');
+        if (batsInMini) {
+            $('#list_soute').append('<br><span class="listRes or">&nbsp Ces bataillons ne rentrent pas dans les véhicules:</span>');
+        } else {
+            $('#list_soute').append('<br><span class="listRes or">&nbsp Ces bataillons ne rentrent pas dans les '+transName+':</span>');
+        }
     }
     if (tooBigForTrans.length >= 1) {
         let nitList = toNiceString(tooBigForTrans);
@@ -437,6 +468,9 @@ function checkArmyTrans(armyBats,armyTransSize,armyTransVol) {
     if (notInTrans.length >= 1) {
         let nitList = toNiceString(notInTrans);
         $('#list_soute').append('<br><span class="listRes blanc">&nbsp '+nitList+' <span class="gf">(manque de place)</span></span>');
+    }
+    if (batsInMini) {
+        $('#list_soute').append('<br><span class="listRes vert">&nbsp Certains bataillons ne rentrent pas dans les '+transName+'.<br>&nbsp Ils devront être transportés par les '+miniName+'.</span>');
     }
 };
 
@@ -452,6 +486,8 @@ function addNewArmyBat(bat,batType) {
         newArmyBat.cat = 'trans';
     } else if (newArmyBat.size <= 9) {
         newArmyBat.cat = 'inf';
+    } else if (newArmyBat.transUnits >= 75) {
+        newArmyBat.cat = 'mini';
     } else {
         newArmyBat.cat = 'out';
     }

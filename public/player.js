@@ -634,7 +634,7 @@ function playerSkillsUTChanges() {
             }
         }
         // DEALERS
-        if (unit.cat != 'infantry' && unit.kind === 'zero-medecine' && unit.skills.includes('dealer') && playerInfos.comp.med >= 1) {
+        if (unit.cat != 'infantry' && (unit.kind === 'zero-medecine' || unit.name === 'Medevacs') && unit.skills.includes('dealer') && playerInfos.comp.med >= 1) {
             if (playerInfos.gang === 'blades') {
                 unit.skills.push('sila');
             }

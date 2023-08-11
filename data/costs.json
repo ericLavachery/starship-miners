@@ -1994,6 +1994,16 @@
         "fabTime":150
     },
     {
+        "id":318,
+        "name":"Medevacs",
+        "levels":{"rednecks":18,"blades":13,"bulbos":16,"drogmulojs":16,"tiradores":16,"detruas":99,"brasier":16},
+        "bldReq":["Hôpital","Aérodocks","Centre de com"],
+        "compReq":{"aero":1,"med":2},
+        "costs":{"Scrap":162,"Carbone":234,"Aluminium":300,"Moteurs":150,"Plastanium":45,"Titane":690,"Cuivre":90,"Electros":220,"Batteries":100,"Silicium":27,"Drogues":130,"Chlore":60,"Zinc":60,"Tissus":30},
+        "deploy":{"Fuel":320,"Drogues":40,"Chlore":20,"Zinc":20,"Tissus":20},
+        "fabTime":160
+    },
+    {
         "id":296,
         "name":"Whales",
         "levels":{"rednecks":19,"blades":18,"bulbos":19,"drogmulojs":19,"tiradores":19,"detruas":99,"brasier":19},
