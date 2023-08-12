@@ -63,6 +63,7 @@ let rescueRateDiv = 150; // default 150
 let mineRateDiv = 125; // divise le mining rate : def 200 (before: 125)
 let resFoundDiv = 8; // default 9
 let resBatchDiv = 14; // divise la quantité de ressource
+let scrapInRuins = 1.3;
 let permaRes = false;
 let resPersistance = 20; // default 10
 let minResForRate = 20;

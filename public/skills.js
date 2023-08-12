@@ -8,6 +8,8 @@ function guet() {
     if (selectedBatType.skills.includes('baddef') && !selectedBatType.skills.includes('fastguet')) {
         selectedBat.apLeft = selectedBat.apLeft-2;
     }
+    let weap = selectedBatType.weapon;
+    reloadSound(weap);
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
