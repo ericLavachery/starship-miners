@@ -846,7 +846,11 @@ function pickZone() {
             } else if (zoneInfo.planet === 'Horst') {
                 planetCol = 'rouge';
             }
-            $('#conUnitList').append('<span class="paramName cy klik" onclick="putMissionZone('+zoneId+','+zoneInfo.pid+')">Choisir '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span> <span class="'+planetCol+'" title="Planète: '+zoneInfo.planet+'">&#9864;</span><br>');
+            let linkCol = 'cy';
+            if (zoneId >= 50) {
+                linkCol = 'blynk';
+            }
+            $('#conUnitList').append('<span class="paramName '+linkCol+' klik" onclick="putMissionZone('+zoneId+','+zoneInfo.pid+')">Choisir '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span> <span class="'+planetCol+'" title="Planète: '+zoneInfo.planet+'">&#9864;</span><br>');
         }
     });
     $('#conUnitList').append('<br>');
