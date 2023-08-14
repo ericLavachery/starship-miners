@@ -1552,7 +1552,7 @@
         "weapon":{
             "name":"Flak canon",
             "cost":3,
-            "range":6,
+            "range":7,
             "noise":4,
             "isArt":true,
             "noGround":true,

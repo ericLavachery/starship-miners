@@ -505,7 +505,8 @@ function showStartLander() {
         let allInLanders = true;
         bataillons.forEach(function(bat) {
             if (bat.loc === 'zone') {
-                if (!batType.skills.includes('transorbital')) {
+                let batType = getBatType(bat);
+                if (!batType.skills.includes('transorbital') && !batType.skills.includes('nolist')) {
                     allInLanders = false;
                 }
             }
