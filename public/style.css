@@ -134,6 +134,9 @@ h6 {
 .small {
     font-size: 13px;
 }
+.sosmall {
+    font-size: 11px;
+}
 .eyeLink {
     margin: 0 0 0 0;
     color: #fbffab;
@@ -1167,6 +1170,10 @@ td {
 }
 .bigSpace {
     width: 12px;
+    display: inline-block;
+}
+.bigHSpace {
+    width: 94px;
     display: inline-block;
 }
 a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover,a.gris:hover,a.blanc:hover,a.bleu:hover {

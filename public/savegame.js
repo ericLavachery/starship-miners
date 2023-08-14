@@ -501,6 +501,19 @@ function showStartLander() {
         playMusic('silence',true);
     }
     saveAutoBackup();
+    if (!playerInfos.onShip) {
+        let allInLanders = true;
+        bataillons.forEach(function(bat) {
+            if (bat.loc === 'zone') {
+                if (!batType.skills.includes('transorbital')) {
+                    allInLanders = false;
+                }
+            }
+        });
+        if (!allInLanders) {
+            warning('<span class="rq3">Attention!</span>','<span class="vio">Tous vos bataillons ne sont pas embarqués dans le lander!</span>');
+        }
+    }
     // let myVol = checkMyVol(playerInfos.volMu+0.3,'volMu');
     // theMusic.fade(myVol,0.0,3000);
     setTimeout(function (){

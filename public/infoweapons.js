@@ -150,6 +150,8 @@ function weaponsInfos(bat,batType,tile,pop) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGrey iconButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
                 }
             }
+            doubleAttaque(bat,batType,thisWeapon,bodyPlace);
+            bullseyeShot(bat,batType,thisWeapon,bodyPlace,inMelee);
             let maxSalves = batType.maxSalvo;
             let resteSalves = bat.salvoLeft;
             if (thisWeapon.noBis) {
@@ -428,6 +430,8 @@ function weaponsInfos(bat,batType,tile,pop) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGrey iconButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+hasLG+'</'+balise+'></span><br>');
                 }
             }
+            doubleAttaque(bat,batType,thisWeapon,bodyPlace);
+            bullseyeShot(bat,batType,thisWeapon,bodyPlace,inMelee);
             let maxSalves = batType.maxSalvo;
             let resteSalves = bat.salvoLeft;
             if (thisWeapon.noBis) {
@@ -583,6 +587,121 @@ function weaponsInfos(bat,batType,tile,pop) {
                 } else {
                     if (!thisWeapon.isPrec && !thisWeapon.isBow && !thisWeapon.noDatt) {
                         $('#'+bodyPlace).append('<span class="paramName">Double attaque</span><span class="paramIcon gf"><i class="ra ra-fire rpg"></i></span><span class="paramValue">Oui</span><br>');
+                    }
+                }
+            }
+        }
+    }
+};
+
+function doubleAttaque(bat,batType,weap,bodyPlace) {
+    // DOUBLE ATTAQUE
+    if (!playerInfos.onShip && !bat.tags.includes('embuscade')) {
+        if (batType.skills.includes('datt')) {
+            let isTir = false;
+            if (batType.skills.includes('tirailleur') && bat.oldTileId != bat.tileId) {
+                isTir = true;
+            }
+            let trainComp = playerInfos.comp.train;
+            if (batType.skills.includes('robot') && noEquip(bat,['g2ai'])) {
+                trainComp = 0;
+            } else {
+                if (playerInfos.bldVM.includes('Camp d\'entraînement')) {
+                    trainComp = trainComp+1;
+                }
+            }
+            let apCost = 7-trainComp;
+            let apReq = 1;
+            let weapOK = true;
+            if (!weap.isPrec && !weap.isBow && !weap.noDatt) {
+                apReq = apCost+weap.cost;
+            } else {
+                weapOK = false;
+            }
+            if (weapOK && !isTir) {
+                let skillMessage = "";
+                let balise = 'h4';
+                let boutonNope = 'boutonGrey';
+                let colorNope = 'gf';
+                if (bat.tags.includes('datt')) {
+                    balise = 'h3';
+                    boutonNope = 'boutonOK';
+                    colorNope = 'cy';
+                }
+                if (bat.apLeft >= apReq && !bat.tags.includes('datt') && batHasTarget) {
+                    $('#'+bodyPlace).append('<span class="bigHSpace"></span><button type="button" title="Double attaque: Cadence 165% / Précision 50%" class="boutonBrun skillButtons" onclick="fury('+apCost+')"><i class="ra ra-fire rpg"></i> <span class="sosmall">'+apCost+'</span></button><br>');
+                } else {
+                    if (bat.tags.includes('datt')) {
+                        skillMessage = "Double attaque: Déjà activé";
+                    } else if (!batHasTarget) {
+                        skillMessage = "Double attaque: Pas de cible";
+                    } else {
+                        skillMessage = "Double attaque: Pas assez de PA";
+                    }
+                    $('#'+bodyPlace).append('<span class="bigHSpace"></span><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="ra ra-fire rpg"></i> <span class="sosmall">'+apCost+'</span></button><br>');
+                }
+            }
+        }
+    }
+};
+
+function bullseyeShot(bat,batType,weap,bodyPlace,inMelee) {
+    // BULLSEYE
+    if (!playerInfos.onShip) {
+        if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && hasEquip(bat,['g2ai'])) || (batType.skills.includes('w2cible') && (bat.eq.includes('w2') || playerInfos.comp.def === 3))) {
+            let tcBonus = calcCibleBonus(batType);
+            let apCost = tcBonus.ap;
+            let apReq = 1;
+            let weapOK = true;
+            if (weap.isPrec) {
+                apReq = apCost+weap.cost;
+            } else {
+                weapOK = false;
+            }
+            if (weapOK) {
+                let skillMessage = "";
+                balise = 'h4';
+                boutonNope = 'boutonGrey';
+                colorNope = 'gf';
+                if (bat.tags.includes('vise')) {
+                    balise = 'h3';
+                    boutonNope = 'boutonOK';
+                    colorNope = 'cy';
+                }
+                let tcPrec = Math.round(100*tcBonus.prec);
+                let tcRof = Math.round(100*tcBonus.rof);
+                let tcPow = Math.round(100*tcBonus.pow);
+                let tcInfo = '+'+tcPrec+'% précision, '+tcRof+'% cadence, '+tcPow+'% puissance ('+apCost+' PA + coût de l\'arme)';
+                if (bat.apLeft >= apReq && !bat.tags.includes('vise') && !inMelee && batHasTarget) {
+                    $('#'+bodyPlace).append('<span class="bigHSpace"></span><button type="button" title="Bullseye: '+tcInfo+'" class="boutonBrun skillButtons" onclick="tirCible('+apCost+')"><i class="fas fa-crosshairs"></i> <span class="sosmall">'+apCost+'</span></button>');
+                    // INSTAKILL
+                    if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill')) {
+                        $('#'+bodyPlace).append('<button type="button" title="Instakill: Seulement en combinaison avec Bullseye" class="boutonGrey skillButtons gf"><i class="fas fa-skull-crossbones"></i> <span class="sosmall">0</span></button>');
+                    } else {
+                        $('#unitInfos').append('<br>');
+                    }
+                } else {
+                    if (bat.tags.includes('vise')) {
+                        skillMessage = "Bullseye: Déjà activé";
+                    } else if (inMelee) {
+                        skillMessage = "Bullseye: Impossible en mêlée";
+                    } else if (!batHasTarget) {
+                        skillMessage = "Bullseye: Pas de cible";
+                    } else {
+                        skillMessage = "Bullseye: Pas assez de PA";
+                    }
+                    if (bat.tags.includes('vise')) {
+                        $('#'+bodyPlace).append('<span class="bigHSpace"></span><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-crosshairs"></i> <span class="sosmall">'+apCost+'</span></button>');
+                        // INSTAKILL
+                        if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill')) {
+                            $('#'+bodyPlace).append('<button type="button" title="Instakill" class="boutonJaune skillButtons" onclick="instaKill()"><i class="fas fa-skull-crossbones"></i> <span class="sosmall">0</span></button>');
+                        } else if (bat.tags.includes('kill')) {
+                            $('#'+bodyPlace).append('<button type="button" title="Instakill: Activé" class="boutonOK skillButtons cy"><i class="fas fa-skull-crossbones"></i> <span class="sosmall">0</span></button>');
+                        } else {
+                            $('#unitInfos').append('<br>');
+                        }
+                    } else {
+                        $('#'+bodyPlace).append('<span class="bigHSpace"></span><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-crosshairs"></i> <span class="sosmall">'+apCost+'</span></button><br>');
                     }
                 }
             }
