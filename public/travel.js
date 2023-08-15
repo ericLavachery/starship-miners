@@ -113,6 +113,29 @@ function updateVMRes() {
     });
 };
 
+function warningLanderFret(myBat,myBatType) {
+    let warn = false;
+    if (myBatType.name === 'Soute') {
+        if (playerInfos.onShip) {
+            let landerDeployed = isLanderDeployed();
+            if (!landerDeployed) {
+                bataillons.forEach(function(bat) {
+                    if (bat.type != 'Soute') {
+                        if (bat.transRes != undefined) {
+                            if (Object.keys(bat.transRes).length >= 1) {
+                                warn = true;
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+    if (warn && !lastAlert.includes('Butin')) {
+        warning('<span class="rq3">Butin</span>','<span class="vio">N\'oubliez pas de transférer les ressources du lander vers la soute.</span>');
+    }
+};
+
 function stopMission() {
     $('#unitInfos').empty();
     $("#unitInfos").css("display","none");
@@ -850,7 +873,7 @@ function pickZone() {
             if (zoneId >= 50) {
                 linkCol = 'blynk';
             }
-            $('#conUnitList').append('<span class="paramName '+linkCol+' klik" onclick="putMissionZone('+zoneId+','+zoneInfo.pid+')">Choisir '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span> <span class="'+planetCol+'" title="Planète: '+zoneInfo.planet+'">&#9864;</span><br>');
+            $('#conUnitList').append('<span class="paramName '+linkCol+' klik" onclick="putMissionZone('+zoneId+','+zoneInfo.pid+')">Choisir '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span> <span class="'+planetCol+' wback" title="Planète: '+zoneInfo.planet+'">&#9864;</span><br>');
         }
     });
     $('#conUnitList').append('<br>');

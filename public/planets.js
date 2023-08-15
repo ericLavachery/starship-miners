@@ -333,7 +333,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 5) {
+        if (doom >= 5.1) {
             if (playerInfos.objectifs.trolley === 'none') {
                 nextMission.num = getNextMissionNum(50,54);
                 if (nextMission.num >= 50) {

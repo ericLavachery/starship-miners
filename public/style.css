@@ -1195,6 +1195,9 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
     font-weight: bold;
     background-color: #363d42;
 }
+.wback {
+    background-color: #c0c6d1;
+}
 .rouge {
     color: #b41947;
 }

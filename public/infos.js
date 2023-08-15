@@ -100,6 +100,7 @@ function batInfos(bat,batType,pop) {
     if (batType.skills.includes('transorbital')) {
         checkModules(bat,batType);
     }
+    warningLanderFret(bat,batType);
     let tagColor = 'cy';
     let batPic = getBatPic(bat,batType);
     let tile = getTile(bat);

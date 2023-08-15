@@ -454,6 +454,7 @@ function checkArmyTrans(armyBats,armyTransSize,armyTransVol) {
         } else {
             $('#list_soute').append('<br><span class="listRes cy">&nbsp Tous les bataillons rentrent dans les '+transName+'.</span>');
         }
+        $('#list_soute').append('<br><span class="listRes gf">&nbsp (Place restante: '+armyTransLeft+')</span>');
     } else {
         if (batsInMini) {
             $('#list_soute').append('<br><span class="listRes or">&nbsp Ces bataillons ne rentrent pas dans les véhicules:</span>');

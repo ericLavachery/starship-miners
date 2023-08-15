@@ -2316,7 +2316,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","w1-ggun","w2-arti","w2-laser","psol2","isophon","lifepod","garage"],
+        "equip":["aucun","w2-arti","w2-laser","psol2","isophon","lifepod","garage"],
         "log3eq":["psol2"],
         "autoEq":["garage","isophon"],
         "moveCost":99,

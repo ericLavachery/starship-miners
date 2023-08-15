@@ -200,6 +200,7 @@ let hasOwnLander = false;
 let numLaserSat = 0;
 let friendsAlert = false;
 let noControlAlert = false;
+let lastAlert = 'none';
 let fogRange = 5;
 let foggedTiles = [];
 let doggedTiles = [];

@@ -776,11 +776,19 @@ function blockThem(stop) {
     commandes();
 };
 
+function jsErrorWarning(theError) {
+    pageError = true;
+    playSound('jumpscare2',-1);
+    warning('<h5>ERREUR JAVASCRIPT</h5>','<span class="hjaune">NE SAUVEGARDEZ PAS! Prenez une photo de l\'erreur dans la console (ctrl-maj-j). Notez l\'action que vous venez de faire. Rapportez le bug.</span><br>'+theError,false);
+    commandes();
+};
+
 function washReports(warningsAlso) {
     if (warningsAlso) {
         $('#warnings').empty();
         $('#warnings').append('<i class="far fa-hand-paper washTop" onclick="washReports(true)" title="Supprimer toutes les alertes"></i> &nbsp; <h4>Messages</h4><br>');
         friendsAlert = false;
+        lastAlert = 'none';
     }
     $('#report').empty();
 };
@@ -788,14 +796,8 @@ function washReports(warningsAlso) {
 function washThisWarning(warnNumber) {
     $('#warn'+warnNumber).empty();
     friendsAlert = false;
+    lastAlert = 'none';
     $('#report').empty();
-};
-
-function jsErrorWarning(theError) {
-    pageError = true;
-    playSound('jumpscare2',0);
-    warning('<h5>ERREUR JAVASCRIPT</h5>','<span class="hjaune">NE SAUVEGARDEZ PAS! Prenez une photo de l\'erreur dans la console (ctrl-maj-j). Notez l\'action que vous venez de faire. Rapportez de bug.</span><br>'+theError,false);
-    commandes();
 };
 
 function warning(title,body,noHand,tileId,closeAll) {
@@ -821,6 +823,7 @@ function warning(title,body,noHand,tileId,closeAll) {
     if (title.includes('rq3')) {
         playSound('attention',0,false);
     }
+    lastAlert = title;
 };
 
 function warnLink(tileId) {
