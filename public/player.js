@@ -433,7 +433,7 @@ function allowedArmors(unit) {
         protection.push('swing');
         protection.push('adamantite');
         protection.push('dragscale');
-        if (!unit.skills.includes('fly') && !unit.skills.includes('dog')) {
+        if (!unit.skills.includes('fly') && !unit.skills.includes('dog') && !unit.skills.includes('moto')) {
             protection.push('battlesuit');
             protection.push('turbosuit');
             protection.push('medsuit');

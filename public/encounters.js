@@ -2164,7 +2164,7 @@ function workingTurrets() {
     playerOccupiedTileList();
     if (!zone[0].visit && zone[0].number < 50) {
         let turretsNum = 0;
-        let baseDice = 12-Math.ceil(zone[0].mapDiff/2);
+        let baseDice = 7-Math.ceil(zone[0].mapDiff/3);
         let maxTurrets = Math.ceil(zone[0].mapDiff/3)+rand.rand(0,4);
         let shufZone = _.shuffle(zone);
         shufZone.forEach(function(tile) {

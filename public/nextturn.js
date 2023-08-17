@@ -1823,7 +1823,7 @@ function tagsEffect(bat,batType) {
             } else if (batType.skills.includes('resistpoison') && rand.rand(1,8) === 1) {
                 tagDelete(bat,'shinda');
             } else {
-                let shindaDamage = Math.round(Math.sqrt(batType.hp)*30);
+                let shindaDamage = Math.round(Math.sqrt(batType.hp)*40);
                 if (batType.skills.includes('reactpoison') || bat.tags.includes('reactpoison')) {
                     shindaDamage = shindaDamage*2;
                 }

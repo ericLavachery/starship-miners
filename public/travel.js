@@ -847,6 +847,7 @@ function pickZone() {
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<div id="zoneDetail"></div>');
     console.log('CHOISIR UNE ZONE POUR VOTRE PROCHAINE MISSION');
+    let allVisited = true;
     zoneFiles.forEach(function(zoneId) {
         if (zoneId != 0 && zoneId < 90) {
             let showInfo = '{Rien}';
@@ -880,6 +881,7 @@ function pickZone() {
                     linkCol = 'gff';
                 }
             } else {
+                allVisited = false;
                 if (zoneId >= 50) {
                     linkCol = 'blynk';
                 } else {
@@ -890,6 +892,9 @@ function pickZone() {
         }
     });
     $('#conUnitList').append('<br>');
+    if (allVisited) {
+        $('#conUnitList').append('<span class="ListRes or">Vous avez déjà exploré toutes ces zones.</span><br>');
+    }
     $('#conUnitList').append('<span class="ListRes">Pour avoir plus de zones, lancez une sonde!</span><br>');
     $('#conUnitList').append('<br>');
     $("#conUnitList").animate({scrollTop:0},"fast");
