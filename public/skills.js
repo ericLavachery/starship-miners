@@ -623,7 +623,7 @@ function calcCamo(bat) {
 
 function camouflage(apCost) {
     console.log('MODE FURTIF');
-    if (apCost <= selectedBat.ap || playerInfos.pseudo === 'Mapedit' || hasEquip(selectedBat,['bld-camo'])) {
+    if (apCost <= selectedBat.ap+1 || playerInfos.pseudo === 'Mapedit' || hasEquip(selectedBat,['bld-camo'])) {
         let camChance = calcCamo(selectedBat);
         let camOK = false;
         let camDice = rand.rand(1,100);
@@ -654,8 +654,8 @@ function camouflage(apCost) {
             selectedBat.apLeft = selectedBat.apLeft-apCost;
         }
     } else {
-        selectedBat.camoAP = apCost-Math.floor(selectedBat.ap/2);
-        selectedBat.apLeft = selectedBat.apLeft-Math.floor(selectedBat.ap/2);
+        selectedBat.camoAP = apCost-selectedBat.apLeft;
+        selectedBat.apLeft = 0;
         console.log('camoAP'+selectedBat.camoAP);
     }
     if (!selectedBat.tags.includes('camo')) {

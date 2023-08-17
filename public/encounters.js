@@ -1937,6 +1937,7 @@ function nomoveOut(myBat) {
 };
 
 function removeNoMoves(myBat) {
+    let myBatType = getBatType(myBat);
     let nevMove = false;
     if (zone[0].neverMove != undefined) {
         if (zone[0].neverMove) {
@@ -1944,7 +1945,7 @@ function removeNoMoves(myBat) {
         }
     }
     if (!nevMove) {
-        if (myBat.type != 'Silo' && myBat.cat === 'buildings') {
+        if (myBat.type != 'Silo' && myBatType.cat === 'buildings') {
             bataillons.forEach(function(bat) {
                 let batType = getBatType(bat);
                 if (bat.tags.includes('nomove') && !batType.skills.includes('nomove')) {
