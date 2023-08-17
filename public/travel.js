@@ -856,6 +856,9 @@ function pickZone() {
                 showInfo = toZoneString(zoneInfo);
             }
             let zoneName = 'Zone '+zoneId;
+            if (zoneId >= 50) {
+                zoneName = 'Mission '+zoneId;
+            }
             if (zoneInfo.name != undefined) {
                 zoneName = zoneInfo.name;
             }
@@ -870,8 +873,18 @@ function pickZone() {
                 planetCol = 'rouge';
             }
             let linkCol = 'cy';
-            if (zoneId >= 50) {
-                linkCol = 'blynk';
+            if (zoneInfo.visit) {
+                if (zoneId >= 50) {
+                    linkCol = 'gf';
+                } else {
+                    linkCol = 'gff';
+                }
+            } else {
+                if (zoneId >= 50) {
+                    linkCol = 'blynk';
+                } else {
+                    linkCol = 'cy';
+                }
             }
             $('#conUnitList').append('<span class="paramName '+linkCol+' klik" onclick="putMissionZone('+zoneId+','+zoneInfo.pid+')">Choisir '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span> <span class="'+planetCol+' wback" title="Planète: '+zoneInfo.planet+'">&#9864;</span><br>');
         }
@@ -903,8 +916,19 @@ function feedZoneDB() {
         newZone.id = zone[0].number;
         newZone.planet = zone[0].planet;
         newZone.pid = zone[0].pid;
+        if (zone[0].title != undefined) {
+            newZone.title = zone[0].title;
+        }
+        if (zone[0].body != undefined) {
+            newZone.body = zone[0].body;
+        }
         if (zone[0].name != undefined) {
             newZone.name = zone[0].name;
+        }
+        if (zone[0].visit != undefined) {
+            newZone.visit = zone[0].visit;
+        } else {
+            newZone.visit = false;
         }
         newZone.dark = zone[0].dark;
         newZone.mapDiff = zone[0].mapDiff;
@@ -947,8 +971,19 @@ function feedZoneDBwith(myZone) {
         newZone.id = myZone[0].number;
         newZone.planet = myZone[0].planet;
         newZone.pid = myZone[0].pid;
+        if (myZone[0].title != undefined) {
+            newZone.title = myZone[0].title;
+        }
+        if (myZone[0].body != undefined) {
+            newZone.body = myZone[0].body;
+        }
         if (myZone[0].name != undefined) {
             newZone.name = myZone[0].name;
+        }
+        if (myZone[0].visit != undefined) {
+            newZone.visit = myZone[0].visit;
+        } else {
+            newZone.visit = false;
         }
         newZone.dark = myZone[0].dark;
         newZone.mapDiff = myZone[0].mapDiff;
@@ -973,6 +1008,17 @@ function feedZoneDBwith(myZone) {
         dbZone.id = myZone[0].number;
         dbZone.planet = myZone[0].planet;
         dbZone.pid = myZone[0].pid;
+        if (myZone[0].title != undefined) {
+            dbZone.title = myZone[0].title;
+        }
+        if (myZone[0].body != undefined) {
+            dbZone.body = myZone[0].body;
+        }
+        if (myZone[0].visit != undefined) {
+            dbZone.visit = myZone[0].visit;
+        } else {
+            dbZone.visit = false;
+        }
         dbZone.dark = myZone[0].dark;
         dbZone.mapDiff = myZone[0].mapDiff;
         dbZone.ensol = myZone[0].ensol;
@@ -1178,6 +1224,18 @@ function showZonePreview() {
     $('#zoneDetail').empty();
     let showInfo = '';
     let zoneInfo = getZoneInfo(zonePrev[0].number);
+    if (zoneInfo.title != undefined) {
+        $('#zoneDetail').append('<h3>'+zoneInfo.title+'</h3><br>');
+        $('#zoneDetail').append('<span class="ListRes jaune">'+zoneInfo.body+'<br></span>');
+    } else {
+        let misNum = playerInfos.nmi+1;
+        $('#zoneDetail').append('<h3>Mission '+misNum+'</h3><br>');
+        $('#zoneDetail').append('<span class="ListRes jaune">Récupérez un maximum de ressources et de survivants<br></span>');
+    }
+    if (zoneInfo.visit) {
+        $('#zoneDetail').append('<span class="ListRes or">Vous avez déjà exploré cette zone!<br></span>');
+    }
+    $('#zoneDetail').append('<br>');
     if (zoneInfo.mapDiff != undefined) {
         showInfo = toZoneString(zoneInfo);
         showInfo = showInfo.replace(/{/g,'');
