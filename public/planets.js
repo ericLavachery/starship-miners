@@ -172,14 +172,22 @@ function planetEffects(bat,batType) {
                 } else if (bat.loc === "trans") {
                     let transBat = getBatById(bat.locId);
                     let transBatType = getBatType(transBat);
-                    if (transBatType.cat === 'buildings' || transBatType.skills.includes('transorbital')) {
+                    if (transBatType.skills.includes('transorbital')) {
+                        medDice = medDice+100;
+                    } else if (transBatType.cat === 'buildings') {
                         medDice = medDice-terrain.veg+10;
                     } else {
                         medDice = medDice-terrain.veg+4;
                     }
                     if (transBatType.squads > transBat.squadsLeft) {
-                        medDice = medDice-4
+                        medDice = medDice/2;
                     }
+                    if (playerInfos.comp.scaph < 1) {
+                        medDice = medDice/2;
+                    }
+                }
+                if (batType.skills.includes('dog')) {
+                    medDice = medDice*2;
                 }
                 medDice = Math.round(medDice);
                 if (medDice < 1) {
@@ -188,9 +196,11 @@ function planetEffects(bat,batType) {
                 let medRoll = rand.rand(1,medDice);
                 if (medRoll === 1) {
                     bat.tags.push('poison');
-                    bat.tags.push('poison');
-                    if (batType.squads > bat.squadsLeft) {
-                        bat.tags.push('maladie');
+                    if (!batType.skills.includes('dog')) {
+                        bat.tags.push('poison');
+                        if (batType.squads > bat.squadsLeft) {
+                            bat.tags.push('maladie');
+                        }
                     }
                     warning('Poison',batType.name+' empoisonnés par les spores',false,bat.tileId);
                 } else if (medRoll === 2) {

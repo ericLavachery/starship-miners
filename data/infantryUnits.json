@@ -4246,7 +4246,6 @@
             "elevation":2,
             "isPrec":true,
             "vision":true,
-            "noBis":true,
             "noise":0,
             "rof":8,
             "accuracy":36,

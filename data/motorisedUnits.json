@@ -3302,7 +3302,7 @@
         "maxScarp":2,
         "maxVeg":2,
         "skills":["b_mid","fortif","maycamo","transport","ouvert","transveh","fret","selfmecano","caterp","dumper","routes","light","accu","crewsave","recupcit","nocrime","recupres","nochef","treuil","lveh"],
-        "mecanoCost":12,
+        "mecanoCost":9,
         "transMaxSize":48,
         "transUnits":1000,
         "transRes":1000,
