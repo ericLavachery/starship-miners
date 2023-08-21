@@ -2068,6 +2068,11 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.noDatt = weapon.noDatt;
     }
+    if (weapon.powerDatt === undefined) {
+        thisWeapon.powerDatt = false;
+    } else {
+        thisWeapon.powerDatt = weapon.powerDatt;
+    }
     if (weapon.noMelee === undefined) {
         thisWeapon.noMelee = false;
     } else {

@@ -1080,7 +1080,11 @@ function turnInfo(first) {
     console.log(pilonedTiles);
     centerMap();
     if (!playerInfos.onShip) {
-        $('#tour').empty().append('<span title="">Zone '+zone[0].number+'</span> / ');
+        let briefing = "Récupérez un maximum de ressources et de survivants";
+        if (zone[0].body != undefined) {
+            briefing = zone[0].title+' : '+zone[0].body;
+        }
+        $('#tour').empty().append('<span class="klik" title="'+briefing+'">Zone '+zone[0].number+'</span> / ');
         $('#tour').append('Tour '+playerInfos.mapTurn+'<br>');
         $('#tour').append('Attraction '+playerInfos.fuzzTotal+'<br>');
         if (playerInfos.mapTurn <= 1 && zone[0].mapDiff != playerInfos.sondeDanger) {

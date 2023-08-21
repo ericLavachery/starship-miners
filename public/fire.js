@@ -439,8 +439,13 @@ function attack(melee,init) {
     }
     // double attaque
     if (selectedBat.tags.includes('datt') && !selectedWeap.isPrec && !selectedWeap.isBow && !selectedWeap.noBis && !selectedWeap.noDatt) {
-        shots = Math.round(shots*1.65);
-        attFactor = Math.round(attFactor*1.65);
+        if (selectedWeap.powerDatt) {
+            shots = Math.round(shots*1.33);
+            attFactor = Math.round(attFactor*1.33);
+        } else {
+            shots = Math.round(shots*1.65);
+            attFactor = Math.round(attFactor*1.65);
+        }
     }
     // sleeping alien
     if (selectedBatType.skills.includes('sleep') && selectedBat.tags.includes('invisible')) {
@@ -458,6 +463,22 @@ function attack(melee,init) {
     $('#report').append('<span class="report jaune">Attaque '+attFactor+'%<br></span>');
     // chargeur
     shots = chargeurAdj(selectedBat,shots,selectedWeap);
+    // double attaque (strong+melee)
+    if (selectedBat.tags.includes('datt') && !selectedWeap.isPrec && !selectedWeap.isBow && !selectedWeap.noBis && !selectedWeap.noDatt) {
+        if (selectedWeap.powerDatt) {
+            selectedWeap.power = Math.round(selectedWeap.power*1.33);
+        }
+    }
+    // noBig
+    if (selectedWeap.noBig) {
+        let weapPriorPower = selectedWeap.power;
+        if (targetBatType.size > Math.round(selectedBatType.size/2)) {
+            selectedWeap.power = Math.round(selectedWeap.power*selectedBatType.size/2/targetBatType.size);
+        }
+        if (selectedWeap.ammo === 'belier-spike') {
+            selectedWeap.power = selectedWeap.power+Math.round(weapPriorPower/5)+10;
+        }
+    }
     $('#report').append('<span class="report">Puissance '+shots+' &times; '+selectedWeap.power+'<br></span>');
     // INFRASTRUCTURES
     // console.log('shots='+shots);
@@ -517,17 +538,6 @@ function attack(melee,init) {
     }
     if (isAdmin.fire && shotDice > 40) {
         shotDice = 100;
-    }
-    // console.log('shotDice='+shotDice);
-    // noBig
-    if (selectedWeap.noBig) {
-        let weapPriorPower = selectedWeap.power;
-        if (targetBatType.size > Math.round(selectedBatType.size/2)) {
-            selectedWeap.power = Math.round(selectedWeap.power*selectedBatType.size/2/targetBatType.size);
-        }
-        if (selectedWeap.ammo === 'belier-spike') {
-            selectedWeap.power = selectedWeap.power+Math.round(weapPriorPower/5)+10;
-        }
     }
     // prec/range adj
     let accurange = calcPrecRangeAdj(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType);
@@ -1652,6 +1662,16 @@ function defense(melee,init) {
     $('#report').append('<span class="report jaune">Défense '+defFactor+'%<br></span>');
     // chargeur
     shots = chargeurAdj(targetBat,shots,targetWeap);
+    // noBig
+    if (targetWeap.noBig) {
+        let weapPriorPower = targetWeap.power;
+        if (selectedBatType.size > Math.round(targetBatType.size/2)) {
+            targetWeap.power = Math.round(targetWeap.power*targetBatType.size/2/selectedBatType.size);
+        }
+        if (targetWeap.ammo === 'belier-spike') {
+            targetWeap.power = targetWeap.power+Math.round(weapPriorPower/5)+10;
+        }
+    }
     $('#report').append('<span class="report">Puissance '+shots+' &times; '+targetWeap.power+'<br></span>');
     // INFRASTRUCTURES
     // console.log('shots='+shots);
@@ -1711,16 +1731,6 @@ function defense(melee,init) {
     }
     if (isAdmin.fire && shotDice > 40) {
         shotDice = 100;
-    }
-    // noBig
-    if (targetWeap.noBig) {
-        let weapPriorPower = targetWeap.power;
-        if (selectedBatType.size > Math.round(targetBatType.size/2)) {
-            targetWeap.power = Math.round(targetWeap.power*targetBatType.size/2/selectedBatType.size);
-        }
-        if (targetWeap.ammo === 'belier-spike') {
-            targetWeap.power = targetWeap.power+Math.round(weapPriorPower/5)+10;
-        }
     }
     // prec/range adj
     let accurange = calcPrecRangeAdj(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType);

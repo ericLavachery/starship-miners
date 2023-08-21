@@ -115,6 +115,7 @@ function weaponsInfos(bat,batType,tile,pop) {
             if (batType.skills.includes('camocontrol') && bat.tags.includes('nomove') && bat.fuzz <= -2) {
                 hasControl = false;
             }
+            let tirOK = true;
             if (bat.salvoLeft >= 1 && apOK && ammoLeft >= 1 && anyTarget && noBisOK && !noFireMelee && hasControl) {
                 // assez d'ap et de salve
                 if (cheapWeapCost > thisWeapon.cost) {
@@ -128,6 +129,7 @@ function weaponsInfos(bat,batType,tile,pop) {
                 }
             } else {
                 // tir impossible
+                tirOK = false;
                 if (!hasControl) {
                     w1message = 'Pas de tir si vous ne contrôlez pas le bataillon';
                 } else if (noFireMelee) {
@@ -150,8 +152,8 @@ function weaponsInfos(bat,batType,tile,pop) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGrey iconButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
                 }
             }
-            doubleAttaque(bat,batType,thisWeapon,bodyPlace);
-            bullseyeShot(bat,batType,thisWeapon,bodyPlace,inMelee);
+            doubleAttaque(bat,batType,thisWeapon,bodyPlace,tirOK);
+            bullseyeShot(bat,batType,thisWeapon,bodyPlace,inMelee,tirOK);
             let maxSalves = batType.maxSalvo;
             let resteSalves = bat.salvoLeft;
             if (thisWeapon.noBis) {
@@ -395,6 +397,7 @@ function weaponsInfos(bat,batType,tile,pop) {
             if (hasEquip(bat,['lanceur','lancegren'])) {
                 hasLG = ' (lanceur)';
             }
+            tirOK = true;
             if (bat.salvoLeft >= 1 && apOK && anyTarget && ammoLeft >= 1 && !noFireMelee && noBisOK && hasControl) {
                 // assez d'ap et de salve
                 if (cheapWeapCost > thisWeapon.cost) {
@@ -408,6 +411,7 @@ function weaponsInfos(bat,batType,tile,pop) {
                 }
             } else {
                 // tir impossible
+                tirOK = false;
                 if (!hasControl) {
                     w1message = 'Pas de tir si vous ne contrôlez pas le bataillon';
                 } else if (noFireMelee) {
@@ -430,8 +434,8 @@ function weaponsInfos(bat,batType,tile,pop) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGrey iconButtons gf"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+hasLG+'</'+balise+'></span><br>');
                 }
             }
-            doubleAttaque(bat,batType,thisWeapon,bodyPlace);
-            bullseyeShot(bat,batType,thisWeapon,bodyPlace,inMelee);
+            doubleAttaque(bat,batType,thisWeapon,bodyPlace,tirOK);
+            bullseyeShot(bat,batType,thisWeapon,bodyPlace,inMelee,tirOK);
             let maxSalves = batType.maxSalvo;
             let resteSalves = bat.salvoLeft;
             if (thisWeapon.noBis) {
@@ -594,7 +598,7 @@ function weaponsInfos(bat,batType,tile,pop) {
     }
 };
 
-function doubleAttaque(bat,batType,weap,bodyPlace) {
+function doubleAttaque(bat,batType,weap,bodyPlace,tirOK) {
     // DOUBLE ATTAQUE
     if (!playerInfos.onShip && !bat.tags.includes('embuscade')) {
         if (batType.skills.includes('datt')) {
@@ -628,13 +632,19 @@ function doubleAttaque(bat,batType,weap,bodyPlace) {
                     boutonNope = 'boutonOK';
                     colorNope = 'cy';
                 }
-                if (bat.apLeft >= apReq && !bat.tags.includes('datt') && batHasTarget) {
-                    $('#'+bodyPlace).append('<span class="bigHSpace"></span><button type="button" title="Double attaque: Cadence 165% / Précision 50%" class="boutonBrun skillButtons" onclick="fury('+apCost+')"><i class="ra ra-fire rpg"></i> <span class="sosmall">'+apCost+'</span></button><br>');
+                if (bat.apLeft >= apReq && !bat.tags.includes('datt') && batHasTarget && tirOK) {
+                    let dattDesc = "Cadence 165% / Précision 50%";
+                    if (weap.powerDatt) {
+                        dattDesc = "Cadence 133% / Puissance 133% / Précision 50%";
+                    }
+                    $('#'+bodyPlace).append('<span class="bigHSpace"></span><button type="button" title="Double attaque: '+dattDesc+'" class="boutonBrun skillButtons" onclick="fury('+apCost+')"><i class="ra ra-fire rpg"></i> <span class="sosmall">'+apCost+'</span></button><br>');
                 } else {
                     if (bat.tags.includes('datt')) {
                         skillMessage = "Double attaque: Déjà activé";
                     } else if (!batHasTarget) {
                         skillMessage = "Double attaque: Pas de cible";
+                    } else if (!tirOK) {
+                        skillMessage = "Double attaque: Pas d'attaque possible";
                     } else {
                         skillMessage = "Double attaque: Pas assez de PA";
                     }
@@ -645,7 +655,7 @@ function doubleAttaque(bat,batType,weap,bodyPlace) {
     }
 };
 
-function bullseyeShot(bat,batType,weap,bodyPlace,inMelee) {
+function bullseyeShot(bat,batType,weap,bodyPlace,inMelee,tirOK) {
     // BULLSEYE
     if (!playerInfos.onShip) {
         if (batType.skills.includes('cible') || (batType.skills.includes('aicible') && hasEquip(bat,['g2ai'])) || (batType.skills.includes('w2cible') && (bat.eq.includes('w2') || playerInfos.comp.def === 3))) {
@@ -672,7 +682,7 @@ function bullseyeShot(bat,batType,weap,bodyPlace,inMelee) {
                 let tcRof = Math.round(100*tcBonus.rof);
                 let tcPow = Math.round(100*tcBonus.pow);
                 let tcInfo = '+'+tcPrec+'% précision, '+tcRof+'% cadence, '+tcPow+'% puissance ('+apCost+' PA + coût de l\'arme)';
-                if (bat.apLeft >= apReq && !bat.tags.includes('vise') && !inMelee && batHasTarget) {
+                if (bat.apLeft >= apReq && !bat.tags.includes('vise') && !inMelee && batHasTarget && tirOK) {
                     $('#'+bodyPlace).append('<span class="bigHSpace"></span><button type="button" title="Bullseye: '+tcInfo+'" class="boutonBrun skillButtons" onclick="tirCible('+apCost+')"><i class="fas fa-crosshairs"></i> <span class="sosmall">'+apCost+'</span></button>');
                     // INSTAKILL
                     if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill')) {
@@ -687,6 +697,8 @@ function bullseyeShot(bat,batType,weap,bodyPlace,inMelee) {
                         skillMessage = "Bullseye: Impossible en mêlée";
                     } else if (!batHasTarget) {
                         skillMessage = "Bullseye: Pas de cible";
+                    } else if (!tirOK) {
+                        skillMessage = "Bullseye: Pas d'attaque possible";
                     } else {
                         skillMessage = "Bullseye: Pas assez de PA";
                     }
