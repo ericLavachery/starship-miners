@@ -4677,7 +4677,7 @@
             "rof":16,
             "accuracy":30,
             "dca":1.2,
-            "power":5,
+            "power":4,
             "aoe":"unit",
             "sound":"laser_fusil_x2",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"]
@@ -4870,7 +4870,7 @@
             "elevation":1,
             "rof":16,
             "accuracy":30,
-            "power":5,
+            "power":6,
             "aoe":"unit",
             "sound":"laser_fusil_x2",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"]
@@ -5060,7 +5060,7 @@
             "rof":16,
             "accuracy":30,
             "dca":1.2,
-            "power":5,
+            "power":4,
             "aoe":"unit",
             "sound":"laser_fusil_x2",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"]
@@ -5417,7 +5417,7 @@
             "rof":16,
             "accuracy":30,
             "dca":1.2,
-            "power":5,
+            "power":4,
             "aoe":"unit",
             "sound":"laser_fusil_x2",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"]
@@ -6318,7 +6318,7 @@
             "rof":16,
             "accuracy":30,
             "dca":1.2,
-            "power":5,
+            "power":4,
             "aoe":"unit",
             "sound":"laser_fusil_x2",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"]

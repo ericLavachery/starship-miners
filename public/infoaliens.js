@@ -42,13 +42,21 @@ function toggleAlienPicSize(batId) {
 };
 
 function getSilSize(alien) {
-    let relSize = Math.ceil(Math.sqrt(alien.size-0.9)*26);
+    let multSize = 40;
+    if (alien.size <= 4) {
+        multSize = (alien.size*15)-25;
+    } else if (alien.size >= 80) {
+        multSize = 29;
+    } else if (alien.size > 20) {
+        multSize = 40-((alien.size-20)/5);
+    }
+    let relSize = Math.ceil(Math.sqrt(alien.size)*multSize);
     let silSize = 270-relSize;
     if (silSize < 24) {
         silSize = 24+Math.round((silSize-24)/5);
     }
-    if (silSize < 18) {
-        silSize = 18;
+    if (silSize < 15) {
+        silSize = 15;
     }
     return silSize;
 };
@@ -96,7 +104,7 @@ function showEnemyBatInfos(bat) {
             silclass = 'silhover';
         }
         let silPic = 'silou';
-        if (batType.size >= 75) {
+        if (batType.size >= 40) {
             silPic = 'siloub';
         }
         let batPic = batType.pic;

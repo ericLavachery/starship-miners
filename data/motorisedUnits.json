@@ -2880,7 +2880,7 @@
         "maxFlood":0,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["b_heavy","fortif","maycamo","medic","medtrans","necrocure","selfbadmecano","dealer","kirin","octiron","starka","transport","tweight","hscarpmove","light","badcrewsave","recupcit","recupres","meleehelp","nochef","lveh"],
+        "skills":["b_heavy","fortif","maycamo","medic","medtrans","medrange","necrocure","selfbadmecano","dealer","kirin","octiron","starka","transport","tweight","hscarpmove","light","badcrewsave","recupcit","recupres","meleehelp","nochef","lveh"],
         "mediCost":4,
         "mecanoCost":14,
         "transMaxSize":9,
