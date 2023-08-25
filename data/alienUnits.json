@@ -517,7 +517,7 @@
         "kind":"spider",
         "class":"C",
         "rarity":4,
-        "squads":5,
+        "squads":6,
         "squadSize":5,
         "crew":0,
         "hp":75,

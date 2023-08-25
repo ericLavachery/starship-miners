@@ -72,19 +72,23 @@ function searchRuins(apCost,tileId) {
 };
 
 function checkRuinsComp(tile) {
-    let maxComps = Math.ceil(zone[0].mapDiff/2.6);
-    if (playerInfos.fndComps < maxComps) {
+    let maxComps = zone[0].mapDiff/2.5;
+    if (playerInfos.fndComps < maxComps+2) {
         let foundComp = {};
         let compOK = false;
-        let compChance = ruinsCompBase;
-        compChance = 1000;
+        let compChance = ruinsCompBase; // 5
+        // compChance = 1000;
         let ruinType = checkRuinType(tile,false);
         if (ruinType.name === 'Université' || ruinType.name === 'Bibliothèque' || ruinType.name === 'Médiathèque' || ruinType.name === 'Laboratoire' || ruinType.name === 'Centre de recherches') {
             compChance = compChance*5;
         } else {
             compChance = Math.round(compChance/1.75);
         }
-        let compDice = 350+(playerInfos.fndComps*150);
+        let compNeed = playerInfos.fndComps-maxComps;
+        if (compNeed < 0) {
+            compNeed = compNeed/4;
+        }
+        let compDice = 350+(compNeed*350);
         if (rand.rand(1,compDice) <= compChance) {
             let i = 1;
             while (i <= 5) {
@@ -1222,7 +1226,7 @@ function checkMinMapDiff(unit) {
     if (level <= 4 || unit.fabTime <= 20) {
         level = -10;
     }
-    level = level-2;
+    level = level-2.5;
     minMapDiff = Math.round((level-2)/2);
     return minMapDiff;
 };
@@ -1303,14 +1307,17 @@ function checkRuinsCar(tile) {
 function checkRuinsUnit(tile) {
     let maxUnits = Math.ceil(zone[0].mapDiff/1.55)-1;
     if (playerInfos.fndUnits < maxUnits) {
-        let fndBonus = (maxUnits-playerInfos.fndUnits)*50;
+        let fndBonus = (maxUnits-playerInfos.fndUnits)*75;
         let unitChance = ruinsUnitBase;
         let unitDice = 300-fndBonus;
+        if (unitDice < 2) {
+            unitDice = 2;
+        }
         if (rand.rand(1,unitDice) <= unitChance) {
             let count = true;
             let chance = 0;
             let foundUnitId = -1;
-            let checkDice = 450-fndBonus;
+            let checkDice = 475-fndBonus;
             let shufUnits = _.shuffle(unitTypes);
             shufUnits.forEach(function(unit) {
                 if (foundUnitId < 0) {

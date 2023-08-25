@@ -2138,10 +2138,10 @@ function putTurret(tile) {
     removeScrapFromRuins(tile);
     if (rand.rand(1,8) === 1) {
         conselUnit = getBatTypeById(301);
-        conselAmmos = ['uranium','xxx','bulk','bld-camo'];
+        conselAmmos = getTurretGear(301);
     } else {
         conselUnit = getBatTypeById(310);
-        conselAmmos = ['uranium','xxx','bulk','muffler'];
+        conselAmmos = getTurretGear(310);
     }
     conselPut = false;
     conselTriche = true;
@@ -2157,6 +2157,41 @@ function putTurret(tile) {
         }
     }
     playerOccupiedTiles.push(tile.id);
+};
+
+function getTurretGear(unitId) {
+    let tGear = [];
+    let mun = 'uranium';
+    let dice = rand.rand(1,5);
+    if (dice === 1) {
+        mun = 'freeze';
+    } else if (dice === 2) {
+        mun = 'salite';
+    } else if (dice === 3) {
+        mun = 'timonium';
+    }
+    tGear.push(mun);
+    tGear.push('xxx');
+    let blindage = 'bulk';
+    dice = rand.rand(1,5);
+    if (dice === 1) {
+        blindage = 'autorep';
+    } else if (dice === 2) {
+        blindage = 'bonibo';
+    } else if (dice === 3) {
+        blindage = 'swag';
+    }
+    tGear.push(blindage);
+    if (unitId === 301) {
+        tGear.push('bld-camo');
+    } else {
+        if (rand.rand(1,4) === 1) {
+            tGear.push('bld-camo');
+        } else {
+            tGear.push('muffler');
+        }
+    }
+    return tGear;
 };
 
 function workingTurrets() {

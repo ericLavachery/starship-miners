@@ -452,7 +452,7 @@ function checkPietonId(transBat) {
 
 function checkVehicleId() {
     let vehBatTypeId = -1;
-    let vehDice = rand.rand(1,16);
+    let vehDice = rand.rand(1,20);
     if (vehDice <= 1) {
         let bt = getBatTypeByName('Busters');
         vehBatTypeId = bt.id;
@@ -465,7 +465,7 @@ function checkVehicleId() {
         let bt = getBatTypeByName('Scavengers');
         vehBatTypeId = bt.id;
         neiRoad = [true,true];
-    } else if (vehDice <= 10) {
+    } else if (vehDice <= 9) {
         let bt = getBatTypeByName('Mécanos');
         vehBatTypeId = bt.id;
         neiRoad[0] = true;
@@ -473,10 +473,27 @@ function checkVehicleId() {
         let bt = getBatTypeByName('Looters');
         vehBatTypeId = bt.id;
     } else if (vehDice <= 13) {
+        let bt = getBatTypeByName('Drilltrucks');
+        vehBatTypeId = bt.id;
+        neiRoad = [true,true];
+    } else if (vehDice <= 14) {
+        let bt = getBatTypeByName('Minitanks');
+        vehBatTypeId = bt.id;
+    } else if (vehDice <= 15) {
+        let bt = getBatTypeByName('Scouts');
+        vehBatTypeId = bt.id;
+    } else if (vehDice <= 17) {
         let bt = getBatTypeByName('Workships');
         vehBatTypeId = bt.id;
         neiRoad = [true,true];
     } else {
+        let bt = getBatTypeByName('Pushers');
+        vehBatTypeId = bt.id;
+        neiRoad = [true,true];
+    }
+    let unit = getBatTypeById(vehBatTypeId);
+    let minDiff = checkMinMapDiff(unit);
+    if (minDiff > zone[0].mapDiff) {
         let bt = getBatTypeByName('Pushers');
         vehBatTypeId = bt.id;
         neiRoad = [true,true];
@@ -530,6 +547,19 @@ function checkNeighbourGear(neiBatType) {
     }
     if (neiBatType.name === 'Looters') {
         gear = ['standard','standard','scrap','aucun'];
+    }
+    if (neiBatType.name === 'Drilltrucks') {
+        gear = ['perfo','standard','kanchan','e-road'];
+    }
+    if (neiBatType.name === 'Minitanks') {
+        if (playerInfos.gang === 'drogmulojs' || playerInfos.gang === 'bulbos') {
+            gear = ['tungsten','obus','kanchan','snorkel'];
+        } else {
+            gear = ['tungsten','cn-proto-plasma','kanchan','snorkel'];
+        }
+    }
+    if (neiBatType.name === 'Scouts') {
+        gear = ['tungsten','obus','kanchan','chargeur1'];
     }
     if (neiBatType.name === 'Workships') {
         gear = ['perfo','standard','kanchan','e-treuil'];

@@ -673,8 +673,22 @@ function showBataillon(bat) {
 function getTransBar(bat,batType) {
     let transBar = 'abar-empty';
     let isCharged = checkCharged(bat,'trans');
+    let hasFret = false;
+    if (batType.transRes >= 1) {
+        if (Object.keys(bat.transRes).length >= 1) {
+            hasFret = true;
+        }
+    }
     if (isCharged) {
-        transBar = 'abar-trans';
+        if (hasFret) {
+            transBar = 'abar-both';
+        } else {
+            transBar = 'abar-trans';
+        }
+    } else {
+        if (hasFret) {
+            transBar = 'abar-fret';
+        }
     }
     return transBar;
 };

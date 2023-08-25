@@ -568,6 +568,12 @@ function checkHasWeapon(num,batType,eq) {
                 } else {
                     hasWeapon = true;
                 }
+                // supprimer la seconde arme si elle ne correspond pas au gang (pour les missions spéciales)
+                if (batType.weapon2.equip != undefined) {
+                    if (eq != batType.weapon2.equip && batType.weapon2.kit) {
+                        hasWeapon = false;
+                    }
+                }
             }
             if (batType.skills.includes('w2mecano') && eq === 'e-mecano') {
                 hasWeapon = false;

@@ -3716,7 +3716,7 @@
             "rof":15,
             "accuracy":23,
             "dca":0.75,
-            "power":7,
+            "power":6,
             "aoe":"unit",
             "sound":"axe_x2",
             "ammo":["ergot","lame-tungsten","lame-carbone","lame-titane","lame-mono","lame-adamantite","lame-adamantium"]
