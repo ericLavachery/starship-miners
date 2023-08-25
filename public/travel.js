@@ -869,7 +869,7 @@ function pickZone() {
             } else if (zoneInfo.planet === 'Gehenna') {
                 planetCol = 'verf';
             } else if (zoneInfo.planet === 'Kzin') {
-                planetCol = 'vio';
+                planetCol = 'viof';
             } else if (zoneInfo.planet === 'Horst') {
                 planetCol = 'rouge';
             }

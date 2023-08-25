@@ -1861,7 +1861,7 @@
         "info": "Virus",
         "bldReq":["Centre de recherches","Biopod"],
         "compReq":{"gen":2,"exo":3,"ca":4},
-        "deploy":{"Carbone":4,"Rhodium":1,"Tungstène":2,"Plastanium":1,"Morphite":1,"Creatite":3,"Bossium":1,"Germium":1},
+        "deploy":{"Carbone":4,"Rhodium":1,"Timonium":2,"Morphite":1,"Creatite":3,"Bossium":1,"Germium":1},
         "batch":100
     },
     {
@@ -1946,7 +1946,7 @@
         "aoe": "",
         "bldReq":["Laboratoire"],
         "compReq":{"mat":3,"energ":1},
-        "deploy":{"Carbone":4,"Rhodium":1,"Tungstène":2,"Uridium":2},
+        "deploy":{"Carbone":4,"Rhodium":1,"Timonium":2,"Uridium":2},
         "batch":100
     },
     {
@@ -2029,7 +2029,7 @@
         "info": "Virus",
         "bldReq":["Centre de recherches","Biopod"],
         "compReq":{"gen":2,"exo":3,"ca":4},
-        "deploy":{"Carbone":4,"Rhodium":1,"Plastanium":1,"Morphite":1,"Creatite":4,"Bossium":1,"Germium":1},
+        "deploy":{"Carbone":4,"Rhodium":1,"Timonium":2,"Morphite":1,"Creatite":4,"Bossium":1,"Germium":1},
         "batch":100
     },
     {

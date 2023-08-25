@@ -540,10 +540,13 @@ function hasEquip(bat,equipList) {
 };
 
 function noEquip(bat,equipList) {
-    let hasNone = false;
+    let hasNone = true;
+    if (bat.tdc === undefined) {
+        bat.tdc = [];
+    }
     equipList.forEach(function(equipName) {
-        if (bat.eq != equipName && bat.logeq != equipName && !bat.tdc.includes(equipName)) {
-            hasNone = true;
+        if (bat.eq === equipName || bat.logeq === equipName || bat.tdc.includes(equipName)) {
+            hasNone = false;
         }
     });
     return hasNone;
