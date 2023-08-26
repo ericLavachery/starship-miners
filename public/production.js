@@ -41,7 +41,7 @@ function getTileEnergy(tile) {
     }
     let tileHeat = getTileHeat(tile);
     let energyProd = Math.ceil(magmaHere/2*3)+(tileHeat*10);
-    energyProd = Math.ceil(energyProd/10);
+    energyProd = Math.ceil(energyProd/geoProdDiv);
     return energyProd;
 };
 
@@ -83,7 +83,7 @@ function geoProd(bat,batType) {
         let energyProd = Math.ceil(magmaHere/2*3)+(tileHeat*10);
         energyProd = energyCreation(energyProd);
         energyProd = prodDrop(bat,batType,energyProd,false);
-        energyProd = Math.ceil(energyProd/10);
+        energyProd = Math.ceil(energyProd/geoProdDiv); // before: 10
         resAddToBld('Energie',energyProd,bat,batType,false);
         if (!playerInfos.onShip) {
             if (minedThisTurn['Energie'] === undefined) {
@@ -106,7 +106,7 @@ function getGeoProd(tile) {
     }
     let energyProd = Math.ceil(magmaHere/2*3)+(tileHeat*10);
     energyProd = energyCreation(energyProd);
-    energyProd = Math.ceil(energyProd/10);
+    energyProd = Math.ceil(energyProd/geoProdDiv); // before: 10
     return energyProd;
 };
 

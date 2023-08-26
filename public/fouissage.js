@@ -41,7 +41,7 @@ function checkOutTile(endGalId) {
 function checkStartGal() {
     let jumpOK = false;
     playerOccupiedTileList();
-    if (rand.rand(1,2) === 1 && selectedBat.apLeft >= 1) {
+    if (rand.rand(1,2) === 1 && selectedBat.apLeft >= 1 && !selectedBat.tags.includes('freeze')) {
         let batTile = getTile(selectedBat);
         if (batTile.infra != undefined) {
             if (batTile.infra === 'Terriers') {
