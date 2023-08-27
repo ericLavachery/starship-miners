@@ -779,7 +779,7 @@ function chooseRes(again) {
             } else {
                 $('#conUnitList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
             }
-            if (adjustedRMR >= 1) {
+            if (adjustedRMR >= 1 || selectedBat.extracted.includes(res.name)) {
                 $('#conUnitList').append('<span class="constName'+resCol+' klik" onclick="resSelect('+res.id+')">'+res.name+' : '+adjustedRMR+' <span class="gff">+('+minedRes+')</span></span><br>');
             } else {
                 $('#conUnitList').append('<span class="constName'+resCol+'">'+res.name+' : '+adjustedRMR+' <span class="gff">+('+minedRes+')</span></span><br>');

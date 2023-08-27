@@ -481,7 +481,13 @@ function batInfos(bat,batType,pop) {
         }
     }
     if (batType.skills.includes('berserk') && bat.damage >= 1) {
-        $('#'+bodyPlace).append('<span class="paramName cy">Berserk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName cy">Frénésie</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    }
+    if (batType.skills.includes('superberserk') && bat.tags.includes('gogogo') && bat.tags.includes('sila') && bat.tags.includes('starka')) {
+        let allTags = _.countBy(bat.tags);
+        if (allTags.starka >= 3 && allTags.sila >= 3) {
+            $('#'+bodyPlace).append('<span class="paramName cy">Berserk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+        }
     }
     if (batType.skills.includes('tirailleur')) {
         let guerBonus = 100;
@@ -1119,7 +1125,7 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Si blessé: Cadence de tir 150% mais dégâts reçu 150%">Frénésie</span>'+sepa;
     }
     if (batType.skills.includes('superberserk')) {
-        allSkills = allSkills+'<span class="paramValue" title="Si ce bataillon à perdu la moitié de ses escouades: Salves infinies">Berserk</span>'+sepa;
+        allSkills = allSkills+'<span class="paramValue" title="Si ce bataillon recoit une commande lorsqu\'il est sous l\'effet du Starka et du Sila: Salves infinies">Berserk</span>'+sepa;
     }
     if (batType.skills.includes('undead')) {
         allSkills = allSkills+'<span class="paramValue" title="Les escouades blessées peuvent continuer à attaquer (la cadence de tir ne diminue pas)">Undead</span>'+sepa;

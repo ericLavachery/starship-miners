@@ -961,13 +961,10 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         // console.log('COMMAND');
         // console.log(near);
         if (!playerInfos.onShip && near.schef) {
-            if (!batType.skills.includes('brigands') && !bat.tags.includes('outsider') && !bat.tags.includes('schef') && !batType.skills.includes('leader') && !batType.skills.includes('prayer')) {
+            if (!batType.skills.includes('brigands') && (!bat.tags.includes('outsider') || batType.kind === 'zero-resistance') && (!bat.tags.includes('schef') || batType.skills.includes('superberserk')) && !batType.skills.includes('leader') && !batType.skills.includes('prayer')) {
                 if (batType.skills.includes('robot') || batType.crew >= 1) {
                     commandOK = true;
                 }
-            }
-            if (batType.name === 'Résistants') {
-                commandOK = true;
             }
         }
         // console.log('commandOK: '+commandOK);

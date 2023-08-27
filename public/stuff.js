@@ -778,7 +778,7 @@ function blockThem(stop) {
 
 function jsErrorWarning(theError) {
     pageError = true;
-    playSound('jumpscare2',-1);
+    playSound('jumpscare2',0);
     warning('<h5>ERREUR JAVASCRIPT</h5>','<span class="hjaune">NE SAUVEGARDEZ PAS! Prenez une photo de l\'erreur dans la console (ctrl-maj-j). Notez l\'action que vous venez de faire. Rapportez le bug.</span><br>'+theError,false);
     commandes();
 };

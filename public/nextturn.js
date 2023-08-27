@@ -1824,7 +1824,7 @@ function tagsEffect(bat,batType) {
         if (bat.tags.includes('shinda') && bat.squadsLeft >= 1) {
             if (batType.skills.includes('nokill') && rand.rand(1,3) === 1) {
                 tagDelete(bat,'shinda');
-            } else if (batType.skills.includes('resistpoison') && rand.rand(1,8) === 1) {
+            } else if ((batType.skills.includes('resistpoison') || bat.tags.includes('permashield')) && rand.rand(1,8) === 1) {
                 tagDelete(bat,'shinda');
             } else {
                 let shindaDamage = Math.round(Math.sqrt(batType.hp)*40);

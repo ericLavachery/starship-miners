@@ -1460,8 +1460,12 @@ function attack(melee,init) {
     // remove ap & salvo
     let sbk = false;
     if (activeTurn === 'player') {
-        if (selectedBatType.skills.includes('superberserk') && selectedBat.squadsLeft <= Math.ceil(selectedBatType.squads/2)) {
-            sbk = true;
+        if (selectedBatType.skills.includes('superberserk') && selectedBat.tags.includes('gogogo') && selectedBat.tags.includes('sila') && selectedBat.tags.includes('starka')) {
+            let allTags = _.countBy(selectedBat.tags);
+            if (allTags.starka >= 3 && allTags.sila >= 3) {
+                sbk = true;
+                tagDelete(selectedBat,'sila');
+            }
         }
     }
     if (selectedBat.tags.includes('tornade') || sbk) {
