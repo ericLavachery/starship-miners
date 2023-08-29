@@ -729,11 +729,8 @@ function getAway(myBat,fromTileId,blob) {
     shufBats.forEach(function(bat) {
         let batType = getBatType(bat);
         if (batType.skills.includes('transport') && batType.cat === 'buildings' && getAwayTile < 0) {
-            let maxSize = batType.transMaxSize;
-            if (hasEquip(bat,['garage'])) {
-                maxSize = maxSize*3;
-            }
-            if (myBatType.size <= maxSize) {
+            let tmsOK = checkTransMaxSize(myBatType,bat,batType);
+            if (tmsOK) {
                 distFromTile = calcDistance(fromTileId,bat.tileId);
                 distFromSelf = calcDistance(myBat.tileId,bat.tileId);
                 if (distFromSelf <= 2 && distFromTile >= 1) {

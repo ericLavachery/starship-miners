@@ -280,6 +280,30 @@ function checkCharged(myBat,where) {
     return isCharged;
 };
 
+function checkTransMaxSize(batType,transBat,transBatType) {
+    let transOK = false;
+    let maxSize = transBatType.transMaxSize;
+    if (hasEquip(transBat,['garage'])) {
+        maxSize = maxSize*3;
+    }
+    if (maxSize >= batType.size) {
+        transOK = true;
+        let isInfantry = false;
+        if (batType.cat === 'infantry') {
+            isInfantry = true;
+        }
+        if (batType.cat === 'vehicles') {
+            if (batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+                isInfantry = true;
+            }
+        }
+        if (maxSize < 20 && !isInfantry) {
+            transOK = false;
+        }
+    }
+    return transOK;
+};
+
 function checkUnderId(myBat,myBatType) {
     // vérifie si l'unité en dessous peut être ramassée par l'unité active, et retourne son Id
     let underId = -1;
@@ -289,7 +313,8 @@ function checkUnderId(myBat,myBatType) {
         if (bat.loc === "zone" && bat.tileId == myBat.tileId) {
             let batType = getBatType(bat);
             if (batType.cat != 'buildings' && batType.cat != 'devices' && batType.moveCost < 90 && !bat.tags.includes('nomove')) {
-                if (myBatType.transMaxSize >= batType.size) {
+                let tmsOK = checkTransMaxSize(batType,myBat,myBatType);
+                if (tmsOK) {
                     if (!batType.skills.includes('tracked') || !tracking) {
                         let batWeight = calcVolume(bat,batType);
                         if (batWeight <= myBatTransUnitsLeft) {
@@ -349,13 +374,8 @@ function checkEmbarqThis(myBat,transBat) {
         let myBatWeight = calcVolume(myBat,myBatType);
         // console.log('myBatWeight='+myBatWeight);
         let transBatType = getBatType(transBat);
-        let maxSize = transBatType.transMaxSize;
-        if (hasEquip(transBat,['garage'])) {
-            maxSize = maxSize*3;
-        }
-        // console.log('maxSize='+maxSize);
-        // console.log('myBatType.size='+myBatType.size);
-        if (maxSize >= myBatType.size) {
+        let tmsOK = checkTransMaxSize(myBatType,transBat,transBatType);
+        if (tmsOK) {
             // console.log('ok size');
             let tracking = checkTracking(transBat);
             // console.log('tracking='+tracking);
@@ -465,7 +485,7 @@ function checkLanderResSpace(bat) {
 function checkTracking(myBat) {
     let tracking = false;
     let myBatType = getBatType(myBat);
-    if (myBatType.transMaxSize < 25) {
+    if (myBatType.transMaxSize <= 20) {
         bataillons.forEach(function(bat) {
             if (bat.loc === "trans" && bat.locId == myBat.id) {
                 batType = getBatType(bat);
@@ -494,7 +514,7 @@ function calcRamasseCost(bat,batType,transBatType) {
         crewCost = 6;
     }
     ramasseCost = ramasseCost+crewCost;
-    if (batType.skills.includes('tracked') && transBatType.transMaxSize < 25) {
+    if (batType.skills.includes('tracked') && transBatType.transMaxSize < 21) {
         ramasseCost = ramasseCost+4-playerInfos.comp.log;
     }
     if (transBatType.skills.includes('hardembark')) {
@@ -519,7 +539,7 @@ function calcEmbarqCost(batType,transBatType) {
     if (transBatType.cat === 'buildings') {
         embarqCost[0] = 3-playerInfos.comp.log;
     }
-    if (batType.skills.includes('tracked') && transBatType.transMaxSize < 25) {
+    if (batType.skills.includes('tracked') && transBatType.transMaxSize < 21) {
         embarqCost[1] = embarqCost[1]+12-(playerInfos.comp.log*2);
     } else {
         if (transBatType.skills.includes('ouvert')) {
@@ -606,15 +626,12 @@ function checkEmbarqArmy(transBat,transBatType,firstBat) {
 
 function embarqArmy(transBat,transBatType,oldTransBat) {
     let transOK = false;
-    let maxSize = transBatType.transMaxSize;
-    if (hasEquip(transBat,['garage'])) {
-        maxSize = maxSize*3;
-    }
     bataillons.forEach(function(bat) {
         if (bat.loc === "trans" && bat.locId == oldTransBat.id && bat.army === transBat.army) {
             let batType = getBatType(bat);
             let batWeight = calcVolume(bat,batType);
-            if (maxSize >= batType.size) {
+            let tmsOK = checkTransMaxSize(batType,transBat,transBatType);
+            if (tmsOK) {
                 let transUnitsLeft = calcTransUnitsLeft(transBat,transBatType);
                 if (transBatType.skills.includes('transveh') && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber')) {
                     batWeight = Math.round(batWeight/2);
@@ -668,11 +685,8 @@ function checkHopTransId(myBat,myBatType) {
                     if (bat.loc === "zone" && myBat.id != bat.id) {
                         let batType = getBatType(bat);
                         if (resLoad <= 0 || !batType.skills.includes('transorbital')) {
-                            let maxSize = batType.transMaxSize;
-                            if (hasEquip(bat,['garage'])) {
-                                maxSize = maxSize*3;
-                            }
-                            if (batType.transUnits >= 1 && maxSize >= myBatType.size) {
+                            let tmsOK = checkTransMaxSize(myBatType,bat,batType);
+                            if (batType.transUnits >= 1 && tmsOK) {
                                 let distance = calcDistance(myBat.tileId,bat.tileId);
                                 if (distance <= 1) {
                                     let tracking = checkTracking(bat);
@@ -716,11 +730,8 @@ function checkJumpTransId() {
                         if (bat.loc === "zone" && selectedBat.id != bat.id) {
                             let batType = getBatType(bat);
                             if (resLoad <= 0 || !batType.skills.includes('transorbital')) {
-                                let maxSize = batType.transMaxSize;
-                                if (hasEquip(bat,['garage'])) {
-                                    maxSize = maxSize*3;
-                                }
-                                if (batType.transUnits >= 1 && maxSize >= selectedBatType.size) {
+                                let tmsOK = checkTransMaxSize(selectedBatType,bat,batType);
+                                if (batType.transUnits >= 1 && tmsOK) {
                                     let distance = calcDistance(selectedBat.tileId,bat.tileId);
                                     if (distance <= 1) {
                                         let tracking = checkTracking(bat);
@@ -882,13 +893,10 @@ function clickDebarq(tileId) {
                 ownBatHere = true;
                 message = 'Le bataillon de destination ne peut pas acceuillir de troupes.';
             } else {
-                let maxSize = batType.transMaxSize;
-                if (hasEquip(bat,['garage'])) {
-                    maxSize = maxSize*3;
-                }
-                if (maxSize < batDebarqType.size) {
+                let tmsOK = checkTransMaxSize(batDebarqType,bat,batType);
+                if (!tmsOK) {
                     ownBatHere = true;
-                    message = 'Le taille de votre bataillon ('+batDebarqType.size+') est trop élevée pour le bataillon de destination ('+maxSize+').';
+                    message = 'Le taille de votre bataillon ('+batDebarqType.size+') est trop élevée pour le bataillon de destination ('+batType.transMaxSize+').';
                 } else {
                     let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
                     let myBatVolume = myBatWeight;

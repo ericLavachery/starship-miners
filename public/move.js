@@ -10,11 +10,8 @@ function clickMove(tileId) {
         if (bat.tileId === tileId && bat.loc === "zone") {
             ownBatHere = true;
             batType = getBatType(bat);
-            let maxSize = batType.transMaxSize;
-            if (hasEquip(bat,['garage'])) {
-                maxSize = maxSize*3;
-            }
-            if (maxSize >= selectedBatType.size) {
+            let tmsOK = checkTransMaxSize(selectedBatType,bat,batType);
+            if (tmsOK) {
                 let myBatVolume = myBatWeight;
                 if (batType.skills.includes('transveh') && selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot') && !selectedBatType.skills.includes('cyber')) {
                     myBatVolume = Math.round(myBatVolume/2);
@@ -546,11 +543,8 @@ function batUnstack() {
             stack = true;
             if (!isCharged) {
                 let batType = getBatType(bat);
-                let maxSize = batType.transMaxSize;
-                if (hasEquip(bat,['garage'])) {
-                    maxSize = maxSize*3;
-                }
-                if (maxSize >= selectedBatType.size) {
+                let tmsOK = checkTransMaxSize(selectedBatType,bat,batType);
+                if (tmsOK) {
                     let myBatVolume = myBatWeight;
                     if (batType.skills.includes('transveh') && selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot') && !selectedBatType.skills.includes('cyber')) {
                         myBatVolume = Math.round(myBatVolume/2);

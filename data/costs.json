@@ -1284,7 +1284,7 @@
     {
         "id":92,
         "name":"Shelltrucks",
-        "levels":{"rednecks":10,"blades":12,"bulbos":11,"drogmulojs":10,"tiradores":13,"detruas":6,"brasier":9},
+        "levels":{"rednecks":10,"blades":12,"bulbos":11,"drogmulojs":10,"tiradores":13,"detruas":7,"brasier":9},
         "bldEquiv":["Poudrière"],
         "bldReq":["Armurerie","Garage"],
         "costs":{"Fer":60,"Scrap":444,"Carbone":120,"Aluminium":48,"Moteurs":60,"Cuivre":24,"Batteries":12,"Compo2":168,"Huile":10},
@@ -1653,7 +1653,7 @@
     {
         "id":65,
         "name":"Hostos",
-        "levels":{"rednecks":10,"blades":8,"bulbos":7,"drogmulojs":7,"tiradores":7,"detruas":8,"brasier":7},
+        "levels":{"rednecks":9,"blades":8,"bulbos":6,"drogmulojs":7,"tiradores":7,"detruas":8,"brasier":7},
         "bldReq":["Infirmerie","Garage"],
         "compReq":{"med":1,"trans":1},
         "altCompReq":{"med":1,"tank":1},
@@ -1728,7 +1728,7 @@
     {
         "id":122,
         "name":"Lowboys",
-        "levels":{"rednecks":11,"blades":10,"bulbos":12,"drogmulojs":11,"tiradores":12,"detruas":7,"brasier":10},
+        "levels":{"rednecks":11,"blades":10,"bulbos":12,"drogmulojs":11,"tiradores":12,"detruas":6,"brasier":10},
         "bldReq":["Armurerie","Chaîne de montage"],
         "compReq":{"trans":2},
         "compPass":["detruas"],
@@ -1741,7 +1741,7 @@
     {
         "id":128,
         "name":"Looters",
-        "levels":{"rednecks":7,"blades":4,"bulbos":6,"drogmulojs":6,"tiradores":7,"detruas":10,"brasier":7},
+        "levels":{"rednecks":8,"blades":4,"bulbos":9,"drogmulojs":6,"tiradores":7,"detruas":10,"brasier":7},
         "bldReq":["Garage","Atelier"],
         "compReq":{"cam":1},
         "costs":{"Fer":24,"Scrap":128,"Carbone":48,"Moteurs":36,"Cuivre":36,"Electros":36,"Batteries":36,"Compo2":36},
@@ -1804,7 +1804,7 @@
     {
         "id":182,
         "name":"Spycars",
-        "levels":{"rednecks":13,"blades":5,"bulbos":7,"drogmulojs":7,"tiradores":13,"detruas":13,"brasier":11},
+        "levels":{"rednecks":10,"blades":5,"bulbos":7,"drogmulojs":7,"tiradores":11,"detruas":11,"brasier":11},
         "bldReq":["Garage"],
         "compReq":{"cam":1},
         "compPass":["blades","drogmulojs"],
@@ -1847,7 +1847,7 @@
     {
         "id":173,
         "name":"Scavengers",
-        "levels":{"rednecks":8,"blades":99,"bulbos":9,"drogmulojs":5,"tiradores":8,"detruas":9,"brasier":7},
+        "levels":{"rednecks":7,"blades":99,"bulbos":7,"drogmulojs":5,"tiradores":8,"detruas":9,"brasier":7},
         "bldReq":["Armurerie","Centre de tri","Garage"],
         "compHardReq":{"tri":1},
         "costs":{"Fer":180,"Scrap":423,"Carbone":108,"Moteurs":36,"Batteries":14,"Compo2":28,"Huile":10,"Eau":96,"Silicium":12},

@@ -1464,7 +1464,9 @@ function attack(melee,init) {
             let allTags = _.countBy(selectedBat.tags);
             if (allTags.starka >= 3 && allTags.sila >= 3) {
                 sbk = true;
-                tagDelete(selectedBat,'sila');
+                if (!selectedBat.tags.includes('sbk')) {
+                    selectedBat.tags.push('sbk');
+                }
             }
         }
     }

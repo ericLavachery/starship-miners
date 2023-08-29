@@ -650,12 +650,32 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     let multiExtractAdj = 1;
     if (!forInfos) {
         if (bat.extracted != undefined) {
-
-        }
-        if (bat.extracted.length >= 2) {
-            multiExtractAdj = 1-((bat.extracted.length-1)/12);
-        } else if (batType.mining.multi) {
-            multiExtractAdj = 1.33;
+            if (batType.mining.multi) {
+                if (batType.mining.level >= 4) {
+                    if (bat.extracted.length >= 3) {
+                        multiExtractAdj = 1-((bat.extracted.length-1)/12);
+                    } else if (bat.extracted.length >= 2) {
+                        multiExtractAdj = 1;
+                    } else {
+                        multiExtractAdj = 1.5;
+                    }
+                } else {
+                    if (bat.extracted.length >= 2) {
+                        multiExtractAdj = 1-((bat.extracted.length-1)/12);
+                    } else {
+                        multiExtractAdj = 1.33;
+                    }
+                }
+            } else {
+                if (bat.extracted.length >= 2) {
+                    multiExtractAdj = 1-((bat.extracted.length-1)/12);
+                }
+            }
+            // if (bat.extracted.length >= 2) {
+            //     multiExtractAdj = 1-((bat.extracted.length-1)/12);
+            // } else if (batType.mining.multi) {
+            //     multiExtractAdj = 1.33;
+            // }
         }
         let maxAdjBonus = extComp/33;
         if (miningLevel >= 4) {

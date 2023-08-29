@@ -3760,7 +3760,6 @@
             "range":0,
             "isMelee":true,
             "isShort":true,
-            "powerDatt":true,
             "rof":6,
             "accuracy":19,
             "dca":0.85,

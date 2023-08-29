@@ -1361,6 +1361,10 @@ function tagsUpdate(bat,batType) {
             warning('Attaque génétique',bat.type+' vont bientôt se transformer.<br>Ils doivent aller à l\'hôpital ou prendre du Skupiac!',false,bat.tileId);
         }
     }
+    if (bat.tags.includes('sbk')) {
+        tagDelete(bat,'sila');
+        tagDelete(bat,'sbk');
+    }
     tagDelete(bat,'podcd');
     tagDelete(bat,'deb');
     tagDelete(bat,'chrg');
