@@ -151,16 +151,10 @@ function combat(melee) {
         let realmOK = checkRealm();
         if (realmOK) {
             riposte = true;
-            let aspeed = calcSpeed(selectedBat,selectedWeap,targetWeap,targetBatType,distance,true);
-            let dspeed = calcSpeed(targetBat,targetWeap,selectedWeap,selectedBatType,distance,false);
-            // embuscade (initiative)
-            if (activeTurn === 'player') {
-                if (selectedBat.tags.includes('embuscade') && selectedBat.fuzz === -2) {
-                    aspeed = -999;
-                }
-            }
+            let aspeed = getInitiative(selectedBat,selectedBatType,selectedWeap,targetBat,targetBatType,targetWeap,distance,true);
+            let dspeed = getInitiative(targetBat,targetBatType,targetWeap,selectedBat,selectedBatType,selectedWeap,distance,false);
             $('#report').append('<span class="report">initiative '+aspeed+' vs '+dspeed+'</span><br>');
-            if (dspeed < aspeed) {
+            if (dspeed > aspeed) {
                 initiative = false;
             }
         }
@@ -1160,10 +1154,7 @@ function attack(melee,init) {
                     }
                     if (selectedWeap.ammo.includes('hypo-') && targetBatType.size >= 7) {
                         targetBat.tags.push('poison');
-                        targetBat.tags.push('poison');
                         if (selectedWeap.ammo.includes('atium')) {
-                            targetBat.tags.push('poison');
-                            targetBat.tags.push('poison');
                             targetBat.tags.push('poison');
                         }
                     }
@@ -1198,7 +1189,8 @@ function attack(melee,init) {
         }
     }
     // shinda & bio
-    if (totalDamage >= 10 || (totalDamage >= 1 && rand.rand(1,2) === 1) || (totalDamage >= 1 && selectedWeap.ammo.includes('hypo'))) {
+    let minShindaDmg = getMinShindaDmg(selectedWeap,targetBat,targetBatType);
+    if (totalDamage >= minShindaDmg && minShindaDmg < 1000) {
         // shinda
         if (selectedWeap.ammo.includes('shinda') || selectedWeap.ammo.includes('gaz-flit')) {
             if (!targetBat.tags.includes('shinda')) {
@@ -1464,14 +1456,13 @@ function attack(melee,init) {
             let allTags = _.countBy(selectedBat.tags);
             if (allTags.starka >= 3 && allTags.sila >= 3) {
                 sbk = true;
-                if (!selectedBat.tags.includes('sbk')) {
-                    selectedBat.tags.push('sbk');
-                }
+                selectedBat.tags.push('sbk');
             }
         }
     }
     if (selectedBat.tags.includes('tornade') || sbk) {
-        if (selectedWeap.cost < 1) {selectedWeap.cost = 1;}
+        let allTags = _.countBy(selectedBat.tags);
+        if (selectedWeap.cost < allTags.sbk) {selectedWeap.cost = allTags.sbk;}
     }
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
     if (selectedBat.tags.includes('tornade') || selectedWeap.free || sbk) {
@@ -2206,10 +2197,7 @@ function defense(melee,init) {
                     }
                     if (targetWeap.ammo.includes('hypo-') && selectedBatType.size >= 7) {
                         selectedBat.tags.push('poison');
-                        selectedBat.tags.push('poison');
                         if (targetWeap.ammo.includes('atium')) {
-                            selectedBat.tags.push('poison');
-                            selectedBat.tags.push('poison');
                             selectedBat.tags.push('poison');
                         }
                     }
@@ -2226,7 +2214,8 @@ function defense(melee,init) {
         }
     }
     // shinda & bio
-    if (totalDamage >= 10 || (totalDamage >= 1 && rand.rand(1,2) === 1) || (totalDamage >= 1 && targetWeap.ammo.includes('hypo'))) {
+    let minShindaDmg = getMinShindaDmg(targetWeap,selectedBat,selectedBatType);
+    if (totalDamage >= minShindaDmg && minShindaDmg < 1000) {
         // shinda
         if (targetWeap.ammo.includes('shinda') || targetWeap.ammo.includes('gaz-flit')) {
             if (!selectedBat.tags.includes('shinda')) {

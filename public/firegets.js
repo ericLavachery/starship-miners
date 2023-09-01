@@ -1363,108 +1363,126 @@ function getStealth(bat) {
     return batStealth;
 };
 
-function calcSpeed(bat,weap,opweap,opBatType,distance,attacking) {
-    let batType = getBatType(bat);
+function getInitiative(bat,batType,weap,opBat,opBatType,opWeap,distance,attacking) {
+    let initiative = 0;
+    let initBonus = 0;
     let crange = weap.range;
     if (weap.range === 0) {
         if (attacking) {
             crange = 1;
         } else {
-            if (opweap.range === 0) {
+            if (opWeap.range === 0) {
                 crange = 1;
             } else {
                 crange = 6;
             }
         }
     }
-    let speed = Math.round(crange*weap.cost);
-    let stealth = getStealth(bat);
-    if (distance <= 1) {
-        if (attacking) {
-            speed = speed-stealth-stealth;
-        } else {
-            speed = speed-stealth;
-        }
+    let weapCost = weap.cost+1;
+    if (weapCost < 1) {weapCost = 1;}
+    let initDice = 100/weap.cost/crange;
+    let stealth = getStealth(bat); // 0 - 6 - 25
+    initDice = initDice+stealth;
+    if (attacking) {
+        initDice = initDice+stealth;
     }
-    if (hasEquip(bat,['w2-autogun','w2-autopistol','w3-autopistol'])) {
-        speed = speed-50-stealth;
-    } else {
-        if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai'])) && !attacking) {
-            speed = speed-watchInitBonus-stealth;
-            // console.log('bonus guet');
-        }
-        if (batType.skills.includes('defense') && !attacking) {
-            speed = speed-10;
-        }
-        if (batType.skills.includes('bastion') && !attacking) {
-            speed = speed-20;
-        }
-        if (batType.skills.includes('tirailleur') && bat.oldTileId != bat.tileId) {
-            speed = speed-20;
-        }
-        if (batType.skills.includes('initiative')) {
-            speed = speed-200;
-            // console.log('bonus initiative');
-        }
-        if (batType.skills.includes('slowfire')) {
-            speed = speed+120;
-            // console.log('bonus initiative');
-        }
-        if (batType.skills.includes('after')) {
-            if (attacking) {
-                speed = speed-999;
-                // console.log('bonus initiative');
+    // camo
+    if (bat.fuzz <= -2 || bat.tags.includes('invisible') || batType.skills.includes('invisible')) {
+        if (attacking) {
+            if (opBatType.skills.includes('snif')) {
+                initDice = initDice+30;
             } else {
-                speed = speed+999;
-                // console.log('malus initiative');
+                initDice = initDice+100;
             }
         }
     }
-    if (hasEquip(bat,['theeye','ciberkit'])) {
-        speed = speed-50;
+    if (hasEquip(bat,['w2-autogun','w2-autopistol','w3-autopistol'])) {
+        initDice = initDice+50+stealth;
+    } else {
+        if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai'])) && !attacking) {
+            initDice = initDice+watchInitBonus; // 30
+        }
+        if (batType.skills.includes('defense') && !attacking) {
+            initDice = initDice+10;
+        }
+        if (batType.skills.includes('bastion') && !attacking) {
+            initDice = initDice+20;
+        }
+        if (batType.skills.includes('tirailleur') && bat.oldTileId != bat.tileId) {
+            initDice = initDice+20;
+        }
+    }
+    if (batType.skills.includes('initiative')) {
+        initDice = initDice+200;
+    }
+    if (hasEquip(bat,['theeye'])) {
+        initDice = initDice+50;
     }
     // initmelee
     if (batType.skills.includes('initmelee') && distance === 0) {
         if (batType.cat === 'aliens' || bat.tags.includes('guet')) {
             if (batType.weapon.range >= 1 && !attacking) {
-                speed = speed-120;
+                initDice = initDice+120;
             } else {
-                speed = speed-60;
+                initDice = initDice+60;
             }
         }
     }
-    // camo
-    if (bat.fuzz <= -2 || bat.tags.includes('invisible') || batType.skills.includes('invisible')) {
-        if (attacking && !opBatType.skills.includes('snif')) {
-            speed = speed-50;
-        }
-    }
-    // Skupiac drug
     if (bat.tags.includes('skupiac')) {
-        speed = speed-15;
+        initDice = initDice+20;
     }
     if (weap.ammo.includes('disco')) {
-        speed = speed-100;
+        initDice = initDice+100;
     }
     if (weap.ammo.includes('eflash')) {
-        speed = speed-50;
+        initDice = initDice+50;
     }
     if (bat.team === 'player') {
-        if ((bat.apLeft < 0 && !batType.skills.includes('guerrilla')) || bat.apLeft > 0) {
-            speed = speed-(bat.apLeft*3);
+        let realGuerrilla = false;
+        if (batType.skills.includes('guerrilla')) {
+            if (batType.cat === 'infantry' || batType.skills.includes('tirailleur')) {
+                realGuerrilla = true;
+            }
+        }
+        if ((bat.apLeft < 0 && !realGuerrilla && !bat.tags.includes('skupiac')) || bat.apLeft > 0) {
+            initDice = initDice+(bat.apLeft*3);
         }
     } else {
         if (bat.apLeft > 0) {
-            speed = speed-(bat.apLeft*2)-15;
+            initDice = initDice+(bat.apLeft*2)+15;
         }
     }
     if (bat.team === 'player') {
-        speed = speed-(playerInfos.comp.train*5)+5;
+        initDice = initDice+(playerInfos.comp.train*5);
+        initDice = initDice+(vetBonus.initiative*bat.vet);
     } else {
-        speed = speed-alienInitiative;
+        initDice = initDice+alienInitiative; // 15
     }
-    let vetDice = vetBonus.initiative*bat.vet;
-    return Math.round(speed+rand.rand(0,initiativeDice)-rand.rand(0,vetDice));
+    if (batType.skills.includes('slowfire')) {
+        initDice = initDice/10;
+    }
+    if (activeTurn === 'player') {
+        if (bat.tags.includes('embuscade') && bat.fuzz === -2) {
+            initBonus = initBonus+100;
+        }
+    }
+    if (batType.skills.includes('after')) {
+        if (attacking) {
+            initBonus = initBonus+999;
+        } else {
+            initBonus = initBonus-999;
+        }
+    }
+    initDice = Math.ceil(initDice);
+    initDice = entre(initDice,3,900);
+    initBonus = Math.ceil(initBonus);
+    initiative = rand.rand(0,initDice)+initBonus;
+    if (attacking) {
+        console.log('INITIATIVE - Attaque: (0-'+initDice+')+'+initBonus+' = '+initiative);
+    } else {
+        console.log('INITIATIVE - Défense: (0-'+initDice+')+'+initBonus+' = '+initiative);
+    }
+    return initiative;
 };
 
 function sideBySideTiles(myTileIndex,thatTileIndex,fuzzThing) {
@@ -3440,6 +3458,21 @@ function getRipNum(bat,batType) {
         ripNum = 0;
     }
     return ripNum;
+};
+
+function getMinShindaDmg(weap,bat,batType) {
+    let minShindaDmg = Math.sqrt(batType.size)*4;
+    if (batType.cat != 'aliens') {
+        minShindaDmg = 1000;
+    } else {
+        if (rand.rand(1,3) === 1) {
+            minShindaDmg = minShindaDmg/4;
+        }
+        if (weap.ammo.includes('hypo')) {
+            minShindaDmg = minShindaDmg/4;
+        }
+    }
+    return minShindaDmg;
 };
 
 function genocide(genoBatType) {

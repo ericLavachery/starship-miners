@@ -2125,7 +2125,7 @@ function eggSpawn(bat,fromEgg) {
         presAlien = 1;
     }
     console.log('eggTurn='+eggTurn);
-    if (eggTurn >= eggLife && fromEgg && !bat.tags.includes('stun')) {
+    if (eggTurn >= eggLife && fromEgg) {
         // TRANFORMATION EN RUCHE OU VOLCAN !
         if (bat.tags.includes('morph')) {
             if (bat.type.includes('Oeuf')) {
@@ -2178,7 +2178,7 @@ function eggSpawn(bat,fromEgg) {
             }
         }
         console.log('spawnChance='+spawnChance);
-        if (rand.rand(1,100) <= spawnChance && !bat.tags.includes('stun')) {
+        if (rand.rand(1,100) <= spawnChance) {
             let adjEggTurn = eggTurn;
             if (adjEggTurn > 13) {
                 adjEggTurn = 13;
