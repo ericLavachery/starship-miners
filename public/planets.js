@@ -295,7 +295,7 @@ function checkMayOutInSoute(bat,batType) {
     return mayOut;
 };
 
-function checkMissions() {
+function checkMissions(markDone) {
     // à l'atterrissage sur une zone!
     let doom = getDoom(false);
     let nextMission = getNextMission(doom);
@@ -305,6 +305,18 @@ function checkMissions() {
         let mType = getMissionType(nextMission.num,true);
         playerInfos.alerte.title = 'Nouvelle mission';
         playerInfos.alerte.body = mType.name+': '+mType.title;
+    }
+    if (markDone) {
+        let mTypeHere = getMissionType(zone[0].number,true);
+        if (mTypeHere.nid === 'trolley') {
+            playerInfos.objectifs.trolley = 'detruit';
+        }
+        if (mTypeHere.nid === 'science') {
+            playerInfos.objectifs.science = 'detruit';
+        }
+        if (mTypeHere.nid === 'resist') {
+            playerInfos.objectifs.resistance = 'detruit';
+        }
     }
 };
 
@@ -434,62 +446,6 @@ function getNextMissionNum(minNum,maxNum) {
         }
     });
     return misNum;
-};
-
-function checkCanon() {
-    // à l'atterrissage sur une zone!
-    // OLD VERSION
-    let doom = getDoom(true);
-    let isTest = false;
-    if (playerInfos.pseudo == 'Payall' || playerInfos.pseudo.includes('Test') || playerInfos.pseudo.includes('test')) {
-        isTest = true;
-    }
-    // CANON WEB (Objectif Spider);
-    let doomStart = 5;
-    // à enlever quand il y aura la map spéciale
-    // enlever le canon
-    if (playerInfos.objectifs.spider === 'actif' && !isTest) {
-        if (doom >= doomStart) {
-            let chance = 30+((doom-doomStart)*15);
-            if (rand.rand(1,100) <= chance) {
-                playerInfos.objectifs.spider = 'detruit';
-            }
-        }
-    }
-    // à garder
-    // mettre le canon
-    if (playerInfos.objectifs.spider === 'none' && !isTest) {
-        if (doom >= doomStart) {
-            let chance = 40+((doom-doomStart)*40);
-            if (rand.rand(1,100) <= chance) {
-                playerInfos.objectifs.spider = 'actif';
-            }
-        }
-    }
-    // CANON METEOR (Objectif Bug);
-    doomStart = 7;
-    // à enlever quand il y aura la map spéciale
-    // enlever le canon
-    if (playerInfos.objectifs.bug === 'actif' && !isTest) {
-        if (doom >= doomStart) {
-            let chance = 30+((doom-doomStart)*15);
-            if (rand.rand(1,100) <= chance) {
-                playerInfos.objectifs.bug = 'detruit';
-            }
-        }
-    }
-    // à garder
-    // mettre le canon
-    if (playerInfos.objectifs.spider === 'detruit') { // enlever cette ligne!
-        if (playerInfos.objectifs.bug === 'none' && !isTest) {
-            if (doom >= doomStart) {
-                let chance = 40+((doom-doomStart)*40);
-                if (rand.rand(1,100) <= chance) {
-                    playerInfos.objectifs.bug = 'actif';
-                }
-            }
-        }
-    }
 };
 
 function alienCanon() {
