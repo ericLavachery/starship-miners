@@ -1017,7 +1017,20 @@ function addRes(zone) {
                     if (tile.rq === undefined) {
                         if (mythicNum < mythicMin) {
                             tile.rq = 5;
-                            mythicNum++;
+                            mythicNum = mythicNum+0.8;
+                        }
+                    }
+                }
+            });
+        }
+        // not enough mythics
+        if (mythicNum < mythicMin) {
+            shufZone.forEach(function(tile) {
+                if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
+                    if (tile.rq === undefined) {
+                        if (mythicNum < mythicMin) {
+                            tile.rq = 5;
+                            mythicNum = mythicNum+0.8;
                         }
                     }
                 }
@@ -1203,7 +1216,7 @@ function addRes(zone) {
                     }
                 }
             });
-            tile.rs[mythicRes.name] = mythicRes.adjBatch*(tile.rq-2)*(tile.rq-3)*rand.rand(5,11);
+            tile.rs[mythicRes.name] = (mythicRes.adjBatch*(tile.rq-2)*(tile.rq-3)*rand.rand(4,12))+rand.rand(0,9);
             // RAJOUT DE RESSOURCES AUX POINTS BLEUS
             let mythicResBld = mythicRes.bld;
             if (mythicResBld === 'Comptoir') {
@@ -1235,7 +1248,7 @@ function addRes(zone) {
                             if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
                                 rajResBatch = rajResBatch+3;
                             }
-                            tile.rs[res.name] = (rajResBatch*rajResBatch*rand.rand(8,18))+rand.rand(0,9);
+                            tile.rs[res.name] = (rajResBatch*rajResBatch*rand.rand(7,19))+rand.rand(0,9);
                         }
                     }
                 }
@@ -1262,7 +1275,7 @@ function addRes(zone) {
                                 if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
                                     rajResBatch = rajResBatch+3;
                                 }
-                                tile.rs[res.name] = (rajResBatch*rajResBatch*rand.rand(8,18))+rand.rand(0,9);
+                                tile.rs[res.name] = (rajResBatch*rajResBatch*rand.rand(7,19))+rand.rand(0,9);
                             }
                         }
                     }
@@ -1290,7 +1303,7 @@ function addRes(zone) {
                                 if (mythicRes.bld === 'Comptoir' && res.name === 'Huile') {
                                     rajResBatch = rajResBatch+3;
                                 }
-                                tile.rs[res.name] = (rajResBatch*rajResBatch*rand.rand(8,18))+rand.rand(0,9);
+                                tile.rs[res.name] = (rajResBatch*rajResBatch*rand.rand(7,19))+rand.rand(0,9);
                             }
                         }
                     }

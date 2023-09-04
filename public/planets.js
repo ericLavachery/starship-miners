@@ -343,7 +343,7 @@ function getNextMission(doom) {
     nextMission.nid = 'none';
     nextMission.pa = 99;
     let found = false;
-    if (doom >= 4.4) {
+    if (doom >= 4.4 || playerInfos.gLevel >= 12) {
         if (playerInfos.objectifs.resistance === 'none') {
             nextMission.num = getNextMissionNum(60,64);
             if (nextMission.num >= 50) {
@@ -355,7 +355,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 5.1) {
+        if (doom >= 5.1 || playerInfos.gLevel >= 13) {
             if (playerInfos.objectifs.trolley === 'none') {
                 nextMission.num = getNextMissionNum(50,54);
                 if (nextMission.num >= 50) {
@@ -368,7 +368,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 5.8) {
+        if (doom >= 5.8 || playerInfos.gLevel >= 14) {
             if (playerInfos.objectifs.swarm === 'none') {
                 nextMission.num = getNextMissionNum(65,69);
                 if (nextMission.num >= 50) {
@@ -381,7 +381,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 6.4) {
+        if (doom >= 6.4 || playerInfos.gLevel >= 15) {
             if (playerInfos.objectifs.science === 'none') {
                 nextMission.num = getNextMissionNum(55,59);
                 if (nextMission.num >= 50) {
@@ -394,7 +394,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 7) {
+        if (doom >= 7 || playerInfos.gLevel >= 16) {
             if (playerInfos.objectifs.spider === 'none') {
                 nextMission.num = getNextMissionNum(80,84);
                 if (nextMission.num >= 50) {
@@ -407,7 +407,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 7.6) {
+        if (doom >= 7.6 || playerInfos.gLevel >= 17) {
             if (playerInfos.objectifs.larve === 'none') {
                 nextMission.num = getNextMissionNum(70,74);
                 if (nextMission.num >= 50) {
@@ -420,7 +420,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 8.2) {
+        if (doom >= 8.2 || playerInfos.gLevel >= 18) {
             if (playerInfos.objectifs.bug === 'none') {
                 nextMission.num = getNextMissionNum(75,79);
                 if (nextMission.num >= 50) {

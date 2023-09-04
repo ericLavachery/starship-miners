@@ -1348,7 +1348,7 @@ function checkRegeneration(myBat,myBatType,resistance,allTags) {
                 if (myBatType.skills.includes('reactpoison') && myBat.tags.includes('poison')) {
                     regOK = false;
                 }
-                if (myBat.tags.includes('shinda') || myBat.tags.includes('necro')) {
+                if (myBat.tags.includes('necro')) {
                     regOK = false;
                 }
             } else if (myBat.tags.includes('necro') || myBat.tags.includes('venin')) {
@@ -1379,6 +1379,9 @@ function checkRegeneration(myBat,myBatType,resistance,allTags) {
                     }
                 }
                 regen = regen/(allTags.poison+5)*5;
+                if (myBat.tags.includes('shinda')) {
+                    regen = regen/5;
+                }
                 regen = Math.ceil(regen*(myBat.squadsLeft+9)/(myBatType.squads+9));
                 if (regen < 1) {regen = 1;}
                 // console.log('regeneration='+regen);

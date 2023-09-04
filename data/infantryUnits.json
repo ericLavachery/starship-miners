@@ -3777,7 +3777,7 @@
             "noBis":true,
             "rof":6,
             "accuracy":13,
-            "dca":0.85,
+            "dca":0.75,
             "power":8,
             "aoe":"squad",
             "sound":"molotov",

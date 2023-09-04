@@ -595,6 +595,31 @@ function alienUnitsChanges() {
 function playerSkillsUTChanges() {
     unitTypes.forEach(function(unit) {
         unit.team = 'player';
+        // WEAPON 1 ALT
+        if (unit.weapon1alt != undefined) {
+            if (unit.weapon1alt.gangs.includes(playerInfos.gang)) {
+                unit.weapon = unit.weapon1alt;
+                unit.weapon1alt = {};
+            } else {
+                unit.weapon1alt = {};
+            }
+        }
+        if (unit.weapon1bis != undefined) {
+            if (unit.weapon1bis.gangs.includes(playerInfos.gang)) {
+                unit.weapon = unit.weapon1bis;
+                unit.weapon1bis = {};
+            } else {
+                unit.weapon1bis = {};
+            }
+        }
+        if (unit.weapon1prox != undefined) {
+            if (unit.weapon1prox.gangs.includes(playerInfos.gang)) {
+                unit.weapon = unit.weapon1prox;
+                unit.weapon1bis = {};
+            } else {
+                unit.weapon1bis = {};
+            }
+        }
         // WEAPON 2 ALT
         if (unit.weapon2alt != undefined) {
             if (unit.weapon2alt.gangs.includes(playerInfos.gang)) {

@@ -1699,7 +1699,7 @@ function tagsEffect(bat,batType) {
     bat.damage = reg.damage;
     bat.squadsLeft = reg.squadsLeft;
     // MALADIE
-    if (bat.tags.includes('maladie') || bat.tags.includes('shinda')) {
+    if (bat.tags.includes('maladie')) {
         if (bat.tags.includes('skupiac') || bat.tags.includes('octiron') || bat.tags.includes('zombie')) {
             tagDelete(bat,'maladie');
         } else {
