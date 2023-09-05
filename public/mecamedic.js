@@ -1374,13 +1374,13 @@ function checkRegeneration(myBat,myBatType,resistance,allTags) {
                     }
                 } else {
                     regen = myBatHP*slowregPower/200;
-                    if (regen > 150) {
-                        regen = 150;
+                    if (regen > 50) {
+                        regen = 50;
                     }
                 }
                 regen = regen/(allTags.poison+5)*5;
                 if (myBat.tags.includes('shinda')) {
-                    regen = regen/5;
+                    regen = regen/4;
                 }
                 regen = Math.ceil(regen*(myBat.squadsLeft+9)/(myBatType.squads+9));
                 if (regen < 1) {regen = 1;}

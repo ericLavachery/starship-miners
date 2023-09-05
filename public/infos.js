@@ -1361,7 +1361,7 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Construction d\'infrastructures possible si à côté d\'un bâtiment (Miradors, Palissades etc...)">Infrastructures</span>'+sepa;
     }
     if (batType.skills.includes('mir')) {
-        allSkills = allSkills+'<span class="paramValue" title="Construction de Miradors possible si à côté d\'un bâtiment">Miradors</span>'+sepa;
+        allSkills = allSkills+'<span class="paramValue" title="Construction de Miradors possible si à côté d\'un bâtiment ou en forêt">Miradors</span>'+sepa;
     }
     if (batType.skills.includes('pal')) {
         allSkills = allSkills+'<span class="paramValue" title="Construction de Palissades possible si à côté d\'un bâtiment">Palissades</span>'+sepa;

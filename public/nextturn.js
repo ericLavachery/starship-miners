@@ -1309,7 +1309,7 @@ function getAP(bat,batType) {
 };
 
 function calcUnitResist() {
-    // min 1 / norm 2 / max 4
+    // min 1 / début 2 / fin 3 / max 5
     let unitResist = -1;
     // INFIRMERIES
     if (playerInfos.bldList.includes('Hôpital')) {
@@ -1331,7 +1331,7 @@ function calcUnitResist() {
     }
     unitResist = Math.round(unitResist);
     if (unitResist < 0) {
-        unitResist = 1;
+        unitResist = 0;
     }
     return unitResist;
 };
@@ -1685,7 +1685,7 @@ function tagsEffect(bat,batType) {
     }
     // UNITRESIST
     let resistance = false;
-    if (rand.rand(1,16) <= unitResist && bat.cat === 'infantry') {
+    if (rand.rand(1,30) <= unitResist && bat.cat === 'infantry') {
         resistance = true;
     }
     // AUTOREPAIR
@@ -1703,13 +1703,13 @@ function tagsEffect(bat,batType) {
         if (bat.tags.includes('skupiac') || bat.tags.includes('octiron') || bat.tags.includes('zombie')) {
             tagDelete(bat,'maladie');
         } else {
-            if (rand.rand(1,20) <= unitResist && bat.team === 'player') {
+            if (rand.rand(1,30) <= unitResist && bat.team === 'player') {
                 tagDelete(bat,'maladie');
                 warning('',bat.type+' a vaincu la maladie.',false,bat.tileId);
             } else {
                 bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
                 if (bat.squadsLeft < batType.squads || bat.damage >= 1) {
-                    if (rand.rand(1,36) <= (4-unitResist) && bat.team === 'player') {
+                    if (rand.rand(1,36) <= (6-unitResist) && bat.team === 'player') {
                         bat.tags.push('venin');
                         if (!batType.skills.includes('resistpoison')) {
                             warning('',bat.type+' risque de succomber à la maladie.',false,bat.tileId);
@@ -1771,7 +1771,7 @@ function tagsEffect(bat,batType) {
             if (batType.skills.includes('nokill')) {
                 tagDelete(bat,'necro');
             }
-        } else if (rand.rand(3,48) <= unitResist) {
+        } else if (rand.rand(4,48) <= unitResist) {
             tagDelete(bat,'necro');
             if (!bat.tags.includes('necro')) {
                 warning('',bat.type+' a éliminé la nécrotoxine.',false,bat.tileId);
@@ -1826,9 +1826,9 @@ function tagsEffect(bat,batType) {
         }
         // SHINDA
         if (bat.tags.includes('shinda') && bat.squadsLeft >= 1) {
-            if (batType.skills.includes('nokill') && rand.rand(1,3) === 1) {
+            if ((batType.skills.includes('nokill') || bat.tags.includes('permashield')) && rand.rand(1,3) === 1) {
                 tagDelete(bat,'shinda');
-            } else if ((batType.skills.includes('resistpoison') || bat.tags.includes('permashield')) && rand.rand(1,8) === 1) {
+            } else if ((batType.skills.includes('resistpoison') || batType.kind === 'egg2') && rand.rand(1,8) === 1) {
                 tagDelete(bat,'shinda');
             } else {
                 let shindaDamage = Math.round(Math.sqrt(batType.hp)*40);
@@ -1923,7 +1923,7 @@ function tagsEffect(bat,batType) {
             } else {
                 let stopPoison = 10;
                 if (batType.team === 'player') {
-                    stopPoison = 18-Math.floor(playerInfos.comp.ca*1.5)-(unitResist*2);
+                    stopPoison = 20-Math.floor(playerInfos.comp.ca*1.5)-(unitResist*2);
                 }
                 let i = 1;
                 while (i <= allTags.poison) {

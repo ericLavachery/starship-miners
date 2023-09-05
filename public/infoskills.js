@@ -2176,7 +2176,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     $('#unitInfos').append('<span id="line-infra"></span>');
     lineBreak = false;
     // INFRASTRUCTURE
-    if ((batType.skills.includes('infraz') || (batType.skills.includes('infbld') && near.bld) || (batType.skills.includes('mir') && near.bld) || (batType.skills.includes('pal') && near.bld) || batType.skills.includes('trou') || near.caserne) && !playerInfos.onShip && !zeroCrew) {
+    if ((batType.skills.includes('infraz') || (batType.skills.includes('infbld') && near.bld) || (batType.skills.includes('mir') && (near.bld || tile.terrain === 'F')) || (batType.skills.includes('pal') && near.bld) || batType.skills.includes('trou') || near.caserne) && !playerInfos.onShip && !zeroCrew) {
         if ((tile.terrain != 'W' || playerInfos.comp.const >= 2 || playerInfos.comp.const+playerInfos.comp.def >= 3) && tile.terrain != 'R' && tile.terrain != 'L') {
             let oneOnly = 'all';
             if (batType.skills.includes('mir') && !near.caserne) {

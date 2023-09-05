@@ -7069,7 +7069,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","camo","cible","guerrilla","tirailleur","fastguet","badmedic","ranger","swim","brigands","herokill","lowstress"],
+        "skills":["a_light","fouille","fortif","datt","camo","cible","guerrilla","tirailleur","fastguet","badmedic","ranger","mir","swim","brigands","herokill","lowstress"],
         "mediCost":7,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"

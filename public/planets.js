@@ -297,16 +297,20 @@ function checkMayOutInSoute(bat,batType) {
 
 function checkMissions(markDone) {
     // à l'atterrissage sur une zone!
-    let doom = getDoom(false);
-    let nextMission = getNextMission(doom);
-    if (nextMission.num >= 50) {
-        // placer les fichiers de la zone !!!!!!!!!!
-        moveMissionZone(nextMission.num);
-        let mType = getMissionType(nextMission.num,true);
-        playerInfos.alerte.title = 'Nouvelle mission';
-        playerInfos.alerte.body = mType.name+': '+mType.title;
+    if (zone[0].number < 50) {
+        // si vous n'êtes pas dans une mission spéciale: check next mission
+        let doom = getDoom(false);
+        let nextMission = getNextMission(doom);
+        if (nextMission.num >= 50) {
+            // placer les fichiers de la zone !!!!!!!!!!
+            moveMissionZone(nextMission.num);
+            let mType = getMissionType(nextMission.num,true);
+            playerInfos.alerte.title = 'Nouvelle mission';
+            playerInfos.alerte.body = mType.name+': '+mType.title;
+        }
     }
     if (markDone) {
+        // si vous êtes dans une mission spéciale: marqué la mission comme complétée (sauf missions BOSS)
         let mTypeHere = getMissionType(zone[0].number,true);
         if (mTypeHere.nid === 'trolley') {
             playerInfos.objectifs.trolley = 'detruit';
