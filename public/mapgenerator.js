@@ -1146,6 +1146,17 @@ function addRes(zone) {
         if (res.cat.includes('sky')) {
             skySum = skySum+resRarity;
         }
+        if (playerInfos.pseudo != 'Mapedit') {
+            if (playerInfos.sondeRes.includes(res.name)) {
+                if (res.adjRarity < res.rarity) {
+                    res.adjRarity = res.rarity;
+                }
+                if (res.adjBatch < res.batch) {
+                    res.adjBatch = res.batch;
+                }
+                res.adjRarity = Math.ceil(res.adjRarity*(playerInfos.comp.ext+5)/5);
+            }
+        }
     });
     console.log('scrapRarity: '+scrapRarity);
     // check RUINS

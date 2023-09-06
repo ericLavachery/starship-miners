@@ -733,11 +733,74 @@ function editSonde() {
         if (i >= prAMax) {break;}
         i++
     }
+    let numRes = playerInfos.comp.det-1;
+    numRes = entre(numRes,0,3);
+    if (playerInfos.comp.ext < 1) {
+        numRes = 0;
+    }
+    if (numRes >= 1) {
+        $('#conUnitList').append('<span class="ListRes vert"><br>Ressources recherchées:</span><br>');
+        cleanSondeRes();
+        sondeResChoice(0);
+    }
+    if (numRes >= 2) {
+        sondeResChoice(1);
+    }
+    if (numRes >= 3) {
+        sondeResChoice(2);
+    }
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<br>');
     planetsDesc();
     $('#conUnitList').append('<br>');
     $("#conUnitList").animate({scrollTop:0},"fast");
+};
+
+function cleanSondeRes() {
+    let numRes = playerInfos.comp.det-1;
+    numRes = entre(numRes,0,3);
+    if (playerInfos.comp.ext < 1) {
+        numRes = 0;
+    }
+    if (playerInfos.sondeRes.length > numRes) {
+        playerInfos.sondeRes = [];
+    }
+    if (playerInfos.sondeRes.length < numRes) {
+        playerInfos.sondeRes.push('Fer');
+        if (playerInfos.sondeRes.length < numRes) {
+            playerInfos.sondeRes.push('Fer');
+            if (playerInfos.sondeRes.length < numRes) {
+                playerInfos.sondeRes.push('Fer');
+            }
+        }
+    }
+}
+
+function sondeResChoice(arNum) {
+    let idName = 'theRes'+arNum;
+    $('#conUnitList').append('<select class="boutonGris" id="'+idName+'" onchange="changePlayerInfo(`'+idName+'`,`sondeRes`,`sonde`)" title="Ressource recherchée"></select><br>');
+    let planetName = getPlanetNameById(playerInfos.sondePlanet);
+    console.log(planetName);
+    let sortedResTypes = _.sortBy(resTypes,'name');
+    sortedResTypes.forEach(function(res) {
+        if (res.cat != 'zero' && res.cat != 'transfo' && res.cat != 'alien' && !res.cat.includes('blue') && !res.cat.includes('sky')) {
+            if (res.name != 'Scrap') {
+                let planetOK = true;
+                if (res.planets != undefined) {
+                    if (res.planets[planetName] <= 0) {
+                        planetOK = false;
+                    }
+                }
+                if (planetOK) {
+                    if (playerInfos.sondeRes[arNum] === res.name) {
+                        $('#'+idName).append('<option value="'+res.name+'" selected>'+res.name+'</option>');
+                    } else {
+                        $('#'+idName).append('<option value="'+res.name+'">'+res.name+'</option>');
+                    }
+                }
+            }
+        }
+    });
 };
 
 function pushSonde(mapNum,mapMax) {

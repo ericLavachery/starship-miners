@@ -323,6 +323,7 @@ function newGame() {
     playerInfos.gangXP = 2200;
     playerInfos.sondeDanger = -1;
     playerInfos.sondePlanet = -1;
+    playerInfos.sondeRes = [];
     playerInfos.crime = 0;
     playerInfos.penit = 0;
     playerInfos.vitals = 0;

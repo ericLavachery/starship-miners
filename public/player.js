@@ -222,14 +222,25 @@ function changePlayerInfo(dropMenuId,infoName,from) {
     if (infoName === 'mapTurn' && value === "0") {
         playerInfos.para = calcParaNum();
     }
-    if (value === 'true') {
-        playerInfos[infoName] = true;
-    } else if (value === 'false') {
-        playerInfos[infoName] = false;
-    } else if (isNaN(value)) {
-        playerInfos[infoName] = value;
+    if (infoName === 'sondeRes') {
+        let arNum = dropMenuId.replace("theRes","");
+        arNum = +arNum;
+        console.log('sondeRes '+arNum+' ======================================================================= ');
+        console.log(playerInfos.sondeRes[arNum]);
+        playerInfos.sondeRes[arNum] = value;
+        console.log(value);
+        console.log(playerInfos.sondeRes[arNum]);
+        console.log(' ======================================================================= ');
     } else {
-        playerInfos[infoName] = +value;
+        if (value === 'true') {
+            playerInfos[infoName] = true;
+        } else if (value === 'false') {
+            playerInfos[infoName] = false;
+        } else if (isNaN(value)) {
+            playerInfos[infoName] = value;
+        } else {
+            playerInfos[infoName] = +value;
+        }
     }
     if (infoName === 'sondePlanet') {
         if (playerInfos.sondePlanet === 1) {
