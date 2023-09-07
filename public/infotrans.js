@@ -970,6 +970,7 @@ function clickDebarq(tileId) {
                 selectedBat.apLeft = selectedBat.apLeft-apCost;
                 selectedBat.xp = selectedBat.xp+(Math.sqrt(batDebarqType.fabTime)/20);
                 constructSound();
+                batDebarq.creaTurn = playerInfos.mapTurn;
             }
         } else {
             if (selectedBat.transIds.includes(batDebarq.id)) {

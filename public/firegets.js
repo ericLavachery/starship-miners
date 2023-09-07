@@ -1722,10 +1722,12 @@ function crossTarget(alien) {
         ct = 'Jelly';
     } else if (alien.tags.includes('inflammable')) {
         ct = 'Fire';
-    } else if (alien.tags.includes('stun') || alien.tags.includes('freeze')) {
-        ct = 'Stun';
+    } else if (alien.tags.includes('freeze')) {
+        ct = 'Freeze';
     } else if (alien.tags.includes('fluo')) {
         ct = 'Fluo';
+    } else if (alien.tags.includes('shinda')) {
+        ct = 'Death';
     }
     return ct;
 };
@@ -3461,26 +3463,34 @@ function getRipNum(bat,batType) {
 };
 
 function getMinShindaDmg(weap,bat,batType) {
-    let minShindaDmg = Math.sqrt(batType.size)*4;
+    let minShindaDmg = Math.sqrt(batType.size)*5.3;
     if (batType.cat != 'aliens') {
         minShindaDmg = 1000;
     } else {
         if (rand.rand(1,3) === 1) {
-            minShindaDmg = minShindaDmg/4;
+            minShindaDmg = minShindaDmg/3;
         }
         if (weap.ammo.includes('hypo')) {
-            minShindaDmg = minShindaDmg/4;
+            minShindaDmg = minShindaDmg/3;
         }
     }
-    return minShindaDmg;
+    return Math.ceil(minShindaDmg);
 };
 
 function genocide(genoBatType) {
+    let bioBat = bataillons.find(item => item.type === 'Biopod');
+    let time = playerInfos.mapTurn-bioBat.creaTurn;
+    genoChance = (playerInfos.comp.ca*6)+(playerInfos.comp.med*6)+(time*3)-100;
+    let genoMax = 89+playerInfos.comp.ca+playerInfos.comp.med;
+    genoChance = entre(genoChance,0,genoMax);
     aliens.forEach(function(bat) {
-        if (!bat.tags.includes('shinda')) {
+        if (!bat.tags.includes('bio')) {
             let batType = getBatType(bat);
             if (batType.id === genoBatType.id) {
-                bat.tags.push('shinda');
+                bat.tags.push('bio');
+                if (rand.rand(1,100) <= genoChance && !bat.tags.includes('shinda')) {
+                    bat.tags.push('shinda');
+                }
             }
         }
     });

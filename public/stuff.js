@@ -879,15 +879,6 @@ function hasUnit(unitName,active) {
             youHaveIt = true;
         }
     }
-    // ages.some(checkAdult);
-    // function checkAdult(age) {
-    //     return age > 18;
-    // }
-    // bataillons.forEach(function(bat) {
-    //     if (bat.type === unitName) {
-    //         youHaveIt = true;
-    //     }
-    // });
     return youHaveIt;
 }
 

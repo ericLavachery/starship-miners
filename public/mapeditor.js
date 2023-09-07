@@ -53,10 +53,14 @@ function mapEditWindow() {
     // Infra
     armorTypes.forEach(function(infra) {
         if (infra.cat === 'infra') {
-            selectStuff(infra.name,infra.pic,infra.name);
+            if (infra.name != 'Crystal' || zone[0].planet === 'Sarak') {
+                selectStuff(infra.name,infra.pic,infra.name);
+            }
         }
     });
-    selectStuff('Ruines','ruinCheck','Ruines (au hasard)');
+    if (zone[0].planet != 'Sarak') {
+        selectStuff('Ruines','ruinCheck','Ruines (au hasard)');
+    }
     selectStuff('RuinesNext','ruinNext','Ruines (au choix)');
     // <br>
     selectStuff('Route','roads','Route (ou Pont)');

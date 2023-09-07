@@ -545,6 +545,9 @@ function showAlien(bat) {
     if (bat.tags.includes('shinda')) {
         tagz = tagz+' (shinda)';
     }
+    if (bat.tags.includes('bio')) {
+        tagz = tagz+' (bio)';
+    }
     if (bat.tags.includes('stun')) {
         tagz = tagz+' (stun)';
     }

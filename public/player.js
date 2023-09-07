@@ -225,12 +225,7 @@ function changePlayerInfo(dropMenuId,infoName,from) {
     if (infoName === 'sondeRes') {
         let arNum = dropMenuId.replace("theRes","");
         arNum = +arNum;
-        console.log('sondeRes '+arNum+' ======================================================================= ');
-        console.log(playerInfos.sondeRes[arNum]);
         playerInfos.sondeRes[arNum] = value;
-        console.log(value);
-        console.log(playerInfos.sondeRes[arNum]);
-        console.log(' ======================================================================= ');
     } else {
         if (value === 'true') {
             playerInfos[infoName] = true;

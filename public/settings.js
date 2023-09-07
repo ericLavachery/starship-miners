@@ -251,6 +251,7 @@ let defAlive = true;
 let venumDamage = 45; // 45 = 15-45 damage (30)
 let poisonDamage = 15; // 15 = 5-15 damage (10)
 let parasiteDamage = 180;
+let genoChance = 0;
 let morphedBats = [];
 let blubDamage = 6;
 let bugROF = 1;

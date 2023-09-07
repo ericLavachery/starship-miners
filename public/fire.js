@@ -1200,15 +1200,15 @@ function attack(melee,init) {
         }
         // bio
         if (selectedWeap.ammo.includes('-bio')) {
-            if (playerInfos.bldList.includes('Biopod') && !targetBat.tags.includes('shinda')) {
-                genocide(targetBatType);
-                targetBat.tags.push('shinda');
-                $('#report').append('<span class="report rose">Genocide<br></span>');
-            } else {
-                if (!targetBat.tags.includes('shinda')) {
-                    targetBat.tags.push('shinda');
+            if (playerInfos.bldList.includes('Biopod')) {
+                if (!targetBat.tags.includes('bio')) {
+                    targetBat.tags.push('bio');
+                    genocide(targetBatType);
+                    $('#report').append('<span class="report rose">Génocide '+genoChance+'%<br></span>');
+                    if (!targetBat.tags.includes('shinda')) {
+                        targetBat.tags.push('shinda');
+                    }
                 }
-                $('#report').append('<span class="report rose">Shinda<br></span>');
             }
         }
     }
@@ -2225,15 +2225,15 @@ function defense(melee,init) {
         }
         // bio
         if (targetWeap.ammo.includes('-bio')) {
-            if (playerInfos.bldList.includes('Biopod') && !selectedBat.tags.includes('shinda')) {
-                genocide(selectedBatType);
-                selectedBat.tags.push('shinda');
-                $('#report').append('<span class="report rose">Genocide<br></span>');
-            } else {
-                if (!selectedBat.tags.includes('shinda')) {
-                    selectedBat.tags.push('shinda');
+            if (playerInfos.bldList.includes('Biopod')) {
+                if (!selectedBat.tags.includes('bio')) {
+                    selectedBat.tags.push('bio');
+                    genocide(selectedBatType);
+                    $('#report').append('<span class="report rose">Génocide '+genoChance+'%<br></span>');
+                    if (!selectedBat.tags.includes('shinda')) {
+                        selectedBat.tags.push('shinda');
+                    }
                 }
-                $('#report').append('<span class="report rose">Shinda<br></span>');
             }
         }
     }
