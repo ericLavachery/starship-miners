@@ -3463,7 +3463,7 @@ function getRipNum(bat,batType) {
 };
 
 function getMinShindaDmg(weap,bat,batType) {
-    let minShindaDmg = Math.sqrt(batType.size)*5.3;
+    let minShindaDmg = Math.sqrt(batType.size)*7.9;
     if (batType.cat != 'aliens') {
         minShindaDmg = 1000;
     } else {

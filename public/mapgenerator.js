@@ -1154,7 +1154,7 @@ function addRes(zone) {
                 if (res.adjBatch < res.batch) {
                     res.adjBatch = res.batch;
                 }
-                res.adjRarity = Math.ceil(res.adjRarity*(playerInfos.comp.ext+5)/5);
+                res.adjRarity = Math.ceil(res.adjRarity*(playerInfos.comp.ext+8)/8);
             }
         }
     });
