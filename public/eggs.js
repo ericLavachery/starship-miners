@@ -156,6 +156,7 @@ function calcEggPause(noMax) {
 };
 
 function checkMaxDroppedEggs() {
+    // ne lancer qu'une seule fois par tour!!!
     let overLimit = playerInfos.mapTurn-30;
     if (overLimit < 0) {
         overLimit = 0;
@@ -166,6 +167,12 @@ function checkMaxDroppedEggs() {
     }
     let maxDroppedEggs = Math.ceil((maxEggDropTurn+overLimit)*(zone[0].mapDiff+1.5)/7);
     maxDroppedEggs = maxDroppedEggs+Math.round(playerInfos.fuzzTotal/50)-8;
+    let numOfAliens = aliens.length+10;
+    let normOfAliens = playerInfos.mapTurn*2;
+    let alienNeed = 85+(15*normOfAliens/numOfAliens);
+    if (playerInfos.mapTurn >= 15) {
+        maxDroppedEggs = Math.ceil(maxDroppedEggs*alienNeed/100);
+    }
     let absoluteMinMax = Math.floor((playerInfos.mapTurn-5)/5)+1;
     if (maxDroppedEggs < absoluteMinMax) {
         maxDroppedEggs = absoluteMinMax;
@@ -197,6 +204,14 @@ function checkMaxDroppedEggs() {
     }
     console.log('droppedEggs='+playerInfos.droppedEggs);
     console.log('maxDroppedEggs='+maxDroppedEggs);
+    if (maxDroppedEggs > playerInfos.maxEggDrop) {
+        playerInfos.maxEggDrop = maxDroppedEggs;
+    } else if (maxDroppedEggs < playerInfos.maxEggDrop) {
+        maxDroppedEggs = playerInfos.maxEggDrop;
+        if (alienNeed >= 115) {
+            playerInfos.droppedEggs = droppedEggs.droppedEggs-1;
+        }
+    }
     return maxDroppedEggs;
 };
 
@@ -212,6 +227,7 @@ function checkMaxEggsInPlay() {
     if (zone[0].meip != undefined) {
         maxEggsInPlay = maxEggsInPlay+zone[0].meip;
     }
+    playerInfos.maxEggPlay = maxEggsInPlay;
     return maxEggsInPlay;
 };
 
@@ -441,7 +457,7 @@ function checkEggsDrop() {
 
 function eggsDrop() {
     console.log('EGGDROP');
-    let maxDroppedEggs = checkMaxDroppedEggs();
+    let maxDroppedEggs = playerInfos.maxEggDrop;
     let numEggs;
     let eggDice = rand.rand(1,100);
     let eggPausePerc = calcEggPause(true);

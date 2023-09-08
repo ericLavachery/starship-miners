@@ -51,6 +51,8 @@ function afterMissionFirstReset() {
     playerInfos.sondeMaps = 0;
     playerInfos.eggPause = false;
     playerInfos.droppedEggs = 0;
+    playerInfos.maxEggDrop = 0;
+    playerInfos.maxEggPlay = 0;
     playerInfos.aliensKilled = 0;
     playerInfos.eggsKilled = 0;
     playerInfos.alienSat = 0;
@@ -75,6 +77,8 @@ function afterMissionReset(time) {
     playerInfos.sondeMaps = 0;
     playerInfos.eggPause = false;
     playerInfos.droppedEggs = 0;
+    playerInfos.maxEggDrop = 0;
+    playerInfos.maxEggPlay = 0;
     playerInfos.aliensKilled = 0;
     playerInfos.eggsKilled = 0;
     playerInfos.alienSat = 0;

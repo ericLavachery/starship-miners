@@ -76,6 +76,12 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.droppedEggs === undefined) {
         playerInfos.droppedEggs = 0;
     }
+    if (playerInfos.maxEggDrop === undefined) {
+        playerInfos.maxEggDrop = 0;
+    }
+    if (playerInfos.maxEggPlay === undefined) {
+        playerInfos.maxEggPlay = 0;
+    }
     if (playerInfos.mapAdjDiff === undefined) {
         playerInfos.mapAdjDiff = playerInfos.sondeDanger;
     }

@@ -1111,7 +1111,7 @@ function turnInfo(first) {
             if (Math.floor(playerInfos.mapTurn/coconStats.turns) > playerInfos.cocons) {
                 turnCol = 'wblynk';
             }
-            let maxDroppedEggs = checkMaxDroppedEggs();
+            let maxDroppedEggs = playerInfos.maxEggDrop;
             let maxEggsInPlay = checkMaxEggsInPlay();
             // dropchance
             let dropChance = getDropChance(playerInfos.mapTurn,maxDroppedEggs);

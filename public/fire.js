@@ -1200,14 +1200,12 @@ function attack(melee,init) {
         }
         // bio
         if (selectedWeap.ammo.includes('-bio')) {
-            if (playerInfos.bldList.includes('Biopod')) {
-                if (!targetBat.tags.includes('bio')) {
-                    targetBat.tags.push('bio');
-                    genocide(targetBatType);
-                    $('#report').append('<span class="report rose">Génocide '+genoChance+'%<br></span>');
-                    if (!targetBat.tags.includes('shinda')) {
-                        targetBat.tags.push('shinda');
-                    }
+            if (!targetBat.tags.includes('bio')) {
+                targetBat.tags.push('bio');
+                genocide(targetBatType);
+                $('#report').append('<span class="report rose">Génocide '+genoChance+'%<br></span>');
+                if (!targetBat.tags.includes('shinda')) {
+                    targetBat.tags.push('shinda');
                 }
             }
         }
@@ -2225,14 +2223,12 @@ function defense(melee,init) {
         }
         // bio
         if (targetWeap.ammo.includes('-bio')) {
-            if (playerInfos.bldList.includes('Biopod')) {
-                if (!selectedBat.tags.includes('bio')) {
-                    selectedBat.tags.push('bio');
-                    genocide(selectedBatType);
-                    $('#report').append('<span class="report rose">Génocide '+genoChance+'%<br></span>');
-                    if (!selectedBat.tags.includes('shinda')) {
-                        selectedBat.tags.push('shinda');
-                    }
+            if (!selectedBat.tags.includes('bio')) {
+                selectedBat.tags.push('bio');
+                genocide(selectedBatType);
+                $('#report').append('<span class="report rose">Génocide '+genoChance+'%<br></span>');
+                if (!selectedBat.tags.includes('shinda')) {
+                    selectedBat.tags.push('shinda');
                 }
             }
         }

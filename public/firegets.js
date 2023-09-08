@@ -3410,11 +3410,13 @@ function getEggProtect(eggBat,eggBatType,weap) {
         if (eggBatType.skills.includes('turnprotect')) {
             console.log('TURNPROT )))))))))))))))');
             if (!domeProtect) {
-                eggProt = (eggProt*3/5)+(playerInfos.mapTurn*1.65);
+                eggProt = (eggProt*3/5)+(playerInfos.mapTurn*1.8);
             }
             if (eggProt > maxProt) {eggProt = maxProt;}
             console.log(eggProt);
-            if (weap.noShield) {
+            if (weap.isMelee) {
+                eggProt = eggProt*0.97;
+            } else if (weap.noShield) {
                 eggProt = eggProt*0.9;
             } else if (weap.minShield) {
                 eggProt = eggProt*0.93;
@@ -3427,18 +3429,16 @@ function getEggProtect(eggBat,eggBatType,weap) {
             console.log(eggProt);
         }
         if (playerInfos.comp.ca === 5) {
-            eggProt = eggProt*0.94;
-        } else if (playerInfos.comp.ca === 4) {
-            eggProt = eggProt*0.98;
+            eggProt = eggProt*0.96;
         }
         if (weap.ammo === 'suicide' || weap.ammo === 'suicide-deluge') {
             eggProt = eggProt*0.85;
         }
     }
+    eggProt = Math.round(eggProt);
     if (eggProt > maxProt) {eggProt = maxProt;}
     if (eggProt < 0) {eggProt = 0;}
     console.log(eggProt);
-    eggProt = Math.round(eggProt);
     return eggProt;
 };
 
@@ -3480,20 +3480,25 @@ function getMinShindaDmg(weap,bat,batType) {
 function genocide(genoBatType) {
     let bioBat = bataillons.find(item => item.type === 'Biopod');
     let time = playerInfos.mapTurn-bioBat.creaTurn;
-    genoChance = (playerInfos.comp.ca*6)+(playerInfos.comp.med*6)+(time*3)-100;
+    genoChance = (playerInfos.comp.ca*6)+(playerInfos.comp.med*6)+(time*3)-80;
     let genoMax = 89+playerInfos.comp.ca+playerInfos.comp.med;
     genoChance = entre(genoChance,0,genoMax);
-    aliens.forEach(function(bat) {
-        if (!bat.tags.includes('bio')) {
-            let batType = getBatType(bat);
-            if (batType.id === genoBatType.id) {
-                bat.tags.push('bio');
-                if (rand.rand(1,100) <= genoChance && !bat.tags.includes('shinda')) {
-                    bat.tags.push('shinda');
+    if (genoBatType.class === 'X' || !playerInfos.bldList.includes('Biopod') || genoChance < 15) {
+        genoChance = 0;
+    }
+    if (genoChance >= 15) {
+        aliens.forEach(function(bat) {
+            if (!bat.tags.includes('bio')) {
+                let batType = getBatType(bat);
+                if (batType.id === genoBatType.id) {
+                    bat.tags.push('bio');
+                    if (rand.rand(1,100) <= genoChance && !bat.tags.includes('shinda')) {
+                        bat.tags.push('shinda');
+                    }
                 }
             }
-        }
-    });
+        });
+    }
 };
 
 function getRealNoise(weap,batType) {

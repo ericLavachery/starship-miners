@@ -471,6 +471,8 @@ function resetPlayerInfos() {
     playerInfos.sondeMaps = 0;
     playerInfos.eggPause = false;
     playerInfos.droppedEggs = 0;
+    playerInfos.maxEggDrop = 0;
+    playerInfos.maxEggPlay = 0;
     playerInfos.knownAliens = [];
     playerInfos.aliensKilled = 0;
     playerInfos.eggsKilled = 0;
