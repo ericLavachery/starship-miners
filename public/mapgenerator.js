@@ -1079,9 +1079,10 @@ function addRes(zone) {
             resRarity = Math.ceil(resRarity*ruinRarity/8);
         }
         resBatch = res.batch;
+        let planetFactor = 1;
         if (res.planets != undefined) {
             let planetName = zone[0].planet;
-            let planetFactor = res.planets[planetName];
+            planetFactor = res.planets[planetName];
             if (planetFactor >= 1 && zone[0].planet != 'Dom') {
                 resRarity = resRarity+2;
             }
@@ -1148,13 +1149,17 @@ function addRes(zone) {
         }
         if (playerInfos.pseudo != 'Mapedit') {
             if (playerInfos.sondeRes.includes(res.name)) {
-                if (res.adjRarity < res.rarity) {
-                    res.adjRarity = res.rarity;
+                let minimumRarity = Math.ceil(res.rarity*(playerInfos.comp.ext+8)/8);
+                minimumRarity = Math.ceil(minimumRarity*planetFactor);
+                if (res.adjRarity < minimumRarity) {
+                    res.adjRarity = minimumRarity;
                 }
                 if (res.adjBatch < res.batch) {
                     res.adjBatch = res.batch;
                 }
-                res.adjRarity = Math.ceil(res.adjRarity*(playerInfos.comp.ext+8)/8);
+                if (res.name === 'Magma') {
+                    res.adjRarity = Math.ceil(res.adjRarity*(playerInfos.comp.ext+8)/8);
+                }
             }
         }
     });
