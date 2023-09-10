@@ -792,10 +792,14 @@ function sondeResChoice(arNum) {
                     }
                 }
                 if (planetOK) {
+                    let checkRes = '';
+                    if (playerInfos.resFlags.includes(res.name)) {
+                        checkRes = ' &nbsp;&#9989;';
+                    }
                     if (playerInfos.sondeRes[arNum] === res.name) {
-                        $('#'+idName).append('<option value="'+res.name+'" selected>'+res.name+'</option>');
+                        $('#'+idName).append('<option value="'+res.name+'" selected>'+res.name+checkRes+'</option>');
                     } else {
-                        $('#'+idName).append('<option value="'+res.name+'">'+res.name+'</option>');
+                        $('#'+idName).append('<option value="'+res.name+'">'+res.name+checkRes+'</option>');
                     }
                 }
             }

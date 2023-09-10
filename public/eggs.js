@@ -209,7 +209,7 @@ function checkMaxDroppedEggs() {
     } else if (maxDroppedEggs < playerInfos.maxEggDrop) {
         maxDroppedEggs = playerInfos.maxEggDrop;
         if (alienNeed >= 115) {
-            playerInfos.droppedEggs = droppedEggs.droppedEggs-1;
+            playerInfos.droppedEggs = playerInfos.droppedEggs-1;
         }
     }
     return maxDroppedEggs;
@@ -442,17 +442,7 @@ function checkEggsDrop() {
             // playMusic('any',false);
         }
     }
-    if (playerInfos.mapTurn >= 15 && !domeProtect) {
-        let adjFuzz = playerInfos.fuzzTotal-150;
-        if (adjFuzz < 1) {adjFuzz = 1;}
-        let rucheBord = Math.ceil(adjFuzz*adjFuzz/30000*Math.sqrt(zone[0].mapDiff)/3);
-        if (rand.rand(1,100) <= rucheBord) {
-            dropEgg('Vomissure','edge');
-            if (playerInfos.vue >= 2) {
-                warning('Ruche en vue','Une Ruche se constitue au loin!');
-            }
-        }
-    }
+    borderInvasion();
 };
 
 function eggsDrop() {
@@ -1240,6 +1230,198 @@ function aliensCount() {
     return aliensNums;
 };
 
+function borderInvasion() {
+    if (playerInfos.mapTurn >= 15 || zone[0].number >= 90) {
+        if (!domeProtect) {
+            alienOccupiedTileList();
+            playerOccupiedTileList();
+            // ruches
+            let adjFuzz = playerInfos.fuzzTotal-150;
+            if (adjFuzz < 1) {adjFuzz = 1;}
+            let rucheBord = Math.ceil(adjFuzz*adjFuzz/30000*Math.sqrt(zone[0].mapDiff)/3*playerInfos.mapTurn/20);
+            if (rand.rand(1,100) <= rucheBord) {
+                dropEgg('Vomissure','edge');
+                if (playerInfos.vue >= 2) {
+                    warning('Ruche en vue','Une Ruche se constitue au loin!');
+                }
+            }
+            // aliens
+            adjFuzz = playerInfos.fuzzTotal+800;
+            let alienBordDice = Math.ceil(adjFuzz*Math.sqrt(zone[0].mapDiff)/2.3*playerInfos.mapTurn/15);
+            if (rand.rand(1,alienBordDice) >= 1) {
+                let edgeTile = getEdgeSpawnTile();
+                if (Object.keys(edgeTile).length >= 1) {
+                    let eggKind = checkEggKindByZoneType();
+                    if (eggKind === '') {
+                        eggKind = getAKindByTer(edgeTile.terrain,zone[0].pKind,zone[0].gKind,zone[0].sKind);
+                    }
+                    alienEdgeSpawns(edgeTile,eggKind,alienBordDice);
+                }
+            }
+        }
+    }
+};
+
+function alienEdgeSpawns(edgeTile,eggKind) {
+    console.log('EDGE ALIEN SPAWN');
+    let alienDiceMax = Math.ceil(5*Math.sqrt(zone[0].mapDiff)/2.3*(playerInfos.mapTurn+10)/25)+1;
+    let alienDiceMin = Math.ceil(alienDiceMax/10);
+    let numAliens = rand.rand(alienDiceMin,alienDiceMax);
+    let classes = [];
+    let minTurnB = 35-Math.round(zone[0].mapDiff*5);
+    let minTurnA = 54-Math.round(zone[0].mapDiff*4);
+    let eggTurn = playerInfos.mapTurn-20;
+    if (eggTurn < 0) {eggTurn = 0;}
+    let eggModTurn = eggTurn+Math.ceil((zone[0].mapDiff*2)-6);
+    classes.push('C');
+    if (eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && zone[0].mapDiff >= 3) {
+        classes.push('B');
+        if (eggModTurn >= 14 && playerInfos.mapTurn >= minTurnA && zone[0].mapDiff >= 6) {
+            classes.push('A');
+            if (eggModTurn >= 21 && playerInfos.mapTurn >= minTurnA) {
+                const index = classes.indexOf('C');
+                if (index > -1) {
+                    classes.splice(index,1);
+                }
+            }
+        }
+    }
+    console.log(classes);
+    let checkDiceMax = 0;
+    let raritySum = 0;
+    let gotIt = false;
+    let edgeAlienName = '';
+    alienUnits.forEach(function(unit) {
+        if (classes.includes(unit.class) && unit.kind.includes(eggKind)) {
+            if (unit.class != 'A' || unit.rarity != 2 || zone[0].mapDiff >= 7) {
+                if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4 || unit.name === 'Punaises') {
+                    let ztRarity = checkRarityByZoneType(unit);
+                    checkDiceMax = checkDiceMax+ztRarity;
+                }
+            }
+        }
+    });
+    let i = 1;
+    while (i <= numAliens) {
+        gotIt = false;
+        edgeAlienName = '';
+        let checkDice = rand.rand(1,checkDiceMax);
+        raritySum = 0;
+        alienUnits.forEach(function(unit) {
+            if (edgeAlienName.length <= 0 && !gotIt) {
+                if (classes.includes(unit.class) && unit.kind.includes(eggKind)) {
+                    if (unit.class != 'A' || unit.rarity != 2 || zone[0].mapDiff >= 7) {
+                        if (zone[0].mapDiff >= 2 || unit.class != 'C' || unit.rarity >= 4 || unit.name === 'Punaises') {
+                            let ztRarity = checkRarityByZoneType(unit);
+                            raritySum = raritySum+ztRarity;
+                            if (checkDice <= raritySum) {
+                                gotIt = true;
+                                if (aliens.length < maxAliens-50 || unit.class != 'C') {
+                                    edgeAlienName = unit.name;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        let edgeTileId = getEdgeSpawnTileId(edgeTile);
+        alienWebSpawn(edgeTileId,edgeAlienName,'');
+        console.log(edgeAlienName);
+        if (i > 12) {break;}
+        i++
+    }
+};
+
+function getEdgeSpawnTile() {
+    let edgeTile = {};
+    let tileOK = false;
+    let shufZone = _.shuffle(zone);
+    shufZone.forEach(function(tile) {
+        if (!tileOK) {
+            if (tile.x >= 58 || tile.x <= 3 || tile.y >= 58 || tile.y <= 3) {
+                if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                    edgeTile = tile;
+                    tileOK = true;
+                }
+            }
+        }
+    });
+    alienOccupiedTiles.push(edgeTile.id);
+    return edgeTile;
+};
+
+function getEdgeSpawnTileId(edgeTile) {
+    let edgeTileId = -1;
+    let shufZone = _.shuffle(zone);
+    shufZone.forEach(function(tile) {
+        if (edgeTileId < 0) {
+            if (tile.x >= 58 || tile.x <= 3 || tile.y >= 58 || tile.y <= 3) {
+                if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                    let distance = calcDistance(edgeTile.id,tile.id);
+                    if (distance <= 3) {
+                        edgeTileId = tile.id;
+                    }
+                }
+            }
+        }
+    });
+    if (edgeTileId < 0) {
+        shufZone.forEach(function(tile) {
+            if (edgeTileId < 0) {
+                if (tile.x >= 58 || tile.x <= 3 || tile.y >= 58 || tile.y <= 3) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        let distance = calcDistance(edgeTile.id,tile.id);
+                        if (distance <= 4) {
+                            edgeTileId = tile.id;
+                        }
+                    }
+                }
+            }
+        });
+    }
+    if (edgeTileId < 0) {
+        shufZone.forEach(function(tile) {
+            if (edgeTileId < 0) {
+                if (tile.x >= 58 || tile.x <= 3 || tile.y >= 58 || tile.y <= 3) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        let distance = calcDistance(edgeTile.id,tile.id);
+                        if (distance <= 6) {
+                            edgeTileId = tile.id;
+                        }
+                    }
+                }
+            }
+        });
+    }
+    if (edgeTileId < 0) {
+        shufZone.forEach(function(tile) {
+            if (edgeTileId < 0) {
+                if (tile.x >= 58 || tile.x <= 3 || tile.y >= 58 || tile.y <= 3) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        edgeTileId = tile.id;
+                    }
+                }
+            }
+        });
+    }
+    if (edgeTileId >= 0) {
+        alienOccupiedTiles.push(edgeTileId);
+    }
+    return edgeTileId;
+};
+
+function alienWebSpawn(tileId,crea,tag) {
+    console.log('WEBSPAWN: '+crea);
+    let unitIndex = alienUnits.findIndex((obj => obj.name == crea));
+    conselUnit = alienUnits[unitIndex];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
+    console.log(conselUnit);
+    if (Object.keys(conselUnit).length >= 1) {
+        putBat(tileId,0,0,tag);
+    }
+};
+
 function ectoSpawns() {
     alienOccupiedTileList();
     playerOccupiedTileList();
@@ -1292,17 +1474,6 @@ function webSpawns(all) {
             }
         }
     });
-};
-
-function alienWebSpawn(tileId,crea,tag) {
-    console.log('WEBSPAWN: '+crea);
-    let unitIndex = alienUnits.findIndex((obj => obj.name == crea));
-    conselUnit = alienUnits[unitIndex];
-    conselAmmos = ['xxx','xxx','xxx','xxx'];
-    console.log(conselUnit);
-    if (Object.keys(conselUnit).length >= 1) {
-        putBat(tileId,0,0,tag);
-    }
 };
 
 function spawns() {
@@ -2218,8 +2389,8 @@ function eggSpawn(bat,fromEgg) {
             }
             console.log('spawnNum='+spawnNum);
             let classes = [];
-            let minTurnB = 33-Math.round(zone[0].mapDiff*3);
-            let minTurnA = 66-Math.round(zone[0].mapDiff*5);
+            let minTurnB = 35-Math.round(zone[0].mapDiff*5);
+            let minTurnA = 54-Math.round(zone[0].mapDiff*4);
             classes.push('C');
             if ((eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && zone[0].mapDiff >= 3) || zoneInfos.cb) {
                 classes.push('B');

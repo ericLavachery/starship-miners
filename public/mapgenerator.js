@@ -1158,7 +1158,7 @@ function addRes(zone) {
                     res.adjBatch = res.batch;
                 }
                 if (res.name === 'Magma') {
-                    res.adjRarity = Math.ceil(res.adjRarity*(playerInfos.comp.ext+8)/8);
+                    res.adjRarity = Math.ceil(res.adjRarity*(playerInfos.comp.ext+5)/5);
                 }
             }
         }
