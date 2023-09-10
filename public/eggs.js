@@ -1248,7 +1248,7 @@ function borderInvasion() {
             // aliens
             adjFuzz = playerInfos.fuzzTotal+800;
             let alienBordDice = Math.ceil(adjFuzz*Math.sqrt(zone[0].mapDiff)/2.3*playerInfos.mapTurn/15);
-            if (rand.rand(1,alienBordDice) >= 1) {
+            if (rand.rand(1,alienBordDice) >= 800) {
                 let edgeTile = getEdgeSpawnTile();
                 if (Object.keys(edgeTile).length >= 1) {
                     let eggKind = checkEggKindByZoneType();
