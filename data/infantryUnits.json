@@ -4681,7 +4681,7 @@
             "dca":1.2,
             "power":4,
             "aoe":"unit",
-            "sound":"laser_fusil_x2",
+            "sound":"laser_rev_x2",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "weapon2":{
@@ -5064,7 +5064,7 @@
             "dca":1.2,
             "power":4,
             "aoe":"unit",
-            "sound":"laser_fusil_x2",
+            "sound":"laser_rev_x2",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "weapon2alt":{
@@ -5421,7 +5421,7 @@
             "dca":1.2,
             "power":4,
             "aoe":"unit",
-            "sound":"laser_fusil_x2",
+            "sound":"laser_rev_x2",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "weapon2":{
@@ -6322,7 +6322,7 @@
             "dca":1.2,
             "power":4,
             "aoe":"unit",
-            "sound":"laser_fusil_x2",
+            "sound":"laser_rev_x2",
             "ammo":["proto-laser","laser","laser-g2","laser-g3"]
         },
         "protection":[],

@@ -1337,6 +1337,10 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                             } else {
                                 newBat.tags = ['invisible'];
                             }
+                        } else if (startTag === 'tired') {
+                            newBat.tags = [];
+                            newBat.apLeft = 0;
+                            newBat.oldapLeft = 0;
                         } else {
                             newBat.tags = [startTag];
                         }

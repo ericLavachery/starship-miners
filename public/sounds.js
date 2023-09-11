@@ -341,7 +341,7 @@ function shotSound(weapon,bat) {
 function reloadSound(weap) {
     if (weap.sound.includes('sniper') || weap.sound.includes('antichar')) {
         playSound('sniperload',0,true);
-    } else if (weap.sound.includes('laser_fusil')) {
+    } else if (weap.sound.includes('laser_fusil') || weap.sound.includes('laser_rev')) {
         playSound('mag',0,true);
     } else if (weap.sound.includes('magnum')) {
         playSound('cock',0,true);

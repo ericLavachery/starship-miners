@@ -1278,12 +1278,6 @@ function alienEdgeSpawns(edgeTile,eggKind) {
         classes.push('B');
         if (eggModTurn >= 14 && playerInfos.mapTurn >= minTurnA && zone[0].mapDiff >= 6) {
             classes.push('A');
-            if (eggModTurn >= 21 && playerInfos.mapTurn >= minTurnA) {
-                const index = classes.indexOf('C');
-                if (index > -1) {
-                    classes.splice(index,1);
-                }
-            }
         }
     }
     console.log(classes);
@@ -1325,9 +1319,11 @@ function alienEdgeSpawns(edgeTile,eggKind) {
                 }
             }
         });
+        console.log('before replace: '+edgeAlienName);
+        edgeAlienName = replaceAlienName(edgeAlienName);
         let edgeTileId = getEdgeSpawnTileId(edgeTile);
-        alienWebSpawn(edgeTileId,edgeAlienName,'');
-        console.log(edgeAlienName);
+        alienWebSpawn(edgeTileId,edgeAlienName,'tired');
+        console.log('after replace: '+edgeAlienName);
         if (i > 12) {break;}
         i++
     }
@@ -1339,7 +1335,7 @@ function getEdgeSpawnTile() {
     let shufZone = _.shuffle(zone);
     shufZone.forEach(function(tile) {
         if (!tileOK) {
-            if (tile.x >= 58 || tile.x <= 3 || tile.y >= 58 || tile.y <= 3) {
+            if (tile.x >= 59 || tile.x <= 2 || tile.y >= 59 || tile.y <= 2) {
                 if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                     edgeTile = tile;
                     tileOK = true;
@@ -1347,6 +1343,18 @@ function getEdgeSpawnTile() {
             }
         }
     });
+    if (!tileOK) {
+        shufZone.forEach(function(tile) {
+            if (!tileOK) {
+                if (tile.x >= 58 || tile.x <= 3 || tile.y >= 58 || tile.y <= 3) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        edgeTile = tile;
+                        tileOK = true;
+                    }
+                }
+            }
+        });
+    }
     alienOccupiedTiles.push(edgeTile.id);
     return edgeTile;
 };
@@ -1430,7 +1438,7 @@ function ectoSpawns() {
             if (rand.rand(1,2) === 1) {
                 if (!alienOccupiedTiles.includes(tile.id)) {
                     if (!playerOccupiedTiles.includes(tile.id)) {
-                        alienWebSpawn(tile.id,'Ectoplasmes');
+                        alienWebSpawn(tile.id,'Ectoplasmes','tired');
                     }
                 }
                 delete tile.ecto;
@@ -2613,6 +2621,41 @@ function replaceAlien(oldAlien) {
             }
         }
     }
+};
+
+function replaceAlienName(oldAlienName) {
+    let inName = '';
+    let outName = '';
+    let newAlienName = oldAlienName;
+    let oldAlien = getAlienTypeByName(oldAlienName);
+    if (oldAlien.class === 'C') {
+        if (zone[0].rc != undefined) {
+            inName = zone[0].rc[0];
+            outName = zone[0].rc[1];
+        }
+    }
+    if (oldAlien.class === 'B') {
+        if (zone[0].rb != undefined) {
+            inName = zone[0].rb[0];
+            outName = zone[0].rb[1];
+        }
+    }
+    if (oldAlien.class === 'A') {
+        if (zone[0].ra != undefined) {
+            inName = zone[0].ra[0];
+            outName = zone[0].ra[1];
+        }
+    }
+    if (oldAlienName === inName) {
+        newAlienName = outName;
+    } else {
+        if (oldAlien.minpa != undefined) {
+            if (zone[0].mapDiff < oldAlien.minpa) {
+                newAlienName = oldAlien.rep;
+            }
+        }
+    }
+    return newAlienName;
 };
 
 function putEggCat(bat,kind) {
