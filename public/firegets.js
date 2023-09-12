@@ -3410,7 +3410,7 @@ function getEggProtect(eggBat,eggBatType,weap) {
         if (eggBatType.skills.includes('turnprotect')) {
             console.log('TURNPROT )))))))))))))))');
             if (!domeProtect) {
-                eggProt = (eggProt*3/5)+(playerInfos.mapTurn*1.8);
+                eggProt = (eggProt*3/5)+(playerInfos.mapTurn*2);
             }
             if (eggProt > maxProt) {eggProt = maxProt;}
             console.log(eggProt);

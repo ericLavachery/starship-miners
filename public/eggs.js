@@ -1231,7 +1231,11 @@ function aliensCount() {
 };
 
 function borderInvasion() {
-    if (playerInfos.mapTurn >= 15 || zone[0].number >= 90) {
+    let minInvTurn = 15;
+    if (zone[0].number >= 90) {
+        minInvTurn = 10;
+    }
+    if (playerInfos.mapTurn >= minInvTurn || zone[0].number >= 90) {
         if (!domeProtect) {
             alienOccupiedTileList();
             playerOccupiedTileList();
@@ -1247,6 +1251,9 @@ function borderInvasion() {
             }
             // aliens
             adjFuzz = playerInfos.fuzzTotal+800;
+            if (zone[0].number >= 90) {
+                adjFuzz = 2000;
+            }
             let alienBordDice = Math.ceil(adjFuzz*Math.sqrt(zone[0].mapDiff)/2.3*playerInfos.mapTurn/15);
             if (rand.rand(1,alienBordDice) >= 800) {
                 let edgeTile = getEdgeSpawnTile();
@@ -1255,7 +1262,7 @@ function borderInvasion() {
                     if (eggKind === '') {
                         eggKind = getAKindByTer(edgeTile.terrain,zone[0].pKind,zone[0].gKind,zone[0].sKind);
                     }
-                    alienEdgeSpawns(edgeTile,eggKind,alienBordDice);
+                    alienEdgeSpawns(edgeTile,eggKind);
                 }
             }
         }
@@ -1322,7 +1329,7 @@ function alienEdgeSpawns(edgeTile,eggKind) {
         console.log('before replace: '+edgeAlienName);
         edgeAlienName = replaceAlienName(edgeAlienName);
         let edgeTileId = getEdgeSpawnTileId(edgeTile);
-        alienWebSpawn(edgeTileId,edgeAlienName,'tired');
+        alienSoloSpawn(edgeTileId,edgeAlienName,'tired');
         console.log('after replace: '+edgeAlienName);
         if (i > 12) {break;}
         i++
@@ -1419,7 +1426,7 @@ function getEdgeSpawnTileId(edgeTile) {
     return edgeTileId;
 };
 
-function alienWebSpawn(tileId,crea,tag) {
+function alienSoloSpawn(tileId,crea,tag) {
     console.log('WEBSPAWN: '+crea);
     let unitIndex = alienUnits.findIndex((obj => obj.name == crea));
     conselUnit = alienUnits[unitIndex];
@@ -1438,7 +1445,7 @@ function ectoSpawns() {
             if (rand.rand(1,2) === 1) {
                 if (!alienOccupiedTiles.includes(tile.id)) {
                     if (!playerOccupiedTiles.includes(tile.id)) {
-                        alienWebSpawn(tile.id,'Ectoplasmes','tired');
+                        alienSoloSpawn(tile.id,'Ectoplasmes','tired');
                     }
                 }
                 delete tile.ecto;
@@ -1474,7 +1481,7 @@ function webSpawns(all) {
                 if (hasBlob || all) {
                     if (!alienOccupiedTiles.includes(tile.id)) {
                         if (!playerOccupiedTiles.includes(tile.id)) {
-                            alienWebSpawn(tile.id,'Rejetons');
+                            alienSoloSpawn(tile.id,'Rejetons');
                         }
                     }
                 }
