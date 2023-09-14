@@ -70,7 +70,7 @@ function checkNeiTurn() {
             theCheck = reCheck;
         }
         if (zone[0].planet === 'Kzin') {
-            theCheck = theCheck+10;
+            theCheck = theCheck+5;
         }
         if (zone[0].planet === 'Horst') {
             if (rand.rand(1,3) === 1) {

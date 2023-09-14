@@ -497,7 +497,7 @@
     {
         "id":47,
         "name":"Scyths",
-        "levels":{"rednecks":99,"blades":13,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":12,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Camp d'entraînement","Atelier"],
         "compReq":{"exo":3,"ca":3},
         "costs":{"Fer":140,"Carbone":56,"Bois":140,"Végétaux":216,"Blendium":56,"Drogues":56,"Or":56,"Chlore":10,"Tissus":5},
@@ -659,7 +659,7 @@
     {
         "id":71,
         "name":"Rétiaires",
-        "levels":{"rednecks":99,"blades":12,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":13,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Caserne Blades","Cabines","Atelier"],
         "compHardReq":{"bal":1},
         "unitCost":"Warriors",
@@ -731,7 +731,7 @@
     {
         "id":78,
         "name":"Mosquitos",
-        "levels":{"rednecks":99,"blades":11,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":12,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Centre de recherches"],
         "compReq":{"gen":2},
         "compHardReq":{"energ":1},
@@ -1284,7 +1284,7 @@
     {
         "id":92,
         "name":"Shelltrucks",
-        "levels":{"rednecks":10,"blades":12,"bulbos":11,"drogmulojs":11,"tiradores":13,"detruas":9,"brasier":9},
+        "levels":{"rednecks":10,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":12,"detruas":9,"brasier":9},
         "bldEquiv":["Poudrière"],
         "bldReq":["Armurerie","Garage"],
         "compReq":{"explo":1},
@@ -1731,7 +1731,7 @@
     {
         "id":122,
         "name":"Lowboys",
-        "levels":{"rednecks":11,"blades":10,"bulbos":12,"drogmulojs":11,"tiradores":12,"detruas":6,"brasier":10},
+        "levels":{"rednecks":11,"blades":10,"bulbos":12,"drogmulojs":11,"tiradores":13,"detruas":6,"brasier":10},
         "bldReq":["Armurerie","Chaîne de montage"],
         "compReq":{"trans":2},
         "compPass":["detruas"],
@@ -1755,7 +1755,7 @@
     {
         "id":120,
         "name":"Megadumps",
-        "levels":{"rednecks":13,"blades":12,"bulbos":13,"drogmulojs":12,"tiradores":14,"detruas":13,"brasier":13},
+        "levels":{"rednecks":13,"blades":13,"bulbos":13,"drogmulojs":13,"tiradores":14,"detruas":13,"brasier":13},
         "bldReq":["Garage","Atelier"],
         "compReq":{"trans":3,"log":1},
         "costs":{"Fer":96,"Scrap":378,"Carbone":288,"Aluminium":96,"Moteurs":200,"Tungstène":96,"Cuivre":32,"Electros":12,"Batteries":114,"Compo2":390,"Compo3":108,"Mendium":80,"Huile":10},
@@ -2247,7 +2247,7 @@
     {
         "id":285,
         "name":"Tourelles",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":13,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "compHardReq":{"bal":1,"pyro":1},
         "costs":{"Compo1":120,"Compo2":280,"Compo3":290,"Eau":48,"Scrap":120,"Tungstène":120,"Aluminium":120,"Fer":360},
