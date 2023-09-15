@@ -280,6 +280,8 @@ let conselInto = false;
 let conselTriche;
 let conselCosts = {};
 let myNewGear = ['xxx','xxx','xxx','xxx'];
+let spinsLanderRecup = 135; // plus grand = moins de récup
+let spinsBldRecup = 30; // plus grand = moins de récup
 // INVASION
 let zoneInfos = {};
 let maxAliens = 250;

@@ -1501,7 +1501,7 @@
         "name":"Fog",
         "pic":"fogger",
         "cat":"devices",
-        "kind":"blades",
+        "kind":"zero-science",
         "sort":1,
         "squads":3,
         "squadSize":3,
@@ -1538,7 +1538,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","prefab","noshow","notarget","fog","bastion","sentinelle","longshot","freeshot","flash","recupres","routes","kzin","bigprot","hbot"],
+        "skills":["b_dev","prefab","noshow","notarget","fog","bastion","sentinelle","longshot","freeshot","flash","recupres","routes","kzin","bigprot","maxfog"],
         "mecanoCost":12,
         "fuzz":3,
         "deathFx":"explo1"

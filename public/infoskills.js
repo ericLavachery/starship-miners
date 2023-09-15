@@ -321,6 +321,15 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             if (batType.skills.includes('fastcam') && apCost > 2) {
                 apCost = Math.ceil(apCost/1.5);
             }
+            if (foggedTiles.includes(tile.id)) {
+                if (bat.tags.includes('fogged')) {
+                    apReq = 0;
+                    apCost = Math.ceil(apCost/2);
+                    if (apCost > 3) {
+                        apCost = 3;
+                    }
+                }
+            }
             let camChance = calcCamo(bat);
             balise = 'h4';
             boutonNope = 'boutonGrey';

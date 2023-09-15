@@ -671,7 +671,7 @@ function checkResByKind(resKind,coffre,tile,recNum) {
                         thatResChance = 150;
                     } else if (res.name === 'Energons') {
                         thatResChance = Math.ceil(resFactor*1.7*res.batch/3);
-                    } else if (res.name != 'Transorb' && res.name != 'Spins') {
+                    } else if (res.name != 'Spins') {
                         thatResChance = Math.ceil(resFactor*1.7*res.batch/3);
                     }
                 } else {

@@ -2032,7 +2032,7 @@ function getResRecup(bat,batType) {
         let index;
         let batArmor;
         let batEquip;
-        // TRANSORB / SPINS
+        // SPINS
         let spinCost = 0;
         if (batType.skills.includes('transorbital') || batType.skills.includes('isvsp')) {
             if (batType.toNum >= 1) {
@@ -2071,24 +2071,26 @@ function getResRecup(bat,batType) {
                 if (playerInfos.comp.const >= 3 && key === 'Compo3') {
                     value = Math.floor(value*9/6);
                 }
-                if (key === 'Energie') {
-                    value = 0;
+                if (batType.name === 'Autoturrets' || batType.name === 'Autobunkers') {
+                    if (bat.tags.includes('outsider')) {
+                        if (bat.eq === 'muffler' || bat.eq === 'bld-camo') {
+                            if (key != 'Compo1' && key != 'Compo2' && key != 'Scrap') {
+                                value = value/2;
+                            }
+                        }
+                    }
                 }
-                if (key != 'Spins') {
+                if (key.includes('Energ')) {
+                    value = Math.ceil(value/7*playerInfos.comp.energ);
+                } else if (key === 'Electros' || key === 'Batteries') {
+                    value = Math.ceil(value/8*(playerInfos.comp.det+1));
+                } else if (key != 'Spins') {
                     value = Math.ceil(value/100*recupFactor);
                 } else if (key === 'Spins') {
                     if (spinCost > 0) {
-                        value = Math.ceil(spinCost/135*(recupFactor+25)*(playerInfos.comp.vsp+15)/17);
+                        value = Math.ceil(spinCost/spinsLanderRecup*(recupFactor+25)*(playerInfos.comp.vsp+15)/17);
                     } else {
-                        value = Math.floor(value/75*playerInfos.comp.det);
-                    }
-                }
-                // random turrets
-                if (batType.name === 'Autoturrets' && bat.eq === 'muffler' && bat.tags.includes('outsider')) {
-                    if (key != 'Spins') {
-                        value = Math.round(value/3);
-                    } else {
-                        value = 0;
+                        value = Math.floor(value/spinsBldRecup*playerInfos.comp.det);
                     }
                 }
                 if (value >= 1) {
@@ -2097,7 +2099,9 @@ function getResRecup(bat,batType) {
                     } else {
                         resRecup[key] = resRecup[key]+value;
                     }
-                    totalRes = totalRes+value;
+                    if (!key.includes('Energ')) {
+                        totalRes = totalRes+value;
+                    }
                 }
             });
         }
@@ -2106,10 +2110,14 @@ function getResRecup(bat,batType) {
             Object.entries(batType.deploy).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
-                if (key != 'Spins') {
+                if (key.includes('Energ')) {
+                    value = Math.ceil(value/7*playerInfos.comp.energ);
+                } else if (key === 'Electros' || key === 'Batteries') {
+                    value = Math.ceil(value/8*(playerInfos.comp.det+1));
+                } else if (key != 'Spins') {
                     value = Math.floor(value/100*recupFactor/2);
                 } else {
-                    value = Math.floor(value/75*playerInfos.comp.det);
+                    value = Math.floor(value/spinsBldRecup*playerInfos.comp.det);
                 }
                 if (value >= 1) {
                     if (resRecup[key] === undefined) {
@@ -2117,7 +2125,9 @@ function getResRecup(bat,batType) {
                     } else {
                         resRecup[key] = resRecup[key]+value;
                     }
-                    totalRes = totalRes+value;
+                    if (!key.includes('Energ')) {
+                        totalRes = totalRes+value;
+                    }
                 }
             });
         }
@@ -2128,10 +2138,14 @@ function getResRecup(bat,batType) {
                 Object.entries(batArmor.costs).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
-                    if (key != 'Spins') {
+                    if (key.includes('Energ')) {
+                        value = Math.ceil(value/7*playerInfos.comp.energ);
+                    } else if (key === 'Electros' || key === 'Batteries') {
+                        value = Math.ceil(value/8*(playerInfos.comp.det+1));
+                    } else if (key != 'Spins') {
                         value = Math.floor(value/100*recupFactor);
                     } else {
-                        value = Math.floor(value/75*playerInfos.comp.det);
+                        value = Math.floor(value/spinsBldRecup*playerInfos.comp.det);
                     }
                     if (value >= 1) {
                         if (resRecup[key] === undefined) {
@@ -2139,7 +2153,9 @@ function getResRecup(bat,batType) {
                         } else {
                             resRecup[key] = resRecup[key]+value;
                         }
-                        totalRes = totalRes+value;
+                        if (!key.includes('Energ')) {
+                            totalRes = totalRes+value;
+                        }
                     }
                 });
             }
@@ -2151,16 +2167,23 @@ function getResRecup(bat,batType) {
                 Object.entries(batEquip.costs).map(entry => {
                     let key = entry[0];
                     let value = entry[1];
-                    if (key != 'Spins') {
+                    if (key.includes('Energ')) {
+                        value = Math.ceil(value/7*playerInfos.comp.energ);
+                    } else if (key === 'Electros' || key === 'Batteries') {
+                        value = Math.ceil(value/8*(playerInfos.comp.det+1));
+                    } else if (key != 'Spins') {
                         value = Math.floor(value/100*recupFactor);
                     } else {
-                        value = Math.floor(value/75*playerInfos.comp.det);
+                        value = Math.floor(value/spinsBldRecup*playerInfos.comp.det);
                     }
                     if (value >= 1) {
                         if (resRecup[key] === undefined) {
                             resRecup[key] = value;
                         } else {
                             resRecup[key] = resRecup[key]+value;
+                        }
+                        if (!key.includes('Energ')) {
+                            totalRes = totalRes+value;
                         }
                     }
                 });

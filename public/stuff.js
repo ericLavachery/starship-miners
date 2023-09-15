@@ -944,7 +944,7 @@ function maxUnits(unit) {
             maxInfo.text = 'Vous ne pouvez pas faire des chercheurs hors de la station';
         }
     }
-    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('wdev') || unit.skills.includes('wsi') || unit.skills.includes('mdev') || unit.skills.includes('hveh') || unit.skills.includes('lveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxexo') || unit.skills.includes('maxdet') || unit.skills.includes('maxind') || unit.skills.includes('maxgang') || unit.skills.includes('maxlevel')) {
+    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('wdev') || unit.skills.includes('wsi') || unit.skills.includes('mdev') || unit.skills.includes('hveh') || unit.skills.includes('lveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxexo') || unit.skills.includes('maxdet') || unit.skills.includes('maxfog') || unit.skills.includes('maxind') || unit.skills.includes('maxgang') || unit.skills.includes('maxlevel')) {
         if (playerInfos.bldList.includes('Camp d\'entraînement')) {
             maxOf.elite = maxOf.elite+playerInfos.comp.train;
             if (maxOf.elite < 1) {
@@ -1063,9 +1063,6 @@ function maxUnits(unit) {
             maxOf.hbot = Math.ceil(maxOf.hbot/2);
         }
         let maxThis = maxOf.hbot;
-        if (unit.skills.includes('fog')) {
-            maxThis++;
-        }
         maxInfo.max = maxThis;
         if (numOf[unit.name] >= maxInfo.max && numOf[unit.name] >= 2) {
             maxInfo.ko = true;
@@ -1172,7 +1169,11 @@ function maxUnits(unit) {
         }
         if (numOf[unit.name] >= maxInfo.max) {
             maxInfo.ko = true;
-            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence d\'exochimie';
+            if (playerInfos.comp.exo >= 1) {
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence d\'exochimie';
+            } else {
+                maxInfo.text = unit.name+': Maximum atteint';
+            }
         }
     }
     if (unit.skills.includes('maxdet')) {
@@ -1183,7 +1184,37 @@ function maxUnits(unit) {
         maxInfo.max = maxThis;
         if (numOf[unit.name] >= maxInfo.max) {
             maxInfo.ko = true;
-            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de détection';
+            if (playerInfos.comp.det < 5) {
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de détection';
+            } else {
+                maxInfo.text = unit.name+': Maximum atteint';
+            }
+        }
+    }
+    if (unit.skills.includes('maxfog')) {
+        let maxThis = 1;
+        if (playerInfos.comp.cam >= 1) {
+            maxThis = maxThis+playerInfos.comp.cam-1;
+        }
+        if (playerInfos.comp.exo >= 3) {
+            maxThis = maxThis+1;
+        }
+        maxInfo.max = maxThis;
+        if (numOf[unit.name] >= maxInfo.max) {
+            maxInfo.ko = true;
+            if (playerInfos.comp.exo < 3) {
+                if (playerInfos.comp.cam < 3) {
+                    maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de camouflage ou d\'exochimie';
+                } else {
+                    maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence d\'exochimie';
+                }
+            } else {
+                if (playerInfos.comp.cam < 3) {
+                    maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de camouflage';
+                } else {
+                    maxInfo.text = unit.name+': Maximum atteint';
+                }
+            }
         }
     }
     if (unit.skills.includes('maxlevel')) {

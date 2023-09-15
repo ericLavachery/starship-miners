@@ -579,6 +579,13 @@ function canCamo(bat,batType,tile) {
             iCanCamo = true;
         }
     }
+    if (foggedTiles.includes(tile.id)) {
+        if (bat.tags.includes('fogged')) {
+            if (canCamoFog(bat,batType)) {
+                iCanCamo = true;
+            }
+        }
+    }
     if (playerInfos.pseudo === 'Mapedit') {
         iCanCamo = true;
     }
@@ -598,6 +605,10 @@ function calcCamo(bat) {
         if (batType.cat != 'buildings' && batType.size < 50) {
             camChance = camChance+25-Math.round(batType.size/2);
         }
+    }
+    // fog
+    if (foggedTiles.includes(bat.tileId)) {
+        camChance = camChance+100-Math.round(batType.size/2);
     }
     // max
     if (batType.skills.includes('underground') || batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
@@ -1769,21 +1780,8 @@ function fogEffect(myBat) {
         if (bat.loc === "zone") {
             distance = calcDistance(myBat.tileId,bat.tileId);
             if (distance <= fogRange) {
-                if (!bat.tags.includes('invisible')) {
-                    bat.tags.push('invisible');
-                }
                 if (!bat.tags.includes('fogged')) {
                     bat.tags.push('fogged');
-                }
-                if (!bat.tags.includes('poison')) {
-                    batType = getBatType(bat);
-                    fogPoison = Math.ceil(Math.sqrt(batType.size)/2);
-                    i = 1;
-                    while (i <= fogPoison) {
-                        bat.tags.push('poison');
-                        if (i > 6) {break;}
-                        i++
-                    }
                 }
             }
         }
@@ -1795,21 +1793,42 @@ function fogEffect(myBat) {
                 if (!bat.tags.includes('fogged')) {
                     bat.tags.push('fogged');
                 }
-                bat.fuzz = -2;
+                let batType = getBatType(bat);
+                if (canCamoFog(bat,batType)) {
+                    if (!bat.tags.includes('camo')) {
+                        bat.tags.push('camo');
+                    }
+                    bat.fuzz = -2;
+                }
             }
         }
     });
+};
+
+function canCamoFog(bat,batType) {
+    let camoOK = true;
+    if (batType.skills.includes('transorbital') || batType.skills.includes('cfo') || batType.skills.includes('pilone') || batType.skills.includes('dome')) {
+        camoOK = false;
+    } else {
+        let maxSize = 75+(playerInfos.comp.cam*10);
+        if (hasEquip(bat,['bld-camo'])) {
+            maxSize = maxSize*2;
+        }
+        if (batType.size > maxSize) {
+            camoOK = false;
+        }
+    }
+    return camoOK;
 };
 
 function deFog(bat,batType) {
     if (bat.tags.includes('fogged')) {
         tagDelete(bat,'fogged');
         if (batType.cat === 'aliens') {
-            if (!batType.skills.includes('hide') && !batType.skills.includes('invisible') && bat.tags.includes('invisible')) {
-                tagDelete(bat,'invisible');
-            }
+
         } else {
-            if (!bat.tags.includes('camo')) {
+            if (!batType.skills.includes('camo')) {
+                tagDelete(bat,'camo');
                 bat.fuzz = batType.fuzz;
             }
         }
@@ -1822,7 +1841,10 @@ function fogStart() {
     if (!selectedBat.tags.includes('fog')) {
         selectedBat.tags.push('fog');
     }
-    selectedBat.fuzz = 3;
+    selectedBat.fuzz = -2;
+    if (!selectedBat.tags.includes('camo')) {
+        selectedBat.tags.push('camo');
+    }
     playSound('fogstart',-0.2);
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
@@ -1837,6 +1859,8 @@ function fogStop() {
         tagIndex = selectedBat.tags.indexOf('fog');
         selectedBat.tags.splice(tagIndex,1);
     }
+    tagDelete(selectedBat,'camo');
+    selectedBat.fuzz = selectedBatType.fuzz;
     playSound('fogstop',-0.2);
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();

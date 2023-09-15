@@ -2679,9 +2679,6 @@ function weaponAdj(weapon,bat,wn) {
     if (zone[0].dark) {
         let vue = calcVue(bat,batType);
     }
-    if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
-        thisWeapon.range = 1;
-    }
     // needle max range
     if (ammo.maxrange != undefined) {
         if (thisWeapon.range > ammo.maxrange) {
@@ -2694,6 +2691,10 @@ function weaponAdj(weapon,bat,wn) {
         if (playerInfos.bldList.includes('Centre de com')) {
             thisWeapon.range = thisWeapon.range*2;
         }
+    }
+    // fog
+    if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
+        thisWeapon.range = 1;
     }
     // hero rage
     if (bat.tags.includes('rage')) {

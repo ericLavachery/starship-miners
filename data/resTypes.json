@@ -986,18 +986,6 @@
         "max": 15000
     },
     {
-        "id": 65,
-        "name": "Transorb",
-        "bld": "",
-        "level": 4,
-        "rarity": 0,
-        "cat": "transfo",
-        "batch": 1,
-        "energie": -1,
-        "equiv": 3000,
-        "kinds": []
-    },
-    {
         "id": 79,
         "name": "Spins",
         "bld": "",
