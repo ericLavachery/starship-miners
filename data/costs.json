@@ -215,6 +215,7 @@
         "name":"Monkeys",
         "levels":{"rednecks":9,"blades":9,"bulbos":9,"drogmulojs":9,"tiradores":9,"detruas":9,"brasier":9},
         "bldReq":["Garage"],
+        "unitUp":"Riggers",
         "compReq":{"trans":3},
         "altCompReq":{"tank":1},
         "compHardReq":{"trans":2},

@@ -142,7 +142,11 @@ function unitInfos(batType) {
         $('#'+bodyPlace).append('<span class="paramName">Dépanage</span><span class="paramEmo">&#128663;</span><span class="paramValue" title="'+mecanoDesc+'">'+mecanoTitle+'</span><br>');
     }
     if (batType.skills.includes('repair') || batType.skills.includes('selfbadrepair') || batType.skills.includes('selfrepair')) {
-        let times = Math.ceil(batType.ap/batType.mecanoCost);
+        let repairCost = batType.mecanoCost;
+        if (batType.skills.includes('repbad')) {
+            repairCost = repairCost*5;
+        }
+        let times = Math.ceil(batType.ap/repairCost);
         let repairTitle = 'Totale';
         let repairDesc = 'Peut réparer totalement les bâtiments';
         if (batType.skills.includes('selfrepair')) {

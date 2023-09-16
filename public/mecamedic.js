@@ -937,10 +937,7 @@ function checkRepairBat(tileId) {
 function diagRepair(repairBatId) {
     let repairBat = getBatById(repairBatId);
     let repairBatType = getBatType(repairBat);
-    let batRepairCost = repairBatType.mecanoCost;
-    if (hasEquip(repairBat,['e-repair'])) {
-        batRepairCost = Math.floor(batRepairCost/3);
-    }
+    let batRepairCost = calcBaseSkillCost(repairBat,repairBatType,'repair',false);
     if (batRepairCost < 2) {batRepairCost = 2;}
     repairBat.apLeft = repairBat.apLeft-batRepairCost;
     let batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
@@ -1049,6 +1046,9 @@ function calcBaseSkillCost(bat,batType,skill,inBld,bldBat) {
         }
     } else if (skill === 'repair') {
         baseskillCost = batType.mecanoCost;
+        if (batType.skills.includes('repbad')) {
+            baseskillCost = baseskillCost*5;
+        }
         if (playerInfos.bldList.includes('Usine') && batType.cat != 'buildings') {
             if (baseskillCost >= 5) {
                 baseskillCost = Math.ceil(baseskillCost/2);

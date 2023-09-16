@@ -204,11 +204,13 @@ function isAlienHere(tileId) {
     return alienHere;
 };
 
-function batSelect(bat,roger) {
+function batSelect(bat,roger,keepBkp) {
     // stop move sound
     // playMove(false);
     // remove selection on old selected unit
-    justReloaded = false;
+    if (!keepBkp) {
+        justReloaded = false;
+    }
     batDebarq = {};
     nextTurnOK = true;
     $('html,body').scrollTop(0);

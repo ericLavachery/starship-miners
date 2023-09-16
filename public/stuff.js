@@ -387,16 +387,6 @@ function getGangRechAdj() {
 
 function levelUp(bat,batType) {
     if (playerInfos.pseudo != 'Mapedit') {
-        if (batType.skills.includes('autohero')) {
-            if (bat.tags.includes('schef')) {
-                tagDelete(bat,'schef');
-                bat.tags.push('hero');
-            }
-            if (bat.tags.includes('vet')) {
-                tagDelete(bat,'vet');
-                bat.tags.push('hero');
-            }
-        }
         let oldGrade = getGrade(bat,batType);
         bat.xp = bat.xp.toFixedNumber(2);
         if (bat.xp >= levelXP[4]) {
@@ -409,6 +399,17 @@ function levelUp(bat,batType) {
             bat.vet = 1;
         } else {
             bat.vet = 0;
+        }
+        if (bat.vet === 4) {
+            if (batType.skills.includes('autohero')) {
+                if (bat.tags.includes('schef')) {
+                    tagDelete(bat,'schef');
+                }
+                if (bat.tags.includes('vet')) {
+                    tagDelete(bat,'vet');
+                }
+            }
+            bat.tags.push('hero');
         }
         if (!bat.tags.includes('vet') && !bat.tags.includes('schef') && !bat.tags.includes('hero')) {
             let grade = getGrade(bat,batType);

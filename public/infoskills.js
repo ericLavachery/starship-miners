@@ -534,7 +534,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     }
     // TAMING
     if (!playerInfos.onShip && !bat.tags.includes('tame') && !zeroCrew) {
-        if ((bat.tags.includes('hero') && batType.skills.includes('herotame')) || batType.skills.includes('taming')) {
+        if (((bat.tags.includes('hero') || bat.tags.includes('schef')) && batType.skills.includes('herotame')) || batType.skills.includes('taming')) {
             let tamingId = getTamingId(bat,batType);
             if (tamingId >= 0) {
                 $('#unitInfos').append('<button type="button" title="Apprivoiser les Meatballs" class="boutonJaune iconButtons" onclick="taming('+tamingId+')"><i class="fas fa-dog"></i> <span class="small">20</span></button>');
@@ -867,10 +867,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             let repairBat = checkRepairBat(bat.tileId);
             if (Object.keys(repairBat).length >= 1) {
                 let repairBatType = getBatType(repairBat);
-                let batRepairCost = repairBatType.mecanoCost;
-                if (hasEquip(repairBat,['e-repair'])) {
-                    batRepairCost = Math.floor(batRepairCost/3);
-                }
+                batRepairCost = calcBaseSkillCost(repairBat,repairBatType,'repair',false);
                 if (batRepairCost < 2) {batRepairCost = 2;}
                 apCost = 0;
                 if (repairBat.apLeft >= 1) {

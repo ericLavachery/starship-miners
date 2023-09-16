@@ -50,6 +50,11 @@ function goStation() {
     commandes();
 };
 
+function souteBatSelect(keepBkp) {
+    let souteBat = getBatById(souteId);
+    batSelect(souteBat,false,keepBkp);
+};
+
 function getStationLandersIds() {
     let landersIds = [];
     bataillons.forEach(function(bat) {

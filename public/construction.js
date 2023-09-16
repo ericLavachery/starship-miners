@@ -1,3 +1,8 @@
+function goProduction() {
+    souteBatSelect(false);
+    bfconst('all',false,'',false);
+};
+
 function bfconst(cat,triche,upgrade,retour) {
     conselCat = cat;
     conselTriche = triche;
@@ -915,6 +920,7 @@ function checkUpUnit(batType) {
 };
 
 function doUpgrade() {
+    // onShip only
     if (conselUpgrade === 'bld') {
         let myBatXP = selectedBat.xp;
         let myBatId = selectedBat.id;
@@ -939,11 +945,13 @@ function doUpgrade() {
     }
     $("#unitInfos").css("display","none");
     if (inSoute) {
+        souteFilter = 'all';
         goSoute();
     }
 };
 
 function clickUpgrade(tileId) {
+    // zone only
     if (tileId === selectedBat.tileId) {
         if (conselUpgrade === 'bld') {
             let myBatXP = selectedBat.xp;

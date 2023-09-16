@@ -1810,7 +1810,10 @@ function canCamoFog(bat,batType) {
     if (batType.skills.includes('transorbital') || batType.skills.includes('cfo') || batType.skills.includes('pilone') || batType.skills.includes('dome')) {
         camoOK = false;
     } else {
-        let maxSize = 75+(playerInfos.comp.cam*10);
+        let maxSize = 75+(playerInfos.comp.cam*15);
+        if (batType.skills.includes('camo')) {
+            maxSize = maxSize*2;
+        }
         if (hasEquip(bat,['bld-camo'])) {
             maxSize = maxSize*2;
         }

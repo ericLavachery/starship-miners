@@ -442,6 +442,10 @@ socket.on('savedMap-Load', function(sm) {
             bat.tdc = [];
         }
     });
+    if (playerInfos.onShip) {
+        souteBatSelect(true);
+        showBatInfos(selectedBat);
+    }
 });
 // resources
 socket.on('resTypes-Load', function(rt) {

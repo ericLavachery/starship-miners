@@ -65,12 +65,18 @@ function commandes() {
                     } else {
                         $('#commandz').append('<button type="button" title="Revenir sur la carte de la station" class="boutonMarine iconButtons" onclick="goStation()" onmousedown="clicSound(7)"><i class="fas fa-chess-board"></i></button>');
                     }
+                    $('#commandz').append('<br>');
+                    if (!inSoute) {
+                        $('#commandz').append('<button type="button" title="Production (bâtiments & unités)" class="boutonOrange iconButtons" onclick="goProduction()"><i class="fas fa-cogs"></i></button>');
+                    } else {
+                        $('#commandz').append('<button type="button" title="Production: Revenir sur la carte de la station" class="boutonGrey iconButtons gf" onclick="goStation()" onmousedown="clicSound(7)"><i class="fas fa-cogs"></i></button>');
+                    }
                 }
                 if (!isStartZone) {
                     if (!inSoute) {
-                        $('#commandz').append('<button type="button" title="Crafting" class="boutonGris iconButtons" onclick="craftWindow(false)" onmousedown="clicSound(5)"><i class="fas fa-toolbox"></i></button>');
+                        $('#commandz').append('<button type="button" title="Crafting" class="boutonOrange iconButtons" onclick="craftWindow(false)" onmousedown="clicSound(5)"><i class="fas fa-toolbox"></i></button>');
                     } else {
-                        $('#commandz').append('<button type="button" title="Crafting: Revenir sur la carte de la station" class="boutonGrey iconButtons gf" onclick="goStation(7)" onmousedown="clicSound()"><i class="fas fa-toolbox"></i></button>');
+                        $('#commandz').append('<button type="button" title="Crafting: Revenir sur la carte de la station" class="boutonGrey iconButtons gf" onclick="goStation()" onmousedown="clicSound(7)"><i class="fas fa-toolbox"></i></button>');
                     }
                 } else {
                     $('#commandz').append('<button type="button" title="Crafting: Impossible ici" class="boutonGrey iconButtons gf"><i class="fas fa-toolbox"></i></button>');
@@ -79,10 +85,10 @@ function commandes() {
                 $('#commandz').append('<br>');
             }
             if (!justReloaded) {
-                if (!inSoute) {
+                if (!playerInfos.onShip) {
                     $('#commandz').append('<button type="button" title="Minimap" class="boutonGris iconButtons" onclick="minimap()" onmousedown="clicSound(5)"><i class="far fa-map"></i></button>');
                 } else {
-                    $('#commandz').append('<button type="button" title="Minimap: Revenir sur la carte de la station" class="boutonGrey iconButtons gf" onclick="goStation()" onmousedown="clicSound(7)"><i class="far fa-map"></i></button>');
+                    $('#commandz').append('<button type="button" title="Backup: Seulement après actualisation de la page" class="boutonGrey iconButtons gf"><i class="fas fa-hdd"></i></button>');
                 }
             }
             if (modeSonde) {
