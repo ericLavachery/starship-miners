@@ -400,6 +400,16 @@ function levelUp(bat,batType) {
         } else {
             bat.vet = 0;
         }
+        // bug hero
+        let allTags = _.countBy(bat.tags);
+        if (allTags.hero > 1) {
+            tagDelete(bat,'hero');
+        }
+        let mayHero = mayBeHero(bat,batType);
+        if (!mayHero && bat.tags.includes('hero')) {
+            tagDelete(bat,'hero');
+        }
+        // autohero
         if (bat.vet === 4) {
             if (batType.skills.includes('autohero')) {
                 if (bat.tags.includes('schef')) {
@@ -408,8 +418,10 @@ function levelUp(bat,batType) {
                 if (bat.tags.includes('vet')) {
                     tagDelete(bat,'vet');
                 }
+                if (!bat.tags.includes('hero')) {
+                    bat.tags.push('hero');
+                }
             }
-            bat.tags.push('hero');
         }
         if (!bat.tags.includes('vet') && !bat.tags.includes('schef') && !bat.tags.includes('hero')) {
             let grade = getGrade(bat,batType);
@@ -442,16 +454,26 @@ function levelUp(bat,batType) {
     }
 };
 
+function mayBeChef(bat,batType) {
+    let mayChef = false;
+    if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('penitbat') && !batType.skills.includes('brigands') && !batType.skills.includes('garde') && batType.crew >= 1 && !bat.tags.includes('outsider')) || batType.skills.includes('souschef')) {
+        mayChef = true;
+    }
+    return mayChef;
+};
+
+function mayBeHero(bat,batType) {
+    let mayHero = false;
+    if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('garde') && batType.crew >= 1) || batType.skills.includes('souschef')) {
+        mayHero = true;
+    }
+    return mayHero;
+};
+
 function heroUp(bat,batType,grade) {
     if (playerInfos.pseudo != 'Mapedit') {
-        let mayChef = false;
-        if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('penitbat') && !batType.skills.includes('brigands') && !batType.skills.includes('garde') && batType.crew >= 1 && !bat.tags.includes('outsider')) || batType.skills.includes('souschef')) {
-            mayChef = true;
-        }
-        let mayHero = false;
-        if ((batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('robot') && !batType.skills.includes('nochef') && !batType.skills.includes('garde') && batType.crew >= 1) || batType.skills.includes('souschef')) {
-            mayHero = true;
-        }
+        let mayChef = mayBeChef(bat,batType);
+        let mayHero = mayBeHero(bat,batType);
         let chefNum = getChefNum();
         if (grade === 'Sergent') {
             if (chefNum === 0 && mayChef) {
