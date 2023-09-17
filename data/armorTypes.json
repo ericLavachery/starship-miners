@@ -2096,7 +2096,7 @@
         "compReq":{"log":1,"def":2},
         "autoComp":[],
         "factor":"rofpow",
-        "costs":{"Fer":15,"Scarp":20,"Bois":40,"Carbone":30}
+        "costs":{"Fer":15,"Scrap":20,"Bois":40,"Carbone":30}
     },
     {
         "name":"w2-brol",

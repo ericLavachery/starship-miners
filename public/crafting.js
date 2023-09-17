@@ -333,6 +333,9 @@ function adjCraftFactor(craft,craftFactor) {
     if (craft.result === 'Energons') {
         noFactor = true;
     }
+    if (craft.result === 'Spins') {
+        noFactor = true;
+    }
     if (craft.cost['Energons'] != undefined) {
         noFactor = true;
     }

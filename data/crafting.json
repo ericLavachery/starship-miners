@@ -312,6 +312,36 @@
         "bg":"#1b1510"
     },
     {
+        "id":164,
+        "result":"Spins",
+        "cost":{"Electros":150,"Morphite":600,"Uridium":600},
+        "compReq":{"det":5,"cyber":2},
+        "bldReq":["Centre de recherches"],
+        "batch":15,
+        "creaNum":3,
+        "bg":"#094949"
+    },
+    {
+        "id":60,
+        "result":"Spins",
+        "cost":{"Electros":150,"Morphite":600,"Uridium":600},
+        "compReq":{"det":5,"robo":1},
+        "bldReq":["Centre de recherches"],
+        "batch":15,
+        "creaNum":5,
+        "bg":"#094949"
+    },
+    {
+        "id":165,
+        "result":"Spins",
+        "cost":{"Electros":150,"Morphite":600,"Uridium":600},
+        "compReq":{"det":5,"vsp":4},
+        "bldReq":["Centre de recherches"],
+        "batch":15,
+        "creaNum":5,
+        "bg":"#094949"
+    },
+    {
         "id":57,
         "result":"Electros",
         "cost":{"Cuivre":45,"Silicium":15,"Cobalt":30},
