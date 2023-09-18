@@ -1016,6 +1016,15 @@ function clickConstruct(tileId,free) {
                     message = 'Pas de construction sur une case occupée par un de vos bataillons';
                 }
             }
+            if (playerInfos.onShip) {
+                if (bat.vmt === tileId) {
+                    let batType = getBatType(bat);
+                    if (!batType.skills.includes('noshow')) {
+                        batHere = true;
+                        message = 'Pas de construction sur une case occupée par un de vos bataillons';
+                    }
+                }
+            }
         });
         aliens.forEach(function(bat) {
             if (bat.tileId === tileId && bat.loc === "zone") {
@@ -1023,8 +1032,20 @@ function clickConstruct(tileId,free) {
                 message = 'Pas de construction sur une case occupée par un alien';
             }
         });
+        if (playerInfos.onShip) {
+            if (conselUnit.skills.includes('conscoq')) {
+                if (tile.terrain != 'Z') {
+                    batHere = true;
+                    message = 'Cette unité doit être construite sur une case "Coque"';
+                }
+            } else {
+                if (tile.terrain != 'X') {
+                    batHere = true;
+                    message = 'Cette unité doit être construite sur une case "Station"';
+                }
+            }
+        }
         if (conselUnit.cat === 'buildings' && !conselTriche) {
-            let tile = getTileById(tileId);
             if (tile.terrain === 'W' || tile.terrain === 'R' || tile.terrain === 'L') {
                 if (!conselUnit.skills.includes('noblub')) {
                     batHere = true;
@@ -2642,3 +2663,26 @@ function checkPiloneNumber(unit,triche) {
     }
     return pNumOK;
 };
+
+function calcSlots() {
+    let slots = {};
+    let usedSlots = 0;
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.slots != undefined) {
+            if (batType.slots >= 1) {
+                usedSlots = usedSlots+batType.slots;
+            }
+        }
+    });
+    slots.used = usedSlots;
+    slots.rest = maxSlots-usedSlots;
+    slots.colour = 'neutre';
+    if (slots.rest <= 10) {
+        slots.colour = 'or';
+    } else if (slots.rest <= 20) {
+        slots.colour = 'jaune';
+    }
+    playerInfos.slots = slots.used;
+    return slots;
+}

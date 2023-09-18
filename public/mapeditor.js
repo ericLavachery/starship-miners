@@ -36,7 +36,7 @@ function mapEditWindow() {
     if (mped.ster === undefined && mped.sinf === '') {mbClass = 'mapedButSel';}
     $('#conUnitList').append('<img class="'+mbClass+'" src="/static/img/sntiles/V_005.png" width="64" title="Changer l\'image sans changer le terrain" onclick="selectTerrain()">');
     terrainTypes.forEach(function(terrain) {
-        if (terrain.name != 'V' && terrain.name != 'X') {
+        if (terrain.name != 'V' && terrain.name != 'X' && terrain.name != 'Z') {
             mbClass = 'mapedBut';
             if (mped.ster === terrain.name && mped.sinf === '') {mbClass = 'mapedButSel';}
             let tPic = terrain.name+'_004';

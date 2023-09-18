@@ -753,7 +753,7 @@ function listBatTerrainAccess(batType,isBat,bat) {
         }
     }
     terrainTypes.forEach(function(ter) {
-        if (ter.name != 'V' && ter.name != 'X') {
+        if (ter.name != 'V' && ter.name != 'X' && ter.name != 'Z') {
             let access = false;
             if (batMaxFlood >= ter.flood && batMaxScarp >= ter.scarp && batMaxVeg >= ter.veg) {
                 access = true;

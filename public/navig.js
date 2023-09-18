@@ -292,6 +292,7 @@ function viewPop() {
             let mesCitoyens = calcTotalCitoyens(false);
             let population = mesCitoyens.crim+mesCitoyens.cit;
             let crimeRate = calcCrimeRate(mesCitoyens);
+            let slots = calcSlots();
             let popColour = 'cy';
             let crimColour = 'neutre';
             if (crimeRate.total >= 15) {
@@ -308,8 +309,10 @@ function viewPop() {
             $("#batloop").css("display","block");
             $('#batloop').empty();
             $('#batloop').append('Population: <span class="'+popColour+'">'+population+'</span><br>');
-            $('#batloop').append('(<span class="" title="Citoyens">'+mesCitoyens.cit+'</span> &middot; <span class="" title="Criminels">'+mesCitoyens.crim+'</span>)<br>');
+            // $('#batloop').append('(<span class="" title="Citoyens">'+mesCitoyens.cit+'</span> &middot; <span class="" title="Criminels">'+mesCitoyens.crim+'</span>)<br>');
             $('#batloop').append('Lits: <span class="'+bedColour+'">'+crimeRate.lits+'</span><br>');
+            // $('#batloop').append('Place libre: <span class="'+slots.colour+'" title="Place libre pour des bâtiments dans la station">'+slots.rest+'</span><br>');
+            $('#batloop').append('Place occupée: <span class="'+slots.colour+'" title="Place occupée par les bâtiments dans la station">'+slots.used+'</span><br>');
             $('#batloop').append('Criminels: <span class="neutre">'+crimeRate.crim+'</span>%<br>');
             $('#batloop').append('Pénibilité: <span class="'+penibColour+'">'+crimeRate.penib+'</span>%<br>');
             $('#batloop').append('Forces de l\'ordre: <span class="neutre">'+crimeRate.fo+'</span><br>');
@@ -345,6 +348,9 @@ function gangNavig() {
         $('#gangInfos').append('<button type="button" title="Ajouter tous les bâtiments requis dans la station" class="boutonCiel iconButtons" onclick="putFullBldVM()"><i class="fas fa-landmark"></i></button>');
         $('#gangInfos').append('<button type="button" title="Charger une zone sauvegardée" class="boutonCiel iconButtons" onclick="voirZones()"><i class="fas fa-folder-open"></i></button>');
         // $('#gangInfos').append('<button type="button" title="Remettre les compétences à zéro" class="boutonCiel iconButtons" onclick="compReset()"><i class="fas fa-award"></i></button>');
+        if (playerInfos.onShip && !inSoute && !modeSonde) {
+            $('#gangInfos').append('<button type="button" title="Changer la carte de la Station" class="boutonCiel iconButtons" onclick="changeStationMap()"><i class="fas fa-layer-group"></i></button>');
+        }
         if (!modeSonde && !playerInfos.onShip) {
             $('#gangInfos').append('<button type="button" title="Test de tir (15 salves, pas de riposte)" class="boutonCiel iconButtons" onclick="noAlienRip()"><i class="fas fa-bullseye"></i></button>');
             $('#gangInfos').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonCiel iconButtons" onclick="mapReset()"><i class="fas fa-skull-crossbones"></i></button>');

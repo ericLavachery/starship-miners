@@ -192,6 +192,9 @@
 .mX {
     background-color: #4d4e48;
 }
+.mZ {
+    background-color: #343430;
+}
 .terFog {
     background-color: #000000;
     background-image: url(/static/img/sntiles/D_001.png);
@@ -576,6 +579,11 @@
 }
 .terX1 {
     background-color: #4d4e48;
+    background-image: url(/static/img/sntiles/X_001.png);
+    background-position: center;
+}
+.terZ1 {
+    background-color: #343430;
     background-image: url(/static/img/sntiles/X_001.png);
     background-position: center;
 }

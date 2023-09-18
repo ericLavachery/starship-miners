@@ -282,6 +282,7 @@ let conselCosts = {};
 let myNewGear = ['xxx','xxx','xxx','xxx'];
 let spinsLanderRecup = 135; // plus grand = moins de récup
 let spinsBldRecup = 15; // plus grand = moins de récup
+let maxSlots = 235;
 // INVASION
 let zoneInfos = {};
 let maxAliens = 250;

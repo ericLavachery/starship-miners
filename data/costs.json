@@ -2086,7 +2086,8 @@
         "bldReq":["Soute"],
         "toNum":200,
         "costs":{"Eau":250,"Energie":3000,"Huile":75,"Scrap":750,"Tissus":25,"Carbone":75,"Titane":350,"Aluminium":2000,"Calcium":30,"Nickel":150,"Cuivre":300,"Or":50,"Silicium":50,"Bore":50,"Plutonium":100,"Oxygène":250,"Hydrogène":450,"Azote":100,"Chlore":50,"Electros":125,"Batteries":100,"Spins":200},
-        "deploy":{"Energie":300,"Huile":5,"Tissus":10,"Chlore":10,"Plutonium":40,"Hydrogène":15}
+        "deploy":{"Energie":300,"Huile":5,"Tissus":10,"Chlore":10,"Plutonium":40,"Hydrogène":15},
+        "slots":9
     },
     {
         "id":7,
@@ -2096,7 +2097,8 @@
         "bldUp":["Shuttle"],
         "toNum":300,
         "costs":{"Eau":2500,"Energie":3000,"Huile":100,"Scrap":550,"Tissus":50,"Carbone":100,"Titane":1500,"Aluminium":3100,"Calcium":30,"Nickel":400,"Cuivre":600,"Or":150,"Silicium":100,"Bore":150,"Plutonium":200,"Oxygène":500,"Hydrogène":800,"Azote":200,"Chlore":100,"Electros":350,"Batteries":200,"Spins":300},
-        "deploy":{"Energie":350,"Huile":10,"Drogues":30,"Chlore":15,"Zinc":15,"Tissus":15,"Plutonium":60,"Hydrogène":30}
+        "deploy":{"Energie":350,"Huile":10,"Drogues":30,"Chlore":15,"Zinc":15,"Tissus":15,"Plutonium":60,"Hydrogène":30},
+        "slots":11
     },
     {
         "id":165,
@@ -2107,7 +2109,8 @@
         "bldCost":"Lander",
         "toNum":315,
         "costs":{"Eau":1000,"Energie":4000,"Huile":175,"Scrap":600,"Tissus":50,"Carbone":150,"Titane":1650,"Aluminium":3900,"Calcium":30,"Nickel":550,"Cuivre":800,"Or":200,"Silicium":150,"Bore":250,"Plutonium":750,"Oxygène":600,"Hydrogène":1050,"Azote":250,"Chlore":100,"Electros":400,"Batteries":250,"Spins":15},
-        "deploy":{"Energie":570,"Huile":15,"Drogues":50,"Chlore":25,"Zinc":25,"Tissus":25,"Plutonium":110,"Hydrogène":55}
+        "deploy":{"Energie":570,"Huile":15,"Drogues":50,"Chlore":25,"Zinc":25,"Tissus":25,"Plutonium":110,"Hydrogène":55},
+        "slots":14
     },
     {
         "id":103,
@@ -2118,7 +2121,8 @@
         "bldCost":"Shuttle",
         "toNum":365,
         "costs":{"Eau":2000,"Energie":5000,"Huile":275,"Scrap":750,"Tissus":100,"Carbone":300,"Titane":2200,"Aluminium":5400,"Calcium":30,"Rhodium":150,"Nickel":750,"Cuivre":3500,"Or":700,"Silicium":400,"Bore":500,"Plutonium":800,"Oxygène":1250,"Hydrogène":1350,"Azote":600,"Chlore":100,"Electros":650,"Batteries":375,"Spins":50},
-        "deploy":{"Energie":760,"Huile":30,"Drogues":80,"Chlore":40,"Zinc":40,"Tissus":40,"Plutonium":225,"Hydrogène":150}
+        "deploy":{"Energie":760,"Huile":30,"Drogues":80,"Chlore":40,"Zinc":40,"Tissus":40,"Plutonium":225,"Hydrogène":150},
+        "slots":17
     },
     {
         "id":105,
@@ -2130,7 +2134,8 @@
         "compReq":{"vsp":1},
         "toNum":400,
         "costs":{"Eau":4000,"Energie":6000,"Huile":375,"Scrap":1000,"Tissus":150,"Carbone":300,"Titane":3700,"Aluminium":8700,"Calcium":30,"Rhodium":350,"Nickel":950,"Cuivre":4000,"Or":1050,"Silicium":650,"Bore":750,"Plutonium":1100,"Oxygène":1700,"Hydrogène":1700,"Azote":850,"Chlore":100,"Electros":750,"Batteries":500,"Plastanium":90,"Spins":35},
-        "deploy":{"Energie":1180,"Huile":40,"Drogues":120,"Chlore":60,"Zinc":60,"Tissus":60,"Plutonium":390,"Hydrogène":220,"Plastanium":45}
+        "deploy":{"Energie":1180,"Huile":40,"Drogues":120,"Chlore":60,"Zinc":60,"Tissus":60,"Plutonium":390,"Hydrogène":220,"Plastanium":45},
+        "slots":22
     },
     {
         "id":104,
@@ -2141,7 +2146,8 @@
         "compReq":{"vsp":2,"trans":2},
         "toNum":480,
         "costs":{"Eau":6000,"Energie":7000,"Huile":575,"Scrap":1000,"Tissus":250,"Carbone":500,"Titane":7500,"Aluminium":10300,"Calcium":30,"Rhodium":500,"Nickel":1100,"Cuivre":6500,"Or":1500,"Silicium":800,"Bore":1550,"Plutonium":1150,"Oxygène":3000,"Hydrogène":2350,"Azote":1250,"Chlore":100,"Electros":850,"Batteries":675,"Plastanium":180,"Spins":80},
-        "deploy":{"Energie":1800,"Huile":60,"Drogues":180,"Chlore":90,"Zinc":90,"Tissus":90,"Plutonium":640,"Hydrogène":320,"Plastanium":95}
+        "deploy":{"Energie":1800,"Huile":60,"Drogues":180,"Chlore":90,"Zinc":90,"Tissus":90,"Plutonium":640,"Hydrogène":320,"Plastanium":95},
+        "slots":29
     },
     {
         "id":106,
@@ -2152,7 +2158,8 @@
         "toNum":520,
         "compReq":{"def":3,"energ":2,"vsp":3},
         "costs":{"Eau":5000,"Energie":8000,"Huile":250,"Scrap":750,"Tissus":150,"Carbone":350,"Titane":9000,"Aluminium":2700,"Calcium":30,"Rhodium":1000,"Nickel":1100,"Cuivre":5000,"Platine":1600,"Silicium":500,"Bore":1350,"Plutonium":1100,"Oxygène":1000,"Hydrogène":1600,"Azote":750,"Chlore":100,"Electros":1000,"Batteries":525,"Plastanium":270,"Spins":120},
-        "deploy":{"Energie":1900,"Huile":50,"Drogues":140,"Chlore":70,"Zinc":70,"Tissus":70,"Plutonium":670,"Hydrogène":450,"Plastanium":135}
+        "deploy":{"Energie":1900,"Huile":50,"Drogues":140,"Chlore":70,"Zinc":70,"Tissus":70,"Plutonium":670,"Hydrogène":450,"Plastanium":135},
+        "slots":20
     },
     {
         "id":251,
@@ -2163,7 +2170,8 @@
         "bldUp":["Thundership"],
         "toNum":150,
         "costs":{"Eau":1000,"Energie":2000,"Huile":50,"Scrap":550,"Carbone":50,"Titane":600,"Aluminium":900,"Rhodium":75,"Nickel":300,"Cuivre":600,"Silicium":100,"Bore":150,"Uranium":400,"Oxygène":100,"Hydrogène":350,"Azote":150,"Chlore":50,"Tissus":50,"Drogues":50,"Zinc":50,"Electros":300,"Batteries":200,"Spins":150},
-        "deploy":{"Eau":50,"Nourriture":50,"Oxygène":50,"Energie":280,"Huile":5,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10,"Uranium":30,"Hydrogène":25}
+        "deploy":{"Eau":50,"Nourriture":50,"Oxygène":50,"Energie":280,"Huile":5,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10,"Uranium":30,"Hydrogène":25},
+        "slots":9
     },
     {
         "id":108,
@@ -2176,7 +2184,8 @@
         "compReq":{"vsp":1},
         "toNum":170,
         "costs":{"Eau":500,"Energie":1000,"Huile":50,"Scrap":300,"Tissus":30,"Carbone":100,"Titane":600,"Rhodium":200,"Nickel":400,"Cuivre":200,"Platine":300,"Silicium":200,"Bore":800,"Uranium":200,"Oxygène":100,"Hydrogène":700,"Azote":100,"Chlore":25,"Electros":600,"Batteries":225,"Plastanium":50,"Spins":20},
-        "deploy":{"Eau":75,"Nourriture":75,"Oxygène":75,"Energie":350,"Huile":10,"Drogues":30,"Chlore":15,"Zinc":15,"Tissus":15,"Uranium":60,"Hydrogène":90,"Plastanium":15}
+        "deploy":{"Eau":75,"Nourriture":75,"Oxygène":75,"Energie":350,"Huile":10,"Drogues":30,"Chlore":15,"Zinc":15,"Tissus":15,"Uranium":60,"Hydrogène":90,"Plastanium":15},
+        "slots":10
     },
     {
         "id":109,
@@ -2188,7 +2197,8 @@
         "compReq":{"vsp":2},
         "toNum":220,
         "costs":{"Eau":1000,"Energie":2000,"Huile":125,"Scrap":300,"Tissus":80,"Carbone":150,"Titane":3600,"Calcium":30,"Rhodium":375,"Nickel":300,"Cuivre":300,"Platine":700,"Silicium":300,"Bore":1300,"Uranium":500,"Oxygène":200,"Hydrogène":500,"Azote":300,"Chlore":100,"Electros":700,"Batteries":300,"Plastanium":70,"Spins":50},
-        "deploy":{"Eau":125,"Nourriture":125,"Oxygène":125,"Energie":500,"Huile":15,"Drogues":50,"Chlore":25,"Zinc":25,"Tissus":25,"Uranium":120,"Hydrogène":120,"Plastanium":35}
+        "deploy":{"Eau":125,"Nourriture":125,"Oxygène":125,"Energie":500,"Huile":15,"Drogues":50,"Chlore":25,"Zinc":25,"Tissus":25,"Uranium":120,"Hydrogène":120,"Plastanium":35},
+        "slots":12
     },
     {
         "id":270,
@@ -2577,7 +2587,7 @@
         "prod":{"Explosifs":0.5},
         "costs":{"Compo1":170,"Compo2":55,"Eau":12,"Végétaux":150},
         "fabTime":25,
-        "slots":1
+        "slots":0
     },
     {
         "id":158,
@@ -2829,7 +2839,7 @@
         "compReq":{"mat":2},
         "costs":{"Compo2":450,"Compo3":250,"Eau":3500,"Carbone":2000,"Tungstène":1500,"Bore":1500,"Rhodium":50,"Batteries":100},
         "fabTime":120,
-        "slots":3
+        "slots":2
     },
     {
         "id":208,
@@ -2839,7 +2849,7 @@
         "upkeep":{"Eau":4},
         "costs":{"Compo1":435,"Compo2":315,"Compo3":270,"Eau":3000,"Aluminium":1500,"Rhodium":1000,"Cobalt":1500,"Cuivre":600,"Platine":300,"Mercure":750,"Silicium":1000,"Argon":600,"Electros":200,"Batteries":450},
         "fabTime":350,
-        "slots":4
+        "slots":3
     },
     {
         "id":209,
@@ -2862,7 +2872,7 @@
         "prod":{"Energie":230},
         "costs":{"Compo1":345,"Compo2":405,"Compo3":450,"Eau":6000,"Energie":4000,"Carbone":5000,"Titane":1500,"Plomb":2000,"Nickel":1000,"Cuivre":800,"Bore":1500,"Plutonium":1500,"Electros":300,"Batteries":900},
         "fabTime":600,
-        "slots":5
+        "slots":6
     },
     {
         "id":212,
@@ -2873,7 +2883,7 @@
         "prod":{"Energie":85},
         "costs":{"Compo1":205,"Compo2":245,"Compo3":270,"Eau":1000,"Energie":1600,"Carbone":1500,"Titane":300,"Plomb":300,"Nickel":300,"Cuivre":250,"Platine":375,"Bore":375,"Uranium":250,"Hydrogène":500,"Electros":125,"Batteries":350},
         "fabTime":300,
-        "slots":3
+        "slots":4
     },
     {
         "id":174,
@@ -3002,7 +3012,7 @@
         "prod":{"Scrap":5},
         "costs":{"Compo1":285,"Compo2":165,"Compo3":55,"Eau":300,"Energie":200,"Aluminium":120,"Fer":1200,"Bois":1200,"Munitions":1200,"Explosifs":300,"Végétaux":1200,"Calcium":150,"Or":30,"Drogues":150,"Chlore":150,"Batteries":80},
         "fabTime":250,
-        "slots":5
+        "slots":6
     },
     {
         "id":232,
@@ -3104,7 +3114,7 @@
         "bldReq":["Station"],
         "costs":{"Compo1":200,"Compo2":100,"Compo3":35,"Carbone":200,"Titane":75,"Tungstène":75,"Aluminium":200,"Cobalt":150,"Nickel":100,"Cuivre":300,"Platine":100,"Silicium":150,"Oxygène":150,"Hélium":250,"Moteurs":100,"Electros":200,"Batteries":75},
         "fabTime":1,
-        "slots":2
+        "slots":3
     },
     {
         "id":275,
@@ -3141,7 +3151,7 @@
         "bldReq":["Station"],
         "costs":{"Compo2":100,"Compo3":50,"Carbone":250,"Huile":75,"Aluminium":500,"Plomb":300,"Cuivre":100,"Hydrogène":150,"Moteurs":150,"Electros":100,"Batteries":15},
         "fabTime":1,
-        "slots":1,
+        "slots":2,
         "crime":-1
     },
     {

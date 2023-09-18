@@ -1992,6 +1992,23 @@ function tagDelete(bat,tag) {
     }
 };
 
+function tagDeleteX(bat,tag,delNum,notAll) {
+    if (bat.tags.includes(tag)) {
+        let iter = 1;
+        while (iter <= delNum) {
+            tagDelete(bat,tag);
+            if (!bat.tags.includes(tag)) {
+                break;
+            }
+            if (iter > 100) {break;}
+            iter++
+        }
+        if (notAll && !bat.tags.includes(tag)) {
+            bat.tags.push(tag);
+        }
+    }
+};
+
 function updateBatProperties(bat,batType) {
     if (bat.logeq === undefined) {
         bat.logeq = '';

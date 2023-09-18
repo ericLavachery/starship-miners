@@ -385,6 +385,20 @@ function getGangRechAdj() {
     return rech;
 };
 
+function heroBug(bat,batType) {
+    // bug hero
+    let mayHero = mayBeHero(bat,batType);
+    if (!mayHero && bat.tags.includes('hero')) {
+        tagDeleteX(bat,'hero',100,false);
+    }
+    if (bat.tags.includes('hero')) {
+        let allTags = _.countBy(bat.tags);
+        if (allTags.hero > 1) {
+            tagDeleteX(bat,'hero',100,true);
+        }
+    }
+}
+
 function levelUp(bat,batType) {
     if (playerInfos.pseudo != 'Mapedit') {
         let oldGrade = getGrade(bat,batType);
@@ -400,15 +414,7 @@ function levelUp(bat,batType) {
         } else {
             bat.vet = 0;
         }
-        // bug hero
-        let allTags = _.countBy(bat.tags);
-        if (allTags.hero > 1) {
-            tagDelete(bat,'hero');
-        }
-        let mayHero = mayBeHero(bat,batType);
-        if (!mayHero && bat.tags.includes('hero')) {
-            tagDelete(bat,'hero');
-        }
+        heroBug(bat,batType);
         // autohero
         if (bat.vet === 4) {
             if (batType.skills.includes('autohero')) {

@@ -64,10 +64,12 @@ function createVM(size) {
         }
         newTile.x = x;
         newTile.y = y;
-        if (x > 25 && x < 37 && y > 23 && y < 39) {
+        if (x >= 27 && x <= 35 && y >= 25 && y <= 37) {
             newTile.terrain = 'X';
             newTile.seed = rand.rand(1,6);
-            // newTile.seed = 1;
+        } else if (x >= 26 && x <= 36 && y >= 22 && y <= 40) {
+            newTile.terrain = 'Z';
+            newTile.seed = 1;
         } else {
             newTile.terrain = 'V';
             newTile.seed = rand.rand(1,6);
@@ -81,6 +83,25 @@ function createVM(size) {
         }
     }
 };
+
+function changeStationMap() {
+    if (playerInfos.onShip) {
+        let testTile = getTileById(1521);
+        if (testTile.terrain != 'Z') {
+            zone.forEach(function(tile) {
+                if (tile.x >= 27 && tile.x <= 35 && tile.y >= 25 && tile.y <= 37) {
+                    tile.terrain = 'X';
+                    tile.seed = rand.rand(1,6);
+                } else if (tile.x >= 26 && tile.x <= 36 && tile.y >= 22 && tile.y <= 40) {
+                    tile.terrain = 'Z';
+                    tile.seed = 1;
+                }
+            });
+            warning('<span class="rq3">Message hors jeu</span>','<span class="vio">Station transformée.</span><br>Construisez les sondes et impacteurs dans la coque, le reste dans la station (dans un emplacement vide)');
+            showMap(zone,false);
+        }
+    }
+}
 
 function regionChange() {
     playerInfos.sondeMaps = playerInfos.sondeMaps+3;
@@ -124,16 +145,6 @@ function generateNewMap(filterCheck,louche) {
     destroyedRuins(zone);
     washReports(true);
     zone[1830].rd = true;
-    // if (landingTerrainOK(zone[1830])) {
-    //     zone[1830].rd = true;
-    // } else {
-    //     zone[1830].rd = true;
-    //     if (zone[1830].terrain === 'F') {
-    //         zone[1830].terrain = 'B';
-    //     } else {
-    //         zone[1830].terrain = 'P';
-    //     }
-    // }
     zoneReport(zone,false);
     writeMapStyles();
     showMap(zone,false);
