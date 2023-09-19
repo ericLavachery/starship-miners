@@ -1168,7 +1168,7 @@ function addRes(zone) {
                 if (res.adjBatch < res.batch) {
                     res.adjBatch = res.batch;
                 }
-                if (res.name === 'Magma') {
+                if (res.name === 'Magma' || res.name === 'Huile' || res.name === 'Fruits') {
                     res.adjRarity = Math.ceil(res.adjRarity*(playerInfos.comp.ext+5)/5);
                 }
             }

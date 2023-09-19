@@ -2741,7 +2741,7 @@
         "prod":{"Scrap":1},
         "costs":{"Compo1":240,"Compo2":135,"Compo3":90,"Eau":36,"Energie":400,"Cobalt":750,"Cuivre":3000,"Platine":500,"Silicium":750,"Oxygène":300,"Hélium":500,"Electros":450,"Batteries":150},
         "fabTime":200,
-        "slots":3
+        "slots":4
     },
     {
         "id":196,
@@ -2974,7 +2974,7 @@
         "costs":{"Compo1":120,"Compo2":45,"Eau":50,"Fer":150},
         "fabTime":35,
         "crime":-4,
-        "slots":2
+        "slots":3
     },
     {
         "id":300,
@@ -3047,7 +3047,7 @@
         "bldReq":["Station"],
         "costs":{},
         "fabTime":200,
-        "slots":0
+        "slots":1
     },
     {
         "id":231,
@@ -3071,7 +3071,7 @@
         "bldReq":["Station"],
         "costs":{},
         "fabTime":200,
-        "slots":0,
+        "slots":14,
         "info":"La Soute ne peut pas être démantelée.",
         "redInfo":"Elle vous permet de produire tous vos nouveaux bataillons.<br>N'oubliez pas de transférer dans la Soute les ressources que vous avez ramenées dans votre Lander après une mission."
     },
@@ -3093,7 +3093,7 @@
         "prod":{"Fruits":0.75,"Végétaux":2},
         "costs":{"Compo1":200,"Scrap":150,"Silicium":150,"Eau":750,"Azote":100,"Phosphore":75,"Potassium":150,"Chlore":50,"Végétaux":750,"Energie":100,"Batteries":25},
         "fabTime":100,
-        "slots":3
+        "slots":4
     },
     {
         "id":229,
@@ -3105,7 +3105,7 @@
         "prod":{"Fruits":3,"Végétaux":9},
         "costs":{"Compo1":300,"Scrap":200,"Silicium":200,"Eau":2500,"Azote":300,"Phosphore":250,"Potassium":450,"Chlore":150,"Végétaux":2500,"Energie":200,"Batteries":50},
         "fabTime":200,
-        "slots":6,
+        "slots":7,
         "crime":-4
     },
     {
@@ -3114,7 +3114,7 @@
         "bldReq":["Station"],
         "costs":{"Compo1":200,"Compo2":100,"Compo3":35,"Carbone":200,"Titane":75,"Tungstène":75,"Aluminium":200,"Cobalt":150,"Nickel":100,"Cuivre":300,"Platine":100,"Silicium":150,"Oxygène":150,"Hélium":250,"Moteurs":100,"Electros":200,"Batteries":75},
         "fabTime":1,
-        "slots":3
+        "slots":4
     },
     {
         "id":275,
@@ -3160,7 +3160,7 @@
         "bldReq":["Station"],
         "costs":{"Compo1":250,"Tissus":100,"Fer":150,"Bois":200,"Cuivre":50,"Silicium":25,"Electros":100,"Batteries":25},
         "fabTime":1,
-        "slots":2,
+        "slots":3,
         "crime":-1
     },
     {

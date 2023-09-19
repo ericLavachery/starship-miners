@@ -209,6 +209,24 @@ function landerSelection(landerId) {
     showBatInfos(selectedBat);
 };
 
+function getSelectedLanderId() {
+    let landerId = -1;
+    let biggerLander = 0;
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.skills.includes('transorbital') && batType.name != 'Soute') {
+            let landerSize = batType.hp+(bat.transIds.length*100);
+            if (landerSize > biggerLander) {
+                landerId = bat.id;
+                biggerLander = landerSize;
+            }
+        }
+    });
+    if (landerId >= 1) {
+        slId = landerId;
+    }
+};
+
 function checkSelectedLanderId() {
     let altId = -1;
     let idOK = false;

@@ -58,6 +58,11 @@ function commandes() {
             $('#commandz').append('<button type="button" title="Ressources présentes dans la zone" class="boutonGris iconButtons" onclick="resView()" onmousedown="clicSound(7)"><i class="far fa-gem"></i></button>');
         }
         if (!playerInfos.onStart) {
+            let craftsOK = true;
+            let maxCrafts = getMaxCrafts();
+            if (playerInfos.crafts >= maxCrafts && playerInfos.onShip) {
+                craftsOK = false;
+            }
             if (!modeSonde) {
                 if (playerInfos.onShip) {
                     if (!inSoute) {
@@ -66,14 +71,18 @@ function commandes() {
                         $('#commandz').append('<button type="button" title="Revenir sur la carte de la station" class="boutonMarine iconButtons" onclick="goStation()" onmousedown="clicSound(7)"><i class="fas fa-chess-board"></i></button>');
                     }
                     $('#commandz').append('<br>');
-                    if (!inSoute) {
+                    if (!craftsOK) {
+                        $('#commandz').append('<button type="button" title="Production: Vous avez atteint votre maximum de crafts" class="boutonGrey iconButtons gf"><i class="fas fa-cogs"></i></button>');
+                    } else if (!inSoute) {
                         $('#commandz').append('<button type="button" title="Production (bâtiments & unités)" class="boutonOrange iconButtons" onclick="goProduction()"><i class="fas fa-cogs"></i></button>');
                     } else {
                         $('#commandz').append('<button type="button" title="Production: Revenir sur la carte de la station" class="boutonGrey iconButtons gf" onclick="goStation()" onmousedown="clicSound(7)"><i class="fas fa-cogs"></i></button>');
                     }
                 }
                 if (!isStartZone) {
-                    if (!inSoute) {
+                    if (!craftsOK) {
+                        $('#commandz').append('<button type="button" title="Crafting: Vous avez atteint votre maximum de crafts" class="boutonGrey iconButtons gf"><i class="fas fa-toolbox"></i></button>');
+                    } else if (!inSoute) {
                         $('#commandz').append('<button type="button" title="Crafting" class="boutonOrange iconButtons" onclick="craftWindow(false)" onmousedown="clicSound(5)"><i class="fas fa-toolbox"></i></button>');
                     } else {
                         $('#commandz').append('<button type="button" title="Crafting: Revenir sur la carte de la station" class="boutonGrey iconButtons gf" onclick="goStation()" onmousedown="clicSound(7)"><i class="fas fa-toolbox"></i></button>');

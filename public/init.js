@@ -449,6 +449,7 @@ socket.on('savedMap-Load', function(sm) {
             changeStationMap();
         }
     }
+    getSelectedLanderId();
 });
 // resources
 socket.on('resTypes-Load', function(rt) {
