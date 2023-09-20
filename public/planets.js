@@ -1006,9 +1006,9 @@ function stormProtection(dmg,bat,batType,canon) {
             } else if (tile.infra === 'Palissades') {
                 infraProtect = 25;
             } else if (tile.infra === 'Remparts') {
-                infraProtect = 35;
-            } else if (tile.infra === 'Murailles') {
                 infraProtect = 50;
+            } else if (tile.infra === 'Murailles') {
+                infraProtect = 75;
             }
         }
     }
@@ -1065,12 +1065,18 @@ function stormDamage(bat,batType,storm,inMov,canon) {
         if (playerInfos.comp.scaph < 3) {
             if (batType.cat === 'infantry') {
                 let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
-                let stormDmg = rand.rand(2*numUnits,4*numUnits);
+                let stormDmg = rand.rand(3*numUnits,5*numUnits);
                 let batArmour = bat.armor;
                 if (bat.tags.includes('fortif')) {
                     batArmour = batArmour+5;
                 }
                 stormDmg = Math.ceil(stormDmg/Math.sqrt(batArmour+1));
+                if (batArmour >= 14 && playerInfos.comp.scaph >= 3 && !canon) {
+                    stormDmg = 0;
+                }
+                if (batType.skills.includes('resiststorm') && !canon) {
+                    stormDmg = 0;
+                }
                 if (stormDmg > 0) {
                     stormDmg = stormProtection(stormDmg,bat,batType,canon);
                 }
@@ -1118,6 +1124,8 @@ function stormDamage(bat,batType,storm,inMov,canon) {
                 let mvmt = bat.ap/baseMoveCost;
                 stormDmg = stormDmg/mvmt*4;
             }
+        } else {
+            stormDmg = stormDmg*1.33;
         }
         console.log('stormDmg='+stormDmg);
         let batArmour = bat.armor;
