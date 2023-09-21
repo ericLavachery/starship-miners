@@ -1523,7 +1523,7 @@
             "isArt":true,
             "rof":18,
             "accuracy":22,
-            "power":3,
+            "power":4,
             "aoe":"bat",
             "sound":"rainbow",
             "ammo":["gaz","gaz-pluto","gaz-jello","gaz-uridium"],

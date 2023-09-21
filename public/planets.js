@@ -1062,50 +1062,54 @@ function stormDamage(bat,batType,storm,inMov,canon) {
     }
     if (!storm) {
         // BOURASQUE
-        if (playerInfos.comp.scaph < 3) {
-            if (batType.cat === 'infantry') {
-                let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
-                let stormDmg = rand.rand(3*numUnits,5*numUnits);
-                let batArmour = bat.armor;
-                if (bat.tags.includes('fortif')) {
-                    batArmour = batArmour+5;
-                }
-                stormDmg = Math.ceil(stormDmg/Math.sqrt(batArmour+1));
-                if (batArmour >= 14 && playerInfos.comp.scaph >= 3 && !canon) {
-                    stormDmg = 0;
-                }
-                if (batType.skills.includes('resiststorm') && !canon) {
-                    stormDmg = 0;
-                }
-                if (stormDmg > 0) {
-                    stormDmg = stormProtection(stormDmg,bat,batType,canon);
-                }
-                console.log('stormDmg='+stormDmg);
-                let totalDamage = bat.damage+stormDmg;
-                let squadHP = batType.squadSize*batType.hp;
-                let squadsOut = Math.floor(totalDamage/squadHP);
-                bat.squadsLeft = bat.squadsLeft-squadsOut;
-                bat.damage = totalDamage-(squadsOut*squadHP);
-                bat.apLeft = bat.apLeft-3;
+        if (batType.cat === 'infantry') {
+            let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
+            let stormDmg = rand.rand(3*numUnits,6*numUnits);
+            let batArmour = bat.armor;
+            if (bat.tags.includes('fortif')) {
+                batArmour = batArmour+5;
+            }
+            if (playerInfos.comp.scaph >= 3) {
+                batArmour = batArmour+5;
+            }
+            stormDmg = Math.ceil(stormDmg/Math.sqrt(batArmour+1));
+            if (batArmour >= 11 && playerInfos.comp.scaph >= 3 && !canon) {
+                stormDmg = 0;
+            }
+            if (batType.skills.includes('resiststorm') && !canon) {
+                stormDmg = 0;
+            }
+            if (stormDmg > 0) {
+                stormDmg = stormProtection(stormDmg,bat,batType,canon);
+            }
+            console.log('stormDmg='+stormDmg);
+            let totalDamage = bat.damage+stormDmg;
+            let squadHP = batType.squadSize*batType.hp;
+            let squadsOut = Math.floor(totalDamage/squadHP);
+            bat.squadsLeft = bat.squadsLeft-squadsOut;
+            bat.damage = totalDamage-(squadsOut*squadHP);
+            bat.apLeft = bat.apLeft-3;
+            if (playerInfos.comp.scaph < 3) {
                 if (bat.apLeft > Math.round(bat.ap/3)) {
                     bat.apLeft = Math.round(bat.ap/3);
                 }
-                if (bat.squadsLeft <= 0) {
-                    batDeathEffect(bat,true,false,deathCause,bat.type+deathType);
-                    isDead = true;
-                    if (inMov) {
-                        batDeath(bat,true,false,false);
-                    } else {
-                        checkDeath(bat,batType,false);
-                    }
-                } else if (stormDmg >= 1) {
-                    if (batType.cat === 'infantry') {
-                        warning(deathCause,bat.type+' blessés.',false,bat.tileId);
-                    } else if (batType.cat === 'buildings') {
-                        warning(deathCause,bat.type+' endommagé.',false,bat.tileId);
-                    } else {
-                        warning(deathCause,bat.type+' endommagés.',false,bat.tileId);
-                    }
+            }
+            if (bat.squadsLeft <= 0) {
+                batDeathEffect(bat,true,false,deathCause,bat.type+deathType);
+                isDead = true;
+                if (inMov) {
+                    batDeath(bat,true,false,false);
+                } else {
+                    checkDeath(bat,batType,false);
+                }
+            } else if (stormDmg >= 1) {
+                deathCause = 'Bourasque';
+                if (batType.cat === 'infantry') {
+                    warning(deathCause,bat.type+' blessés. (dégâts: '+stormDmg+')',false,bat.tileId);
+                } else if (batType.cat === 'buildings') {
+                    warning(deathCause,bat.type+' endommagé. (dégâts: '+stormDmg+')',false,bat.tileId);
+                } else {
+                    warning(deathCause,bat.type+' endommagés. (dégâts: '+stormDmg+')',false,bat.tileId);
                 }
             }
         }

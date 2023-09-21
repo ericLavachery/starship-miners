@@ -871,6 +871,7 @@ function warnLink(tileId) {
         });
     }
     if (linkBatId >= 0) {
+        selectMode();
         batSelect(linkBat);
         showBatInfos(linkBat);
     } else {

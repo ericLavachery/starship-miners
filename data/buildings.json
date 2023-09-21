@@ -158,8 +158,8 @@
         "weapon2":{
             "name":"Baliste",
             "cost":4,
-            "range":3,
-            "elevation":1,
+            "range":2,
+            "elevation":2,
             "isBow":true,
             "noBis":true,
             "rof":8,

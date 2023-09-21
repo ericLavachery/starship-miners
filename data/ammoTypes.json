@@ -3762,7 +3762,7 @@
         "range": 1,
         "rof": 1.7,
         "power": 0,
-        "powermult": 1,
+        "powermult": 1.34,
         "armors": 0,
         "accuracy": 1,
         "apdamage": 0.1,
