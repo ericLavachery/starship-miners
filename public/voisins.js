@@ -305,6 +305,7 @@ function putNeighbour(neiBatType) {
         conselTriche = true;
         conselAmmos = checkNeighbourGear(neiBatType);
         putBat(vTileId,cit,xp,'outsider',false);
+        playerInfos.fndCits = playerInfos.fndCits+1;
         let transBat = getZoneBatByTileId(vTileId);
         lastNeiTileId = vTileId;
         let transVol = neiBatType.transUnits;
@@ -390,6 +391,7 @@ function putNeighbourIn(neiBatType,transBat,cit) {
         conselTriche = true;
         conselAmmos = checkNeighbourGear(neiBatType);
         putBat(vTileId,cit,xp,'outsider',false);
+        playerInfos.fndCits = playerInfos.fndCits+1;
         let neiBat = getBatByTileId(vTileId);
         loadBat(neiBat.id,transBat.id);
     }

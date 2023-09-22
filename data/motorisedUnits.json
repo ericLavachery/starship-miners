@@ -4867,7 +4867,7 @@
         "equip":["aucun","g2motor","e-flash","e-lifepod","e-stab"],
         "log3eq":[],
         "autoEq":["e-flash","e-stab"],
-        "moveCost":1.9,
+        "moveCost":2,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,

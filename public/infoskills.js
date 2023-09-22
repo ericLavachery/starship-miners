@@ -562,7 +562,11 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 apCost = numTargets*(baseskillCost+medicBatType.squads-medicBat.squadsLeft);
                 if (apCost === 0) {apCost = baseskillCost;}
                 if (numTargets >= 1) {
-                    $('#unitInfos').append('<button type="button" title="Soigner les infanteries adjacentes avec '+medicBat.type+'" class="boutonBleu iconButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true,true,'+medicBat.id+')"><i class="fas fa-heart"></i> <span class="small">'+apCost+'</span></button>');
+                    let skillText = 'Soigner les infanteries adjacentes';
+                    if (batType.skills.includes('inmed')) {
+                        skillText = 'Soigner les infanteries dans le véhicule';
+                    }
+                    $('#unitInfos').append('<button type="button" title="'+skillText+' avec '+medicBat.type+'" class="boutonBleu iconButtons" onclick="medic(`infantry`,'+baseskillCost+',true,true,true,'+medicBat.id+')"><i class="fas fa-heart"></i> <span class="small">'+apCost+'</span></button>');
                     lineBreak = true;
                 } else {
                     skillMessage = "Aucune infanterie adjacente n'a pas subit de dégâts";
