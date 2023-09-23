@@ -255,8 +255,9 @@ function checkCoconBonus() {
     console.log('checkCoconBonus !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
     console.log(coconStats);
     console.log('TURN '+playerInfos.mapTurn);
-    if (playerInfos.mapTurn >= 40) {
-        if (aliens.length < playerInfos.mapTurn*2.5) {
+    if (playerInfos.mapTurn >= 39-playerInfos.randSeed) {
+        let numAliens = aliens.length*(playerInfos.randSeed+playerInfos.pauseSeed+21)/30;
+        if (numAliens < playerInfos.mapTurn*2.5) {
             if (playerInfos.mapTurn % 5 === 0) {
                 console.log(Math.floor(playerInfos.mapTurn/coconStats.turns)+' <= '+playerInfos.cocons);
                 if (Math.floor(playerInfos.mapTurn/coconStats.turns) <= playerInfos.cocons) {
@@ -571,7 +572,7 @@ function eggsDrop() {
                     warning('Oeuf voilé','Un Oeuf voilé est tombé!');
                 }
             } else {
-                if (rand.rand(1,zone[0].mapDiff+2) >= 4 && playerInfos.mapTurn*2.5 > aliens.length && playerInfos.mapTurn >= 30 && coveredEggs <= Math.ceil(zone[0].mapDiff/3)) {
+                if (rand.rand(1,zone[0].mapDiff+2) >= 4 && playerInfos.mapTurn*2.5 > aliens.length && playerInfos.mapTurn >= 30-playerInfos.pauseSeed && coveredEggs <= Math.ceil(zone[0].mapDiff/3)) {
                     if (coconStats.volc) {
                         dropEgg('Oeuf','acouvert');
                         coveredEggs++;
@@ -602,7 +603,7 @@ function getCoqueChance() {
     if (zone[0].mapDiff < 4) {
         coqPerc = coqPerc+(zone[0].mapDiff*5)-20;
     }
-    if (playerInfos.mapTurn > aliens.length) {
+    if (playerInfos.mapTurn > aliens.length+playerInfos.randSeed-playerInfos.pauseSeed) {
         coqPerc = coqPerc+13;
     }
     if (coconStats.dome) {
@@ -2073,7 +2074,7 @@ function cocoonSpawn(bat) {
         let classes = [];
         console.log('coconStats.level='+coconStats.level);
         let saturation = false;
-        if (aliens.length >= maxAliens-50 && playerInfos.mapTurn >= 55) {
+        if (aliens.length >= maxAliens-50 && playerInfos.mapTurn >= 45) {
             saturation = true;
         }
         let spawnNum = 4;
@@ -2300,7 +2301,7 @@ function checkAlienBoss(eggCat) {
 function eggSpawn(bat,fromEgg) {
     console.log('SPAWN');
     let overSaturation = false;
-    if (playerInfos.alienSat >= coconSatLimit-1 && playerInfos.mapTurn >= 76) {
+    if (playerInfos.alienSat >= coconSatLimit-1 && playerInfos.mapTurn >= 66) {
         overSaturation = true;
     }
     let eggCat = checkputEggKind(bat);
