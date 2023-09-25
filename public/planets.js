@@ -1062,6 +1062,7 @@ function stormDamage(bat,batType,storm,inMov,canon) {
     }
     if (!storm) {
         // BOURASQUE
+        deathCause = 'Bourasque';
         if (batType.cat === 'infantry') {
             let numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
             let stormDmg = rand.rand(3*numUnits,6*numUnits);
@@ -1094,8 +1095,12 @@ function stormDamage(bat,batType,storm,inMov,canon) {
                     bat.apLeft = Math.round(bat.ap/3);
                 }
             }
+            if (inMov && bat.squadsLeft <= 0) {
+                justNotDead(bat,batType);
+                stormDmg = (batType.squadSize*batType.hp*batType.squads)-1;
+            }
             if (bat.squadsLeft <= 0) {
-                batDeathEffect(bat,true,false,deathCause,bat.type+deathType);
+                batDeathEffect(bat,true,false,'<span class="rq3">'+deathCause+'</span>','<span class="vio">'+bat.type+deathType+' (dégâts: '+stormDmg+')</span>');
                 isDead = true;
                 if (inMov) {
                     batDeath(bat,true,false,false);
@@ -1103,7 +1108,6 @@ function stormDamage(bat,batType,storm,inMov,canon) {
                     checkDeath(bat,batType,false);
                 }
             } else if (stormDmg >= 1) {
-                deathCause = 'Bourasque';
                 if (batType.cat === 'infantry') {
                     warning(deathCause,bat.type+' blessés. (dégâts: '+stormDmg+')',false,bat.tileId);
                 } else if (batType.cat === 'buildings') {
@@ -1169,8 +1173,12 @@ function stormDamage(bat,batType,storm,inMov,canon) {
                 bat.apLeft = Math.round(bat.ap/4);
             }
         }
+        if (inMov && bat.squadsLeft <= 0) {
+            justNotDead(bat,batType);
+            stormDmg = (batType.squadSize*batType.hp*batType.squads)-1;
+        }
         if (bat.squadsLeft <= 0) {
-            batDeathEffect(bat,true,false,deathCause,bat.type+deathType+' (dégâts: '+stormDmg+')');
+            batDeathEffect(bat,true,false,'<span class="rq3">'+deathCause+'</span>','<span class="vio">'+bat.type+deathType+' (dégâts: '+stormDmg+')</span>');
             isDead = true;
             if (inMov) {
                 batDeath(bat,true,false,false);
@@ -1193,6 +1201,15 @@ function stormDamage(bat,batType,storm,inMov,canon) {
             showBatInfos(selectedBat);
             showBataillon(selectedBat);
         }
+    }
+};
+
+function justNotDead(bat,batType) {
+    bat.squadsLeft = 1;
+    let squadHP = batType.squadSize*batType.hp;
+    bat.damage = squadHP-1;
+    if (bat.apLeft > -5) {
+        bat.apLeft = 0-rand.rand(5,7);
     }
 };
 

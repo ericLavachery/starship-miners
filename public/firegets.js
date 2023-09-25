@@ -539,6 +539,7 @@ function batDeath(bat,count,gain,isWiped) {
         }
         batIndex = batList.findIndex((obj => obj.id == bat.id));
         batList.splice(batIndex,1);
+        // selectMode();
     } else if (bat.team == 'aliens') {
         if (count) {
             if (bat.type.includes('Oeuf') || bat.type === 'Coque' || bat.type === 'Ruche' || bat.type === 'Cocon' || bat.type === 'Volcan' || bat.type === 'Colonie') {
