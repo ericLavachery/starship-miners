@@ -3151,7 +3151,7 @@
         "equip":["aucun","g2motor","maxtrans","e-flash","e-mecano","w2-mit"],
         "log3eq":["g2motor"],
         "autoEq":["e-mecano"],
-        "moveCost":3.5,
+        "moveCost":2.6,
         "maxFlood":3,
         "maxScarp":0,
         "maxVeg":0,

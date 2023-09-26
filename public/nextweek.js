@@ -97,8 +97,39 @@ function calcTurnXP(turns) {
     } else {
         xp = Math.sqrt(turns);
     }
-    xp = Math.round(xp*gangXPFactor);
+    let xpf = calcXPFactor();
+    xp = Math.round(xp*xpf);
     return xp;
+};
+
+function evalTurnXP(turns) {
+    let xp = 0;
+    if (turns > 45) {
+        let overTurns = turns-45;
+        xp = 6.7+(overTurns*0.074);
+    } else {
+        xp = Math.sqrt(turns);
+    }
+    let xpf = calcXPFactor();
+    if (turns < 15) {
+        xp = Math.round(xp*gangXPFactor);
+    } else {
+        xp = Math.round(xp*xpf);
+    }
+    return xp;
+};
+
+function calcXPFactor() {
+    let doomClock = getDoom(false);
+    // console.log('BASE ==================== '+gangXPFactor);
+    // console.log('DOOM ==================== '+doomClock);
+    let normClock = (playerInfos.gLevel-2)/2;
+    // console.log('NORM ==================== '+normClock);
+    let xpf = Math.round(gangXPFactor*(doomClock+5)/(normClock+5));
+    // console.log('XPF ==================== '+xpf);
+    playerInfos.doom = doomClock;
+    playerInfos.xpf = xpf;
+    return xpf;
 };
 
 function repos(time) {

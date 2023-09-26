@@ -2033,7 +2033,7 @@ function calcEndRes(onlyLanders) {
     // toutes les valeurs en ressources des équipements (cost + deploy)
     // toutes les valeurs en ressources des munitions (cost + deploy)
     playerInfos.endRes['Citoyens'] = 0;
-    playerInfos.endRes['Lore'] = playerInfos.gangXP+calcTurnXP(playerInfos.mapTurn);
+    playerInfos.endRes['Lore'] = playerInfos.gangXP+evalTurnXP(playerInfos.mapTurn);
     let allCosts = {};
     let unitCosts;
     // console.log('LANDERS');

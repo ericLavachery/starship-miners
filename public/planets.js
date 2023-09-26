@@ -511,7 +511,7 @@ function alienCanon() {
 
 function ectoCanon(canonTiles) {
     playSound('web-fall',0);
-    warning('Canon alien','',false,canonTiles[0],false);
+    warning('Canon Skygrub','',false,canonTiles[0],false);
 };
 
 function getEctoCanonTiles() {
@@ -541,7 +541,7 @@ function necroCanon(canonTiles,silent) {
     if (!silent) {
         playSound('web-fall',0);
     }
-    warning('Canon alien','',false,canonTiles[0],false);
+    warning('Canon Nécroblob','',false,canonTiles[0],false);
     aliens.forEach(function(bat) {
         if (canonTiles.includes(bat.tileId)) {
             if (!bat.tags.includes('moss')) {
@@ -671,7 +671,7 @@ function meteorCanon() {
             }
         }
     });
-    warning('Canon alien','',false,canonTiles[0],false);
+    warning('Canon Dragonblob','',false,canonTiles[0],false);
     killBatList();
 };
 
@@ -772,7 +772,7 @@ function blobMeteorImpact(tile) {
 
 function webCanon(canonTiles) {
     playSound('web-fall',0);
-    warning('Canon alien','',false,canonTiles[0],false);
+    warning('Canon Spiderblob','',false,canonTiles[0],false);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
             if (canonTiles.includes(bat.tileId)) {
@@ -1057,7 +1057,7 @@ function stormDamage(bat,batType,storm,inMov,canon) {
     let deathCause = 'Tempête';
     let deathType = ' brûlés.';
     if (canon) {
-        deathCause = 'Canon alien';
+        deathCause = 'Canon Dragonblob';
         deathType = ' anéantis.';
     }
     if (!storm) {

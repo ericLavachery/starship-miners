@@ -576,6 +576,55 @@ function modWeekMulti(costs) {
     }
 };
 
+function saveArmies() {
+    let armiz = [];
+    let i = 0;
+    while (i <= 21) {
+        let newArmy = {};
+        newArmy.num = i;
+        newArmy.ids = [];
+        armiz.push(newArmy);
+        if (i > 21) {break;}
+        i++
+    }
+    bataillons.forEach(function(bat) {
+        if (bat.army != undefined) {
+            if (bat.army >= 1) {
+                if (bat.typeId != 126 && bat.typeId != 225) {
+                    armiz[bat.army].ids.push(bat.id);
+                }
+            }
+        }
+    });
+    console.log(armiz);
+    playerInfos.armiz = armiz;
+    commandes();
+    // saveGame();
+}
+
+function loadArmies() {
+    if (playerInfos.armiz != undefined) {
+        bataillons.forEach(function(bat) {
+            let i = 1;
+            while (i <= 20) {
+                if (playerInfos.armiz[i].ids.includes(bat.id)) {
+                    bat.army = i;
+                }
+                if (i > 20) {break;}
+                i++
+            }
+        });
+    }
+    goSoute();
+}
+
+function deleteArmies() {
+    bataillons.forEach(function(bat) {
+        bat.army = 0;
+    });
+    goSoute();
+}
+
 function voirZones() {
     selectMode();
     $("#conUnitList").css("display","block");

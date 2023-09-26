@@ -71,6 +71,14 @@ function commandes() {
                         $('#commandz').append('<button type="button" title="Revenir sur la carte de la station" class="boutonMarine iconButtons" onclick="goStation()" onmousedown="clicSound(7)"><i class="fas fa-chess-board"></i></button>');
                     }
                     $('#commandz').append('<br>');
+                    if (inSoute && souteFilter === 'army') {
+                        $('#commandz').append('<button type="button" title="Annuler toutes les armées (mettre tous les bataillons dans l\'armée 0)" class="boutonRouge iconButtons" onclick="deleteArmies()" onmousedown="clicSound(7)"><i class="fas fa-backspace"></i></button>');
+                        $('#commandz').append('<button type="button" title="Sauvegarder les armées telles qu\'elles sont (n\'oubliez pas de sauvegarder le jeu après!)" class="boutonVert iconButtons" onclick="saveArmies()" onmousedown="clicSound(7)"><i class="fas fa-download"></i></button>');
+                        if (playerInfos.armiz != undefined) {
+                            $('#commandz').append('<button type="button" title="Reconstituer les armées telles que vous les avez sauvegardées" class="boutonRouge iconButtons" onclick="loadArmies()" onmousedown="clicSound(7)"><i class="fas fa-upload"></i></button>');
+                        }
+                        $('#commandz').append('<br>');
+                    }
                     if (!craftsOK) {
                         $('#commandz').append('<button type="button" title="Production: Vous avez atteint votre maximum de crafts" class="boutonGrey iconButtons gf"><i class="fas fa-cogs"></i></button>');
                     } else if (!inSoute) {
