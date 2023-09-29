@@ -1590,13 +1590,13 @@
         "gangs":["drogmulojs"]
     },
     {
-        "unit":"Fog",
+        "unit":"Nimbus",
         "gear":["gaz-pluto","xxx","duneg","aucun"],
         "missions":["science","spider","dragon"],
         "gangs":["blades"]
     },
     {
-        "unit":"Fog",
+        "unit":"Nimbus",
         "gear":["gaz-pluto","xxx","tisal","aucun"],
         "missions":["sky"],
         "gangs":["blades"]

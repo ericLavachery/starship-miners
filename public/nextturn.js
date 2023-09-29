@@ -686,7 +686,7 @@ function nextTurnEnd() {
                 }
             }
             // FOG
-            if (bat.tags.includes('fog')) {
+            if (bat.tags.includes('fog') && bat.loc === 'zone') {
                 fogEffect(bat);
             }
             // RAVITPROD
@@ -940,7 +940,7 @@ function turnInfo(first) {
             }
             batFuzz = calcBatAttraction(bat);
             fuzzTotal = fuzzTotal+batFuzz;
-            if (bat.type === 'Fog' && bat.tags.includes('fog')) {
+            if (batType.skills.includes('fog') && bat.tags.includes('fog')) {
                 foggersTiles.push(bat.tileId);
             }
             if (batType.skills.includes('snif')) {
@@ -1074,6 +1074,8 @@ function turnInfo(first) {
     console.log(roboTiles);
     console.log('Zombified Tiles');
     console.log(zombifiedTiles);
+    // console.log('Foggers Tiles');
+    // console.log(foggersTiles);
     console.log('Fogged Tiles');
     console.log(foggedTiles);
     console.log('Piloned Tiles');

@@ -11,7 +11,7 @@ function transInfos(bat,batType,isCharged) {
         let embarqCost = calcEmbarqCost(batType,transBatType);
         apCost = embarqCost[0];
         if (!isCharged) {
-            if (bat.tags.includes('deb') && bat.salvoLeft < 1 && transBatType.cat === 'vehicles' && !transBatType.skills.includes('transorbital')) {
+            if (bat.tags.includes('deb') && bat.salvoLeft < 1 && transBatType.cat === 'vehicles' && !transBatType.skills.includes('transorbital') && !transBatType.skills.includes('inout')) {
                 // Le bataillon actif fait un aller-tir-retour dans un véhicule
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Pas d\'embarquement si votre bataillon sort d\'un véhicule et a attaqué ce tour-ci" class="boutonRouge iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button>&nbsp; Embarquer</h4></span>');
             } else {
@@ -986,7 +986,7 @@ function clickDebarq(tileId) {
         } else {
             batDebarq.oldTileId = tileId;
         }
-        if (!allowDSE && fromVeh) {
+        if (!allowDSE && fromVeh && !batDebarq.tags.includes('deb')) {
             batDebarq.tags.push('deb');
         }
         console.log('oldTileId='+selectedBat.tileId);

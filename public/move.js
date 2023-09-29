@@ -551,7 +551,7 @@ function batUnstack() {
                     }
                     let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
                     if (myBatVolume <= batTransUnitsLeft) {
-                        if (!selectedBat.tags.includes('deb') || selectedBat.salvoLeft >= 1 || batType.cat != 'vehicles' || batType.skills.includes('transorbital')) {
+                        if (!selectedBat.tags.includes('deb') || selectedBat.salvoLeft >= 1 || batType.cat != 'vehicles' || batType.skills.includes('transorbital') || batType.skills.includes('inout')) {
                             ownTransHere = true;
                             transId = bat.id;
                         }

@@ -3155,11 +3155,11 @@
         "maxFlood":3,
         "maxScarp":0,
         "maxVeg":0,
-        "skills":["b_heavy","longshot","freeshot","hover","nodry","badmecano","transport","inmed","fret","light","crewsave","recupcit","nocrime","recupres","nochef"],
+        "skills":["b_heavy","longshot","freeshot","hover","nodry","badmecano","transport","inout","inmed","fret","light","crewsave","recupcit","nocrime","recupres","nochef"],
         "mecanoCost":12,
         "transMaxSize":21,
         "transUnits":1200,
-        "transRes":1200,
+        "transRes":2000,
         "fuzz":2,
         "deathFx":"planeexploair1",
         "mvSnd":"hover"

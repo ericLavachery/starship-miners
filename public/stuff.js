@@ -1076,7 +1076,7 @@ function maxUnits(unit) {
         maxInfo.max = maxOf.saucer;
         maxInfo.maxText = 'aéronefs';
         maxInfo.num = total.saucer;
-        if (total.saucer >= maxInfo.max && numOf[unit.name] >= 3) {
+        if (total.saucer >= maxInfo.max && numOf[unit.name] >= 2) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus d\'avions vous devez construire un aérodock supplémentaire';
         }

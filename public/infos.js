@@ -616,7 +616,7 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName or">Blindage troué</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     if (bat.tags.includes('fogged')) {
-        $('#'+bodyPlace).append('<span class="paramName or">Fog</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName or">Brouillard</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     // XP
     if (pop) {

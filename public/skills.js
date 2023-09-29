@@ -1827,13 +1827,20 @@ function canCamoFog(bat,batType) {
 function deFog(bat,batType) {
     if (bat.tags.includes('fogged')) {
         tagDelete(bat,'fogged');
+        tagDelete(bat,'fogged');
+        tagDelete(bat,'fogged');
         if (batType.cat === 'aliens') {
-
+            // nothing
         } else {
             if (!batType.skills.includes('camo')) {
                 tagDelete(bat,'camo');
                 bat.fuzz = batType.fuzz;
             }
+        }
+    }
+    if (bat.loc === 'trans') {
+        if (bat.tags.includes('fog')) {
+            tagDelete(bat,'fog');
         }
     }
 }
@@ -1875,7 +1882,7 @@ function checkFoggedTiles() {
     foggersTiles = [];
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone") {
-            if (bat.type === 'Fog' && bat.tags.includes('fog')) {
+            if (batType.skills.includes('fog') && bat.tags.includes('fog')) {
                 foggersTiles.push(bat.tileId);
             }
         }
