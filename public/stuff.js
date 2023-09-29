@@ -1076,9 +1076,17 @@ function maxUnits(unit) {
         maxInfo.max = maxOf.saucer;
         maxInfo.maxText = 'aéronefs';
         maxInfo.num = total.saucer;
-        if (total.saucer >= maxInfo.max && numOf[unit.name] >= 2) {
-            maxInfo.ko = true;
-            maxInfo.text = 'Pour pouvoir construire plus d\'avions vous devez construire un aérodock supplémentaire';
+        let gLevLimit = getUnitLevelLimit(unit);
+        if (gLevLimit < maxInfo.max && maxInfo.max > 1) {
+            if (numOf[unit.name] >= gLevLimit) {
+                maxInfo.ko = true;
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez monter de niveau';
+            }
+        } else {
+            if (total.saucer >= maxInfo.max && numOf[unit.name] >= 2) {
+                maxInfo.ko = true;
+                maxInfo.text = 'Pour pouvoir construire plus d\'aéronefs vous devez construire un aérodock supplémentaire';
+            }
         }
     }
     if (unit.skills.includes('mdev')) {
@@ -1128,16 +1136,34 @@ function maxUnits(unit) {
     }
     if (unit.skills.includes('wbld')) {
         maxInfo.max = playerInfos.comp.def+2;
-        if (numOf[unit.name] >= maxInfo.max) {
-            maxInfo.ko = true;
-            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de désense';
+        let gLevLimit = getUnitLevelLimit(unit);
+        if (gLevLimit < maxInfo.max && maxInfo.max > 1) {
+            maxInfo.max = gLevLimit;
+            if (numOf[unit.name] >= maxInfo.max) {
+                maxInfo.ko = true;
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez monter de niveau';
+            }
+        } else {
+            if (numOf[unit.name] >= maxInfo.max) {
+                maxInfo.ko = true;
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de désense';
+            }
         }
     }
     if (unit.skills.includes('wdev')) {
         maxInfo.max = playerInfos.comp.def+(playerInfos.comp.arti*2);
-        if (numOf[unit.name] >= maxInfo.max) {
-            maxInfo.ko = true;
-            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de désense ou d\'artillerie';
+        let gLevLimit = getUnitLevelLimit(unit);
+        if (gLevLimit < maxInfo.max && maxInfo.max > 1) {
+            maxInfo.max = gLevLimit;
+            if (numOf[unit.name] >= maxInfo.max) {
+                maxInfo.ko = true;
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez monter de niveau';
+            }
+        } else {
+            if (numOf[unit.name] >= maxInfo.max) {
+                maxInfo.ko = true;
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de désense ou d\'artillerie';
+            }
         }
     }
     if (unit.skills.includes('wsi')) {
@@ -1292,6 +1318,16 @@ function maxUnits(unit) {
     // console.log(maxInfo);
     return maxInfo;
 };
+
+function getUnitLevelLimit(unit) {
+    let unitLevel = unit.levels[playerInfos.gang];
+    let levComp = playerInfos.gLevel-unitLevel;
+    let gLevLimit = 1;
+    if (levComp >= 1) {
+        gLevLimit = 99;
+    }
+    return gLevLimit;
+}
 
 function getSoute() {
     let soute = {};

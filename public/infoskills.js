@@ -2680,55 +2680,57 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
         }
     }
-    // UPGRADE INFANTRY
-    if (batType.skills.includes('uprank') && !zeroCrew) {
-        let isInPlace = checkUprankPlace(bat,batType);
-        let isXPok = checkUprankXP(bat,batType);
-        let upBatType = getBatTypeByName(batType.unitUp);
-        apReq = 5;
-        if (bat.apLeft >= apReq && !nearby.oneTile && (isInPlace || inSoute) && isXPok && craftsOK) {
-            $('#unitInfos').append('<button type="button" title="Transformer en '+batType.unitUp+'" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false,`inf`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
-            lineBreak = true;
-        } else {
-            if (nearby.oneTile) {
-                skillMessage = "Transformation: Ne peut pas se faire en mêlée";
-            } else if (!craftsOK) {
-                skillMessage = "Transformation: Vous avez atteint votre maximum de crafts";
-            } else if (!isXPok) {
-                skillMessage = "Transformation: Ce bataillon n'a pas assez d'expérience pour être monté en grade";
-            } else if (!isInPlace) {
-                skillMessage = 'Transformation: Vous devez être à côté d\'un '+upBatType.bldReq[0]+' pour monter ce bataillon en grade';
+    if (playerInfos.onShip) {
+        // UPGRADE INFANTRY
+        if (batType.skills.includes('uprank') && !zeroCrew) {
+            let isInPlace = checkUprankPlace(bat,batType);
+            let isXPok = checkUprankXP(bat,batType);
+            let upBatType = getBatTypeByName(batType.unitUp);
+            apReq = 5;
+            if (bat.apLeft >= apReq && !nearby.oneTile && (isInPlace || inSoute) && isXPok && craftsOK) {
+                $('#unitInfos').append('<button type="button" title="Transformer en '+batType.unitUp+'" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false,`inf`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
+                lineBreak = true;
             } else {
-                skillMessage = "Transformation: Pas assez de PA (réserve de "+apReq+" requise)";
+                if (nearby.oneTile) {
+                    skillMessage = "Transformation: Ne peut pas se faire en mêlée";
+                } else if (!craftsOK) {
+                    skillMessage = "Transformation: Vous avez atteint votre maximum de crafts";
+                } else if (!isXPok) {
+                    skillMessage = "Transformation: Ce bataillon n'a pas assez d'expérience pour être monté en grade";
+                } else if (!isInPlace) {
+                    skillMessage = 'Transformation: Vous devez être à côté d\'un '+upBatType.bldReq[0]+' pour monter ce bataillon en grade';
+                } else {
+                    skillMessage = "Transformation: Pas assez de PA (réserve de "+apReq+" requise)";
+                }
+                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
+                lineBreak = true;
             }
-            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
-            lineBreak = true;
         }
-    }
-    // UPGRADE BUILDING
-    if (batType.skills.includes('upgrade') && !zeroCrew) {
-        let isCharged = checkCharged(bat,'trans');
-        apReq = 5;
-        if (bat.apLeft >= apReq && !nearby.oneTile && !isCharged && craftsOK) {
-            if (batType.bldUp.length === 1) {
-                $('#unitInfos').append('<button type="button" title="Transformer en '+batType.bldUp[0]+'" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false,`bld`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
-                lineBreak = true;
+        // UPGRADE BUILDING
+        if (batType.skills.includes('upgrade') && !zeroCrew) {
+            let isCharged = checkCharged(bat,'trans');
+            apReq = 5;
+            if (bat.apLeft >= apReq && !nearby.oneTile && !isCharged && craftsOK) {
+                if (batType.bldUp.length === 1) {
+                    $('#unitInfos').append('<button type="button" title="Transformer en '+batType.bldUp[0]+'" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false,`bld`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
+                    lineBreak = true;
+                } else {
+                    $('#unitInfos').append('<button type="button" title="Transformer en '+batType.bldUp[0]+' ou '+batType.bldUp[1]+'" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false,`bld`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
+                    lineBreak = true;
+                }
             } else {
-                $('#unitInfos').append('<button type="button" title="Transformer en '+batType.bldUp[0]+' ou '+batType.bldUp[1]+'" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false,`bld`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
+                if (nearby.oneTile) {
+                    skillMessage = "Transformation: Ne peut pas se faire en mêlée";
+                } else if (!craftsOK) {
+                    skillMessage = "Transformation: Vous avez atteint votre maximum de crafts";
+                } else if (isCharged) {
+                    skillMessage = "Transformation: Vous devez vider votre bataillon avant de le transformer";
+                } else {
+                    skillMessage = "Transformation: Pas assez de PA (réserve de "+apReq+" requise)";
+                }
+                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
                 lineBreak = true;
             }
-        } else {
-            if (nearby.oneTile) {
-                skillMessage = "Transformation: Ne peut pas se faire en mêlée";
-            } else if (!craftsOK) {
-                skillMessage = "Transformation: Vous avez atteint votre maximum de crafts";
-            } else if (isCharged) {
-                skillMessage = "Transformation: Vous devez vider votre bataillon avant de le transformer";
-            } else {
-                skillMessage = "Transformation: Pas assez de PA (réserve de "+apReq+" requise)";
-            }
-            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
-            lineBreak = true;
         }
     }
     // RE-SORT

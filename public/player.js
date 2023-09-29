@@ -598,7 +598,38 @@ function alienUnitsChanges() {
     });
 };
 
+function resistanceUpgrade() {
+    let rebUnit = getBatTypeByName('Rebelles');
+    let resUnit = getBatTypeByName('Résistants');
+    let rebTransUnit = getBatTypeByName('Rednecks');
+    let resTransUnit = getBatTypeByName('Stalkers');
+    if (playerInfos.gang === 'blades') {
+        rebTransUnit = getBatTypeByName('Piquiers');
+        resTransUnit = getBatTypeByName('Warriors');
+    } else if (playerInfos.gang === 'bulbos') {
+        rebTransUnit = getBatTypeByName('Vapos');
+        resTransUnit = getBatTypeByName('Shooters');
+    } else if (playerInfos.gang === 'drogmulojs') {
+        rebTransUnit = getBatTypeByName('Blastoxs');
+        resTransUnit = getBatTypeByName('Toxs');
+    } else if (playerInfos.gang === 'tiradores') {
+        rebTransUnit = getBatTypeByName('Gunners');
+        resTransUnit = getBatTypeByName('Pistoleros');
+    } else if (playerInfos.gang === 'detruas') {
+        rebTransUnit = getBatTypeByName('Dogs');
+        resTransUnit = getBatTypeByName('Snowballs');
+    } else if (playerInfos.gang === 'brasier') {
+        rebTransUnit = getBatTypeByName('Hot girls');
+        resTransUnit = getBatTypeByName('Blocks');
+    }
+    rebUnit.unitUp = rebTransUnit.name;
+    resUnit.unitUp = resTransUnit.name;
+    rebTransUnit.altUnitCost = rebUnit.name;
+    resTransUnit.altUnitCost = resUnit.name;
+};
+
 function playerSkillsUTChanges() {
+    resistanceUpgrade();
     unitTypes.forEach(function(unit) {
         unit.team = 'player';
         // WEAPON 1 ALT
@@ -1263,6 +1294,16 @@ function playerSkillsUTChanges() {
             if (Object.keys(unit.weapon2).length >= 3) {
                 if (unit.weapon2.spot) {
                     unit.weapon2.vision = true;
+                }
+            }
+            if (unit.name === 'Espions') {
+                let levBonus = Math.floor((playerInfos.comp.det-2)*2.5);
+                if (playerInfos.comp.cam >= 2) {
+                    levBonus = levBonus+3;
+                }
+                unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-levBonus;
+                if (unit.levels[playerInfos.gang] < 1) {
+                    unit.levels[playerInfos.gang] = 1;
                 }
             }
         }

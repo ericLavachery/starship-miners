@@ -1088,7 +1088,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["bastion","longshot","maycamo","noshow","notrash","transport","fret","routes","flash","bigflash","prefab","camocontrol"],
+        "skills":["bastion","longshot","maycamo","noshow","notrash","transport","fret","routes","flash","bigflash","prefab","camocontrol","wbld"],
         "mecanoCost":12,
         "transMaxSize":9,
         "transUnits":400,

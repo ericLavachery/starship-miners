@@ -808,15 +808,25 @@ function payUnitCost(batType) {
         });
     }
     let reqCit = batType.squads*batType.squadSize*batType.crew;
-    // console.log('reqCit='+reqCit);
     if (conselUpgrade === 'bld') {
         let oldBatType = getBatTypeByName(conselUnit.bldCost);
         let oldCit = oldBatType.squads*oldBatType.squadSize*oldBatType.crew;
-        // console.log('oldCit='+oldCit);
         reqCit = reqCit-oldCit;
-        // console.log('reqCit='+reqCit);
     }
     if (conselUpgrade === 'inf') {
+        if (conselUnit.unitCost != 'none') {
+            let oldBatType = getBatTypeByName(conselUnit.unitCost);
+            let oldCit = oldBatType.squads*oldBatType.squadSize*oldBatType.crew;
+            reqCit = reqCit-oldCit;
+        } else if (conselUnit.altUnitCost != undefined) {
+            let oldBatType = getBatTypeByName(conselUnit.altUnitCost);
+            let oldCit = oldBatType.squads*oldBatType.squadSize*oldBatType.crew;
+            reqCit = reqCit-oldCit;
+        } else {
+            reqCit = 0;
+        }
+    }
+    if (reqCit < 0) {
         reqCit = 0;
     }
     if (batType.skills.includes('clone') || batType.skills.includes('dog')) {

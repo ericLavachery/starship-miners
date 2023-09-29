@@ -835,7 +835,11 @@ function setPenitLevel() {
 
 function getCamionEquips(bat,batType) {
     let camion = [];
-    let mafiaLevel = playerInfos.penit+bat.vet-2;
+    let vetLevel = (bat.vet*2)-5;
+    if (vetLevel < 0) {
+        vetLevel = Math.ceil(vetLevel/2);
+    }
+    let mafiaLevel = playerInfos.penit+vetLevel;
     // tous sauf tôlards
     if (batType.equip.includes('e-camo') && mafiaLevel >= 2) {
         camion.push('e-camo');

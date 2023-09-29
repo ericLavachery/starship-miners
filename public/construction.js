@@ -922,7 +922,7 @@ function checkUpUnit(batType) {
 function doUpgrade() {
     // onShip only
     if (conselUpgrade === 'bld') {
-        let myBatXP = selectedBat.xp;
+        let myBatXP = Math.ceil(selectedBat.xp/1.5);
         let myBatId = selectedBat.id;
         let myBatTileId = selectedBat.tileId;
         if (selectedBat.vmt != undefined) {
@@ -937,7 +937,7 @@ function doUpgrade() {
         putBat(myBatTileId,0,myBatXP);
     }
     if (conselUpgrade === 'inf') {
-        let myBatXP = Math.ceil(selectedBat.xp/4);
+        let myBatXP = Math.ceil(selectedBat.xp/2);
         let myBatId = selectedBat.id;
         let myBatTileId = selectedBat.tileId;
         removeBat(selectedBat.id);
@@ -1541,6 +1541,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
         conselReset(false);
     } else {
         conselReset(true);
+        commandes();
     }
     if (playerInfos.onShip && !inSoute) {
         souteFilter = 'all';

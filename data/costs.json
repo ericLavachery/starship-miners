@@ -1110,10 +1110,22 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":[],
         "compReq":{},
+        "unitUp":"Espions",
         "costs":{"Fer":72,"Scrap":48,"Végétaux":72,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
         "fabTime":15,
         "inRuin":4
+    },
+    {
+        "id":319,
+        "name":"Espions",
+        "levels":{"rednecks":17,"blades":16,"bulbos":15,"drogmulojs":16,"tiradores":17,"detruas":16,"brasier":17},
+        "bldReq":["Centre de com","Camp d'entraînement"],
+        "compReq":{"det":2,"cam":1},
+        "unitCost":"Survivants",
+        "costs":{"Fer":96,"Carbone":96,"Silicium":24,"Electros":48,"Batteries":24,"Végétaux":96,"Blendium":48,"Chlore":20,"Zinc":20,"Tissus":10},
+        "deploy":{"Drogues":3,"Tissus":2},
+        "fabTime":30
     },
     {
         "id":261,
