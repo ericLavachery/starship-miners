@@ -51,6 +51,14 @@ function searchRuins(apCost,tileId) {
                 let nf = rand.rand(1,3);
                 fxSound('fouille'+nf);
             }
+            if (playerInfos.alerte.title != undefined) {
+                if (playerInfos.alerte.nid === 'resist' || playerInfos.alerte.nid === 'science' || playerInfos.alerte.nid === 'trolley') {
+                    let alertChance = Math.ceil(200/tile.sh)+5;
+                    if (rand.rand(1,100) <= alertChance) {
+                        checkMissionAlert(true);
+                    }
+                }
+            }
         } else {
             playSound('clic16',-0.2);
             warning('<span class="rq3">Alerte!</span>','<span class="vio">Les aliens ont fouillé une ruine!</span>',false,tileId);

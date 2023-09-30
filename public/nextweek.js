@@ -2,7 +2,7 @@ function events(afterMission,time,sim,quiet) {
     console.log('EVENTS: afterMission='+afterMission+' time='+time+' sim='+sim+' quiet='+quiet);
     afterMissionFirstReset();
     replacerSondes();
-    checkMissionAlert();
+    checkMissionAlert(false);
     checkReserve();
     updateBldList();
     resetWeekRes();

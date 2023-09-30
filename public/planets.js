@@ -307,6 +307,8 @@ function checkMissions(markDone) {
             let mType = getMissionType(nextMission.num,true);
             playerInfos.alerte.title = 'Nouvelle mission';
             playerInfos.alerte.body = mType.name+': '+mType.title;
+            playerInfos.alerte.nid = mType.nid;
+            playerInfos.alerte.ok = false;
         }
     }
     if (markDone) {
@@ -324,21 +326,48 @@ function checkMissions(markDone) {
     }
 };
 
-function checkMissionAlert() {
+function checkMissionAlert(fromRuin) {
     if (playerInfos.alerte.title != undefined) {
         if (playerInfos.onShip) {
-            doMissionAlert();
-        } else {
-            if (playerInfos.mapTurn >= 19) {
-                doMissionAlert();
+            if (playerInfos.alerte.ok) {
+                if (playerInfos.alerte.nid === 'resist' || playerInfos.alerte.nid === 'science' || playerInfos.alerte.nid === 'trolley') {
+                    warning('<span class="nmiss">SOS</span>','<span class="verf">Rappel: Répondre message de détresse?</span>');
+                } else {
+                    warning('<span class="nmiss">BOSS</span>','<span class="verf">Rappel: Nos équipes ont trouvé le boss alien responsable du canon.</span>');
+                }
+            } else {
+                if (playerInfos.alerte.nid === 'resist' || playerInfos.alerte.nid === 'science' || playerInfos.alerte.nid === 'trolley') {
+                    warning('<span class="nmiss">SOS</span>','<span class="verf">Nous avons capté un message de détresse!</span>');
+                } else {
+                    warning('<span class="nmiss">BOSS</span>','<span class="verf">Nos équipes ont trouvé le boss alien responsable du canon!</span>');
+                }
+            }
+            doMissionAlert(true);
+        } else if (!playerInfos.alerte.ok) {
+            if (fromRuin) {
+                warning('<span class="nmiss">SOS</span>','<span class="verf">Une radio dans les ruines diffuse un message de détresse!</span>');
+                doMissionAlert(false);
+                playerInfos.alerte.ok = true;
+            } else {
+                if (playerInfos.mapTurn === 22-playerInfos.randSeed) {
+                    if (playerInfos.alerte.nid === 'resist' || playerInfos.alerte.nid === 'science' || playerInfos.alerte.nid === 'trolley') {
+                        warning('<span class="nmiss">SOS</span>','<span class="verf">Nous avons capté un message de détresse!</span>');
+                    } else {
+                        warning('<span class="nmiss">BOSS</span>','<span class="verf">Nos équipes ont trouvé le boss alien responsable du canon!</span>');
+                    }
+                    doMissionAlert(false);
+                    playerInfos.alerte.ok = true;
+                }
             }
         }
     }
 };
 
-function doMissionAlert() {
+function doMissionAlert(wipeAlert) {
     warning('<span class="rq3">'+playerInfos.alerte.title+'</span>','<span class="vio">'+playerInfos.alerte.body+'</span>',false);
-    playerInfos.alerte = {};
+    if (wipeAlert) {
+        playerInfos.alerte = {};
+    }
 };
 
 function getNextMission(doom) {

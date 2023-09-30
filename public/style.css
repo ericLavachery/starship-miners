@@ -1279,6 +1279,9 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
 .mauve {
     color: #c395cb;
 }
+.nmiss {
+    color: #61ff00;
+}
 .blk {
     -webkit-animation: hBlink .5s infinite;  /* Safari 4+ */
     -moz-animation: hBlink .5s infinite;  /* Fx 5+ */

@@ -283,7 +283,7 @@ function alienTurnEnd() {
 function nextTurnEnd() {
     alienTurnEnd();
     alienCanon();
-    checkMissionAlert();
+    checkMissionAlert(false);
     checkCitCaves();
     createStormsLists(false);
     $('#report').empty('');

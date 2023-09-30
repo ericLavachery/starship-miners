@@ -411,7 +411,7 @@
             "power":9,
             "aoe":"unit",
             "sound":"mit_pneu",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-necro","pn-salite","pn-dunium","pn-freeze"]
         },
         "weapon2":{
             "name":"Autocanon",
@@ -2066,7 +2066,7 @@
             "power":9,
             "aoe":"unit",
             "sound":"mit_pneu",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-necro","pn-salite","pn-dunium","pn-freeze"]
         },
         "weapon2":{
             "name":"Bélier",
@@ -2830,7 +2830,7 @@
             "power":12,
             "aoe":"unit",
             "sound":"mit_pneu",
-            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-salite","pn-dunium","pn-freeze"]
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-timonium","pn-necro","pn-salite","pn-dunium","pn-freeze"]
         },
         "weapon2":{
             "name":"Bélier",

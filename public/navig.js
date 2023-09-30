@@ -329,7 +329,7 @@ function viewPop() {
             // $('#batloop').append('(<span class="" title="Citoyens">'+mesCitoyens.cit+'</span> &middot; <span class="" title="Criminels">'+mesCitoyens.crim+'</span>)<br>');
             $('#batloop').append('Lits: <span class="'+bedColour+'">'+crimeRate.lits+'</span><br>');
             // $('#batloop').append('Place libre: <span class="'+slots.colour+'" title="Place libre pour des bâtiments dans la station">'+slots.rest+'</span><br>');
-            $('#batloop').append('Place occupée: <span class="'+slots.colour+'" title="Place occupée par les bâtiments dans la station">'+slots.used+'</span><br>');
+            $('#batloop').append('Place occupée: <span class="'+slots.colour+'" title="Place occupée par les bâtiments dans la station (max 250)">'+slots.used+'</span><br>');
             $('#batloop').append('Criminels: <span class="neutre">'+crimeRate.crim+'</span>%<br>');
             $('#batloop').append('Pénibilité: <span class="'+penibColour+'">'+crimeRate.penib+'</span>%<br>');
             $('#batloop').append('Forces de l\'ordre: <span class="neutre">'+crimeRate.fo+'</span><br>');

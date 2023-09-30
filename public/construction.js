@@ -2679,9 +2679,9 @@ function calcSlots() {
     slots.used = usedSlots;
     slots.rest = maxSlots-usedSlots;
     slots.colour = 'neutre';
-    if (slots.rest <= 10) {
+    if (slots.rest <= 0) {
         slots.colour = 'or';
-    } else if (slots.rest <= 20) {
+    } else if (slots.rest <= 10) {
         slots.colour = 'jaune';
     }
     playerInfos.slots = slots.used;
