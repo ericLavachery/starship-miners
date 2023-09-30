@@ -1056,8 +1056,19 @@
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Station"],
         "compReq":{"train":1},
+        "unitUp":"Mongrels",
         "costs":{},
         "fabTime":15
+    },
+    {
+        "id":320,
+        "name":"Mongrels",
+        "levels":{"rednecks":11,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Chenil","Laboratoire"],
+        "compReq":{"gen":1},
+        "unitCost":"Wardogs",
+        "costs":{"Creatite":120,"Bugium":90,"Calcium":90,"Azote":90,"Mercure":36,"Drogues":72},
+        "fabTime":45
     },
     {
         "id":266,
@@ -2978,7 +2989,7 @@
         "costs":{"Compo1":120,"Compo2":30,"Eau":50,"Fer":150},
         "fabTime":25,
         "info":"Produit des bataillons de Wardogs.",
-        "slots":2
+        "slots":1
     },
     {
         "id":224,

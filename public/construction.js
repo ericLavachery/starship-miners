@@ -859,6 +859,10 @@ function checkUprankPlace(myBat,myBatType) {
 function checkUprankXP(myBat,myBatType) {
     let isXPok = false;
     let levelNeeded = 2;
+    if (myBatType.skills.includes('up0')) {
+        levelNeeded = 0;
+        isXPok = true;
+    }
     if (myBat.xp >= levelXP[4]) {
         if (levelNeeded <= 4) {
             isXPok = true;

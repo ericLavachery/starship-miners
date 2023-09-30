@@ -805,6 +805,8 @@ function payUnitCost(batType) {
             let key = entry[0];
             let value = entry[1];
             resSub(key,value);
+            // if (conselUpgrade != 'inf' || conselUnit.name != 'Klogs' || key != 'Gibier') {
+            // }
         });
     }
     let reqCit = batType.squads*batType.squadSize*batType.crew;
