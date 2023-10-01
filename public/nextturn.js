@@ -943,7 +943,7 @@ function turnInfo(first) {
             if (batType.skills.includes('fog') && bat.tags.includes('fog')) {
                 foggersTiles.push(bat.tileId);
             }
-            if (batType.skills.includes('snif')) {
+            if (hasSnif(bat,batType)) {
                 dogTiles.push(bat.tileId);
             }
             if (batType.skills.includes('radar') || hasEquip(bat,['e-radar'])) {

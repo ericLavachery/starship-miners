@@ -1415,7 +1415,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
             if (coconStats.dome && conselUnit.name === 'Vomissure' && !newBat.tags.includes('morph')) {
                 newBat.tags.push('morph');
             }
-            if (conselUnit.skills.includes('genhab') || conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3')) {
+            if (conselUnit.skills.includes('genhab') || conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3') || conselUnit.skills.includes('genhab4')) {
                 let genDice = 0;
                 let goodChance = 0;
                 let nullDice = 0;
@@ -1424,16 +1424,16 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                     nullDice = 2-Math.round(goodChance/50);
                     if (rand.rand(1,100) <= goodChance) {
                         genDice = rand.rand(4,6);
-                        if (conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3')) {
+                        if (conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3') || conselUnit.skills.includes('genhab4')) {
                             genDice = rand.rand(4,7);
                         }
                     } else {
                         genDice = rand.rand(1,3);
-                        if (conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3')) {
+                        if (conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3') || conselUnit.skills.includes('genhab4')) {
                             genDice = rand.rand(0,3);
                         }
                     }
-                    if (genDice === 1) {
+                    if (genDice === 1 && !conselUnit.skills.includes('genhab4')) {
                         newBat.tags.push('genblind');
                     } else if (genDice === 2) {
                         newBat.tags.push('genslow');
@@ -1441,38 +1441,40 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                         newBat.tags.push('genwater');
                     } else if (genDice === 4 && !conselUnit.skills.includes('regeneration')) {
                         newBat.tags.push('genreg');
-                    } else if (genDice === 5 && !conselUnit.skills.includes('genhab3')) {
+                    } else if (genDice === 5 && !conselUnit.skills.includes('genhab3') && !conselUnit.skills.includes('genhab4')) {
                         newBat.tags.push('genstrong');
                     } else if (genDice === 6) {
+                        newBat.tags.push('genfast');
+                    } else if (genDice === 7 && conselUnit.skills.includes('genhab4')) {
                         newBat.tags.push('genfast');
                     }
                     if (rand.rand(1,100) <= goodChance) {
                         genDice = rand.rand(5,7+nullDice);
-                        if (conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3')) {
+                        if (conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3') || conselUnit.skills.includes('genhab4')) {
                             genDice = rand.rand(5,8+nullDice);
                         }
                     } else {
                         genDice = rand.rand(1,4);
-                        if (conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3')) {
+                        if (conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3') || conselUnit.skills.includes('genhab4')) {
                             genDice = rand.rand(0,4);
                         }
                     }
-                    if (genDice === 1 && !newBat.tags.includes('genblind')) {
+                    if (genDice === 1 && !newBat.tags.includes('genblind') && !conselUnit.skills.includes('genhab4')) {
                         newBat.tags.push('genblind');
-                    } else if (genDice === 2 && !newBat.tags.includes('genslow') && !newBat.tags.includes('genfast')) {
+                    } else if (genDice === 2 && !newBat.tags.includes('genslow') && !newBat.tags.includes('genfast') && !conselUnit.skills.includes('genhab4')) {
                         newBat.tags.push('genslow');
                     } else if (genDice === 3 && !newBat.tags.includes('genwater') && !conselUnit.skills.includes('genhab3') && !conselUnit.skills.includes('genhab2')) {
                         newBat.tags.push('genwater');
                     } else if (genDice === 5 && !newBat.tags.includes('genreg') && !conselUnit.skills.includes('regeneration')) {
                         newBat.tags.push('genreg');
-                    } else if (genDice === 6 && !newBat.tags.includes('genstrong') && !conselUnit.skills.includes('genhab3')) {
+                    } else if (genDice === 6 && !newBat.tags.includes('genstrong') && !conselUnit.skills.includes('genhab3') && !conselUnit.skills.includes('genhab4')) {
                         newBat.tags.push('genstrong');
                     } else if (genDice === 7 && !newBat.tags.includes('genslow') && !newBat.tags.includes('genfast')) {
                         newBat.tags.push('genfast');
                     }
                 } else {
                     genDice = rand.rand(1,3);
-                    if (conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3')) {
+                    if (conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3') || conselUnit.skills.includes('genhab4')) {
                         genDice = rand.rand(1,6);
                     }
                     if (genDice === 1) {
@@ -1483,12 +1485,12 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                         newBat.tags.push('genwater');
                     }
                     genDice = rand.rand(1,3+playerInfos.comp.ca);
-                    if (conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3')) {
+                    if (conselUnit.skills.includes('genhab2') || conselUnit.skills.includes('genhab3') || conselUnit.skills.includes('genhab4')) {
                         genDice = rand.rand(1,6+playerInfos.comp.ca);
                     }
                     if (genDice === 1 && !newBat.tags.includes('genblind')) {
                         newBat.tags.push('genblind');
-                    } else if (genDice === 2 && !newBat.tags.includes('genslow')) {
+                    } else if (genDice === 2 && !newBat.tags.includes('genslow') && !conselUnit.skills.includes('genhab4')) {
                         newBat.tags.push('genslow');
                     } else if (genDice === 3 && !newBat.tags.includes('genwater') && !conselUnit.skills.includes('genhab3') && !conselUnit.skills.includes('genhab2')) {
                         newBat.tags.push('genwater');

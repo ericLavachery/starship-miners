@@ -1390,7 +1390,7 @@ function getInitiative(bat,batType,weap,opBat,opBatType,opWeap,distance,attackin
     // camo
     if (bat.fuzz <= -2 || bat.tags.includes('invisible') || batType.skills.includes('invisible')) {
         if (attacking) {
-            if (opBatType.skills.includes('snif')) {
+            if (hasSnif(opBat,opBatType)) {
                 initDice = initDice+30;
             } else {
                 initDice = initDice+100;

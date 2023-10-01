@@ -1093,7 +1093,7 @@ function maxUnits(unit) {
         maxInfo.max = (playerInfos.comp.def*15)+(playerInfos.comp.explo*5);
         if (numOf[unit.name] >= maxInfo.max) {
             maxInfo.ko = true;
-            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de désense';
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de défense';
         }
     }
     if (unit.skills.includes('hbot')) {
@@ -1146,7 +1146,7 @@ function maxUnits(unit) {
         } else {
             if (numOf[unit.name] >= maxInfo.max) {
                 maxInfo.ko = true;
-                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de désense';
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de défense';
             }
         }
     }
@@ -1162,7 +1162,7 @@ function maxUnits(unit) {
         } else {
             if (numOf[unit.name] >= maxInfo.max) {
                 maxInfo.ko = true;
-                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de désense ou d\'artillerie';
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de défense ou d\'artillerie';
             }
         }
     }
@@ -1173,7 +1173,7 @@ function maxUnits(unit) {
         }
         if (numOf[unit.name] >= maxInfo.max) {
             maxInfo.ko = true;
-            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de désense';
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de défense';
         }
     }
     if (unit.skills.includes('max1')) {

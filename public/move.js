@@ -477,7 +477,7 @@ function moveSelectedBat(tileId,free,jump) {
             }
         }
     }
-    if (selectedBatType.skills.includes('snif')) {
+    if (hasSnif(selectedBat,selectedBatType)) {
         updateDogTiles(selectedBat.tileId);
     }
     if (activeTurn === 'player') {
@@ -485,7 +485,7 @@ function moveSelectedBat(tileId,free,jump) {
             centerMap();
         } else if (isMapViewBorder(tileId)) {
             centerMap();
-        } else if (zone[0].dark || selectedBatType.skills.includes('snif')) {
+        } else if (zone[0].dark || hasSnif(selectedBat,selectedBatType)) {
             showMap(zone,true);
         }
     }
@@ -766,7 +766,7 @@ function listBatTerrainAccess(batType,isBat,bat) {
             }
             if (isBat) {
                 if (bat.tags.includes('genwater')) {
-                    if (ter.name === 'W' || (ter.name === 'S' && playerInfos.comp.scaph < 1) || ter.name === 'L' || ter.name === 'R') {
+                    if (ter.name === 'W' || (ter.name === 'S' && playerInfos.comp.scaph < 2) || ter.name === 'L' || ter.name === 'R') {
                         access = false;
                     }
                 }
@@ -841,7 +841,7 @@ function terrainAccess(batId,targetTileId,selfMoveExcluded) {
             }
         }
         if (bat.tags.includes('genwater')) {
-            if (terrain.name === 'W' || (terrain.name === 'S' && playerInfos.comp.scaph < 1) || terrain.name === 'L' || terrain.name === 'R') {
+            if (terrain.name === 'W' || (terrain.name === 'S' && playerInfos.comp.scaph < 2) || terrain.name === 'L' || terrain.name === 'R') {
                 if (!zone[targetTileId].rd) {
                     access = false;
                 }

@@ -1978,3 +1978,27 @@ function putCrew() {
         showBatInfos(selectedBat);
     }
 };
+
+function hasSnif(bat,batType) {
+    let canSnif = false;
+    if (batType.skills.includes('snif')) {
+        if (batType.skills.includes('dog')) {
+            if (bat.tags.includes('genblind') || bat.tags.includes('genslow') || bat.tags.includes('genwater')) {
+                canSnif = true;
+            } else {
+                if (!bat.tags.includes('genstrong') && !bat.tags.includes('genfast') && !bat.tags.includes('genreg')) {
+                    canSnif = true;
+                }
+            }
+        } else {
+            canSnif = true;
+        }
+    } else {
+        if (bat.tags.includes('genblind')) {
+            if (bat.tags.includes('genslow') || bat.tags.includes('genwater') || bat.tags.includes('genreg')) {
+                canSnif = true;
+            }
+        }
+    }
+    return canSnif;
+};

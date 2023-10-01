@@ -527,6 +527,9 @@ function batInfos(bat,batType,pop) {
     if (bat.tags.includes('genwater')) {
         $('#'+bodyPlace).append('<span class="paramName or" title="Allergique à l\'eau">Allergique</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
+    if (hasSnif(bat,batType)) {
+        $('#'+bodyPlace).append('<span class="paramName cy" title="Peut repérer les aliens furtifs et invisibles à 2 cases">Pisteur</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    }
     if (bat.tags.includes('zombie')) {
         $('#'+bodyPlace).append('<span class="paramName or">Zombie</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
@@ -1345,7 +1348,11 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Permet de repérer les aliens furtifs et invisibles (distance variable)">Radar</span>'+sepa;
     }
     if (batType.skills.includes('snif')) {
-        allSkills = allSkills+'<span class="paramValue" title="Permet de repérer les aliens furtifs et invisibles (2 cases)">Pisteur</span>'+sepa;
+        if (batType.name === 'Mongrels') {
+            allSkills = allSkills+'<span class="paramValue" title="Permet de repérer les aliens furtifs et invisibles (2 cases) (si ils ont les bonnes mutations)">Pisteur?</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Permet de repérer les aliens furtifs et invisibles (2 cases)">Pisteur</span>'+sepa;
+        }
     }
     if (batType.skills.includes('prefab')) {
         allSkills = allSkills+'<span class="paramValue" title="Ce bâtiment peut être démonté et remonté avec un lander ou un pusher">Préfabriqué</span>'+sepa;

@@ -3731,7 +3731,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","datt","camo","fastcam","meleecam","meleehide","chasse","pistage","regeneration","rage","ranger","snif","mutant","nofear","guerrilla","embuscade","baddef","fastguet","resistpoison","escape","herorush","lowstress","elite"],
+        "skills":["a_mid","datt","camo","fastcam","meleecam","meleehide","chasse","pistage","regeneration","rage","ranger","snif","mutant","genhab4","nofear","guerrilla","embuscade","baddef","fastguet","resistpoison","escape","herorush","lowstress","elite"],
         "fuzz":0,
         "deathFx":"mutantdeath"
     },
