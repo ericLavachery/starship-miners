@@ -476,6 +476,9 @@ function healEverything() {
         if (bat.tags.includes('genreg')) {
             gearTags.push('genreg');
         }
+        if (bat.tags.includes('genred')) {
+            gearTags.push('genred');
+        }
         if (bat.tags.includes('outsider')) {
             if (!batType.skills.includes('constructeur')) {
                 gearTags.push('outsider');
@@ -951,7 +954,15 @@ function pickZone() {
                     linkCol = 'cy';
                 }
             }
-            $('#conUnitList').append('<span class="paramName '+linkCol+' klik" onclick="putMissionZone('+zoneId+','+zoneInfo.pid+')">Choisir '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span> <span class="'+planetCol+' wback" title="Planète: '+zoneInfo.planet+'">&#9864;</span><br>');
+            let hideZone = false;
+            if (playerInfos.alerte.title != undefined) {
+                if (playerInfos.alerte.num === zoneId && !playerInfos.alerte.ok) {
+                    hideZone = true;
+                }
+            }
+            if (!hideZone) {
+                $('#conUnitList').append('<span class="paramName '+linkCol+' klik" onclick="putMissionZone('+zoneId+','+zoneInfo.pid+')">Choisir '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span> <span class="'+planetCol+' wback" title="Planète: '+zoneInfo.planet+'">&#9864;</span><br>');
+            }
         }
     });
     $('#conUnitList').append('<br>');

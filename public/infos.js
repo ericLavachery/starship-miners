@@ -509,17 +509,21 @@ function batInfos(bat,batType,pop) {
         if (bat.tags.includes('kirin') || bat.tags.includes('genreg') || batType.skills.includes('regeneration') || bat.tags.includes('regeneration')) {
             regenType = 'rapide';
         }
-        $('#'+bodyPlace).append('<span class="paramName cy">Régénération</span><span class="paramIcon"></span><span class="paramValue cy">'+regenType+'</span><br>');
+        let gencolor = 'cy';
+        if (bat.tags.includes('genreg') || batType.skills.includes('regeneration') || batType.skills.includes('slowreg')) {
+            gencolor = 'ciel';
+        }
+        $('#'+bodyPlace).append('<span class="paramName '+gencolor+'">Régénération</span><span class="paramIcon"></span><span class="paramValue '+gencolor+'">'+regenType+'</span><br>');
     }
     // GENHAB
     if (bat.tags.includes('genstrong')) {
-        $('#'+bodyPlace).append('<span class="paramName cy">Hulk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName ciel">Hulk</span><span class="paramIcon"></span><span class="paramValue ciel">Oui</span><br>');
     }
     if (bat.tags.includes('genblind')) {
         $('#'+bodyPlace).append('<span class="paramName jaune">Myope</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
     if (bat.tags.includes('genfast')) {
-        $('#'+bodyPlace).append('<span class="paramName cy">Rapide</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName ciel">Rapide</span><span class="paramIcon"></span><span class="paramValue ciel">Oui</span><br>');
     }
     if (bat.tags.includes('genslow')) {
         $('#'+bodyPlace).append('<span class="paramName jaune">Lent</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
@@ -528,13 +532,14 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName or" title="Allergique à l\'eau">Allergique</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     if (hasSnif(bat,batType)) {
-        $('#'+bodyPlace).append('<span class="paramName cy" title="Peut repérer les aliens furtifs et invisibles à 2 cases">Pisteur</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName ciel" title="Peut repérer les aliens furtifs et invisibles à 2 cases">Pisteur</span><span class="paramIcon"></span><span class="paramValue ciel">Oui</span><br>');
     }
-    if (bat.tags.includes('zombie')) {
-        $('#'+bodyPlace).append('<span class="paramName or">Zombie</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
-    }
-    if (batType.skills.includes('dreduct') || bat.prt === 'kapton' || bat.prt.includes('suit') || bat.prt === 'bonibo' || bat.prt === 'swarwing' || bat.prt === 'tisal' || bat.prt === 'silk' || (bat.tags.includes('zealot') && batType.cat === 'infantry') || (bat.tags.includes('bliss') && batType.cat === 'infantry')) {
-        $('#'+bodyPlace).append('<span class="paramName jaune" title="Ignore les petits dégâts">Réduction dégâts</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+    if (batType.skills.includes('dreduct') || bat.tags.includes('genred') || bat.prt === 'kapton' || bat.prt.includes('suit') || bat.prt === 'bonibo' || bat.prt === 'swarwing' || bat.prt === 'tisal' || bat.prt === 'silk' || (bat.tags.includes('zealot') && batType.cat === 'infantry') || (bat.tags.includes('bliss') && batType.cat === 'infantry')) {
+        let degcolor = 'cy';
+        if (batType.skills.includes('dreduct') || bat.tags.includes('genred')) {
+            degcolor = 'ciel';
+        }
+        $('#'+bodyPlace).append('<span class="paramName '+degcolor+'" title="Ignore les petits dégâts">Réduction dégâts</span><span class="paramIcon"></span><span class="paramValue '+degcolor+'">Oui</span><br>');
     }
     if (bat.tags.includes('resistfeu') || batType.skills.includes('resistfeu')) {
         $('#'+bodyPlace).append('<span class="paramName cy">Résistance feu</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
@@ -554,7 +559,10 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName jaune">Saoul</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
     if (bat.tags.includes('zealot')) {
-        $('#'+bodyPlace).append('<span class="paramName jaune">Fanatique</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName cy">Fanatique</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
+    }
+    if (bat.tags.includes('zombie')) {
+        $('#'+bodyPlace).append('<span class="paramName or">Zombie</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     // BAD TAGS
     if (bat.tags.includes('inflammable') || bat.eq === 'e-jetpack' || batType.skills.includes('inflammable')) {

@@ -55,7 +55,7 @@ function searchRuins(apCost,tileId) {
                 if (playerInfos.alerte.nid === 'resist' || playerInfos.alerte.nid === 'science' || playerInfos.alerte.nid === 'trolley') {
                     let alertChance = Math.ceil(200/tile.sh)+5;
                     if (rand.rand(1,100) <= alertChance) {
-                        checkMissionAlert(true);
+                        checkMissionAlert(true,false);
                     }
                 }
             }

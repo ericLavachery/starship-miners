@@ -971,7 +971,9 @@ function calcDamage(weapon,power,armor,defBat) {
 function getDamageRed(sound,defBat,defBatType) {
     let dmgReduct = 0;
     if (!sound.includes('suck')) {
-        if (defBatType.skills.includes('dreduct')) {
+        if (defBat.tags.includes('genred')) {
+            dmgReduct = 2;
+        } else if (defBatType.skills.includes('dreduct')) {
             dmgReduct = 2;
         } else if (defBat.tags.includes('bliss') && defBatType.cat === 'infantry') {
             dmgReduct = 2;

@@ -1439,8 +1439,12 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                         newBat.tags.push('genslow');
                     } else if (genDice === 3 && !conselUnit.skills.includes('genhab3') && !conselUnit.skills.includes('genhab2')) {
                         newBat.tags.push('genwater');
-                    } else if (genDice === 4 && !conselUnit.skills.includes('regeneration')) {
-                        newBat.tags.push('genreg');
+                    } else if (genDice === 4) {
+                        if (!conselUnit.skills.includes('regeneration')) {
+                            newBat.tags.push('genreg');
+                        } else {
+                            newBat.tags.push('genred');
+                        }
                     } else if (genDice === 5 && !conselUnit.skills.includes('genhab3') && !conselUnit.skills.includes('genhab4')) {
                         newBat.tags.push('genstrong');
                     } else if (genDice === 6) {
@@ -1465,12 +1469,16 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                         newBat.tags.push('genslow');
                     } else if (genDice === 3 && !newBat.tags.includes('genwater') && !conselUnit.skills.includes('genhab3') && !conselUnit.skills.includes('genhab2')) {
                         newBat.tags.push('genwater');
+                    } else if (genDice === 5 && newBat.tags.includes('genreg') && conselUnit.skills.includes('resistall')) {
+                        newBat.tags.push('genred');
                     } else if (genDice === 5 && !newBat.tags.includes('genreg') && !conselUnit.skills.includes('regeneration')) {
                         newBat.tags.push('genreg');
                     } else if (genDice === 6 && !newBat.tags.includes('genstrong') && !conselUnit.skills.includes('genhab3') && !conselUnit.skills.includes('genhab4')) {
                         newBat.tags.push('genstrong');
                     } else if (genDice === 7 && !newBat.tags.includes('genslow') && !newBat.tags.includes('genfast')) {
                         newBat.tags.push('genfast');
+                    } else if (genDice === 7 && newBat.tags.includes('genfast') && conselUnit.skills.includes('resistall')) {
+                        newBat.tags.push('genred');
                     }
                 } else {
                     genDice = rand.rand(1,3);

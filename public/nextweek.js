@@ -2,7 +2,21 @@ function events(afterMission,time,sim,quiet) {
     console.log('EVENTS: afterMission='+afterMission+' time='+time+' sim='+sim+' quiet='+quiet);
     afterMissionFirstReset();
     replacerSondes();
-    checkMissionAlert(false);
+    if (!sim && !quiet) {
+        let bossDetect = (playerInfos.comp.det*2)+1;
+        if (bossDetect < 4) {
+            bossDetect = Math.ceil((bossDetect+4)/2);
+        }
+        let findChance = bossDetect*time;
+        if (afterMission) {
+            findChance = bossDetect*6;
+        }
+        if (rand.rand(1,100) <= findChance) {
+            checkMissionAlert(false,false);
+        } else {
+            checkMissionAlert(false,true);
+        }
+    }
     checkReserve();
     updateBldList();
     resetWeekRes();
