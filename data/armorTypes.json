@@ -586,7 +586,7 @@
         "compReq":{"mat":2,"med":2,"cyber":1,"ca":2,"ind":1},
         "factor":"thp",
         "costs":{"Carbone":6,"Moteurs":9,"Titane":18,"Electros":12,"Batteries":12,"Or":6,"Drogues":12,"Mendium":12},
-        "deploy":{"Energie":18,"Drogues":2,"Mendium":3,"Huile":2},
+        "deploy":{"Energie":18,"Drogues":2,"Mendium":1,"Huile":2},
         "icon":3,
         "popIn":["Caserne"]
     },
@@ -1167,7 +1167,7 @@
         "autoComp":["gen",2],
         "factor":"thp",
         "costs":{"Drogues":12,"Octiron":32,"Mendium":9,"Creatite":12,"Or":6},
-        "deploy":{"Drogues":2,"Mendium":3,"Creatite":2,"Or":2}
+        "deploy":{"Drogues":2,"Blendium":1,"Creatite":2,"Or":2}
     },
     {
         "name":"permakirin",
@@ -1179,7 +1179,7 @@
         "autoComp":["med",3],
         "factor":"thp",
         "costs":{"Drogues":12,"Octiron":32,"Mendium":9,"Creatite":12,"Or":6},
-        "deploy":{"Drogues":2,"Mendium":3,"Creatite":2,"Or":2}
+        "deploy":{"Drogues":2,"Creatite":2,"Or":2}
     },
     {
         "name":"waterproof",

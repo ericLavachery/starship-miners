@@ -1240,7 +1240,7 @@
         "compReq":{"ind":1},
         "altCompReq":{"const":1},
         "costs":{"Fer":140,"Scrap":244,"Carbone":216,"Aluminium":40,"Moteurs":186,"Tungstène":120,"Electros":70,"Batteries":70,"Compo2":292,"Silicium":24,"Huile":84,"Mendium":104,"Azote":88,"Eau":960,"Zinc":180,"Cuivre":120},
-        "deploy":{"Fuel":130,"Energie":220,"Mendium":15,"Huile":55},
+        "deploy":{"Fuel":130,"Energie":220,"Mendium":6,"Huile":55},
         "fabTime":105,
         "inRuin":3
     },
@@ -2575,7 +2575,7 @@
         "prod":{"Oxygène":4},
         "costs":{"Compo1":75,"Scrap":100,"Fer":50,"Moteurs":12,"Batteries":6,"Energie":120},
         "fabTime":20,
-        "slots":1
+        "slots":0
     },
     {
         "id":283,

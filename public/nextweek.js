@@ -2,19 +2,38 @@ function events(afterMission,time,sim,quiet) {
     console.log('EVENTS: afterMission='+afterMission+' time='+time+' sim='+sim+' quiet='+quiet);
     afterMissionFirstReset();
     replacerSondes();
-    if (!sim && !quiet) {
-        let bossDetect = (playerInfos.comp.det*2)+1;
-        if (bossDetect < 4) {
-            bossDetect = Math.ceil((bossDetect+4)/2);
-        }
-        let findChance = bossDetect*time;
-        if (afterMission) {
-            findChance = bossDetect*6;
-        }
-        if (rand.rand(1,100) <= findChance) {
-            checkMissionAlert(false,false);
-        } else {
-            checkMissionAlert(false,true);
+    if (!quiet) {
+        if (playerInfos.alerte.title != undefined) {
+            let bossDetect = (playerInfos.comp.det*2)+1;
+            if (bossDetect < 4) {
+                bossDetect = Math.ceil((bossDetect+4)/2);
+            }
+            if (playerInfos.alerte.turns >= 30) {
+                let turnsBonus = (playerInfos.alerte.turns-30)/10;
+                if (bossDetect < 6) {
+                    bossDetect = 6;
+                }
+                bossDetect = bossDetect+turnsBonus;
+            }
+            let findChance = bossDetect*time;
+            if (afterMission) {
+                findChance = bossDetect*6;
+            }
+            findChance = Math.ceil(findChance);
+            if (sim) {
+                checkMissionAlert(false,true); // remind
+            } else {
+                if (rand.rand(1,100) <= findChance) {
+                    checkMissionAlert(false,false);
+                } else {
+                    checkMissionAlert(false,true); // remind
+                    if (afterMission) {
+                        playerInfos.alerte.turns = playerInfos.alerte.turns+6;
+                    } else {
+                        playerInfos.alerte.turns = playerInfos.alerte.turns+time;
+                    }
+                }
+            }
         }
     }
     checkReserve();

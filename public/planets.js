@@ -310,6 +310,7 @@ function checkMissions(markDone) {
             playerInfos.alerte.nid = mType.nid;
             playerInfos.alerte.ok = false;
             playerInfos.alerte.num = nextMission.num;
+            playerInfos.alerte.turns = 0;
         }
     }
     if (markDone) {
@@ -324,6 +325,10 @@ function checkMissions(markDone) {
         if (mTypeHere.nid === 'resist') {
             playerInfos.objectifs.resistance = 'detruit';
         }
+    }
+    if (playerInfos.alerte.title != undefined) {
+        // si il y a déjà une mission spéciale mais non détectée
+        playerInfos.alerte.turns = playerInfos.alerte.turns+6;
     }
 };
 
@@ -354,15 +359,18 @@ function checkMissionAlert(fromRuin,onlyRemind) {
                 playerInfos.alerte.ok = true;
             } else {
                 // next turn
+                playerInfos.alerte.turns++;
                 if (playerInfos.alerte.nid === 'resist' || playerInfos.alerte.nid === 'science' || playerInfos.alerte.nid === 'trolley') {
-                    if (playerInfos.mapTurn === 22-playerInfos.randSeed) {
+                    if (playerInfos.mapTurn === 22-playerInfos.randSeed || playerInfos.alerte.turns === 35) {
                         warning('<span class="nmiss">SOS</span>','<span class="verf">Nous avons capté un message de détresse!</span>');
                         doMissionAlert(false);
                         playerInfos.alerte.ok = true;
                     }
                 } else {
                     if (playerInfos.mapTurn >= 5) {
-                        let findChance = (playerInfos.comp.det*2)+1;
+                        let turnsBonus = playerInfos.alerte.turns-30;
+                        if (turnsBonus < 1) {turnsBonus = 0;}
+                        let findChance = (playerInfos.comp.det*2)+1+turnsBonus;
                         if (rand.rand(1,100) <= findChance) {
                             warning('<span class="nmiss">BOSS</span>','<span class="verf">Nos équipes ont trouvé le boss alien responsable du canon!</span>');
                             doMissionAlert(false);

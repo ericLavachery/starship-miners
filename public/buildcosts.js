@@ -1326,6 +1326,41 @@ function calcAllCosts(unit,ammoNames,withDeploy,withFlat) {
     return allCosts;
 };
 
+function calcSlots() {
+    let slots = {};
+    let usedSlots = 0;
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.slots != undefined) {
+            if (batType.slots >= 1) {
+                usedSlots = usedSlots+batType.slots;
+            }
+        }
+    });
+    slots.used = usedSlots;
+    slots.rest = maxSlots-usedSlots;
+    slots.colour = 'neutre';
+    if (slots.rest <= 0) {
+        slots.colour = 'or';
+    } else if (slots.rest <= 10) {
+        slots.colour = 'jaune';
+    }
+    playerInfos.slots = slots.used;
+    return slots;
+}
+
+function iCanSlotThis(slots,unit) {
+    let slotsOK = true;
+    let unitSlots = 0;
+    if (unit.slots != undefined) {
+        unitSlots = unit.slots;
+        if (unit.slots > slots.rest) {
+            slotsOK = false;
+        }
+    }
+    return slotsOK;
+};
+
 function iCanProdThis(prodUnit,unit,catz) {
     let prodThis = false;
     if (prodUnit.skills.includes('transorbital') || unit.skills.includes('panprod')) {

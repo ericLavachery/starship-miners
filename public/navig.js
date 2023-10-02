@@ -341,9 +341,10 @@ function viewPop() {
             }
             $('#batloop').append('<span class="jaune">Doomclock: '+doomsday+'</span><br>');
             if (!inSoute && !modeSonde) {
-                $('#batloop').append('<button type="button" title="Simuler 3 semaines (1 mission)" class="boutonVert iconButtons" onclick="events(false,65,true,false)"><i class="far fa-clock"></i></button>');
+                $('#batloop').append('<button type="button" title="Simuler 3 semaines (1 mission)" class="boutonVert iconButtons" onclick="events(false,65,true,false)"><i class="fas fa-calendar-alt"></i></button>');
+                $('#batloop').append('<button type="button" title="Simuler 3 jours" class="boutonVert iconButtons" onclick="events(false,9,true,false)"><i class="far fa-clock"></i></button>');
                 $('#batloop').append('<button type="button" title="Attendre 3 jours" class="boutonRouge iconButtons" onclick="events(false,9,false,false)"><i class="far fa-clock"></i></button>');
-                $('#batloop').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false,21,false,false)"><i class="far fa-clock"></i></button>');
+                // $('#batloop').append('<button type="button" title="Attendre 1 semaine" class="boutonRouge iconButtons" onclick="events(false,21,false,false)"><i class="far fa-clock"></i></button>');
             }
         }
     }

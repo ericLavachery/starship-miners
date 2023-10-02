@@ -1587,12 +1587,20 @@ function addRes(zone) {
     let oilRes = getResByName('Huile');
     oilChance = Math.round(oilChance/oilRes.planets[zone[0].planet]);
     let oilDiv = 1;
+    if (playerInfos.sondeRes.includes(oilRes.name)) {
+        oilChance = Math.ceil(oilChance/(playerInfos.comp.ext+4)*3);
+        oilDiv = oilDiv/(playerInfos.comp.ext+3)*3;
+    }
     let oilHere = false;
     let fruName = 'Fruits';
     let fruChance = (rand.rand(2,6)*20); // plus bas = plus de chances
     let fruRes = getResByName('Fruits');
     fruChance = Math.round(fruChance/fruRes.planets[zone[0].planet]);
     let fruDiv = 1.75*(zone[0].mapDiff+4)/5;
+    if (playerInfos.sondeRes.includes(fruRes.name)) {
+        fruChance = Math.ceil(fruChance/(playerInfos.comp.ext+4)*3);
+        fruDiv = fruDiv/(playerInfos.comp.ext+3)*3;
+    }
     let fruHere = false;
     console.log('numBadTer: '+numBadTer);
     if (playerInfos.sondeDanger >= 1) {

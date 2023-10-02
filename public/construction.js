@@ -32,6 +32,7 @@ function bfconst(cat,triche,upgrade,retour) {
     let dispoCit = getDispoCit();
     let yh = youHave();
     updateBldList();
+    let slots = calcSlots();
     let maxCrafts = getMaxCrafts();
     let restCrafts = maxCrafts-playerInfos.crafts;
     let restCraftsPerc = Math.round(100/maxCrafts*restCrafts);
@@ -88,11 +89,13 @@ function bfconst(cat,triche,upgrade,retour) {
     let bldOK = false;
     let uMaxOK = true;
     let costOK = false;
+    let slotsOK = false;
     let costString = '';
     let unitMergedCosts;
     sortedUnitsList.forEach(function(unit) {
         // console.log(unit.name);
         mayOut = checkMayOut(unit,false);
+        slotsOK = iCanSlotThis(slots,unit);
         uMaxOK = true;
         prodOK = true;
         prodHere = false;
@@ -242,8 +245,8 @@ function bfconst(cat,triche,upgrade,retour) {
                     fromUnitName = unit.unitCost;
                 }
                 color = 'gff';
-                $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="Se construit en transformant: '+fromUnitName+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
-            } else if ((bldOK && costOK && uMaxOK) || triche) {
+                $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="&#127872; Se construit en transformant: '+fromUnitName+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
+            } else if ((bldOK && costOK && uMaxOK && slotsOK) || triche) {
                 if (pDistOK && pNumOK) {
                     color = catColor(unit);
                     $('#conUnitList').append('<span class="constName klik '+color+deco+'" onclick="conSelect('+unit.id+',`player`,false)"><span title="'+toBldString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
@@ -257,7 +260,10 @@ function bfconst(cat,triche,upgrade,retour) {
             } else {
                 if (!uMaxOK) {
                     color = 'gff';
-                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+maxInfo.text+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="&#9995; '+maxInfo.text+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
+                } else if (!slotsOK) {
+                    color = 'gff';
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="&#127959; Vous devez libérer de l\'espace dans la Station. Il reste '+slots.rest+' places et il en faut '+unit.slots+' pour ce bâtiment.">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
                 } else {
                     color = 'gff';
                     $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+toBldString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
@@ -2678,26 +2684,3 @@ function checkPiloneNumber(unit,triche) {
     }
     return pNumOK;
 };
-
-function calcSlots() {
-    let slots = {};
-    let usedSlots = 0;
-    bataillons.forEach(function(bat) {
-        let batType = getBatType(bat);
-        if (batType.slots != undefined) {
-            if (batType.slots >= 1) {
-                usedSlots = usedSlots+batType.slots;
-            }
-        }
-    });
-    slots.used = usedSlots;
-    slots.rest = maxSlots-usedSlots;
-    slots.colour = 'neutre';
-    if (slots.rest <= 0) {
-        slots.colour = 'or';
-    } else if (slots.rest <= 10) {
-        slots.colour = 'jaune';
-    }
-    playerInfos.slots = slots.used;
-    return slots;
-}
