@@ -102,7 +102,7 @@ function checkNeiTurn() {
 function neighbours() {
     if (playerInfos.mapTurn === 30) {
         let numEvents = getNumEvents();
-        numEvents = Math.floor(numEvents*numEvents/2);
+        numEvents = Math.floor(numEvents*numEvents/2/playerInfos.cNeed);
         numEvents = entre(numEvents,1,100);
         if (rand.rand(1,numEvents) === 1) {
             let turnz = rand.rand(1,12);
@@ -147,7 +147,7 @@ function lesVoisins() {
     let numEvents = getNumEvents();
     let eventsBonus = 42-(numEvents*7);
     if (eventsBonus < 1) {eventsBonus = 0}
-    let transChance = (playerInfos.mapDiff*3)+15+eventsBonus;
+    let transChance = Math.ceil(((playerInfos.mapDiff*3)+15+eventsBonus)*playerInfos.cNeed);
     if (rand.rand(1,100) <= transChance) {
         transDice = rand.rand(1,26);
         if (transDice <= 4) {
@@ -234,12 +234,18 @@ function lesVoisins() {
         pietonBatTypeId = checkPietonId();
         neiBatType = getBatTypeById(pietonBatTypeId);
         putNeighbour(neiBatType);
-        if (rand.rand(1,3) === 1) {
+        let pDice = 3;
+        if (playerInfos.cNeed > 1) {
+            pDice = Math.floor(3/playerInfos.cNeed);
+        } else {
+            pDice = Math.ceil(3/playerInfos.cNeed);
+        }
+        if (rand.rand(1,pDice) === 1) {
             pietonBatTypeId = checkPietonId();
             neiBatType = getBatTypeById(pietonBatTypeId);
             putNeighbour(neiBatType);
         }
-        if (rand.rand(1,5) === 1) {
+        if (rand.rand(1,pDice+2) === 1) {
             pietonBatTypeId = checkPietonId();
             neiBatType = getBatTypeById(pietonBatTypeId);
             putNeighbour(neiBatType);
@@ -728,6 +734,7 @@ function checkCitCaves() {
             chance = chance-Math.floor(zone[0].caves);
         }
         chance = chance-playerInfos.fndCits+2;
+        chance = Math.round(chance*playerInfos.cNeed);
         chance = entre(chance,1,7);
         console.log('chance '+chance);
         // chance = 100;

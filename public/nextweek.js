@@ -59,8 +59,9 @@ function events(afterMission,time,sim,quiet) {
             warning('<h5>RAPPORT</h5>','<span class="vert">'+Math.round(time/3)+' jours</span> passés<br>('+time+' tours)',false,-1,true);
         }
     }
-    eventCitoyens(time,sim,quiet);
-    eventBodies(time,sim,quiet);
+    let navHere = checkNavette();
+    eventCitoyens(time,sim,quiet,navHere);
+    eventBodies(time,sim,quiet,navHere);
     eventProduction(afterMission,time,sim,quiet); // remove 'return' tag !!!
     eventBouffe(time,sim,quiet);
     eventCrime(time,sim,quiet,afterMission);
@@ -741,41 +742,77 @@ function showResBallance(quiet) {
     }
 };
 
-function eventCitoyens(time,sim,quiet) {
-    let citNeed = getCitNeed();
-    // let gangFacts = getGangFactors();
-    console.log('$$$$$$$$$$$$$$$$$$$$$ citNeed = '+citNeed);
-    let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,18)*gangFacts.cit*(playerInfos.comp.med+30)*(playerInfos.comp.vsp+30)*navCitFactor/100000);
-    let citId = 126;
-    let citName = 'Citoyens';
-    if (rand.rand(1,ruinsCrimChance) === 1) {
-        citId = 225;
-        citName = 'Criminels';
-    } else {
-        if (playerInfos.crime > 50) {
-            newCitsNumber = 0;
-        } else if (playerInfos.crime > 15) {
-            newCitsNumber = Math.floor(newCitsNumber*15/playerInfos.crime);
+function checkNavette() {
+    let navHere = {};
+    navHere.ok = false;
+    navHere.art = 'la';
+    navHere.name = 'Navette de secours';
+    navHere.has = false;
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.skills.includes('rescue')) {
+            navHere.has = true;
+            navHere.name = bat.type;
+            if (navHere.name != 'Navette de secours') {
+                navHere.art = 'le';
+            }
+            if (!bat.tags.includes('return')) {
+                navHere.ok = true;
+            }
         }
-    }
-    if (!sim && newCitsNumber >= 1) {
-        bonusCit(citId,souteId,newCitsNumber);
-        playerInfos.allCits = playerInfos.allCits+newCitsNumber;
-    }
-    if (!quiet) {
-        warning('Navette de secours','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont été récupérés par la navette de secours.<br>',true);
+    });
+    return navHere;
+};
+
+function eventCitoyens(time,sim,quiet,navHere) {
+    if (navHere.ok) {
+        let citNeed = getCitNeed();
+        console.log('$$$$$$$$$$$$$$$$$$$$$ citNeed = '+citNeed);
+        let newCitsNumber = Math.floor(time*citNeed*rand.rand(10,18)*gangFacts.cit*(playerInfos.comp.med+30)*(playerInfos.comp.vsp+30)*navCitFactor/100000);
+        let citId = 126;
+        let citName = 'Citoyens';
+        if (rand.rand(1,ruinsCrimChance) === 1) {
+            citId = 225;
+            citName = 'Criminels';
+        } else {
+            if (playerInfos.crime > 50) {
+                newCitsNumber = 0;
+            } else if (playerInfos.crime > 10) {
+                newCitsNumber = Math.floor(newCitsNumber*10/playerInfos.crime);
+            }
+        }
+        if (!sim && newCitsNumber >= 1) {
+            bonusCit(citId,souteId,newCitsNumber);
+            playerInfos.allCits = playerInfos.allCits+newCitsNumber;
+        }
+        if (!quiet) {
+            warning('Rescapés','<span class="vert">'+newCitsNumber+' '+citName+'</span> ont été récupérés par '+navHere.art+' '+navHere.name+'.<br>',true);
+        }
+    } else {
+        if (navHere.has) {
+            warning('Rescapés','Aucun rescapé n\'a pu être récupéré car '+navHere.art+' '+navHere.name+' était en mission.<br>',true);
+        } else {
+            warning('Rescapés','Aucun rescapé n\'a pu être récupéré car vous n\'avez pas de '+navHere.name+'.<br>',true);
+        }
     }
 };
 
-function eventBodies(time,sim,quiet) {
-    // let gangFacts = getGangFactors();
-    let bodyCount = Math.floor(time*rand.rand(1,19)*gangFacts.bod*(playerInfos.comp.med+6)/140);
-    if (bodyCount >= 5) {
-        if (!sim) {
-            resAdd('Corps',bodyCount);
+function eventBodies(time,sim,quiet,navHere) {
+    if (navHere.ok) {
+        let bodyCount = Math.floor(time*rand.rand(1,19)*gangFacts.bod*(playerInfos.comp.med+6)*navBodFactor/1500);
+        if (bodyCount >= 5) {
+            if (!sim) {
+                resAdd('Corps',bodyCount);
+            }
+            if (!quiet) {
+                warning('Victimes','<span class="vert">'+bodyCount+' corps</span> ont été récupérés par '+navHere.art+' '+navHere.name+'.<br>',true);
+            }
         }
-        if (!quiet) {
-            warning('Navette de secours','<span class="vert">'+bodyCount+' corps</span> ont été récupérés par la navette de secours.<br>',true);
+    } else {
+        if (navHere.has) {
+            warning('Victimes','Aucun corps n\'a pu être récupéré car '+navHere.art+' '+navHere.name+' était en mission.<br>',true);
+        } else {
+            warning('Victimes','Aucun corps n\'a pu être récupéré car vous n\'avez pas de '+navHere.name+'.<br>',true);
         }
     }
 };

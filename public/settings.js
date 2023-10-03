@@ -79,7 +79,8 @@ let ruinsCompBase = 5; // 4 sur 350
 let ruinsUnitBase = 5; // 4 sur 300
 let ruinsResBase = 50; // 33%
 let ruinsCitBase = 50; // def 50
-let navCitFactor = 8; // def 10 (+ = + de cits)
+let navCitFactor = 4; // def 10 (+ = + de cits)
+let navBodFactor = 10; // def 10 (+ = + de cits)
 let coffreTileId = -1;
 let encounterTileId = -1;
 let lastNeiTileId = -1;
