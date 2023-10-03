@@ -2,7 +2,7 @@ function checkStartingAliens() {
     // Ruches
     let numRuches;
     if (!zone[0].visit && zone[0].number < 50) {
-        if (zone[0].mapDiff >= 8) {
+        if (zone[0].mapDiff >= 8 || playerInfos.gLevel >= 17) {
             dropEgg('Colonie','nedge');
             coconStats.colo = true;
             let coloBat = getAlienByName('Colonie');
@@ -68,7 +68,7 @@ function checkStartingAliens() {
             if (rand.rand(1,4) === 1) {
                 dropEgg('Flaque','any');
             } else {
-                if (rand.rand(1,4) === 1 && zone[0].mapDiff >= 7) {
+                if (rand.rand(1,4) === 1 && (zone[0].mapDiff >= 7 || playerInfos.gLevel >= 15)) {
                     dropEgg('Ruche','nocenter');
                     coconStats.volc = true;
                 } else {

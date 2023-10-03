@@ -683,7 +683,7 @@
         "maxVeg":3,
         "skills":["minaccu","resistfeu","sentinelle","fastreg","stay"],
         "deathFx":"death1",
-        "killRes":{"Bugium":2,"Pyrus":4,"Mendium":1},
+        "killRes":{"Bugium":2,"Pyrus":4,"Mendium":2},
         "killXP":10
     },
     {

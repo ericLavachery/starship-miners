@@ -515,10 +515,10 @@ function batDeath(bat,count,gain,isWiped) {
         isFlying = true;
     }
     if (bat.team == 'player') {
-        if (batType.crew >= 1 && !batType.skills.includes('dog') && !batType.skills.includes('clone') && !bat.tags.includes('outsider') && count) {
-            let cytxp = Math.ceil(batType.squads*batType.squadSize*batType.crew/6);
-            playerInfos.gangXP = playerInfos.gangXP+cytxp;
-        }
+        // if (batType.crew >= 1 && !batType.skills.includes('dog') && !batType.skills.includes('clone') && !bat.tags.includes('outsider') && count) {
+        //     let cytxp = Math.ceil(batType.squads*batType.squadSize*batType.crew/6);
+        //     playerInfos.gangXP = playerInfos.gangXP+cytxp;
+        // }
         if (bat.tags.includes('nomove') && count && !batType.skills.includes('nomove')) {
             removeNoMoves(bat);
         }
@@ -977,9 +977,11 @@ function getDamageRed(sound,defBat,defBatType) {
             dmgReduct = 2;
         } else if (defBat.tags.includes('bliss') && defBatType.cat === 'infantry') {
             dmgReduct = 2;
+        } else if (defBat.prt === 'kaptane') {
+            dmgReduct = 2;
         } else if (defBat.tags.includes('zealot') && defBatType.cat === 'infantry') {
             dmgReduct = 1;
-        } else if (defBat.prt === 'kapton' || defBat.prt === 'kaptane' || defBat.prt.includes('suit') || defBat.prt === 'bonibo' || defBat.prt === 'swarwing' || defBat.prt === 'silk' || defBat.prt === 'tisal') {
+        } else if (defBat.prt === 'kapton' || defBat.prt.includes('suit') || defBat.prt === 'bonibo' || defBat.prt === 'swarwing' || defBat.prt === 'silk' || defBat.prt === 'tisal') {
             dmgReduct = 1;
         }
     }

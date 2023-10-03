@@ -171,6 +171,7 @@ function craftWindow(retour) {
             // sortedResTypes.reverse();
             sortedResTypes.forEach(function(res) {
                 if (res.name != 'Scrap' && res.name != 'Corps' && res.name != 'Eau' && res.name != 'Végétaux' && res.name != 'Bois' && res.name != 'Fruits' && res.name != 'Atium' && res.name != 'Octiron' && res.name != 'Magma' && res.cat != 'alien' && res.cat != 'transfo') {
+                    neededRes = 25;
                     iHaveRes = getDispoRes(res.name);
                     if (res.bld === 'Derrick') {
                         baseRes = 'Eau';
@@ -218,6 +219,58 @@ function craftWindow(retour) {
                             $('#morph'+res.id).append('<span class="craftsList bleu">tri:'+triReq+'</span><br>');
                         } else {
                             $('#morph'+res.id).append('<span class="craftsList rouge">tri:'+triReq+'</span><br>');
+                        }
+                    }
+                    $('#morph'+res.id).append('<hr class="craft">');
+                }
+            });
+            sortedResTypes.forEach(function(res) {
+                if (res.cat === 'alien' && res.name != 'Gibier' && res.name != 'Creatite') {
+                    neededRes = 35;
+                    iHaveRes = getDispoRes(res.name);
+                    baseRes = res.morphRes;
+                    iHaveTheBase = getDispoRes(baseRes);
+                    doRes = Math.ceil(Math.sqrt(res.rarity)*Math.sqrt(res.rarity/10)/res.equiv/res.equiv*3*morphFactor/100)*5;
+                    if (doRes > 100) {
+                        neededRes = Math.ceil(neededRes*500/(doRes+400));
+                        if (neededRes < 15) {neededRes = Math.ceil(Math.sqrt(neededRes)*3.87);}
+                        if (neededRes < 5) {neededRes = 5;}
+                        doRes = 100;
+                    }
+                    let triReq = 0;
+                    if (res.name === 'Bossium' || res.name === 'Egidium') {
+                        triReq = 5;
+                    } else if (res.rarity <= 20) {
+                        triReq = 4;
+                    } else if (res.rarity <= 35) {
+                        triReq = 3;
+                    } else {
+                        triReq = 2;
+                    }
+                    $('#conUnitList').append('<div class="morphABlock" id="morph'+res.id+'"></div>');
+                    if (iHaveMorph >= neededRes && iHaveTheBase >= doRes && triReq <= playerInfos.comp.ca && playerInfos.crafts < maxCrafts) {
+                        $('#morph'+res.id).append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
+                        $('#morph'+res.id).append('<span class="craftsList cy klik" onclick="doMorphCraft(`'+res.name+'`,'+doRes+',`'+baseRes+'`,'+neededRes+')">'+doRes+' '+res.name+' <span class="brunf">('+iHaveRes+')</span></span><br>');
+                    } else {
+                        $('#morph'+res.id).append('<span class="constIcon"><i class="far fa-circle"></i></span>');
+                        $('#morph'+res.id).append('<span class="craftsList gf">'+doRes+' '+res.name+'</span><br>');
+                    }
+                    if (iHaveMorph >= neededRes) {
+                        $('#morph'+res.id).append('<span class="craftsList gf">Morphite:<span class="bleu">'+neededRes+'</span>/<span class="vert">'+iHaveMorph+'</span></span>');
+                    } else {
+                        $('#morph'+res.id).append('<span class="craftsList gf">Morphite:<span class="rouge">'+neededRes+'</span>/<span class="vert">'+iHaveMorph+'</span></span>');
+                    }
+                    if (iHaveTheBase >= doRes) {
+                        $('#morph'+res.id).append('<span class="craftsList gf">'+baseRes+':<span class="bleu">'+doRes+'</span>/<span class="vert">'+iHaveScrap+'</span></span><br>');
+                    } else {
+                        $('#morph'+res.id).append('<span class="craftsList gf">'+baseRes+':<span class="rouge">'+doRes+'</span>/<span class="vert">'+iHaveScrap+'</span></span><br>');
+                    }
+                    $('#morph'+res.id).append('<span class="craftsList bleu">Recyclab</span><br>');
+                    if (triReq >= 1) {
+                        if (triReq <= playerInfos.comp.ca) {
+                            $('#morph'+res.id).append('<span class="craftsList bleu">ca:'+triReq+'</span><br>');
+                        } else {
+                            $('#morph'+res.id).append('<span class="craftsList rouge">ca:'+triReq+'</span><br>');
                         }
                     }
                     $('#morph'+res.id).append('<hr class="craft">');

@@ -2922,7 +2922,7 @@
     {
         "id":175,
         "name":"Dôme",
-        "levels":{"rednecks":18,"blades":18,"bulbos":18,"drogmulojs":18,"tiradores":18,"detruas":18,"brasier":18},
+        "levels":{"rednecks":19,"blades":19,"bulbos":19,"drogmulojs":19,"tiradores":19,"detruas":19,"brasier":19},
         "bldEquiv":["Champ de force"],
         "bldReq":["Centrale SMR"],
         "upkeep":{"Energie":80,"Plutonium":20,"Eau":80},

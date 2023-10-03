@@ -672,6 +672,7 @@
         "cat": "alien",
         "batch": 5,
         "energie": -1,
+        "morphRes":"Fer",
         "equiv": 1
     },
     {
@@ -683,7 +684,8 @@
         "cat": "alien",
         "batch": 5,
         "energie": -1,
-        "equiv": 1
+        "morphRes":"Fer",
+        "equiv": 1.2
     },
     {
         "id": 46,
@@ -695,7 +697,8 @@
         "batch": 5,
         "energie": 5,
         "cramBld": "Incinérateur",
-        "equiv": 1
+        "morphRes":"Huile",
+        "equiv": 1.5
     },
     {
         "id": 47,
@@ -707,7 +710,8 @@
         "batch": 5,
         "energie": 8,
         "cramBld": "Incinérateur",
-        "equiv": 1
+        "morphRes":"Phosphore",
+        "equiv": 1.2
     },
     {
         "id": 50,
@@ -718,7 +722,8 @@
         "cat": "alien",
         "batch": 5,
         "energie": -1,
-        "equiv": 1
+        "morphRes":"Huile",
+        "equiv": 2.5
     },
     {
         "id": 48,
@@ -729,7 +734,7 @@
         "cat": "alien",
         "batch": 5,
         "energie": -1,
-        "equiv": 1
+        "equiv": 1.5
     },
     {
         "id": 49,
@@ -741,7 +746,8 @@
         "batch": 5,
         "energie": 3,
         "cramBld": "Incinérateur",
-        "equiv": 1
+        "morphRes":"Huile",
+        "equiv": 2
     },
     {
         "id": 52,
@@ -752,7 +758,8 @@
         "cat": "alien",
         "batch": 5,
         "energie": -1,
-        "equiv": 1
+        "morphRes":"Huile",
+        "equiv": 2
     },
     {
         "id": 53,
@@ -763,7 +770,8 @@
         "cat": "alien",
         "batch": 5,
         "energie": -1,
-        "equiv": 1
+        "morphRes":"Titane",
+        "equiv": 2.5
     },
     {
         "id": 54,
@@ -774,7 +782,8 @@
         "cat": "alien",
         "batch": 5,
         "energie": -1,
-        "equiv": 1
+        "morphRes":"Huile",
+        "equiv": 2
     },
     {
         "id": 55,
@@ -785,7 +794,8 @@
         "cat": "alien",
         "batch": 5,
         "energie": -1,
-        "equiv": 1
+        "morphRes":"Huile",
+        "equiv": 2
     },
     {
         "id": 56,
@@ -796,7 +806,8 @@
         "cat": "alien",
         "batch": 5,
         "energie": -1,
-        "equiv": 1.5
+        "morphRes":"Rhodium",
+        "equiv": 4
     },
     {
         "id": 57,
@@ -807,19 +818,21 @@
         "cat": "alien",
         "batch": 5,
         "energie": -1,
-        "equiv": 1.5
+        "morphRes":"Timonium",
+        "equiv": 6
     },
     {
         "id": 58,
         "name": "Pyrus",
         "bld": "",
         "level": 4,
-        "rarity": 5,
+        "rarity": 10,
         "cat": "alien",
         "batch": 5,
         "energie": 1,
         "cramBld": "Incinérateur",
-        "equiv": 1.5
+        "morphRes":"Pyratol",
+        "equiv": 2.5
     },
     {
         "id": 77,

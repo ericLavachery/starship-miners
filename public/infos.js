@@ -534,7 +534,7 @@ function batInfos(bat,batType,pop) {
     if (hasSnif(bat,batType)) {
         $('#'+bodyPlace).append('<span class="paramName ciel" title="Peut repérer les aliens furtifs et invisibles à 2 cases">Pisteur</span><span class="paramIcon"></span><span class="paramValue ciel">Oui</span><br>');
     }
-    if (batType.skills.includes('dreduct') || bat.tags.includes('genred') || bat.prt === 'kapton' || bat.prt.includes('suit') || bat.prt === 'bonibo' || bat.prt === 'swarwing' || bat.prt === 'tisal' || bat.prt === 'silk' || (bat.tags.includes('zealot') && batType.cat === 'infantry') || (bat.tags.includes('bliss') && batType.cat === 'infantry')) {
+    if (batType.skills.includes('dreduct') || bat.tags.includes('genred') || bat.prt === 'kapton' || bat.prt === 'kaptane' || bat.prt.includes('suit') || bat.prt === 'bonibo' || bat.prt === 'swarwing' || bat.prt === 'tisal' || bat.prt === 'silk' || (bat.tags.includes('zealot') && batType.cat === 'infantry') || (bat.tags.includes('bliss') && batType.cat === 'infantry')) {
         let degcolor = 'cy';
         if (batType.skills.includes('dreduct') || bat.tags.includes('genred')) {
             degcolor = 'ciel';
@@ -1498,6 +1498,12 @@ function batFullInfos(bat,batType) {
         $('#popbody').append('<div class="shSpace"></div>');
         $('#popbody').append('<span class="blockTitle"><h4>Coûts de construction</h4></span><br>');
         let costString = '';
+        if (batType.slots != undefined) {
+            if (batType.slots >= 1) {
+                $('#popbody').append('<span class="paramValue"><span class="mauve" title="Place occupée dans la Station">Emplacements requis:</span> '+batType.slots+'</span><br>');
+                $('#popbody').append('<div class="shSpace"></div>');
+            }
+        }
         if (batType.bldReq.includes('Station')) {
             $('#popbody').append('<span class="paramValue">Ce bâtiment ne peut pas être construit.</span>');
         } else {
