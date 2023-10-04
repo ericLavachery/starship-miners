@@ -1313,8 +1313,8 @@ function checkMedBld(bat,batType) {
     if (batType.cat === 'buildings' || batType.skills.includes('transorbital') || batType.skills.includes('stable') || batType.skills.includes('inmed')) {
         canBeMedBld = true;
     } else if (batType.cat === 'vehicles' && !batType.skills.includes('fly')) {
-        if (bat.tags.includes('fortif')) {
-            if (batType.skills.includes('medtrans')) {
+        if (bat.tags.includes('fortif') || batType.skills.includes('canmed')) {
+            if (batType.skills.includes('medtrans') || batType.skills.includes('canmed')) {
                 canBeMedBld = true;
             } else if (batType.skills.includes('ouvert')) {
                 if (batType.transUnits >= 700) {

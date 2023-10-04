@@ -3243,7 +3243,7 @@
         },
         "weapon2":{
             "name":"Glu",
-            "cost":2,
+            "cost":1,
             "range":4,
             "elevation":3,
             "noFly":false,
@@ -3261,7 +3261,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["eggprotect","resistblast","xpplus","igtarglog","baddef","silhover","smartrip"],
+        "skills":["hide","eggprotect","resistblast","xpplus","igtarglog","baddef","silhover","smartrip","sentinelle"],
         "deathFx":"xplode",
         "killRes":{"Bugium":1,"Slime":6},
         "killXP":10

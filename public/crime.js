@@ -649,7 +649,11 @@ function calcCrimeRate(mesCitoyens) {
     crimeRate.total = 0;
     // facteur: +population
     let overPop = population-3000;
-    crimeRate.penib = crimeRate.penib+Math.round(overPop/250);
+    let surPop = 0;
+    if (population > 7500) {
+        surPop = population-7500;
+    }
+    crimeRate.penib = crimeRate.penib+Math.round(overPop/250)+Math.round(surPop/500);
     // +1 par point playerInfos.vitals (25 pts)
     crimeRate.penib = crimeRate.penib+playerInfos.vitals;
     let bldIds = [];
@@ -691,11 +695,14 @@ function calcCrimeRate(mesCitoyens) {
         if (batType.name === 'Cabines') {
             crimeRate.lits = crimeRate.lits+350;
             if (outOfOrder) {
-                crimeRate.lits = crimeRate.lits-70;
+                crimeRate.lits = crimeRate.lits-50;
             }
         }
-        if (batType.name === 'Appartements' && !outOfOrder) {
+        if (batType.name === 'Appartements') {
             crimeRate.lits = crimeRate.lits+75;
+            if (outOfOrder) {
+                crimeRate.lits = crimeRate.lits-15;
+            }
         }
         if (batType.crime != undefined || bat.eq === 'camkit' || bat.eq === 'taserkit') {
             let countMe = false;
@@ -755,10 +762,10 @@ function calcCrimeRate(mesCitoyens) {
     // structure
     let numStructures = checkNumUnits('Structure');
     // console.log('Structure='+numStructures);
-    crimeRate.penib = crimeRate.penib-Math.round(numStructures/10);
+    crimeRate.penib = crimeRate.penib-(numStructures/10);
     // +5 par dortoir manquant
     if (population > crimeRate.lits) {
-        crimeRate.penib = crimeRate.penib+Math.floor((population-crimeRate.lits)/100);
+        crimeRate.penib = crimeRate.penib+((population-crimeRate.lits)/100);
     }
     crimeRate.penib = Math.round(crimeRate.penib);
     console.log('PENIBBBBBBBBBBBBBBBBBBBBBBBBB');
