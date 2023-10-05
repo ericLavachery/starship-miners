@@ -15,7 +15,7 @@ function getMapInfos() {
 };
 
 // Dessine la carte
-function showMap(wmap,justMoved) {
+function showMap(wmap,justMoved,isPrev) {
     // reset
     $('#zone_map').empty();
     // fill
@@ -79,7 +79,7 @@ function showMap(wmap,justMoved) {
             }
         }
         $('#zone_map').append('<div id="'+tile.id+'" class="grid-item '+terclass+'" onclick="clickTile('+tile.id+')" title="#'+tile.id+' ('+tile.y+'&lrhar;'+tile.x+')"><span class="'+terClass+'"><img src="/static/img/sntiles/'+tPic+'.png"></span><span class="bigIcon" id="b'+tile.id+'">'+resHere+'</span><br></div>');
-        if (!modeSonde) {
+        if (!modeSonde && !zone[0].isPrev) {
             bataillons.forEach(function(bat) {
                 if (bat.tileId === tile.id && bat.loc === "zone") {
                     if (bat.tileId === selectedBat.tileId) {

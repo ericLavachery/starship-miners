@@ -297,8 +297,9 @@ function checkMayOutInSoute(bat,batType) {
 
 function checkMissions(markDone) {
     // à l'atterrissage sur une zone!
-    if (zone[0].number < 50) {
-        // si vous n'êtes pas dans une mission spéciale: check next mission
+    let mTypeHere = getMissionType(zone[0].number,true);
+    if (zone[0].number < 50 || mTypeHere.nid === 'trolley' || mTypeHere.nid === 'science' || mTypeHere.nid === 'resist') {
+        // si vous n'êtes pas dans une mission BOSS: check next mission
         let doom = getDoom(false);
         let nextMission = getNextMission(doom);
         if (nextMission.num >= 50) {
@@ -315,7 +316,6 @@ function checkMissions(markDone) {
     }
     if (markDone) {
         // si vous êtes dans une mission spéciale: marqué la mission comme complétée (sauf missions BOSS)
-        let mTypeHere = getMissionType(zone[0].number,true);
         if (mTypeHere.nid === 'trolley') {
             playerInfos.objectifs.trolley = 'detruit';
         }
@@ -396,7 +396,7 @@ function getNextMission(doom) {
     nextMission.nid = 'none';
     nextMission.pa = 99;
     let found = false;
-    if (doom >= 4.4 || playerInfos.gLevel >= 12) {
+    if (doom >= 4.1 || playerInfos.gLevel >= 12) {
         if (playerInfos.objectifs.resistance === 'none') {
             nextMission.num = getNextMissionNum(60,64);
             if (nextMission.num >= 50) {
@@ -408,7 +408,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 5.1 || playerInfos.gLevel >= 13) {
+        if (doom >= 4.9 || playerInfos.gLevel >= 13) {
             if (playerInfos.objectifs.trolley === 'none') {
                 nextMission.num = getNextMissionNum(50,54);
                 if (nextMission.num >= 50) {
@@ -421,7 +421,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 5.8 || playerInfos.gLevel >= 14) {
+        if (doom >= 5.5 || playerInfos.gLevel >= 14) {
             if (playerInfos.objectifs.swarm === 'none') {
                 nextMission.num = getNextMissionNum(65,69);
                 if (nextMission.num >= 50) {
@@ -434,7 +434,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 6.4 || playerInfos.gLevel >= 15) {
+        if (doom >= 6.1 || playerInfos.gLevel >= 15) {
             if (playerInfos.objectifs.science === 'none') {
                 nextMission.num = getNextMissionNum(55,59);
                 if (nextMission.num >= 50) {
@@ -447,7 +447,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 7 || playerInfos.gLevel >= 16) {
+        if (doom >= 6.7 || playerInfos.gLevel >= 16) {
             if (playerInfos.objectifs.spider === 'none') {
                 nextMission.num = getNextMissionNum(80,84);
                 if (nextMission.num >= 50) {
@@ -460,7 +460,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 7.6 || playerInfos.gLevel >= 17) {
+        if (doom >= 7.3 || playerInfos.gLevel >= 17) {
             if (playerInfos.objectifs.larve === 'none') {
                 nextMission.num = getNextMissionNum(70,74);
                 if (nextMission.num >= 50) {
@@ -473,7 +473,7 @@ function getNextMission(doom) {
         }
     }
     if (!found) {
-        if (doom >= 8.2 || playerInfos.gLevel >= 18) {
+        if (doom >= 7.9 || playerInfos.gLevel >= 18) {
             if (playerInfos.objectifs.bug === 'none') {
                 nextMission.num = getNextMissionNum(75,79);
                 if (nextMission.num >= 50) {

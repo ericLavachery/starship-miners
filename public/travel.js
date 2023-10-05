@@ -834,6 +834,7 @@ function crashSonde() {
     showedTilesReset(false);
     miniOut();
     commandes();
+    viewPop();
     planetThumb();
 };
 
@@ -845,6 +846,7 @@ function stopSonde() {
     showedTilesReset(false);
     miniOut();
     commandes();
+    viewPop();
     planetThumb();
 };
 
@@ -874,6 +876,7 @@ function goSonde(impacteur) {
     showMap(zone,true);
     planetThumb();
     commandes();
+    viewPop();
     ruinsView();
 };
 
@@ -1212,6 +1215,7 @@ function showZonePreview() {
     $('#themmap').empty();
     $('#thenavig').empty();
     $('#thenavig').append('<span class="constIcon"><i class="fas fa-times-circle klik" onclick="miniOut()"></i></span><br>');
+    $('#thenavig').append('<button type="button" title="Montrer cette carte dans la grande fenêtre" class="boutonGris miniButtons" onclick="fullMapPreview()"><i class="fas fa-arrows-alt"></i></button><br>');
     let allResQHere = {};
     let allResHere = [];
     let centreResQHere = {};
@@ -1407,6 +1411,31 @@ function showZonePreview() {
     } else {
         $('#zoneDetail').append('<span class="ListRes">Compétence de détection insuffisante...<br></span><br>');
     }
+};
+
+function fullMapPreview() {
+    if (zonePrev.length >= 1) {
+        zonePrev[0].isPrev = true;
+        if (!zone[0].isPrev) {
+            zoneBkp = zone;
+            zone = zonePrev;
+            showMap(zone,false,true);
+            viewPop();
+            commandes();
+            batUnselect();
+            conOut(true);
+        }
+    }
+};
+
+function fullMapPreviewOut() {
+    zone = zoneBkp;
+    zoneBkp = [];
+    showMap(zone,false);
+    centerMapCenter();
+    viewPop();
+    pickZone();
+    commandes();
 };
 
 function changeEggKindsByZoneType(showInfo,spType) {

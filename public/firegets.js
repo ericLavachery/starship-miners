@@ -726,9 +726,6 @@ function newAlienKilled(batType,tileId) {
             playerInfos.knownAliens.push(batType.name);
             if (batType.class != 'C') {
                 playerInfos.gangXP = playerInfos.gangXP+batType.killXP;
-                if (batType.class === 'A' || batType.class === 'S' || batType.class === 'X') {
-                    playerInfos.gangXP = playerInfos.gangXP+batType.killXP;
-                }
             }
             let xpBonus = batType.killXP;
             xpBonus = Math.floor(xpBonus*(playerInfos.comp.train+2)/4);

@@ -828,8 +828,8 @@ function batInfos(bat,batType,pop) {
     // DISMANTLE
     if (!pop) {
         $('#'+bodyPlace).append('<hr>');
-        let demText;
-        let fleeText;
+        let demText = '';
+        let fleeText = '';
         console.log(nearby);
         let okDis = checkDismantle(bat,batType);
         if (okDis && !decButHere) {

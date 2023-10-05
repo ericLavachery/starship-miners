@@ -125,9 +125,9 @@ function afterMissionReset(time) {
 
 function calcTurnXP(turns) {
     let xp = 0;
-    if (turns > 45) {
-        let overTurns = turns-45;
-        xp = 6.7+(overTurns*0.074);
+    if (turns > 35) {
+        let overTurns = turns-35;
+        xp = 5.91+(overTurns*0.09);
     } else {
         xp = Math.sqrt(turns);
     }
@@ -138,9 +138,9 @@ function calcTurnXP(turns) {
 
 function evalTurnXP(turns) {
     let xp = 0;
-    if (turns > 45) {
-        let overTurns = turns-45;
-        xp = 6.7+(overTurns*0.074);
+    if (turns > 35) {
+        let overTurns = turns-35;
+        xp = 5.91+(overTurns*0.09);
     } else {
         xp = Math.sqrt(turns);
     }

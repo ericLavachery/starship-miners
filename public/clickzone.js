@@ -1,5 +1,5 @@
 function clickTile(tileId) {
-    if (stopMe === false) {
+    if (stopMe === false && !zone[0].isPrev) {
         if (changeVMTid >= 0) {
             clickVMT(tileId);
         } else if (modeLanding) {

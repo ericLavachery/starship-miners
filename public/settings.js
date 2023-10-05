@@ -52,6 +52,7 @@ let filterBase = {};
 let isStartZone = false;
 let zone = [];
 let zonePrev = [];
+let zoneBkp = [];
 let resources = [];
 let minedThisTurn = {};
 let fretTuning = 2; // multiplie tous les Frets des unités : def 1
