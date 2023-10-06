@@ -66,6 +66,15 @@
   }
 }
 
+@-webkit-keyframes eggBlink {
+  0%, 49% {
+    background-color: #ff0000;
+  }
+  50%, 100% {
+    background-color: #ffff00;
+  }
+}
+
 @-webkit-keyframes pointsBlink {
   0%, 49% {
     background-color: #000000;
@@ -115,10 +124,10 @@
     animation: alienBlink 1s infinite;  /* IE 10+, Fx 29+ */
 }
 .mEgg {
-    -webkit-animation: alienBlink .3s infinite;  /* Safari 4+ */
-    -moz-animation: alienBlink .3s infinite;  /* Fx 5+ */
-    -o-animation: alienBlink .3s infinite;  /* Opera 12+ */
-    animation: alienBlink .3s infinite;  /* IE 10+, Fx 29+ */
+    -webkit-animation: eggBlink .3s infinite;  /* Safari 4+ */
+    -moz-animation: eggBlink .3s infinite;  /* Fx 5+ */
+    -o-animation: eggBlink .3s infinite;  /* Opera 12+ */
+    animation: eggBlink .3s infinite;  /* IE 10+, Fx 29+ */
 }
 .mPoints {
     -webkit-animation: pointsBlink .5s infinite;  /* Safari 4+ */

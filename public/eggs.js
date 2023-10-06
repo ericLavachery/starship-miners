@@ -538,6 +538,7 @@ function eggsDrop() {
     }
     console.log('eggDice='+eggDice);
     let coqPerc = getCoqueChance();
+    let coqPlace = getCoquePlace();
     let coqNum = 0;
     let coveredEggs = 0;
     let maxPack = Math.floor((zone[0].mapDiff+1)*(zone[0].mapDiff+1)/4.4);
@@ -558,11 +559,15 @@ function eggsDrop() {
                 }
             }
             if (eggTypeDice <= coqPerc) {
-                if (coqNum < 2) {
-                    dropEgg('Coque','nocenter');
+                if (coqNum <= 1 || coqPlace != 'nocenter') {
+                    dropEgg('Coque',coqPlace);
                     coqNum++;
+                    if (coqPlace === 'center2x') {
+                        dropEgg('Coque',coqPlace);
+                        coqNum++;
+                    }
                 } else {
-                    dropEgg('Oeuf','encounter');
+                    dropEgg('Oeuf','encounter'); // nedge if no encounterTileId
                 }
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             } else if (eggTypeDice <= coqPerc+invisibleChance) {
@@ -599,7 +604,7 @@ function eggsDrop() {
 };
 
 function getCoqueChance() {
-    let coqPerc = coqueChance;
+    let coqPerc = coqueChance; // 20%
     if (zone[0].mapDiff < 4) {
         coqPerc = coqPerc+(zone[0].mapDiff*5)-20;
     }
@@ -611,6 +616,28 @@ function getCoqueChance() {
     }
     return coqPerc;
 }
+
+function getCoquePlace() {
+    let coqPlace = 'nocenter'; // nocenter - any - center
+    let minTurn = 15-zone[0].mapDiff-playerInfos.randSeed;
+    if (zone[0].mapDiff >= 3 && playerInfos.mapTurn >= minTurn) {
+        let coqAccuracy = Math.round(24+(zone[0].mapDiff*4)+(playerInfos.mapTurn)-(aliens.length/3));
+        if (rand.rand(1,2) === 1) {
+            if (coqAccuracy < 30) {
+                coqPlace = 'nocenter';
+            } else if (coqAccuracy < 50) {
+                coqPlace = 'any';
+            } else if (coqAccuracy < 70) {
+                coqPlace = 'center';
+            } else {
+                coqPlace = 'center2x';
+            }
+        }
+        console.log('coqAccuracy = '+coqAccuracy);
+        console.log('coqPlace = '+coqPlace);
+    }
+    return coqPlace;
+};
 
 function dropEgg(alienUnit,theArea) {
     console.log('dropping egg...');
@@ -923,6 +950,41 @@ function eggDropTile(eggName,theArea) {
             }
         });
     }
+    // CENTER
+    if (area === 'center' || area === 'center2x') {
+        let shufZone = _.shuffle(zone);
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                if (tile.x <= 36 && tile.x >= 26 && tile.y <= 37 && tile.y >= 25) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
+                        theTile = tile.id;
+                    }
+                }
+            }
+        });
+        if (theTile < 0) {
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    if (tile.x <= 38 && tile.x >= 23 && tile.y <= 40 && tile.y >= 21) {
+                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            });
+        }
+        if (theTile < 0) {
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    if (tile.x <= 42 && tile.x >= 19 && tile.y <= 44 && tile.y >= 17) {
+                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            });
+        }
+    }
     // TARGET
     // Près d'un bâtiment du joueur
     if (area === 'target') {
@@ -941,26 +1003,32 @@ function eggDropTile(eggName,theArea) {
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
                 let distance = calcDistance(tile.id,targetTile);
-                if (distance > 8 && distance < 13) {
+                if (distance >= 7 && distance <= 11) {
                     if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
                 }
             }
         });
-        if (theTile < 0) {
-            shufBats.forEach(function(bat) {
-                if (bat.loc === "zone") {
-                    let batType = getBatType(bat);
-                    if (batType.cat === 'buildings') {
-                        let distance = calcDistance(bat.tileId,theTile);
-                        if (distance < 5) {
-                            notThisTile = theTile;
-                            theTile = -1;
+        let centerNeed = 0;
+        if (zone[0].mapDiff >= 3) {
+            centerNeed = playerInfos.mapTurn-Math.round(aliens.length/3);
+        }
+        if (centerNeed <= 0) {
+            if (theTile >= 0) {
+                shufBats.forEach(function(bat) {
+                    if (bat.loc === "zone") {
+                        let batType = getBatType(bat);
+                        if (batType.cat === 'buildings') {
+                            let distance = calcDistance(bat.tileId,theTile);
+                            if (distance < 5) {
+                                notThisTile = theTile;
+                                theTile = -1;
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
         }
         if (notThisTile != -1 || theTile < 0) {
             bestFuzz = -3;
@@ -975,7 +1043,7 @@ function eggDropTile(eggName,theArea) {
             shufZone.forEach(function(tile) {
                 if (theTile < 0) {
                     let distance = calcDistance(tile.id,targetTile);
-                    if (distance > 10 && distance < 15) {
+                    if (distance >= 9 && distance <= 13) {
                         if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
                             theTile = tile.id;
                         }

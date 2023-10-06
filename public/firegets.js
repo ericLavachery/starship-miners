@@ -2315,8 +2315,8 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (hasEquip(bat,['g2siege'])) {
         if (thisWeapon.name.includes('Baliste')) {
-            thisWeapon.range = thisWeapon.range+1;
-            thisWeapon.rof = thisWeapon.rof*1.5;
+            thisWeapon.power = thisWeapon.power*1.28;
+            thisWeapon.rof = thisWeapon.rof*1.15;
             if (batType.maxSalvo === 1) {
                 thisWeapon.rof = thisWeapon.rof*1.5;
             } else if (batType.maxSalvo === 2) {

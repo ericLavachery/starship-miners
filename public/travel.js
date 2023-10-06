@@ -662,7 +662,7 @@ function editSonde() {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE DESTINATION POUR PROCHAINE LA SONDE</span><br>');
+    $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE DESTINATION LA POUR PROCHAINE SONDE</span><br>');
     $('#conUnitList').append('<br>');
     // PLANET
     $('#conUnitList').append('<select class="boutonGris" id="thePlanet" onchange="changePlayerInfo(`thePlanet`,`sondePlanet`,`sonde`)" title="Planète"></select>');
