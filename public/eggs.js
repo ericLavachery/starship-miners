@@ -562,7 +562,7 @@ function eggsDrop() {
                 if (coqNum <= 1 || coqPlace != 'nocenter') {
                     dropEgg('Coque',coqPlace);
                     coqNum++;
-                    if (coqPlace === 'center2x') {
+                    if (coqPlace === 'center2x' && coqNum <= 2) {
                         dropEgg('Coque',coqPlace);
                         coqNum++;
                     }
@@ -677,19 +677,20 @@ function dropEgg(alienUnit,theArea) {
         if (eggSquadsLeft <= 0) {
             warning('<span class="rq3">Satéllite Laser</span>','<span class="vio">Oeuf détruit.</span>');
             numLaserSat = numLaserSat-1;
+            conselReset(false);
         } else {
             if (alienUnit === 'Oeuf voilé') {
-                putBat(dropTile,0,0,'invisible');
+                putEgg(dropTile,0,0,'invisible');
             } else if (alienUnit === 'Vomissure') {
-                putBat(dropTile,0,0,'bmorph');
+                putEgg(dropTile,0,0,'bmorph');
             } else if (alienUnit === 'Cocon' && theArea === 'edge') {
-                putBat(dropTile,0,0,'crys');
+                putEgg(dropTile,0,0,'crys');
             } else if (alienUnit === 'Coque' && rand.rand(2,101) <= zone[0].mapDiff) {
-                putBat(dropTile,0,0,'permashield');
+                putEgg(dropTile,0,0,'permashield');
             } else if (alienUnit === 'Oeuf' && rand.rand(2,101) <= zone[0].mapDiff) {
-                putBat(dropTile,0,0,'permashield');
+                putEgg(dropTile,0,0,'permashield');
             } else {
-                putBat(dropTile,0,0);
+                putEgg(dropTile,0,0);
             }
             if (eggSquadsLeft < 6) {
                 let newEggBat = getLastAlienCreated();
@@ -706,6 +707,71 @@ function dropEgg(alienUnit,theArea) {
                 }
             }
         }
+    }
+};
+
+function testDrop() {
+    eggSound();
+    playerOccupiedTileList();
+    let alienUnit = 'Coque';
+    let alienType = getBatTypeByName(alienUnit);
+    let unitIndex = alienUnits.findIndex((obj => obj.name === alienUnit));
+    conselUnit = alienUnits[unitIndex];
+    conselAmmos = ['xxx','xxx','xxx','xxx'];
+    putEgg(1830,0,0,'');
+};
+
+function putEgg(dropTile,cit,xp,startTag) {
+    // console.log('PUT EGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG');
+    // console.log(conselUnit);
+    playerOccupiedTileList();
+    let eggSquadsLeft = 6;
+    if (playerOccupiedTiles.includes(dropTile)) {
+        let deadBat = getZoneBatByTileId(dropTile);
+        let deadBatType = getBatType(deadBat);
+        // calculer en fonction de oeuf et bat
+        let eggDmg = 0;
+        if (deadBatType.skills.includes('transorbital')) {
+            eggDmg = 99;
+        } else if (deadBatType.cat === 'buildings') {
+            eggDmg = deadBatType.hp*deadBat.armor/2000/Math.sqrt(conselUnit.armor+10)*6;
+            if (deadBat.tags.includes('protectall') || deadBatType.skills.includes('protectall')) {
+                eggDmg = eggDmg*1.33;
+            } else if (deadBat.tags.includes('resistall') || deadBatType.skills.includes('resistall')) {
+                eggDmg = eggDmg*1.2;
+            }
+        } else if (deadBatType.cat === 'infantry') {
+            eggDmg = 0;
+        } else {
+            eggDmg = 1;
+        }
+        eggSquadsLeft = eggSquadsLeft-Math.round(eggDmg);
+        eggSquadsLeft = entre(eggSquadsLeft,0,6);
+        if (eggSquadsLeft > 0) {
+            putBat(dropTile,cit,xp,startTag);
+            if (eggSquadsLeft < 6) {
+                let newEggBat = getLastAlienCreated();
+                newEggBat.squadsLeft = eggSquadsLeft;
+            }
+            if (!deadBatType.skills.includes('nodeathcount')) {
+                playerInfos.eggCrash++;
+            }
+            batDeath(deadBat,true,false,false);
+            warning('<span class="rq3">Bataillon détruit</span>','<span class="vio">'+deadBat.type+' détruit par la chutte de l\'oeuf!</span>',false,dropTile,false);
+        } else {
+            conselReset(false);
+            if (deadBatType.skills.includes('transorbital')) {
+                deadBat.squadsLeft = deadBat.squadsLeft-3;
+                if (deadBat.squadsLeft < 1) {
+                    deadBat.squadsLeft = 1;
+                }
+            } else {
+                deadBat.squadsLeft = 1;
+            }
+            warning('<span class="rq3">Bataillon endommagé</span>','<span class="vio">'+deadBat.type+' endommagé par la chutte de l\'oeuf!</span>',false,dropTile,false);
+        }
+    } else {
+        putBat(dropTile,cit,xp,startTag);
     }
 };
 
@@ -731,6 +797,12 @@ function eggDropTile(eggName,theArea) {
     let theTile = -1;
     let area = 'any';
     let targetTile = -1;
+    let mayCrash = false;
+    let crashDice = Math.round(playerInfos.cNeed*5)+(playerInfos.eggCrash*2)-1;
+    crashDice = entre(crashDice,2,15);
+    if (rand.rand(1,crashDice) === 1) {
+        mayCrash = true;
+    }
     if (theArea != 'none') {
         area = theArea;
     } else {
@@ -788,6 +860,7 @@ function eggDropTile(eggName,theArea) {
         }
     }
     // COCON TARGET
+    // quand le premier cocon a une case définie dans une mission
     if (area === 'coctarg') {
         let shufZone = _.shuffle(zone);
         shufZone.forEach(function(tile) {
@@ -821,7 +894,7 @@ function eggDropTile(eggName,theArea) {
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
                 if (tile.x >= 2 && tile.x <= 59 && tile.y >= 2 && tile.y <= 59) {
-                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash) && !pilonedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
                 }
@@ -847,7 +920,7 @@ function eggDropTile(eggName,theArea) {
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
                 if ((tile.x === 55 && tile.y >= 6 && tile.y <= 55) || (tile.x === 6 && tile.y >= 6 && tile.y <= 55) || (tile.y === 6 && tile.x >= 6 && tile.x <= 55) || (tile.y === 55 && tile.x >= 6 && tile.x <= 55)) {
-                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash) && !pilonedTiles.includes(tile.id)) {
                         if (tile.terrain != 'F' && tile.terrain != 'W' && tile.terrain != 'R' && tile.terrain != 'L') {
                             theTile = tile.id;
                         }
@@ -859,7 +932,18 @@ function eggDropTile(eggName,theArea) {
             shufZone.forEach(function(tile) {
                 if (theTile < 0) {
                     if ((tile.x === 55 && tile.y >= 6 && tile.y <= 55) || (tile.x === 6 && tile.y >= 6 && tile.y <= 55) || (tile.y === 6 && tile.x >= 6 && tile.x <= 55) || (tile.y === 55 && tile.x >= 6 && tile.x <= 55)) {
-                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash) && !pilonedTiles.includes(tile.id)) {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            });
+        }
+        if (theTile < 0) {
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    if ((tile.x === 55 && tile.y >= 6 && tile.y <= 55) || (tile.x === 6 && tile.y >= 6 && tile.y <= 55) || (tile.y === 6 && tile.x >= 6 && tile.x <= 55) || (tile.y === 55 && tile.x >= 6 && tile.x <= 55)) {
+                        if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash)) {
                             theTile = tile.id;
                         }
                     }
@@ -943,7 +1027,7 @@ function eggDropTile(eggName,theArea) {
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
                 if (tile.x < 15 || tile.x > 45 || tile.y < 15 || tile.y > 45) {
-                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash) && !pilonedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
                 }
@@ -966,7 +1050,7 @@ function eggDropTile(eggName,theArea) {
             shufZone.forEach(function(tile) {
                 if (theTile < 0) {
                     if (tile.x <= 38 && tile.x >= 23 && tile.y <= 40 && tile.y >= 21) {
-                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
+                        if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash) && !pilonedTiles.includes(tile.id)) {
                             theTile = tile.id;
                         }
                     }
@@ -977,7 +1061,7 @@ function eggDropTile(eggName,theArea) {
             shufZone.forEach(function(tile) {
                 if (theTile < 0) {
                     if (tile.x <= 42 && tile.x >= 19 && tile.y <= 44 && tile.y >= 17) {
-                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
+                        if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash)) {
                             theTile = tile.id;
                         }
                     }
@@ -1004,7 +1088,7 @@ function eggDropTile(eggName,theArea) {
             if (theTile < 0) {
                 let distance = calcDistance(tile.id,targetTile);
                 if (distance >= 7 && distance <= 11) {
-                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash)) {
                         theTile = tile.id;
                     }
                 }
@@ -1153,7 +1237,7 @@ function eggDropTile(eggName,theArea) {
             if (theTile < 0) {
                 distance = calcDistance(tile.id,targetTile);
                 if (distance === 2 || distance === 3) {
-                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
+                    if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash) && !pilonedTiles.includes(tile.id)) {
                         theTile = tile.id;
                     }
                 }
@@ -1164,7 +1248,7 @@ function eggDropTile(eggName,theArea) {
                 if (theTile < 0) {
                     distance = calcDistance(tile.id,targetTile);
                     if (distance === 4 || distance === 5) {
-                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id) && !pilonedTiles.includes(tile.id)) {
+                        if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash) && !pilonedTiles.includes(tile.id)) {
                             theTile = tile.id;
                         }
                     }
@@ -1176,7 +1260,7 @@ function eggDropTile(eggName,theArea) {
                 if (theTile < 0) {
                     distance = calcDistance(tile.id,targetTile);
                     if (distance === 2 || distance === 3 || distance === 4 || distance === 5) {
-                        if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash)) {
                             theTile = tile.id;
                         }
                     }
@@ -1248,7 +1332,19 @@ function eggDropTile(eggName,theArea) {
         }
     }
     return theTile;
-}
+};
+
+function mayDropHere(tileId,mayCrash) {
+    let dropOK = true;
+    if (playerOccupiedTiles.includes(tileId)) {
+        if (zone[0].mapDiff >= eggCrashMinPA && playerInfos.mapTurn >= 3 && playerInfos.eggCrash <= 3 && mayCrash) {
+            dropOK = true;
+        } else {
+            dropOK = false;
+        }
+    }
+    return dropOK;
+};
 
 function morphList() {
     let transList = [];

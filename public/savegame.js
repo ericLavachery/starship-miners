@@ -476,6 +476,7 @@ function resetPlayerInfos() {
     playerInfos.knownAliens = [];
     playerInfos.aliensKilled = 0;
     playerInfos.eggsKilled = 0;
+    playerInfos.eggCrash = 0;
     playerInfos.alienSat = 0;
     playerInfos.unitsLost = 0;
     playerInfos.okFill = false;

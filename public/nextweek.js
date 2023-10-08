@@ -89,6 +89,7 @@ function afterMissionFirstReset() {
     playerInfos.maxEggPlay = 0;
     playerInfos.aliensKilled = 0;
     playerInfos.eggsKilled = 0;
+    playerInfos.eggCrash = 0;
     playerInfos.alienSat = 0;
     playerInfos.fuzzTotal = 0;
     playerInfos.pauseSeed = rand.rand(1,8);
@@ -115,6 +116,7 @@ function afterMissionReset(time) {
     playerInfos.maxEggPlay = 0;
     playerInfos.aliensKilled = 0;
     playerInfos.eggsKilled = 0;
+    playerInfos.eggCrash = 0;
     playerInfos.alienSat = 0;
     playerInfos.fuzzTotal = 0;
     playerInfos.pauseSeed = rand.rand(1,8);

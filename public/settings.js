@@ -269,6 +269,7 @@ let autoRepPower = 5; // 5%
 let shownEggs = [];
 let vomiChance = 5; // 5% par oeuf manquant
 let coqueChance = 20; // 20% pour une coque
+let eggCrashMinPA = 4; // présence alien minimum pour qu'un oeuf puisse tomber sur une unité
 let stopForFight = false;
 let alienTypesList = [];
 let colonyTiles = [];

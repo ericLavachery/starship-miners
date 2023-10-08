@@ -80,7 +80,7 @@
     "costs":{"Scrap":3,"Carbone":9,"Titane":18}
 },
 {
-    "name":"cyberkit",
+    "name":"ciberkit",
     "cat":"equip",
     "skills":[],
     "info":"Helper + TheEye + Regeneration lente",

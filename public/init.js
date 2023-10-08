@@ -184,6 +184,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.travTurns === undefined) {
         playerInfos.travTurns = 8;
     }
+    if (playerInfos.eggCrash === undefined) {
+        playerInfos.eggCrash = 0;
+    }
     if (playerInfos.aCanon === undefined) {
         playerInfos.aCanon = 'none';
     }

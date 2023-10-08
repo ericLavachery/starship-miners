@@ -515,10 +515,6 @@ function batDeath(bat,count,gain,isWiped) {
         isFlying = true;
     }
     if (bat.team == 'player') {
-        // if (batType.crew >= 1 && !batType.skills.includes('dog') && !batType.skills.includes('clone') && !bat.tags.includes('outsider') && count) {
-        //     let cytxp = Math.ceil(batType.squads*batType.squadSize*batType.crew/6);
-        //     playerInfos.gangXP = playerInfos.gangXP+cytxp;
-        // }
         if (bat.tags.includes('nomove') && count && !batType.skills.includes('nomove')) {
             removeNoMoves(bat);
         }
@@ -2336,7 +2332,7 @@ function weaponAdj(weapon,bat,wn) {
             }
         }
     }
-    if (hasEquip(bat,['theeye','ciberkit'])) {
+    if (hasEquip(bat,['theeye'])) {
         if (thisWeapon.aoe === 'unit' || (thisWeapon.aoe === 'brochette' && thisWeapon.name.includes('lister'))) {
             if (thisWeapon.range >= 2 || thisWeapon.elevation >= 4) {
                 thisWeapon.range = thisWeapon.range+1;
@@ -2507,7 +2503,7 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     // helper
-    if (hasEquip(bat,['helper','ciberkit']) && (thisWeapon.isMelee || thisWeapon.name.includes('Javelot'))) {
+    if (hasEquip(bat,['helper']) && (thisWeapon.isMelee || thisWeapon.name.includes('Javelot'))) {
         thisWeapon.power = Math.round(thisWeapon.power*1.33);
     }
     // sila drug

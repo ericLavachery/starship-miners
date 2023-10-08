@@ -370,6 +370,8 @@ function gangNavig() {
             // $('#gangInfos').append('<button type="button" title="Full Zone Preview" class="boutonCiel iconButtons" onclick="fullMapPreview()"><i class="fas fa-layer-group"></i></button>');
         }
         if (!modeSonde && !playerInfos.onShip) {
+            // $('#gangInfos').append('<button type="button" title="Faire tomber une Coque au centre de la carte" class="boutonCiel iconButtons" onclick="testDrop()"><i class="fas fa-meteor"></i></button>');
+            // $('#gangInfos').append('<br>');
             $('#gangInfos').append('<button type="button" title="Test de tir (15 salves, pas de riposte)" class="boutonCiel iconButtons" onclick="noAlienRip()"><i class="fas fa-bullseye"></i></button>');
             $('#gangInfos').append('<button type="button" title="Supprime TOUT sauf la carte et les compétences" class="boutonCiel iconButtons" onclick="mapReset()"><i class="fas fa-skull-crossbones"></i></button>');
             $('#gangInfos').append('<button type="button" title="Supprimer tous les aliens" class="boutonCiel iconButtons" onclick="alienReset()"><i class="fas fa-bug"></i></button>');

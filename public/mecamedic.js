@@ -825,8 +825,8 @@ function getAway(myBat,fromTileId,blob) {
             warning('Répulsion',myBat.type+' paralysé de peur...',false,myBat.tileId);
         } else {
             let batIndex = bataillons.findIndex((obj => obj.id == myBat.id));
+            batDeathEffect(myBat,true,false,'Bataillon digéré',myBat.type+' englouti par la vomissure...');
             bataillons.splice(batIndex,1);
-            batDeathEffect(myBat,true,false,'Bataillon digéré',myBat.type+' englouti par la vomissure...',false,myBat.tileId);
         }
     }
     playerOccupiedTileList();

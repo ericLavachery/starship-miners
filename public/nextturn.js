@@ -182,6 +182,7 @@ function nextTurn() {
     });
     killAlienList();
     checkEggsDrop();
+    // testDrop();
     webSpawns(false);
     ectoSpawns();
     spawns();
