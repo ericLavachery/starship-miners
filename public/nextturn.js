@@ -1,6 +1,6 @@
 function nextTurn() {
     testConnect(pseudo);
-    playMusic('any',false);
+    // playMusic('any',false);
     saveGame();
     checkUndark();
     nextWarn = 1;
@@ -766,6 +766,7 @@ function nextTurnEnd() {
     }
     blockMe(false);
     activeTurn = 'player';
+    // playMusic('any',false);
     nextTurnOK = false;
     commandes();
     // testConnect(pseudo);

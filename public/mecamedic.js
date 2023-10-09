@@ -60,7 +60,11 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     }
     let medRange = 0;
     if (selectedBatType.skills.includes('medrange')) {
-        medRange = 2;
+        if (selectedBatType.name === 'Hôpital') {
+            medRange = 3;
+        } else {
+            medRange = 2;
+        }
     } else if (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('transorbital') || (selectedBatType.skills.includes('medtrans') && selectedBat.tags.includes('fortif')) || (inBld && !selectedBatType.skills.includes('inmed'))) {
         medRange = 1;
     } else if (selectedBatType.skills.includes('inmed')) {
@@ -514,7 +518,11 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
     }
     let medRange = 0;
     if (myBatType.skills.includes('medrange')) {
-        medRange = 2;
+        if (myBatType.name === 'Hôpital') {
+            medRange = 3;
+        } else {
+            medRange = 2;
+        }
     } else if (inBatType.cat === 'buildings' || inBatType.skills.includes('transorbital') || (inBatType.skills.includes('medtrans') && inBat.tags.includes('fortif')) || (myBat.id != inBat.id && !inBatType.skills.includes('inmed'))) {
         medRange = 1;
     } else if (inBatType.skills.includes('inmed')) {

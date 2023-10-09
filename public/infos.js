@@ -273,8 +273,8 @@ function batInfos(bat,batType,pop) {
         let typun = getFullUnitType(batType);
         if (typun.name.includes('préfabriqué')) {
             if (bat.tags.includes('noprefab')) {
-                typun.name = typun.name.replace(' préfabriqués','');
-                typun.name = typun.name.replace(' préfabriqué','');
+                typun.name = typun.name.replace(' préfabriqués',' permanents');
+                typun.name = typun.name.replace(' préfabriqué',' permanent');
             }
         }
         $('#'+bodyPlace).append('<span class="paramName">Type</span><span class="paramIcon"></span><span class="paramValue">'+typun.name+'</span><br>');
@@ -1268,7 +1268,11 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Ce bataillon est moins sujet au stress">Maîtrise</span>'+sepa;
     }
     if (batType.skills.includes('medrange')) {
-        allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons à une distance de 2 cases">Ambulance</span>'+sepa;
+        if (batType.name === 'Hôpital') {
+            allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons à une distance de 3 cases">Ambulance</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons à une distance de 2 cases">Ambulance</span>'+sepa;
+        }
     }
     if (batType.skills.includes('necrocure')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons infectés par la nécrotoxine">Necrocure</span>'+sepa;

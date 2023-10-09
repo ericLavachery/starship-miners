@@ -435,6 +435,13 @@ function getBatPic(bat,batType) {
             batPic = 'minitank-p';
         }
     }
+    if (batType.name === 'Mongrels' || batType.name === 'Klogs') {
+        if (hasSnif(bat,batType)) {
+            batPic = 'dogzmutant';
+        } else {
+            batPic = 'dogzclone';
+        }
+    }
     if (batType.pic.includes('-v1')) {
         if (playerInfos.pseudo === 'Mapedit') {
             // reste v1;

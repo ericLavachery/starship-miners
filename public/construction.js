@@ -96,6 +96,7 @@ function bfconst(cat,triche,upgrade,retour) {
         // console.log(unit.name);
         mayOut = checkMayOut(unit,false);
         slotsOK = iCanSlotThis(slots,unit);
+        let unitSlots = unit.slots;
         uMaxOK = true;
         prodOK = true;
         prodHere = false;
@@ -126,6 +127,8 @@ function bfconst(cat,triche,upgrade,retour) {
                 } else {
                     prodHere = false;
                 }
+                let upFromUnit = getBatTypeByName(unit.bldCost);
+                unitSlots = unitSlots-upFromUnit.slots;
             }
             if (conselUpgrade === 'inf') {
                 if (selectedBatType.unitUp === unit.name) {
@@ -263,7 +266,7 @@ function bfconst(cat,triche,upgrade,retour) {
                     $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="&#9995; '+maxInfo.text+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
                 } else if (!slotsOK) {
                     color = 'gff';
-                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="&#127959; Vous devez libérer de l\'espace dans la Station. Il reste '+slots.rest+' places et il en faut '+unit.slots+' pour ce bâtiment.">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
+                    $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="&#127959; Vous devez libérer de l\'espace dans la Station. Il reste '+slots.rest+' places et il en faut '+unitSlots+' pour ce bâtiment.">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
                 } else {
                     color = 'gff';
                     $('#conUnitList').append('<span class="constName '+color+deco+'"><span title="'+toBldString(unit.bldReq)+citAlert+' '+costString+'">'+unit.name+'</span> <span class="'+citColour+'" title="'+unitCits+' '+citName+'">('+unitCits+'c)</span>'+yhPrint+prodSign+'</span>'+descLink+'<br>');
@@ -1667,7 +1670,7 @@ function removeBat(batId) {
     let bat = getBatById(batId);
     let batType = getBatType(bat);
     batUnselect();
-    batDeath(bat,false,false,false);
+    batDeath(bat,false,false,false,false);
     let batIndex = batList.findIndex((obj => obj.id == batId));
     batList.splice(batIndex,1);
     $('#b'+bat.tileId).empty();
@@ -1757,7 +1760,7 @@ function dismantle(batId,fuite) {
             }
             let xp = getXp(bat);
             batUnselect();
-            batDeath(bat,false,false,false);
+            batDeath(bat,false,false,false,false);
             let batIndex = batList.findIndex((obj => obj.id == batId));
             batList.splice(batIndex,1);
             $('#b'+bat.tileId).empty();
@@ -2331,7 +2334,7 @@ function getXp(bat) {
 function deleteAlien(batId) {
     let index = aliens.findIndex((obj => obj.id == batId));
     let bat = aliens[index];
-    batDeath(bat,false,false,false);
+    batDeath(bat,false,false,false,false);
     $('#b'+bat.tileId).empty();
     let resHere = showRes(bat.tileId);
     $('#b'+bat.tileId).append(resHere);

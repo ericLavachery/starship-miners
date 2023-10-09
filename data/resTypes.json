@@ -551,7 +551,7 @@
         "cat": "sky",
         "batch": 3,
         "energie": 0.33,
-        "cramBld": "Centrale nucléaire",
+        "cramBld": "Centrale SMR",
         "equiv": 4,
         "kinds": ["science","military"],
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":1,"Horst":1}
@@ -592,7 +592,7 @@
         "cat": "sky",
         "batch": 2,
         "energie": 0.4,
-        "cramBld": "Centrale nucléaire",
+        "cramBld": "Centrale SMR",
         "equiv": 5,
         "kinds": ["science","military"],
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":0.5,"Horst":1.5}

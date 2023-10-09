@@ -54,7 +54,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["b_mid","noguet","maycamo","mecano","repair","constructeur","cleaning","barbs","infraz","routes","noblub","light","crewsave","fret","extraction","dumper","recupcit","nocrime","recupres","caterp","reeq","nochef"],
+        "skills":["b_mid","noguet","maycamo","mecano","repair","constructeur","worker","cleaning","barbs","infraz","routes","noblub","light","crewsave","fret","extraction","dumper","recupcit","nocrime","recupres","caterp","reeq","nochef"],
         "mecanoCost":6,
         "mining":{
             "level":1,
@@ -123,7 +123,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":3,
-        "skills":["b_heavy","noguet","mecano","repair","constructeur","cleaning","barbs","infraz","routes","noblub","resistacide","resistelec","dealer","nitro","sudu","light","crewsave","fret","extraction","dumper","recupcit","nocrime","recupres","caterp","kzin","reeq","nochef"],
+        "skills":["b_heavy","noguet","mecano","repair","constructeur","worker","cleaning","barbs","infraz","routes","noblub","resistacide","resistelec","dealer","nitro","sudu","light","crewsave","fret","extraction","dumper","recupcit","nocrime","recupres","caterp","kzin","reeq","nochef"],
         "mecanoCost":3.8,
         "mining":{
             "level":1,

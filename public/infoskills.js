@@ -2680,7 +2680,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
         }
     }
-    if (playerInfos.onShip) {
+    if (playerInfos.onShip && inSoute) {
         // UPGRADE INFANTRY
         if (batType.skills.includes('uprank') && !zeroCrew) {
             let isInPlace = checkUprankPlace(bat,batType);
@@ -2773,7 +2773,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                                 decButHere = true;
                                 let apCost = Math.round(6*batType.fabTime/30);
                                 $('#unitInfos').append('<hr>');
-                                $('#unitInfos').append('<button type="button" title="Déconstruire (mettre dans le lander)" class="boutonMarine iconButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'&nbsp; Déconstruction</span></button>');
+                                $('#unitInfos').append('<button type="button" title="Déconstruire (mettre dans le lander)" class="boutonRouge iconButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'&nbsp; Déconstruction</span></button>');
                             }
                         }
                     }

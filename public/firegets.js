@@ -500,7 +500,7 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
     return result;
 };
 
-function batDeath(bat,count,gain,isWiped) {
+function batDeath(bat,count,gain,isWiped,quiet) {
     console.log('DEATH');
     console.log(bat);
     let deadId = bat.id;
@@ -524,7 +524,9 @@ function batDeath(bat,count,gain,isWiped) {
             if (!batType.skills.includes('nodeathcount') && !bat.tags.includes('nopilots')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 playerInfos.deadBats.push(batType.name);
-                playMusic('rip',true);
+                if (!quiet) {
+                    playMusic('rip',true);
+                }
             }
             if (batType.skills.includes('transport')) {
                 transDestroy(tileId,deadId,isFlying);

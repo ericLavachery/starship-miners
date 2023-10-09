@@ -401,7 +401,7 @@ function checkEggsDrop() {
         }
         if (eggDropCount >= 1 || satDrop) {
             eggSound();
-            playMusic('aftermath',true);
+            playMusic('rhorns',true);
             if (Math.floor(playerInfos.mapTurn/coconStats.turns) > playerInfos.cocons && !satDrop) {
                 if (coconStats.level >= 9) {
                     dropEgg('Cocon','nedge');
@@ -440,7 +440,9 @@ function checkEggsDrop() {
                 playerInfos.cocons = playerInfos.cocons+1;
             }
         } else {
-            // playMusic('any',false);
+            if (aliens.length >= 6) {
+                playMusic('aftermath',true);
+            }
         }
     }
     borderInvasion();
@@ -756,7 +758,7 @@ function putEgg(dropTile,cit,xp,startTag) {
             if (!deadBatType.skills.includes('nodeathcount')) {
                 playerInfos.eggCrash++;
             }
-            batDeath(deadBat,true,false,false);
+            batDeath(deadBat,true,false,false,true);
             warning('<span class="rq3">Bataillon détruit</span>','<span class="vio">'+deadBat.type+' détruit par la chutte de l\'oeuf!</span>',false,dropTile,false);
         } else {
             conselReset(false);

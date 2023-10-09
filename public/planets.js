@@ -1152,7 +1152,7 @@ function stormDamage(bat,batType,storm,inMov,canon) {
                 batDeathEffect(bat,true,false,'<span class="rq3">'+deathCause+'</span>','<span class="vio">'+bat.type+deathType+' (dégâts: '+stormDmg+')</span>');
                 isDead = true;
                 if (inMov) {
-                    batDeath(bat,true,false,false);
+                    batDeath(bat,true,false,false,false);
                 } else {
                     checkDeath(bat,batType,false);
                 }
@@ -1230,7 +1230,7 @@ function stormDamage(bat,batType,storm,inMov,canon) {
             batDeathEffect(bat,true,false,'<span class="rq3">'+deathCause+'</span>','<span class="vio">'+bat.type+deathType+' (dégâts: '+stormDmg+')</span>');
             isDead = true;
             if (inMov) {
-                batDeath(bat,true,false,false);
+                batDeath(bat,true,false,false,false);
             } else {
                 checkDeath(bat,batType,false);
             }

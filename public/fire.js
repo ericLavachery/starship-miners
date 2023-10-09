@@ -1211,7 +1211,7 @@ function attack(melee,init) {
         }
     }
     // freeze
-    if (targetBatType.cat === 'aliens' && targetBatType.kind != 'game') {
+    if (targetBatType.cat === 'aliens' && targetBatType.kind != 'game' && !targetBatType.skills.includes('nofreeze')) {
         if (totalDamage >= 50 || totalDamage >= Math.round(targetBatType.hp*targetBatType.squadSize/2) || (totalDamage >= 1 && selectedWeap.ammo.includes('hypo-'))) {
             if (selectedWeap.ammo.includes('freeze')) {
                 if (targetBatType.cat === 'aliens') {
@@ -1475,7 +1475,7 @@ function attack(melee,init) {
         if (selectedBat.tags.includes('nomove') || selectedBatType.skills.includes('nomove')) {
             gain = false;
         }
-        batDeath(targetBat,true,gain,sWipe);
+        batDeath(targetBat,true,gain,sWipe,false);
         $('#report').append('<br><span class="report cy">Bataillon ('+targetBatName+') détruit<br></span>');
         let deadBat = JSON.parse(JSON.stringify(targetBat));
         if (!isFFW) {
@@ -1497,7 +1497,7 @@ function attack(melee,init) {
     }
     if (selectedWeap.ammo.includes('suicide') || selectedWeap.ammo.includes('autodes')) {
         attAlive = false;
-        batDeath(selectedBat,true,false,true);
+        batDeath(selectedBat,true,false,true,false);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBatName+') détruit<br></span>');
         let deadBat = JSON.parse(JSON.stringify(selectedBat));
         if (!isFFW) {
@@ -2234,7 +2234,7 @@ function defense(melee,init) {
         }
     }
     // freeze
-    if (selectedBatType.cat === 'aliens' && selectedBatType.kind != 'game') {
+    if (selectedBatType.cat === 'aliens' && selectedBatType.kind != 'game' && !selectedBatType.skills.includes('nofreeze')) {
         if (totalDamage >= 50 || totalDamage >= Math.round(selectedBatType.hp*selectedBatType.squadSize/2) || (totalDamage >= 1 && targetWeap.ammo.includes('hypo-'))) {
             if (targetWeap.ammo.includes('freeze')) {
                 let allTags = _.countBy(selectedBat.tags);
@@ -2400,7 +2400,7 @@ function defense(melee,init) {
         if (targetBat.tags.includes('nomove') || targetBatType.skills.includes('nomove')) {
             gain = false;
         }
-        batDeath(selectedBat,true,gain,false);
+        batDeath(selectedBat,true,gain,false,false);
         $('#report').append('<br><span class="report cy">Bataillon ('+selectedBatName+') détruit<br></span>');
         let deadBat = JSON.parse(JSON.stringify(selectedBat));
         if (!isFFW) {

@@ -1355,7 +1355,11 @@ function iCanSlotThis(slots,unit) {
     let unitSlots = 0;
     if (unit.slots != undefined) {
         unitSlots = unit.slots;
-        if (unit.slots > slots.rest) {
+        if (conselUpgrade === 'bld') {
+            let upFromUnit = getBatTypeByName(unit.bldCost);
+            unitSlots = unitSlots-upFromUnit.slots;
+        }
+        if (unitSlots > slots.rest) {
             slotsOK = false;
         }
     }

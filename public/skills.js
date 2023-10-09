@@ -845,7 +845,11 @@ function goDrug(apCost,drugName) {
             if (batType.skills.includes('dealer') && batType.skills.includes(drug.name)) {
                 let rangeBonus = 0;
                 if (batType.skills.includes('medrange')) {
-                    rangeBonus = 1;
+                    if (batType.name === 'Hôpital') {
+                        rangeBonus = 2;
+                    } else {
+                        rangeBonus = 1;
+                    }
                 }
                 ravitLeft = calcRavitDrug(bat);
                 if (calcDistance(selectedBat.tileId,bat.tileId) <= 1+rangeBonus && ravitLeft >= 1) {
@@ -879,6 +883,11 @@ function goDrug(apCost,drugName) {
             selectedBat.tags.push(drug.name);
             selectedBat.tags.push(drug.name);
             selectedBat.tags.push(drug.name);
+            if (drug.name === 'nitro') {
+                if (selectedBatType.skills.includes('saucer') || selectedBatType.skills.includes('tank')) {
+                    selectedBat.tags.push(drug.name);
+                }
+            }
             drugInstantBonus(drug,false);
         }
         playSound(drug.sound,0);
@@ -988,7 +997,14 @@ function getNitroBonus(bat) {
     }
     let batAP = getAP(bat,batType);
     let transBonus = Math.floor(playerInfos.comp.trans*playerInfos.comp.trans/3)*2;
-    let baseBonus = Math.round(batAP/2)+transBonus;
+    if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
+        transBonus = Math.floor(playerInfos.comp.aero*playerInfos.comp.aero/3)*2;
+    }
+    let catDiv = 2;
+    if (batType.skills.includes('tank') || batType.skills.includes('worker')) {
+        catDiv = 3;
+    }
+    let baseBonus = Math.round(batAP/catDiv)+transBonus;
     batAPLeft = batAPLeft+baseBonus;
     if (batAPLeft >= batAP+3+transBonus) {
         batAPLeft = batAP+3+transBonus;
@@ -1044,7 +1060,11 @@ function checkDrugs(myBat) {
             if (batType.skills.includes('dealer')) {
                 let rangeBonus = 0;
                 if (batType.skills.includes('medrange')) {
-                    rangeBonus = 1;
+                    if (batType.name === 'Hôpital') {
+                        rangeBonus = 2;
+                    } else {
+                        rangeBonus = 1;
+                    }
                 }
                 if (calcDistance(myBat.tileId,bat.tileId) <= 1+rangeBonus && calcRavitDrug(bat) >= 1) {
                     if (batType.skills.includes('moloko')) {

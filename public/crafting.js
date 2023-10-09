@@ -130,7 +130,17 @@ function craftWindow(retour) {
                     if (res.cramBld != undefined) {
                         cramBld = res.cramBld;
                     }
-                    if (playerInfos.bldList.includes(cramBld)) {
+                    let hasCramBld = false;
+                    if (cramBld === 'Centrale SMR') {
+                        if (hasUnit('Centrale SMR',false)) {
+                            hasCramBld = true;
+                        }
+                    } else {
+                        if (playerInfos.bldList.includes(cramBld)) {
+                            hasCramBld = true;
+                        }
+                    }
+                    if (hasCramBld) {
                         if (playerInfos.bldList.includes('Incinérateur') || (cramBld != 'Crameur' && cramBld != 'Incinérateur')) {
                             energyFactor = Math.round(50/Math.sqrt(res.energie)*(indus+6)/6)*5;
                         } else {

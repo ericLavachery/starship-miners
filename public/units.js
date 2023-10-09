@@ -340,14 +340,14 @@ function getFullUnitType(batType) {
         if (batType.skills.includes('prefab')) {
             typun.name = 'Bâtiment préfabriqué';
         } else {
-            typun.name = 'Bâtiment';
+            typun.name = 'Bâtiment permanent';
         }
         typun.emo = '&#128101;';
     } else if (batType.cat === 'devices') {
         if (batType.skills.includes('prefab')) {
             typun.name = 'Dispositifs préfabriqués';
         } else {
-            typun.name = 'Dispositifs';
+            typun.name = 'Dispositifs permanents';
         }
         typun.emo = '&#128101;';
     } else if (batType.cat === 'vehicles') {

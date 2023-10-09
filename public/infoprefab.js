@@ -13,7 +13,7 @@ function defabInfos(bat,batType) {
         if (Object.keys(landerBat).length >= 1) {
             haveLander = true;
         }
-        if (batType.skills.includes('constructeur') && !bat.tags.includes('nomove') && !bat.tags.includes('noprefab')) {
+        if (batType.skills.includes('constructeur') && !bat.tags.includes('nomove')) {
             decButHere = true;
             let apCost = prefabCost(batType,prefabBatType,false);
             let depliOK = true;
@@ -30,14 +30,18 @@ function defabInfos(bat,batType) {
             if (prefabBat.apLeft < 0) {
                 apOK = false;
             }
-            if (depliOK && !isLoaded && !isCharged && damageOK && apOK && haveLander && prefabSizeOK) {
-                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonGris iconButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
+            if (depliOK && !isLoaded && !isCharged && damageOK && apOK && haveLander && prefabSizeOK && !prefabBat.tags.includes('noprefab')) {
+                $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Déconstruire '+prefabBatName+'" class="boutonRouge iconButtons" onclick="deconstruction('+prefabId+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
             } else {
                 let koMessage = "Vous ne pouvez pas déconstruire ce bâtiment";
-                if (!haveLander) {
+                if (prefabBat.tags.includes('noprefab')) {
+                    koMessage = "Ce bâtiment n'est pas préfabriqué (vous ne pouvez pas le déconstruire)";
+                } else if (!haveLander) {
                     koMessage = "Vous ne pouvez pas déconstruire de bâtiments si vous n'avez pas de lander";
                 } else if (!prefabSizeOK) {
                     koMessage = "Ce bâtiment est trop grand pour le lander";
+                } else if (!depliOK) {
+                    koMessage = "Une infanterie ne peut pas déconstruire ce bâtiment";
                 } else if (!damageOK) {
                     koMessage = "Ce bâtiment est trop endommagé pour être déconstruit";
                 } else if (!apOK) {
@@ -46,8 +50,6 @@ function defabInfos(bat,batType) {
                     koMessage = "Vous ne pouvez pas déconstruire un bâtiment si il y a un bataillon dedans";
                 } else if (isLoaded) {
                     koMessage = "Vous ne pouvez pas déconstruire un bâtiment si il y a un autre bâtiment dedans";
-                } else if (!depliOK) {
-                    koMessage = "Une infanterie ne peut pas déconstruire ce bâtiment";
                 }
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="'+koMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'</span></button>&nbsp; Déconstruction</h4></span>');
             }
