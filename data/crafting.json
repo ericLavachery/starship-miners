@@ -1207,7 +1207,7 @@
     {
         "id":78,
         "result":"Viande",
-        "cost":{"Drogues":1,"Creatite":4,"Calcium":2},
+        "cost":{"Drogues":1,"Creatite":8,"Calcium":2},
         "compReq":{"ca":4,"gen":1},
         "bldReq":["Centre de recherches"],
         "batch":12,

@@ -1668,6 +1668,25 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         $('#unitInfos').append('<button type="button" title="Elixir du docteur Doxey" class="boutonVert iconButtons" onclick="goDoxey()"><i class="ra ra-flask rpg"></i> <span class="small">0</span></button>');
         lineBreak = true;
     }
+    // GENMOD
+    if (playerInfos.onShip && inSoute && playerInfos.comp.gen >= 1 && playerInfos.bldList.includes('Laboratoire')) {
+        if (!bat.tags.includes('genwater') && !bat.tags.includes('genblind') && !bat.tags.includes('genslow') && !bat.tags.includes('genreg') && !bat.tags.includes('genred') && !bat.tags.includes('genstrong') && !bat.tags.includes('genfast')) {
+            if (batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('cyber')) {
+                if (bat.vet <= 2) {
+                    let goodChance = getGenModChance();
+                    let genModCosts = getGenModCost(batType);
+                    let genCostOK = checkCost(genModCosts);
+                    if (genCostOK) {
+                        $('#unitInfos').append('<button type="button" title="Essayer une modification génétique avec de l\'ADN alien: '+goodChance+'% de réussite (irréversible!) '+displayCosts(genModCosts)+'" class="boutonRouge iconButtons" onclick="doGenMod()"><i class="ra ra-burst-blob rpg"></i> <span class="small">'+goodChance+'%</span></button>');
+                        lineBreak = true;
+                    } else {
+                        $('#unitInfos').append('<button type="button" title="Modification génétique: Ressources insuffisantes '+displayCosts(genModCosts)+'" class="boutonGrey iconButtons gf"><i class="ra ra-burst-blob rpg"></i> <span class="small">'+goodChance+'%</span></button>');
+                        lineBreak = true;
+                    }
+                }
+            }
+        }
+    }
     // LIGNE 6 -----------------------------------------------------------------------------------------------------------------------------------
     if (lineBreak) {
         $('#line-drugs').append('<br>');

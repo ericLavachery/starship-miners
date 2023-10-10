@@ -876,7 +876,7 @@ function batInfos(bat,batType,pop) {
                         demText = '(récupérer des ressources)';
                     } else if (batType.skills.includes('recupcorps')) {
                         if (batType.skills.includes('dog')) {
-                            demText = '(récupérer de la viande)';
+                            demText = '(récupérer du gibier)';
                         } else {
                             demText = '(récupérer des corps)';
                         }

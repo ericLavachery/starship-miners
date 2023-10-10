@@ -1065,9 +1065,9 @@
         "name":"Mongrels",
         "levels":{"rednecks":11,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Chenil","Laboratoire"],
-        "compReq":{"gen":1},
+        "compReq":{"gen":1,"ca":3},
         "unitCost":"Wardogs",
-        "costs":{"Creatite":120,"Bugium":90,"Calcium":90,"Azote":90,"Mercure":36,"Drogues":72},
+        "costs":{"Creatite":240,"Bugium":90,"Calcium":90,"Azote":90,"Mercure":36,"Drogues":72},
         "fabTime":45
     },
     {
@@ -1075,8 +1075,8 @@
         "name":"Klogs",
         "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Chenil","Laboratoire"],
-        "compReq":{"gen":1},
-        "costs":{"Creatite":180,"Gibier":162,"Calcium":90,"Azote":90,"Mercure":36,"Drogues":72},
+        "compReq":{"gen":1,"ca":1},
+        "costs":{"Creatite":120,"Gibier":240,"Calcium":90,"Azote":90,"Mercure":36,"Drogues":72},
         "fabTime":45
     },
     {
@@ -2891,7 +2891,7 @@
         "bldEquiv":["Générateur","Centrale SMR"],
         "bldReq":["Générateur"],
         "compReq":{"energ":2},
-        "upkeep":{"Plutonium":6,"Eau":20},
+        "upkeep":{"Plutonium":14,"Eau":28},
         "prod":{"Energie":230},
         "costs":{"Compo1":345,"Compo2":405,"Compo3":450,"Eau":6000,"Energie":4000,"Carbone":5000,"Titane":1500,"Plomb":2000,"Nickel":1000,"Cuivre":800,"Bore":1500,"Plutonium":1500,"Electros":300,"Batteries":900},
         "fabTime":600,
@@ -2902,11 +2902,11 @@
         "name":"Centrale SMR",
         "bldEquiv":["Générateur"],
         "bldReq":["Générateur"],
-        "upkeep":{"Uranium":3,"Eau":5},
+        "upkeep":{"Uranium":7,"Eau":11,"Rhodium":0.1},
         "prod":{"Energie":85},
         "costs":{"Compo1":205,"Compo2":245,"Compo3":270,"Eau":1000,"Energie":1600,"Carbone":1500,"Titane":300,"Plomb":300,"Nickel":300,"Cuivre":250,"Platine":375,"Bore":375,"Uranium":250,"Hydrogène":500,"Electros":125,"Batteries":350},
         "fabTime":300,
-        "slots":4
+        "slots":3
     },
     {
         "id":174,

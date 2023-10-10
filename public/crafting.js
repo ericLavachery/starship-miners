@@ -122,6 +122,7 @@ function craftWindow(retour) {
                 indus = 4;
             }
             let iHave = getDispoRes('Energie');
+            let dispoWater = getDispoRes('Eau');
             let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'cat'),'energie');
             // sortedResTypes.reverse();
             sortedResTypes.forEach(function(res) {
@@ -149,15 +150,36 @@ function craftWindow(retour) {
                         dispoRes = getDispoRes(res.name);
                         neededRes = res.energie*energyFactor/eCrafting;
                         neededRes = cramPower(res,neededRes);
+                        let waterNeed = 0;
+                        if (res.name === 'Plutonium' || res.name === 'Uranium') {
+                            waterNeed = neededRes*2;
+                        }
                         $('#conUnitList').append('<div class="craftsBlock" id="cram'+res.id+'"></div>');
-                        if (dispoRes >= neededRes && playerInfos.crafts < maxCrafts) {
+                        if (dispoRes >= neededRes && dispoWater >= waterNeed && playerInfos.crafts < maxCrafts) {
                             $('#cram'+res.id).append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                             $('#cram'+res.id).append('<span class="craftsList cy klik" onclick="doEnergyCraft(`'+res.name+'`,'+neededRes+','+energyFactor+')">'+energyFactor+' Energie <span class="brunf">('+iHave+')</span></span><br>');
-                            $('#cram'+res.id).append('<span class="craftsList gf">'+res.name+':<span class="bleu">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
+                            $('#cram'+res.id).append('<span class="craftsList gf">'+res.name+':<span class="bleu">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span> ');
+                            if (res.name === 'Plutonium' || res.name === 'Uranium') {
+                                $('#cram'+res.id).append('<span class="craftsList gf">Eau:<span class="bleu">'+waterNeed+'</span>/<span class="vert">'+dispoWater+'</span></span>');
+                            }
+                            $('#cram'+res.id).append('<br>');
                         } else {
                             $('#cram'+res.id).append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                             $('#cram'+res.id).append('<span class="craftsList gf">'+energyFactor+' Energie</span><br>');
-                            $('#cram'+res.id).append('<span class="craftsList gf">'+res.name+':<span class="rouge">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span><br>');
+                            let theCol = 'rouge';
+                            if (dispoRes >= neededRes) {
+                                theCol = 'bleu';
+                            }
+                            $('#cram'+res.id).append('<span class="craftsList gf">'+res.name+':<span class="'+theCol+'">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span> ');
+                            if (res.name === 'Plutonium' || res.name === 'Uranium') {
+                                if (dispoWater >= waterNeed) {
+                                    theCol = 'bleu';
+                                } else {
+                                    theCol = 'rouge';
+                                }
+                                $('#cram'+res.id).append('<span class="craftsList gf">Eau:<span class="'+theCol+'">'+waterNeed+'</span>/<span class="vert">'+dispoWater+'</span></span>');
+                            }
+                            $('#cram'+res.id).append('<br>');
                         }
                         $('#cram'+res.id).append('<span class="craftsList bleu">'+cramBld+'</span><br>');
                         $('#cram'+res.id).append('<hr class="craft">');
@@ -488,6 +510,10 @@ function adjCraftFactor(craft,craftFactor) {
 
 function doEnergyCraft(resName,neededRes,energyCreated) {
     resSub(resName,neededRes);
+    if (resName === 'Plutonium' || resName === 'Uranium') {
+        let waterNeed = neededRes*2;
+        resSub('Eau',waterNeed);
+    }
     resAdd('Energie',energyCreated);
     playerInfos.crafts = playerInfos.crafts+1;
     craftWindow(true);

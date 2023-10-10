@@ -334,6 +334,8 @@ function getGangFactors() {
         }
         if (playerInfos.gang === 'blades') {
             gangFacts.hunt = 1.25;
+        } else if (playerInfos.gang === 'tiradores') {
+            gangFacts.hunt = 0.9;
         }
     }
     gangFacts.rech = getGangRechAdj();

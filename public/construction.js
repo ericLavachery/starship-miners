@@ -1990,13 +1990,15 @@ function checkOkKill(batType) {
 
 function recupBodies(bat,batType) {
     let coffre = {};
-    if (playerInfos.onShip) {
-        coffre = getBatById(souteId);
-    } else {
-        coffreTileId = -1;
-        conselTriche = true;
-        putBatAround(bat.tileId,false,'near',239,0);
-        coffre = getZoneBatByTileId(coffreTileId);
+    if (!batType.skills.includes('dog')) {
+        if (playerInfos.onShip) {
+            coffre = getBatById(souteId);
+        } else {
+            coffreTileId = -1;
+            conselTriche = true;
+            putBatAround(bat.tileId,false,'near',239,0);
+            coffre = getZoneBatByTileId(coffreTileId);
+        }
     }
     let numBodies = 0;
     if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
@@ -2005,12 +2007,8 @@ function recupBodies(bat,batType) {
         numBodies = batType.crew*batType.squads*batType.squadSize*batType.size/3;
     }
     if (batType.skills.includes('dog')) {
-        numBodies = Math.ceil(numBodies/(7-playerInfos.comp.tri)*16);
-        if (coffre.transRes['Viande'] === undefined) {
-            coffre.transRes['Viande'] = numBodies;
-        } else {
-            coffre.transRes['Viande'] = coffre.transRes['Viande']+numBodies;
-        }
+        numBodies = calcRecupGibier(batType);
+        resAdd('Gibier',numBodies);
     } else {
         numBodies = Math.ceil(numBodies);
         if (coffre.transRes['Corps'] === undefined) {
@@ -2066,6 +2064,18 @@ function recupRes(bat,batType) {
     coffreTileId = -1;
 };
 
+function calcRecupGibier(batType) {
+    let recupGibier = Math.ceil(batType.crew*batType.squads*batType.squadSize*batType.size/1.5);
+    if (batType.name === 'Klogs' || batType.name === 'Mongrels') {
+        recupGibier = 240;
+    } else if (batType.name === 'Wardogs') {
+        recupGibier = 120;
+    } else if (batType.name === 'Pets') {
+        recupGibier = 440;
+    }
+    return recupGibier;
+};
+
 function getResRecup(bat,batType) {
     let resRecup = {};
     if (batType.skills.includes('recupcorps')) {
@@ -2073,7 +2083,7 @@ function getResRecup(bat,batType) {
             resRecup['Corps'] = bat.citoyens;
         } else {
             if (batType.skills.includes('dog')) {
-                resRecup['Viande'] = Math.ceil(batType.crew*batType.squads*batType.squadSize*batType.size/3/(7-playerInfos.comp.tri)*16);
+                resRecup['Gibier'] = calcRecupGibier(batType);
             } else {
                 resRecup['Corps'] = Math.ceil(batType.crew*batType.squads*batType.squadSize*batType.size/3);
             }

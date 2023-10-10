@@ -2015,10 +2015,99 @@ function hasSnif(bat,batType) {
         }
     } else {
         if (bat.tags.includes('genblind')) {
-            if (bat.tags.includes('genslow') || bat.tags.includes('genwater') || bat.tags.includes('genreg')) {
+            if (bat.tags.includes('genslow') || bat.tags.includes('genwater') || bat.tags.includes('genreg') || bat.vet >= 4) {
                 canSnif = true;
             }
         }
     }
     return canSnif;
+};
+
+function getGenModCost(batType) {
+    let cost = {};
+    let amount = batType.squads*batType.squadSize*batType.size;
+    if (batType.skills.includes('moto')) {
+        amount = amount/5*3;
+    }
+    cost['Calcium'] = Math.ceil(amount/2);
+    if (playerInfos.gang === 'drogmulojs') {
+        amount = amount/2;
+    }
+    cost['Creatite'] = Math.ceil(amount/3);
+    cost['Azote'] = Math.ceil(amount/2.5);
+    cost['Mercure'] = Math.ceil(amount/6);
+    cost['Drogues'] = Math.ceil(amount/4);
+    cost['Mendium'] = Math.ceil(amount/12);
+    cost['Swarmine'] = Math.ceil(amount/5);
+    cost['Aranium'] = Math.ceil(amount/10);
+    cost['Larvium'] = Math.ceil(amount/15);
+    cost['Bugium'] = Math.ceil(amount/2);
+    return cost;
+};
+
+function getGenModChance() {
+    let goodChance = (playerInfos.comp.ca*8)+(playerInfos.comp.med*6)+(playerInfos.comp.gen*12);
+    if (playerInfos.bldList.includes('Centre de recherches')) {
+        goodChance = goodChance+10;
+    }
+    return goodChance;
+}
+
+function doGenMod() {
+    if (!selectedBat.tags.includes('genwater') && !selectedBat.tags.includes('genblind') && !selectedBat.tags.includes('genslow') && !selectedBat.tags.includes('genreg') && !selectedBat.tags.includes('genred') && !selectedBat.tags.includes('genstrong') && !selectedBat.tags.includes('genfast')) {
+        let goodChance = getGenModChance();
+        let genDice = 0;
+        if (rand.rand(1,100) <= goodChance) {
+            genDice = rand.rand(4,7);
+        } else {
+            genDice = rand.rand(0,3);
+        }
+        let mayStrong = false;
+        if (Object.keys(selectedBatType.weapon).length >= 3) {
+            if (selectedBatType.weapon.isMelee || selectedBatType.weapon.name.includes('Javelot')) {
+                mayStrong = true;
+            }
+        }
+        if (Object.keys(selectedBatType.weapon2).length >= 3) {
+            if (selectedBatType.weapon2.isMelee || selectedBatType.weapon2.name.includes('Javelot')) {
+                mayStrong = true;
+            }
+        }
+        if (genDice === 1) {
+            selectedBat.tags.push('genblind'); // 0.75 Accuracy
+            warning('Modification génétique',selectedBat.type+' deviennent à moitié aveugles',false);
+        } else if (genDice === 2) {
+            selectedBat.tags.push('genslow'); // 1.25 MoveCost
+            warning('Modification génétique',selectedBat.type+' deviennent boiteux',false);
+        } else if (genDice === 3) {
+            selectedBat.tags.push('genwater'); // Pas de sortie sous la pluie & pas de déplacement dans l'eau (OK avec scaphandre 2)
+            warning('Modification génétique',selectedBat.type+' deviennent allergiques à l\'eau',false);
+        } else if (genDice === 4 && !selectedBatType.skills.includes('regeneration')) {
+            selectedBat.tags.push('genreg'); // Régénération rapide
+            warning('Modification génétique',selectedBat.type+' acquièrent la régénération',false);
+        } else if (genDice === 5 && mayStrong) {
+            selectedBat.tags.push('genstrong'); // Mêlée power +4
+            warning('Modification génétique',selectedBat.type+' acquièrent une force exceptionnelle',false);
+        } else if (genDice === 6 && !selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('moto') && !selectedBatType.skills.includes('cage') && !selectedBatType.skills.includes('machine')) {
+            selectedBat.tags.push('genfast'); // 0.7 MoveCost
+            warning('Modification génétique',selectedBat.type+' acquièrent un déplacement rapide',false);
+        } else if (genDice === 7) {
+            selectedBat.tags.push('genred'); // Réduction de dégâts: 2
+            warning('Modification génétique',selectedBat.type+' acquièrent une résistance aux dégâts',false);
+        } else {
+            warning('Modification génétique','Aucun effet',false);
+        }
+        if (selectedBat.soins === undefined) {
+            selectedBat.soins = 15;
+        } else {
+            selectedBat.soins = selectedBat.soins+15;
+        }
+        let costs = getGenModCost(selectedBatType);
+        payCost(costs);
+        selectedBatArrayUpdate();
+        showBatInfos(selectedBat);
+        if (inSoute) {
+            goSoute();
+        }
+    }
 };

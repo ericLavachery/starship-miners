@@ -709,9 +709,8 @@ function addBodies(bat,batType,cits) {
         resAdd('Corps',bodyRecup);
     }
     if (batType.skills.includes('dog')) {
-        unitCits = batType.squads*batType.crew*batType.squadSize;
-        bodyFactor = 40+(playerInfos.comp.ca*5)+(gangFacts.cit*300)-300+rand.rand(0,10);
-        let bidocheRecup = Math.ceil(unitCits*bodyFactor/100);
+        let bidocheRecup = calcRecupGibier(batType);
+        bidocheRecup = Math.ceil(bidocheRecup/2);
         if (bidocheRecup >= 1) {
             resAdd('Gibier',bidocheRecup);
         }

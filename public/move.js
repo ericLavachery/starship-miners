@@ -51,7 +51,7 @@ function clickMove(tileId) {
         if (selectedBat.team === 'aliens' && zone[0].planet === 'Horst') {
             jmc = jmc/1.5;
         }
-        if (selectedBat.tags.includes('genfast')) {
+        if (selectedBat.tags.includes('genfast') && selectedBat.eq != 'e-jetpack') {
             jmc = jmc/1.33;
         }
         if (selectedBat.tags.includes('genslow')) {
@@ -237,7 +237,7 @@ function moveInfos(bat,jump) {
             if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst' && playerInfos.comp.scaph < 3 && selectedBatType.cat === 'infantry') {
                 jmc = jmc*1.5*moveKzin;
             }
-            if (selectedBat.tags.includes('genfast')) {
+            if (selectedBat.tags.includes('genfast') && selectedBat.eq != 'e-jetpack') {
                 jmc = jmc/1.33;
             }
             if (selectedBat.tags.includes('genslow')) {
@@ -315,7 +315,7 @@ function moveSelectedBat(tileId,free,jump) {
             if (selectedBat.team === 'aliens' && zone[0].planet === 'Horst') {
                 jmc = jmc/1.5;
             }
-            if (selectedBat.tags.includes('genfast')) {
+            if (selectedBat.tags.includes('genfast') && selectedBat.eq != 'e-jetpack') {
                 jmc = jmc/1.33;
             }
             if (selectedBat.tags.includes('genslow')) {

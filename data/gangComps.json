@@ -36,7 +36,7 @@
         "id":4,
         "name":"gen",
         "fullName":"Génétique",
-        "levels":{"rednecks":11,"blades":9,"bulbos":8,"drogmulojs":3,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":11,"blades":9,"bulbos":8,"drogmulojs":3,"tiradores":11,"detruas":11,"brasier":11},
         "maxLevel":2,
         "lvlCosts":[0,1,1],
         "rechCost":2,
