@@ -479,6 +479,15 @@ function healEverything() {
         if (bat.tags.includes('genred')) {
             gearTags.push('genred');
         }
+        if (bat.tags.includes('genimmune')) {
+            gearTags.push('genimmune');
+        }
+        if (bat.tags.includes('genweak')) {
+            gearTags.push('genweak');
+        }
+        if (bat.tags.includes('genko')) {
+            gearTags.push('genko');
+        }
         if (bat.tags.includes('outsider')) {
             if (!batType.skills.includes('constructeur')) {
                 gearTags.push('outsider');

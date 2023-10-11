@@ -1472,7 +1472,7 @@ function alienEdgeSpawns(edgeTile,eggKind) {
     let i = 1;
     while (i <= numAliens) {
         gotIt = false;
-        edgeAlienName = '';
+        edgeAlienName = 'Bugs';
         let checkDice = rand.rand(1,checkDiceMax);
         raritySum = 0;
         alienUnits.forEach(function(unit) {

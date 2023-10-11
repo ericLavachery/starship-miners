@@ -152,12 +152,13 @@ function craftWindow(retour) {
                         neededRes = res.energie*energyFactor/eCrafting;
                         neededRes = cramPower(res,neededRes);
                         let waterNeed = 0;
-                        if (res.name === 'Plutonium' || res.name === 'Uranium') {
-                            waterNeed = neededRes*3;
-                        }
                         let rhodNeed = 0;
+                        if (res.name === 'Plutonium') {
+                            waterNeed = Math.ceil(neededRes*2.5);
+                        }
                         if (res.name === 'Uranium') {
-                            rhodNeed = Math.ceil(neededRes/15);
+                            waterNeed = Math.ceil(neededRes*3.5);
+                            rhodNeed = Math.ceil(neededRes/10);
                         }
                         $('#conUnitList').append('<div class="craftsBlock" id="cram'+res.id+'"></div>');
                         if (dispoRes >= neededRes && dispoWater >= waterNeed && dispoRhod >= rhodNeed && playerInfos.crafts < maxCrafts) {
@@ -526,12 +527,14 @@ function adjCraftFactor(craft,craftFactor) {
 
 function doEnergyCraft(resName,neededRes,energyCreated) {
     resSub(resName,neededRes);
-    if (resName === 'Plutonium' || resName === 'Uranium') {
-        let waterNeed = neededRes*3;
+    if (resName === 'Plutonium') {
+        let waterNeed = Math.ceil(neededRes*2.5);
         resSub('Eau',waterNeed);
     }
     if (resName === 'Uranium') {
-        let rhodNeed = Math.ceil(neededRes/15);
+        let waterNeed = Math.ceil(neededRes*3.5);
+        resSub('Eau',waterNeed);
+        let rhodNeed = Math.ceil(neededRes/10);
         resSub('Rhodium',rhodNeed);
     }
     resAdd('Energie',energyCreated);

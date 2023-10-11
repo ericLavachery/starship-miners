@@ -3152,7 +3152,7 @@ function mirDestruction(weap,bat,batType,tile,teamOnMir,infraName) {
 
 function checkDisease(giveBatType,damage,haveBat,haveBatType,terrain) {
     let getIt = false;
-    if (!haveBat.tags.includes('maladie')) {
+    if (!haveBat.tags.includes('maladie') && !haveBat.tags.includes('genimmune')) {
         if (giveBatType.skills.includes('maladie') || giveBatType.skills.includes('chancre')) {
             if ((haveBatType.cat == 'infantry' && !haveBatType.skills.includes('mutant') && !haveBat.tags.includes('zombie')) || haveBatType.cat == 'aliens') {
                 let dmgReduct = getDamageRed('sans',haveBat,haveBatType);
@@ -3171,6 +3171,9 @@ function checkDisease(giveBatType,damage,haveBat,haveBatType,terrain) {
                 }
                 if (getChance < 13-disResist && damage >= 1) {
                     getChance = 13-disResist;
+                }
+                if (haveBat.tags.includes('genweak')) {
+                    getChance = getChance+35;
                 }
                 if (rand.rand(1,100) <= getChance) {
                     getIt = true;

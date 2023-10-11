@@ -2054,13 +2054,13 @@ function getGenModChance() {
 }
 
 function doGenMod() {
-    if (!selectedBat.tags.includes('genwater') && !selectedBat.tags.includes('genblind') && !selectedBat.tags.includes('genslow') && !selectedBat.tags.includes('genreg') && !selectedBat.tags.includes('genred') && !selectedBat.tags.includes('genstrong') && !selectedBat.tags.includes('genfast')) {
+    if (!selectedBat.tags.includes('genwater') && !selectedBat.tags.includes('genblind') && !selectedBat.tags.includes('genslow') && !selectedBat.tags.includes('genreg') && !selectedBat.tags.includes('genred') && !selectedBat.tags.includes('genstrong') && !selectedBat.tags.includes('genfast') && !selectedBat.tags.includes('genko') && !selectedBat.tags.includes('genimmune') && !selectedBat.tags.includes('genweak')) {
         let goodChance = getGenModChance();
         let genDice = 0;
         if (rand.rand(1,100) <= goodChance) {
-            genDice = rand.rand(4,7);
+            genDice = rand.rand(6,10);
         } else {
-            genDice = rand.rand(0,3);
+            genDice = rand.rand(0,5);
         }
         let mayStrong = false;
         if (Object.keys(selectedBatType.weapon).length >= 3) {
@@ -2073,28 +2073,35 @@ function doGenMod() {
                 mayStrong = true;
             }
         }
-        if (genDice === 1) {
+        if (genDice === 2) {
             selectedBat.tags.push('genblind'); // 0.75 Accuracy
             warning('Modification génétique',selectedBat.type+' deviennent à moitié aveugles',false);
-        } else if (genDice === 2) {
+        } else if (genDice === 3 && !selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('moto')) {
             selectedBat.tags.push('genslow'); // 1.25 MoveCost
             warning('Modification génétique',selectedBat.type+' deviennent boiteux',false);
-        } else if (genDice === 3) {
+        } else if (genDice === 4) {
             selectedBat.tags.push('genwater'); // Pas de sortie sous la pluie & pas de déplacement dans l'eau (OK avec scaphandre 2)
             warning('Modification génétique',selectedBat.type+' deviennent allergiques à l\'eau',false);
-        } else if (genDice === 4 && !selectedBatType.skills.includes('regeneration')) {
+        } else if (genDice === 5) {
+            selectedBat.tags.push('genweak'); // Sensibilité aux poisons et maladies
+            warning('Modification génétique',selectedBat.type+' ont leur système immunitaire affaibli',false);
+        } else if (genDice === 6 && !selectedBatType.skills.includes('regeneration')) {
             selectedBat.tags.push('genreg'); // Régénération rapide
             warning('Modification génétique',selectedBat.type+' acquièrent la régénération',false);
-        } else if (genDice === 5 && mayStrong) {
+        } else if (genDice === 7 && mayStrong) {
             selectedBat.tags.push('genstrong'); // Mêlée power +4
             warning('Modification génétique',selectedBat.type+' acquièrent une force exceptionnelle',false);
-        } else if (genDice === 6 && !selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('moto') && !selectedBatType.skills.includes('cage') && !selectedBatType.skills.includes('machine')) {
+        } else if (genDice === 8 && !selectedBatType.skills.includes('fly') && !selectedBatType.skills.includes('moto') && !selectedBatType.skills.includes('cage') && !selectedBatType.skills.includes('machine')) {
             selectedBat.tags.push('genfast'); // 0.7 MoveCost
             warning('Modification génétique',selectedBat.type+' acquièrent un déplacement rapide',false);
-        } else if (genDice === 7) {
+        } else if (genDice === 9) {
             selectedBat.tags.push('genred'); // Réduction de dégâts: 2
             warning('Modification génétique',selectedBat.type+' acquièrent une résistance aux dégâts',false);
+        } else if (genDice === 10) {
+            selectedBat.tags.push('genimmune'); // Immunisé poisons et maladies
+            warning('Modification génétique',selectedBat.type+' acquièrent une immunité aux poisons et maladies',false);
         } else {
+            selectedBat.tags.push('genko'); // Rien
             warning('Modification génétique','Aucun effet',false);
         }
         if (selectedBat.soins === undefined) {

@@ -1106,7 +1106,7 @@ function attack(melee,init) {
     }
     if (totalDamage >= minDamage || (totalDamage >= 1 && minDamage >= 1 && rand.rand(1,minDamage) === 1)) {
         if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap') || selectedWeap.ammo.includes('gaz')) {
-            if (!targetBatType.skills.includes('resistpoison') && !targetBatType.skills.includes('eatpoison') && !targetBat.tags.includes('zombie')) {
+            if (!targetBatType.skills.includes('resistpoison') && !targetBatType.skills.includes('eatpoison') && !targetBat.tags.includes('zombie') && !targetBat.tags.includes('genimmune')) {
                 if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || targetBatType.cat === 'aliens') {
                     let morePoison = false;
                     if (!selectedWeap.ammo.includes('trap')) {
@@ -2147,7 +2147,7 @@ function defense(melee,init) {
     }
     if (totalDamage >= minDamage || (totalDamage >= 1 && minDamage >= 1 && rand.rand(1,minDamage) === 1)) {
         if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap') || targetWeap.ammo.includes('gaz')) {
-            if (!selectedBatType.skills.includes('resistpoison') && !selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('zombie')) {
+            if (!selectedBatType.skills.includes('resistpoison') && !selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('zombie') && !selectedBat.tags.includes('genimmune')) {
                 if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || selectedBatType.cat === 'aliens') {
                     let morePoison = false;
                     if (!targetWeap.ammo.includes('trap')) {
