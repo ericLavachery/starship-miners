@@ -123,6 +123,7 @@ function craftWindow(retour) {
             }
             let iHave = getDispoRes('Energie');
             let dispoWater = getDispoRes('Eau');
+            let dispoRhod = getDispoRes('Rhodium');
             let sortedResTypes = _.sortBy(_.sortBy(_.sortBy(resTypes,'rarity'),'cat'),'energie');
             // sortedResTypes.reverse();
             sortedResTypes.forEach(function(res) {
@@ -152,15 +153,22 @@ function craftWindow(retour) {
                         neededRes = cramPower(res,neededRes);
                         let waterNeed = 0;
                         if (res.name === 'Plutonium' || res.name === 'Uranium') {
-                            waterNeed = neededRes*2;
+                            waterNeed = neededRes*3;
+                        }
+                        let rhodNeed = 0;
+                        if (res.name === 'Uranium') {
+                            rhodNeed = Math.ceil(neededRes/15);
                         }
                         $('#conUnitList').append('<div class="craftsBlock" id="cram'+res.id+'"></div>');
-                        if (dispoRes >= neededRes && dispoWater >= waterNeed && playerInfos.crafts < maxCrafts) {
+                        if (dispoRes >= neededRes && dispoWater >= waterNeed && dispoRhod >= rhodNeed && playerInfos.crafts < maxCrafts) {
                             $('#cram'+res.id).append('<span class="constIcon"><i class="far fa-check-circle cy"></i></span>');
                             $('#cram'+res.id).append('<span class="craftsList cy klik" onclick="doEnergyCraft(`'+res.name+'`,'+neededRes+','+energyFactor+')">'+energyFactor+' Energie <span class="brunf">('+iHave+')</span></span><br>');
                             $('#cram'+res.id).append('<span class="craftsList gf">'+res.name+':<span class="bleu">'+neededRes+'</span>/<span class="vert">'+dispoRes+'</span></span> ');
                             if (res.name === 'Plutonium' || res.name === 'Uranium') {
                                 $('#cram'+res.id).append('<span class="craftsList gf">Eau:<span class="bleu">'+waterNeed+'</span>/<span class="vert">'+dispoWater+'</span></span>');
+                            }
+                            if (res.name === 'Uranium') {
+                                $('#cram'+res.id).append('<span class="craftsList gf">Rhodium:<span class="bleu">'+rhodNeed+'</span>/<span class="vert">'+dispoRhod+'</span></span>');
                             }
                             $('#cram'+res.id).append('<br>');
                         } else {
@@ -178,6 +186,14 @@ function craftWindow(retour) {
                                     theCol = 'rouge';
                                 }
                                 $('#cram'+res.id).append('<span class="craftsList gf">Eau:<span class="'+theCol+'">'+waterNeed+'</span>/<span class="vert">'+dispoWater+'</span></span>');
+                            }
+                            if (res.name === 'Uranium') {
+                                if (dispoRhod >= rhodNeed) {
+                                    theCol = 'bleu';
+                                } else {
+                                    theCol = 'rouge';
+                                }
+                                $('#cram'+res.id).append('<span class="craftsList gf">Rhodium:<span class="'+theCol+'">'+rhodNeed+'</span>/<span class="vert">'+dispoRhod+'</span></span>');
                             }
                             $('#cram'+res.id).append('<br>');
                         }
@@ -511,8 +527,12 @@ function adjCraftFactor(craft,craftFactor) {
 function doEnergyCraft(resName,neededRes,energyCreated) {
     resSub(resName,neededRes);
     if (resName === 'Plutonium' || resName === 'Uranium') {
-        let waterNeed = neededRes*2;
+        let waterNeed = neededRes*3;
         resSub('Eau',waterNeed);
+    }
+    if (resName === 'Uranium') {
+        let rhodNeed = Math.ceil(neededRes/15);
+        resSub('Rhodium',rhodNeed);
     }
     resAdd('Energie',energyCreated);
     playerInfos.crafts = playerInfos.crafts+1;
@@ -641,31 +661,33 @@ function morphCreation(resCreated) {
 };
 
 function cramPower(res,neededRes) {
-    let energyComp = 0;
+    let energyComp = 0.5;
     if (playerInfos.comp.energ === 1) {
         energyComp = 2;
     } else if (playerInfos.comp.energ === 2) {
         energyComp = 3;
     } else if (playerInfos.comp.energ === 3) {
-        energyComp = 5;
+        energyComp = 4.5;
     }
-    if (playerInfos.bldList.includes('Incinérateur')) {
-        neededRes = neededRes/(energyComp+5)*8;
+    let cramBld = 'Crameur';
+    if (res.cramBld != undefined) {
+        cramBld = res.cramBld;
+    }
+    if (playerInfos.bldList.includes('Incinérateur') && cramBld === 'Incinérateur') {
+        neededRes = Math.round(neededRes/(energyComp+5)*8);
     } else {
-        neededRes = neededRes/(energyComp+5)*10;
+        neededRes = Math.round(neededRes/(energyComp+5)*10);
     }
     if (res.name === 'Huile' || res.name === 'Soufre' || res.name === 'Pyrus' || res.name === 'Pyratol' || res.name === 'Phosphore') {
         neededRes = Math.round(neededRes/(playerInfos.comp.pyro+7)*7);
+    } else if (res.name === 'Uranium' || res.name === 'Plutonium' || res.name === 'Timonium' || res.name === 'Uridium') {
+        neededRes = Math.round(neededRes/(energyComp+20)*23);
     } else if (res.name === 'Scrap') {
         neededRes = Math.round(neededRes/(playerInfos.comp.tri+5)*5);
-    } else if (res.bld === 'Comptoir') {
-        neededRes = Math.round(neededRes/(playerInfos.comp.tri+9)*9);
     } else if (res.cat === 'alien') {
         neededRes = Math.round(neededRes/(playerInfos.comp.ca+10)*10);
-    } else if (res.cat === 'transfo') {
-        neededRes = Math.round(neededRes/(playerInfos.comp.tri+9)*9);
     } else {
-        neededRes = Math.round(neededRes/(energyComp+10)*10);
+        neededRes = Math.round(neededRes/(energyComp+15)*15);
     }
     return neededRes;
 };

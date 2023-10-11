@@ -1860,7 +1860,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","mir","camo","chasse","pistage","guerrilla","embuscade","datt","cible","selfbadmedic","ranger","fastguet","swim","trapap","heroescape","heroap"],
+        "skills":["a_light","fouille","fortif","mir","camo","chasse","pistage","guerrilla","embuscade","datt","cible","selfbadmedic","ranger","fastguet","swim","trapap","heroescape","herosalvo"],
         "mediCost":6,
         "mecanoCost":15,
         "maxSkill":4,
