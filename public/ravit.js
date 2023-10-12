@@ -125,6 +125,9 @@ function calcRavit(bat) {
     let batType = getBatType(bat);
     let ravitLeft = 0;
     ravitLeft = batType.maxSkill;
+    if (bat.tags.includes('genstrong')) {
+        ravitLeft = Math.round(ravitLeft*1.5);
+    }
     if (batType.skills.includes('stock')) {
         ravitLeft = 999;
     }

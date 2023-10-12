@@ -2412,7 +2412,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     // GENHAB
     if (bat.tags.includes('genstrong')) {
-        if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot')) {
+        if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot') || thisWeapon.name.includes('Foreuse')) {
             thisWeapon.power = thisWeapon.power+4;
         }
     }
@@ -2504,12 +2504,12 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     // helper
-    if (hasEquip(bat,['helper']) && (thisWeapon.isMelee || thisWeapon.name.includes('Javelot'))) {
+    if (hasEquip(bat,['helper']) && (thisWeapon.isMelee || thisWeapon.name.includes('Javelot') || thisWeapon.name.includes('Foreuse'))) {
         thisWeapon.power = Math.round(thisWeapon.power*1.33);
     }
     // sila drug
     if (bat.tags.includes('sila')) {
-        if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot')) {
+        if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot') || thisWeapon.name.includes('Foreuse')) {
             thisWeapon.power = thisWeapon.power+3;
         } else if (thisWeapon.isBow) {
             thisWeapon.accuracy = thisWeapon.accuracy+3;
@@ -2697,7 +2697,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     // hero rage
     if (bat.tags.includes('rage')) {
-        if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot')) {
+        if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot') || thisWeapon.name.includes('Foreuse')) {
             thisWeapon.power = thisWeapon.power+Math.round(Math.sqrt(thisWeapon.power)*1.42);
         }
         if (batType.cat === 'aliens') {
@@ -2987,7 +2987,7 @@ function chargeurAdj(bat,shots,weap) {
     } else if (hasCarrousel) {
         newShots = Math.round(newShots*1.25);
     } else if (hasEquip(bat,['helper'])) {
-        if (!weap.isMelee && !weap.name.includes('Javelot')) {
+        if (!weap.isMelee && !weap.name.includes('Javelot') && !weap.name.includes('Foreuse')) {
             newShots = Math.round(newShots*1.25);
         }
     }

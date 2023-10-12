@@ -519,20 +519,44 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName '+gencolor+'">Régénération</span><span class="paramIcon"></span><span class="paramValue '+gencolor+'">'+regenType+'</span><br>');
     }
     // GENHAB
-    if (bat.tags.includes('genstrong')) {
-        $('#'+bodyPlace).append('<span class="paramName ciel">Hulk</span><span class="paramIcon"></span><span class="paramValue ciel">Oui</span><br>');
+    if (bat.tags.includes('genwater')) {
+        $('#'+bodyPlace).append('<span class="paramName or" title="Allergique à l\'eau">Allergique</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     }
     if (bat.tags.includes('genblind')) {
         $('#'+bodyPlace).append('<span class="paramName jaune">Myope</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
-    if (bat.tags.includes('genfast')) {
-        $('#'+bodyPlace).append('<span class="paramName ciel">Rapide</span><span class="paramIcon"></span><span class="paramValue ciel">Oui</span><br>');
-    }
     if (bat.tags.includes('genslow')) {
         $('#'+bodyPlace).append('<span class="paramName jaune">Lent</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
     }
-    if (bat.tags.includes('genwater')) {
-        $('#'+bodyPlace).append('<span class="paramName or" title="Allergique à l\'eau">Allergique</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+    if (bat.tags.includes('genweak')) {
+        $('#'+bodyPlace).append('<span class="paramName jaune" title="Sensibilité aux poisons et maladies">Déficient</span><span class="paramIcon"></span><span class="paramValue jaune">Oui</span><br>');
+    }
+    if (bat.tags.includes('genstrong')) {
+        $('#'+bodyPlace).append('<span class="paramName ciel">Hulk</span><span class="paramIcon"></span><span class="paramValue ciel">Oui</span><br>');
+    }
+    if (bat.tags.includes('genfast')) {
+        $('#'+bodyPlace).append('<span class="paramName ciel">Rapide</span><span class="paramIcon"></span><span class="paramValue ciel">Oui</span><br>');
+    }
+    if (pop) {
+        let resDis = false;
+        let resPois = false;
+        if (bat.tags.includes('genimmune')) {
+            resDis = true;
+            resPois = true;
+        }
+        if (batType.skills.includes('mutant')) {
+            if (playerInfos.comp.ca >= 3) {
+                resDis = true;
+                resPois = true;
+            } else {
+                resDis = true;
+            }
+        }
+        if (resDis && resPois) {
+            $('#'+bodyPlace).append('<span class="paramName ciel" title="Résistant aux poisons et maladies">Vigoureux</span><span class="paramIcon"></span><span class="paramValue ciel">Oui</span><br>');
+        } else if (resDis) {
+            $('#'+bodyPlace).append('<span class="paramName ciel" title="Résistant aux maladies">Vigoureux</span><span class="paramIcon"></span><span class="paramValue ciel">Oui</span><br>');
+        }
     }
     if (hasSnif(bat,batType)) {
         $('#'+bodyPlace).append('<span class="paramName ciel" title="Peut repérer les aliens furtifs et invisibles à 2 cases">Pisteur</span><span class="paramIcon"></span><span class="paramValue ciel">Oui</span><br>');

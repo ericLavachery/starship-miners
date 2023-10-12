@@ -1688,6 +1688,13 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             if (batType.kind === 'drogmulojs') {
                 riskOK = true;
             }
+            if (playerInfos.gang === 'brasier') {
+                if (batType.name === 'Tôlards') {
+                    riskOK = true;
+                } else {
+                    riskOK = false;
+                }
+            }
         }
         let genModCosts = getGenModCost(batType);
         let genCostOK = checkCost(genModCosts);
