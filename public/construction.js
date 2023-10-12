@@ -953,14 +953,50 @@ function doUpgrade() {
         let myBatXP = Math.ceil(selectedBat.xp/2);
         let myBatId = selectedBat.id;
         let myBatTileId = selectedBat.tileId;
+        let myBatGenTag = getBatGenTag(selectedBat);
         removeBat(selectedBat.id);
-        putBat(myBatTileId,0,myBatXP);
+        putBat(myBatTileId,0,myBatXP,myBatGenTag);
     }
     $("#unitInfos").css("display","none");
     if (inSoute) {
         souteFilter = 'all';
         goSoute();
     }
+};
+
+function getBatGenTag(bat) {
+    let genTag = '';
+    if (bat.tags.includes('genko')) {
+        genTag = 'genko';
+    }
+    if (bat.tags.includes('genslow')) {
+        genTag = 'genslow';
+    }
+    if (bat.tags.includes('genfast')) {
+        genTag = 'genfast';
+    }
+    if (bat.tags.includes('genblind')) {
+        genTag = 'genblind';
+    }
+    if (bat.tags.includes('genstrong')) {
+        genTag = 'genstrong';
+    }
+    if (bat.tags.includes('genwater')) {
+        genTag = 'genwater';
+    }
+    if (bat.tags.includes('genreg')) {
+        genTag = 'genreg';
+    }
+    if (bat.tags.includes('genred')) {
+        genTag = 'genred';
+    }
+    if (bat.tags.includes('genimmune')) {
+        genTag = 'genimmune';
+    }
+    if (bat.tags.includes('genweak')) {
+        genTag = 'genweak';
+    }
+    return genTag;
 };
 
 function clickUpgrade(tileId) {

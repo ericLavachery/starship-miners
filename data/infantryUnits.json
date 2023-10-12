@@ -39,7 +39,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["b_none","fortif","fret","fweight","varsquad","nodeathcount","nochef","recupcorps","iscit","nofight"],
+        "skills":["b_none","fortif","fret","fweight","varsquad","nodeathcount","nochef","recupcorps","iscit","nogen","nofight"],
         "transRes":72,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
@@ -83,7 +83,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["b_none","recherche","noguet","mecano","nochef","nodeploy","nofight"],
+        "skills":["b_none","recherche","noguet","mecano","nochef","nodeploy","nofight","nogen"],
         "mecanoCost":6,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
@@ -127,7 +127,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["b_none","fouille","fortif","fret","fweight","varsquad","nodeathcount","nochef","recupcorps","iscit","nofight"],
+        "skills":["b_none","fouille","fortif","fret","fweight","varsquad","nodeathcount","nochef","recupcorps","iscit","nofight","nogen"],
         "transRes":72,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
@@ -590,7 +590,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_elga","fouille","fortif","maycamo","datt","fastguet","resistelec","resistall","bigblub","gooddef","noaploss","fo","kzin","herorip","lowstress","detrange","elite"],
+        "skills":["a_elga","fouille","fortif","maycamo","datt","fastguet","resistelec","resistall","bigblub","gooddef","noaploss","fo","kzin","herorip","lowstress","detrange","nogen","elite"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },
@@ -1310,7 +1310,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","medic","cleric","dealer","starka","octiron","uprank","souschef","herorange","lowstress"],
+        "skills":["a_light","fouille","fortif","datt","medic","cleric","dealer","starka","octiron","uprank","souschef","herorange","lowstress","nogen"],
         "mediCost":9,
         "maxDrug":18,
         "fuzz":0.5,
@@ -1374,7 +1374,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","fireballs","medic","cleric","necrocure","dealer","starka","kirin","octiron","prayer","survivor","luckyshot","nochef","lowstress","max3"],
+        "skills":["a_light","fouille","fortif","datt","fireballs","medic","cleric","necrocure","dealer","starka","kirin","octiron","prayer","survivor","luckyshot","nochef","lowstress","nogen","max3"],
         "mediCost":7,
         "maxDrug":24,
         "fuzz":0.5,
@@ -3850,7 +3850,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","selfmedic","dealer","starka","leader","fly","jetpack","fastguet","longshot","survivor","inflammable","unemun","maycamo","baddef","oknitro","herosalvo"],
+        "skills":["a_mid","fouille","fortif","selfmedic","dealer","starka","leader","fly","jetpack","fastguet","longshot","survivor","inflammable","unemun","maycamo","baddef","oknitro","nogen","herosalvo"],
         "maxDrug":8,
         "mediCost":8,
         "fuzz":3.5,
@@ -4211,7 +4211,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","selfmedic","defense","leader","survivor","luckyshot","fastguet","ranger","guerrilla","maycamo","cible","fo","herokill"],
+        "skills":["a_mid","fouille","fortif","datt","selfmedic","defense","leader","survivor","luckyshot","fastguet","ranger","guerrilla","maycamo","cible","fo","nogen","herokill"],
         "mediCost":5,
         "fuzz":1.5,
         "deathFx":"162157__mediapaja2009__agony"
@@ -4271,7 +4271,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","embuscade","camo","ranger","swim","selfmedic","survivor","leader","defense","dreduct","guerrilla","tirailleur","baddef","fastguet","heroescape","herorange","taming"],
+        "skills":["a_mid","fouille","fortif","datt","embuscade","camo","ranger","swim","selfmedic","survivor","leader","defense","dreduct","guerrilla","tirailleur","baddef","fastguet","nogen","heroescape","herorange","taming"],
         "mediCost":7,
         "fuzz":0,
         "deathFx":"human3"
@@ -4331,7 +4331,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","selfmedic","leader","fly","jetpack","longshot","survivor","inflammable","maycamo","oknitro","herosalvo","heroap"],
+        "skills":["a_light","fouille","fortif","datt","selfmedic","leader","fly","jetpack","longshot","survivor","inflammable","maycamo","oknitro","nogen","herosalvo","heroap"],
         "mediCost":10,
         "fuzz":2.5,
         "deathFx":"162157__mediapaja2009__agony"
@@ -4394,7 +4394,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","fastguet","datt","cible","ranger","swim","selfmedic","leader","survivor","maycamo","defense","guerrilla","embuscade","herokill"],
+        "skills":["a_heavy","fouille","fortif","fastguet","datt","cible","ranger","swim","selfmedic","leader","survivor","maycamo","defense","guerrilla","embuscade","nogen","herokill"],
         "mediCost":5,
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
@@ -6885,7 +6885,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","guerrilla","datt","camo","chasse","pistage","selfbadmedic","ranger","swim","lowstress","recupcit","nocrime","nofight","uprank"],
+        "skills":["a_light","fouille","fortif","guerrilla","datt","camo","chasse","pistage","selfbadmedic","ranger","swim","lowstress","recupcit","nocrime","nofight","nogen","uprank"],
         "mediCost":10,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"

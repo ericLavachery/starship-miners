@@ -1670,23 +1670,47 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     }
     // GENMOD
     if (playerInfos.onShip && inSoute && playerInfos.comp.gen >= 1 && playerInfos.bldList.includes('Laboratoire')) {
+        let modDone = true;
         if (!bat.tags.includes('genwater') && !bat.tags.includes('genblind') && !bat.tags.includes('genslow') && !bat.tags.includes('genreg') && !bat.tags.includes('genred') && !bat.tags.includes('genstrong') && !bat.tags.includes('genfast') && !bat.tags.includes('genko') && !bat.tags.includes('genimmune') && !bat.tags.includes('genweak')) {
-            if (batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('cyber') && !batType.skills.includes('mutant') && !batType.skills.includes('dog')) {
-                if (bat.vet <= 2 && !batType.skills.includes('leader') && !batType.skills.includes('cleric')) {
-                    if (bat.id % 3 === 0) {
-                        let goodChance = getGenModChance();
-                        let genModCosts = getGenModCost(batType);
-                        let genCostOK = checkCost(genModCosts);
-                        if (genCostOK) {
-                            $('#unitInfos').append('<button type="button" title="Essayer une modification génétique avec de l\'ADN alien: '+goodChance+'% de réussite (irréversible!) '+displayCosts(genModCosts)+'" class="boutonRouge iconButtons" onclick="doGenMod()"><i class="ra ra-burst-blob rpg"></i> <span class="small">'+goodChance+'%</span></button>');
-                            lineBreak = true;
-                        } else {
-                            $('#unitInfos').append('<button type="button" title="Modification génétique: Ressources insuffisantes '+displayCosts(genModCosts)+'" class="boutonGrey iconButtons gf"><i class="ra ra-burst-blob rpg"></i> <span class="small">'+goodChance+'%</span></button>');
-                            lineBreak = true;
-                        }
-                    }
+            modDone = false;
+        }
+        let typeOK = false;
+        if (batType.cat === 'infantry' && !batType.skills.includes('clone') && !batType.skills.includes('cyber') && !batType.skills.includes('mutant') && !batType.skills.includes('dog')) {
+            typeOK = true;
+        }
+        let riskOK = false;
+        if (!batType.skills.includes('nogen') && !batType.skills.includes('recupcit')) {
+            if (bat.vet <= 2 || batType.skills.includes('penitbat')) {
+                if (bat.id % 3 === 0) {
+                    riskOK = true;
                 }
             }
+            if (batType.kind === 'drogmulojs') {
+                riskOK = true;
+            }
+        }
+        let genModCosts = getGenModCost(batType);
+        let genCostOK = checkCost(genModCosts);
+        let goodChance = getGenModChance();
+        if (!modDone && typeOK && riskOK && genCostOK) {
+            $('#unitInfos').append('<button type="button" title="Essayer une modification génétique avec de l\'ADN alien: '+goodChance+'% de réussite (irréversible!) '+displayCosts(genModCosts)+'" class="boutonRouge iconButtons" onclick="doGenMod()"><i class="ra ra-burst-blob rpg"></i> <span class="small">'+goodChance+'%</span></button>');
+            lineBreak = true;
+        } else {
+            boutonNope = 'boutonGrey';
+            colorNope = 'gf';
+            if (modDone || batType.skills.includes('mutant') || batType.name === 'Klogs' || batType.name === 'Mongrels') {
+                skillMessage = 'Modification génétique: Déjà effectuée';
+                boutonNope = 'boutonOK';
+                colorNope = 'cy';
+            } else if (!typeOK) {
+                skillMessage = 'Modification génétique: Impossible sur ce bataillon';
+            } else if (!riskOK) {
+                skillMessage = 'Modification génétique: Ils ne sont pas très chauds...';
+            } else if (!genCostOK) {
+                skillMessage = 'Modification génétique: Ressources insuffisantes '+displayCosts(genModCosts);
+            }
+            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="ra ra-burst-blob rpg"></i> <span class="small">'+goodChance+'%</span></button>');
+            lineBreak = true;
         }
     }
     // LIGNE 6 -----------------------------------------------------------------------------------------------------------------------------------

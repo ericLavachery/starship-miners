@@ -1709,14 +1709,16 @@ function tagsEffect(bat,batType) {
         } else {
             if (rand.rand(1,30) <= unitResist && bat.team === 'player' && !bat.tags.includes('genweak')) {
                 tagDelete(bat,'maladie');
-                warning('',bat.type+' a vaincu la maladie.',false,bat.tileId);
+                if (!bat.tags.includes('maladie')) {
+                    warning('',bat.type+' ont vaincu la maladie.',false,bat.tileId);
+                }
             } else {
                 bat.apLeft = bat.apLeft-Math.floor(bat.ap/2.2);
-                if (bat.squadsLeft < batType.squads || bat.damage >= 1) {
+                if (bat.squadsLeft < batType.squads || bat.damage >= 1 || bat.tags.includes('genweak')) {
                     if (rand.rand(1,36) <= (6-unitResist) && bat.team === 'player') {
-                        bat.tags.push('venin');
                         if (!batType.skills.includes('resistpoison')) {
-                            warning('',bat.type+' risque de succomber à la maladie.',false,bat.tileId);
+                            bat.tags.push('venin');
+                            warning('',bat.type+' risquent de succomber à la maladie.',false,bat.tileId);
                         }
                     }
                 }
@@ -1872,7 +1874,7 @@ function tagsEffect(bat,batType) {
             bat.apLeft = bat.apLeft-Math.floor(bat.ap/3);
             let veninDeg = Math.round(rand.rand((Math.round(venumDamage/3)),venumDamage)*batType.squads*batType.squadSize/60);
             if (bat.tags.includes('genweak')) {
-                veninDeg = veninDeg*3;
+                veninDeg = veninDeg*2;
             }
             if (playerInfos.comp.med >= 3) {
                 veninDeg = Math.round(veninDeg/2);
@@ -1899,7 +1901,7 @@ function tagsEffect(bat,batType) {
         if (bat.tags.includes('poison') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron') && !bat.tags.includes('zombie') && bat.squadsLeft >= 1) {
             let poisonPower = allTags.poison*poisonDamage;
             if (bat.tags.includes('genweak')) {
-                poisonPower = poisonPower*3;
+                poisonPower = poisonPower*2;
             }
             if (bat.team === 'player') {
                 poisonPower = Math.round(poisonPower*batType.squads*batType.squadSize/60);

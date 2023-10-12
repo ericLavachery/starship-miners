@@ -2073,6 +2073,12 @@ function doGenMod() {
                 mayStrong = true;
             }
         }
+        if (selectedBatType.mining != undefined) {
+            mayStrong = true;
+        }
+        if (selectedBatType.skills.includes('fret')) {
+            mayStrong = true;
+        }
         if (genDice === 2) {
             selectedBat.tags.push('genblind'); // 0.75 Accuracy
             warning('Modification génétique',selectedBat.type+' deviennent à moitié aveugles',false);
@@ -2096,7 +2102,7 @@ function doGenMod() {
             warning('Modification génétique',selectedBat.type+' acquièrent un déplacement rapide',false);
         } else if (genDice === 9) {
             selectedBat.tags.push('genred'); // Réduction de dégâts: 2
-            warning('Modification génétique',selectedBat.type+' acquièrent une résistance aux dégâts',false);
+            warning('Modification génétique',selectedBat.type+' acquièrent une peau épaisse (résistance aux dégâts)',false);
         } else if (genDice === 10) {
             selectedBat.tags.push('genimmune'); // Immunisé poisons et maladies
             warning('Modification génétique',selectedBat.type+' acquièrent une immunité aux poisons et maladies',false);

@@ -548,6 +548,12 @@ function getMiningRate(bat,fullRate,noMining) {
                 miningAdj = 1.6;
             }
         }
+        if (bat.tags.includes('genstrong')) {
+            miningAdj = miningAdj+0.2;
+        }
+        if (bat.tags.includes('genblind')) {
+            miningAdj = miningAdj-0.2;
+        }
         if (hasEquip(bat,['plasmaextract'])) {
             miningAdj = 1.7;
         } else if (hasEquip(bat,['monoextract'])) {

@@ -126,6 +126,9 @@ function batInfos(bat,batType,pop) {
     if (hasEquip(bat,['maxtrans'])) {
         resMax = Math.round(resMax/4);
     }
+    if (bat.tags.includes('genstrong')) {
+        resMax = Math.round(resMax*2);
+    }
     if (hasEquip(bat,['garage'])) {
         resMax = resMax*2;
         if (resMax < 5000) {
