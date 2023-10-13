@@ -513,7 +513,7 @@ function alienCanon() {
         cblob = 1;
     }
     if ((playerInfos.objectifs.spider === 'actif' && !domeProtect) || cprov === 'uber') {
-        let freq = 7-Math.ceil(zone[0].mapDiff/2)-cblob;
+        let freq = 7-Math.ceil(zone[0].mapDiff/2)-cblob-cblob;
         if (freq < 2) {freq = 2;}
         if (playerInfos.mapTurn % freq === 0 && playerInfos.mapTurn >= 2) {
             let canonTiles = getWebCanonTiles(cprov,cblob);
@@ -892,8 +892,10 @@ function getWebCanonTiles(cprov,cblob) {
                         }
                     }
                     if (thisTarget >= bestTarget) {
-                        targetTile = bat.tileId;
-                        bestTarget = thisTarget;
+                        if (bestTarget === 0 || rand.rand(1,2) === 1) {
+                            targetTile = bat.tileId;
+                            bestTarget = thisTarget;
+                        }
                     }
                 }
             }

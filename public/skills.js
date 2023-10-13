@@ -1327,6 +1327,7 @@ function removeWeb(apCost) {
     let thisTile = getTileById(selectedBat.tileId);
     if (thisTile.web || thisTile.ecto || thisTile.moist) {
         workDone = true;
+        tagDelete(selectedBat,'mud');
         apFullCost = apFullCost+apCost;
         if (!selectedBatType.skills.includes('fly')) {
             apFullCost = apFullCost+apCost;
@@ -1338,7 +1339,7 @@ function removeWeb(apCost) {
     if (!workDone) {
         thisTile = getTileById(selectedBat.tileId-1);
         if (thisTile.web || thisTile.ecto || thisTile.moist) {
-            delete thisTile.web;
+            // delete thisTile.web;
             workDone = true;
             apFullCost = apFullCost+apCost;
         }
@@ -1353,7 +1354,7 @@ function removeWeb(apCost) {
         if (thisTile.moist) {delete thisTile.moist;}
         thisTile = getTileById(selectedBat.tileId+1);
         if (thisTile.web || thisTile.ecto || thisTile.moist) {
-            delete thisTile.web;
+            // delete thisTile.web;
             workDone = true;
             apFullCost = apFullCost+apCost;
         }
@@ -1368,7 +1369,7 @@ function removeWeb(apCost) {
         if (thisTile.moist) {delete thisTile.moist;}
         thisTile = getTileById(selectedBat.tileId+mapSize);
         if (thisTile.web || thisTile.ecto || thisTile.moist) {
-            delete thisTile.web;
+            // delete thisTile.web;
             workDone = true;
             apFullCost = apFullCost+apCost;
         }
@@ -1383,7 +1384,7 @@ function removeWeb(apCost) {
         if (thisTile.moist) {delete thisTile.moist;}
         thisTile = getTileById(selectedBat.tileId-mapSize);
         if (thisTile.web || thisTile.ecto || thisTile.moist) {
-            delete thisTile.web;
+            // delete thisTile.web;
             workDone = true;
             apFullCost = apFullCost+apCost;
         }
@@ -1401,7 +1402,7 @@ function removeWeb(apCost) {
         if (!workDone) {
             thisTile = getTileById(selectedBat.tileId-mapSize-1);
             if (thisTile.web || thisTile.ecto || thisTile.moist) {
-                delete thisTile.web;
+                // delete thisTile.web;
                 apFullCost = apFullCost+apCost;
             }
             if (thisTile.web) {
@@ -1415,7 +1416,7 @@ function removeWeb(apCost) {
             if (thisTile.moist) {delete thisTile.moist;}
             thisTile = getTileById(selectedBat.tileId-mapSize+1);
             if (thisTile.web || thisTile.ecto || thisTile.moist) {
-                delete thisTile.web;
+                // delete thisTile.web;
                 apFullCost = apFullCost+apCost;
             }
             if (thisTile.web) {
@@ -1429,7 +1430,7 @@ function removeWeb(apCost) {
             if (thisTile.moist) {delete thisTile.moist;}
             thisTile = getTileById(selectedBat.tileId+mapSize-1);
             if (thisTile.web || thisTile.ecto || thisTile.moist) {
-                delete thisTile.web;
+                // delete thisTile.web;
                 apFullCost = apFullCost+apCost;
             }
             if (thisTile.web) {
@@ -1443,7 +1444,7 @@ function removeWeb(apCost) {
             if (thisTile.moist) {delete thisTile.moist;}
             thisTile = getTileById(selectedBat.tileId+mapSize+1);
             if (thisTile.web || thisTile.ecto || thisTile.moist) {
-                delete thisTile.web;
+                // delete thisTile.web;
                 apFullCost = apFullCost+apCost;
             }
             if (thisTile.web) {

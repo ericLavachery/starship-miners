@@ -1553,6 +1553,9 @@ function isInRange(myBat,thatTileId,myWeapon,alien) {
         if (myWeapon.range >= 1 && !myWeapon.isMelee) {
             rangeBonus = rangeBonus+1;
         }
+        if (myWeapon.flurange != undefined) {
+            range = myWeapon.flurange;
+        }
     }
     if (rangeTerAdj) {
         if (myWeapon.aoe === 'unit' || myWeapon.aoe === 'brochette') {
@@ -1560,9 +1563,6 @@ function isInRange(myBat,thatTileId,myWeapon,alien) {
             let terrain = getTerrainById(thatTileId);
             let alienType = getBatType(alien);
             if (!alienType.skills.includes('fly') && !alien.tags.includes('fluo')) {
-                // if (terrain.scarp >= 3 && alienType.size <= 2) {
-                //     terrainAdj = terrainAdj-1;
-                // }
                 if (terrain.veg > alienType.size) {
                     terrainAdj = terrainAdj-terrain.veg+alienType.size;
                 }
@@ -2693,6 +2693,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     // fog
     if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
+        thisWeapon.flurange = thisWeapon.range;
         thisWeapon.range = 1;
     }
     // hero rage
