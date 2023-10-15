@@ -897,11 +897,11 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             apFullCost = apCost*numWeb;
             apReq = Math.ceil(apFullCost/6);
             apReq = entre(apReq,2,10);
-            if (bat.apLeft >= apReq && !nearby.oneTile) {
+            if (bat.apLeft >= apReq && !inMelee) {
                 $('#unitInfos').append('<button type="button" title="Nettoyer: Détruire les toiles, moisissures et ectoplasmes" class="boutonGris iconButtons" onclick="removeWeb('+apCost+')"><i class="fas fa-broom"></i> <span class="small">'+apFullCost+'</span></button>');
                 lineBreak = true;
             } else {
-                if (nearby.oneTile) {
+                if (inMelee) {
                     skillMessage = "Nettoyer: Ne peut pas se faire en mêlée";
                 } else {
                     skillMessage = "Nettoyer: Pas assez de PA (réserve de "+apReq+" requise)";

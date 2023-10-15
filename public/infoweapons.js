@@ -729,6 +729,7 @@ function showAmmo(ammo,redux) {
     ammoView = ammoView.replace('hypo-','');
     ammoView = ammoView.replace('boulet-','');
     ammoView = ammoView.replace('belier-','');
+    ammoView = ammoView.replace('ram-','');
     ammoView = ammoView.replace('ac-','');
     ammoView = ammoView.replace('pn-','');
     ammoView = ammoView.replace('sm-','');

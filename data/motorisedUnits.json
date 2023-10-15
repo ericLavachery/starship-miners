@@ -44,7 +44,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["belier-standard"]
         },
         "protection":[],
         "equip":["aucun","g2motor","e-flash","e-treuil","e-road"],
@@ -113,7 +113,7 @@
             "power":25,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["belier-standard"]
         },
         "protection":[],
         "equip":["aucun","g2motor","e-flash","e-treuil","e-road"],
@@ -595,7 +595,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","g2motor","snorkel","maxtrans","belier","moisso","e-flash","e-mecano","e-road"],
@@ -797,7 +797,7 @@
             "power":14,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","chargeur1","wstab","g2motor","snorkel","belier","moisso","e-flash","e-radar","waterproof","e-control","e-road"],
@@ -863,7 +863,7 @@
             "power":14,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","chargeur1","wstab","g2motor","snorkel","belier","moisso","e-flash","waterproof","e-control","e-road","e-radar"],
@@ -1302,7 +1302,7 @@
             "power":28,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","g2motor","lunette1","moisso","snorkel","e-flash","theeye","e-mecano","e-road"],
@@ -1605,7 +1605,7 @@
             "power":20,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","g2motor","moisso","snorkel","e-flash"],
@@ -1787,7 +1787,7 @@
             "power":22,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "weapon3":{
             "name":"Bélier",
@@ -1802,7 +1802,7 @@
             "power":22,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["belier-standard"]
         },
         "protection":[],
         "equip":["aucun","carrousel1","g2motor","snorkel","e-flash"],
@@ -1940,7 +1940,7 @@
             "power":32,
             "aoe":"squad",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","ram-low","ram-spike","ram-spear"]
         },
         "weapon3":{
             "name":"Scies",
@@ -2020,7 +2020,7 @@
             "power":42,
             "aoe":"squad",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","ram-low","ram-spike","ram-spear"]
         },
         "protection":[],
         "equip":["aucun","g2motor","e-flash","theeye","waterproof","e-mecano","e-road"],
@@ -2082,7 +2082,7 @@
             "power":17,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","lunette1","chargeur1","silencieux1","moisso","g2motor","snorkel","e-flash","waterproof","e-radar"],
@@ -2846,7 +2846,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","lunette1","chargeur1","moisso","g2motor","chenilles","snorkel","e-flash"],
@@ -2913,7 +2913,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","g2motor","chenilles","snorkel","e-mecano","belier","moisso","e-flash","e-road","e-lifepod"],
@@ -2977,7 +2977,7 @@
             "power":20,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","g2motor","chenilles","moisso","e-flash","e-mecano","e-medic","g2siege","repel","e-road","e-lifepod"],
@@ -3206,7 +3206,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","g2motor","chenilles","snorkel","maxtrans","belier","moisso","e-flash","e-mecano","e-medic","chargeur1","e-road","e-lifepod"],
@@ -3272,7 +3272,7 @@
             "power":15,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","g2motor","chenilles","snorkel","e-mecano","belier","moisso","e-flash","e-road","e-treuil","e-respod"],
@@ -3399,7 +3399,7 @@
             "power":10,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","g2motor","belier","silencieux1","e-flash","waterproof","maxtrans","e-mecano","e-road","repel","e-respod"],
@@ -3459,7 +3459,7 @@
             "power":30,
             "aoe":"squad",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","ram-low","ram-spike","ram-spear"]
         },
         "protection":[],
         "equip":["aucun","g2motor","maxtrans","e-flash","e-mecano","e-road","e-respod"],
@@ -3524,7 +3524,7 @@
             "power":30,
             "aoe":"squad",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","ram-low","ram-spike","ram-spear"]
         },
         "protection":[],
         "equip":["aucun","carrousel1","g2motor","e-flash","waterproof","e-road","e-lifepod"],
@@ -3591,7 +3591,7 @@
             "power":18,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","lunette1","chargeur1","wstabkit","moisso","g2motor","snorkel","e-flash","chenilles","e-mecano","e-lifepod"],
@@ -3655,7 +3655,7 @@
             "power":15,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","g2motor","snorkel","chenilles","maxtrans","belier","moisso","e-flash","e-road","e-mecano"],
@@ -3721,7 +3721,7 @@
             "power":10,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","g2motor","chenilles","snorkel","maxtrans","e-flash","belier","moisso","e-mecano","e-road"],
@@ -3850,7 +3850,7 @@
             "power":15,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","g2motor","moisso","e-flash","waterproof","e-mecano","e-road"],
@@ -4055,7 +4055,7 @@
             "power":20,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","chargeur1","moisso","g2motor","snorkel","maxtrans","e-flash","theeye","e-mecano","g2tools","e-road","e-respod"],
@@ -4128,7 +4128,7 @@
             "power":20,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard","belier-spike"]
+            "ammo":["belier-standard","belier-spike"]
         },
         "protection":[],
         "equip":["aucun","arcpoulie","moisso","g2motor","snorkel","maxtrans","e-flash","theeye","e-mecano","g2tools","e-road","e-respod"],
@@ -4204,7 +4204,7 @@
             "power":16,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["belier-standard"]
         },
         "protection":[],
         "equip":["aucun","g2motor","belier","moisso","e-flash","waterproof","e-mecano","e-road","e-respod"],
@@ -4277,7 +4277,7 @@
             "power":21,
             "aoe":"brochette",
             "sound":"belier",
-            "ammo":["standard"]
+            "ammo":["belier-standard"]
         },
         "protection":[],
         "equip":["aucun","g2motor","belier","moisso","e-road","e-respod"],

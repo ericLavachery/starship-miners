@@ -1657,9 +1657,9 @@ function tagsEffect(bat,batType) {
         if (bat.apLeft > maxAP) {
             bat.apLeft = maxAP;
         }
-        if (batType.skills.includes('fullaploss')) {
-            bat.apLeft = bat.apLeft-rand.rand(6,12);
-        }
+        // if (batType.skills.includes('fullaploss')) {
+        //     bat.apLeft = bat.apLeft-rand.rand(6,12);
+        // }
         tagDelete(bat,'web');
     }
     // BLAZE DRUG
@@ -1850,7 +1850,11 @@ function tagsEffect(bat,batType) {
                 bat.squadsLeft = bat.squadsLeft-squadsOut;
                 bat.damage = totalDamage-(squadsOut*squadHP);
                 if (bat.squadsLeft <= 0) {
-                    batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le shinda.');
+                    if (batType.skills.includes('boss')) {
+                        batDeathEffect(bat,true,true,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' tués par le shinda.</span>');
+                    } else {
+                        batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le shinda.');
+                    }
                 }
             }
         }
@@ -1928,7 +1932,11 @@ function tagsEffect(bat,batType) {
             bat.damage = totalDamage-(squadsOut*squadHP);
             if (bat.squadsLeft <= 0) {
                 if (batType.team === 'aliens') {
-                    batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le poison.');
+                    if (batType.skills.includes('boss')) {
+                        batDeathEffect(bat,true,true,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' tués par le poison.</span>');
+                    } else {
+                        batDeathEffect(bat,true,true,'Bataillon détruit',bat.type+' tués par le poison.');
+                    }
                 } else {
                     batDeathEffect(bat,true,true,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' tués par le poison.</span>');
                 }

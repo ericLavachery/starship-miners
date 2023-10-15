@@ -280,9 +280,9 @@ function goDoxey() {
 function diversion() {
     aliens.forEach(function(alien) {
         let alienType = getBatType(alien);
-        if (alienType.moveCost < 90) {
+        if (alienType.moveCost < 90 && !alien.tags.includes('freeze')) {
             let distance = calcDistance(selectedBat.tileId,alien.tileId);
-            if (distance <= 5) {
+            if (distance <= 6) {
                 alien.aplLeft = alien.aplLeft-Math.round(alienType.moveCost*1.5);
                 let lassoTileId = getLassoTile(alien.tileId,selectedBat.tileId);
                 if (lassoTileId >= 0) {
@@ -1328,6 +1328,9 @@ function removeWeb(apCost) {
     if (thisTile.web || thisTile.ecto || thisTile.moist) {
         workDone = true;
         tagDelete(selectedBat,'mud');
+        if (selectedBat.apLeft < 0) {
+            selectedBat.apLeft = Math.round(selectedBat.apLeft/2);
+        }
         apFullCost = apFullCost+apCost;
         if (!selectedBatType.skills.includes('fly')) {
             apFullCost = apFullCost+apCost;
@@ -1348,6 +1351,9 @@ function removeWeb(apCost) {
             let hereBat = getZoneBatByTileId(thisTile.id);
             if (Object.keys(hereBat).length >= 1) {
                 tagDelete(hereBat,'mud');
+                if (hereBat.apLeft < 0) {
+                    hereBat.apLeft = Math.round(hereBat.apLeft/2);
+                }
             }
         }
         if (thisTile.ecto) {delete thisTile.ecto;}
@@ -1363,6 +1369,9 @@ function removeWeb(apCost) {
             let hereBat = getZoneBatByTileId(thisTile.id);
             if (Object.keys(hereBat).length >= 1) {
                 tagDelete(hereBat,'mud');
+                if (hereBat.apLeft < 0) {
+                    hereBat.apLeft = Math.round(hereBat.apLeft/2);
+                }
             }
         }
         if (thisTile.ecto) {delete thisTile.ecto;}
@@ -1378,6 +1387,9 @@ function removeWeb(apCost) {
             let hereBat = getZoneBatByTileId(thisTile.id);
             if (Object.keys(hereBat).length >= 1) {
                 tagDelete(hereBat,'mud');
+                if (hereBat.apLeft < 0) {
+                    hereBat.apLeft = Math.round(hereBat.apLeft/2);
+                }
             }
         }
         if (thisTile.ecto) {delete thisTile.ecto;}
@@ -1393,6 +1405,9 @@ function removeWeb(apCost) {
             let hereBat = getZoneBatByTileId(thisTile.id);
             if (Object.keys(hereBat).length >= 1) {
                 tagDelete(hereBat,'mud');
+                if (hereBat.apLeft < 0) {
+                    hereBat.apLeft = Math.round(hereBat.apLeft/2);
+                }
             }
         }
         if (thisTile.ecto) {delete thisTile.ecto;}
@@ -1410,6 +1425,9 @@ function removeWeb(apCost) {
                 let hereBat = getZoneBatByTileId(thisTile.id);
                 if (Object.keys(hereBat).length >= 1) {
                     tagDelete(hereBat,'mud');
+                    if (hereBat.apLeft < 0) {
+                        hereBat.apLeft = Math.round(hereBat.apLeft/2);
+                    }
                 }
             }
             if (thisTile.ecto) {delete thisTile.ecto;}
@@ -1424,6 +1442,9 @@ function removeWeb(apCost) {
                 let hereBat = getZoneBatByTileId(thisTile.id);
                 if (Object.keys(hereBat).length >= 1) {
                     tagDelete(hereBat,'mud');
+                    if (hereBat.apLeft < 0) {
+                        hereBat.apLeft = Math.round(hereBat.apLeft/2);
+                    }
                 }
             }
             if (thisTile.ecto) {delete thisTile.ecto;}
@@ -1438,6 +1459,9 @@ function removeWeb(apCost) {
                 let hereBat = getZoneBatByTileId(thisTile.id);
                 if (Object.keys(hereBat).length >= 1) {
                     tagDelete(hereBat,'mud');
+                    if (hereBat.apLeft < 0) {
+                        hereBat.apLeft = Math.round(hereBat.apLeft/2);
+                    }
                 }
             }
             if (thisTile.ecto) {delete thisTile.ecto;}
@@ -1452,6 +1476,9 @@ function removeWeb(apCost) {
                 let hereBat = getZoneBatByTileId(thisTile.id);
                 if (Object.keys(hereBat).length >= 1) {
                     tagDelete(hereBat,'mud');
+                    if (hereBat.apLeft < 0) {
+                        hereBat.apLeft = Math.round(hereBat.apLeft/2);
+                    }
                 }
             }
             if (thisTile.ecto) {delete thisTile.ecto;}
@@ -1460,7 +1487,7 @@ function removeWeb(apCost) {
     }
     selectedBat.apLeft = selectedBat.apLeft-apFullCost;
     playSound('hose',-0.3);
-    tagDelete(selectedBat,'mud');
+    // tagDelete(selectedBat,'mud');
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);

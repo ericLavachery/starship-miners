@@ -1312,15 +1312,15 @@ function attack(melee,init) {
         }
     }
     if (targetBatType.skills.includes('noaploss')) {
-        if (selectedWeap.ammo.includes('flashbang') || selectedWeap.ammo === 'molotov-flash') {
+        if (selectedWeap.ammo.includes('flashbang') || selectedWeap.ammo === 'molotov-flash' || selectedWeap.ammo === 'ram-low') {
             apDamage = Math.round(apDamage/1.25);
         } else {
             apDamage = Math.round(apDamage/5);
         }
     } else if (targetBatType.skills.includes('fullaploss') && selectedWeap.ammo.includes('web')) {
-        apDamage = Math.ceil(apDamage*5);
+        apDamage = Math.ceil(apDamage*3);
     } else if (targetBatType.skills.includes('moreaploss') && selectedWeap.ammo.includes('web')) {
-        apDamage = Math.ceil(apDamage*2);
+        apDamage = Math.ceil(apDamage*1.5);
     }
     if (targetBat.prt != undefined) {
         if (targetBat.prt === 'swing' || targetBat.prt === 'soap' || targetBat.prt === 'silk') {
@@ -1486,6 +1486,17 @@ function attack(melee,init) {
             }, 200);
         } else {
             batDeathEffect(deadBat,false,gain,'','');
+        }
+        if (selectedWeap.name === 'Bélier' && !selectedWeap.free) {
+            if (selectedWeap.num === 1) {
+                if (selectedBat.tags.includes('noBis1')) {
+                    tagDelete(selectedBat,'noBis1');
+                }
+            } else {
+                if (selectedBat.tags.includes('noBis2')) {
+                    tagDelete(selectedBat,'noBis2');
+                }
+            }
         }
     } else {
         // targetBatArrayUpdate();
@@ -2333,7 +2344,7 @@ function defense(melee,init) {
         }
     }
     if (selectedBatType.skills.includes('noaploss')) {
-        if (targetWeap.ammo.includes('flashbang') || targetWeap.ammo === 'molotov-flash') {
+        if (targetWeap.ammo.includes('flashbang') || targetWeap.ammo === 'molotov-flash' || targetWeap.ammo === 'ram-low') {
             apDamage = Math.round(apDamage/1.25);
         } else {
             apDamage = Math.round(apDamage/5);
