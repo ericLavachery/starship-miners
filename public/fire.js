@@ -1498,6 +1498,16 @@ function attack(melee,init) {
                 }
             }
         }
+        if (!sbk && !selectedBat.tags.includes('tornade')) {
+            if (selectedBatType.skills.includes('onemore') && !selectedBat.tags.includes('more')) {
+                if (selectedBatType.skills.includes('elite') || selectedBat.vet >= 3) {
+                    if (selectedBat.salvoLeft < 1) {
+                        selectedBat.salvoLeft = 1;
+                        selectedBat.tags.push('more');
+                    }
+                }
+            }
+        }
     } else {
         // targetBatArrayUpdate();
         if (targetBat.team == 'player') {

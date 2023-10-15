@@ -1373,6 +1373,7 @@ function tagsUpdate(bat,batType) {
     tagDelete(bat,'deb');
     tagDelete(bat,'chrg');
     tagDelete(bat,'vise');
+    tagDelete(bat,'more');
     tagDelete(bat,'datt');
     // tagDelete(bat,'autoroad');
     if (rand.rand(1,3) > 1) {
