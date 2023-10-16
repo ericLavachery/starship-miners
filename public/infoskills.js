@@ -2833,7 +2833,9 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
         }
         // RECONSTRUIRE
-        refabInfos(bat,batType);
+        if (!playerInfos.onShip) {
+            refabInfos(bat,batType);
+        }
     }
     // CONSTRUCTION TRICHE
     if (batType.skills.includes('triche')) {

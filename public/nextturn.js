@@ -1776,7 +1776,9 @@ function tagsEffect(bat,batType) {
         }
         if (bat.team === 'aliens') {
             if (batType.skills.includes('nokill')) {
-                tagDelete(bat,'necro');
+                if (rand.rand(1,4) === 1) {
+                    tagDelete(bat,'necro');
+                }
             }
         } else if (rand.rand(4,48) <= unitResist) {
             tagDelete(bat,'necro');
@@ -1997,9 +1999,12 @@ function checkDeath(bat,batType,gain) {
                     unveilAliens(bat);
                 }
             }
+            playerInfos.aliensKilled = playerInfos.aliensKilled+1;
             if (gain) {
-                playerInfos.aliensKilled = playerInfos.aliensKilled+1;
                 addAlienRes(bat,false);
+                if (!playerInfos.knownAliens.includes(batType.name)) {
+                    newAlienKilled(batType,bat.tileId,true);
+                }
             }
             deadAliensList.push(bat.id);
         }

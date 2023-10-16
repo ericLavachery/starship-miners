@@ -2497,7 +2497,7 @@ function getRoadAPCost(bat,batType,tile,round) {
     let apCost = batType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
     if (hasEquip(bat,['e-road'])) {
         if (batType.skills.includes('routes')) {
-            apCost = apCost/1.5;
+            apCost = apCost/1.75;
         } else if (batType.mecanoCost < 12) {
             apCost = 12*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
         }

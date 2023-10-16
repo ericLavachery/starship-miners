@@ -973,7 +973,11 @@ function pickZone() {
                 }
             }
             if (!hideZone) {
-                $('#conUnitList').append('<span class="paramName '+linkCol+' klik" onclick="putMissionZone('+zoneId+','+zoneInfo.pid+')">Choisir '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span> <span class="'+planetCol+' wback" title="Planète: '+zoneInfo.planet+'">&#9864;</span><br>');
+                if (playerInfos.missionZone === zoneId) {
+                    $('#conUnitList').append('<span class="paramName lcy">&#128640; '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span> <span class="'+planetCol+' wback" title="Planète: '+zoneInfo.planet+'">&#9864;</span><br>');
+                } else {
+                    $('#conUnitList').append('<span class="paramName '+linkCol+' klik" onclick="putMissionZone('+zoneId+','+zoneInfo.pid+')">Choisir '+zoneName+'</span><span class="paramIcon rose"><i class="fas fa-map"></i></span><span class="paramValue cy klik" title="'+showInfo+'" onclick="loadZonePreview('+zoneId+')">Voir</span> <span class="'+planetCol+' wback" title="Planète: '+zoneInfo.planet+'">&#9864;</span><br>');
+                }
             }
         }
     });

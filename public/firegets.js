@@ -557,7 +557,7 @@ function batDeath(bat,count,gain,isWiped,quiet) {
             if (gain) {
                 addAlienRes(bat,isWiped);
                 if (!playerInfos.knownAliens.includes(batType.name)) {
-                    newAlienKilled(batType,tileId);
+                    newAlienKilled(batType,tileId,false);
                 }
             }
         }
@@ -613,7 +613,7 @@ function batDeathEffect(bat,quiet,gain,title,body) {
         warning(title,body);
     }
     if (gain && bat.team === 'aliens' && !playerInfos.knownAliens.includes(bat.type)) {
-        newAlienKilled(bat.type,bat.tileId);
+        newAlienKilled(bat.type,bat.tileId,false);
     }
     if (bat.team != 'aliens') {
         let batType = getBatType(bat);
@@ -717,7 +717,7 @@ function addBodies(bat,batType,cits) {
     }
 };
 
-function newAlienKilled(batType,tileId) {
+function newAlienKilled(batType,tileId,onTurnEnd) {
     if (!isStartZone) {
         if (batType.cat === 'aliens') {
             playerInfos.knownAliens.push(batType.name);
@@ -726,29 +726,31 @@ function newAlienKilled(batType,tileId) {
             }
             let xpBonus = batType.killXP;
             xpBonus = Math.floor(xpBonus*(playerInfos.comp.train+2)/4);
-            if (xpBonus >= 1) {
-                if (Object.keys(selectedBat).length >= 1) {
-                    if (selectedBat.team === 'player') {
-                        if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
-                            selectedBat.xp = selectedBat.xp+xpBonus;
-                            selectedBatArrayUpdate();
-                        }
-                    }
-                }
-                bataillons.forEach(function(bat) {
-                    if (bat.loc === "zone" || bat.loc === "trans") {
-                        let distance = calcDistance(tileId,bat.tileId);
-                        let batType = getBatType(bat);
-                        if (distance <= 4 || xpBonus >= 25) {
-                            if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
-                                bat.xp = bat.xp+xpBonus;
+            if (!onTurnEnd) {
+                if (xpBonus >= 1) {
+                    if (Object.keys(selectedBat).length >= 1) {
+                        if (selectedBat.team === 'player') {
+                            if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
+                                selectedBat.xp = selectedBat.xp+xpBonus;
+                                selectedBatArrayUpdate();
                             }
                         }
                     }
-                });
-                warning('Alien inconnu tué : '+batType.name,'Toutes vos unités dans la zone ont gagné <span class="vio">'+xpBonus+' points d\'expérience.</span><br><span class="gf">Ressources récupérées: '+toCoolString(batType.killRes,true,false)+'</span>');
-            } else {
-                warning('Alien inconnu tué : '+batType.name,'<span class="gf">Ressources récupérées: '+toCoolString(batType.killRes,true,false)+'</span>');
+                    bataillons.forEach(function(bat) {
+                        if (bat.loc === "zone" || bat.loc === "trans") {
+                            let distance = calcDistance(tileId,bat.tileId);
+                            let batType = getBatType(bat);
+                            if (distance <= 4 || xpBonus >= 25) {
+                                if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
+                                    bat.xp = bat.xp+xpBonus;
+                                }
+                            }
+                        }
+                    });
+                    warning('Alien inconnu tué : '+batType.name,'Toutes vos unités dans la zone ont gagné <span class="vio">'+xpBonus+' points d\'expérience.</span><br><span class="gf">Ressources récupérées: '+toCoolString(batType.killRes,true,false)+'</span>');
+                } else {
+                    warning('Alien inconnu tué : '+batType.name,'<span class="gf">Ressources récupérées: '+toCoolString(batType.killRes,true,false)+'</span>');
+                }
             }
         }
     }
@@ -2479,6 +2481,11 @@ function weaponAdj(weapon,bat,wn) {
     }
     thisWeapon.power = Math.round(thisWeapon.power*ammo.powermult);
     thisWeapon.power = thisWeapon.power+ammo.power;
+    if (thisWeapon.name === 'Bélier' || thisWeapon.name === 'Boutoir') {
+        if (bat.tileId != bat.oldTileId) {
+            thisWeapon.power = Math.round(thisWeapon.power*1.2);
+        }
+    }
     thisWeapon.apdamage = ammo.apdamage;
     let thisAmmoArmors = ammo.armors;
     if (ammo.avar != undefined) {

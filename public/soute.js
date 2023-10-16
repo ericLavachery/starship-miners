@@ -116,12 +116,12 @@ function souteMenu() {
         if (souteFilter === 'army') {
             $('#menu_soute').append('<span class="menuTab cy">Armées</span>');
             $('#menu_soute').append('<br>');
-            if (armyFilter === 0) {
+            if (armyFilter === -1) {
                 $('#menu_soute').append('<span class="menuTab cy">Toutes</span> &nbsp');
             } else {
-                $('#menu_soute').append('<span class="menuTab klik" onclick="setArmyFilter(0)">Toutes</span> &nbsp');
+                $('#menu_soute').append('<span class="menuTab klik" onclick="setArmyFilter(-1)">Toutes</span> &nbsp');
             }
-            let i = 1;
+            let i = 0;
             while (i <= 20) {
                 if (armyFilter === i) {
                     $('#menu_soute').append('<span class="menuTab cy">'+i+'</span> &nbsp');
@@ -406,6 +406,12 @@ function souteArmyList(landersIds,idOfLander) {
                     }
                 } else {
                     showMe = false;
+                }
+            } else if (armyFilter === 0) {
+                if (bat.army != undefined) {
+                    if (bat.army > 0) {
+                        showMe = false;
+                    }
                 }
             }
         }

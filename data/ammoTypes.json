@@ -411,7 +411,7 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"ca":10},
         "altKillReq": "Necroblob",
-        "deploy":{"Munitions":1,"Timonium":2,"Mercure":1,"Germium":4,"Bossium":1},
+        "deploy":{"Munitions":1,"Timonium":2,"Mercure":1,"Germium":4,"Or":1},
         "batch":100
     },
     {
@@ -1223,7 +1223,7 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"ca":10},
         "altKillReq": "Necroblob",
-        "deploy":{"Fer":2,"Plomb":2,"Timonium":2,"Mercure":1,"Germium":4,"Bossium":1},
+        "deploy":{"Fer":2,"Plomb":2,"Timonium":2,"Mercure":1,"Germium":4,"Or":1},
         "batch":100
     },
     {
@@ -1919,7 +1919,7 @@
         "bldReq":["Usine d'armement"],
         "compReq":{"ca":10},
         "altKillReq": "Necroblob",
-        "deploy":{"Carbone":4,"Timonium":2,"Mercure":1,"Germium":5,"Bossium":1},
+        "deploy":{"Carbone":4,"Timonium":2,"Mercure":1,"Germium":5,"Or":1},
         "batch":100
     },
     {
@@ -2701,8 +2701,9 @@
         "range": 1,
         "rof": 0.5,
         "power": 10,
-        "powermult": 2,
-        "armors": 0.25,
+        "powermult": 2.5,
+        "armors": 0.45,
+        "avar": "energ",
         "accuracy": 1,
         "apdamage": 0.1,
         "passprotect": true,
@@ -2720,8 +2721,9 @@
         "range": 1,
         "rof": 0.5,
         "power": 10,
-        "powermult": 2,
-        "armors": 0.25,
+        "powermult": 2.5,
+        "armors": 0.45,
+        "avar": "energ",
         "accuracy": 0.67,
         "apdamage": 0.1,
         "passprotect": true,

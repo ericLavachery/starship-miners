@@ -33,6 +33,7 @@ function showMap(wmap,justMoved,isPrev) {
         allCheckedZoneRes = [];
     }
     viewBorders = [];
+    let sondeViewDistance = Math.ceil((playerInfos.comp.vsp+3)*(playerInfos.comp.det+8)/8);
     if (modeSonde || modeLanding) {
         playerInfos.showedTiles = [1830];
         showLanderLandingTiles();
@@ -65,7 +66,13 @@ function showMap(wmap,justMoved,isPrev) {
             }
         }
         if (zone[0].dark) {
-            if (zone[0].undarkOnce.includes(tile.id) || zone[0].undarkAll) {
+            let distance = 0;
+            if (modeSonde || zone[0].isPrev || modeLanding) {
+                distance = calcDistance(tile.id,1830);
+            }
+            if ((modeSonde || zone[0].isPrev || modeLanding) && distance <= sondeViewDistance) {
+                terclass = 'ter'+tile.terrain+tile.seed;
+            } else if (zone[0].undarkOnce.includes(tile.id) || zone[0].undarkAll) {
                 terclass = 'ter'+tile.terrain+tile.seed;
             } else {
                 terclass = 'terFog';
@@ -554,6 +561,9 @@ function showAlien(bat) {
     }
     if (bat.tags.includes('bio')) {
         tagz = tagz+' (bio)';
+    }
+    if (bat.tags.includes('necro')) {
+        tagz = tagz+' (necro)';
     }
     if (bat.tags.includes('stun')) {
         tagz = tagz+' (stun)';

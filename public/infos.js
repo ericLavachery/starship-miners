@@ -990,7 +990,7 @@ function getInfoAdd(batType) {
         infoAdd = infoAdd+'Sans ce bâtiment, l\'équipement camkit des forces de l\'ordre ne sert à rien.<br>';
     }
     if (batType.name === 'Biopod') {
-        infoAdd = infoAdd+'Les flèches bio, combinées avec le biopod, exterminent tous les aliens d\'un même type: Vous infectez 1 bug (ou tout autre race d\'alien), et tous les bugs présents dans la zone à ce moment vont périr à petit feu.<br>';
+        infoAdd = infoAdd+'Les munitions "bio", combinées avec le biopod, exterminent tous les aliens d\'un même type: Vous infectez 1 bug (ou tout autre race d\'alien), et tous les bugs présents dans la zone à ce moment vont périr à petit feu.<br>';
     }
     if (batType.name === 'Décharge') {
         infoAdd = infoAdd+'La Décharge vous permet de récupérer une plus grande partie du scrap produit par vos bâtiments et vos citoyens.<br>';
@@ -1164,6 +1164,13 @@ function batFullInfos(bat,batType) {
     }
     if (batType.skills.includes('superberserk')) {
         allSkills = allSkills+'<span class="paramValue" title="Si ce bataillon recoit une commande lorsqu\'il est sous l\'effet du Starka et du Sila: Salves infinies">Berserk</span>'+sepa;
+    }
+    if (batType.skills.includes('onemore')) {
+        if (batType.skills.includes('elite')) {
+            allSkills = allSkills+'<span class="paramValue" title="Ce bataillon gagne une attaque supplémentaire si il a terminé un bataillon alien dans le tour">One more</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Lorsqu\'il est niveau 3 ou plus, ce bataillon gagne une attaque supplémentaire si il a terminé un bataillon alien dans le tour">One more</span>'+sepa;
+        }
     }
     if (batType.skills.includes('undead')) {
         allSkills = allSkills+'<span class="paramValue" title="Les escouades blessées peuvent continuer à attaquer (la cadence de tir ne diminue pas)">Undead</span>'+sepa;

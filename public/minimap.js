@@ -84,7 +84,13 @@ function minimap() {
                     alienView = false;
                 }
             } else {
-                alienView = true;
+                alienView = true;tile.infra === 'Crystal'
+            }
+            let withCrys = false;
+            if (tile.infra != undefined) {
+                if (tile.infra === 'Crystal') {
+                    withCrys = true;
+                }
             }
             if (tile.y === 1) {
                 $('#themmap').append('<br>');
@@ -125,7 +131,9 @@ function minimap() {
                                         } else {
                                             if (zone[0].dark) {
                                                 let distance = calcDistance(tile.id,1830);
-                                                if (distance <= sondeViewDistance) {
+                                                if (withCrys) {
+                                                    $('#themmap').append('<span class="mini mBlu" onclick="centerFromMinimap('+tile.id+')"></span>');
+                                                } else if (distance <= sondeViewDistance) {
                                                     $('#themmap').append('<span class="mini m'+tile.terrain+'" onclick="centerFromMinimap('+tile.id+')"></span>');
                                                 } else {
                                                     if (undarkNow.includes(tile.id)) {

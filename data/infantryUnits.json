@@ -1012,7 +1012,7 @@
             "armors":0.8,
             "aoe":"unit",
             "sound":"balista",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "equip":["aucun","kit-sentinelle","e-ranger","e-jetpack","e-medic","taserkit","camkit","e-phare","repel","helper"],
         "log3eq":["helper"],
@@ -1790,7 +1790,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"crossbow2_x2",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "protection":[],
         "equip":["aucun","e-flash","e-camo","arbalourde","permakirin","theeye","helper","repel"],
@@ -1836,7 +1836,7 @@
             "power":5,
             "aoe":"unit",
             "sound":"bow",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "weapon2":{
             "name":"Lame",
@@ -1915,7 +1915,7 @@
             "power":7,
             "aoe":"unit",
             "sound":"crossbow2_x2",
-            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-bio","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
         },
         "equip":["aucun","e-flash","e-jetpack","e-camo","e-ranger","arbalourde","permakirin","theeye","helper","waterproof"],
         "log3eq":["arbalourde"],
@@ -4248,8 +4248,8 @@
             "ammo":["web-standard","web-spike","web-taser"]
         },
         "weapon2":{
-            "name":"Carabine hypo",
-            "cost":3,
+            "name":"Carabine pneu",
+            "cost":4,
             "range":2,
             "elevation":2,
             "isPrec":true,
@@ -4257,11 +4257,11 @@
             "noise":0,
             "rof":8,
             "accuracy":36,
-            "power":4,
-            "armors":0.4,
+            "power":8,
+            "armors":0.8,
             "aoe":"unit",
-            "sound":"fpneu_x3",
-            "ammo":["hypo-poison","hypo-atium","hypo-poraz","hypo-shinda","hypo-freeze"]
+            "sound":"fpneu_x1",
+            "ammo":["pn-standard","pn-scrap","pn-hollow","pn-perfo","pn-titanium","pn-teflon","pn-tungsten","pn-uranium","pn-explosive","pn-incendiaire","pn-gliding","pn-timonium","pn-necro","pn-salite","pn-dunium","pn-freeze"]
         },
         "protection":[],
         "equip":["aucun","e-flash","lunette2","chargeur2","silencieux2","e-jetpack","e-camo","permakirin","theeye","helper","e-medic","repel"],
@@ -4271,7 +4271,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","embuscade","camo","ranger","swim","selfmedic","survivor","leader","defense","dreduct","guerrilla","tirailleur","baddef","fastguet","nogen","heroescape","herorange","taming"],
+        "skills":["a_mid","fouille","fortif","cible","embuscade","camo","ranger","swim","selfmedic","survivor","leader","defense","dreduct","guerrilla","tirailleur","baddef","fastguet","nogen","heroescape","herorange","taming"],
         "mediCost":7,
         "fuzz":0,
         "deathFx":"human3"
@@ -4487,7 +4487,7 @@
             "armors":0.4,
             "aoe":"unit",
             "sound":"fpneu_x3",
-            "ammo":["hypo-poison","hypo-atium","hypo-poraz","hypo-shinda","hypo-freeze"]
+            "ammo":["hypo-poison","hypo-atium","hypo-poraz","hypo-shinda","hypo-bio","hypo-freeze"]
         },
         "weapon2":{
             "name":"Carabine hypo",
@@ -4504,7 +4504,7 @@
             "armors":0.4,
             "aoe":"unit",
             "sound":"fpneu_x3",
-            "ammo":["hypo-poison","hypo-atium","hypo-poraz","hypo-shinda","hypo-freeze"]
+            "ammo":["hypo-poison","hypo-atium","hypo-poraz","hypo-shinda","hypo-bio","hypo-freeze"]
         },
         "weapon3":{
             "name":"Jet d'acide",
@@ -5088,7 +5088,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_cyb","fouille","fortif","datt","selfmedic","meleehelp","guerrilla","tirailleur","cyber","camo","berserk","undead","ranger","nostun","resistacide","oknitro","sentinelle","escape","fret","fweight","herorush","herosalvo"],
+        "skills":["a_cyb","fouille","fortif","datt","selfmedic","meleehelp","guerrilla","tirailleur","cyber","camo","berserk","undead","ranger","nostun","resistacide","oknitro","sentinelle","escape","fret","fweight","herorush","herosalvo","elite"],
         "mediCost":10,
         "mecanoCost":10,
         "transRes":96,
@@ -5105,7 +5105,7 @@
         "squadSize":6,
         "crew":1,
         "hp":7,
-        "armor":2,
+        "armor":0,
         "size":3,
         "volume":1.2,
         "stealth":4,

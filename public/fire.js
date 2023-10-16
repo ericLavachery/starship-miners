@@ -1112,8 +1112,16 @@ function attack(melee,init) {
                     if (!selectedWeap.ammo.includes('trap')) {
                         morePoison = true;
                         targetBat.tags.push('poison');
-                        if (attFactor >= 150 && selectedBatType.cat != 'aliens') {
-                            targetBat.tags.push('poison');
+                        if (selectedBatType.cat != 'aliens') {
+                            if (attFactor >= 150) {
+                                targetBat.tags.push('poison');
+                            }
+                            if (shots >= 150) {
+                                targetBat.tags.push('poison');
+                                if (selectedWeap.ammo.includes('atium')) {
+                                    targetBat.tags.push('poison');
+                                }
+                            }
                         }
                     }
                     if (selectedWeap.ammo === 'gaz') {
@@ -1498,8 +1506,8 @@ function attack(melee,init) {
                 }
             }
         }
-        if (!sbk && !selectedBat.tags.includes('tornade')) {
-            if (selectedBatType.skills.includes('onemore') && !selectedBat.tags.includes('more')) {
+        if (selectedBatType.skills.includes('onemore')) {
+            if (!sbk && !selectedBat.tags.includes('tornade') && !selectedBat.tags.includes('more')) {
                 if (selectedBatType.skills.includes('elite') || selectedBat.vet >= 3) {
                     if (selectedBat.salvoLeft < 1) {
                         selectedBat.salvoLeft = 1;

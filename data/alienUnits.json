@@ -3378,7 +3378,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["isegg","ponte","minaccu","eggshield","eggprotect","noaploss","nolaser","survivor","xpfeast","nokill","defense","smartrip","infrip","freeshot","nojello","silhover","ctarg","light"],
+        "skills":["isegg","ponte","minaccu","eggshield","protectall","noaploss","nolaser","survivor","xpfeast","nokill","defense","smartrip","infrip","freeshot","nojello","silhover","ctarg","light"],
         "deathFx":"xplode",
         "killRes":{"Bugium":36,"Creatite":24,"Mendium":30,"Egidium":94,"Bossium":73,"Pyrus":108},
         "killXP":100,
