@@ -56,19 +56,75 @@ function extraction(apCost) {
 };
 
 function miningSound() {
-    let mType = selectedBatType.mining.types[0];
-    if (mType === 'Mine') {
+    // let mType = selectedBatType.mining.types[0];
+    let mResType = getMiningResType();
+    if (mResType === 'Mine') {
         playSound('mining',-0.2);
-    } else if (mType === 'Derrick') {
+    } else if (mResType === 'Derrick') {
         playSound('motor',0);
-    } else if (mType === 'Scrap') {
+    } else if (mResType === 'Scrap') {
         playSound('fouille3',-0.2);
-    } else if (mType === 'Pompe') {
+    } else if (mResType === 'Pompe') {
         playSound('pump',0);
-    } else if (mType === 'Comptoir') {
+    } else if (mResType === 'Comptoir') {
         playSound('chainsaw',-0.2);
     }
 };
+
+function getMiningResType() {
+    let mType = selectedBatType.mining.types[0];
+    let mResType = mType;
+    let isVariable = true;
+    if (mType === 'Mine' || mType === 'Pompe') {
+        isVariable = false;
+    }
+    if (mType === 'Scrap') {
+        if (selectedBatType.cat === 'infantry') {
+            isVariable = false;
+        }
+    }
+    if (isVariable && selectedBat.extracted.length >= 1) {
+        let okThen = false;
+        let sortedResTypes = _.sortBy(resTypes,'bld');
+        sortedResTypes.forEach(function(res) {
+            if (!okThen) {
+                if (res.bld != '' && res.bld != 'Geo') {
+                    if (selectedBat.extracted.includes(res.name)) {
+                        if (res.bld === mType) {
+                            mResType = mType;
+                            okThen = true;
+                        }
+                        if (mType === 'Comptoir') {
+                            if (res.bld != mType) {
+                                mResType = 'Scrap';
+                            }
+                        }
+                        if (mType === 'Derrick') {
+                            if (res.bld != mType) {
+                                mResType = res.bld;
+                            }
+                        }
+                        if (mType === 'Scrap') {
+                            if (selectedBatType.skills.includes('transorbital')) {
+                                if (res.bld != mType) {
+                                    mResType = res.bld;
+                                }
+                            } else {
+                                if (res.bld === 'Comptoir') {
+                                    mResType = 'Comptoir';
+                                } else {
+                                    mResType = 'Scrap';
+                                    okThen = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+    return mResType;
+}
 
 function mining(bat) {
     if (bat.tags.includes('mining')) {

@@ -1311,6 +1311,13 @@ function attack(melee,init) {
             targetBat.tags.push('jello');
             targetBat.tags.push('jelly');
             $('#report').append('<span class="report rose">Jelly<br></span>');
+        } else if (selectedWeap.ammo.includes('hypo')) {
+            if (totalDamage >= 10) {
+                targetBat.tags.push('poison');
+                targetBat.tags.push('poison');
+                targetBat.tags.push('jello');
+                $('#report').append('<span class="report rose">Jello<br></span>');
+            }
         } else {
             targetBat.tags.push('poison');
             if (!targetBat.tags.includes('jello')) {
@@ -2353,6 +2360,13 @@ function defense(melee,init) {
             selectedBat.tags.push('jello');
             selectedBat.tags.push('jelly');
             $('#report').append('<span class="report rose">Jelly<br></span>');
+        } else if (targetWeap.ammo.includes('hypo')) {
+            if (totalDamage >= 10) {
+                selectedBat.tags.push('poison');
+                selectedBat.tags.push('poison');
+                selectedBat.tags.push('jello');
+                $('#report').append('<span class="report rose">Jello<br></span>');
+            }
         } else {
             selectedBat.tags.push('poison');
             if (!selectedBat.tags.includes('jello')) {

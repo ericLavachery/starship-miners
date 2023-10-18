@@ -3488,12 +3488,20 @@ function getMinShindaDmg(weap,bat,batType) {
     return Math.ceil(minShindaDmg);
 };
 
-function genocide(genoBatType) {
-    let bioBat = bataillons.find(item => item.type === 'Biopod');
+function setGenoChance(bioBat) {
     let time = playerInfos.mapTurn-bioBat.creaTurn;
-    genoChance = (playerInfos.comp.ca*6)+(playerInfos.comp.med*6)+(time*3)-80;
+    genoChance = (playerInfos.comp.ca*6)+(playerInfos.comp.med*6)+(time*3)-35;
     let genoMax = 89+playerInfos.comp.ca+playerInfos.comp.med;
     genoChance = entre(genoChance,0,genoMax);
+};
+
+function genocide(genoBatType) {
+    let bioBat = bataillons.find(item => item.type === 'Biopod');
+    setGenoChance(bioBat);
+    // let time = playerInfos.mapTurn-bioBat.creaTurn;
+    // genoChance = (playerInfos.comp.ca*6)+(playerInfos.comp.med*6)+(time*3)-80;
+    // let genoMax = 89+playerInfos.comp.ca+playerInfos.comp.med;
+    // genoChance = entre(genoChance,0,genoMax);
     if (genoBatType.class === 'X' || !playerInfos.bldList.includes('Biopod') || genoChance < 15) {
         genoChance = 0;
     }

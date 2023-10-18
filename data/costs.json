@@ -764,7 +764,7 @@
     {
         "id":86,
         "name":"Cyborgs",
-        "levels":{"rednecks":99,"blades":14,"bulbos":3,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":10},
+        "levels":{"rednecks":99,"blades":13,"bulbos":3,"drogmulojs":12,"tiradores":99,"detruas":99,"brasier":10},
         "bldReq":["Armurerie","Laboratoire"],
         "compReq":{"energ":1},
         "compPass":["bulbos"],
@@ -2003,7 +2003,7 @@
     {
         "id":166,
         "name":"Droppers",
-        "levels":{"rednecks":99,"blades":13,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":16},
+        "levels":{"rednecks":99,"blades":14,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":16},
         "bldReq":["Aérodocks","Centre de com"],
         "compReq":{"aero":1},
         "costs":{"Scrap":162,"Carbone":234,"Aluminium":300,"Moteurs":150,"Plastanium":45,"Titane":675,"Cuivre":90,"Electros":180,"Batteries":81,"Silicium":27,"Drogues":55,"Chlore":28,"Zinc":28,"Tissus":14,"Spins":12},

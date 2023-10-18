@@ -2833,7 +2833,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","camo","ranger","datt","defense","strong","extraction","helpex","scrapmorph","cleaning","selfmedic","dynamite","fret","fweight","barda","conscont","infraz","routes","heroap","herorange","autohero"],
+        "skills":["a_mid","fouille","fortif","camo","ranger","datt","defense","strong","extraction","helpex","scrapmorph","cleaning","selfmedic","landmine","fret","fweight","barda","conscont","infraz","routes","heroap","herorange","autohero"],
         "mediCost":8,
         "mecanoCost":7,
         "mining":{
@@ -4487,7 +4487,7 @@
             "armors":0.4,
             "aoe":"unit",
             "sound":"fpneu_x3",
-            "ammo":["hypo-poison","hypo-atium","hypo-poraz","hypo-shinda","hypo-bio","hypo-freeze"]
+            "ammo":["hypo-poison","hypo-atium","hypo-poraz","hypo-shinda","hypo-bio","hypo-freeze","hypo-jello"]
         },
         "weapon2":{
             "name":"Carabine hypo",
@@ -4504,7 +4504,7 @@
             "armors":0.4,
             "aoe":"unit",
             "sound":"fpneu_x3",
-            "ammo":["hypo-poison","hypo-atium","hypo-poraz","hypo-shinda","hypo-bio","hypo-freeze"]
+            "ammo":["hypo-poison","hypo-atium","hypo-poraz","hypo-shinda","hypo-bio","hypo-freeze","hypo-jello"]
         },
         "weapon3":{
             "name":"Jet d'acide",

@@ -569,6 +569,18 @@
             "sound":"calibre_hunt",
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
+        "weapon1Def3":{
+            "name":"Fusil semi-auto",
+            "cost":3,
+            "range":2,
+            "noise":2,
+            "rof":32,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"calibre_sa_multi",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
+        },
         "weapon2":{
             "name":"Dynamite",
             "cost":5,
@@ -641,6 +653,18 @@
             "aoe":"unit",
             "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
+        },
+        "weapon1Def3":{
+            "name":"Fusil semi-auto",
+            "cost":3,
+            "range":2,
+            "noise":2,
+            "rof":12,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"calibre_sa_multi",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Lance grenade",
@@ -753,6 +777,18 @@
         "ap":12,
         "maxSalvo":1,
         "weapon":{},
+        "weapon1Def3":{
+            "name":"Fusil semi-auto",
+            "cost":3,
+            "range":2,
+            "noise":2,
+            "rof":12,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"calibre_sa_multi",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
+        },
         "weapon2":{},
         "weapon3":{
             "name":"Autopistol",
@@ -885,6 +921,18 @@
             "aoe":"unit",
             "sound":"pistol_x4",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
+        },
+        "weapon1Def3":{
+            "name":"Fusil semi-auto",
+            "cost":3,
+            "range":2,
+            "noise":2,
+            "rof":21,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"calibre_sa_multi",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Fusil antichar",
@@ -1960,6 +2008,18 @@
             "sound":"pistol_x4",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
         },
+        "weapon1Def3":{
+            "name":"Fusil semi-auto",
+            "cost":3,
+            "range":2,
+            "noise":2,
+            "rof":16,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"calibre_sa_multi",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
+        },
         "weapon2":{},
         "weapon3":{
             "name":"Autopistol",
@@ -2363,6 +2423,18 @@
             "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
+        "weapon1Def3":{
+            "name":"Fusil semi-auto",
+            "cost":3,
+            "range":2,
+            "noise":2,
+            "rof":8,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"calibre_sa_multi",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
+        },
         "weapon2":{
             "name":"Dynamite",
             "cost":5,
@@ -2626,6 +2698,18 @@
             "sound":"pistol_x4",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
         },
+        "weapon1Def3":{
+            "name":"Fusil semi-auto",
+            "cost":3,
+            "range":2,
+            "noise":2,
+            "rof":16,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"calibre_sa_multi",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
+        },
         "weapon2":{
             "name":"Rainbow gun",
             "cost":6,
@@ -2745,6 +2829,18 @@
         "ap":12,
         "maxSalvo":1,
         "weapon":{},
+        "weapon1Def3":{
+            "name":"Fusil semi-auto",
+            "cost":3,
+            "range":2,
+            "noise":2,
+            "rof":5,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"calibre_sa_multi",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
+        },
         "weapon2":{},
         "weapon3":{
             "name":"Autopistol",
@@ -3495,8 +3591,20 @@
         "stealth":0,
         "speed":-5,
         "ap":16,
-        "maxSalvo":2,
+        "maxSalvo":1,
         "weapon":{},
+        "weapon1Def3":{
+            "name":"Fusil semi-auto",
+            "cost":3,
+            "range":2,
+            "noise":2,
+            "rof":12,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"calibre_sa_multi",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
+        },
         "weapon2":{},
         "protection":[],
         "equip":["aucun","isophon","garage","e-infra"],
@@ -3611,6 +3719,18 @@
             "sound":"calibre_x2",
             "ammo":["standard","scrap","hollow","perfo","needle","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro","flechette"]
         },
+        "weapon1Def3":{
+            "name":"Fusil semi-auto",
+            "cost":3,
+            "range":2,
+            "noise":2,
+            "rof":5,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"calibre_sa_multi",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
+        },
         "weapon2":{
             "name":"Molotov",
             "cost":6,
@@ -3691,6 +3811,18 @@
             "sound":"pistol_x4",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
         },
+        "weapon1Def3":{
+            "name":"Fusil semi-auto",
+            "cost":3,
+            "range":2,
+            "noise":2,
+            "rof":12,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"calibre_sa_multi",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
+        },
         "weapon2":{},
         "weapon3":{
             "name":"Autopistol",
@@ -3739,38 +3871,10 @@
         "speed":-5,
         "ap":16,
         "maxSalvo":1,
-        "weapon":{
-            "name":"Pistolet automatique",
-            "cost":2,
-            "range":1,
-            "isShort":true,
-            "kit":true,
-            "noise":1,
-            "rof":3,
-            "accuracy":19,
-            "dca":1.2,
-            "power":4,
-            "armors":1.25,
-            "aoe":"unit",
-            "sound":"pistol_x4",
-            "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
-        },
+        "weapon":{},
         "weapon2":{},
-        "weapon3":{
-            "name":"Autopistol",
-            "cost":1,
-            "range":3,
-            "elevation":1,
-            "rof":18,
-            "accuracy":30,
-            "power":8,
-            "armors":0.5,
-            "aoe":"unit",
-            "sound":"autopistol",
-            "ammo":["standard"]
-        },
         "protection":[],
-        "equip":["aucun","w1-gun","w2-autopistol","e-medic","psol","isophon","garage"],
+        "equip":["aucun","e-medic","psol","isophon","garage"],
         "log3eq":["psol"],
         "autoEq":["garage","isophon","e-medic"],
         "moveCost":99,
@@ -3943,6 +4047,18 @@
             "aoe":"unit",
             "sound":"pistol_x4",
             "ammo":["standard","scrap","sm-hollow","sm-perfo","sm-needle","sm-teflon","sm-tungsten","sm-uranium","sm-explosive","sm-incendiaire","sm-timonium","sm-salite","sm-adamantium","bugshells","sm-dunium","sm-freeze","necro"]
+        },
+        "weapon1Def3":{
+            "name":"Fusil semi-auto",
+            "cost":3,
+            "range":2,
+            "noise":2,
+            "rof":6,
+            "accuracy":23,
+            "power":6,
+            "aoe":"unit",
+            "sound":"calibre_sa_multi",
+            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","gliding","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{},
         "weapon3":{

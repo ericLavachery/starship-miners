@@ -570,6 +570,8 @@ function showAlien(bat) {
     }
     if (bat.tags.includes('jelly')) {
         tagz = tagz+' (jelly)';
+    } else if (bat.tags.includes('jello')) {
+        tagz = tagz+' (jello)';
     }
     if (bat.tags.includes('freeze')) {
         tagz = tagz+' (freeze)';

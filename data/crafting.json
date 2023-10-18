@@ -148,7 +148,7 @@
     {
         "id":123,
         "result":"Compo2",
-        "cost":{"Bugium":10,"Mendium":1,"Carbone":20,"Eau":5},
+        "cost":{"Bugium":10,"Carbone":20,"Eau":5},
         "compReq":{"ca":3},
         "bldReq":["Atelier"],
         "batch":20,

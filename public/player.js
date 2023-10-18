@@ -657,6 +657,12 @@ function playerSkillsUTChanges() {
                 unit.weapon1bis = {};
             }
         }
+        if (playerInfos.comp.def === 3) {
+            if (unit.weapon1Def3 != undefined) {
+                unit.weapon = unit.weapon1Def3;
+                unit.weapon1Def3 = {};
+            }
+        }
         // WEAPON 2 ALT
         if (unit.weapon2alt != undefined) {
             if (unit.weapon2alt.gangs.includes(playerInfos.gang)) {
@@ -1443,7 +1449,7 @@ function maxGangCompCosts() {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
-        if (playerInfos.gLevel >= 15) {
+        if (playerInfos.gLevel >= 14) {
             maxComp[0] = maxComp[0]+1;
             maxComp[1] = maxComp[1]+1;
         }
@@ -3540,7 +3546,7 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 13) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 15) {
+            } else if (nextGangLevel === 14) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 16) {
                 theCompPoints = 2;

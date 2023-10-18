@@ -2,7 +2,7 @@ function checkStartingAliens() {
     // Ruches
     let numRuches;
     if (!zone[0].visit && zone[0].number < 50) {
-        if (zone[0].mapDiff >= 8 || playerInfos.gLevel >= 17) {
+        if (zone[0].mapDiff >= 7 || playerInfos.gLevel >= 17) {
             dropEgg('Colonie','nedge');
             coconStats.colo = true;
             let coloBat = getAlienByName('Colonie');
@@ -11,12 +11,17 @@ function checkStartingAliens() {
             if (rand.rand(1,2) === 1) {
                 dropEgg('Flytraps','guard');
             }
-            if (zone[0].mapDiff >= 9) {
+            if (zone[0].mapDiff >= 8) {
                 alienSpawn(coloBat,'Vomissure','bmorph');
-                alienSpawn(coloBat,'Vomissure','bmorph');
-                alienSpawn(coloBat,'Ruche');
                 coconStats.volc = true;
                 dropEgg('Volcan','guard');
+                if (rand.rand(1,2) === 1) {
+                    dropEgg('Flytraps','guard');
+                }
+            }
+            if (zone[0].mapDiff >= 9) {
+                alienSpawn(coloBat,'Vomissure','bmorph');
+                alienSpawn(coloBat,'Ruche');
                 if (rand.rand(1,2) === 1) {
                     dropEgg('Volcan','guard');
                 }
@@ -35,15 +40,18 @@ function checkStartingAliens() {
                     dropEgg('Flytraps','guard');
                 }
             }
-            numRuches = rand.rand(4,6);
+            numRuches = rand.rand(3,5);
+            if (zone[0].mapDiff === 8) {
+                numRuches = rand.rand(4,6);
+            }
             if (zone[0].mapDiff === 9) {
                 numRuches = rand.rand(6,9);
             }
             if (zone[0].mapDiff >= 10) {
                 numRuches = rand.rand(9,12);
             }
-        } else if (zone[0].mapDiff >= 5) {
-            numRuches = rand.rand(0,2)+zone[0].mapDiff-5;
+        } else if (zone[0].mapDiff >= 4) {
+            numRuches = rand.rand(0,2)+zone[0].mapDiff-4;
         }
         if (numRuches >= 1) {
             let i = 1;

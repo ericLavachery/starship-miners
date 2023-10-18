@@ -608,6 +608,25 @@ function checkAmmoReqs(bat,batType) {
             }
             selectedBat.ammo2 = forcedAmmo;
         }
+        // check w1Def3 ammo
+        if (playerInfos.comp.def === 3) {
+            if (selectedBatType.weapon1Def3 != undefined) {
+                if (!selectedBatType.weapon.ammo.includes(selectedBat.ammo)) {
+                    if (selectedBat.ammo.includes('sm-')) {
+                        let batTestAmmo = selectedBat.ammo.replace('sm-','');
+                        if (selectedBatType.weapon.ammo.includes(batTestAmmo)) {
+                            selectedBat.ammo = batTestAmmo;
+                        } else {
+                            warning('Munitions inadaptées','<span class="bleu">'+batType.name+'</span> : Les munitions de ce bataillon ne sont plus adaptées à ses nouvelles armes.<br><span class="brun">'+selectedBat.ammo+'</span> remplacées par <span class="brun">standard</span>');
+                            selectedBat.ammo = 'standard';
+                        }
+                    } else {
+                        warning('Munitions inadaptées','<span class="bleu">'+batType.name+'</span> : Les munitions de ce bataillon ne sont plus adaptées à ses nouvelles armes.<br><span class="brun">'+selectedBat.ammo+'</span> remplacées par <span class="brun">standard</span>');
+                        selectedBat.ammo = 'standard';
+                    }
+                }
+            }
+        }
         selectedBatArrayUpdate();
     }
 };
