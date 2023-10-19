@@ -617,12 +617,14 @@ function checkAmmoReqs(bat,batType) {
                         if (selectedBatType.weapon.ammo.includes(batTestAmmo)) {
                             selectedBat.ammo = batTestAmmo;
                         } else {
-                            warning('Munitions inadaptées','<span class="bleu">'+batType.name+'</span> : Les munitions de ce bataillon ne sont plus adaptées à ses nouvelles armes.<br><span class="brun">'+selectedBat.ammo+'</span> remplacées par <span class="brun">standard</span>');
-                            selectedBat.ammo = 'standard';
+                            let forcedAmmo = selectedBatType.weapon.ammo[0];
+                            warning('Munitions inadaptées','<span class="bleu">'+batType.name+'</span> : Les munitions de ce bataillon ne sont plus adaptées à ses nouvelles armes.<br><span class="brun">'+selectedBat.ammo+'</span> remplacées par <span class="brun">'+forcedAmmo+'</span>');
+                            selectedBat.ammo = forcedAmmo;
                         }
                     } else {
-                        warning('Munitions inadaptées','<span class="bleu">'+batType.name+'</span> : Les munitions de ce bataillon ne sont plus adaptées à ses nouvelles armes.<br><span class="brun">'+selectedBat.ammo+'</span> remplacées par <span class="brun">standard</span>');
-                        selectedBat.ammo = 'standard';
+                        let forcedAmmo = selectedBatType.weapon.ammo[0];
+                        warning('Munitions inadaptées','<span class="bleu">'+batType.name+'</span> : Les munitions de ce bataillon ne sont plus adaptées à ses nouvelles armes.<br><span class="brun">'+selectedBat.ammo+'</span> remplacées par <span class="brun">'+forcedAmmo+'</span>');
+                        selectedBat.ammo = forcedAmmo;
                     }
                 }
             }

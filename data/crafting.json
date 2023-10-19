@@ -78,7 +78,7 @@
     {
         "id":117,
         "result":"Compo1",
-        "cost":{"Bugium":2,"Carbone":4,"Eau":1},
+        "cost":{"Bugium":2,"Bois":4,"Eau":1},
         "compReq":{"ca":2},
         "bldReq":["Atelier"],
         "batch":5,
@@ -148,7 +148,7 @@
     {
         "id":123,
         "result":"Compo2",
-        "cost":{"Bugium":10,"Carbone":20,"Eau":5},
+        "cost":{"Bugium":20,"Carbone":10,"Eau":5},
         "compReq":{"ca":3},
         "bldReq":["Atelier"],
         "batch":20,

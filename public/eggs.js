@@ -150,6 +150,22 @@ function calcEggPause(noMax) {
     if (zone[0].mapDiff >= 10) {
         eggPauseDice = eggPauseMinimum;
     }
+    // waiting tactic
+    if (zone[0].mapDiff >= 3 && zone[0].number < 50 && playerInfos.eggsKilled >= 8) {
+        let minSeed = zone[0].mapDiff-2;
+        minSeed = entre(minSeed,0,4);
+        if (playerInfos.pauseSeed <= minSeed) {
+            let minTurn = Math.ceil(playerInfos.randSeed/2)+6;
+            if (playerInfos.mapTurn >= minTurn && playerInfos.mapTurn <= minTurn+8) {
+                if (aliens.length <= 5) {
+                    eggPauseDice = eggPauseDice+20;
+                    if (noMax) {
+                        eggPauseDice = eggPauseDice+20;
+                    }
+                }
+            }
+        }
+    }
     if (!noMax) {
         if (eggPauseDice > eggPauseMaximum) {
             eggPauseDice = eggPauseMaximum;

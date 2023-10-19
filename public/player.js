@@ -657,6 +657,7 @@ function playerSkillsUTChanges() {
                 unit.weapon1bis = {};
             }
         }
+        // def3 weapons
         if (playerInfos.comp.def === 3) {
             if (unit.weapon1Def3 != undefined) {
                 unit.weapon = unit.weapon1Def3;

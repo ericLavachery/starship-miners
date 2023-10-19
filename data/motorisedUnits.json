@@ -2000,7 +2000,7 @@
             "isMelee":true,
             "bigDef":true,
             "noise":0,
-            "rof":32,
+            "rof":26,
             "accuracy":18,
             "power":8,
             "aoe":"unit",
