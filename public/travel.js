@@ -449,12 +449,20 @@ function healEverything() {
         }
         // TAGS -------------------------------------------------
         let gearTags = getBatGearTags(bat.prt,bat.eq,batType);
+        if (batType.skills.includes('rescue')) {
+            if (bat.transIds.length >= 1) {
+                if (!bat.tags.includes('return')) {
+                    gearTags.push('return');
+                }
+            }
+        }
         if (bat.loc === 'trans' && bat.locId != souteId) {
             if (!bat.tags.includes('return')) {
                 gearTags.push('return');
             }
             loadBat(bat.id,souteId,bat.locId);
         }
+        // tags permanents
         if (bat.tags.includes('zombie')) {
             gearTags.push('zombie');
         }
@@ -546,15 +554,31 @@ function healEverything() {
                     bat.soins = 3;
                 }
             }
-            if (batType.skills.includes('decay')) {
-                let decayPts = 6;
-                if (batType.skills.includes('robot')) {
-                    decayPts = 9;
+            if (bat.tags.includes('return')) {
+                if (batType.skills.includes('decay')) {
+                    let decayPts = 6;
+                    if (batType.skills.includes('robot')) {
+                        decayPts = 9;
+                    }
+                    if (bat.soins != undefined) {
+                        bat.soins = bat.soins+decayPts;
+                    } else {
+                        bat.soins = decayPts;
+                    }
                 }
-                if (bat.soins != undefined) {
-                    bat.soins = bat.soins+decayPts;
+            }
+        }
+        // STRESS
+        if (bat.tags.includes('return')) {
+            if (!batType.skills.includes('robot') && batType.crew >= 1) {
+                let endStress = 8;
+                if (batType.skills.includes('lowstress')) {
+                    endStress = 4;
+                }
+                if (bat.emo != undefined) {
+                    bat.emo = bat.emo+endStress;
                 } else {
-                    bat.soins = decayPts;
+                    bat.emo = endStress;
                 }
             }
         }

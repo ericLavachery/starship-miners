@@ -170,10 +170,10 @@ function calcXPFactor() {
 
 function repos(time) {
     let woundHeal = 2;
-    let stressHeal = 3+playerInfos.comp.med;
+    let stressHeal = 2;
     let necroHeal = 2;
     if (playerInfos.bldList.includes('Salle de sport')) {
-        stressHeal = stressHeal+3;
+        stressHeal = stressHeal+2;
     }
     if (playerInfos.bldList.includes('Bar')) {
         stressHeal = stressHeal+1;
@@ -182,15 +182,19 @@ function repos(time) {
         stressHeal = stressHeal+1;
     }
     if (playerInfos.bldList.includes('Jardin')) {
-        stressHeal = stressHeal+3;
+        stressHeal = stressHeal+2;
     }
     if (playerInfos.bldList.includes('Hôpital')) {
-        stressHeal = stressHeal+7+playerInfos.comp.med;
-        woundHeal = woundHeal+10+(playerInfos.comp.med*2);
-        necroHeal = 100;
+        stressHeal = stressHeal+2+(playerInfos.comp.med*2);
+        woundHeal = woundHeal+4+(playerInfos.comp.med*4);
+        if (playerInfos.comp.med >= 3) {
+            necroHeal = 100;
+        } else {
+            necroHeal = necroHeal+3+(playerInfos.comp.med*2);
+        }
     } else if (playerInfos.bldList.includes('Infirmerie')) {
-        stressHeal = stressHeal+2+playerInfos.comp.med;
-        woundHeal = woundHeal+2+playerInfos.comp.med;
+        stressHeal = stressHeal+playerInfos.comp.med;
+        woundHeal = woundHeal+1+(playerInfos.comp.med*2);
         necroHeal = necroHeal+2+playerInfos.comp.med;
     }
     bataillons.forEach(function(bat) {

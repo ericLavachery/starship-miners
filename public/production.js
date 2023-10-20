@@ -529,6 +529,9 @@ function triProd(bat,batType,time,sim,quiet) {
                 }
             }
             if (resProd >= 1) {
+                resProd = notAlways(resProd,33,time);
+            }
+            if (resProd >= 1) {
                 resProd = scrapRecup(resProd);
                 resProd = prodDrop(bat,batType,resProd,true);
                 if (hasEquip(bat,['prodboost'])) {
@@ -562,6 +565,17 @@ function triProd(bat,batType,time,sim,quiet) {
             warning(batType.name,message,true);
         }
     }
+};
+
+function notAlways(prod,perc,time) {
+    let thePerc = perc*Math.sqrt(Math.sqrt(time));
+    let theProd = prod;
+    if (rand.rand(1,100) <= thePerc) {
+        theProd = Math.ceil(theProd*100/thePerc);
+    } else {
+        theProd = 0;
+    }
+    return theProd;
 };
 
 function scrapRecup(resCreated) {

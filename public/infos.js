@@ -1313,7 +1313,11 @@ function batFullInfos(bat,batType) {
         }
     }
     if (batType.skills.includes('necrocure')) {
-        allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons infectés par la nécrotoxine">Necrocure</span>'+sepa;
+        if (batType.cat === 'buildings') {
+            allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons infectés par la nécrotoxine">Necrocure</span>'+sepa;
+        } else {
+            allSkills = allSkills+'<span class="paramValue" title="Si vous avez 3 en compétence de médecine, ce bataillon peut soigner les bataillons infectés par la nécrotoxine">Necrocure</span>'+sepa;
+        }
     }
     if (batType.skills.includes('survivor')) {
         allSkills = allSkills+'<span class="paramValue" title="Survit à la première attaque fatale">Survivant</span>'+sepa;

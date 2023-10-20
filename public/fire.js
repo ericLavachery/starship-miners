@@ -1211,6 +1211,7 @@ function attack(melee,init) {
             if (!targetBat.tags.includes('bio')) {
                 targetBat.tags.push('bio');
                 genocide(targetBatType);
+                $('#report').append('<span class="report rose">Shinda<br></span>');
                 $('#report').append('<span class="report rose">Génocide '+genoChance+'%<br></span>');
                 if (!targetBat.tags.includes('shinda')) {
                     targetBat.tags.push('shinda');
@@ -2262,6 +2263,7 @@ function defense(melee,init) {
             if (!selectedBat.tags.includes('bio')) {
                 selectedBat.tags.push('bio');
                 genocide(selectedBatType);
+                $('#report').append('<span class="report rose">Shinda<br></span>');
                 $('#report').append('<span class="report rose">Génocide '+genoChance+'%<br></span>');
                 if (!selectedBat.tags.includes('shinda')) {
                     selectedBat.tags.push('shinda');

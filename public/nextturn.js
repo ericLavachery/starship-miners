@@ -1766,11 +1766,11 @@ function tagsEffect(bat,batType) {
     }
     // NECRO
     if (bat.tags.includes('necro')) {
-        if (bat.tags.includes('octiron')) {
-            if (rand.rand(1,6) === 1) {
+        if (bat.tags.includes('octiron') && playerInfos.comp.med >= 3) {
+            if (rand.rand(1,10) === 1) {
                 tagDelete(bat,'necro');
                 if (!bat.tags.includes('necro')) {
-                    warning('',bat.type+' a éliminé la nécrotoxine.',false,bat.tileId);
+                    warning('Octiron',bat.type+' a éliminé la nécrotoxine.',false,bat.tileId);
                 }
             }
         }
@@ -1779,11 +1779,6 @@ function tagsEffect(bat,batType) {
                 if (rand.rand(1,4) === 1) {
                     tagDelete(bat,'necro');
                 }
-            }
-        } else if (rand.rand(4,48) <= unitResist) {
-            tagDelete(bat,'necro');
-            if (!bat.tags.includes('necro')) {
-                warning('',bat.type+' a éliminé la nécrotoxine.',false,bat.tileId);
             }
         }
     }

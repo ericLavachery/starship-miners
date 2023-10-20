@@ -325,6 +325,11 @@ function scrapMorphing(bat,batType,minedScrap,tile) {
             }
         }
         if (resProd >= 1) {
+            if (res.name != 'Spins') {
+                resProd = notAlways(resProd,15,1);
+            }
+        }
+        if (resProd >= 1) {
             resProd = prodDrop(bat,batType,resProd,true);
             resAddToBld(res.name,resProd,bat,batType,true);
             if (minedThisTurn[res.name] === undefined) {

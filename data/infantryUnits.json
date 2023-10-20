@@ -6437,7 +6437,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","dog","datt","onemore","lowstress","swim","regeneration","ranger","kzin","ricoface","initmelee","resistall","recupcorps","nochef"],
+        "skills":["a_heavy","dog","datt","onemore","swim","regeneration","ranger","kzin","ricoface","initmelee","resistall","recupcorps","nochef"],
         "fuzz":1.5,
         "deathFx":"mutantdeath"
     },
@@ -6495,7 +6495,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","dog","dogescape","lowstress","swim","escape","ranger","chasse","snif","guerrilla","tirailleur","datt","sentinelle","initmelee","recupcorps","nochef","uprank","up0"],
+        "skills":["a_mid","dog","dogescape","swim","escape","ranger","chasse","snif","guerrilla","tirailleur","datt","sentinelle","initmelee","recupcorps","nochef","uprank","up0"],
         "fuzz":1,
         "deathFx":"dog_death"
     },
@@ -6552,7 +6552,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","dog","dogescape","lowmed","lowstress","escape","ranger","snif","kzin","genhab2","guerrilla","tirailleur","recupcorps","nochef"],
+        "skills":["a_mid","dog","dogescape","lowmed","escape","ranger","snif","kzin","genhab2","guerrilla","tirailleur","recupcorps","nochef"],
         "fuzz":1,
         "cloneSlot":2,
         "deathFx":"dog_death"

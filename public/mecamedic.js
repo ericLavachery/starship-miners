@@ -17,10 +17,16 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     }
     let real = false;
     washReports(false);
+    let necroSoins = false;
     if (!inBld) {
         $('#report').append('<span class="report or">'+selectedBat.type+' ('+denom+')</span><br>');
         if ((selectedBatType.skills.includes('realmed') && playerInfos.comp.med >= 2) || selectedBatType.skills.includes('medtrans')) {
             real = true;
+        }
+        if (selectedBatType.skills.includes('necrocure')) {
+            if (selectedBatType.cat === 'buildings' || playerInfos.comp.med >= 3) {
+                necroSoins = true;
+            }
         }
     } else {
         medicBat = getBatById(medicBatId);
@@ -83,7 +89,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                             } else {
                                 catOK = false;
                             }
-                            if (bat.tags.includes('necro') && playerInfos.comp.med < 3 && !selectedBatType.skills.includes('necrocure') && catOK) {
+                            if (bat.tags.includes('necro') && !necroSoins && catOK) {
                                 catOK = false;
                                 $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">soins inefficaces<br></span>');
                             }
@@ -335,7 +341,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
         batUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
         if (cat === 'infantry') {
             // MEDIC (SELF)
-            if (selectedBat.tags.includes('necro') && playerInfos.comp.med < 3 && !selectedBatType.skills.includes('necrocure') && catOK) {
+            if (selectedBat.tags.includes('necro') && !necroSoins && catOK) {
                 catOK = false;
                 $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">soins inefficaces<br></span>');
             }
@@ -512,6 +518,12 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
     if ((myBatType.skills.includes('realmed') && playerInfos.comp.med >= 2) || myBatType.skills.includes('medtrans')) {
         real = true;
     }
+    let necroSoins = false;
+    if (myBatType.skills.includes('necrocure')) {
+        if (myBatType.cat === 'buildings' || playerInfos.comp.med >= 3) {
+            necroSoins = true;
+        }
+    }
     let medRange = 0;
     if (myBatType.skills.includes('medrange')) {
         medRange = getMedRange(myBat,myBatType);
@@ -523,7 +535,7 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
     if (!around) {
         let effSoins = checkEffSoins(myBat);
         if (effSoins >= 50) {
-            if (!myBat.tags.includes('necro') || playerInfos.comp.med >= 3 || myBatType.skills.includes('necrocure')) {
+            if (!myBat.tags.includes('necro') || necroSoins) {
                 if ((deep || playerInfos.comp.med >= 2) && myBat.tags.includes('venin')) {
                     numTargets = numTargets+1;
                 } else if (deep) {
@@ -564,7 +576,7 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
                     } else {
                         catOK = false;
                     }
-                    if (bat.tags.includes('necro') && playerInfos.comp.med < 3 && !myBatType.skills.includes('necrocure')) {
+                    if (bat.tags.includes('necro') && !necroSoins) {
                         catOK = false;
                     }
                     let effSoins = checkEffSoins(bat);
