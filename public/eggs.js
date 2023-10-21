@@ -576,7 +576,7 @@ function eggsDrop() {
         let i = 1;
         while (i <= numEggs) {
             eggTypeDice = rand.rand(1,100);
-            invisibleChance = Math.floor(zone[0].mapDiff*1.5)-8+zoneInfos.ieggsBonus;
+            invisibleChance = Math.floor(zone[0].mapDiff*1.5)-6+zoneInfos.ieggsBonus;
             if (invisibleChance < 0 || !zoneInfos.ieggs) {
                 invisibleChance = 0;
             } else {
@@ -599,7 +599,7 @@ function eggsDrop() {
             } else if (eggTypeDice <= coqPerc+invisibleChance) {
                 dropEgg('Oeuf voilé','any');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
-                if (playerInfos.vue >= 3 && (playerInfos.knownAliens.includes('Oeuf voilé') || playerInfos.comp.ca >= 4)) {
+                if (playerInfos.vue >= 3 && (playerInfos.knownAliens.includes('Oeuf voilé') || playerInfos.comp.ca >= 5)) {
                     warning('Oeuf voilé','Un Oeuf voilé est tombé!');
                 }
             } else {

@@ -1141,37 +1141,77 @@ function turnInfo(first) {
                 }
             }
         }
-        let sconvNear = false;
-        if (playerInfos.vue >= 2) {
-            if (playerInfos.vz-5-playerInfos.pauseSeed <= playerInfos.mapTurn) {
-                if (playerInfos.vz-5-playerInfos.pauseSeed === playerInfos.mapTurn) {
-                    warning('Convoi en approche','Attirés par le bruit, des survivants sont en route vers votre Lander.');
+        // CONVOI DE SURVIVANTS
+        if (playerInfos.vz < 90) {
+            let convApprox = 19-(playerInfos.vue*3);
+            let turnApprox = Math.round(playerInfos.vz/convApprox)*convApprox;
+            let badTurnApprox = Math.round(playerInfos.vz/convApprox/2)*convApprox*2;
+            let turnsTillConv = turnApprox-playerInfos.mapTurn;
+            let firstAlertTurn = 12-Math.floor(playerInfos.pauseSeed/3);
+            let lastAlertTurn = playerInfos.vz-4-Math.floor(playerInfos.pauseSeed/3);
+            if (playerInfos.vue >= 3) {
+                if (playerInfos.mapTurn === firstAlertTurn) {
+                    warning('<span class="rq3">Survivants</span>','<span class="vio">Notre centre de communication à détecté un convoi de survivants.</span>');
                 }
-                if (playerInfos.vue >= 5) {
-                    $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (tour '+playerInfos.vz+') ('+playerInfos.vc+')">Survivants</span><br>');
-                } else if (playerInfos.vue >= 4) {
-                    $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (moins de 15 tours) ('+playerInfos.vc+')">Survivants</span><br>');
-                } else {
-                    $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (moins de 15 tours)">Survivants</span><br>');
-                }
-                sconvNear = true;
             }
-        }
-        if (playerInfos.vue >= 4) {
-            if (playerInfos.vz < 90) {
-                if (!sconvNear && playerInfos.mapTurn >= 10) {
-                    if (playerInfos.vue >= 5 && playerInfos.mapTurn >= 20) {
-                        let approxTurn = Math.round(playerInfos.vz/10)*10;
-                        $('#tour').append('<span class="neutre" title="Convoi de survivants en approche (vers le tour '+approxTurn+')">Survivants</span><br>');
+            if (playerInfos.vue >= 2) {
+                if (playerInfos.mapTurn >= firstAlertTurn) {
+                    if (turnsTillConv >= 15) {
+                        // plus de 15 tours
+                        if (playerInfos.vue >= 3) {
+                            if (playerInfos.vue >= 4) {
+                                $('#tour').append('<span class="neutre" title="Convoi de survivants en approche (vers le tour '+badTurnApprox+')">Survivants</span><br>');
+                            } else {
+                                $('#tour').append('<span class="neutre" title="Convoi de survivants en approche (plus de 15 tours)">Survivants</span><br>');
+                            }
+                        }
                     } else {
-                        $('#tour').append('<span class="neutre" title="Convoi de survivants en approche (plus de 15 tours)">Survivants</span><br>');
+                        // moins de 15 tours
+                        if (playerInfos.vue >= 5) {
+                            $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (tour '+playerInfos.vz+') ('+playerInfos.vc+')">Survivants</span><br>');
+                        } else if (playerInfos.vue >= 4) {
+                            $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (vers le tour '+turnApprox+') ('+playerInfos.vc+')">Survivants</span><br>');
+                        } else {
+                            $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (vers le tour '+turnApprox+')">Survivants</span><br>');
+                        }
+                        if (lastAlertTurn === playerInfos.mapTurn) {
+                            warning('<span class="rq3">Convoi en approche</span>','<span class="vio">Attirés par le bruit, des survivants sont en route vers votre Lander.</span>');
+                        }
                     }
                 }
-                if (playerInfos.mapTurn === 10) {
-                    warning('Survivants','Notre centre de communication à détecté un convoi de survivants.');
-                }
             }
         }
+        // let sconvNear = false;
+        // if (playerInfos.vue >= 2) {
+        //     if (playerInfos.vz-5-playerInfos.pauseSeed <= playerInfos.mapTurn) {
+        //         if (playerInfos.vz-5-playerInfos.pauseSeed === playerInfos.mapTurn) {
+        //             warning('Convoi en approche','Attirés par le bruit, des survivants sont en route vers votre Lander.');
+        //         }
+        //         if (playerInfos.vue >= 5) {
+        //             $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (tour '+playerInfos.vz+') ('+playerInfos.vc+')">Survivants</span><br>');
+        //         } else if (playerInfos.vue >= 4) {
+        //             $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (moins de 15 tours) ('+playerInfos.vc+')">Survivants</span><br>');
+        //         } else {
+        //             $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (moins de 15 tours)">Survivants</span><br>');
+        //         }
+        //         sconvNear = true;
+        //     }
+        // }
+        // if (playerInfos.vue >= 4) {
+        //     if (playerInfos.vz < 90) {
+        //         if (!sconvNear && playerInfos.mapTurn >= 10) {
+        //             if (playerInfos.vue >= 5 && playerInfos.mapTurn >= 20) {
+        //                 let approxTurn = Math.round(playerInfos.vz/10)*10;
+        //                 $('#tour').append('<span class="neutre" title="Convoi de survivants en approche (vers le tour '+approxTurn+')">Survivants</span><br>');
+        //             } else {
+        //                 $('#tour').append('<span class="neutre" title="Convoi de survivants en approche (plus de 15 tours)">Survivants</span><br>');
+        //             }
+        //         }
+        //         if (playerInfos.mapTurn === 10) {
+        //             warning('Survivants','Notre centre de communication à détecté un convoi de survivants.');
+        //         }
+        //     }
+        // }
         $('#tour').append('Morts <span class="or" title="'+toNiceString(playerInfos.deadBats)+'">'+playerInfos.unitsLost+'</span> / <span class="neutre" title="Aliens tués">'+playerInfos.aliensKilled+'</span> / <span class="cy" title="Oeufs détruits">'+playerInfos.eggsKilled+'</span>');
     }
     checkVMTileIds();

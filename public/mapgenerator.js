@@ -2388,15 +2388,15 @@ function checkZoneType() {
         sead = sead-6;
     }
     let ieggsLevel = (Math.ceil(zone[0].mapDiff/3)*2)+sead;
-    if (ieggsLevel >= 9) {
+    if (ieggsLevel >= 8) {
         zoneInfos.ieggs = true;
         if (zone[2].seed === 4) {
-            zoneInfos.ieggsBonus = 2;
+            zoneInfos.ieggsBonus = 3;
         } else {
             zoneInfos.ieggsBonus = 0;
         }
     }
-    if (playerInfos.gLevel >= 19) {
+    if (playerInfos.gLevel >= 15) {
         zoneInfos.ieggs = true;
     }
     // swamp map
