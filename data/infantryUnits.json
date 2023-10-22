@@ -3791,7 +3791,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","camo","selfmedic","embuscade","berserk","undead","superberserk","onemore","nofear","lowstress","fly","jetpack","longshot","inflammable","baddef","oknitro","herorage","herosalvo","elite"],
+        "skills":["a_mid","fouille","fortif","datt","camo","selfmedic","embuscade","berserk","undead","superberserk","onemore","nofear","lowstress","fly","jetpack","longshot","inflammable","baddef","emoteur","herorage","heroap","elite"],
         "mediCost":12,
         "fuzz":2.5,
         "deathFx":"162157__mediapaja2009__agony"
@@ -5272,7 +5272,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_cyb","fouille","fortif","datt","cyber","hardmove","resistall","kzin","herosalvo","herofortif","detrange","tank"],
+        "skills":["a_cyb","fouille","fortif","datt","onemore","cyber","hardmove","resistall","kzin","herosalvo","herofortif","detrange","tank"],
         "fuzz":2.5,
         "deathFx":"robodeath2"
     },

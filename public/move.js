@@ -372,8 +372,8 @@ function moveSelectedBat(tileId,free,jump) {
         if (selectedBat.prt.includes('suit')) {
             camoOut();
         } else {
-            if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('emoteur') && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo') || !selectedBatType.skills.includes('camo') || selectedBat.eq === 'e-jetpack') {
-                if (hasEquip(selectedBat,['kit-chouf'])) {
+            if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo') || !selectedBatType.skills.includes('camo') || selectedBat.eq === 'e-jetpack') {
+                if (hasEquip(selectedBat,['kit-chouf']) || selectedBatType.skills.includes('emoteur')) {
                     camouflage(0);
                 } else {
                     camoOut();

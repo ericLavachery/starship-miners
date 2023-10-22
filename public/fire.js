@@ -1474,10 +1474,6 @@ function attack(melee,init) {
             }
         }
     }
-    if (selectedBat.tags.includes('tornade') || sbk) {
-        let allTags = _.countBy(selectedBat.tags);
-        if (selectedWeap.cost < allTags.sbk) {selectedWeap.cost = allTags.sbk;}
-    }
     selectedBat.apLeft = selectedBat.apLeft-selectedWeap.cost;
     if (selectedBat.tags.includes('tornade') || selectedWeap.free || sbk) {
         // salves infinies

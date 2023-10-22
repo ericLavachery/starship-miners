@@ -1198,7 +1198,7 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Peut se mettre en mode furtif à condition d\'avoir un niveau suffisant dans la compétence de camouflage">Camouflage</span>'+sepa;
     }
     if (batType.skills.includes('emoteur')) {
-        allSkills = allSkills+'<span class="paramValue" title="Permet au véhicule de rester furtif même en mouvement">Moteur silencieux</span>'+sepa;
+        allSkills = allSkills+'<span class="paramValue" title="Permet de rester furtif même en mouvement">Moteur silencieux</span>'+sepa;
     }
     if (batType.skills.includes('strong')) {
         if (batType.skills.includes('mutant')) {

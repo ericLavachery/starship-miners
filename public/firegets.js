@@ -2723,6 +2723,10 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.cost = 1;
         }
     }
+    // tornade & superbarserk weapon costs
+    if (bat.tags.includes('tornade') || bat.tags.includes('sbk')) {
+        thisWeapon.cost = getSBKCost(bat,thisWeapon);
+    }
     // Deluge Cost
     if (thisWeapon.ammo === 'missile-deluge') {
         thisWeapon.cost = weapon.cost+1;
@@ -2803,6 +2807,19 @@ function weaponAdj(weapon,bat,wn) {
     }
     // console.log(thisWeapon);
     return thisWeapon;
+};
+
+function getSBKCost(bat,weap) {
+    let sbkCost = 1;
+    if (bat.tags.includes('sbk')) {
+        let allTags = _.countBy(bat.tags);
+        sbkCost = allTags.sbk;
+    } else if (bat.tags.includes('tornade')) {
+        if (weap.cost < 2) {weap.cost = 2;}
+    }
+    weap.cost = weap.cost+sbkCost;
+    // if (weap.cost < sbkCost) {weap.cost = sbkCost;}
+    return weap.cost;
 };
 
 function getTGuetRange() {
