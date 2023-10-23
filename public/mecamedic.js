@@ -606,6 +606,8 @@ function getMedRange(bat,batType) {
         if (batType.cat === 'buildings' || batType.cat === 'devices') {
             if (batType.name === 'Hôpital') {
                 medRange = 3;
+            } else if (batType.name === 'Bar') {
+                medRange = 1;
             } else {
                 medRange = 2;
             }

@@ -839,9 +839,11 @@ function goDrug(apCost,drugName) {
     let ravitBat = {};
     let ravitLeft = 0;
     let biggestRavit = 0;
+    let molokoRavit = false;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);
+            ravitLeft = 0;
             if (batType.skills.includes('dealer') && batType.skills.includes(drug.name)) {
                 let rangeBonus = 0;
                 if (batType.skills.includes('medrange')) {
@@ -859,6 +861,9 @@ function goDrug(apCost,drugName) {
                         console.log('ravit bat: '+ravitBat.type);
                     }
                 }
+            }
+            if (batType.skills.includes('dealer') && batType.skills.includes('moloko') && ravitLeft >= 1) {
+                molokoRavit = true;
             }
         }
     });
@@ -889,6 +894,41 @@ function goDrug(apCost,drugName) {
                 }
             }
             drugInstantBonus(drug,false);
+        }
+        // moloko bonus
+        if (drug.name != 'moloko') {
+            if (molokoRavit) {
+                if (playerInfos.comp.ordre < 2) {
+                    let molokoTempted = true;
+                    if (selectedBatType.cat != 'infantry' && selectedBatType.cat != 'vehicles') {
+                        molokoTempted = false;
+                    }
+                    if (selectedBatType.crew === 0) {
+                        molokoTempted = false;
+                    }
+                    if (selectedBatType.skills.includes('clone') || selectedBatType.skills.includes('dog') || selectedBatType.skills.includes('robot') || selectedBatType.skills.includes('cleric')) {
+                        molokoTempted = false;
+                    }
+                    if (selectedBatType.skills.includes('leader') || selectedBat.tags.includes('schef')) {
+                        if (playerInfos.gang != 'drogmulojs') {
+                            molokoTempted = false;
+                        }
+                    }
+                    if (molokoTempted) {
+                        let molokoDice = 7+(playerInfos.comp.ordre*6);
+                        if (playerInfos.gang === 'drogmulojs') {
+                            molokoDice = Math.ceil(molokoDice/3);
+                        } else if (playerInfos.gang === 'rednecks' || playerInfos.gang === 'detruas' || playerInfos.gang === 'tiradores') {
+                            molokoDice = Math.ceil(molokoDice/1.75);
+                        }
+                        if (rand.rand(1,molokoDice) === 1) {
+                            selectedBat.tags.push('moloko');
+                            selectedBat.tags.push('moloko');
+                            selectedBat.apLeft = selectedBat.apLeft-3;
+                        }
+                    }
+                }
+            }
         }
         playSound(drug.sound,0);
         payCost(drug.costs);

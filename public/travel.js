@@ -437,6 +437,8 @@ function landingTerrainOK(tile) {
 function healEverything() {
     // toutes les unités vont dans la soute
     // toutes les unités sont soignées et perdent leurs tags temporaires
+    let dooom = getDoom(false);
+    dooom = Math.round(dooom);
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         // RESSOURCES ---------------------------------------
@@ -556,9 +558,9 @@ function healEverything() {
             }
             if (bat.tags.includes('return')) {
                 if (batType.skills.includes('decay')) {
-                    let decayPts = 6;
+                    let decayPts = 4+rand.rand(0,4);
                     if (batType.skills.includes('robot')) {
-                        decayPts = 9;
+                        decayPts = decayPts+3;
                     }
                     if (bat.soins != undefined) {
                         bat.soins = bat.soins+decayPts;
@@ -571,14 +573,16 @@ function healEverything() {
         // STRESS
         if (bat.tags.includes('return')) {
             if (!batType.skills.includes('robot') && batType.crew >= 1) {
-                let endStress = 8;
+                let endStress = dooom-4+rand.rand(0,6);
                 if (batType.skills.includes('lowstress')) {
-                    endStress = 4;
+                    endStress = Math.round(endStress/2);
                 }
-                if (bat.emo != undefined) {
-                    bat.emo = bat.emo+endStress;
-                } else {
-                    bat.emo = endStress;
+                if (endStress >= 1) {
+                    if (bat.emo != undefined) {
+                        bat.emo = bat.emo+endStress;
+                    } else {
+                        bat.emo = endStress;
+                    }
                 }
             }
         }

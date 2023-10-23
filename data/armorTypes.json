@@ -73,7 +73,7 @@
     {
         "name":"moloko",
         "cat":"drogue",
-        "apCost":6,
+        "apCost":4,
         "bldReq":["Bar"],
         "bldVMReq":["Bar"],
         "compReq":{},

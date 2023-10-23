@@ -1307,9 +1307,11 @@ function batFullInfos(bat,batType) {
     }
     if (batType.skills.includes('medrange')) {
         if (batType.name === 'Hôpital') {
-            allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons à une distance de 3 cases">Ambulance</span>'+sepa;
+            allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons et distribuer des drogues à une distance de 3 cases">Ambulance</span>'+sepa;
+        } else if (batType.name === 'Bar') {
+            allSkills = allSkills+'<span class="paramValue" title="Peut distribuer des drogues à une distance de 2 cases">Ambulance</span>'+sepa;
         } else {
-            allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons à une distance de 2 cases">Ambulance</span>'+sepa;
+            allSkills = allSkills+'<span class="paramValue" title="Peut soigner les bataillons et distribuer des drogues à une distance de 2 cases">Ambulance</span>'+sepa;
         }
     }
     if (batType.skills.includes('necrocure')) {

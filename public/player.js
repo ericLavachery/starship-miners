@@ -703,15 +703,80 @@ function playerSkillsUTChanges() {
             }
         }
         // DEALERS
-        if (unit.cat != 'infantry' && (unit.kind === 'zero-medecine' || unit.name === 'Medevacs') && unit.skills.includes('dealer') && playerInfos.comp.med >= 1) {
+        if (playerInfos.comp.med >= 1 || playerInfos.comp.log >= 2) {
             if (playerInfos.gang === 'blades') {
-                unit.skills.push('sila');
+                if (unit.cat != 'infantry' && (unit.kind === 'zero-medecine' || unit.name === 'Medevacs')) {
+                    unit.skills.push('sila');
+                }
             }
+        }
+        if (unit.name === 'Bar') {
             if (playerInfos.gang === 'drogmulojs') {
+                unit.skills.push('starka');
                 unit.skills.push('sila');
                 unit.skills.push('bliss');
                 unit.skills.push('skupiac');
                 unit.skills.push('blaze');
+                unit.skills.push('kirin');
+                unit.skills.push('octiron');
+                unit.skills.push('medrange');
+            } else if (playerInfos.comp.exo >= 1) {
+                unit.skills.push('starka');
+            }
+        }
+        if (playerInfos.comp.med >= 2 || playerInfos.comp.log >= 3) {
+            if (unit.type != 'infantry') {
+                if (unit.skills.includes('octiron')) {
+                    if (!unit.skills.includes('kirin')) {
+                        unit.skills.push('kirin');
+                    }
+                    if (!unit.skills.includes('starka')) {
+                        unit.skills.push('starka');
+                    }
+                }
+                if (unit.skills.includes('kirin')) {
+                    if (!unit.skills.includes('octiron')) {
+                        unit.skills.push('octiron');
+                    }
+                    if (!unit.skills.includes('starka')) {
+                        unit.skills.push('starka');
+                    }
+                }
+                if (unit.skills.includes('starka')) {
+                    if (!unit.skills.includes('octiron')) {
+                        unit.skills.push('octiron');
+                    }
+                    if (!unit.skills.includes('kirin')) {
+                        unit.skills.push('kirin');
+                    }
+                }
+            }
+        }
+        let ravitMoloko = false;
+        if (playerInfos.comp.exo >= 1 && playerInfos.comp.log >= 2) {
+            ravitMoloko = true;
+        }
+        if (playerInfos.comp.ordre <= 1) {
+            ravitMoloko = true;
+        }
+        if (ravitMoloko) {
+            if (unit.kind === 'zero-trans-ravit') {
+                if (!unit.skills.includes('dealer')) {
+                    if (unit.maxDrug > 200) {
+                        unit.maxDrug = 6;
+                    }
+                    unit.skills.push('dealer');
+                }
+                if (!unit.skills.includes('moloko')) {
+                    unit.skills.push('moloko');
+                }
+            }
+        }
+        if (playerInfos.comp.ordre === 0) {
+            if (unit.skills.includes('dealer')) {
+                if (!unit.skills.includes('moloko')) {
+                    unit.skills.push('moloko');
+                }
             }
         }
         // AUTOKITS

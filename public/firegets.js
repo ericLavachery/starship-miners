@@ -345,6 +345,10 @@ function shot(weapon,attBat,attBatType,defBat,defBatType,shotDice,accurange) {
     if (defBat.tags.includes('skupiac')) {
         defBatSpeed = defBatSpeed+3;
     }
+    // moloko drug
+    if (defBat.tags.includes('moloko')) {
+        defBatSpeed = defBatSpeed-2;
+    }
     // Pièges
     if (weapon.name.includes('Dart') || weapon.name.includes('Pieu') || weapon.name.includes('Barbelés') || weapon.name === 'Explosifs' || weapon.name === 'Explosion') {
         stealth = 0;
@@ -416,6 +420,10 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
     let defBatSpeed = defBatType.speed;
     if (defBat.tags.includes('skupiac')) {
         defBatSpeed = defBatSpeed+3;
+    }
+    // moloko drug
+    if (defBat.tags.includes('moloko')) {
+        defBatSpeed = defBatSpeed-2;
     }
     // Pièges
     if (weapon.name.includes('Dart') || weapon.name.includes('Pieu') || weapon.name.includes('Barbelés') || weapon.name === 'Explosifs' || weapon.name === 'Explosion') {
@@ -1353,7 +1361,11 @@ function getStealth(bat) {
         batStealth = 0;
     }
     // Starka drug
-    if (bat.tags.includes('starka') || bat.tags.includes('moloko')) {
+    if (bat.tags.includes('starka')) {
+        batStealth = batStealth/1.5;
+    }
+    // Moloko drug
+    if (bat.tags.includes('moloko')) {
         batStealth = batStealth/1.5;
     }
     // camouflage 0
@@ -2533,6 +2545,13 @@ function weaponAdj(weapon,bat,wn) {
     if (bat.tags.includes('skupiac')) {
         thisWeapon.accuracy = thisWeapon.accuracy+6;
         thisWeapon.power = thisWeapon.power+1;
+    }
+    // moloko drug
+    if (bat.tags.includes('moloko')) {
+        thisWeapon.accuracy = thisWeapon.accuracy-3+playerInfos.comp.exo;
+        if (thisWeapon.isMelee || thisWeapon.name.includes('Javelot') || thisWeapon.name.includes('Foreuse')) {
+            thisWeapon.power = thisWeapon.power+2;
+        }
     }
     // eatpoison & frenzy
     if (batType.skills.includes('eatpoison') && bat.tags.includes('regeneration')) {

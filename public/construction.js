@@ -1957,14 +1957,28 @@ function recupRaiders(unitId,tileId,citoyens,xp,ammo,equip) {
         loadBat(citBat.id,souteId);
     }
     let dropTile = checkDrop(tileId);
-    conselUnit = unitTypes[unitIndex];
-    conselPut = false;
-    conselAmmos = [ammo,ammo,'kevlar',equip];
-    conselTriche = true;
-    putBat(dropTile,0,xp);
-    if (playerInfos.onShip) {
-        let citBat = getBatByTypeIdAndTileId(typeId,dropTile);
-        loadBat(citBat.id,souteId);
+    if (dropTile >= 0) {
+        conselUnit = unitTypes[unitIndex];
+        conselPut = false;
+        conselAmmos = [ammo,ammo,'kevlar',equip];
+        conselTriche = true;
+        putBat(dropTile,0,xp);
+        if (playerInfos.onShip) {
+            let citBat = getBatByTypeIdAndTileId(typeId,dropTile);
+            loadBat(citBat.id,souteId);
+        }
+        dropTile = checkDrop(tileId);
+        if (dropTile >= 0) {
+            conselUnit = unitTypes[unitIndex];
+            conselPut = false;
+            conselAmmos = [ammo,ammo,'kevlar',equip];
+            conselTriche = true;
+            putBat(dropTile,0,xp);
+            if (playerInfos.onShip) {
+                let citBat = getBatByTypeIdAndTileId(typeId,dropTile);
+                loadBat(citBat.id,souteId);
+            }
+        }
     }
 };
 

@@ -808,7 +808,7 @@
     {
         "id":156,
         "name":"Riggers",
-        "levels":{"rednecks":13,"blades":16,"bulbos":9,"drogmulojs":14,"tiradores":13,"detruas":99,"brasier":12},
+        "levels":{"rednecks":13,"blades":15,"bulbos":9,"drogmulojs":14,"tiradores":13,"detruas":99,"brasier":12},
         "bldReq":["Atelier","Centre de recherches"],
         "compReq":{"trans":2},
         "altCompReq":{"trans":1,"cyber":2},
@@ -1641,7 +1641,7 @@
     {
         "id":34,
         "name":"Mirôdeurs",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":14,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":15,"detruas":99,"brasier":99},
         "bldReq":["Arsenal","Usine"],
         "compReq":{"tank":1,"const":2},
         "costs":{"Fer":220,"Scrap":2712,"Carbone":852,"Aluminium":102,"Moteurs":816,"Titane":72,"Tungstène":16,"Silicium":15,"Cuivre":68,"Batteries":78,"Compo2":1080,"Compo3":810,"Huile":58,"Chlore":26,"Zinc":26,"Cobalt":30,"Hélium":60,"Tissus":13},
@@ -1973,16 +1973,16 @@
     {
         "id":102,
         "name":"Speeders",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":15,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":14,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Aérodocks","Poste radio"],
-        "costs":{"Fer":24,"Scrap":72,"Carbone":144,"Aluminium":96,"Moteurs":96,"Plastanium":12,"Cuivre":48,"Titane":240,"Tungstène":24,"Electros":144,"Batteries":48},
+        "costs":{"Fer":24,"Scrap":72,"Carbone":144,"Aluminium":96,"Moteurs":96,"Plastanium":12,"Cuivre":48,"Titane":240,"Tungstène":24,"Electros":144,"Batteries":48,"Spins":4},
         "deploy":{"Fuel":190},
         "fabTime":85
     },
     {
         "id":12,
         "name":"Homers",
-        "levels":{"rednecks":99,"blades":17,"bulbos":17,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":18},
+        "levels":{"rednecks":99,"blades":16,"bulbos":17,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":18},
         "bldReq":["Usine d'armement","Aérodocks","Centre de com"],
         "compReq":{"aero":1,"energ":1},
         "costs":{"Fer":30,"Carbone":250,"Aluminium":120,"Moteurs":120,"Plastanium":30,"Titane":480,"Tungstène":105,"Rhodium":100,"Silicium":25,"Cuivre":90,"Electros":270,"Batteries":215,"Nickel":45,"Silicium":15,"Huile":45,"Mendium":30,"Cobalt":30,"Hélium":60,"Spins":6},
@@ -2023,7 +2023,7 @@
     {
         "id":318,
         "name":"Medevacs",
-        "levels":{"rednecks":18,"blades":13,"bulbos":16,"drogmulojs":16,"tiradores":16,"detruas":99,"brasier":16},
+        "levels":{"rednecks":18,"blades":14,"bulbos":16,"drogmulojs":16,"tiradores":16,"detruas":99,"brasier":16},
         "bldReq":["Hôpital","Aérodocks","Centre de com"],
         "compReq":{"aero":1,"med":2},
         "costs":{"Scrap":162,"Carbone":234,"Aluminium":300,"Moteurs":150,"Plastanium":45,"Titane":690,"Cuivre":90,"Electros":220,"Batteries":100,"Silicium":27,"Drogues":130,"Chlore":60,"Zinc":60,"Tissus":30,"Spins":12},
@@ -2033,7 +2033,7 @@
     {
         "id":296,
         "name":"Whales",
-        "levels":{"rednecks":19,"blades":18,"bulbos":19,"drogmulojs":19,"tiradores":19,"detruas":99,"brasier":19},
+        "levels":{"rednecks":19,"blades":19,"bulbos":19,"drogmulojs":19,"tiradores":19,"detruas":99,"brasier":19},
         "bldReq":["Usine","Aérodocks","Centre de com"],
         "compReq":{"aero":1,"trans":3},
         "costs":{"Carbone":1200,"Aluminium":1200,"Moteurs":320,"Plastanium":160,"Titane":2400,"Tungstène":160,"Rhodium":240,"Silicium":80,"Cuivre":200,"Electros":400,"Batteries":480,"Nickel":40,"Cobalt":30,"Hélium":60,"Drogues":12,"Chlore":12,"Zinc":12,"Tissus":12,"Spins":15},
@@ -2085,7 +2085,7 @@
     {
         "id":8,
         "name":"Ventilos",
-        "levels":{"rednecks":99,"blades":19,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":17,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Aérodocks","QG"],
         "compReq":{"aero":1},
         "costs":{"Carbone":288,"Aluminium":500,"Moteurs":192,"Plastanium":90,"Titane":1000,"Cuivre":144,"Electros":270,"Batteries":135,"Silicium":18,"Drogues":46,"Chlore":28,"Zinc":28,"Fuel":90,"Tissus":14,"Spins":12},

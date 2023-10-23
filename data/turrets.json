@@ -598,7 +598,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_lander","maycamo","fouille","transorbital","rescue","ravitaillement","stock","transport","longshot","freeshot","fret","medic","medtrans","infrahelp","mecano","cleaning","bastion","dumper","routes","flash","accu","recupcit","recupres","noblub","lowstress","upgrade","max1"],
+        "skills":["b_lander","maycamo","fouille","transorbital","rescue","ravitaillement","stock","transport","longshot","freeshot","fret","medic","medtrans","dealer","kirin","octiron","starka","infrahelp","mecano","cleaning","bastion","dumper","routes","flash","accu","recupcit","recupres","noblub","lowstress","upgrade","max1"],
         "mediCost":7,
         "mecanoCost":6,
         "transMaxSize":21,

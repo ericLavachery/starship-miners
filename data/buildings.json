@@ -461,7 +461,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","crewsave","transport","ravitaillement","dealer","starka","nitro","routes","longshot","gooddef","sentinelle","fret","dumper","selfbadrepair","badmedic","meleehelp","prefab","noshow","infrahelp","phare"],
+        "skills":["fouille","recupcit","crewsave","transport","ravitaillement","dealer","starka","nitro","sudu","routes","longshot","gooddef","sentinelle","fret","dumper","selfbadrepair","badmedic","meleehelp","prefab","noshow","infrahelp","phare"],
         "mecanoCost":10,
         "mediCost":9,
         "transMaxSize":21,
