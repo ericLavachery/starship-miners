@@ -1499,7 +1499,7 @@ function attack(melee,init) {
         } else {
             batDeathEffect(deadBat,false,gain,'','');
         }
-        if (selectedWeap.name === 'Bélier' && !selectedWeap.free) {
+        if (selectedWeap.isRam && !selectedWeap.free) {
             if (selectedWeap.num === 1) {
                 if (selectedBat.tags.includes('noBis1')) {
                     tagDelete(selectedBat,'noBis1');

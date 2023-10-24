@@ -1977,6 +1977,7 @@ function weaponEqChange(thisWeapon,wn,bat,batType) {
     if (hasEquip(bat,['belier'])) {
         if (thisWeapon.name === 'Boutoir') {
             thisWeapon.name = 'Bélier';
+            thisWeapon.isRam = true;
             thisWeapon.rof = thisWeapon.rof*1.5;
             thisWeapon.power = Math.round(thisWeapon.power*1.26);
             thisWeapon.accuracy = thisWeapon.accuracy+2;
@@ -1990,6 +1991,7 @@ function weaponEqChange(thisWeapon,wn,bat,batType) {
             thisWeapon.name = 'Moissonneuse';
             thisWeapon.noBig = false;
             thisWeapon.noShield = false;
+            thisWeapon.isRam = false;
             thisWeapon.aoe = 'squad';
             thisWeapon.power = Math.ceil(Math.sqrt(batType.size*1.75));
             thisWeapon.accuracy = 24;
@@ -2181,6 +2183,11 @@ function weaponAdj(weapon,bat,wn) {
         thisWeapon.hide = false;
     } else {
         thisWeapon.hide = weapon.hide;
+    }
+    if (weapon.isRam === undefined) {
+        thisWeapon.isRam = false;
+    } else {
+        thisWeapon.isRam = weapon.isRam;
     }
     // Equipements qui changent l'arme
     thisWeapon = weaponEqChange(thisWeapon,wn,bat,batType);
@@ -2493,7 +2500,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     thisWeapon.power = Math.round(thisWeapon.power*ammo.powermult);
     thisWeapon.power = thisWeapon.power+ammo.power;
-    if (thisWeapon.name === 'Bélier' || thisWeapon.name === 'Boutoir') {
+    if (thisWeapon.isRam) {
         if (bat.tileId != bat.oldTileId) {
             thisWeapon.power = Math.round(thisWeapon.power*1.2);
         }
@@ -3461,7 +3468,7 @@ function getEggProtect(eggBat,eggBatType,weap) {
             }
             if (eggProt > maxProt) {eggProt = maxProt;}
             console.log(eggProt);
-            if (weap.isMelee) {
+            if (weap.isMelee || weap.isBelier) {
                 eggProt = eggProt*0.97;
             } else if (weap.noShield) {
                 eggProt = eggProt*0.9;
