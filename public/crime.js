@@ -638,6 +638,22 @@ function getCitDeath(citType,number,eaten) {
     return citLost;
 };
 
+function getCommodList() {
+    let commodList = {};
+    unitTypes.forEach(function(unit) {
+        if (unit.cat === 'buildings') {
+            if (unit.crime != undefined) {
+                if (unit.crime < 0) {
+                    if (unit.skills.includes('poprel')) {
+                        commodList[unit.name] = 0;
+                    }
+                }
+            }
+        }
+    });
+    return commodList;
+};
+
 function calcCrimeRate(mesCitoyens) {
     let crimeRate = {};
     // facteur: +criminels%
@@ -657,6 +673,8 @@ function calcCrimeRate(mesCitoyens) {
     // +1 par point playerInfos.vitals (25 pts)
     crimeRate.penib = crimeRate.penib+playerInfos.vitals;
     let bldIds = [];
+    let commodList = getCommodList();
+    let commodNeed = Math.round(population/3000);
     // Unités: (electroguards-2 gurus-2 dealers-1 marshalls-1)
     let maxCamGuards = Math.floor(Math.sqrt(population)/16);
     let camGuards = 0;
@@ -720,6 +738,13 @@ function calcCrimeRate(mesCitoyens) {
                         }
                         hopitBonus = hopitBonus+batType.crime;
                     }
+                } else if (batType.skills.includes('poprel')) {
+                    if (commodList[batType.name] < commodNeed) {
+                        countMe = true;
+                        console.log('COUNT: '+batType.name);
+                        console.log(commodList);
+                    }
+                    commodList[batType.name] = commodList[batType.name]+1;
                 } else {
                     if (!bldIds.includes(batType.id)) {
                         if (!outOfOrder) {
@@ -733,28 +758,26 @@ function calcCrimeRate(mesCitoyens) {
             } else {
                 if (bat.eq === 'camkit' || bat.eq === 'taserkit') {
                     camGuards++;
-                    if (camGuards <= maxCamGuards) {
-                        countMe = true;
-                    }
-                } else {
-                    countMe = true;
                 }
+                countMe = true;
             }
             if (countMe) {
-                if (bat.eq === 'taserkit') {
+                if (bat.eq === 'taserkit' && camGuards <= maxCamGuards) {
                     crimeRate.fo = crimeRate.fo-0.5;
-                } else if (bat.eq === 'camkit' && playerInfos.bldVM.includes('Salle de contrôle')) {
+                } else if (bat.eq === 'camkit' && playerInfos.bldVM.includes('Salle de contrôle') && camGuards <= maxCamGuards) {
                     crimeRate.fo = crimeRate.fo-1;
                 } else if (batType.skills.includes('fo')) {
                     crimeRate.fo = crimeRate.fo+batType.crime;
                 } else {
-                    crimeRate.penib = crimeRate.penib+batType.crime;
-                    // console.log(batType.name+' '+batType.crime+' total='+crimeRate.penib);
+                    if (batType.skills.includes('poprel')) {
+                        crimeRate.penib = crimeRate.penib+(batType.crime/commodNeed);
+                    } else {
+                        crimeRate.penib = crimeRate.penib+batType.crime;
+                    }
                 }
             }
         }
     });
-    crimeRate.fo = Math.round(crimeRate.fo);
     // centre de com
     if (playerInfos.bldList.includes('Salle de contrôle')) {
         crimeRate.fo = crimeRate.fo-1;
@@ -783,7 +806,7 @@ function calcCrimeRate(mesCitoyens) {
     // Treshold
     let horror = crimeRate.penib;
     if (horror > 15) {
-        horror = Math.ceil((horror-15)/10)+15;
+        horror = Math.ceil((horror-15)/5)+15;
     }
     if (horror < 10) {
         crimeRate.total = adjCrims+Math.round(horror/1.9);
@@ -792,18 +815,23 @@ function calcCrimeRate(mesCitoyens) {
     } else {
         crimeRate.total = adjCrims+horror;
     }
-    crimeRate.total = crimeRate.total+crimeRate.fo;
     // compétence maintien de l'ordre
-    let mOrdre = 6;
+    let mOrdre = 8;
     if (playerInfos.comp.ordre === 1) {
-        mOrdre = 8;
-    } else if (playerInfos.comp.ordre >= 2) {
         mOrdre = 10;
+    } else if (playerInfos.comp.ordre === 2) {
+        mOrdre = 13;
+    } else if (playerInfos.comp.ordre === 3) {
+        mOrdre = 16;
     }
-    crimeRate.total = Math.round(crimeRate.total/mOrdre*6);
+    crimeRate.fo = crimeRate.fo/10*mOrdre;
+    crimeRate.total = crimeRate.total+crimeRate.fo;
+    crimeRate.total = Math.round(crimeRate.total);
     if (crimeRate.total < 0) {
         crimeRate.total = 0;
     }
+    console.log('crimeRate.fo='+crimeRate.fo);
+    crimeRate.fo = Math.round(crimeRate.fo);
     console.log('crimeRate.total='+crimeRate.total);
     return crimeRate;
 };

@@ -441,7 +441,7 @@
         "level": 2,
         "rarity": 28,
         "cat": "white",
-        "batch": 5,
+        "batch": 2,
         "energie": -1,
         "equiv": 1,
         "kinds": ["industry","medecine"]

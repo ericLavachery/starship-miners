@@ -458,6 +458,17 @@ function healEverything() {
                 }
             }
         }
+        if (batType.skills.includes('transorbital')) {
+            if (bat.transIds.length >= 1) {
+                let decayPts = batType.slots+rand.rand(0,12);
+                decayPts = Math.ceil(decayPts/10);
+                if (bat.soins != undefined) {
+                    bat.soins = bat.soins+decayPts;
+                } else {
+                    bat.soins = decayPts;
+                }
+            }
+        }
         if (bat.loc === 'trans' && bat.locId != souteId) {
             if (!bat.tags.includes('return')) {
                 gearTags.push('return');

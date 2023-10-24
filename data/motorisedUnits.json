@@ -3444,7 +3444,7 @@
         "kind":"zero-trans-fret",
         "squads":5,
         "squadSize":2,
-        "crew":3,
+        "crew":5,
         "hp":200,
         "armor":14,
         "size":48,
