@@ -620,7 +620,7 @@ function checkMineRuinsRes(ruinType,coffre,tile) {
                 let value = entry[1];
                 let found = 0;
                 if (key === 'Hydrocarbure' || key === 'Eau') {
-                    found = Math.floor(value*rand.rand(0,3)*rand.rand(3,12)/48);
+                    found = Math.floor(value*rand.rand(0,5)*rand.rand(1,16)/60);
                 }
                 console.log(key+'='+found);
                 if (found >= 1) {
@@ -635,7 +635,7 @@ function checkMineRuinsRes(ruinType,coffre,tile) {
             Object.entries(allRes).map(entry => {
                 let key = entry[0];
                 let value = entry[1];
-                let found = Math.floor(value*rand.rand(0,3)*rand.rand(3,12)/48);
+                let found = Math.floor(value*rand.rand(0,5)*rand.rand(1,16)/60);
                 if (key === 'Scrap') {
                     found = 0;
                 }

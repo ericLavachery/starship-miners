@@ -676,8 +676,10 @@ function calcCrimeRate(mesCitoyens) {
     let commodList = getCommodList();
     let commodNeed = Math.round(population/3000);
     // Unités: (electroguards-2 gurus-2 dealers-1 marshalls-1)
-    let maxCamGuards = Math.floor(Math.sqrt(population)/16);
-    let camGuards = 0;
+    let camCount = false;
+    if (playerInfos.bldList.includes('Salle de contrôle')) {
+        camCount = true;
+    }
     let hopitBonus = 0;
     let bigCrims = 0;
     // Bâtiments: (prisons-5 salleSport-2 jardin-4 bar-2 cantine-3 dortoirs+1 cabines-1 appartements+3)
@@ -722,7 +724,7 @@ function calcCrimeRate(mesCitoyens) {
                 crimeRate.lits = crimeRate.lits-15;
             }
         }
-        if (batType.crime != undefined || bat.eq === 'camkit' || bat.eq === 'taserkit') {
+        if (batType.crime != undefined) {
             let countMe = false;
             if (batType.cat === 'buildings' || batType.name === 'Technobass') {
                 if (batType.crime >= 1) {
@@ -755,19 +757,16 @@ function calcCrimeRate(mesCitoyens) {
                 }
             } else if (batType.name === 'Electroguards') {
                 countMe = true;
-            } else {
-                if (bat.eq === 'camkit' || bat.eq === 'taserkit') {
-                    camGuards++;
-                }
+            } else if (!batType.skills.includes('garde')) {
                 countMe = true;
             }
             if (countMe) {
-                if (bat.eq === 'taserkit' && camGuards <= maxCamGuards) {
-                    crimeRate.fo = crimeRate.fo-0.5;
-                } else if (bat.eq === 'camkit' && playerInfos.bldVM.includes('Salle de contrôle') && camGuards <= maxCamGuards) {
-                    crimeRate.fo = crimeRate.fo-1;
-                } else if (batType.skills.includes('fo')) {
-                    crimeRate.fo = crimeRate.fo+batType.crime;
+                if (batType.skills.includes('fo')) {
+                    if (camCount && bat.eq === 'camkit') {
+                        crimeRate.fo = crimeRate.fo+batType.crime-1;
+                    } else {
+                        crimeRate.fo = crimeRate.fo+batType.crime;
+                    }
                 } else {
                     if (batType.skills.includes('poprel')) {
                         crimeRate.penib = crimeRate.penib+(batType.crime/commodNeed);
@@ -778,10 +777,9 @@ function calcCrimeRate(mesCitoyens) {
             }
         }
     });
-    // centre de com
-    if (playerInfos.bldList.includes('Salle de contrôle')) {
-        crimeRate.fo = crimeRate.fo-1;
-    }
+    // Salle de contrôle et Gardes
+    let guardsFO = calcGuards(population);
+    crimeRate.fo = crimeRate.fo+guardsFO;
     // structure
     let numStructures = checkNumUnits('Structure');
     // console.log('Structure='+numStructures);
@@ -834,6 +832,69 @@ function calcCrimeRate(mesCitoyens) {
     crimeRate.fo = Math.round(crimeRate.fo);
     console.log('crimeRate.total='+crimeRate.total);
     return crimeRate;
+};
+
+function calcGuards(population) {
+    let guardsFO = 0;
+    let maxGuards = Math.floor(Math.sqrt(population)/16);
+    let numGuards = 0;
+    if (playerInfos.bldList.includes('Salle de contrôle')) {
+        guardsFO = guardsFO-1;
+        bataillons.forEach(function(bat) {
+            if (numGuards < maxGuards) {
+                let batType = getBatType(bat);
+                if (batType.skills.includes('garde')) {
+                    if (bat.eq === 'taserkit' || bat.eq === 'camkit') {
+                        numGuards++;
+                        if (bat.eq === 'taserkit') {
+                            guardsFO = guardsFO-0.5;
+                        } else if (bat.eq === 'camkit') {
+                            guardsFO = guardsFO-1;
+                        }
+                    }
+                }
+            }
+        });
+        if (numGuards < maxGuards) {
+            bataillons.forEach(function(bat) {
+                if (numGuards < maxGuards) {
+                    let batType = getBatType(bat);
+                    if (batType.skills.includes('garde')) {
+                        if (bat.eq != 'taserkit' && bat.eq != 'camkit') {
+                            numGuards++;
+                            guardsFO = guardsFO+batType.crime;
+                        }
+                    }
+                }
+            });
+        }
+    } else {
+        bataillons.forEach(function(bat) {
+            if (numGuards < maxGuards) {
+                let batType = getBatType(bat);
+                if (batType.skills.includes('garde')) {
+                    if (bat.eq === 'taserkit') {
+                        numGuards++;
+                        guardsFO = guardsFO-0.5;
+                    }
+                }
+            }
+        });
+        if (numGuards < maxGuards) {
+            bataillons.forEach(function(bat) {
+                if (numGuards < maxGuards) {
+                    let batType = getBatType(bat);
+                    if (batType.skills.includes('garde')) {
+                        if (bat.eq != 'taserkit') {
+                            numGuards++;
+                            guardsFO = guardsFO+batType.crime;
+                        }
+                    }
+                }
+            });
+        }
+    }
+    return guardsFO;
 };
 
 function setPenitLevel() {

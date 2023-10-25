@@ -82,7 +82,7 @@
         "levels":{"rednecks":8,"blades":8,"bulbos":8,"drogmulojs":8,"tiradores":8,"detruas":8,"brasier":8},
         "bldReq":["Laboratoire","Générateur"],
         "compReq":{"ordre":3,"mat":2},
-        "altCompReq":{"ordre":3,"mat":1,"ca":3},
+        "altCompReq":{"ordre":3,"mat":1,"energ":1},
         "costs":{"Scrap":30,"Carbone":60,"Bois":60,"Aluminium":105,"Titane":45,"Cuivre":60,"Tissus":30,"Azote":30,"Mendium":30,"Silicium":30,"Electros":60,"Batteries":30},
         "deploy":{"Energie":60},
         "fabTime":90,

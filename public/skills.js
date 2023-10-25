@@ -431,8 +431,7 @@ function tornade() {
     selectedBat.tags.push('tornade');
     selectedBat.tags.push('notorn');
     selectedBat.tags.push('notorn');
-    if (selectedBatType.weapon.range >= 1) {
-        selectedBat.tags.push('notorn');
+    if (selectedBatType.weapon.name === 'Minigun') {
         selectedBat.tags.push('notorn');
     }
     doneAction(selectedBat);

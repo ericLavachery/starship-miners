@@ -583,7 +583,7 @@
             "ravitBld":"Poudrière"
         },
         "protection":[],
-        "equip":["aucun","e-flash","e-ranger","e-camo","e-jetpack","permakirin","theeye","helper","kit-lightning","detector"],
+        "equip":["aucun","e-flash","e-ranger","e-camo","e-jetpack","permakirin","theeye","helper","kit-lightning","detector","camkit"],
         "log3eq":["detector"],
         "autoEq":["e-ranger","permakirin","theeye","helper"],
         "moveCost":3.5,
