@@ -1468,7 +1468,7 @@ function attack(melee,init) {
     if (activeTurn === 'player') {
         if (selectedBatType.skills.includes('superberserk') && selectedBat.tags.includes('gogogo') && selectedBat.tags.includes('sila') && selectedBat.tags.includes('starka')) {
             let allTags = _.countBy(selectedBat.tags);
-            if (allTags.starka >= 3 && allTags.sila >= 3) {
+            if ((allTags.starka >= 3 && allTags.sila >= 3) || selectedBat.tags.includes('sbk')) {
                 sbk = true;
                 selectedBat.tags.push('sbk');
             }

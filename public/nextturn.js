@@ -1408,9 +1408,6 @@ function tagsUpdate(bat,batType) {
     if (bat.tags.includes('sbk')) {
         tagDelete(bat,'sbk');
         tagDelete(bat,'sila');
-        if (bat.tags.includes('sbk')) {
-            tagDelete(bat,'sila');
-        }
     }
     tagDelete(bat,'podcd');
     tagDelete(bat,'deb');

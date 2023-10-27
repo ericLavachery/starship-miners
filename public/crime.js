@@ -814,15 +814,15 @@ function calcCrimeRate(mesCitoyens) {
         crimeRate.total = adjCrims+horror;
     }
     // compétence maintien de l'ordre
-    let mOrdre = 8;
-    if (playerInfos.comp.ordre === 1) {
-        mOrdre = 10;
-    } else if (playerInfos.comp.ordre === 2) {
-        mOrdre = 13;
-    } else if (playerInfos.comp.ordre === 3) {
-        mOrdre = 16;
-    }
-    crimeRate.fo = crimeRate.fo/10*mOrdre;
+    // let mOrdre = 8;
+    // if (playerInfos.comp.ordre === 1) {
+    //     mOrdre = 10;
+    // } else if (playerInfos.comp.ordre === 2) {
+    //     mOrdre = 12;
+    // } else if (playerInfos.comp.ordre === 3) {
+    //     mOrdre = 14;
+    // }
+    // crimeRate.fo = crimeRate.fo/10*mOrdre;
     crimeRate.total = crimeRate.total+crimeRate.fo;
     crimeRate.total = Math.round(crimeRate.total);
     if (crimeRate.total < 0) {
@@ -894,6 +894,16 @@ function calcGuards(population) {
             });
         }
     }
+    // compétence maintien de l'ordre
+    let mOrdre = 8;
+    if (playerInfos.comp.ordre === 1) {
+        mOrdre = 10;
+    } else if (playerInfos.comp.ordre === 2) {
+        mOrdre = 13;
+    } else if (playerInfos.comp.ordre === 3) {
+        mOrdre = 16;
+    }
+    guardsFO = guardsFO/10*mOrdre;
     return guardsFO;
 };
 

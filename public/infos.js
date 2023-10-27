@@ -492,7 +492,7 @@ function batInfos(bat,batType,pop) {
     }
     if (batType.skills.includes('superberserk') && bat.tags.includes('gogogo') && bat.tags.includes('sila') && bat.tags.includes('starka')) {
         let allTags = _.countBy(bat.tags);
-        if (allTags.starka >= 3 && allTags.sila >= 3) {
+        if ((allTags.starka >= 3 && allTags.sila >= 3) || bat.tags.includes('sbk')) {
             $('#'+bodyPlace).append('<span class="paramName cy">Berserk</span><span class="paramIcon"></span><span class="paramValue cy">Oui</span><br>');
         }
     }

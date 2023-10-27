@@ -525,6 +525,9 @@ function alienCanon() {
     if (playerInfos.objectifs.bug === 'actif' && !domeProtect) {
         let chance = playerInfos.mapTurn+landingNoise;
         if (chance > 33) {chance = 33;}
+        if (hasAlien('Dragonblob')) {
+            chance = chance+17;
+        }
         // chance = 100;
         if (playerInfos.mapTurn >= 2) {
             if (rand.rand(1,100) <= chance) {
@@ -548,7 +551,7 @@ function alienCanon() {
     if (playerInfos.objectifs.larve === 'actif' && !domeProtect) {
         let freq = 4;
         if (hasAlien('Skygrub')) {
-            freq = 3;
+            freq = 2;
         }
         if (playerInfos.mapTurn % freq === 0 && playerInfos.mapTurn >= 1) {
             let canonTiles = getEctoCanonTiles();

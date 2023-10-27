@@ -2147,9 +2147,9 @@ function getResRecup(bat,batType) {
         let batEquip;
         // SPINS
         let spinCost = 0;
-        if (batType.skills.includes('transorbital') || batType.skills.includes('isvsp')) {
-            if (batType.toNum >= 1) {
-                spinCost = batType.toNum;
+        if (batType.spinNum != undefined) {
+            if (batType.spinNum >= 1) {
+                spinCost = batType.spinNum;
             }
         }
         if (playerInfos.bldList.includes('Décharge') || spinCost >= 1) {
@@ -2199,7 +2199,11 @@ function getResRecup(bat,batType) {
                     value = Math.ceil(value/8*(playerInfos.comp.det+1));
                 } else if (key === 'Spins') {
                     if (spinCost > 0) {
-                        value = Math.ceil(spinCost/spinsLanderRecup*(recupFactor+25)*(playerInfos.comp.vsp+15)/17);
+                        if (batType.skills.includes('transorbital')) {
+                            value = Math.ceil(spinCost/spinsLanderRecup*(recupFactor+25)*(playerInfos.comp.vsp+15)/17);
+                        } else {
+                            value = Math.floor(spinCost/spinsBldRecup*playerInfos.comp.det);
+                        }
                     } else {
                         value = Math.floor(value/spinsBldRecup*playerInfos.comp.det);
                     }

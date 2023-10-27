@@ -1085,7 +1085,7 @@ function maxUnits(unit) {
                 maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez monter de niveau';
             }
         } else {
-            if (total.saucer >= maxInfo.max && numOf[unit.name] >= 2) {
+            if (total.saucer >= maxInfo.max && numOf[unit.name] >= playerInfos.comp.aero) {
                 maxInfo.ko = true;
                 maxInfo.text = 'Pour pouvoir construire plus d\'aéronefs vous devez construire un aérodock supplémentaire';
             }
@@ -1325,7 +1325,7 @@ function getUnitLevelLimit(unit) {
     let unitLevel = unit.levels[playerInfos.gang];
     let levComp = playerInfos.gLevel-unitLevel;
     let gLevLimit = 1;
-    if (levComp >= 1) {
+    if (levComp >= 1 || playerInfos.gLevel >= 20) {
         gLevLimit = 99;
     }
     return gLevLimit;
