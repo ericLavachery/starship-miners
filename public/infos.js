@@ -565,7 +565,7 @@ function batInfos(bat,batType,pop) {
     if (hasSnif(bat,batType)) {
         $('#'+bodyPlace).append('<span class="paramName ciel" title="Peut repérer les aliens furtifs et invisibles à 2 cases">Pisteur</span><span class="paramIcon"></span><span class="paramValue ciel">Oui</span><br>');
     }
-    if (batType.skills.includes('dreduct') || bat.tags.includes('genred') || bat.prt === 'kapton' || bat.prt === 'kaptane' || bat.prt.includes('suit') || bat.prt === 'bonibo' || bat.prt === 'swarwing' || bat.prt === 'tisal' || bat.prt === 'silk' || (bat.tags.includes('zealot') && batType.cat === 'infantry') || (bat.tags.includes('bliss') && batType.cat === 'infantry')) {
+    if (batType.skills.includes('dreduct') || bat.tags.includes('genred') || bat.prt === 'kapton' || bat.prt === 'kaptane' || bat.prt === 'nano' || bat.prt.includes('suit') || bat.prt === 'bonibo' || bat.prt === 'swarwing' || bat.prt === 'tisal' || bat.prt === 'silk' || (bat.tags.includes('zealot') && batType.cat === 'infantry') || (bat.tags.includes('bliss') && batType.cat === 'infantry')) {
         let degcolor = 'cy';
         if (batType.skills.includes('dreduct') || bat.tags.includes('genred')) {
             degcolor = 'ciel';

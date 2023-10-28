@@ -470,7 +470,7 @@ function getMissionTitle(misNum) {
     if (misNum === 81) {title = '';}
     if (misNum === 80) {title = '';}
     // DRAGONBLOB
-    if (misNum === 79) {title = '';}
+    if (misNum === 79) {title = 'Smaug';}
     if (misNum === 78) {title = '';}
     if (misNum === 77) {title = '';}
     if (misNum === 76) {title = '';}

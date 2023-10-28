@@ -373,7 +373,7 @@ function shot(weapon,attBat,attBatType,defBat,defBatType,shotDice,accurange) {
     }
     if (isHit(weapAccu,minAccu,weapon,attBat,attBatType,defBat,defBatType,stealth,cover,defBatSpeed,shotDice)) {
         if (weapon.power >= 1) {
-            result.damage = calcDamage(weapon,weapon.power,defBat.armor,defBat);
+            result.damage = calcDamage(weapon,weapon.power,defBat.armor,defBat,false);
         } else {
             result.damage = 0;
         }
@@ -472,7 +472,7 @@ function blast(weapon,attBat,attBatType,defBat,defBatType,shotDice,brochette,aoe
         // console.log('power'+power);
         if (isHit(weapAccu,minAccu,weapon,attBat,attBatType,defBat,defBatType,stealth,cover,defBatSpeed,shotDice)) {
             if (weapon.power >= 1) {
-                newDamage = calcDamage(weapon,power,defBat.armor,defBat);
+                newDamage = calcDamage(weapon,power,defBat.armor,defBat,true);
             } else {
                 newDamage = 0;
             }
@@ -868,7 +868,7 @@ function getCrashEscapeTile(tileId) {
     return escTile;
 };
 
-function calcDamage(weapon,power,armor,defBat) {
+function calcDamage(weapon,power,armor,defBat,fromAOE) {
     // powerDice is max 4x power
     // fortif armor
     let defBatType = getBatType(defBat);
@@ -947,7 +947,10 @@ function calcDamage(weapon,power,armor,defBat) {
     }
     // bliss drug / damage reduction
     let dmgReduct = getDamageRed(weapon.sound,defBat,defBatType);
-    let calculatedDmg = powerDice-modifiedArmor-dmgReduct;
+    let calculatedDmg = powerDice-modifiedArmor;
+    if (!fromAOE) {
+        calculatedDmg = calculatedDmg-dmgReduct;
+    }
     if (calculatedDmg <= dmgReduct+1 && dmgReduct >= 1) {
         calculatedDmg = 0;
     }
@@ -985,7 +988,7 @@ function getDamageRed(sound,defBat,defBatType) {
             dmgReduct = 2;
         } else if (defBat.tags.includes('zealot') && defBatType.cat === 'infantry') {
             dmgReduct = 1;
-        } else if (defBat.prt === 'kapton' || defBat.prt.includes('suit') || defBat.prt === 'bonibo' || defBat.prt === 'swarwing' || defBat.prt === 'silk' || defBat.prt === 'tisal') {
+        } else if (defBat.prt === 'kapton' || defBat.prt.includes('suit') || defBat.prt === 'bonibo' || defBat.prt === 'nano' || defBat.prt === 'swarwing' || defBat.prt === 'silk' || defBat.prt === 'tisal') {
             dmgReduct = 1;
         }
     }

@@ -702,9 +702,9 @@ function attack(melee,init) {
                     $('#report').append('<span class="report rose">Résistance au feu 67%<br></span>');
                 }
             } else {
-                totalDamage = Math.round(totalDamage/1.67);
-                apDamage = Math.round(apDamage/1.67);
-                $('#report').append('<span class="report rose">Résistance au feu 40%<br></span>');
+                totalDamage = Math.round(totalDamage/2);
+                apDamage = Math.round(apDamage/2);
+                $('#report').append('<span class="report rose">Résistance au feu 50%<br></span>');
             }
             // console.log('résistance au feu!');
         }
@@ -866,10 +866,10 @@ function attack(melee,init) {
     // résistance acide
     if (selectedWeap.isAcid) {
         if (targetBatType.skills.includes('resistacide') || targetBat.tags.includes('resistacide')) {
-            totalDamage = Math.round(totalDamage/1.5);
-            apDamage = Math.round(apDamage/1.5);
+            totalDamage = Math.round(totalDamage/1.67);
+            apDamage = Math.round(apDamage/1.67);
             if (playerInfos.comp.ca >= 2) {
-                $('#report').append('<span class="report rose">Résistance à l\'acide 33%<br></span>');
+                $('#report').append('<span class="report rose">Résistance à l\'acide 40%<br></span>');
             }
             // console.log('résistance acide!');
         }
@@ -889,8 +889,8 @@ function attack(melee,init) {
                 }
             }
         } else {
-            totalDamage = Math.round(totalDamage/1.6);
-            $('#report').append('<span class="report rose">Protection 37%<br></span>');
+            totalDamage = Math.round(totalDamage/1.67);
+            $('#report').append('<span class="report rose">Protection 40%<br></span>');
         }
     } else {
         // résistance all
@@ -908,8 +908,8 @@ function attack(melee,init) {
                     }
                 }
             } else {
-                totalDamage = Math.round(totalDamage/1.34);
-                $('#report').append('<span class="report rose">Protection 25%<br></span>');
+                totalDamage = Math.round(totalDamage/1.5);
+                $('#report').append('<span class="report rose">Protection 33%<br></span>');
             }
         }
     }
@@ -1916,9 +1916,9 @@ function defense(melee,init) {
                     $('#report').append('<span class="report rose">Résistance au feu 67%<br></span>');
                 }
             } else {
-                totalDamage = Math.round(totalDamage/1.67);
-                apDamage = Math.round(apDamage/1.67);
-                $('#report').append('<span class="report rose">Résistance au feu 40%<br></span>');
+                totalDamage = Math.round(totalDamage/2);
+                apDamage = Math.round(apDamage/2);
+                $('#report').append('<span class="report rose">Résistance au feu 50%<br></span>');
             }
             // console.log('résistance au feu!');
         }
@@ -2078,10 +2078,10 @@ function defense(melee,init) {
     // résistance acide
     if (targetWeap.isAcid) {
         if (selectedBatType.skills.includes('resistacide') || selectedBat.tags.includes('resistacide')) {
-            totalDamage = Math.round(totalDamage/1.5);
-            apDamage = Math.round(apDamage/1.5);
+            totalDamage = Math.round(totalDamage/1.67);
+            apDamage = Math.round(apDamage/1.67);
             if (playerInfos.comp.ca >= 2) {
-                $('#report').append('<span class="report rose">Résistance à l\'acide 33%<br></span>');
+                $('#report').append('<span class="report rose">Résistance à l\'acide 40%<br></span>');
             }
             // console.log('résistance acide!');
         }
@@ -2101,8 +2101,8 @@ function defense(melee,init) {
                 }
             }
         } else {
-            totalDamage = Math.round(totalDamage/1.5);
-            $('#report').append('<span class="report rose">Protection 33%<br></span>');
+            totalDamage = Math.round(totalDamage/1.67);
+            $('#report').append('<span class="report rose">Protection 40%<br></span>');
         }
     } else {
         // résistance all
@@ -2115,8 +2115,8 @@ function defense(melee,init) {
                     }
                 }
             } else {
-                totalDamage = Math.round(totalDamage/1.34);
-                $('#report').append('<span class="report rose">Protection 25%<br></span>');
+                totalDamage = Math.round(totalDamage/1.5);
+                $('#report').append('<span class="report rose">Protection 33%<br></span>');
             }
         }
     }

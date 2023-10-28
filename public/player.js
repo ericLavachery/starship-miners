@@ -427,6 +427,7 @@ function allowedArmors(unit) {
         }
         protection.push('silk');
         protection.push('kaptane');
+        protection.push('adplate');
         protection.push('dragscale');
     }
     if (unit.skills.includes('a_heavy')) {
@@ -509,6 +510,7 @@ function allowedArmors(unit) {
             protection.push('bonibo');
         }
         protection.push('silk');
+        protection.push('adplate');
         protection.push('dragscale');
     }
     if (unit.skills.includes('b_heavy')) {

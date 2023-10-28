@@ -337,7 +337,7 @@
     {
         "name":"soap",
         "cat":"armor",
-        "armor":2,
+        "armor":3,
         "ap":-1,
         "skills":["soap"],
         "bldReq":["Laboratoire"],
@@ -366,7 +366,7 @@
         "cat":"armor",
         "armor":4,
         "ap":0,
-        "skills":[],
+        "skills":["dreduct"],
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":4},
         "factor":"thp",
@@ -390,13 +390,26 @@
     {
         "name":"adamantite",
         "cat":"armor",
-        "armor":5,
+        "armor":4,
         "ap":-1,
+        "skills":["resistall"],
+        "bldReq":["Arsenal"],
+        "compReq":{"mat":3},
+        "factor":"thp",
+        "costs":{"Carbone":5,"Adamantium":10,"Salite":5,"Argon":3},
+        "icon":3,
+        "popIn":["Caserne","Armurerie"]
+    },
+    {
+        "name":"adplate",
+        "cat":"armor",
+        "armor":5,
+        "ap":-2,
         "skills":["protectall"],
         "bldReq":["Arsenal"],
         "compReq":{"mat":3},
         "factor":"thp",
-        "costs":{"Aluminium":6,"Adamantium":12,"Argon":3},
+        "costs":{"Aluminium":5,"Adamantium":12,"Dunium":5,"Argon":3},
         "icon":3,
         "popIn":["Caserne","Armurerie"]
     },
@@ -488,14 +501,14 @@
     {
         "name":"silk",
         "cat":"armor",
-        "armor":4,
+        "armor":5,
         "ap":-2,
         "skills":["soap","dreduct"],
         "bldReq":["Laboratoire"],
         "compReq":{"ca":10},
         "altKillReq": "Spiderblob",
         "factor":"thp",
-        "costs":{"Titane":9,"Bossium":4,"Aranium":18}
+        "costs":{"Titane":9,"Bossium":2,"Aranium":18}
     },
     {
         "name":"kaptane",
@@ -551,7 +564,7 @@
     {
         "name":"battlesuit",
         "cat":"armor",
-        "armor":3,
+        "armor":4,
         "ap":2,
         "skills":["resistall","dreduct","camoloss"],
         "bldReq":["Centre de recherches"],
@@ -673,13 +686,13 @@
     {
         "name":"autorep",
         "cat":"armor",
-        "armor":2,
+        "armor":3,
         "ap":-1,
         "skills":["resistall","autorepair"],
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":4,"ca":3},
         "factor":"thp",
-        "costs":{"Carbone":9,"Azote":3,"Dunium":6,"Wingium":3,"Mendium":6,"Spins":0.03}
+        "costs":{"Carbone":9,"Azote":3,"Dunium":6,"Wingium":3,"Mendium":4,"Spins":0.03}
     },
     {
         "name":"rhodu",
@@ -2908,7 +2921,7 @@
             "Drogues":250,
             "Batteries":250,
             "Electros":150,
-            "Spins":20,
+            "Spins":30,
             "Bugium":300,
             "Aranium":100,
             "Larvium":100,
