@@ -428,7 +428,7 @@ function conSelect(unitId,player,noRefresh) {
                         $('#conAmmoList').append('<span class="constIcon"><i class="far fa-circle"></i></span>');
                     }
                     armorSkills = showArmorInfo(batArmor);
-                    fullArmorSkills = showFullArmorInfo(batArmor,forBld,false,false);
+                    fullArmorSkills = showFullArmorInfo(batArmor,forBld,false,false,true,conselUnit);
                     flatCosts = getCosts(conselUnit,batArmor,0,'equip');
                     deployCosts = getDeployCosts(conselUnit,batArmor,0,'equip');
                     mergeObjects(flatCosts,deployCosts);

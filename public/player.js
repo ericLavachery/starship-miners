@@ -427,6 +427,7 @@ function allowedArmors(unit) {
         }
         protection.push('silk');
         protection.push('kaptane');
+        protection.push('dragscale');
     }
     if (unit.skills.includes('a_heavy')) {
         protection.push('hplate');
@@ -438,7 +439,6 @@ function allowedArmors(unit) {
         protection.push('tisal');
         protection.push('swing');
         protection.push('adamantite');
-        protection.push('dragscale');
         if (!unit.skills.includes('fly') && !unit.skills.includes('dog') && !unit.skills.includes('moto')) {
             protection.push('battlesuit');
             protection.push('turbosuit');
@@ -509,6 +509,7 @@ function allowedArmors(unit) {
             protection.push('bonibo');
         }
         protection.push('silk');
+        protection.push('dragscale');
     }
     if (unit.skills.includes('b_heavy')) {
         if (!unit.skills.includes('resistall') && !unit.skills.includes('protectall')) {
@@ -521,7 +522,6 @@ function allowedArmors(unit) {
         protection.push('rhodu');
         protection.push('autorep');
         protection.push('adamantite');
-        protection.push('dragscale');
     }
     if (unit.cat === 'buildings') {
         protection.push('aucun');
@@ -3384,7 +3384,7 @@ function compDetail(compId) {
             if (stuff.cat === 'armor' && !stuff.name.includes('aucun')) {
                 let listMe = checkListedItem(stuff,comp);
                 if (listMe) {
-                    let stuffInfo = showFullArmorInfo(stuff,false,true,false);
+                    let stuffInfo = showFullArmorInfo(stuff,false,true,false,false);
                     let compReqOK = checkCompReq(stuff);
                     if (compReqOK) {
                         stuffInfo = messageOK+stuffInfo;

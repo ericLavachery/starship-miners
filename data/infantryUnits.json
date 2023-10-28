@@ -6211,7 +6211,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","camo","chasse","affut","guerrilla","tirailleur","datt","baddef","fastguet","selfbadmedic","heroescape"],
+        "skills":["a_light","fouille","fortif","camo","chasse","affut","guerrilla","tirailleur","datt","baddef","fastguet","selfbadmedic","heroescape"],
         "mediCost":10,
         "fuzz":1,
         "deathFx":"195954__minian89__death-blood-splatter"

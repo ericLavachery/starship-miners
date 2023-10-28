@@ -44,7 +44,7 @@ function reEquip(batId,noRefresh) {
             myBatType.protection.forEach(function(armor) {
                 batArmor = getEquipByName(armor);
                 armorSkills = showArmorInfo(batArmor);
-                fullArmorSkills = showFullArmorInfo(batArmor,forBld,false,false);
+                fullArmorSkills = showFullArmorInfo(batArmor,forBld,false,false,true,myBatType);
                 compReqOK = checkCompReq(batArmor);
                 if (compReqOK) {
                     if (myNewGear[2] == armor || (myNewGear[2] === 'xxx' && listNum === 1)) {
@@ -811,9 +811,19 @@ function getBatGearStuff(armorName,equipName,batType) {
     }
     // weak
     if (batType.skills.includes('weak')) {
-        if (Math.abs(batArmor.ap) >= 3) {
-            baseAP = baseAP+batArmor.ap+2;
+        if (batArmor.ap < -1) {
+            baseAP = baseAP+batArmor.ap+1;
         }
+    }
+    // strong
+    let isStrong = false;
+    if (batType.skills.includes('strong')) {
+        if (batType.skills.includes('mutant') || playerInfos.bldVM.includes('Salle de sport')) {
+            isStrong = true;
+        }
+    }
+    if (bat.tags.includes('genstrong')) {
+        isStrong = true;
     }
     if (batType.skills.includes('robot')) {
         gearStuff[1] = baseAP;
@@ -827,7 +837,7 @@ function getBatGearStuff(armorName,equipName,batType) {
             gearStuff[1] = baseAP+batArmor.ap+2;
         } else if ((equipName === 'helper') && (batArmor.ap < -1 || batType.ap < 13)) {
             gearStuff[1] = baseAP+batArmor.ap+1;
-        } else if (batType.skills.includes('strong') && (batType.skills.includes('mutant') || playerInfos.bldVM.includes('Salle de sport')) && batArmor.ap < -1) {
+        } else if (isStrong && batArmor.ap < -1) {
             gearStuff[1] = baseAP+batArmor.ap+1;
         } else if (batType.moveCost === 99) {
             gearStuff[1] = baseAP;

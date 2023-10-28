@@ -403,15 +403,15 @@
     {
         "name":"dragscale",
         "cat":"armor",
-        "armor":4,
-        "ap":-1,
+        "armor":5,
+        "ap":-2,
         "skills":["resistfeu","protectall"],
         "bldReq":["Arsenal"],
         "compReq":{"ca":10},
         "gangReq":["brasier"],
         "altKillReq": "Dragonblob",
         "factor":"thp",
-        "costs":{"Carbone":6,"Adamantium":9,"Bossium":6}
+        "costs":{"Carbone":8,"Adamantium":8,"Bossium":2}
     },
     {
         "name":"composite",

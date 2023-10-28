@@ -1207,6 +1207,9 @@ function batFullInfos(bat,batType) {
             allSkills = allSkills+'<span class="paramValue" title="Moins de perte de PA avec les armures lourdes (à condition d\'avoir une Salle de sport)">Strong</span>'+sepa;
         }
     }
+    if (batType.skills.includes('weak')) {
+        allSkills = allSkills+'<span class="paramValue" title="Plus de perte de PA avec les blindages lourds">Weak</span>'+sepa;
+    }
     if (batType.skills.includes('fly')) {
         if (batType.skills.includes('jetpack')) {
             allSkills = allSkills+'<span class="paramValue" title="Jetpack: Volant mais considéré au sol si les PA sont négatifs">Jetpack</span>'+sepa;
@@ -1632,7 +1635,7 @@ function displayUnitArmors(batType) {
     armorTypes.forEach(function(stuff) {
         if (stuff.cat === 'armor' && !stuff.name.includes('aucun')) {
             if (batType.protection.includes(stuff.name)) {
-                let armorInfo = showFullArmorInfo(stuff,forBld,true,false);
+                let armorInfo = showFullArmorInfo(stuff,forBld,true,false,true,batType);
                 armorString = armorString+sepa+'<span title="'+armorInfo+'">'+stuff.name+'</span>';
             }
         }

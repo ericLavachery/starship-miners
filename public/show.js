@@ -22,7 +22,7 @@ function equipDetails(stuffName,isAmmo) {
         baseInfo = showAmmoInfo(stuffName,true,true);
     } else if (stuff.cat === 'armor') {
         pageTitle = 'ARMURE';
-        baseInfo = showFullArmorInfo(stuff,false,true,true);
+        baseInfo = showFullArmorInfo(stuff,false,true,true,false);
     } else if (stuff.cat === 'drogue') {
         pageTitle = 'DROGUE';
         if (stuff.info != undefined) {
@@ -49,10 +49,20 @@ function equipDetails(stuffName,isAmmo) {
     $('#conUnitList').append('<br><br>');
 };
 
-function showFullArmorInfo(batArmor,forBld,withReqs,withCosts) {
+function showFullArmorInfo(batArmor,forBld,withReqs,withCosts,forUnit,unit) {
     let apAdj = batArmor.ap;
     if (apAdj >= 1) {
         apAdj = '+'+apAdj;
+    }
+    if (forUnit) {
+        if (batArmor.ap < -1) {
+            if (unit.skills.includes('weak')) {
+                apAdj = apAdj+batArmor.ap+1;
+            }
+            if (unit.skills.includes('strong') && (unit.skills.includes('mutant') || playerInfos.bldVM.includes('Salle de sport'))) {
+                apAdj = apAdj+1;
+            }
+        }
     }
     let armorSkills = '(+'+batArmor.armor+' Armure / '+apAdj+' PA) ';
     if (forBld) {
