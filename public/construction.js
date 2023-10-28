@@ -1285,7 +1285,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
             }
             let batArmor = getEquipByName(armorName);
             newBat.prt = armorName;
-            let gearStuff = getBatGearStuff(armorName,equipName,conselUnit);
+            let gearStuff = getBatGearStuff(armorName,equipName,conselUnit,false);
             newBat.armor = gearStuff[0];
             newBat.ap = gearStuff[1];
             if (conselUnit.team === 'aliens') {

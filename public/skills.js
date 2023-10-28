@@ -1778,7 +1778,7 @@ function useArmorPack(armorName) {
         });
         let gearTags = getBatGearTags(armorName,selectedBat.eq,selectedBatType);
         selectedBat.tags.push.apply(selectedBat.tags,gearTags);
-        let gearStuff = getBatGearStuff(armorName,selectedBat.eq,selectedBatType);
+        let gearStuff = getBatGearStuff(armorName,selectedBat.eq,selectedBatType,true,selectedBat);
         selectedBat.armor = gearStuff[0];
         selectedBat.ap = gearStuff[1];
         selectedBat.prt = armorName;

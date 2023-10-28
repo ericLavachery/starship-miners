@@ -6946,7 +6946,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","guerrilla","cible","camo","snif","selfmedic","dealer","octiron","starka","kirin","ranger","swim","lowstress","autohero","heroescape","herolasso","elite"],
+        "skills":["a_light","fouille","fortif","guerrilla","cible","camo","radar","selfmedic","dealer","octiron","starka","kirin","ranger","swim","lowstress","autohero","heroescape","herolasso","elite"],
         "mediCost":8,
         "maxDrug":6,
         "fuzz":0,

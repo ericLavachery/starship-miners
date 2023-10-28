@@ -728,7 +728,7 @@ function doReEquip(batId) {
     let costsOK = checkCost(totalCosts);
     console.log(totalCosts);
     if (costsOK) {
-        let gearStuff = getBatGearStuff(myNewGear[2],myNewGear[3],myBatType);
+        let gearStuff = getBatGearStuff(myNewGear[2],myNewGear[3],myBatType,true,myBat);
         myBat.armor = gearStuff[0];
         myBat.ap = gearStuff[1];
         myBat.ammo = myNewGear[0];
@@ -770,7 +770,7 @@ function doReEquip(batId) {
     showBatInfos(myBat);
 };
 
-function getBatGearStuff(armorName,equipName,batType) {
+function getBatGearStuff(armorName,equipName,batType,isBat,bat) {
     let gearStuff = [];
     if (batType.skills.includes('penitbat') && playerInfos.onShip) {
         setPenitLevel();
@@ -822,8 +822,10 @@ function getBatGearStuff(armorName,equipName,batType) {
             isStrong = true;
         }
     }
-    if (bat.tags.includes('genstrong')) {
-        isStrong = true;
+    if (isBat) {
+        if (bat.tags.includes('genstrong')) {
+            isStrong = true;
+        }
     }
     if (batType.skills.includes('robot')) {
         gearStuff[1] = baseAP;
