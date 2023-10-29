@@ -1550,7 +1550,7 @@ function batFullInfos(bat,batType) {
         $('#popbody').append('<span class="blockTitle"><h4>Coûts de construction</h4></span><br>');
         let costString = '';
         if (batType.slots != undefined) {
-            if (batType.slots >= 1) {
+            if (batType.slots >= 1 && batType.name != 'Soute') {
                 $('#popbody').append('<span class="paramValue"><span class="mauve" title="Place occupée dans la Station">Emplacements requis:</span> '+batType.slots+'</span><br>');
                 $('#popbody').append('<div class="shSpace"></div>');
             }

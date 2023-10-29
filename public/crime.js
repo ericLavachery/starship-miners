@@ -699,31 +699,6 @@ function calcCrimeRate(mesCitoyens) {
         if (batType.skills.includes('gcrim')) {
             bigCrims = bigCrims+(batType.squads*batType.crew*batType.squadSize);
         }
-        if (batType.name === 'Dortoirs') {
-            crimeRate.lits = crimeRate.lits+500;
-            if (bat.eq === 'mezzanine') {
-                crimeRate.lits = crimeRate.lits+350;
-                crimeRate.penib = crimeRate.penib+1;
-            }
-            if (bat.eq === 'confort' && !outOfOrder) {
-                crimeRate.penib = crimeRate.penib-0.5;
-            }
-            if (outOfOrder) {
-                crimeRate.lits = crimeRate.lits-100;
-            }
-        }
-        if (batType.name === 'Cabines') {
-            crimeRate.lits = crimeRate.lits+350;
-            if (outOfOrder) {
-                crimeRate.lits = crimeRate.lits-50;
-            }
-        }
-        if (batType.name === 'Appartements') {
-            crimeRate.lits = crimeRate.lits+75;
-            if (outOfOrder) {
-                crimeRate.lits = crimeRate.lits-15;
-            }
-        }
         if (batType.crime != undefined) {
             let countMe = false;
             if (batType.cat === 'buildings' || batType.name === 'Technobass') {
@@ -785,6 +760,9 @@ function calcCrimeRate(mesCitoyens) {
     // console.log('Structure='+numStructures);
     crimeRate.penib = crimeRate.penib-(numStructures/10);
     // +5 par dortoir manquant
+    let beds = calcBeds();
+    crimeRate.penib = crimeRate.penib+beds.penib;
+    crimeRate.lits = beds.humans;
     if (population > crimeRate.lits) {
         crimeRate.penib = crimeRate.penib+((population-crimeRate.lits)/100);
     }

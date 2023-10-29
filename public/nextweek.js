@@ -168,6 +168,57 @@ function calcXPFactor() {
     return xpf;
 };
 
+function calcBeds() {
+    let beds = {};
+    beds.humans = 0;
+    beds.dogs = 0;
+    beds.penib = 0;
+    beds.numDogs = 0;
+    bataillons.forEach(function(bat) {
+        let batType = getBatType(bat);
+        let outOfOrder = false;
+        if (batType.cat === 'buildings') {
+            if (bat.soins != undefined) {
+                if (bat.soins >= 15) {
+                    outOfOrder = true;
+                }
+            }
+        }
+        if (batType.name === 'Dortoirs') {
+            beds.humans = beds.humans+500;
+            if (bat.eq === 'mezzanine') {
+                beds.humans = beds.humans+350;
+                beds.penib = beds.penib+1;
+            }
+            if (bat.eq === 'confort' && !outOfOrder) {
+                beds.penib = beds.penib-0.5;
+            }
+            if (outOfOrder) {
+                beds.humans = beds.humans-100;
+            }
+        }
+        if (batType.name === 'Cabines') {
+            beds.humans = beds.humans+350;
+            if (outOfOrder) {
+                beds.humans = beds.humans-50;
+            }
+        }
+        if (batType.name === 'Appartements') {
+            beds.humans = beds.humans+75;
+            if (outOfOrder) {
+                beds.humans = beds.humans-15;
+            }
+        }
+        if (batType.name === 'Chenil') {
+            beds.dogs = beds.dogs+360;
+        }
+        if (batType.skills.includes('dog')) {
+            beds.numDogs = beds.numDogs+60;
+        }
+    });
+    return beds;
+};
+
 function repos(time) {
     let woundHeal = 2;
     let stressHeal = 2;
@@ -197,24 +248,55 @@ function repos(time) {
         woundHeal = woundHeal+1+(playerInfos.comp.med*2);
         necroHeal = necroHeal+2+playerInfos.comp.med;
     }
+    let population = playerInfos.citz.total;
+    let overPop = 100;
+    if (population > 3000) {
+        overPop = overPop+((population-3000)/500);
+    }
+    let beds = calcBeds();
+    let missingBeds = (population-beds.humans);
+    let bedsFactor = 100;
+    if (missingBeds >= 1) {
+        bedsFactor = bedsFactor+(missingBeds/100);
+    }
+    let missingDogBeds = (beds.numDogs-beds.dogs);
+    let dogBedsFactor = 100;
+    if (missingDogBeds >= 1) {
+        dogBedsFactor = dogBedsFactor+(missingDogBeds/30);
+    }
+    let woundsFactor = 100*10/(playerInfos.vitals+10);
+    let stressFactor = 100*20/(playerInfos.vitals+20)*100/overPop*100/bedsFactor;
+    let stressFactorDogs = 100*20/(playerInfos.vitals+20)*100/overPop*100/dogBedsFactor;
+    // console.log('overPop='+overPop);
+    // console.log('bedsFactor='+bedsFactor);
+    // console.log('dogBedsFactor='+dogBedsFactor);
+    // console.log('woundsFactor='+woundsFactor);
+    // console.log('stressFactor='+stressFactor);
+    // console.log('stressFactorDogs='+stressFactorDogs);
     bataillons.forEach(function(bat) {
         if (!bat.tags.includes('return')) {
             let batType = getBatType(bat);
-            if (rand.rand(1,100) <= necroHeal*time) {
+            let necroHealChance = Math.round(necroHeal*time*woundsFactor/100);
+            if (rand.rand(1,100) <= necroHealChance) {
                 tagDelete(bat,'necro');
             }
             if (bat.soins != undefined) {
                 if (batType.cat === 'infantry' && !batType.skills.includes('clone') && !bat.tags.includes('necro')) {
-                    bat.soins = bat.soins-Math.round(time*woundHeal/7);
-                    if (bat.soins < 0) {
-                        bat.soins = 0;
-                    }
+                    let severity = bat.soins;
+                    if (severity < 8) {severity = 8;}
+                    bat.soins = bat.soins-Math.round(time*woundHeal/7*woundsFactor/100/severity*8);
+                    if (bat.soins < 0) {bat.soins = 0;}
                 }
             }
             if (bat.emo != undefined) {
-                bat.emo = bat.emo-Math.round(time*stressHeal/36);
-                if (bat.emo < 0) {
-                    bat.emo = 0;
+                let severity = bat.emo;
+                if (severity < 8) {severity = 8;}
+                if (batType.skills.includes('dog')) {
+                    bat.emo = bat.emo-Math.round(time*stressHeal/36*stressFactorDogs/100/severity*8);
+                    if (bat.emo < 0) {bat.emo = 0;}
+                } else {
+                    bat.emo = bat.emo-Math.round(time*stressHeal/36*stressFactor/100/severity*8);
+                    if (bat.emo < 0) {bat.emo = 0;}
                 }
             }
         }

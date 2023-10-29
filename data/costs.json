@@ -2110,7 +2110,7 @@
         "spinNum":200,
         "costs":{"Eau":250,"Energie":3000,"Huile":75,"Scrap":750,"Tissus":25,"Carbone":75,"Titane":350,"Aluminium":2000,"Calcium":30,"Nickel":150,"Cuivre":300,"Or":50,"Silicium":50,"Bore":50,"Plutonium":100,"Oxygène":250,"Hydrogène":450,"Azote":100,"Chlore":50,"Electros":125,"Batteries":100,"Spins":200},
         "deploy":{"Energie":300,"Huile":5,"Tissus":10,"Chlore":10,"Plutonium":40,"Hydrogène":15},
-        "slots":9
+        "slots":29
     },
     {
         "id":7,
@@ -2121,7 +2121,7 @@
         "spinNum":300,
         "costs":{"Eau":2500,"Energie":3000,"Huile":100,"Scrap":550,"Tissus":50,"Carbone":100,"Titane":1500,"Aluminium":3100,"Calcium":30,"Nickel":400,"Cuivre":600,"Or":150,"Silicium":100,"Bore":150,"Plutonium":200,"Oxygène":500,"Hydrogène":800,"Azote":200,"Chlore":100,"Electros":350,"Batteries":200,"Spins":300},
         "deploy":{"Energie":350,"Huile":10,"Drogues":30,"Chlore":15,"Zinc":15,"Tissus":15,"Plutonium":60,"Hydrogène":30},
-        "slots":11
+        "slots":31
     },
     {
         "id":165,
@@ -2133,7 +2133,7 @@
         "spinNum":315,
         "costs":{"Eau":1000,"Energie":4000,"Huile":175,"Scrap":600,"Tissus":50,"Carbone":150,"Titane":1650,"Aluminium":3900,"Calcium":30,"Nickel":550,"Cuivre":800,"Or":200,"Silicium":150,"Bore":250,"Plutonium":750,"Oxygène":600,"Hydrogène":1050,"Azote":250,"Chlore":100,"Electros":400,"Batteries":250,"Spins":15},
         "deploy":{"Energie":570,"Huile":15,"Drogues":50,"Chlore":25,"Zinc":25,"Tissus":25,"Plutonium":110,"Hydrogène":55},
-        "slots":14
+        "slots":34
     },
     {
         "id":103,
@@ -2145,7 +2145,7 @@
         "spinNum":365,
         "costs":{"Eau":2000,"Energie":5000,"Huile":275,"Scrap":750,"Tissus":100,"Carbone":300,"Titane":2200,"Aluminium":5400,"Calcium":30,"Rhodium":150,"Nickel":750,"Cuivre":3500,"Or":700,"Silicium":400,"Bore":500,"Plutonium":800,"Oxygène":1250,"Hydrogène":1350,"Azote":600,"Chlore":100,"Electros":650,"Batteries":375,"Spins":50},
         "deploy":{"Energie":760,"Huile":30,"Drogues":80,"Chlore":40,"Zinc":40,"Tissus":40,"Plutonium":225,"Hydrogène":150},
-        "slots":17
+        "slots":37
     },
     {
         "id":105,
@@ -2158,7 +2158,7 @@
         "spinNum":400,
         "costs":{"Eau":4000,"Energie":6000,"Huile":375,"Scrap":1000,"Tissus":150,"Carbone":300,"Titane":3700,"Aluminium":8700,"Calcium":30,"Rhodium":350,"Nickel":950,"Cuivre":4000,"Or":1050,"Silicium":650,"Bore":750,"Plutonium":1100,"Oxygène":1700,"Hydrogène":1700,"Azote":850,"Chlore":100,"Electros":750,"Batteries":500,"Plastanium":90,"Spins":35},
         "deploy":{"Energie":1180,"Huile":40,"Drogues":120,"Chlore":60,"Zinc":60,"Tissus":60,"Plutonium":390,"Hydrogène":220,"Plastanium":45},
-        "slots":22
+        "slots":42
     },
     {
         "id":104,
@@ -2170,7 +2170,7 @@
         "spinNum":480,
         "costs":{"Eau":6000,"Energie":7000,"Huile":575,"Scrap":1000,"Tissus":250,"Carbone":500,"Titane":7500,"Aluminium":10300,"Calcium":30,"Rhodium":500,"Nickel":1100,"Cuivre":6500,"Or":1500,"Silicium":800,"Bore":1550,"Plutonium":1150,"Oxygène":3000,"Hydrogène":2350,"Azote":1250,"Chlore":100,"Electros":850,"Batteries":675,"Plastanium":180,"Spins":80},
         "deploy":{"Energie":1800,"Huile":60,"Drogues":180,"Chlore":90,"Zinc":90,"Tissus":90,"Plutonium":640,"Hydrogène":320,"Plastanium":95},
-        "slots":29
+        "slots":51
     },
     {
         "id":106,
@@ -2182,7 +2182,7 @@
         "compReq":{"def":3,"energ":2,"vsp":3},
         "costs":{"Eau":5000,"Energie":8000,"Huile":250,"Scrap":750,"Tissus":150,"Carbone":350,"Titane":9000,"Aluminium":2700,"Calcium":30,"Rhodium":1000,"Nickel":1100,"Cuivre":5000,"Platine":1600,"Silicium":500,"Bore":1350,"Plutonium":1100,"Oxygène":1000,"Hydrogène":1600,"Azote":750,"Chlore":100,"Electros":1000,"Batteries":525,"Plastanium":270,"Spins":120},
         "deploy":{"Energie":1900,"Huile":50,"Drogues":140,"Chlore":70,"Zinc":70,"Tissus":70,"Plutonium":670,"Hydrogène":450,"Plastanium":135},
-        "slots":20
+        "slots":45
     },
     {
         "id":251,
@@ -3095,7 +3095,7 @@
         "bldReq":["Station"],
         "costs":{},
         "fabTime":200,
-        "slots":14,
+        "slots":42,
         "info":"La Soute ne peut pas être démantelée.",
         "redInfo":"Elle vous permet de produire tous vos nouveaux bataillons.<br>N'oubliez pas de transférer dans la Soute les ressources que vous avez ramenées dans votre Lander après une mission."
     },
