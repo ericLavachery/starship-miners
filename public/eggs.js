@@ -2967,7 +2967,7 @@ function unveilAliens(myBat) {
         aliens.forEach(function(bat) {
             if (bat.loc === "zone") {
                 batType = getBatType(bat);
-                if (bat.tags.includes('invisible') && batType.kind == myKind && !batType.skills.includes('hide')) {
+                if (bat.tags.includes('invisible') && batType.kind == myKind && !batType.skills.includes('hide') && !batType.skills.includes('skyhide')) {
                     tagDelete(bat,'invisible');
                 }
             }
@@ -2976,7 +2976,7 @@ function unveilAliens(myBat) {
         aliens.forEach(function(bat) {
             if (bat.loc === "zone") {
                 batType = getBatType(bat);
-                if (bat.tags.includes('invisible') && batType.kind == myKind && !batType.skills.includes('hide')) {
+                if (bat.tags.includes('invisible') && batType.kind == myKind && !batType.skills.includes('hide') && !batType.skills.includes('skyhide')) {
                     distance = calcDistance(myBat.tileId,bat.tileId);
                     if (distance <= 8) {
                         tagDelete(bat,'invisible');
@@ -3008,7 +3008,7 @@ function unveilAliensOld(myBat) {
         aliens.forEach(function(bat) {
             if (bat.loc === "zone") {
                 batType = getBatType(bat);
-                if (bat.tags.includes('invisible') && batType.kind == myKind && !batType.skills.includes('hide')) {
+                if (bat.tags.includes('invisible') && batType.kind == myKind && !batType.skills.includes('hide') && !batType.skills.includes('skyhide')) {
                     tagDelete(bat,'invisible');
                 }
             }

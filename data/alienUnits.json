@@ -3380,7 +3380,7 @@
         "maxVeg":-1,
         "skills":["isegg","ponte","minaccu","eggshield","protectall","noaploss","nolaser","survivor","xpfeast","nokill","defense","smartrip","infrip","freeshot","nojello","silhover","ctarg","light"],
         "deathFx":"xplode",
-        "killRes":{"Bugium":36,"Creatite":24,"Mendium":30,"Egidium":94,"Bossium":73,"Pyrus":108},
+        "killRes":{"Bugium":108,"Swarmine":108,"Larvium":108,"Aranium":108,"Creatite":144,"Wingium":72,"Mendium":108,"Egidium":144,"Bossium":108,"Pyrus":144},
         "killXP":100,
         "flavText":"Les colonies protègent tous les oeufs avec leur bouclier, et augmente la portée de tir des ruches à proximité."
     },
@@ -3671,7 +3671,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["sentinelle","resistall","robot","smartrip","stay"],
+        "skills":["sentinelle","resistall","skyshield","robot","smartrip","stay"],
         "deathFx":"robodeath",
         "killRes":{},
         "killXP":0
@@ -3717,7 +3717,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["baddef","resistall","robot","stay"],
+        "skills":["baddef","resistall","skyshield","robot","stay"],
         "deathFx":"robodeath",
         "killRes":{},
         "killXP":0
@@ -3761,7 +3761,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["robot","stay","resistall"],
+        "skills":["robot","stay","resistall","skyshield"],
         "deathFx":"robodeath",
         "killRes":{},
         "killXP":0
@@ -3805,7 +3805,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["robot","undead","stay","resistall"],
+        "skills":["robot","undead","stay","resistall","skyshield"],
         "deathFx":"robodeath",
         "killRes":{},
         "killXP":0
@@ -3849,7 +3849,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["robot","sentinelle","undead","survivor","resistfeu","resistall","stay"],
+        "skills":["robot","sentinelle","undead","survivor","resistfeu","resistall","skyshield","stay"],
         "deathFx":"robodeath2",
         "killRes":{},
         "killXP":0
@@ -3894,7 +3894,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["undead","ranger","robot","sentinelle","resistall","longshot","stay"],
+        "skills":["undead","ranger","robot","sentinelle","resistall","skyshield","skyhide","longshot","stay"],
         "deathFx":"robodeath3",
         "killRes":{},
         "killXP":0

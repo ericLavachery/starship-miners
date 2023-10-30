@@ -1555,7 +1555,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
             if (!conselTriche && conselUnit.team === 'player' && !playerInfos.onShip) {
                 newBat.tags.push('construction');
             }
-            if (conselUnit.skills.includes('hide') || (larveHIDE && conselUnit.kind === 'larve' && !conselUnit.skills.includes('fly') && !conselUnit.skills.includes('invisible'))) {
+            if (conselUnit.skills.includes('hide') || conselUnit.skills.includes('skyhide') || (larveHIDE && conselUnit.kind === 'larve' && !conselUnit.skills.includes('fly') && !conselUnit.skills.includes('invisible'))) {
                 newBat.tags.push('invisible');
             }
             if (newBat.team === 'player') {

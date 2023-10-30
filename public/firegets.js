@@ -1106,8 +1106,14 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
 function applyShield(shots) {
     let shieldValue = 1;
     let shieldChance = 0;
-    if (targetBatType.skills.includes('shield') || targetBatType.skills.includes('permashield') || targetBat.tags.includes('permashield') || targetBatType.skills.includes('slowshield')) {
-        if (targetBatType.skills.includes('permashield') || targetBat.tags.includes('permashield')) {
+    let hasSky = false;
+    if (zone[0].number >= 70 && zone[0].number <= 74) {
+        if (hasAlien('Skygrub')) {
+            hasSky = true;
+        }
+    }
+    if (targetBatType.skills.includes('shield') || (targetBatType.skills.includes('skyshield') && hasSky) || targetBatType.skills.includes('permashield') || targetBat.tags.includes('permashield') || targetBatType.skills.includes('slowshield')) {
+        if (targetBatType.skills.includes('permashield') || targetBatType.skills.includes('skyshield') || targetBat.tags.includes('permashield')) {
             shieldChance = 100;
         } else if (targetBatType.skills.includes('slowshield')) {
             shieldChance = 0;

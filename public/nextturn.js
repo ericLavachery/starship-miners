@@ -42,6 +42,12 @@ function nextTurn() {
     let unitIndex;
     let batType;
     let hasHide = false;
+    let hasSky = false;
+    if (zone[0].number >= 70 && zone[0].number <= 74) {
+        if (hasAlien('Skygrub')) {
+            hasSky = true;
+        }
+    }
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
@@ -68,6 +74,9 @@ function nextTurn() {
             if (!bat.tags.includes('invisible')) {
                 hasHide = false;
                 if (batType.skills.includes('hide')) {
+                    hasHide = true;
+                }
+                if (batType.skills.includes('skyhide') && hasSky) {
                     hasHide = true;
                 }
                 if (batType.kind === 'larve' && !batType.skills.includes('fly') && !batType.skills.includes('invisible') && larveHIDE) {
@@ -145,10 +154,10 @@ function nextTurn() {
             if (rand.rand(1,freezeResistance) === 1) {
                 tagDelete(bat,'freeze');
             }
-            if (playerInfos.mapTurn > bat.creaTurn+7 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !batType.skills.includes('healhide') && !larveHIDE) {
+            if (playerInfos.mapTurn > bat.creaTurn+7 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !batType.skills.includes('skyhide') && !batType.skills.includes('healhide') && !larveHIDE) {
                 tagDelete(bat,'invisible');
             }
-            if (playerInfos.mapTurn > bat.creaTurn+2 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !batType.skills.includes('healhide') && !larveHIDE && bat.tags.includes('follow')) {
+            if (playerInfos.mapTurn > bat.creaTurn+2 && bat.type != 'Oeuf voilé' && !batType.skills.includes('hide') && !batType.skills.includes('skyhide') && !batType.skills.includes('healhide') && !larveHIDE && bat.tags.includes('follow')) {
                 tagDelete(bat,'invisible');
             }
             if (batType.kind === 'game') {
@@ -824,7 +833,7 @@ function turnInfo(first) {
                     tagDelete(bat,'invisible');
                 } else {
                     if (!isLarveHide) {
-                        if (batType.kind === 'larve' && !batType.skills.includes('dive') && !batType.skills.includes('hide') && (!bat.tags.includes('follow') || playerInfos.mapTurn > bat.creaTurn+2)) {
+                        if (batType.kind === 'larve' && !batType.skills.includes('dive') && !batType.skills.includes('hide') && !batType.skills.includes('skyhide') && (!bat.tags.includes('follow') || playerInfos.mapTurn > bat.creaTurn+2)) {
                             tagDelete(bat,'invisible');
                         }
                     } else {
