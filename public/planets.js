@@ -530,9 +530,9 @@ function alienCanon() {
         }
         // chance = 100;
         if (playerInfos.mapTurn >= 2) {
-            if (rand.rand(1,100) <= chance) {
+            if (rand.rand(1,100) <= chance || playerInfos.mapTurn === playerInfos.randSeed+2) {
                 // canon! Autour du lander (le plus gros) / Tire 4 à 5 météors
-                meteorCanon();
+                meteorCanon(chance);
                 showMap(zone,true);
             }
         }
@@ -676,7 +676,7 @@ function howManyCloseAliens(tileId,dist) {
     return howMany;
 };
 
-function meteorCanon() {
+function meteorCanon(mChance) {
     playSound('meteor',0.4);
     let canonTiles = [];
     let targetTile = -1;

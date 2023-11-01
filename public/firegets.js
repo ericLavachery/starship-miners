@@ -2523,6 +2523,14 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     thisWeapon.armors = thisWeapon.armors*thisAmmoArmors;
+    if (bat.team != 'aliens') {
+        if (thisWeapon.isMelee) {
+            thisWeapon.armors = thisWeapon.armors+meleePenet;
+        }
+        if (thisWeapon.isBow) {
+            thisWeapon.armors = thisWeapon.armors+bowPenet;
+        }
+    }
     thisWeapon.armors = thisWeapon.armors.toFixedNumber(2);
     if (ammo.aoe != '' && thisWeapon.aoe != 'bat') {
         thisWeapon.aoe = ammo.aoe;
