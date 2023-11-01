@@ -2498,6 +2498,9 @@ function eggSpawn(bat,fromEgg) {
     let alienBoss = checkAlienBoss(eggCat);
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     let eggModTurn = eggTurn+Math.ceil((zone[0].mapDiff*2)-6);
+    if (playerInfos.maxEggPlay > eggsNum) {
+        eggModTurn = eggModTurn+Math.round((playerInfos.maxEggPlay-eggsNum)/2.5);
+    }
     if (coconStats.dome) {
         eggModTurn = eggModTurn+3;
     }
@@ -2595,19 +2598,21 @@ function eggSpawn(bat,fromEgg) {
             }
             console.log('spawnNum='+spawnNum);
             let classes = [];
-            let minTurnB = 35-Math.round(zone[0].mapDiff*5);
-            let minTurnA = 54-Math.round(zone[0].mapDiff*4);
+            let minTurnB = 35-Math.round(zone[0].mapDiff*6);
+            let minTurnA = 50-Math.round(zone[0].mapDiff*5);
             classes.push('C');
             if ((eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && zone[0].mapDiff >= 3) || zoneInfos.cb) {
                 classes.push('B');
-                if (eggModTurn >= 14 && playerInfos.mapTurn >= minTurnA && (zone[0].mapDiff >= 6 || overSaturation)) {
+                if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && (zone[0].mapDiff >= 6 || overSaturation)) {
                     classes.push('A');
                     if (zoneInfos.as) {
                         classes.push('S');
-                    } else if (coconStats.dome && eggModTurn >= 21 && playerInfos.mapTurn >= 40 && !alienBoss && fromEgg && bat.type != 'Oeuf voilé') {
+                    } else if (coconStats.dome && eggModTurn >= 18 && !alienBoss && fromEgg && bat.type != 'Oeuf voilé') {
+                        classes.push('S');
+                    } else if (playerInfos.mapTurn >= (25+playerInfos.randSeed) && eggModTurn >= 18 && !alienBoss && fromEgg && bat.type != 'Oeuf voilé') {
                         classes.push('S');
                     }
-                    if (eggModTurn >= 21 && playerInfos.mapTurn >= minTurnA && fromEgg) {
+                    if (eggModTurn >= 21 && fromEgg) {
                         const index = classes.indexOf('C');
                         if (index > -1) {
                             classes.splice(index,1);
