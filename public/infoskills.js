@@ -8,8 +8,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     let colorNope = 'gf';
     let prodOK = true;
     let craftsOK = true;
-    let maxCrafts = getMaxCrafts();
-    if (playerInfos.crafts >= maxCrafts && playerInfos.onShip) {
+    if (playerInfos.crafts >= playerInfos.stCrafts && playerInfos.onShip) {
         craftsOK = false;
     }
     findLanders();
@@ -918,11 +917,16 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 let apLoss = checkVehiclesAPSoins(bat,batType);
                 let maintCosts = getMaintenanceCosts(bat,batType);
                 let maintOK = checkCost(maintCosts);
-                if (maintOK) {
+                if (maintOK && craftsOK) {
                     $('#unitInfos').append('<button type="button" title="Entretien '+displayCosts(maintCosts)+'" class="boutonOrange iconButtons" onclick="maintenance()"><i class="fa fa-wrench"></i> <span class="small">0</span></button>');
                     lineBreak = true;
                 } else {
-                    $('#unitInfos').append('<button type="button" title="Entretien: Ressources insuffisantes '+displayCosts(maintCosts)+'" class="boutonGrey iconButtons gf"><i class="fa fa-wrench"></i> <span class="small">0</span></button>');
+                    if (!craftsOK) {
+                        skillMessage = "Entretien: Vous avez atteint votre maximum de crafts";
+                    } else {
+                        skillMessage = 'Entretien: Ressources insuffisantes '+displayCosts(maintCosts);
+                    }
+                    $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fa fa-wrench"></i> <span class="small">0</span></button>');
                     lineBreak = true;
                 }
             }

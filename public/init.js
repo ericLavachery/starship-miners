@@ -279,6 +279,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.crafts === undefined) {
         playerInfos.crafts = 0;
     }
+    if (playerInfos.stCrafts === undefined) {
+        playerInfos.stCrafts = 0;
+    }
     if (playerInfos.volFx === undefined) {
         playerInfos.volFx = 0.4;
     }

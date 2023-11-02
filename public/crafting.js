@@ -405,6 +405,7 @@ function getMaxCrafts() {
     let maxCrafts = Math.ceil(craftsPerTurn*3);
     if (playerInfos.onShip) {
         maxCrafts = maxCrafts*3;
+        playerInfos.stCrafts = maxCrafts;
     }
     return maxCrafts;
 }

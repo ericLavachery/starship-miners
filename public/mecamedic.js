@@ -1207,30 +1207,8 @@ function checkVehiclesAPSoins(bat,batType) {
     return apLoss;
 };
 
-function getMaintenanceCosts(bat,batType) {
-    let maintCosts = {};
-    let state = (bat.soins*2)-7;
-    if (state > 50) {
-        state = 50+Math.round((state-50)/5);
-    }
-    Object.entries(batType.costs).map(entry => {
-        let key = entry[0];
-        let value = entry[1];
-        let thatCost = Math.floor(value*state/100);
-        if (key === 'Moteurs') {
-            thatCost = Math.ceil(thatCost*2);
-        }
-        if (key === 'Plastanium') {
-            thatCost = Math.ceil(thatCost*3);
-        }
-        if (thatCost >= 1 && key != 'Spins') {
-            maintCosts[key] = thatCost;
-        }
-    });
-    return maintCosts;
-};
-
 function getAvMaintCosts(batType) {
+    // average maintenance costs (pour rapport de mission)
     let maintCosts = {};
     if (batType.skills.includes('decay')) {
         Object.entries(batType.costs).map(entry => {
@@ -1256,10 +1234,46 @@ function getAvMaintCosts(batType) {
     return maintCosts;
 };
 
+function getMaintenanceCosts(bat,batType) {
+    let maintCosts = {};
+    let state = (bat.soins*2)-7;
+    if (state > 50) {
+        state = 50+Math.round((state-50)/5);
+    }
+    Object.entries(batType.costs).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        let thatCost = Math.floor(value*state/100);
+        if (key === 'Moteurs') {
+            thatCost = Math.ceil(thatCost*2);
+        }
+        if (key === 'Plastanium') {
+            thatCost = Math.ceil(thatCost*3);
+        }
+        if (thatCost >= 1 && key != 'Spins') {
+            maintCosts[key] = thatCost;
+        }
+    });
+    return maintCosts;
+};
+
+function getMaintCraftCost(bat,batType) {
+    let craftCost = 1;
+    if (bat.soins >= 11) {
+        craftCost = Math.ceil(batType.fabTime/11*Math.sqrt(bat.soins-10)/5);
+    }
+    // console.log('-----------------------------------------------------------maintenanceCost='+craftCost);
+    // let fabCost = Math.floor(batType.fabTime/5.5);
+    // console.log('-----------------------------------------------------------fabCost='+fabCost);
+    return craftCost;
+};
+
 function maintenance() {
     let maintCosts = getMaintenanceCosts(selectedBat,selectedBatType);
     let maintOK = checkCost(maintCosts);
     if (maintOK) {
+        let craftCost = getMaintCraftCost(selectedBat,selectedBatType);
+        playerInfos.crafts = playerInfos.crafts+craftCost;
         payCost(maintCosts);
         selectedBat.soins = 0;
         playSound('repair',-0.2);
