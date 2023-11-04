@@ -23,6 +23,11 @@ function voirBataillons() {
             if (bat.loc != 'zone') {
                 batColor = 'bleu';
             }
+            if (selectedBat != undefined) {
+                if (selectedBat.id === bat.id) {
+                    $('#conUnitList').append('<span class="ListRes hrouge">>>></span>&nbsp;');
+                }
+            }
             $('#conUnitList').append('<span class="ListRes '+batColor+' klik" onclick="warnLink('+bat.tileId+')">'+bat.type+'</span>&nbsp;&nbsp;');
             if (bat.army >= 1) {
                 $('#conUnitList').append('<span class="ListRes gff" title="Armée">('+bat.army+')</span>&nbsp;&nbsp;');

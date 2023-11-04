@@ -693,7 +693,7 @@ function meteorCanon(mChance) {
                         targetValue = 5;
                     }
                     if (targetValue >= 1) {
-                        targetValue = targetValue+rand.rand(0,2);
+                        targetValue = targetValue+rand.rand(0,4);
                     }
                     if (targetValue > bestTarget) {
                         targetTile = bat.tileId;

@@ -40,10 +40,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     let batType;
     let totalAPCost = 0;
     let xpGain = 0.1;
-    let patientAPCost = medicPatientAP;
-    if (selectedBatType.skills.includes('fastcure')) {
-        patientAPCost = Math.ceil(patientAPCost/2);
-    }
+    let patientAPCost = Math.ceil(mecaPatientAP*5/(playerInfos.comp.med+3));
     let apCost = cost;
     if (!inBld) {
         apCost = calcAdjSkillCost(1,apCost,selectedBatType,selectedBat,isMed);
@@ -230,15 +227,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         oldSquadsLeft = bat.squadsLeft;
                                         squadHP = batType.squadSize*batType.hp;
                                         batHP = squadHP*batType.squads;
-                                        if (batType.skills.includes('transorbital')) {
-                                            regen = mecanoHP*5;
-                                        } else if (batType.cat === 'buildings' || batType.cat === 'devices') {
-                                            regen = mecanoHP*2;
-                                        } else if (batType.skills.includes('robot') && !selectedBatType.skills.includes('roborepair')) {
-                                            regen = Math.round(mecanoHP/3);
-                                        } else {
-                                            regen = mecanoHP;
-                                        }
+                                        regen = getMecaHP(batType,selectedBatType);
                                         batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
                                         bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
                                         bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
@@ -255,9 +244,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         if (bat.loc === "zone") {
                                             showBataillon(bat);
                                         }
-                                        bat.apLeft = bat.apLeft-medicPatientAP;
+                                        bat.apLeft = bat.apLeft-mecaPatientAP;
                                         if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
-                                            bat.apLeft = bat.apLeft-medicPatientAP;
+                                            bat.apLeft = bat.apLeft-mecaPatientAP;
                                         }
                                         // let healCost = Math.round(bat.damage/(batType.hp*batType.squadSize)*2);
                                         // addRepairFlag(bat,healCost);
@@ -267,15 +256,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         oldSquadsLeft = bat.squadsLeft;
                                         squadHP = batType.squadSize*batType.hp;
                                         batHP = squadHP*batType.squads;
-                                        if (batType.skills.includes('transorbital')) {
-                                            regen = mecanoHP*5;
-                                        } else if (batType.cat === 'buildings' || batType.cat === 'devices') {
-                                            regen = mecanoHP*2;
-                                        } else if (batType.skills.includes('robot') && !selectedBatType.skills.includes('roborepair')) {
-                                            regen = Math.round(mecanoHP/3);
-                                        } else {
-                                            regen = mecanoHP;
-                                        }
+                                        regen = getMecaHP(batType,selectedBatType);
                                         batHPLeft = (bat.squadsLeft*squadHP)-bat.damage+regen;
                                         bat.squadsLeft = Math.ceil(batHPLeft/squadHP);
                                         bat.damage = (bat.squadsLeft*squadHP)-batHPLeft;
@@ -296,9 +277,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         if (bat.loc === "zone") {
                                             showBataillon(bat);
                                         }
-                                        bat.apLeft = bat.apLeft-medicPatientAP;
+                                        bat.apLeft = bat.apLeft-mecaPatientAP;
                                         if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
-                                            bat.apLeft = bat.apLeft-medicPatientAP;
+                                            bat.apLeft = bat.apLeft-mecaPatientAP;
                                         }
                                         addRepairFlag(bat,2);
                                         doneAction(bat);
@@ -309,9 +290,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         console.log('totalAPCost '+totalAPCost);
                                         xpGain = xpGain+0.35;
                                         $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">trous bouchés<br></span>');
-                                        bat.apLeft = bat.apLeft-medicPatientAP;
+                                        bat.apLeft = bat.apLeft-mecaPatientAP;
                                         if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
-                                            bat.apLeft = bat.apLeft-medicPatientAP;
+                                            bat.apLeft = bat.apLeft-mecaPatientAP;
                                         }
                                         addRepairFlag(bat,2);
                                         doneAction(bat);
@@ -418,13 +399,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                 oldSquadsLeft = selectedBat.squadsLeft;
                 squadHP = selectedBatType.squadSize*selectedBatType.hp;
                 batHP = squadHP*selectedBatType.squads;
-                if (selectedBatType.skills.includes('transorbital')) {
-                    regen = mecanoHP*5;
-                } else if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
-                    regen = mecanoHP*2;
-                } else {
-                    regen = mecanoHP;
-                }
+                regen = getMecaHP(selectedBatType,selectedBatType);
                 batHPLeft = (selectedBat.squadsLeft*squadHP)-selectedBat.damage+regen;
                 selectedBat.squadsLeft = Math.ceil(batHPLeft/squadHP);
                 selectedBat.damage = (selectedBat.squadsLeft*squadHP)-batHPLeft;
@@ -443,13 +418,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                 oldSquadsLeft = selectedBat.squadsLeft;
                 squadHP = selectedBatType.squadSize*selectedBatType.hp;
                 batHP = squadHP*selectedBatType.squads;
-                if (selectedBatType.skills.includes('transorbital')) {
-                    regen = mecanoHP*5;
-                } else if (selectedBatType.cat === 'buildings' || selectedBatType.cat === 'devices') {
-                    regen = mecanoHP*2;
-                } else {
-                    regen = mecanoHP;
-                }
+                regen = getMecaHP(selectedBatType,selectedBatType);
                 batHPLeft = (selectedBat.squadsLeft*squadHP)-selectedBat.damage+regen;
                 selectedBat.squadsLeft = Math.ceil(batHPLeft/squadHP);
                 selectedBat.damage = (selectedBat.squadsLeft*squadHP)-batHPLeft;
@@ -599,6 +568,26 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
     }
     return numTargets;
 };
+
+function getMecaHP(batType,mecaBatType) {
+    let regen = mecanoHP;
+    if (batType.skills.includes('transorbital')) {
+        regen = Math.round(mecanoHP*5*(playerInfos.comp.vsp+3)/5);
+    } else if (batType.cat === 'buildings') {
+        regen = Math.round(mecanoHP*2*(playerInfos.comp.const+3)/5);
+    } else if (batType.skills.includes('robot')) {
+        if (mecaBatType.skills.includes('roborepair')) {
+            regen = Math.round(mecanoHP/2*(playerInfos.comp.det+3)/5);
+        } else {
+            regen = Math.round(mecanoHP/6*(playerInfos.comp.det+3)/5);
+        }
+    } else if (batType.cat === 'devices') {
+        regen = Math.round(mecanoHP*(playerInfos.comp.det+3)/5);
+    } else {
+        regen = Math.round(mecanoHP*(playerInfos.comp.trans+3)/5);
+    }
+    return regen;
+}
 
 function getMedRange(bat,batType) {
     let medRange = 0;
@@ -997,10 +986,11 @@ function diagRepair(repairBatId) {
     let oldSquadsLeft = selectedBat.squadsLeft;
     let squadHP = selectedBatType.squadSize*selectedBatType.hp;
     let batHP = squadHP*selectedBatType.squads;
-    let regen = mecanoHP*2;
-    if (selectedBatType.skills.includes('transorbital')) {
-        regen = mecanoHP*5;
-    }
+    let regen = getMecaHP(selectedBatType,repairBatType);
+    // let regen = mecanoHP*2;
+    // if (selectedBatType.skills.includes('transorbital')) {
+    //     regen = mecanoHP*5;
+    // }
     let batHPLeft = (selectedBat.squadsLeft*squadHP)-selectedBat.damage+regen;
     selectedBat.squadsLeft = Math.ceil(batHPLeft/squadHP);
     selectedBat.damage = (selectedBat.squadsLeft*squadHP)-batHPLeft;

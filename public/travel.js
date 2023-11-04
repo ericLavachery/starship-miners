@@ -250,9 +250,9 @@ function landingList() {
                 let presAlienDice = rand.rand(1,12);
                 if (zone[0].planet === 'Gehenna') {
                     zone[0].mapDiff = zone[0].mapDiff+1;
-                } else if (presAlienDice <= 2 && zone[0].mapDiff <= 8 && zone[0].mapDiff >= 2) {
+                } else if (presAlienDice <= 3 && zone[0].mapDiff <= 8 && zone[0].mapDiff >= 2) {
                     zone[0].mapDiff = zone[0].mapDiff+1;
-                } else if (presAlienDice >= 11 && zone[0].mapDiff >= 2) {
+                } else if (presAlienDice >= 12 && zone[0].mapDiff <= 5 && zone[0].mapDiff >= 2) {
                     zone[0].mapDiff = zone[0].mapDiff-1;
                 }
             }

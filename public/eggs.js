@@ -2499,7 +2499,7 @@ function eggSpawn(bat,fromEgg) {
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     let eggModTurn = eggTurn+Math.ceil((zone[0].mapDiff*2)-6);
     if (playerInfos.maxEggPlay > eggsNum) {
-        eggModTurn = eggModTurn+Math.round((playerInfos.maxEggPlay-eggsNum)/2.5);
+        eggModTurn = eggModTurn+Math.round((playerInfos.maxEggPlay-eggsNum)/2);
     }
     if (coconStats.dome) {
         eggModTurn = eggModTurn+3;
