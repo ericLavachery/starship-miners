@@ -2296,7 +2296,7 @@
         "bldReq":["Usine d'armement","Centre de com"],
         "compReq":{"def":2,"det":2,"bal":3,"mat":2,"tank":1,"robo":1},
         "altCompReq":{"def":2,"det":3,"bal":3,"mat":2,"tank":1,"cyber":2},
-        "costs":{"Compo1":120,"Compo2":240,"Compo3":300,"Scrap":120,"Carbone":120,"Tungstène":120,"Titane":120,"Fer":240,"Moteurs":180,"Cuivre":150,"Silicium":120,"Cobalt":90,"Nickel":60,"Electros":240,"Batteries":360,"Spins":30},
+        "costs":{"Compo1":120,"Compo2":240,"Compo3":300,"Scrap":120,"Carbone":120,"Tungstène":120,"Titane":120,"Fer":240,"Moteurs":180,"Cuivre":150,"Silicium":120,"Cobalt":90,"Nickel":60,"Electros":240,"Batteries":360,"Spins":35},
         "fabTime":200,
         "slots":0
     },

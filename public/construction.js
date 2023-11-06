@@ -2447,32 +2447,40 @@ function toggleAutoRoad(apCost,stop) {
 };
 
 function autoRoad(tile) {
-    let isBatHere = isOccupiedByFriend(tile.id);
-    if (!tile.rd && !isBatHere) {
-        let terrain = getTerrain(selectedBat);
-        let apCost = getRoadAPCost(selectedBat,selectedBatType,tile,false);
-        if (tile.infra != undefined && tile.infra != 'Débris') {
-            apCost = Math.round(apCost/2);
-        } else {
-            apCost = Math.round(apCost);
-        }
-        let roadCosts = getRoadCosts(tile);
-        let roadCostsOK = checkCost(roadCosts);
-        if (roadCostsOK) {
-            selectedBat.apLeft = selectedBat.apLeft-apCost;
-            selectedBat.xp = selectedBat.xp+(terrain.roadBuild/30);
-            payCost(roadCosts);
-            doneAction(selectedBat);
-            camoOut();
-            tile.rd = true;
-            if (tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
-                constructSound();
-            }
-            if (tile.qs != undefined) {
-                delete tile.qs;
-            }
-        } else if (selectedBat.tags.includes('autoroad')) {
+    let nearby = nearbyAliens(selectedBat);
+    if (nearby.oneTile) {
+        if (selectedBat.tags.includes('autoroad')) {
             tagDelete(selectedBat,'autoroad');
+        }
+    }
+    if (selectedBat.tags.includes('autoroad')) {
+        let isBatHere = isOccupiedByFriend(tile.id);
+        if (!tile.rd && !isBatHere) {
+            let terrain = getTerrain(selectedBat);
+            let apCost = getRoadAPCost(selectedBat,selectedBatType,tile,false);
+            if (tile.infra != undefined && tile.infra != 'Débris') {
+                apCost = Math.round(apCost/2);
+            } else {
+                apCost = Math.round(apCost);
+            }
+            let roadCosts = getRoadCosts(tile);
+            let roadCostsOK = checkCost(roadCosts);
+            if (roadCostsOK) {
+                selectedBat.apLeft = selectedBat.apLeft-apCost;
+                selectedBat.xp = selectedBat.xp+(terrain.roadBuild/30);
+                payCost(roadCosts);
+                doneAction(selectedBat);
+                camoOut();
+                tile.rd = true;
+                if (tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
+                    constructSound();
+                }
+                if (tile.qs != undefined) {
+                    delete tile.qs;
+                }
+            } else if (selectedBat.tags.includes('autoroad')) {
+                tagDelete(selectedBat,'autoroad');
+            }
         }
     }
 };
@@ -2531,7 +2539,7 @@ function putRoad(apCost,quiet) {
     let tile = getTile(selectedBat);
     let terrain = getTileTerrain(selectedBat.tileId);
     if (tile.infra != undefined && tile.infra != 'Débris') {
-        apCost = Math.round(apCost/2);
+        apCost = Math.ceil(apCost/1.5);
     }
     // console.log('apCost:'+apCost);
     if (selectedBatType.crew === 0) {

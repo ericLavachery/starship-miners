@@ -2221,7 +2221,12 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         if (batType.moveCost < 90) {
             let roadCosts = getRoadCosts(tile);
             let roadCostsOK = checkCost(roadCosts);
-            if (roadCostsOK) {
+            if (bat.tags.includes('autoroad')) {
+                if (nearby.oneTile) {
+                    tagDelete(bat,'autoroad');
+                }
+            }
+            if (roadCostsOK && !nearby.oneTile) {
                 if (bat.tags.includes('autoroad')) {
                     $('#unitInfos').append('<button type="button" title="Stopper la construction automatique de routes" class="boutonOK iconButtons cy" onclick="toggleAutoRoad('+apCost+',true)"><i class="fas fa-road"></i> <span class="small">Stop</span></button>');
                     lineBreak = true;
@@ -2231,6 +2236,9 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 }
             } else {
                 skillMessage = "Pas assez de ressources "+displayCosts(roadCosts);
+                if (nearby.oneTile) {
+                    skillMessage = "Ne peut pas se faire en mêlée";
+                }
                 $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-road"></i> <span class="small">Auto</span></button>');
                 lineBreak = true;
             }

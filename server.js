@@ -344,6 +344,7 @@ io.sockets.on('connection', function (socket, pseudo) {
                 zoneFiles.push(+zoneNum);
             }
         });
+        zoneFiles.sort(function(a, b){return a - b});
         console.log('Zones:');
         console.log(zoneFiles);
     };

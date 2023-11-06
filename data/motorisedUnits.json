@@ -5228,7 +5228,7 @@
         "weapon":{
             "name":"Moissonneuse",
             "cost":1,
-            "range":1,
+            "range":0,
             "rof":21,
             "accuracy":20,
             "power":8,
@@ -5236,7 +5236,23 @@
             "sound":"harvest",
             "ammo":["lame","lame-tungsten","lame-carbone","lame-moisso-mono"]
         },
-        "weapon2":{},
+        "weapon2":{
+            "name":"Darts",
+            "cost":2,
+            "range":2,
+            "isBow":true,
+            "isPrec":true,
+            "noShield":true,
+            "noise":0,
+            "rof":27,
+            "accuracy":25,
+            "dca":1.25,
+            "power":4,
+            "armors":0.5,
+            "aoe":"unit",
+            "sound":"darts_x4",
+            "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]
+        },
         "protection":[],
         "equip":["aucun","g2motor","e-flash","e-mecano","e-stab"],
         "log3eq":["e-mecano"],
