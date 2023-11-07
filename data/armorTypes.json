@@ -1840,7 +1840,7 @@
         "compReq":{"energ":1,"det":2,"vsp":2},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Carbone":400,"Titane":100,"Cobalt":75,"Cuivre":125,"Platine":100,"Silicium":200,"Electros":125,"Batteries":50,"Spins":75}
+        "costs":{"Carbone":400,"Titane":100,"Cobalt":75,"Cuivre":125,"Platine":100,"Silicium":200,"Electros":125,"Batteries":50,"Spins":65}
     },
     {
         "name":"megafret",

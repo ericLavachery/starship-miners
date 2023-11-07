@@ -1180,7 +1180,7 @@ function addAlienRes(bat,isWiped) {
                         killRes = killRes/2;
                     }
                     if (prop === 'Germium' || prop === 'Mephitis') {
-                        killRes = killRes*(playerInfos.comp.exo+7)*(playerInfos.comp.exo+7)/49;
+                        killRes = killRes*(playerInfos.comp.exo+7)*(playerInfos.comp.exo+8)/56;
                     }
                     if (prop != 'Gibier') {
                         killRes = Math.ceil(killRes*alienResFactor/10);

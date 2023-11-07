@@ -2895,6 +2895,7 @@ function checkDeepForest(tile) {
 
 function calcTirFurtif(weap,bat,distance) {
     let tirFurtif = 0;
+    let tfMax = stealthMaxChance;
     if (bat.fuzz <= -2) {
         if (weap.noise < 2 || (weap.noise < 4 && distance >= 3)) {
             let batType = getBatType(bat);
@@ -2905,17 +2906,27 @@ function calcTirFurtif(weap,bat,distance) {
             }
             tirFurtif = tirFurtif+(distAdj*20)-20;
             if (weap.noise > 0) {
-                tirFurtif = Math.round(tirFurtif/(weap.noise+3)*4/1.5);
+                tirFurtif = tirFurtif/(weap.noise+3)*4/1.5;
             } else {
-                tirFurtif = Math.round(tirFurtif/1.15);
+                tirFurtif = tirFurtif/1.15;
             }
             if (batType.cat === 'buildings' || batType.cat === 'devices' || batType.skills.includes('transorbital')) {
-                tirFurtif = Math.round(tirFurtif*1.33);
+                tirFurtif = tirFurtif*1.33;
             }
+            if (weap.num === 2) {
+                if (batType.weapon2.noise < 1) {
+                    tfMax = Math.floor((tfMax+100)/2);
+                }
+            } else {
+                if (batType.weapon.noise < 1) {
+                    tfMax = Math.floor((tfMax+100)/2);
+                }
+            }
+            tirFurtif = Math.round(tirFurtif);
         }
     }
-    if (tirFurtif >= stealthMaxChance) {
-        tirFurtif = stealthMaxChance;
+    if (tirFurtif > tfMax) {
+        tirFurtif = tfMax;
     }
     console.log('tirFurtif='+tirFurtif);
     return tirFurtif;

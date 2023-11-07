@@ -1171,9 +1171,9 @@ function batFullInfos(bat,batType) {
     }
     if (batType.skills.includes('onemore')) {
         if (batType.skills.includes('elite')) {
-            allSkills = allSkills+'<span class="paramValue" title="Ce bataillon gagne une attaque supplémentaire si il a terminé un bataillon alien dans le tour">One more</span>'+sepa;
+            allSkills = allSkills+'<span class="paramValue" title="Ce bataillon gagne une attaque supplémentaire si il a terminé un bataillon alien avec sa dernière attaque">One more</span>'+sepa;
         } else {
-            allSkills = allSkills+'<span class="paramValue" title="Lorsqu\'il est niveau 3 ou plus, ce bataillon gagne une attaque supplémentaire si il a terminé un bataillon alien dans le tour">One more</span>'+sepa;
+            allSkills = allSkills+'<span class="paramValue" title="Lorsqu\'il est niveau 3 ou plus, ce bataillon gagne une attaque supplémentaire si il a terminé un bataillon alien avec sa dernière attaque">One more</span>'+sepa;
         }
     }
     if (batType.skills.includes('undead')) {

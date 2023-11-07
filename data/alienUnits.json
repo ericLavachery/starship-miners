@@ -141,7 +141,7 @@
         "deathFx":"death2",
         "spawnFx":"spawn-lib",
         "fxPriority":4,
-        "killRes":{"Larvium":16,"Bugium":7,"Bossium":15,"Mendium":12,"Wingium":45},
+        "killRes":{"Larvium":32,"Bugium":14,"Bossium":15,"Mendium":24,"Wingium":90},
         "killXP":25
     },
     {
@@ -200,7 +200,7 @@
         "deathFx":"death2",
         "spawnFx":"spawn-lib",
         "fxPriority":4,
-        "killRes":{"Larvium":16,"Bugium":7,"Bossium":15,"Mendium":12,"Wingium":50},
+        "killRes":{"Larvium":32,"Bugium":14,"Bossium":15,"Mendium":24,"Wingium":75,"Slime":36},
         "killXP":25
     },
     {
@@ -326,7 +326,7 @@
         "class":"A",
         "rarity":1,
         "squads":7,
-        "squadSize":4,
+        "squadSize":5,
         "crew":0,
         "hp":115,
         "armor":6,
@@ -341,7 +341,7 @@
             "range":0,
             "noFly":true,
             "isMelee":true,
-            "rof":4,
+            "rof":5,
             "accuracy":20,
             "power":16,
             "armors":0.75,
@@ -355,7 +355,7 @@
             "range":0,
             "noFly":true,
             "isMelee":true,
-            "rof":4,
+            "rof":5,
             "accuracy":25,
             "power":20,
             "armors":0.5,
@@ -372,7 +372,7 @@
         "deathFx":"death2",
         "spawnFx":"spawn-ghost",
         "fxPriority":1,
-        "killRes":{"Bugium":3,"Blendium":21,"Larvium":11,"Mendium":5,"Germium":9,"Bossium":3},
+        "killRes":{"Bugium":6,"Blendium":42,"Larvium":22,"Mendium":10,"Germium":18,"Bossium":5},
         "killXP":25,
         "flavText":"Les fantômes restent rarement longtemps au même endroit pour ne pas être repérés."
     },
@@ -505,7 +505,7 @@
         "deathFx":"death3",
         "spawnFx":"spawn-mante",
         "fxPriority":7,
-        "killRes":{"Bugium":30,"Swarmine":60,"Bossium":30,"Egidium":100,"Mendium":15},
+        "killRes":{"Bugium":60,"Swarmine":120,"Bossium":30,"Egidium":100,"Mendium":30},
         "killXP":35,
         "flavText":"Les mantes pondent des fourmis."
     },
@@ -595,7 +595,7 @@
         "deathFx":"death3",
         "spawnFx":"spawn-glaireuse",
         "fxPriority":8,
-        "killRes":{"Bugium":7,"Aranium":27,"Bossium":20,"Creatite":6,"Slime":24,"Mendium":24},
+        "killRes":{"Bugium":14,"Aranium":54,"Bossium":20,"Creatite":6,"Slime":48,"Mendium":48},
         "killXP":30,
         "flavText":"Les glaireuses pondent des gluantes."
     },
@@ -969,7 +969,7 @@
         "maxVeg":3,
         "skills":["nocap","flee","terror","bugboost","fastreg","shield","resistall","noaploss","survivor","smartrip","infrip","sentinelle"],
         "deathFx":"death2",
-        "killRes":{"Bugium":23,"Mendium":12,"Creatite":6,"Egidium":44,"Bossium":28},
+        "killRes":{"Bugium":46,"Mendium":24,"Creatite":6,"Egidium":44,"Bossium":28},
         "killXP":30,
         "flavText":"Les bigheads augmentent la cadence de tir de tous les bugs et l'armure de certains d'entre eux'. Ils pondent des escarbots."
     },
@@ -1028,7 +1028,7 @@
         "deathFx":"death2",
         "spawnFx":"spawn-veuve",
         "fxPriority":6,
-        "killRes":{"Bugium":12,"Aranium":18,"Mephitis":20,"Bossium":16,"Slime":16,"Mendium":4},
+        "killRes":{"Bugium":24,"Aranium":36,"Mephitis":40,"Bossium":16,"Slime":32,"Mendium":8},
         "killXP":30,
         "flavText":"Les veuves chassent vos infanteries en priorité, même celles qui sont très éloignées. Leur poison est six fois plus virulent que celui des autres aliens."
     },
@@ -1089,7 +1089,7 @@
         "deathFx":"death2",
         "spawnFx":"spawn-scarab",
         "fxPriority":5,
-        "killRes":{"Bugium":7,"Bossium":9,"Slime":13,"Egidium":24,"Mendium":3,"Creatite":6},
+        "killRes":{"Bugium":14,"Bossium":9,"Slime":26,"Egidium":24,"Mendium":6,"Creatite":6},
         "killXP":25,
         "flavText":"Les scarabs pondent des bugs."
     },
@@ -1393,7 +1393,7 @@
         "deathFx":"death3",
         "spawnFx":"spawn-mygale",
         "fxPriority":3,
-        "killRes":{"Bugium":3,"Aranium":20,"Mephitis":17,"Bossium":3},
+        "killRes":{"Bugium":6,"Aranium":40,"Mephitis":34,"Bossium":5},
         "killXP":20,
         "flavText":"Les mygales chassent vos infanteries en priorité, même celles qui sont très éloignées."
     },
@@ -1702,7 +1702,7 @@
         "deathFx":"death3",
         "spawnFx":"spawn-androk",
         "fxPriority":5,
-        "killRes":{"Bugium":45,"Swarmine":60,"Mephitis":7,"Bossium":25,"Creatite":6},
+        "killRes":{"Bugium":90,"Swarmine":120,"Mephitis":14,"Bossium":30,"Creatite":6},
         "killXP":35,
         "flavText":"Les androks pondent des scorpions."
     },
@@ -1748,7 +1748,7 @@
         "deathFx":"death3",
         "spawnFx":"spawn-gal",
         "fxPriority":3,
-        "killRes":{"Bugium":28,"Swarmine":40,"Bossium":9,"Mendium":11},
+        "killRes":{"Bugium":56,"Swarmine":80,"Bossium":9,"Mendium":22},
         "killXP":25,
         "flavText":"Le poison de vos flêches et vos lames ravigore les galéodes. Elles sont furtives dans l'eau et les marécages."
     },
@@ -1807,7 +1807,7 @@
         "deathFx":"death3",
         "spawnFx":"spawn-dragon",
         "fxPriority":8,
-        "killRes":{"Bugium":50,"Bossium":28,"Creatite":6,"Pyrus":75},
+        "killRes":{"Bugium":100,"Bossium":28,"Creatite":6,"Pyrus":100},
         "killXP":40,
         "flavText":"Les dragons pondent des firebugs. Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
@@ -2222,7 +2222,7 @@
         "deathFx":"death3",
         "spawnFx":"spawn-mgrubz",
         "fxPriority":2,
-        "killRes":{"Bugium":15,"Larvium":36,"Mendium":72,"Bossium":29,"Creatite":6,"Slime":21},
+        "killRes":{"Bugium":30,"Larvium":72,"Mendium":144,"Bossium":29,"Creatite":12,"Slime":42},
         "killXP":35,
         "flavText":"Les megagrubz pondent des vomissures."
     },
@@ -2537,7 +2537,7 @@
         "deathFx":"death3",
         "spawnFx":"spawn-homard",
         "fxPriority":7,
-        "killRes":{"Bugium":20,"Swarmine":24,"Mendium":8,"Bossium":1},
+        "killRes":{"Bugium":40,"Swarmine":48,"Mendium":16,"Bossium":18,"Creatite":12},
         "killXP":25,
         "flavText":"Les homards pondent des cafards et transforment les cafards en écrevisses."
     },
@@ -2581,7 +2581,7 @@
         "maxVeg":3,
         "skills":["grip","fear","fastreg","destructeur","okwater","resistall","defense","ponte","nojello","aimcfo","silhover"],
         "deathFx":"death3",
-        "killRes":{"Bugium":20,"Swarmine":24,"Mendium":8,"Bossium":1},
+        "killRes":{"Bugium":40,"Swarmine":48,"Mendium":16,"Bossium":1},
         "killXP":15,
         "flavText":"Les écrevisses pondent des cafards et transforment les cafards en écrevisses."
     },
@@ -2639,7 +2639,7 @@
         "deathFx":"death2",
         "spawnFx":"spawn-lich",
         "fxPriority":12,
-        "killRes":{"Bugium":7,"Blendium":63,"Larvium":16,"Germium":16,"Bossium":33},
+        "killRes":{"Bugium":14,"Blendium":186,"Larvium":32,"Germium":32,"Bossium":33},
         "killXP":75,
         "flavText":"Les liches rendent toutes les larves invisible."
     },
@@ -2698,7 +2698,7 @@
         "deathFx":"death1",
         "spawnFx":"spawn-spinne",
         "fxPriority":8,
-        "killRes":{"Bugium":30,"Aranium":45,"Mephitis":11,"Germium":9,"Mendium":15,"Blendium":23,"Bossium":31},
+        "killRes":{"Bugium":60,"Aranium":90,"Mephitis":33,"Germium":27,"Mendium":30,"Blendium":46,"Bossium":31},
         "killXP":50,
         "flavText":"Les uberspinne augmentent la portée des attaques de toutes les araignées. Elles projettent leur toile à grande distance et sur une grande aire d'effet."
     },
@@ -2961,7 +2961,7 @@
         "deathFx":"death3",
         "spawnFx":"spawn-over",
         "fxPriority":11,
-        "killRes":{"Bugium":50,"Mendium":6,"Bossium":34,"Egidium":93,"Slime":20},
+        "killRes":{"Bugium":100,"Mendium":18,"Bossium":34,"Egidium":93,"Slime":40},
         "killXP":75,
         "flavText":"Les overbugs protègent tous les bugs avec leur bouclier. Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
@@ -3054,7 +3054,7 @@
         "maxVeg":-1,
         "skills":["inflammable","noaploss","shield","eggprotect","morph","xpplus","silhover"],
         "deathFx":"xplodewet",
-        "killRes":{"Creatite":15,"Bossium":5,"Egidium":2,"Bugium":5,"Swarmine":5,"Larvium":5,"Aranium":5},
+        "killRes":{"Creatite":10,"Bossium":5,"Egidium":2,"Bugium":5,"Swarmine":5,"Larvium":5,"Aranium":5},
         "killXP":5
     },
     {
@@ -3263,7 +3263,7 @@
         "maxVeg":-1,
         "skills":["hide","eggprotect","resistblast","xpplus","igtarglog","baddef","silhover","smartrip","sentinelle"],
         "deathFx":"xplode",
-        "killRes":{"Bugium":1,"Slime":6},
+        "killRes":{"Bugium":1,"Blendium":9,"Slime":6},
         "killXP":10
     },
     {
@@ -3380,7 +3380,7 @@
         "maxVeg":-1,
         "skills":["isegg","ponte","minaccu","eggshield","protectall","noaploss","nolaser","survivor","xpfeast","nokill","defense","smartrip","infrip","freeshot","nojello","silhover","ctarg","light"],
         "deathFx":"xplode",
-        "killRes":{"Bugium":108,"Swarmine":108,"Larvium":108,"Aranium":108,"Creatite":144,"Wingium":72,"Mendium":108,"Egidium":144,"Bossium":108,"Pyrus":144},
+        "killRes":{"Bugium":108,"Swarmine":108,"Larvium":108,"Aranium":108,"Creatite":144,"Wingium":72,"Mendium":108,"Egidium":144,"Bossium":54,"Pyrus":144},
         "killXP":100,
         "flavText":"Les colonies protègent tous les oeufs avec leur bouclier, et augmente la portée de tir des ruches à proximité."
     },

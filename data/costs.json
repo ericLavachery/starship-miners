@@ -2087,7 +2087,7 @@
         "name":"Ventilos",
         "levels":{"rednecks":99,"blades":17,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Aérodocks","QG"],
-        "compReq":{"aero":1},
+        "compReq":{"aero":1,"bal":1},
         "costs":{"Carbone":288,"Aluminium":500,"Moteurs":192,"Plastanium":90,"Titane":1000,"Cuivre":144,"Electros":270,"Batteries":135,"Silicium":18,"Drogues":46,"Chlore":28,"Zinc":28,"Fuel":90,"Tissus":14,"Spins":6},
         "deploy":{"Energie":750,"Plutonium":25,"Plastanium":18,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":180
@@ -2303,10 +2303,20 @@
     {
         "id":310,
         "name":"Autoturrets",
-        "levels":{"rednecks":14,"blades":15,"bulbos":14,"drogmulojs":15,"tiradores":14,"detruas":15,"brasier":15},
+        "levels":{"rednecks":14,"blades":99,"bulbos":14,"drogmulojs":15,"tiradores":14,"detruas":15,"brasier":15},
         "bldReq":["Usine d'armement","Centre de com"],
         "compReq":{"def":2,"det":2,"bal":2,"robo":1},
         "altCompReq":{"def":2,"det":3,"bal":2,"cyber":2},
+        "costs":{"Compo1":120,"Compo2":180,"Compo3":240,"Scrap":120,"Carbone":90,"Aluminium":90,"Titane":60,"Fer":120,"Moteurs":120,"Cuivre":90,"Silicium":90,"Cobalt":60,"Nickel":30,"Electros":180,"Batteries":180,"Spins":10},
+        "fabTime":150,
+        "slots":0
+    },
+    {
+        "id":321,
+        "name":"Autodarts",
+        "levels":{"rednecks":99,"blades":14,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "bldReq":["Usine d'armement","Centre de com"],
+        "compReq":{"def":2,"det":3,"bal":2,"cam":1,"cyber":1},
         "costs":{"Compo1":120,"Compo2":180,"Compo3":240,"Scrap":120,"Carbone":90,"Aluminium":90,"Titane":60,"Fer":120,"Moteurs":120,"Cuivre":90,"Silicium":90,"Cobalt":60,"Nickel":30,"Electros":180,"Batteries":180,"Spins":10},
         "fabTime":150,
         "slots":0
