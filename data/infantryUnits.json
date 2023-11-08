@@ -3271,6 +3271,7 @@
         "pic":"scyths",
         "cat":"infantry",
         "kind":"blades",
+        "sort":175,
         "squads":7,
         "squadSize":8,
         "crew":1,

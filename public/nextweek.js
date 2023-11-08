@@ -292,10 +292,10 @@ function repos(time) {
                 let severity = bat.emo;
                 if (severity < 8) {severity = 8;}
                 if (batType.skills.includes('dog')) {
-                    bat.emo = bat.emo-Math.round(time*stressHeal/36*stressFactorDogs/100/severity*8);
+                    bat.emo = bat.emo-Math.round(time*stressHeal/36*stressFactorDogs/100/severity*8*rand.rand(8,14)/10);
                     if (bat.emo < 0) {bat.emo = 0;}
                 } else {
-                    bat.emo = bat.emo-Math.round(time*stressHeal/36*stressFactor/100/severity*8);
+                    bat.emo = bat.emo-Math.round(time*stressHeal/36*stressFactor/100/severity*8*rand.rand(8,14)/10);
                     if (bat.emo < 0) {bat.emo = 0;}
                 }
             }

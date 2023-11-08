@@ -368,21 +368,7 @@ function moveSelectedBat(tileId,free,jump) {
         tagIndex = selectedBat.tags.indexOf('mud');
         selectedBat.tags.splice(tagIndex,1);
     }
-    if (selectedBat.tags.includes('camo') || selectedBat.fuzz <= -2) {
-        if (selectedBat.prt.includes('suit')) {
-            camoOut();
-        } else {
-            if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo') || !selectedBatType.skills.includes('camo') || selectedBat.eq === 'e-jetpack') {
-                if (hasEquip(selectedBat,['kit-chouf']) || selectedBatType.skills.includes('emoteur')) {
-                    camouflage(0);
-                } else {
-                    camoOut();
-                }
-            } else {
-                camouflage(0);
-            }
-        }
-    }
+    camoReCheck(0);
     if (zone[0].dark && activeTurn === 'player') {
         undarkAround(selectedBat,false);
     }

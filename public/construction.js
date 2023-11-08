@@ -2520,7 +2520,11 @@ function constructSound() {
 
 function getRoadAPCost(bat,batType,tile,round) {
     let terrain = getTerrainById(tile.id);
-    let apCost = batType.mecanoCost*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
+    let baseMecaRoad = batType.mecanoCost;
+    if (batType.skills.includes('fastrd')) {
+        baseMecaRoad = 3.8;
+    }
+    let apCost = baseMecaRoad*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
     if (hasEquip(bat,['e-road'])) {
         if (batType.skills.includes('routes')) {
             apCost = apCost/1.75;

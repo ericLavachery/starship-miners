@@ -25,6 +25,7 @@ function fortification(apCost) {
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     playSound('fortif',-0.1);
     tagDelete(selectedBat,'mining');
+    camoReCheck();
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
     showMap(zone,false);
@@ -203,6 +204,7 @@ function goTreuil(treuilBatId,gainPA) {
     selectedBat.salvoLeft = 0;
     let treuilBat = getBatById(treuilBatId);
     treuilBat.apLeft = treuilBat.apLeft-4;
+    camoReCheck();
     playSound('winch',-0.2,false);
     doneAction(treuilBat);
     tagDelete(selectedBat,'guet');
@@ -375,6 +377,7 @@ function taming(tamingId) {
     selectedBat.apLeft = selectedBat.apLeft-20;
     selectedBat.xp = selectedBat.xp+5;
     selectedBat.tags.push('tame');
+    camoOut();
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -487,6 +490,7 @@ function gloireASatan() {
             }
         }
     });
+    camoOut();
     playSound('satan',-0.2);
     tagDelete(selectedBat,'guet');
     doneAction(selectedBat);
@@ -631,10 +635,16 @@ function calcCamo(bat) {
     return camChance;
 };
 
-function camouflage(apCost) {
+function camouflage(apCost,bonus) {
+    if (bonus === undefined) {
+        bonus = 0;
+    }
     console.log('MODE FURTIF');
     if (apCost <= selectedBat.ap+1 || playerInfos.pseudo === 'Mapedit' || hasEquip(selectedBat,['bld-camo'])) {
         let camChance = calcCamo(selectedBat);
+        if (bonus >= 1) {
+            camChance = camChance+bonus;
+        }
         let camOK = false;
         let camDice = rand.rand(1,100);
         console.log('camChance '+camChance);
@@ -700,6 +710,32 @@ function longCamo(bat) {
     }
     if (!bat.tags.includes('camo')) {
         bat.tags.push('camo');
+    }
+};
+
+function camoReCheck(bonus) {
+    console.log('CAMO RECHECK');
+    if (bonus === undefined) {
+        bonus = 0;
+    }
+    if (selectedBat.tags.includes('camo') || selectedBat.fuzz <= -2) {
+        console.log('isCamo');
+        if (selectedBat.prt.includes('suit')) {
+            console.log('suit');
+            camoOut();
+        } else {
+            if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo') || !selectedBatType.skills.includes('camo') || selectedBat.eq === 'e-jetpack') {
+                console.log('fly or something');
+                if (hasEquip(selectedBat,['kit-chouf']) || selectedBatType.skills.includes('emoteur')) {
+                    camouflage(0,bonus);
+                } else {
+                    camoOut();
+                }
+            } else {
+                console.log('recheck');
+                camouflage(0,bonus);
+            }
+        }
     }
 };
 
@@ -1206,8 +1242,8 @@ function dropStuff(apCost,mineType) {
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     selectedBat.xp = selectedBat.xp+0.1;
     selectedBat.salvoLeft = 0;
-    // tagAction();
     tagDelete(selectedBat,'guet');
+    camoReCheck(5);
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -1525,8 +1561,8 @@ function removeWeb(apCost) {
         }
     }
     selectedBat.apLeft = selectedBat.apLeft-apFullCost;
+    camoReCheck();
     playSound('hose',-0.3);
-    // tagDelete(selectedBat,'mud');
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);

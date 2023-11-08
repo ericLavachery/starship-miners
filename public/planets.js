@@ -564,6 +564,16 @@ function alienCanon() {
 function ectoCanon(canonTiles) {
     playSound('web-fall',0);
     warning('Canon Skygrub','',false,canonTiles[0],false);
+    bataillons.forEach(function(bat) {
+        if (canonTiles.includes(bat.tileId)) {
+            if (!bat.tags.includes('maladie') && !bat.tags.includes('zombie') && !bat.tags.includes('genimmune')) {
+                let batType = getBatType(bat);
+                if (batType.cat == 'infantry' && !batType.skills.includes('mutant')) {
+                    bat.tags.push('maladie');
+                }
+            }
+        }
+    });
 };
 
 function getEctoCanonTiles() {

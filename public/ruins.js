@@ -68,6 +68,7 @@ function searchRuins(apCost,tileId) {
         if (!auto) {
             selectedBat.xp = selectedBat.xp+1;
             playerInfos.gangXP = playerInfos.gangXP+1;
+            camoReCheck(10);
             tagDelete(selectedBat,'guet');
             doneAction(selectedBat);
             selectedBatArrayUpdate();
@@ -636,7 +637,7 @@ function checkMineRuinsRes(ruinType,coffre,tile) {
                 let key = entry[0];
                 let value = entry[1];
                 let found = Math.floor(value*rand.rand(0,5)*rand.rand(1,16)/60);
-                if (key === 'Scrap') {
+                if (key === 'Scrap' || key === 'Magma') {
                     found = 0;
                 }
                 console.log(key+'='+found);

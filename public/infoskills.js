@@ -2735,7 +2735,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         if (bat.soins != undefined) {
                             usure = bat.soins;
                         }
-                        if (drug.name != 'meca' || bat.squadsLeft < batType.squads || bat.damage >= 30 || usure >= 10) {
+                        if (drug.name != 'meca' || bat.squadsLeft < batType.squads || bat.damage >= 30 || usure >= 11) {
                             $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert iconButtons" onclick="useDrugPack(`'+drugName+'`,'+apCost+')"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                         } else {
                             $('#unitInfos').append('<button type="button" title="('+drugName+' / '+drug.info+')" class="boutonVert iconButtons gf"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
