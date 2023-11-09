@@ -25,7 +25,10 @@ function fortification(apCost) {
     selectedBat.apLeft = selectedBat.apLeft-apCost;
     playSound('fortif',-0.1);
     tagDelete(selectedBat,'mining');
-    camoReCheck();
+    let tile = getTile(selectedBat);
+    if (tile.infra === undefined) {
+        camoReCheck();
+    }
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
     showMap(zone,false);
