@@ -1368,7 +1368,7 @@ function attack(melee,init) {
         trueWeb();
     }
     if (selectedWeap.ammo === 'storm-true' && targetBatType.team === 'player') {
-        blobStormThis();
+        blobStormThis(selectedBat.squadsLeft);
     }
     let inDanger = checkInDanger(targetBat,targetBatType);
     if (inDanger) {

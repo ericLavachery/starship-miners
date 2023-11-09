@@ -787,15 +787,15 @@ function stormThis(batId) {
     showMap(zone,true);
 };
 
-function blobStormThis() {
+function blobStormThis(power) {
     playSound('meteor-blob',0.4);
     let tile = getTile(targetBat);
-    blobMeteorImpact(tile);
+    blobMeteorImpact(tile,power);
     // killBatList();
     showMap(zone,true);
 };
 
-function blobMeteorImpact(tile) {
+function blobMeteorImpact(tile,power) {
     if (tile.ruins) {
         delete tile.ruins;
         delete tile.sh;
@@ -805,7 +805,7 @@ function blobMeteorImpact(tile) {
         if (tile.infra === 'Débris') {
             delete tile.infra;
         }
-        let wipeChance = 100-(playerInfos.comp.const*playerInfos.comp.const*3)-(playerInfos.comp.def*playerInfos.comp.def*6);
+        let wipeChance = 100-(playerInfos.comp.const*playerInfos.comp.const*3)-(playerInfos.comp.def*playerInfos.comp.def*6)+(power*10)-60;
         // if (tile.infra === 'Miradors') {
         //     wipeChance = wipeChance;
         // }
@@ -826,7 +826,7 @@ function blobMeteorImpact(tile) {
         }
     }
     tile.crat = true;
-    stormDamage(targetBat,targetBatType,true,false,true);
+    stormDamage(targetBat,targetBatType,true,false,true,power);
     if (targetBatType.cat === 'buildings' || targetBatType.skills.includes('transorbital')) {
         delete tile.crat;
     }
@@ -1116,7 +1116,10 @@ function stormProtection(dmg,bat,batType,canon) {
     return adjDmg;
 };
 
-function stormDamage(bat,batType,storm,inMov,canon) {
+function stormDamage(bat,batType,storm,inMov,canon,power) {
+    if (power === undefined) {
+        power = 6;
+    }
     let isDead = false;
     let deathCause = 'Tempête';
     let deathType = ' brûlés.';
@@ -1199,6 +1202,7 @@ function stormDamage(bat,batType,storm,inMov,canon) {
         } else {
             stormDmg = stormDmg*1.33;
         }
+        stormDmg = stormDmg*power/6;
         console.log('stormDmg='+stormDmg);
         let batArmour = bat.armor;
         if (bat.tags.includes('fortif')) {

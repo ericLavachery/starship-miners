@@ -2466,6 +2466,19 @@ function newEggCat() {
     return eggCat;
 };
 
+function getNumClassA() {
+    let numClassA = 0;
+    aliens.forEach(function(bat) {
+        let batType = getBatType(bat);
+        if (batType.class === 'A' || batType.class === 'S') {
+            if (batType.name != 'Ecrevisses' && batType.name != 'Fantômes' && batType.name != 'Mygales' && batType.name != 'Galéodes') {
+                numClassA++;
+            }
+        }
+    });
+    return numClassA;
+};
+
 function checkAlienBoss(eggCat) {
     let alienBoss = false;
     if (eggCat === 'swarm') {
@@ -2496,6 +2509,11 @@ function eggSpawn(bat,fromEgg) {
     }
     let eggCat = checkputEggKind(bat);
     let alienBoss = checkAlienBoss(eggCat);
+    let numClassA = getNumClassA();
+    let maxClassA = ((zone[0].mapDiff-4)*3);
+    if (coconStats.dome) {
+        maxClassA = maxClassA+6;
+    }
     let eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
     let eggModTurn = eggTurn+Math.ceil((zone[0].mapDiff*2)-6);
     if (playerInfos.maxEggPlay > eggsNum) {
@@ -2604,7 +2622,9 @@ function eggSpawn(bat,fromEgg) {
             if ((eggModTurn >= 7 && playerInfos.mapTurn >= minTurnB && zone[0].mapDiff >= 3) || zoneInfos.cb) {
                 classes.push('B');
                 if (eggModTurn >= 13 && playerInfos.mapTurn >= minTurnA && (zone[0].mapDiff >= 6 || overSaturation)) {
-                    classes.push('A');
+                    if (numClassA < maxClassA && maxClassA > 1) {
+                        classes.push('A');
+                    }
                     if (zoneInfos.as) {
                         classes.push('S');
                     } else if (coconStats.dome && eggModTurn >= 18 && !alienBoss && fromEgg && bat.type != 'Oeuf voilé') {

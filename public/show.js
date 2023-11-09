@@ -43,9 +43,6 @@ function equipDetails(stuffName,isAmmo) {
     $('#conUnitList').append('<span class="constName vert">'+pageTitle+': <span class="or">&ldquo;'+stuff.name+'&rdquo;</span></span><br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="basicText">'+baseInfo+'</span><br>');
-
-
-
     $('#conUnitList').append('<br><br>');
 };
 
@@ -103,6 +100,9 @@ function showFullArmorInfo(batArmor,forBld,withReqs,withCosts,forUnit,unit) {
     }
     if (batArmor.skills.includes('regeneration')) {
         armorSkills = armorSkills+'&#9889; régénération ';
+    }
+    if (batArmor.skills.includes('rof')) {
+        armorSkills = armorSkills+'&#9889; cadence de tir +15% ';
     }
     if (batArmor.skills.includes('camoloss')) {
         armorSkills = armorSkills+'&#9889; déplacement non furtif ';
@@ -256,7 +256,13 @@ function showAmmoInfo(ammoName,withReqs,withCosts) {
     }
     if (ammo.apdamage > 0) {
         let apd = Math.round(ammo.apdamage*100);
-        ammoInfo = ammoInfo+'&#9889; Entrave '+apd+' ';
+        if (ammo.apweb) {
+            ammoInfo = ammoInfo+'&#9889; Entrave '+apd+'+ ';
+        } else {
+            ammoInfo = ammoInfo+'&#9889; Entrave '+apd+' ';
+        }
+    } else if (ammo.apweb) {
+        ammoInfo = ammoInfo+'&#9889; Entrave ';
     }
     if (ammo.name.includes('plastanium')) {
         ammoInfo = ammoInfo+'&#9889; Dégâts x2 dans l\'eau ';
@@ -271,7 +277,7 @@ function showAmmoInfo(ammoName,withReqs,withCosts) {
         ammoInfo = ammoInfo+'&#9889; Génocide ';
     }
     if (ammo.name.includes('-necro')) {
-        ammoInfo = ammoInfo+'&#9889; Anti-régénération ';
+        ammoInfo = ammoInfo+'&#9889; Anti-régénération (nécrotoxine) ';
     }
     if (ammo.aoe != '') {
         if (ammo.aoe == 'unit') {

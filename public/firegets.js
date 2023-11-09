@@ -3061,13 +3061,16 @@ function chargeurAdj(bat,shots,weap) {
         if (hasEquip(bat,['landerwkit'])) {
             mult = mult+0.17;
         }
-        newShots = Math.round(newShots*mult);
+        newShots = newShots*mult;
     } else if (hasCarrousel) {
-        newShots = Math.round(newShots*1.25);
-    } else if (hasEquip(bat,['helper'])) {
-        if (!weap.isMelee && !weap.name.includes('Javelot') && !weap.name.includes('Foreuse')) {
-            newShots = Math.round(newShots*1.25);
-        }
+        newShots = newShots*1.25;
+    }
+    if (bat.prt === 'battlesuit') {
+        newShots = Math.round(newShots*1.15);
+    } else if (hasEquip(bat,['helper']) && !weap.isMelee && !weap.name.includes('Javelot') && !weap.name.includes('Foreuse')) {
+        newShots = Math.round(newShots*1.1);
+    } else {
+        newShots = Math.round(newShots);
     }
     return newShots;
 };
