@@ -895,29 +895,31 @@ function nextTile(myTileIndex,size) {
 
 function addRes(zone) {
     let resLevelDice;
-    let mythicMin = Math.floor(playerInfos.sondeDanger/2)-4;
-    let mythicMax = playerInfos.sondeDanger-2;
+    let resMapDiff = Math.round((playerInfos.sondeDanger+2.5)/1.42);
+    if (resMapDiff > 6) {resMapDiff = 6;}
+    let mythicMin = 0;
+    let mythicMax = resMapDiff-2;
     let mythicNum = 0;
-    let baseMin = 24+(playerInfos.sondeDanger*3);
+    let baseMin = 24+(resMapDiff*3);
     let baseNum = 0;
-    let redMin = Math.floor(playerInfos.sondeDanger)+8;
+    let redMin = Math.floor(resMapDiff)+8;
     let redNum = 0;
     if (zone[0].planet != 'Dom') {
         if (zone[0].planet != 'Horst') {
-            mythicMin = mythicMin+Math.floor(playerInfos.sondeDanger/3);
+            mythicMin = mythicMin+Math.floor(resMapDiff/3);
             if (mythicMin < 2) {
                 mythicMin = 2;
             }
-            mythicMax = mythicMax+Math.floor(playerInfos.sondeDanger/2);
+            mythicMax = mythicMax+Math.floor(resMapDiff/2);
         } else {
-            mythicMin = mythicMin+Math.floor(playerInfos.sondeDanger/1.5);
-            if (mythicMin < 5) {
-                mythicMin = 5;
+            mythicMin = mythicMin+Math.floor(resMapDiff/2);
+            if (mythicMin < 4) {
+                mythicMin = 4;
             }
-            mythicMax = mythicMax+playerInfos.sondeDanger;
+            mythicMax = mythicMax+resMapDiff;
         }
-        baseMin = baseMin+Math.floor(playerInfos.sondeDanger*2.5);
-        redMin = redMin+Math.floor(playerInfos.sondeDanger*1.5);
+        baseMin = baseMin+Math.floor(resMapDiff*2);
+        redMin = redMin+Math.floor(resMapDiff*1.5);
     }
     let terrain;
     let minChance;
@@ -1009,7 +1011,7 @@ function addRes(zone) {
     console.log('fewRedRarityAdj:'+fewRedRarityAdj);
     // blue mythics
     if (playerInfos.sondeDanger >= 1) {
-        let silverChance = Math.round(30000000/numBadTer/((playerInfos.sondeDanger+3)*(playerInfos.sondeDanger+3)));
+        let silverChance = Math.round(30000000/numBadTer/((resMapDiff+3)*(resMapDiff+3)));
         shufZone.forEach(function(tile) {
             if (tile.x > 2 && tile.x < 59 && tile.y > 2 && tile.y < 59) {
                 terrain = getTileTerrain(tile.id);
@@ -1075,7 +1077,8 @@ function addRes(zone) {
     // adjust res rarity
     let bestRarity = 0;
     let resDefault;
-    let maxDice = Math.floor(playerInfos.sondeDanger/2)+5;
+    // let maxDice = Math.floor(playerInfos.sondeDanger/2)+5;
+    let maxDice = 7;
     let rarityDice;
     let altDice;
     let minDice = 1;

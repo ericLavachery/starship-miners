@@ -62,8 +62,8 @@ let bldHPTuning = 1.2; // multiplie tous les HP des bâtiments : def 1
 let bldTransTuning = 2; // multiplie tous les Transports des bâtiments : def 1
 let rescueRateDiv = 150; // default 150
 let mineRateDiv = 125; // divise le mining rate : def 200 (before: 125)
-let resFoundDiv = 8; // default 9
-let resBatchDiv = 14; // divise la quantité de ressource
+let resFoundDiv = 9; // default 9 (old = 8)
+let resBatchDiv = 17; // divise la quantité de ressource (old = 14)
 let scrapInRuins = 1.3;
 let permaRes = false;
 let resPersistance = 20; // default 10

@@ -570,7 +570,6 @@
             "elevation":1,
             "noise":4,
             "kit":true,
-            "noDef":true,
             "noBis":true,
             "rof":18,
             "accuracy":25,
@@ -580,7 +579,7 @@
             "aoe":"brochette",
             "sound":"lightning",
             "ammo":["electricity"],
-            "maxAmmo":15,
+            "maxAmmo":30,
             "ravitBld":"Poudrière"
         },
         "protection":[],

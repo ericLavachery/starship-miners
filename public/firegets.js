@@ -2743,7 +2743,11 @@ function weaponAdj(weapon,bat,wn) {
     // fog
     if (bat.tags.includes('fogged') && thisWeapon.range > 1) {
         thisWeapon.flurange = thisWeapon.range;
-        thisWeapon.range = 1;
+        if (infra === 'Miradors' || infra === 'Murailles' || batType.skills.includes('fly')) {
+            thisWeapon.range = 2;
+        } else {
+            thisWeapon.range = 1;
+        }
     }
     // hero rage
     if (bat.tags.includes('rage')) {

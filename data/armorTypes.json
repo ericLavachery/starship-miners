@@ -2016,7 +2016,7 @@
         "info":"Minitions++",
         "bldReq":[],
         "compReq":{"log":2},
-        "autoComp":[],
+        "autoComp":["const",3],
         "factor":"one",
         "costs":{"Compo1":100,"Compo2":50}
     },

@@ -1325,7 +1325,7 @@ function getUnitLevelLimit(unit) {
     let unitLevel = unit.levels[playerInfos.gang];
     let levComp = playerInfos.gLevel-unitLevel;
     let gLevLimit = 1;
-    if (levComp >= 1 || playerInfos.gLevel >= 20) {
+    if (levComp >= 1 || playerInfos.gLevel >= 19) {
         gLevLimit = 99;
     }
     return gLevLimit;

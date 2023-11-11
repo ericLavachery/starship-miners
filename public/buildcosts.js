@@ -780,6 +780,24 @@ function checkUnitCost(batType,withDeploy) {
 function checkCitCost(batType) {
     let enoughCit = true;
     let reqCit = batType.squads*batType.squadSize*batType.crew;
+    if (conselUpgrade === 'bld') {
+        let oldBatType = getBatTypeByName(conselUnit.bldCost);
+        let oldCit = oldBatType.squads*oldBatType.squadSize*oldBatType.crew;
+        reqCit = reqCit-oldCit;
+    }
+    if (conselUpgrade === 'inf') {
+        if (conselUnit.unitCost != 'none') {
+            let oldBatType = getBatTypeByName(conselUnit.unitCost);
+            let oldCit = oldBatType.squads*oldBatType.squadSize*oldBatType.crew;
+            reqCit = reqCit-oldCit;
+        } else if (conselUnit.altUnitCost != undefined) {
+            let oldBatType = getBatTypeByName(conselUnit.altUnitCost);
+            let oldCit = oldBatType.squads*oldBatType.squadSize*oldBatType.crew;
+            reqCit = reqCit-oldCit;
+        } else {
+            reqCit = 0;
+        }
+    }
     if (batType.skills.includes('clone') || batType.skills.includes('dog')) {
         reqCit = 0;
     }
