@@ -1171,8 +1171,7 @@
         "speed":-5,
         "ap":12,
         "maxSalvo":1,
-        "weapon":{},
-        "weapon1Def3":{
+        "weapon":{
             "name":"Barbelés",
             "cost":2,
             "range":0,
@@ -1208,7 +1207,8 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","fret","dumper","underground","maycamo","infrahelp","transport","nodeathcount","routes","prefab","noshow","notrash"],
+        "skills":["fouille","fret","dumper","ravitaillement","underground","maycamo","infrahelp","transport","nodeathcount","routes","prefab","noshow","notrash"],
+        "maxSkill":30,
         "mecanoCost":12,
         "transMaxSize":50,
         "transUnits":2000,

@@ -267,12 +267,6 @@ function repos(time) {
     let woundsFactor = 100*10/(playerInfos.vitals+10);
     let stressFactor = 100*20/(playerInfos.vitals+20)*100/overPop*100/bedsFactor;
     let stressFactorDogs = 100*20/(playerInfos.vitals+20)*100/overPop*100/dogBedsFactor;
-    // console.log('overPop='+overPop);
-    // console.log('bedsFactor='+bedsFactor);
-    // console.log('dogBedsFactor='+dogBedsFactor);
-    // console.log('woundsFactor='+woundsFactor);
-    // console.log('stressFactor='+stressFactor);
-    // console.log('stressFactorDogs='+stressFactorDogs);
     bataillons.forEach(function(bat) {
         if (!bat.tags.includes('return')) {
             let batType = getBatType(bat);
@@ -290,12 +284,20 @@ function repos(time) {
             }
             if (bat.emo != undefined) {
                 let severity = bat.emo;
-                if (severity < 8) {severity = 8;}
+                if (severity < 10) {severity = 10;}
+                let healMult = 10;
+                let chanceMult = rand.rand(6,16);
+                // let chanceMult = 11;
+                if (bat.tags.includes('pills')) {
+                    healMult = severity;
+                    chanceMult = 18;
+                    tagDelete(bat,'pills');
+                }
                 if (batType.skills.includes('dog')) {
-                    bat.emo = bat.emo-Math.round(time*stressHeal/36*stressFactorDogs/100/severity*16*rand.rand(8,14)/10);
+                    bat.emo = bat.emo-Math.round(time*stressHeal/36*stressFactorDogs/100/severity*healMult*chanceMult/11);
                     if (bat.emo < 0) {bat.emo = 0;}
                 } else {
-                    bat.emo = bat.emo-Math.round(time*stressHeal/36*stressFactor/100/severity*16*rand.rand(8,14)/10);
+                    bat.emo = bat.emo-Math.round(time*stressHeal/36*stressFactor/100/severity*healMult*chanceMult/11);
                     if (bat.emo < 0) {bat.emo = 0;}
                 }
             }
@@ -476,7 +478,7 @@ function rechercheSci(bat,time) {
         let rechComp = getCompByName(rechCompName);
         warning('<span class="cy">RECHERCHE: ('+rechComp.fullName+')</span>','<span class="gfbleu">Points de recherche: '+bat.sciRech+'.</span><br>',true);
         console.log(rechComp);
-        let rechCompOK = isFoundCompOK(rechComp);
+        let rechCompOK = isRechCompOK(rechComp);
         console.log(rechCompOK);
         if (rechCompOK) {
             let rechAdj = 1;

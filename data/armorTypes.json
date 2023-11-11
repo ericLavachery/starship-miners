@@ -129,7 +129,7 @@
         "rarity":2,
         "icon":"fas fa-cannabis",
         "sound":"drinklot",
-        "info":"+4 PA / protection poisons et maladies / réduit le stress"
+        "info":"+4 PA / protection poisons et maladies / réduit les effets du stress"
     },
     {
         "name":"bliss",
@@ -145,7 +145,7 @@
         "rarity":1,
         "icon":"ra ra-pills rpg",
         "sound":"pills",
-        "info":"Dégâts reçus réduits / immunisé à la peur / réduit le stress / -1 PA"
+        "info":"Dégâts reçus réduits / immunisé à la peur / réduit les effets du stress / -1 PA"
     },
     {
         "name":"skupiac",
@@ -240,6 +240,17 @@
         "icon":"fa fa-wrench",
         "sound":"repair",
         "info":"Pièces de rechange pour réparer un véhicule"
+    },
+    {
+        "name":"pills",
+        "cat":"pills",
+        "apCost":0,
+        "bldReq":[],
+        "bldVMReq":[],
+        "costs":{"Drogues":18,"Hélium":4,"Bore":4,"Octiron":12,"Zinc":8,"Or":4,"Végétaux":18,"Oxygène":12},
+        "icon":"fas fa-pills",
+        "sound":"pills",
+        "info":"Traitement anti-dépressif (récupération plus rapide du stress)"
     },
     {
         "name":"aucune",

@@ -910,6 +910,22 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
         }
     }
+    // DEPRESSION
+    if (playerInfos.onShip && !zeroCrew) {
+        if (bat.emo >= 5 && !bat.tags.includes('pills')) {
+            let drug = getDrugByName('pills');
+            let pillsCosts = getPillsCosts();
+            let pillsOK = checkCost(pillsCosts);
+            if (pillsOK) {
+                $('#unitInfos').append('<button type="button" title="'+drug.info+' '+displayCosts(pillsCosts)+'" class="boutonVert iconButtons" onclick="pills()"><i class="'+drug.icon+'"></i> <span class="small">0</span></button>');
+                lineBreak = true;
+            } else {
+                skillMessage = 'Traitement: Ressources insuffisantes '+displayCosts(pillsCosts);
+                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="'+drug.icon+'"></i> <span class="small">0</span></button>');
+                lineBreak = true;
+            }
+        }
+    }
     // ENTRETIEN
     if (playerInfos.onShip && !zeroCrew) {
         if (bat.soins >= 11) {

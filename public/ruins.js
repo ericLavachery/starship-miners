@@ -164,6 +164,19 @@ function isFoundCompOK(foundComp) {
     return compOK;
 };
 
+function isRechCompOK(foundComp) {
+    let compOK = true;
+    let playerCompLvl = playerInfos.comp[foundComp.name];
+    if (playerCompLvl >= foundComp.maxLevel) {
+        // pas si déjà au max
+        compOK = false;
+    } else if (foundComp.lvlCosts[playerCompLvl+1] === 2) {
+        // pas si il coûte 2
+        compOK = false;
+    }
+    return compOK;
+};
+
 function randomComp(first,last) {
     let dice = rand.rand(first,last);
     let theComp = getCompById(dice);

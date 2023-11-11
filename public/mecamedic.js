@@ -1224,6 +1224,34 @@ function getAvMaintCosts(batType) {
     return maintCosts;
 };
 
+function getPillsCosts() {
+    let drug = getDrugByName('pills');
+    let pillsCosts = {};
+    Object.entries(drug.costs).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        let thatCost = value;
+        if (thatCost >= 1) {
+            pillsCosts[key] = Math.ceil(thatCost*4/(playerInfos.comp.med+3));
+        }
+    });
+    return pillsCosts;
+};
+
+function pills() {
+    let drug = getDrugByName('pills');
+    let pillsCosts = getPillsCosts();
+    let pillsOK = checkCost(pillsCosts);
+    if (pillsOK) {
+        payCost(pillsCosts);
+        selectedBat.tags.push('pills');
+        playSound(drug.sound,0);
+        selectedBatArrayUpdate();
+        goSoute();
+        showBatInfos(selectedBat);
+    }
+};
+
 function getMaintenanceCosts(bat,batType) {
     let maintCosts = {};
     let state = (bat.soins*2)-7;

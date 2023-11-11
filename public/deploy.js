@@ -518,7 +518,7 @@ function checkSpecialEquip(equip,batType,bat) {
     if (equip.name.includes('sci-')) {
         let rechCompName = equip.name.replace('sci-','');
         let rechComp = getCompByName(rechCompName);
-        let rechCompOK = isFoundCompOK(rechComp);
+        let rechCompOK = isRechCompOK(rechComp);
         if (!rechCompOK) {
             nope = true;
         }
