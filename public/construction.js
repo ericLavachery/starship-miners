@@ -1136,14 +1136,14 @@ function clickConstruct(tileId,free) {
 
 function conselNeat() {
     if (conselAmmos[0] == 'xxx') {
-        if (Object.keys(conselUnit.weapon).length >= 1) {
+        if (conselUnit.weapon.rof >= 1) {
             conselAmmos[0] = conselUnit.weapon.ammo[0];
         } else {
             conselAmmos[0] = 'none';
         }
     }
     if (conselAmmos[1] == 'xxx') {
-        if (Object.keys(conselUnit.weapon2).length >= 1) {
+        if (conselUnit.weapon2.rof >= 1) {
             conselAmmos[1] = conselUnit.weapon2.ammo[0];
         } else {
             conselAmmos[1] = 'none';

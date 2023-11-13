@@ -38,6 +38,7 @@ let riverNS = 5; // chance pour une rivière Nord-Sud (2- = 100%) +grand = moins
 let riverSN = 5; // chance pour une rivière Nord-Sud (2- = 100%) +grand = moins de chance
 let riverCurve = 3; // +grand = rivières plus droites (minimum 3)
 let maxTileCheck = 5; // 4 = tendance transversale / 5 = tendance droite
+let lastMapMinKind = 15; // % minimum de chaque race d'alien sur la carte finale
 let terrainTypes = [];
 let armorTypes = [];
 let ammoTypes = [];

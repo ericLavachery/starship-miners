@@ -142,6 +142,7 @@ function generateNewMap(filterCheck,louche) {
     addRivers(zone);
     addRes(zone);
     deepWaters(zone);
+    persil(zone);
     destroyedRuins(zone);
     washReports(true);
     zone[1830].rd = true;
@@ -480,7 +481,7 @@ function filterParams(filterCheck) {
         console.log('terSeedDiceMin='+terSeedDiceMin);
         let dice = rand.rand(terSeedDiceMin,terSeedDiceMin+3);
         if (playerInfos.gLevel >= 19) {
-            dice = rand.rand(3,10);
+            dice = rand.rand(4,10);
         }
         switch (dice) {
             case 1:
@@ -551,33 +552,22 @@ function logFilters(filtre, seed, curve) {
     filtre = filtre.replace(' P',' +');
     console.log('Filtre: '+filtre);
     let variance;
-    switch (seed) {
-        case 3:
+    if (seed <= 3) {
         variance = "très forte";
-        break;
-        case 6:
+    } else if (seed <= 6) {
         variance = "forte";
-        break;
-        case 9:
+    } else if (seed <= 10) {
         variance = "moyenne +";
-        break;
-        case 12:
+    } else if (seed <= 16) {
         variance = "moyenne";
-        break;
-        case 18:
+    } else if (seed <= 20) {
         variance = "moyenne -";
-        break;
-        case 24:
+    } else if (seed <= 40) {
         variance = "faible";
-        break;
-        case 90:
+    } else if (seed <= 100) {
         variance = "très faible";
-        break;
-        case 200:
+    } else {
         variance = "extrèmement faible";
-        break;
-        default:
-        variance = "erreur !!";
     }
     console.log('Variabilité: '+variance+' (seed '+seed+')');
     console.log('River Curve: '+curve);
@@ -592,32 +582,45 @@ function logFilters(filtre, seed, curve) {
 function addRivers(map) {
     let direction;
     let dice = rand.rand(1,riverEW);
-    let isRiver = false;
+    let numRiver = 0;
     if (dice < 3) {
         direction = rand.rand(1,4); // 1 is North, 2 is South
         addEWRiver(map,direction);
-        isRiver = true;
+        numRiver++;
         console.log('Rivière ouest-est');
     }
     direction = rand.rand(1,2); // 1 is West, 2 is East
     dice = rand.rand(1,riverNS);
     if (dice < 3) {
         addNSRiver(map,direction);
-        isRiver = true;
+        numRiver++;
         console.log('Rivière nord-sud');
     }
     dice = rand.rand(1,riverSN);
     if (dice < 3) {
         addSNRiver(map,direction);
-        isRiver = true;
+        numRiver++;
         console.log('Rivière sud-nord');
     }
-    if (!isRiver) {
+    if (numRiver < 1) {
         if (playerInfos.gLevel >= 19) {
-            console.log('RECURSE');
+            console.log('RECURSE rivers');
             addRivers(map);
         } else {
             console.log('Pas de rivière');
+        }
+    } else if (numRiver < 2) {
+        if (playerInfos.gLevel >= 19 || rand.rand(1,4) === 1) {
+            console.log('rivière bonus');
+            if (rand.rand(1,2) === 1) {
+                addNSRiver(map,direction);
+                numRiver++;
+                console.log('Rivière nord-sud');
+            } else {
+                addSNRiver(map,direction);
+                numRiver++;
+                console.log('Rivière sud-nord');
+            }
         }
     }
 };
@@ -1851,6 +1854,55 @@ function checkResLevel(tile) {
     }
 };
 
+function persil(zone) {
+    if (rand.rand(1,4) === 1) {
+        let pRoll = rand.rand(1,6);
+        if (pRoll === 1) {
+            // mountains
+            if (rand.rand(1,2) === 1) {
+                replaceTerrain('P','M',rand.rand(4,12),true);
+            } else {
+                replaceTerrain('H','M',rand.rand(4,12),true);
+            }
+        } else if (pRoll === 2) {
+            // hills
+            if (rand.rand(1,2) === 1) {
+                replaceTerrain('P','H',rand.rand(4,24),true);
+            } else {
+                replaceTerrain('M','H',rand.rand(4,24),true);
+            }
+        } else if (pRoll === 3) {
+            // bushes
+            if (rand.rand(1,2) === 1) {
+                replaceTerrain('F','B',rand.rand(4,24),true);
+            } else {
+                replaceTerrain('S','B',rand.rand(4,24),true);
+            }
+        } else if (pRoll === 4) {
+            // forests
+            if (rand.rand(1,2) === 1) {
+                replaceTerrain('H','F',rand.rand(4,16),true);
+            } else {
+                replaceTerrain('W','F',rand.rand(4,16),true);
+            }
+        } else if (pRoll === 5) {
+            // swamps
+            if (rand.rand(1,2) === 1) {
+                replaceTerrain('P','S',rand.rand(4,16),true);
+            } else {
+                replaceTerrain('F','S',rand.rand(4,16),true);
+            }
+        } else if (pRoll === 6) {
+            // water
+            if (rand.rand(1,2) === 1) {
+                replaceTerrain('G','W',rand.rand(4,12),true);
+            } else {
+                replaceTerrain('B','W',rand.rand(4,12),true);
+            }
+        }
+    }
+};
+
 function lastZoneAdj() {
     // s'arranger pour qu'il y ait assez de chaque terrain!
     // utiliser les remplacements de terrain du MAPEDIT
@@ -1862,7 +1914,7 @@ function lastZoneAdj() {
     let spiderPerc = zone[0].pf;
     let larvePerc = zone[0].pw+zone[0].pr;
     // BUG TEST
-    if (bugPerc < 17) {
+    if (bugPerc < lastMapMinKind) {
         if (!pk) {
             pk = true;
             zone[0].pKind = 'bug';
@@ -1870,7 +1922,7 @@ function lastZoneAdj() {
         }
     }
     // LARVE TEST
-    if (larvePerc < 17) {
+    if (larvePerc < lastMapMinKind) {
         if (!sk) {
             sk = true;
             zone[0].sKind = 'larve';
@@ -1878,21 +1930,21 @@ function lastZoneAdj() {
         }
     }
     // SPIDER TEST
-    if (spiderPerc < 17) {
+    if (spiderPerc < lastMapMinKind) {
         if (!gk) {
             gk = true;
             zone[0].gKind = 'spider';
             spiderPerc = spiderPerc+zone[0].pg;
         }
     }
-    if (spiderPerc < 17) {
+    if (spiderPerc < lastMapMinKind) {
         if (!sk) {
             sk = true;
             zone[0].sKind = 'spider';
             spiderPerc = spiderPerc+zone[0].ps;
         }
     }
-    if (spiderPerc < 17) {
+    if (spiderPerc < lastMapMinKind) {
         if (!pk) {
             pk = true;
             zone[0].pKind = 'spider';
@@ -1900,21 +1952,21 @@ function lastZoneAdj() {
         }
     }
     // SWARM TEST
-    if (swarmPerc < 17) {
+    if (swarmPerc < lastMapMinKind) {
         if (!gk) {
             gk = true;
             zone[0].gKind = 'swarm';
             swarmPerc = swarmPerc+zone[0].pg;
         }
     }
-    if (swarmPerc < 17) {
+    if (swarmPerc < lastMapMinKind) {
         if (!pk) {
             pk = true;
             zone[0].pKind = 'swarm';
             swarmPerc = swarmPerc+zone[0].pp;
         }
     }
-    if (swarmPerc < 17) {
+    if (swarmPerc < lastMapMinKind) {
         if (!sk) {
             sk = true;
             zone[0].sKind = 'swarm';
@@ -1940,19 +1992,11 @@ function lastZoneAdj() {
     // terrain changes?
     let majTerrain = 'G';
     // BUG TEST
-    if (bugPerc < 17) {
+    if (bugPerc < lastMapMinKind) {
         if (zone[0].pg >= 25) {
             replaceTerrain('G','H',25,true);
             zone[0].pg = Math.round(zone[0].pg*75/100);
             zone[0].ph = zone[0].ph+Math.round(zone[0].pg*25/100);
-        } else if (zone[0].ps >= 25) {
-            replaceTerrain('S','H',25,true);
-            zone[0].ps = Math.round(zone[0].ps*75/100);
-            zone[0].ph = zone[0].ph+Math.round(zone[0].ps*25/100);
-        } else if (zone[0].pw >= 25) {
-            replaceTerrain('W','M',25,true);
-            zone[0].pw = Math.round(zone[0].pw*75/100);
-            zone[0].pm = zone[0].pm+Math.round(zone[0].pw*25/100);
         } else if (zone[0].pf >= 25) {
             replaceTerrain('F','H',25,true);
             zone[0].pf = Math.round(zone[0].pf*75/100);
@@ -1961,10 +2005,18 @@ function lastZoneAdj() {
             replaceTerrain('B','H',25,true);
             zone[0].pb = Math.round(zone[0].pb*75/100);
             zone[0].ph = zone[0].ph+Math.round(zone[0].pb*25/100);
+        } else if (zone[0].ps >= 25) {
+            replaceTerrain('S','H',25,true);
+            zone[0].ps = Math.round(zone[0].ps*75/100);
+            zone[0].ph = zone[0].ph+Math.round(zone[0].ps*25/100);
+        } else if (zone[0].pw >= 25) {
+            replaceTerrain('W','M',25,true);
+            zone[0].pw = Math.round(zone[0].pw*75/100);
+            zone[0].pm = zone[0].pm+Math.round(zone[0].pw*25/100);
         }
     }
     // LARVE TEST
-    if (larvePerc < 17) {
+    if (larvePerc < lastMapMinKind) {
         if (zone[0].pg >= 25) {
             replaceTerrain('G','S',35,true);
             zone[0].pg = Math.round(zone[0].pg*65/100);
@@ -1974,25 +2026,45 @@ function lastZoneAdj() {
             zone[0].pf = Math.round(zone[0].pf*75/100);
             zone[0].ps = zone[0].ps+Math.round(zone[0].pf*25/100);
         } else if (zone[0].pp >= 25) {
-            replaceTerrain('P','W',25,true);
+            replaceTerrain('P','S',25,true);
             zone[0].pp = Math.round(zone[0].pp*75/100);
-            zone[0].pw = zone[0].pw+Math.round(zone[0].pp*25/100);
+            zone[0].ps = zone[0].ps+Math.round(zone[0].pp*25/100);
         } else if (zone[0].pm >= 25) {
             replaceTerrain('M','S',25,true);
             zone[0].pm = Math.round(zone[0].pm*75/100);
             zone[0].ps = zone[0].ps+Math.round(zone[0].pm*25/100);
-        } else if (zone[0].pb >= 25) {
-            replaceTerrain('B','W',25,true);
-            zone[0].pb = Math.round(zone[0].pb*75/100);
-            zone[0].pw = zone[0].pw+Math.round(zone[0].pb*25/100);
+        } else if (zone[0].pb >= 35) {
+            replaceTerrain('B','W',15,true);
+            zone[0].pb = Math.round(zone[0].pb*85/100);
+            zone[0].pw = zone[0].pw+Math.round(zone[0].pb*15/100);
         } else if (zone[0].ph >= 25) {
             replaceTerrain('H','S',25,true);
             zone[0].ph = Math.round(zone[0].ph*75/100);
             zone[0].ps = zone[0].ps+Math.round(zone[0].ph*25/100);
+        } else if (zone[0].pg >= 20) {
+            replaceTerrain('G','S',35,true);
+            zone[0].pg = Math.round(zone[0].pg*65/100);
+            zone[0].ps = zone[0].ps+Math.round(zone[0].pg*35/100);
+        } else if (zone[0].pf >= 20) {
+            replaceTerrain('F','S',35,true);
+            zone[0].pf = Math.round(zone[0].pf*65/100);
+            zone[0].ps = zone[0].ps+Math.round(zone[0].pf*35/100);
+        } else if (zone[0].pp >= 20) {
+            replaceTerrain('P','S',35,true);
+            zone[0].pp = Math.round(zone[0].pp*65/100);
+            zone[0].ps = zone[0].ps+Math.round(zone[0].pp*35/100);
+        } else if (zone[0].pm >= 20) {
+            replaceTerrain('M','S',35,true);
+            zone[0].pm = Math.round(zone[0].pm*65/100);
+            zone[0].ps = zone[0].ps+Math.round(zone[0].pm*35/100);
+        } else if (zone[0].ph >= 20) {
+            replaceTerrain('H','S',35,true);
+            zone[0].ph = Math.round(zone[0].ph*65/100);
+            zone[0].ps = zone[0].ps+Math.round(zone[0].ph*35/100);
         }
     }
     // SPIDER TEST
-    if (spiderPerc < 17) {
+    if (spiderPerc < lastMapMinKind) {
         if (zone[0].pp >= 25) {
             replaceTerrain('P','F',25,true);
             zone[0].pp = Math.round(zone[0].pp*75/100);
@@ -2009,10 +2081,6 @@ function lastZoneAdj() {
             replaceTerrain('G','F',25,true);
             zone[0].pg = Math.round(zone[0].pg*75/100);
             zone[0].pf = zone[0].pf+Math.round(zone[0].pg*25/100);
-        } else if (zone[0].pb >= 25) {
-            replaceTerrain('B','F',25,true);
-            zone[0].pb = Math.round(zone[0].pb*75/100);
-            zone[0].pf = zone[0].pf+Math.round(zone[0].pb*25/100);
         } else if (zone[0].pm >= 25) {
             replaceTerrain('M','F',25,true);
             zone[0].pm = Math.round(zone[0].pm*75/100);
@@ -2021,38 +2089,80 @@ function lastZoneAdj() {
             replaceTerrain('H','F',25,true);
             zone[0].ph = Math.round(zone[0].ph*75/100);
             zone[0].pf = zone[0].pf+Math.round(zone[0].ph*25/100);
+        } else if (zone[0].pb >= 25) {
+            replaceTerrain('B','F',25,true);
+            zone[0].pb = Math.round(zone[0].pb*75/100);
+            zone[0].pf = zone[0].pf+Math.round(zone[0].pb*25/100);
         }
     }
     // SWARM TEST
-    if (swarmPerc < 17) {
+    if (swarmPerc < lastMapMinKind) {
         if (zone[0].pg >= 25) {
             replaceTerrain('G','B',25,true);
             zone[0].pg = Math.round(zone[0].pg*75/100);
             zone[0].pb = zone[0].pb+Math.round(zone[0].pg*25/100);
-        } else if (zone[0].ps >= 25) {
-            replaceTerrain('S','B',25,true);
-            zone[0].ps = Math.round(zone[0].ps*75/100);
-            zone[0].pb = zone[0].pb+Math.round(zone[0].ps*25/100);
-        } else if (zone[0].pf >= 25) {
-            replaceTerrain('F','B',25,true);
-            zone[0].pf = Math.round(zone[0].pf*75/100);
-            zone[0].pb = zone[0].pb+Math.round(zone[0].pf*25/100);
-        } else if (zone[0].pw >= 25) {
-            replaceTerrain('W','B',25,true);
-            zone[0].pw = Math.round(zone[0].pw*75/100);
-            zone[0].pb = zone[0].pb+Math.round(zone[0].pw*25/100);
-        } else if (zone[0].pp >= 25) {
-            replaceTerrain('P','B',25,true);
-            zone[0].pp = Math.round(zone[0].pp*75/100);
-            zone[0].pb = zone[0].pb+Math.round(zone[0].pp*25/100);
-        } else if (zone[0].pm >= 25) {
-            replaceTerrain('M','B',25,true);
-            zone[0].pm = Math.round(zone[0].pm*75/100);
-            zone[0].pb = zone[0].pb+Math.round(zone[0].pm*25/100);
+            swarmPerc = swarmPerc+Math.round(zone[0].pg*25/100);
         } else if (zone[0].ph >= 25) {
             replaceTerrain('H','B',25,true);
             zone[0].ph = Math.round(zone[0].ph*75/100);
             zone[0].pb = zone[0].pb+Math.round(zone[0].ph*25/100);
+            swarmPerc = swarmPerc+Math.round(zone[0].ph*25/100);
+        } else if (zone[0].pf >= 25) {
+            replaceTerrain('F','B',25,true);
+            zone[0].pf = Math.round(zone[0].pf*75/100);
+            zone[0].pb = zone[0].pb+Math.round(zone[0].pf*25/100);
+            swarmPerc = swarmPerc+Math.round(zone[0].pf*25/100);
+        } else if (zone[0].pp >= 25) {
+            replaceTerrain('P','B',25,true);
+            zone[0].pp = Math.round(zone[0].pp*75/100);
+            zone[0].pb = zone[0].pb+Math.round(zone[0].pp*25/100);
+            swarmPerc = swarmPerc+Math.round(zone[0].pp*25/100);
+        } else if (zone[0].ps >= 25) {
+            replaceTerrain('S','B',25,true);
+            zone[0].ps = Math.round(zone[0].ps*75/100);
+            zone[0].pb = zone[0].pb+Math.round(zone[0].ps*25/100);
+            swarmPerc = swarmPerc+Math.round(zone[0].ps*25/100);
+        } else if (zone[0].pw >= 25) {
+            replaceTerrain('W','B',25,true);
+            zone[0].pw = Math.round(zone[0].pw*75/100);
+            zone[0].pb = zone[0].pb+Math.round(zone[0].pw*25/100);
+            swarmPerc = swarmPerc+Math.round(zone[0].pw*25/100);
+        } else if (zone[0].pm >= 25) {
+            replaceTerrain('M','B',25,true);
+            zone[0].pm = Math.round(zone[0].pm*75/100);
+            zone[0].pb = zone[0].pb+Math.round(zone[0].pm*25/100);
+            swarmPerc = swarmPerc+Math.round(zone[0].pm*25/100);
+        }
+        if (swarmPerc < lastMapMinKind) {
+            if (zone[0].pg >= 20) {
+                replaceTerrain('G','B',25,true);
+                zone[0].pg = Math.round(zone[0].pg*75/100);
+                zone[0].pb = zone[0].pb+Math.round(zone[0].pg*25/100);
+            } else if (zone[0].ph >= 20) {
+                replaceTerrain('H','B',25,true);
+                zone[0].ph = Math.round(zone[0].ph*75/100);
+                zone[0].pb = zone[0].pb+Math.round(zone[0].ph*25/100);
+            } else if (zone[0].pf >= 20) {
+                replaceTerrain('F','B',25,true);
+                zone[0].pf = Math.round(zone[0].pf*75/100);
+                zone[0].pb = zone[0].pb+Math.round(zone[0].pf*25/100);
+            } else if (zone[0].pp >= 20) {
+                replaceTerrain('P','B',25,true);
+                zone[0].pp = Math.round(zone[0].pp*75/100);
+                zone[0].pb = zone[0].pb+Math.round(zone[0].pp*25/100);
+            } else if (zone[0].ps >= 20) {
+                replaceTerrain('S','B',25,true);
+                zone[0].ps = Math.round(zone[0].ps*75/100);
+                zone[0].pb = zone[0].pb+Math.round(zone[0].ps*25/100);
+            } else if (zone[0].pw >= 20) {
+                replaceTerrain('W','B',25,true);
+                zone[0].pw = Math.round(zone[0].pw*75/100);
+                zone[0].pb = zone[0].pb+Math.round(zone[0].pw*25/100);
+            } else if (zone[0].pm >= 20) {
+                replaceTerrain('M','B',25,true);
+                zone[0].pm = Math.round(zone[0].pm*75/100);
+                zone[0].pb = zone[0].pb+Math.round(zone[0].pm*25/100);
+            }
         }
     }
 };
