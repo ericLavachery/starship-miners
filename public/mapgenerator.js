@@ -479,6 +479,9 @@ function filterParams(filterCheck) {
         }
         console.log('terSeedDiceMin='+terSeedDiceMin);
         let dice = rand.rand(terSeedDiceMin,terSeedDiceMin+3);
+        if (playerInfos.gLevel >= 19) {
+            dice = rand.rand(3,10);
+        }
         switch (dice) {
             case 1:
             terSeed = 3;
@@ -610,7 +613,12 @@ function addRivers(map) {
         console.log('Rivière sud-nord');
     }
     if (!isRiver) {
-        console.log('Pas de rivière');
+        if (playerInfos.gLevel >= 19) {
+            console.log('RECURSE');
+            addRivers(map);
+        } else {
+            console.log('Pas de rivière');
+        }
     }
 };
 function checkRiverSeed() {
@@ -1843,6 +1851,212 @@ function checkResLevel(tile) {
     }
 };
 
+function lastZoneAdj() {
+    // s'arranger pour qu'il y ait assez de chaque terrain!
+    // utiliser les remplacements de terrain du MAPEDIT
+    let pk = false;
+    let gk = false;
+    let sk = false;
+    let bugPerc = zone[0].pm+zone[0].ph;
+    let swarmPerc = zone[0].pb;
+    let spiderPerc = zone[0].pf;
+    let larvePerc = zone[0].pw+zone[0].pr;
+    // BUG TEST
+    if (bugPerc < 17) {
+        if (!pk) {
+            pk = true;
+            zone[0].pKind = 'bug';
+            bugPerc = bugPerc+zone[0].pp;
+        }
+    }
+    // LARVE TEST
+    if (larvePerc < 17) {
+        if (!sk) {
+            sk = true;
+            zone[0].sKind = 'larve';
+            larvePerc = larvePerc+zone[0].ps;
+        }
+    }
+    // SPIDER TEST
+    if (spiderPerc < 17) {
+        if (!gk) {
+            gk = true;
+            zone[0].gKind = 'spider';
+            spiderPerc = spiderPerc+zone[0].pg;
+        }
+    }
+    if (spiderPerc < 17) {
+        if (!sk) {
+            sk = true;
+            zone[0].sKind = 'spider';
+            spiderPerc = spiderPerc+zone[0].ps;
+        }
+    }
+    if (spiderPerc < 17) {
+        if (!pk) {
+            pk = true;
+            zone[0].pKind = 'spider';
+            spiderPerc = spiderPerc+zone[0].pp;
+        }
+    }
+    // SWARM TEST
+    if (swarmPerc < 17) {
+        if (!gk) {
+            gk = true;
+            zone[0].gKind = 'swarm';
+            swarmPerc = swarmPerc+zone[0].pg;
+        }
+    }
+    if (swarmPerc < 17) {
+        if (!pk) {
+            pk = true;
+            zone[0].pKind = 'swarm';
+            swarmPerc = swarmPerc+zone[0].pp;
+        }
+    }
+    if (swarmPerc < 17) {
+        if (!sk) {
+            sk = true;
+            zone[0].sKind = 'swarm';
+            swarmPerc = swarmPerc+zone[0].ps;
+        }
+    }
+    // unallocated kinds
+    if (!pk) {
+        pk = true;
+        zone[0].pKind = 'bug';
+        bugPerc = bugPerc+zone[0].pp;
+    }
+    if (!sk) {
+        sk = true;
+        zone[0].sKind = 'larve';
+        larvePerc = larvePerc+zone[0].ps;
+    }
+    if (!gk) {
+        gk = true;
+        zone[0].gKind = 'spider';
+        spiderPerc = spiderPerc+zone[0].pg;
+    }
+    // terrain changes?
+    let majTerrain = 'G';
+    // BUG TEST
+    if (bugPerc < 17) {
+        if (zone[0].pg >= 25) {
+            replaceTerrain('G','H',25,true);
+            zone[0].pg = Math.round(zone[0].pg*75/100);
+            zone[0].ph = zone[0].ph+Math.round(zone[0].pg*25/100);
+        } else if (zone[0].ps >= 25) {
+            replaceTerrain('S','H',25,true);
+            zone[0].ps = Math.round(zone[0].ps*75/100);
+            zone[0].ph = zone[0].ph+Math.round(zone[0].ps*25/100);
+        } else if (zone[0].pw >= 25) {
+            replaceTerrain('W','M',25,true);
+            zone[0].pw = Math.round(zone[0].pw*75/100);
+            zone[0].pm = zone[0].pm+Math.round(zone[0].pw*25/100);
+        } else if (zone[0].pf >= 25) {
+            replaceTerrain('F','H',25,true);
+            zone[0].pf = Math.round(zone[0].pf*75/100);
+            zone[0].ph = zone[0].ph+Math.round(zone[0].pf*25/100);
+        } else if (zone[0].pb >= 25) {
+            replaceTerrain('B','H',25,true);
+            zone[0].pb = Math.round(zone[0].pb*75/100);
+            zone[0].ph = zone[0].ph+Math.round(zone[0].pb*25/100);
+        }
+    }
+    // LARVE TEST
+    if (larvePerc < 17) {
+        if (zone[0].pg >= 25) {
+            replaceTerrain('G','S',35,true);
+            zone[0].pg = Math.round(zone[0].pg*65/100);
+            zone[0].ps = zone[0].ps+Math.round(zone[0].pg*35/100);
+        } else if (zone[0].pf >= 25) {
+            replaceTerrain('F','S',25,true);
+            zone[0].pf = Math.round(zone[0].pf*75/100);
+            zone[0].ps = zone[0].ps+Math.round(zone[0].pf*25/100);
+        } else if (zone[0].pp >= 25) {
+            replaceTerrain('P','W',25,true);
+            zone[0].pp = Math.round(zone[0].pp*75/100);
+            zone[0].pw = zone[0].pw+Math.round(zone[0].pp*25/100);
+        } else if (zone[0].pm >= 25) {
+            replaceTerrain('M','S',25,true);
+            zone[0].pm = Math.round(zone[0].pm*75/100);
+            zone[0].ps = zone[0].ps+Math.round(zone[0].pm*25/100);
+        } else if (zone[0].pb >= 25) {
+            replaceTerrain('B','W',25,true);
+            zone[0].pb = Math.round(zone[0].pb*75/100);
+            zone[0].pw = zone[0].pw+Math.round(zone[0].pb*25/100);
+        } else if (zone[0].ph >= 25) {
+            replaceTerrain('H','S',25,true);
+            zone[0].ph = Math.round(zone[0].ph*75/100);
+            zone[0].ps = zone[0].ps+Math.round(zone[0].ph*25/100);
+        }
+    }
+    // SPIDER TEST
+    if (spiderPerc < 17) {
+        if (zone[0].pp >= 25) {
+            replaceTerrain('P','F',25,true);
+            zone[0].pp = Math.round(zone[0].pp*75/100);
+            zone[0].pf = zone[0].pf+Math.round(zone[0].pp*25/100);
+        } else if (zone[0].pw >= 25) {
+            replaceTerrain('W','F',25,true);
+            zone[0].pw = Math.round(zone[0].pw*75/100);
+            zone[0].pf = zone[0].pf+Math.round(zone[0].pw*25/100);
+        } else if (zone[0].ps >= 25) {
+            replaceTerrain('S','F',25,true);
+            zone[0].ps = Math.round(zone[0].ps*75/100);
+            zone[0].pf = zone[0].pf+Math.round(zone[0].ps*25/100);
+        } else if (zone[0].pg >= 25) {
+            replaceTerrain('G','F',25,true);
+            zone[0].pg = Math.round(zone[0].pg*75/100);
+            zone[0].pf = zone[0].pf+Math.round(zone[0].pg*25/100);
+        } else if (zone[0].pb >= 25) {
+            replaceTerrain('B','F',25,true);
+            zone[0].pb = Math.round(zone[0].pb*75/100);
+            zone[0].pf = zone[0].pf+Math.round(zone[0].pb*25/100);
+        } else if (zone[0].pm >= 25) {
+            replaceTerrain('M','F',25,true);
+            zone[0].pm = Math.round(zone[0].pm*75/100);
+            zone[0].pf = zone[0].pf+Math.round(zone[0].pm*25/100);
+        } else if (zone[0].ph >= 25) {
+            replaceTerrain('H','F',25,true);
+            zone[0].ph = Math.round(zone[0].ph*75/100);
+            zone[0].pf = zone[0].pf+Math.round(zone[0].ph*25/100);
+        }
+    }
+    // SWARM TEST
+    if (swarmPerc < 17) {
+        if (zone[0].pg >= 25) {
+            replaceTerrain('G','B',25,true);
+            zone[0].pg = Math.round(zone[0].pg*75/100);
+            zone[0].pb = zone[0].pb+Math.round(zone[0].pg*25/100);
+        } else if (zone[0].ps >= 25) {
+            replaceTerrain('S','B',25,true);
+            zone[0].ps = Math.round(zone[0].ps*75/100);
+            zone[0].pb = zone[0].pb+Math.round(zone[0].ps*25/100);
+        } else if (zone[0].pf >= 25) {
+            replaceTerrain('F','B',25,true);
+            zone[0].pf = Math.round(zone[0].pf*75/100);
+            zone[0].pb = zone[0].pb+Math.round(zone[0].pf*25/100);
+        } else if (zone[0].pw >= 25) {
+            replaceTerrain('W','B',25,true);
+            zone[0].pw = Math.round(zone[0].pw*75/100);
+            zone[0].pb = zone[0].pb+Math.round(zone[0].pw*25/100);
+        } else if (zone[0].pp >= 25) {
+            replaceTerrain('P','B',25,true);
+            zone[0].pp = Math.round(zone[0].pp*75/100);
+            zone[0].pb = zone[0].pb+Math.round(zone[0].pp*25/100);
+        } else if (zone[0].pm >= 25) {
+            replaceTerrain('M','B',25,true);
+            zone[0].pm = Math.round(zone[0].pm*75/100);
+            zone[0].pb = zone[0].pb+Math.round(zone[0].pm*25/100);
+        } else if (zone[0].ph >= 25) {
+            replaceTerrain('H','B',25,true);
+            zone[0].ph = Math.round(zone[0].ph*75/100);
+            zone[0].pb = zone[0].pb+Math.round(zone[0].ph*25/100);
+        }
+    }
+};
+
 function zoneReport(myZone,quiet) {
     let percM = 0;
     let percH = 0;
@@ -1902,7 +2116,7 @@ function zoneReport(myZone,quiet) {
     myZone[0].pw = percW;
     percR = Math.round(percR/36);
     myZone[0].pr = percR;
-    if (!quiet && myZone[0].planet === 'Dom') {
+    if (!quiet && myZone[0].planet === 'Dom' && playerInfos.gLevel < 19) {
         if (percS+percR+percW >= 40) {
             myZone[0].sKind = 'larve';
         }
@@ -1916,6 +2130,9 @@ function zoneReport(myZone,quiet) {
             myZone[0].pKind = 'bug';
             myZone[0].gKind = 'bug';
         }
+    }
+    if (playerInfos.gLevel >= 19 && !quiet) {
+        lastZoneAdj();
     }
     let rain = false;
     let sndEnsolBonus = 100;
@@ -2052,48 +2269,48 @@ function zoneReport(myZone,quiet) {
             }
         }
         if (playerInfos.comp.ca < 3) {
-            warning('Plaines',percP+'%',true);
-            warning('Prairies',percG+'%',true);
-            warning('Collines',percH+'%',true);
-            warning('Montagnes',percM+'%',true);
-            warning('Maquis',percB+'%',true);
-            warning('Forêts',percF+'%',true);
-            warning('Etangs',percW+'%',true);
-            warning('Rivières',percR+'%',true);
-            warning('Marécages',percS+'%',false,-1,true);
+            warning('Plaines',zone[0].pp+'%',true);
+            warning('Prairies',zone[0].pg+'%',true);
+            warning('Collines',zone[0].ph+'%',true);
+            warning('Montagnes',zone[0].pm+'%',true);
+            warning('Maquis',zone[0].pb+'%',true);
+            warning('Forêts',zone[0].pf+'%',true);
+            warning('Etangs',zone[0].pw+'%',true);
+            warning('Rivières',zone[0].pr+'%',true);
+            warning('Marécages',zone[0].ps+'%',false,-1,true);
         } else {
-            warning('Plaines',percP+'% ('+myZone[0].pKind+')',true);
-            warning('Prairies',percG+'% ('+myZone[0].gKind+')',true);
+            warning('Plaines',zone[0].pp+'% ('+myZone[0].pKind+')',true);
+            warning('Prairies',zone[0].pg+'% ('+myZone[0].gKind+')',true);
             if (myZone[0].planet === 'Gehenna') {
-                warning('Collines',percH+'% (spider)',true);
-                warning('Montagnes',percM+'% (spider)',true);
-                warning('Maquis',percB+'% (swarm)',true);
-                warning('Forêts',percF+'% (spider)',true);
-                warning('Etangs',percW+'% (larve)',true);
-                warning('Rivières',percR+'% (larve)',true);
+                warning('Collines',zone[0].ph+'% (spider)',true);
+                warning('Montagnes',zone[0].pm+'% (spider)',true);
+                warning('Maquis',zone[0].pb+'% (swarm)',true);
+                warning('Forêts',zone[0].pf+'% (spider)',true);
+                warning('Etangs',zone[0].pw+'% (larve)',true);
+                warning('Rivières',zone[0].pr+'% (larve)',true);
             } else if (myZone[0].planet === 'Kzin') {
-                warning('Collines',percH+'% (bug)',true);
-                warning('Montagnes',percM+'% (bug)',true);
-                warning('Maquis',percB+'% (spider)',true);
-                warning('Forêts',percF+'% (spider)',true);
-                warning('Etangs',percW+'% (larve)',true);
-                warning('Rivières',percR+'% (larve)',true);
+                warning('Collines',zone[0].ph+'% (bug)',true);
+                warning('Montagnes',zone[0].pm+'% (bug)',true);
+                warning('Maquis',zone[0].pb+'% (spider)',true);
+                warning('Forêts',zone[0].pf+'% (spider)',true);
+                warning('Etangs',zone[0].pw+'% (larve)',true);
+                warning('Rivières',zone[0].pr+'% (larve)',true);
             } else if (myZone[0].planet === 'Horst') {
-                warning('Collines',percH+'% (bug)',true);
-                warning('Montagnes',percM+'% (bug)',true);
-                warning('Maquis',percB+'% (swarm)',true);
-                warning('Forêts',percF+'% (swarm)',true);
-                warning('Etangs',percW+'% (swarm)',true);
-                warning('Rivières',percR+'% (swarm)',true);
+                warning('Collines',zone[0].ph+'% (bug)',true);
+                warning('Montagnes',zone[0].pm+'% (bug)',true);
+                warning('Maquis',zone[0].pb+'% (swarm)',true);
+                warning('Forêts',zone[0].pf+'% (swarm)',true);
+                warning('Etangs',zone[0].pw+'% (swarm)',true);
+                warning('Rivières',zone[0].pr+'% (swarm)',true);
             } else {
-                warning('Collines',percH+'% (bug)',true);
-                warning('Montagnes',percM+'% (bug)',true);
-                warning('Maquis',percB+'% (swarm)',true);
-                warning('Forêts',percF+'% (spider)',true);
-                warning('Etangs',percW+'% (larve)',true);
-                warning('Rivières',percR+'% (larve)',true);
+                warning('Collines',zone[0].ph+'% (bug)',true);
+                warning('Montagnes',zone[0].pm+'% (bug)',true);
+                warning('Maquis',zone[0].pb+'% (swarm)',true);
+                warning('Forêts',zone[0].pf+'% (spider)',true);
+                warning('Etangs',zone[0].pw+'% (larve)',true);
+                warning('Rivières',zone[0].pr+'% (larve)',true);
             }
-            warning('Marécages',percS+'% ('+myZone[0].sKind+')',false,-1,true);
+            warning('Marécages',zone[0].ps+'% ('+myZone[0].sKind+')',false,-1,true);
         }
     }
     console.log('ensol');
@@ -2401,6 +2618,9 @@ function checkZoneType() {
     }
     if (playerInfos.gLevel >= 15) {
         zoneInfos.ieggs = true;
+        if (playerInfos.gLevel >= 18) {
+            zoneInfos.ieggsBonus = 3;
+        }
     }
     // swamp map
     let swampMap = false;

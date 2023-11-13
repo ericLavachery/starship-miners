@@ -1371,10 +1371,13 @@ function mapGlobalEdits(oldTer,newTer) {
     $("#conUnitList").animate({scrollTop:0},"fast");
 };
 
-function replaceTerrain(oldTer,newTer,pc) {
+function replaceTerrain(oldTer,newTer,pc,quiet) {
     console.log('GLOBAL REPLACE TERRAIN');
     console.log(oldTer);
     console.log(newTer);
+    if (quiet === undefined) {
+        quiet = false;
+    }
     let seedReduce = false;
     if (oldTer == 'M' || oldTer == 'H') {
         if (newTer != 'M' && newTer != 'H') {
@@ -1426,8 +1429,10 @@ function replaceTerrain(oldTer,newTer,pc) {
             }
         }
     });
-    showMap(zone,false);
-    minimap();
+    if (!quiet) {
+        showMap(zone,false);
+        minimap();
+    }
 };
 
 function roadsKill() {
