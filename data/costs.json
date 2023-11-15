@@ -2191,7 +2191,7 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":["Soute"],
         "bldUp":["Thundership"],
-        "spinNum":150,
+        "spinNum":50,
         "costs":{"Eau":1000,"Energie":2000,"Huile":50,"Scrap":550,"Carbone":50,"Titane":600,"Aluminium":900,"Rhodium":75,"Nickel":300,"Cuivre":600,"Silicium":100,"Bore":150,"Uranium":400,"Oxygène":100,"Hydrogène":350,"Azote":150,"Chlore":50,"Tissus":50,"Drogues":50,"Zinc":50,"Electros":300,"Batteries":200,"Spins":150},
         "deploy":{"Eau":50,"Nourriture":50,"Oxygène":50,"Energie":280,"Huile":5,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10,"Uranium":30,"Hydrogène":25},
         "slots":9
@@ -2205,7 +2205,7 @@
         "bldCost":"Navette de secours",
         "bldUp":["Liberator"],
         "compReq":{"vsp":1},
-        "spinNum":170,
+        "spinNum":57,
         "costs":{"Eau":500,"Energie":1000,"Huile":50,"Scrap":300,"Tissus":30,"Carbone":100,"Titane":600,"Rhodium":200,"Nickel":400,"Cuivre":200,"Platine":300,"Silicium":200,"Bore":800,"Uranium":200,"Oxygène":100,"Hydrogène":700,"Azote":100,"Chlore":25,"Electros":600,"Batteries":225,"Plastanium":50,"Spins":20},
         "deploy":{"Eau":75,"Nourriture":75,"Oxygène":75,"Energie":350,"Huile":10,"Drogues":30,"Chlore":15,"Zinc":15,"Tissus":15,"Uranium":60,"Hydrogène":90,"Plastanium":15},
         "slots":10
@@ -2218,7 +2218,7 @@
         "bldReq":["Soute","Centre de recherches","Usine"],
         "bldCost":"Thundership",
         "compReq":{"vsp":2},
-        "spinNum":220,
+        "spinNum":73,
         "costs":{"Eau":1000,"Energie":2000,"Huile":125,"Scrap":300,"Tissus":80,"Carbone":150,"Titane":3600,"Calcium":30,"Rhodium":375,"Nickel":300,"Cuivre":300,"Platine":700,"Silicium":300,"Bore":1300,"Uranium":500,"Oxygène":200,"Hydrogène":500,"Azote":300,"Chlore":100,"Electros":700,"Batteries":300,"Plastanium":70,"Spins":50},
         "deploy":{"Eau":125,"Nourriture":125,"Oxygène":125,"Energie":500,"Huile":15,"Drogues":50,"Chlore":25,"Zinc":25,"Tissus":25,"Uranium":120,"Hydrogène":120,"Plastanium":35},
         "slots":12

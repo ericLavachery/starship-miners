@@ -70,6 +70,12 @@ function voirReserve() {
             } else {
                 $('#conUnitList').append('<br>');
             }
+        } else if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 50 && playerInfos.gLevel >= 19) {
+            if (dispoRes >= 500) {
+                $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 500 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',500)">500 >>></span><br>');
+            } else {
+                $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span><br>');
+            }
         } else if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 50) {
             $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span><br>');
         } else if (res.cat === 'alien' || minedRes <= 0) {

@@ -552,8 +552,13 @@ function batListElement(bat,batType,idOfLander) {
     let deployInfo = checkPlaceLander(bat,batType,slId);
     let mayOut = checkMayOutInSoute(bat,batType);
     let deployOK = true;
-    if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2] || !mayOut || bat.eq === 'camkit' || bat.eq === 'taserkit' || batType.skills.includes('nodeploy') || bat.tags.includes('dying')) {
+    if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2] || !mayOut || bat.eq === 'camkit' || bat.eq === 'taserkit' || bat.tags.includes('dying')) {
         deployOK = false;
+    }
+    if (batType.skills.includes('nodeploy')) {
+        if (batType.name != 'Chercheurs' || playerInfos.gLevel < 19) {
+            deployOK = false;
+        }
     }
     if (batType.cat === 'buildings' || batType.cat === 'devices') {
         if (bat.soins != undefined) {
@@ -774,7 +779,16 @@ function batListElement(bat,batType,idOfLander) {
     }
     if (bat.id === selectedBat.id) {
         $('#be'+bat.id).append('<hr class="cyff">');
-        if (bat.eq != 'camkit' && bat.eq != 'taserkit' && !batType.skills.includes('nodeploy')) {
+        let mayDeploy = true;
+        if (bat.eq === 'camkit' || bat.eq === 'taserkit') {
+            mayDeploy = false;
+        }
+        if (batType.skills.includes('nodeploy')) {
+            if (batType.name != 'Chercheurs' || playerInfos.gLevel < 19) {
+                mayDeploy = false;
+            }
+        }
+        if (mayDeploy) {
             if (lynx === 'deploy') {
                 $('#be'+bat.id).append('<span class="listRes marine klik" title="Charger le bataillon dans le lander" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></span>&nbsp;');
             } else if (lynx === 'undeploy') {
