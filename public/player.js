@@ -576,6 +576,7 @@ function allowedArmors(unit) {
     if (unit.skills.includes('b_barb')) {
         protection.push('aucun');
         protection.push('acier');
+        protection.push('bbulk');
     }
     if (unit.skills.includes('b_lander')) {
         protection.push('aucun');

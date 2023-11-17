@@ -4838,7 +4838,7 @@
         "equip":["aucun","e-flash","e-ranger","gilet","detector","e-repair","w2-autopistol","repel","e-road"],
         "log3eq":["e-ranger"],
         "autoEq":["detector","gilet","e-repair"],
-        "moveCost":4,
+        "moveCost":3,
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,

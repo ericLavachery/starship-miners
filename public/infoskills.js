@@ -251,7 +251,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     // CAMOUFLAGE
     let camoufOK = true;
     if (!playerInfos.onShip && !zeroCrew) {
-        if (canCamo(bat,batType,tile)) {
+        if (canCamo(bat,batType,tile,near)) {
             let ruinHide = false;
             if ((tile.ruins && batType.size < 20) || (tile.terrain === 'F' && batType.size < 20 && !inMelee) || (tile.infra === 'Terriers' && batType.size < 9)) {
                 ruinHide = true;
@@ -320,15 +320,19 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             if (batType.skills.includes('fastcam') && apCost > 2) {
                 apCost = Math.ceil(apCost/1.5);
             }
+            let inFog = false;
             if (foggedTiles.includes(tile.id)) {
                 if (bat.tags.includes('fogged')) {
-                    apReq = 0;
-                    apCost = Math.ceil(apCost/2);
-                    if (apCost > 3) {
-                        apCost = 3;
-                    }
-                    camoufOK = true;
+                    inFog = true;
                 }
+            }
+            if (inFog || near.fog) {
+                apReq = 0;
+                apCost = Math.ceil(apCost/2);
+                if (apCost > 3) {
+                    apCost = 3;
+                }
+                camoufOK = true;
             }
             let camChance = calcCamo(bat);
             balise = 'h4';

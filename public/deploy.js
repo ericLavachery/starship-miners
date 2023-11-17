@@ -799,8 +799,8 @@ function getBatGearStuff(armorName,equipName,batType,isBat,bat) {
     // skill bigprot?
     if (batType.skills.includes('bigprot')) {
         let blindageBonus = (batArmor.armor*2)+1;
-        if (blindageBonus > 8) {
-            blindageBonus = 8;
+        if (blindageBonus > 9) {
+            blindageBonus = 9;
         }
         gearStuff[0] = batType.armor+blindageBonus;
     }

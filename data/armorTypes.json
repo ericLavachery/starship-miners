@@ -546,6 +546,17 @@
         "costs":{"Scrap":2,"Fer":12}
     },
     {
+        "name":"bbulk",
+        "cat":"armor",
+        "armor":4,
+        "ap":-4,
+        "skills":["protectall"],
+        "bldReq":["Arsenal"],
+        "compReq":{"mat":2,"const":2,"def":2},
+        "factor":"thp",
+        "costs":{"Carbone":6,"Titane":6,"Rhodium":2,"Silicium":3,"Cobalt":2}
+    },
+    {
         "name":"hplate",
         "cat":"armor",
         "armor":5,

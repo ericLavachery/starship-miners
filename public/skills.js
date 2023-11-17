@@ -501,7 +501,10 @@ function gloireASatan() {
     showBatInfos(selectedBat);
 };
 
-function canCamo(bat,batType,tile) {
+function canCamo(bat,batType,tile,near) {
+    if (near === undefined) {
+        near = nearWhat(bat,batType);
+    }
     let iCanCamo = false;
     if (batType.skills.includes('camo')) {
         iCanCamo = true;
@@ -591,6 +594,9 @@ function canCamo(bat,batType,tile) {
                 iCanCamo = true;
             }
         }
+    }
+    if (near.fog) {
+        iCanCamo = true;
     }
     if (playerInfos.pseudo === 'Mapedit') {
         iCanCamo = true;
@@ -714,6 +720,22 @@ function longCamo(bat) {
     if (!bat.tags.includes('camo')) {
         bat.tags.push('camo');
     }
+};
+
+function checkCamoMove(bat,batType) {
+    let camoMove = true;
+    if (bat.prt.includes('suit')) {
+        camoMove = false;
+    } else {
+        if (batType.skills.includes('fly') || (batType.cat === 'vehicles' && !batType.skills.includes('robot')) || batType.skills.includes('moto') || batType.skills.includes('maycamo') || !batType.skills.includes('camo') || bat.eq === 'e-jetpack') {
+            if (hasEquip(bat,['kit-chouf']) || batType.skills.includes('emoteur')) {
+                // OK
+            } else {
+                camoMove = false;
+            }
+        }
+    }
+    return camoMove;
 };
 
 function camoReCheck(bonus) {

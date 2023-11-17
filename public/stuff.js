@@ -675,6 +675,7 @@ function nearWhat(myBat,myBatType) {
     let near = {};
     near.caserne = false;
     near.bld = false;
+    near.fog = false;
     near.control = false;
     near.friends = false;
     near.schef = false;
@@ -704,6 +705,13 @@ function nearWhat(myBat,myBatType) {
             if (isOpLander(bat,batType)) {
                 if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1) {
                     near.lander = true;
+                }
+            }
+        }
+        if (bat.loc === "zone") {
+            if (batType.skills.includes('fog') && bat.tags.includes('fog')) {
+                if (myBat.tileId === bat.tileId+1 || myBat.tileId === bat.tileId-1 || myBat.tileId === bat.tileId-mapSize || myBat.tileId === bat.tileId-mapSize+1 || myBat.tileId === bat.tileId-mapSize-1 || myBat.tileId === bat.tileId+mapSize || myBat.tileId === bat.tileId+mapSize+1 || myBat.tileId === bat.tileId+mapSize-1 || myBat.tileId === bat.tileId) {
+                    near.fog = true;
                 }
             }
         }

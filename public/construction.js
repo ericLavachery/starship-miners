@@ -2150,6 +2150,9 @@ function getResRecup(bat,batType) {
         if (batType.spinNum != undefined) {
             if (batType.spinNum >= 1) {
                 spinCost = batType.spinNum;
+                if (batType.skills.includes('rescue')) {
+                    spinCost = Math.round(spinCost/4);
+                }
             }
         }
         if (playerInfos.bldList.includes('Décharge') || spinCost >= 1) {
