@@ -2667,7 +2667,7 @@
             "range":0,
             "noFly":true,
             "isMelee":true,
-            "rof":6,
+            "rof":9,
             "accuracy":30,
             "power":30,
             "armors":1,

@@ -1563,6 +1563,7 @@
             "rof":12,
             "accuracy":9,
             "power":35,
+            "armors":0.9,
             "aoe":"squad",
             "sound":"catapult2",
             "ammo":["boulet","boulet-mitraille","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],

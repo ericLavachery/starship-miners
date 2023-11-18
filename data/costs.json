@@ -2178,9 +2178,9 @@
         "levels":{"rednecks":19,"blades":19,"bulbos":19,"drogmulojs":19,"tiradores":19,"detruas":19,"brasier":19},
         "bldReq":["Soute","Usine d'armement","Usine"],
         "bldCost":"Minotaur",
-        "spinNum":520,
+        "spinNum":500,
         "compReq":{"def":3,"energ":2,"vsp":3},
-        "costs":{"Eau":5000,"Energie":8000,"Huile":250,"Scrap":750,"Tissus":150,"Carbone":350,"Titane":9000,"Aluminium":2700,"Calcium":30,"Rhodium":1000,"Nickel":1100,"Cuivre":5000,"Platine":1600,"Silicium":500,"Bore":1350,"Plutonium":1100,"Oxygène":1000,"Hydrogène":1600,"Azote":750,"Chlore":100,"Electros":1000,"Batteries":525,"Plastanium":270,"Spins":120},
+        "costs":{"Eau":5000,"Energie":8000,"Huile":250,"Scrap":750,"Tissus":150,"Carbone":350,"Titane":9000,"Aluminium":2700,"Calcium":30,"Rhodium":1000,"Nickel":1100,"Cuivre":5000,"Platine":1600,"Silicium":500,"Bore":1350,"Plutonium":1100,"Oxygène":1000,"Hydrogène":1600,"Azote":750,"Chlore":100,"Electros":1000,"Batteries":525,"Plastanium":270,"Spins":100},
         "deploy":{"Energie":1900,"Huile":50,"Drogues":140,"Chlore":70,"Zinc":70,"Tissus":70,"Plutonium":670,"Hydrogène":450,"Plastanium":135},
         "slots":45
     },
