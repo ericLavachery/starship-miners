@@ -571,6 +571,7 @@
             "noise":4,
             "kit":true,
             "noBis":true,
+            "noShield":true,
             "rof":18,
             "accuracy":25,
             "dca":1.25,

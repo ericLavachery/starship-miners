@@ -870,8 +870,8 @@ function getCrashEscapeTile(tileId) {
 
 function calcDamage(weapon,power,armor,defBat,fromAOE) {
     // powerDice is max 4x power
-    // fortif armor
     let defBatType = getBatType(defBat);
+    // fortif armor
     if (bugROF > 1) {
         if (defBatType.cat === 'aliens') {
             if (defBatType.skills.includes('arboost')) {
@@ -944,6 +944,12 @@ function calcDamage(weapon,power,armor,defBat,fromAOE) {
         powerDice = Math.floor(rand.rand(0,4)/4);
     } else {
         powerDice = 0;
+    }
+    // BLD DAMAGE
+    if (defBatType.cat === 'aliens') {
+        if (defBatType.moveCost >= 90) {
+            powerDice = Math.floor(powerDice*weapon.blddmg);
+        }
     }
     // bliss drug / damage reduction
     let dmgReduct = getDamageRed(weapon.sound,defBat,defBatType);
@@ -2489,6 +2495,12 @@ function weaponAdj(weapon,bat,wn) {
         if (thisWeapon.ammo.includes('feu') || thisWeapon.ammo.includes('incendiaire') || thisWeapon.ammo.includes('napalm') || thisWeapon.ammo.includes('fire') || thisWeapon.ammo.includes('pyratol') || thisWeapon.ammo.includes('lf-') || thisWeapon.ammo.includes('lt-') || thisWeapon.ammo.includes('molotov')) {
             thisWeapon.armors = thisWeapon.armors*0.8;
         }
+    }
+    // BLD DAMAGE
+    if (ammo.blddmg === undefined) {
+        thisWeapon.blddmg = 0.9;
+    } else {
+        thisWeapon.blddmg = ammo.blddmg;
     }
     // SOUND
     if (ammo.sound != undefined) {

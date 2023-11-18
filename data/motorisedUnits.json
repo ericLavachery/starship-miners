@@ -1342,7 +1342,7 @@
         "ap":18,
         "maxSalvo":2,
         "weapon":{
-            "name":"Mitrailleuse lourde",
+            "name":"Mitrailleuse",
             "cost":4,
             "range":2,
             "noStab":true,
@@ -4836,7 +4836,7 @@
         "ap":13,
         "maxSalvo":2,
         "weapon":{
-            "name":"Mitrailleuse lourde",
+            "name":"Mitrailleuse",
             "cost":4,
             "range":2,
             "noStab":true,
@@ -4923,7 +4923,7 @@
         "ap":20,
         "maxSalvo":2,
         "weapon":{
-            "name":"Mitrailleuse lourde",
+            "name":"Mitrailleuse",
             "cost":4,
             "range":2,
             "noStab":true,

@@ -677,16 +677,18 @@ function dropEgg(alienUnit,theArea) {
     if (dropTile >= 0) {
         let eggSquadsLeft = 6;
         let endo = 'endommagé';
+        let destro = 'détruit';
         console.log('NUMLASETSAT *************************************************** = '+numLaserSat);
         if (numLaserSat >= 1) {
             let satAccuracy = playerInfos.comp.det-2;
             let satPower = playerInfos.comp.energ-1;
-            eggSquadsLeft = rand.rand(0,8-satAccuracy)-satPower;
+            eggSquadsLeft = rand.rand(0,7-satAccuracy)-satPower;
             if (alienUnit === 'Oeuf') {
                 numLaserSat = numLaserSat-1;
             } else if (alienUnit === 'Coque') {
-                eggSquadsLeft = eggSquadsLeft+3;
+                eggSquadsLeft = eggSquadsLeft+2;
                 endo = 'endommagée';
+                destro = 'détruite';
                 numLaserSat = numLaserSat-1;
             } else if (alienUnit === 'Cocon') {
                 eggSquadsLeft = eggSquadsLeft+4;
@@ -701,7 +703,7 @@ function dropEgg(alienUnit,theArea) {
             eggDropCount = eggDropCount+1;
         }
         if (eggSquadsLeft <= 0) {
-            warning('<span class="rq3">Satéllite Laser</span>','<span class="vio">Oeuf détruit.</span>');
+            warning('<span class="rq3">Satéllite Laser</span>','<span class="vio">'+alienUnit+' '+destro+'.</span>');
             numLaserSat = numLaserSat-1;
             conselReset(false);
         } else {
