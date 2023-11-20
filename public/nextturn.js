@@ -818,6 +818,11 @@ function turnInfo(first) {
     let numClassS = 0;
     let realNumberOfEggs = 0;
     let isLarveHide = hasAlien('Liches');
+    if (isLarveHide) {
+        if (playerInfos.vue > 4) {
+            playerInfos.vue = 4;
+        }
+    }
     let hasLarveOV = hasAlienWithTag('Oeuf voilé','larve');
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {

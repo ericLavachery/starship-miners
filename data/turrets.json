@@ -1207,7 +1207,7 @@
             "rof":20,
             "accuracy":30,
             "power":4,
-            "armors":0.5,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"darts_x6",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]

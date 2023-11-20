@@ -1922,7 +1922,8 @@
         "weapon":{
             "name":"Catapulte",
             "cost":4,
-            "range":3,
+            "range":2,
+            "elevation":1,
             "noFly":true,
             "noBis":true,
             "rof":4,
@@ -5248,7 +5249,7 @@
             "accuracy":25,
             "dca":1.25,
             "power":4,
-            "armors":0.5,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"darts_x4",
             "ammo":["fleche","fleche-scrap","fleche-tungsten","fleche-incendiaire","fleche-dragon","fleche-mono","fleche-poison","fleche-atium","fleche-poraz","fleche-shinda","fleche-freeze","fleche-necro","fleche-homing","fleche-plastanium","fleche-uridium"]

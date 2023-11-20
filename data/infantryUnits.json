@@ -2744,7 +2744,7 @@
         },
         "weapon2":{
             "name":"Foreuse",
-            "cost":8,
+            "cost":10,
             "range":0,
             "isShort":true,
             "noShield":true,
@@ -2812,7 +2812,7 @@
         },
         "weapon2":{
             "name":"Foreuse",
-            "cost":8,
+            "cost":10,
             "range":0,
             "isShort":true,
             "noShield":true,

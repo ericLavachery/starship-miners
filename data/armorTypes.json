@@ -736,7 +736,7 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":2,"ca":2,"vsp":2},
         "factor":"thp",
-        "costs":{"Carbone":12,"Azote":3,"Dunium":2,"Egidium":0.2,"Spins":0.03}
+        "costs":{"Carbone":12,"Azote":3,"Dunium":2,"Egidium":0.2,"Spins":0.005}
     },
     {
         "name":"autorep-vsp",
@@ -747,7 +747,7 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"mat":4,"ca":3,"vsp":3},
         "factor":"thp",
-        "costs":{"Carbone":12,"Azote":3,"Dunium":2,"Wingium":1,"Mendium":2,"Spins":0.08}
+        "costs":{"Carbone":12,"Azote":3,"Dunium":2,"Wingium":1,"Mendium":2,"Spins":0.012}
     },
     {
         "name":"lunette",
@@ -1862,7 +1862,7 @@
         "compReq":{"energ":1,"det":2,"vsp":2},
         "autoComp":[],
         "factor":"one",
-        "costs":{"Carbone":400,"Titane":100,"Cobalt":75,"Cuivre":125,"Platine":100,"Silicium":200,"Electros":125,"Batteries":50,"Spins":65}
+        "costs":{"Carbone":400,"Titane":100,"Cobalt":75,"Cuivre":125,"Platine":100,"Silicium":200,"Electros":125,"Batteries":50,"Spins":45}
     },
     {
         "name":"megafret",

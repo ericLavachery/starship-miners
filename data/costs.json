@@ -1404,7 +1404,7 @@
         "name":"Technobass",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":11,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Centre de recherches","Garage"],
-        "costs":{"Fer":180,"Scrap":672,"Carbone":228,"Moteurs":72,"Cuivre":48,"Electros":84,"Batteries":118,"Compo2":96,"Compo3":96,"Mendium":96,"Azote":48,"Cobalt":30,"Hélium":60,"Spins":3},
+        "costs":{"Fer":180,"Scrap":672,"Carbone":228,"Moteurs":72,"Cuivre":48,"Electros":84,"Batteries":118,"Compo2":96,"Compo3":96,"Mendium":96,"Azote":48,"Cobalt":30,"Hélium":60,"Spins":2},
         "deploy":{"Fuel":70},
         "fabTime":90,
         "crime":-3
@@ -1529,7 +1529,7 @@
     {
         "id":38,
         "name":"Wartrucks",
-        "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Garage","Atelier"],
         "costs":{"Fer":140,"Scrap":564,"Carbone":156,"Bois":96,"Moteurs":108,"Tungstène":224,"Cuivre":22,"Batteries":22,"Compo2":192,"Compo3":72,"Silicium":10,"Huile":30},
         "deploy":{"Fuel":140,"Energie":80,"Huile":20},
@@ -1693,7 +1693,7 @@
     {
         "id":54,
         "name":"Whizz",
-        "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":7,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Laboratoire","Garage"],
         "costs":{"Fer":60,"Scrap":468,"Carbone":120,"Bois":48,"Moteurs":60,"Cuivre":54,"Electros":72,"Batteries":126,"Compo2":180,"Végétaux":324,"Blendium":108,"Huile":10},
         "deploy":{"Energie":300},
@@ -2016,7 +2016,7 @@
         "levels":{"rednecks":18,"blades":99,"bulbos":16,"drogmulojs":16,"tiradores":16,"detruas":99,"brasier":99},
         "bldReq":["Armurerie","Aérodocks","Centre de com"],
         "compReq":{"aero":1},
-        "costs":{"Fer":36,"Scrap":171,"Carbone":252,"Aluminium":318,"Moteurs":150,"Plastanium":45,"Titane":700,"Cuivre":90,"Electros":180,"Batteries":81,"Silicium":27,"Drogues":55,"Chlore":28,"Zinc":28,"Tissus":14,"Spins":13},
+        "costs":{"Fer":36,"Scrap":171,"Carbone":252,"Aluminium":318,"Moteurs":150,"Plastanium":45,"Titane":700,"Cuivre":90,"Electros":180,"Batteries":81,"Silicium":27,"Drogues":55,"Chlore":28,"Zinc":28,"Tissus":14,"Spins":12},
         "deploy":{"Fuel":290,"Plastanium":12,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
         "fabTime":150
     },
@@ -2352,7 +2352,7 @@
     {
         "id":145,
         "name":"Trébuchets",
-        "levels":{"rednecks":99,"blades":7,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "levels":{"rednecks":99,"blades":10,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Atelier"],
         "costs":{"Scrap":240,"Carbone":36,"Bois":252,"Compo2":36},
         "fabTime":35
