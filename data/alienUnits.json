@@ -2700,7 +2700,7 @@
         "fxPriority":8,
         "killRes":{"Bugium":60,"Aranium":90,"Mephitis":33,"Germium":27,"Mendium":30,"Blendium":46,"Bossium":31},
         "killXP":50,
-        "flavText":"Les uberspinne augmentent la portée des attaques de toutes les araignées. Elles projettent leur toile à grande distance et sur une grande aire d'effet."
+        "flavText":"Les uberspinne pondent des rejetons. Elles augmentent la portée des attaques de toutes les araignées. Elles projettent leur toile à grande distance et sur une grande aire d'effet."
     },
     {
         "id":64,
@@ -2963,7 +2963,7 @@
         "fxPriority":11,
         "killRes":{"Bugium":100,"Mendium":18,"Bossium":34,"Egidium":93,"Slime":40},
         "killXP":75,
-        "flavText":"Les overbugs protègent tous les bugs avec leur bouclier. Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
+        "flavText":"Les overbugs pondent des spitbugs. Ils protègent tous les bugs avec leur bouclier. Les balles a faible pénétration ou a faible puissance ne leur font aucun dégâts."
     },
     {
         "id":6,

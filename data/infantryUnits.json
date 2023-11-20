@@ -4486,7 +4486,7 @@
             "rof":9,
             "accuracy":36,
             "power":4,
-            "armors":0.4,
+            "armors":0.7,
             "aoe":"unit",
             "sound":"fpneu_x3",
             "ammo":["hypo-poison","hypo-atium","hypo-poraz","hypo-shinda","hypo-bio","hypo-freeze","hypo-jello"]
@@ -4503,7 +4503,7 @@
             "rof":9,
             "accuracy":36,
             "power":4,
-            "armors":0.4,
+            "armors":0.7,
             "aoe":"unit",
             "sound":"fpneu_x3",
             "ammo":["hypo-poison","hypo-atium","hypo-poraz","hypo-shinda","hypo-bio","hypo-freeze","hypo-jello"]

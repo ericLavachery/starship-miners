@@ -3469,7 +3469,7 @@
             "noDatt":true,
             "noShield":true,
             "isRam":true,
-            "rof":10,
+            "rof":8,
             "accuracy":18,
             "power":30,
             "aoe":"squad",

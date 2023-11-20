@@ -1403,6 +1403,8 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                     if (conselUnit.team === 'aliens') {
                         if (Array.isArray(startTag)) {
                             newBat.tags = startTag;
+                        } else if (startTag === 'seek') {
+                            newBat.tags = ['follow'];
                         } else if (startTag === 'follow') {
                             if (!conselUnit.skills.includes('errant') && !conselUnit.skills.includes('capbld') && !conselUnit.skills.includes('nocap') && !conselUnit.skills.includes('capmen')) {
                                 newBat.tags = ['follow'];

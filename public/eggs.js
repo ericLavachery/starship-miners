@@ -1658,6 +1658,11 @@ function webSpawns(all) {
         theBlob = getAlienByName('Spiderblob');
         alienOccupiedTileList();
         playerOccupiedTileList();
+    } else if (hasAlien('Uberspinne')) {
+        hasBlob = true;
+        theBlob = getAlienByName('Uberspinne');
+        alienOccupiedTileList();
+        playerOccupiedTileList();
     }
     zone.forEach(function(tile) {
         if (tile.web) {
@@ -1811,6 +1816,9 @@ function spawns() {
                 vomiSpawn(bat);
             } else if (bat.type === 'Dragons' && aliens.length < maxAliens && aliensNums.firebugs < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Firebugs');
+                if (batTurn <= 2) {
+                    alienSpawn(bat,'Firebugs');
+                }
             } else if (bat.type === 'Dragonblob' && aliens.length < maxAliens && aliensNums.firebugs < maxPonte*2) {
                 alienSpawn(bat,'Firebugs');
                 alienSpawn(bat,'Firebugs');
@@ -1820,11 +1828,24 @@ function spawns() {
             } else if (bat.type === 'Bigheads' && aliens.length < maxAliens && aliensNums.escarbots < Math.round(maxPonte/1.5)) {
                 alienSpawn(bat,'Escarbots');
             } else if (bat.type === 'Mantes' && aliens.length < maxAliens && aliensNums.fourmis < Math.round(maxPonte/1.5)) {
-                alienSpawn(bat,'Fourmis');
+                alienSpawn(bat,'Fourmis','seek');
+                if (batTurn <= 2) {
+                    alienSpawn(bat,'Fourmis','seek');
+                    alienSpawn(bat,'Fourmis','seek');
+                }
             } else if (bat.type === 'Scarabs' && aliens.length < maxAliens-50 && aliensNums.bugs < maxPonte*2) {
                 alienSpawn(bat,'Bugs');
+                if (batTurn <= 2) {
+                    alienSpawn(bat,'Bugs');
+                    alienSpawn(bat,'Bugs');
+                }
             } else if (bat.type === 'Androks' && aliens.length < maxAliens-50 && aliensNums.scorpions < Math.round(maxPonte*1.5)) {
                 alienSpawn(bat,'Scorpions');
+                if (batTurn <= 2) {
+                    alienSpawn(bat,'Scorpions');
+                    alienSpawn(bat,'Scorpions');
+                    alienSpawn(bat,'Scorpions');
+                }
             } else if (bat.type === 'Homards' && aliens.length < maxAliens-50 && aliensNums.cafards < maxPonte*3) {
                 alienSpawn(bat,'Cafards');
                 alienSpawn(bat,'Cafards');
@@ -1878,6 +1899,22 @@ function spawns() {
                 alienSpawn(bat,'Cafards');
             } else if (bat.type === 'Glaireuses' && aliens.length < maxAliens-50 && aliensNums.gluantes < maxPonte) {
                 alienSpawn(bat,'Gluantes');
+                if (batTurn <= 2) {
+                    alienSpawn(bat,'Gluantes');
+                    alienSpawn(bat,'Gluantes');
+                }
+            } else if (bat.type === 'Uberspinne' && aliens.length < maxAliens-50) {
+                alienSpawn(bat,'Rejetons');
+                if (batTurn <= 2) {
+                    alienSpawn(bat,'Rejetons');
+                    alienSpawn(bat,'Rejetons');
+                }
+            } else if (bat.type === 'Overbugs' && aliens.length < maxAliens-50) {
+                alienSpawn(bat,'Spitbugs');
+                if (batTurn <= 2) {
+                    alienSpawn(bat,'Spitbugs');
+                    alienSpawn(bat,'Spitbugs');
+                }
             } else if (bat.type === 'Cocon') {
                 cocoonSpawn(bat);
             }
