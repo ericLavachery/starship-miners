@@ -1288,7 +1288,7 @@
         "altCompReq":{"log":1,"det":4},
         "autoComp":["det",5],
         "factor":"one",
-        "costs":{"Silicium":30,"Electros":60,"Batteries":12},
+        "costs":{"Silicium":30,"Electros":60,"Batteries":12,"Spins":1},
         "deploy":{"Energie":36}
     },
     {

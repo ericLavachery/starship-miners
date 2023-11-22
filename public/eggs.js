@@ -588,7 +588,7 @@ function eggsDrop() {
                 if (coqNum <= 1 || coqPlace != 'nocenter') {
                     dropEgg('Coque',coqPlace);
                     coqNum++;
-                    if (coqPlace === 'center2x' && coqNum <= 2) {
+                    if ((coqPlace === 'center2x' || coqPlace === 'groupir') && coqNum <= 2) {
                         dropEgg('Coque',coqPlace);
                         coqNum++;
                     }
@@ -644,11 +644,17 @@ function getCoqueChance() {
 }
 
 function getCoquePlace() {
-    let coqPlace = 'nocenter'; // nocenter - any - center
+    let coqPlace = 'nocenter'; // nocenter - any - center - center2x - groupir
     let minTurn = 15-zone[0].mapDiff-playerInfos.randSeed;
     if (zone[0].mapDiff >= 3 && playerInfos.mapTurn >= minTurn) {
+        let centerDice = 3;
+        if (coconStats.colo) {
+            centerDice = 6;
+        } else if (coconStats.dome) {
+            centerDice = 4;
+        }
         let coqAccuracy = Math.round(24+(zone[0].mapDiff*4)+(playerInfos.mapTurn)-(aliens.length/3));
-        if (rand.rand(1,2) === 1) {
+        if (rand.rand(1,centerDice) === 1) {
             if (coqAccuracy < 30) {
                 coqPlace = 'nocenter';
             } else if (coqAccuracy < 50) {
@@ -657,6 +663,14 @@ function getCoquePlace() {
                 coqPlace = 'center';
             } else {
                 coqPlace = 'center2x';
+            }
+        } else {
+            if (coqAccuracy < 30) {
+                coqPlace = 'nocenter';
+            } else if (coqAccuracy < 50) {
+                coqPlace = 'any';
+            } else {
+                coqPlace = 'groupir';
             }
         }
         console.log('coqAccuracy = '+coqAccuracy);
@@ -1251,6 +1265,70 @@ function eggDropTile(eggName,theArea) {
             shufAliens.forEach(function(bat) {
                 if (bat.loc === "zone") {
                     if (bat.type === 'Coque' || bat.type === 'Oeuf') {
+                        if (bat.squadsLeft > bestCover) {
+                            targetTile = bat.tileId;
+                            bestCover = bat.squadsLeft;
+                        }
+                    }
+                }
+            });
+        }
+        let shufZone = _.shuffle(zone);
+        let distance;
+        shufZone.forEach(function(tile) {
+            if (theTile < 0) {
+                distance = calcDistance(tile.id,targetTile);
+                if (distance === 2 || distance === 3) {
+                    if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash) && !pilonedTiles.includes(tile.id)) {
+                        theTile = tile.id;
+                    }
+                }
+            }
+        });
+        if (theTile < 0) {
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    distance = calcDistance(tile.id,targetTile);
+                    if (distance === 4 || distance === 5) {
+                        if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash) && !pilonedTiles.includes(tile.id)) {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            });
+        }
+        if (theTile < 0) {
+            shufZone.forEach(function(tile) {
+                if (theTile < 0) {
+                    distance = calcDistance(tile.id,targetTile);
+                    if (distance === 2 || distance === 3 || distance === 4 || distance === 5) {
+                        if (!alienOccupiedTiles.includes(tile.id) && mayDropHere(tile.id,mayCrash)) {
+                            theTile = tile.id;
+                        }
+                    }
+                }
+            });
+        }
+    }
+    // GROUPIR
+    // Près d'une coque ou colonie
+    if (area === 'groupir') {
+        let bestCover = 0;
+        let shufAliens = _.shuffle(aliens);
+        shufAliens.forEach(function(bat) {
+            if (bat.loc === "zone") {
+                if (bat.type === 'Coque' || bat.type === 'Colonie') {
+                    if (bat.squadsLeft > bestCover) {
+                        targetTile = bat.tileId;
+                        bestCover = bat.squadsLeft;
+                    }
+                }
+            }
+        });
+        if (targetTile < 0) {
+            shufAliens.forEach(function(bat) {
+                if (bat.loc === "zone") {
+                    if (bat.type === 'Oeuf' || bat.type === 'Volcan' || bat.type === 'Ruche') {
                         if (bat.squadsLeft > bestCover) {
                             targetTile = bat.tileId;
                             bestCover = bat.squadsLeft;
