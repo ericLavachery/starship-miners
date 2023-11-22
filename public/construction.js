@@ -1429,7 +1429,11 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                             newBat.tags = ['nomove','guet','camo'];
                             newBat.fuzz = -2;
                         } else if (startTag === 'camobld') {
-                            newBat.tags = ['nomove','guet','camo','noprefab'];
+                            if (rand.rand(1,8) === 1) {
+                                newBat.tags = ['nomove','guet','camo'];
+                            } else {
+                                newBat.tags = ['nomove','guet','camo','noprefab'];
+                            }
                             newBat.fuzz = -2;
                         } else if (startTag === 'fortifguet') {
                             newBat.tags = ['guet','fortif'];

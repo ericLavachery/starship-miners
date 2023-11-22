@@ -25,6 +25,11 @@ function voirReserve() {
     let dispoCrim = getDispoCrim();
     $('#conUnitList').append('<span class="paramResName">Criminels</span><span class="paramIcon"></span><span class="paramValue cy">'+dispoCrim+'</span><br>');
     let dispoRes;
+    let resSpace = 0;
+    if (playerInfos.onShip && inSoute && souteTab === 'rez' && slId >= 0) {
+        let toBat = getBatById(slId);
+        resSpace = checkResSpace(toBat);
+    }
     let minedRes;
     let resIcon;
     let sortedResTypes = _.sortBy(resTypes,'name');
@@ -70,14 +75,16 @@ function voirReserve() {
             } else {
                 $('#conUnitList').append('<br>');
             }
-        } else if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 50 && playerInfos.gLevel >= 19) {
-            if (dispoRes >= 500) {
-                $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 500 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',500)">500 >>></span><br>');
+        } else if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 1 && resSpace >= 1) {
+            if (playerInfos.gLevel >= 19) {
+                if (dispoRes >= 500) {
+                    $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 500 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',500)">500 >>></span><br>');
+                } else {
+                    $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 100 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',100)">100 >>></span><br>');
+                }
             } else {
-                $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span><br>');
+                $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 100 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',100)">100 >>></span><br>');
             }
-        } else if (playerInfos.onShip && inSoute && souteTab === 'rez' && res.cat != 'alien' && dispoRes >= 50) {
-            $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramResValue"><span class="cy">'+dispoRes+'</span></span><span class="paramValue klik" title="Charger 50 '+res.name+' dans le lander" onclick="missionResSingle('+res.id+',50)">50 >>></span><br>');
         } else if (res.cat === 'alien' || minedRes <= 0) {
             $('#conUnitList').append('<span class="paramResName'+resCol+'" title="'+resInfo+'">'+res.name+'</span><span class="paramIcon blanc">'+resIcon+'</span><span class="paramValue"><span class="cy">'+dispoRes+'</span></span><br>');
         } else {
@@ -1396,7 +1403,9 @@ function iCanProdThis(prodUnit,unit,catz) {
         prodThis = true;
     } else {
         if (catz.includes(unit.cat)) {
-            if (prodUnit.cat === 'infantry' && unit.fabTime >= 35 && !unit.skills.includes('clicput')) {
+            if (prodUnit.cat === 'infantry' && unit.skills.includes('nosap')) {
+                prodThis = false;
+            } else if (prodUnit.cat === 'infantry' && unit.fabTime >= 35 && !unit.skills.includes('clicput')) {
                 prodThis = false;
             } else if (prodUnit.skills.includes('constructeur')) {
                 prodThis = true;

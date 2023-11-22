@@ -1310,12 +1310,16 @@ function clickMine(clicTileId,poseurTileId) {
     }
 };
 
-function checkFreeConsTile(bat,batType) {
+function checkFreeConsTile(bat,mineType,okInfra) {
     // pour les clicput
     let freeTile = false;
     let infraOK = false;
-    if (batType.skills.includes('oninfra')) {
+    if (okInfra) {
         infraOK = true;
+    } else {
+        if (mineType.skills.includes('oninfra')) {
+            infraOK = true;
+        }
     }
     let distance;
     alienOccupiedTileList();

@@ -244,14 +244,37 @@ function reconstruction(debId,apCost) {
     showBatInfos(selectedBat);
 };
 
+function clicPutCost(pusherType,mineType,isExplo) {
+    let apCost = prefabCost(pusherType,mineType,true);
+    if (isExplo) {
+        apCost = apCost*5/(playerInfos.comp.explo+4);
+        if (pusherType.kind === 'detruas') {
+            apCost = apCost/1.7;
+        }
+    } else {
+        apCost = apCost*5/(playerInfos.comp.def+4)*5/(playerInfos.comp.train+4);
+    }
+    apCost = Math.ceil(apCost/1.33);
+    return apCost;
+};
+
 function prefabCost(pusherType,prefabType,construct) {
-    let apCost = Math.round(pusherType.mecanoCost*prefabType.fabTime/15);
+    let mecano = 16;
+    if (pusherType.mecanoCost < 16) {
+        mecano = pusherType.mecanoCost;
+    }
+    let conSkill = Math.sqrt(pusherType.mecanoCost)*2;
+    let apCost = conSkill*prefabType.fabTime/15;
     if (apCost >= 60) {
         apCost = 60;
     }
     if (construct) {
-        apCost = Math.round(apCost*1.5);
+        apCost = apCost*1.5;
     }
+    if (prefabType.skills.includes('clicput')) {
+        apCost = apCost*1.5;
+    }
+    apCost = Math.ceil(apCost);
     return apCost;
 };
 

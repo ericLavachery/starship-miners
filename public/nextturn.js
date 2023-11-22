@@ -1117,6 +1117,8 @@ function turnInfo(first) {
                 $('#tour').append('<span class="or">Dôme inactif</span><br>');
             }
         }
+        // vue
+        $('#tour').append('<span class="neutre">Détection: '+playerInfos.vue+'</span><br>');
         if (playerInfos.vue >= 3) {
             let allCoconTurns = [];
             let turn = 0;

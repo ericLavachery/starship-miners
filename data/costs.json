@@ -753,7 +753,7 @@
     {
         "id":85,
         "name":"Bigman",
-        "levels":{"rednecks":99,"blades":11,"bulbos":5,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":9},
+        "levels":{"rednecks":99,"blades":18,"bulbos":5,"drogmulojs":17,"tiradores":99,"detruas":99,"brasier":9},
         "bldReq":["Chaîne de montage","Laboratoire"],
         "compReq":{"cyber":1,"const":1},
         "compPass":["brasier"],

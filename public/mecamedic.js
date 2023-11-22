@@ -686,7 +686,7 @@ function addStressFlag(bat,emoType) {
             } else {
                 bat.emo = stressCost;
             }
-            if (bat.emo >= 10 && playerInfos.comp.ordre >= 2) {
+            if (bat.emo >= 11 && playerInfos.comp.ordre >= 2 && !bat.tags.includes('octiron')) {
                 warning('Stress',bat.type+' commencent à stresser',false,bat.tileId);
             }
         }

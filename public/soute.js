@@ -1618,15 +1618,6 @@ function missionResUnit(unitId) {
     goSoute();
 };
 
-function missionResSingle(resId,number) {
-    let res = getResById(resId);
-    let costs = {};
-    costs[res.name] = number;
-    moveResCost(costs,souteId,slId,1);
-    playerInfos.okFill = true;
-    goSoute();
-};
-
 function missionCit(citId) {
     moveCit(citId,souteId,slId,6);
     goSoute();
@@ -1658,6 +1649,24 @@ function moveCit(citId,fromId,toId,number) {
         newCitBat.locId = toBat.id;
         toBat.transIds.push(newCitBat.id);
     }
+};
+
+function missionResSingle(resId,number) {
+    let res = getResById(resId);
+    let dispoRes = getDispoRes(res.name);
+    let toBat = getBatById(slId);
+    let resSpace = checkResSpace(toBat);
+    if (number > dispoRes) {
+        number = dispoRes;
+    }
+    if (number > resSpace) {
+        number = resSpace;
+    }
+    let costs = {};
+    costs[res.name] = number;
+    moveResCost(costs,souteId,slId,1);
+    playerInfos.okFill = true;
+    goSoute();
 };
 
 function moveResCost(costs,fromId,toId,number) {

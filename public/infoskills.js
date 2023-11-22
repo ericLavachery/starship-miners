@@ -953,7 +953,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
     }
     if (!playerInfos.onShip && !zeroCrew) {
-        if (bat.soins >= 11) {
+        if (bat.soins >= 11 && bat.damage === 0 && bat.squadsLeft >= batType.squads && bat.apLeft > 0) {
             if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
                 if (checkNearConstructor(bat)) {
                     let apLoss = checkVehiclesAPSoins(bat,batType);
@@ -1881,110 +1881,126 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     if (!playerInfos.onShip && !zeroCrew) {
         // POSE PIEGES
         if (batType.skills.includes('trapfosse')) {
-            freeConsTile = checkFreeConsTile(bat,batType);
+            trapType = getBatTypeByName('Fosses');
+            freeConsTile = checkFreeConsTile(bat,trapType);
             if (freeConsTile) {
-                let minesLeft = calcRavit(bat);
-                balise = 'h4';
-                boutonNope = 'boutonGrey';
-                colorNope = 'gf';
-                if (Object.keys(conselUnit).length >= 1) {
-                    balise = 'h3';
-                    boutonNope = 'boutonOK';
-                    colorNope = 'cy';
-                }
-                trapType = getBatTypeByName('Fosses');
-                trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
-                apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.def+4));
-                if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
-                    $('#unitInfos').append('<button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`trap-fosse`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Fosses</span></button>');
-                    lineBreak = true;
-                } else {
-                    if (minesLeft <= 0) {
-                        skillMessage = "Plus de pièges";
-                    } else if (!trapCostOK) {
-                        skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                    } else if (nearby.oneTile) {
-                        skillMessage = "Ne peut pas se faire en mêlée";
-                    } else {
-                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                let compReqOK = checkUnitCompReq(trapType);
+                if (compReqOK) {
+                    let minesLeft = calcRavit(bat);
+                    balise = 'h4';
+                    boutonNope = 'boutonGrey';
+                    colorNope = 'gf';
+                    if (Object.keys(conselUnit).length >= 1) {
+                        balise = 'h3';
+                        boutonNope = 'boutonOK';
+                        colorNope = 'cy';
                     }
-                    $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Fosses</span></button>');
-                    lineBreak = true;
+                    trapCostOK = checkCost(trapType.costs);
+                    // apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
+                    apCost = clicPutCost(batType,trapType,false);
+                    apReq = Math.round(apCost/1.5);
+                    if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
+                    if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
+                        $('#unitInfos').append('<button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`trap-fosse`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Fosses</span></button>');
+                        lineBreak = true;
+                    } else {
+                        if (minesLeft <= 0) {
+                            skillMessage = "Plus de pièges";
+                        } else if (!trapCostOK) {
+                            skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                        } else if (nearby.oneTile) {
+                            skillMessage = "Ne peut pas se faire en mêlée";
+                        } else {
+                            skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                        }
+                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Fosses</span></button>');
+                        lineBreak = true;
+                    }
                 }
             }
         }
         if (batType.skills.includes('trapap') || bat.eq === 'kit-sentinelle') {
-            freeConsTile = checkFreeConsTile(bat,batType);
+            trapType = getBatTypeByName('Pièges');
+            freeConsTile = checkFreeConsTile(bat,trapType);
             if (freeConsTile) {
-                let minesLeft = calcRavit(bat);
-                balise = 'h4';
-                boutonNope = 'boutonGrey';
-                colorNope = 'gf';
-                if (Object.keys(conselUnit).length >= 1) {
-                    balise = 'h3';
-                    boutonNope = 'boutonOK';
-                    colorNope = 'cy';
-                }
-                trapType = getBatTypeByName('Pièges');
-                trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
-                apReq = Math.round(batType.ap/2*5/(playerInfos.comp.def+4));
-                if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
-                    $('#unitInfos').append('<button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`trap-ap`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Pièges</span></button>');
-                    lineBreak = true;
-                } else {
-                    if (minesLeft <= 0) {
-                        skillMessage = "Plus de pièges";
-                    } else if (!trapCostOK) {
-                        skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                    } else if (inMelee) {
-                        skillMessage = "Ne peut pas se faire en mêlée";
-                    } else {
-                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                let compReqOK = checkUnitCompReq(trapType);
+                if (compReqOK) {
+                    let minesLeft = calcRavit(bat);
+                    balise = 'h4';
+                    boutonNope = 'boutonGrey';
+                    colorNope = 'gf';
+                    if (Object.keys(conselUnit).length >= 1) {
+                        balise = 'h3';
+                        boutonNope = 'boutonOK';
+                        colorNope = 'cy';
                     }
-                    $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Pièges</span></button>');
-                    lineBreak = true;
+                    trapCostOK = checkCost(trapType.costs);
+                    // apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
+                    apCost = clicPutCost(batType,trapType,false);
+                    apReq = Math.round(apCost/1.5);
+                    if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
+                    if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                        $('#unitInfos').append('<button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`trap-ap`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Pièges</span></button>');
+                        lineBreak = true;
+                    } else {
+                        if (minesLeft <= 0) {
+                            skillMessage = "Plus de pièges";
+                        } else if (!trapCostOK) {
+                            skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                        } else if (inMelee) {
+                            skillMessage = "Ne peut pas se faire en mêlée";
+                        } else {
+                            skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                        }
+                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Pièges</span></button>');
+                        lineBreak = true;
+                    }
                 }
             }
         }
         if (batType.skills.includes('trapdard')) {
-            freeConsTile = checkFreeConsTile(bat,batType);
+            trapType = getBatTypeByName('Dardières');
+            freeConsTile = checkFreeConsTile(bat,trapType);
             if (freeConsTile) {
-                let minesLeft = calcRavit(bat);
-                balise = 'h4';
-                boutonNope = 'boutonGrey';
-                colorNope = 'gf';
-                if (Object.keys(conselUnit).length >= 1) {
-                    balise = 'h3';
-                    boutonNope = 'boutonOK';
-                    colorNope = 'cy';
-                }
-                trapType = getBatTypeByName('Dardières');
-                trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
-                apReq = Math.round(batType.ap/2*5/(playerInfos.comp.def+4));
-                if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
-                    $('#unitInfos').append('<button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`trap-dard`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Dardières</span></button>');
-                    lineBreak = true;
-                } else {
-                    if (minesLeft <= 0) {
-                        skillMessage = "Plus de pièges";
-                    } else if (!trapCostOK) {
-                        skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
-                    } else if (inMelee) {
-                        skillMessage = "Ne peut pas se faire en mêlée";
-                    } else {
-                        skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                let compReqOK = checkUnitCompReq(trapType);
+                if (compReqOK) {
+                    let minesLeft = calcRavit(bat);
+                    balise = 'h4';
+                    boutonNope = 'boutonGrey';
+                    colorNope = 'gf';
+                    if (Object.keys(conselUnit).length >= 1) {
+                        balise = 'h3';
+                        boutonNope = 'boutonOK';
+                        colorNope = 'cy';
                     }
-                    $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Dardières</span></button>');
-                    lineBreak = true;
+                    trapCostOK = checkCost(trapType.costs);
+                    // apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
+                    apCost = clicPutCost(batType,trapType,false);
+                    apReq = Math.round(apCost/1.5);
+                    if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
+                    if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
+                        $('#unitInfos').append('<button type="button" title="Déposer des pièges '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`trap-dard`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Dardières</span></button>');
+                        lineBreak = true;
+                    } else {
+                        if (minesLeft <= 0) {
+                            skillMessage = "Plus de pièges";
+                        } else if (!trapCostOK) {
+                            skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                        } else if (inMelee) {
+                            skillMessage = "Ne peut pas se faire en mêlée";
+                        } else {
+                            skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                        }
+                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Dardières</span></button>');
+                        lineBreak = true;
+                    }
                 }
             }
         }
         // POSE CHAMP DE MINES
         if (batType.skills.includes('landmine') && playerInfos.comp.explo >= 1) {
-            freeConsTile = checkFreeConsTile(bat,batType);
+            trapType = getBatTypeByName('Champ de mines');
+            freeConsTile = checkFreeConsTile(bat,trapType);
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
@@ -1995,11 +2011,12 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     boutonNope = 'boutonOK';
                     colorNope = 'cy';
                 }
-                trapType = getBatTypeByName('Champ de mines');
                 if (trapType.levels[playerInfos.gang] <= playerInfos.gLevel) {
                     trapCostOK = checkCost(trapType.costs);
-                    apCost = Math.round(batType.ap/1.1*5/(playerInfos.comp.explo+4));
-                    apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.explo+4));
+                    // apCost = Math.round(14*batType.mecanoCost/5*trapType.fabTime/35*5/(playerInfos.comp.explo+4));
+                    apCost = clicPutCost(batType,trapType,true);
+                    apReq = Math.round(apCost/1.5);
+                    if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
                     if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
                         $('#unitInfos').append('<button type="button" title="Déposer un champ de mines '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Mines</span></button>');
                         lineBreak = true;
@@ -2021,7 +2038,8 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
         // POSE MINES WIPEOUT
         if (batType.skills.includes('landmine') && playerInfos.comp.explo >= 2) {
-            freeConsTile = checkFreeConsTile(bat,batType);
+            trapType = getBatTypeByName('Mines wipeout');
+            freeConsTile = checkFreeConsTile(bat,trapType);
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
@@ -2032,11 +2050,12 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     boutonNope = 'boutonOK';
                     colorNope = 'cy';
                 }
-                trapType = getBatTypeByName('Mines wipeout');
                 if (trapType.levels[playerInfos.gang] <= playerInfos.gLevel) {
                     trapCostOK = checkCost(trapType.costs);
-                    apCost = Math.round(batType.ap/1.1*5/(playerInfos.comp.explo+4));
-                    apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.explo+4));
+                    // apCost = Math.round(14*batType.mecanoCost/5*trapType.fabTime/35*5/(playerInfos.comp.explo+4));
+                    apCost = clicPutCost(batType,trapType,true);
+                    apReq = Math.round(apCost/1.5);
+                    if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
                     if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
                         $('#unitInfos').append('<button type="button" title="Déposer un champ de mines Wipeout '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`wipe`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Wipeout</span></button>');
                         lineBreak = true;
@@ -2058,7 +2077,8 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
         // POSE DYNAMITE
         if (batType.skills.includes('dynamite')) {
-            freeConsTile = checkFreeConsTile(bat,batType);
+            trapType = getBatTypeByName('Explosifs');
+            freeConsTile = checkFreeConsTile(bat,trapType);
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);
                 balise = 'h4';
@@ -2069,10 +2089,11 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     boutonNope = 'boutonOK';
                     colorNope = 'cy';
                 }
-                trapType = getBatTypeByName('Explosifs');
                 trapCostOK = checkCost(trapType.costs);
-                apCost = Math.round(batType.ap*5/(playerInfos.comp.explo+4));
-                apReq = Math.round(batType.ap/1.5*5/(playerInfos.comp.explo+4));
+                // apCost = Math.round(batType.ap*5/(playerInfos.comp.explo+4));
+                apCost = clicPutCost(batType,trapType,true);
+                apReq = Math.round(apCost/1.5);
+                if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
                 if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
                     $('#unitInfos').append('<button type="button" title="Déposer des explosifs '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`dynamite`)"><i class="ra ra-bomb-explosion rpg"></i> <span class="small">'+apCost+'&nbsp; Explosifs</span></button>');
                     lineBreak = true;
@@ -2093,7 +2114,8 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
         // POSE COFFRES
         if (batType.skills.includes('conscont')) {
-            freeConsTile = checkFreeConsTile(bat,batType);
+            trapType = getBatTypeByName('Coffres');
+            freeConsTile = checkFreeConsTile(bat,trapType);
             if (freeConsTile) {
                 balise = 'h4';
                 boutonNope = 'boutonGrey';
@@ -2103,7 +2125,6 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     boutonNope = 'boutonOK';
                     colorNope = 'cy';
                 }
-                trapType = getBatTypeByName('Coffres');
                 trapCostOK = checkCost(trapType.costs);
                 apCost = 8;
                 apReq = Math.ceil(batType.ap/2);
@@ -2125,7 +2146,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
         // POSE BARBELES
         if (batType.skills.includes('barbs')) {
-            freeConsTile = checkFreeConsTile(bat,batType);
+            freeConsTile = checkFreeConsTile(bat,trapType,true);
             if (freeConsTile) {
                 let barbLeft = calcRavit(bat);
                 balise = 'h4';
