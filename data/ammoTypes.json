@@ -3344,6 +3344,22 @@
         "batch":100
     },
     {
+        "name": "obus-cluster",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 0.75,
+        "blddmg": 0.9,
+        "armors": 0.5,
+        "accuracy": 2,
+        "apdamage": 0,
+        "aoe": "squad",
+        "bldReq":["Usine d'armement"],
+        "compReq":{"explo":2,"arti":1,"mat":3,"det":3},
+        "deploy":{"Scrap":3,"Tungstène":3,"Explosifs":6,"Cuivre":1,"Titane":1,"Electros":1,"Uridium":3,"Nanite":6},
+        "batch":100
+    },
+    {
         "name": "missile-sunburst",
         "range": 1,
         "rof": 1,
@@ -3430,6 +3446,23 @@
         "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"bal":2,"explo":3,"pyro":2,"arti":1},
         "deploy":{"Fer":3,"Aluminium":3,"Titane":1,"Nickel":1,"Plutonium":1,"Explosifs":7,"Phosphore":9,"Pyratol":3,"Electros":3,"Batteries":1},
+        "batch":100
+    },
+    {
+        "name": "missile-cluster",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "blddmg": 1,
+        "armors": 0.5,
+        "accuracy": 2,
+        "apdamage": 0,
+        "passprotect": true,
+        "aoe": "squad",
+        "bldReq":["Usine d'armement"],
+        "compReq":{"bal":1,"explo":2,"arti":1,"mat":3,"det":3},
+        "deploy":{"Fer":3,"Tungstène":3,"Explosifs":6,"Cuivre":1,"Titane":1,"Nickel":1,"Electros":3,"Batteries":1,"Uridium":2,"Nanite":4},
         "batch":100
     },
     {
@@ -3783,6 +3816,21 @@
         "bldReq":["Laboratoire"],
         "compReq":{"explo":2},
         "deploy":{"Scrap":2,"Fer":3,"Explosifs":4,"Cuivre":1,"Carbone":1,"Oxygène":2,"Potassium":1,"Nanite":10},
+        "batch":100
+    },
+    {
+        "name": "boulet-cluster",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 0.75,
+        "armors": 0.5,
+        "accuracy": 2,
+        "apdamage": 0,
+        "aoe": "squad",
+        "bldReq":["Usine d'armement"],
+        "compReq":{"explo":2,"mat":3,"det":3},
+        "deploy":{"Scrap":3,"Tungstène":3,"Explosifs":6,"Cuivre":1,"Titane":1,"Electros":1,"Uridium":2,"Nanite":4},
         "batch":100
     },
     {

@@ -2500,6 +2500,13 @@
         "fabTime":35
     },
     {
+        "id":323,
+        "name":"Sous-munitions",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
+        "costs":{},
+        "fabTime":25
+    },
+    {
         "id":262,
         "name":"Bastion de résistants",
         "pName":"Bastion",

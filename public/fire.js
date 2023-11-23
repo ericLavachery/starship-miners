@@ -1574,7 +1574,9 @@ function attack(melee,init) {
     }
     selectedBatArrayUpdate();
     escaped = false;
-    if (selectedWeap.ammo.includes('-deluge')) {
+    if (selectedWeap.ammo.includes('-cluster')) {
+        cluster(selectedWeap,delugeTileId);
+    } else if (selectedWeap.ammo.includes('-deluge')) {
         deluge(selectedWeap,delugeTileId,false);
     } else if (selectedWeap.ammo.includes('-gaz') && selectedWeap.ammo != 'grenade-gaz') {
         let fromMissile = 'no';

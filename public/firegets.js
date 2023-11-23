@@ -67,6 +67,75 @@ function seveso(tileId,fromMissile) {
     });
 };
 
+function cluster(weap,tileId) {
+    let maxBomb = 3+rand.rand(0,1);
+    if (playerInfos.comp.arti >= 2) {
+        maxBomb = maxBomb+2; // 6
+        if (weap.ammo.includes('obus')) {
+            maxBomb = maxBomb-1; // 5
+        }
+    }
+    console.log('CLUSTER');
+    console.log(weap.ammo);
+    if (playerInfos.comp.explo >= 3) {
+        maxBomb = maxBomb+1; // 4
+    }
+    if (weap.name === 'Mortier léger') {
+        maxBomb = playerInfos.comp.explo+rand.rand(0,1)-1; // 2
+    } else if (playerInfos.gang === 'detruas') {
+        maxBomb = maxBomb+1;
+    } else if (playerInfos.gang === 'blades') {
+        maxBomb = (playerInfos.comp.explo*2)+rand.rand(0,1)-1; // 5
+    }
+    let numBomb = 0;
+    let clusterUnit = getBatTypeByName('Sous-munitions');
+    playerOccupiedTileList();
+    alienOccupiedTileList();
+    let shufZone = _.shuffle(zone);
+    shufZone.forEach(function(tile) {
+        if (numBomb < maxBomb) {
+            if (tile.id != tileId) {
+                if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                    if (rand.rand(1,2) === 1) {
+                        let distance = calcDistance(tileId,tile.id);
+                        if (distance <= 1) {
+                            conselUnit = clusterUnit;
+                            conselPut = false;
+                            conselAmmos = ['xxx','xxx','xxx','xxx'];
+                            conselTriche = true;
+                            putBat(tile.id,0,0,'deploy');
+                            playerOccupiedTiles.push(tile.id);
+                            numBomb++;
+                        }
+                    }
+                }
+            }
+        }
+    });
+    if (numBomb < maxBomb) {
+        shufZone.forEach(function(tile) {
+            if (numBomb < maxBomb) {
+                if (tile.id != tileId) {
+                    if (!alienOccupiedTiles.includes(tile.id) && !playerOccupiedTiles.includes(tile.id)) {
+                        let distance = calcDistance(tileId,tile.id);
+                        if (distance === 2) {
+                            conselUnit = clusterUnit;
+                            conselPut = false;
+                            conselAmmos = ['xxx','xxx','xxx','xxx'];
+                            conselTriche = true;
+                            putBat(tile.id,0,0,'deploy');
+                            playerOccupiedTiles.push(tile.id);
+                            numBomb++;
+                        }
+                    }
+                }
+            }
+        });
+    }
+    console.log('CLUSTER BOMBS = '+numBomb);
+    console.log('MAX BOMBS = '+maxBomb);
+};
+
 function deluge(weap,tileId,onlyAround) {
     console.log('DELUGE tile '+tileId);
     deadBatsList = [];
@@ -2794,6 +2863,14 @@ function weaponAdj(weapon,bat,wn) {
     }
     if (thisWeapon.ammo === 'obus-deluge') {
         thisWeapon.cost = weapon.cost+1;
+        thisWeapon.noDef = true;
+    }
+    // Cluster
+    if (thisWeapon.ammo.includes('-cluster')) {
+        thisWeapon.cost = weapon.cost+2;
+        if (thisWeapon.cost < 8) {
+            thisWeapon.cost = 8;
+        }
         thisWeapon.noDef = true;
     }
     // Type d'attaques

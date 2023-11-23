@@ -1080,6 +1080,11 @@ function playerSkillsUTChanges() {
             }
         }
         // EXPLOSIFS
+        if (unit.name === 'Rainmen') {
+            if (playerInfos.gLevel >= 13) {
+                unit.weapon2.ammo.push('obus-cluster');
+            }
+        }
         if (unit.name === 'Mines wipeout') {
             let wipeJump = (playerInfos.comp.explo*2)+playerInfos.comp.arti-4;
             if (wipeJump >= 2) {

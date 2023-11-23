@@ -690,10 +690,16 @@ function nextTurnEnd() {
                 resSpace = checkResSpace(bat);
                 resMax = batType.transRes;
                 if (resSpace >= resMax) {
-                    batDeathEffect(bat,true,false,'Bataillon détruit',bat.type+' expiré.');
+                    batDeathEffect(bat,true,false,'Bataillon détruit',bat.type+' expirés.');
                     bat.squadsLeft = 0;
                     checkDeath(bat,batType,false);
                 }
+            }
+            // fin sous-munitions
+            if (batType.name === 'Sous-munitions' && playerInfos.mapTurn > bat.creaTurn+2) {
+                batDeathEffect(bat,true,false,'Bataillon détruit',bat.type+' expirées.');
+                bat.squadsLeft = 0;
+                checkDeath(bat,batType,false);
             }
             // FOG
             if (bat.tags.includes('fog') && bat.loc === 'zone') {

@@ -273,6 +273,10 @@ function showAmmoInfo(ammoName,withReqs,withCosts) {
     if (ammo.name.includes('marq')) {
         ammoInfo = ammoInfo+'&#9889; Marquage ';
     }
+    if (ammo.name.includes('-cluster')) {
+        ammoInfo = ammoInfo+'&#9889; Sous-munitions ';
+        ammoInfo = ammoInfo+'&#9889; Max 1 salve ';
+    }
     if (ammo.name.includes('-bio')) {
         ammoInfo = ammoInfo+'&#9889; Génocide ';
     }
