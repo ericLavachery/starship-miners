@@ -323,7 +323,8 @@ function attack(melee,init) {
         }
     }
     // rof*squadsLeft loop
-    let shots = selectedWeap.rof*selectedBat.squadsLeft;
+    // let shots = selectedWeap.rof*selectedBat.squadsLeft;
+    let shots = getNumShots(selectedWeap,selectedBat,selectedBatType,targetBat,targetBatType,1);
     // autodes or undead
     if (selectedWeap.ammo.includes('autodes') || selectedBatType.skills.includes('undead') || selectedBat.tags.includes('zombie')) {
         shots = selectedWeap.rof*selectedBatType.squads;
@@ -478,31 +479,19 @@ function attack(melee,init) {
     // console.log('shots='+shots);
     if (activeTurn != 'player') {
         if (!selectedWeap.ammo.includes('eflash') && !selectedWeap.ammo.includes('psionics')) {
-            if (tile.infra != undefined) {
-                let okCover = bonusInfra(targetBatType,tile.infra);
-                if (okCover) {
-                    let infraProtect = 0;
-                    if (tile.infra === 'Miradors') {
-                        infraProtect = 25;
-                    } else if (tile.infra === 'Palissades') {
-                        infraProtect = 33;
-                    } else if (tile.infra === 'Remparts') {
-                        infraProtect = 45;
-                    } else if (tile.infra === 'Murailles') {
-                        infraProtect = 60;
-                    }
-                    if (playerInfos.comp.def >= 3 && targetBatType.skills.includes('garde')) {
-                        infraProtect = infraProtect+(((100-infraProtect)*1.5)-(100-infraProtect));
-                    }
-                    if (selectedBatType.skills.includes('sauteur') && !tile.infra === 'Miradors') {
-                        infraProtect = Math.round(infraProtect/2);
-                    }
-                    if (selectedBatType.skills.includes('fly')) {
-                        infraProtect = Math.round((infraProtect-15)/2.5);
-                    }
-                    shots = Math.round(shots*(100-infraProtect)/100);
-                    $('#report').append('<span class="report rose">Protection '+infraProtect+'%<br></span>');
+            let infraProtect = getBatInfraProt(targetBat,targetBatType);
+            if (infraProtect >= 1) {
+                if (playerInfos.comp.def >= 3 && targetBatType.skills.includes('garde')) {
+                    infraProtect = infraProtect+(((100-infraProtect)*1.5)-(100-infraProtect));
                 }
+                if (selectedBatType.skills.includes('sauteur') && !tile.infra === 'Miradors') {
+                    infraProtect = Math.round(infraProtect/2);
+                }
+                if (selectedBatType.skills.includes('fly')) {
+                    infraProtect = Math.round((infraProtect-15)/2.5);
+                }
+                shots = Math.round(shots*(100-infraProtect)/100);
+                $('#report').append('<span class="report rose">Protection '+infraProtect+'%<br></span>');
             }
         }
     }
@@ -1575,7 +1564,11 @@ function attack(melee,init) {
     selectedBatArrayUpdate();
     escaped = false;
     if (selectedWeap.ammo.includes('-cluster')) {
-        cluster(selectedWeap,delugeTileId);
+        if (selectedBatType.cat === 'infantry' || selectedBatType.skills.includes('robot')) {
+            cluster(selectedWeap,delugeTileId,true);
+        } else {
+            cluster(selectedWeap,delugeTileId,false);
+        }
     } else if (selectedWeap.ammo.includes('-deluge')) {
         deluge(selectedWeap,delugeTileId,false);
     } else if (selectedWeap.ammo.includes('-gaz') && selectedWeap.ammo != 'grenade-gaz') {
@@ -1633,7 +1626,8 @@ function defense(melee,init) {
         }
     }
     // console.log('brideDef='+brideDef);
-    let shots = Math.ceil(targetWeap.rof*targetBat.squadsLeft*brideDef);
+    // let shots = Math.ceil(targetWeap.rof*targetBat.squadsLeft*brideDef);
+    let shots = getNumShots(targetWeap,targetBat,targetBatType,selectedBat,selectedBatType,brideDef);
     // undead
     if (targetBatType.skills.includes('undead') || targetBat.tags.includes('zombie')) {
         shots = Math.ceil(targetWeap.rof*targetBatType.squads*brideDef);
@@ -1706,31 +1700,19 @@ function defense(melee,init) {
     // console.log('shots='+shots);
     if (activeTurn === 'player') {
         if (!targetWeap.ammo.includes('eflash') && !targetWeap.ammo.includes('psionics')) {
-            if (tile.infra != undefined) {
-                let okCover = bonusInfra(selectedBatType,tile.infra);
-                if (okCover) {
-                    let infraProtect = 0;
-                    if (tile.infra === 'Miradors') {
-                        infraProtect = 25;
-                    } else if (tile.infra === 'Palissades') {
-                        infraProtect = 33;
-                    } else if (tile.infra === 'Remparts') {
-                        infraProtect = 45;
-                    } else if (tile.infra === 'Murailles') {
-                        infraProtect = 60;
-                    }
-                    if (playerInfos.comp.def >= 3 && selectedBatType.skills.includes('garde')) {
-                        infraProtect = infraProtect+(((100-infraProtect)*1.5)-(100-infraProtect));
-                    }
-                    if (targetBatType.skills.includes('sauteur') && !tile.infra === 'Miradors') {
-                        infraProtect = Math.round(infraProtect/2);
-                    }
-                    if (targetBatType.skills.includes('fly')) {
-                        infraProtect = Math.round((infraProtect-15)/2.5);
-                    }
-                    shots = Math.round(shots*(100-infraProtect)/100);
-                    $('#report').append('<span class="report rose">Protection '+infraProtect+'%<br></span>');
+            let infraProtect = getBatInfraProt(selectedBat,selectedBatType);
+            if (infraProtect >= 1) {
+                if (playerInfos.comp.def >= 3 && selectedBatType.skills.includes('garde')) {
+                    infraProtect = infraProtect+(((100-infraProtect)*1.5)-(100-infraProtect));
                 }
+                if (targetBatType.skills.includes('sauteur') && !tile.infra === 'Miradors') {
+                    infraProtect = Math.round(infraProtect/2);
+                }
+                if (targetBatType.skills.includes('fly')) {
+                    infraProtect = Math.round((infraProtect-15)/2.5);
+                }
+                shots = Math.round(shots*(100-infraProtect)/100);
+                $('#report').append('<span class="report rose">Protection '+infraProtect+'%<br></span>');
             }
         }
     }

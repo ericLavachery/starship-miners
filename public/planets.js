@@ -748,9 +748,6 @@ function meteorImpact(tile) {
             delete tile.infra;
         }
         let wipeChance = 100-(playerInfos.comp.const*playerInfos.comp.const*3)-(playerInfos.comp.def*playerInfos.comp.def*6);
-        // if (tile.infra === 'Miradors') {
-        //     wipeChance = wipeChance;
-        // }
         if (tile.infra === 'Palissades') {
             wipeChance = wipeChance+10;
         }
@@ -760,9 +757,6 @@ function meteorImpact(tile) {
         if (tile.infra === 'Murailles') {
             wipeChance = wipeChance-40;
         }
-        // if (tile.infra === 'Terriers') {
-        //     wipeChance = wipeChance;
-        // }
         if (rand.rand(1,100) <= wipeChance) {
             delete tile.infra;
         }
@@ -806,9 +800,6 @@ function blobMeteorImpact(tile,power) {
             delete tile.infra;
         }
         let wipeChance = 100-(playerInfos.comp.const*playerInfos.comp.const*3)-(playerInfos.comp.def*playerInfos.comp.def*6)+(power*10)-60;
-        // if (tile.infra === 'Miradors') {
-        //     wipeChance = wipeChance;
-        // }
         if (tile.infra === 'Palissades') {
             wipeChance = wipeChance+10;
         }
@@ -818,9 +809,6 @@ function blobMeteorImpact(tile,power) {
         if (tile.infra === 'Murailles') {
             wipeChance = wipeChance-40;
         }
-        // if (tile.infra === 'Terriers') {
-        //     wipeChance = wipeChance;
-        // }
         if (rand.rand(1,100) <= wipeChance) {
             delete tile.infra;
         }

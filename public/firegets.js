@@ -67,7 +67,7 @@ function seveso(tileId,fromMissile) {
     });
 };
 
-function cluster(weap,tileId) {
+function cluster(weap,tileId,small) {
     let maxBomb = 3+rand.rand(0,1);
     if (playerInfos.comp.arti >= 2) {
         maxBomb = maxBomb+2; // 6
@@ -80,8 +80,8 @@ function cluster(weap,tileId) {
     if (playerInfos.comp.explo >= 3) {
         maxBomb = maxBomb+1; // 4
     }
-    if (weap.name === 'Mortier léger') {
-        maxBomb = playerInfos.comp.explo+rand.rand(0,1)-1; // 2
+    if (small) {
+        maxBomb = maxBomb-1;
     } else if (playerInfos.gang === 'detruas') {
         maxBomb = maxBomb+1;
     } else if (playerInfos.gang === 'blades') {
@@ -89,6 +89,10 @@ function cluster(weap,tileId) {
     }
     let numBomb = 0;
     let clusterUnit = getBatTypeByName('Sous-munitions');
+    let gear = ['mine','suicide','aucun','aucun'];
+    if (small) {
+        gear = ['mine-small','suicide-small','aucun','aucun'];
+    }
     playerOccupiedTileList();
     alienOccupiedTileList();
     let shufZone = _.shuffle(zone);
@@ -101,9 +105,9 @@ function cluster(weap,tileId) {
                         if (distance <= 1) {
                             conselUnit = clusterUnit;
                             conselPut = false;
-                            conselAmmos = ['xxx','xxx','xxx','xxx'];
+                            conselAmmos = gear;
                             conselTriche = true;
-                            putBat(tile.id,0,0,'deploy');
+                            putBat(tile.id,0,0);
                             playerOccupiedTiles.push(tile.id);
                             numBomb++;
                         }
@@ -121,9 +125,9 @@ function cluster(weap,tileId) {
                         if (distance === 2) {
                             conselUnit = clusterUnit;
                             conselPut = false;
-                            conselAmmos = ['xxx','xxx','xxx','xxx'];
+                            conselAmmos = gear;
                             conselTriche = true;
-                            putBat(tile.id,0,0,'deploy');
+                            putBat(tile.id,0,0);
                             playerOccupiedTiles.push(tile.id);
                             numBomb++;
                         }
@@ -259,7 +263,52 @@ function delugeDamage(weap,bat,batType) {
         }
         checkDeath(bat,batType,false);
     }
-}
+};
+
+function getInfraProt(infraName) {
+    let infra = getInfraByName(infraName);
+    return infra.protect;
+};
+
+function getTileInfraProt(tile) {
+    let infraProt = 0;
+    if (tile.infra != undefined) {
+        infraProt = getInfraProt(tile.infra);
+    }
+    return infraProt;
+};
+
+function getBatInfraProt(bat,batType) {
+    let infraProt = 0;
+    let tile = getTile(bat);
+    if (tile.infra != undefined) {
+        let okCover = bonusInfra(batType,tile.infra);
+        if (okCover) {
+            infraProt = getInfraProt(tile.infra);
+        }
+    }
+    return infraProt;
+};
+
+function bonusInfra(batType,infraName) {
+    let okCover = false;
+    if (batType.cat != 'buildings' && batType.cat != 'aliens') {
+        if (batType.cat === 'vehicles') {
+            if (batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+                okCover = true;
+            }
+        } else if (batType.cat === 'devices') {
+            if (!batType.skills.includes('infrako')) {
+                if (infraName === 'Remparts' || infraName === 'Murailles') {
+                    okCover = true;
+                }
+            }
+        } else {
+            okCover = true;
+        }
+    }
+    return okCover;
+};
 
 function checkTargetBatType() {
     let targetBatUnitIndex;
@@ -399,6 +448,19 @@ function calcPrecRangeAdj(weapon,attBat,attBatType,defBat,defBatType) {
         }
     }
     return accurange;
+};
+
+function getNumShots(weap,attBat,attBatType,defBat,defBatType,bride) {
+    let numShots = weap.rof*attBat.squadsLeft*bride;
+    if (attBatType.skills.includes('trample') && weap.aoe === 'unit' && weap.isMelee) {
+        if (attBatType.size >= 24 && defBatType.size <= 9) {
+            console.log('TRAMPLE');
+            console.log(numShots);
+            numShots = numShots*Math.sqrt(attBatType.size-20)/2/Math.sqrt(defBatType.size+4)*2.64;
+            console.log(numShots);
+        }
+    }
+    return Math.ceil(numShots);
 };
 
 function shot(weapon,attBat,attBatType,defBat,defBatType,shotDice,accurange) {
@@ -1139,7 +1201,7 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
     if (!defBat.tags.includes('jelly')) {
         if (attWeap.name != undefined) {
             if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet') || (defBatType.skills.includes('ricoface') && !init)) {
-                if (!attWeap.isFire && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('eflash') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('snake') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('psionics') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield && !attWeap.isSaw) {
+                if (!attWeap.isFire && !attWeap.isAcid && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('eflash') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('glair') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('snake') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('psionics') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield && !attWeap.isSaw) {
                     let defArmor = defBat.armor;
                     if (bugROF > 1) {
                         if (defBatType.cat === 'aliens') {
@@ -1343,26 +1405,6 @@ function getCover(bat,withFortif,forAOE) {
         }
     }
     return cover;
-};
-
-function bonusInfra(batType,infraName) {
-    let okCover = false;
-    if (batType.cat != 'buildings' && batType.cat != 'aliens') {
-        if (batType.cat === 'vehicles') {
-            if (batType.skills.includes('robot') || batType.skills.includes('cyber')) {
-                okCover = true;
-            }
-        } else if (batType.cat === 'devices') {
-            if (!batType.skills.includes('infrako')) {
-                if (infraName === 'Remparts' || infraName === 'Murailles') {
-                    okCover = true;
-                }
-            }
-        } else {
-            okCover = true;
-        }
-    }
-    return okCover;
 };
 
 function getStealth(bat) {
