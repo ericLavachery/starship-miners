@@ -2694,7 +2694,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["errant","chancre","venom","fastreg","fear","minaccu","trample","spiderrange","protectall","survivor","initmelee","eatpoison","flee","ctarg","webca"],
+        "skills":["errant","chancre","venom","fastreg","fear","minaccu","trample","spiderrange","protectall","noaploss","survivor","initmelee","eatpoison","flee","ctarg","webca"],
         "deathFx":"death1",
         "spawnFx":"spawn-spinne",
         "fxPriority":8,

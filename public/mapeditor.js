@@ -909,6 +909,11 @@ function addTagToAlienOnTile(tile,tag) {
             tagDelete(bat,tag);
         }
     }
+    if (bat.tags.includes('permashield')) {
+        if (batType.class === 'X') {
+            bat.armor = batType.armor+15;
+        }
+    }
 };
 
 function changeBatLevel(tile) {

@@ -1452,6 +1452,9 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
             } else {
                 newBat.tags = [];
             }
+            if (newBat.tags.includes('permashield')) {
+                newBat.armor = newBat.armor+15;
+            }
             if (conselUnit.team === 'aliens' && conselUnit.moveCost < 90 && conselUnit.kind != 'game') {
                 if (zone[0].flw != undefined) {
                     if (zone[0].flw) {
