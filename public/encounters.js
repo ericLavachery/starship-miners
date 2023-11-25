@@ -1355,7 +1355,7 @@ function putHLLUnits(centreTileId,hard) {
         for (var i = 0; i < numUnits; i++){
             dropTile = checkDropSafe(centreTileId);
             conselUnit = getBatTypeById(237);
-            conselAmmos = ['trap','trap-suicide','aucun','aucun'];
+            conselAmmos = ['mine-trap','trap-suicide','aucun','aucun'];
             conselPut = false;
             conselTriche = true;
             putBat(dropTile,0,0,'nomove',false);
@@ -1374,7 +1374,7 @@ function putHLLUnits(centreTileId,hard) {
             for (var i = 0; i < numUnits; i++){
                 dropTile = checkDropAny(centreTileId);
                 conselUnit = getBatTypeById(43);
-                conselAmmos = ['mine','suicide','aucun','aucun'];
+                conselAmmos = ['mine-standard','suicide','aucun','aucun'];
                 conselPut = false;
                 conselTriche = true;
                 putBat(dropTile,0,0,'nomove',false);
@@ -1667,7 +1667,7 @@ function putBastionUnits(centreTileId,hard) {
             dropTile = checkDropAny(centreTileId);
             conselUnit = getBatTypeById(43);
             conselPut = false;
-            conselAmmos = ['mine','suicide','aucun','aucun'];
+            conselAmmos = ['mine-standard','suicide','aucun','aucun'];
             conselTriche = true;
             putBat(dropTile,0,0,'',false);
             playerOccupiedTiles.push(dropTile);

@@ -2870,6 +2870,19 @@
         "aoe": ""
     },
     {
+        "name": "mine-trap",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "armors": 0.75,
+        "avar": "train",
+        "accuracy": 1,
+        "apdamage": 0,
+        "apweb": true,
+        "aoe": ""
+    },
+    {
         "name": "trap-suicide",
         "range": 1,
         "rof": 1,
@@ -2884,6 +2897,18 @@
     },
     {
         "name": "shinda",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "armors": 0.75,
+        "avar": "train",
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
+        "name": "mine-shinda",
         "range": 1,
         "rof": 1,
         "power": 0,
@@ -2919,11 +2944,23 @@
         "aoe": ""
     },
     {
+        "name": "mine-standard",
+        "range": 1,
+        "rof": 1,
+        "power": 0,
+        "powermult": 1,
+        "armors": 0.55,
+        "avar": "explo",
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": ""
+    },
+    {
         "name": "mine-small",
         "range": 1,
         "rof": 1,
         "power": 0,
-        "powermult": 0.5,
+        "powermult": 0.45,
         "armors": 0.55,
         "avar": "explo",
         "accuracy": 1,
@@ -2948,7 +2985,7 @@
         "range": 1,
         "rof": 1,
         "power": 0,
-        "powermult": 0.5,
+        "powermult": 0.45,
         "blddmg": 1.15,
         "armors": 0.55,
         "avar": "explo",
