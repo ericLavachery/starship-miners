@@ -670,7 +670,7 @@ function getCoquePlace() {
             } else if (coqAccuracy < 50) {
                 coqPlace = 'any';
             } else {
-                if (rand.rand(1,4) === 1) {
+                if (rand.rand(1,4) === 1 || Math.floor(playerInfos.mapTurn/coconStats.turns) > playerInfos.cocons) {
                     coqPlace = 'nocenter';
                 } else {
                     coqPlace = 'groupir';

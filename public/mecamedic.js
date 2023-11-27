@@ -248,9 +248,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
                                             bat.apLeft = bat.apLeft-mecaPatientAP;
                                         }
-                                        // let healCost = Math.round(bat.damage/(batType.hp*batType.squadSize)*2);
-                                        // addRepairFlag(bat,healCost);
-                                        addRepairFlag(bat,2);
+                                        addRepairFlag(bat,1);
                                         doneAction(bat);
                                     } else if (bat.squadsLeft < batType.squads && deep) {
                                         oldSquadsLeft = bat.squadsLeft;
@@ -410,9 +408,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                 newBatUnits = batUnits+selectedBatType.squadSize;
                 totalAPCost = totalAPCost+apCost;
                 $('#report').append('<span class="report cy">'+selectedBat.type+'<br></span><span class="report">dégâts réparés<br>');
-                // let healCost = Math.round(selectedBat.damage/(selectedBatType.hp*selectedBatType.squadSize)*2);
-                // addRepairFlag(selectedBat,healCost);
-                addRepairFlag(selectedBat,2);
+                addRepairFlag(selectedBat,1);
                 showBataillon(selectedBat);
             } else if (selectedBat.squadsLeft < selectedBatType.squads && deep) {
                 oldSquadsLeft = selectedBat.squadsLeft;
@@ -916,7 +912,6 @@ function addHealFlag(bat,healCost) {
 function addRepairFlag(bat,healCost) {
     let batType = getBatType(bat);
     let indComp = (playerInfos.comp.ind+2)*(playerInfos.comp.ind+1);
-    // let healCost = 2;
     if (rand.rand(1,25) <= indComp) {
         healCost = healCost-1;
     }
