@@ -2470,7 +2470,7 @@
         "bldReq":["Usine d'armement","Centre de com"],
         "compReq":{"det":2,"bal":2,"mat":2,"explo":2,"robo":1,"arti":1},
         "altCompReq":{"det":2,"bal":2,"mat":2,"explo":2,"cyber":2,"arti":1},
-        "costs":{"Explosifs":300,"Nanite":300,"Plastanium":60,"Fer":120,"Scrap":60,"Carbone":120,"Aluminium":60,"Titane":60,"Rhodium":45,"Silicium":20,"Cuivre":20,"Electros":60,"Batteries":30,"Nickel":30,"Spins":25},
+        "costs":{"Explosifs":300,"Nanite":300,"Plastanium":60,"Fer":120,"Scrap":60,"Carbone":120,"Aluminium":60,"Titane":60,"Rhodium":45,"Silicium":20,"Cuivre":20,"Electros":60,"Batteries":30,"Nickel":30,"Spins":15},
         "fabTime":150
     },
     {

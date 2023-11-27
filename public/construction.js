@@ -792,6 +792,12 @@ function checkCompReq(stuff) {
             compReqOK = false;
         }
     }
+    // lvlReq
+    if (stuff.lvlReq != undefined) {
+        if (stuff.lvlReq[playerInfos.gang] > playerInfos.gLevel) {
+            compReqOK = false;
+        }
+    }
     return compReqOK;
 };
 

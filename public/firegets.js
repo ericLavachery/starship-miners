@@ -3659,6 +3659,9 @@ function getEggProtect(eggBat,eggBatType,weap) {
     eggProt = Math.round(eggProt);
     if (eggProt > maxProt) {eggProt = maxProt;}
     if (eggProt < 0) {eggProt = 0;}
+    if (domeProtect) {
+        eggProt = 0;
+    }
     console.log(eggProt);
     return eggProt;
 };

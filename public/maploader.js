@@ -267,24 +267,26 @@ function showRes(tileId) {
         }
         tileText = tileText+'&nbsp;&nbsp;&nbsp; ';
     }
-    if (tile.rq != undefined) {
-        if (playerInfos.comp.det >= 1 || !modeSonde) {
-            res = JSON.stringify(tile.rs);
-            res = res.replace(/"/g,"");
-            res = res.replace(/{/g,"");
-            res = res.replace(/}/g,"");
-            res = res.replace(/,/g," &nbsp;&#128313;&nbsp; ");
-            res = res.replace(/:/g," ");
-            if (playerInfos.comp.det >= 3 || !modeSonde) {
-                // tout voir
-            } else {
-                res = res.replace(/&nbsp;&#128313;&nbsp;/g,"");
-                res = res.replace(/\d+/g,"");
-            }
-            if (playerInfos.resFlags.length >= 1) {
-                playerInfos.resFlags.forEach(function(resName) {
-                    res = res.replace(resName,resName+'&#10071;');
-                });
+    if (mode === 'select' || mode === 'edit') {
+        if (tile.rq != undefined) {
+            if (playerInfos.comp.det >= 1 || !modeSonde) {
+                res = JSON.stringify(tile.rs);
+                res = res.replace(/"/g,"");
+                res = res.replace(/{/g,"");
+                res = res.replace(/}/g,"");
+                res = res.replace(/,/g," &nbsp;&#128313;&nbsp; ");
+                res = res.replace(/:/g," ");
+                if (playerInfos.comp.det >= 3 || !modeSonde) {
+                    // tout voir
+                } else {
+                    res = res.replace(/&nbsp;&#128313;&nbsp;/g,"");
+                    res = res.replace(/\d+/g,"");
+                }
+                if (playerInfos.resFlags.length >= 1) {
+                    playerInfos.resFlags.forEach(function(resName) {
+                        res = res.replace(resName,resName+'&#10071;');
+                    });
+                }
             }
         }
     }
@@ -420,8 +422,6 @@ function showRes(tileId) {
         }
     }
     if (mode === 'select' || mode === 'edit') {
-        // if (tileText.includes('&timesb;') || tileText.includes('(')) {
-        // }
         if (tileText != '') {
             mapIndicators = mapIndicators+'<div class="markover" title="'+tileText+'"></div>';
         }

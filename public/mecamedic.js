@@ -1439,6 +1439,13 @@ function checkRegeneration(myBat,myBatType,resistance,allTags) {
             } else if (myBat.tags.includes('necro') || myBat.tags.includes('venin')) {
                 regOK = false;
             }
+            if (domeProtect) {
+                if (myBatType.cat === 'aliens') {
+                    if (myBatType.kind.includes('egg')) {
+                        regOK = false;
+                    }
+                }
+            }
             if (regOK) {
                 let squadHP = myBatType.squadSize*myBatType.hp;
                 let myBatHP = squadHP*myBatType.squads;

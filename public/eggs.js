@@ -670,7 +670,11 @@ function getCoquePlace() {
             } else if (coqAccuracy < 50) {
                 coqPlace = 'any';
             } else {
-                coqPlace = 'groupir';
+                if (rand.rand(1,4) === 1) {
+                    coqPlace = 'nocenter';
+                } else {
+                    coqPlace = 'groupir';
+                }
             }
         }
         console.log('coqAccuracy = '+coqAccuracy);
@@ -1576,7 +1580,7 @@ function alienEdgeSpawns(edgeTile,eggKind) {
     let i = 1;
     while (i <= numAliens) {
         gotIt = false;
-        edgeAlienName = 'Bugs';
+        edgeAlienName = '';
         let checkDice = rand.rand(1,checkDiceMax);
         raritySum = 0;
         alienUnits.forEach(function(unit) {
@@ -1597,6 +1601,9 @@ function alienEdgeSpawns(edgeTile,eggKind) {
                 }
             }
         });
+        if (edgeAlienName.length <= 0) {
+            edgeAlienName = 'Bugs';
+        }
         console.log('before replace: '+edgeAlienName);
         edgeAlienName = replaceAlienName(edgeAlienName);
         let edgeTileId = getEdgeSpawnTileId(edgeTile);

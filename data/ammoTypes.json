@@ -1960,7 +1960,7 @@
     },
     {
         "name": "fleche-homing",
-        "range": 1.4,
+        "range": 1.6,
         "rof": 1,
         "power": 0,
         "powermult": 1.33,
@@ -3418,6 +3418,7 @@
         "aoe": "squad",
         "bldReq":["Usine d'armement"],
         "compReq":{"explo":2,"arti":1,"mat":3,"det":3},
+        "lvlReq":{"rednecks":18,"blades":18,"bulbos":18,"drogmulojs":18,"tiradores":99,"detruas":13,"brasier":18},
         "deploy":{"Scrap":3,"Tungstène":3,"Explosifs":6,"Cuivre":1,"Titane":1,"Electros":1,"Uridium":3,"Nanite":6},
         "batch":100
     },
@@ -3524,6 +3525,7 @@
         "aoe": "squad",
         "bldReq":["Usine d'armement"],
         "compReq":{"bal":1,"explo":2,"arti":1,"mat":3,"det":3},
+        "lvlReq":{"rednecks":18,"blades":18,"bulbos":18,"drogmulojs":18,"tiradores":99,"detruas":13,"brasier":18},
         "deploy":{"Fer":3,"Tungstène":3,"Explosifs":6,"Cuivre":1,"Titane":1,"Nickel":1,"Electros":3,"Batteries":1,"Uridium":2,"Nanite":4},
         "batch":100
     },
@@ -3892,6 +3894,7 @@
         "aoe": "squad",
         "bldReq":["Usine d'armement"],
         "compReq":{"explo":2,"mat":3,"det":3},
+        "lvlReq":{"rednecks":18,"blades":18,"bulbos":18,"drogmulojs":18,"tiradores":99,"detruas":13,"brasier":18},
         "deploy":{"Scrap":3,"Tungstène":3,"Explosifs":6,"Cuivre":1,"Titane":1,"Electros":1,"Uridium":2,"Nanite":4},
         "batch":100
     },

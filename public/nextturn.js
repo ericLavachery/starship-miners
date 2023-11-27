@@ -1898,6 +1898,36 @@ function tagsEffect(bat,batType) {
                 batDeathEffect(bat,true,true,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' tués par la drogue.</span>');
             }
         }
+        // OEUFS SOUS LE DOME
+        if (domeProtect) {
+            if (bat.team === 'aliens') {
+                if (batType.skills.includes('spawnegg')) {
+                    let linkDamage = Math.round(rand.rand(6,10)*batType.hp/13);
+                    let totalDamage = bat.damage+blazeDamage;
+                    squadHP = batType.squadSize*batType.hp;
+                    squadsOut = Math.floor(totalDamage/squadHP);
+                    bat.squadsLeft = bat.squadsLeft-squadsOut;
+                    bat.damage = totalDamage-(squadsOut*squadHP);
+                    if (bat.squadsLeft <= 0) {
+                        batDeathEffect(bat,true,true,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' a perdu sont lien avec la matrice.</span>');
+                    }
+                }
+            }
+        }
+        if (bat.tags.includes('blaze') && bat.squadsLeft >= 1) {
+            let blazeDamage = Math.round(rand.rand((Math.round(poisonDamage/3)),poisonDamage)*batType.squads*batType.squadSize/60);
+            if (playerInfos.comp.med >= 3) {
+                blazeDamage = Math.round(blazeDamage/2);
+            }
+            let totalDamage = bat.damage+blazeDamage;
+            squadHP = batType.squadSize*batType.hp;
+            squadsOut = Math.floor(totalDamage/squadHP);
+            bat.squadsLeft = bat.squadsLeft-squadsOut;
+            bat.damage = totalDamage-(squadsOut*squadHP);
+            if (bat.squadsLeft <= 0) {
+                batDeathEffect(bat,true,true,'<span class="rq3">Bataillon détruit</span>','<span class="vio">'+bat.type+' tués par la drogue.</span>');
+            }
+        }
         // VENIN
         if (bat.tags.includes('venin') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron') && !bat.tags.includes('zombie') && bat.squadsLeft >= 1) {
             bat.apLeft = bat.apLeft-Math.floor(bat.ap/3);
