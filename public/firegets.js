@@ -2727,9 +2727,11 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     if (batType.name === 'Ruche') {
-        if (colonyTiles.includes(bat.tileId)) {
-            thisWeapon.range = thisWeapon.range+5;
-            thisWeapon.power = thisWeapon.power+zone[0].mapDiff-5;
+        if (!domeProtect) {
+            if (colonyTiles.includes(bat.tileId)) {
+                thisWeapon.range = thisWeapon.range+5;
+                thisWeapon.power = thisWeapon.power+zone[0].mapDiff-5;
+            }
         }
     }
     // RANGE ADJUSTMENTS

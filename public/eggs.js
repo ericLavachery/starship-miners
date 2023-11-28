@@ -2774,12 +2774,14 @@ function eggSpawn(bat,fromEgg) {
                     if (numClassA < maxClassA && maxClassA > 1) {
                         classes.push('A');
                     }
-                    if (zoneInfos.as) {
-                        classes.push('S');
-                    } else if (coconStats.dome && eggModTurn >= 18 && !alienBoss && fromEgg && bat.type != 'Oeuf voilé') {
-                        classes.push('S');
-                    } else if (playerInfos.mapTurn >= (25+playerInfos.randSeed) && eggModTurn >= 18 && !alienBoss && fromEgg && bat.type != 'Oeuf voilé') {
-                        classes.push('S');
+                    if (!domeProtect) {
+                        if (zoneInfos.as) {
+                            classes.push('S');
+                        } else if (coconStats.dome && eggModTurn >= 18 && !alienBoss && fromEgg && bat.type != 'Oeuf voilé') {
+                            classes.push('S');
+                        } else if (playerInfos.mapTurn >= (25+playerInfos.randSeed) && eggModTurn >= 18 && !alienBoss && fromEgg && bat.type != 'Oeuf voilé') {
+                            classes.push('S');
+                        }
                     }
                     if (eggModTurn >= 21 && fromEgg) {
                         const index = classes.indexOf('C');

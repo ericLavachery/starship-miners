@@ -991,7 +991,7 @@ function turnInfo(first) {
     });
     if (nDom >= 1 && nPil >= 4) {
         domeProtect = true;
-        let domeBat = getBatTypeByName('Dôme');
+        let domeBat = getBatByName('Dôme');
         if (domeBat.opTurn != undefined) {
             if (domeBat.opTurn <= 0) {
                 domeBat.opTurn = playerInfos.mapTurn;
@@ -1243,7 +1243,7 @@ function checkLastStand() {
     let lastMission = hasUnit('Dôme',false);
     if (domeProtect) {
         if (lastMission) {
-            let domeBat = getBatTypeByName('Dôme');
+            let domeBat = getBatByName('Dôme');
             if (domeBat.opTurn != undefined) {
                 lastStand.turn = domeBat.opTurn+14+Math.round(playerInfos.pauseSeed/3);
                 if (playerInfos.mapTurn >= lastStand.turn) {
