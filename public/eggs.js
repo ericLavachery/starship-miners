@@ -1550,6 +1550,9 @@ function alienEdgeSpawns(edgeTile,eggKind) {
     let alienDiceMin = Math.ceil(alienDiceMax/10);
     let numAliens = rand.rand(alienDiceMin,alienDiceMax);
     let classes = [];
+    let numA = 0;
+    let maxA = Math.floor((zone[0].mapDiff/8)+(playerInfos.mapTurn/40));
+    if (maxA > 2) {maxA = 2;}
     let minTurnB = 35-Math.round(zone[0].mapDiff*5);
     let minTurnA = 54-Math.round(zone[0].mapDiff*4);
     let eggTurn = playerInfos.mapTurn-20;
@@ -1583,6 +1586,7 @@ function alienEdgeSpawns(edgeTile,eggKind) {
         edgeAlienName = '';
         let checkDice = rand.rand(1,checkDiceMax);
         raritySum = 0;
+        let alienClass = 'C';
         alienUnits.forEach(function(unit) {
             if (edgeAlienName.length <= 0 && !gotIt) {
                 if (classes.includes(unit.class) && unit.kind.includes(eggKind)) {
@@ -1594,6 +1598,8 @@ function alienEdgeSpawns(edgeTile,eggKind) {
                                 gotIt = true;
                                 if (aliens.length < maxAliens-50 || unit.class != 'C') {
                                     edgeAlienName = unit.name;
+                                    alienClass = unit.class;
+                                    numA++;
                                 }
                             }
                         }
@@ -1601,8 +1607,15 @@ function alienEdgeSpawns(edgeTile,eggKind) {
                 }
             }
         });
+        let isBaseAlien = false;
         if (edgeAlienName.length <= 0) {
-            edgeAlienName = 'Bugs';
+            isBaseAlien = true;
+        }
+        if (numA > maxA && alienClass === 'A') {
+            isBaseAlien = true;
+        }
+        if (isBaseAlien) {
+            edgeAlienName = getBaseAlien(eggKind);
         }
         console.log('before replace: '+edgeAlienName);
         edgeAlienName = replaceAlienName(edgeAlienName);
@@ -1612,6 +1625,18 @@ function alienEdgeSpawns(edgeTile,eggKind) {
         if (i > 12) {break;}
         i++
     }
+};
+
+function getBaseAlien(eggKind) {
+    let alienName = 'Bugs';
+    if (eggKind === 'swarm') {
+        alienName = 'Cafards';
+    } else if (eggKind === 'spider') {
+        alienName = 'Gluantes';
+    } else if (eggKind === 'larve') {
+        alienName = 'Asticots';
+    }
+    return alienName;
 };
 
 function getEdgeSpawnTile() {
