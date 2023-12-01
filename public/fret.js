@@ -560,6 +560,9 @@ function checkResSpace(bat) {
     if (hasEquip(bat,['maxtrans'])) {
         resMax = Math.round(resMax/4);
     }
+    if (hasEquip(bat,['e-gmine'])) {
+        resMax = Math.round(resMax/4);
+    }
     if (bat.tags.includes('genstrong')) {
         resMax = Math.round(resMax*2);
     }

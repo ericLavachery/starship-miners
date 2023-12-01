@@ -1918,7 +1918,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     }
                     trapCostOK = checkCost(trapType.costs);
                     // apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
-                    apCost = clicPutCost(batType,trapType,false);
+                    apCost = clicPutCost(batType,trapType,false,false);
                     apReq = Math.round(apCost/1.5);
                     if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
                     if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
@@ -1957,7 +1957,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     }
                     trapCostOK = checkCost(trapType.costs);
                     // apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
-                    apCost = clicPutCost(batType,trapType,false);
+                    apCost = clicPutCost(batType,trapType,false,false);
                     apReq = Math.round(apCost/1.5);
                     if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
                     if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
@@ -1996,7 +1996,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     }
                     trapCostOK = checkCost(trapType.costs);
                     // apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
-                    apCost = clicPutCost(batType,trapType,false);
+                    apCost = clicPutCost(batType,trapType,false,false);
                     apReq = Math.round(apCost/1.5);
                     if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
                     if (minesLeft >= 1 && bat.apLeft >= apReq && !inMelee && trapCostOK) {
@@ -2035,14 +2035,21 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 if (trapType.levels[playerInfos.gang] <= playerInfos.gLevel) {
                     trapCostOK = checkCost(trapType.costs);
                     // apCost = Math.round(14*batType.mecanoCost/5*trapType.fabTime/35*5/(playerInfos.comp.explo+4));
-                    apCost = clicPutCost(batType,trapType,true);
+                    apCost = clicPutCost(batType,trapType,true,false);
                     apReq = Math.round(apCost/1.5);
                     if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
-                    if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
+                    let uMaxOK = true;
+                    let maxInfo = maxUnits(trapType);
+                    if (maxInfo.ko) {
+                        uMaxOK = false;
+                    }
+                    if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK && uMaxOK) {
                         $('#unitInfos').append('<button type="button" title="Déposer un champ de mines '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Mines</span></button>');
                         lineBreak = true;
                     } else {
-                        if (minesLeft <= 0) {
+                        if (!uMaxOK) {
+                            skillMessage = "Maximum atteint";
+                        } else if (minesLeft <= 0) {
                             skillMessage = "Plus de mines";
                         } else if (!trapCostOK) {
                             skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
@@ -2074,14 +2081,21 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 if (trapType.levels[playerInfos.gang] <= playerInfos.gLevel) {
                     trapCostOK = checkCost(trapType.costs);
                     // apCost = Math.round(14*batType.mecanoCost/5*trapType.fabTime/35*5/(playerInfos.comp.explo+4));
-                    apCost = clicPutCost(batType,trapType,true);
+                    apCost = clicPutCost(batType,trapType,true,false);
                     apReq = Math.round(apCost/1.5);
                     if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
-                    if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK) {
+                    let uMaxOK = true;
+                    let maxInfo = maxUnits(trapType);
+                    if (maxInfo.ko) {
+                        uMaxOK = false;
+                    }
+                    if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK && uMaxOK) {
                         $('#unitInfos').append('<button type="button" title="Déposer un champ de mines Wipeout '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`wipe`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Wipeout</span></button>');
                         lineBreak = true;
                     } else {
-                        if (minesLeft <= 0) {
+                        if (!uMaxOK) {
+                            skillMessage = "Maximum atteint";
+                        } else if (minesLeft <= 0) {
                             skillMessage = "Plus de mines";
                         } else if (!trapCostOK) {
                             skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
@@ -2092,6 +2106,55 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         }
                         $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Wipeout</span></button>');
                         lineBreak = true;
+                    }
+                }
+            }
+        }
+        // POSE MINES BAYGON
+        if ((batType.skills.includes('gasmine') || bat.eq === 'e-gmine') && playerInfos.comp.explo >= 1 && playerInfos.comp.exo >= 2 && playerInfos.comp.ca >= 3) {
+            trapType = getBatTypeByName('Mines baygon');
+            freeConsTile = checkFreeConsTile(bat,trapType);
+            if (freeConsTile) {
+                let compReqOK = checkUnitCompReq(trapType);
+                if (compReqOK) {
+                    let minesLeft = calcRavit(bat);
+                    balise = 'h4';
+                    boutonNope = 'boutonGrey';
+                    colorNope = 'gf';
+                    if (Object.keys(conselUnit).length >= 1) {
+                        balise = 'h3';
+                        boutonNope = 'boutonOK';
+                        colorNope = 'cy';
+                    }
+                    if (trapType.levels[playerInfos.gang] <= playerInfos.gLevel) {
+                        trapCostOK = checkCost(trapType.costs);
+                        // apCost = Math.round(14*batType.mecanoCost/5*trapType.fabTime/35*5/(playerInfos.comp.explo+4));
+                        apCost = clicPutCost(batType,trapType,false,true);
+                        apReq = Math.round(apCost/1.5);
+                        if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
+                        let uMaxOK = true;
+                        let maxInfo = maxUnits(trapType);
+                        if (maxInfo.ko) {
+                            uMaxOK = false;
+                        }
+                        if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK && uMaxOK) {
+                            $('#unitInfos').append('<button type="button" title="Déposer un champ de mines Baygon '+displayCosts(trapType.costs)+'" class="boutonGris iconButtons" onclick="dropStuff('+apCost+',`bay`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Baygon</span></button>');
+                            lineBreak = true;
+                        } else {
+                            if (!uMaxOK) {
+                                skillMessage = "Maximum atteint";
+                            } else if (minesLeft <= 0) {
+                                skillMessage = "Plus de mines";
+                            } else if (!trapCostOK) {
+                                skillMessage = 'Vous n\'avez pas les ressources '+displayCosts(trapType.costs);
+                            } else if (nearby.oneTile) {
+                                skillMessage = "Ne peut pas se faire en mêlée";
+                            } else {
+                                skillMessage = "Pas assez de PA (réserve de "+apReq+" requise)";
+                            }
+                            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="'+boutonNope+' iconButtons '+colorNope+'"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Baygon</span></button>');
+                            lineBreak = true;
+                        }
                     }
                 }
             }

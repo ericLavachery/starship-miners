@@ -2345,7 +2345,7 @@
         "name":"Flitguns",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":17,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Usine d'armement","Centre de com"],
-        "compHardReq":{"arti":1,"exo":3,"bal":1},
+        "compHardReq":{"arti":1,"exo":3,"bal":1,"ca":3},
         "costs":{"Fer":108,"Scrap":36,"Carbone":84,"Aluminium":108,"Titane":36,"Rhodium":36,"Silicium":18,"Electros":18,"Batteries":24,"Nickel":36,"Compo2":72,"Uranium":36,"Munitions":18},
         "fabTime":70
     },
@@ -2476,11 +2476,21 @@
     {
         "id":288,
         "name":"Mines wipeout",
-        "levels":{"rednecks":15,"blades":15,"bulbos":14,"drogmulojs":15,"tiradores":16,"detruas":10,"brasier":14},
+        "levels":{"rednecks":15,"blades":17,"bulbos":14,"drogmulojs":16,"tiradores":16,"detruas":13,"brasier":15},
         "bldReq":["Usine d'armement"],
         "compReq":{"explo":2},
         "costs":{"Explosifs":60,"Nanite":120,"Tungstène":60,"Plomb":12,"Titane":12,"Azote":18,"Cuivre":18,"Electros":18},
-        "fabTime":70
+        "fabTime":100
+    },
+    {
+        "id":324,
+        "name":"Mines baygon",
+        "levels":{"rednecks":15,"blades":15,"bulbos":14,"drogmulojs":13,"tiradores":16,"detruas":15,"brasier":15},
+        "bldReq":["Centre de recherches"],
+        "compReq":{"exo":2,"explo":1,"ca":4},
+        "altCompReq":{"exo":3,"explo":1,"ca":3},
+        "costs":{"Explosifs":15,"Fuel":15,"Mephitis":15,"Argon":60,"Huile":45,"Végétaux":45,"Plomb":12,"Titane":12,"Azote":18,"Cuivre":18,"Electros":18},
+        "fabTime":90
     },
     {
         "id":43,

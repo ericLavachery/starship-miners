@@ -1,31 +1,103 @@
-function seveso(tileId,fromMissile) {
+function seveso(weap,tileId) {
     console.log('SEVESO tile '+tileId);
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             let batType = getBatType(bat);
-            if (!batType.skills.includes('resistpoison') && !batType.skills.includes('eatpoison')) {
-                if (bat.tileId != tileId) {
-                    let distance = calcDistance(bat.tileId,tileId);
-                    if (distance <= 1) {
-                        bat.tags.push('poison');
+            if (!batType.skills.includes('eatpoison')) {
+                let distance = calcDistance(bat.tileId,tileId);
+                if (distance <= 1) {
+                    if (!batType.skills.includes('resistpoison')) {
+                        // gaz
                         if (bat.apLeft >= 1) {
-                            bat.apLeft = Math.floor(bat.apLeft/3);
-                        }
-                        bat.apLeft = bat.apLeft-8;
-                        if (fromMissile != 'no') {
-                            bat.tags.push('poison');
-                            bat.tags.push('poison');
-                            bat.apLeft = bat.apLeft-8;
-                            if (fromMissile === 'flit') {
-                                if (!bat.tags.includes('shinda')) {
-                                    bat.tags.push('shinda');
-                                }
-                                bat.apLeft = bat.apLeft-8;
+                            if (!batType.skills.includes('noaploss')) {
+                                bat.apLeft = Math.floor(bat.apLeft/3);
+                            } else {
+                                bat.apLeft = Math.floor(bat.apLeft/2);
                             }
-                            if (batType.class === 'C' || batType.class === 'B' || batType.class === 'Z') {
-                                bat.squadsLeft = bat.squadsLeft-1;
-                                if (bat.squadsLeft === 0) {
-                                    bat.squadsLeft = 1;
+                        }
+                        if (weap.seveso >= 2) {
+                            // missile & autodes
+                            if (batType.skills.includes('reactpoison') || !batType.skills.includes('noaploss')) {
+                                bat.apLeft = bat.apLeft-6;
+                            } else {
+                                bat.apLeft = bat.apLeft-2;
+                            }
+                            if (weap.seveso >= 3) {
+                                // flit
+                                if (batType.skills.includes('reactpoison') || !batType.skills.includes('noaploss')) {
+                                    bat.apLeft = bat.apLeft-6;
+                                } else {
+                                    bat.apLeft = bat.apLeft-2;
+                                }
+                                if (!batType.skills.includes('nokill')) {
+                                    if (bat.squadsLeft >= 3 || bat.squadsLeft === batType.squads) {
+                                        bat.squadsLeft = bat.squadsLeft-1;
+                                    }
+                                }
+                                if (weap.seveso >= 4) {
+                                    // flitmine
+                                    if (batType.skills.includes('reactpoison') || !batType.skills.includes('noaploss')) {
+                                        bat.apLeft = bat.apLeft-6;
+                                    } else {
+                                        bat.apLeft = bat.apLeft-2;
+                                    }
+                                    bat.tags.push('poison');
+                                    bat.tags.push('poison');
+                                    if (bat.squadsLeft >= 2 && bat.tags.includes('shinda')) {
+                                        bat.squadsLeft = bat.squadsLeft-1;
+                                    } else if (bat.squadsLeft >= 3 || bat.squadsLeft === batType.squads) {
+                                        bat.squadsLeft = bat.squadsLeft-1;
+                                    }
+                                }
+                            }
+                            if (batType.skills.includes('reactpoison') && !batType.skills.includes('noaploss')) {
+                                if (bat.squadsLeft >= 2) {
+                                    bat.squadsLeft = bat.squadsLeft-1;
+                                }
+                            }
+                        }
+                    } else {
+                        if (weap.seveso >= 3) {
+                            // flit
+                            if (bat.apLeft >= 1) {
+                                bat.apLeft = Math.floor(bat.apLeft/3);
+                            }
+                            if (weap.seveso >= 4) {
+                                // flitmine
+                                if (!batType.skills.includes('noaploss')) {
+                                    bat.apLeft = bat.apLeft-6;
+                                } else {
+                                    bat.apLeft = bat.apLeft-2;
+                                }
+                            }
+                        }
+                    }
+                    if (bat.tileId != tileId) {
+                        if (!batType.skills.includes('resistpoison')) {
+                            // gaz
+                            bat.tags.push('poison');
+                            if (weap.seveso >= 2) {
+                                // missile & autodes
+                                bat.tags.push('poison');
+                                bat.tags.push('poison');
+                                if (weap.seveso >= 3) {
+                                    // flit
+                                    if (!bat.tags.includes('shinda')) {
+                                        bat.tags.push('shinda');
+                                    }
+                                    if (weap.seveso >= 4) {
+                                        // flitmine
+                                        if (!bat.tags.includes('necro')) {
+                                            bat.tags.push('necro');
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            if (weap.seveso >= 4) {
+                                // flitmine
+                                if (!bat.tags.includes('necro')) {
+                                    bat.tags.push('necro');
                                 }
                             }
                         }
@@ -43,21 +115,37 @@ function seveso(tileId,fromMissile) {
         if (bat.loc === "zone") {
             let batType = getBatType(bat);
             if (!bat.tags.includes('zombie') && batType.cat === 'infantry') {
-                if (bat.tileId != tileId) {
-                    let distance = calcDistance(bat.tileId,tileId);
-                    if (distance <= 1) {
+                let distance = calcDistance(bat.tileId,tileId);
+                if (distance <= 1) {
+                    // gaz
+                    bat.tags.push('poison');
+                    if (bat.apLeft >= 1) {
+                        bat.apLeft = Math.floor(bat.apLeft/3);
+                    }
+                    if (weap.seveso >= 2) {
+                        // missile & autodes
                         bat.tags.push('poison');
-                        if (bat.apLeft >= 1) {
-                            bat.apLeft = Math.floor(bat.apLeft/3);
-                        }
-                        bat.apLeft = bat.apLeft-8;
-                        if (fromMissile != 'no') {
+                        bat.tags.push('poison');
+                        bat.apLeft = bat.apLeft-3;
+                        if (weap.seveso >= 3) {
+                            // flit
                             bat.tags.push('poison');
                             bat.tags.push('poison');
-                            bat.apLeft = bat.apLeft-8;
-                            bat.squadsLeft = bat.squadsLeft-1;
-                            if (bat.squadsLeft === 0) {
-                                bat.squadsLeft = 1;
+                            bat.apLeft = bat.apLeft-3;
+                            if (bat.squadsLeft >= 2) {
+                                bat.squadsLeft = bat.squadsLeft-1;
+                            }
+                            if (weap.seveso >= 4) {
+                                // flitmine
+                                bat.tags.push('poison');
+                                bat.tags.push('poison');
+                                if (!bat.tags.includes('necro')) {
+                                    bat.tags.push('necro');
+                                }
+                                bat.apLeft = bat.apLeft-6;
+                                if (bat.squadsLeft >= 2) {
+                                    bat.squadsLeft = bat.squadsLeft-1;
+                                }
                             }
                         }
                     }
@@ -2587,6 +2675,11 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.apWeb = false;
     }
+    if (ammo.seveso != undefined) {
+        thisWeapon.seveso = ammo.seveso;
+    } else {
+        thisWeapon.seveso = 0;
+    }
     if (ammo.passprotect) {
         thisWeapon.passprotect = true;
     } else {
@@ -2949,7 +3042,7 @@ function weaponAdj(weapon,bat,wn) {
     } else {
         thisWeapon.isBlast = false;
     }
-    if (thisWeapon.ammo.includes('gaz')) {
+    if (thisWeapon.ammo.includes('gaz') || thisWeapon.ammo.includes('baygon')) {
         thisWeapon.isGas = true;
     } else {
         thisWeapon.isGas = false;

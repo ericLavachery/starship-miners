@@ -1104,6 +1104,19 @@
         "costs":{"Cobalt":50,"Cuivre":100,"Platine":25,"Silicium":50,"Hélium":25,"Electros":50,"Batteries":15}
     },
     {
+        "name":"e-gmine",
+        "cat":"equip",
+        "skills":[],
+        "info":"Pose de mines baygon",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"exo":2,"explo":1,"ca":4,"log":2,"cam":2},
+        "altCompReq":{"exo":3,"explo":1,"ca":3,"log":2,"cam":2},
+        "autoComp":[],
+        "lvlReq":{"rednecks":17,"blades":17,"bulbos":17,"drogmulojs":15,"tiradores":17,"detruas":17,"brasier":17},
+        "factor":"one",
+        "costs":{"Fer":50,"Cuivre":15,"Blendium":100,"Electros":15,"Batteries":15}
+    },
+    {
         "name":"w1-lifepod",
         "cat":"equip",
         "skills":[],

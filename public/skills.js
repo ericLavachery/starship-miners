@@ -1246,6 +1246,8 @@ function dropStuff(apCost,mineType) {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Champ de mines'));
     } else if (mineType === 'wipe') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Mines wipeout'));
+    } else if (mineType === 'bay') {
+        unitIndex = unitTypes.findIndex((obj => obj.name === 'Mines baygon'));
     } else if (mineType === 'dynamite') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Explosifs'));
     } else if (mineType === 'barb-fer') {

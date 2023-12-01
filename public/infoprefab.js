@@ -244,12 +244,23 @@ function reconstruction(debId,apCost) {
     showBatInfos(selectedBat);
 };
 
-function clicPutCost(pusherType,mineType,isExplo) {
+function clicPutCost(pusherType,mineType,isExplo,isGas) {
     let apCost = prefabCost(pusherType,mineType,true);
     if (isExplo) {
         apCost = apCost*5/(playerInfos.comp.explo+4);
         if (pusherType.kind === 'detruas') {
             apCost = apCost/1.7;
+        }
+        if (pusherType.name === 'Bigman') {
+            apCost = apCost*1.25;
+        }
+    } else if (isGas) {
+        apCost = apCost*4/(playerInfos.comp.exo+2);
+        if (pusherType.kind === 'detruas') {
+            apCost = apCost/1.5;
+        }
+        if (pusherType.name === 'Bigman') {
+            apCost = apCost*1.25;
         }
     } else {
         apCost = apCost*5/(playerInfos.comp.def+4)*5/(playerInfos.comp.train+4);

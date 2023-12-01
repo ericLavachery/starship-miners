@@ -1094,7 +1094,7 @@ function attack(melee,init) {
         minDamage = 0;
     }
     if (totalDamage >= minDamage || (totalDamage >= 1 && minDamage >= 1 && rand.rand(1,minDamage) === 1)) {
-        if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap') || selectedWeap.ammo.includes('gaz')) {
+        if (selectedWeap.ammo.includes('poison') || selectedWeap.ammo.includes('atium') || selectedWeap.ammo.includes('trap') || selectedWeap.ammo.includes('gaz') || selectedWeap.ammo.includes('baygon')) {
             if (!targetBatType.skills.includes('resistpoison') && !targetBatType.skills.includes('eatpoison') && !targetBat.tags.includes('zombie') && !targetBat.tags.includes('genimmune')) {
                 if ((targetBatType.cat == 'infantry' && (!targetBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || targetBatType.cat === 'aliens') {
                     let morePoison = false;
@@ -1118,7 +1118,7 @@ function attack(melee,init) {
                     } else if (selectedWeap.ammo.includes('atium') || selectedWeap.ammo === 'gaz-pluto' || selectedWeap.ammo === 'grenade-gaz') {
                         targetBat.tags.push('poison');
                         targetBat.tags.push('poison');
-                    } else if (selectedWeap.ammo.includes('-gaz') || selectedWeap.ammo.includes('gaz-uridium')) {
+                    } else if (selectedWeap.ammo.includes('-gaz') || selectedWeap.ammo.includes('gaz-uridium') || selectedWeap.ammo.includes('baygon')) {
                         targetBat.tags.push('poison');
                         targetBat.tags.push('poison');
                         targetBat.tags.push('poison');
@@ -1189,7 +1189,7 @@ function attack(melee,init) {
     let minShindaDmg = getMinShindaDmg(selectedWeap,targetBat,targetBatType);
     if (totalDamage >= minShindaDmg && minShindaDmg < 1000) {
         // shinda
-        if (selectedWeap.ammo.includes('shinda') || selectedWeap.ammo.includes('gaz-flit')) {
+        if (selectedWeap.ammo.includes('shinda') || selectedWeap.ammo.includes('gaz-flit') || selectedWeap.ammo.includes('-baygon')) {
             if (!targetBat.tags.includes('shinda')) {
                 targetBat.tags.push('shinda');
             }
@@ -1571,15 +1571,8 @@ function attack(melee,init) {
         }
     } else if (selectedWeap.ammo.includes('-deluge')) {
         deluge(selectedWeap,delugeTileId,false);
-    } else if (selectedWeap.ammo.includes('-gaz') && selectedWeap.ammo != 'grenade-gaz') {
-        let fromMissile = 'no';
-        if (selectedWeap.ammo.includes('missile-gaz')) {
-            fromMissile = 'yes';
-            if (selectedWeap.ammo.includes('gaz-flit')) {
-                fromMissile = 'flit';
-            }
-        }
-        seveso(delugeTileId,fromMissile);
+    } else if (selectedWeap.seveso >= 1) {
+        seveso(selectedWeap,delugeTileId);
     }
     setTimeout(function (){
         blockThem(false);
@@ -2163,7 +2156,7 @@ function defense(melee,init) {
         minDamage = 0;
     }
     if (totalDamage >= minDamage || (totalDamage >= 1 && minDamage >= 1 && rand.rand(1,minDamage) === 1)) {
-        if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap') || targetWeap.ammo.includes('gaz')) {
+        if (targetWeap.ammo.includes('poison') || targetWeap.ammo.includes('atium') || targetWeap.ammo.includes('trap') || targetWeap.ammo.includes('gaz') || targetWeap.ammo.includes('baygon')) {
             if (!selectedBatType.skills.includes('resistpoison') && !selectedBatType.skills.includes('eatpoison') && !selectedBat.tags.includes('zombie') && !selectedBat.tags.includes('genimmune')) {
                 if ((selectedBatType.cat == 'infantry' && (!selectedBatType.skills.includes('mutant') || playerInfos.comp.ca < 3)) || selectedBatType.cat === 'aliens') {
                     let morePoison = false;
@@ -2179,7 +2172,7 @@ function defense(melee,init) {
                     } else if (targetWeap.ammo.includes('atium') || targetWeap.ammo === 'gaz-pluto' || targetWeap.ammo === 'grenade-gaz') {
                         selectedBat.tags.push('poison');
                         selectedBat.tags.push('poison');
-                    } else if (targetWeap.ammo.includes('-gaz') || targetWeap.ammo.includes('gaz-uridium')) {
+                    } else if (targetWeap.ammo.includes('-gaz') || targetWeap.ammo.includes('gaz-uridium') || targetWeap.ammo.includes('baygon')) {
                         selectedBat.tags.push('poison');
                         selectedBat.tags.push('poison');
                         selectedBat.tags.push('poison');
@@ -2232,7 +2225,7 @@ function defense(melee,init) {
     let minShindaDmg = getMinShindaDmg(targetWeap,selectedBat,selectedBatType);
     if (totalDamage >= minShindaDmg && minShindaDmg < 1000) {
         // shinda
-        if (targetWeap.ammo.includes('shinda') || targetWeap.ammo.includes('gaz-flit')) {
+        if (targetWeap.ammo.includes('shinda') || targetWeap.ammo.includes('gaz-flit') || targetWeap.ammo.includes('-baygon')) {
             if (!selectedBat.tags.includes('shinda')) {
                 selectedBat.tags.push('shinda');
             }
@@ -2469,15 +2462,8 @@ function defense(melee,init) {
     // doneAction(targetBat);
     targetBatArrayUpdate();
     escaped = false;
-    if (targetWeap.ammo.includes('-gaz') && targetWeap.ammo != 'grenade-gaz') {
-        let fromMissile = 'no';
-        if (targetWeap.ammo.includes('missile-gaz')) {
-            fromMissile = 'yes';
-            if (targetWeap.ammo.includes('gaz-flit')) {
-                fromMissile = 'flit';
-            }
-        }
-        seveso(delugeTileId,fromMissile);
+    if (targetWeap.seveso >= 1) {
+        seveso(targetWeap,delugeTileId);
     }
     setTimeout(function (){
         blockThem(false);
