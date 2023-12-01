@@ -585,6 +585,9 @@ function healEverything() {
         if (bat.tags.includes('return')) {
             if (!batType.skills.includes('robot') && batType.crew >= 1) {
                 let endStress = dooom-4+rand.rand(0,6);
+                if (dooom < 2 && endStress > 1) {
+                    endStress = 1;
+                }
                 if (batType.skills.includes('lowstress')) {
                     endStress = Math.round(endStress/2);
                 }

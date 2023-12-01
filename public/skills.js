@@ -27,7 +27,7 @@ function fortification(apCost) {
     tagDelete(selectedBat,'mining');
     let tile = getTile(selectedBat);
     if (tile.infra === undefined) {
-        camoReCheck();
+        camoReCheck(5);
     }
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -722,13 +722,18 @@ function longCamo(bat) {
     }
 };
 
-function checkCamoMove(bat,batType) {
+function checkCamoMove(bat,batType,bonus) {
+    if (bonus === undefined) {
+        bonus = 0;
+    }
     let camoMove = true;
     if (bat.prt.includes('suit')) {
         camoMove = false;
     } else {
         if (batType.skills.includes('fly') || (batType.cat === 'vehicles' && !batType.skills.includes('robot')) || batType.skills.includes('moto') || batType.skills.includes('maycamo') || !batType.skills.includes('camo') || bat.eq === 'e-jetpack') {
             if (hasEquip(bat,['kit-chouf']) || batType.skills.includes('emoteur')) {
+                // OK
+            } else if (bonus > 0 && batType.cat != 'vehicles') {
                 // OK
             } else {
                 camoMove = false;
@@ -752,6 +757,8 @@ function camoReCheck(bonus) {
             if (selectedBatType.skills.includes('fly') || (selectedBatType.cat === 'vehicles' && !selectedBatType.skills.includes('robot')) || selectedBatType.skills.includes('moto') || selectedBatType.skills.includes('maycamo') || !selectedBatType.skills.includes('camo') || selectedBat.eq === 'e-jetpack') {
                 console.log('fly or something');
                 if (hasEquip(selectedBat,['kit-chouf']) || selectedBatType.skills.includes('emoteur')) {
+                    camouflage(0,bonus);
+                } else if (bonus > 0 && selectedBatType.cat != 'vehicles') {
                     camouflage(0,bonus);
                 } else {
                     camoOut();

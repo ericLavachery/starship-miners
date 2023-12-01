@@ -1574,13 +1574,21 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                 newBat.tags.push('invisible');
             }
             if (newBat.team === 'player') {
+                let gotSurv = false;
                 if (playerInfos.onShip) {
+                    if (playerInfos.gMode < 2) {
+                        gotSurv = true;
+                    } else if (playerInfos.gMode < 3 && playerInfos.gLevel <= 6) {
+                        gotSurv = true;
+                    }
+                }
+                if (gotSurv) {
                     if (conselUnit.cat === 'infantry' && !conselUnit.skills.includes('clone') && !conselUnit.skills.includes('dog') && conselUnit.name != 'Citoyens' && conselUnit.name != 'Criminels') {
                         newBat.tags.push('survivor');
                     }
                 }
                 bataillons.push(newBat);
-                if (newBat.type === 'Chercheurs') {
+                if (newBat.type === 'Chercheurs' && playerInfos.onShip) {
                     playerInfos.sci++;
                 }
                 if (conselInto) {

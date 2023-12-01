@@ -398,7 +398,7 @@ function batInfos(bat,batType,pop) {
     if (canCamo(bat,batType,tile,near)) {
         if (batType.moveCost >= 90) {
             $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+' ('+camChance+'%)</span><br>');
-        } else if (checkCamoMove(bat,batType)) {
+        } else if (checkCamoMove(bat,batType,0)) {
             $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+' <span class="cy" title="Peut se déplacer furtivement">('+camChance+'%)</span></span><br>');
         } else {
             $('#'+bodyPlace).append('<span class="paramName">Furtivité</span><span class="paramIcon"></span><span class="paramValue">'+stealth+' <span class="or" title="Ne peut pas se déplacer furtivement">('+camChance+'%)</span></span><br>');

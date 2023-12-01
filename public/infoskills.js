@@ -190,6 +190,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             lineBreak = true;
         }
     }
+    let camChance = calcCamo(bat);
     // FORTIFICATION
     if (batType.skills.includes('fortif') && !playerInfos.onShip && !zeroCrew) {
         balise = 'h4';
@@ -235,8 +236,28 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             bouton = 'boutonGrey';
             colorBof = 'gf';
         }
+        let camInfo = '';
+        if (bat.fuzz <= -2 && bat.tags.includes('camo')) {
+            let camoStay = camChance+5;
+            if (tile.infra === undefined) {
+                let camoMove = checkCamoMove(bat,batType,5);
+                if (camoStay > 100) {camoStay = 100;}
+                if (!camoMove) {
+                    camoStay = 0;
+                }
+            } else {
+                camoStay = 100;
+            }
+            if (camoStay >= 100) {
+                camInfo = ' &#127807; '+camoStay+'% de rester furtif';
+            } else if (camoStay >= 1) {
+                camInfo = ' &#127807; '+camoStay+'% de rester furtif';
+            } else {
+                camInfo = ' &#128683; '+camoStay+'% de rester furtif';
+            }
+        }
         if ((bat.apLeft >= apReq || bat.apLeft >= bat.ap-2) && !bat.tags.includes('fortif') && (!nearby.oneTile || playerInfos.pseudo === 'Mapedit')) {
-            $('#unitInfos').append('<button type="button" title="Se fortifier ('+apReq+' PA requis)" class="'+bouton+' iconButtons '+colorBof+'" onclick="fortification('+apCost+')"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>');
+            $('#unitInfos').append('<button type="button" title="Se fortifier ('+apReq+' PA requis)'+camInfo+'" class="'+bouton+' iconButtons '+colorBof+'" onclick="fortification('+apCost+')"><i class="fas fa-shield-alt"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
         } else {
             if (nearby.oneTile) {
@@ -334,7 +355,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 }
                 camoufOK = true;
             }
-            let camChance = calcCamo(bat);
+            // let camChance = calcCamo(bat);
             balise = 'h4';
             boutonNope = 'boutonGrey';
             colorNope = 'gf';

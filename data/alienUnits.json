@@ -3666,7 +3666,7 @@
             "sound":"calibre_sa",
             "ammo":["alienshells"]
         },
-        "w2chance":3,
+        "w2chance":2,
         "moveCost":3,
         "maxFlood":2,
         "maxScarp":3,

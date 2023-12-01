@@ -213,8 +213,13 @@ function commandes() {
             if (!modeSonde && !inSoute) {
                 if (playerInfos.onShip) {
                     if (playerInfos.onStart) {
-                        $('#commandz').append('<hr>');
-                        $('#commandz').append('<button type="button" title="Sortir de l\'abri" class="boutonRouge iconButtons" onclick="startMission(false)"><i class="fas fa-dungeon"></i></button>');
+                        if (playerInfos.gangDef) {
+                            let nextGangLevel = checkGangLevel();
+                            if (nextGangLevel === -1) {
+                                $('#commandz').append('<hr>');
+                                $('#commandz').append('<button type="button" title="Sortir de l\'abri" class="boutonRouge iconButtons" onclick="startMission(false)"><i class="fas fa-dungeon"></i></button>');
+                            }
+                        }
                     } else {
                         if (zoneFiles.length >= 2) {
                             $('#commandz').append('<hr>');
