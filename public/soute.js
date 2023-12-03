@@ -255,10 +255,11 @@ function souteList() {
     if (souteFilter === 'all' || souteFilter === 'support') {
         souteBatList('infantry',playerInfos.gang,'medic','robot',landersIds,-1);
         souteBatList('infantry',playerInfos.gang,'mecano','robot',landersIds,-1);
-        souteBatList('infantry','zero-','','robot',landersIds,-1); // no resist
+        souteBatList('infantry','zero-','','robot',landersIds,-1); // no resist no regu
         souteBatList('infantry',playerInfos.gang,'garde','robot',landersIds,-1);
     }
     if (souteFilter === 'all' || souteFilter === 'cyberobots') {
+        souteBatList('infantry','reguliers','','',landersIds,-1); // regu
         souteBatList('infantry','resistance','','',landersIds,-1); // resist
         souteBatList('infantry','','clone','',landersIds,-1);
         souteBatList('infantry','','cyber','',landersIds,-1);
@@ -298,6 +299,7 @@ function landerList() {
     souteBatList('infantry',playerInfos.gang,'mecano','robot',landersIds,slId);
     souteBatList('infantry','zero-','','robot',landersIds,slId); // no resist
     souteBatList('infantry',playerInfos.gang,'garde','robot',landersIds,slId);
+    souteBatList('infantry','reguliers','','',landersIds,slId); // regu
     souteBatList('infantry','resistance','','',landersIds,slId); // resist
     souteBatList('infantry','','clone','',landersIds,slId);
     souteBatList('infantry','','dog','',landersIds,slId);
@@ -342,7 +344,7 @@ function souteBatList(cat,partKind,skill,noSkill,landersIds,idOfLander) {
         if (!batType.kind.includes(partKind)) {
             showMe = false;
         }
-        if (cat === 'infantry' && partKind === 'zero-' && batType.kind.includes('resistance')) {
+        if (cat === 'infantry' && partKind === 'zero-' && (batType.kind.includes('resistance') || batType.kind.includes('reguliers'))) {
             showMe = false;
         }
         if (cat === 'infantry' && partKind === playerInfos.gang && skill === '') {

@@ -495,6 +495,13 @@ function spawnSound() {
     }
 };
 
+function alienTheme(interrupt) {
+    let thresh = 22+(playerInfos.sondeDanger*3);
+    if (alienThreat >= thresh) {
+        playMusic('aftermath',interrupt);
+    }
+};
+
 function playMusic(piste,interrupt) {
     // let track = [_.sample(musicTracks)];
     if (playerInfos.statMu || !playerInfos.onShip) {

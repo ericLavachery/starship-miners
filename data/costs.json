@@ -410,13 +410,22 @@
         "fabTime":10
     },
     {
+        "id":325,
+        "name":"Bûcherons",
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "bldReq":[],
+        "costs":{"Fer":90,"Scrap":36,"Carbone":18,"Bois":36},
+        "deploy":{"Fuel":7},
+        "fabTime":15
+    },
+    {
         "id":28,
         "name":"Mineurs",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "bldReq":[],
         "unitUp":"Scrapers",
         "costs":{"Fer":90,"Scrap":36,"Carbone":18,"Bois":36,"Moteurs":5,"Batteries":5,"Végétaux":20,"Chlore":10,"Tissus":5},
-        "deploy":{"Energie":15,"Drogues":1,"Tissus":1},
+        "deploy":{"Energie":30,"Drogues":1,"Tissus":1},
         "fabTime":15
     },
     {

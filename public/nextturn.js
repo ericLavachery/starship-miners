@@ -48,9 +48,11 @@ function nextTurn() {
             hasSky = true;
         }
     }
+    alienThreat = 0;
     aliens.forEach(function(bat) {
         if (bat.loc === "zone") {
             batType = getBatType(bat);
+            alienThreat = alienThreat+Math.sqrt(batType.killXP);
             if (bat.logeq === undefined) {
                 bat.logeq = '';
             }
@@ -189,6 +191,7 @@ function nextTurn() {
             }
         }
     });
+    alienThreat = Math.round(alienThreat);
     killAlienList();
     checkEggsDrop();
     // testDrop();

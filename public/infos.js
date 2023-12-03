@@ -1131,16 +1131,18 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('bigfortif')) {
         allSkills = allSkills+'<span class="paramValue" title="Meilleur bonus de fortification">Fortification avancée</span>'+sepa;
     }
-    if (!batType.skills.includes('noguet') && !batType.skills.includes('sentinelle') && !batType.skills.includes('fastguet')) {
-        if (batType.cat != 'buildings' || batType.crew >= 1) {
-            allSkills = allSkills+'<span class="paramValue" title="Peut faire le guet. Cadence de tir 100% en défense">Guet</span>'+sepa;
+    if (batType.weapon.rof >= 1) {
+        if (!batType.skills.includes('noguet') && !batType.skills.includes('sentinelle') && !batType.skills.includes('fastguet')) {
+            if (batType.cat != 'buildings' || batType.crew >= 1) {
+                allSkills = allSkills+'<span class="paramValue" title="Peut faire le guet. Cadence de tir 100% en défense">Guet</span>'+sepa;
+            }
         }
-    }
-    if (batType.skills.includes('fastguet')) {
-        allSkills = allSkills+'<span class="paramValue" title="Peut se mettre en mode guet plus facilement (moins de PA). Cadence de tir 100% en défense">Guet rapide</span>'+sepa;
-    }
-    if (batType.skills.includes('sentinelle')) {
-        allSkills = allSkills+'<span class="paramValue" title="Toujours en guet: Cadence de tir 100% en défense">Sentinelle</span>'+sepa;
+        if (batType.skills.includes('fastguet')) {
+            allSkills = allSkills+'<span class="paramValue" title="Peut se mettre en mode guet plus facilement (moins de PA). Cadence de tir 100% en défense">Guet rapide</span>'+sepa;
+        }
+        if (batType.skills.includes('sentinelle')) {
+            allSkills = allSkills+'<span class="paramValue" title="Toujours en guet: Cadence de tir 100% en défense">Sentinelle</span>'+sepa;
+        }
     }
     if (batType.skills.includes('baddef')) {
         allSkills = allSkills+'<span class="paramValue" title="Cadence de tir seulement 85% en mode guet. Moins de bonus pour la fortification.">Seconde ligne</span>'+sepa;
@@ -1260,7 +1262,7 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('routes')) {
         if (batType.moveCost < 99) {
             allSkills = allSkills+'<span class="paramValue" title="Peut construire des routes">Routes</span>'+sepa;
-        } else {
+        } else if (batType.kind != 'zero-vm') {
             allSkills = allSkills+'<span class="paramValue" title="Peut construire une route là où il est installé">Route</span>'+sepa;
         }
     }
@@ -1465,7 +1467,7 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('crange')) {
         allSkills = allSkills+'<span class="paramValue" title="Ces robots ne peuvent se déplacer seuls qu\'à une certaine distance d\'un centre de contrôle">Connecté</span>'+sepa;
     }
-    if (batType.skills.includes('cleaning') || (batType.cat === 'buildings' && batType.crew >= 1)) {
+    if (batType.skills.includes('cleaning') || (batType.cat === 'buildings' && batType.crew >= 1 && batType.kind != 'zero-vm')) {
         allSkills = allSkills+'<span class="paramValue" title="Peut nettoyer les toiles, spores etc...">Nettoyage</span>'+sepa;
     }
     if (batType.skills.includes('conscont')) {

@@ -302,7 +302,7 @@ function delugeDamage(weap,bat,batType) {
         numUnits = Math.round(batType.squadSize*batType.squads*Math.sqrt(batType.size)/1.7);
     }
     // console.log('numUnits='+numUnits);
-    let baseDmg = Math.ceil((weap.power+15)*numUnits/75);
+    let baseDmg = Math.ceil((weap.power+15)*numUnits/75*(playerInfos.comp.explo+1)/4);
     let stormDmg = rand.rand(10*baseDmg,16*baseDmg);
     if (weap.ammo.includes('suicide')) {
         stormDmg = stormDmg*6;

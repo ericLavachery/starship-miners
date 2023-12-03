@@ -464,9 +464,7 @@ function checkEggsDrop() {
                 playerInfos.cocons = playerInfos.cocons+1;
             }
         } else {
-            if (aliens.length >= 6) {
-                playMusic('aftermath',true);
-            }
+            alienTheme(true);
         }
     }
     borderInvasion();
@@ -1144,6 +1142,9 @@ function eggDropTile(eggName,theArea) {
         if (zone[0].mapDiff >= 3) {
             centerNeed = playerInfos.mapTurn-Math.round(aliens.length/3);
         }
+        console.log('COCON TARGET');
+        console.log('targetTile='+targetTile);
+        console.log('theTile='+theTile);
         if (centerNeed <= 0) {
             if (theTile >= 0) {
                 shufBats.forEach(function(bat) {

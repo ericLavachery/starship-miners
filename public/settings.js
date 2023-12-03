@@ -277,6 +277,7 @@ let stopForFight = false;
 let alienTypesList = [];
 let colonyTiles = [];
 let spawnType = {};
+let alienThreat = 0;
 // CONSTRUCTION
 let conselUnit = {};
 let conselAmmos = ['xxx','xxx','xxx','xxx'];

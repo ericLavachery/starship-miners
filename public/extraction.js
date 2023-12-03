@@ -588,14 +588,14 @@ function getMiningRate(bat,fullRate,noMining) {
     // console.log(batType);
     let miningAdj = 1;
     if (!noMining) {
-        if (batType.weapon2.name === 'Foreuse' || batType.weapon2.name === 'Pioche') {
+        if (batType.weapon2.name === 'Foreuse' || batType.weapon2.name === 'Pioche' || batType.weapon2.name === 'Tronçonneuse') {
             if (bat.ammo2 === 'lame') {
                 miningAdj = 1;
             } else if (bat.ammo2 === 'lame-tungsten') {
                 miningAdj = 1.2;
-            } else if (bat.ammo2 === 'lame-carbone') {
+            } else if (bat.ammo2 === 'lame-carbone' || bat.ammo2 === 'lame-titane') {
                 miningAdj = 1.3;
-            } else if (bat.ammo2 === 'lame-plasma' || bat.ammo2 === 'lame-fplasma' || bat.ammo2 === 'lame-adamantium') {
+            } else if (bat.ammo2 === 'lame-plasma' || bat.ammo2 === 'lame-fplasma' || bat.ammo2 === 'lame-adamantium' || bat.ammo2 === 'lame-mono') {
                 miningAdj = 1.5;
             }
         } else if (batType.weapon.name === 'Foreuse' || batType.weapon.name === 'Pioche') {
@@ -603,10 +603,10 @@ function getMiningRate(bat,fullRate,noMining) {
                 miningAdj = 1;
             } else if (bat.ammo === 'lame-tungsten') {
                 miningAdj = 1.2;
-            } else if (bat.ammo === 'lame-carbone') {
+            } else if (bat.ammo === 'lame-carbone' || bat.ammo === 'lame-titane') {
                 miningAdj = 1.3;
-            } else if (bat.ammo === 'lame-plasma' || bat.ammo === 'lame-fplasma' || bat.ammo === 'lame-adamantium') {
-                miningAdj = 1.6;
+            } else if (bat.ammo === 'lame-plasma' || bat.ammo === 'lame-fplasma' || bat.ammo === 'lame-adamantium' || bat.ammo === 'lame-mono') {
+                miningAdj = 1.5;
             }
         }
         if (bat.tags.includes('genstrong')) {
@@ -653,7 +653,7 @@ function getMiningRate(bat,fullRate,noMining) {
                             }
                         }
                     }
-                    if (inBat.type === 'Sapeurs') {
+                    if (inBat.type === 'Sapeurs' || inBat.type === 'Bûcherons') {
                         if (inBat.apLeft >= 7 && inBat.squadsLeft >= 6) {
                             if (helpInside < 1.2) {
                                 helpInside = 1.2;

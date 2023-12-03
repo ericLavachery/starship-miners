@@ -12,12 +12,12 @@ function checkCrimes(crimeRate,time,afterMission) {
         // crimeMeurtre(testSev,afterMission); // 2
         // crimeIncendie(testSev,afterMission); // 2
         // crimeEmeute(testSev,afterMission); // 1
-    } else if (playerInfos.crime >= 5) {
+    } else if (playerInfos.crime > 5) {
         let adjTime = time;
         if (afterMission) {
             adjTime = Math.ceil(adjTime/2);
         }
-        let crimeChance = Math.round((playerInfos.crime-3)*adjTime/7);
+        let crimeChance = Math.ceil((playerInfos.crime-5)*adjTime/7);
         console.log('crimeChance='+crimeChance);
         if (rand.rand(1,100) <= crimeChance) {
             whichCrime(crimeRate,afterMission);
