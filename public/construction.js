@@ -3,6 +3,11 @@ function goProduction() {
     bfconst('all',false,'',false);
 };
 
+function prodFromSoute() {
+    goStation();
+    goProduction();
+}
+
 function bfconst(cat,triche,upgrade,retour) {
     conselCat = cat;
     conselTriche = triche;

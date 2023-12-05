@@ -32,21 +32,22 @@ function whichCrime(crimeRate,afterMission) {
     // playerInfos.crime : plus grave
     let myCrime = playerInfos.crime-3;
     let severity = rand.rand(1,3)+Math.floor((playerInfos.crime-5)/1.35)-2;
-    if (severity > 10) {severity = 10;}
-    if (severity < 1) {severity = 1;}
+    severity = entre(severity,1,10);
     let slot = {};
-    slot.vol = 4+Math.round((playerInfos.vitals+playerInfos.penit+myCrime)/2);
-    slot.hup = 1+Math.round((playerInfos.penit+myCrime)/2);
-    slot.vand = 0+myCrime-playerInfos.vitals;
-    if (slot.vand < 1) {slot.vand = 1;}
-    slot.bag = 4+myCrime-Math.round(playerInfos.vitals/2);
-    if (slot.bag < 4) {slot.bag = 4;}
-    slot.fire = -2+myCrime-Math.round(playerInfos.vitals/2);
-    if (slot.fire < 0) {slot.fire = 0;}
+    slot.vol = Math.round(4+(myCrime/2)+playerInfos.vitals+(playerInfos.penit/2));
+    slot.vol = entre(slot.vol,4,99);
+    slot.hup = Math.round(1+(myCrime/2)+(playerInfos.penit/2));
+    slot.hup = entre(slot.hup,1,99);
+    slot.vand = Math.round(0+myCrime-playerInfos.vitals);
+    slot.vand = entre(slot.vand,2,15);
+    slot.bag = Math.round(4+myCrime-(playerInfos.vitals/2)+(playerInfos.penit/2));
+    slot.bag = entre(slot.bag,4,99);
+    slot.fire = Math.round(-2+myCrime+(playerInfos.vitals/3));
+    slot.fire = entre(slot.fire,0,10);
     slot.kill = -3+myCrime;
-    if (slot.kill < 0) {slot.kill = 0;}
+    slot.kill = entre(slot.kill,0,99);
     slot.riot = -6+myCrime;
-    if (slot.riot < 0) {slot.riot = 0;}
+    slot.riot = entre(slot.riot,0,99);
     let crimeDiceMax = slot.vol+slot.hup+slot.vand+slot.bag+slot.fire+slot.kill+slot.riot;
     console.log('vol='+slot.vol+'/'+crimeDiceMax);
     console.log('hup='+slot.hup+'/'+crimeDiceMax);
@@ -58,16 +59,14 @@ function whichCrime(crimeRate,afterMission) {
     let crimeDice = rand.rand(1,crimeDiceMax);
     if (crimeDice <= slot.vol) {
         severity = rand.rand(1,3)+Math.floor((playerInfos.vitals+playerInfos.penit-5+playerInfos.crime-5)/1.35)-2;
-        if (severity > 10) {severity = 10;}
-        if (severity < 1) {severity = 1;}
+        severity = entre(severity,1,10);
         crimeVol(severity,afterMission);
         if (playerInfos.vitals >= 2) {
             crimeVol(severity,afterMission);
         }
     } else if (crimeDice <= slot.vol+slot.hup) {
         severity = rand.rand(1,3)+Math.floor((playerInfos.penit-5+playerInfos.crime-5)/1.35)-2;
-        if (severity > 10) {severity = 10;}
-        if (severity < 1) {severity = 1;}
+        severity = entre(severity,1,10);
         crimeHoldUp(severity,afterMission);
         if (playerInfos.penit >= 10) {
             crimeVol(severity,afterMission);

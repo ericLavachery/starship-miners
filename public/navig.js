@@ -86,7 +86,7 @@ function commandes() {
                     } else if (!inSoute) {
                         $('#commandz').append('<button type="button" title="Production (bâtiments & unités)" class="boutonOrange iconButtons" onclick="goProduction()"><i class="fas fa-cogs"></i></button>');
                     } else {
-                        $('#commandz').append('<button type="button" title="Production: Revenir sur la carte de la station" class="boutonGrey iconButtons gf" onclick="goStation()" onmousedown="clicSound(7)"><i class="fas fa-cogs"></i></button>');
+                        $('#commandz').append('<button type="button" title="Production: Revenir sur la carte de la station" class="boutonOrange iconButtons" onclick="prodFromSoute()" onmousedown="clicSound(7)"><i class="fas fa-cogs"></i></button>');
                     }
                 }
                 if (!isStartZone) {
@@ -95,7 +95,7 @@ function commandes() {
                     } else if (!inSoute) {
                         $('#commandz').append('<button type="button" title="Crafting" class="boutonOrange iconButtons" onclick="craftWindow(false)" onmousedown="clicSound(5)"><i class="fas fa-toolbox"></i></button>');
                     } else {
-                        $('#commandz').append('<button type="button" title="Crafting: Revenir sur la carte de la station" class="boutonGrey iconButtons gf" onclick="goStation()" onmousedown="clicSound(7)"><i class="fas fa-toolbox"></i></button>');
+                        $('#commandz').append('<button type="button" title="Crafting: Revenir sur la carte de la station" class="boutonOrange iconButtons" onclick="craftFromSoute()" onmousedown="clicSound(7)"><i class="fas fa-toolbox"></i></button>');
                     }
                 } else {
                     $('#commandz').append('<button type="button" title="Crafting: Impossible ici" class="boutonGrey iconButtons gf"><i class="fas fa-toolbox"></i></button>');

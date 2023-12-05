@@ -1424,6 +1424,27 @@ function batFullInfos(bat,batType) {
             allSkills = allSkills+'<span class="paramValue" title="Permet de repérer les aliens furtifs et invisibles (2 cases)">Pisteur</span>'+sepa;
         }
     }
+    let vuePlus = false;
+    if (!vuePlus) {
+        if (batType.weapon.rof >= 1) {
+            if ((batType.weapon.spot && playerInfos.comp.det >= 2) || batType.weapon.vue) {
+                vuePlus = true;
+                allSkills = allSkills+'<span class="paramValue" title="Peut voir les aliens furtifs (et les aliens invisibles lorsqu\'ils sont blessés)">Vue+</span>'+sepa;
+            }
+        }
+    }
+    if (!vuePlus) {
+        if (batType.weapon2.rof >= 1) {
+            if ((batType.weapon.spot && playerInfos.comp.det >= 2) || batType.weapon.vue) {
+                vuePlus = true;
+                if (batType.weapon2.kit) {
+                    allSkills = allSkills+'<span class="paramValue" title="Peut voir les aliens furtifs (et les aliens invisibles lorsqu\'ils sont blessés) (seulement avec le kit)">Vue+</span>'+sepa;
+                } else {
+                    allSkills = allSkills+'<span class="paramValue" title="Peut voir les aliens furtifs (et les aliens invisibles lorsqu\'ils sont blessés)">Vue+</span>'+sepa;
+                }
+            }
+        }
+    }
     if (batType.skills.includes('prefab')) {
         allSkills = allSkills+'<span class="paramValue" title="Ce bâtiment peut être démonté et remonté avec un lander ou un pusher">Préfabriqué</span>'+sepa;
     }

@@ -220,6 +220,12 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         if (batType.skills.includes('baddef') || batType.skills.includes('tirailleur')) {
             apCost = apCost+3;
         }
+        if (tile.infra != undefined) {
+            if (tile.infra === 'Palissades' || tile.infra === 'Remparts' || tile.infra === 'Murailles' || tile.infra === 'Miradors') {
+                apReq = Math.ceil(apReq/2);
+                apCost = Math.ceil(apCost/2);
+            }
+        }
         if (apReq < Math.round(bat.ap/2)) {
             apReq = Math.round(bat.ap/2);
         }
@@ -2873,9 +2879,9 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
         }
     }
-    if (playerInfos.onShip && inSoute) {
+    if (playerInfos.onShip) {
         // UPGRADE INFANTRY
-        if (batType.skills.includes('uprank') && !zeroCrew) {
+        if (batType.skills.includes('uprank') && !zeroCrew && inSoute) {
             let isInPlace = checkUprankPlace(bat,batType);
             let isXPok = checkUprankXP(bat,batType);
             let upBatType = getBatTypeByName(batType.unitUp);
@@ -2903,7 +2909,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         if (batType.skills.includes('upgrade') && !zeroCrew) {
             let isCharged = checkCharged(bat,'trans');
             apReq = 5;
-            if (bat.apLeft >= apReq && !nearby.oneTile && !isCharged && craftsOK) {
+            if (bat.apLeft >= apReq && !nearby.oneTile && !isCharged && craftsOK && inSoute) {
                 if (batType.bldUp.length === 1) {
                     $('#unitInfos').append('<button type="button" title="Transformer en '+batType.bldUp[0]+'" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false,`bld`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
                     lineBreak = true;
@@ -2911,6 +2917,9 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     $('#unitInfos').append('<button type="button" title="Transformer en '+batType.bldUp[0]+' ou '+batType.bldUp[1]+'" class="boutonGris iconButtons" onclick="bfconst(`buildings`,false,`bld`,false)"><i class="fas fa-recycle"></i> <span class="small">'+apReq+'</span></button>');
                     lineBreak = true;
                 }
+            } else if (!inSoute) {
+                $('#unitInfos').append('<button type="button" title="Transformer en '+batType.bldUp[0]+': Aller dans la soute" class="boutonGris iconButtons" onclick="goSoute()"><i class="fas fa-recycle"></i></button>');
+                lineBreak = true;
             } else {
                 if (nearby.oneTile) {
                     skillMessage = "Transformation: Ne peut pas se faire en mêlée";

@@ -3,6 +3,11 @@ function craftListSelect(selection) {
     craftWindow(false);
 };
 
+function craftFromSoute() {
+    goStation();
+    craftWindow(false);
+}
+
 function craftWindow(retour) {
     selectMode();
     batUnselect();
