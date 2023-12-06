@@ -1148,13 +1148,15 @@ function eggDropTile(eggName,theArea) {
         if (centerNeed <= 0) {
             if (theTile >= 0) {
                 shufBats.forEach(function(bat) {
-                    if (bat.loc === "zone") {
-                        let batType = getBatType(bat);
-                        if (batType.cat === 'buildings') {
-                            let distance = calcDistance(bat.tileId,theTile);
-                            if (distance < 5) {
-                                notThisTile = theTile;
-                                theTile = -1;
+                    if (theTile >= 0) {
+                        if (bat.loc === "zone") {
+                            let batType = getBatType(bat);
+                            if (batType.cat === 'buildings') {
+                                let distance = calcDistance(bat.tileId,theTile);
+                                if (distance < 5) {
+                                    notThisTile = theTile;
+                                    theTile = -1;
+                                }
                             }
                         }
                     }

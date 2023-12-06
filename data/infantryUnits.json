@@ -4032,7 +4032,7 @@
             "noFly":true,
             "noise":2,
             "rof":5,
-            "accuracy":12,
+            "accuracy":10,
             "power":13,
             "aoe":"squad",
             "sound":"tromblon_long",

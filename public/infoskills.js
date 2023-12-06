@@ -165,6 +165,12 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         if (bat.salvoLeft >= batType.maxSalvo && bat.tileId === bat.oldTileId) {
             apReq = apReq-2;
         }
+        if (tile.infra != undefined) {
+            if (tile.infra === 'Palissades' || tile.infra === 'Remparts' || tile.infra === 'Murailles' || tile.infra === 'Miradors') {
+                apReq = Math.ceil(apReq/2);
+                apCost = Math.ceil(apCost/2);
+            }
+        }
         if (apReq < 1) {
             apReq = 1;
         }
@@ -2395,6 +2401,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 oneOnly = 'trou';
             }
             apReq = getConstAPReq(bat,batType);
+            apReq = Math.ceil(apReq/2);
             let infra;
             let infraCostOK;
             let compReqOK;
@@ -2553,6 +2560,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 let infra = getInfraByName(tile.infra);
                 apCost = Math.round(Math.sqrt(batType.mecanoCost)*infra.fabTime/5.1);
                 apReq = getConstAPReq(bat,batType);
+                apReq = Math.ceil(apReq/2);
                 if (bat.apLeft >= apReq && !nearby.oneTile) {
                     $('#unitInfos').append('<button type="button" title="Démanteler '+tile.infra+'" class="boutonGris iconButtons" onclick="demolition('+apCost+')"><i class="far fa-trash-alt"></i> <span class="small">'+apCost+'</span></button>');
                     lineBreak = true;
