@@ -1240,6 +1240,11 @@ function pills() {
     if (pillsOK) {
         payCost(pillsCosts);
         selectedBat.tags.push('pills');
+        if (selectedBat.emo != undefined) {
+            if (selectedBat.emo >= 1) {
+                selectedBat.emo = selectedBat.emo-1;
+            }
+        }
         playSound(drug.sound,0);
         selectedBatArrayUpdate();
         goSoute();

@@ -300,6 +300,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.statMu === undefined) {
         playerInfos.statMu = true;
     }
+    if (playerInfos.packs === undefined) {
+        playerInfos.packs = [];
+    }
     let doom = getDoom(true);
     if (playerInfos.sondeDanger < doom) {
         playerInfos.sondeDanger = doom;

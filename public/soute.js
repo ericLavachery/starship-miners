@@ -698,7 +698,7 @@ function batListElement(bat,batType,idOfLander) {
             $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-wrench"></i></span>');
         }
         if (bat.emo >= 11) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+bat.emo+'</span>');
             if (!bat.tags.includes('pills')) {
                 if (bat.emo >= 16) {
                     $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-pills"></i></span>');
@@ -707,13 +707,13 @@ function batListElement(bat,batType,idOfLander) {
                 }
             }
         } else if (bat.emo >= 1) {
-            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i> '+bat.emo+'</span>');
         }
     } else if (batType.skills.includes('clone')) {
         if (bat.tags.includes('necro')) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+bat.emo+'</span>');
         } else if (bat.emo >= 11) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+bat.emo+'</span>');
             if (!bat.tags.includes('pills')) {
                 if (bat.emo >= 16) {
                     $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-pills"></i></span>');
@@ -722,7 +722,7 @@ function batListElement(bat,batType,idOfLander) {
                 }
             }
         } else if (bat.emo >= 1) {
-            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i> '+bat.emo+'</span>');
         }
         if (effSoins < 50) {
             $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-skull-crossbones"></i></span>');
@@ -732,8 +732,12 @@ function batListElement(bat,batType,idOfLander) {
             $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="far fa-heart"></i></span>');
         }
     } else {
+        let bedTime = bat.emo;
+        if (bat.soins > bat.emo) {
+            bedTime = bat.soins;
+        }
         if (bat.soins >= 11 || bat.emo >= 11 || bat.tags.includes('necro')) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+bedTime+'</span>');
             if (!bat.tags.includes('pills') && bat.emo >= 11) {
                 if (bat.emo >= 16) {
                     $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-pills"></i></span>');
@@ -742,7 +746,7 @@ function batListElement(bat,batType,idOfLander) {
                 }
             }
         } else if (bat.soins >= 1 || bat.emo >= 1) {
-            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i> '+bedTime+'</span>');
         }
     }
     $('#be'+bat.id).append('<br>');

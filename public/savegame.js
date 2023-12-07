@@ -333,6 +333,7 @@ function newGame() {
     playerInfos.resFlags = [];
     playerInfos.deadBats = [];
     playerInfos.notes = [];
+    playerInfos.packs = [];
     playerInfos.sciRech = 0;
     playerInfos.sci = 0;
     playerInfos.enc = 65;
@@ -488,6 +489,7 @@ function resetPlayerInfos() {
     playerInfos.myCenter = 1830;
     playerInfos.undarkOnce = [];
     playerInfos.bldList = [];
+    playerInfos.packs = [];
 };
 
 function showMapReset() {

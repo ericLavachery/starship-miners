@@ -189,7 +189,7 @@ function refabInfos(myBat,myBatUnitType) {
         let landerBat = findTheLander(true);
         let sortedBats = bataillons.slice();
         sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'id'),'type'),'army');
-        sortedBats.reverse();
+        // sortedBats.reverse();
         sortedBats.forEach(function(bat) {
             if (bat.loc === "trans") {
                 batType = getBatType(bat);

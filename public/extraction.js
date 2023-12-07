@@ -738,11 +738,6 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
                     multiExtractAdj = 1-((bat.extracted.length-1)/12);
                 }
             }
-            // if (bat.extracted.length >= 2) {
-            //     multiExtractAdj = 1-((bat.extracted.length-1)/12);
-            // } else if (batType.mining.multi) {
-            //     multiExtractAdj = 1.33;
-            // }
         }
         let maxAdjBonus = extComp/33;
         if (miningLevel >= 4) {
@@ -889,6 +884,9 @@ function resSelect(resId) {
         }
     } else {
         let singleNum = 1;
+        if (selectedBatType.cat != 'infantry') {
+            singleNum++;
+        }
         if (playerInfos.comp.ext >= 2) {
             singleNum = singleNum+playerInfos.comp.ext-1;
         }

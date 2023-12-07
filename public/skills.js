@@ -1687,7 +1687,7 @@ function checkAmmoPack(ammoName,bat,batType,conv) {
     return ammoOK;
 };
 
-function useAmmoPack(ammoName,conv) {
+function useAmmoPack(tileId,ammoName,conv) {
     let ammoOK = false;
     let theWeapon = selectedBatType.weapon;
     let hasW1 = checkHasWeapon(1,selectedBatType,selectedBat.eq);
@@ -1753,8 +1753,9 @@ function useAmmoPack(ammoName,conv) {
     if (ammoOK) {
         selectedBat.apLeft = selectedBat.apLeft-1;
         reloadSound(theWeapon);
-        let tile = getTile(selectedBat);
-        delete tile.ap;
+        let tile = getTileById(tileId);
+        // delete tile.ap;
+        packOut(tile);
     }
     doneAction(selectedBat);
     selectedBatArrayUpdate();
@@ -1785,7 +1786,7 @@ function checkEquipPack(equipName,bat,batType) {
     return equipOK;
 };
 
-function useEquipPack(equipName) {
+function useEquipPack(tileId,equipName) {
     let equipOK = false;
     if (selectedBatType.equip.includes(equipName)) {
         equipOK = true;
@@ -1825,8 +1826,9 @@ function useEquipPack(equipName) {
     if (equipOK) {
         selectedBat.apLeft = selectedBat.apLeft-3;
         playSound('changing',0,true);
-        let tile = getTile(selectedBat);
-        delete tile.ap;
+        let tile = getTileById(tileId);
+        // delete tile.ap;
+        packOut(tile);
     }
     doneAction(selectedBat);
     selectedBatArrayUpdate();
@@ -1842,7 +1844,7 @@ function checkArmorPack(armorName,bat,batType) {
     return armorOK;
 };
 
-function useArmorPack(armorName) {
+function useArmorPack(tileId,armorName) {
     let armorOK = false;
     if (selectedBatType.protection.includes(armorName)) {
         armorOK = true;
@@ -1860,8 +1862,9 @@ function useArmorPack(armorName) {
     if (armorOK) {
         selectedBat.apLeft = selectedBat.apLeft-3;
         playSound('changing',0,true);
-        let tile = getTile(selectedBat);
-        delete tile.ap;
+        let tile = getTileById(tileId);
+        // delete tile.ap;
+        packOut(tile);
     }
     doneAction(selectedBat);
     selectedBatArrayUpdate();
@@ -1906,7 +1909,7 @@ function checkDrugPack(drugName,bat,batType) {
     return drugOK;
 };
 
-function useDrugPack(drugName,apCost) {
+function useDrugPack(tileId,drugName,apCost) {
     let drug = getEquipByName(drugName);
     let drugOK = checkDrugPack(drugName,selectedBat,selectedBatType);
     if (drugOK) {
@@ -1923,14 +1926,107 @@ function useDrugPack(drugName,apCost) {
         drugInstantBonus(drug,true);
         playSound(drug.sound,0);
         selectedBat.apLeft = selectedBat.apLeft-apCost;
-        let tile = getTile(selectedBat);
-        delete tile.ap;
+        let tile = getTileById(tileId);
+        // delete tile.ap;
+        packOut(tile);
     }
     doneAction(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
     showMap(zone,true);
 };
+
+function packOut(tile) {
+    const index = playerInfos.packs.indexOf(tile.id);
+    if (index > -1) {
+        playerInfos.packs.splice(index,1);
+    }
+    delete tile.ap;
+}
+
+function allPacks(bat,batType) {
+    if (playerInfos.packs != undefined) {
+        if (playerInfos.packs.length >= 1) {
+            playerInfos.packs.forEach(function(packTileId) {
+                let tile = getTileById(packTileId);
+                if (tile.ap != undefined) {
+                    if (!tile.ap.includes('prt_') && !tile.ap.includes('eq_') && !tile.ap.includes('drg_')) {
+                        let ammoOK = checkAmmoPack(tile.ap,bat,batType,true);
+                        if (ammoOK) {
+                            apCost = 1;
+                            apReq = 0;
+                            let tileAmmoPackName = tile.ap;
+                            if (tileAmmoPackName === 'molotov-slime' && batType.skills.includes('fireballs')) {
+                                tileAmmoPackName = 'fireslime';
+                            } else if (tileAmmoPackName === 'molotov-pyrus' && batType.skills.includes('fireballs')) {
+                                tileAmmoPackName = 'firebug';
+                            } else if (tileAmmoPackName === 'molotov-pyratol' && batType.skills.includes('fireballs')) {
+                                tileAmmoPackName = 'fireblast';
+                            }
+                            let ammo = getAmmoByName(tileAmmoPackName);
+                            let ammoInfo = showAmmoInfo(ammo.name,false,false);
+                            $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tileAmmoPackName+' / '+ammoInfo+')" class="boutonOrange iconButtons" onclick="useAmmoPack('+tile.id+',`'+tile.ap+'`,true)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
+                        }
+                    }
+                    if (tile.ap.includes('prt_')) {
+                        let armorName = tile.ap.replace('prt_','');
+                        let armorOK = checkArmorPack(armorName,bat,batType);
+                        let forBld = false;
+                        if (batType.cat === 'buildings' || batType.cat === 'devices') {
+                            forBld = true;
+                        }
+                        if (armorOK) {
+                            apCost = 3;
+                            apReq = 0;
+                            let armor = getEquipByName(armorName);
+                            let armorInfo = showFullArmorInfo(armor,forBld,false,false,true,batType);
+                            $('#unitInfos').append('<button type="button" title="Enfiler les armures ('+armorName+' / '+armorInfo+')" class="boutonOrange iconButtons" onclick="useArmorPack('+tile.id+',`'+armorName+'`)"><i class="ra ra-vest rpg"></i> <span class="small">'+apCost+'</span></button>');
+                        }
+                    }
+                    if (tile.ap.includes('eq_')) {
+                        let equipName = tile.ap.replace('eq_','');
+                        let equipackOK = checkEquipPack(equipName,bat,batType);
+                        if (equipackOK) {
+                            apCost = 3;
+                            apReq = 0;
+                            let equip = getEquipByName(equipName);
+                            let oldEquip = getEquipByName(bat.eq);
+                            $('#unitInfos').append('<button type="button" title="Utiliser les équipements ('+equipName+' / '+equip.info+') &mdash; Se débarasser de ('+bat.eq+' / '+oldEquip.info+')" class="boutonOrange iconButtons" onclick="useEquipPack('+tile.id+',`'+equipName+'`)"><i class="fas fa-compass"></i> <span class="small">'+apCost+'</span></button>');
+                        }
+                    }
+                    if (tile.ap.includes('drg_')) {
+                        let drugName = tile.ap.replace('drg_','');
+                        let drugOK = checkDrugPack(drugName,bat,batType);
+                        if (drugOK) {
+                            let drug = getEquipByName(drugName);
+                            apCost = drug.apCost;
+                            apReq = 0;
+                            if (drugName === 'meca') {
+                                baseskillCost = calcBaseSkillCost(bat,batType,'mecano',false);
+                                apCost = calcAdjSkillCost(1,baseskillCost,batType,bat,false);
+                                apCost = Math.ceil(apCost/1.5);
+                                apReq = Math.ceil(apCost/2);
+                            }
+                            if (drug.units === 'veh') {
+                                let usure = 0;
+                                if (bat.soins != undefined) {
+                                    usure = bat.soins;
+                                }
+                                if (drug.name != 'meca' || bat.squadsLeft < batType.squads || bat.damage >= 30 || usure >= 11) {
+                                    $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonOrange iconButtons" onclick="useDrugPack('+tile.id+',`'+drugName+'`,'+apCost+')"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                                } else {
+                                    $('#unitInfos').append('<button type="button" title="('+drugName+' / '+drug.info+')" class="boutonOrange iconButtons gf"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                                }
+                            } else {
+                                $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonOrange iconButtons" onclick="useDrugPack('+tile.id+',`'+drugName+'`,'+apCost+')"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+}
 
 function fogEffect(myBat) {
     let fogPoison = 1;

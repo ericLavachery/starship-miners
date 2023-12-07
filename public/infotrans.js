@@ -81,98 +81,112 @@ function unloadInfos(myBat,myBatUnitType) {
             let apCost = 0;
             let sortedBats = bataillons.slice();
             sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'id'),'type'),'army');
-            sortedBats.reverse();
+            // sortedBats.reverse();
             sortedBats.forEach(function(bat) {
                 if (bat.loc === "trans" && bat.locId == myBat.id) {
-                    batType = getBatType(bat);
-                    let damageIcon = '';
-                    let squadLoss = false;
-                    if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
-                        if (bat.squadsLeft < Math.ceil(bat.citoyens/6)) {
-                            damageIcon = '<i class="ra ra-bleeding-hearts blor"></i>';
-                            squadLoss = true;
-                        }
-                    } else {
-                        if (bat.squadsLeft < batType.squads) {
-                            damageIcon = '<i class="ra ra-bleeding-hearts blor"></i>';
-                            squadLoss = true;
-                        }
+                    let batType = getBatType(bat);
+                    if (batType.cat != 'buildings' && batType.cat != 'devices') {
+                        unloadBatInfos(myBat,myBatUnitType,bat,batType,apCost);
                     }
-                    if (!squadLoss && bat.damage >= 1) {
-                        damageIcon = '<i class="ra ra-bleeding-hearts"></i>';
-                    }
-                    let poisonIcon = '';
-                    if (bat.tags.includes('parasite') || bat.tags.includes('venin') || bat.tags.includes('poison') || bat.tags.includes('vomissure')) {
-                        poisonIcon = '<i class="fas fa-skull-crossbones"></i>';
-                    }
-                    let maladieIcon = '';
-                    if (bat.tags.includes('maladie') || bat.tags.includes('necro') || bat.tags.includes('vomi')) {
-                        maladieIcon = '<i class="fas fa-thermometer"></i>';
-                    }
-                    let drugIcon = '';
-                    if (bat.tags.includes('blaze')) {
-                        drugIcon = '<i class="ra ra-lightning-bolt"></i>';
-                    }
-                    let moreInfos = '';
-                    if (bat.chief != undefined) {
-                        if (bat.chief != '') {
-                            moreInfos = moreInfos+bat.chief+' ';
-                        }
-                    }
-                    let armyNum = '';
-                    if (bat.army != undefined) {
-                        if (bat.army >= 1) {
-                            armyNum = ' <span class="report gff">(a<span class="jaune">'+bat.army+'</span>)</span>';
-                        }
-                    }
-                    let myAmmo1 = showAmmo(bat.ammo,true);
-                    moreInfos = moreInfos+'('+myAmmo1+'&middot;';
-                    let myAmmo2 = showAmmo(bat.ammo2,true);
-                    moreInfos = moreInfos+myAmmo2+')';
-                    balise = 'h4';
-                    if (Object.keys(batDebarq).length >= 1) {
-                        if (batDebarq.id === bat.id) {
-                            balise = 'h3';
-                        }
-                    }
-                    let batPic = getBatPic(bat,batType);
-                    batAPLeft = Math.floor(bat.apLeft);
-                    let butCol = 'boutonMarine';
-                    if (batAPLeft < 1) {
-                        butCol = 'boutonGrey gf';
-                    } else if (batAPLeft < 7) {
-                        butCol = 'boutonGris';
-                    }
-                    let ready = true;
-                    if (batType.skills.includes('prefab') && bat.apLeft <= 0) {
-                        ready = false;
-                    }
-                    let mayOut = checkMayOut(batType,true,bat);
-                    let batPrintName = getUnitPrintName(batType,true);
-                    if (!playerInfos.onShip && playerInfos.mapTurn < 1) {
-                        let isPara = isUnitPara(batType);
-                        if (isPara && playerInfos.para >= 1 && myBatUnitType.skills.includes('transorbital') && !myBatUnitType.skills.includes('rescue')) {
-                            let paraDistance = calcParaDist();
-                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Parachuter '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA '+moreInfos+' ('+paraDistance+' cases)" class="'+butCol+' iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-parachute-box"></i> <span class="small">'+apCost+'</span></button> <img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="32" class="dunit" onclick="batDetail('+bat.id+')" title="Détail du bataillon">&nbsp; '+batPrintName+armyNum+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
-                        } else {
-                            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer avant le tour 1" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batPrintName+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
-                        }
-                    } else if (myBatUnitType.skills.includes('transorbital') && !myBat.tags.includes('nomove') && !myBat.tags.includes('nopilots') && (batType.id === 126 || batType.id === 225)) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer des citoyens d\'un vaisseau" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batPrintName+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
-                    } else if (bat.tags.includes('nomove') && myBat.tags.includes('nomove')) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer ce bataillon car vous ne le contrôlez pas" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batPrintName+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
-                    } else if (!mayOut) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer ce bataillon sur cette planète" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batPrintName+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
-                    } else if (!ready) {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas reconstruire un bâtiment qui n\'a plus de PA" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batPrintName+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
-                    } else {
-                        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA '+moreInfos+'" class="'+butCol+' iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button> <img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="32" class="dunit" onclick="batDetail('+bat.id+')" title="Détail du bataillon">&nbsp; '+batPrintName+armyNum+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+                }
+            });
+            sortedBats.forEach(function(bat) {
+                if (bat.loc === "trans" && bat.locId == myBat.id) {
+                    let batType = getBatType(bat);
+                    if (batType.cat === 'buildings' || batType.cat === 'devices') {
+                        unloadBatInfos(myBat,myBatUnitType,bat,batType,apCost);
                     }
                 }
             });
         }
     }
 };
+
+function unloadBatInfos(myBat,myBatUnitType,bat,batType,apCost) {
+    let damageIcon = '';
+    let squadLoss = false;
+    if (batType.name === 'Citoyens' || batType.name === 'Criminels') {
+        if (bat.squadsLeft < Math.ceil(bat.citoyens/6)) {
+            damageIcon = '<i class="ra ra-bleeding-hearts blor"></i>';
+            squadLoss = true;
+        }
+    } else {
+        if (bat.squadsLeft < batType.squads) {
+            damageIcon = '<i class="ra ra-bleeding-hearts blor"></i>';
+            squadLoss = true;
+        }
+    }
+    if (!squadLoss && bat.damage >= 1) {
+        damageIcon = '<i class="ra ra-bleeding-hearts"></i>';
+    }
+    let poisonIcon = '';
+    if (bat.tags.includes('parasite') || bat.tags.includes('venin') || bat.tags.includes('poison') || bat.tags.includes('vomissure')) {
+        poisonIcon = '<i class="fas fa-skull-crossbones"></i>';
+    }
+    let maladieIcon = '';
+    if (bat.tags.includes('maladie') || bat.tags.includes('necro') || bat.tags.includes('vomi')) {
+        maladieIcon = '<i class="fas fa-thermometer"></i>';
+    }
+    let drugIcon = '';
+    if (bat.tags.includes('blaze')) {
+        drugIcon = '<i class="ra ra-lightning-bolt"></i>';
+    }
+    let moreInfos = '';
+    if (bat.chief != undefined) {
+        if (bat.chief != '') {
+            moreInfos = moreInfos+bat.chief+' ';
+        }
+    }
+    let armyNum = '';
+    if (bat.army != undefined) {
+        if (bat.army >= 1) {
+            armyNum = ' <span class="report gff">(a<span class="jaune">'+bat.army+'</span>)</span>';
+        }
+    }
+    let myAmmo1 = showAmmo(bat.ammo,true);
+    moreInfos = moreInfos+'('+myAmmo1+'&middot;';
+    let myAmmo2 = showAmmo(bat.ammo2,true);
+    moreInfos = moreInfos+myAmmo2+')';
+    balise = 'h4';
+    if (Object.keys(batDebarq).length >= 1) {
+        if (batDebarq.id === bat.id) {
+            balise = 'h3';
+        }
+    }
+    let batPic = getBatPic(bat,batType);
+    batAPLeft = Math.floor(bat.apLeft);
+    let butCol = 'boutonMarine';
+    if (batAPLeft < 1) {
+        butCol = 'boutonGrey gf';
+    } else if (batAPLeft < 7) {
+        butCol = 'boutonGris';
+    }
+    let ready = true;
+    if (batType.skills.includes('prefab') && bat.apLeft <= 0) {
+        ready = false;
+    }
+    let mayOut = checkMayOut(batType,true,bat);
+    let batPrintName = getUnitPrintName(batType,true);
+    if (!playerInfos.onShip && playerInfos.mapTurn < 1) {
+        let isPara = isUnitPara(batType);
+        if (isPara && playerInfos.para >= 1 && myBatUnitType.skills.includes('transorbital') && !myBatUnitType.skills.includes('rescue')) {
+            let paraDistance = calcParaDist();
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Parachuter '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA '+moreInfos+' ('+paraDistance+' cases)" class="'+butCol+' iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-parachute-box"></i> <span class="small">'+apCost+'</span></button> <img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="32" class="dunit" onclick="batDetail('+bat.id+')" title="Détail du bataillon">&nbsp; '+batPrintName+armyNum+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+        } else {
+            $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer avant le tour 1" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batPrintName+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+        }
+    } else if (myBatUnitType.skills.includes('transorbital') && !myBat.tags.includes('nomove') && !myBat.tags.includes('nopilots') && (batType.id === 126 || batType.id === 225)) {
+        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer des citoyens d\'un vaisseau" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batPrintName+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+    } else if (bat.tags.includes('nomove') && myBat.tags.includes('nomove')) {
+        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer ce bataillon car vous ne le contrôlez pas" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batPrintName+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+    } else if (!mayOut) {
+        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas débarquer ce bataillon sur cette planète" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batPrintName+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+    } else if (!ready) {
+        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Vous ne pouvez pas reconstruire un bâtiment qui n\'a plus de PA" class="boutonGrey iconButtons gf"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button><button type="button" title="Détail du bataillon" class="boutonGris iconButtons" onclick="batDetail('+bat.id+')"><i class="fas fa-info-circle"></i></button>&nbsp; '+batPrintName+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+    } else {
+        $('#unitInfos').append('<span class="blockTitle"><'+balise+'><button type="button" title="Débarquer '+batType.name+' ('+bat.squadsLeft+'/'+batType.squads+') '+batAPLeft+' PA '+moreInfos+'" class="'+butCol+' iconButtons" onclick="debarquement('+bat.id+')"><i class="fas fa-truck"></i> <span class="small">'+apCost+'</span></button> <img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="32" class="dunit" onclick="batDetail('+bat.id+')" title="Détail du bataillon">&nbsp; '+batPrintName+armyNum+damageIcon+maladieIcon+poisonIcon+drugIcon+'</'+balise+'></span>');
+    }
+}
 
 function unloadInLander() {
     let landerId = -1;
