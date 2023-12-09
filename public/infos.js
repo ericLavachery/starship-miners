@@ -693,7 +693,7 @@ function batInfos(bat,batType,pop) {
     if (pop) {
         $('#'+bodyPlace).append('<span class="paramName">Taille</span><span class="paramIcon"></span><span class="paramValue">'+batType.size+'</span><br>');
         if (batType.skills.includes('prefab')) {
-            if (batType.fabTime < 35) {
+            if (batType.fabTime < 35 || batType.skills.includes('infconst')) {
                 $('#'+bodyPlace).append('<span class="paramName" title="Construction et déconstruction">Construction</span><span class="paramIcon"></span><span class="paramValue" title="Avec les véhicules et les infanteries">Sapeurs</span><br>');
             } else {
                 $('#'+bodyPlace).append('<span class="paramName" title="Construction et déconstruction">Construction</span><span class="paramIcon"></span><span class="paramValue" title="Uniquement avec les véhicules">Pushers</span><br>');

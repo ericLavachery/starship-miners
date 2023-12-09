@@ -80,8 +80,10 @@ function unloadInfos(myBat,myBatUnitType) {
             }
             let apCost = 0;
             let sortedBats = bataillons.slice();
-            sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'id'),'type'),'army');
-            // sortedBats.reverse();
+            sortedBats = _.sortBy(_.sortBy(sortedBats,'id'),'type');
+            sortedBats.reverse();
+            sortedBats = _.sortBy(sortedBats,'army');
+            sortedBats.reverse();
             sortedBats.forEach(function(bat) {
                 if (bat.loc === "trans" && bat.locId == myBat.id) {
                     let batType = getBatType(bat);

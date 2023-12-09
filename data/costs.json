@@ -2395,7 +2395,7 @@
         "compHardReq":{"cam":1,"exo":1,"ca":3},
         "costs":{"Fer":90,"Carbone":135,"Aluminium":162,"Titane":135,"Tungstène":72,"Silicium":36,"Cuivre":72,"Electros":90,"Batteries":90,"Compo2":132,"Potassium":180,"Végétaux":180,"Spins":10},
         "deploy":{"Energie":45,"Potassium":90,"Végétaux":90,"Titane":45},
-        "fabTime":45,
+        "fabTime":75,
         "info":"Ce dispositif crée un brouillard qui limite les tirs à 1 case (pour vos bataillons et les aliens). Vos bataillons ne dépassant pas une certaine taille peuvent devenir furtifs."
     },
     {
@@ -2542,7 +2542,7 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":8,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
-        "fabTime":30,
+        "fabTime":100,
         "slots":0
     },
     {
@@ -2552,7 +2552,7 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":8,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":96,"Scrap":192,"Fer":192,"Bois":192,"Aluminium":96,"Carbone":96,"Titane":48,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":200,"Zinc":16,"Silicium":64},
-        "fabTime":30,
+        "fabTime":100,
         "slots":0
     },
     {
@@ -2562,7 +2562,7 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":8,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Fer":84,"Carbone":126,"Aluminium":84,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
-        "fabTime":30,
+        "fabTime":100,
         "slots":0
     },
     {
@@ -2572,7 +2572,7 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":8,"tiradores":99,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":96,"Scrap":192,"Fer":144,"Carbone":48,"Bois":48,"Tungstène":24,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":100,"Zinc":30,"Silicium":30},
-        "fabTime":30,
+        "fabTime":100,
         "slots":0
     },
     {
@@ -2582,7 +2582,7 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":8,"detruas":99,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":90,"Scrap":180,"Fer":90,"Carbone":135,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
-        "fabTime":30,
+        "fabTime":100,
         "slots":0
     },
     {
@@ -2592,7 +2592,7 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":8,"brasier":99},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":168,"Fer":126,"Carbone":42,"Bois":42,"Tungstène":21,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
-        "fabTime":30,
+        "fabTime":100,
         "slots":0
     },
     {
@@ -2602,7 +2602,7 @@
         "bldEquiv":["Caserne"],
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":8},
         "costs":{"Compo1":190,"Compo2":60,"Eau":84,"Scrap":84,"Aluminium":42,"Carbone":84,"Titane":42,"Drogues":10,"Tissus":10,"Chlore":10,"Végétaux":50,"Zinc":10,"Silicium":10},
-        "fabTime":30,
+        "fabTime":100,
         "slots":0
     },
     {
@@ -2627,7 +2627,7 @@
         "name":"Atmopompe",
         "upkeep":{"Energie":4},
         "costs":{"Compo1":200,"Eau":18,"Hélium":300,"Carbone":75,"Fer":75,"Titane":35,"Moteurs":10,"Cuivre":25,"Electros":35,"Batteries":10},
-        "fabTime":35,
+        "fabTime":30,
         "info":"Récupère les gaz dans l'atmosphère. La production de ce bâtiment dépend donc de la composition de l'atmosphère de la planète sur laquelle il est déployé.",
         "slots":0
     },

@@ -1405,7 +1405,7 @@ function iCanProdThis(prodUnit,unit,catz) {
         if (catz.includes(unit.cat)) {
             if (prodUnit.cat === 'infantry' && unit.skills.includes('nosap')) {
                 prodThis = false;
-            } else if (prodUnit.cat === 'infantry' && unit.fabTime >= 35 && !unit.skills.includes('clicput')) {
+            } else if (prodUnit.cat === 'infantry' && unit.fabTime >= 35 && !unit.skills.includes('clicput') && !unit.skills.includes('infconst')) {
                 prodThis = false;
             } else if (prodUnit.skills.includes('constructeur')) {
                 prodThis = true;

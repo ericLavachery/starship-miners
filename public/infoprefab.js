@@ -18,7 +18,7 @@ function defabInfos(bat,batType) {
             let apCost = prefabCost(batType,prefabBatType,false);
             let depliOK = true;
             if (selectedBatType.cat === 'infantry') {
-                if (prefabBatType.fabTime >= 35 && !prefabBatType.skills.includes('clicput')) {
+                if (prefabBatType.fabTime >= 35 && !prefabBatType.skills.includes('clicput') && !prefabBatType.skills.includes('infconst')) {
                     depliOK = false;
                 }
             }
@@ -196,7 +196,7 @@ function refabInfos(myBat,myBatUnitType) {
                 if (batType.skills.includes('prefab')) {
                     let depliOK = true;
                     if (myBatUnitType.cat === 'infantry') {
-                        if (batType.fabTime >= 35 && !batType.skills.includes('clicput')) {
+                        if (batType.fabTime >= 35 && !batType.skills.includes('clicput') && !batType.skills.includes('infconst')) {
                             depliOK = false;
                         }
                     }

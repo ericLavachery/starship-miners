@@ -2454,7 +2454,7 @@
         "weapon2":{
             "name":"Mortier léger",
             "cost":7,
-            "range":3,
+            "range":4,
             "elevation":1,
             "noMelee":true,
             "noFly":true,
