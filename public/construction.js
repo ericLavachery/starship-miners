@@ -2592,7 +2592,7 @@ function putRoad(apCost,quiet) {
     tagDelete(selectedBat,'guet');
     doneAction(selectedBat);
     camoOut();
-    if (selectedBatType.skills.includes('infrahelp') || hasEquip(selectedBat,['e-infra'])) {
+    if (selectedBatType.skills.includes('infrahelp') || selectedBatType.skills.includes('roadhelp') || hasEquip(selectedBat,['e-infra'])) {
         selectedBat.apLeft = selectedBat.apLeft-apCost;
         putRoadsAround();
     } else {

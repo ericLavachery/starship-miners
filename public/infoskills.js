@@ -949,17 +949,23 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     }
     // DEPRESSION
     if (playerInfos.onShip && !zeroCrew) {
-        if (bat.emo >= 5 && !bat.tags.includes('pills')) {
+        if (bat.emo >= 5) {
             let drug = getDrugByName('pills');
             let pillsCosts = getPillsCosts();
             let pillsOK = checkCost(pillsCosts);
-            if (pillsOK) {
+            if (pillsOK && !bat.tags.includes('pills')) {
                 $('#unitInfos').append('<button type="button" title="'+drug.info+' '+displayCosts(pillsCosts)+'" class="boutonVert iconButtons" onclick="pills()"><i class="'+drug.icon+'"></i> <span class="small">0</span></button>');
                 lineBreak = true;
             } else {
-                skillMessage = 'Traitement: Ressources insuffisantes '+displayCosts(pillsCosts);
-                $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="'+drug.icon+'"></i> <span class="small">0</span></button>');
-                lineBreak = true;
+                if (bat.tags.includes('pills')) {
+                    skillMessage = 'Déjà sous anti-dépresseurs';
+                    $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonOK iconButtons cy"><i class="'+drug.icon+'"></i> <span class="small">0</span></button>');
+                    lineBreak = true;
+                } else {
+                    skillMessage = 'Traitement: Ressources insuffisantes '+displayCosts(pillsCosts);
+                    $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="'+drug.icon+'"></i> <span class="small">0</span></button>');
+                    lineBreak = true;
+                }
             }
         }
     }
@@ -2312,7 +2318,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     // ROUTES / PONTS
     if ((batType.skills.includes('routes') || hasEquip(bat,['e-road'])) && !playerInfos.onShip && !zeroCrew) {
         let roadsOK = true;
-        if (batType.skills.includes('infrahelp') || hasEquip(bat,['e-infra'])) {
+        if (batType.skills.includes('infrahelp') || batType.skills.includes('roadhelp') || hasEquip(bat,['e-infra'])) {
             roadsOK = checkRoadsAround(bat);
         }
         if (!tile.rd || !roadsOK) {

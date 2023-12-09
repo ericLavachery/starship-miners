@@ -1091,6 +1091,10 @@ function drugInstantBonus(drug,fromPack) {
             selectedBat.squadsLeft = selectedBat.squadsLeft+1;
         }
         tagDelete(selectedBat,'trou');
+        if (selectedBat.soins != undefined) {
+            let deepMeca = Math.ceil((playerInfos.comp.trans+1)/4*selectedBat.soins);
+            selectedBat.soins = selectedBat.soins-deepMeca;
+        }
         selectedBat.soins = 0;
         console.log('repair kit bonus');
     }

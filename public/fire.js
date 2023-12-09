@@ -1320,7 +1320,7 @@ function attack(melee,init) {
         if (selectedWeap.ammo.includes('flashbang') || selectedWeap.ammo === 'molotov-flash' || selectedWeap.ammo === 'ram-low') {
             apDamage = Math.round(apDamage/1.25);
         } else {
-            apDamage = Math.round(apDamage/5);
+            apDamage = Math.round(apDamage/Math.sqrt(targetBatType.size+8)*1.5);
         }
     } else if (targetBatType.skills.includes('fullaploss') && selectedWeap.ammo.includes('web')) {
         apDamage = Math.ceil(apDamage*3);
@@ -2354,7 +2354,7 @@ function defense(melee,init) {
         if (targetWeap.ammo.includes('flashbang') || targetWeap.ammo === 'molotov-flash' || targetWeap.ammo === 'ram-low') {
             apDamage = Math.round(apDamage/1.25);
         } else {
-            apDamage = Math.round(apDamage/5);
+            apDamage = Math.round(apDamage/Math.sqrt(selectedBatType.size+8)*1.5);
         }
     } else if (selectedBatType.skills.includes('fullaploss') && targetWeap.ammo.includes('web')) {
         apDamage = Math.ceil(apDamage*5);

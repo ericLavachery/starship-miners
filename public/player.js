@@ -958,13 +958,15 @@ function playerSkillsUTChanges() {
             }
         }
         // INDUSTRIE
-        if (playerInfos.comp.ind >= 1 && unit.cat === 'vehicles') {
-            if (unit.skills.includes('robot')) {
-                unit.hp = unit.hp+Math.round(unit.hp/5*playerInfos.comp.ind);
-            } else {
-                unit.hp = unit.hp+Math.round(unit.hp/15*playerInfos.comp.ind);
+        if (playerInfos.comp.ind >= 1) {
+            if (unit.cat === 'vehicles' || unit.skills.includes('machine')) {
+                if (unit.skills.includes('robot') || unit.skills.includes('machine')) {
+                    unit.hp = unit.hp+Math.round(unit.hp/5*playerInfos.comp.ind);
+                } else {
+                    unit.hp = unit.hp+Math.round(unit.hp/15*playerInfos.comp.ind);
+                }
+                unit.fabTime = unit.fabTime/(playerInfos.comp.ind+3)*3;
             }
-            unit.fabTime = unit.fabTime/(playerInfos.comp.ind+3)*3;
         }
         // DEFENSE
         let defComp = playerInfos.comp.def-1;

@@ -2831,10 +2831,12 @@ function weaponAdj(weapon,bat,wn) {
     // Elevation
     let infra = '';
     if (batType.cat != 'aliens') {
-        if (!batType.skills.includes('machine')) {
+        if (tile.infra != undefined) {
             if (batType.cat != 'vehicles' || batType.skills.includes('robot') || batType.skills.includes('cyber')) {
-                if (tile.infra != undefined && tile.infra != 'Débris' && tile.infra != 'Terriers') {
-                    infra = tile.infra;
+                if (tile.infra != 'Débris' && tile.infra != 'Terriers') {
+                    if (!batType.skills.includes('machine') || tile.infra === 'Remparts' || tile.infra === 'Muraillles') {
+                        infra = tile.infra;
+                    }
                 }
             }
         }
