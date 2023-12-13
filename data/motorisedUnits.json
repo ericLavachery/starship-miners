@@ -65,7 +65,7 @@
             "subTypes":["Pompe"]
         },
         "transRes":150,
-        "maxSkill":8,
+        "maxSkill":12,
         "fuzz":1.5,
         "deathFx":"planeexploair1",
         "mvSnd":"tractor"

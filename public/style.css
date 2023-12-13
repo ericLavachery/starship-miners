@@ -490,8 +490,10 @@ hr.craft {
     margin-top: -3px;
     z-index: -5;
 }
+/* GRYD */
 .cloudz {
     opacity: 0.5;
+    /* opacity: 1; */
 }
 .webz {
     position: absolute;

@@ -141,7 +141,10 @@ function mapEffect() {
         if (!playerInfos.clouds) {
             // $('#zone_effect').append('<span onmouseover="mapEffectOut()"><img src="/static/img/cloudz1.png"></span>');
         } else {
+            // GRYD
             $('#zone_effect').append('<span class="cloudz"><img src="/static/img/cloudz1.png"></span>');
+            // $('#zone_effect').append('<span class="cloudz"><img src="/static/img/grid.png"></span>');
+            // $('#zone_effect').append('<span class="cloudz"><img src="/static/img/dirtyGrid1.png"></span>');
         }
     }
 };

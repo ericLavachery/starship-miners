@@ -6925,7 +6925,7 @@
         "armor":0,
         "size":3,
         "volume":0.8,
-        "stealth":9,
+        "stealth":13,
         "ap":15,
         "maxSalvo":1,
         "weapon":{
@@ -6962,7 +6962,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","guerrilla","datt","camo","chasse","pistage","badmedic","ranger","swim","lowstress","recupcit","nocrime","nofight","nogen","uprank"],
+        "skills":["a_light","fouille","scav","fortif","guerrilla","datt","camo","chasse","pistage","badmedic","ranger","swim","lowstress","recupcit","nocrime","nofight","nogen","uprank"],
         "mediCost":8,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
@@ -6980,7 +6980,7 @@
         "armor":0,
         "size":3,
         "volume":0.9,
-        "stealth":16,
+        "stealth":18,
         "ap":15,
         "maxSalvo":2,
         "weapon":{

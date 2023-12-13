@@ -2594,6 +2594,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             apReq = Math.round(5*7/(playerInfos.comp.tri+6));
             apCost = Math.round(1250/bat.squadsLeft/batType.squadSize/batType.crew);
             if (batType.skills.includes('scav')) {
+                apReq = Math.ceil(apReq/1.75);
                 apCost = Math.round(apCost/1.75);
             }
             if (batType.cat === 'infantry') {

@@ -601,12 +601,14 @@
     background-image: url(/static/img/sntiles/V_001.png);
     background-position: center;
 }
+/* GRYD */
 .terPic {
     position: absolute;
     top: -4px;
     left: -4px;
     display: inline-block;
     z-index: 1;
+    /* filter: sepia(100%) saturate(150%) hue-rotate(107deg) brightness(100%) contrast(110%); */
 }
 .terPicRain {
     position: absolute;
