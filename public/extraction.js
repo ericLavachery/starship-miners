@@ -634,36 +634,7 @@ function getMiningRate(bat,fullRate,noMining) {
     if (bat.tags.includes('camo')) {
         miningAdj = miningAdj/1.5;
     }
-    let helpInside = 1;
-    if (batType.skills.includes('exhelp')) {
-        if (bat.transIds.length >= 1) {
-            bataillons.forEach(function(inBat) {
-                if (inBat.loc === "trans" && inBat.locId === bat.id) {
-                    if (inBat.type === 'Scrapers') {
-                        if (inBat.apLeft >= 7 && inBat.squadsLeft >= 6) {
-                            if (helpInside < 1.6) {
-                                helpInside = 1.6;
-                            }
-                        }
-                    }
-                    if (inBat.type === 'Mineurs') {
-                        if (inBat.apLeft >= 7 && inBat.squadsLeft >= 6) {
-                            if (helpInside < 1.5) {
-                                helpInside = 1.5;
-                            }
-                        }
-                    }
-                    if (inBat.type === 'Sapeurs' || inBat.type === 'Bûcherons') {
-                        if (inBat.apLeft >= 7 && inBat.squadsLeft >= 6) {
-                            if (helpInside < 1.2) {
-                                helpInside = 1.2;
-                            }
-                        }
-                    }
-                }
-            });
-        }
-    }
+    let helpInside = getExHelp(bat,batType);
     miningAdj = miningAdj*helpInside;
     let batMining = batType.mining.rate;
     if (hasEquip(bat,['g2tools']) && noEquip(bat,['autoextract'])) {
@@ -675,6 +646,47 @@ function getMiningRate(bat,fullRate,noMining) {
     } else {
         return Math.ceil(batMining*bat.apLeft/batType.ap*bat.squadsLeft/batType.squads*miningAdj);
     }
+};
+
+function getExHelp(bat,batType) {
+    let helpInside = 1;
+    if (batType.skills.includes('exhelp')) {
+        if (bat.transIds.length >= 1) {
+            bataillons.forEach(function(inBat) {
+                if (inBat.loc === "trans" && inBat.locId === bat.id) {
+                    if (inBat.apLeft >= 7 && inBat.squadsLeft >= 6) {
+                        if (inBat.type === 'Scrapers') {
+                            if (helpInside < 1.6) {
+                                helpInside = 1.6;
+                            }
+                        }
+                        if (inBat.type === 'Mineurs') {
+                            if (helpInside < 1.5) {
+                                helpInside = 1.5;
+                            }
+                        }
+                        if (inBat.type === 'Sapeurs') {
+                            if (helpInside < 1.2) {
+                                helpInside = 1.2;
+                            }
+                        }
+                        if (inBat.type === 'Bûcherons') {
+                            if (batType.name === 'Comptoir') {
+                                if (helpInside < 1.6) {
+                                    helpInside = 1.6;
+                                }
+                            } else {
+                                if (helpInside < 1.3) {
+                                    helpInside = 1.3;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+    return helpInside;
 };
 
 function getResMiningRate(bat,res,value,fullRate,forInfos) {

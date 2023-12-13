@@ -8,7 +8,7 @@
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
         "costs":{"Compo1":125},
         "protect":30,
-        "info":"Protection 30% / Elevation +1 / Pas de restriction de cible due à la mêlée"
+        "info":"Protection 30% / Elevation +1 / Pas de diminution de portée en forêt / Pas de restriction de cible due à la mêlée"
     },
     {
         "name":"Remparts",

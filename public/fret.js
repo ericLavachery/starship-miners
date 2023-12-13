@@ -635,3 +635,39 @@ function fretThrow() {
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
 };
+
+function throwBatRes(resName) {
+    delete selectedBat.transRes[resName];
+    selectedBatArrayUpdate();
+    fretThrowList();
+};
+
+function fretThrowList() {
+    // selectedBat !
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","800px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
+    $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName or" id="gentils">VIDER</span><br>');
+    $('#conUnitList').append('<span class="constName">(ressources dans '+selectedBat.type+')</span><br>');
+    let batPic = getBatPic(selectedBat,selectedBatType);
+    $('#conUnitList').append('<img src="/static/img/units/'+selectedBatType.cat+'/'+batPic+'.png" width="48" class="tunit"><br>');
+    // $('#conUnitList').append('<br>');
+    if (selectedBat.transRes != undefined) {
+        Object.entries(selectedBat.transRes).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            let res = getResByName(key);
+            let resIcon = getResIcon(res);
+            $('#conUnitList').append('<span class="paramResName">'+key+'</span><span class="paramIcon klik" title="Vider '+key+'" onclick="throwBatRes(`'+key+'`)">&#128465;</span><span class="paramResValue"><span class="cy">'+value+'</span></span><br>');
+        });
+    }
+    $('#conUnitList').append('<br><br>');
+    // $("#conUnitList").animate({scrollTop:0},"fast");
+};

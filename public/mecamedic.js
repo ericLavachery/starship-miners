@@ -643,7 +643,7 @@ function addStressFlag(bat,emoType) {
                 stressChance = Math.ceil(stressChance);
             }
             if (rand.rand(1,100) <= stressChance) {
-                stressCost = 6;
+                stressCost = 4;
             }
         } else if (emoType === 'fear') {
             stressCost = 2;
@@ -1242,7 +1242,7 @@ function pills() {
         selectedBat.tags.push('pills');
         if (selectedBat.emo != undefined) {
             if (selectedBat.emo >= 1) {
-                selectedBat.emo = selectedBat.emo-1;
+                selectedBat.emo = Math.floor(selectedBat.emo/1.25);
             }
         }
         playSound(drug.sound,0);

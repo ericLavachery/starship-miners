@@ -591,11 +591,14 @@ function healEverything() {
                 if (batType.skills.includes('lowstress')) {
                     endStress = Math.round(endStress/2);
                 }
+                if (bat.emo === undefined) {
+                    bat.emo = 0;
+                }
                 if (endStress >= 1) {
-                    if (bat.emo != undefined) {
-                        bat.emo = bat.emo+endStress;
+                    if (bat.emo > endstress) {
+                        bat.emo = bat.emo+Math.ceil(endStress/2);
                     } else {
-                        bat.emo = endStress;
+                        bat.emo = Math.ceil(bat.emo/2)+endStress;
                     }
                 }
             }
@@ -1373,26 +1376,31 @@ function showZonePreview() {
     if (zoneInfo.visit) {
         $('#zoneDetail').append('<span class="ListRes or">Vous avez déjà exploré cette zone!<br></span>');
     }
-    $('#zoneDetail').append('<br>');
     if (zoneInfo.mapDiff != undefined) {
         showInfo = toZoneString(zoneInfo);
         showInfo = showInfo.replace(/{/g,'');
         showInfo = showInfo.replace(/}/g,'');
     }
     let rain = isRaining(zonePrev);
+    let rainPrint = '??';
     if (playerInfos.bldVM.includes('Station météo')) {
         if (rain) {
             showInfo = showInfo+', Pluie=Oui';
+            rainPrint = 'Oui';
         }  else {
             showInfo = showInfo+', Pluie=Non';
+            rainPrint = 'Non';
         }
     }
+    let potablePrint = '<span class="jaune">??</span>';
     if (playerInfos.comp.ca >= 2) {
         let potable = checkPotable(zonePrev,-1);
         if (!potable) {
             showInfo = showInfo+', Eau=Poison';
+            potablePrint = '<span class="or">Empoisonnée</span>';
         } else {
             showInfo = showInfo+', Eau=OK';
+            potablePrint = '<span class="cy">OK</span>';
         }
     }
     if (showInfo.includes('Dom')) {
@@ -1416,7 +1424,14 @@ function showZonePreview() {
     if (spType != 'normal') {
         showInfo = changeEggKindsByZoneType(showInfo,spType);
     }
-    $('#zoneDetail').append('<span class="ListRes">'+showInfo+'<br></span><br>');
+    $('#zoneDetail').append('<span class="ListRes vert">Planète: <span class="cy">'+zoneInfo.planet+'</span><br></span>');
+    $('#zoneDetail').append('<span class="ListRes vert">Présence alien: <span class="cy">'+zoneInfo.mapDiff+'</span><br></span>');
+    $('#zoneDetail').append('<span class="ListRes vert">Eau: '+potablePrint+'<br></span>');
+    $('#zoneDetail').append('<span class="ListRes vert">Ensoleillement: <span class="cy">'+zoneInfo.ensol+'</span><br></span>');
+    $('#zoneDetail').append('<span class="ListRes vert">Pluie: <span class="cy">'+rainPrint+'</span><br></span>');
+    $('#zoneDetail').append('<span class="ListRes">&#127808; Montagnes '+zoneInfo.pm+'% &#127808; Collines '+zoneInfo.ph+'% &#127808; Plaines '+zoneInfo.pp+'% &#127808; Prairies '+zoneInfo.pg+'% &#127808; Maquis '+zoneInfo.pb+'% &#127808; Forêts '+zoneInfo.pf+'% &#127808; Marécages '+zoneInfo.ps+'% &#127808; Lacs '+zoneInfo.pw+'% &#127808; Rivières '+zoneInfo.pr+'% <br></span>');
+    $('#zoneDetail').append('<br>');
+    // $('#zoneDetail').append('<span class="ListRes">'+showInfo+'<br></span><br>');
     // Ressources manquantes
     let allMissingRes = [];
     let centreMissingRes = [];

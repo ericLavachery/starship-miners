@@ -2927,7 +2927,7 @@ function weaponAdj(weapon,bat,wn) {
     }
     // Forêt (range)
     let overInfra = false;
-    if (infra === 'Miradors' || infra === 'Murailles' || infra === 'Remparts') {
+    if (infra === 'Miradors' || infra === 'Murailles' || infra === 'Remparts' || infra === 'Palissades') {
         overInfra = true;
     }
     if (tile.terrain == 'F' && !overInfra && batType.cat != 'buildings' && batType.cat != 'devices' && !batType.skills.includes('transorbital') && !batType.skills.includes('fly') && !bat.eq != 'e-jetpack') {

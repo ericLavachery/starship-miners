@@ -2505,6 +2505,8 @@ function autoRoad(tile) {
                 tile.rd = true;
                 if (tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
                     constructSound();
+                } else {
+                    roadSound();
                 }
                 if (tile.qs != undefined) {
                     delete tile.qs;
@@ -2549,18 +2551,37 @@ function constructSound() {
     }
 };
 
+function roadSound() {
+    if (selectedBatType.skills.includes('worker')) {
+        playSound('road-push',-0.1);
+    } else {
+        playSound('road-sap',-0.1);
+    }
+};
+
 function getRoadAPCost(bat,batType,tile,round) {
     let terrain = getTerrainById(tile.id);
     let baseMecaRoad = batType.mecanoCost;
     if (batType.skills.includes('fastrd')) {
         baseMecaRoad = 3.8;
     }
-    let apCost = baseMecaRoad*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
+    let roadComp = playerInfos.comp.trans;
+    let constComp = playerInfos.comp.const-1;
+    if (playerInfos.comp.const === 3) {
+        constComp = 3;
+    }
+    if (constComp > playerInfos.comp.trans) {
+        roadComp = constComp;
+    }
+    if (terrain.name === 'R' || terrain.name === 'L' || terrain.name === 'W') {
+        roadComp = playerInfos.comp.const;
+    }
+    let apCost = baseMecaRoad*terrain.roadBuild*roadAPCost/40/(roadComp+3)*3;
     if (hasEquip(bat,['e-road'])) {
         if (batType.skills.includes('routes')) {
             apCost = apCost/1.75;
         } else if (batType.mecanoCost < 12) {
-            apCost = 12*terrain.roadBuild*roadAPCost/40/(playerInfos.comp.const+3)*3;
+            apCost = 12*terrain.roadBuild*roadAPCost/40/(roadComp+3)*3;
         }
     }
     if (round) {
@@ -2600,6 +2621,8 @@ function putRoad(apCost,quiet) {
         if (!quiet) {
             if (tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
                 constructSound();
+            } else {
+                roadSound();
             }
         }
         if (tile.qs != undefined) {
@@ -2613,6 +2636,7 @@ function putRoad(apCost,quiet) {
 };
 
 function putRoadsAround() {
+    roadSound();
     zone.forEach(function(tile) {
         let distance = calcDistance(selectedBat.tileId,tile.id);
         if (distance <= 1) {

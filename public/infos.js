@@ -836,6 +836,7 @@ function batInfos(bat,batType,pop) {
             if (army >= 20) {break;}
             army++
         }
+        $('#'+bodyPlace).append('<button type="button" title="Nommer le commandant de ce bataillon" class="boutonGris skillButtons" onclick="renameChief('+bat.id+')"><i class="fas fa-user-alt"></i></button>');
     }
     // RESSOURCES transportées
     // console.log('HERE');
@@ -861,8 +862,10 @@ function batInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramValue">'+transportedRes+' &nbsp;('+showTotal+')</span><br>');
         }
     }
-    if (!pop) {
-        $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Nommer le commandant de ce bataillon" class="boutonGris skillButtons" onclick="renameChief('+bat.id+')"><i class="fas fa-user-alt"></i></button>&nbsp; Commandant</h4></span>');
+    if ((batType.transRes >= 1 && batType.name != 'Soute' && batType.name != 'Stocks') || (batType.transRes >= 1 && allowCheat)) {
+        if (Object.keys(bat.transRes).length >= 1) {
+            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter certaines ressources" class="boutonCaca skillButtons" onclick="fretThrowList()"><i class="far fa-trash-alt"></i></button>&nbsp; Vider</h4></span>');
+        }
     }
 
     // DISMANTLE
@@ -937,11 +940,11 @@ function batInfos(bat,batType,pop) {
             }
         }
         if (isAdmin.deep || allowCheat) {
-            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel bigButtons" onclick="removeBat('+bat.id+')"><i class="far fa-trash-alt"></i></button>&nbsp; Supprimer</h4></span>');
+            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel bigButtons" onclick="removeBat('+bat.id+')"><i class="fas fa-user-slash"></i></button>&nbsp; Supprimer</h4></span>');
         }
         if ((batType.transRes >= 1 && batType.name != 'Soute' && batType.name != 'Stocks') || (batType.transRes >= 1 && allowCheat)) {
             if (Object.keys(bat.transRes).length >= 1) {
-                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge bigButtons" onclick="fretThrow()"><i class="fas fa-truck-loading"></i></button>&nbsp; Vider</h4></span>');
+                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge iconButtons" onclick="fretThrow()"><i class="far fa-trash-alt"></i></button>&nbsp; Tout vider</h4></span>');
             }
         }
         if (isAdmin.fire) {
