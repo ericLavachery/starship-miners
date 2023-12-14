@@ -1,3 +1,67 @@
+.aUnits {
+    background-color: rgba(251, 250, 148, 0.3);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(251, 250, 148, 0.5);
+    border-radius: 8px;
+    position: absolute;
+}
+.gUnits {
+    background-color: rgba(148, 251, 236, 0.3);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(148, 251, 248, 0.5);
+    border-radius: 8px;
+    position: absolute;
+    /* margin: 1px 1px 1px 1px; */
+}
+.pUnitsNoPrefab {
+    background-color: rgba(221, 248, 252, 0.3);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(249, 223, 188, 1);
+    border-radius: 8px;
+    position: absolute;
+    /* margin: 1px 1px 1px 1px; */
+}
+.pUnits {
+    background-color: rgba(221, 248, 252, 0.3);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(221, 248, 252, 0.5);
+    border-radius: 32px;
+    position: absolute;
+}
+.pUnitsFortif {
+    background-color: rgba(221, 248, 252, 0.3);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(249, 223, 188, 1);
+    border-radius: 32px;
+    position: absolute;
+    /* margin: 1px 1px 1px 1px; */
+}
+.pUnitsCamo {
+    background-color: rgba(170, 242, 251, 0.4);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(170, 242, 251, 0.9);
+    border-radius: 32px;
+    position: absolute;
+    opacity: 0.7;
+    /* margin: 1px 1px 1px 1px; */
+}
+.pUnitsCamoFortif {
+    background-color: rgba(170, 242, 251, 0.4);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(249, 230, 205, 1);
+    border-radius: 32px;
+    position: absolute;
+    opacity: 0.7;
+    /* margin: 1px 1px 1px 1px; */
+}
+
 [{"id":4,"type":"Jeeps","typeId":141,"team":"player","creaTurn":1,"loc":"zone","locId":0,"tileId":1827,"oldTileId":1827,"citoyens":0,"squadsLeft":4,"damage":0,"camoAP":-1,"noDump":true,"eq":"aucun","tdc":[],"prt":"aucun","armor":7,"ap":15,"apLeft":15,"oldapLeft":15,"salvoLeft":2,"ammo":"standard","ammo2":"standard","vet":0,"xp":0,"range":1,"sort":25,"army":0,"fuzz":1,"transIds":[6],"transRes":{},"tags":[],"logeq":"","ok":"ok7","an":false},{"id":5,"type":"Lander","typeId":7,"team":"player","creaTurn":4,"loc":"zone","locId":0,"tileId":1830,"oldTileId":1830,"citoyens":0,"squadsLeft":6,"damage":0,"camoAP":-1,"noDump":false,"eq":"aucun","tdc":[],"prt":"aucun","armor":7,"ap":16,"apLeft":16,"oldapLeft":16,"salvoLeft":2,"ammo":"standard","ammo2":"standard","vet":0,"xp":0,"range":4,"sort":14,"army":0,"fuzz":4,"transIds":[],"transRes":{"Corps":36},"tags":["deploy"],"logeq":"","ok":"ok15","an":false,"modules":{"trans":0,"fret":0,"prt":0,"stab":0,"g2mo":0,"mining":0,"radar":0,"nano":0,"teleport":0,"athmo":0,"camopt":0,"pli":0}},{"id":6,"type":"Clones","typeId":138,"team":"player","creaTurn":7,"loc":"trans","locId":4,"tileId":1827,"oldTileId":1827,"citoyens":0,"squadsLeft":6,"damage":0,"camoAP":-1,"eq":"aucun","tdc":[],"prt":"aucune","armor":0,"ap":14,"apLeft":15,"oldapLeft":15,"salvoLeft":1,"ammo":"standard","ammo2":"molotov-feu","ammo2Left":6,"vet":1,"xp":50,"range":1,"sort":10,"army":0,"fuzz":1,"tags":["necro","vomissure"],"logeq":"","ok":"ok25","an":true,"extracted":[],"autoLoad":[]}]
 
 

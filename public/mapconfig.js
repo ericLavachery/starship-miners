@@ -57,6 +57,12 @@ function yourMapSize() {
     }
     numHTiles = Number(prompt('Nombre de terrains vus horizontalement (x)',numHTiles));
     numVTiles = Number(prompt('Nombre de terrains vus horizontalement (y)',numVTiles));
+    if (numHTiles > 28) {
+        numHTiles = 28;
+    }
+    if (numVTiles > 16) {
+        numVTiles = 16;
+    }
     writeMapStyles();
     showMap(zone,false);
 };

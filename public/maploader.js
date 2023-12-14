@@ -59,8 +59,14 @@ function showMap(wmap,justMoved,isPrev) {
         if (tile.seed >= 10) {
             tPic = tile.terrain+'_0'+tile.seed;
         } else {
-            if (zone[0].planet === 'Gehenna' && tile.terrain === 'F') {
-                tPic = tile.terrain+'b_00'+tile.seed;
+            // tPic = tile.terrain+'_00'+tile.seed;
+            // if (zone[0].planet === 'Gehenna' && tile.terrain === 'F') {
+            //     tPic = tile.terrain+'b_00'+tile.seed;
+            // } else {
+            //     tPic = tile.terrain+'_00'+tile.seed;
+            // }
+            if (tile.terrain === 'F') {
+                tPic = tile.terrain+'c_00'+tile.seed;
             } else {
                 tPic = tile.terrain+'_00'+tile.seed;
             }
@@ -137,16 +143,18 @@ function toggleMapEffect() {
 
 function mapEffect() {
     $('#zone_effect').empty();
-    if (!playerInfos.onShip) {
-        if (!playerInfos.clouds) {
-            // $('#zone_effect').append('<span onmouseover="mapEffectOut()"><img src="/static/img/cloudz1.png"></span>');
+    let hpix = (numHTiles*72)+10;
+    let vpix = (numVTiles*72)+10;
+    if (!playerInfos.clouds) {
+        $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/scratchGrid7.png"></span>');
+    } else {
+        if (playerInfos.bldVM.includes('Centre de com')) {
+            $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/scratchGrid7.png"></span>');
         } else {
-            // GRYD
-            $('#zone_effect').append('<span class="cloudz"><img src="/static/img/cloudz1.png"></span>');
-            // $('#zone_effect').append('<span class="cloudz"><img src="/static/img/grid.png"></span>');
-            // $('#zone_effect').append('<span class="cloudz"><img src="/static/img/dirtyGrid1.png"></span>');
+            $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid8.png"></span>');
         }
     }
+    $("#dirty").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
 };
 
 function mapEffectOut() {

@@ -608,7 +608,7 @@
     left: -4px;
     display: inline-block;
     z-index: 1;
-    /* filter: sepia(100%) saturate(150%) hue-rotate(107deg) brightness(100%) contrast(110%); */
+    filter: sepia(100%) saturate(130%) hue-rotate(107deg) brightness(100%) contrast(120%);
 }
 .terPicRain {
     position: absolute;
@@ -616,7 +616,8 @@
     left: -4px;
     display: inline-block;
     z-index: 1;
-    filter: grayscale(35%) brightness(80%) contrast(120%);
+    filter: sepia(100%) saturate(130%) hue-rotate(107deg) brightness(100%) contrast(120%);
+    /* filter: grayscale(35%) brightness(80%) contrast(120%); */
 }
 .terPicSun {
     position: absolute;
@@ -624,7 +625,8 @@
     left: -4px;
     display: inline-block;
     z-index: 1;
-    filter: hue-rotate(5deg) saturate(100%) brightness(108%) contrast(125%);
+    filter: sepia(100%) saturate(130%) hue-rotate(107deg) brightness(100%) contrast(120%);
+    /* filter: hue-rotate(5deg) saturate(100%) brightness(108%) contrast(125%); */
 }
 .terPicFog {
     position: absolute;
@@ -632,7 +634,8 @@
     left: -4px;
     display: inline-block;
     z-index: 1;
-    filter: grayscale(65%) brightness(65%) contrast(145%);
+    filter: sepia(100%) saturate(100%) hue-rotate(170deg) brightness(80%) contrast(120%);
+    /* filter: grayscale(65%) brightness(65%) contrast(145%); */
 }
 .terPicGrav {
     position: absolute;
@@ -640,7 +643,8 @@
     left: -4px;
     display: inline-block;
     z-index: 1;
-    filter: hue-rotate(205deg) saturate(70%) brightness(85%) contrast(135%);
+    filter: sepia(100%) saturate(130%) hue-rotate(230deg) brightness(85%) contrast(130%);
+    /* filter: hue-rotate(205deg) saturate(70%) brightness(85%) contrast(135%); */
 }
 .terPicHot {
     position: absolute;
@@ -648,7 +652,8 @@
     left: -4px;
     display: inline-block;
     z-index: 1;
-    filter: hue-rotate(325deg) brightness(75%) contrast(125%) saturate(130%);
+    filter: sepia(100%) saturate(160%) hue-rotate(300deg) brightness(70%) contrast(150%);
+    /* filter: hue-rotate(325deg) brightness(75%) contrast(125%) saturate(130%); */
 }
 .terPicTox {
     position: absolute;
@@ -656,7 +661,8 @@
     left: -4px;
     display: inline-block;
     z-index: 1;
-    filter: hue-rotate(40deg) brightness(90%) contrast(130%) saturate(90%);
+    filter: sepia(100%) saturate(130%) hue-rotate(75deg) brightness(90%) contrast(120%);
+    /* filter: hue-rotate(40deg) brightness(90%) contrast(130%) saturate(90%); */
 }
 .terFb1 {
     background-color: #22460c;
