@@ -12,16 +12,15 @@ body {
     margin: 0 0 0 4px;
 }
 .woodBlock {
-    background-color: black;
+    /* background-color: black; */
     font-size: 13px;
     color: #d5cabd;
     padding: 8px 8px;
-    border-style: solid;
+    border-style: ridge;
     border-width: 2px;
     border-color: #464a4a;
-    /* border-color: #565c5c; */
     margin: 9px 0 10px 0;
-    border-radius: 6px;
+    /* border-radius: 6px; */
     min-width: 285px;
 }
 .modeSelect {
@@ -605,6 +604,13 @@ hr.craft {
     min-height: 318px;
     /* margin: 1px 1px 1px 1px; */
 }
+.batInfoPic {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+    border-radius: 32px;
+}
 .aUnits {
     background-color: rgba(255, 253, 0, 0.3);
     border-style: solid;
@@ -916,6 +922,8 @@ td {
     /* background-image: url(/static/img/oldmetal_big_bg.jpg); */
     background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 0%;
+    /* background-image: url(/static/img/chalk.png); */
+    /* background-position: -4px -1px; */
     scroll-behavior: auto;
     scrollbar-color: #4C4845 #17161A;
     overflow-y: scroll;
@@ -1071,6 +1079,8 @@ td {
 #zone_metro {
     display: none;
 }
+/* #zone_map {
+} */
 #menu_soute {
     background-image: url(/static/img/plate-dork-mid.jpg);
     background-position: right 0% 0%;

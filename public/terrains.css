@@ -608,7 +608,7 @@
     left: -4px;
     display: inline-block;
     z-index: 1;
-    filter: sepia(100%) saturate(130%) hue-rotate(107deg) brightness(100%) contrast(120%);
+    filter: sepia(100%) saturate(110%) hue-rotate(107deg) brightness(100%) contrast(120%);
 }
 .terPicRain {
     position: absolute;
@@ -616,7 +616,7 @@
     left: -4px;
     display: inline-block;
     z-index: 1;
-    filter: sepia(100%) saturate(130%) hue-rotate(107deg) brightness(100%) contrast(120%);
+    filter: sepia(100%) saturate(110%) hue-rotate(107deg) brightness(100%) contrast(120%);
     /* filter: grayscale(35%) brightness(80%) contrast(120%); */
 }
 .terPicSun {
@@ -625,7 +625,7 @@
     left: -4px;
     display: inline-block;
     z-index: 1;
-    filter: sepia(100%) saturate(130%) hue-rotate(107deg) brightness(100%) contrast(120%);
+    filter: sepia(100%) saturate(110%) hue-rotate(107deg) brightness(100%) contrast(120%);
     /* filter: hue-rotate(5deg) saturate(100%) brightness(108%) contrast(125%); */
 }
 .terPicFog {

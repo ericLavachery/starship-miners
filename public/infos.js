@@ -153,7 +153,7 @@ function batInfos(bat,batType,pop) {
         $('#'+headPlace).append('<img style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" onclick="unitDetail('+batType.id+')" title="Voir le détail du type d\'unité">&nbsp;');
         $('#'+headPlace).append('<span class="blockTitle"><h6>'+unitsLeft+' '+batType.name+'</h6></span>');
     } else {
-        $('#'+headPlace).append('<span class="blockTitle"><h3><img style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+unitPrintName+'</h3> '+vetIcon+infraImg+'</span>');
+        $('#'+headPlace).append('<span class="blockTitle"><h3><img class="batInfoPic" style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+unitPrintName+'</h3> '+vetIcon+infraImg+'</span>');
     }
     $('#'+bodyPlace).append('<div class="shSpace"></div>');
     let near = nearWhat(bat,batType);
