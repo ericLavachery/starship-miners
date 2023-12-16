@@ -3,13 +3,14 @@ body {
     font-weight: 500;
     margin: 6px 4px 0 4px;
     font-size: 14px;
+    /* background-color: #31342c; */
     background-color: black;
-    background-image: url(/static/img/rayures.jpg);
-    background-repeat: no-repeat;
+    /* background-image: url(/static/img/rayures.jpg); */
+    /* background-repeat: no-repeat; */
 }
 #cadreMap {
     padding: 0 0 0 0;
-    margin: 0 0 0 4px;
+    margin: 15px 0 0 8px;
 }
 .woodBlock {
     /* background-color: black; */
@@ -919,17 +920,13 @@ td {
     background-position: 0% 5%;
 }
 #unitInfos {
-    /* background-image: url(/static/img/oldmetal_big_bg.jpg); */
     background-image: url(/static/img/plate-vdork-small.jpg);
     background-position: 0% 0%;
-    /* background-image: url(/static/img/chalk.png); */
-    /* background-position: -4px -1px; */
     scroll-behavior: auto;
     scrollbar-color: #4C4845 #17161A;
     overflow-y: scroll;
     display: none;
     height: 800px;
-    /* min-height: 81px; */
 }
 #intro {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
@@ -1073,14 +1070,6 @@ td {
     /* width: 850px; */
     /* min-height: 1950px; */
 }
-#zone_soute {
-    display: none;
-}
-#zone_metro {
-    display: none;
-}
-/* #zone_map {
-} */
 #menu_soute {
     background-image: url(/static/img/plate-dork-mid.jpg);
     background-position: right 0% 0%;

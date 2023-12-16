@@ -27,7 +27,7 @@ function showBatPrefab(bat) {
     } else if (batType.skills.includes('nonumname')) {
         unitsLeft = '';
     }
-    $('#'+headPlace).append('<span class="blockTitle"><h3><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3></span>');
+    $('#'+headPlace).append('<span class="blockTitle"><h3><img class="batInfoPic" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3></span>');
     $('#'+bodyPlace).append('<span class="constName jaune">Accès par la soute</span><br>');
     $('#'+bodyPlace).append('<button type="button" title="Aller dans la soute" class="boutonMarine iconButtons" onclick="goSoutePrefab('+bat.id+')" onmousedown="clicSound()"><i class="fas fa-warehouse"></i></button>');
     $('#'+bodyPlace).append('<br>');
@@ -150,7 +150,7 @@ function batInfos(bat,batType,pop) {
         vetIcon = '<img src="/static/img/vet'+bat.vet+'.png" width="15">';
     }
     if (pop) {
-        $('#'+headPlace).append('<img style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" onclick="unitDetail('+batType.id+')" title="Voir le détail du type d\'unité">&nbsp;');
+        $('#'+headPlace).append('<img class="batInfoPic" style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" onclick="unitDetail('+batType.id+')" title="Voir le détail du type d\'unité">&nbsp;');
         $('#'+headPlace).append('<span class="blockTitle"><h6>'+unitsLeft+' '+batType.name+'</h6></span>');
     } else {
         $('#'+headPlace).append('<span class="blockTitle"><h3><img class="batInfoPic" style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+unitPrintName+'</h3> '+vetIcon+infraImg+'</span>');

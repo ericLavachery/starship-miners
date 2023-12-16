@@ -20,7 +20,7 @@ function unitInfos(batType) {
     if (batType.squads === 6 && batType.squadSize === 1 && (batType.cat === 'buildings' || batType.cat === 'devices')) {
         unitsLeft = '';
     }
-    $('#'+headPlace).append('<img style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png">&nbsp;');
+    $('#'+headPlace).append('<img class="batInfoPic" style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png">&nbsp;');
     if (batType.skills.includes('nonumname')) {
         $('#'+headPlace).append('<span class="blockTitle"><h6>'+batType.name+'</h6> <span class="cy">(description du type d\'unité)</span></span>');
     } else {

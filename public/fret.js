@@ -15,7 +15,7 @@ function loadRes(retour) {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName cy"><img src="/static/img/units/'+selectedBatType.cat+'/'+selectedBatPic+'.png">&nbsp;');
+    $('#conUnitList').append('<span class="constName cy"><img class="batInfoPic" src="/static/img/units/'+selectedBatType.cat+'/'+selectedBatPic+'.png">&nbsp;');
     $('#conUnitList').append('<h1>'+selectedBat.type.toUpperCase()+'</h1><br>');
     $('#conUnitList').append('<span class="constName cy">Charger</span> <span class="cy">(max '+restSpace+')</span><br>');
     if (!playerInfos.onShip || selectedBatType.name === 'Soute' || selectedBatType.name === 'Stocks') {
@@ -83,7 +83,7 @@ function loadRes(retour) {
                         if ((resLoad >= 1 || seeAllFret) && seeMe) {
                             let batPic = getBatPic(bat,batType);
                             $('#conUnitList').append('<hr>');
-                            $('#conUnitList').append('<span class="unitPic"><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"></span><br>');
+                            $('#conUnitList').append('<span class="unitPic"><img class="batInfoPic" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"></span><br>');
                             let tile = getTile(bat);
                             let theTile = tileNaming(tile,false,selectedBatTile.id);
                             if (batType.skills.includes('transorbital')) {
@@ -156,7 +156,7 @@ function loadRes(retour) {
         let teleCostOK = checkCost(teleStationCost);
         if (selectedBatType.skills.includes('teleport') && seeLandersFret) {
             $('#conUnitList').append('<hr>');
-            $('#conUnitList').append('<span class="unitPic"><img src="/static/img/units/buildings/station.png" width="48"></span><br>');
+            $('#conUnitList').append('<span class="unitPic"><img class="batInfoPic" src="/static/img/units/buildings/station.png" width="48"></span><br>');
             $('#conUnitList').append('<span class="constName cy">Station <span class="gf"> &mdash; (Téléportation)</span></span><br>');
             if (playerInfos.comp.tele >= 2 && teleCostOK) {
                 Object.entries(playerInfos.vmRes).map(entry => {
@@ -657,7 +657,7 @@ function fretThrowList() {
     $('#conUnitList').append('<span class="constName or" id="gentils">VIDER</span><br>');
     $('#conUnitList').append('<span class="constName">(ressources dans '+selectedBat.type+')</span><br>');
     let batPic = getBatPic(selectedBat,selectedBatType);
-    $('#conUnitList').append('<img src="/static/img/units/'+selectedBatType.cat+'/'+batPic+'.png" width="48" class="tunit"><br>');
+    $('#conUnitList').append('<img class="batInfoPic" src="/static/img/units/'+selectedBatType.cat+'/'+batPic+'.png" width="48" class="tunit"><br>');
     // $('#conUnitList').append('<br>');
     if (selectedBat.transRes != undefined) {
         Object.entries(selectedBat.transRes).map(entry => {

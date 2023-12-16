@@ -145,16 +145,25 @@ function mapEffect() {
     $('#zone_effect').empty();
     let hpix = (numHTiles*72)+10;
     let vpix = (numVTiles*72)+10;
-    if (!playerInfos.clouds) {
-        $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/scratchGrid7.png"></span>');
-    } else {
-        if (playerInfos.bldVM.includes('Centre de com')) {
+    let hmon = hpix-6;
+    let vmon = vpix-8;
+    if (!inSoute) {
+        if (!playerInfos.clouds) {
             $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/scratchGrid7.png"></span>');
         } else {
-            $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid8.png"></span>');
+            if (playerInfos.bldVM.includes('Centre de com')) {
+                $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/scratchGrid7.png"></span>');
+            } else {
+                $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid8.png"></span>');
+            }
         }
+        $("#dirty").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
+        $('#zone_monitor').empty();
+        $('#zone_monitor').append('<img src="/static/img/empty.png" width="'+hmon+'" height="'+vmon+'">');
+        $("#zone_monitor").css("display","block");
+    } else {
+        $("#zone_monitor").css("display","none");
     }
-    $("#dirty").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
 };
 
 function mapEffectOut() {

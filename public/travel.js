@@ -595,7 +595,7 @@ function healEverything() {
                     bat.emo = 0;
                 }
                 if (endStress >= 1) {
-                    if (bat.emo > endstress) {
+                    if (bat.emo > endStress) {
                         bat.emo = bat.emo+Math.ceil(endStress/2);
                     } else {
                         bat.emo = Math.ceil(bat.emo/2)+endStress;
