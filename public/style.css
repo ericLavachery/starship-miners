@@ -5,6 +5,7 @@ body {
     font-size: 14px;
     /* background-color: #31342c; */
     background-color: black;
+    background-image: url(/static/img/plasticBG.jpg);
     /* background-image: url(/static/img/rayures.jpg); */
     /* background-repeat: no-repeat; */
 }
@@ -14,14 +15,16 @@ body {
 }
 .woodBlock {
     /* background-color: black; */
+    /* background-color: rgba(0, 0, 0, 0.4); */
     font-size: 13px;
     color: #d5cabd;
     padding: 8px 8px;
-    border-style: ridge;
+    border-style: solid;
     border-width: 2px;
-    border-color: #464a4a;
+    /* border-color: #464a4a; */
+    border-color: #000000;
     margin: 9px 0 10px 0;
-    /* border-radius: 6px; */
+    border-radius: 6px;
     min-width: 285px;
 }
 .modeSelect {
@@ -920,10 +923,12 @@ td {
     background-position: 0% 5%;
 }
 #unitInfos {
-    background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: 0% 0%;
+    /* background-image: url(/static/img/plate-vdork-small.jpg); */
+    /* background-position: 0% 0%; */
+    background-image: url(/static/img/windowBG.jpg);
+    background-position: 0% 45%;
     scroll-behavior: auto;
-    scrollbar-color: #4C4845 #17161A;
+    scrollbar-color: #23305e #17203f;
     overflow-y: scroll;
     display: none;
     height: 800px;
@@ -932,16 +937,18 @@ td {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
     /* background-position: 0% 0%; */
     scroll-behavior: auto;
-    scrollbar-color: #4C4845 #17161A;
+    scrollbar-color: #23305e #17203f;
     overflow-y: scroll;
     /* display: none; */
     max-width: 550px;
 }
 #conUnitList,#conAmmoList {
-    background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: 0% 0%;
+    /* background-image: url(/static/img/plate-vdork-small.jpg); */
+    /* background-position: 0% 0%; */
+    background-image: url(/static/img/windowBG.jpg);
+    background-position: 0% 45%;
     scroll-behavior: auto;
-    scrollbar-color: #4C4845 #17161A;
+    scrollbar-color: #23305e #17203f;
     overflow-y: scroll;
     display: none;
     height: 300px;
@@ -952,8 +959,10 @@ td {
     background-position: 0% 35%;
 }
 #tileInfos {
-    background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: 0% 40%;
+    /* background-image: url(/static/img/plate-vdork-small.jpg); */
+    /* background-position: 0% 40%; */
+    background-image: url(/static/img/windowBG.jpg);
+    background-position: 800px 33%;
     display: none;
     /* min-height: 81px; */
 }
@@ -965,46 +974,60 @@ td {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
     /* background-position: right 0%; */
     min-width: 130px;
-    background-image: url(/static/img/oldmetal_bg.jpg);
-    background-position: 0% 45%;
+    /* background-image: url(/static/img/oldmetal_bg.jpg); */
+    /* background-position: 0% 45%; */
+    background-image: url(/static/img/windowBG.jpg);
+    background-position: 0% 60%;
 }
 #commandz {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
     /* background-position: 20% 10%; */
     min-width: 130px;
-    background-image: url(/static/img/oldmetal_bg.jpg);
-    background-position: 0% 0%;
+    /* background-image: url(/static/img/oldmetal_bg.jpg); */
+    /* background-position: 0% 0%; */
+    background-image: url(/static/img/windowBG.jpg);
+    background-position: 20% 60%;
 }
 #report {
-    background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: 0% 0%;
+    /* background-image: url(/static/img/plate-vdork-small.jpg); */
+    /* background-position: 0% 0%; */
+    background-image: url(/static/img/windowBG.jpg);
+    background-position: 40% 60%;
     min-width: 130px;
     max-width: 130px;
     line-height: 14px;
 }
 #warnings {
-    background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: 0% 0%;
+    /* background-image: url(/static/img/plate-vdork-small.jpg); */
+    /* background-position: 0% 0%; */
+    background-image: url(/static/img/windowBG.jpg);
+    background-position: 50% 60%;
     min-width: 130px;
     max-width: 130px;
     line-height: 17px;
 }
 #gangInfos {
-    background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: 0% 0%;
+    /* background-image: url(/static/img/plate-vdork-small.jpg); */
+    /* background-position: 0% 0%; */
+    background-image: url(/static/img/windowBG.jpg);
+    background-position: 70% 60%;
     min-width: 130px;
     max-width: 130px;
     line-height: 17px;
 }
 #timeInfos {
-    background-image: url(/static/img/plate-vdork-small.jpg);
-    background-position: right 10%;
+    /* background-image: url(/static/img/plate-vdork-small.jpg); */
+    /* background-position: right 10%; */
+    background-image: url(/static/img/windowBG.jpg);
+    background-position: 0% 60%;
     min-width: 130px;
 }
 #modesInfos {
     /* background-image: url(/static/img/dom-thumb.jpg); */
-    background-position: 0% 0%;
-    background-image: url(/static/img/plate-vdork-small.jpg);
+    /* background-position: 0% 0%; */
+    /* background-image: url(/static/img/plate-vdork-small.jpg); */
+    background-image: url(/static/img/windowBG.jpg);
+    background-position: 0% 60%;
     min-width: 130px;
     height: 144px;
     padding: 0 0 0 0;
@@ -1071,31 +1094,35 @@ td {
     /* min-height: 1950px; */
 }
 #menu_soute {
-    background-image: url(/static/img/plate-dork-mid.jpg);
-    background-position: right 0% 0%;
+    /* background-image: url(/static/img/plate-dork-mid.jpg); */
+    background-image: url(/static/img/souteList.jpg);
+    background-position: 0% 0%;
     height: 50px;
     width: 495px;
 }
 #list_soute {
-    background-image: url(/static/img/plate-dork-mid.jpg);
-    background-position: right 0% 0%;
+    /* background-image: url(/static/img/plate-dork-mid.jpg); */
+    background-image: url(/static/img/souteList.jpg);
+    background-position: 0% 0%;
     scroll-behavior: auto;
-    scrollbar-color: #4C4845 #17161A;
+    scrollbar-color: #23305e #17203f;
     overflow-y: scroll;
     height: 1000px;
     width: 495px;
 }
 #menu_lander {
-    background-image: url(/static/img/plate-dork-mid.jpg);
-    background-position: right 0% 0%;
+    /* background-image: url(/static/img/plate-dork-mid.jpg); */
+    background-image: url(/static/img/souteList.jpg);
+    background-position: 0% 0%;
     height: 50px;
     width: 495px;
 }
 #list_lander {
-    background-image: url(/static/img/plate-dork-mid.jpg);
-    background-position: right 0% 0%;
+    /* background-image: url(/static/img/plate-dork-mid.jpg); */
+    background-image: url(/static/img/souteList.jpg);
+    background-position: 0% 0%;
     scroll-behavior: auto;
-    scrollbar-color: #4C4845 #17161A;
+    scrollbar-color: #23305e #17203f;
     overflow-y: scroll;
     height: 1000px;
     width: 495px;

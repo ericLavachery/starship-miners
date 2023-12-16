@@ -256,7 +256,7 @@
         "apCost":0,
         "bldReq":[],
         "bldVMReq":[],
-        "costs":{"Drogues":18,"Hélium":4,"Bore":4,"Octiron":12,"Zinc":8,"Or":4,"Végétaux":18,"Oxygène":12},
+        "costs":{"Drogues":18,"Hélium":4,"Bore":4,"Octiron":12,"Calcium":8,"Or":4,"Végétaux":18,"Oxygène":12},
         "icon":"fas fa-pills",
         "sound":"pills",
         "info":"Traitement anti-dépressif (récupération plus rapide du stress)"

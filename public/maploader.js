@@ -147,7 +147,7 @@ function mapEffect() {
     let vpix = (numVTiles*72)+10;
     let hmon = hpix-6;
     let vmon = vpix-8;
-    if (!inSoute) {
+    if (!playerInfos.onShip) {
         if (!playerInfos.clouds) {
             $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/scratchGrid7.png"></span>');
         } else {

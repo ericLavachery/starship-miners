@@ -13,7 +13,8 @@
     /* margin-top: 0px; */
 }
 #zone_monitor {
-    display: block;
+    /* display: block; */
+    display: none;
     position: absolute;
     z-index: 10;
     pointer-events:none;
@@ -21,13 +22,17 @@
     margin-top: -7px;
     border-style: ridge;
     border-width: 8px;
-    border-color: #50603e;
+    border-color: #23305e;
 }
 #zone_soute {
     display: none;
+    margin-left: -10px;
+    margin-top: -18px;
 }
 #zone_metro {
     display: none;
+    margin-left: -6px;
+    margin-top: -6px;
 }
 #minimap {
     font-size: 0px;

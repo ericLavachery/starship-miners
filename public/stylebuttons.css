@@ -14,7 +14,7 @@ button, select {
 	text-shadow:0px 1px 0px #4d3534;
 	/* -moz-border-radius:4px; */
 	/* -webkit-border-radius:4px; */
-	/* border-radius:4px; */
+	border-radius:8px;
 	display:inline-block;
 	cursor:pointer;
 	color:#ededed;

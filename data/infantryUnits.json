@@ -2770,7 +2770,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","ranger","maycamo","datt","extraction","helpex","brigands","fret","fweight","conscont","nochef"],
+        "skills":["a_light","fouille","fortif","ranger","maycamo","datt","extraction","buche","helpex","brigands","fret","fweight","conscont","nochef"],
         "mediCost":12,
         "mecanoCost":12,
         "mining":{

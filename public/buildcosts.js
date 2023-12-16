@@ -1111,6 +1111,9 @@ function getDispoCit() {
     let numCitBat = 0;
     bataillons.forEach(function(bat) {
         if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Citoyens') {
+            if (bat.citoyens < 1) {
+                bat.citoyens = 1;
+            }
             dispoCit = dispoCit+bat.citoyens;
             numCitBat++;
         }
@@ -1141,6 +1144,9 @@ function getDispoCrim() {
     let numCitBat = 0;
     bataillons.forEach(function(bat) {
         if (bat.loc === 'trans' && landersIds.includes(bat.locId) && bat.type === 'Criminels') {
+            if (bat.citoyens < 1) {
+                bat.citoyens = 1;
+            }
             dispoCrim = dispoCrim+bat.citoyens;
             numCitBat++;
         }

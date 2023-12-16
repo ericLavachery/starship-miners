@@ -768,7 +768,7 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
     // ADJ SUBTYPE & LEVELS
     if (!batType.mining.types.includes(res.bld)) {
         if (batType.mining.subTypes.includes(res.bld)) {
-            if (hasEquip(bat,['g2tools'])) {
+            if (hasEquip(bat,['g2tools']) && !batType.skills.includes('buche')) {
                 let umr = batType.mining.rate;
                 umr = entre(umr,10,48);
                 if (hasEquip(bat,['autoextract'])) {
