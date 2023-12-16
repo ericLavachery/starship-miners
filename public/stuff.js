@@ -789,12 +789,10 @@ function isOpLander(bat,batType) {
 function blockMe(stop) {
     if (stop) {
         stopMe = true;
-        // $('body').css('background-image', 'url("/static/img/rayures-m.jpg")');
-        $('#unitInfos').css('background-image', 'url("/static/img/plate-mdork-small.jpg")');
+        $('#unitInfos').css('background-image', 'url("/static/img/windowBGyellow.jpg")');
     } else {
         stopMe = false;
-        // $('body').css('background-image', 'url("/static/img/rayures.jpg")');
-        $('#unitInfos').css('background-image', 'url("/static/img/plate-vdork-small.jpg")');
+        $('#unitInfos').css('background-image', 'url("/static/img/windowBG.jpg")');
     }
 };
 

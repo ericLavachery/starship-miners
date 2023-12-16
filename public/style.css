@@ -16,6 +16,7 @@ body {
 .woodBlock {
     /* background-color: black; */
     /* background-color: rgba(0, 0, 0, 0.4); */
+    background-color: #303943;
     font-size: 13px;
     color: #d5cabd;
     padding: 8px 8px;
@@ -962,7 +963,7 @@ td {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
     /* background-position: 0% 40%; */
     background-image: url(/static/img/windowBG.jpg);
-    background-position: 800px 33%;
+    background-position: 800px 50%;
     display: none;
     /* min-height: 81px; */
 }
@@ -977,7 +978,7 @@ td {
     /* background-image: url(/static/img/oldmetal_bg.jpg); */
     /* background-position: 0% 45%; */
     background-image: url(/static/img/windowBG.jpg);
-    background-position: 0% 60%;
+    background-position: 30% 2%;
 }
 #commandz {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
@@ -986,7 +987,7 @@ td {
     /* background-image: url(/static/img/oldmetal_bg.jpg); */
     /* background-position: 0% 0%; */
     background-image: url(/static/img/windowBG.jpg);
-    background-position: 20% 60%;
+    background-position: 70% 70%;
 }
 #report {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
@@ -1010,7 +1011,7 @@ td {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
     /* background-position: 0% 0%; */
     background-image: url(/static/img/windowBG.jpg);
-    background-position: 70% 60%;
+    background-position: 40% 40%;
     min-width: 130px;
     max-width: 130px;
     line-height: 17px;
