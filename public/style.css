@@ -1097,14 +1097,14 @@ td {
 #menu_soute {
     /* background-image: url(/static/img/plate-dork-mid.jpg); */
     background-image: url(/static/img/souteList.jpg);
-    background-position: 0% 0%;
+    background-position: 0% 50%;
     height: 50px;
     width: 495px;
 }
 #list_soute {
     /* background-image: url(/static/img/plate-dork-mid.jpg); */
     background-image: url(/static/img/souteList.jpg);
-    background-position: 0% 0%;
+    background-position: -10px 0px;
     scroll-behavior: auto;
     scrollbar-color: #23305e #17203f;
     overflow-y: scroll;
@@ -1114,14 +1114,14 @@ td {
 #menu_lander {
     /* background-image: url(/static/img/plate-dork-mid.jpg); */
     background-image: url(/static/img/souteList.jpg);
-    background-position: 0% 0%;
+    background-position: 0% 50%;
     height: 50px;
     width: 495px;
 }
 #list_lander {
     /* background-image: url(/static/img/plate-dork-mid.jpg); */
     background-image: url(/static/img/souteList.jpg);
-    background-position: 0% 0%;
+    background-position: -10px 0px;
     scroll-behavior: auto;
     scrollbar-color: #23305e #17203f;
     overflow-y: scroll;

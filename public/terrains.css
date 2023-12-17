@@ -624,6 +624,14 @@
     background-position: center;
 }
 /* GRYD */
+.terPicStation {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    display: inline-block;
+    z-index: 1;
+    filter: saturate(100%) brightness(100%) contrast(120%);
+}
 .terPic {
     position: absolute;
     top: -4px;

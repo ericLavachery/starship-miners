@@ -14,8 +14,27 @@ function getMapInfos() {
     console.log('pKind='+zoneInfos.pKind+' gKind='+zoneInfos.gKind+' sKind='+zoneInfos.sKind);
 };
 
+function mapSizeConfig() {
+    if (playerInfos.onShip) {
+        if (playerInfos.numHTiles > 22) {
+            numHTiles = 22;
+        } else {
+            numHTiles = playerInfos.numHTiles;
+        }
+        if (playerInfos.numVTiles > 13) {
+            numVTiles = 13;
+        } else {
+            numVTiles = playerInfos.numVTiles;
+        }
+    } else {
+        numVTiles = playerInfos.numVTiles;
+        numHTiles = playerInfos.numHTiles;
+    }
+};
+
 // Dessine la carte
 function showMap(wmap,justMoved,isPrev) {
+    // mapSizeConfig();
     // reset
     $('#zone_map').empty();
     // fill
@@ -158,6 +177,8 @@ function mapEffect() {
             }
         }
         $("#dirty").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
+    }
+    if (!inSoute) {
         $('#zone_monitor').empty();
         $('#zone_monitor').append('<img src="/static/img/empty.png" width="'+hmon+'" height="'+vmon+'">');
         $("#zone_monitor").css("display","block");
@@ -1008,6 +1029,8 @@ function getTerrainFilter(mapInf) {
                 terClass = 'terPicHot';
             }
         }
+    } else {
+        terClass = 'terPicStation';
     }
     return terClass;
 }
