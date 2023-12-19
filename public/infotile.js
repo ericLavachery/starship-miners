@@ -13,7 +13,8 @@ function showTileInfos(tileId) {
     if (zone[0].dark && !zone[0].undarkOnce.includes(selectedTile) && !zone[0].undarkAll) {
         view = false;
     }
-    $('#tileInfos').append('<span class="blockTitle"><h3>'+terrain.fullName+'</h3></span>');
+    let terName = getTerFullName(tile,terrain);
+    $('#tileInfos').append('<span class="blockTitle"><h3>'+terName+'</h3></span>');
     $('#tileInfos').append('<div class="shSpace"></div>');
     // NOM
     if (tile.tileName != undefined) {
@@ -201,6 +202,14 @@ function showTileInfos(tileId) {
     $('#tileInfos').append('<button type="button" title="Nommer cet emplacement" class="boutonGris skillButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>');
     $('#tileInfos').append('<button type="button" title="Faire de cet emplacement mon centre" class="boutonGris skillButtons" onclick="defCenter('+tileId+')"><i class="fas fa-space-shuttle"></i></button>');
 };
+
+function getTerFullName(tile,terrain) {
+    let terName = terrain.fullName;
+    if (terrain.name === 'R' && tile.seed >= 4) {
+        terName = terName+' (Gué)';
+    }
+    return terName;
+}
 
 function renameTile(tileId) {
     let newName = prompt('Donnez un nom à cet emplacement :');

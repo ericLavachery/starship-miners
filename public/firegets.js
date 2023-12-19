@@ -1289,7 +1289,7 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
     if (!defBat.tags.includes('jelly')) {
         if (attWeap.name != undefined) {
             if (defBatType.skills.includes('ricochet') || defBat.tags.includes('ricochet') || (defBatType.skills.includes('ricoface') && !init)) {
-                if (!attWeap.isFire && !attWeap.isAcid && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('eflash') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('glair') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('snake') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('psionics') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield && !attWeap.isSaw && attWeap.ammo != 'marquage-spike') {
+                if (!attWeap.isFire && !attWeap.isAcid && !attWeap.ammo.includes('laser') && !attWeap.ammo.includes('electric') && !attWeap.ammo.includes('eflash') && !attWeap.ammo.includes('taser') && !attWeap.ammo.includes('web') && !attWeap.ammo.includes('glair') && !attWeap.ammo.includes('flashbang') && !attWeap.name.includes('plasma') && !attWeap.ammo.includes('snake') && !attWeap.ammo.includes('gaz') && !attWeap.ammo.includes('disco') && !attWeap.ammo.includes('psionics') && !attWeap.ammo.includes('mono') && !attWeap.isMelee && !attWeap.noShield && !attWeap.isSaw && !attWeap.ammo.includes('marquage')) {
                     let defArmor = defBat.armor;
                     if (bugROF > 1) {
                         if (defBatType.cat === 'aliens') {

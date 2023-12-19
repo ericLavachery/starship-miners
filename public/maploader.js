@@ -143,10 +143,6 @@ function showMap(wmap,justMoved,isPrev) {
         playerOccupiedTileList();
     }
     mapEffect();
-    // if (showMini && activeTurn == 'player') {
-    //     unitsView();
-    // }
-    // console.log(zone);
 };
 
 function toggleMapEffect() {
@@ -989,7 +985,7 @@ function writeMapStyles() {
 
 function getTerrainFilter(mapInf) {
     let terClass = 'terPic';
-    if (!playerInfos.onShip || modeSonde) {
+    if (!playerInfos.onShip || modeSonde || zone[0].isPrev) {
         if (mapInf.snd === undefined) {
             zoneReport(zone,true);
         }

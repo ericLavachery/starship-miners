@@ -437,9 +437,12 @@ function nextTurnEnd() {
             batType = getBatType(bat);
             if (bat.loc === "zone") {
                 if (batType.skills.includes('upkeep') || batType.skills.includes('prodres') || batType.skills.includes('upnodis')) {
-                    if (!bat.tags.includes('construction') && bat.apLeft >= 10) {
+                    if (!bat.tags.includes('construction') && bat.apLeft >= 8) {
                         upkeepAndProd(bat,batType,1,false,false);
                     }
+                }
+                if (batType.cat === 'buildings' && batType.crew >= 1 && bat.apLeft >= 8 && batType.skills.includes('fret')) {
+                    bldScraping(bat,batType);
                 }
                 if (batType.skills.includes('geo') && bat.tags.includes('prodres') && bat.apLeft >= 0) {
                     geoProd(bat,batType);

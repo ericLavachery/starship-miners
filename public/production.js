@@ -584,6 +584,38 @@ function scrapRecup(resCreated) {
     return resCreated;
 };
 
+function bldScraping(bat,batType) {
+    // minage de scrap par les bâtiments
+    let scrapHere = 0;
+    let boysHere = batType.crew*bat.squadsLeft*batType.squadSize;
+    let tile = getTile(bat);
+    if (tile.rs != undefined) {
+        if (tile.rs['Scrap'] != undefined) {
+            scrapHere = tile.rs['Scrap'];
+        }
+    }
+    let scrapProd = 0;
+    if (scrapHere >= 1) {
+        scrapProd = Math.floor(scrapHere*boysHere/765);
+    }
+    if (scrapProd >= 1) {
+        let resSpace = checkResSpace(bat);
+        if (resSpace >= 1) {
+            if (bat.transRes['Scrap'] === undefined) {
+                bat.transRes['Scrap'] = scrapProd;
+            } else {
+                bat.transRes['Scrap'] = bat.transRes['Scrap']+scrapProd;
+            }
+            if (minedThisTurn['Scrap'] === undefined) {
+                minedThisTurn['Scrap'] = scrapProd;
+            } else {
+                minedThisTurn['Scrap'] = minedThisTurn['Scrap']+scrapProd;
+            }
+            tile.rs['Scrap'] = tile.rs['Scrap']-Math.ceil(scrapProd/resPersistance*4);
+        }
+    }
+};
+
 function upkeepAndProd(bat,batType,time,sim,quiet) {
     console.log('UPKEEP');
     console.log(batType.name);

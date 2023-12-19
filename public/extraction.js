@@ -184,7 +184,7 @@ function mining(bat) {
                             // diminution des gisements
                             if (!permaRes && res.cat != 'zero') {
                                 if (res.name === 'Scrap') {
-                                    tile.rs[res.name] = tile.rs[res.name]-Math.ceil(resMiningRate/resPersistance*5);
+                                    tile.rs[res.name] = tile.rs[res.name]-Math.ceil(resMiningRate/resPersistance*4);
                                 } else {
                                     tile.rs[res.name] = tile.rs[res.name]-Math.ceil(resMiningRate/resPersistance);
                                 }

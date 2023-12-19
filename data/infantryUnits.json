@@ -919,6 +919,7 @@
             "rof":10,
             "accuracy":25,
             "power":0,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"paint",
             "ammo":["marquage","marquage-spike","marquage-stop","marquage-kill"]
@@ -5685,6 +5686,7 @@
             "accuracy":25,
             "dca":0.75,
             "power":0,
+            "armors":0.75,
             "aoe":"unit",
             "sound":"paint",
             "ammo":["marquage","marquage-spike","marquage-stop"]

@@ -435,8 +435,7 @@
         "weapon2":{
             "name":"Mortier",
             "cost":3,
-            "range":5,
-            "elevation":1,
+            "range":6,
             "noise":4,
             "noMelee":true,
             "noFly":true,
