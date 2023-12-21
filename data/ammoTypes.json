@@ -30,7 +30,7 @@
         "rof": 0.5,
         "power": 4,
         "powermult": 1,
-        "armors": 0.6,
+        "armors": 0.5,
         "avar": "mat",
         "accuracy": 1,
         "apdamage": 0,
@@ -75,7 +75,7 @@
         "apdamage": 0,
         "aoe": "squad",
         "bldReq":["Atelier"],
-        "compReq":{"det":3,"mat":1,"bal":1,"explo":3},
+        "compReq":{"det":2,"mat":1,"bal":1,"explo":3,"arti":1},
         "deploy":{"Fer":1,"Carbone":1,"Cobalt":1,"Silicium":1,"Mercure":1,"Explosifs":2,"Nanite":2},
         "batch":200,
         "sound":{"paint":"paint_kill","fragger_throw":"paint_kill"}
