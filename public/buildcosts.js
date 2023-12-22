@@ -103,9 +103,9 @@ function getResGauge(res,dispoRes) {
     let gauge = {};
     gauge.num = Math.ceil(90*dispoRes/res.gauge)+10;
     let gauge100 = Math.ceil(100*dispoRes/res.gauge);
-    if (gauge100 < 10) {
+    if (gauge100 < 5) {
         gauge.col = '#cd0000';
-    } else if (gauge100 < 25) {
+    } else if (gauge100 < 20) {
         gauge.col = '#c47000';
     } else if (gauge100 < 50) {
         gauge.col = '#7b8600';

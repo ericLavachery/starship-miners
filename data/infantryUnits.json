@@ -6216,7 +6216,6 @@
             "noFly":true,
             "noMelee":true,
             "noDef":true,
-            "noBis":true,
             "rof":6,
             "accuracy":9,
             "power":20,

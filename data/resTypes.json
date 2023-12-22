@@ -132,7 +132,7 @@
         "pter": [3,"F","B","G"],
         "rlab": 1,
         "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3},
-        "gauge": 10000
+        "gauge": 5000
     },
     {
         "id": 8,
@@ -196,7 +196,7 @@
         "equiv": 1,
         "kinds": ["construction","military","industry","auto","any"],
         "rlab": 20,
-        "gauge": 10000
+        "gauge": 20000
     },
     {
         "id": 12,
@@ -623,7 +623,7 @@
         "equiv": 3,
         "kinds": ["science","military","energy","auto"],
         "planets":{"Dom":0,"Sarak":1,"Gehenna":0.7,"Kzin":2,"Horst":0.75},
-        "gauge": 5000
+        "gauge": 3000
     },
     {
         "id": 37,
@@ -802,7 +802,7 @@
         "cramBld": "Incinérateur",
         "morphRes":"Huile",
         "equiv": 2,
-        "gauge": 5000
+        "gauge": 3000
     },
     {
         "id": 52,
@@ -907,7 +907,7 @@
         "energie": -1,
         "equiv": 3,
         "max": 15000,
-        "gauge": 10000
+        "gauge": 3000
     },
     {
         "id": 60,
@@ -1071,7 +1071,7 @@
         "equiv": 2,
         "kinds": ["food"],
         "max": 15000,
-        "gauge": 5000
+        "gauge": 3000
     },
     {
         "id": 79,

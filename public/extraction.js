@@ -1070,14 +1070,24 @@ function showTileRes(theTileRes) {
 
 function getResIcon(res) {
     let resIcon;
-    if (res.cat.includes('sky') || res.name === 'Spins') {
-        resIcon = '&starf;';
-    } else if (res.rarity <= 20 || res.cat === 'blue') {
-        resIcon = '&star;';
-    } else if (res.rarity <= 30) {
-        resIcon = '&dtri;';
+    if (res.cat === 'alien') {
+        if (res.rarity <= 10 && res.name != 'Gibier') {
+            resIcon = '&starf;';
+        } else if (res.rarity <= 40) {
+            resIcon = '&star;';
+        } else {
+            resIcon = '&dtri;';
+        }
     } else {
-        resIcon = '';
+        if (res.cat.includes('sky') || res.name === 'Spins') {
+            resIcon = '&starf;';
+        } else if (res.rarity <= 20 || res.cat === 'blue') {
+            resIcon = '&star;';
+        } else if (res.rarity <= 30) {
+            resIcon = '&dtri;';
+        } else {
+            resIcon = '';
+        }
     }
     return resIcon;
 };
