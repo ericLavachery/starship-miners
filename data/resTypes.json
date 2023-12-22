@@ -10,7 +10,8 @@
         "energie": 45,
         "equiv": 0.7,
         "kinds": [],
-        "planets":{"Dom":1,"Sarak":0.85,"Gehenna":0.6,"Kzin":0.45,"Horst":0.35}
+        "planets":{"Dom":1,"Sarak":0.85,"Gehenna":0.6,"Kzin":0.45,"Horst":0.35},
+        "gauge": 20000
     },
     {
         "id": 1,
@@ -24,7 +25,8 @@
         "equiv": 0.7,
         "kinds": ["military","industry","any"],
         "rlab": 2,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":0.5,"Horst":0.5}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":0.5,"Horst":0.5},
+        "gauge": 10000
     },
     {
         "id": 2,
@@ -38,7 +40,8 @@
         "equiv": 0.7,
         "kinds": ["construction","military","industry","any"],
         "rlab": 40,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":0.5,"Horst":0.5}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":0.5,"Horst":0.5},
+        "gauge": 20000
     },
     {
         "id": 59,
@@ -52,7 +55,8 @@
         "equiv": 1,
         "kinds": ["science","construction","military","industry","any"],
         "pter": [2,"F","H"],
-        "rlab": 20
+        "rlab": 20,
+        "gauge": 10000
     },
     {
         "id": 3,
@@ -65,7 +69,8 @@
         "energie": -1,
         "equiv": 1,
         "kinds": ["science","construction","military","industry","any"],
-        "rlab": 15
+        "rlab": 15,
+        "gauge": 10000
     },
     {
         "id": 4,
@@ -79,7 +84,8 @@
         "equiv": 1,
         "kinds": ["science","industry","any"],
         "rlab": 10,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1.5,"Kzin":1,"Horst":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1.5,"Kzin":1,"Horst":1},
+        "gauge": 10000
     },
     {
         "id": 5,
@@ -93,7 +99,8 @@
         "equiv": 1,
         "kinds": ["science","medecine"],
         "pter": [2,"H","P","B"],
-        "rlab": 4
+        "rlab": 4,
+        "gauge": 5000
     },
     {
         "id": 6,
@@ -107,7 +114,8 @@
         "equiv": 1,
         "kinds": ["science","construction","industry","medecine","any"],
         "rlab": 15,
-        "planets":{"Dom":1,"Sarak":0.5,"Gehenna":1.2,"Kzin":0.5,"Horst":0.5}
+        "planets":{"Dom":1,"Sarak":0.5,"Gehenna":1.2,"Kzin":0.5,"Horst":0.5},
+        "gauge": 10000
     },
     {
         "id": 7,
@@ -123,7 +131,8 @@
         "kinds": ["science","military","industry","any"],
         "pter": [3,"F","B","G"],
         "rlab": 1,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":3},
+        "gauge": 10000
     },
     {
         "id": 8,
@@ -138,7 +147,8 @@
         "equiv": 0.7,
         "kinds": ["military","industry","any"],
         "rlab": 1,
-        "planets":{"Dom":1,"Sarak":0.5,"Gehenna":0.5,"Kzin":1,"Horst":3}
+        "planets":{"Dom":1,"Sarak":0.5,"Gehenna":0.5,"Kzin":1,"Horst":3},
+        "gauge": 10000
     },
     {
         "id": 9,
@@ -153,7 +163,8 @@
         "kinds": ["science","industry","any"],
         "pter": [2,"M"],
         "rlab": 4,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":0.7,"Kzin":1,"Horst":1.5}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0.7,"Kzin":1,"Horst":1.5},
+        "gauge": 10000
     },
     {
         "id": 10,
@@ -169,7 +180,8 @@
         "kinds": ["military","industry","any"],
         "rlab": 2,
         "pter": [3,"P","H","F"],
-        "planets":{"Dom":1.1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":1}
+        "planets":{"Dom":1.1,"Sarak":1,"Gehenna":1,"Kzin":1,"Horst":1},
+        "gauge": 10000
     },
     {
         "id": 11,
@@ -183,7 +195,8 @@
         "cramBld": "Incinérateur",
         "equiv": 1,
         "kinds": ["construction","military","industry","auto","any"],
-        "rlab": 20
+        "rlab": 20,
+        "gauge": 10000
     },
     {
         "id": 12,
@@ -198,7 +211,8 @@
         "kinds": ["science","any"],
         "rlab": 1,
         "pter": [2,"M"],
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1,"Kzin":2,"Horst":1},
+        "gauge": 3000
     },
     {
         "id": 13,
@@ -212,7 +226,8 @@
         "equiv": 1.5,
         "kinds": ["science","military","industry","medecine","auto","any"],
         "rlab": 6,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":0.7,"Kzin":1,"Horst":1.5}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0.7,"Kzin":1,"Horst":1.5},
+        "gauge": 10000
     },
     {
         "id": 14,
@@ -226,7 +241,8 @@
         "equiv": 1.5,
         "kinds": ["science","industry","any"],
         "rlab": 3,
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1.5,"Kzin":1,"Horst":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1.5,"Kzin":1,"Horst":1},
+        "gauge": 10000
     },
     {
         "id": 15,
@@ -239,7 +255,8 @@
         "energie": -1,
         "equiv": 1,
         "kinds": ["military","industry","any"],
-        "rlab": 10
+        "rlab": 10,
+        "gauge": 10000
     },
     {
         "id": 16,
@@ -253,7 +270,8 @@
         "cramBld": "Centrale nucléaire",
         "equiv": 1,
         "kinds": ["science","industry","energy"],
-        "planets":{"Dom":1,"Sarak":0.5,"Gehenna":1.2,"Kzin":2,"Horst":1}
+        "planets":{"Dom":1,"Sarak":0.5,"Gehenna":1.2,"Kzin":2,"Horst":1},
+        "gauge": 10000
     },
     {
         "id": 17,
@@ -267,7 +285,8 @@
         "cramBld": "Centrale SMR",
         "equiv": 1,
         "kinds": ["science","military","industry","energy"],
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":1.2,"Kzin":2,"Horst":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":1.2,"Kzin":2,"Horst":1},
+        "gauge": 10000
     },
     {
         "id": 18,
@@ -280,7 +299,8 @@
         "energie": -1,
         "equiv": 1.5,
         "kinds": ["science"],
-        "rlab": 1
+        "rlab": 1,
+        "gauge": 5000
     },
     {
         "id": 19,
@@ -294,7 +314,8 @@
         "equiv": 1.5,
         "kinds": ["science","medecine"],
         "pter": [2,"F","B"],
-        "rlab": 1
+        "rlab": 1,
+        "gauge": 5000
     },
     {
         "id": 20,
@@ -308,7 +329,8 @@
         "equiv": 1,
         "rlab": 1,
         "kinds": ["science","industry"],
-        "pter": [2,"P","G","B"]
+        "pter": [2,"P","G","B"],
+        "gauge": 5000
     },
     {
         "id": 41,
@@ -323,7 +345,8 @@
         "pter": [3,"F"],
         "rlab": 0.2,
         "kinds": ["science","military","industry"],
-        "planets":{"Dom":1,"Sarak":1.5,"Gehenna":1,"Kzin":1.5,"Horst":3}
+        "planets":{"Dom":1,"Sarak":1.5,"Gehenna":1,"Kzin":1.5,"Horst":3},
+        "gauge": 5000
     },
     {
         "id": 69,
@@ -336,7 +359,8 @@
         "energie": -1,
         "equiv": 1,
         "kinds": [],
-        "max": 2000
+        "max": 2000,
+        "gauge": 1000
     },
     {
         "id": 21,
@@ -349,7 +373,8 @@
         "energie": -1,
         "equiv": 0.7,
         "kinds": ["food","science","industry","medecine","any"],
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.5}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.5},
+        "gauge": 20000
     },
     {
         "id": 22,
@@ -364,7 +389,8 @@
         "kinds": ["industry","energy","any"],
         "pter": [1.5,"P"],
         "rlab": 3,
-        "planets":{"Dom":1,"Sarak":0.7,"Gehenna":1.2,"Kzin":1,"Horst":0.5}
+        "planets":{"Dom":1,"Sarak":0.7,"Gehenna":1.2,"Kzin":1,"Horst":0.5},
+        "gauge": 10000
     },
     {
         "id": 23,
@@ -378,7 +404,8 @@
         "equiv": 1.5,
         "kinds": ["science","industry","medecine","energy","auto"],
         "rlab": 1,
-        "planets":{"Dom":1,"Sarak":2,"Gehenna":0,"Kzin":1,"Horst":1}
+        "planets":{"Dom":1,"Sarak":2,"Gehenna":0,"Kzin":1,"Horst":1},
+        "gauge": 5000
     },
     {
         "id": 72,
@@ -392,7 +419,8 @@
         "equiv": 1,
         "kinds": ["food"],
         "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0,"Kzin":0.5,"Horst":0},
-        "max": 15000
+        "max": 15000,
+        "gauge": 10000
     },
     {
         "id": 24,
@@ -405,7 +433,8 @@
         "energie": 45,
         "equiv": 0.7,
         "kinds": ["science","medecine"],
-        "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0,"Kzin":1,"Horst":0.5}
+        "planets":{"Dom":1,"Sarak":0.7,"Gehenna":0,"Kzin":1,"Horst":0.5},
+        "gauge": 20000
     },
     {
         "id": 25,
@@ -419,7 +448,8 @@
         "equiv": 0.7,
         "kinds": ["construction","industry","any"],
         "rlab": 20,
-        "planets":{"Dom":1.1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.7}
+        "planets":{"Dom":1.1,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.7},
+        "gauge": 20000
     },
     {
         "id": 26,
@@ -432,7 +462,8 @@
         "energie": -1,
         "equiv": 0,
         "kinds": [],
-        "planets":{"Dom":1,"Sarak":2,"Gehenna":1,"Kzin":1,"Horst":5}
+        "planets":{"Dom":1,"Sarak":2,"Gehenna":1,"Kzin":1,"Horst":5},
+        "gauge": 1
     },
     {
         "id": 27,
@@ -444,7 +475,8 @@
         "batch": 2,
         "energie": -1,
         "equiv": 1,
-        "kinds": ["industry","medecine"]
+        "kinds": ["industry","medecine"],
+        "gauge": 10000
     },
     {
         "id": 28,
@@ -459,7 +491,8 @@
         "equiv": 1,
         "kinds": ["military","industry"],
         "rlab": 1,
-        "pter": [2,"P","G","B"]
+        "pter": [2,"P","G","B"],
+        "gauge": 10000
     },
     {
         "id": 29,
@@ -473,7 +506,8 @@
         "equiv": 1,
         "kinds": ["science","military","industry"],
         "rlab": 1,
-        "pter": [2,"P","G","B"]
+        "pter": [2,"P","G","B"],
+        "gauge": 10000
     },
     {
         "id": 30,
@@ -487,7 +521,8 @@
         "equiv": 1,
         "rlab": 4,
         "kinds": ["science","military","medecine"],
-        "planets":{"Dom":1,"Sarak":1,"Gehenna":3,"Kzin":1,"Horst":1}
+        "planets":{"Dom":1,"Sarak":1,"Gehenna":3,"Kzin":1,"Horst":1},
+        "gauge": 5000
     },
     {
         "id": 31,
@@ -500,7 +535,8 @@
         "energie": -1,
         "equiv": 1,
         "kinds": ["science","industry"],
-        "rlab": 0.5
+        "rlab": 0.5,
+        "gauge": 5000
     },
     {
         "id": 32,
@@ -513,7 +549,8 @@
         "energie": -1,
         "equiv": 1,
         "kinds": ["science"],
-        "rlab": 1
+        "rlab": 1,
+        "gauge": 5000
     },
     {
         "id": 78,
@@ -527,7 +564,8 @@
         "cramBld": "Incinérateur",
         "equiv": 3,
         "kinds": ["science"],
-        "planets":{"Dom":0,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":0}
+        "planets":{"Dom":0,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":0},
+        "gauge": 1000
     },
     {
         "id": 33,
@@ -540,7 +578,8 @@
         "energie": -1,
         "equiv": 3.5,
         "kinds": ["military"],
-        "planets":{"Dom":0,"Sarak":0.7,"Gehenna":1.5,"Kzin":0,"Horst":1}
+        "planets":{"Dom":0,"Sarak":0.7,"Gehenna":1.5,"Kzin":0,"Horst":1},
+        "gauge": 3000
     },
     {
         "id": 34,
@@ -554,7 +593,8 @@
         "cramBld": "Centrale SMR",
         "equiv": 4,
         "kinds": ["science","military"],
-        "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":1,"Horst":1}
+        "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":1,"Horst":1},
+        "gauge": 3000
     },
     {
         "id": 35,
@@ -567,7 +607,8 @@
         "energie": -1,
         "equiv": 3.5,
         "kinds": ["military"],
-        "planets":{"Dom":0,"Sarak":0.5,"Gehenna":1.2,"Kzin":1,"Horst":0.75}
+        "planets":{"Dom":0,"Sarak":0.5,"Gehenna":1.2,"Kzin":1,"Horst":0.75},
+        "gauge": 3000
     },
     {
         "id": 36,
@@ -581,7 +622,8 @@
         "cramBld": "Incinérateur",
         "equiv": 3,
         "kinds": ["science","military","energy","auto"],
-        "planets":{"Dom":0,"Sarak":1,"Gehenna":0.7,"Kzin":2,"Horst":0.75}
+        "planets":{"Dom":0,"Sarak":1,"Gehenna":0.7,"Kzin":2,"Horst":0.75},
+        "gauge": 5000
     },
     {
         "id": 37,
@@ -595,7 +637,8 @@
         "cramBld": "Centrale SMR",
         "equiv": 5,
         "kinds": ["science","military"],
-        "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":0.5,"Horst":1.5}
+        "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":0.5,"Horst":1.5},
+        "gauge": 3000
     },
     {
         "id": 38,
@@ -609,7 +652,8 @@
         "cramBld": "Incinérateur",
         "equiv": 2.5,
         "kinds": ["military"],
-        "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.5}
+        "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.5},
+        "gauge": 5000
     },
     {
         "id": 39,
@@ -622,7 +666,8 @@
         "energie": -1,
         "equiv": 3.5,
         "kinds": ["science","military","industry"],
-        "planets":{"Dom":0,"Sarak":0,"Gehenna":0.2,"Kzin":0.75,"Horst":1.5}
+        "planets":{"Dom":0,"Sarak":0,"Gehenna":0.2,"Kzin":0.75,"Horst":1.5},
+        "gauge": 3000
     },
     {
         "id": 40,
@@ -635,7 +680,8 @@
         "energie": 0.67,
         "equiv": 2.5,
         "kinds": ["military","industry","energy","auto"],
-        "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":2}
+        "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":2},
+        "gauge": 5000
     },
     {
         "id": 42,
@@ -648,7 +694,8 @@
         "energie": 45,
         "equiv": 2,
         "kinds": ["science","medecine"],
-        "planets":{"Dom":1,"Sarak":2,"Gehenna":0,"Kzin":0,"Horst":0}
+        "planets":{"Dom":1,"Sarak":2,"Gehenna":0,"Kzin":0,"Horst":0},
+        "gauge": 5000
     },
     {
         "id": 43,
@@ -661,7 +708,8 @@
         "energie": -1,
         "equiv": 2,
         "kinds": ["science","military","medecine"],
-        "planets":{"Dom":0.5,"Sarak":1,"Gehenna":3,"Kzin":0,"Horst":0}
+        "planets":{"Dom":0.5,"Sarak":1,"Gehenna":3,"Kzin":0,"Horst":0},
+        "gauge": 3000
     },
     {
         "id": 44,
@@ -673,7 +721,8 @@
         "batch": 5,
         "energie": -1,
         "morphRes":"Fer",
-        "equiv": 1
+        "equiv": 1,
+        "gauge": 5000
     },
     {
         "id": 45,
@@ -685,7 +734,8 @@
         "batch": 5,
         "energie": -1,
         "morphRes":"Fer",
-        "equiv": 1.2
+        "equiv": 1.2,
+        "gauge": 5000
     },
     {
         "id": 46,
@@ -698,7 +748,8 @@
         "energie": 5,
         "cramBld": "Incinérateur",
         "morphRes":"Huile",
-        "equiv": 1.5
+        "equiv": 1.5,
+        "gauge": 5000
     },
     {
         "id": 47,
@@ -711,7 +762,8 @@
         "energie": 8,
         "cramBld": "Incinérateur",
         "morphRes":"Phosphore",
-        "equiv": 1.2
+        "equiv": 1.2,
+        "gauge": 5000
     },
     {
         "id": 50,
@@ -723,7 +775,8 @@
         "batch": 5,
         "energie": -1,
         "morphRes":"Huile",
-        "equiv": 2.5
+        "equiv": 2.5,
+        "gauge": 3000
     },
     {
         "id": 48,
@@ -734,7 +787,8 @@
         "cat": "alien",
         "batch": 5,
         "energie": -1,
-        "equiv": 1.5
+        "equiv": 1.5,
+        "gauge": 5000
     },
     {
         "id": 49,
@@ -747,7 +801,8 @@
         "energie": 3,
         "cramBld": "Incinérateur",
         "morphRes":"Huile",
-        "equiv": 2
+        "equiv": 2,
+        "gauge": 5000
     },
     {
         "id": 52,
@@ -759,7 +814,8 @@
         "batch": 5,
         "energie": -1,
         "morphRes":"Huile",
-        "equiv": 2
+        "equiv": 2,
+        "gauge": 3000
     },
     {
         "id": 53,
@@ -771,7 +827,8 @@
         "batch": 5,
         "energie": -1,
         "morphRes":"Titane",
-        "equiv": 2.5
+        "equiv": 2.5,
+        "gauge": 3000
     },
     {
         "id": 54,
@@ -783,7 +840,8 @@
         "batch": 5,
         "energie": -1,
         "morphRes":"Huile",
-        "equiv": 2
+        "equiv": 2,
+        "gauge": 3000
     },
     {
         "id": 55,
@@ -795,7 +853,8 @@
         "batch": 5,
         "energie": -1,
         "morphRes":"Huile",
-        "equiv": 2
+        "equiv": 2,
+        "gauge": 3000
     },
     {
         "id": 56,
@@ -807,7 +866,8 @@
         "batch": 5,
         "energie": -1,
         "morphRes":"Rhodium",
-        "equiv": 4
+        "equiv": 4,
+        "gauge": 1000
     },
     {
         "id": 57,
@@ -819,7 +879,8 @@
         "batch": 5,
         "energie": -1,
         "morphRes":"Timonium",
-        "equiv": 6
+        "equiv": 6,
+        "gauge": 1000
     },
     {
         "id": 58,
@@ -832,7 +893,8 @@
         "energie": 1,
         "cramBld": "Incinérateur",
         "morphRes":"Pyratol",
-        "equiv": 2.5
+        "equiv": 2.5,
+        "gauge": 1000
     },
     {
         "id": 77,
@@ -844,7 +906,8 @@
         "batch": 5,
         "energie": -1,
         "equiv": 3,
-        "max": 15000
+        "max": 15000,
+        "gauge": 10000
     },
     {
         "id": 60,
@@ -856,7 +919,8 @@
         "batch": 3,
         "energie": -1,
         "equiv": 0.3,
-        "kinds": ["science","construction","military","industry","medecine","energy","auto","any"]
+        "kinds": ["science","construction","military","industry","medecine","energy","auto","any"],
+        "gauge": 30000
     },
     {
         "id": 51,
@@ -869,7 +933,8 @@
         "energie": -1,
         "equiv": 2,
         "rlab": 2,
-        "kinds": ["science","military","industry","medecine","energy","auto"]
+        "kinds": ["science","military","industry","medecine","energy","auto"],
+        "gauge": 1000
     },
     {
         "id": 62,
@@ -882,7 +947,8 @@
         "energie": -1,
         "equiv": 3,
         "kinds": ["science","military","industry","medecine","energy","auto","any"],
-        "rlab": 2
+        "rlab": 2,
+        "gauge": 1000
     },
     {
         "id": 61,
@@ -895,7 +961,8 @@
         "energie": -1,
         "equiv": 4,
         "kinds": ["science","military","industry","medecine","energy","auto","any"],
-        "rlab": 3
+        "rlab": 3,
+        "gauge": 1000
     },
     {
         "id": 63,
@@ -908,7 +975,8 @@
         "energie": 3,
         "equiv": 2,
         "rlab": 7,
-        "kinds": ["military","industry","energy","auto","any"]
+        "kinds": ["military","industry","energy","auto","any"],
+        "gauge": 5000
     },
     {
         "id": 74,
@@ -921,7 +989,8 @@
         "energie": -1,
         "equiv": 2,
         "kinds": ["military","industry","energy","auto","any"],
-        "rlab": 4
+        "rlab": 4,
+        "gauge": 5000
     },
     {
         "id": 64,
@@ -933,7 +1002,8 @@
         "batch": 2,
         "energie": -1,
         "equiv": 3,
-        "kinds": ["military"]
+        "kinds": ["military"],
+        "gauge": 5000
     },
     {
         "id": 73,
@@ -945,7 +1015,8 @@
         "batch": 3,
         "energie": -1,
         "equiv": 2,
-        "kinds": ["military"]
+        "kinds": ["military"],
+        "gauge": 5000
     },
     {
         "id": 75,
@@ -957,7 +1028,8 @@
         "batch": 3,
         "energie": -1,
         "equiv": 2,
-        "kinds": ["science","medecine"]
+        "kinds": ["science","medecine"],
+        "gauge": 5000
     },
     {
         "id": 70,
@@ -970,7 +1042,8 @@
         "energie": 15,
         "equiv": 2.5,
         "kinds": ["medecine"],
-        "rlab": 7
+        "rlab": 7,
+        "gauge": 5000
     },
     {
         "id": 71,
@@ -983,7 +1056,8 @@
         "energie": -1,
         "equiv": 3.5,
         "kinds": ["food"],
-        "rlab": 7
+        "rlab": 7,
+        "gauge": 10000
     },
     {
         "id": 76,
@@ -996,7 +1070,8 @@
         "energie": -1,
         "equiv": 2,
         "kinds": ["food"],
-        "max": 15000
+        "max": 15000,
+        "gauge": 5000
     },
     {
         "id": 79,
@@ -1008,7 +1083,8 @@
         "batch": 1,
         "energie": -1,
         "equiv": 1000,
-        "kinds": []
+        "kinds": [],
+        "gauge": 200
     },
     {
         "id": 66,
@@ -1020,7 +1096,8 @@
         "batch": 5,
         "energie": 25,
         "equiv": 1.5,
-        "kinds": ["construction","industry"]
+        "kinds": ["construction","industry"],
+        "gauge": 10000
     },
     {
         "id": 67,
@@ -1032,7 +1109,8 @@
         "batch": 4,
         "energie": -1,
         "equiv": 2,
-        "kinds": ["construction","military","industry"]
+        "kinds": ["construction","military","industry"],
+        "gauge": 10000
     },
     {
         "id": 68,
@@ -1044,6 +1122,7 @@
         "batch": 3,
         "energie": -1,
         "equiv": 2.5,
-        "kinds": ["construction","military","industry"]
+        "kinds": ["construction","military","industry"],
+        "gauge": 3000
     }
 ]

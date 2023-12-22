@@ -693,59 +693,67 @@ function batListElement(bat,batType,idOfLander) {
         $('#be'+bat.id).append('<span class="listRes jaune" title="Souffrant">&nbsp;<i class="fas fa-bone"></i></span>');
     }
     let effSoins = checkEffSoins(bat);
+    let batSoins = 0;
+    if (bat.soins != undefined) {
+        batSoins = bat.soins;
+    }
+    let batEmo = 0;
+    if (bat.emo != undefined) {
+        batEmo = bat.emo;
+    }
     if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
-        if (bat.soins >= 11) {
+        if (batSoins >= 11) {
             $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-wrench"></i></span>');
         }
-        if (bat.emo >= 11) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+bat.emo+'</span>');
+        if (batEmo >= 11) {
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
             if (!bat.tags.includes('pills')) {
-                if (bat.emo >= 16) {
+                if (batEmo >= 16) {
                     $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-pills"></i></span>');
                 } else {
                     $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-pills"></i></span>');
                 }
             }
-        } else if (bat.emo >= 1) {
-            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i> '+bat.emo+'</span>');
+        } else if (batEmo >= 1) {
+            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
         }
     } else if (batType.skills.includes('clone')) {
         if (bat.tags.includes('necro')) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+bat.emo+'</span>');
-        } else if (bat.emo >= 11) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+bat.emo+'</span>');
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
+        } else if (batEmo >= 11) {
+            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
             if (!bat.tags.includes('pills')) {
-                if (bat.emo >= 16) {
+                if (batEmo >= 16) {
                     $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-pills"></i></span>');
                 } else {
                     $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-pills"></i></span>');
                 }
             }
-        } else if (bat.emo >= 1) {
-            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i> '+bat.emo+'</span>');
+        } else if (batEmo >= 1) {
+            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
         }
         if (effSoins < 50) {
             $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-skull-crossbones"></i></span>');
         } else if (effSoins <= 75) {
             $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-heart"></i></span>');
-        } else if (bat.soins >= 1) {
+        } else if (batSoins >= 1) {
             $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="far fa-heart"></i></span>');
         }
     } else {
-        let bedTime = bat.emo;
-        if (bat.soins > bat.emo) {
-            bedTime = bat.soins;
+        let bedTime = batEmo;
+        if (batSoins > batEmo) {
+            bedTime = batSoins;
         }
-        if (bat.soins >= 11 || bat.emo >= 11 || bat.tags.includes('necro')) {
+        if (batSoins >= 11 || batEmo >= 11 || bat.tags.includes('necro')) {
             $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+bedTime+'</span>');
-            if (!bat.tags.includes('pills') && bat.emo >= 11) {
-                if (bat.emo >= 16) {
+            if (!bat.tags.includes('pills') && batEmo >= 11) {
+                if (batEmo >= 16) {
                     $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-pills"></i></span>');
                 } else {
                     $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-pills"></i></span>');
                 }
             }
-        } else if (bat.soins >= 1 || bat.emo >= 1) {
+        } else if (batSoins >= 1 || batEmo >= 1) {
             $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i> '+bedTime+'</span>');
         }
     }

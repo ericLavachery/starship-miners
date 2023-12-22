@@ -206,7 +206,7 @@ function isAlienHere(tileId) {
 
 function batSelect(bat,roger,keepBkp) {
     // stop move sound
-    // playMove(false);
+    playMove(false);
     // remove selection on old selected unit
     if (!keepBkp) {
         justReloaded = false;
@@ -259,7 +259,7 @@ function checkSelectedBatType() {
 
 function batUnselect() {
     // stop move sound
-    // playMove(false);
+    playMove(false);
     deleteMoveInfos();
     // remove selection on old selected unit
     tileUnselect();
@@ -298,11 +298,7 @@ function tileSelect(bat) {
     if (mode === 'move') {
         $('#'+tile.id).append('<span class="selTile"><img src="/static/img/moving.png"></span>');
     } else {
-        if (zone[0].dark) {
-            $('#'+tile.id).append('<span class="selTile"><img src="/static/img/selected-dark.gif"></span>');
-        } else {
-            $('#'+tile.id).append('<span class="selTile"><img src="/static/img/selected.gif"></span>');
-        }
+        $('#'+tile.id).append('<span class="selTile"><img src="/static/img/selected-dark.gif"></span>');
     }
     // $('#'+tile.id).removeClass(terclass).addClass('terUnderSel');
 };

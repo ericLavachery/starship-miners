@@ -451,10 +451,12 @@ function showRes(tileId) {
             tseed = tseed-6;
         }
         if (playerInfos.stList.includes(tileId)) {
-            mapIndicators = mapIndicators+'<div class="stormz"><img src="/static/img/storm'+tseed+'.png"></div>';
+            // mapIndicators = mapIndicators+'<div class="stormz"><img src="/static/img/storm'+tseed+'.png"></div>';
+            mapIndicators = mapIndicators+'<div class="stormz"><img src="/static/img/screen-storm.png"></div>';
         } else if (playerInfos.sqList.includes(tileId)) {
             if (playerInfos.bldVM.includes('Station météo')) {
-                mapIndicators = mapIndicators+'<div class="squallz"><img src="/static/img/storm'+tseed+'.png"></div>';
+                // mapIndicators = mapIndicators+'<div class="squallz"><img src="/static/img/storm'+tseed+'.png"></div>';
+                mapIndicators = mapIndicators+'<div class="stormz"><img src="/static/img/screen-squash.png"></div>';
             }
         }
     }

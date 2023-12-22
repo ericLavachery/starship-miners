@@ -291,16 +291,26 @@ function okSound(roger) {
             src: ['/static/sounds/moves/'+okFile+'.mp3'],
             volume: myVol
         });
+        okSnd.play();
     } else {
+        playOKBip('radio4');
         // let nbr = rand.rand(1,5);
-        let nbr = 4;
-        okSnd = new Howl({
-            src: ['/static/sounds/moves/radio'+nbr+'.mp3'],
-            volume: myVol
-        });
+        // let nbr = 4;
+        // okSnd = new Howl({
+        //     src: ['/static/sounds/moves/radio'+nbr+'.mp3'],
+        //     volume: myVol
+        // });
     }
-    okSnd.play();
 };
+
+function playOKBip(theBip) {
+    let myVol = checkMyVol(playerInfos.volFx-0.3,'volFx');
+    let bipSnd = new Howl({
+        src: ['/static/sounds/moves/'+theBip+'.mp3'],
+        volume: myVol
+    });
+    bipSnd.play();
+}
 
 function playOK(bat) {
     let myVol = checkMyVol(playerInfos.volFx-0.3,'volFx');
@@ -312,7 +322,7 @@ function playOK(bat) {
 };
 
 function shotSound(weapon,bat) {
-    // playMove(false);
+    playMove(false);
     let soundDir;
     if (bat.team === 'aliens') {
         soundDir = 'aliens';
@@ -619,10 +629,13 @@ function playRoom(piste,interrupt,onloop) {
 function playMove(play) {
     let isLoop = true;
     let track = 'none';
-    let myVol = checkMyVol(playerInfos.volFx+0.1,'volFx');
+    let myVol = checkMyVol(playerInfos.volFx-0.2,'volFx');
     if (!play) {
+        // theMove.fade(myVol,0,200);
+        if (theMove.playing()) {
+            playOKBip('radio3');
+        }
         theMove.stop();
-        // theMove.fade(moveVol,0,2000);
     } else {
         if (selectedBatType.mvSnd != undefined) {
             track = selectedBatType.mvSnd;

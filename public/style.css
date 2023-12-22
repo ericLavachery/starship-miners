@@ -271,6 +271,12 @@ h6 {
     margin-right: 3px;
     min-height: 17px;
 }
+.paramResGauge {
+    display: inline-block;
+    color: #cafbe5;
+    width: 60px;
+    font-weight: bold;
+}
 .paramResValue {
     display: inline-block;
     width: 60px;
