@@ -15,12 +15,12 @@ window.onerror = (event) => {
 socket.on('playerInfos-Load', function(pi) {
     playerInfos = pi;
     isPlayerAdmin();
+    if (playerInfos.onShip === undefined) {
+        playerInfos.onShip = true;
+    }
     if (playerInfos.numHTiles > 1 && playerInfos.numVTiles > 1) {
         numHTiles = playerInfos.numHTiles;
         numVTiles = playerInfos.numVTiles;
-    }
-    if (playerInfos.onShip === undefined) {
-        playerInfos.onShip = true;
     }
     if (playerInfos.onStart === undefined) {
         playerInfos.onStart = false;

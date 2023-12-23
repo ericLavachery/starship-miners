@@ -47,8 +47,8 @@ function areaGo(x,y) {
 function yourMapSize() {
     let screenH = window.screen.availWidth;
     let screenV = window.screen.availHeight;
-    let defV = 18;
-    let defH = 12;
+    let defV = 19;
+    let defH = 11;
     if (screenH >= 2560) {
         defH = 28;
     }

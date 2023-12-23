@@ -1,11 +1,19 @@
 function showBatInfos(bat) {
     if (!playerInfos.onStart) {
         $("#unitInfos").css("display","block");
+        if (playerInfos.onShip && !inSoute) {
+            $("#unitInfos").css("height","380px");
+        } else {
+            $("#unitInfos").css("height","800px");
+        }
         let batType = getBatType(bat);
         batInfos(bat,batType,false);
         $("#unitInfos").animate({scrollTop:0},"fast");
         if (bat.type === 'Soute') {
             viewPop();
+        }
+        if (playerInfos.onShip) {
+            $("#tileInfos").css("display","none");
         }
     }
 };
@@ -630,9 +638,18 @@ function batInfos(bat,batType,pop) {
             $('#'+bodyPlace).append('<span class="paramName jaune">Usure</span><span class="paramIcon"></span><span class="paramValue jaune">-'+apLoss+' PA</span><br>');
         }
     } else if (batType.cat === 'infantry') {
-        if (bat.soins >= 11) {
-            let effSoins = checkEffSoins(bat);
-            $('#'+bodyPlace).append('<span class="paramName jaune">Efficacité soins</span><span class="paramIcon"></span><span class="paramValue jaune">'+effSoins+'%</span><br>');
+        if (inSoute) {
+            if (bat.soins >= 11) {
+                let effSoins = checkEffSoins(bat);
+                $('#'+bodyPlace).append('<span class="paramName or">Invalidité</span><span class="paramIcon"></span><span class="paramValue or" title="Efficacité des soins: '+effSoins+'%">'+bat.soins+'</span><br>');
+            } else if (bat.soins >= 1) {
+                $('#'+bodyPlace).append('<span class="paramName jaune">Invalidité</span><span class="paramIcon"></span><span class="paramValue jaune" title="Efficacité des soins: 100%">'+bat.soins+'</span><br>');
+            }
+        } else {
+            if (bat.soins >= 11) {
+                let effSoins = checkEffSoins(bat);
+                $('#'+bodyPlace).append('<span class="paramName jaune">Efficacité soins</span><span class="paramIcon"></span><span class="paramValue jaune">'+effSoins+'%</span><br>');
+            }
         }
     }
     if (bat.tags.includes('blub')) {
@@ -653,7 +670,7 @@ function batInfos(bat,batType,pop) {
     if (bat.tags.includes('vomissure') || bat.tags.includes('vomi')) {
         $('#'+bodyPlace).append('<span class="paramName or" title="Attaque génétique">Gangrène</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
     } else if (bat.tags.includes('necro')) {
-        $('#'+bodyPlace).append('<span class="paramName or">Nécrotoxine</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
+        $('#'+bodyPlace).append('<span class="paramName or">Nécrotoxine</span><span class="paramIcon"></span><span class="paramValue or" title="Efficacité des soins: 0%">Oui</span><br>');
     }
     if (bat.tags.includes('maladie')) {
         $('#'+bodyPlace).append('<span class="paramName or">Malade</span><span class="paramIcon"></span><span class="paramValue or">Oui</span><br>');
@@ -843,28 +860,30 @@ function batInfos(bat,batType,pop) {
     if (!pop) {
         $('#'+bodyPlace).append('<span id="lefret"></span>');
     }
-    if (batType.transRes >= 1 && !inSoute) {
-        // console.log('btres');
-        if (Object.keys(bat.transRes).length >= 1) {
-            // console.log('bres');
-            $('#'+bodyPlace).append('<div class="shSpace"></div>');
-            $('#'+bodyPlace).append('<span class="blockTitle"><h3>Ressources</h3></span><br>');
-            let transportedRes = JSON.stringify(bat.transRes);
-            transportedRes = "<nobr>"+transportedRes;
-            transportedRes = transportedRes.replace(/"/g,"");
-            transportedRes = transportedRes.replace(/{/g,"");
-            transportedRes = transportedRes.replace(/}/g,"");
-            transportedRes = transportedRes.replace(/,/g,"</nobr> &nbsp;&horbar;&nbsp; <nobr>");
-            transportedRes = transportedRes.replace(/:/g," ");
-            transportedRes = transportedRes+"</nobr>";
-            let resLoaded = checkResLoad(bat);
-            let showTotal = '<span class="cy">'+resLoaded+'</span>/'+resMax;
-            $('#'+bodyPlace).append('<span class="paramValue">'+transportedRes+' &nbsp;('+showTotal+')</span><br>');
+    if (!playerInfos.onShip) {
+        if (batType.transRes >= 1 && !inSoute) {
+            // console.log('btres');
+            if (Object.keys(bat.transRes).length >= 1) {
+                // console.log('bres');
+                $('#'+bodyPlace).append('<div class="shSpace"></div>');
+                $('#'+bodyPlace).append('<span class="blockTitle"><h3>Ressources</h3></span><br>');
+                let transportedRes = JSON.stringify(bat.transRes);
+                transportedRes = "<nobr>"+transportedRes;
+                transportedRes = transportedRes.replace(/"/g,"");
+                transportedRes = transportedRes.replace(/{/g,"");
+                transportedRes = transportedRes.replace(/}/g,"");
+                transportedRes = transportedRes.replace(/,/g,"</nobr> &nbsp;&horbar;&nbsp; <nobr>");
+                transportedRes = transportedRes.replace(/:/g," ");
+                transportedRes = transportedRes+"</nobr>";
+                let resLoaded = checkResLoad(bat);
+                let showTotal = '<span class="cy">'+resLoaded+'</span>/'+resMax;
+                $('#'+bodyPlace).append('<span class="paramValue">'+transportedRes+' &nbsp;('+showTotal+')</span><br>');
+            }
         }
-    }
-    if ((batType.transRes >= 1 && batType.name != 'Soute' && batType.name != 'Stocks') || (batType.transRes >= 1 && allowCheat)) {
-        if (Object.keys(bat.transRes).length >= 1) {
-            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter certaines ressources" class="boutonCaca skillButtons" onclick="fretThrowList()"><i class="far fa-trash-alt"></i></button>&nbsp; Vider</h4></span>');
+        if ((batType.transRes >= 1 && batType.name != 'Soute' && batType.name != 'Stocks') || (batType.transRes >= 1 && allowCheat)) {
+            if (Object.keys(bat.transRes).length >= 1) {
+                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter certaines ressources" class="boutonCaca skillButtons" onclick="fretThrowList()"><i class="far fa-trash-alt"></i></button>&nbsp; Vider</h4></span>');
+            }
         }
     }
 

@@ -969,6 +969,14 @@ function hideBataillon(bat) {
 };
 
 function writeMapStyles() {
+    if (playerInfos.onShip) {
+        if (numHTiles > 21) {
+            numHTiles = 21;
+        }
+        if (numVTiles > 13) {
+            numVTiles = 13;
+        }
+    }
     $('#mapStyles').empty();
     $('#mapStyles').append('.grid-container {grid-template-columns:');
     let i = 0;

@@ -1,5 +1,5 @@
-let numHTiles = 15; // default 15
-let numVTiles = 9; // default 9
+let numHTiles = 21; // default 15
+let numVTiles = 13; // default 9
 let mapSize = 60; // default 60
 let xOffsetForced = 0;
 let xOffset = Number(new URLSearchParams(document.location.search).get("x"));

@@ -15,17 +15,50 @@ function goSoute() {
     checkSelectedLanderId();
     checkReserve();
     souteMenu();
-    landerMenu();
     if (souteTab === 'unitz') {
+        $('body').css('background-image','url(/static/img/dockBG.jpg)');
+        $('body').css('background-position','left top');
+        $("#menu_lander").css("display","block");
+        $("#list_lander").css("height","1000px");
+        $("#list_lander").css("display","block");
         souteList();
         landerList();
         if (Object.keys(selectedBat).length >= 1) {
             showBatInfos(selectedBat);
         }
+        landerMenu();
     } else if (souteTab === 'rez') {
+        $('body').css('background-image','url(/static/img/stockBG.jpg)');
+        $('body').css('background-position','left top');
+        $("#menu_lander").css("display","block");
+        $("#list_lander").css("height","190px");
+        $("#list_lander").css("display","block");
         missionRes();
         viewLanderRes();
         voirReserve();
+        landerMenu();
+    } else if (souteTab === 'hop') {
+        $('body').css('background-image','url(/static/img/infirmBG.jpg)');
+        $('body').css('background-position','left center');
+        $("#menu_lander").css("display","none");
+        $("#list_lander").css("display","none");
+        hopList();
+        if (Object.keys(selectedBat).length >= 1) {
+            showBatInfos(selectedBat);
+        }
+        $('#list_lander').empty();
+        $('#menu_lander').empty();
+    } else if (souteTab === 'gar') {
+        $('body').css('background-image','url(/static/img/workBG.jpg)');
+        $('body').css('background-position','left top');
+        $("#menu_lander").css("display","none");
+        $("#list_lander").css("display","none");
+        garList();
+        if (Object.keys(selectedBat).length >= 1) {
+            showBatInfos(selectedBat);
+        }
+        $('#list_lander').empty();
+        $('#menu_lander').empty();
     }
     viewPop();
     commandes();
@@ -38,6 +71,8 @@ function goStation() {
         playRoom('station',true,true);
         playFx('work',true);
     }
+    $('body').css('background-image','url(/static/img/boardBG.jpg)');
+    $('body').css('background-position','left top');
     $("#zone_map").css("display","grid");
     $("#zone_soute").css("display","none");
     $("#zone_metro").css("display","none");
@@ -71,10 +106,24 @@ function getStationLandersIds() {
 function souteTabsMenu(here) {
     if (souteTab === 'unitz') {
         $('#'+here).append('<h2 class="bcy">Bataillons &nbsp</h2>');
+        $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`hop`)">Infirmerie &nbsp</h2>');
+        $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`gar`)">Atelier &nbsp</h2>');
         $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`rez`)">Ressources</h2>');
     } else if (souteTab === 'rez') {
         $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`unitz`)">Bataillons &nbsp</h2>');
+        $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`hop`)">Infirmerie &nbsp</h2>');
+        $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`gar`)">Atelier &nbsp</h2>');
         $('#'+here).append('<h2 class="bcy">Ressources</h2>');
+    } else if (souteTab === 'hop') {
+        $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`unitz`)">Bataillons &nbsp</h2>');
+        $('#'+here).append('<h2 class="bcy">Infirmerie &nbsp</h2>');
+        $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`gar`)">Atelier &nbsp</h2>');
+        $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`rez`)">Ressources</h2>');
+    } else if (souteTab === 'gar') {
+        $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`unitz`)">Bataillons &nbsp</h2>');
+        $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`hop`)">Infirmerie &nbsp</h2>');
+        $('#'+here).append('<h2 class="bcy">Atelier &nbsp</h2>');
+        $('#'+here).append('<h2 class="neutre klik" onclick="setSouteTab(`rez`)">Ressources</h2>');
     }
     $('#'+here).append('<br>');
 };
@@ -134,6 +183,10 @@ function souteMenu() {
         } else {
             $('#menu_soute').append('<span class="menuTab klik" onclick="setSouteFilter(`army`)">Armées</span>');
         }
+    } else if (souteTab === 'hop') {
+        $('#menu_soute').append('<span class="menuTab jaune">Ces bataillons sont en partie invalides ou stressés/déprimés.<br>Ils guériront avec le temps si ils restent dans la station.</span>');
+    } else if (souteTab === 'gar') {
+        $('#menu_soute').append('<span class="menuTab jaune">Ces bataillons ont besoin d\'un entretien.<br></span>');
     }
 };
 
@@ -243,6 +296,76 @@ function checkSelectedLanderId() {
     if (!idOK) {
         slId = altId;
     }
+};
+
+function hopList() {
+    $('#list_soute').empty();
+    let showMe = true;
+    let sortedBats = bataillons.slice();
+    sortedBats = _.sortBy(_.sortBy(sortedBats,'id'),'type');
+    // sortedBats = sortedBats.reverse();
+    sortedBats.forEach(function(bat) {
+        let batType = getBatType(bat);
+        showMe = false;
+        if (batType.cat != 'vehicles' && batType.cat != 'buildings' && batType.cat != 'devices') {
+            if (bat.soins != undefined) {
+                if (bat.soins >= 4) {
+                    showMe = true;
+                }
+            }
+            if (bat.emo != undefined) {
+                if (bat.emo >= 4) {
+                    showMe = true;
+                }
+            }
+            if (bat.tags.includes('necro')) {
+                showMe = true;
+            }
+        }
+        if (batType.skills.includes('transorbital')) {
+            showMe = false;
+        }
+        if (batType.id === 126 || batType.id === 225) {
+            showMe = false;
+        }
+        if (showMe) {
+            if (bat.loc === 'zone' && idOfLander < 0) {
+                loadBat(bat.id,souteId);
+            }
+            batListElement(bat,batType,-1,true);
+        }
+    });
+};
+
+function garList() {
+    $('#list_soute').empty();
+    let showMe = true;
+    let sortedBats = bataillons.slice();
+    sortedBats = _.sortBy(_.sortBy(sortedBats,'id'),'type');
+    // sortedBats = sortedBats.reverse();
+    sortedBats.forEach(function(bat) {
+        let batType = getBatType(bat);
+        showMe = false;
+        if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
+            if (bat.soins != undefined) {
+                if (bat.soins >= 11) {
+                    showMe = true;
+                }
+            }
+        }
+        if (batType.skills.includes('transorbital')) {
+            showMe = false;
+        }
+        if (batType.id === 126 || batType.id === 225) {
+            showMe = false;
+        }
+        if (showMe) {
+            if (bat.loc === 'zone' && idOfLander < 0) {
+                loadBat(bat.id,souteId);
+            }
+            batListElement(bat,batType,-1,true);
+        }
+    });
 };
 
 function souteList() {
@@ -358,7 +481,7 @@ function souteBatList(cat,partKind,skill,noSkill,landersIds,idOfLander) {
                     if (bat.loc === 'zone' && idOfLander < 0) {
                         loadBat(bat.id,souteId);
                     }
-                    batListElement(bat,batType,idOfLander);
+                    batListElement(bat,batType,idOfLander,false);
                 }
             }
         }
@@ -421,7 +544,7 @@ function souteArmyList(landersIds,idOfLander) {
             if (bat.loc === 'zone' && idOfLander < 0) {
                 loadBat(bat.id,souteId);
             }
-            batListElement(bat,batType,idOfLander);
+            batListElement(bat,batType,idOfLander,false);
             // calculer les transports et infanteries! xxxxxx
             // sauf si 2 bigTrans -> message "faites 2 armées"
             if (armyFilter >= 1) {
@@ -544,7 +667,7 @@ function addNewArmyBat(bat,batType) {
     return newArmyBat;
 };
 
-function batListElement(bat,batType,idOfLander) {
+function batListElement(bat,batType,idOfLander,noEmb) {
     let colId = 'list_soute';
     if (idOfLander >= 0) {
         colId = 'list_lander';
@@ -554,7 +677,7 @@ function batListElement(bat,batType,idOfLander) {
     let deployInfo = checkPlaceLander(bat,batType,slId);
     let mayOut = checkMayOutInSoute(bat,batType);
     let deployOK = true;
-    if (!enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2] || !mayOut || bat.eq === 'camkit' || bat.eq === 'taserkit' || bat.tags.includes('dying')) {
+    if (noEmb || !enoughRes || !deployInfo[0] || !deployInfo[1] || !deployInfo[2] || !mayOut || bat.eq === 'camkit' || bat.eq === 'taserkit' || bat.tags.includes('dying')) {
         deployOK = false;
     }
     if (batType.skills.includes('nodeploy')) {
@@ -703,59 +826,39 @@ function batListElement(bat,batType,idOfLander) {
     }
     if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
         if (batSoins >= 11) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-wrench"></i></span>');
-        }
-        if (batEmo >= 11) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
-            if (!bat.tags.includes('pills')) {
-                if (batEmo >= 16) {
-                    $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-pills"></i></span>');
-                } else {
-                    $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-pills"></i></span>');
-                }
-            }
-        } else if (batEmo >= 1) {
-            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
-        }
-    } else if (batType.skills.includes('clone')) {
-        if (bat.tags.includes('necro')) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
-        } else if (batEmo >= 11) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
-            if (!bat.tags.includes('pills')) {
-                if (batEmo >= 16) {
-                    $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-pills"></i></span>');
-                } else {
-                    $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-pills"></i></span>');
-                }
-            }
-        } else if (batEmo >= 1) {
-            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
-        }
-        if (effSoins < 50) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-skull-crossbones"></i></span>');
-        } else if (effSoins <= 75) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-heart"></i></span>');
-        } else if (batSoins >= 1) {
-            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="far fa-heart"></i></span>');
+            $('#be'+bat.id).append('<span class="listRes or" title="Sans entretien, ce bataillon perdra des points d\'action">&nbsp;<i class="fas fa-wrench"></i></span>');
         }
     } else {
-        let bedTime = batEmo;
-        if (batSoins > batEmo) {
-            bedTime = batSoins;
+        if (bat.tags.includes('necro')) {
+            $('#be'+bat.id).append('<span class="listRes or" title="Nécrotoxine: ce bataillon a besoin de repos">&nbsp;<i class="fas fa-skull-crossbones"></i></span>');
         }
-        if (batSoins >= 11 || batEmo >= 11 || bat.tags.includes('necro')) {
-            $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-bed"></i> '+bedTime+'</span>');
-            if (!bat.tags.includes('pills') && batEmo >= 11) {
-                if (batEmo >= 16) {
-                    $('#be'+bat.id).append('<span class="listRes or">&nbsp;<i class="fas fa-pills"></i></span>');
-                } else {
-                    $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-pills"></i></span>');
-                }
+        if (batType.skills.includes('clone')) {
+            if (effSoins < 50) {
+                $('#be'+bat.id).append('<span class="listRes or" title="Clone gravement blessé (non soignable)">&nbsp;<i class="fas fa-heart"></i></span>');
+            } else if (effSoins < 100) {
+                $('#be'+bat.id).append('<span class="listRes or" title="Clone blessé (non soignable)">&nbsp;<i class="far fa-heart"></i></span>');
+            } else if (batSoins >= 1) {
+                $('#be'+bat.id).append('<span class="listRes jaune" title="Clone légèrement blessé (non soignable)">&nbsp;<i class="far fa-heart"></i></span>');
             }
-        } else if (batSoins >= 1 || batEmo >= 1) {
-            $('#be'+bat.id).append('<span class="listRes jaune">&nbsp;<i class="fas fa-bed"></i> '+bedTime+'</span>');
+        } else {
+            if (batSoins >= 11) {
+                $('#be'+bat.id).append('<span class="listRes or" title="Invalidité grave: ce bataillon a besoin de repos">&nbsp;<i class="fas fa-wheelchair"></i> '+batSoins+'</span>');
+            } else if (batSoins >= 1) {
+                $('#be'+bat.id).append('<span class="listRes jaune" title="Invalidité: ce bataillon a besoin de repos">&nbsp;<i class="fas fa-wheelchair"></i> '+batSoins+'</span>');
+            }
         }
+    }
+    if (batEmo >= 11) {
+        $('#be'+bat.id).append('<span class="listRes or" title="Stress grave: ce bataillon a besoin de repos">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
+        if (!bat.tags.includes('pills')) {
+            if (batEmo >= 16) {
+                $('#be'+bat.id).append('<span class="listRes or" title="Un traitement anti-dépressif est recommandé">&nbsp;<i class="fas fa-pills"></i></span>');
+            } else {
+                $('#be'+bat.id).append('<span class="listRes jaune" title="La récupération sera plus rapide avec un traitement anti-dépressif">&nbsp;<i class="fas fa-pills"></i></span>');
+            }
+        }
+    } else if (batEmo >= 1) {
+        $('#be'+bat.id).append('<span class="listRes jaune" title="Stress: ce bataillon a besoin de repos">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
     }
     $('#be'+bat.id).append('<br>');
     let prt = bat.prt;

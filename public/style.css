@@ -5,9 +5,9 @@ body {
     font-size: 14px;
     /* background-color: #31342c; */
     background-color: black;
-    background-image: url(/static/img/plasticBG.jpg);
-    /* background-image: url(/static/img/rayures.jpg); */
-    /* background-repeat: no-repeat; */
+    background-image: url(/static/img/boardBG.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
 }
 #cadreMap {
     padding: 0 0 0 0;
