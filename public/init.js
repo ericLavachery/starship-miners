@@ -18,7 +18,20 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.onShip === undefined) {
         playerInfos.onShip = true;
     }
-    if (playerInfos.numHTiles > 1 && playerInfos.numVTiles > 1) {
+    if (playerInfos.numHTiles === undefined) {
+        playerInfos.numHTiles = 21;
+    }
+    if (playerInfos.numVTiles === undefined) {
+        playerInfos.numVTiles = 13;
+    }
+    if (playerInfos.onShip && !modeSonde) {
+        if (playerInfos.numHTiles > 21) {
+            numHTiles = 21;
+        }
+        if (playerInfos.numVTiles > 13) {
+            numVTiles = 13;
+        }
+    } else {
         numHTiles = playerInfos.numHTiles;
         numVTiles = playerInfos.numVTiles;
     }

@@ -14,27 +14,8 @@ function getMapInfos() {
     console.log('pKind='+zoneInfos.pKind+' gKind='+zoneInfos.gKind+' sKind='+zoneInfos.sKind);
 };
 
-function mapSizeConfig() {
-    if (playerInfos.onShip) {
-        if (playerInfos.numHTiles > 22) {
-            numHTiles = 22;
-        } else {
-            numHTiles = playerInfos.numHTiles;
-        }
-        if (playerInfos.numVTiles > 13) {
-            numVTiles = 13;
-        } else {
-            numVTiles = playerInfos.numVTiles;
-        }
-    } else {
-        numVTiles = playerInfos.numVTiles;
-        numHTiles = playerInfos.numHTiles;
-    }
-};
-
 // Dessine la carte
 function showMap(wmap,justMoved,isPrev) {
-    // mapSizeConfig();
     // reset
     $('#zone_map').empty();
     // fill
@@ -969,13 +950,16 @@ function hideBataillon(bat) {
 };
 
 function writeMapStyles() {
-    if (playerInfos.onShip) {
+    if (playerInfos.onShip && !modeSonde) {
         if (numHTiles > 21) {
             numHTiles = 21;
         }
         if (numVTiles > 13) {
             numVTiles = 13;
         }
+    } else {
+        numHTiles = playerInfos.numHTiles;
+        numVTiles = playerInfos.numVTiles;
     }
     $('#mapStyles').empty();
     $('#mapStyles').append('.grid-container {grid-template-columns:');

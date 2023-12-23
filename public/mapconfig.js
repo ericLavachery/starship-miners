@@ -63,6 +63,8 @@ function yourMapSize() {
     if (numVTiles > 16) {
         numVTiles = 16;
     }
+    playerInfos.numHTiles = numHTiles;
+    playerInfos.numVTiles = numVTiles;
     writeMapStyles();
     showMap(zone,false);
 };
