@@ -16,7 +16,8 @@
 /* Modal Content */
 .modal-content {
 	position: relative;
-	background-color: #222224;
+	background-color: #262c3a;
+	background-image: url(/static/img/modalbg.jpg);
 	margin: auto;
 	padding: 0;
 	border: 1px solid #d5cabd;
@@ -41,16 +42,18 @@
 }
 
 .modal-header {
-	padding: 6px 16px 2px 16px;
-	background-color: #439975;
-	background-image: url(/static/img/oldmetal-ciel.jpg);
+	padding: 6px 16px 6px 16px;
+	margin: 4px;
+	/* background-color: #439975; */
+	background-image: url(/static/img/modaltop-blu.jpg);
+	background-position: center;
 	color: white;
 	border-radius: 10px;
 }
 
 .modal-body {
 	padding: 20px 45px 20px 40px;
-	background-image: url(/static/img/modalbg.jpg);
+	/* background-image: url(/static/img/modalbg.jpg); */
 	color: #d5cabd;
 	font-size: 14px;
 	height: 580px;
@@ -58,9 +61,11 @@
 }
 
 .modal-footer {
-	padding: 6px 16px 2px 16px;
-	background-color: #439975;
-	background-image: url(/static/img/oldmetal-ciel.jpg);
+	padding: 6px 16px 6px 16px;
+	margin: 4px;
+	/* background-color: #439975; */
+	background-image: url(/static/img/modaltop-blu.jpg);
+	background-position: bottom;
 	color: white;
 	min-height: 22px;
 	border-radius: 10px;

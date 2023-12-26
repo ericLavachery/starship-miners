@@ -187,6 +187,8 @@ function souteMenu() {
         $('#menu_soute').append('<span class="menuTab jaune">Ces bataillons sont en partie invalides ou stressés/déprimés.<br>Ils guériront avec le temps si ils restent dans la station.</span>');
     } else if (souteTab === 'gar') {
         $('#menu_soute').append('<span class="menuTab jaune">Ces bataillons ont besoin d\'un entretien.<br></span>');
+    } else if (souteTab === 'rez') {
+        $('#menu_soute').append('<span class="menuTab jaune">Pour pouvoir construire des infrastructures pendant la mission, transférez les ressources nécessaire dans le Lander.<br></span>');
     }
 };
 

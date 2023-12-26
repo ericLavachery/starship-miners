@@ -65,8 +65,9 @@ function batInfos(bat,batType,pop) {
     let headPlace = 'unitInfos';
     let bodyPlace = 'unitInfos';
     if (pop) {
-        $('.modal-header').css('background-image','url(/static/img/oldmetal-ciel.jpg)');
-        $('.modal-footer').css('background-image','url(/static/img/oldmetal-ciel.jpg)');
+        $('.modal-header').css('background-image','url(/static/img/modaltop-blu.jpg)');
+        $('.modal-footer').css('background-image','url(/static/img/modaltop-blu.jpg)');
+        $('.modal-content').css('background-image','url(/static/img/modalbg.jpg)');
         headPlace = 'pophead';
         bodyPlace = 'popbody';
         $('#'+headPlace).empty();

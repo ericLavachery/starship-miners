@@ -1109,19 +1109,19 @@
         "maxSalvo":1,
         "weapon":{},
         "weapon1Def3":{
-            "name":"Barbelés",
-            "cost":2,
+            "name":"Barbelés (taser)",
+            "cost":1,
             "range":0,
             "isMelee":true,
             "noAtt":true,
             "noFly":true,
             "rof":6,
-            "accuracy":10,
-            "power":4,
-            "armors":1,
+            "accuracy":20,
+            "power":6,
+            "armors":0.5,
             "aoe":"brochette",
-            "sound":"bite",
-            "ammo":["barb"]
+            "sound":"electricity",
+            "ammo":["barb-taser"]
         },
         "weapon2":{},
         "weapon3":{
@@ -1171,19 +1171,19 @@
         "ap":12,
         "maxSalvo":1,
         "weapon":{
-            "name":"Barbelés",
-            "cost":2,
+            "name":"Barbelés (taser)",
+            "cost":1,
             "range":0,
             "isMelee":true,
             "noAtt":true,
             "noFly":true,
             "rof":6,
-            "accuracy":10,
-            "power":4,
-            "armors":1,
+            "accuracy":20,
+            "power":6,
+            "armors":0.5,
             "aoe":"brochette",
-            "sound":"bite",
-            "ammo":["barb"]
+            "sound":"electricity",
+            "ammo":["barb-taser"]
         },
         "weapon2":{},
         "weapon3":{
