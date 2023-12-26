@@ -188,7 +188,7 @@ function souteMenu() {
     } else if (souteTab === 'gar') {
         $('#menu_soute').append('<span class="menuTab jaune">Ces bataillons ont besoin d\'un entretien.<br></span>');
     } else if (souteTab === 'rez') {
-        $('#menu_soute').append('<span class="menuTab jaune">Pour pouvoir construire des infrastructures pendant la mission, transférez les ressources nécessaire dans le Lander.<br></span>');
+        $('#menu_soute').append('<span class="menuTab jaune">Certaines actions <span title="Construire des infrastructures et dispositifs / utiliser des drogues / payer les coûts de production ou d\'entretien de vos unités">&#128065</span> ont un coût pendant la mission: Transférez des ressources dans le Lander pour pouvoir les entreprendre.<br></span>');
     }
 };
 
@@ -1355,6 +1355,7 @@ function missionRes() {
                 if (lastKind != unit.kind) {
                     showkind = unit.kind.replace(/zero-/g,"");
                     $('#fillList').append('<br><span class="constName or" id="kind-'+unit.kind+'">'+showkind.toUpperCase()+'</span><br>');
+                    $('#fillList').append('<span class="constName jaune">Construction de bâtiments et dispositifs</span><br>');
                 }
                 if (prepaBld[unit.name] === undefined) {
                     showPrep = '';
@@ -1446,6 +1447,7 @@ function missionRes() {
     });
     // INFRASTRUCTURES
     $('#fillList').append('<br><span class="constName or">INFRASTRUCTURES</span><br>');
+    $('#fillList').append('<span class="constName jaune">Construction d\'infrastructures</span><br>');
     armorTypes.forEach(function(infra) {
         if (infra.fabTime != undefined) {
             prodOK = true;
@@ -1508,6 +1510,7 @@ function missionRes() {
     // TELEPORT
     if (playerInfos.comp.tele >= 2) {
         $('#fillList').append('<br><span class="constName or">TELEPORTATION</span><br>');
+        $('#fillList').append('<span class="constName jaune">Coûts de téléportation</span><br>');
         if (prepaBld['ResPort'] === undefined) {
             showPrep = '';
         } else {
@@ -1543,6 +1546,7 @@ function missionRes() {
     }
     // DROGUES
     $('#fillList').append('<br><span class="constName or">DROGUES</span><br>');
+    $('#fillList').append('<span class="constName jaune">Réserves de drogues</span><br>');
     armorTypes.forEach(function(drug) {
         if (drug.cat != undefined) {
             if (drug.cat === 'drogue') {
@@ -1580,6 +1584,7 @@ function missionRes() {
     });
     // PACKS UPKEEP
     $('#fillList').append('<br><span class="constName or">PACKS UPKEEP (10 Tours)</span><br>');
+    $('#fillList').append('<span class="constName jaune">Réserve de ressources pour la production et l\'entretien des bâtiments</span><br>');
     unitTypes.forEach(function(unit) {
         if (unit.skills.includes('prefab')) {
             if (playerInfos.bldVM.includes(unit.name)) {

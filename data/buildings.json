@@ -1625,7 +1625,7 @@
         "maxSalvo":2,
         "weapon":{
             "name":"Flak canon",
-            "cost":3,
+            "cost":2,
             "range":7,
             "noise":4,
             "isArt":true,
@@ -1642,7 +1642,7 @@
         },
         "weapon2":{
             "name":"Flak canon (sol)",
-            "cost":3,
+            "cost":4,
             "range":2,
             "elevation":2,
             "noise":4,

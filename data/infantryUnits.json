@@ -6192,7 +6192,7 @@
         "maxSalvo":2,
         "weapon":{
             "name":"Flak canon",
-            "cost":5,
+            "cost":2,
             "range":5,
             "noise":4,
             "noGround":true,

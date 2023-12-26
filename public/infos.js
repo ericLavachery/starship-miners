@@ -775,7 +775,7 @@ function batInfos(bat,batType,pop) {
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
         $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Drogues</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxDrug+'</span><br>');
     }
-    if (batType.skills.includes('landmine') || batType.skills.includes('dynamite') || batType.skills.includes('trapap') || batType.skills.includes('trapdard') || batType.skills.includes('trapfosse') || bat.eq === 'kit-sentinelle') {
+    if (batType.skills.includes('landmine') || batType.skills.includes('gasmine') || batType.skills.includes('dynamite') || batType.skills.includes('trapap') || batType.skills.includes('trapdard') || batType.skills.includes('trapfosse') || bat.eq === 'kit-sentinelle') {
         let ravitNum = calcRavit(bat);
         let trapName = getTrapName(bat,batType);
         if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
@@ -1288,6 +1288,24 @@ function batFullInfos(bat,batType) {
         } else if (batType.kind != 'zero-vm') {
             allSkills = allSkills+'<span class="paramValue" title="Peut construire une route là où il est installé">Route</span>'+sepa;
         }
+    }
+    if (batType.skills.includes('landmine')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut poser des Champs de mines et Mines wipeout">Mines</span>'+sepa;
+    }
+    if (batType.skills.includes('gasmine')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut poser des Mines baygon">Mines (gaz)</span>'+sepa;
+    }
+    if (batType.skills.includes('dynamite')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut poser des Explosifs">Explosifs</span>'+sepa;
+    }
+    if (batType.skills.includes('trapap')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut poser des Pièges">Pièges</span>'+sepa;
+    }
+    if (batType.skills.includes('trapfosse')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut creuser des Fosses">Fosses</span>'+sepa;
+    }
+    if (batType.skills.includes('trapdard')) {
+        allSkills = allSkills+'<span class="paramValue" title="Peut poser des Dardières">Dardières</span>'+sepa;
     }
     if (batType.skills.includes('fouille')) {
         if (batType.moveCost > 90) {

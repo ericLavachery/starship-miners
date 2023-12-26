@@ -182,7 +182,7 @@ function unitInfos(batType) {
     }
     $('#'+bodyPlace).append('<span class="paramName">Eclairage</span><span class="paramEmo">&nbsp;</span><span class="paramValue" title="Distance d\'éclairage">'+vue+'</span><br>');
     // POSE DISPOSITIFS
-    if (batType.skills.includes('landmine') || batType.skills.includes('dynamite') || batType.skills.includes('trapap') || batType.skills.includes('trapdard') || batType.skills.includes('trapfosse')) {
+    if (batType.skills.includes('landmine') || batType.skills.includes('gasmine') || batType.skills.includes('dynamite') || batType.skills.includes('trapap') || batType.skills.includes('trapdard') || batType.skills.includes('trapfosse')) {
         let trapName = getUnitTrapName(batType);
         $('#'+bodyPlace).append('<span class="paramName">'+trapName+'</span><span class="paramEmo">&nbsp;</span><span class="paramValue">'+batType.maxSkill+'</span><br>');
     }
