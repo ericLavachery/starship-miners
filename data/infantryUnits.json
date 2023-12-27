@@ -6202,7 +6202,7 @@
             "accuracy":36,
             "power":20,
             "aoe":"squad",
-            "sound":"canon_flak_x3",
+            "sound":"bomb_mini_x3",
             "ammo":["obus-scrap","obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":18,
             "ravitBld":"Poudrière"
@@ -6220,7 +6220,7 @@
             "accuracy":9,
             "power":20,
             "aoe":"squad",
-            "sound":"canon_flak_x3",
+            "sound":"bomb_mini_x3",
             "ammo":["obus-scrap","obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
             "maxAmmo":18,
             "ravitBld":"Poudrière"
