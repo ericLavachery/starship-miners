@@ -610,6 +610,9 @@ function playRoom(piste,interrupt,onloop) {
     if (piste != 'any') {
         track = piste;
     }
+    if (track != 'soute' && track != 'station') {
+        track = 'control';
+    }
     let myVol = checkMyVol(playerInfos.volAmb-0.1,'volAmb');
     if (!theRoom.playing() || interrupt) {
         theRoom.stop();

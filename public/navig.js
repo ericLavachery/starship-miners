@@ -289,6 +289,7 @@ function commandes() {
     if (isAdmin.low) {
         gangNavig();
     }
+    showResBar();
 };
 
 function getMaxMaps(impact) {

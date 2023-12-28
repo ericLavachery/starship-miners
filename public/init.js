@@ -41,6 +41,12 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.clouds === undefined) {
         playerInfos.clouds = true;
     }
+    if (playerInfos.resBar === undefined) {
+        playerInfos.resBar = true;
+    }
+    if (playerInfos.resBarOut === undefined) {
+        playerInfos.resBarOut = [];
+    }
     if (playerInfos.comp === undefined) {
         playerInfos.comp = resetComp();
     }

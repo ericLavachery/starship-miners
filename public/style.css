@@ -13,6 +13,28 @@ body {
     padding: 0 0 0 0;
     margin: 15px 0 0 8px;
 }
+#restop {
+    /* display: table-row; */
+    display: none;
+}
+#resbar {
+    background-image: url(/static/img/windowBG.jpg);
+    display: table-cell;
+    background-color: #303943;
+    font-size: 13px;
+    color: #d5cabd;
+    padding: 3px 3px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #000000;
+    margin: 9px 0 10px 0;
+    border-radius: 6px;
+}
+.barText {
+    display: inline-block;
+    font-size: 13px;
+    /* font-weight: bold; */
+}
 .woodBlock {
     /* background-color: black; */
     /* background-color: rgba(0, 0, 0, 0.4); */

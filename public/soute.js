@@ -85,6 +85,60 @@ function goStation() {
     commandes();
 };
 
+function resBarToggle() {
+    if (playerInfos.resBar) {
+        playerInfos.resBar = false;
+    } else {
+        playerInfos.resBar = true;
+    }
+    showResBar();
+}
+
+function showResBar() {
+    if (playerInfos.onShip && playerInfos.resBar) {
+        $('#restop').css('display','table-row');
+        $('#resbar').empty();
+        // $('#resbar').append('');
+        let sortedResTypes = _.sortBy(resTypes,'name');
+        sortedResTypes.forEach(function(res) {
+            if (res.name != 'Magma') {
+                let dispoRes = getDispoRes(res.name);
+                if (dispoRes < 0) {
+                    dispoRes = 0;
+                }
+                let maxRes = getDefResMax(res);
+                let gauge = getResGauge(res,dispoRes);
+                if (gauge.num < 20 || playerInfos.resFlags.includes(res.name)) {
+                    if (!playerInfos.resBarOut.includes(res.name)) {
+                        $('#resbar').append('<span class="klik" onclick="barResOut(`'+res.name+'`)" title="Cacher '+res.name+'">&#10060;</span><span class="barText">'+res.name+'</span><span class="paramResGauge" style="background: linear-gradient(to right, '+gauge.col+' 0%, '+gauge.col+' '+gauge.num+'%, black '+gauge.num+'%, black 100%)">'+dispoRes+'</span>');
+                    }
+                }
+            }
+        });
+        $('#resbar').append('<span class="klik" onclick="barResAllIn()" title="Montrer toutes les ressources en carence">&#128260;</span>');
+    } else {
+        $('#restop').css('display','none');
+        $('#resbar').empty();
+    }
+};
+
+function barResOut(resName) {
+    if (!playerInfos.resBarOut.includes(resName)) {
+        playerInfos.resBarOut.push(resName);
+    }
+    showResBar();
+};
+
+function barResAllIn() {
+    playerInfos.resBarOut = [];
+    showResBar();
+};
+
+function hideResBar() {
+    $('#restop').css('display','none');
+    $('#resbar').empty();
+};
+
 function souteBatSelect(keepBkp) {
     let souteBat = getBatById(souteId);
     batSelect(souteBat,false,keepBkp);

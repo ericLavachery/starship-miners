@@ -14,9 +14,11 @@ function voirReserve() {
         $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="voirReserve()">Zone</span> &nbsp;|&nbsp; <span class="jaune klik" onclick="voirReserveStation()">Station</span></span><br>');
     } else {
         $('#conUnitList').append('<span class="constName or" id="gentils">RESERVE</span><br>');
-        if (!inSoute) {
-            $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="purgerReserve()" title="Jeter toutes les ressources qui dépassent le maximum">Purger</span></span><br>');
-        }
+    }
+    if (!playerInfos.resBar) {
+        $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="resBarToggle()" title="Afficher la barre des ressources en carence">Barre de ressources</span></span><br>');
+    } else {
+        $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="resBarToggle()" title="Cacher la barre des ressources en carence">Barre de ressources</span></span><br>');
     }
     $('#conUnitList').append('<br>');
     findLanders();
@@ -95,6 +97,12 @@ function voirReserve() {
             playerInfos.reserve[res.name] = dispoRes;
         }
     });
+    if (playerInfos.onShip) {
+        if (!inSoute) {
+            $('#conUnitList').append('<br>');
+            $('#conUnitList').append('<span class="constName"><span class="jaune klik" onclick="purgerReserve()" title="Jeter toutes les ressources qui dépassent le maximum">Purger les ressources</span></span><br>');
+        }
+    }
     $('#conUnitList').append('<br><br>');
     // $("#conUnitList").animate({scrollTop:0},"fast");
 };
@@ -245,8 +253,13 @@ function tagRes(resId) {
         playerInfos.resFlags.splice(tagIndex,1);
     } else {
         playerInfos.resFlags.push(res.name);
+        if (playerInfos.resBarOut.includes(res.name)) {
+            let tagIndex = playerInfos.resBarOut.indexOf(res.name);
+            playerInfos.resBarOut.splice(tagIndex,1);
+        }
     }
     voirReserve();
+    showResBar();
 };
 
 function tagAllMissingRes(unitId) {
