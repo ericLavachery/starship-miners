@@ -315,12 +315,12 @@ function hopList() {
                     showMe = true;
                 }
             }
-            if (bat.emo != undefined) {
-                if (bat.emo >= 4) {
-                    showMe = true;
-                }
-            }
             if (bat.tags.includes('necro')) {
+                showMe = true;
+            }
+        }
+        if (bat.emo != undefined) {
+            if (bat.emo >= 4) {
                 showMe = true;
             }
         }
@@ -859,6 +859,9 @@ function batListElement(bat,batType,idOfLander,noEmb) {
                 $('#be'+bat.id).append('<span class="listRes jaune" title="La récupération sera plus rapide avec un traitement anti-dépressif">&nbsp;<i class="fas fa-pills"></i></span>');
             }
         }
+    } else if (batEmo >= 6) {
+        $('#be'+bat.id).append('<span class="listRes jaune" title="Stress: ce bataillon a besoin de repos">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
+        $('#be'+bat.id).append('<span class="listRes jaune" title="La récupération sera plus rapide avec un traitement anti-dépressif">&nbsp;<i class="fas fa-pills"></i></span>');
     } else if (batEmo >= 1) {
         $('#be'+bat.id).append('<span class="listRes jaune" title="Stress: ce bataillon a besoin de repos">&nbsp;<i class="fas fa-bed"></i> '+batEmo+'</span>');
     }

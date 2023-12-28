@@ -2840,7 +2840,7 @@
         "bldEquiv":["Décharge"],
         "bldUp":["Recyclab"],
         "bldCost":"Décharge",
-        "upkeep":{"Energie":5,"Eau":5,"Scrap":50},
+        "upkeep":{"Energie":5,"Eau":5,"Scrap":25},
         "costs":{"Compo1":305,"Compo2":70,"Eau":2000,"Fer":500,"Energie":400,"Bore":500,"Chlore":250,"Electros":50,"Batteries":100},
         "fabTime":75,
         "slots":4
@@ -2851,7 +2851,7 @@
         "bldEquiv":["Décharge","Centre de tri"],
         "bldCost":"Centre de tri",
         "compReq":{"tri":1},
-        "upkeep":{"Energie":10,"Eau":10,"Scrap":100},
+        "upkeep":{"Energie":10,"Eau":10,"Scrap":40},
         "costs":{"Compo1":380,"Compo2":220,"Compo3":150,"Eau":5000,"Fer":750,"Energie":1200,"Platine":500,"Bore":2000,"Chlore":1000,"Argon":750,"Electros":250,"Batteries":180},
         "fabTime":350,
         "slots":5

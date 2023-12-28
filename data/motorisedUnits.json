@@ -2264,7 +2264,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
-            "name":"Obusier",
+            "name":"Mortier",
             "cost":6,
             "range":3,
             "noise":4,
