@@ -2082,7 +2082,7 @@
             "power":250,
             "armors":0.5,
             "aoe":"bat",
-            "sound":"miss",
+            "sound":"miss_wipe",
             "ammo":["suicide-deluge"]
         },
         "weapon2":{},
@@ -2123,7 +2123,7 @@
             "power":50,
             "armors":0.5,
             "aoe":"squad",
-            "sound":"canon_big",
+            "sound":"mine_solo",
             "ammo":["mine-standard"]
         },
         "weapon2":{
@@ -2136,7 +2136,7 @@
             "power":50,
             "armors":0.5,
             "aoe":"bat",
-            "sound":"canon_big_multi",
+            "sound":"mine_wipeout",
             "ammo":["suicide-deluge"]
         },
         "protection":[],
@@ -2176,7 +2176,7 @@
             "power":7,
             "armors":0,
             "aoe":"squad",
-            "sound":"canon_big",
+            "sound":"mine_solo",
             "ammo":["mine-baygon"]
         },
         "weapon2":{
@@ -2189,7 +2189,7 @@
             "power":7,
             "armors":0,
             "aoe":"squad",
-            "sound":"canon_big_multi",
+            "sound":"mine_baygon",
             "ammo":["suicide-baygon"]
         },
         "protection":[],
@@ -2229,7 +2229,7 @@
             "power":36,
             "armors":0.5,
             "aoe":"squad",
-            "sound":"canon_big",
+            "sound":"mine_solo",
             "ammo":["mine-standard"]
         },
         "weapon2":{
@@ -2242,7 +2242,7 @@
             "power":36,
             "armors":0.5,
             "aoe":"squad",
-            "sound":"canon_big_multi",
+            "sound":"mine_multi",
             "ammo":["suicide"]
         },
         "protection":[],
@@ -2281,7 +2281,7 @@
             "accuracy":24,
             "power":24,
             "aoe":"brochette",
-            "sound":"canon_soft_x1",
+            "sound":"mine_dyn_solo",
             "ammo":["mine-standard"]
         },
         "weapon2":{
@@ -2294,7 +2294,7 @@
             "power":24,
             "armors":0.5,
             "aoe":"squad",
-            "sound":"canon_soft_x3",
+            "sound":"mine_dyn_multi",
             "ammo":["suicide"]
         },
         "protection":[],
