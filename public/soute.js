@@ -19,7 +19,7 @@ function goSoute() {
         $('body').css('background-image','url(/static/img/dockBG.jpg)');
         $('body').css('background-position','left top');
         $("#menu_lander").css("display","block");
-        $("#list_lander").css("height","1000px");
+        $("#list_lander").css("height","757px");
         $("#list_lander").css("display","block");
         souteList();
         landerList();
@@ -95,7 +95,7 @@ function resBarToggle() {
 }
 
 function showResBar() {
-    if (playerInfos.onShip && playerInfos.resBar) {
+    if (playerInfos.onShip && playerInfos.resBar && !playerInfos.onStart) {
         $('#restop').css('display','table-row');
         $('#resbar').empty();
         // $('#resbar').append('');
@@ -115,7 +115,7 @@ function showResBar() {
                 }
             }
         });
-        $('#resbar').append('<span class="klik" onclick="barResAllIn()" title="Montrer toutes les ressources en carence">&#128260;</span>');
+        $('#resbar').append('<span class="baseText klik" onclick="barResAllIn()" title="Montrer toutes les ressources en carence" style="font-size: 15px">&#128260;</span>');
     } else {
         $('#restop').css('display','none');
         $('#resbar').empty();
@@ -1386,6 +1386,7 @@ function missionRes() {
     let costString = '';
     // CITOYENS
     $('#fillList').append('<br><span class="constName or">CITOYENS</span><br>');
+    $('#fillList').append('<span class="constName jaune">Embarquer des citoyens</span><br>');
     let numCit = getLanderNumCit(souteId,126);
     if (numCit < 6) {
         $('#fillList').append('<span class="constName gff">&cross; 6 Citoyens</span><br>');

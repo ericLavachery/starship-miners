@@ -155,7 +155,7 @@ function mapEffect() {
         }
         $("#dirty").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
     }
-    if (!inSoute) {
+    if (!inSoute && !playerInfos.onStart) {
         $('#zone_monitor').empty();
         $('#zone_monitor').append('<img src="/static/img/empty.png" width="'+hmon+'" height="'+vmon+'">');
         $("#zone_monitor").css("display","block");

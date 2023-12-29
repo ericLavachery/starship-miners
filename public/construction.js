@@ -1592,6 +1592,9 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                         newBat.tags.push('survivor');
                     }
                 }
+                if (conselUnit.skills.includes('prodres') || conselUnit.skills.includes('geo') || conselUnit.skills.includes('solar') || conselUnit.skills.includes('cram') || conselUnit.skills.includes('dogprod') || conselUnit.skills.includes('transcrap') || conselUnit.skills.includes('cryogen')) {
+                    newBat.tags.push('prodres');
+                }
                 bataillons.push(newBat);
                 if (newBat.type === 'Chercheurs' && playerInfos.onShip) {
                     playerInfos.sci++;

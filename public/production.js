@@ -32,6 +32,37 @@ function getTileHeat(tile) {
     return tileHeat;
 };
 
+function allBatProd(go) {
+    if (go) {
+        bataillons.forEach(function(bat) {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar') || batType.skills.includes('cram') || batType.skills.includes('dogprod') || batType.skills.includes('transcrap') || batType.skills.includes('cryogen')) {
+                if (!bat.tags.includes('prodres')) {
+                    bat.tags.push('prodres');
+                }
+            }
+        });
+        // if (Object.keys(selectedBat).length >= 1) {
+        //     if (selectedBatType.skills.includes('prodres') || selectedBatType.skills.includes('geo') || selectedBatType.skills.includes('solar') || selectedBatType.skills.includes('cram') || selectedBatType.skills.includes('dogprod') || selectedBatType.skills.includes('transcrap') || selectedBatType.skills.includes('cryogen')) {
+        //         if (!selectedBat.tags.includes('prodres')) {
+        //             selectedBat.tags.push('prodres');
+        //             selectedBatArrayUpdate();
+        //         }
+        //     }
+        // }
+    } else {
+        bataillons.forEach(function(bat) {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('prodres') || batType.skills.includes('geo') || batType.skills.includes('solar') || batType.skills.includes('cram') || batType.skills.includes('dogprod') || batType.skills.includes('transcrap') || batType.skills.includes('cryogen')) {
+                if (bat.tags.includes('prodres')) {
+                    tagDelete(bat,'prodres');
+                }
+            }
+        });
+    }
+    goSoute();
+};
+
 function getTileEnergy(tile) {
     let magmaHere = 0;
     if (tile.rs != undefined) {

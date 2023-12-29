@@ -2,9 +2,9 @@ function showBatInfos(bat) {
     if (!playerInfos.onStart) {
         $("#unitInfos").css("display","block");
         if (playerInfos.onShip && !inSoute) {
-            $("#unitInfos").css("height","380px");
+            // $("#unitInfos").css("height","380px");
         } else {
-            $("#unitInfos").css("height","800px");
+            // $("#unitInfos").css("height","800px");
         }
         let batType = getBatType(bat);
         batInfos(bat,batType,false);
@@ -822,7 +822,7 @@ function batInfos(bat,batType,pop) {
                 if (selfMove) {
                     weaponsInfos(bat,batType,tile,pop);
                 }
-                $('#'+bodyPlace).append('<div class="shSpace"></div>');
+                // $('#'+bodyPlace).append('<div class="shSpace"></div>');
                 skillsInfos(bat,batType,near,nearby,selfMove);
             }
         } else {

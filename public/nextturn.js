@@ -1457,11 +1457,7 @@ function tagsUpdate(bat,batType) {
             tagDelete(bat,'moloko');
             if (!bat.tags.includes('moloko')) {
                 warning('Burp...',bat.type+' a la gueule de bois.',false,bat.tileId);
-                if (bat.apLeft >= 6) {
-                    bat.apLeft = Math.ceil(bat.apLeft/1.5);
-                } else {
-                    bat.apLeft = bat.apLeft-2;
-                }
+                drugDown(bat,true,30);
             }
         }
     }

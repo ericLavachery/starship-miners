@@ -960,7 +960,8 @@ td {
     scrollbar-color: #23305e #17203f;
     overflow-y: scroll;
     display: none;
-    height: 800px;
+    max-height: 750px;
+    /* height: 800px; */
 }
 #intro {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
@@ -1136,7 +1137,7 @@ td {
     scroll-behavior: auto;
     scrollbar-color: #23305e #17203f;
     overflow-y: scroll;
-    height: 1000px;
+    height: 757px;
     width: 495px;
 }
 #menu_lander {
@@ -1153,7 +1154,7 @@ td {
     scroll-behavior: auto;
     scrollbar-color: #23305e #17203f;
     overflow-y: scroll;
-    height: 1000px;
+    height: 757px;
     width: 495px;
 }
 .mapedBut {

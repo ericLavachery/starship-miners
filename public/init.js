@@ -44,6 +44,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.resBar === undefined) {
         playerInfos.resBar = true;
     }
+    if (playerInfos.showWeaps === undefined) {
+        playerInfos.showWeaps = false;
+    }
     if (playerInfos.resBarOut === undefined) {
         playerInfos.resBarOut = [];
     }
@@ -345,6 +348,10 @@ socket.on('playerInfos-Load', function(pi) {
         playerInfos.deployRes['Tissus'] = 30;
         playerInfos.deployRes['Plutonium'] = 120;
         playerInfos.deployRes['Hydrogène'] = 60;
+    }
+    if (playerInfos.onStart) {
+        $('body').css('background-image','url(/static/img/metroBG.jpg)');
+        $('body').css('background-position','left top');
     }
 });
 // Terrains

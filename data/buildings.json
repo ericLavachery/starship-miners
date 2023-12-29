@@ -4560,7 +4560,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["recupcit","prodres","upkeep","updisable"],
+        "skills":["recupcit","upkeep","updisable","cryocit"],
         "fuzz":3
     },
     {
