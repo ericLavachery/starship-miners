@@ -954,3 +954,32 @@ function deployEquip(equip,batId) {
     myNewGear[3] = equip;
     reEquip(batId,true);
 };
+
+function getBaseArmor(batType,cuName) {
+    let armorName = cuName;
+    if (armorName === 'xxx') {
+        armorName = 'aucune';
+    }
+    if (batType.team === 'player') {
+        if (batType.cat === 'infantry') {
+            if (batType.protection.includes('acier')) {
+                armorName = 'acier';
+            } else if (batType.protection.includes('scrap')) {
+                armorName = 'scrap';
+            }
+        } else if (batType.cat === 'buildings') {
+            armorName = 'aucun';
+        } else {
+            if (batType.protection.includes('scrap')) {
+                armorName = 'scrap';
+            } else if (batType.protection.includes('aucun')) {
+                armorName = 'aucun';
+            } else {
+                armorName = 'aucune';
+            }
+        }
+    } else {
+        armorName = 'aucune';
+    }
+    return armorName;
+};

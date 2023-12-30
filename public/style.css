@@ -1128,7 +1128,7 @@ td {
     background-image: url(/static/img/souteList.jpg);
     background-position: 0% 50%;
     height: 50px;
-    width: 495px;
+    width: 455px;
 }
 #list_soute {
     /* background-image: url(/static/img/plate-dork-mid.jpg); */
@@ -1138,14 +1138,14 @@ td {
     scrollbar-color: #23305e #17203f;
     overflow-y: scroll;
     height: 757px;
-    width: 495px;
+    width: 455px;
 }
 #menu_lander {
     /* background-image: url(/static/img/plate-dork-mid.jpg); */
     background-image: url(/static/img/souteList.jpg);
     background-position: 0% 50%;
     height: 50px;
-    width: 495px;
+    width: 455px;
 }
 #list_lander {
     /* background-image: url(/static/img/plate-dork-mid.jpg); */
@@ -1155,7 +1155,7 @@ td {
     scrollbar-color: #23305e #17203f;
     overflow-y: scroll;
     height: 757px;
-    width: 495px;
+    width: 455px;
 }
 .mapedBut {
     border-style: solid;

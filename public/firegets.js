@@ -236,18 +236,18 @@ function deluge(weap,tileId,onlyAround) {
         if (bat.loc === "zone") {
             let inDeluge = false;
             let batType = getBatType(bat);
-            if (!batType.skills.includes('fly') || bat.apLeft < 5) {
-                if (bat.tileId === tileId) {
-                    if (!onlyAround) {
-                        inDeluge = true;
-                    }
-                } else {
-                    let distance = calcDistance(bat.tileId,tileId);
-                    if (distance <= 1) {
-                        inDeluge = true;
-                    }
+            if (bat.tileId === tileId) {
+                if (!onlyAround) {
+                    inDeluge = true;
+                }
+            } else {
+                let distance = calcDistance(bat.tileId,tileId);
+                if (distance <= 1) {
+                    inDeluge = true;
                 }
             }
+            // if (!batType.skills.includes('fly') || bat.apLeft < 5) {
+            // }
             if (inDeluge) {
                 let batType = getBatType(bat);
                 delugeDamage(weap,bat,batType);
@@ -267,17 +267,17 @@ function deluge(weap,tileId,onlyAround) {
                     inDeluge = true;
                 }
             }
-            let batType = getBatType(bat);
-            if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
-                if (bat.apLeft > -5) {
-                    inDeluge = false;
-                }
-            }
-            if (batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') {
-                if (bat.apLeft > 0) {
-                    inDeluge = false;
-                }
-            }
+            // let batType = getBatType(bat);
+            // if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
+            //     if (bat.apLeft > -5) {
+            //         inDeluge = false;
+            //     }
+            // }
+            // if (batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') {
+            //     if (bat.apLeft > 0) {
+            //         inDeluge = false;
+            //     }
+            // }
             if (inDeluge) {
                 let batType = getBatType(bat);
                 delugeDamage(weap,bat,batType);
@@ -312,31 +312,48 @@ function delugeDamage(weap,bat,batType) {
     }
     // let stormDmg = 13*baseDmg;
     // console.log('stormDmg='+stormDmg);
-    stormDmg = Math.ceil(stormDmg/Math.sqrt(bat.armor+1));
+    stormDmg = stormDmg/Math.sqrt(bat.armor+1);
     // console.log('stormDmg(a)='+stormDmg);
     if (!weap.ammo.includes('suicide')) {
         if (batType.skills.includes('resistfeu') || bat.tags.includes('resistfeu')) {
             if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
-                stormDmg = Math.ceil(stormDmg/1.25);
+                stormDmg = stormDmg/1.25;
             } else {
-                stormDmg = Math.ceil(stormDmg/1.67);
+                stormDmg = stormDmg/1.67;
             }
         } else {
             if (batType.skills.includes('inflammable') || bat.tags.includes('inflammable') || bat.eq === 'e-jetpack') {
-                stormDmg = Math.ceil(stormDmg*2);
+                stormDmg = stormDmg*2;
             }
         }
     }
     if (batType.skills.includes('protectall') || bat.tags.includes('protectall')) {
-        stormDmg = Math.ceil(stormDmg/2);
+        stormDmg = stormDmg/2;
     } else if (batType.skills.includes('resistall') || bat.tags.includes('resistall')) {
-        stormDmg = Math.ceil(stormDmg/1.5);
+        stormDmg = stormDmg/1.5;
     }
     if (batType.skills.includes('resistblast') || bat.tags.includes('resistblast')) {
-        stormDmg = Math.ceil(stormDmg/1.25);
+        stormDmg = stormDmg/1.25;
     } else if (batType.skills.includes('reactblast') || bat.tags.includes('reactblast')) {
-        stormDmg = Math.ceil(stormDmg*2);
+        stormDmg = stormDmg*2;
     }
+    if (bat.team === 'aliens') {
+        if (batType.skills.includes('fly') && bat.apLeft > -5) {
+            stormDmg = stormDmg/2;
+        }
+    } else {
+        if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
+            if (bat.apLeft > -5) {
+                stormDmg = stormDmg/2;
+            }
+        }
+        if (batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') {
+            if (bat.apLeft > 0) {
+                stormDmg = stormDmg/2;
+            }
+        }
+    }
+    stormDmg = Math.ceil(stormDmg);
     // console.log('stormDmg(T)='+stormDmg);
     let totalDamage = bat.damage+stormDmg;
     let squadHP = batType.squadSize*batType.hp;

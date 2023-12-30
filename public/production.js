@@ -42,14 +42,7 @@ function allBatProd(go) {
                 }
             }
         });
-        // if (Object.keys(selectedBat).length >= 1) {
-        //     if (selectedBatType.skills.includes('prodres') || selectedBatType.skills.includes('geo') || selectedBatType.skills.includes('solar') || selectedBatType.skills.includes('cram') || selectedBatType.skills.includes('dogprod') || selectedBatType.skills.includes('transcrap') || selectedBatType.skills.includes('cryogen')) {
-        //         if (!selectedBat.tags.includes('prodres')) {
-        //             selectedBat.tags.push('prodres');
-        //             selectedBatArrayUpdate();
-        //         }
-        //     }
-        // }
+        warning('<span class="rq3">Production lancée</span>','<span class="vio">Tous les bâtiments ont lancé leur production.</span>');
     } else {
         bataillons.forEach(function(bat) {
             let batType = getBatType(bat);
@@ -59,6 +52,7 @@ function allBatProd(go) {
                 }
             }
         });
+        warning('<span class="rq3">Production stoppée</span>','<span class="vio">Tous les bâtiments ont arrêté leur production.</span>');
     }
     goSoute();
 };
@@ -455,15 +449,15 @@ function getScrapResList(batName) {
                 }
             }
             if (batName === 'Recyclab') {
-                resFactor = (res.rlab+playerInfos.comp.tri-3)*2.5;
+                resFactor = (res.rlab+Math.sqrt(playerInfos.comp.tri)-1.2)*2.5;
             } else if (scrapLevel === 1) {
-                resFactor = res.rlab+playerInfos.comp.tri-3;
+                resFactor = res.rlab+Math.sqrt(playerInfos.comp.tri)-1.2;
             }
             if (res.name === 'Fuel' || res.name === 'Nourriture') {
                 resFactor = resFactor/10;
             }
             if (res.bld === 'Derrick') {
-                resFactor = resFactor/2;
+                resFactor = resFactor*(playerInfos.comp.pyro+3)/3;
             }
         }
         if (resFactor >= 1) {
@@ -534,18 +528,23 @@ function triProd(bat,batType,time,sim,quiet) {
                     }
                 }
                 if (batType.name === 'Recyclab') {
-                    resFactor = (res.rlab+playerInfos.comp.tri-3)*2.5;
+                    resFactor = (res.rlab+Math.sqrt(playerInfos.comp.tri)-1.2)*2.5;
                 } else if (scrapLevel === 1) {
-                    resFactor = res.rlab+playerInfos.comp.tri-3;
+                    resFactor = res.rlab+Math.sqrt(playerInfos.comp.tri)-1.2;
                 }
                 if (res.name === 'Fuel' || res.name === 'Nourriture') {
                     resFactor = resFactor/10;
                 }
                 if (res.bld === 'Derrick') {
-                    resFactor = resFactor/2;
+                    resFactor = resFactor*(playerInfos.comp.pyro+3)/3;
                 }
             }
             if (resFactor >= 1) {
+                if (res.rlab < 1) {
+                    resFactor = resFactor*res.rlab;
+                } else if (res.bld === 'Derrick') {
+                    resFactor = resFactor/2;
+                }
                 let resNum = Math.round(time*resFactor/rand.rand(9,12)/2);
                 console.log(res.name);
                 console.log('resNum: '+resNum);
@@ -579,7 +578,8 @@ function triProd(bat,batType,time,sim,quiet) {
                         resAddToBld(res.name,resProd,bat,batType,false);
                     }
                 }
-                message = message+res.name+':<span class="vert">+'+resProd+'</span><br>';
+                let resIcon = getResIcon(res);
+                message = message+res.name+':<span class="vert">+'+resProd+'</span> <span class="jaune">'+resIcon+'</span><br>';
                 if (!playerInfos.onShip) {
                     if (minedThisTurn[res.name] === undefined) {
                         minedThisTurn[res.name] = resProd;

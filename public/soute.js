@@ -17,7 +17,7 @@ function goSoute() {
     souteMenu();
     if (souteTab === 'unitz') {
         $('body').css('background-image','url(/static/img/dockBG.jpg)');
-        $('body').css('background-position','left top');
+        $('body').css('background-position','left center');
         $("#menu_lander").css("display","block");
         $("#list_lander").css("height","757px");
         $("#list_lander").css("display","block");
@@ -1385,8 +1385,8 @@ function missionRes() {
     let combinedCosts = {};
     let costString = '';
     // CITOYENS
-    $('#fillList').append('<br><span class="constName or">CITOYENS</span><br>');
-    $('#fillList').append('<span class="constName jaune">Embarquer des citoyens</span><br>');
+    $('#fillList').append('<br><span class="basicText or">CITOYENS</span><br>');
+    $('#fillList').append('<span class="basicText jaune">Embarquer des citoyens</span><br>');
     let numCit = getLanderNumCit(souteId,126);
     if (numCit < 6) {
         $('#fillList').append('<span class="constName gff">&cross; 6 Citoyens</span><br>');
@@ -1412,8 +1412,8 @@ function missionRes() {
             if (prodOK && compReqOK) {
                 if (lastKind != unit.kind) {
                     showkind = unit.kind.replace(/zero-/g,"");
-                    $('#fillList').append('<br><span class="constName or" id="kind-'+unit.kind+'">'+showkind.toUpperCase()+'</span><br>');
-                    $('#fillList').append('<span class="constName jaune">Construction de bâtiments et dispositifs</span><br>');
+                    $('#fillList').append('<br><span class="basicText or" id="kind-'+unit.kind+'">'+showkind.toUpperCase()+'</span><br>');
+                    $('#fillList').append('<span class="basicText jaune">Construction de bâtiments et dispositifs</span><br>');
                 }
                 if (prepaBld[unit.name] === undefined) {
                     showPrep = '';
@@ -1504,8 +1504,8 @@ function missionRes() {
         }
     });
     // INFRASTRUCTURES
-    $('#fillList').append('<br><span class="constName or">INFRASTRUCTURES</span><br>');
-    $('#fillList').append('<span class="constName jaune">Construction d\'infrastructures</span><br>');
+    $('#fillList').append('<br><span class="basicText or">INFRASTRUCTURES</span><br>');
+    $('#fillList').append('<span class="basicText jaune">Construction d\'infrastructures</span><br>');
     armorTypes.forEach(function(infra) {
         if (infra.fabTime != undefined) {
             prodOK = true;
@@ -1567,8 +1567,8 @@ function missionRes() {
     }
     // TELEPORT
     if (playerInfos.comp.tele >= 2) {
-        $('#fillList').append('<br><span class="constName or">TELEPORTATION</span><br>');
-        $('#fillList').append('<span class="constName jaune">Coûts de téléportation</span><br>');
+        $('#fillList').append('<br><span class="basicText or">TELEPORTATION</span><br>');
+        $('#fillList').append('<span class="basicText jaune">Coûts de téléportation</span><br>');
         if (prepaBld['ResPort'] === undefined) {
             showPrep = '';
         } else {
@@ -1603,8 +1603,8 @@ function missionRes() {
         }
     }
     // DROGUES
-    $('#fillList').append('<br><span class="constName or">DROGUES</span><br>');
-    $('#fillList').append('<span class="constName jaune">Réserves de drogues</span><br>');
+    $('#fillList').append('<br><span class="basicText or">DROGUES</span><br>');
+    $('#fillList').append('<span class="basicText jaune">Réserves de drogues</span><br>');
     armorTypes.forEach(function(drug) {
         if (drug.cat != undefined) {
             if (drug.cat === 'drogue') {
@@ -1641,8 +1641,9 @@ function missionRes() {
         }
     });
     // PACKS UPKEEP
-    $('#fillList').append('<br><span class="constName or">PACKS UPKEEP (10 Tours)</span><br>');
-    $('#fillList').append('<span class="constName jaune">Réserve de ressources pour la production et l\'entretien des bâtiments</span><br>');
+    $('#fillList').append('<br><span class="basicText or">PACKS UPKEEP (10 Tours)</span><br>');
+    $('#fillList').append('<span class="basicText jaune">Réserve de ressources pour la production et l\'entretien des bâtiments</span><br>');
+    let batInLander = batInLanderArray();
     unitTypes.forEach(function(unit) {
         if (unit.skills.includes('prefab')) {
             if (playerInfos.bldVM.includes(unit.name)) {
@@ -1661,10 +1662,13 @@ function missionRes() {
                     });
                     costString = displayCosts(upCosts);
                     costsOK = checkCost(upCosts);
+                    let inLander = hasHowMany(batInLander,'type',unit.name);
                     if (!costsOK) {
-                        $('#fillList').append('<span class="constName gff" title="'+costString+'">&cross; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                        $('#fillList').append('<span class="constName gff"><span title="Ressources insuffisentes">&cross; </span><span title="'+costString+'">'+unit.name+'</span> <span class="ciel">'+showPrep+'</span></span><br>');
+                    } else if (inLander >= 1) {
+                        $('#fillList').append('<span class="constName klik cyf" onclick="missionResUpkeep(`'+unit.name+'`,10)"><span title="Embarqué: '+inLander+'">'+inLander+' </span><span title="'+costString+'">'+unit.name+'</span> <span class="ciel">'+showPrep+'</span></span><br>');
                     } else {
-                        $('#fillList').append('<span class="constName klik cyf" title="'+costString+'" onclick="missionResUpkeep(`'+unit.name+'`,10)">&check; '+unit.name+' <span class="ciel">'+showPrep+'</span></span><br>');
+                        $('#fillList').append('<span class="constName klik gff" onclick="missionResUpkeep(`'+unit.name+'`,10)"><span title="Embarqué: 0">0 </span><span title="'+costString+'">'+unit.name+'</span> <span class="ciel">'+showPrep+'</span></span><br>');
                     }
                 }
             }
@@ -1688,6 +1692,16 @@ function missionRes() {
     //     }
     // });
     $('#fillList').append('<br>');
+};
+
+function batInLanderArray() {
+    let batInLander = [];
+    bataillons.forEach(function(bat) {
+        if (bat.loc === 'trans' && bat.locId != souteId) {
+            batInLander.push(bat);
+        }
+    });
+    return batInLander;
 };
 
 function makeInfraProps(infraName,special) {

@@ -578,6 +578,7 @@
         "energie": -1,
         "equiv": 3.5,
         "kinds": ["military"],
+        "rlab": 0.08,
         "planets":{"Dom":0,"Sarak":0.7,"Gehenna":1.5,"Kzin":0,"Horst":1},
         "gauge": 3000
     },
@@ -593,6 +594,7 @@
         "cramBld": "Centrale SMR",
         "equiv": 4,
         "kinds": ["science","military"],
+        "rlab": 0.05,
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":1,"Horst":1},
         "gauge": 3000
     },
@@ -607,6 +609,7 @@
         "energie": -1,
         "equiv": 3.5,
         "kinds": ["military"],
+        "rlab": 0.08,
         "planets":{"Dom":0,"Sarak":0.5,"Gehenna":1.2,"Kzin":1,"Horst":0.75},
         "gauge": 3000
     },
@@ -622,6 +625,7 @@
         "cramBld": "Incinérateur",
         "equiv": 3,
         "kinds": ["science","military","energy","auto"],
+        "rlab": 0.1,
         "planets":{"Dom":0,"Sarak":1,"Gehenna":0.7,"Kzin":2,"Horst":0.75},
         "gauge": 3000
     },
@@ -637,6 +641,7 @@
         "cramBld": "Centrale SMR",
         "equiv": 5,
         "kinds": ["science","military"],
+        "rlab": 0.02,
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0,"Kzin":0.5,"Horst":1.5},
         "gauge": 3000
     },
@@ -652,6 +657,7 @@
         "cramBld": "Incinérateur",
         "equiv": 2.5,
         "kinds": ["military"],
+        "rlab": 0.05,
         "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":1,"Horst":0.5},
         "gauge": 5000
     },
@@ -666,6 +672,7 @@
         "energie": -1,
         "equiv": 3.5,
         "kinds": ["science","military","industry"],
+        "rlab": 0.05,
         "planets":{"Dom":0,"Sarak":0,"Gehenna":0.2,"Kzin":0.75,"Horst":1.5},
         "gauge": 3000
     },
@@ -680,6 +687,7 @@
         "energie": 0.67,
         "equiv": 2.5,
         "kinds": ["military","industry","energy","auto"],
+        "rlab": 0.1,
         "planets":{"Dom":0.5,"Sarak":1,"Gehenna":0,"Kzin":0,"Horst":2},
         "gauge": 5000
     },
@@ -694,6 +702,7 @@
         "energie": 45,
         "equiv": 2,
         "kinds": ["science","medecine"],
+        "rlab": 0.05,
         "planets":{"Dom":1,"Sarak":2,"Gehenna":0,"Kzin":0,"Horst":0},
         "gauge": 5000
     },

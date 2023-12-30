@@ -1290,10 +1290,11 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                 newBat.tdc = [];
             }
             // Armor
-            let armorName = conselAmmos[2];
-            if (armorName === 'xxx') {
-                armorName = 'aucune';
-            }
+            // let armorName = conselAmmos[2];
+            // if (armorName === 'xxx') {
+            //     armorName = 'aucune';
+            // }
+            let armorName = getBaseArmor(conselUnit,conselAmmos[2]);
             let batArmor = getEquipByName(armorName);
             newBat.prt = armorName;
             let gearStuff = getBatGearStuff(armorName,equipName,conselUnit,false);
