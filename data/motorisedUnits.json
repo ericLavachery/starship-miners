@@ -2250,7 +2250,7 @@
         "maxSalvo":2,
         "weapon":{
             "name":"Mitrailleuse",
-            "cost":4,
+            "cost":2,
             "range":2,
             "noStab":true,
             "noise":4,
@@ -2265,7 +2265,7 @@
         },
         "weapon2":{
             "name":"Mortier",
-            "cost":6,
+            "cost":4,
             "range":3,
             "noise":4,
             "noFly":true,
@@ -2285,7 +2285,7 @@
         "equip":["aucun","carrousel2","longtom2","wstabkit","g2motor","e-flash"],
         "log3eq":["g2motor"],
         "autoEq":["carrousel2"],
-        "moveCost":2,
+        "moveCost":1.9,
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,

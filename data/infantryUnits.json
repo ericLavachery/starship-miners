@@ -5926,7 +5926,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","ranger","ravitaillement","badmecano","robot","fret","dumper","aifouille","autotrans","w2mecano","lbot"],
+        "skills":["a_rob","ranger","ravitaillement","badmecano","robot","fret","dumper","aifouille","solotrans","w2mecano","lbot"],
         "maxSkill":19,
         "mecanoCost":14,
         "transRes":640,

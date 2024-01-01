@@ -3,7 +3,9 @@ function loadRes(retour) {
     let restSpace = checkResSpace(selectedBat);
     let selectedBatPic = getBatPic(selectedBat,selectedBatType);
     let myConvey = true;
-    if (selectedBatType.crew === 0 && !selectedBatType.skills.includes('autotrans')) {
+    if (selectedBatType.crew === 0 && !selectedBatType.skills.includes('autotrans') && !selectedBatType.skills.includes('solotrans')) {
+        myConvey = false;
+    } else if (selectedBat.tags.includes('nopilots')) {
         myConvey = false;
     }
     if (restSpace < 0) {restSpace = 0;}
@@ -76,9 +78,15 @@ function loadRes(retour) {
                             seeMe = false;
                         }
                         resLoad = checkResLoad(bat);
+                        let soloLine = false;
                         let targetConvey = true;
-                        if (batType.crew === 0 && !batType.skills.includes('autotrans')) {
+                        if (batType.crew === 0 && !batType.skills.includes('autotrans') && !batType.skills.includes('solotrans')) {
                             targetConvey = false;
+                        } else if (bat.tags.includes('nopilots')) {
+                            targetConvey = false;
+                        } else if (batType.skills.includes('solotrans') && selectedBatType.skills.includes('solotrans')) {
+                            targetConvey = false;
+                            soloLine = true;
                         }
                         if ((resLoad >= 1 || seeAllFret) && seeMe) {
                             let batPic = getBatPic(bat,batType);
@@ -91,7 +99,7 @@ function loadRes(retour) {
                             } else {
                                 $('#conUnitList').append('<span class="constName cy">'+bat.type+' <span class="gf"> &mdash; '+theTile+'</span></span><br>');
                             }
-                            if (myConvey || targetConvey) {
+                            if ((myConvey || targetConvey) && !soloLine) {
                                 if (restSpace >= resLoad) {
                                     $('#conUnitList').append('<span class="loadIcon rose klik" onclick="resAllLoad('+bat.id+')" title="Charger tout ce qu\'il y a dans ce bataillon ('+bat.type+')"><i class="fas fa-pallet"></i></span>');
                                 } else {

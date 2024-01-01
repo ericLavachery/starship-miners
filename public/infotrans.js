@@ -208,7 +208,7 @@ function unloadInLander() {
         bataillons.forEach(function(bat) {
             if (bat.loc === "trans" && bat.locId === selectedBat.id) {
                 batType = getBatType(bat);
-                if (batType.moveCost < 90) {
+                if (batType.moveCost < 90 || batType.skills.includes('trailer')) {
                     let embarqOK = checkEmbarqThis(bat,landerBat);
                     if (embarqOK) {
                         let embarqCost = calcEmbarqCost(batType,landerBatType);
@@ -310,7 +310,7 @@ function checkTransMaxSize(batType,transBat,transBatType) {
             isInfantry = true;
         }
         if (batType.cat === 'vehicles') {
-            if (batType.skills.includes('robot') || batType.skills.includes('cyber')) {
+            if (batType.skills.includes('robot') || batType.skills.includes('cyber') || batType.skills.includes('trailer')) {
                 isInfantry = true;
             }
         }
@@ -329,7 +329,7 @@ function checkUnderId(myBat,myBatType) {
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" && bat.tileId == myBat.tileId) {
             let batType = getBatType(bat);
-            if (batType.cat != 'buildings' && batType.cat != 'devices' && batType.moveCost < 90 && !bat.tags.includes('nomove')) {
+            if (batType.cat != 'buildings' && batType.cat != 'devices' && (batType.moveCost < 90 || batType.skills.includes('trailer')) && !bat.tags.includes('nomove')) {
                 let tmsOK = checkTransMaxSize(batType,myBat,myBatType);
                 if (tmsOK) {
                     if (!batType.skills.includes('tracked') || !tracking) {
@@ -386,7 +386,7 @@ function checkEmbarqThis(myBat,transBat) {
     // console.log(transBat);
     let embarqOK = false;
     let myBatType = getBatType(myBat);
-    if (myBatType.moveCost < 90) {
+    if (myBatType.moveCost < 90 || myBatType.skills.includes('trailer')) {
         // console.log('ok move');
         let myBatWeight = calcVolume(myBat,myBatType);
         // console.log('myBatWeight='+myBatWeight);
@@ -686,7 +686,7 @@ function resTransfert(transBat) {
 
 function checkHopTransId(myBat,myBatType) {
     let transId = -1;
-    if (myBatType.moveCost < 90) {
+    if (myBatType.moveCost < 90 || myBatType.skills.includes('trailer')) {
         if (!myBat.tags.includes('deb') || myBat.salvoLeft >= 1) {
             let isCharged = checkCharged(myBat,'trans');
             let enoughAP = false;
@@ -731,7 +731,7 @@ function checkHopTransId(myBat,myBatType) {
 function checkJumpTransId() {
     let transId = -1;
     if (Object.keys(selectedBat).length >= 1) {
-        if (selectedBatType.moveCost < 90) {
+        if (selectedBatType.moveCost < 90 || selectedBatType.skills.includes('trailer')) {
             if (!selectedBat.tags.includes('deb') || selectedBat.salvoLeft >= 1) {
                 let isCharged = checkCharged(selectedBat,'trans');
                 let enoughAP = false;

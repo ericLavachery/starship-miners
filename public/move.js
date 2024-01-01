@@ -945,6 +945,12 @@ function fastEmptyFactor(bat,batType) {
         }
         mcFactor = mcFactor*10/(10+apBonus);
     }
+    if (batType.skills.includes('transport')) {
+        let tracking = checkTracking(bat);
+        if (tracking) {
+            mcFactor = mcFactor*1.15;
+        }
+    }
     // console.log('*** fastEmptyFactor : '+mcFactor);
     return mcFactor;
 };

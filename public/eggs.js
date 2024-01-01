@@ -1556,6 +1556,9 @@ function alienEdgeSpawns(edgeTile,eggKind) {
     let numA = 0;
     let maxA = Math.floor((zone[0].mapDiff/8)+(playerInfos.mapTurn/40));
     if (maxA > 2) {maxA = 2;}
+    let numB = 0;
+    let maxB = Math.floor((zone[0].mapDiff/3)+(playerInfos.mapTurn/20));
+    if (maxB > 5) {maxB = 5;}
     let minTurnB = 35-Math.round(zone[0].mapDiff*5);
     let minTurnA = 54-Math.round(zone[0].mapDiff*4);
     let eggTurn = playerInfos.mapTurn-20;
@@ -1602,7 +1605,11 @@ function alienEdgeSpawns(edgeTile,eggKind) {
                                 if (aliens.length < maxAliens-50 || unit.class != 'C') {
                                     edgeAlienName = unit.name;
                                     alienClass = unit.class;
-                                    numA++;
+                                    if (unit.class === 'A') {
+                                        numA++;
+                                    } else if (unit.class === 'B') {
+                                        numB++;
+                                    }
                                 }
                             }
                         }
@@ -1611,14 +1618,21 @@ function alienEdgeSpawns(edgeTile,eggKind) {
             }
         });
         let isBaseAlien = false;
+        let baseClass = 'A';
         if (edgeAlienName.length <= 0) {
             isBaseAlien = true;
+            baseClass = 'A';
         }
         if (numA > maxA && alienClass === 'A') {
             isBaseAlien = true;
+            baseClass = 'B';
+        }
+        if (numB > maxB && alienClass === 'B') {
+            isBaseAlien = true;
+            baseClass = 'B';
         }
         if (isBaseAlien) {
-            edgeAlienName = getBaseAlien(eggKind);
+            edgeAlienName = getBaseAlien(eggKind,baseClass);
         }
         console.log('before replace: '+edgeAlienName);
         edgeAlienName = replaceAlienName(edgeAlienName);
@@ -1630,14 +1644,61 @@ function alienEdgeSpawns(edgeTile,eggKind) {
     }
 };
 
-function getBaseAlien(eggKind) {
+function getBaseAlien(eggKind,alienClass) {
     let alienName = 'Bugs';
+    let alienDice = rand.rand(1,4);
     if (eggKind === 'swarm') {
         alienName = 'Cafards';
+        if (alienDice === 1) {
+            alienName = 'Scorpions';
+        } else if (alienDice === 2) {
+            alienName = 'Blattes';
+        }
     } else if (eggKind === 'spider') {
         alienName = 'Gluantes';
+        if (alienDice === 1) {
+            alienName = 'Cracheuses';
+        }
     } else if (eggKind === 'larve') {
         alienName = 'Asticots';
+        if (alienDice === 1) {
+            alienName = 'Vers';
+        } else if (alienDice === 2) {
+            alienName = 'Larves';
+        }
+    } else if (eggKind === 'bug') {
+        alienName = 'Bugs';
+        if (alienDice === 1) {
+            alienName = 'Escarbots';
+        }
+    }
+    if (alienClass === 'B') {
+        alienName = 'Broyeurs';
+        if (eggKind === 'swarm') {
+            alienName = 'Skolos';
+            if (alienDice === 1) {
+                alienName = 'Fourmis';
+            } else if (alienDice === 2) {
+                alienName = 'Bourdons';
+            }
+        } else if (eggKind === 'spider') {
+            alienName = 'Torches';
+            if (alienDice === 1) {
+                alienName = 'Sournoises';
+            } else if (alienDice === 2) {
+                alienName = 'Faucheux';
+            }
+        } else if (eggKind === 'larve') {
+            alienName = 'Wurms';
+            if (alienDice === 1) {
+                alienName = 'Ombres';
+            }
+        } else if (eggKind === 'bug') {
+            alienName = 'Broyeurs';
+            if (alienDice === 1) {
+                alienName = 'Chancres';
+            }
+        }
     }
     return alienName;
 };

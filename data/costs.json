@@ -2399,6 +2399,16 @@
         "info":"Ce dispositif crée un brouillard qui limite les tirs à 1 case (pour vos bataillons et les aliens). Vos bataillons ne dépassant pas une certaine taille peuvent devenir furtifs."
     },
     {
+        "id":326,
+        "name":"Remorques",
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "bldReq":["Atelier"],
+        "compReq":{"log":1},
+        "costs":{"Fer":30,"Scrap":30,"Compo1":45},
+        "deploy":{},
+        "fabTime":15
+    },
+    {
         "id":239,
         "name":"Coffres",
         "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},

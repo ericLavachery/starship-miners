@@ -521,7 +521,8 @@ function alienTheme(interrupt) {
 function playMusic(piste,interrupt) {
     // let track = [_.sample(musicTracks)];
     if (playerInfos.statMu || !playerInfos.onShip) {
-        let myVol = checkMyVol(playerInfos.volMu+0.3,'volMu');
+        // let myVol = checkMyVol(playerInfos.volMu+0.3,'volMu');
+        let myVol = playerInfos.volMu;
         if (!theMusic.playing() || interrupt) {
             let track = 'amb_trucsympa';
             if (trackNum > musicTracks.length-1) {
@@ -567,7 +568,8 @@ function playMusic(piste,interrupt) {
 function playRadio(piste,interrupt) {
     // let track = [_.sample(musicTracks)];
     if (playerInfos.statMu || !playerInfos.onShip) {
-        let myVol = checkMyVol(playerInfos.volRadio+0.3,'volRadio');
+        // let myVol = checkMyVol(playerInfos.volRadio+0.3,'volRadio');
+        let myVol = playerInfos.volRadio;
         if (!theRadio.playing() || interrupt) {
             let track = 'amb_trucsympa';
             if (trackNum > stationTracks.length-1) {

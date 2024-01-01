@@ -80,6 +80,9 @@ function batInfos(bat,batType,pop) {
         bat.tdc = [];
     }
     updateBatProperties(bat,batType);
+    if (batType.skills.includes('trailer')) {
+        bat.apLeft = bat.ap;
+    }
     let selfMove = checkSelfMove(bat,batType);
     levelUp(bat,batType);
     if (!playerInfos.onShip) {
