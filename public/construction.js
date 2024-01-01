@@ -2557,9 +2557,9 @@ function constructSound() {
 
 function roadSound() {
     if (selectedBatType.skills.includes('worker')) {
-        playSound('road-push',-0.1);
+        playSound('road-push',-0.1,false);
     } else {
-        playSound('road-sap',-0.1);
+        playSound('road-sap',-0.1,false);
     }
 };
 

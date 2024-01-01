@@ -713,7 +713,7 @@ function bullseyeShot(bat,batType,weap,bodyPlace,inMelee,tirOK) {
                     if (bat.tags.includes('hero') && (batType.skills.includes('herokill') || batType.skills.includes('herominik')) && !bat.tags.includes('nokill')) {
                         $('#'+bodyPlace).append('<button type="button" title="Instakill: Seulement en combinaison avec Bullseye" class="boutonGrey skillButtons gf"><i class="fas fa-skull-crossbones"></i> <span class="sosmall">0</span></button>');
                     } else {
-                        $('#unitInfos').append('<br>');
+                        $('#'+bodyPlace).append('<br>');
                     }
                 } else {
                     if (bat.tags.includes('vise')) {
@@ -735,7 +735,7 @@ function bullseyeShot(bat,batType,weap,bodyPlace,inMelee,tirOK) {
                         } else if (bat.tags.includes('kill')) {
                             $('#'+bodyPlace).append('<button type="button" title="Instakill: Activé" class="boutonOK skillButtons cy"><i class="fas fa-skull-crossbones"></i> <span class="sosmall">0</span></button>');
                         } else {
-                            $('#unitInfos').append('<br>');
+                            $('#'+bodyPlace).append('<br>');
                         }
                     } else {
                         $('#'+bodyPlace).append('<span class="bigHSpace"></span><button type="button" title="'+skillMessage+'" class="'+boutonNope+' skillButtons '+colorNope+'"><i class="fas fa-crosshairs"></i> <span class="sosmall">'+apCost+'</span></button><br>');

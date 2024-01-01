@@ -2289,7 +2289,7 @@
         "maxFlood":3,
         "maxScarp":2,
         "maxVeg":2,
-        "skills":["b_light","hover","selfbadmecano","fret","light","recupcit","recupres","kzin","hveh"],
+        "skills":["b_light","hover","selfbadmecano","longshot","fret","light","recupcit","recupres","kzin","hveh"],
         "mecanoCost":28,
         "transRes":120,
         "fuzz":3,

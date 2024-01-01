@@ -100,23 +100,25 @@ function checkNeiTurn() {
 };
 
 function neighbours() {
-    if (playerInfos.mapTurn === 30) {
+    if (playerInfos.mapTurn === 30 && playerInfos.vz > 43) {
         let numEvents = getNumEvents();
         numEvents = Math.floor(numEvents*numEvents/2/playerInfos.cNeed);
         numEvents = entre(numEvents,1,100);
         if (rand.rand(1,numEvents) === 1) {
             let turnz = rand.rand(1,12);
-            playerInfos.vz = 31+turnz;
-            let card = rand.rand(1,4);
-            if (card === 1) {
-                playerInfos.vc = 'nord';
-            } else if (card === 2) {
-                playerInfos.vc = 'sud';
-            } else if (card === 3) {
-                playerInfos.vc = 'ouest';
-            } else {
-                playerInfos.vc = 'est';
+            if (playerInfos.vz === 999) {
+                let card = rand.rand(1,4);
+                if (card === 1) {
+                    playerInfos.vc = 'nord';
+                } else if (card === 2) {
+                    playerInfos.vc = 'sud';
+                } else if (card === 3) {
+                    playerInfos.vc = 'ouest';
+                } else {
+                    playerInfos.vc = 'est';
+                }
             }
+            playerInfos.vz = 31+turnz;
         }
     }
     if (playerInfos.vz <= playerInfos.mapTurn) {

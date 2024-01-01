@@ -144,15 +144,19 @@ function mapEffect() {
     let hmon = hpix-6;
     let vmon = vpix-8;
     if (!playerInfos.onShip) {
-        if (!playerInfos.clouds) {
-            $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/scratchGrid7.png"></span>');
-        } else {
-            if (playerInfos.bldVM.includes('Centre de com')) {
-                $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/scratchGrid7.png"></span>');
+        if (playerInfos.bldVM.includes('Centre de com')) {
+            if (playerInfos.comp.det >= 3) {
+                $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/nailGrid.png"></span>');
             } else {
-                $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid8.png"></span>');
+                $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/scratchGrid.png"></span>');
             }
+        } else {
+            $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid.png"></span>');
         }
+        // if (!playerInfos.clouds) {
+        //     $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/scratchGrid7.png"></span>');
+        // } else {
+        // }
         $("#dirty").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
     }
     if (!inSoute && !playerInfos.onStart) {

@@ -194,16 +194,17 @@ function checkRuinsCit(tile) {
     citChance = citChance*playerInfos.cNeed;
     if (tile.rt != undefined) {
         let checkz = tile.rt.checks.length;
+        let allChecks = _.countBy(tile.rt.checks);
         if (checkz === 0) {
             checkz = 0.5;
         }
         if (tile.rt.name === 'Mine') {
             citChance = citChance*1.5;
         } else if (tile.rt.checks.includes('food')) {
+            let lifeChecks = (allChecks.food+1)*(allChecks.food+1);
+            citChance = citChance*lifeChecks*checkz/3;
             if (tile.rt.checks.includes('military') || tile.rt.checks.includes('medecine')) {
-                citChance = citChance*3.5*checkz;
-            } else {
-                citChance = citChance*1.5*checkz;
+                citChance = citChance*2;
             }
         } else {
             citChance = citChance/3*checkz;
