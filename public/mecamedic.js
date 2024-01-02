@@ -774,13 +774,16 @@ function getAway(myBat,fromTileId,blob) {
                 if (distFromSelf <= 2 && distFromTile >= 1) {
                     let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
                     let tracking = checkTracking(bat);
+                    let trailerIn = checkTrailer(bat);
                     if (!myBatType.skills.includes('tracked') || !tracking) {
-                        let myBatWeight = calcVolume(myBat,myBatType);
-                        if (myBatWeight <= batTransUnitsLeft) {
-                            getAwayTile = bat.tileId;
-                            apCost = (distFromSelf*5)+2;
-                            inBld = true;
-                            transBatId = bat.id;
+                        if (!myBatType.skills.includes('trailer') || !trailerIn) {
+                            let myBatWeight = calcVolume(myBat,myBatType);
+                            if (myBatWeight <= batTransUnitsLeft) {
+                                getAwayTile = bat.tileId;
+                                apCost = (distFromSelf*5)+2;
+                                inBld = true;
+                                transBatId = bat.id;
+                            }
                         }
                     }
                 }

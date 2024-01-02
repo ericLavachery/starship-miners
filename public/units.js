@@ -8,8 +8,8 @@ function unitDetail(unitId) {
 };
 
 function unitInfos(batType) {
-    $('.modal-header').css('background-image','url(/static/img/modaltop.jpg)');
-    $('.modal-footer').css('background-image','url(/static/img/modaltop.jpg)');
+    $('.modal-header').css('background-image','url(/static/img/modaltop-yel.jpg)');
+    $('.modal-footer').css('background-image','url(/static/img/modaltop-yel.jpg)');
     $('.modal-content').css('background-image','url(/static/img/modalbg-yel.jpg)');
     let headPlace = 'pophead';
     let bodyPlace = 'popbody';

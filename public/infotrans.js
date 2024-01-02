@@ -326,6 +326,7 @@ function checkUnderId(myBat,myBatType) {
     let underId = -1;
     let myBatTransUnitsLeft = calcTransUnitsLeft(myBat,myBatType);
     let tracking = checkTracking(myBat);
+    let trailerIn = checkTrailer(myBat);
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" && bat.tileId == myBat.tileId) {
             let batType = getBatType(bat);
@@ -333,11 +334,13 @@ function checkUnderId(myBat,myBatType) {
                 let tmsOK = checkTransMaxSize(batType,myBat,myBatType);
                 if (tmsOK) {
                     if (!batType.skills.includes('tracked') || !tracking) {
-                        let batWeight = calcVolume(bat,batType);
-                        if (batWeight <= myBatTransUnitsLeft) {
-                            let isCharged = checkCharged(bat,'trans');
-                            if (!isCharged) {
-                                underId = bat.id;
+                        if (!batType.skills.includes('trailer') || !trailerIn) {
+                            let batWeight = calcVolume(bat,batType);
+                            if (batWeight <= myBatTransUnitsLeft) {
+                                let isCharged = checkCharged(bat,'trans');
+                                if (!isCharged) {
+                                    underId = bat.id;
+                                }
                             }
                         }
                     }
@@ -354,7 +357,6 @@ function checkTransportId(myBat,myBatType) {
     let batType;
     let batTransUnitsLeft;
     let myBatWeight = calcVolume(myBat,myBatType);
-    let tracking;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" && bat.tileId === myBat.tileId) {
             batType = getBatType(bat);
@@ -363,15 +365,18 @@ function checkTransportId(myBat,myBatType) {
                 maxSize = maxSize*3;
             }
             if (maxSize >= myBatType.size) {
-                tracking = checkTracking(bat);
+                let tracking = checkTracking(bat);
+                let trailerIn = checkTrailer(bat);
                 if (!myBatType.skills.includes('tracked') || !tracking) {
-                    batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
-                    let myBatVolume = myBatWeight;
-                    if (batType.skills.includes('transveh') && myBatType.cat === 'vehicles' && !myBatType.skills.includes('robot') && !myBatType.skills.includes('cyber')) {
-                        myBatVolume = Math.round(myBatVolume/2);
-                    }
-                    if (myBatVolume <= batTransUnitsLeft) {
-                        transId = bat.id;
+                    if (!myBatType.skills.includes('trailer') || !trailerIn) {
+                        batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
+                        let myBatVolume = myBatWeight;
+                        if (batType.skills.includes('transveh') && myBatType.cat === 'vehicles' && !myBatType.skills.includes('robot') && !myBatType.skills.includes('cyber')) {
+                            myBatVolume = Math.round(myBatVolume/2);
+                        }
+                        if (myBatVolume <= batTransUnitsLeft) {
+                            transId = bat.id;
+                        }
                     }
                 }
             }
@@ -395,17 +400,20 @@ function checkEmbarqThis(myBat,transBat) {
         if (tmsOK) {
             // console.log('ok size');
             let tracking = checkTracking(transBat);
+            let trailerIn = checkTrailer(transBat);
             // console.log('tracking='+tracking);
             if (!myBatType.skills.includes('tracked') || !tracking) {
-                // console.log('ok tracking');
-                let transUnitsLeft = calcTransUnitsLeft(transBat,transBatType);
-                // console.log('transUnitsLeft='+transUnitsLeft);
-                if (transBatType.skills.includes('transveh') && myBatType.cat === 'vehicles' && !myBatType.skills.includes('robot') && !myBatType.skills.includes('cyber')) {
-                    myBatWeight = Math.round(myBatWeight/2);
-                }
-                if (myBatWeight <= transUnitsLeft) {
-                    // console.log('ok trans left');
-                    embarqOK = true;
+                if (!myBatType.skills.includes('trailer') || !trailerIn) {
+                    // console.log('ok tracking');
+                    let transUnitsLeft = calcTransUnitsLeft(transBat,transBatType);
+                    // console.log('transUnitsLeft='+transUnitsLeft);
+                    if (transBatType.skills.includes('transveh') && myBatType.cat === 'vehicles' && !myBatType.skills.includes('robot') && !myBatType.skills.includes('cyber')) {
+                        myBatWeight = Math.round(myBatWeight/2);
+                    }
+                    if (myBatWeight <= transUnitsLeft) {
+                        // console.log('ok trans left');
+                        embarqOK = true;
+                    }
                 }
             }
         }
@@ -502,17 +510,40 @@ function checkLanderResSpace(bat) {
 function checkTracking(myBat) {
     let tracking = false;
     let myBatType = getBatType(myBat);
-    if (myBatType.transMaxSize <= 20) {
+    if (myBatType.skills.includes('fly') || myBatType.skills.includes('hover') || myBatType.skills.includes('emoteur')) {
+        if (myBatType.transMaxSize <= 18) {
+            tracking = true;
+        }
+    }
+    if (!tracking) {
+        if (myBatType.transMaxSize <= 18) {
+            bataillons.forEach(function(bat) {
+                if (bat.loc === "trans" && bat.locId == myBat.id) {
+                    batType = getBatType(bat);
+                    if (batType.skills.includes('tracked')) {
+                        tracking = true;
+                    }
+                }
+            });
+        }
+    }
+    return tracking;
+};
+
+function checkTrailer(myBat) {
+    let trailerIn = false;
+    let myBatType = getBatType(myBat);
+    if (!myBatType.skills.includes('transorbital') && myBatType.cat != 'buildings') {
         bataillons.forEach(function(bat) {
             if (bat.loc === "trans" && bat.locId == myBat.id) {
                 batType = getBatType(bat);
-                if (batType.skills.includes('tracked')) {
-                    tracking = true;
+                if (batType.skills.includes('trailer')) {
+                    trailerIn = true;
                 }
             }
         });
     }
-    return tracking;
+    return trailerIn;
 };
 
 function calcRamasseCost(bat,batType,transBatType) {
@@ -707,13 +738,16 @@ function checkHopTransId(myBat,myBatType) {
                                 let distance = calcDistance(myBat.tileId,bat.tileId);
                                 if (distance <= 1) {
                                     let tracking = checkTracking(bat);
+                                    let trailerIn = checkTrailer(bat);
                                     if (!myBatType.skills.includes('tracked') || !tracking) {
-                                        let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
-                                        if (myBatVolume <= batTransUnitsLeft) {
-                                            let thisTrans = getTransScore(bat,batType,myBat,myBatVolume,batTransUnitsLeft,selfMove);
-                                            if (thisTrans > bestTrans) {
-                                                transId = bat.id;
-                                                bestTrans = thisTrans;
+                                        if (!myBatType.skills.includes('trailer') || !trailerIn) {
+                                            let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
+                                            if (myBatVolume <= batTransUnitsLeft) {
+                                                let thisTrans = getTransScore(bat,batType,myBat,myBatVolume,batTransUnitsLeft,selfMove);
+                                                if (thisTrans > bestTrans) {
+                                                    transId = bat.id;
+                                                    bestTrans = thisTrans;
+                                                }
                                             }
                                         }
                                     }
@@ -752,13 +786,16 @@ function checkJumpTransId() {
                                     let distance = calcDistance(selectedBat.tileId,bat.tileId);
                                     if (distance <= 1) {
                                         let tracking = checkTracking(bat);
+                                        let trailerIn = checkTrailer(bat);
                                         if (!selectedBatType.skills.includes('tracked') || !tracking) {
-                                            let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
-                                            if (selectedBatVolume <= batTransUnitsLeft) {
-                                                let thisTrans = getTransScore(bat,batType,selectedBat,selectedBatVolume,batTransUnitsLeft,selfMove);
-                                                if (thisTrans > bestTrans) {
-                                                    transId = bat.id;
-                                                    bestTrans = thisTrans;
+                                            if (!selectedBatType.skills.includes('trailer') || !trailerIn) {
+                                                let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
+                                                if (selectedBatVolume <= batTransUnitsLeft) {
+                                                    let thisTrans = getTransScore(bat,batType,selectedBat,selectedBatVolume,batTransUnitsLeft,selfMove);
+                                                    if (thisTrans > bestTrans) {
+                                                        transId = bat.id;
+                                                        bestTrans = thisTrans;
+                                                    }
                                                 }
                                             }
                                         }

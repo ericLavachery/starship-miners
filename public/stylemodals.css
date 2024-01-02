@@ -17,7 +17,7 @@
 .modal-content {
 	position: relative;
 	background-color: #262c3a;
-	background-image: url(/static/img/modalbg.jpg);
+	background-image: url(/static/img/modalbg-blu.jpg);
 	margin: auto;
 	padding: 0;
 	border: 1px solid #d5cabd;
@@ -53,7 +53,7 @@
 
 .modal-body {
 	padding: 20px 45px 20px 40px;
-	/* background-image: url(/static/img/modalbg.jpg); */
+	/* background-image: url(/static/img/modalbg-blu.jpg); */
 	color: #d5cabd;
 	font-size: 14px;
 	height: 580px;

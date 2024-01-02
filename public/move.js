@@ -946,9 +946,26 @@ function fastEmptyFactor(bat,batType) {
         mcFactor = mcFactor*10/(10+apBonus);
     }
     if (batType.skills.includes('transport')) {
-        let tracking = checkTracking(bat);
-        if (tracking) {
-            mcFactor = mcFactor*1.15;
+        let trailerIn = checkTrailer(bat);
+        if (trailerIn) {
+            let trailFactor = 1.2;
+            if (batType.size >= 28) {
+                trailFactor = 1.07;
+            } else {
+                trailFactor = 1.2-((batType.size-12)/120);
+            }
+            if (batType.skills.includes('weak')) {
+                trailFactor = trailFactor+0.1;
+            }
+            if (batType.skills.includes('fweight')) {
+                trailFactor = trailFactor+0.1;
+            }
+            mcFactor = mcFactor*trailFactor;
+        } else {
+            let tracking = checkTracking(bat);
+            if (tracking) {
+                mcFactor = mcFactor*1.25;
+            }
         }
     }
     // console.log('*** fastEmptyFactor : '+mcFactor);

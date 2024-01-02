@@ -2538,7 +2538,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fouille","fortif","maycamo","datt","strong","defense","barda","herorange"],
+        "skills":["a_heavy","fouille","fortif","maycamo","datt","strong","defense","barda","herorange","herowc","autohero"],
         "mediCost":9,
         "fuzz":2,
         "deathFx":"195954__minian89__death-blood-splatter"
@@ -3463,7 +3463,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","camo","ranger","chasse","affut","swim","fastguet","guerrilla","datt","embuscade","selfbadmedic","baddef","heroap","heroescape","autohero"],
+        "skills":["a_light","fouille","fortif","camo","ranger","chasse","affut","swim","fastguet","guerrilla","datt","embuscade","selfbadmedic","baddef","heroap","heroescape"],
         "mediCost":9,
         "fuzz":0,
         "deathFx":"219149__musability__female-wilhelm-scream-audacity"
@@ -5926,7 +5926,7 @@
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","ranger","ravitaillement","badmecano","robot","fret","dumper","aifouille","solotrans","w2mecano","lbot"],
+        "skills":["a_rob","ranger","ravitaillement","badmecano","robot","fret","dumper","aifouille","autotrans","w2mecano","lbot"],
         "maxSkill":19,
         "mecanoCost":14,
         "transRes":640,

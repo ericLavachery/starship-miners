@@ -1701,7 +1701,7 @@
         "crew":0,
         "hp":15,
         "armor":4,
-        "size":9,
+        "size":4,
         "volume":0,
         "stealth":0,
         "speed":-5,
@@ -1716,7 +1716,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["b_light","fret","nodeathcount","okdel","oninfra","tracked","trailer","solotrans"],
-        "transRes":350,
+        "transRes":300,
         "fuzz":0,
         "deathFx":"S_Explosion02"
     },
@@ -1746,7 +1746,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["b_none","fret","nodeathcount","resiststorm","okdel","noblub","notarget","clicput","nostation","oninfra","neverlist"],
-        "transRes":500,
+        "transRes":750,
         "fuzz":-2,
         "deathFx":"S_Explosion02"
     },

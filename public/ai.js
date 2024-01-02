@@ -588,6 +588,9 @@ function targetLogic(bat,iter) {
             }
         }
     }
+    if (batType.skills.includes('trailer')) {
+        tFuzz = -95;
+    }
     if (tFuzz < -95) {
         tFuzz = -95;
     }
@@ -1044,6 +1047,9 @@ function checkGoodMoves() {
                         repeled = true;
                     }
                 }
+                if (bat.type === 'Remorques') {
+                    repeled = true;
+                }
                 if (!repeled) {
                     batType = getBatType(bat);
                     let bldLike = isBldLike(bat,batType);
@@ -1097,6 +1103,9 @@ function checkGoodMoves() {
                     if (rand.rand(1,100) <= repelChance) {
                         repeled = true;
                     }
+                }
+                if (bat.type === 'Remorques') {
+                    repeled = true;
                 }
                 if (!repeled) {
                     batType = getBatType(bat);
