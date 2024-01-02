@@ -1403,7 +1403,7 @@ function missionRes() {
     let allUnitsList = unitTypes.slice();
     let sortedUnitsList = _.sortBy(_.sortBy(_.sortBy(allUnitsList,'name'),'cat'),'kind');
     sortedUnitsList.forEach(function(unit) {
-        if (unit.moveCost === 99 && unit.kind != 'zero-vaisseaux' && unit.kind != 'zero-vm' && unit.name != 'Coffres' && !unit.skills.includes('prefab')) {
+        if (unit.moveCost === 99 && unit.kind != 'zero-vaisseaux' && unit.kind != 'zero-vm' && unit.name != 'Coffres' && unit.name != 'Remorques' && !unit.skills.includes('prefab')) {
             prodOK = true;
             if (unit.levels[playerInfos.gang] > playerInfos.gLevel) {
                 prodOK = false;

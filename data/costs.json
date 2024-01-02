@@ -1714,6 +1714,8 @@
         "levels":{"rednecks":9,"blades":8,"bulbos":10,"drogmulojs":9,"tiradores":10,"detruas":10,"brasier":10},
         "bldReq":["Armurerie","Atelier"],
         "compReq":{"trans":2},
+        "compPass":["detruas"],
+        "compHardReq":{"trans":1},
         "costs":{"Fer":60,"Scrap":120,"Carbone":90,"Bois":60,"Silicium":60,"Wingium":60,"Aluminium":60,"Moteurs":60,"Tungstène":15,"Cuivre":15,"Batteries":30,"Compo2":120,"Hélium":75,"Chlore":75,"Huile":10},
         "deploy":{"Fuel":60},
         "fabTime":55,
@@ -2135,7 +2137,7 @@
     {
         "id":165,
         "name":"Shuttle",
-        "levels":{"rednecks":8,"blades":8,"bulbos":8,"drogmulojs":8,"tiradores":8,"detruas":8,"brasier":8},
+        "levels":{"rednecks":7,"blades":7,"bulbos":7,"drogmulojs":7,"tiradores":7,"detruas":7,"brasier":7},
         "bldReq":["Soute"],
         "bldUp":["Dropship"],
         "bldCost":"Lander",
@@ -2147,7 +2149,7 @@
     {
         "id":103,
         "name":"Dropship",
-        "levels":{"rednecks":11,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":11,"brasier":11},
+        "levels":{"rednecks":10,"blades":10,"bulbos":10,"drogmulojs":10,"tiradores":10,"detruas":10,"brasier":10},
         "bldReq":["Soute","Chaîne de montage"],
         "bldUp":["Minotaur"],
         "bldCost":"Shuttle",
@@ -2159,7 +2161,7 @@
     {
         "id":105,
         "name":"Minotaur",
-        "levels":{"rednecks":14,"blades":14,"bulbos":14,"drogmulojs":14,"tiradores":14,"detruas":14,"brasier":14},
+        "levels":{"rednecks":13,"blades":13,"bulbos":13,"drogmulojs":13,"tiradores":13,"detruas":13,"brasier":13},
         "bldReq":["Soute","Usine"],
         "bldUp":["Hercules","Crusader"],
         "bldCost":"Dropship",
@@ -2770,7 +2772,7 @@
         "bldCost":"Arsenal",
         "upkeep":{"Energie":24,"Fer":2.4,"Soufre":4.8,"Plomb":4.8,"Carbone":0.3,"Hydrogène":0.6,"Azote":0.6,"Oxygène":0.3},
         "prod":{"Munitions":4,"Explosifs":1.5,"Scrap":8},
-        "costs":{"Compo1":390,"Compo2":360,"Compo3":360,"Eau":540,"Energie":1200,"Hydrocarbure":600,"Fuel":1000,"Huile":500,"Scrap":1500,"Titane":1500,"Tungstène":3000,"Fer":3000,"Potassium":2000,"Platine":300,"Plutonium":500,"Hydrogène":1500,"Azote":1500,"Egidium":100,"Wingium":200,"Electros":400,"Batteries":300},
+        "costs":{"Compo1":390,"Compo2":360,"Compo3":360,"Eau":540,"Energie":1200,"Hydrocarbure":600,"Fuel":1000,"Huile":500,"Scrap":1500,"Titane":1500,"Tungstène":3000,"Fer":3000,"Potassium":2000,"Platine":300,"Plutonium":500,"Hydrogène":1500,"Azote":1500,"Egidium":75,"Wingium":200,"Electros":400,"Batteries":300},
         "fabTime":500,
         "slots":6,
         "info":"Augmente les réserves de munitions de tous vos bataillons de 50%."
