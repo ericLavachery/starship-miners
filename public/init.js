@@ -44,11 +44,14 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.resBar === undefined) {
         playerInfos.resBar = true;
     }
-    if (playerInfos.showWeaps === undefined) {
-        playerInfos.showWeaps = false;
-    }
     if (playerInfos.resBarOut === undefined) {
         playerInfos.resBarOut = [];
+    }
+    if (playerInfos.barState === undefined) {
+        playerInfos.barState = {};
+    }
+    if (playerInfos.showWeaps === undefined) {
+        playerInfos.showWeaps = false;
     }
     if (playerInfos.comp === undefined) {
         playerInfos.comp = resetComp();

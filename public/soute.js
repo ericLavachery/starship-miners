@@ -95,6 +95,9 @@ function resBarToggle() {
 }
 
 function showResBar() {
+    console.log('BAR STATE ====================================================================================');
+    let barChange = false;
+    let barState = {};
     if (playerInfos.onShip && playerInfos.resBar && !playerInfos.onStart) {
         $('#restop').css('display','table-row');
         $('#resbar').empty();
@@ -108,8 +111,23 @@ function showResBar() {
                 }
                 let maxRes = getDefResMax(res);
                 let gauge = getResGauge(res,dispoRes);
-                if (gauge.num < 20 || playerInfos.resFlags.includes(res.name)) {
-                    if (!playerInfos.resBarOut.includes(res.name)) {
+                if (gauge.level <= 2 || playerInfos.resFlags.includes(res.name)) {
+                    barState[res.name] = gauge.level;
+                    let rsChange = false;
+                    if (playerInfos.barState[res.name] === undefined) {
+                        rsChange = true;
+                    } else {
+                        if (barState[res.name] <= 2) {
+                            if (barState[res.name] < playerInfos.barState[res.name]) {
+                                rsChange = true;
+                            }
+                        }
+                    }
+                    if (rsChange) {
+                        $('#resbar').append('<span class="klik" onclick="barResOut(`'+res.name+'`)" title="Cacher '+res.name+'">&#10060;</span><span class="barBlynk">'+res.name+'</span><span class="paramResGauge" style="background: linear-gradient(to right, '+gauge.col+' 0%, '+gauge.col+' '+gauge.num+'%, black '+gauge.num+'%, black 100%)">'+dispoRes+'</span>');
+                        barResIn(res.name);
+                        barChange = true;
+                    } else if (!playerInfos.resBarOut.includes(res.name)) {
                         $('#resbar').append('<span class="klik" onclick="barResOut(`'+res.name+'`)" title="Cacher '+res.name+'">&#10060;</span><span class="barText">'+res.name+'</span><span class="paramResGauge" style="background: linear-gradient(to right, '+gauge.col+' 0%, '+gauge.col+' '+gauge.num+'%, black '+gauge.num+'%, black 100%)">'+dispoRes+'</span>');
                     }
                 }
@@ -120,6 +138,11 @@ function showResBar() {
         $('#restop').css('display','none');
         $('#resbar').empty();
     }
+    if (barChange && !justReloaded) {
+        clicSound(16);
+    }
+    playerInfos.barState = barState;
+    console.log(barState);
 };
 
 function barResOut(resName) {
@@ -127,6 +150,13 @@ function barResOut(resName) {
         playerInfos.resBarOut.push(resName);
     }
     showResBar();
+};
+
+function barResIn(resName) {
+    if (playerInfos.resBarOut.includes(resName)) {
+        let index = playerInfos.resBarOut.indexOf(resName);
+        playerInfos.resBarOut.splice(index,1);
+    }
 };
 
 function barResAllIn() {

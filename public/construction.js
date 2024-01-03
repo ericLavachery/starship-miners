@@ -9,6 +9,7 @@ function prodFromSoute() {
 }
 
 function bfconst(cat,triche,upgrade,retour) {
+    justReloaded = false;
     conselCat = cat;
     conselTriche = triche;
     conselUpgrade = upgrade;

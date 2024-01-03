@@ -113,12 +113,16 @@ function getResGauge(res,dispoRes) {
     let gauge100 = Math.ceil(100*dispoRes/res.gauge);
     if (gauge100 < 5) {
         gauge.col = '#cd0000';
+        gauge.level = 1;
     } else if (gauge100 < 20) {
         gauge.col = '#c47000';
+        gauge.level = 2;
     } else if (gauge100 < 50) {
         gauge.col = '#7b8600';
+        gauge.level = 3;
     } else {
         gauge.col = '#097100';
+        gauge.level = 4;
     }
     return gauge;
 };
@@ -253,10 +257,7 @@ function tagRes(resId) {
         playerInfos.resFlags.splice(tagIndex,1);
     } else {
         playerInfos.resFlags.push(res.name);
-        if (playerInfos.resBarOut.includes(res.name)) {
-            let tagIndex = playerInfos.resBarOut.indexOf(res.name);
-            playerInfos.resBarOut.splice(tagIndex,1);
-        }
+        barResIn(res.name);
     }
     voirReserve();
     showResBar();

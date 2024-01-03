@@ -9,6 +9,7 @@ function craftFromSoute() {
 }
 
 function craftWindow(retour) {
+    justReloaded = false;
     selectMode();
     batUnselect();
     updateBldList();
