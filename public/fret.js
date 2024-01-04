@@ -6,7 +6,10 @@ function loadRes(retour) {
     if (selectedBatType.crew === 0 && !selectedBatType.skills.includes('autotrans') && !selectedBatType.skills.includes('solotrans')) {
         myConvey = false;
     } else if (selectedBat.tags.includes('nopilots')) {
-        myConvey = false;
+        let selfMove = checkSelfMove(selectedBat,selectedBatType);
+        if (!selfMove) {
+            myConvey = false;
+        }
     }
     if (restSpace < 0) {restSpace = 0;}
     $("#conUnitList").css("display","block");
@@ -83,7 +86,10 @@ function loadRes(retour) {
                         if (batType.crew === 0 && !batType.skills.includes('autotrans') && !batType.skills.includes('solotrans')) {
                             targetConvey = false;
                         } else if (bat.tags.includes('nopilots')) {
-                            targetConvey = false;
+                            let selfMove = checkSelfMove(bat,batType);
+                            if (!selfMove) {
+                                targetConvey = false;
+                            }
                         } else if (batType.skills.includes('solotrans') && selectedBatType.skills.includes('solotrans')) {
                             targetConvey = false;
                             soloLine = true;

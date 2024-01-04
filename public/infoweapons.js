@@ -147,6 +147,11 @@ function weaponsInfos(bat,batType,tile,pop) {
                         }
                     }
                 }
+                if (playerInfos.showWeaps) {
+                    w1message = w1message+' / Cliquer pour cacher le détail';
+                } else {
+                    w1message = w1message+' / Cliquer pour voir le détail';
+                }
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
                 if (pop) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
@@ -436,6 +441,11 @@ function weaponsInfos(bat,batType,tile,pop) {
                             w2message = 'PA épuisés';
                         }
                     }
+                }
+                if (playerInfos.showWeaps) {
+                    w2message = w2message+' / Cliquer pour cacher le détail';
+                } else {
+                    w2message = w2message+' / Cliquer pour voir le détail';
                 }
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
                 if (pop) {
