@@ -918,7 +918,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{
-            "name":"Obusier",
+            "name":"Mortier",
             "cost":6,
             "range":4,
             "noise":4,
@@ -2204,7 +2204,7 @@
         "weapon2":{
             "name":"Obusier",
             "cost":5,
-            "range":4,
+            "range":6,
             "noise":4,
             "noFly":true,
             "noMelee":true,
@@ -2266,7 +2266,7 @@
         "weapon2":{
             "name":"Mortier",
             "cost":3,
-            "range":3,
+            "range":4,
             "noise":4,
             "noFly":true,
             "noBis":true,
@@ -2441,7 +2441,7 @@
         "weapon":{
             "name":"Mortier",
             "cost":3,
-            "range":3,
+            "range":4,
             "elevation":1,
             "noise":4,
             "noMelee":true,

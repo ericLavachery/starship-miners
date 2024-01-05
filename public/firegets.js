@@ -1796,7 +1796,15 @@ function isInRange(myBat,thatTileId,myWeapon,alien) {
     let rangeBonus = 0;
     if (alien.tags.includes('fluo')) {
         if (myWeapon.range >= 1 && !myWeapon.isMelee) {
-            rangeBonus = rangeBonus+1;
+            if (myWeapon.ammo.includes('missile')) {
+                rangeBonus = rangeBonus+3;
+            } else if (myWeapon.ammo.includes('obus') && !myWeapon.name.includes('ombes')) {
+                rangeBonus = rangeBonus+2;
+            } else if (myWeapon.ammo.includes('gaz') && myWeapon.range >= 3 && myWeapon.aoe === 'bat') {
+                rangeBonus = rangeBonus+2;
+            } else {
+                rangeBonus = rangeBonus+1;
+            }
         }
         if (myWeapon.flurange != undefined) {
             range = myWeapon.flurange;
@@ -1823,7 +1831,7 @@ function isInRange(myBat,thatTileId,myWeapon,alien) {
             }
         }
     }
-    if (myBat.type === 'Mines wipeout' || myWeapon.ammo.includes('lt-')) {
+    if (myWeapon.ammo.includes('lt-') || myWeapon.ammo.includes('suicide') || myWeapon.ammo.includes('autodes') || myWeapon.ammo.includes('trap') || myWeapon.ammo.includes('mine')) {
         rangeBonus = 0;
     }
     let halfRange = Math.floor(range/2);

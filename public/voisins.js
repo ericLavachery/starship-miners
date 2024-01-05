@@ -102,7 +102,7 @@ function checkNeiTurn() {
 function neighbours() {
     if (playerInfos.mapTurn === 30 && playerInfos.vz > 43) {
         let numEvents = getNumEvents();
-        numEvents = Math.floor(numEvents*numEvents/2/playerInfos.cNeed);
+        numEvents = Math.floor((numEvents+2)*(numEvents+2)/playerInfos.cNeed);
         numEvents = entre(numEvents,1,100);
         if (rand.rand(1,numEvents) === 1) {
             let turnz = rand.rand(1,12);
