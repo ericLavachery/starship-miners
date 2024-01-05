@@ -161,11 +161,11 @@ function showTileInfos(tileId) {
                 // console.log(key,value);
             });
         }
-        console.log(terrain);
-        console.log(tile);
+        // console.log(terrain);
+        // console.log(tile);
         let srs = getTerrainRes(terrain,tile);
-        console.log('terrain res');
-        console.log(srs);
+        // console.log('terrain res');
+        // console.log(srs);
         if (Object.keys(srs).length >= 1) {
             let tileIndex;
             let res;

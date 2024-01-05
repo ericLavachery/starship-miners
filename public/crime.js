@@ -1,8 +1,8 @@
 function checkCrimes(crimeRate,time,afterMission) {
     // % en fonction de time!!!!!
     // severity 1-10 (max 10)
-    console.log('KRYMEZ --------------------------------------------------------------------------------------------------------------');
-    console.log('playerInfos.crime='+playerInfos.crime);
+    // console.log('KRYMEZ --------------------------------------------------------------------------------------------------------------');
+    // console.log('playerInfos.crime='+playerInfos.crime);
     if (playerInfos.pseudo === 'Xxxxxx') {
         // let testSev = 1;
         // crimeVol(testSev,afterMission); // 6
@@ -18,7 +18,7 @@ function checkCrimes(crimeRate,time,afterMission) {
             adjTime = Math.ceil(adjTime/2);
         }
         let crimeChance = Math.ceil((playerInfos.crime-5)*adjTime/7);
-        console.log('crimeChance='+crimeChance);
+        // console.log('crimeChance='+crimeChance);
         if (rand.rand(1,100) <= crimeChance) {
             whichCrime(crimeRate,afterMission);
         }
@@ -49,13 +49,13 @@ function whichCrime(crimeRate,afterMission) {
     slot.riot = -6+myCrime;
     slot.riot = entre(slot.riot,0,99);
     let crimeDiceMax = slot.vol+slot.hup+slot.vand+slot.bag+slot.fire+slot.kill+slot.riot;
-    console.log('vol='+slot.vol+'/'+crimeDiceMax);
-    console.log('hup='+slot.hup+'/'+crimeDiceMax);
-    console.log('vand='+slot.vand+'/'+crimeDiceMax);
-    console.log('bag='+slot.bag+'/'+crimeDiceMax);
-    console.log('fire='+slot.fire+'/'+crimeDiceMax);
-    console.log('kill='+slot.kill+'/'+crimeDiceMax);
-    console.log('riot='+slot.riot+'/'+crimeDiceMax);
+    // console.log('vol='+slot.vol+'/'+crimeDiceMax);
+    // console.log('hup='+slot.hup+'/'+crimeDiceMax);
+    // console.log('vand='+slot.vand+'/'+crimeDiceMax);
+    // console.log('bag='+slot.bag+'/'+crimeDiceMax);
+    // console.log('fire='+slot.fire+'/'+crimeDiceMax);
+    // console.log('kill='+slot.kill+'/'+crimeDiceMax);
+    // console.log('riot='+slot.riot+'/'+crimeDiceMax);
     let crimeDice = rand.rand(1,crimeDiceMax);
     if (crimeDice <= slot.vol) {
         severity = rand.rand(1,3)+Math.floor((playerInfos.vitals+playerInfos.penit-5+playerInfos.crime-5)/1.35)-2;
@@ -717,8 +717,8 @@ function calcCrimeRate(mesCitoyens) {
                 } else if (batType.skills.includes('poprel')) {
                     if (commodList[batType.name] < commodNeed) {
                         countMe = true;
-                        console.log('COUNT: '+batType.name);
-                        console.log(commodList);
+                        // console.log('COUNT: '+batType.name);
+                        // console.log(commodList);
                     }
                     commodList[batType.name] = commodList[batType.name]+1;
                 } else {
@@ -766,8 +766,8 @@ function calcCrimeRate(mesCitoyens) {
         crimeRate.penib = crimeRate.penib+((population-crimeRate.lits)/100);
     }
     crimeRate.penib = Math.round(crimeRate.penib);
-    console.log('PENIBBBBBBBBBBBBBBBBBBBBBBBBB');
-    console.log(crimeRate.penib);
+    // console.log('PENIBBBBBBBBBBBBBBBBBBBBBBBBB');
+    // console.log(crimeRate.penib);
     if (crimeRate.penib < 0) {
         crimeRate.penib = 0;
     }
@@ -775,9 +775,9 @@ function calcCrimeRate(mesCitoyens) {
     let bigAdj = bigCrims*2/(playerInfos.comp.ordre+4);
     let adjCrims = crimeRate.crim;
     adjCrims = Math.ceil((mesCitoyens.crim+bigAdj)*100/population);
-    console.log('crimeRate.crim='+crimeRate.crim);
-    console.log('bigAdj='+bigAdj);
-    console.log('adjCrims='+adjCrims);
+    // console.log('crimeRate.crim='+crimeRate.crim);
+    // console.log('bigAdj='+bigAdj);
+    // console.log('adjCrims='+adjCrims);
     // Treshold
     let horror = crimeRate.penib;
     if (horror > 15) {
@@ -805,9 +805,9 @@ function calcCrimeRate(mesCitoyens) {
     if (crimeRate.total < 0) {
         crimeRate.total = 0;
     }
-    console.log('crimeRate.fo='+crimeRate.fo);
+    // console.log('crimeRate.fo='+crimeRate.fo);
     crimeRate.fo = Math.round(crimeRate.fo);
-    console.log('crimeRate.total='+crimeRate.total);
+    // console.log('crimeRate.total='+crimeRate.total);
     return crimeRate;
 };
 
@@ -893,8 +893,8 @@ function setPenitLevel() {
         }
     });
     playerInfos.penit = Math.ceil((playerInfos.crime+4)*penitNum/4);
-    console.log('TOMBE DU CAMION');
-    console.log(playerInfos.penit);
+    // console.log('TOMBE DU CAMION');
+    // console.log(playerInfos.penit);
     bataillons.forEach(function(bat) {
         let batType = getBatType(bat);
         if (batType.skills.includes('penitbat')) {
@@ -1063,6 +1063,6 @@ function getCamionEquips(bat,batType) {
             camion.push('repel');
         }
     }
-    console.log(camion);
+    // console.log(camion);
     return camion;
 };

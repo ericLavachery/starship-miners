@@ -126,7 +126,7 @@ let playerOccupiedTiles = [];
 let visibleAliens = [];
 let visibleHunts = [];
 let visibleEggs = [];
-let prepaBld = {};
+// let prepaBld = {}; dans playerInfos.prepaLand
 let vetBonus = {
     rof: 6,
     initiative: 10,

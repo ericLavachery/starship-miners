@@ -30,7 +30,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     if (selfMove || playerInfos.pseudo === 'Mapedit') {
         zeroCrew = false;
     }
-    console.log('inMelee='+inMelee);
+    // console.log('inMelee='+inMelee);
     // SOUTE
     if (batType.skills.includes('soute') && playerInfos.onShip) {
         if (!inSoute) {
@@ -1044,7 +1044,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         // console.log('commandOK: '+commandOK);
         if (commandOK && !bat.tags.includes('gogogo')) {
             let leSousChef = checkCommand(bat);
-            console.log(leSousChef);
+            // console.log(leSousChef);
             if (leSousChef.ok) {
                 $('#unitInfos').append('<button type="button" title="Commande: +'+leSousChef.pa+' PA (-1 PA pour le bataillon de '+leSousChef.bat.type+')" class="boutonVert iconButtons" onclick="goCommand('+leSousChef.bat.id+','+leSousChef.pa+')"><i class="far fa-hand-point-right"></i> <span class="small">0</span></button>');
                 lineBreak = true;
@@ -2654,7 +2654,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     }
     // RAVITAILLEMENT
     anyRavit = checkRavit(bat);
-    console.log('RAVIT: '+anyRavit);
+    // console.log('RAVIT: '+anyRavit);
     if (anyRavit && bat.tags.includes('aU') && !playerInfos.onShip && !zeroCrew) {
         let ravitVolume = calcRavitVolume(bat);
         let ravitFactor = 3;

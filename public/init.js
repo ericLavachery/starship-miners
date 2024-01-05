@@ -268,6 +268,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.sqList === undefined) {
         playerInfos.sqList = [];
     }
+    if (playerInfos.prepaLand === undefined) {
+        playerInfos.prepaLand = {};
+    }
     if (playerInfos.resFlags === undefined) {
         playerInfos.resFlags = [];
     }

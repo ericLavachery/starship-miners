@@ -625,9 +625,9 @@ function playRoom(piste,interrupt,onloop) {
             loop: onloop
         });
         theRoom.play();
-        console.log('ROOM: '+track);
+        // console.log('ROOM: '+track);
     } else {
-        console.log('ALREADY A ROOM');
+        // console.log('ALREADY A ROOM');
     }
 };
 
@@ -696,9 +696,9 @@ function playFx(piste,stop) {
                 loop: true
             });
             theWork.play();
-            console.log('ROOM: '+track);
+            // console.log('ROOM: '+track);
         } else {
-            console.log('ALREADY A ROOM');
+            // console.log('ALREADY A ROOM');
         }
     }
 };

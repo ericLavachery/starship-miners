@@ -6,9 +6,11 @@ function startMission(isTest) {
     if (playerInfos.okFill) {
         saveGame();
         events(false,65,true,true);
-        // noter les ressources de la station
         if (!isTest) {
+            // noter les ressources de la station
             updateVMRes();
+            // effacer la prépa de ressources pour la mission
+            playerInfos.prepaLand = {};
         }
         playerInfos.undarkOnce = [];
         batUnselect();

@@ -896,7 +896,7 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<hr>');
         let demText = '';
         let fleeText = '';
-        console.log(nearby);
+        // console.log(nearby);
         let okDis = checkDismantle(bat,batType);
         if (okDis && !decButHere) {
             let okKill = checkOkKill(batType);
