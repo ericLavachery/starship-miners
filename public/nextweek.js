@@ -161,7 +161,7 @@ function calcXPFactor() {
     // console.log('DOOM ==================== '+doomClock);
     let normClock = (playerInfos.gLevel-2)/2;
     // console.log('NORM ==================== '+normClock);
-    let xpf = Math.round(gangXPFactor*(doomClock+5)/(normClock+5));
+    let xpf = Math.round(gangXPFactor*(doomClock+3)/(normClock+3));
     // console.log('XPF ==================== '+xpf);
     playerInfos.doom = doomClock;
     playerInfos.xpf = xpf;
