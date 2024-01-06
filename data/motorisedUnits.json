@@ -2271,6 +2271,7 @@
             "noFly":true,
             "noBis":true,
             "isArt":true,
+            "noDef":true,
             "rof":6,
             "accuracy":9,
             "power":23,

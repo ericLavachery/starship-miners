@@ -39,6 +39,7 @@ function weaponsInfos(bat,batType,tile,pop) {
     let apOK = false;
     let terrain = getTerrain(bat);
     let hasW1 = checkHasWeapon(1,batType,bat.eq);
+    let wKOmessage = 'Salves épuisées';
     if (batType.weapon.rof >= 1) {
         if (batType.weapon.name.includes('Bélier') || batType.weapon.name.includes('Boutoir') || batType.weapon.name.includes('Moissonneuse')) {
             if (!batType.skills.includes('fly') && terrain.name === 'M') {
@@ -98,7 +99,7 @@ function weaponsInfos(bat,batType,tile,pop) {
             if (thisWeapon.noBis && bat.tags.includes('noBis1')) {
                 noBisOK = false;
             }
-            let w1message = 'Salves épuisées';
+            wKOmessage = 'Salves épuisées';
             if (bat.apLeft >= thisWeapon.cost) {
                 apOK = true;
             } else {
@@ -133,34 +134,35 @@ function weaponsInfos(bat,batType,tile,pop) {
                 // tir impossible
                 tirOK = false;
                 if (!hasControl) {
-                    w1message = 'Pas de tir si vous ne contrôlez pas le bataillon';
+                    wKOmessage = 'Bataillon non contrôlé';
                 } else if (noFireMelee) {
-                    w1message = 'Tir impossible en mêlée';
+                    wKOmessage = 'Tir impossible en mêlée';
                 } else {
                     if (ammoLeft < 1) {
-                        w1message = 'Munitions épuisées';
+                        wKOmessage = 'Munitions épuisées';
                     } else {
                         if (!anyTarget) {
-                            w1message = 'Pas de cible';
+                            wKOmessage = 'Pas de cible';
                         } else if (!apOK) {
-                            w1message = 'PA épuisés';
+                            wKOmessage = 'PA épuisés';
                         }
                     }
                 }
                 if (playerInfos.showWeaps) {
-                    w1message = w1message+' / Cliquer pour cacher le détail';
+                    wKOmessage = wKOmessage+' / Cliquer pour cacher le détail';
                 } else {
-                    w1message = w1message+' / Cliquer pour voir le détail';
+                    wKOmessage = wKOmessage+' / Cliquer pour voir le détail';
                 }
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
                 if (pop) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
                 } else {
-                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w1message+'" class="boutonGrey iconButtons gf" onclick="showWeapsToggle()"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+wKOmessage+'" class="boutonGrey iconButtons gf" onclick="showWeapsToggle()"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
                 }
                 $('#'+bodyPlace).append('<div id="w1div"></div>');
                 if (!pop && !playerInfos.showWeaps) {
                     $("#w1div").css("display","none");
+                    $('#'+bodyPlace).append('<span class="report gf klik" onclick="showWeapsToggle()">&nbsp;&nbsp;'+wKOmessage+'</span><br>');
                 } else {
                     $("#w1div").css("display","block");
                 }
@@ -387,7 +389,7 @@ function weaponsInfos(bat,batType,tile,pop) {
             if (thisWeapon.noBis && bat.tags.includes('noBis2')) {
                 noBisOK = false;
             }
-            let w2message = 'Salves épuisées';
+            wKOmessage = 'Salves épuisées';
             if (bat.apLeft >= thisWeapon.cost) {
                 apOK = true;
             } else {
@@ -428,34 +430,35 @@ function weaponsInfos(bat,batType,tile,pop) {
                 // tir impossible
                 tirOK = false;
                 if (!hasControl) {
-                    w1message = 'Pas de tir si vous ne contrôlez pas le bataillon';
+                    wKOmessage = 'Bataillon non contrôlé';
                 } else if (noFireMelee) {
-                    w2message = 'Tir impossible en mêlée';
+                    wKOmessage = 'Tir impossible en mêlée';
                 } else {
                     if (ammoLeft < 1) {
-                        w2message = 'Munitions épuisées';
+                        wKOmessage = 'Munitions épuisées';
                     } else {
                         if (!anyTarget) {
-                            w2message = 'Pas de cible';
+                            wKOmessage = 'Pas de cible';
                         } else if (!apOK) {
-                            w2message = 'PA épuisés';
+                            wKOmessage = 'PA épuisés';
                         }
                     }
                 }
                 if (playerInfos.showWeaps) {
-                    w2message = w2message+' / Cliquer pour cacher le détail';
+                    wKOmessage = wKOmessage+' / Cliquer pour cacher le détail';
                 } else {
-                    w2message = w2message+' / Cliquer pour voir le détail';
+                    wKOmessage = wKOmessage+' / Cliquer pour voir le détail';
                 }
                 $('#'+bodyPlace).append('<div class="shSpace"></div>');
                 if (pop) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
                 } else {
-                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+w2message+'" class="boutonGrey iconButtons gf" onclick="showWeapsToggle()"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+hasLG+'</'+balise+'></span><br>');
+                    $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+wKOmessage+'" class="boutonGrey iconButtons gf" onclick="showWeapsToggle()"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+hasLG+'</'+balise+'></span><br>');
                 }
                 $('#'+bodyPlace).append('<div id="w2div"></div>');
                 if (!pop && !playerInfos.showWeaps) {
                     $("#w2div").css("display","none");
+                    $('#'+bodyPlace).append('<span class="report gf klik" onclick="showWeapsToggle()">&nbsp;&nbsp;'+wKOmessage+'</span><br>');
                 } else {
                     $("#w2div").css("display","block");
                 }

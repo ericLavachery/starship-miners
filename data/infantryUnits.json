@@ -6001,7 +6001,7 @@
         "name":"Rabbitz",
         "pic":"rabbitz",
         "cat":"vehicles",
-        "kind":"detruas",
+        "kind":"zero-robotique",
         "squads":6,
         "squadSize":8,
         "crew":0,
