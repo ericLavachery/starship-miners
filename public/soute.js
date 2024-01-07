@@ -125,7 +125,9 @@ function showResBar() {
                     }
                     if (rsChange) {
                         $('#resbar').append('<span class="klik" onclick="barResOut(`'+res.name+'`)" title="Cacher '+res.name+'">&#10060;</span><span class="barBlynk">'+res.name+'</span><span class="paramResGauge" style="background: linear-gradient(to right, '+gauge.col+' 0%, '+gauge.col+' '+gauge.num+'%, black '+gauge.num+'%, black 100%)">'+dispoRes+'</span>');
-                        barResIn(res.name);
+                        if (!justReloaded) {
+                            barResIn(res.name);
+                        }
                         barChange = true;
                     } else if (!playerInfos.resBarOut.includes(res.name)) {
                         $('#resbar').append('<span class="klik" onclick="barResOut(`'+res.name+'`)" title="Cacher '+res.name+'">&#10060;</span><span class="barText">'+res.name+'</span><span class="paramResGauge" style="background: linear-gradient(to right, '+gauge.col+' 0%, '+gauge.col+' '+gauge.num+'%, black '+gauge.num+'%, black 100%)">'+dispoRes+'</span>');

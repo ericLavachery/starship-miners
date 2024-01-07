@@ -5716,7 +5716,7 @@
         "armor":6,
         "size":3,
         "volume":1,
-        "stealth":7,
+        "stealth":5,
         "ap":13,
         "maxSalvo":1,
         "weapon":{
@@ -5760,7 +5760,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_rob","fortif","datt","sentinelle","robot","badmecano","barda","crange","decay","light","aifouille","camo","lbot"],
+        "skills":["a_rob","fortif","datt","sentinelle","robot","badmecano","barda","crange","decay","light","aifouille","lbot"],
         "mecanoCost":8,
         "fuzz":1,
         "deathFx":"robodeath"

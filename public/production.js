@@ -539,6 +539,7 @@ function triProd(bat,batType,time,sim,quiet) {
                     resFactor = resFactor*(playerInfos.comp.pyro+3)/3;
                 }
             }
+            let luckyRes = false;
             if (resFactor >= 1) {
                 if (res.rlab < 1) {
                     resFactor = resFactor*res.rlab;
@@ -553,6 +554,10 @@ function triProd(bat,batType,time,sim,quiet) {
                 } else {
                     let resChance = Math.round(100*resFactor/30*time/3);
                     console.log('resChance: '+resChance+'%');
+                    if (resChance <= 20) {
+                        luckyRes = true;
+                        console.log('luckyRes --------------- ');
+                    }
                     if (rand.rand(1,100) <= resChance) {
                         resProd = 3;
                     }
@@ -569,7 +574,15 @@ function triProd(bat,batType,time,sim,quiet) {
                 }
                 // resAdd(res.name,resProd);
                 if (playerInfos.onShip) {
-                    modWeekRes(res.name,resProd);
+                    if (sim) {
+                        if (!luckyRes) {
+                            modWeekRes(res.name,resProd);
+                        } else {
+                            console.log('luckyRes OK!');
+                        }
+                    } else {
+                        modWeekRes(res.name,resProd);
+                    }
                 }
                 if (!sim) {
                     if (playerInfos.onShip) {
@@ -736,8 +749,15 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                             fullProd = fullProd/5;
                         }
                     }
+                    let luckyRes = false;
+                    console.log(key);
                     if (fullProd < 1) {
                         let prodChance = Math.floor(100*fullProd);
+                        console.log('prodChance: '+prodChance+'%');
+                        if (prodChance <= 20) {
+                            luckyRes = true;
+                            console.log('luckyRes --------------- ');
+                        }
                         if (rand.rand(1,100) <= prodChance) {
                             fullProd = 1;
                         } else {
@@ -749,7 +769,15 @@ function upkeepAndProd(bat,batType,time,sim,quiet) {
                     if (fullProd >= 1) {
                         // resAdd(key,fullProd);
                         if (playerInfos.onShip) {
-                            modWeekRes(key,fullProd);
+                            if (sim) {
+                                if (!luckyRes) {
+                                    modWeekRes(key,fullProd);
+                                } else {
+                                    console.log('luckyRes OK!');
+                                }
+                            } else {
+                                modWeekRes(key,fullProd);
+                            }
                         }
                         if (!sim) {
                             if (playerInfos.onShip) {
