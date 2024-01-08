@@ -436,9 +436,18 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         let jumpTransId = checkHopTransId(bat,batType);
         if (jumpTransId >= 0) {
             let jumpTransBat = getBatById(jumpTransId);
+            let jumpTransBatType = getBatType(jumpTransBat);
+            let jtbPrint = getUnitPrintName(jumpTransBatType,true);
+            let jumpIcon = 'fas fa-warehouse';
+            if (jumpTransBatType.cat === 'vehicles') {
+                jumpIcon = 'fas fa-truck';
+            }
+            if (jumpTransBatType.skills.includes('transorbital')) {
+                jumpIcon = 'fas fa-space-shuttle';
+            }
             let anybody = anybodyHere(jumpTransBat);
             if (anybody || !zeroCrew) {
-                $('#unitInfos').append('<button type="button" title="Embarquer dans: '+jumpTransBat.type+'" class="boutonMarine iconButtons" onclick="jumpInTrans()"><i class="fas fa-truck"></i></button>');
+                $('#unitInfos').append('<button type="button" title="Embarquer dans: '+jumpTransBat.type+'" class="boutonMarine iconButtons" onclick="jumpInTrans()"><i class="'+jumpIcon+'"></i> <span class="small">'+jtbPrint+'</span></button>');
                 lineBreak = true;
             }
         }

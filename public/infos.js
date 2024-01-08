@@ -156,7 +156,7 @@ function batInfos(bat,batType,pop) {
         let infraInfo = showInfraInfo(infra.name,true,false);
         infraImg = '<img style="vertical-align:-12px;" src="/static/img/units/'+infra.pic+'.png" width="48" class="tunit" title="'+infraInfo+'">';
     }
-    let unitPrintName = getUnitPrintName(batType,true);
+    let unitPrintName = getUnitPrintName(batType,false);
     let vetIcon = '';
     if (bat.vet >= 1) {
         vetIcon = '<img src="/static/img/vet'+bat.vet+'.png" width="15">';

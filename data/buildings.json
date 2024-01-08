@@ -1284,7 +1284,7 @@
         "maxScarp":-1,
         "maxVeg":-1,
         "skills":["fouille","maycamo","recupcit","crewsave","prodres","before","upkeep","upgrade","transport","routes","producteur","fret","dumper","mecano","selfbadrepair","dealer","nitro","sudu","longshot","prefab"],
-        "mecanoCost":6,
+        "mecanoCost":4,
         "maxDrug":18,
         "transMaxSize":35,
         "transUnits":1000,

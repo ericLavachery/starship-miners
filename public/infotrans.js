@@ -168,7 +168,7 @@ function unloadBatInfos(myBat,myBatUnitType,bat,batType,apCost) {
         ready = false;
     }
     let mayOut = checkMayOut(batType,true,bat);
-    let batPrintName = getUnitPrintName(batType,true);
+    let batPrintName = getUnitPrintName(batType,false);
     if (!playerInfos.onShip && playerInfos.mapTurn < 1) {
         let isPara = isUnitPara(batType);
         if (isPara && playerInfos.para >= 1 && myBatUnitType.skills.includes('transorbital') && !myBatUnitType.skills.includes('rescue')) {
@@ -562,7 +562,7 @@ function calcRamasseCost(bat,batType,transBatType) {
         crewCost = 6;
     }
     ramasseCost = ramasseCost+crewCost;
-    if (batType.skills.includes('tracked') && transBatType.transMaxSize < 21) {
+    if (batType.skills.includes('tracked') && transBatType.transMaxSize <= 18) {
         ramasseCost = ramasseCost+4-playerInfos.comp.log;
     }
     if (transBatType.skills.includes('hardembark')) {
@@ -570,6 +570,9 @@ function calcRamasseCost(bat,batType,transBatType) {
     }
     if (transBatType.skills.includes('ouvert')) {
         ramasseCost = ramasseCost-4;
+    }
+    if (batType.skills.includes('trailer')) {
+        ramasseCost = 2-playerInfos.comp.log;
     }
     if (ramasseCost < 0) {
         ramasseCost = 0;
@@ -587,7 +590,7 @@ function calcEmbarqCost(batType,transBatType) {
     if (transBatType.cat === 'buildings') {
         embarqCost[0] = 3-playerInfos.comp.log;
     }
-    if (batType.skills.includes('tracked') && transBatType.transMaxSize < 21) {
+    if (batType.skills.includes('tracked') && transBatType.transMaxSize <= 18) {
         embarqCost[1] = embarqCost[1]+12-(playerInfos.comp.log*2);
     } else {
         if (transBatType.skills.includes('ouvert')) {
@@ -1034,6 +1037,7 @@ function clickDebarq(tileId) {
         batDebarq.loc = 'zone';
         batDebarq.locId = 0;
         batDebarq.tileId = tileId;
+        tagDelete(batDebarq,'hreg');
         if (selectedBat.tileId > -1) {
             batDebarq.oldTileId = selectedBat.tileId;
         } else {

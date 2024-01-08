@@ -1405,6 +1405,18 @@ function getUnitPrintName(batType,small) {
     if (batType.pName != undefined) {
         unitPrintName = batType.pName;
     }
+    if (small) {
+        if (unitPrintName.includes('. ')) {
+            let str1 = unitPrintName.substring(0,2);
+            str1 = str1.replaceAll(" ", "");
+            str1 = str1.replaceAll(".", "");
+            let str2 = unitPrintName.substring(3,7);
+            str2 = str2.replaceAll(" ", "");
+            str2 = capitalizeFirstLetter(str2);
+            unitPrintName = str1+str2;
+        }
+        unitPrintName = unitPrintName.substring(0,4);
+    }
     return unitPrintName;
 };
 

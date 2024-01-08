@@ -1430,7 +1430,7 @@ function checkMedTrans(bat,batType) {
 function checkRegeneration(myBat,myBatType,resistance,allTags) {
     let ar = {};
     if (myBat.damage >= 1 || myBat.squadsLeft < myBatType.squads) {
-        if (myBat.tags.includes('kirin') || myBat.tags.includes('genreg') || hasEquip(myBat,['permakirin']) || myBat.tags.includes('regeneration') || myBatType.skills.includes('regeneration') || myBatType.skills.includes('slowreg') || myBat.tags.includes('slowreg') || myBatType.skills.includes('fastreg') || myBatType.skills.includes('heal') || resistance) {
+        if (myBat.tags.includes('kirin') || myBat.tags.includes('genreg') || hasEquip(myBat,['permakirin']) || myBat.tags.includes('regeneration') || myBat.tags.includes('hreg') || myBatType.skills.includes('regeneration') || myBatType.skills.includes('slowreg') || myBat.tags.includes('slowreg') || myBatType.skills.includes('fastreg') || myBatType.skills.includes('heal') || resistance) {
             let regOK = true;
             if (myBatType.cat === 'aliens') {
                 if (myBatType.skills.includes('reactpoison') && myBat.tags.includes('poison')) {
@@ -1460,7 +1460,7 @@ function checkRegeneration(myBat,myBatType,resistance,allTags) {
                     regen = myBatHP;
                 } else if (myBatType.skills.includes('fastreg')) {
                     regen = myBatHP/2;
-                } else if (myBat.tags.includes('kirin') || myBat.tags.includes('genreg') || myBatType.skills.includes('regeneration') || myBat.tags.includes('regeneration')) {
+                } else if (myBat.tags.includes('kirin') || myBat.tags.includes('genreg') || myBatType.skills.includes('regeneration') || myBat.tags.includes('regeneration') || myBat.tags.includes('hreg')) {
                     regen = myBatHP*regenPower/100;
                 } else if (!resistance) {
                     regen = myBatHP*slowregPower/100;

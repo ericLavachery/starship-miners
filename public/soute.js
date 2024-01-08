@@ -1248,6 +1248,12 @@ function loadBat(batId,transBatId,oldTransBatId) {
     tagDelete(bat,'guet');
     tagDelete(bat,'fortif');
     tagDelete(bat,'camo');
+    if (!bat.tags.includes('hreg')) {
+        let transBatType = getBatType(transBat);
+        if (transBatType.skills.includes('necrocure')) {
+            bat.tags.push('hreg');
+        }
+    }
     bat.fuzz = batType.fuzz;
     if (!transBat.transIds.includes(bat.id)) {
         transBat.transIds.push(bat.id);

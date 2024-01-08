@@ -207,7 +207,7 @@ function refabInfos(myBat,myBatUnitType) {
                         depliOK = false;
                     }
                     if (depliOK) {
-                        let batPrintName = getUnitPrintName(batType,true);
+                        let batPrintName = getUnitPrintName(batType,false);
                         apCost = prefabCost(myBatUnitType,batType,false);
                         if (myBat.apLeft >= 4 || myBat.apLeft >= apCost) {
                             balise = 'h4';
