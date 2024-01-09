@@ -572,7 +572,7 @@ function calcRamasseCost(bat,batType,transBatType) {
         ramasseCost = ramasseCost-4;
     }
     if (batType.skills.includes('trailer')) {
-        ramasseCost = 2-playerInfos.comp.log;
+        ramasseCost = 3-playerInfos.comp.log;
     }
     if (ramasseCost < 0) {
         ramasseCost = 0;
@@ -720,6 +720,10 @@ function resTransfert(transBat) {
 
 function checkHopTransId(myBat,myBatType) {
     let transId = -1;
+    let isTrailer = false;
+    if (myBatType.skills.includes('trailer')) {
+        isTrailer = true;
+    }
     if (myBatType.moveCost < 90 || myBatType.skills.includes('trailer')) {
         if (!myBat.tags.includes('deb') || myBat.salvoLeft >= 1) {
             let isCharged = checkCharged(myBat,'trans');
@@ -746,7 +750,7 @@ function checkHopTransId(myBat,myBatType) {
                                         if (!myBatType.skills.includes('trailer') || !trailerIn) {
                                             let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
                                             if (myBatVolume <= batTransUnitsLeft) {
-                                                let thisTrans = getTransScore(bat,batType,myBat,myBatVolume,batTransUnitsLeft,selfMove);
+                                                let thisTrans = getTransScore(bat,batType,myBat,myBatVolume,batTransUnitsLeft,selfMove,isTrailer);
                                                 if (thisTrans > bestTrans) {
                                                     transId = bat.id;
                                                     bestTrans = thisTrans;
@@ -767,6 +771,10 @@ function checkHopTransId(myBat,myBatType) {
 
 function checkJumpTransId() {
     let transId = -1;
+    let isTrailer = false;
+    if (selectedBatType.skills.includes('trailer')) {
+        isTrailer = true;
+    }
     if (Object.keys(selectedBat).length >= 1) {
         if (selectedBatType.moveCost < 90 || selectedBatType.skills.includes('trailer')) {
             if (!selectedBat.tags.includes('deb') || selectedBat.salvoLeft >= 1) {
@@ -794,7 +802,7 @@ function checkJumpTransId() {
                                             if (!selectedBatType.skills.includes('trailer') || !trailerIn) {
                                                 let batTransUnitsLeft = calcTransUnitsLeft(bat,batType);
                                                 if (selectedBatVolume <= batTransUnitsLeft) {
-                                                    let thisTrans = getTransScore(bat,batType,selectedBat,selectedBatVolume,batTransUnitsLeft,selfMove);
+                                                    let thisTrans = getTransScore(bat,batType,selectedBat,selectedBatVolume,batTransUnitsLeft,selfMove,isTrailer);
                                                     if (thisTrans > bestTrans) {
                                                         transId = bat.id;
                                                         bestTrans = thisTrans;
@@ -845,19 +853,22 @@ function jumpInTrans() {
     }
 };
 
-function getTransScore(bat,batType,myBat,selectedBatVolume,batTransUnitsLeft,selfMove) {
-    let score = Math.round(batTransUnitsLeft/100);
-    if (selectedBatVolume+180 <= batTransUnitsLeft) {
-        score = score+10;
-    }
-    if (selectedBatVolume+50 > batTransUnitsLeft && batType.moveCost < 90) {
-        score = score+((55+selectedBatVolume-batTransUnitsLeft)*10);
+function getTransScore(bat,batType,myBat,selectedBatVolume,batTransUnitsLeft,selfMove,isTrailer) {
+    let score = 0;
+    if (!isTrailer) {
+        score = Math.round(batTransUnitsLeft/100);
+        if (selectedBatVolume+180 <= batTransUnitsLeft) {
+            score = score+10;
+        }
+        if (selectedBatVolume+50 > batTransUnitsLeft && batType.moveCost < 90) {
+            score = score+((55+selectedBatVolume-batTransUnitsLeft)*10);
+        }
+        if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 3) {
+            score = score+10000;
+        }
     }
     if (bat.army === myBat.army) {
         score = score+1000;
-    }
-    if (batType.skills.includes('transorbital') && playerInfos.mapTurn >= 3) {
-        score = score+10000;
     }
     if (!selfMove) {
         let anybody = anybodyHere(bat);
