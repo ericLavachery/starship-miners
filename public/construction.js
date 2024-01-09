@@ -660,10 +660,24 @@ function showEquipInfo(equipName,unit,long) {
             }
         } else {
             equipInfo = equipInfo+equip.info+' ';
+            let sciEqLevel = showSciEqLevel(equip);
+            if (sciEqLevel != '') {
+                equipInfo = equipInfo+sciEqLevel;
+            }
         }
     }
     equipInfo = equipInfo.replace(/ \/ /g,' &#9889; ');
     return equipInfo;
+};
+
+function showSciEqLevel(equip) {
+    let sciEqLevel = '';
+    if (equip.name.includes('sci-')) {
+        let equipComp = equip.name.substr(4,10);
+        let nextLevel = playerInfos.comp[equipComp]+1;
+        sciEqLevel = sciEqLevel+'('+playerInfos.comp[equipComp]+' > '+nextLevel+') '
+    }
+    return sciEqLevel;
 };
 
 function selectAmmo(ammo,weapon,unitId) {

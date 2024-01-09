@@ -664,6 +664,7 @@ function souteArmyList(landersIds,idOfLander) {
 
 function checkArmyTrans(armyBats,armyTransSize,armyTransVol) {
     let armyTransLeft = armyTransVol;
+    let armyTotalVol = 0;
     let notInTrans = [];
     let tooBigForTrans = [];
     let transName = 'véhicules';
@@ -676,6 +677,7 @@ function checkArmyTrans(armyBats,armyTransSize,armyTransVol) {
     sortedBats.forEach(function(bat) {
         if (bat.cat === 'inf') {
             if (bat.size <= armyTransSize) {
+                armyTotalVol = armyTotalVol+bat.volume;
                 if (armyTransLeft >= bat.volume) {
                     armyTransLeft = armyTransLeft-bat.volume;
                 } else {
@@ -728,7 +730,8 @@ function checkArmyTrans(armyBats,armyTransSize,armyTransVol) {
     }
     if (notInTrans.length >= 1) {
         let nitList = toNiceString(notInTrans);
-        $('#list_soute').append('<br><span class="listRes blanc">&nbsp '+nitList+' <span class="gf">(manque de place)</span></span>');
+        let armyTransOver = armyTransVol+miniTransVol-armyTotalVol;
+        $('#list_soute').append('<br><span class="listRes blanc">&nbsp '+nitList+' <span class="gf">(manque de place: '+armyTransOver+')</span></span>');
     }
     if (batsInMini) {
         $('#list_soute').append('<br><span class="listRes vert">&nbsp Certains bataillons ne rentrent pas dans les '+transName+'.<br>&nbsp Ils devront être transportés par les '+miniName+'.</span>');
@@ -1249,9 +1252,11 @@ function loadBat(batId,transBatId,oldTransBatId) {
     tagDelete(bat,'fortif');
     tagDelete(bat,'camo');
     if (!bat.tags.includes('hreg')) {
-        let transBatType = getBatType(transBat);
-        if (transBatType.skills.includes('necrocure')) {
-            bat.tags.push('hreg');
+        if (batType.cat === 'infantry') {
+            let transBatType = getBatType(transBat);
+            if (transBatType.skills.includes('infreg')) {
+                bat.tags.push('hreg');
+            }
         }
     }
     bat.fuzz = batType.fuzz;
