@@ -2681,7 +2681,8 @@
         "id":316,
         "name":"Baraquement",
         "costs":{"Compo1":250,"Compo2":100,"Fer":50,"Scrap":50,"Carbone":20,"Moteurs":10,"Eau":50,"Zinc":15,"Cuivre":10},
-        "fabTime":30,
+        "deploy":{"Energie":24},
+        "fabTime":25,
         "slots":0,
         "info":"Un simple bâtiment, rapide à monter et démonter, et qui vous permet de mettre beaucoups de bataillons à l'abri."
     },

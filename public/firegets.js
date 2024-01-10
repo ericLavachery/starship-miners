@@ -1640,7 +1640,7 @@ function getInitiative(bat,batType,weap,opBat,opBatType,opWeap,distance,attackin
             }
         }
     }
-    if (hasEquip(bat,['w2-autogun','w2-autopistol','w3-autopistol'])) {
+    if (hasEquip(bat,['w2-autogun','w2-autopistol','w3-autopistol','w2-autoriffle'])) {
         initDice = initDice+50+stealth;
     } else {
         if ((bat.tags.includes('guet') || batType.skills.includes('sentinelle') || hasEquip(bat,['detector','g2ai'])) && !attacking) {

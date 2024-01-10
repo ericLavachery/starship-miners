@@ -2359,6 +2359,19 @@
         "deploy":{"Munitions":15,"Tungstène":25,"Energie":20}
     },
     {
+        "name":"w2-autoriffle",
+        "cat":"equip",
+        "skills":[],
+        "info":"Autopistol",
+        "bldReq":["Arsenal"],
+        "compReq":{"def":2,"det":2,"bal":2,"robo":1},
+        "altCompReq":{"def":2,"det":2,"bal":2,"cyber":2},
+        "autoComp":[],
+        "factor":"one",
+        "costs":{"Carbone":15,"Scrap":15,"Munitions":10,"Tungstène":20,"Fer":75,"Cuivre":20,"Aluminium":30,"Moteurs":5,"Silicium":15,"Electros":15,"Batteries":15},
+        "deploy":{"Energie":30}
+    },
+    {
         "name":"w2-autogun",
         "cat":"equip",
         "skills":[],

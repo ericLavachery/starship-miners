@@ -1777,8 +1777,8 @@
             "noFly":true,
             "rof":6,
             "accuracy":20,
-            "power":6,
-            "armors":0.5,
+            "power":12,
+            "armors":0.25,
             "aoe":"brochette",
             "sound":"electricity",
             "ammo":["barb-taser"]
