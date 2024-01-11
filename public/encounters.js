@@ -206,7 +206,7 @@ function madCitizens(hard) {
         }
         let maxCit = Math.floor(zone[0].mapDiff/1.25)+4;
         let minCit = Math.floor(zone[0].mapDiff/3)+1;
-        let numCit = rand.rand(minCit,maxCit)*6;
+        let numCit = Math.ceil(rand.rand(minCit,maxCit)*6*playerInfos.cNeed);
         let citId = 126;
         if (rand.rand(1,ruinsCrimChance) === 1) {
             citId = 225;

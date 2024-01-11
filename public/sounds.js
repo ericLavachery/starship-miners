@@ -631,7 +631,7 @@ function playRoom(piste,interrupt,onloop) {
     }
 };
 
-function playMove(play) {
+function playMove(play,tile) {
     let isLoop = true;
     let track = 'none';
     let myVol = checkMyVol(playerInfos.volFx-0.2,'volFx');
@@ -656,7 +656,11 @@ function playMove(play) {
                 isLoop = false;
             } else if (selectedBatType.cat === 'infantry' && !selectedBatType.skills.includes('robot') && !selectedBatType.skills.includes('fly')) {
                 // en fonction du terrain?
-                track = 'steps-gravel';
+                if (tile.terrain === 'M' || tile.terrain === 'H' || tile.terrain === 'P' || tile.rd) {
+                    track = 'steps-gravel';
+                } else {
+                    track = 'steps-grass';
+                }
                 isLoop = false;
             }
         }

@@ -3109,7 +3109,7 @@
         "transRes":250,
         "fuzz":1,
         "deathFx":"planeexploair1",
-        "mvSnd":"hover"
+        "mvSnd":"paddling"
     },
     {
         "id":304,
@@ -3173,7 +3173,7 @@
         "transRes":2000,
         "fuzz":2,
         "deathFx":"planeexploair1",
-        "mvSnd":"hover"
+        "mvSnd":"barge"
     },
     {
         "id":80,
@@ -4441,7 +4441,7 @@
         "mecanoCost":6,
         "fuzz":0,
         "deathFx":"robodeath3",
-        "mvSnd":"emotor"
+        "mvSnd":"drones"
     },
     {
         "id":265,
@@ -4500,7 +4500,7 @@
         "mecanoCost":8,
         "fuzz":0,
         "deathFx":"robodeath3",
-        "mvSnd":"emotor"
+        "mvSnd":"drones"
     },
     {
         "id":74,
@@ -4818,7 +4818,7 @@
         "transRes":600,
         "fuzz":3,
         "deathFx":"vehicleexplo3",
-        "mvSnd":"saucer"
+        "mvSnd":"airship"
     },
     {
         "id":90,
@@ -4868,7 +4868,7 @@
         "transRes":550,
         "fuzz":4.5,
         "deathFx":"vehicleexplo3",
-        "mvSnd":"saucer"
+        "mvSnd":"airship"
     },
     {
         "id":318,
@@ -4905,7 +4905,7 @@
         "transRes":300,
         "fuzz":3,
         "deathFx":"vehicleexplo3",
-        "mvSnd":"saucer"
+        "mvSnd":"airship"
     },
     {
         "id":296,
@@ -4969,7 +4969,7 @@
         "transRes":3600,
         "fuzz":4.5,
         "deathFx":"vehicleexplo3",
-        "mvSnd":"saucer"
+        "mvSnd":"airship"
     },
     {
         "id":111,
@@ -5028,7 +5028,7 @@
         "skills":["b_heavy","noguet","baddef","fly","longshot","guerrilla","tirailleur","escape","flash","decay","recupcit","recupres","kzin","saucer"],
         "fuzz":5,
         "deathFx":"vehicleexplo3",
-        "mvSnd":"saucer"
+        "mvSnd":"airship"
     },
     {
         "id":181,
@@ -5088,7 +5088,7 @@
         "skills":["b_heavy","noguet","baddef","fly","longshot","guerrilla","tirailleur","escape","flash","decay","recupcit","recupres","kzin","saucer"],
         "fuzz":5,
         "deathFx":"vehicleexplo3",
-        "mvSnd":"saucer"
+        "mvSnd":"airship"
     },
     {
         "id":110,
@@ -5149,7 +5149,7 @@
         "skills":["b_heavy","noguet","fly","longshot","strong","baddef","flash","decay","recupcit","recupres","kzin","saucer"],
         "fuzz":7,
         "deathFx":"vehicleexplo3",
-        "mvSnd":"saucer"
+        "mvSnd":"airship"
     },
     {
         "id":184,
@@ -5208,7 +5208,7 @@
         "skills":["b_heavy","noguet","fly","longshot","strong","baddef","flash","decay","recupcit","recupres","kzin","saucer"],
         "fuzz":7,
         "deathFx":"vehicleexplo3",
-        "mvSnd":"saucer"
+        "mvSnd":"airship"
     },
     {
         "id":8,
@@ -5331,6 +5331,7 @@
         "transUnits":2000,
         "transRes":3000,
         "fuzz":4,
-        "deathFx":"planeexploground2"
+        "deathFx":"planeexploground2",
+        "mvSnd":"airship"
     }
 ]

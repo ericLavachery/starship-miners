@@ -281,9 +281,10 @@ function deleteMoveInfos() {
 };
 
 function moveSelectedBat(tileId,free,jump) {
+    let tile = getTileById(tileId);
     // play sound
     if (selectedBat.team != 'aliens') {
-        playMove(true);
+        playMove(true,tile);
     }
     // let batIndex = bataillons.findIndex((obj => obj.id == selectedBat.id));
     // remove unit and redraw old tile
@@ -380,7 +381,7 @@ function moveSelectedBat(tileId,free,jump) {
             stormDamage(selectedBat,selectedBatType,false,true,false);
         }
     }
-    let tile = getTileById(tileId);
+    // let tile = getTileById(tileId);
     if (selectedBat.tags.includes('autoroad')) {
         autoRoad(tile);
     }

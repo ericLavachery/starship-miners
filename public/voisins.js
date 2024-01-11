@@ -784,7 +784,13 @@ function putCitCave(caveTileId) {
         zone[0].caves = zone[0].caves+1;
     }
     playerInfos.fndCits = playerInfos.fndCits+1;
-    if (rand.rand(1,3) === 1) {
+    let survChance = 3;
+    if (playerInfos.cNeed < 0.9) {
+        survChance = 4;
+    } else if (playerInfos.cNeed > 1.1) {
+        survChance = 2;
+    }
+    if (rand.rand(1,survChance) === 1) {
         warning('<span class="rq3">Survivants en vue!</span>','<span class="vio">Des survivants sont sortis de leur sous-terrain.</span>',false,caveTileId);
         let citId = 287;
         unitIndex = unitTypes.findIndex((obj => obj.id == citId));
@@ -800,7 +806,7 @@ function putCitCave(caveTileId) {
         if (rand.rand(1,ruinsCrimChance) === 1) {
             citId = 225;
         }
-        let numCit = rand.rand(1,12)*6;
+        let numCit = Math.ceil(rand.rand(1,12)*6*playerInfos.cNeed);
         unitIndex = unitTypes.findIndex((obj => obj.id == citId));
         conselUnit = unitTypes[unitIndex];
         conselAmmos = ['lame-scrap','xxx','aucune','aucun'];

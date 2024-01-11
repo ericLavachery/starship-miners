@@ -4787,7 +4787,8 @@
         "skills":["a_light","fouille","fortif","datt","fly","longshot","mutant","genhab3","escape","guerrilla","tirailleur","maycamo","herowc","herolasso"],
         "mediCost":15,
         "fuzz":1,
-        "deathFx":"mutantdeath"
+        "deathFx":"mutantdeath",
+        "mvSnd":"wings"
     },
     {
         "id":249,
@@ -4847,7 +4848,8 @@
         "skills":["a_light","fouille","fortif","maycamo","datt","fly","longshot","mutant","genhab3","escape","guerrilla","tirailleur","herolasso"],
         "mediCost":15,
         "fuzz":3,
-        "deathFx":"mutantdeath"
+        "deathFx":"mutantdeath",
+        "mvSnd":"wings"
     },
     {
         "id":85,
@@ -4923,7 +4925,8 @@
         "maxSkill":6,
         "transRes":180,
         "fuzz":1.5,
-        "deathFx":"robodeath2"
+        "deathFx":"robodeath2",
+        "mvSnd":"steps-robot"
     },
     {
         "id":86,
@@ -5351,7 +5354,8 @@
         "maxVeg":3,
         "skills":["a_cyb","fouille","fortif","datt","onemore","cyber","hardmove","resistall","kzin","herosalvo","herofortif","detrange","tank"],
         "fuzz":2.5,
-        "deathFx":"robodeath2"
+        "deathFx":"robodeath2",
+        "mvSnd":"steps-robot"
     },
     {
         "id":88,
@@ -5638,7 +5642,8 @@
         "maxVeg":3,
         "skills":["a_rob","fortif","datt","sentinelle","robot","crange","decay","unemun","aifouille","lbot"],
         "fuzz":1,
-        "deathFx":"robodeath"
+        "deathFx":"robodeath",
+        "mvSnd":"steps-robot"
     },
     {
         "id":136,
@@ -5701,7 +5706,8 @@
         "maxVeg":3,
         "skills":["a_rob","fortif","robot","crange","decay","baddef","light","aicible","aifouille","aicamo","detrange","lbot"],
         "fuzz":1,
-        "deathFx":"robodeath"
+        "deathFx":"robodeath",
+        "mvSnd":"steps-robot"
     },
     {
         "id":297,
@@ -5764,7 +5770,8 @@
         "skills":["a_rob","fortif","datt","sentinelle","robot","badmecano","barda","crange","decay","light","aifouille","lbot"],
         "mecanoCost":8,
         "fuzz":1,
-        "deathFx":"robodeath"
+        "deathFx":"robodeath",
+        "mvSnd":"steps-robot"
     },
     {
         "id":183,
@@ -5825,7 +5832,8 @@
         "maxVeg":3,
         "skills":["a_rob","fortif","datt","robot","decay","crange","light","barda","aifouille","detrange","hbot"],
         "fuzz":1,
-        "deathFx":"robodeath"
+        "deathFx":"robodeath",
+        "mvSnd":"steps-robot"
     },
     {
         "id":83,
@@ -5884,7 +5892,8 @@
         "skills":["a_rob","fortif","datt","robot","crange","decay","sentinelle","selfmecano","undead","survivor","resistfeu","light","aifouille","roborepair","hbot"],
         "mecanoCost":10,
         "fuzz":2,
-        "deathFx":"robodeath2"
+        "deathFx":"robodeath2",
+        "mvSnd":"steps-robot"
     },
     {
         "id":241,
@@ -5932,7 +5941,8 @@
         "mecanoCost":14,
         "transRes":640,
         "fuzz":2,
-        "deathFx":"robodeath3"
+        "deathFx":"robodeath3",
+        "mvSnd":"steps-robot"
     },
     {
         "id":84,
@@ -5996,7 +6006,8 @@
         "skills":["a_rob","fortif","undead","datt","onemore","ranger","robot","decay","aifouille","aicamo","w2mecano","detrange","longshot","lbot"],
         "mecanoCost":9,
         "fuzz":0,
-        "deathFx":"robodeath3"
+        "deathFx":"robodeath3",
+        "mvSnd":"steps-rabbit"
     },
     {
         "id":133,
@@ -6055,7 +6066,8 @@
         "maxVeg":3,
         "skills":["a_rob","datt","ranger","robot","decay","nodeathcount"],
         "fuzz":0,
-        "deathFx":"robodeath3"
+        "deathFx":"robodeath3",
+        "mvSnd":"steps-rabbit"
     },
     {
         "id":89,
