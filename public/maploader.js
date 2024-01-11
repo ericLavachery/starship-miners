@@ -473,6 +473,13 @@ function getBatPic(bat,batType) {
             batPic = 'dogzclone';
         }
     }
+    if (batType.name === 'Dortoirs') {
+        if (bat.eq === 'confort') {
+            batPic = 'dortoir-c';
+        } else if (bat.eq === 'mezzanine') {
+            batPic = 'dortoir-m';
+        }
+    }
     if (batType.pic.includes('-v1')) {
         if (playerInfos.pseudo === 'Mapedit') {
             // reste v1;

@@ -2830,6 +2830,12 @@ function weaponAdj(weapon,bat,wn) {
     if (bat.range < thisWeapon.range) {
         bat.range = thisWeapon.range;
     }
+    // Electric Fence (barbelés taser)
+    if (thisWeapon.name === 'Barbelés (taser)') {
+        if (playerInfos.bldList.includes('Centrale SMR')) {
+            thisWeapon.power = thisWeapon.power+2;
+        }
+    }
     // ERUPTIONS
     if (thisWeapon.name === 'Eruption') {
         thisWeapon.power = thisWeapon.power+Math.floor((zone[0].mapDiff-1)/1.8/22*thisWeapon.power);

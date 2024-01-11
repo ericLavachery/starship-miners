@@ -1159,7 +1159,7 @@
             "armors":1.2,
             "aoe":"unit",
             "sound":"autopistol",
-            "ammo":["standard","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
+            "ammo":["standard","hollow","perfo","teflon","tungsten","titanium","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon2":{},
         "protection":[],

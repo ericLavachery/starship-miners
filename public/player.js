@@ -1196,12 +1196,12 @@ function playerSkillsUTChanges() {
             }
             if (energWeapBonus) {
                 if (Object.keys(unit.weapon).length >= 3) {
-                    if (unit.weapon.name.includes('plasma') || unit.weapon.name.includes('laser') || unit.weapon.name.includes('Electro') || unit.weapon.name.includes('Lightning') || unit.weapon.name.includes('BFG') || unit.weapon.name.includes('électrique') || unit.weapon.name.includes('Taser')) {
+                    if (unit.weapon.name.includes('plasma') || unit.weapon.name.includes('laser') || unit.weapon.name.includes('Electro') || unit.weapon.name.includes('Lightning') || unit.weapon.name.includes('BFG') || unit.weapon.name.includes('électrique') || unit.weapon.name.includes('Taser') || unit.weapon.name === 'Barbelés (taser)') {
                         unit.weapon.power = Math.ceil(unit.weapon.power*(energComp+15)/15);
                     }
                 }
                 if (Object.keys(unit.weapon2).length >= 3) {
-                    if (unit.weapon2.name.includes('plasma') || unit.weapon2.name.includes('laser') || unit.weapon2.name.includes('Electro') || unit.weapon2.name.includes('Lightning') || unit.weapon2.name.includes('BFG') || unit.weapon2.name.includes('électrique')) {
+                    if (unit.weapon2.name.includes('plasma') || unit.weapon2.name.includes('laser') || unit.weapon2.name.includes('Electro') || unit.weapon2.name.includes('Lightning') || unit.weapon2.name.includes('BFG') || unit.weapon2.name.includes('électrique') || unit.weapon2.name.includes('Taser') || unit.weapon2.name === 'Barbelés (taser)') {
                         unit.weapon2.power = Math.ceil(unit.weapon2.power*(energComp+15)/15);
                     }
                 }

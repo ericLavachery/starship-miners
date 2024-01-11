@@ -634,6 +634,13 @@ function eventBouffe(time,sim,quiet) {
                 tagDelete(bat,'construction');
             }
         }
+        if (bat.type === 'Appartements') {
+            if (!bat.tags.includes('construction')) {
+                plantesProd = plantesProd+Math.round(18*time/21);
+            } else {
+                tagDelete(bat,'construction');
+            }
+        }
         if (batType.cat === 'buildings') {
             bldHeat = bldHeat+batType.hp;
         }
