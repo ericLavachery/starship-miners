@@ -1102,7 +1102,7 @@
         "ap":15,
         "maxSalvo":3,
         "weapon":{
-            "name":"Tourelles auto",
+            "name":"Autoblaster",
             "cost":4,
             "range":4,
             "elevation":2,

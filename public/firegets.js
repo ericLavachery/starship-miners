@@ -3317,7 +3317,7 @@ function chargeurAdj(bat,shots,weap) {
         if (weap.name.includes('assaut') || weap.name.includes('itrail') || weap.name.includes('ulfat') || weap.name.includes('Minigun') || weap.name.includes('semi-auto') || weap.name.includes('BFG') || (weap.name.includes('Blister') && !weap.name.includes('pistol'))) {
             mult = 1.33;
         }
-        if (weap.name === 'Autopistol' || weap.name === 'Tourelles auto') {
+        if (weap.name === 'Autopistol' || weap.name === 'Autoblaster' || weap.name === 'Autogun') {
             mult = 1.25;
         }
         if (bat.eq.includes('kit-chouf')) {
@@ -3410,7 +3410,7 @@ function calcBrideDef(bat,batType,weap,attRange,guet) {
         }
         brideDef = brideDef*ripFactor;
     }
-    if (weap.name === 'Autopistol' || weap.name === 'Tourelles auto') {
+    if (weap.name === 'Autopistol' || weap.name === 'Autoblaster' || weap.name === 'Autogun') {
         brideDef = 1;
     }
     return brideDef;

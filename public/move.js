@@ -991,32 +991,36 @@ function calcMoveCost(targetTileId,diag) {
             isCatMC = true;
         }
     }
-    let moveCost;
-    if (tile.rd && !selectedBatType.skills.includes('hover')) {
-        moveCost = baseMoveCost+terrain.roadmc;
-        if (baseMoveCost >= 4 && selectedBat.team != 'aliens') {
-            moveCost = moveCost-((baseMoveCost-3)/2);
-        }
-        if (moveCost <= 1) {
-            moveCost = 1.5;
-        }
-    } else if (selectedBat.team == 'aliens' && !selectedBatType.skills.includes('hover') && !selectedBatType.skills.includes('okwater')) {
-        moveCost = baseMoveCost+terrain.alienmc;
+    let terMC;
+    if (selectedBat.team == 'aliens' && !selectedBatType.skills.includes('hover') && !selectedBatType.skills.includes('okwater')) {
+        terMC = terrain.alienmc;
     } else if (selectedBatType.skills.includes('okwater')) {
-        moveCost = baseMoveCost+terrain.larvemc;
+        terMC = terrain.larvemc;
     } else if (selectedBatType.skills.includes('ranger') || hasEquip(selectedBat,['e-ranger','kit-sentinelle'])) {
-        moveCost = baseMoveCost+terrain.rangermc;
+        terMC = terrain.rangermc;
     } else if (selectedBatType.skills.includes('caterp') || isCatMC) {
-        moveCost = baseMoveCost+terrain.catmc;
+        terMC = terrain.catmc;
     } else if (selectedBatType.skills.includes('hover')) {
-        moveCost = baseMoveCost+terrain.hovermc;
+        terMC = terrain.hovermc;
     } else if (selectedBatType.skills.includes('hardmove')) {
-        moveCost = baseMoveCost+terrain.hardmc;
+        terMC = terrain.hardmc;
     } else if (selectedBatType.skills.includes('hscarpmove')) {
-        moveCost = baseMoveCost+terrain.hscarpmc;
+        terMC = terrain.hscarpmc;
     } else {
-        moveCost = baseMoveCost+terrain.mc;
+        terMC = terrain.mc;
     }
+    if (tile.rd) {
+        let roadMC = terrain.roadmc;
+        if (baseMoveCost >= 4 && selectedBat.team != 'aliens') {
+            roadMC = roadMC-((baseMoveCost-3)/2);
+        }
+        if (terMC > roadMC) {
+            terMC = roadMC;
+        } else if (terMC === roadMC) {
+            terMC = roadMC-0.1;
+        }
+    }
+    let moveCost = baseMoveCost+terMC;
     if (hasEquip(selectedBat,['snorkel'])) {
         if (terrain.flood > selectedBatType.maxFlood) {
             moveCost = moveCost+4;

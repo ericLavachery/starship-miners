@@ -1186,7 +1186,7 @@
             "ammo":["barb-taser"]
         },
         "weapon2":{
-            "name":"Autopistol",
+            "name":"Autogun",
             "cost":1,
             "range":3,
             "elevation":1,
@@ -1457,7 +1457,7 @@
             "ravitBld":"Poudrière"
         },
         "weapon3":{
-            "name":"Tourelles auto",
+            "name":"Autoblaster",
             "cost":1,
             "range":4,
             "elevation":2,
@@ -1577,7 +1577,7 @@
             "ravitBld":"Poudrière"
         },
         "weapon3":{
-            "name":"Tourelles auto",
+            "name":"Autoblaster",
             "cost":1,
             "range":4,
             "elevation":2,
@@ -2131,7 +2131,7 @@
             "ravitBld":"Poudrière"
         },
         "weapon3":{
-            "name":"Tourelles auto",
+            "name":"Autoblaster",
             "cost":1,
             "range":4,
             "elevation":2,
@@ -2299,7 +2299,7 @@
             "ravitBld":"Poudrière"
         },
         "weapon3":{
-            "name":"Tourelles auto",
+            "name":"Autoblaster",
             "cost":1,
             "range":4,
             "elevation":2,
@@ -2578,7 +2578,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon3":{
-            "name":"Tourelles auto",
+            "name":"Autoblaster",
             "cost":1,
             "range":4,
             "elevation":2,
@@ -2659,7 +2659,7 @@
             "ammo":["ac-standard","ac-tungsten","ac-titanium","ac-uranium","ac-explosive","ac-incendiaire","dragon","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-freeze","necro","ac-dunium"]
         },
         "weapon3":{
-            "name":"Tourelles auto",
+            "name":"Autoblaster",
             "cost":1,
             "range":4,
             "elevation":2,
@@ -3068,7 +3068,7 @@
             "ravitBld":"Poudrière"
         },
         "weapon3":{
-            "name":"Tourelles auto",
+            "name":"Autoblaster",
             "cost":1,
             "range":4,
             "elevation":2,
@@ -3212,7 +3212,7 @@
             "ammo":["ac-standard","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","dragon","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-freeze","necro","ac-dunium"]
         },
         "weapon3":{
-            "name":"Tourelles auto",
+            "name":"Autoblaster",
             "cost":1,
             "range":4,
             "elevation":2,
@@ -3289,7 +3289,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon3":{
-            "name":"Tourelles auto",
+            "name":"Autoblaster",
             "cost":1,
             "range":4,
             "elevation":2,
@@ -3471,7 +3471,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "weapon3":{
-            "name":"Tourelles auto",
+            "name":"Autoblaster",
             "cost":1,
             "range":4,
             "elevation":2,

@@ -2307,7 +2307,7 @@
         "bldReq":["Usine d'armement","Centre de com"],
         "compReq":{"def":2,"det":2,"bal":3,"mat":2,"tank":1,"robo":1},
         "altCompReq":{"def":2,"det":3,"bal":3,"mat":2,"tank":1,"cyber":2},
-        "costs":{"Compo1":120,"Compo2":240,"Compo3":300,"Scrap":120,"Carbone":120,"Tungstène":120,"Titane":120,"Fer":240,"Moteurs":180,"Cuivre":150,"Silicium":120,"Cobalt":90,"Nickel":60,"Electros":240,"Batteries":360,"Spins":35},
+        "costs":{"Compo1":120,"Compo2":240,"Compo3":300,"Scrap":120,"Carbone":120,"Tungstène":120,"Titane":120,"Fer":240,"Moteurs":180,"Cuivre":150,"Silicium":120,"Cobalt":90,"Nickel":60,"Electros":240,"Batteries":360,"Spins":28},
         "fabTime":200,
         "slots":0
     },
@@ -2318,7 +2318,7 @@
         "bldReq":["Usine d'armement","Centre de com"],
         "compReq":{"def":2,"det":2,"bal":2,"robo":1},
         "altCompReq":{"def":2,"det":3,"bal":2,"cyber":2},
-        "costs":{"Compo1":120,"Compo2":180,"Compo3":240,"Scrap":120,"Carbone":90,"Aluminium":90,"Titane":60,"Fer":120,"Moteurs":120,"Cuivre":90,"Silicium":90,"Cobalt":60,"Nickel":30,"Electros":180,"Batteries":180,"Spins":10},
+        "costs":{"Compo1":120,"Compo2":180,"Compo3":240,"Scrap":120,"Carbone":90,"Aluminium":90,"Titane":60,"Fer":120,"Moteurs":120,"Cuivre":90,"Silicium":90,"Cobalt":60,"Nickel":30,"Electros":180,"Batteries":180,"Spins":8},
         "fabTime":150,
         "slots":0
     },
@@ -2328,7 +2328,7 @@
         "levels":{"rednecks":99,"blades":14,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":99},
         "bldReq":["Usine d'armement","Centre de com"],
         "compReq":{"def":2,"det":3,"bal":2,"cam":1,"cyber":1},
-        "costs":{"Compo1":120,"Compo2":180,"Compo3":240,"Scrap":120,"Carbone":90,"Aluminium":90,"Titane":60,"Fer":120,"Moteurs":120,"Cuivre":90,"Silicium":90,"Cobalt":60,"Nickel":30,"Electros":180,"Batteries":180,"Spins":10},
+        "costs":{"Compo1":120,"Compo2":180,"Compo3":240,"Scrap":120,"Carbone":90,"Aluminium":90,"Titane":60,"Fer":120,"Moteurs":120,"Cuivre":90,"Silicium":90,"Cobalt":60,"Nickel":30,"Electros":180,"Batteries":180,"Spins":8},
         "fabTime":150,
         "slots":0
     },
@@ -2395,7 +2395,7 @@
         "compReq":{"cam":2,"exo":2,"ca":4},
         "compPass":["blades","brasier"],
         "compHardReq":{"cam":1,"exo":1,"ca":3},
-        "costs":{"Fer":90,"Carbone":135,"Aluminium":162,"Titane":135,"Tungstène":72,"Silicium":36,"Cuivre":72,"Electros":90,"Batteries":90,"Compo2":132,"Potassium":180,"Végétaux":180,"Spins":10},
+        "costs":{"Fer":90,"Carbone":135,"Aluminium":162,"Titane":135,"Tungstène":72,"Silicium":36,"Cuivre":72,"Electros":90,"Batteries":90,"Compo2":132,"Potassium":180,"Végétaux":180,"Spins":12},
         "deploy":{"Energie":45,"Potassium":90,"Végétaux":90,"Titane":45},
         "fabTime":75,
         "info":"Ce dispositif crée un brouillard qui limite les tirs à 1 case (pour vos bataillons et les aliens). Vos bataillons ne dépassant pas une certaine taille peuvent devenir furtifs."
@@ -3119,8 +3119,8 @@
         "name":"Appartements",
         "bldReq":["Soute"],
         "upkeep":{"Azote":1,"Phosphore":0.75,"Potassium":1},
-        "prod":{"Fruits":1,"Végétaux":3},
-        "costs":{"Eau":375,"Tissus":375,"Carbone":300,"Compo1":375,"Bois":300,"Cuivre":200,"Electros":25,"Batteries":75},
+        "prod":{"Fruits":1,"Végétaux":2},
+        "costs":{"Eau":375,"Tissus":375,"Carbone":300,"Compo1":375,"Bois":300,"Eau":800,"Azote":100,"Phosphore":80,"Potassium":150,"Végétaux":800,"Energie":100,"Cuivre":200,"Electros":25,"Batteries":75},
         "fabTime":75,
         "crime":3,
         "slots":2
