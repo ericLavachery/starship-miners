@@ -1467,7 +1467,11 @@ function attack(melee,init) {
     if (selectedBat.tags.includes('tornade') || selectedWeap.free || sbk) {
         // salves infinies
     } else {
-        selectedBat.salvoLeft = selectedBat.salvoLeft-1;
+        if (selectedWeap.ammo === 'marquage-kill' && selectedBat.salvoLeft >= 3) {
+            selectedBat.salvoLeft = selectedBat.salvoLeft-2;
+        } else {
+            selectedBat.salvoLeft = selectedBat.salvoLeft-1;
+        }
     }
     // add xp & remove life :)
     if (targetBat.squadsLeft <= 0) {

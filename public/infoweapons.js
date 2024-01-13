@@ -170,6 +170,13 @@ function weaponsInfos(bat,batType,tile,pop) {
             doubleAttaque(bat,batType,thisWeapon,'w1div',tirOK);
             bullseyeShot(bat,batType,thisWeapon,'w1div',inMelee,tirOK);
             let maxSalves = batType.maxSalvo;
+            if (thisWeapon.ammo === 'marquage-kill') {
+                if (maxSalves >= 5) {
+                    maxSalves = maxSalves-2;
+                } else if (maxSalves >= 3) {
+                    maxSalves = maxSalves-1;
+                }
+            }
             let resteSalves = bat.salvoLeft;
             if (thisWeapon.noBis) {
                 maxSalves = 1;
@@ -179,6 +186,12 @@ function weaponsInfos(bat,batType,tile,pop) {
                     } else {
                         resteSalves = 1;
                     }
+                }
+            } else if (thisWeapon.ammo === 'marquage-kill') {
+                if (resteSalves >= 5) {
+                    resteSalves = resteSalves-2;
+                } else if (resteSalves >= 3) {
+                    resteSalves = resteSalves-1;
                 }
             }
             if (resteSalves >= 1) {
@@ -466,6 +479,13 @@ function weaponsInfos(bat,batType,tile,pop) {
             doubleAttaque(bat,batType,thisWeapon,'w2div',tirOK);
             bullseyeShot(bat,batType,thisWeapon,'w2div',inMelee,tirOK);
             let maxSalves = batType.maxSalvo;
+            if (thisWeapon.ammo === 'marquage-kill') {
+                if (maxSalves >= 5) {
+                    maxSalves = maxSalves-2;
+                } else if (maxSalves >= 3) {
+                    maxSalves = maxSalves-1;
+                }
+            }
             let resteSalves = bat.salvoLeft;
             if (thisWeapon.noBis) {
                 maxSalves = 1;
@@ -475,6 +495,12 @@ function weaponsInfos(bat,batType,tile,pop) {
                     } else {
                         resteSalves = 1;
                     }
+                }
+            } else if (thisWeapon.ammo === 'marquage-kill') {
+                if (resteSalves >= 5) {
+                    resteSalves = resteSalves-2;
+                } else if (resteSalves >= 3) {
+                    resteSalves = resteSalves-1;
                 }
             }
             if (resteSalves >= 1) {

@@ -860,16 +860,16 @@
         "ap":14,
         "maxSalvo":2,
         "weapon":{
-            "name":"Blaster",
+            "name":"Blaster (mitraille)",
             "cost":3,
             "range":1,
-            "rof":16,
-            "accuracy":20,
-            "power":10,
-            "armors":0.7,
+            "rof":24,
+            "accuracy":34,
+            "power":7,
+            "armors":1.25,
             "aoe":"unit",
             "sound":"calibre_heavy_x1",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","dragon","ac-needle","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-dunium","ac-freeze","necro","ac-flechette"]
+            "ammo":["standard","scrap","snake","incendiaire","dragon","tungsten","uranium","timonium","salite","adamantium","bugshells","ac-dunium","freeze","necro"]
         },
         "weapon2":{
             "name":"Canon",

@@ -296,7 +296,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_multi",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","dragon","ac-needle","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-dunium","ac-freeze","necro","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-mammoth","ac-incendiaire","dragon","ac-needle","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-dunium","ac-freeze","necro","ac-flechette"]
         },
         "weapon2":{
             "name":"Rainbow canon",
@@ -430,7 +430,7 @@
             "armors":0.7,
             "aoe":"unit",
             "sound":"calibre_heavy_multi",
-            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-incendiaire","dragon","ac-needle","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-dunium","ac-freeze","necro","ac-flechette"]
+            "ammo":["standard","scrap","hollow","perfo","ac-tungsten","ac-uranium","ac-explosive","ac-mammoth","ac-incendiaire","dragon","ac-needle","ac-timonium","ac-salite","ac-adamantium","bugshells","ac-dunium","ac-freeze","necro","ac-flechette"]
         },
         "weapon2":{
             "name":"Mortier",

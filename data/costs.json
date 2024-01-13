@@ -701,7 +701,7 @@
     {
         "id":72,
         "name":"Dogs",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":5,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":6,"brasier":99},
         "bldReq":["Armurerie"],
         "costs":{"Fer":135,"Scrap":54,"Carbone":54,"Aluminium":108,"Soufre":27,"Plomb":27,"Végétaux":20,"Chlore":10,"Tissus":5},
         "deploy":{"Drogues":3,"Tissus":2},
@@ -997,7 +997,7 @@
     {
         "id":91,
         "name":"Pushkas",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":6,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":5,"brasier":99},
         "bldReq":["Arsenal"],
         "costs":{"Fer":216,"Scrap":72,"Carbone":27,"Aluminium":135,"Tungstène":63},
         "fabTime":35

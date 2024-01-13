@@ -2582,7 +2582,11 @@ function getRoadAPCost(bat,batType,tile,round) {
     let terrain = getTerrainById(tile.id);
     let baseMecaRoad = batType.mecanoCost;
     if (batType.skills.includes('fastrd')) {
-        baseMecaRoad = 3.8;
+        if (baseMecaRoad >= 4) {
+            baseMecaRoad = 3.8;
+        } else {
+            baseMecaRoad = baseMecaRoad-0.2;
+        }
     }
     let roadComp = playerInfos.comp.trans;
     let constComp = playerInfos.comp.const-1;

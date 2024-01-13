@@ -340,7 +340,7 @@ function solarProd(bat,batType,time,sim,quiet) {
             }
         }
         if (upkeepPaid) {
-            let energyProd = 60*time;
+            let energyProd = 80*time;
             if (!playerInfos.onShip) {
                 energyProd = rand.rand(35,85);
                 if (tile.terrain === 'P') {
