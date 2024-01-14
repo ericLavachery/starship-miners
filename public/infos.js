@@ -53,6 +53,8 @@ function goSoutePrefab(batId) {
 
 function batDetail(batId) {
     modal.style.display = "block";
+    $("#w1div").remove();
+    $("#w2div").remove();
     let bat = getBatById(batId);
     let batType = getBatType(bat);
     batInfos(bat,batType,true);
