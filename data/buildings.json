@@ -1171,7 +1171,7 @@
         "ap":12,
         "maxSalvo":1,
         "weapon":{
-            "name":"Barbelés (taser)",
+            "name":"Barbelés (ht)",
             "cost":1,
             "range":0,
             "isMelee":true,
@@ -1179,7 +1179,7 @@
             "noFly":true,
             "rof":6,
             "accuracy":20,
-            "power":12,
+            "power":10,
             "armors":0.25,
             "aoe":"brochette",
             "sound":"electricity",

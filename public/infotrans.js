@@ -641,7 +641,9 @@ function embarquement(transId,withRes) {
     doneAction(transBat);
     tagDelete(selectedBat,'guet');
     camoOut();
-    stopAutoLoad();
+    if (!selectedBatType.skills.includes('trailer')) {
+        stopAutoLoad();
+    }
     selectedBatArrayUpdate();
     showBataillon(transBat);
     batSelect(transBat);
@@ -841,7 +843,9 @@ function jumpInTrans() {
             doneAction(transBat);
             tagDelete(selectedBat,'guet');
             camoOut();
-            stopAutoLoad();
+            if (!selectedBatType.skills.includes('trailer')) {
+                stopAutoLoad();
+            }
             selectedBatArrayUpdate();
             showMap(zone,true);
             showBataillon(transBat);

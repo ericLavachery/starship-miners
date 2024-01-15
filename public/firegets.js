@@ -2833,7 +2833,8 @@ function weaponAdj(weapon,bat,wn) {
     // Electric Fence (barbelés taser)
     if (thisWeapon.name === 'Barbelés (taser)') {
         if (playerInfos.bldList.includes('Centrale SMR')) {
-            thisWeapon.power = thisWeapon.power+2;
+            thisWeapon.name = 'Barbelés (ht)';
+            thisWeapon.power = thisWeapon.power+3;
         }
     }
     // ERUPTIONS

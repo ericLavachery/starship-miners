@@ -1355,7 +1355,7 @@ function undarkList() {
                 zone[0].undarkOnce = [];
             }
         }
-        if (zone[0].undarkOnce.length >= 3550 || zone[0].undarkAll) {
+        if (zone[0].undarkOnce.length >= 3500 || zone[0].undarkAll) {
             zone[0].undarkOnce = [];
             zone[0].undarkAll = true;
         } else {

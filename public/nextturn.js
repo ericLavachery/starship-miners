@@ -89,8 +89,8 @@ function nextTurn() {
                 }
             }
             if (batType.skills.includes('healhide')) {
-                if (bat.squadsLeft <= 3) {
-                    if (!bat.tags.includes('invisible') && !bat.tags.includes('fluo')) {
+                if (bat.squadsLeft <= 3 && !bat.tags.includes('fluo')) {
+                    if (!bat.tags.includes('invisible')) {
                         bat.tags.push('invisible');
                     }
                 } else {
@@ -252,7 +252,7 @@ function alienTurnEnd() {
             if (batType.skills.includes('lurk') || batType.skills.includes('dive') || batType.skills.includes('creep')) {
                 let tile = getTile(bat);
                 let hideTerrains = [];
-                if (batType.skills.includes('lurk') && bat.salvoLeft >= 1 && !bat.tags.includes('fluo')) {
+                if (batType.skills.includes('lurk') && bat.salvoLeft >= 1) {
                     hideTerrains.push('F');
                 }
                 if (batType.skills.includes('dive')) {
@@ -261,13 +261,13 @@ function alienTurnEnd() {
                     hideTerrains.push('W');
                     hideTerrains.push('S');
                 }
-                if (batType.skills.includes('creep') && bat.salvoLeft >= 1 && !bat.tags.includes('fluo')) {
+                if (batType.skills.includes('creep') && bat.salvoLeft >= 1) {
                     hideTerrains.push('F');
                     hideTerrains.push('B');
                     hideTerrains.push('M');
                     hideTerrains.push('S');
                 }
-                if (hideTerrains.includes(tile.terrain)) {
+                if (hideTerrains.includes(tile.terrain) && !bat.tags.includes('fluo')) {
                     if (!bat.tags.includes('invisible')) {
                         bat.tags.push('invisible');
                     }
@@ -276,6 +276,9 @@ function alienTurnEnd() {
                         tagDelete(bat,'invisible');
                     }
                 }
+            }
+            if (bat.tags.includes('fluo')) {
+                tagDelete(bat,'invisible');
             }
             if (aFouille) {
                 if (fRuinTileId < 0) {
@@ -418,7 +421,7 @@ function nextTurnEnd() {
                 medicalTransports.push(bat.id);
             }
             updateBatProperties(bat,batType);
-            if (bat.autoLoad != undefined && bat.loc === 'zone') {
+            if (bat.autoLoad != undefined && (bat.loc === 'zone' || batType.skills.includes('trailer'))) {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
@@ -484,7 +487,7 @@ function nextTurnEnd() {
                 });
             }
             // AUTOLOAD
-            if (bat.autoLoad != undefined && bat.loc === 'zone') {
+            if (bat.autoLoad != undefined && (bat.loc === 'zone' || batType.skills.includes('trailer'))) {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
@@ -544,7 +547,7 @@ function nextTurnEnd() {
                 // console.log('AUTO-UNLOAD'+bat.type);
                 autoUnload(bat);
             }
-            if (bat.autoLoad != undefined && bat.loc === 'zone') {
+            if (bat.autoLoad != undefined && (bat.loc === 'zone' || batType.skills.includes('trailer'))) {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
                         let fromBat = getBatById(batId);
@@ -722,7 +725,7 @@ function nextTurnEnd() {
     });
     // LOAD AUTOMATION X2
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
+        if (bat.loc === "zone" || bat.type === 'Remorques') {
             if (bat.autoLoad != undefined) {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {
@@ -739,7 +742,7 @@ function nextTurnEnd() {
     });
     alienOccupiedTileList();
     bataillons.forEach(function(bat) {
-        if (bat.loc === "zone") {
+        if (bat.loc === "zone" || bat.type === 'Remorques') {
             if (bat.autoLoad != undefined) {
                 if (Array.isArray(bat.autoLoad)) {
                     bat.autoLoad.forEach(function(batId) {

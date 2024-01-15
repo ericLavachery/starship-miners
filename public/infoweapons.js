@@ -103,7 +103,7 @@ function weapDisplay(bat,batType,weapNum,inMelee,onInfra,defCol,guetCol,pop,body
             colIcon = 'gf';
         }
         let noBisOK = true;
-        if (thisWeapon.noBis && bat.tags.includes('noBis1')) {
+        if (thisWeapon.noBis && bat.tags.includes('noBis'+weapNum)) {
             noBisOK = false;
         }
         let wKOmessage = 'Salves épuisées';
@@ -195,7 +195,7 @@ function weapDisplay(bat,batType,weapNum,inMelee,onInfra,defCol,guetCol,pop,body
         if (thisWeapon.noBis) {
             maxSalves = 1;
             if (resteSalves >= 1) {
-                if (bat.tags.includes('noBis1')) {
+                if (bat.tags.includes('noBis'+weapNum)) {
                     resteSalves = 0;
                 } else {
                     resteSalves = 1;
@@ -215,7 +215,7 @@ function weapDisplay(bat,batType,weapNum,inMelee,onInfra,defCol,guetCol,pop,body
                 $('#'+wDivName).append('<span class="paramName or">Salves</span><span class="paramIcon '+colIcon+'"></span><span class="paramValue or">'+resteSalves+'/'+maxSalves+'</span><br>');
             }
         } else {
-            $('#'+wDivName).append('<span class="paramName or">Salves</span><span class="paramIcon '+colIcon+'"></span><span class="paramValue or">Riposte seulement</span><br>');
+            $('#'+wDivName).append('<span class="paramName or">Salves</span><span class="paramIcon '+colIcon+'"></span><span class="paramValue">Riposte seulement</span><br>');
         }
         if (pop) {
             $('#'+wDivName).append('<span class="paramName">PA/Salve</span><span class="paramIcon"></span><span class="paramValue">'+thisWeapon.cost+'</span><br>');
