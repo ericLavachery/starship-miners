@@ -19,17 +19,17 @@ socket.on('playerInfos-Load', function(pi) {
         playerInfos.onShip = true;
     }
     if (playerInfos.numHTiles === undefined) {
-        playerInfos.numHTiles = 21;
+        playerInfos.numHTiles = 17;
     }
     if (playerInfos.numVTiles === undefined) {
-        playerInfos.numVTiles = 13;
+        playerInfos.numVTiles = 11;
     }
     if (playerInfos.onShip && !modeSonde) {
-        if (playerInfos.numHTiles > 21) {
-            numHTiles = 21;
+        if (playerInfos.numHTiles > 17) {
+            numHTiles = 17;
         }
-        if (playerInfos.numVTiles > 13) {
-            numVTiles = 13;
+        if (playerInfos.numVTiles > 11) {
+            numVTiles = 11;
         }
     } else {
         numHTiles = playerInfos.numHTiles;

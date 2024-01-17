@@ -2695,6 +2695,11 @@ function weaponAdj(weapon,bat,wn) {
     let ammoIndex = ammoTypes.findIndex((obj => obj.name == myAmmo));
     let ammo = ammoTypes[ammoIndex];
     thisWeapon.ammo = myAmmo;
+    if (ammo.fly != undefined) {
+        if (!ammo.fly) {
+            thisWeapon.noFly = true;
+        }
+    }
     if (ammo.apweb) {
         thisWeapon.apWeb = true;
     } else {

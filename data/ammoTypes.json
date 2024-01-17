@@ -73,10 +73,11 @@
         "avar": "explo",
         "accuracy": 1,
         "apdamage": 0,
+        "fly": false,
         "aoe": "squad",
         "bldReq":["Atelier"],
         "compReq":{"det":2,"mat":1,"bal":1,"explo":3,"arti":1},
-        "deploy":{"Fer":1,"Carbone":1,"Cobalt":1,"Silicium":1,"Mercure":1,"Explosifs":2,"Nanite":3},
+        "deploy":{"Fer":1,"Carbone":1,"Cobalt":1,"Silicium":1,"Mercure":1,"Explosifs":3,"Nanite":6},
         "batch":200,
         "sound":{"paint":"paint_kill","fragger_throw":"paint_kill"}
     },
@@ -3201,7 +3202,7 @@
         "aoe": "squad",
         "bldReq":["Laboratoire"],
         "compReq":{"explo":2},
-        "deploy":{"Carbone":1,"Scrap":1,"Explosifs":3,"Végétaux":2,"Potassium":2,"Nanite":10},
+        "deploy":{"Carbone":1,"Scrap":1,"Explosifs":3,"Végétaux":2,"Potassium":2,"Nanite":7},
         "batch":100
     },
     {
@@ -4005,7 +4006,7 @@
         "aoe": "squad",
         "bldReq":["Arsenal","Laboratoire"],
         "compReq":{"explo":2},
-        "deploy":{"Scrap":4,"Fer":2,"Aluminium":2,"Potassium":1,"Nanite":10,"Explosifs":2},
+        "deploy":{"Scrap":4,"Fer":2,"Aluminium":2,"Potassium":1,"Nanite":8,"Explosifs":2},
         "batch":100,
         "icon":3
     },

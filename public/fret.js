@@ -1,5 +1,16 @@
-function loadRes(retour) {
+function loadRes(retour,isTrailer,trailerId) {
     selectMode();
+    let trailerBat = {};
+    let transBatId = -1;
+    if (isTrailer) {
+        trailerBat = getBatById(trailerId);
+        batSelect(trailerBat);
+    }
+    // console.log(selectedBat);
+    if (selectedBat.type === 'Remorques' && selectedBat.loc === 'trans') {
+        transBatId = selectedBat.locId;
+    }
+    // console.log('TRANSID = '+transBatId);
     let restSpace = checkResSpace(selectedBat);
     let selectedBatPic = getBatPic(selectedBat,selectedBatType);
     let myConvey = true;
@@ -19,7 +30,11 @@ function loadRes(retour) {
     $('#tileInfos').empty();
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    if (transBatId >= 0) {
+        $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOutToBat(true,'+transBatId+')"><i class="fas fa-times-circle"></i></span>');
+    } else {
+        $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    }
     $('#conUnitList').append('<span class="constName cy"><img class="batInfoPic" src="/static/img/units/'+selectedBatType.cat+'/'+selectedBatPic+'.png">&nbsp;');
     $('#conUnitList').append('<h1>'+selectedBat.type.toUpperCase()+'</h1><br>');
     $('#conUnitList').append('<span class="constName cy">Charger</span> <span class="cy">(max '+restSpace+')</span><br>');
@@ -67,7 +82,7 @@ function loadRes(retour) {
         sortedBats = _.sortBy(_.sortBy(_.sortBy(sortedBats,'type'),'creaTurn'),'id');
         sortedBats.reverse();
         sortedBats.forEach(function(bat) {
-            if (bat.id != selectedBat.id && bat.loc === 'zone') {
+            if (bat.id != selectedBat.id && bat.id != trailerId && (bat.loc === 'zone' || bat.type === 'Remorques')) {
                 batType = getBatType(bat);
                 if (batType.skills.includes('fret')) {
                     distance = calcDistance(bat.tileId,selectedBat.tileId);
@@ -90,7 +105,7 @@ function loadRes(retour) {
                             if (!selfMove) {
                                 targetConvey = false;
                             }
-                        } else if (batType.skills.includes('solotrans') && selectedBatType.skills.includes('solotrans')) {
+                        } else if (batType.skills.includes('solotrans') && selectedBatType.skills.includes('solotrans') && selectedBat.loc === 'zone' && bat.loc === 'zone') {
                             targetConvey = false;
                             soloLine = true;
                         }

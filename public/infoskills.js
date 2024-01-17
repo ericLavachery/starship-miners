@@ -2636,7 +2636,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         apReq = 0;
         apCost = 3-playerInfos.comp.trans;
         if (!inMelee && !inSoute) {
-            $('#unitInfos').append('<button type="button" title="Charger des ressources" class="boutonCaca iconButtons" onclick="loadRes(false)"><i class="fas fa-truck-loading"></i> <span class="small">'+apCost+'</span></button>');
+            $('#unitInfos').append('<button type="button" title="Charger des ressources" class="boutonCaca iconButtons" onclick="loadRes(false,false)"><i class="fas fa-truck-loading"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
         } else {
             if (inMelee) {
@@ -2646,6 +2646,19 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
             $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey iconButtons gf"><i class="fas fa-truck-loading"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
+        }
+    }
+    if (!inMelee && !inSoute) {
+        if (batType.skills.includes('transport') && !batType.skills.includes('transorbital')) {
+            if (bat.transIds.length >= 1) {
+                bat.transIds.forEach(function(inBatId) {
+                    let inBat = getBatById(inBatId);
+                    if (inBat.type === 'Remorques') {
+                        $('#unitInfos').append('<button type="button" title="Charger des ressources dans la remorque" class="boutonCaca iconButtons" onclick="loadRes(false,true,'+inBatId+')"><i class="fas fa-dolly-flatbed"></i>&nbsp;</button>');
+                        lineBreak = true;
+                    }
+                });
+            }
         }
     }
     // RAVITAILLEMENT DROGUES

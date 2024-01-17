@@ -962,11 +962,11 @@ function hideBataillon(bat) {
 
 function writeMapStyles() {
     if (playerInfos.onShip && !modeSonde) {
-        if (numHTiles > 21) {
-            numHTiles = 21;
+        if (numHTiles > 17) {
+            numHTiles = 17;
         }
-        if (numVTiles > 13) {
-            numVTiles = 13;
+        if (numVTiles > 11) {
+            numVTiles = 11;
         }
     } else {
         numHTiles = playerInfos.numHTiles;

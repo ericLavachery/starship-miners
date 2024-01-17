@@ -1718,10 +1718,27 @@ function conOut(changeMode) {
         showResOpen = false;
         $("#conUnitList").css("display","none");
         $("#conAmmoList").css("display","none");
-        // selectMode();
         if (Object.keys(selectedBat).length >= 1) {
             showBatInfos(selectedBat);
         }
+    }
+};
+
+function conOutToBat(changeMode,batId) {
+    console.log('conOutToBat ====================================================');
+    $('#conUnitList').empty();
+    $('#conAmmoList').empty();
+    $('#conUnitList').css("height","300px");
+    conselReset(changeMode);
+    showResOpen = false;
+    $("#conUnitList").css("display","none");
+    $("#conAmmoList").css("display","none");
+    let newSelBat = getBatById(batId);
+    batSelect(newSelBat);
+    // console.log(newSelBat);
+    // console.log(selectedBat);
+    if (Object.keys(selectedBat).length >= 1) {
+        showBatInfos(selectedBat);
     }
 };
 

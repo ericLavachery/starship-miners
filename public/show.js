@@ -165,11 +165,6 @@ function showAmmoInfo(ammoName,withReqs,withCosts) {
     let ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoName));
     let ammo = ammoTypes[ammoIndex];
     let ammoInfo = '';
-    // if (ammo.range > 1.2) {
-    //     ammoInfo = ammoInfo+'&#9889; Portée++ ';
-    // } else if (ammo.range > 1) {
-    //     ammoInfo = ammoInfo+'&#9889; Portée+ ';
-    // }
     if (ammo.range != 1) {
         let perc = Math.round(ammo.range*100);
         ammoInfo = ammoInfo+'&#9889; Portée '+perc+'% ';
@@ -180,28 +175,10 @@ function showAmmoInfo(ammoName,withReqs,withCosts) {
     if (ammo.elevation != undefined) {
         ammoInfo = ammoInfo+'&#9889; Elevation+ ';
     }
-    // if (ammo.rof >= 1.3) {
-    //     ammoInfo = ammoInfo+'&#9889; Cadence++ ';
-    // } else if (ammo.rof > 1) {
-    //     ammoInfo = ammoInfo+'&#9889; Cadence+ ';
-    // }
-    // if (ammo.rof < 1) {
-    //     ammoInfo = ammoInfo+'&#9889; Cadence- ';
-    // }
     if (ammo.rof != 1) {
         let perc = Math.round(ammo.rof*100);
         ammoInfo = ammoInfo+'&#9889; Cadence '+perc+'% ';
     }
-    // if (ammo.power >= 9) {
-    //     ammoInfo = ammoInfo+'&#9889; Puissance+++ ';
-    // } else if (ammo.power >= 3 || ammo.powermult >= 1.4) {
-    //     ammoInfo = ammoInfo+'&#9889; Puissance++ ';
-    // } else if (ammo.power > 0 || ammo.powermult > 1) {
-    //     ammoInfo = ammoInfo+'&#9889; Puissance+ ';
-    // }
-    // if (ammo.power < 0 || ammo.powermult < 1) {
-    //     ammoInfo = ammoInfo+'&#9889; Puissance- ';
-    // }
     if (ammo.powermult != 1) {
         let perc = Math.round(ammo.powermult*100);
         ammoInfo = ammoInfo+'&#9889; Puissance '+perc+'% ';
@@ -211,19 +188,6 @@ function showAmmoInfo(ammoName,withReqs,withCosts) {
     } else if (ammo.power < 0) {
         ammoInfo = ammoInfo+'&#9889; Puissance '+ammo.power+' ';
     }
-    // if (ammo.armors < 0.2) {
-    //     ammoInfo = ammoInfo+'&#9889; Pénétration+++ ';
-    // } else if (ammo.armors < 0.5) {
-    //     ammoInfo = ammoInfo+'&#9889; Pénétration++ ';
-    // } else if (ammo.armors < 1) {
-    //     ammoInfo = ammoInfo+'&#9889; Pénétration+ ';
-    // } else if (ammo.armors >= 1.4) {
-    //     ammoInfo = ammoInfo+'&#9889; Pénétration-- ';
-    // } else if (ammo.armors > 1) {
-    //     ammoInfo = ammoInfo+'&#9889; Pénétration- ';
-    // } else if (ammo.avar != undefined) {
-    //     ammoInfo = ammoInfo+'&#9889; Pénétration ';
-    // }
     if (ammo.armors != 1 || ammo.avar != undefined) {
         let armur = ammo.armors*10;
         if (ammo.avar != undefined) {
@@ -242,14 +206,6 @@ function showAmmoInfo(ammoName,withReqs,withCosts) {
     if (ammo.aignore != undefined) {
         ammoInfo = ammoInfo+'&#9889; IgnoreArmure '+ammo.aignore+'- ';
     }
-    // if (ammo.accuracy > 1.3) {
-    //     ammoInfo = ammoInfo+'&#9889; Précision++ ';
-    // } else if (ammo.accuracy > 1) {
-    //     ammoInfo = ammoInfo+'&#9889; Précision+ ';
-    // }
-    // if (ammo.accuracy < 1) {
-    //     ammoInfo = ammoInfo+'&#9889; Précision- ';
-    // }
     if (ammo.accuracy != 1) {
         let perc = Math.round(ammo.accuracy*100);
         ammoInfo = ammoInfo+'&#9889; Précision '+perc+'% ';
@@ -299,6 +255,11 @@ function showAmmoInfo(ammoName,withReqs,withCosts) {
             } else {
                 ammoInfo = ammoInfo+'&#9889; AOE Bataillon ';
             }
+        }
+    }
+    if (ammo.fly != undefined) {
+        if (!ammo.fly) {
+            ammoInfo = ammoInfo+'&#9889; Tir au sol uniquement ';
         }
     }
     if (ammo.info != undefined) {
