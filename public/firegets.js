@@ -2696,8 +2696,10 @@ function weaponAdj(weapon,bat,wn) {
     let ammo = ammoTypes[ammoIndex];
     thisWeapon.ammo = myAmmo;
     if (ammo.fly != undefined) {
-        if (!ammo.fly) {
+        if (ammo.fly <= 0) {
             thisWeapon.noFly = true;
+        } else {
+            thisWeapon.dca = thisWeapon.dca*ammo.fly;
         }
     }
     if (ammo.apweb) {

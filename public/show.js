@@ -258,7 +258,7 @@ function showAmmoInfo(ammoName,withReqs,withCosts) {
         }
     }
     if (ammo.fly != undefined) {
-        if (!ammo.fly) {
+        if (ammo.fly <= 0) {
             ammoInfo = ammoInfo+'&#9889; Tir au sol uniquement ';
         }
     }

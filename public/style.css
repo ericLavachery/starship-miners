@@ -8,6 +8,7 @@ body {
     background-image: url(/static/img/boardBG.jpg);
     background-repeat: no-repeat;
     background-position: left top;
+    /* background-size: cover; */
 }
 #cadreMap {
     padding: 0 0 0 0;

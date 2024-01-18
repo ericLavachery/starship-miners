@@ -294,12 +294,6 @@ function okSound(roger) {
         okSnd.play();
     } else {
         playOKBip('radio4');
-        // let nbr = rand.rand(1,5);
-        // let nbr = 4;
-        // okSnd = new Howl({
-        //     src: ['/static/sounds/moves/radio'+nbr+'.mp3'],
-        //     volume: myVol
-        // });
     }
 };
 

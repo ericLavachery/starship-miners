@@ -144,14 +144,14 @@ function mapEffect() {
     let hmon = hpix-6;
     let vmon = vpix-8;
     if (!playerInfos.onShip) {
-        if (playerInfos.bldVM.includes('Centre de com')) {
-            if (playerInfos.comp.det >= 3) {
-                $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/nailGrid.png"></span>');
+        if (playerInfos.bldVM.includes('Centre de com') && playerInfos.comp.det >= 2) {
+            if (playerInfos.comp.det >= 4) {
+                $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid3.png"></span>');
             } else {
-                $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/scratchGrid.png"></span>');
+                $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid2.png"></span>');
             }
         } else {
-            $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid.png"></span>');
+            $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid1.png"></span>');
         }
         $("#dirty").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
     }
