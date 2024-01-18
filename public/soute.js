@@ -392,8 +392,8 @@ function hopList() {
     $('#list_soute').empty();
     let showMe = true;
     let sortedBats = bataillons.slice();
-    sortedBats = _.sortBy(_.sortBy(sortedBats,'id'),'type');
-    // sortedBats = sortedBats.reverse();
+    sortedBats = _.sortBy(_.sortBy(sortedBats,'soins'),'emo');
+    sortedBats = sortedBats.reverse();
     sortedBats.forEach(function(bat) {
         let batType = getBatType(bat);
         showMe = false;

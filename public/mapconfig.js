@@ -69,6 +69,19 @@ function yourMapSize() {
     showMap(zone,false);
 };
 
+function stationMapSize() {
+    numHTiles = playerInfos.numHTiles;
+    numVTiles = playerInfos.numVTiles;
+    writeMapStyles();
+    myTileX = zone[1830].x;
+    myTileY = zone[1830].y;
+    xOffset = myTileX-Math.round(numVTiles/2);
+    yOffset = myTileY-Math.round(numHTiles/2);
+    limitOffset();
+    showMap(zone,false);
+    miniOut();
+};
+
 function limitOffset() {
     if (xOffset < 0) {
         xOffset = 0;
@@ -148,7 +161,7 @@ function centerMapTarget() {
 };
 
 function centerMapCenter() {
-    // center on selectedBat
+    // center on lander
     myTileX = zone[playerInfos.myCenter].x;
     myTileY = zone[playerInfos.myCenter].y;
     xOffset = myTileX-Math.round(numVTiles/2);

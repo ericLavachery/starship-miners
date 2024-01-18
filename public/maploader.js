@@ -153,10 +153,6 @@ function mapEffect() {
         } else {
             $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid.png"></span>');
         }
-        // if (!playerInfos.clouds) {
-        //     $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/scratchGrid7.png"></span>');
-        // } else {
-        // }
         $("#dirty").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
     }
     if (!inSoute && !playerInfos.onStart) {

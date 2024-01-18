@@ -169,6 +169,7 @@ function stopMission() {
     playerInfos.para = 0;
     inSoute = false;
     modeLanding = true;
+    stationMapSize();
     landingList();
 };
 
@@ -900,7 +901,7 @@ function stopSonde() {
     saveNewMap();
     loadZone(0);
     showedTilesReset(false);
-    miniOut();
+    stationMapSize();
     commandes();
     viewPop();
     planetThumb();

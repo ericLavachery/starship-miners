@@ -508,6 +508,10 @@ function rechercheSci(bat,time) {
         } else {
             playerInfos.gangXP = playerInfos.gangXP+Math.round(time/5);
         }
+        if (playerInfos.xpf < gangXPFactor) {
+            bat.eq = 'aucun';
+            warning('<span class="hrouge">RECHERCHE: Matériel obsolète!</span>','<span class="gfbleu">Vous devez acheter du nouveau matériel (équipement) pour que vos chercheurs puissent travailler.</span><br>',true);
+        }
     } else {
         warning('<span class="hrouge">RECHERCHE: Chercheurs sans matériel!</span>','<span class="gfbleu">Vous devez leur acheter du matériel (équipement) pour qu\'ils puissent travailler.</span><br>',true);
     }

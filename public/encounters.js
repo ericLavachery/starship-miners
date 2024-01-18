@@ -1,45 +1,45 @@
 function encounterCheck() {
     if (!zone[0].visit && zone[0].number < 50) {
         if (zone[0].mapDiff >= 2) {
-            let encounterChance = playerInfos.enc;
+            let encounterDice = playerInfos.enc;
             if (zone[0].planet === 'Dom') {
-                if (zone[0].mapDiff >= 4) {
-                    encounterChance = encounterChance-20;
+                if (zone[0].mapDiff >= 3) {
+                    encounterDice = encounterDice-20;
                 }
             }
             if (zone[0].planet === 'Sarak') {
-                encounterChance = encounterChance-10;
-                if (zone[0].mapDiff >= 5) {
-                    encounterChance = encounterChance-20;
+                encounterDice = encounterDice-10;
+                if (zone[0].mapDiff >= 4) {
+                    encounterDice = encounterDice-20;
                 }
             }
             if (zone[0].planet === 'Horst') {
-                encounterChance = encounterChance+40;
-                if (encounterChance < 90) {
-                    encounterChance = 90;
+                encounterDice = encounterDice+40;
+                if (encounterDice < 90) {
+                    encounterDice = 90;
                 }
             }
             if (zone[0].planet === 'Kzin') {
-                encounterChance = encounterChance+20;
-                if (encounterChance < 70) {
-                    encounterChance = 70;
+                encounterDice = encounterDice+20;
+                if (encounterDice < 70) {
+                    encounterDice = 70;
                 }
             }
             if (zone[0].planet === 'Gehenna') {
-                encounterChance = encounterChance+10;
-                if (encounterChance < 60) {
-                    encounterChance = 60;
+                encounterDice = encounterDice+10;
+                if (encounterDice < 60) {
+                    encounterDice = 60;
                 }
             }
             if (playerInfos.cAdj <= 3 && playerInfos.cLoss >= 1500) {
-                encounterChance = encounterChance-10;
+                encounterDice = encounterDice-10;
             }
-            if (rand.rand(1,encounterChance) <= 30) {
+            if (rand.rand(1,encounterDice) <= 30) {
                 encounter();
             } else {
                 playerInfos.encz.push('xx');
                 if (zone[0].planet === 'Sarak' || zone[0].planet === 'Dom') {
-                    playerInfos.enc = playerInfos.enc-10;
+                    playerInfos.enc = playerInfos.enc-12;
                     let citNeedDice = Math.round(18-(playerInfos.cNeed*10));
                     if (citNeedDice < 4) {
                         citNeedDice = 4;
@@ -131,11 +131,11 @@ function checkEncDice(encDiceMin,encDiceMax,hard) {
     } else if (encDice === 13) {
         // Piège alien
         tooLate(hard);
-        playerInfos.enc = playerInfos.enc-10;
+        playerInfos.enc = playerInfos.enc-12;
         playerInfos.encz.push('pa');
     } else if ((encDice === 14 || encDice === 15 || encDice === 16 || encDice === 17) && zone[0].mapDiff < 7) {
         tooLate(hard);
-        playerInfos.enc = playerInfos.enc-10;
+        playerInfos.enc = playerInfos.enc-12;
         playerInfos.encz.push('rb');
     } else {
         if (rand.rand(1,50) > playerInfos.enc && !playerInfos.encz.includes('br')) {

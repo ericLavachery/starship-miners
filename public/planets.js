@@ -1454,10 +1454,15 @@ function checkUndark() {
 
 function undarkCenter() {
     let distance;
+    let udoDistance = Math.round(playerInfos.comp.det*3.75);
     zone.forEach(function(tile) {
         distance = calcDistance(1830,tile.id);
         if (distance <= startLander) {
             unDark(tile.id);
+        } else if (distance <= udoDistance) {
+            if (!zone[0].undarkOnce.includes(tile.id) && !zone[0].undarkAll) {
+                zone[0].undarkOnce.push(tile.id);
+            }
         }
         if (tile.infra != undefined) {
             if (tile.infra === 'Crystal') {

@@ -1,5 +1,12 @@
 function minimap() {
-    if (!zone[0].isPrev) {
+    let thatsAllrightNoProblemCool = true;
+    if (zone[0].isPrev) {
+        thatsAllrightNoProblemCool = false;
+    }
+    if (playerInfos.onShip && !modeSonde) {
+        thatsAllrightNoProblemCool = false;
+    }
+    if (thatsAllrightNoProblemCool) {
         showMini = true;
         // console.log('MINI allZoneRes');
         // console.log(allZoneRes);

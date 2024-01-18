@@ -260,6 +260,11 @@ function showEquip(batType,batEquip,bat) {
             }
         }
     }
+    if (batEquip.name === 'gang-lore') {
+        if (playerInfos.xpf < gangXPFactor) {
+            showEq = false;
+        }
+    }
     return showEq;
 };
 
