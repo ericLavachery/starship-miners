@@ -957,17 +957,6 @@ function hideBataillon(bat) {
 };
 
 function writeMapStyles() {
-    if (playerInfos.onShip && !modeSonde) {
-        if (numHTiles > 17) {
-            numHTiles = 17;
-        }
-        if (numVTiles > 11) {
-            numVTiles = 11;
-        }
-    } else {
-        numHTiles = playerInfos.numHTiles;
-        numVTiles = playerInfos.numVTiles;
-    }
     $('#mapStyles').empty();
     $('#mapStyles').append('.grid-container {grid-template-columns:');
     let i = 0;

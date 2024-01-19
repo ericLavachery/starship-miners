@@ -16,8 +16,8 @@ function goSoute() {
     checkReserve();
     souteMenu();
     if (souteTab === 'unitz') {
-        $('body').css('background-image','url(/static/img/dockBG.jpg)');
-        $('body').css('background-position','left center');
+        $('body').css('background-image','url(/static/img/dockBGnew.jpg)');
+        $('body').css('background-position','left top');
         $("#menu_lander").css("display","block");
         $("#list_lander").css("height","757px");
         $("#list_lander").css("display","block");
@@ -40,6 +40,8 @@ function goSoute() {
     } else if (souteTab === 'hop') {
         $('body').css('background-image','url(/static/img/infirmBG.jpg)');
         $('body').css('background-position','left center');
+        // $('body').css('background-image','url(/static/img/infirmBGnew.jpg)');
+        // $('body').css('background-position','left top');
         $("#menu_lander").css("display","none");
         $("#list_lander").css("display","none");
         hopList();
@@ -71,7 +73,7 @@ function goStation() {
         playRoom('station',true,true);
         playFx('work',true);
     }
-    $('body').css('background-image','url(/static/img/boardBG.jpg)');
+    $('body').css('background-image','url(/static/img/boardBGnew.jpg)');
     $('body').css('background-position','left top');
     $("#zone_map").css("display","grid");
     $("#zone_soute").css("display","none");

@@ -38,6 +38,7 @@ function startMission(isTest) {
         // une fois placé, mettre le lander et toutes les unités qui sont dedans dans la db bataillons (sur le tileId choisi)
         // idem avec tous les landers
         // quand plus rien dans batsInSpace: modeLanding = false
+        autoMapSize();
         landingList();
         // la mission commence
     } else {
@@ -169,7 +170,7 @@ function stopMission() {
     playerInfos.para = 0;
     inSoute = false;
     modeLanding = true;
-    stationMapSize();
+    autoMapSize();
     landingList();
 };
 
@@ -888,8 +889,8 @@ function crashSonde() {
     modeSonde = false;
     playSound('sondecrash',-0.2);
     loadZone(0);
+    autoMapSize();
     showedTilesReset(false);
-    miniOut();
     commandes();
     viewPop();
     planetThumb();
@@ -900,6 +901,7 @@ function stopSonde() {
     feedZoneDBwith(zone);
     saveNewMap();
     loadZone(0);
+    autoMapSize();
     showedTilesReset(false);
     stationMapSize();
     commandes();
@@ -930,7 +932,8 @@ function goSonde(impacteur) {
         mapTurn = false;
     }
     generateNewMap(false);
-    showMap(zone,true);
+    autoMapSize();
+    // showMap(zone,true);
     planetThumb();
     commandes();
     viewPop();
@@ -1492,7 +1495,8 @@ function fullMapPreview() {
         if (!zone[0].isPrev) {
             zoneBkp = zone;
             zone = zonePrev;
-            showMap(zone,false,true);
+            // showMap(zone,false,true);
+            autoMapSize(true);
             viewPop();
             commandes();
             batUnselect();
@@ -1504,7 +1508,8 @@ function fullMapPreview() {
 function fullMapPreviewOut() {
     zone = zoneBkp;
     zoneBkp = [];
-    showMap(zone,false);
+    // showMap(zone,false);
+    autoMapSize();
     centerMapCenter();
     viewPop();
     pickZone();

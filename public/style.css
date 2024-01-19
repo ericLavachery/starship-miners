@@ -5,7 +5,7 @@ body {
     font-size: 14px;
     /* background-color: #31342c; */
     background-color: black;
-    background-image: url(/static/img/boardBG.jpg);
+    background-image: url(/static/img/boardBGnew.jpg);
     background-repeat: no-repeat;
     background-position: left top;
     /* background-size: cover; */
@@ -990,7 +990,7 @@ td {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
     /* background-position: 0% 0%; */
     background-image: url(/static/img/windowBG.jpg);
-    background-position: 0% 45%;
+    background-position: 0% 0%;
     scroll-behavior: auto;
     scrollbar-color: #23305e #17203f;
     overflow-y: scroll;
@@ -1011,7 +1011,7 @@ td {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
     /* background-position: 0% 0%; */
     background-image: url(/static/img/windowBG.jpg);
-    background-position: 0% 45%;
+    background-position: 0% 0%;
     scroll-behavior: auto;
     scrollbar-color: #23305e #17203f;
     overflow-y: scroll;

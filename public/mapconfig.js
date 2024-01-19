@@ -44,6 +44,46 @@ function areaGo(x,y) {
     confirmMode();
 };
 
+function autoMapSize(isPrev) {
+    let screenH = window.innerWidth;
+    let screenV = window.innerHeight;
+    console.log('YOUR SCREEN =====================================================================');
+    console.log(screenH+' x '+screenV);
+    screenH = screenH-540;
+    screenV = screenV-52;
+    if (playerInfos.onShip && playerInfos.resBar) {
+        screenV = screenV-30;
+    }
+    console.log('Map area');
+    console.log(screenH+' x '+screenV);
+    let numSquaresH = Math.floor(screenH/72);
+    let numSquaresV = Math.floor(screenV/72);
+    console.log('Squares');
+    console.log(numSquaresH+' x '+numSquaresV);
+    numHTiles = numSquaresH;
+    numVTiles = numSquaresV;
+    if (playerInfos.onShip && !modeSonde && !zone[0].isPrev) {
+        if (numHTiles > 17) {
+            numHTiles = 17;
+        }
+        if (numVTiles > 11) {
+            numVTiles = 11;
+        }
+    }
+    playerInfos.numHTiles = numHTiles;
+    playerInfos.numVTiles = numVTiles;
+    writeMapStyles();
+    myTileX = zone[1830].x;
+    myTileY = zone[1830].y;
+    xOffset = myTileX-Math.round(numVTiles/2);
+    yOffset = myTileY-Math.round(numHTiles/2);
+    limitOffset();
+    showMap(zone,false,isPrev);
+    if (playerInfos.onShip && !modeSonde && !zone[0].isPrev) {
+        miniOut();
+    }
+}
+
 function yourMapSize() {
     let screenH = window.screen.availWidth;
     let screenV = window.screen.availHeight;

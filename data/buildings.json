@@ -1206,7 +1206,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","fret","dumper","ravitaillement","dealer","starka","kirin","underground","maycamo","infrahelp","transport","nodeathcount","routes","prefab","noshow","notrash"],
+        "skills":["fouille","fret","dumper","ravitaillement","dealer","starka","kirin","underground","maycamo","flash","infrahelp","transport","nodeathcount","routes","prefab","noshow","notrash"],
         "maxSkill":30,
         "maxDrug":12,
         "mecanoCost":12,
