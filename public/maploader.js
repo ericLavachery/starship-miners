@@ -138,22 +138,31 @@ function toggleMapEffect() {
 };
 
 function mapEffect() {
-    $('#zone_effect').empty();
+    $('#zone_grid').empty();
+    $('#zone_screen').empty();
     let hpix = (numHTiles*72)+10;
     let vpix = (numVTiles*72)+10;
     let hmon = hpix-6;
     let vmon = vpix-8;
     if (!playerInfos.onShip) {
         if (playerInfos.bldVM.includes('Centre de com') && playerInfos.comp.det >= 2) {
-            if (playerInfos.comp.det >= 4) {
-                $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid3.png"></span>');
+            if (playerInfos.comp.det >= 5) {
+                $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
+            } else if (playerInfos.comp.det >= 4) {
+                $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
+                $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt3.png" width="'+hpix+'" height="'+vpix+'"></span>');
             } else {
-                $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid2.png"></span>');
+                $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
+                $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt2.png" width="'+hpix+'" height="'+vpix+'"></span>');
             }
         } else {
-            $('#zone_effect').append('<span class="cloudz" id="dirty"><img src="/static/img/dirtyGrid1.png"></span>');
+            $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
+            $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt1.png" width="'+hpix+'" height="'+vpix+'"></span>');
         }
-        $("#dirty").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
+        $("#gridPic").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
+        if (playerInfos.comp.det < 5) {
+            $("#screenPic").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
+        }
     }
     if (!inSoute && !playerInfos.onStart) {
         $('#zone_monitor').empty();
@@ -165,11 +174,11 @@ function mapEffect() {
 };
 
 function mapEffectOut() {
-    $("#zone_effect").css("display","none");
+    $("#zone_grid").css("display","none");
 };
 
 function mapEffectIn() {
-    $("#zone_effect").css("display","block");
+    $("#zone_grid").css("display","block");
 };
 
 function redrawTile(tileId,drawSelectedBat) {

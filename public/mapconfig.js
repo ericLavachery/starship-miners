@@ -69,6 +69,13 @@ function autoMapSize(isPrev) {
         if (numVTiles > 11) {
             numVTiles = 11;
         }
+    } else {
+        if (numHTiles > 28) {
+            numHTiles = 28;
+        }
+        if (numVTiles > 16) {
+            numVTiles = 16;
+        }
     }
     playerInfos.numHTiles = numHTiles;
     playerInfos.numVTiles = numVTiles;
