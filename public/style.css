@@ -1003,7 +1003,7 @@ td {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
     /* background-position: 0% 0%; */
     scroll-behavior: auto;
-    scrollbar-color: #23305e #17203f;
+    scrollbar-color: #000000 #212828;
     overflow-y: scroll;
     /* display: none; */
     max-width: 550px;
@@ -1014,7 +1014,7 @@ td {
     background-image: url(/static/img/windowBG.jpg);
     background-position: 0% 0%;
     scroll-behavior: auto;
-    scrollbar-color: #23305e #17203f;
+    scrollbar-color: #000000 #212828;
     overflow-y: scroll;
     display: none;
     height: 300px;
@@ -1171,7 +1171,7 @@ td {
     background-image: url(/static/img/souteList.jpg);
     background-position: -10px 0px;
     scroll-behavior: auto;
-    scrollbar-color: #23305e #17203f;
+    scrollbar-color: #000000 #212828;
     overflow-y: scroll;
     height: 757px;
     width: 455px;
@@ -1188,7 +1188,7 @@ td {
     background-image: url(/static/img/souteList.jpg);
     background-position: -10px 0px;
     scroll-behavior: auto;
-    scrollbar-color: #23305e #17203f;
+    scrollbar-color: #000000 #212828;
     overflow-y: scroll;
     height: 757px;
     width: 455px;

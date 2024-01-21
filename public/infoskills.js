@@ -198,7 +198,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     }
     let camChance = calcCamo(bat);
     // FORTIFICATION
-    if (batType.skills.includes('fortif') && !playerInfos.onShip && !zeroCrew) {
+    if (batType.skills.includes('fortif') && !playerInfos.onShip && !zeroCrew && ((tile.terrain != 'W' && tile.terrain != 'L' && tile.terrain != 'R') || tile.rd)) {
         balise = 'h4';
         boutonNope = 'boutonGrey';
         colorNope = 'gf';

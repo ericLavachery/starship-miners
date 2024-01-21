@@ -141,24 +141,26 @@ function mapEffect() {
     // let vmon = vpix-8;
     let hmon = hpix+43;
     let vmon = vpix+101;
-    $('#zone_monitor').append('<img src="/static/img/monitorLight.png" width="'+hmon+'" height="'+vmon+'">');
-    if (playerInfos.bldVM.includes('Centre de com') && playerInfos.comp.det >= 2) {
-        if (playerInfos.comp.det >= 5) {
-            $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
-        } else if (playerInfos.comp.det >= 4) {
-            $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
-            $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt3.png" width="'+hpix+'" height="'+vpix+'"></span>');
+    if (!inSoute) {
+        $('#zone_monitor').append('<img src="/static/img/monitorLight.png" width="'+hmon+'" height="'+vmon+'">');
+        if (playerInfos.bldVM.includes('Centre de com') && playerInfos.comp.det >= 2) {
+            if (playerInfos.comp.det >= 5) {
+                $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
+            } else if (playerInfos.comp.det >= 4) {
+                $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
+                $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt3.png" width="'+hpix+'" height="'+vpix+'"></span>');
+            } else {
+                $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
+                $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt2.png" width="'+hpix+'" height="'+vpix+'"></span>');
+            }
         } else {
             $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
-            $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt2.png" width="'+hpix+'" height="'+vpix+'"></span>');
+            $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt1.png" width="'+hpix+'" height="'+vpix+'"></span>');
         }
-    } else {
-        $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
-        $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt1.png" width="'+hpix+'" height="'+vpix+'"></span>');
-    }
-    $("#gridPic").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
-    if (playerInfos.comp.det < 5) {
-        $("#screenPic").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
+        $("#gridPic").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
+        if (playerInfos.comp.det < 5) {
+            $("#screenPic").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
+        }
     }
 };
 
