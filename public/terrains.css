@@ -1,27 +1,35 @@
 #zone_map {
     position: absolute;
     z-index: 1;
-    /* margin-left: 0px; */
-    /* margin-top: 0px; */
+    margin-left: 16px;
+    margin-top: 24px;
 }
 #zone_grid {
     display: block;
     position: absolute;
     z-index: 2;
     pointer-events:none;
-    /* margin-left: 0px; */
-    /* margin-top: 0px; */
+    margin-left: 16px;
+    margin-top: 24px;
 }
 #zone_screen {
     display: block;
     position: absolute;
     z-index: 3;
     pointer-events:none;
-    /* margin-left: 0px; */
-    /* margin-top: 0px; */
+    margin-left: 16px;
+    margin-top: 24px;
 }
 #zone_monitor {
-    /* display: block; */
+    display: block;
+    position: absolute;
+    z-index: 10;
+    pointer-events:none;
+    /* background-image: url(/static/img/monitor.png); */
+    margin-left: -6px;
+    margin-top: -20px;
+}
+/* #zone_monitor {
     display: none;
     position: absolute;
     z-index: 10;
@@ -31,7 +39,7 @@
     border-style: ridge;
     border-width: 8px;
     border-color: #23305e;
-}
+} */
 #zone_soute {
     display: none;
     margin-left: -10px;
@@ -47,7 +55,7 @@
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
     /* background-position: 0% 40%; */
     background-image: url(/static/img/minimap.jpg);
-    background-position: 0% 0%;
+    background-position: 0 0;
     height: 260px;
     padding-top: 21px;
     padding-left: 9px;
@@ -66,8 +74,8 @@
     position: absolute;
     z-index: 2;
     pointer-events:none;
-    margin-left: 0px;
-    margin-top: 0px;
+    margin-left: 1px;
+    margin-top: 3px;
 }
 .mini {
     min-width: 4px;

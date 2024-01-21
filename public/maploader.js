@@ -33,7 +33,7 @@ function showMap(wmap,justMoved,isPrev) {
         allCheckedZoneRes = [];
     }
     viewBorders = [];
-    let sondeViewDistance = Math.ceil((playerInfos.comp.vsp+3)*(playerInfos.comp.det+8)/8);
+    let sondeViewDistance = calcSondeView();
     if (modeSonde || modeLanding) {
         playerInfos.showedTiles = [1830];
         showLanderLandingTiles();
@@ -59,12 +59,6 @@ function showMap(wmap,justMoved,isPrev) {
         if (tile.seed >= 10) {
             tPic = tile.terrain+'_0'+tile.seed;
         } else {
-            // tPic = tile.terrain+'_00'+tile.seed;
-            // if (zone[0].planet === 'Gehenna' && tile.terrain === 'F') {
-            //     tPic = tile.terrain+'b_00'+tile.seed;
-            // } else {
-            //     tPic = tile.terrain+'_00'+tile.seed;
-            // }
             if (tile.terrain === 'F') {
                 tPic = tile.terrain+'c_00'+tile.seed;
             } else {
@@ -140,36 +134,31 @@ function toggleMapEffect() {
 function mapEffect() {
     $('#zone_grid').empty();
     $('#zone_screen').empty();
+    $('#zone_monitor').empty();
     let hpix = (numHTiles*72)+10;
     let vpix = (numVTiles*72)+10;
-    let hmon = hpix-6;
-    let vmon = vpix-8;
-    if (!playerInfos.onShip) {
-        if (playerInfos.bldVM.includes('Centre de com') && playerInfos.comp.det >= 2) {
-            if (playerInfos.comp.det >= 5) {
-                $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
-            } else if (playerInfos.comp.det >= 4) {
-                $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
-                $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt3.png" width="'+hpix+'" height="'+vpix+'"></span>');
-            } else {
-                $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
-                $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt2.png" width="'+hpix+'" height="'+vpix+'"></span>');
-            }
+    // let hmon = hpix-6;
+    // let vmon = vpix-8;
+    let hmon = hpix+43;
+    let vmon = vpix+101;
+    $('#zone_monitor').append('<img src="/static/img/monitorLight.png" width="'+hmon+'" height="'+vmon+'">');
+    if (playerInfos.bldVM.includes('Centre de com') && playerInfos.comp.det >= 2) {
+        if (playerInfos.comp.det >= 5) {
+            $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
+        } else if (playerInfos.comp.det >= 4) {
+            $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
+            $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt3.png" width="'+hpix+'" height="'+vpix+'"></span>');
         } else {
             $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
-            $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt1.png" width="'+hpix+'" height="'+vpix+'"></span>');
+            $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt2.png" width="'+hpix+'" height="'+vpix+'"></span>');
         }
-        $("#gridPic").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
-        if (playerInfos.comp.det < 5) {
-            $("#screenPic").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
-        }
-    }
-    if (!inSoute && !playerInfos.onStart) {
-        $('#zone_monitor').empty();
-        $('#zone_monitor').append('<img src="/static/img/empty.png" width="'+hmon+'" height="'+vmon+'">');
-        $("#zone_monitor").css("display","block");
     } else {
-        $("#zone_monitor").css("display","none");
+        $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
+        $('#zone_screen').append('<span class="cloudz" id="screenPic"><img src="/static/img/screenDirt1.png" width="'+hpix+'" height="'+vpix+'"></span>');
+    }
+    $("#gridPic").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
+    if (playerInfos.comp.det < 5) {
+        $("#screenPic").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
     }
 };
 

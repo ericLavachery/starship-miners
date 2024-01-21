@@ -76,13 +76,14 @@ body {
     background-color: #303943;
     font-size: 13px;
     color: #d5cabd;
-    padding: 8px 8px;
-    border-style: solid;
-    border-width: 2px;
+    padding: 6px 6px;
+    border-style: ridge;
+    border-width: 6px;
     /* border-color: #464a4a; */
-    border-color: #000000;
-    margin: 9px 0 10px 0;
-    border-radius: 6px;
+    /* border-color: #3c4949; */
+    border-color: #323d3d;
+    margin: 9px 0 9px 0;
+    border-radius: 15px;
     min-width: 285px;
 }
 .modeSelect {
@@ -969,7 +970,7 @@ hr.craft {
 }
 td {
     vertical-align: top;
-    padding-right: 4px;
+    padding-right: 3px;
 }
 .klim {
     margin: 10px 0 0 3px;
@@ -992,7 +993,7 @@ td {
     background-image: url(/static/img/windowBG.jpg);
     background-position: 0% 0%;
     scroll-behavior: auto;
-    scrollbar-color: #23305e #17203f;
+    scrollbar-color: #000000 #212828;
     overflow-y: scroll;
     display: none;
     max-height: 750px;

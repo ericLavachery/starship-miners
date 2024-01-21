@@ -79,7 +79,7 @@ function minimap() {
             ccom = true;
         }
         let alienView;
-        let sondeViewDistance = Math.ceil((playerInfos.comp.vsp+3)*(playerInfos.comp.det+8)/8);
+        let sondeViewDistance = calcSondeView();
         if (!modeSonde) {
             sondeViewDistance = 3;
         }
@@ -91,7 +91,7 @@ function minimap() {
                     alienView = false;
                 }
             } else {
-                alienView = true;tile.infra === 'Crystal'
+                alienView = true;
             }
             let withCrys = false;
             if (tile.infra != undefined) {
@@ -196,6 +196,18 @@ function minimap() {
         }
     }
 };
+
+function calcSondeView() {
+    let sondeView = 3;
+    let viewVSP = Math.round(playerInfos.comp.vsp*4.4);
+    let viewDET = Math.round(playerInfos.comp.det*3.5);
+    if (viewVSP > viewDET) {
+        sondeView = viewVSP;
+    } else {
+        sondeView = viewDET;
+    }
+    return sondeView;
+}
 
 function updateAliensNum() {
     checkVisibleAliens();

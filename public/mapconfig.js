@@ -51,6 +51,7 @@ function autoMapSize(isPrev) {
     console.log(screenH+' x '+screenV);
     screenH = screenH-540;
     screenV = screenV-52;
+    // screenV = screenV-124;
     if (playerInfos.onShip && playerInfos.resBar) {
         screenV = screenV-30;
     }
@@ -73,9 +74,15 @@ function autoMapSize(isPrev) {
         if (numHTiles > 28) {
             numHTiles = 28;
         }
-        if (numVTiles > 16) {
-            numVTiles = 16;
+        if (numVTiles > 15) {
+            numVTiles = 15;
         }
+    }
+    if (numHTiles < 14) {
+        numHTiles = 14;
+    }
+    if (numVTiles < 9) {
+        numVTiles = 9;
     }
     playerInfos.numHTiles = numHTiles;
     playerInfos.numVTiles = numVTiles;
