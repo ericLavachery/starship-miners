@@ -132,6 +132,9 @@ function toggleMapEffect() {
 };
 
 function mapEffect() {
+    $("#zone_grid").css("display","block");
+    $("#zone_screen").css("display","block");
+    $("#zone_monitor").css("display","block");
     $('#zone_grid').empty();
     $('#zone_screen').empty();
     $('#zone_monitor').empty();
@@ -161,15 +164,23 @@ function mapEffect() {
         if (playerInfos.comp.det < 5) {
             $("#screenPic").css('clip', 'rect(0px, '+hpix+'px, '+vpix+'px, 0px)');
         }
+    } else {
+        $("#zone_grid").css("display","none");
+        $("#zone_screen").css("display","none");
+        $("#zone_monitor").css("display","none");
     }
 };
 
 function mapEffectOut() {
     $("#zone_grid").css("display","none");
+    $("#zone_screen").css("display","none");
+    $("#zone_monitor").css("display","none");
 };
 
 function mapEffectIn() {
     $("#zone_grid").css("display","block");
+    $("#zone_screen").css("display","block");
+    $("#zone_monitor").css("display","block");
 };
 
 function redrawTile(tileId,drawSelectedBat) {

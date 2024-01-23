@@ -793,6 +793,9 @@ hr.craft {
     color: #ffff00;
   }
 }
+.niet {
+    text-decoration: line-through;
+}
 .cy {
     color: #6be9b4;
     font-weight: bold;
@@ -1071,6 +1074,10 @@ td {
     min-width: 130px;
     max-width: 130px;
     line-height: 17px;
+    scroll-behavior: auto;
+    scrollbar-color: #000000 #212828;
+    overflow-y: scroll;
+    max-height: 450px;
 }
 #gangInfos {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */

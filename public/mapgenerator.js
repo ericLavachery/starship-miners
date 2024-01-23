@@ -2178,6 +2178,10 @@ function zoneReport(myZone,quiet) {
     let percW = 0;
     let percR = 0;
     let terName;
+    // let allResQHere = {};
+    let allResHere = [];
+    // let centreResQHere = {};
+    let centreResHere = [];
     myZone.forEach(function(tile) {
         terName = getTileTerrainName(tile.id);
         if (terName === 'M') {
@@ -2206,6 +2210,39 @@ function zoneReport(myZone,quiet) {
         }
         if (terName === 'R') {
             percR++;
+        }
+        if (tile.rq != undefined) {
+            let isCentre = false;
+            let distance = calcDistance(1830,tile.id);
+            if (distance <= 9) {
+                isCentre = true;
+            }
+            Object.entries(tile.rs).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                if (isCentre) {
+                    if (!centreResHere.includes(key)) {
+                        centreResHere.push(key);
+                    }
+                }
+                if (!allResHere.includes(key)) {
+                    allResHere.push(key);
+                }
+                // if (playerInfos.comp.det >= 3) {
+                //     if (isCentre) {
+                //         if (centreResQHere[key] === undefined) {
+                //             centreResQHere[key] = value;
+                //         } else {
+                //             centreResQHere[key] = centreResQHere[key]+value;
+                //         }
+                //     }
+                //     if (allResQHere[key] === undefined) {
+                //         allResQHere[key] = value;
+                //     } else {
+                //         allResQHere[key] = allResQHere[key]+value;
+                //     }
+                // }
+            });
         }
     });
     percM = Math.round(percM/36);
@@ -2351,6 +2388,7 @@ function zoneReport(myZone,quiet) {
         }
         console.log(myZone[0].snd);
     }
+    let infoString = '';
     if (myZone[0].ensol === undefined) {
         let ensolFactor = rand.rand(25,35);
         let ensolBonus = rand.rand(0,80);
@@ -2359,69 +2397,158 @@ function zoneReport(myZone,quiet) {
             myZone[0].ensol = 40+rand.rand(0,10);
         }
         if (playerInfos.comp.det >= 2 && playerInfos.bldVM.includes('Station météo') && !quiet) {
-            warning('Ensoleillement',myZone[0].ensol,true);
+            // warning('Ensoleillement',myZone[0].ensol,true);
+            infoString = infoString+'<span class="vert">Ensoleillement:</span> <span class="gf">'+myZone[0].ensol+'</span>';
         }
     }
     if (!quiet) {
         if (playerInfos.bldVM.includes('Station météo')) {
             if (rain) {
-                warning('Pluie','Oui',true);
+                // warning('Pluie','Oui',true);
+                infoString = infoString+'<br><span class="vert">Pluie:</span> <span class="jaune">Oui</span>';
             } else {
-                warning('Pluie','Non',true);
+                // warning('Pluie','Non',true);
+                infoString = infoString+'<br><span class="vert">Pluie:</span> <span class="gf">Non</span>';
             }
         }
         if (playerInfos.comp.ca >= 2) {
             let potable = checkPotable(myZone,-1);
             if (!potable) {
-                warning('Eau','Empoisonnée<br>',true);
+                // warning('Eau','Empoisonnée<br>',true);
+                infoString = infoString+'<br><span class="vert">Eau:</span> <span class="jaune">Empoisonnée</span>';
             } else {
-                warning('Eau','OK<br>',true);
+                // warning('Eau','OK<br>',true);
+                infoString = infoString+'<br><span class="vert">Eau:</span> <span class="gf">OK</span>';
             }
         }
+        warning('<span class="bleu">Zone</span>',infoString,true);
+        let terrainString = '';
         if (playerInfos.comp.ca < 3) {
-            warning('Plaines',zone[0].pp+'%',true);
-            warning('Prairies',zone[0].pg+'%',true);
-            warning('Collines',zone[0].ph+'%',true);
-            warning('Montagnes',zone[0].pm+'%',true);
-            warning('Maquis',zone[0].pb+'%',true);
-            warning('Forêts',zone[0].pf+'%',true);
-            warning('Etangs',zone[0].pw+'%',true);
-            warning('Rivières',zone[0].pr+'%',true);
-            warning('Marécages',zone[0].ps+'%',false,-1,true);
+            terrainString = terrainString+'Plaines<span class="vert">'+zone[0].pp+'%</span> ';
+            terrainString = terrainString+'Prairies<span class="vert">'+zone[0].pg+'%</span> ';
+            terrainString = terrainString+'Collines<span class="vert">'+zone[0].ph+'%</span> ';
+            terrainString = terrainString+'Montagnes<span class="vert">'+zone[0].pm+'%</span> ';
+            terrainString = terrainString+'Maquis<span class="vert">'+zone[0].pb+'%</span> ';
+            terrainString = terrainString+'Forêts<span class="vert">'+zone[0].pf+'%</span> ';
+            terrainString = terrainString+'Etangs<span class="vert">'+zone[0].pw+'%</span> ';
+            terrainString = terrainString+'Rivières<span class="vert">'+zone[0].pr+'%</span> ';
+            terrainString = terrainString+'Marécages<span class="vert">'+zone[0].ps+'%</span> ';
+            // warning('Plaines',zone[0].pp+'%',true);
+            // warning('Prairies',zone[0].pg+'%',true);
+            // warning('Collines',zone[0].ph+'%',true);
+            // warning('Montagnes',zone[0].pm+'%',true);
+            // warning('Maquis',zone[0].pb+'%',true);
+            // warning('Forêts',zone[0].pf+'%',true);
+            // warning('Etangs',zone[0].pw+'%',true);
+            // warning('Rivières',zone[0].pr+'%',true);
+            // warning('Marécages',zone[0].ps+'%',true);
         } else {
-            warning('Plaines',zone[0].pp+'% ('+myZone[0].pKind+')',true);
-            warning('Prairies',zone[0].pg+'% ('+myZone[0].gKind+')',true);
+            terrainString = terrainString+'Plaines<span class="vert">'+zone[0].pp+'%</span>('+myZone[0].pKind+') ';
+            terrainString = terrainString+'Prairies<span class="vert">'+zone[0].pg+'%</span>('+myZone[0].gKind+') ';
             if (myZone[0].planet === 'Gehenna') {
-                warning('Collines',zone[0].ph+'% (spider)',true);
-                warning('Montagnes',zone[0].pm+'% (spider)',true);
-                warning('Maquis',zone[0].pb+'% (swarm)',true);
-                warning('Forêts',zone[0].pf+'% (spider)',true);
-                warning('Etangs',zone[0].pw+'% (larve)',true);
-                warning('Rivières',zone[0].pr+'% (larve)',true);
+                terrainString = terrainString+'Collines<span class="vert">'+zone[0].ph+'%</span>(spider) ';
+                terrainString = terrainString+'Montagnes<span class="vert">'+zone[0].pm+'%</span>(spider) ';
+                terrainString = terrainString+'Maquis<span class="vert">'+zone[0].pb+'%</span>(swarm) ';
+                terrainString = terrainString+'Forêts<span class="vert">'+zone[0].pf+'%</span>(spider) ';
+                terrainString = terrainString+'Etangs<span class="vert">'+zone[0].pw+'%</span>(larve) ';
+                terrainString = terrainString+'Rivières<span class="vert">'+zone[0].pr+'%</span>(larve) ';
             } else if (myZone[0].planet === 'Kzin') {
-                warning('Collines',zone[0].ph+'% (bug)',true);
-                warning('Montagnes',zone[0].pm+'% (bug)',true);
-                warning('Maquis',zone[0].pb+'% (spider)',true);
-                warning('Forêts',zone[0].pf+'% (spider)',true);
-                warning('Etangs',zone[0].pw+'% (larve)',true);
-                warning('Rivières',zone[0].pr+'% (larve)',true);
+                terrainString = terrainString+'Collines<span class="vert">'+zone[0].ph+'%</span>(bug) ';
+                terrainString = terrainString+'Montagnes<span class="vert">'+zone[0].pm+'%</span>(bug) ';
+                terrainString = terrainString+'Maquis<span class="vert">'+zone[0].pb+'%</span>(spider) ';
+                terrainString = terrainString+'Forêts<span class="vert">'+zone[0].pf+'%</span>(spider) ';
+                terrainString = terrainString+'Etangs<span class="vert">'+zone[0].pw+'%</span>(larve) ';
+                terrainString = terrainString+'Rivières<span class="vert">'+zone[0].pr+'%</span>(larve) ';
             } else if (myZone[0].planet === 'Horst') {
-                warning('Collines',zone[0].ph+'% (bug)',true);
-                warning('Montagnes',zone[0].pm+'% (bug)',true);
-                warning('Maquis',zone[0].pb+'% (swarm)',true);
-                warning('Forêts',zone[0].pf+'% (swarm)',true);
-                warning('Etangs',zone[0].pw+'% (swarm)',true);
-                warning('Rivières',zone[0].pr+'% (swarm)',true);
+                terrainString = terrainString+'Collines<span class="vert">'+zone[0].ph+'%</span>(bug) ';
+                terrainString = terrainString+'Montagnes<span class="vert">'+zone[0].pm+'%</span>(bug) ';
+                terrainString = terrainString+'Maquis<span class="vert">'+zone[0].pb+'%</span>(swarm) ';
+                terrainString = terrainString+'Forêts<span class="vert">'+zone[0].pf+'%</span>(swarm) ';
+                terrainString = terrainString+'Etangs<span class="vert">'+zone[0].pw+'%</span>(swarm) ';
+                terrainString = terrainString+'Rivières<span class="vert">'+zone[0].pr+'%</span>(swarm) ';
             } else {
-                warning('Collines',zone[0].ph+'% (bug)',true);
-                warning('Montagnes',zone[0].pm+'% (bug)',true);
-                warning('Maquis',zone[0].pb+'% (swarm)',true);
-                warning('Forêts',zone[0].pf+'% (spider)',true);
-                warning('Etangs',zone[0].pw+'% (larve)',true);
-                warning('Rivières',zone[0].pr+'% (larve)',true);
+                terrainString = terrainString+'Collines<span class="vert">'+zone[0].ph+'%</span>(bug) ';
+                terrainString = terrainString+'Montagnes<span class="vert">'+zone[0].pm+'%</span>(bug) ';
+                terrainString = terrainString+'Maquis<span class="vert">'+zone[0].pb+'%</span>(swarm) ';
+                terrainString = terrainString+'Forêts<span class="vert">'+zone[0].pf+'%</span>(spider) ';
+                terrainString = terrainString+'Etangs<span class="vert">'+zone[0].pw+'%</span>(larve) ';
+                terrainString = terrainString+'Rivières<span class="vert">'+zone[0].pr+'%</span>(larve) ';
             }
-            warning('Marécages',zone[0].ps+'% ('+myZone[0].sKind+')',false,-1,true);
+            terrainString = terrainString+'Marécages<span class="vert">'+zone[0].ps+'%</span>('+myZone[0].sKind+') ';
+            // warning('Plaines',zone[0].pp+'% ('+myZone[0].pKind+')',true);
+            // warning('Prairies',zone[0].pg+'% ('+myZone[0].gKind+')',true);
+            // if (myZone[0].planet === 'Gehenna') {
+            //     warning('Collines',zone[0].ph+'% (spider)',true);
+            //     warning('Montagnes',zone[0].pm+'% (spider)',true);
+            //     warning('Maquis',zone[0].pb+'% (swarm)',true);
+            //     warning('Forêts',zone[0].pf+'% (spider)',true);
+            //     warning('Etangs',zone[0].pw+'% (larve)',true);
+            //     warning('Rivières',zone[0].pr+'% (larve)',true);
+            // } else if (myZone[0].planet === 'Kzin') {
+            //     warning('Collines',zone[0].ph+'% (bug)',true);
+            //     warning('Montagnes',zone[0].pm+'% (bug)',true);
+            //     warning('Maquis',zone[0].pb+'% (spider)',true);
+            //     warning('Forêts',zone[0].pf+'% (spider)',true);
+            //     warning('Etangs',zone[0].pw+'% (larve)',true);
+            //     warning('Rivières',zone[0].pr+'% (larve)',true);
+            // } else if (myZone[0].planet === 'Horst') {
+            //     warning('Collines',zone[0].ph+'% (bug)',true);
+            //     warning('Montagnes',zone[0].pm+'% (bug)',true);
+            //     warning('Maquis',zone[0].pb+'% (swarm)',true);
+            //     warning('Forêts',zone[0].pf+'% (swarm)',true);
+            //     warning('Etangs',zone[0].pw+'% (swarm)',true);
+            //     warning('Rivières',zone[0].pr+'% (swarm)',true);
+            // } else {
+            //     warning('Collines',zone[0].ph+'% (bug)',true);
+            //     warning('Montagnes',zone[0].pm+'% (bug)',true);
+            //     warning('Maquis',zone[0].pb+'% (swarm)',true);
+            //     warning('Forêts',zone[0].pf+'% (spider)',true);
+            //     warning('Etangs',zone[0].pw+'% (larve)',true);
+            //     warning('Rivières',zone[0].pr+'% (larve)',true);
+            // }
+            // warning('Marécages',zone[0].ps+'% ('+myZone[0].sKind+')',true);
         }
+        warning('<span class="bleu">Terrains</span>',terrainString,true);
+        let resCentreString = '';
+        let resRareString = '';
+        let thePlanet = myZone[0].planet;
+        let sortedResTypes = _.sortBy(resTypes,'name');
+        sortedResTypes.forEach(function(res) {
+            if (res.cat != 'zero' && res.cat != 'alien' && res.cat != 'transfo') {
+                if (playerInfos.resFlags.includes(res.name)) {
+                    if (centreResHere.includes(res.name)) {
+                        resCentreString = resCentreString+'<span class="cy">'+res.name+'</span> ';
+                    } else {
+                        resCentreString = resCentreString+'<span class="cy niet">'+res.name+'</span> ';
+                    }
+                } else {
+                    if (centreResHere.includes(res.name)) {
+                        resCentreString = resCentreString+'<span class="gf">'+res.name+'</span> ';
+                    } else {
+                        resCentreString = resCentreString+'<span class="gff niet">'+res.name+'</span> ';
+                    }
+                }
+                if (res.cat.includes('sky') || res.cat.includes('blue')) {
+                    let possibleRes = true;
+                    if (res.planets != undefined) {
+                        if (res.planets[thePlanet] === 0) {
+                            possibleRes = false;
+                        }
+                    }
+                    if (allResHere.includes(res.name)) {
+                        resRareString = resRareString+'<span class="vert">'+res.name+'</span> ';
+                    } else {
+                        if (possibleRes) {
+                            resRareString = resRareString+'<span class="brunf niet">'+res.name+'</span> ';
+                        } else {
+                            resRareString = resRareString+'<span class="gff niet">'+res.name+'</span> ';
+                        }
+                    }
+                }
+            }
+        });
+        warning('<span class="bleu">Ressources au centre</span>',resCentreString,true);
+        warning('<span class="bleu">Ressources rares</span>',resRareString,true);
     }
     console.log('ensol');
     console.log(myZone[0].ensol);
