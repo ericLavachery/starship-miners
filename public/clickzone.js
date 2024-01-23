@@ -174,6 +174,9 @@ function toggleShowedTile(tileId) {
         }
         selectedTile = tileId;
         showTileInfos(tileId);
+        if (modePlan) {
+            planDuCamp();
+        }
         if (showMini) {
             minimap();
         }

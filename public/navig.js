@@ -257,6 +257,9 @@ function commandes() {
                         $('#commandz').append('<button type="button" title="'+returnText+'" class="boutonNoir iconButtons pipi" onclick="showStartLander()" onmousedown="warnSound(`ignition`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
                         $('#commandz').append('<button type="button" title="'+returnText+'" class="boutonRouge iconButtons" onclick="stopMission()" onmousedown="warnSound(`takeoff`)" id="takeof2"><i class="fas fa-space-shuttle"></i></button>');
                     }
+                    if (playerInfos.mapTurn < 3) {
+                        $('#commandz').append('<button type="button" title="Faire un plan du campement" class="boutonRose iconButtons" onclick="planDuCamp()" onmousedown="clicSound(1)"><i class="fas fa-draw-polygon"></i></button>');
+                    }
                 }
             }
             if (!modeSonde) {

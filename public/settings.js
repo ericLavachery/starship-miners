@@ -18,6 +18,7 @@ if (yOffset == null) {
 let justReloaded = true;
 let pageError = false;
 // MAP GENERATOR
+let modePlan = false;
 let mped = {};
 let theTileRes = {};
 let theBatRes = {};

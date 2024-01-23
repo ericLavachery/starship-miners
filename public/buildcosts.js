@@ -49,7 +49,7 @@ function voirReserve() {
                 maxRes = playerInfos.maxRes[res.name];
             }
             let resCol = '';
-            let tagEmo = '&#9989;';
+            let tagEmo = '&#11035;';
             let tagTxt = 'Taguer cette ressource';
             if (maxRes < dispoRes && (res.cat != 'alien' || res.name === 'Gibier') && playerInfos.onShip && !inSoute) {
                 if (isPerish) {
@@ -58,7 +58,7 @@ function voirReserve() {
                     resCol = ' ciel';
                 }
             } else if (playerInfos.resFlags.includes(res.name)) {
-                tagEmo = '&#10062;';
+                tagEmo = '&#9989;';
                 tagTxt = 'Enlever le tag sur cette ressource';
                 resCol = ' jaune';
             } else if (res.cat === 'alien') {

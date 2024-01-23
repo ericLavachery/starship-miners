@@ -146,18 +146,16 @@ function weapDisplay(bat,batType,weapNum,inMelee,onInfra,defCol,guetCol,pop,body
                 wKOmessage = 'Pas d\'attaque avec cette arme';
             } else if (!hasControl) {
                 wKOmessage = 'Bataillon non contrôlé';
+            } else if (ammoLeft < 1) {
+                wKOmessage = 'Munitions épuisées';
+            } else if (bat.salvoLeft < 1) {
+                wKOmessage = 'Salves épuisées';
+            } else if (!apOK) {
+                wKOmessage = 'PA épuisés';
             } else if (noFireMelee) {
                 wKOmessage = 'Tir impossible en mêlée';
-            } else {
-                if (ammoLeft < 1) {
-                    wKOmessage = 'Munitions épuisées';
-                } else {
-                    if (!anyTarget) {
-                        wKOmessage = 'Pas de cible';
-                    } else if (!apOK) {
-                        wKOmessage = 'PA épuisés';
-                    }
-                }
+            } else  if (!anyTarget) {
+                wKOmessage = 'Pas de cible';
             }
             if (playerInfos.showWeaps) {
                 wKOmessage = wKOmessage+' / Cliquer pour cacher le détail';

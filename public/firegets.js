@@ -2609,24 +2609,19 @@ function weaponAdj(weapon,bat,wn) {
         }
     }
     if (thisWeapon.maxAmmo > 1) {
-        if (playerInfos.bldList.includes('Usine d\'armement')) {
-            thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.5);
-        } else if (playerInfos.bldList.includes('Arsenal')) {
-            thisWeapon.maxAmmo = Math.round(thisWeapon.maxAmmo*1.25);
-        }
         if (hasEquip(bat,['gilet']) && thisWeapon.maxAmmo < 99) {
-            thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.5);
-            if (thisWeapon.maxAmmo < 16) {
-                thisWeapon.maxAmmo = 16;
+            thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.33);
+            if (thisWeapon.maxAmmo < 12) {
+                thisWeapon.maxAmmo = 12;
             }
         }
         if (hasEquip(bat,['hangard']) && thisWeapon.maxAmmo < 99) {
             thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*2.5);
         }
         if (hasEquip(bat,['carrousel','carrousel1','carrousel2']) && thisWeapon.maxAmmo < 99) {
-            thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.35);
-            if (thisWeapon.maxAmmo < 16) {
-                thisWeapon.maxAmmo = 16;
+            thisWeapon.maxAmmo = Math.floor(thisWeapon.maxAmmo*1.25);
+            if (thisWeapon.maxAmmo < 12) {
+                thisWeapon.maxAmmo = 12;
             }
         }
     }

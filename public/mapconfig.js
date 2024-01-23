@@ -357,3 +357,125 @@ function checkEggInDark(tileId) {
     }
     return isVisible;
 };
+
+function planBatDrop(batId) {
+    if (selectedTile >= 0) {
+        if (playerInfos.showedTiles.includes(selectedTile)) {
+            let tile = getTileById(selectedTile);
+            if (tile.tileName === undefined) {
+                let bat = getBatById(batId);
+                let batType = getBatType(bat);
+                if (!bat.tags.includes('plan')) {
+                    bat.tags.push('plan');
+                }
+                tile.tileName = getUnitPrintName(batType,false);
+                redrawTile(tile.id,false);
+                console.log('OK PLAN');
+                console.log(tile);
+                console.log(batType);
+            } else {
+                console.log('ALREADY');
+            }
+        } else {
+            console.log('NO MARK');
+        }
+    } else {
+        console.log('NO SELECT');
+    }
+    planDuCamp();
+};
+
+function planDel() {
+    if (selectedTile >= 0) {
+        if (playerInfos.showedTiles.includes(selectedTile)) {
+            let tile = getTileById(selectedTile);
+            if (tile.tileName != undefined) {
+                planDeplan(tile.tileName);
+                delete tile.tileName;
+                redrawTile(tile.id,false);
+                console.log('OK DEL');
+            }
+        } else {
+            console.log('NO MARK');
+        }
+    } else {
+        console.log('NO SELECT');
+    }
+    planDuCamp();
+};
+
+function planDeplan(unitSmallName) {
+    let deplanOK = false;
+    bataillons.forEach(function(bat) {
+        if (!deplanOK) {
+            if (bat.loc === "trans") {
+                if (bat.type === unitSmallName) {
+                    if (bat.tags.includes('plan')) {
+                        tagDelete(bat,'plan');
+                        deplanOK = true;
+                    }
+                } else {
+                    let batType = getBatType(bat);
+                    if (batType.pName != undefined) {
+                        if (batType.pName === unitSmallName) {
+                            if (bat.tags.includes('plan')) {
+                                tagDelete(bat,'plan');
+                                deplanOK = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+};
+
+function planDuCamp() {
+    selectMode();
+    modePlan = true;
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","575px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
+    // $('#tileInfos').empty();
+    // $("#tileInfos").css("display","none");
+    $('#conUnitList').empty();
+    $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
+    $('#conUnitList').append('<span class="constName or">PLAN DU CAMPEMENT</span><br>');
+    $('#conUnitList').append('<span class="basicText"><span class="small gf">Cliquez sur un terrain, ensuite cliquez dans cette liste pour définir l\'emplacement voulu pour ce bâtiment</span></span><br>');
+    $('#conUnitList').append('<br>');
+    let mayDrop = false;
+    if (selectedTile >= 0) {
+        if (playerInfos.showedTiles.includes(selectedTile)) {
+            let tile = getTileById(selectedTile);
+            if (tile.tileName === undefined) {
+                mayDrop = true;
+            } else {
+                $('#conUnitList').append('<span class="constName or klik" onclick="planDel()">&#10060; Effacer <span class="jaune">('+tile.tileName+')</span></span><br>');
+            }
+        } else {
+            console.log('NO MARK');
+        }
+    } else {
+        console.log('NO SELECT');
+    }
+    sortedBats = _.sortBy(_.sortBy(bataillons,'id'),'type');
+    sortedBats.forEach(function(bat) {
+        if (bat.loc === "trans") {
+            let batType = getBatType(bat);
+            if (batType.cat === 'buildings' || batType.cat === 'devices') {
+                if (bat.tags.includes('plan')) {
+                    $('#conUnitList').append('<span class="constName vert">&#9989; '+batType.name+'</span><br>');
+                } else {
+                    if (mayDrop) {
+                        $('#conUnitList').append('<span class="constName gf klik" onclick="planBatDrop('+bat.id+')">&#11036; '+batType.name+'</span><br>');
+                    } else {
+                        $('#conUnitList').append('<span class="constName gff">&#11035; '+batType.name+'</span><br>');
+                    }
+                }
+            }
+        }
+    });
+    $('#conUnitList').append('<br><br>');
+};

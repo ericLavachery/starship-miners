@@ -1716,6 +1716,7 @@ function conOut(changeMode) {
         $('#conUnitList').css("height","300px");
         conselReset(changeMode);
         showResOpen = false;
+        modePlan = false;
         $("#conUnitList").css("display","none");
         $("#conAmmoList").css("display","none");
         if (Object.keys(selectedBat).length >= 1) {

@@ -31,24 +31,19 @@ function calcRavitVolume(bat) {
     let w2maxAmmo = batType.weapon2.maxAmmo;
     if (batType.weapon2.maxAmmo < 99) {
         if (batType.weapon2.maxAmmo > 1) {
-            if (playerInfos.bldList.includes('Usine d\'armement')) {
-                w2maxAmmo = Math.round(w2maxAmmo*1.5);
-            } else if (playerInfos.bldList.includes('Arsenal')) {
-                w2maxAmmo = Math.round(w2maxAmmo*1.25);
-            }
             if (hasEquip(bat,['gilet'])) {
-                w2maxAmmo = Math.floor(w2maxAmmo*1.5);
-                if (w2maxAmmo < 16) {
-                    w2maxAmmo = 16;
+                w2maxAmmo = Math.floor(w2maxAmmo*1.33);
+                if (w2maxAmmo < 12) {
+                    w2maxAmmo = 12;
                 }
             }
             if (hasEquip(bat,['hangard'])) {
                 w2maxAmmo = Math.floor(w2maxAmmo*2.5);
             }
             if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
-                w2maxAmmo = Math.floor(w2maxAmmo*1.35);
-                if (w2maxAmmo < 16) {
-                    w2maxAmmo = 16;
+                w2maxAmmo = Math.floor(w2maxAmmo*1.25);
+                if (w2maxAmmo < 12) {
+                    w2maxAmmo = 12;
                 }
             }
         }
@@ -74,24 +69,19 @@ function calcRavitVolume(bat) {
         ravitVolume[1] = ravitVolume[0]-Math.floor(ravitVolume[0]*ammoLeft/w2maxAmmo);
     } else if (batType.weapon.maxAmmo < 99) {
         if (batType.weapon.maxAmmo > 1) {
-            if (playerInfos.bldList.includes('Usine d\'armement')) {
-                w1maxAmmo = Math.round(w1maxAmmo*1.5);
-            } else if (playerInfos.bldList.includes('Arsenal')) {
-                w1maxAmmo = Math.round(w1maxAmmo*1.25);
-            }
             if (hasEquip(bat,['gilet'])) {
-                w1maxAmmo = Math.floor(w1maxAmmo*1.5);
-                if (w1maxAmmo < 16) {
-                    w1maxAmmo = 16;
+                w1maxAmmo = Math.floor(w1maxAmmo*1.33);
+                if (w1maxAmmo < 12) {
+                    w1maxAmmo = 12;
                 }
             }
             if (hasEquip(bat,['hangard'])) {
                 w1maxAmmo = Math.floor(w1maxAmmo*2.5);
             }
             if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
-                w1maxAmmo = Math.floor(w1maxAmmo*1.35);
-                if (w1maxAmmo < 16) {
-                    w1maxAmmo = 16;
+                w1maxAmmo = Math.floor(w1maxAmmo*1.25);
+                if (w1maxAmmo < 12) {
+                    w1maxAmmo = 12;
                 }
             }
         }
@@ -301,11 +291,6 @@ function calcRavitDrug(bat) {
     let ravitLeft = 0;
     if (batType.skills.includes('dealer')) {
         ravitLeft = batType.maxDrug;
-        if (playerInfos.bldList.includes('Centre de recherches')) {
-            ravitLeft = Math.round(ravitLeft*2);
-        } else if (playerInfos.bldList.includes('Laboratoire')) {
-            ravitLeft = Math.round(ravitLeft*1.5);
-        }
         if (ravitLeft < 999) {
             if (bat.tags.includes('dU')) {
                 let allTags = _.countBy(bat.tags);
