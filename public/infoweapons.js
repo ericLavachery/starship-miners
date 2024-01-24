@@ -182,13 +182,6 @@ function weapDisplay(bat,batType,weapNum,inMelee,onInfra,defCol,guetCol,pop,body
             bullseyeShot(bat,batType,thisWeapon,wDivName,inMelee,tirOK);
         }
         let maxSalves = batType.maxSalvo;
-        // if (thisWeapon.ammo === 'marquage-kill') {
-        //     if (maxSalves >= 5) {
-        //         maxSalves = maxSalves-2;
-        //     } else if (maxSalves >= 3) {
-        //         maxSalves = maxSalves-1;
-        //     }
-        // }
         let resteSalves = bat.salvoLeft;
         if (thisWeapon.noBis) {
             maxSalves = 1;
@@ -200,13 +193,6 @@ function weapDisplay(bat,batType,weapNum,inMelee,onInfra,defCol,guetCol,pop,body
                 }
             }
         }
-        // else if (thisWeapon.ammo === 'marquage-kill') {
-        //     if (resteSalves >= 5) {
-        //         resteSalves = resteSalves-2;
-        //     } else if (resteSalves >= 3) {
-        //         resteSalves = resteSalves-1;
-        //     }
-        // }
         if (!thisWeapon.noAtt && weapNum != 3) {
             if (resteSalves >= 1) {
                 $('#'+wDivName).append('<span class="paramName">Salves</span><span class="paramIcon '+colIcon+'"></span><span class="paramValue">'+resteSalves+'/'+maxSalves+'</span><br>');

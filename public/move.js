@@ -133,8 +133,10 @@ function getRoboTiles() {
     if (selectedBat.eq === 'e-control' || selectedBat.logeq === 'e-control' || selectedBatType.skills.includes('control')) {
         let roboControlers = [];
         let controlRange = 3;
-        if (playerInfos.bldList.includes('Centre de com')) {
+        if (playerInfos.bldList.includes('QG')) {
             controlRange = 12;
+        } else if (playerInfos.bldList.includes('Centre de com')) {
+            controlRange = 9;
         } else if (playerInfos.bldList.includes('Poste radio')) {
             controlRange = 6;
         }

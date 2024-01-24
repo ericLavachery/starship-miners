@@ -2840,14 +2840,14 @@ function checkZoneType() {
     // oeufs voilés
     zoneInfos.ieggs = false;
     zoneInfos.ieggsBonus = 0;
-    let sead = zone[1].seed;
+    let sead = zone[13].seed;
     if (sead > 6) {
         sead = sead-6;
     }
     let ieggsLevel = (Math.ceil(zone[0].mapDiff/3)*2)+sead;
     if (ieggsLevel >= 8) {
         zoneInfos.ieggs = true;
-        if (zone[2].seed === 4) {
+        if (zone[14].seed === 4) {
             zoneInfos.ieggsBonus = 3;
         } else {
             zoneInfos.ieggsBonus = 0;
@@ -2858,6 +2858,10 @@ function checkZoneType() {
         if (playerInfos.gLevel >= 18) {
             zoneInfos.ieggsBonus = 3;
         }
+    }
+    if (zone[0].planet === 'Gehenna') {
+        zoneInfos.ieggs = true;
+        zoneInfos.ieggsBonus = zoneInfos.ieggsBonus+3;
     }
     // swamp map
     let swampMap = false;
