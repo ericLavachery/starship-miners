@@ -2861,7 +2861,7 @@ function checkZoneType() {
     }
     if (zone[0].planet === 'Gehenna') {
         zoneInfos.ieggs = true;
-        zoneInfos.ieggsBonus = zoneInfos.ieggsBonus+3;
+        zoneInfos.ieggsBonus = zoneInfos.ieggsBonus+6;
     }
     // swamp map
     let swampMap = false;

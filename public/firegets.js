@@ -2693,6 +2693,9 @@ function weaponAdj(weapon,bat,wn) {
     if (ammo.fly != undefined) {
         if (ammo.fly <= 0) {
             thisWeapon.noFly = true;
+        } else if (ammo.fly >= 1) {
+            thisWeapon.noFly = false;
+            thisWeapon.dca = thisWeapon.dca*ammo.fly;
         } else {
             thisWeapon.dca = thisWeapon.dca*ammo.fly;
         }

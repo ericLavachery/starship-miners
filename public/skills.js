@@ -1104,7 +1104,8 @@ function getNitroBonus(bat) {
     let batType = getBatType(bat);
     let batAPLeft = bat.apLeft;
     if (bat.apLeft < 0 && !bat.tags.includes('construction')) {
-        batAPLeft = Math.round(bat.apLeft/2);
+        let transDiv = 1.5+(playerInfos.comp.trans/3);
+        batAPLeft = Math.round(bat.apLeft/transDiv);
     }
     let batAP = getAP(bat,batType);
     let transBonus = Math.floor(playerInfos.comp.trans*playerInfos.comp.trans/3)*2;
@@ -1119,9 +1120,6 @@ function getNitroBonus(bat) {
     batAPLeft = batAPLeft+baseBonus;
     if (batAPLeft >= batAP+3+transBonus) {
         batAPLeft = batAP+3+transBonus;
-    }
-    if (batAPLeft < transBonus-4 && !bat.tags.includes('construction')) {
-        batAPLeft = transBonus-4;
     }
     let nitroBonus = Math.round(batAPLeft-bat.apLeft);
     return nitroBonus;
@@ -1145,7 +1143,8 @@ function getStarkaBonus(bat) {
         batMoves = 0;
     }
     if (bat.apLeft < 0) {
-        batAPLeft = Math.round(bat.apLeft/2);
+        let medDiv = 1.5+(playerInfos.comp.med/3);
+        batAPLeft = Math.round(bat.apLeft/medDiv);
     }
     let batAP = getAP(bat,batType);
     let medBonus = Math.floor((playerInfos.comp.exo+1.5)*(playerInfos.comp.med+1)/3);

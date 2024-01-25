@@ -1443,7 +1443,7 @@
         "maxScarp":3,
         "maxVeg":3,
         "skills":["a_light","fouille","fortif","barda","autokitmolo","mecano","repair","repbad","recupcit","uprank","maycamo","dealer","nitro","sudu","nochef"],
-        "mecanoCost":4,
+        "mecanoCost":5,
         "maxDrug":12,
         "fuzz":1,
         "deathFx":"human3"

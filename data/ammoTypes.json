@@ -3798,6 +3798,7 @@
         "blddmg": 1.2,
         "armors": 0.6,
         "accuracy": 1.25,
+        "fly": 1,
         "apdamage": 0,
         "passprotect": true,
         "aoe": "squad",

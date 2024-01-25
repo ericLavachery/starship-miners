@@ -1157,9 +1157,11 @@ function turnInfo(first) {
         }
         // CONVOI DE SURVIVANTS
         if (playerInfos.vz < 90) {
-            let convApprox = 19-(playerInfos.vue*3);
+            let convApprox = 13-(playerInfos.vue*2);
             let turnApprox = Math.round(playerInfos.vz/convApprox)*convApprox;
-            let badTurnApprox = Math.round(playerInfos.vz/convApprox/2)*convApprox*2;
+            let badConvApprox = 5;
+            if (convApprox >= 5) {badConvApprox = 10;}
+            let badTurnApprox = Math.round(playerInfos.vz/badConvApprox)*badConvApprox;
             let turnsTillConv = turnApprox-playerInfos.mapTurn;
             let firstAlertTurn = 12-Math.floor(playerInfos.pauseSeed/3);
             let lastAlertTurn = playerInfos.vz-4-Math.floor(playerInfos.pauseSeed/3);
@@ -1181,7 +1183,7 @@ function turnInfo(first) {
                         }
                     } else {
                         // moins de 15 tours
-                        if (playerInfos.vue >= 5) {
+                        if (playerInfos.vue >= 6) {
                             $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (tour '+playerInfos.vz+') ('+playerInfos.vc+')">Survivants</span><br>');
                         } else if (playerInfos.vue >= 4) {
                             $('#tour').append('<span class="wblynk" title="Convoi de survivants en approche (vers le tour '+turnApprox+') ('+playerInfos.vc+')">Survivants</span><br>');

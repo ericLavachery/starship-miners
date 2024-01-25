@@ -1517,18 +1517,8 @@ function borderInvasion() {
         if (!domeProtect) {
             alienOccupiedTileList();
             playerOccupiedTileList();
-            // ruches
-            let adjFuzz = playerInfos.fuzzTotal-150;
-            if (adjFuzz < 1) {adjFuzz = 1;}
-            let rucheBord = Math.ceil(adjFuzz*adjFuzz/30000*Math.sqrt(zone[0].mapDiff)/3*playerInfos.mapTurn/20);
-            if (rand.rand(1,100) <= rucheBord) {
-                dropEgg('Vomissure','edge');
-                if (playerInfos.vue >= 2) {
-                    warning('Ruche en vue','Une Ruche se constitue au loin!');
-                }
-            }
             // aliens
-            adjFuzz = playerInfos.fuzzTotal+800;
+            let adjFuzz = playerInfos.fuzzTotal+800;
             if (zone[0].number >= 90) {
                 adjFuzz = 2000;
             }
