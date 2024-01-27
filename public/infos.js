@@ -954,7 +954,7 @@ function batInfos(bat,batType,pop) {
                     demText = '(détruire)';
                 }
                 let resRecup = getResRecup(bat,batType);
-                if (playerInfos.onShip) {
+                if (playerInfos.onShip || batType.skills.includes('recupfull')) {
                     $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+' '+toCoolString(resRecup)+'" class="boutonRouge bigButtons" onclick="dismantle('+bat.id+',false)"><i class="fas fa-people-carry"></i></button>&nbsp; Démanteler</h4></span>');
                 } else {
                     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {

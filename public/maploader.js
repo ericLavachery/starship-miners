@@ -731,6 +731,7 @@ function showBataillon(bat) {
 };
 
 function getTransBar(bat,batType) {
+    // console.log('TRANSBAR?');
     let transBar = 'abar-empty';
     let isCharged = checkCharged(bat,'trans');
     let hasFret = false;
@@ -739,6 +740,14 @@ function getTransBar(bat,batType) {
             hasFret = true;
         }
     }
+    if (isCharged) {
+        let myTrailer = checkTrailerInfo(bat);
+        if (myTrailer.fret) {
+            hasFret = true;
+        }
+    }
+    // console.log(isCharged);
+    // console.log(hasFret);
     if (isCharged) {
         if (hasFret) {
             transBar = 'abar-both';

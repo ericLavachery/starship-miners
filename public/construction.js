@@ -2137,8 +2137,20 @@ function recupBodies(bat,batType) {
 
 function recupRes(bat,batType) {
     let coffre = {};
+    let lander = {};
+    let fullNearLander = false;
+    if (batType.skills.includes('recupfull')) {
+        let landerId = getBiggestLander();
+        lander = getBatById(landerId);
+        let distance = calcDistance(bat.tileId,lander.tileId);
+        if (distance <= 16) {
+            fullNearLander = true;
+        }
+    }
     if (playerInfos.onShip) {
         coffre = getBatById(souteId);
+    } else if (fullNearLander) {
+        coffre = lander;
     } else {
         coffreTileId = -1;
         conselTriche = true;
@@ -2230,8 +2242,13 @@ function getResRecup(bat,batType) {
             bldFactor = bldFactor+1;
         }
         recupFactor = Math.round(recupFactor*(bldFactor+playerInfos.comp.tri+1)/8);
-        if (batType.skills.includes('recupfull') && recupFactor < 70) {
-            recupFactor = 70;
+        if (batType.skills.includes('recupfull')) {
+            recupFactor = 100;
+        } else if (batType.skills.includes('recupbig')) {
+            recupFactor = recupFactor+20;
+            recupFactor = entre(recupFactor,75,100);
+        } else {
+            recupFactor = entre(recupFactor,10,100);
         }
         if (bat.squadsLeft < batType.squads-1) {
             recupFactor = Math.round(recupFactor*bat.squadsLeft/(batType.squads-1));
@@ -2251,15 +2268,6 @@ function getResRecup(bat,batType) {
                 }
                 if (playerInfos.comp.const >= 3 && key === 'Compo3') {
                     value = Math.floor(value*9/6);
-                }
-                if (batType.name === 'Autoturrets' || batType.name === 'Autobunkers') {
-                    if (bat.tags.includes('outsider')) {
-                        if (bat.eq === 'muffler' || bat.eq === 'bld-camo') {
-                            if (key != 'Compo1' && key != 'Compo2' && key != 'Scrap') {
-                                value = value/2;
-                            }
-                        }
-                    }
                 }
                 if (key.includes('Energ')) {
                     value = Math.ceil(value/7*playerInfos.comp.energ);
@@ -2375,10 +2383,15 @@ function getResRecup(bat,batType) {
             }
         }
         let scrapBonus = Math.floor(totalRes/10);
-        if (resRecup['Scrap'] === undefined) {
-            resRecup['Scrap'] = scrapBonus;
-        } else {
-            resRecup['Scrap'] = resRecup['Scrap']+scrapBonus;
+        if (batType.skills.includes('recupfull')) {
+            scrapBonus = 0;
+        }
+        if (scrapBonus >= 1) {
+            if (resRecup['Scrap'] === undefined) {
+                resRecup['Scrap'] = scrapBonus;
+            } else {
+                resRecup['Scrap'] = resRecup['Scrap']+scrapBonus;
+            }
         }
     }
     return resRecup;

@@ -2176,7 +2176,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","noblub","nolist","norepair","recupres","nobld","clicput","nosap","infrako","oninfra","noaploss","nostation","okdel","mdev"],
+        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","noblub","nolist","norepair","recupres","recupfull","nobld","clicput","nosap","infrako","oninfra","noaploss","nostation","okdel","mdev"],
         "fuzz":-2,
         "deathFx":"xplode"
     },
@@ -2229,7 +2229,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","noblub","nolist","norepair","recupres","nobld","clicput","nosap","infrako","oninfra","noaploss","nostation","okdel","mdev"],
+        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","noblub","nolist","norepair","recupres","recupfull","nobld","clicput","nosap","infrako","oninfra","noaploss","nostation","okdel","mdev"],
         "fuzz":-2,
         "deathFx":"xplode"
     },
@@ -2282,7 +2282,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","noblub","nolist","norepair","nobld","clicput","infrako","oninfra","noaploss","nostation","okdel","mdev"],
+        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","noblub","nolist","norepair","recupres","recupbig","nobld","clicput","infrako","oninfra","noaploss","nostation","okdel","mdev"],
         "fuzz":-2,
         "deathFx":"xplode"
     },

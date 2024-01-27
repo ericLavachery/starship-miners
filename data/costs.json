@@ -2510,7 +2510,7 @@
         "bldReq":["Centre de recherches"],
         "compReq":{"exo":2,"explo":1,"ca":4},
         "altCompReq":{"exo":3,"explo":1,"ca":3},
-        "costs":{"Explosifs":15,"Fuel":15,"Mephitis":15,"Argon":60,"Huile":45,"Végétaux":45,"Plomb":12,"Titane":12,"Azote":18,"Cuivre":18,"Electros":18},
+        "costs":{"Explosifs":30,"Fuel":15,"Mephitis":15,"Argon":60,"Huile":45,"Végétaux":45,"Plomb":12,"Titane":12,"Azote":18,"Cuivre":18,"Electros":18},
         "fabTime":90
     },
     {
@@ -2519,7 +2519,7 @@
         "levels":{"rednecks":11,"blades":13,"bulbos":10,"drogmulojs":12,"tiradores":13,"detruas":1,"brasier":11},
         "bldReq":["Arsenal"],
         "compReq":{"explo":1},
-        "costs":{"Explosifs":12,"Fer":12,"Plomb":4,"Titane":4,"Azote":6,"Cuivre":6,"Electros":1},
+        "costs":{"Explosifs":30,"Fer":12,"Plomb":4,"Titane":4,"Azote":6,"Cuivre":6,"Electros":1},
         "fabTime":35
     },
     {

@@ -297,6 +297,30 @@ function checkCharged(myBat,where) {
     return isCharged;
 };
 
+function checkTrailerInfo(myBat) {
+    console.log('REMORQUE');
+    let remBatType = getBatTypeByName('Remorques');
+    let myTrailer = {};
+    myTrailer.ok = false;
+    myTrailer.fret = false;
+    myTrailer.space = remBatType.transRes;
+    console.log(myTrailer.space);
+    bataillons.forEach(function(bat) {
+        if (bat.type === 'Remorques') {
+            if (bat.loc === 'trans' && bat.locId == myBat.id) {
+                myTrailer.ok = true;
+                let resSpace = checkResSpace(bat);
+                console.log(resSpace);
+                if (resSpace < myTrailer.space) {
+                    myTrailer.fret = true;
+                    myTrailer.space = resSpace;
+                }
+            }
+        }
+    });
+    return myTrailer;
+};
+
 function checkTransMaxSize(batType,transBat,transBatType) {
     let transOK = false;
     let maxSize = transBatType.transMaxSize;
