@@ -259,6 +259,14 @@ function batInfos(bat,batType,pop) {
             }
         }
     }
+    if (batType.moveCost < 90 && batType.skills.includes('transport')) {
+        let myTrailer = checkTrailerInfo(bat);
+        if (myTrailer.space < 1) {
+            fretIcon = fretIcon+' &nbsp;<i class="fas fa-dolly-flatbed rouge" onclick="scrollToBottom()" title="Remorques chargées à bloc"></i>';
+        } else if (myTrailer.fret) {
+            fretIcon = fretIcon+' &nbsp;<i class="fas fa-dolly-flatbed caca" onclick="scrollToBottom()" title="Les remorques contiennent des ressources"></i>';
+        }
+    }
     let chiefName = '';
     if (bat.chief != undefined) {
         if (bat.chief != '') {

@@ -1591,7 +1591,7 @@
         "aoe": "",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":2,"energ":1},
-        "deploy":{"Mercure":2,"Hydrogène":4,"Plastanium":4,"Wingium":1},
+        "deploy":{"Mercure":2,"Hydrogène":4,"Plastanium":4,"Wingium":0.5},
         "batch":200
     },
     {
@@ -1704,7 +1704,7 @@
         "aoe": "brochette",
         "bldReq":["Laboratoire"],
         "compReq":{"bal":2,"energ":1},
-        "deploy":{"Mercure":2,"Hydrogène":4,"Plastanium":4,"Wingium":1},
+        "deploy":{"Mercure":2,"Hydrogène":4,"Plastanium":4,"Wingium":0.5},
         "batch":200
     },
     {
@@ -3417,7 +3417,7 @@
         "aoe": "squad",
         "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"bal":2,"explo":2,"energ":1},
-        "deploy":{"Carbone":2,"Fer":4,"Plastanium":4,"Titane":2,"Tungstène":2,"Electros":2,"Batteries":2,"Explosifs":6,"Wingium":1},
+        "deploy":{"Carbone":2,"Fer":4,"Plastanium":4,"Titane":2,"Tungstène":2,"Electros":2,"Batteries":2,"Explosifs":6,"Wingium":0.5},
         "batch":200
     },
     {
@@ -3786,7 +3786,7 @@
         "aoe": "squad",
         "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"bal":2,"explo":2,"energ":1,"arti":1},
-        "deploy":{"Carbone":2,"Plastanium":4,"Aluminium":4,"Tungstène":2,"Titane":2,"Nickel":2,"Explosifs":6,"Fuel":2,"Electros":6,"Batteries":2,"Wingium":1},
+        "deploy":{"Carbone":2,"Plastanium":4,"Aluminium":4,"Tungstène":2,"Titane":2,"Nickel":2,"Explosifs":6,"Fuel":2,"Electros":6,"Batteries":2,"Wingium":0.5},
         "batch":200
     },
     {
@@ -4369,7 +4369,7 @@
         "info": "Incendiaire",
         "bldReq":["Laboratoire"],
         "compReq":{"pyro":3,"energ":1},
-        "deploy":{"Hydrocarbure":6,"Oxygène":6,"Plastanium":2,"Wingium":1},
+        "deploy":{"Hydrocarbure":6,"Oxygène":6,"Plastanium":2,"Wingium":0.5},
         "batch":200
     },
     {

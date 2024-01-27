@@ -2654,7 +2654,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 bat.transIds.forEach(function(inBatId) {
                     let inBat = getBatById(inBatId);
                     if (inBat.type === 'Remorques') {
-                        $('#unitInfos').append('<button type="button" title="Charger des ressources dans la remorque" class="boutonCaca iconButtons" onclick="loadRes(false,true,'+inBatId+')"><i class="fas fa-dolly-flatbed"></i>&nbsp;</button>');
+                        $('#unitInfos').append('<button type="button" title="Charger des ressources dans les remorques" class="boutonCaca iconButtons" onclick="loadRes(false,true,'+inBatId+')"><i class="fas fa-dolly-flatbed"></i>&nbsp;</button>');
                         lineBreak = true;
                     }
                 });

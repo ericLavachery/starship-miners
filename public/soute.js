@@ -829,7 +829,8 @@ function batListElement(bat,batType,idOfLander,noEmb) {
     } else {
         $('#'+colId).append('<div class="'+blockType+'" onclick="batSouteSelect('+selId+')"><table><tr><td><img src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48"></td><td id="be'+bat.id+'"></td></tr></table></div>');
     }
-    $('#be'+bat.id).append('<span class="listRes klik">'+batType.name+'</span>');
+    let printName = getUnitPrintName(batType,false);
+    $('#be'+bat.id).append('<span class="listRes klik">'+printName+'</span>');
     if (batType.skills.includes('uprank')) {
         let isXPok = checkUprankXP(bat,batType);
         let isUpUnitOK = checkUpUnit(batType);

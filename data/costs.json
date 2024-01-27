@@ -3026,6 +3026,7 @@
         "name":"Bar",
         "costs":{"Compo1":115,"Eau":50,"Huile":15,"Carbone":25,"Fruits":50},
         "fabTime":20,
+        "info":"Le nombre idéal de Bars est 1 par 3000 habitants.",
         "crime":-2,
         "slots":1
     },
@@ -3083,6 +3084,7 @@
         "upkeep":{"Energie":1,"Eau":10},
         "costs":{"Compo1":210,"Compo2":15,"Eau":150,"Energie":60,"Aluminium":15,"Fer":100,"Plomb":25,"Végétaux":100,"Calcium":25,"Chlore":25},
         "fabTime":40,
+        "info":"Le nombre idéal de Salles de sport est 1 par 3000 habitants.",
         "crime":-2,
         "slots":2
     },

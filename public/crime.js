@@ -673,7 +673,7 @@ function calcCrimeRate(mesCitoyens) {
     crimeRate.penib = crimeRate.penib+playerInfos.vitals;
     let bldIds = [];
     let commodList = getCommodList();
-    let commodNeed = Math.round(population/3000);
+    let commodNeed = Math.ceil(population/3000);
     // Unités: (electroguards-2 gurus-2 dealers-1 marshalls-1)
     let camCount = false;
     if (playerInfos.bldList.includes('Salle de contrôle')) {

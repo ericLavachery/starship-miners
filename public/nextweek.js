@@ -245,7 +245,7 @@ function repos(time) {
         }
     } else if (playerInfos.bldList.includes('Infirmerie')) {
         stressHeal = stressHeal+playerInfos.comp.med;
-        woundHeal = woundHeal+1+(playerInfos.comp.med*2);
+        woundHeal = woundHeal+2+(playerInfos.comp.med*3);
         necroHeal = necroHeal+2+playerInfos.comp.med;
     }
     let population = playerInfos.citz.total;
@@ -278,7 +278,7 @@ function repos(time) {
                 if (batType.cat === 'infantry' && !batType.skills.includes('clone') && !bat.tags.includes('necro')) {
                     let severity = bat.soins;
                     if (severity < 8) {severity = 8;}
-                    bat.soins = bat.soins-Math.round(time*woundHeal/7*woundsFactor/100/severity*8);
+                    bat.soins = bat.soins-Math.round(time*woundHeal/12*woundsFactor/100/severity*8);
                     if (bat.soins < 0) {bat.soins = 0;}
                 }
             }
