@@ -1609,7 +1609,7 @@
         "name":"Alphas",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":14,"brasier":99},
         "bldReq":["Caserne Detruas","Usine d'armement","Appartements"],
-        "compHardReq":{"arti":1,"explo":1,"bal":2,"mat":2},
+        "compHardReq":{"arti":1,"explo":1,"bal":1,"mat":2},
         "unitCost":"Rainmen",
         "costs":{"Fer":96,"Scrap":12,"Carbone":108,"Aluminium":120,"Moteurs":72,"Titane":48,"Tungstène":72,"Rhodium":48,"Silicium":12,"Cuivre":36,"Electros":52,"Batteries":52,"Nickel":36,"Compo2":120,"Compo3":36,"Huile":10,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":70},
