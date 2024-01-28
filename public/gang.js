@@ -71,12 +71,14 @@ function gangUnitsList(gangName) {
                 newUnit.skills = unit.skills;
                 // newUnit.compPass = unit.compPass;
                 let newCompReq = {};
+                let newAltCompReq = {};
                 if (unit.compHardReq != undefined) {
                     if (Object.keys(unit.compHardReq).length >= 1) {
                         Object.entries(unit.compHardReq).map(entry => {
                             let key = entry[0];
                             let value = entry[1];
                             newCompReq[key] = value;
+                            newAltCompReq[key] = value;
                         });
                     }
                 }
@@ -90,6 +92,15 @@ function gangUnitsList(gangName) {
                             });
                         }
                     }
+                    if (unit.altCompReq != undefined) {
+                        if (Object.keys(unit.altCompReq).length >= 1) {
+                            Object.entries(unit.altCompReq).map(entry => {
+                                let key = entry[0];
+                                let value = entry[1];
+                                newAltCompReq[key] = value;
+                            });
+                        }
+                    }
                 }
                 // Taupes/Blades
                 if (unit.name === 'Taupes' && gangFacts.taupe) {
@@ -97,6 +108,7 @@ function gangUnitsList(gangName) {
                     newCompReq['cyber'] = 1;
                 }
                 newUnit.compReq = newCompReq;
+                newUnit.altCompReq = newAltCompReq;
                 gangUnits.push(newUnit);
             }
         }
@@ -109,27 +121,27 @@ function gangUnitsList(gangName) {
         let fullUnit = getBatTypeByName(unit.name);
         let color = catColor(fullUnit);
         let lvlcol = 'cy';
-        let compcol = 'gf';
+        let lvlNeed = '&#9989;';
         if (playerInfos.gLevel < unit.level) {
             lvlcol = 'gf';
+            lvlNeed = '&#9940;';
         }
-        let compNeed = '';
+        let compNeed = '&#9989;';
         if (Object.keys(unit.compReq).length >= 1) {
-            compNeed = toCoolString(unit.compReq);
-            let compReqOK = checkUnitCompReq(unit,true);
+            let compReqOK = checkUnitCompReq(fullUnit,false);
             if (!compReqOK) {
+                compNeed = '&#9940;';
                 lvlcol = 'gff';
-                compcol = 'gff';
             }
         }
-        let bldNeed = '';
+        let bldNeed = '&#9989;';
         if (Object.keys(unit.bldReq).length >= 1) {
-            bldNeed = toNiceString(unit.bldReq);
             let bldOK = false;
             if ((playerInfos.bldList.includes(unit.bldReq[0]) || unit.bldReq[0] === undefined) && (playerInfos.bldList.includes(unit.bldReq[1]) || unit.bldReq[1] === undefined) && (playerInfos.bldList.includes(unit.bldReq[2]) || unit.bldReq[2] === undefined)) {
                 bldOK = true;
             }
             if (!bldOK) {
+                bldNeed = '&#9940;';
                 lvlcol = 'gf';
             }
         }
@@ -144,7 +156,7 @@ function gangUnitsList(gangName) {
         if (unitName.includes('Champ de mines')) {
             unitName = 'Mines';
         }
-        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+reqString+'" onclick="unitDetail('+unit.id+')">'+unitName+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue '+compcol+'">'+compNeed+'</span><br>');
+        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+reqString+'" onclick="unitDetail('+unit.id+')">'+unitName+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue" title="Niveau">'+lvlNeed+'</span> <span class="paramValue" title="Compétences">'+compNeed+'</span> <span class="paramValue" title="Bâtiments">'+bldNeed+'</span><br>');
     });
     $('#conUnitList').append('<br><br>');
     $("#conUnitList").animate({scrollTop:0},"fast");

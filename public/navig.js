@@ -333,6 +333,7 @@ function viewPop() {
             }
             $("#batloop").css("display","block");
             $('#batloop').empty();
+            $('#batloop').append('Gang: <span class="cy">'+playerInfos.gang+' '+playerInfos.gLevel+'</span><br>');
             $('#batloop').append('Population: <span class="'+popColour+'">'+population+'</span><br>');
             // $('#batloop').append('(<span class="" title="Citoyens">'+mesCitoyens.cit+'</span> &middot; <span class="" title="Criminels">'+mesCitoyens.crim+'</span>)<br>');
             $('#batloop').append('Lits: <span class="'+bedColour+'">'+crimeRate.lits+'</span><br>');
