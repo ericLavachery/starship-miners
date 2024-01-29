@@ -1,126 +1,218 @@
-body {
-	padding: 0;
-	margin: 0;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #000;
+button,select {
+	display: inline-block;
+	cursor: pointer;
+	color: #ededed;
+	text-shadow: 0px 1px 0px #1f1f1f;
+	font-size: 13px;
+	text-decoration: none;
+    margin: 0 0 0 0;
+	padding: 6px 5px 5px 5px;
+	transform: rotateX(30deg);
+	border-radius: 6px;
+	border: 1px solid #000000;
+	box-shadow: 0 3px 0 1px #ababab;
+	font-size: 15px;
+	transition: all 150ms;
+	background-image: url(/static/img/scratch.png);
+    filter: saturate(75%);
 }
-.glitch {
-	position: relative;
-	overflow: hidden;
-}
-.glitch img {
-	position: relative;
-	z-index: 1;
-	display: block;
-}
-.glitch__layers {
+
+button::after,select::after {
 	position: absolute;
-	z-index: 2;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 3px;
+    text-align: end;
+    color: #000000;
 }
-.glitch__layer {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	background-image: url(https://images.unsplash.com/photo-1561019733-a84b4e023910?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80);
-	background-repeat: no-repeat;
-	background-position: 0 0;
+
+button:active,select:active {
+	transform: rotateX(30deg) translateY(3px);
+    box-shadow: 0 0 0 0 #ababab;
 }
-.glitch__layer:nth-child(1) {
-	transform: translateX(-5%);
-	animation: glitch-anim-1 2s infinite linear alternate;
+
+select {
+	min-width: 87px;
 }
-.glitch__layer:nth-child(2) {
-	transform: translateX(3%) translateY(3%);
-	animation: glitch-anim-2 2.3s -.8s infinite linear alternate;
+
+button:hover,select:hover {
+    filter: brightness(130%);
 }
-.glitch__layer:nth-child(3) {
-	transform: translateX(5%);
-	animation: glitch-anim-flash 1s infinite linear;
+.boutonGrey:hover {
+	filter: brightness(100%);
 }
-@keyframes glitch-anim-1 {
-	0% {
-		clip-path: polygon(0 0%, 100% 0%, 100% 5%, 0 5%);
-	}
-	10% {
-		clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
-	}
-	20% {
-		clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
-	}
-	30% {
-		clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
-	}
-	40% {
-		clip-path: polygon(0 35%, 100% 35%, 100% 35%, 0 35%);
-	}
-	50% {
-		clip-path: polygon(0 45%, 100% 45%, 100% 46%, 0 46%);
-	}
-	60% {
-		clip-path: polygon(0 50%, 100% 50%, 100% 70%, 0 70%);
-	}
-	70% {
-		clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
-	}
-	80% {
-		clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
-	}
-	90% {
-		clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
-	}
-	100% {
-		clip-path: polygon(0 60%, 100% 60%, 100% 70%, 0 70%);
-	}
+
+.boutonGris {
+    position: relative;
+	/* box-shadow: 0 3px 0 1px #323e41; */
+	background-color:#53686e;
+	background-position: 24% 40%;
 }
-@keyframes glitch-anim-2 {
-	0% {
-		clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
-	}
-	15% {
-		clip-path: polygon(0 3%, 100% 3%, 100% 3%, 0 3%);
-	}
-	25% {
-		clip-path: polygon(0 8%, 100% 8%, 100% 20%, 0 20%);
-	}
-	30% {
-		clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%);
-	}
-	45% {
-		clip-path: polygon(0 45%, 100% 45%, 100% 45%, 0 45%);
-	}
-	50% {
-		clip-path: polygon(0 50%, 100% 50%, 100% 57%, 0 57%);
-	}
-	65% {
-		clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%);
-	}
-	75% {
-		clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
-	}
-	80% {
-		clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%);
-	}
-	95% {
-		clip-path: polygon(0 45%, 100% 45%, 100% 60%, 0 60%);
-	}
-	100% {
-		clip-path: polygon(0 11%, 100% 11%, 100% 15%, 0 15%);
-	}
+
+.boutonGrey {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #2f3638; */
+	background-color:#4c575b;
+	background-position: 0% 75%;
 }
-@keyframes glitch-anim-flash {
-	0% {
-		opacity: .2;
-	}
-	30%, 100% {
-		opacity: 0;
-	}
+
+.boutonBrun {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #412b15; */
+	background-color:#794f24;
+	background-position: 10% 60%;
+}
+
+.boutonRouge {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #5e0202; */
+	background-color:#aa0000;
+	background-position: 80% 0%;
+}
+
+.boutonOrange {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #6c3d00; */
+	background-color:#ee8800;
+	background-position: 0% 80%;
+}
+
+.boutonVert {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #1a551c; */
+	background-color:#2f9e32;
+	background-position: 15% 70%;
+}
+
+.boutonJaune {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #656914; */
+	background-color:#b4bb25;
+	background-position: 20% 20%;
+}
+
+.boutonJauneG {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #3d4012; */
+	background-color:#7c8120;
+	background-position: 0% 75%;
+}
+
+.boutonRose {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #63153f; */
+	background-color:#da2788;
+	background-position: 50% 50%;
+}
+
+.boutonBleu {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #084567; */
+	background-color:#12aaff;
+	background-position: 40% 55%;
+}
+
+.boutonCiel {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #09675c; */
+	background-color:#17ffe3;
+	background-position: 30% 35%;
+}
+
+.boutonMauve {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #44027d; */
+	background-color:#7205d2;
+	background-position: 30% 0%;
+}
+
+.boutonMarine {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #292b7e; */
+	background-color:#3235e4;
+	background-position: 60% 30%;
+}
+
+.boutonCaca {
+    position: relative;
+    /* box-shadow: 0 3px 0 1px #394418; */
+	background-color:#6d822f;
+	background-position: 27% 53%;
+}
+
+.boutonNoir {
+    position: relative;
+	/* box-shadow: 0 3px 0 1px #470000; */
+	background-color:#610000;
+	background-position: 64% 37%;
+}
+
+.boutonOK {
+    position: relative;
+    border: 1px solid #53f9b3;
+    /* box-shadow: 0 3px 0 1px #2f3638; */
+	background-color:#4c575b;
+	background-position: 73% 52%;
+}
+
+.modeButtons {
+	font-size:14px;
+    min-width: 130px;
+    /* padding: 6px 13px; */
+    margin: 3px 0 5px 0;
+    text-align: left;
+}
+.crudButtons {
+	font-size:13px;
+    /* padding: 4px 10px; */
+    margin: 3px 0 5px 0;
+	min-width: 10px;
+}
+select.crudButtons {
+    padding: 3px 10px;
+}
+.txtInputs {
+    min-width: 25px;
+    font-size: 12px;
+	color: #ece5dd;
+	background-color: #000000;
+	background-image: url(/static/img/oldmetal-gris.jpg);
+    padding: 4px 5px 3px 5px;
+	margin: 3px 0 3px 6px;
+}
+.skillButtons {
+    min-width: 25px;
+    font-size: 12px;
+    /* padding: 4px 5px 3px 5px; */
+	margin: 3px 0 3px 6px;
+}
+.bigButtons {
+    min-width: 35px;
+    font-size: 19px;
+    /* padding: 4px 5px 3px 5px; */
+	margin: 3px 0 3px 6px;
+}
+.miniButtons {
+    min-width: 26px;
+    font-size: 12px;
+    padding: 4px 3px 3px 3px;
+	margin: 3px 0 3px 0;
+}
+.iconButtons,.iconButtonsRA {
+    min-width: 35px;
+    font-size: 17px;
+    /* padding: 4px 5px 3px 5px; */
+	margin: 3px 0 3px 6px;
+}
+.iconSMButtons {
+    min-width: 30px;
+    font-size: 17px;
+    /* padding: 4px 5px 3px 5px; */
+	margin: 3px 0 3px 6px;
+}
+.iconButtonsRA i {
+	vertical-align: middle;
+	padding-bottom: 3px;
 }

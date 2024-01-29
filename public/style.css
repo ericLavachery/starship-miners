@@ -1377,6 +1377,9 @@ a.brun:hover,a.vert:hover,a.mauve:hover,a.ciel:hover,a.jaune:hover,a.grisf:hover
 .blanc {
     color: #FFFFFF;
 }
+.vertc {
+    color: #7cda8b;
+}
 .vert {
     color: #6db979;
 }

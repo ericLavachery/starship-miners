@@ -586,7 +586,8 @@ function healEverything() {
         // STRESS
         if (bat.tags.includes('return')) {
             if (!batType.skills.includes('robot') && batType.crew >= 1) {
-                let endStress = dooom-4+rand.rand(0,6);
+                let leadership = 3-playerInfos.comp.ordre;
+                let endStress = dooom-5+rand.rand(leadership,7);
                 if (dooom < 2 && endStress > 1) {
                     endStress = 1;
                 }

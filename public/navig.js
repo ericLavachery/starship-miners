@@ -175,44 +175,46 @@ function commandes() {
             $('#commandz').append('<hr>');
             $('#commandz').append('<button type="button" title="Revenir sur la carte de la Station" class="boutonMarine iconButtons" onclick="fullMapPreviewOut()"><i class="fas fa-chess-board"></i></button>');
         } else {
-            if (!modeSonde) {
-                if (!playerInfos.onStart) {
-                    if (!inSoute) {
-                        let hasSonde = hasUnit('Sonde',false);
-                        let hasImpacteur = hasUnit('Impacteur',false);
-                        $('#commandz').append('<hr>');
-                        if (hasSonde || hasImpacteur) {
-                            $('#commandz').append('<button type="button" title="Régler une sonde (destination)" class="boutonBrun iconButtons" onclick="editSonde()" onmousedown="clicSound(6)"><i class="fas fa-keyboard"></i></button>');
-                            if (playerInfos.sondePlanet > 0 && playerInfos.sondeDanger > 0) {
-                                let planetName = getPlanetNameById(playerInfos.sondePlanet);
-                                if (hasSonde) {
-                                    let maxMaps = getMaxMaps(false);
-                                    $('#commandz').append('<button type="button" title="Envoyer une sonde (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+') ('+maxMaps+' zones)" class="boutonBrun iconButtons" onclick="goSonde(false)" onmousedown="clicSound(9)"><i class="fas fa-rocket"></i></button>');
+            if (playerInfos.onShip) {
+                if (!modeSonde) {
+                    if (!playerInfos.onStart) {
+                        if (!inSoute) {
+                            let hasSonde = hasUnit('Sonde',false);
+                            let hasImpacteur = hasUnit('Impacteur',false);
+                            $('#commandz').append('<hr>');
+                            if (hasSonde || hasImpacteur) {
+                                $('#commandz').append('<button type="button" title="Régler une sonde (destination)" class="boutonBrun iconButtons" onclick="editSonde()" onmousedown="clicSound(6)"><i class="fas fa-keyboard"></i></button>');
+                                if (playerInfos.sondePlanet > 0 && playerInfos.sondeDanger > 0) {
+                                    let planetName = getPlanetNameById(playerInfos.sondePlanet);
+                                    if (hasSonde) {
+                                        let maxMaps = getMaxMaps(false);
+                                        $('#commandz').append('<button type="button" title="Envoyer une sonde (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+') ('+maxMaps+' zones)" class="boutonBrun iconButtons" onclick="goSonde(false)" onmousedown="clicSound(9)"><i class="fas fa-rocket"></i></button>');
+                                    }
+                                    if (hasImpacteur && planetName != 'Horst' && planetName != 'Kzin') {
+                                        let maxMaps = getMaxMaps(true);
+                                        $('#commandz').append('<button type="button" title="Envoyer un impacteur (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+') ('+maxMaps+' zones)" class="boutonBrun iconButtons vertc" onclick="goSonde(true)" onmousedown="clicSound(9)"><i class="fas fa-rocket"></i></button>');
+                                    }
                                 }
-                                if (hasImpacteur && planetName != 'Horst' && planetName != 'Kzin') {
-                                    let maxMaps = getMaxMaps(true);
-                                    $('#commandz').append('<button type="button" title="Envoyer un impacteur (Planète '+planetName+' / présence alien '+playerInfos.sondeDanger+') ('+maxMaps+' zones)" class="boutonNoir iconButtons" onclick="goSonde(true)" onmousedown="clicSound(9)"><i class="fas fa-rocket"></i></button>');
-                                }
+                            } else {
+                                $('#commandz').append('<button type="button" title="Régler une sonde: Vous n\'avez ni Sonde ni Impacteur!" class="boutonGrey iconButtons gf"><i class="fas fa-keyboard"></i></button>');
                             }
-                        } else {
-                            $('#commandz').append('<button type="button" title="Régler une sonde: Vous n\'avez ni Sonde ni Impacteur!" class="boutonGrey iconButtons gf"><i class="fas fa-keyboard"></i></button>');
                         }
                     }
-                }
-            } else {
-                $('#commandz').append('<hr>');
-                $('#commandz').append('<button type="button" title="Poser la sonde" class="boutonRouge iconButtons" onclick="stopSonde()" onmousedown="clicSound(10)"><i class="fas fa-rocket"></i></button>');
-                let maxMaps = getMaxMaps(impact);
-                let nextMapNumber = playerInfos.sondeMaps+1;
-                if (playerInfos.sondeMaps < maxMaps) {
-                    $('#commandz').append('<button type="button" title="Voir une autre zone ('+nextMapNumber+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-map" onclick="generateNewMap(false)" onmousedown="clicSound(19)"></i></button>');
-                    if (playerInfos.comp.vsp >= 4 && playerInfos.sondeMaps+3 < maxMaps && !impact) {
-                        let mapNumberAfterChange = nextMapNumber+3;
-                        $('#commandz').append('<button type="button" title="Changer de région ('+mapNumberAfterChange+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-globe" onclick="regionChange()" onmousedown="clicSound(9)"></i></button>');
-                    }
                 } else {
-                    // $('#commandz').append('<button type="button" title="Maximum de cartes atteint" class="boutonGris iconButtons"><i class="fas fa-map"></i></button>');
-                    $('#commandz').append('<button type="button" title="Voir une autre zone (au risque de crasher la sonde!)" class="boutonRouge iconButtons"><i class="fas fa-map" onclick="pushSonde('+nextMapNumber+','+maxMaps+')" onmousedown="clicSound(19)"></i></button>');
+                    $('#commandz').append('<hr>');
+                    $('#commandz').append('<button type="button" title="Poser la sonde" class="boutonRouge iconButtons" onclick="stopSonde()" onmousedown="clicSound(10)"><i class="fas fa-rocket"></i></button>');
+                    let maxMaps = getMaxMaps(impact);
+                    let nextMapNumber = playerInfos.sondeMaps+1;
+                    if (playerInfos.sondeMaps < maxMaps) {
+                        $('#commandz').append('<button type="button" title="Voir une autre zone ('+nextMapNumber+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-map" onclick="generateNewMap(false)" onmousedown="clicSound(19)"></i></button>');
+                        if (playerInfos.comp.vsp >= 4 && playerInfos.sondeMaps+3 < maxMaps && !impact) {
+                            let mapNumberAfterChange = nextMapNumber+3;
+                            $('#commandz').append('<button type="button" title="Changer de région ('+mapNumberAfterChange+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-globe" onclick="regionChange()" onmousedown="clicSound(9)"></i></button>');
+                        }
+                    } else {
+                        // $('#commandz').append('<button type="button" title="Maximum de cartes atteint" class="boutonGris iconButtons"><i class="fas fa-map"></i></button>');
+                        $('#commandz').append('<button type="button" title="Voir une autre zone (au risque de crasher la sonde!)" class="boutonRouge iconButtons"><i class="fas fa-map" onclick="pushSonde('+nextMapNumber+','+maxMaps+')" onmousedown="clicSound(19)"></i></button>');
+                    }
                 }
             }
             $('#commandz').append('<br>');
@@ -245,7 +247,7 @@ function commandes() {
                                 $('#commandz').append('<button type="button" title="Partir en mission: Vous devez d\'abord choisir une zone!" class="boutonGrey iconButtons" onmousedown="warnSound(`error2`)" id="takeof1"><i class="fas fa-space-shuttle"></i></button>');
                             }
                         } else {
-                            $('#commandz').append('<button type="button" title="Choisir une zone pour la prochaine mission: Sélectionnez la Soute" class="boutonGrey iconButtons gf"><i class="fas fa-map"></i></button>');
+                            $('#commandz').append('<button type="button" title="Choisir une zone pour la prochaine mission: Cliquez d\'abord sur la Soute" class="boutonGrey iconButtons gf"><i class="fas fa-map"></i></button>');
                         }
                     }
                 } else {

@@ -1,499 +1,161 @@
-button, select {
-	/* border-radius: 8px; */
+button,select {
 	display: inline-block;
 	cursor: pointer;
 	color: #ededed;
 	text-shadow: 0px 1px 0px #1f1f1f;
 	font-size: 13px;
-	/* padding: 4px 10px; */
 	text-decoration: none;
     margin: 0 0 0 0;
-    filter: saturate(70%);
+	padding: 6px 5px 5px 5px;
+	transform: rotateX(30deg);
+	border-radius: 6px;
+	border: 1px solid #000000;
+	box-shadow: 0 3px 0 1px #ababab;
+	/* font-size: 15px; */
+	transition: all 150ms;
+	background-image: url(/static/img/scratch.png);
+    filter: saturate(75%);
+}
+
+button::after,select::after {
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 3px;
+    text-align: end;
+    color: #000000;
+}
+
+button:active,select:active {
+	transform: rotateX(30deg) translateY(3px);
+    box-shadow: 0 0 0 0 #ababab;
 }
 
 select {
-    padding:3px 10px;
 	min-width: 87px;
+}
+
+button:hover,select:hover {
+    filter: brightness(130%);
+}
+.boutonGrey:hover {
+	filter: brightness(100%);
 }
 
 .boutonGris {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #323e41;
-    font-size: 15px;
-    transition: all 150ms;
+	/* box-shadow: 0 3px 0 1px #323e41; */
 	background-color:#53686e;
-    background-image: url(/static/img/scratch.png);
 	background-position: 24% 40%;
-}
-.boutonGris:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #323e41;
-}
-.boutonGris::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonGrey {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #2f3638;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #2f3638; */
 	background-color:#4c575b;
-    background-image: url(/static/img/scratch.png);
 	background-position: 0% 75%;
-}
-.boutonGrey:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #2f3638;
-}
-.boutonGrey::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonBrun {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #412b15;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #412b15; */
 	background-color:#794f24;
-    background-image: url(/static/img/scratch.png);
 	background-position: 10% 60%;
-}
-.boutonBrun:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #412b15;
-}
-.boutonBrun::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonRouge {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #5e0202;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #5e0202; */
 	background-color:#aa0000;
-    background-image: url(/static/img/scratch.png);
 	background-position: 80% 0%;
-}
-.boutonRouge:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #5e0202;
-}
-.boutonRouge::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonOrange {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #6c3d00;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #6c3d00; */
 	background-color:#ee8800;
-    background-image: url(/static/img/scratch.png);
 	background-position: 0% 80%;
-}
-.boutonOrange:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #6c3d00;
-}
-.boutonOrange::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonVert {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #1a551c;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #1a551c; */
 	background-color:#2f9e32;
-    background-image: url(/static/img/scratch.png);
 	background-position: 15% 70%;
-}
-.boutonVert:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #1a551c;
-}
-.boutonVert::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonJaune {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #656914;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #656914; */
 	background-color:#b4bb25;
-    background-image: url(/static/img/scratch.png);
 	background-position: 20% 20%;
-}
-.boutonJaune:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #656914;
-}
-.boutonJaune::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonJauneG {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #3d4012;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #3d4012; */
 	background-color:#7c8120;
-    background-image: url(/static/img/scratch.png);
 	background-position: 0% 75%;
-}
-.boutonJauneG:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #3d4012;
-}
-.boutonJauneG::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonRose {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #63153f;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #63153f; */
 	background-color:#da2788;
-    background-image: url(/static/img/scratch.png);
 	background-position: 50% 50%;
-}
-.boutonRose:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #63153f;
-}
-.boutonRose::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonBleu {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #084567;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #084567; */
 	background-color:#12aaff;
-    background-image: url(/static/img/scratch.png);
 	background-position: 40% 55%;
-}
-.boutonBleu:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #084567;
-}
-.boutonBleu::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonCiel {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #09675c;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #09675c; */
 	background-color:#17ffe3;
-    background-image: url(/static/img/scratch.png);
 	background-position: 30% 35%;
-}
-.boutonCiel:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #09675c;
-}
-.boutonCiel::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonMauve {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #44027d;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #44027d; */
 	background-color:#7205d2;
-    background-image: url(/static/img/scratch.png);
 	background-position: 30% 0%;
-}
-.boutonMauve:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #44027d;
-}
-.boutonMauve::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonMarine {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #292b7e;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #292b7e; */
 	background-color:#3235e4;
-    background-image: url(/static/img/scratch.png);
 	background-position: 60% 30%;
-}
-.boutonMarine:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #292b7e;
-}
-.boutonMarine::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonCaca {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #394418;
-    font-size: 15px;
-    transition: all 150ms;
+    /* box-shadow: 0 3px 0 1px #394418; */
 	background-color:#6d822f;
-    background-image: url(/static/img/scratch.png);
 	background-position: 27% 53%;
-}
-.boutonCaca:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #394418;
-}
-.boutonCaca::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonNoir {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #000000;
-    box-shadow: 0 3px 0 1px #004147;
-    font-size: 15px;
-    transition: all 150ms;
-	background-color:#005861;
-    background-image: url(/static/img/scratch.png);
+	/* box-shadow: 0 3px 0 1px #470000; */
+	background-color:#610000;
 	background-position: 64% 37%;
-}
-.boutonNoir:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #004147;
-}
-.boutonNoir::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .boutonOK {
     position: relative;
-    padding: 6px 5px 5px 5px;
-    transform: rotateX(30deg);
-    border-radius: 6px;
-    /* border: 1px solid #1b1c47; */
-    border: 1px solid #53f9b3;
-    box-shadow: 0 3px 0 1px #2f3638;
-    font-size: 15px;
-    transition: all 150ms;
-	background-color:#4c575b;
-    background-image: url(/static/img/scratch.png);
+    /* border: 1px solid #53f9b3; */
+	box-shadow: 0 3px 0 1px #53f9b3;
+    /* box-shadow: 0 3px 0 1px #2f3638; */
+	background-color:#32393c;
 	background-position: 73% 52%;
-}
-.boutonOK:active {
-    transform: rotateX(30deg) translateY(3px);
-    box-shadow: 0 0 0 0 #2f3638;
-}
-.boutonOK::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3px;
-    text-align: end;
-    /* color: #1b1c47; */
-    color: #000000;
 }
 
 .modeButtons {
