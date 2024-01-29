@@ -378,6 +378,9 @@ h6 {
     /* padding-bottom: 5px; */
     padding-right: 8px;
 }
+hr {
+  border: 2px ridge #323d3d;
+}
 hr.craft {
   border: 1px solid #393939;
 }

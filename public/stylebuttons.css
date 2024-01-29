@@ -15,6 +15,7 @@
     text-shadow: 0 0 20px #ffffff, 0 0 50px #ffffff;
   }
 }
+
 button, select {
 	-moz-box-shadow:inset 0px 1px 0px 0px #a6827e;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #a6827e;
