@@ -465,17 +465,26 @@ function planDuCamp() {
         if (bat.loc === "trans") {
             let batType = getBatType(bat);
             if (batType.cat === 'buildings' || batType.cat === 'devices') {
+                let bldIcon = getBldIcon(batType);
                 if (bat.tags.includes('plan')) {
-                    $('#conUnitList').append('<span class="constName vert">&#9989; '+batType.name+'</span><br>');
+                    $('#conUnitList').append('<span class="constName vert">&#9989; '+bldIcon+' '+batType.name+'</span><br>');
                 } else {
                     if (mayDrop) {
-                        $('#conUnitList').append('<span class="constName gf klik" onclick="planBatDrop('+bat.id+')">&#11036; '+batType.name+'</span><br>');
+                        $('#conUnitList').append('<span class="constName gf klik" onclick="planBatDrop('+bat.id+')">&#11036; '+bldIcon+' '+batType.name+'</span><br>');
                     } else {
-                        $('#conUnitList').append('<span class="constName gff">&#11035; '+batType.name+'</span><br>');
+                        $('#conUnitList').append('<span class="constName gff">&#11035; '+bldIcon+' '+batType.name+'</span><br>');
                     }
                 }
             }
         }
     });
     $('#conUnitList').append('<br><br>');
+};
+
+function getBldIcon(batType) {
+    let bldIcon = '';
+    if (batType.mining != undefined || batType.skills.includes('geo')) {
+        bldIcon = '&#9935;';
+    }
+    return bldIcon;
 };
