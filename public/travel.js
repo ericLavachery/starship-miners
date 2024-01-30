@@ -722,7 +722,7 @@ function editSonde() {
     $('#conUnitList').append('<span class="ListRes or">CHOISIR UNE DESTINATION LA POUR PROCHAINE SONDE</span><br>');
     $('#conUnitList').append('<br>');
     // PLANET
-    $('#conUnitList').append('<select class="boutonGris" id="thePlanet" onchange="changePlayerInfo(`thePlanet`,`sondePlanet`,`sonde`)" title="Planète"></select>');
+    $('#conUnitList').append('<select class="boutonGrisBis" id="thePlanet" onchange="changePlayerInfo(`thePlanet`,`sondePlanet`,`sonde`)" title="Planète"></select>');
     $('#thePlanet').empty().append('<option value="">Planète</option>');
     if (1 === playerInfos.sondePlanet) {
         $('#thePlanet').append('<option value="1" selected>Dom</option>');

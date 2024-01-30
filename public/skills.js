@@ -9,7 +9,7 @@ function guet() {
         selectedBat.apLeft = selectedBat.apLeft-2;
     }
     let weap = selectedBatType.weapon;
-    reloadSound(weap);
+    reloadSound(weap,true);
     tagDelete(selectedBat,'mining');
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -1755,7 +1755,7 @@ function useAmmoPack(tileId,ammoName,conv) {
     }
     if (ammoOK) {
         selectedBat.apLeft = selectedBat.apLeft-1;
-        reloadSound(theWeapon);
+        reloadSound(theWeapon,true);
         let tile = getTileById(tileId);
         // delete tile.ap;
         packOut(tile);

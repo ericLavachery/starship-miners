@@ -199,7 +199,7 @@ function showTileInfos(tileId) {
     } else {
         $('#tileInfos').append('<button type="button" title="Mettre un marqueur" class="boutonGris skillButtons" onclick="toggleMark('+tileId+')"><i class="fas fa-map-pin"></i></button>');
     }
-    $('#tileInfos').append('<button type="button" title="Nommer cet emplacement" class="boutonGris skillButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>');
+    $('#tileInfos').append('<button type="button" title="Nommer cet emplacement" class="boutonGrisBis skillButtons" onclick="renameTile('+tileId+')"><i class="fas fa-map-signs"></i></button>');
     $('#tileInfos').append('<button type="button" title="Faire de cet emplacement mon centre" class="boutonGris skillButtons" onclick="defCenter('+tileId+')"><i class="fas fa-space-shuttle"></i></button>');
 };
 

@@ -134,7 +134,7 @@ function weapDisplay(bat,batType,weapNum,inMelee,onInfra,defCol,guetCol,pop,body
             if (pop) {
                 $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
             } else {
-                $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="'+leBouton+' iconButtons '+colBouton+'" onclick="fireMode(`'+wNumName+'`,false)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
+                $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="Attaquer" class="'+leBouton+' unitButtons '+colBouton+'" onclick="fireMode(`'+wNumName+'`,false)"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
             }
             $('#'+bodyPlace).append('<div id="'+wDivName+'"></div>');
             $('#'+wDivName).empty();
@@ -166,7 +166,7 @@ function weapDisplay(bat,batType,weapNum,inMelee,onInfra,defCol,guetCol,pop,body
             if (pop) {
                 $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'>'+thisWeapon.name+'</'+balise+'></span><br>');
             } else {
-                $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+wKOmessage+'" class="boutonGrey iconButtons gf" onclick="showWeapsToggle()"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
+                $('#'+bodyPlace).append('<span class="blockTitle"><'+balise+'><button type="button" title="'+wKOmessage+'" class="boutonGrey unitButtons gf" onclick="showWeapsToggle()"><i class="ra ra-bullets rpg"></i> <span class="small">'+thisWeapon.cost+'</span></button>&nbsp; '+thisWeapon.name+'</'+balise+'></span><br>');
             }
             $('#'+bodyPlace).append('<div id="'+wDivName+'"></div>');
             $('#'+wDivName).empty();

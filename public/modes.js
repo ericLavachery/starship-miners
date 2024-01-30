@@ -36,7 +36,7 @@ function fireMode(weapon,silent) {
         cursorSwitch('.','grid-item','pointer');
         weaponSelect(weapon);
         if (!silent) {
-            reloadSound(selectedWeap);
+            reloadSound(selectedWeap,false);
         }
         fireInfos(selectedBat);
         showBatInfos(selectedBat);

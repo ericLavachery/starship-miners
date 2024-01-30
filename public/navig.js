@@ -33,7 +33,7 @@ function commandes() {
             if (batList.length >= 1) {
                 if (Object.keys(selectedBat).length >= 1) {
                     $('#batloop').append('<button type="button" title="Passer au bataillon suivant (et ne plus s\'occuper de celui-ci ce tour-ci)" class="boutonGris iconButtons" onclick="nextBat(true,false)" onmousedown="clicSound(3)"><i class="fas fa-thumbs-up"></i></button>');
-                    $('#batloop').append('<button type="button" title="Passer au bataillon suivant (et s\'occuper de celui-ci à la fin du tour)" class="boutonGris iconButtons" onclick="nextBat(false,false)" onmousedown="clicSound(1)"><i class="fas fa-share"></i></button>');
+                    $('#batloop').append('<button type="button" title="Passer au bataillon suivant (et s\'occuper de celui-ci à la fin du tour)" class="boutonGrisBis iconButtons" onclick="nextBat(false,false)" onmousedown="clicSound(1)"><i class="fas fa-share"></i></button>');
                     $('#batloop').append('<button type="button" title="Mettre ce bataillon hors alerte (le sortir de la liste)" class="boutonGris iconButtons" onclick="nextBat(true,true)" onmousedown="clicSound(6)"><i class="far fa-bell-slash"></i></button>');
                 } else {
                     $('#batloop').append('<button type="button" title="Passer au bataillon suivant" class="boutonGris iconButtons" onclick="nextBat(true)" onmousedown="clicSound(3)"><i class="fas fa-chevron-circle-right"></i></button>');
@@ -52,7 +52,7 @@ function commandes() {
             } else {
                 $('#commandz').append('<button type="button" title="Passer au tour suivant" class="boutonGrey iconButtons gf"><i class="fas fa-spider"></i></button>');
             }
-            $('#commandz').append('<button type="button" title="Nombre d\'aliens en vue" class="boutonGris iconButtons" onclick="updateAliensNum()">'+aliensNum+'</button>');
+            $('#commandz').append('<button type="button" title="Nombre d\'aliens en vue" class="boutonGrisBis iconButtons" onclick="updateAliensNum()">'+aliensNum+'</button>');
             $('#commandz').append('<button type="button" title="Nombre d\'oeufs en vue" class="boutonGris iconButtons" onclick="findEgg()" onmousedown="clicSound(5)">'+eggsNum+'</button>');
             $('#commandz').append('<hr>');
         }
@@ -109,7 +109,7 @@ function commandes() {
             }
             if (!justReloaded) {
                 if (!playerInfos.onShip) {
-                    $('#commandz').append('<button type="button" title="Minimap" class="boutonGris iconButtons" onclick="minimap()" onmousedown="clicSound(5)"><i class="far fa-map"></i></button>');
+                    $('#commandz').append('<button type="button" title="Minimap" class="boutonGrisBis iconButtons" onclick="minimap()" onmousedown="clicSound(5)"><i class="far fa-map"></i></button>');
                 } else {
                     $('#commandz').append('<button type="button" title="Backup: Seulement après actualisation de la page" class="boutonGrey iconButtons gf"><i class="fas fa-hdd"></i></button>');
                 }
@@ -159,16 +159,16 @@ function commandes() {
             }
         }
         $('#commandz').append('<button type="button" title="Nombre d\'aliens en vue" class="boutonGris iconButtons">'+aliensNum+'</button>');
-        $('#commandz').append('<button type="button" title="Nombre d\'oeufs en vue" class="boutonGris iconButtons" onclick="findEgg()" onmousedown="clicSound(5)">'+eggsNum+'</button>');
+        $('#commandz').append('<button type="button" title="Nombre d\'oeufs en vue" class="boutonGrisBis iconButtons" onclick="findEgg()" onmousedown="clicSound(5)">'+eggsNum+'</button>');
         $('#commandz').append('<br>');
     }
     $('#commandz').append('<hr>');
     $('#commandz').append('<button type="button" title="Gérer les volumes" class="boutonGris iconButtons" onclick="soundCheck()"><i class="fas fa-sliders-h"></i></button>');
     // console.log('volMu =========================================================================== '+playerInfos.volMu);
     if (playerInfos.volMu > 0 || playerInfos.volAmb > 0 || playerInfos.volRadio > 0) {
-        $('#commandz').append('<button type="button" title="Stopper tous les sons" class="boutonGris iconButtons" onclick="soundAllStop()"><i class="fas fa-volume-mute"></i></button>');
+        $('#commandz').append('<button type="button" title="Stopper tous les sons" class="boutonGrisBis iconButtons" onclick="soundAllStop()"><i class="fas fa-volume-mute"></i></button>');
     } else {
-        $('#commandz').append('<button type="button" title="Redémarrer tous les sons" class="boutonGris iconButtons" onclick="soundAllGo()"><i class="fas fa-play"></i></button>');
+        $('#commandz').append('<button type="button" title="Redémarrer tous les sons" class="boutonGrisBis iconButtons" onclick="soundAllGo()"><i class="fas fa-play"></i></button>');
     }
     if (activeTurn == 'player') {
         if (zone[0].isPrev) {

@@ -178,7 +178,7 @@ function mapEditWindow() {
     if (zone[0].body === undefined) {
         zone[0].body = 'Allez chercher ce Trolley et cassez-vous, bordel!';
     }
-    $('#conUnitList').append('<span class="constName"><form id="descFrm" onkeydown="return event.key != `Enter`;">Nom:<br><input type="text" id="descTitle" name="descTitle" class="txtInputs" value="'+zone[0].title+'"><br>Objectif/Description:<br><textarea id="descBody" name="descBody" rows="8" cols="32" class="txtInputs">'+zone[0].body+'</textarea><br><input type="button" onclick="nameTheZoneBaby()" value="Envoyer" class="boutonGris skillButtons"></form></span>');
+    $('#conUnitList').append('<span class="constName"><form id="descFrm" onkeydown="return event.key != `Enter`;">Nom:<br><input type="text" id="descTitle" name="descTitle" class="txtInputs" value="'+zone[0].title+'"><br>Objectif/Description:<br><textarea id="descBody" name="descBody" rows="8" cols="32" class="txtInputs">'+zone[0].body+'</textarea><br><input type="button" onclick="nameTheZoneBaby()" value="Envoyer" class="boutonGrisBis skillButtons"></form></span>');
     $('#conUnitList').append('<br><br>');
 };
 
@@ -1499,7 +1499,7 @@ function loadEditorMission() {
     $('#conUnitList').append('<span class="constName or" id="gentils">EDITER UNE MISSION</span><br>');
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<select class="boutonGris" id="theStartZone" onchange="editTheMissionBaby()"></select>');
+    $('#conUnitList').append('<select class="boutonGrisBis" id="theStartZone" onchange="editTheMissionBaby()"></select>');
     $('#theStartZone').empty().append('<option value="0" selected>Mission</option>');
     let misNum = 50;
     while (misNum <= 99) {

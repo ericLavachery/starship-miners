@@ -37,10 +37,10 @@ function showBatPrefab(bat) {
     }
     $('#'+headPlace).append('<span class="blockTitle"><h3><img class="batInfoPic" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+batType.name+'</h3></span>');
     $('#'+bodyPlace).append('<span class="constName jaune">Accès par la soute</span><br>');
-    $('#'+bodyPlace).append('<button type="button" title="Aller dans la soute" class="boutonMarine iconButtons" onclick="goSoutePrefab('+bat.id+')" onmousedown="clicSound()"><i class="fas fa-warehouse"></i></button>');
+    $('#'+bodyPlace).append('<button type="button" title="Aller dans la soute" class="boutonMarine unitButtons" onclick="goSoutePrefab('+bat.id+')" onmousedown="clicSound()"><i class="fas fa-warehouse"></i></button>');
     $('#'+bodyPlace).append('<br>');
     $('#'+bodyPlace).append('<span class="constName">Déplacer ce bâtiment</span><br>');
-    $('#'+bodyPlace).append('<button type="button" title="Cliquez ici, puis cliquez sur la carte" class="boutonGris iconButtons" onclick="movePrefab('+bat.id+')" onmousedown="clicSound()"><i class="fas fa-arrows-alt"></i></button>');
+    $('#'+bodyPlace).append('<button type="button" title="Cliquez ici, puis cliquez sur la carte" class="boutonGris unitButtons" onclick="movePrefab('+bat.id+')" onmousedown="clicSound()"><i class="fas fa-arrows-alt"></i></button>');
     $("#unitInfos").animate({scrollTop:0},"fast");
 };
 
@@ -867,7 +867,7 @@ function batInfos(bat,batType,pop) {
             if (army >= 20) {break;}
             army++
         }
-        $('#'+bodyPlace).append('<button type="button" title="Nommer le commandant de ce bataillon" class="boutonGris skillButtons" onclick="renameChief('+bat.id+')"><i class="fas fa-user-alt"></i></button>');
+        $('#'+bodyPlace).append('<button type="button" title="Nommer le commandant de ce bataillon" class="boutonGrisBis skillButtons" onclick="renameChief('+bat.id+')"><i class="fas fa-user-alt"></i></button>');
     }
     // RESSOURCES transportées
     // console.log('HERE');
@@ -977,7 +977,7 @@ function batInfos(bat,batType,pop) {
         }
         if ((batType.transRes >= 1 && batType.name != 'Soute' && batType.name != 'Stocks') || (batType.transRes >= 1 && allowCheat)) {
             if (Object.keys(bat.transRes).length >= 1) {
-                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge iconButtons" onclick="fretThrow()"><i class="far fa-trash-alt"></i></button>&nbsp; Tout vider</h4></span>');
+                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Jeter toutes les ressources" class="boutonRouge unitButtons" onclick="fretThrow()"><i class="far fa-trash-alt"></i></button>&nbsp; Tout vider</h4></span>');
             }
         }
         if (isAdmin.fire) {

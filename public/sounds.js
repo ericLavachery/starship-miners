@@ -21,7 +21,7 @@ function soundCheck() {
         $('#conUnitList').append('<button type="button" title="Redémarrer les effets" class="boutonVert iconButtons" onclick="soundVolume(`mute`,`volFx`)"><i class="fas fa-play"></i></button>');
     }
     $('#conUnitList').append('<button type="button" title="Diminuer le volume des effets" class="boutonGris iconButtons" onclick="soundVolume(`down`,`volFx`)"><i class="fas fa-volume-down"></i></button>');
-    $('#conUnitList').append('<button type="button" title="Augmenter le volume des effets" class="boutonGris iconButtons" onclick="soundVolume(`up`,`volFx`)"><i class="fas fa-volume-up"></i></button>');
+    $('#conUnitList').append('<button type="button" title="Augmenter le volume des effets" class="boutonGrisBis iconButtons" onclick="soundVolume(`up`,`volFx`)"><i class="fas fa-volume-up"></i></button>');
     theVol = Math.round(playerInfos.volFx*10);
     $('#conUnitList').append('<button type="button" title="Volume" class="boutonBleu iconButtons">'+theVol+'</button>');
     $('#conUnitList').append('<br>');
@@ -33,7 +33,7 @@ function soundCheck() {
     } else {
         $('#conUnitList').append('<button type="button" title="Redémarrer l\'ambiance sonore" class="boutonVert iconButtons" onclick="soundVolume(`mute`,`volAmb`)"><i class="fas fa-play"></i></button>');
     }
-    $('#conUnitList').append('<button type="button" title="Diminuer le volume de l\'ambiance sonore" class="boutonGris iconButtons" onclick="soundVolume(`down`,`volAmb`)"><i class="fas fa-volume-down"></i></button>');
+    $('#conUnitList').append('<button type="button" title="Diminuer le volume de l\'ambiance sonore" class="boutonGrisBis iconButtons" onclick="soundVolume(`down`,`volAmb`)"><i class="fas fa-volume-down"></i></button>');
     $('#conUnitList').append('<button type="button" title="Augmenter le volume de l\'ambiance sonore" class="boutonGris iconButtons" onclick="soundVolume(`up`,`volAmb`)"><i class="fas fa-volume-up"></i></button>');
     theVol = Math.round(playerInfos.volAmb*10);
     $('#conUnitList').append('<button type="button" title="Volume" class="boutonBleu iconButtons">'+theVol+'</button>');
@@ -48,7 +48,7 @@ function soundCheck() {
             $('#conUnitList').append('<button type="button" title="Redémarrer la musique" class="boutonVert iconButtons" onclick="soundVolume(`mute`,`volMu`)"><i class="fas fa-play"></i></button>');
         }
         $('#conUnitList').append('<button type="button" title="Diminuer le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`down`,`volMu`)"><i class="fas fa-volume-down"></i></button>');
-        $('#conUnitList').append('<button type="button" title="Augmenter le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`up`,`volMu`)"><i class="fas fa-volume-up"></i></button>');
+        $('#conUnitList').append('<button type="button" title="Augmenter le volume de la musique" class="boutonGrisBis iconButtons" onclick="soundVolume(`up`,`volMu`)"><i class="fas fa-volume-up"></i></button>');
         theVol = Math.round(playerInfos.volMu*10);
         $('#conUnitList').append('<button type="button" title="Volume" class="boutonBleu iconButtons">'+theVol+'</button>');
         $('#conUnitList').append('<br>');
@@ -61,7 +61,7 @@ function soundCheck() {
         } else {
             $('#conUnitList').append('<button type="button" title="Redémarrer la musique" class="boutonVert iconButtons" onclick="soundVolume(`mute`,`volRadio`)"><i class="fas fa-play"></i></button>');
         }
-        $('#conUnitList').append('<button type="button" title="Diminuer le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`down`,`volRadio`)"><i class="fas fa-volume-down"></i></button>');
+        $('#conUnitList').append('<button type="button" title="Diminuer le volume de la musique" class="boutonGrisBis iconButtons" onclick="soundVolume(`down`,`volRadio`)"><i class="fas fa-volume-down"></i></button>');
         $('#conUnitList').append('<button type="button" title="Augmenter le volume de la musique" class="boutonGris iconButtons" onclick="soundVolume(`up`,`volRadio`)"><i class="fas fa-volume-up"></i></button>');
         theVol = Math.round(playerInfos.volRadio*10);
         $('#conUnitList').append('<button type="button" title="Volume" class="boutonBleu iconButtons">'+theVol+'</button>');
@@ -342,7 +342,7 @@ function shotSound(weapon,bat) {
     }
 };
 
-function reloadSound(weap) {
+function reloadSound(weap,noFire) {
     if (weap.sound.includes('antichar')) {
         playSound('sniperload',0,true);
     } else if (weap.sound.includes('sniper')) {
@@ -410,11 +410,19 @@ function reloadSound(weap) {
     } else if (weap.sound.includes('canon_')) {
         playSound('hydro',-1,true);
     } else if (weap.sound.includes('bomb')) {
-        playSound('hydro',0,true);
+        playSound('hydro',-1,true);
     } else if (weap.sound.includes('miss')) {
-        playSound('allteams',0,true);
+        if (noFire) {
+            playSound('hydro',-1,true);
+        } else {
+            playSound('allteams',0,true);
+        }
     } else if (weap.sound.includes('obusier')) {
-        playSound('getready',0,true);
+        if (noFire) {
+            playSound('hydro',-1,true);
+        } else {
+            playSound('getready',0,true);
+        }
     } else {
         playSound('wready',0,true);
     }

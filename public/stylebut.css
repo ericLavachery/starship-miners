@@ -51,6 +51,13 @@ button:hover,select:hover {
 	background-position: 24% 40%;
 }
 
+.boutonGrisBis {
+    position: relative;
+	/* box-shadow: 0 3px 0 1px #323e41; */
+	background-color:#53686e;
+	background-position: 55% 60%;
+}
+
 .boutonGrey {
     position: relative;
     /* box-shadow: 0 3px 0 1px #2f3638; */
@@ -62,7 +69,7 @@ button:hover,select:hover {
 .boutonBrun {
     position: relative;
     /* box-shadow: 0 3px 0 1px #412b15; */
-	background-color:#794f24;
+	background-color:#7a450f;
 	background-position: 10% 60%;
 }
 
@@ -201,6 +208,12 @@ select.crudButtons {
     font-size: 12px;
     padding: 4px 3px 3px 3px;
 	margin: 3px 0 3px 0;
+}
+.unitButtons {
+    min-width: 45px;
+    font-size: 17px;
+    /* padding: 4px 5px 3px 5px; */
+	margin: 3px 0 3px 6px;
 }
 .iconButtons,.iconButtonsRA {
     min-width: 35px;

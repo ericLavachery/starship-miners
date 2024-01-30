@@ -2939,7 +2939,7 @@ function gangChoice() {
     // DIFFICULTE
     $('#conUnitList').append('<span class="ListRes or">CHOISIR LE NIVEAU DE DIFFICULTE</span><br>');
     $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<select class="boutonGris" id="theDiffMode" onchange="changePlayerInfo(`theDiffMode`,`gMode`,`gangChoice`)"></select>');
+    $('#conUnitList').append('<select class="boutonGrisBis" id="theDiffMode" onchange="changePlayerInfo(`theDiffMode`,`gMode`,`gangChoice`)"></select>');
     $('#theDiffMode').empty().append('<option value="2">Niveau</option>');
     $('#theDiffMode').append('<option value="1">J\'ai peur des bourdons</option>');
     $('#theDiffMode').append('<option value="2">Normal</option>');

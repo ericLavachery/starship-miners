@@ -982,7 +982,7 @@ function maxUnits(unit) {
             maxInfo.text = 'Vous ne pouvez pas faire des chercheurs hors de la station';
         }
     }
-    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('wdev') || unit.skills.includes('wsi') || unit.skills.includes('mdev') || unit.skills.includes('hveh') || unit.skills.includes('lveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxexo') || unit.skills.includes('maxdet') || unit.skills.includes('maxfog') || unit.skills.includes('maxind') || unit.skills.includes('maxgang') || unit.skills.includes('maxlevel')) {
+    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('wdev') || unit.skills.includes('wsi') || unit.skills.includes('wguet') || unit.skills.includes('mdev') || unit.skills.includes('hveh') || unit.skills.includes('lveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxexo') || unit.skills.includes('maxdet') || unit.skills.includes('maxfog') || unit.skills.includes('maxind') || unit.skills.includes('maxgang') || unit.skills.includes('maxlevel')) {
         if (playerInfos.bldList.includes('Camp d\'entraînement')) {
             maxOf.elite = maxOf.elite+playerInfos.comp.train;
             if (maxOf.elite < 1) {
@@ -1159,7 +1159,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('wdev')) {
-        maxInfo.max = playerInfos.comp.def+(playerInfos.comp.arti*2);
+        maxInfo.max = playerInfos.comp.def+playerInfos.comp.arti;
         let gLevLimit = getUnitLevelLimit(unit);
         if (gLevLimit < maxInfo.max && maxInfo.max > 1) {
             maxInfo.max = gLevLimit;
@@ -1175,6 +1175,13 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('wsi')) {
+        maxInfo.max = playerInfos.comp.def+2;
+        if (numOf[unit.name] >= maxInfo.max) {
+            maxInfo.ko = true;
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de défense';
+        }
+    }
+    if (unit.skills.includes('wguet')) {
         maxInfo.max = playerInfos.comp.def+3;
         if (playerInfos.comp.def >= 3) {
             maxInfo.max++;

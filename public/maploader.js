@@ -689,7 +689,9 @@ function showBataillon(bat) {
             }
         }
     } else {
-        if (bat.fuzz <= -2 && bat.type != 'Fosses') {
+        if (batType.name.includes('Barbelés') && !bat.prt.includes('aucun')) {
+            uClass = 'pUnitsCamoFortif';
+        } else if (bat.fuzz <= -2 && bat.type != 'Fosses') {
             if (bat.tags.includes('fortif')) {
                 uClass = 'pUnitsCamoFortif';
             } else {
