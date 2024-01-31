@@ -167,7 +167,6 @@ function goCommand(chefBatId,gainPA) {
 };
 
 function checkTreuil(myBat) {
-    // array 0=ok? 1=treuilBat 2=PA
     let leTreuil = {};
     leTreuil.ok = false;
     leTreuil.bat = {};
@@ -182,9 +181,11 @@ function checkTreuil(myBat) {
                 if (batType.skills.includes('treuil') || hasEquip(bat,['e-treuil'])) {
                     let thisEffect = 200+bat.apLeft;
                     let gainPA = 2;
-                    if (Math.ceil(batType.size*1.5) >= myBatType.size) {
-                        gainPA = 4;
-                        thisEffect = thisEffect+200;
+                    if (batType.size*1.2 >= myBatType.size) {
+                        let bonusPA = Math.ceil(batType.size/myBatType.size*1.2)-1;
+                        bonusPA = entre(bonusPA,1,3);
+                        gainPA = gainPA+bonusPA;
+                        thisEffect = thisEffect+(bonusPA*100);
                     }
                     if (thisEffect > bestEffect) {
                         bestEffect = thisEffect;
@@ -197,7 +198,7 @@ function checkTreuil(myBat) {
         }
     });
     if (playerInfos.comp.trans === 3) {
-        leTreuil.pa = leTreuil.pa+2;
+        leTreuil.pa = leTreuil.pa+1;
     }
     return leTreuil;
 };

@@ -1793,7 +1793,7 @@
             "noShield":true,
             "isRam":true,
             "rof":12,
-            "accuracy":22,
+            "accuracy":25,
             "power":22,
             "aoe":"brochette",
             "sound":"belier",
