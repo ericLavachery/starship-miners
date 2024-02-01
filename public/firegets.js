@@ -1795,7 +1795,7 @@ function isInRange(myBat,thatTileId,myWeapon,alien) {
     let range = myWeapon.range;
     let rangeBonus = 0;
     if (alien.tags.includes('fluo')) {
-        if (myWeapon.range >= 1 && !myWeapon.isMelee) {
+        if (myWeapon.range >= 1 && !myWeapon.isMelee && !myBatType.skills.includes('ismine')) {
             if (myWeapon.ammo.includes('missile')) {
                 rangeBonus = rangeBonus+3;
             } else if (myWeapon.ammo.includes('obus') && !myWeapon.name.includes('ombes')) {
@@ -2081,7 +2081,7 @@ function weaponSelect(weapon) {
 
 function weaponSelectRiposte(distance) {
     if (targetBatType.skills.includes('smartrip')) {
-        if (distance > targetBatType.weapon.range) {
+        if (distance > targetBatType.weapon.range || targetBatType.weapon.noDef) {
             targetWeap = JSON.parse(JSON.stringify(targetBatType.weapon2));
             targetWeap = weaponAdj(targetWeap,targetBat,'w2');
         } else {
@@ -3785,6 +3785,9 @@ function getEggProtect(eggBat,eggBatType,weap) {
         }
         if (playerInfos.comp.ca === 5) {
             eggProt = eggProt*0.96;
+        }
+        if (eggBat.tags.includes('jelly')) {
+            eggProt = eggProt*0.97;
         }
         if (weap.ammo === 'suicide' || weap.ammo === 'suicide-deluge') {
             eggProt = eggProt*0.85;

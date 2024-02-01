@@ -1949,7 +1949,6 @@
             "elevation":1,
             "noFly":false,
             "isMelee":false,
-            "noDef":true,
             "rof":6,
             "accuracy":8,
             "dca":1,
@@ -1963,7 +1962,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["dread","capmen","nojello","slowreg","wselect","necrotouch","stay"],
+        "skills":["dread","capmen","nojello","slowreg","wselect","necrotouch","smartrip","stay"],
         "deathFx":"death2",
         "killRes":{"Bugium":10,"Swarmine":22,"Mendium":3,"Slime":7,"Germium":16},
         "killXP":12
