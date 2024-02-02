@@ -125,16 +125,6 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     // LIGNE 1 -----------------------------------------------------------------------------------------------------------------------------------
     $('#unitInfos').append('<span id="line-defense"></span>');
     lineBreak = false;
-    // MARQUEUR
-    if (!playerInfos.onShip) {
-        if (playerInfos.showedTiles.includes(tile.id)) {
-            $('#unitInfos').append('<button type="button" title="Effacer le marqueur" class="boutonGrisBis iconSMButtons" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-eraser"></i></button>');
-            lineBreak = true;
-        } else {
-            $('#unitInfos').append('<button type="button" title="Mettre un marqueur" class="boutonGrisBis iconSMButtons" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-map-pin"></i></button>');
-            lineBreak = true;
-        }
-    }
     // GUET
     if (batType.weapon.rof >= 1 && bat.ap >= 1 && !batType.skills.includes('noguet') && (hasW1 || hasW2) && !playerInfos.onShip && !zeroCrew) {
         balise = 'h4';
@@ -467,6 +457,16 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             lineBreak = true;
         } else {
             $('#unitInfos').append('<button type="button" title="Arrêter le fog" class="'+boutonNope+' unitButtons '+colorNope+'" onclick="fogStop()"><i class="fas fa-cloud"></i> <span class="small">0</span></button>');
+            lineBreak = true;
+        }
+    }
+    // MARQUEUR
+    if (!playerInfos.onShip) {
+        if (playerInfos.showedTiles.includes(tile.id)) {
+            $('#unitInfos').append('<button type="button" title="Effacer le marqueur" class="boutonGrisBis unitButtonsSmall" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-eraser"></i></button>');
+            lineBreak = true;
+        } else {
+            $('#unitInfos').append('<button type="button" title="Mettre un marqueur" class="boutonGrisBis unitButtonsSmall" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-map-pin"></i></button>');
             lineBreak = true;
         }
     }
@@ -2440,7 +2440,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     prodOK = true;
                 }
                 if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
-                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGrisBis iconSMButtons" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGrisBis unitButtonsSmall" onclick="putInfra(`Miradors`)"><span class="small">Mi</span></button>');
                     lineBreak = true;
                 } else {
                     if (!compReqOK) {
@@ -2452,7 +2452,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     } else {
                         skillMessage = defaultMessage;
                     }
-                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey iconSMButtons gf"><span class="small">Mi</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey unitButtonsSmall gf"><span class="small">Mi</span></button>');
                     lineBreak = true;
                 }
             }
@@ -2467,7 +2467,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     prodOK = true;
                 }
                 if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
-                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGris iconSMButtons" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGris unitButtonsSmall" onclick="putInfra(`Palissades`)"><span class="small">Pa</span></button>');
                     lineBreak = true;
                 } else {
                     if (!compReqOK) {
@@ -2479,7 +2479,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     } else {
                         skillMessage = defaultMessage;
                     }
-                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey iconSMButtons gf"><span class="small">Pa</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey unitButtonsSmall gf"><span class="small">Pa</span></button>');
                     lineBreak = true;
                 }
             }
@@ -2494,7 +2494,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     prodOK = true;
                 }
                 if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
-                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGrisBis iconSMButtons" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGrisBis unitButtonsSmall" onclick="putInfra(`Remparts`)"><span class="small">Re</span></button>');
                     lineBreak = true;
                 } else {
                     if (!compReqOK) {
@@ -2506,7 +2506,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     } else {
                         skillMessage = defaultMessage;
                     }
-                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey iconSMButtons gf"><span class="small">Re</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey unitButtonsSmall gf"><span class="small">Re</span></button>');
                     lineBreak = true;
                 }
             }
@@ -2521,7 +2521,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     prodOK = true;
                 }
                 if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
-                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGris iconSMButtons" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGris unitButtonsSmall" onclick="putInfra(`Murailles`)"><span class="small">Mu</span></button>');
                     lineBreak = true;
                 } else {
                     if (!compReqOK) {
@@ -2533,7 +2533,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     } else {
                         skillMessage = defaultMessage;
                     }
-                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey iconSMButtons gf"><span class="small">Mu</span></button>');
+                    $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey unitButtonsSmall gf"><span class="small">Mu</span></button>');
                     lineBreak = true;
                 }
             }
@@ -2549,7 +2549,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         prodOK = true;
                     }
                     if (infraCostOK && prodOK && compReqOK && bat.apLeft >= apReq && !nearby.oneTile) {
-                        $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGrisBis iconSMButtons" onclick="putInfra(`Terriers`)"><span class="small">Te</span></button>');
+                        $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+displayCosts(infra.costs)+'" class="boutonGrisBis unitButtonsSmall" onclick="putInfra(`Terriers`)"><span class="small">Te</span></button>');
                         lineBreak = true;
                     } else {
                         if (!compReqOK) {
@@ -2561,7 +2561,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         } else {
                             skillMessage = defaultMessage;
                         }
-                        $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey iconSMButtons gf"><span class="small">Te</span></button>');
+                        $('#infraButtons').append('<button type="button" title="'+infraInfo+'\n'+skillMessage+'" class="boutonGrey unitButtonsSmall gf"><span class="small">Te</span></button>');
                         lineBreak = true;
                     }
                 }

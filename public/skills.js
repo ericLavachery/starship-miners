@@ -998,7 +998,8 @@ function goDrug(apCost,drugName) {
                 }
             }
         }
-        playSound(drug.sound,0);
+        let drugSound = getDrugSound(drug,selectedBatType);
+        playSound(drugSound,0);
         payCost(drug.costs);
         doneAction(ravitBat);
         doneAction(selectedBat);
@@ -1007,8 +1008,17 @@ function goDrug(apCost,drugName) {
     }
 };
 
-function drugSound(drug) {
-    playSound('ambush',-0.2);
+function getDrugSound(drug,unit) {
+    let drugSound = drug.sound;
+    if (drugSound === 'pourgo') {
+        if (unit.skills.includes('robot') || unit.skills.includes('cyber') || unit.skills.includes('emoteur') || unit.skills.includes('saucer')) {
+            drugSound = 'pour';
+        }
+    }
+    if (drug.name === 'pills') {
+        drugSound = 'pills'+rand.rand(1,6);
+    }
+    return drugSound;
 };
 
 function drugInstantBonus(drug,fromPack) {
@@ -1928,7 +1938,8 @@ function useDrugPack(tileId,drugName,apCost) {
         }
         selectedBat.tags.push(drug.name);
         drugInstantBonus(drug,true);
-        playSound(drug.sound,0);
+        let drugSound = getDrugSound(drug,selectedBatType);
+        playSound(drugSound,0);
         selectedBat.apLeft = selectedBat.apLeft-apCost;
         let tile = getTileById(tileId);
         // delete tile.ap;
@@ -1969,7 +1980,7 @@ function allPacks(bat,batType) {
                             }
                             let ammo = getAmmoByName(tileAmmoPackName);
                             let ammoInfo = showAmmoInfo(ammo.name,false,false);
-                            $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tileAmmoPackName+' / '+ammoInfo+')" class="boutonOrange iconButtons" onclick="useAmmoPack('+tile.id+',`'+tile.ap+'`,true)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tileAmmoPackName+' / '+ammoInfo+')" class="boutonOrange unitButtons" onclick="useAmmoPack('+tile.id+',`'+tile.ap+'`,true)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
                         }
                     }
                     if (tile.ap.includes('prt_')) {
@@ -1984,7 +1995,7 @@ function allPacks(bat,batType) {
                             apReq = 0;
                             let armor = getEquipByName(armorName);
                             let armorInfo = showFullArmorInfo(armor,forBld,false,false,true,batType);
-                            $('#unitInfos').append('<button type="button" title="Enfiler les armures ('+armorName+' / '+armorInfo+')" class="boutonOrange iconButtons" onclick="useArmorPack('+tile.id+',`'+armorName+'`)"><i class="ra ra-vest rpg"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="Enfiler les armures ('+armorName+' / '+armorInfo+')" class="boutonOrange unitButtons" onclick="useArmorPack('+tile.id+',`'+armorName+'`)"><i class="ra ra-vest rpg"></i> <span class="small">'+apCost+'</span></button>');
                         }
                     }
                     if (tile.ap.includes('eq_')) {
@@ -1995,7 +2006,7 @@ function allPacks(bat,batType) {
                             apReq = 0;
                             let equip = getEquipByName(equipName);
                             let oldEquip = getEquipByName(bat.eq);
-                            $('#unitInfos').append('<button type="button" title="Utiliser les équipements ('+equipName+' / '+equip.info+') &mdash; Se débarasser de ('+bat.eq+' / '+oldEquip.info+')" class="boutonOrange iconButtons" onclick="useEquipPack('+tile.id+',`'+equipName+'`)"><i class="fas fa-compass"></i> <span class="small">'+apCost+'</span></button>');
+                            $('#unitInfos').append('<button type="button" title="Utiliser les équipements ('+equipName+' / '+equip.info+') &mdash; Se débarasser de ('+bat.eq+' / '+oldEquip.info+')" class="boutonOrange unitButtons" onclick="useEquipPack('+tile.id+',`'+equipName+'`)"><i class="fas fa-compass"></i> <span class="small">'+apCost+'</span></button>');
                         }
                     }
                     if (tile.ap.includes('drg_')) {
@@ -2017,12 +2028,12 @@ function allPacks(bat,batType) {
                                     usure = bat.soins;
                                 }
                                 if (drug.name != 'meca' || bat.squadsLeft < batType.squads || bat.damage >= 30 || usure >= 11) {
-                                    $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonOrange iconButtons" onclick="useDrugPack('+tile.id+',`'+drugName+'`,'+apCost+')"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                                    $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonOrange unitButtons" onclick="useDrugPack('+tile.id+',`'+drugName+'`,'+apCost+')"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                                 } else {
-                                    $('#unitInfos').append('<button type="button" title="('+drugName+' / '+drug.info+')" class="boutonOrange iconButtons gf"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                                    $('#unitInfos').append('<button type="button" title="('+drugName+' / '+drug.info+')" class="boutonOrange unitButtons gf"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                                 }
                             } else {
-                                $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonOrange iconButtons" onclick="useDrugPack('+tile.id+',`'+drugName+'`,'+apCost+')"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                                $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonOrange unitButtons" onclick="useDrugPack('+tile.id+',`'+drugName+'`,'+apCost+')"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
                             }
                         }
                     }

@@ -1248,7 +1248,8 @@ function pills() {
                 selectedBat.emo = Math.floor(selectedBat.emo/1.25);
             }
         }
-        playSound(drug.sound,0);
+        let drugSound = getDrugSound(drug,selectedBatType);
+        playSound(drugSound,0);
         selectedBatArrayUpdate();
         goSoute();
         showBatInfos(selectedBat);

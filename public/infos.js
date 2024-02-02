@@ -963,17 +963,17 @@ function batInfos(bat,batType,pop) {
                 }
                 let resRecup = getResRecup(bat,batType);
                 if (playerInfos.onShip || batType.skills.includes('recupfull')) {
-                    $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+' '+toCoolString(resRecup)+'" class="boutonRouge bigButtons" onclick="dismantle('+bat.id+',false)"><i class="fas fa-people-carry"></i></button>&nbsp; Démanteler</h4></span>');
+                    $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+' '+toCoolString(resRecup)+'" class="boutonRouge unitButtons" onclick="dismantle('+bat.id+',false)"><i class="fas fa-people-carry"></i></button>&nbsp; Démanteler</h4></span>');
                 } else {
                     if (batType.cat === 'buildings' || batType.skills.includes('recupres')) {
-                        $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+' '+toCoolString(resRecup)+'" class="boutonRouge bigButtons" onclick="dismantle('+bat.id+',false)"><i class="fas fa-people-carry"></i></button>&nbsp; Démanteler</h4></span>');
+                        $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler '+demText+' '+toCoolString(resRecup)+'" class="boutonRouge unitButtons" onclick="dismantle('+bat.id+',false)"><i class="fas fa-people-carry"></i></button>&nbsp; Démanteler</h4></span>');
                     }
-                    $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler sans récupérer les ressources (et donc sans perdre de PA) '+fleeText+'" class="boutonRouge bigButtons" onclick="dismantle('+bat.id+',true)"><i class="fas fa-running"></i></button>&nbsp; Abandonner</h4></span>');
+                    $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Démanteler sans récupérer les ressources (et donc sans perdre de PA) '+fleeText+'" class="boutonRouge unitButtons" onclick="dismantle('+bat.id+',true)"><i class="fas fa-running"></i></button>&nbsp; Abandonner</h4></span>');
                 }
             }
         }
         if (isAdmin.deep || allowCheat) {
-            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel bigButtons" onclick="removeBat('+bat.id+')"><i class="fas fa-user-slash"></i></button>&nbsp; Supprimer</h4></span>');
+            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Supprimer le bataillon (triche!)" class="boutonCiel unitButtons" onclick="removeBat('+bat.id+')"><i class="fas fa-user-slash"></i></button>&nbsp; Supprimer</h4></span>');
         }
         if ((batType.transRes >= 1 && batType.name != 'Soute' && batType.name != 'Stocks') || (batType.transRes >= 1 && allowCheat)) {
             if (Object.keys(bat.transRes).length >= 1) {
@@ -981,9 +981,9 @@ function batInfos(bat,batType,pop) {
             }
         }
         if (isAdmin.fire) {
-            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Storm!" class="boutonMauve bigButtons" onclick="stormThis('+bat.id+')"><i class="fas fa-meteor"></i></button>&nbsp; Storm!</h4></span>');
+            $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Storm!" class="boutonMauve unitButtons" onclick="stormThis('+bat.id+')"><i class="fas fa-meteor"></i></button>&nbsp; Storm!</h4></span>');
             if (batType.skills.includes('robot')) {
-                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Skygrub Test!" class="boutonMauve bigButtons" onclick="turnThisBot('+bat.id+')"><i class="fas fa-robot"></i></button>&nbsp; Turn!</h4></span>');
+                $('#'+bodyPlace).append('<span class="blockTitle"><h4><button type="button" title="Skygrub Test!" class="boutonMauve unitButtons" onclick="turnThisBot('+bat.id+')"><i class="fas fa-robot"></i></button>&nbsp; Turn!</h4></span>');
             }
         }
         // let resLoaded = checkResLoad(bat);

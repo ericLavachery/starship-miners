@@ -1831,7 +1831,7 @@ function isInRange(myBat,thatTileId,myWeapon,alien) {
             }
         }
     }
-    if (myWeapon.ammo.includes('lt-') || myWeapon.ammo.includes('suicide') || myWeapon.ammo.includes('autodes') || myWeapon.ammo.includes('trap') || myWeapon.ammo.includes('mine')) {
+    if (myWeapon.ammo.includes('lt-') || myWeapon.ammo.includes('autodes') || myBatType.skills.includes('ismine')) {
         rangeBonus = 0;
     }
     let halfRange = Math.floor(range/2);

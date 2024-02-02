@@ -464,7 +464,15 @@ function planDuCamp() {
     sortedBats.forEach(function(bat) {
         if (bat.loc === "trans") {
             let batType = getBatType(bat);
-            if (batType.cat === 'buildings' || batType.cat === 'devices') {
+            let isMineTruck = false;
+            if (batType.mining != undefined) {
+                if (batType.mining.multi) {
+                    if (!batType.skills.includes('transorbital')) {
+                        isMineTruck = true;
+                    }
+                }
+            }
+            if (batType.cat === 'buildings' || batType.cat === 'devices' || isMineTruck) {
                 let bldIcon = getBldIcon(batType);
                 if (bat.tags.includes('plan')) {
                     $('#conUnitList').append('<span class="constName vert">&#9989; '+bldIcon+' '+batType.name+'</span><br>');

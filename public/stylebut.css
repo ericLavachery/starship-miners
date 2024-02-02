@@ -197,12 +197,6 @@ select.crudButtons {
     /* padding: 4px 5px 3px 5px; */
 	margin: 3px 0 3px 6px;
 }
-.bigButtons {
-    min-width: 35px;
-    font-size: 19px;
-    /* padding: 4px 5px 3px 5px; */
-	margin: 3px 0 3px 6px;
-}
 .miniButtons {
     min-width: 26px;
     font-size: 12px;
@@ -210,24 +204,26 @@ select.crudButtons {
 	margin: 3px 0 3px 0;
 }
 .unitButtons {
-    min-width: 45px;
-    font-size: 17px;
+    min-width: 42px;
+    font-size: 15px;
     /* padding: 4px 5px 3px 5px; */
 	margin: 3px 0 3px 6px;
 }
-.iconButtons,.iconButtonsRA {
+.unitButtonsSmall {
+    min-width: 30px;
+    font-size: 15px;
+    /* padding: 4px 5px 3px 5px; */
+	margin: 3px 0 3px 6px;
+}
+.bigButtons {
+    min-width: 42px;
+    font-size: 19px;
+    /* padding: 4px 5px 3px 5px; */
+	margin: 3px 0 3px 6px;
+}
+.iconButtons {
     min-width: 35px;
     font-size: 17px;
     /* padding: 4px 5px 3px 5px; */
 	margin: 3px 0 3px 6px;
-}
-.iconSMButtons {
-    min-width: 30px;
-    font-size: 17px;
-    /* padding: 4px 5px 3px 5px; */
-	margin: 3px 0 3px 6px;
-}
-.iconButtonsRA i {
-	vertical-align: middle;
-	padding-bottom: 3px;
 }
