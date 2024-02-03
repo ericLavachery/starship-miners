@@ -146,8 +146,8 @@ function mapEffect() {
     let vmon = vpix+101;
     if (!inSoute) {
         $('#zone_monitor').append('<img src="/static/img/monitorLight.png" width="'+hmon+'" height="'+vmon+'">');
-        if (playerInfos.bldVM.includes('Centre de com') && playerInfos.comp.det >= 2) {
-            if (playerInfos.comp.det >= 5) {
+        if ((playerInfos.bldVM.includes('Centre de com') && playerInfos.comp.det >= 2) || playerInfos.pseudo === 'Mapedit') {
+            if (playerInfos.comp.det >= 5 || playerInfos.pseudo === 'Mapedit') {
                 $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
             } else if (playerInfos.comp.det >= 4) {
                 $('#zone_grid').append('<span class="cloudz" id="gridPic"><img src="/static/img/grid.png"></span>');
@@ -391,7 +391,11 @@ function showRes(tileId) {
             if (webNum > 6) {
                 webNum = webNum-6;
             }
-            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/moss'+webNum+'.png"></div>';
+            if (zone[0].planet === 'Dom' || zone[0].planet === 'Gehenna') {
+                mapIndicators = mapIndicators+'<div class="ruins hrotate"><img src="/static/img/units/moist'+webNum+'.png"></div>';
+            } else {
+                mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/moist'+webNum+'.png"></div>';
+            }
         }
     }
     if (playerInfos.mapTurn < 2 || playerInfos.pseudo === 'Mapedit') {

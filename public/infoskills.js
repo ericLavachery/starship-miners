@@ -2829,8 +2829,10 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     // TILE PACKS
     if (!zeroCrew) {
         if (tile.ap != undefined) {
-            if (!playerInfos.packs.includes(tile.id)) {
-                playerInfos.packs.push(tile.id);
+            if (!bat.tags.includes('nomove')) {
+                if (!playerInfos.packs.includes(tile.id)) {
+                    playerInfos.packs.push(tile.id);
+                }
             }
         }
     }

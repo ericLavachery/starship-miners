@@ -305,6 +305,12 @@ function setSouteTab(tab) {
 };
 
 function landerMenu() {
+    if (souteTab === 'rez') {
+        let selLanderBat = getBatById(slId);
+        if (!selLanderBat.tags.includes('deploy')) {
+            selectDeployedLander();
+        }
+    }
     $('#menu_lander').empty();
     souteTabsMenu('menu_lander');
     $('#menu_lander').append('<span class="menuTab klik" onclick="batSouteSelect(1)">Soute <span class="brunf">(Voir détail)</span></span>');
@@ -321,27 +327,33 @@ function landerMenu() {
         }
         let ucol = 'cy';
         let rcol = 'brunf';
+        let isDeployed = true;
         if (souteTab === 'rez') {
             ucol = 'brunf';
             rcol = 'cy';
+            if (!landerBat.tags.includes('deploy')) {
+                isDeployed = false;
+            }
         }
-        if (landerId === slId) {
-            $('#menu_lander').append('<span class="menuTab cy klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+' <span class="brunf">(<span class="'+ucol+'">'+transUnitLeft+'</span>&ndash;<span class="'+rcol+'">'+transResLeft+'</span>)</span></span>');
-        } else {
-            $('#menu_lander').append('<span class="menuTab klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+' <span class="brunf">('+transUnitLeft+'&ndash;'+transResLeft+')</span></span>');
-        }
-        if (landerBat.chief != undefined) {
-            if (landerBat.chief != '') {
-                if (landerId === slId) {
-                    $('#menu_lander').append('<span class="menuTab cyf">('+landerBat.chief+') &nbsp;&nbsp;</span>');
+        if (isDeployed) {
+            if (landerId === slId) {
+                $('#menu_lander').append('<span class="menuTab cy klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+' <span class="brunf">(<span class="'+ucol+'">'+transUnitLeft+'</span>&ndash;<span class="'+rcol+'">'+transResLeft+'</span>)</span></span>');
+            } else {
+                $('#menu_lander').append('<span class="menuTab klik" onclick="landerSelection('+landerId+')">'+landerBatType.name+' <span class="brunf">('+transUnitLeft+'&ndash;'+transResLeft+')</span></span>');
+            }
+            if (landerBat.chief != undefined) {
+                if (landerBat.chief != '') {
+                    if (landerId === slId) {
+                        $('#menu_lander').append('<span class="menuTab cyf">('+landerBat.chief+') &nbsp;&nbsp;</span>');
+                    } else {
+                        $('#menu_lander').append('<span class="menuTab gf">('+landerBat.chief+') &nbsp;&nbsp;</span>');
+                    }
                 } else {
-                    $('#menu_lander').append('<span class="menuTab gf">('+landerBat.chief+') &nbsp;&nbsp;</span>');
+                    $('#menu_lander').append('<span class="menuTab gf"> &nbsp;&nbsp;</span>');
                 }
             } else {
                 $('#menu_lander').append('<span class="menuTab gf"> &nbsp;&nbsp;</span>');
             }
-        } else {
-            $('#menu_lander').append('<span class="menuTab gf"> &nbsp;&nbsp;</span>');
         }
     });
 };
@@ -352,6 +364,26 @@ function landerSelection(landerId) {
     batSelect(landerBat);
     goSoute();
     showBatInfos(selectedBat);
+};
+
+function selectDeployedLander() {
+    let landerId = -1;
+    let biggerLander = 0;
+    bataillons.forEach(function(bat) {
+        if (bat.tags.includes('deploy')) {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('transorbital') && batType.name != 'Soute') {
+                let landerSize = batType.hp+(bat.transIds.length*100);
+                if (landerSize > biggerLander) {
+                    landerId = bat.id;
+                    biggerLander = landerSize;
+                }
+            }
+        }
+    });
+    if (landerId >= 1) {
+        landerSelection(landerId);
+    }
 };
 
 function getSelectedLanderId() {

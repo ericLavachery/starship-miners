@@ -3433,7 +3433,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["slowreg","resistfeu","reactpoison","nolaser","infrip","freeshot","igtarglog","eggprotect","noaploss","xpfeast","nojello","aimcfo","silhover","light"],
+        "skills":["isegg","slowreg","resistfeu","reactpoison","nolaser","infrip","freeshot","igtarglog","eggprotect","noaploss","xpfeast","nojello","aimcfo","silhover","light"],
         "deathFx":"xplode",
         "killRes":{"Bugium":8,"Mendium":8,"Pyrus":26,"Creatite":6},
         "killXP":35,

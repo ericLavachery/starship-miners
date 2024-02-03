@@ -592,6 +592,9 @@ hr.craft {
     margin-top: 0px;
     z-index: -10;
 }
+.hrotate {
+    filter: hue-rotate(200deg);
+}
 .stormz {
     position: absolute;
     margin-left: 0px;
