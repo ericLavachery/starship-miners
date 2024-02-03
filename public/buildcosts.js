@@ -1445,7 +1445,7 @@ function iCanProdThis(prodUnit,unit,catz) {
         if (catz.includes(unit.cat)) {
             if (prodUnit.cat === 'infantry' && unit.skills.includes('nosap')) {
                 prodThis = false;
-            } else if (prodUnit.cat === 'infantry' && unit.fabTime >= 35 && !unit.skills.includes('clicput') && !unit.skills.includes('infconst')) {
+            } else if (prodUnit.cat === 'infantry' && unit.fabTime >= 35 && !unit.skills.includes('clicput') && (!unit.skills.includes('infconst') || playerInfos.comp.const < 1)) {
                 prodThis = false;
             } else if (prodUnit.skills.includes('constructeur')) {
                 prodThis = true;

@@ -6978,7 +6978,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","scav","fortif","guerrilla","datt","camo","chasse","pistage","badmedic","ranger","swim","lowstress","recupcit","nocrime","nofight","nogen","uprank"],
+        "skills":["a_light","fouille","scav","fortif","guerrilla","datt","camo","chasse","pistage","badmedic","ranger","swim","lowstress","recupcit","nocrime","nofight","nogen","uprank","up3"],
         "mediCost":8,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
@@ -7099,7 +7099,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","camo","baddef","guerrilla","tirailleur","fastguet","selfbadmedic","ranger","swim","brigands","heroescape","lowstress","uprank"],
+        "skills":["a_light","fouille","fortif","datt","camo","baddef","guerrilla","tirailleur","fastguet","selfbadmedic","ranger","swim","brigands","heroescape","lowstress","uprank","up25"],
         "mediCost":7,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"
@@ -7333,7 +7333,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","guerrilla","unemun","maycamo","fastguet","selfbadmedic","ranger","brigands","recupcit","nocrime","herosalvo","uprank"],
+        "skills":["a_mid","fouille","fortif","datt","guerrilla","unemun","maycamo","fastguet","selfbadmedic","ranger","brigands","recupcit","nocrime","herosalvo","uprank","up25"],
         "mediCost":8,
         "fuzz":0,
         "deathFx":"162157__mediapaja2009__agony"

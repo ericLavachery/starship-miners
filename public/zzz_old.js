@@ -1044,3 +1044,106 @@ if (!playerInfos.onShip && playerInfos.clouds) {
 } else {
     $('#zone_map').css("filter","");
 }
+
+let xxww = false;
+if (!zeroCrew && xxww) {
+    if (tile.ap != undefined) {
+        if (!tile.ap.includes('prt_') && !tile.ap.includes('eq_') && !tile.ap.includes('drg_')) {
+            if (!playerInfos.packs.includes(tile.id)) {
+                playerInfos.packs.push(tile.id);
+            }
+            let ammoOK = checkAmmoPack(tile.ap,bat,batType,true);
+            if (ammoOK) {
+                apCost = 1;
+                apReq = 0;
+                let tileAmmoPackName = tile.ap;
+                if (tileAmmoPackName === 'molotov-slime' && batType.skills.includes('fireballs')) {
+                    tileAmmoPackName = 'fireslime';
+                } else if (tileAmmoPackName === 'molotov-pyrus' && batType.skills.includes('fireballs')) {
+                    tileAmmoPackName = 'firebug';
+                } else if (tileAmmoPackName === 'molotov-pyratol' && batType.skills.includes('fireballs')) {
+                    tileAmmoPackName = 'fireblast';
+                }
+                let ammo = getAmmoByName(tileAmmoPackName);
+                let ammoInfo = showAmmoInfo(ammo.name,false,false);
+                $('#unitInfos').append('<button type="button" title="Utiliser le pack de munitions ('+tileAmmoPackName+' / '+ammoInfo+')" class="boutonVert unitButtons" onclick="useAmmoPack('+tile.id+',`'+tile.ap+'`,true)"><i class="ra ra-rifle rpg"></i> <span class="small">'+apCost+'</span></button>');
+                lineBreak = true;
+            }
+        }
+    }
+    // ARMOR PACK
+    if (tile.ap != undefined) {
+        if (tile.ap.includes('prt_')) {
+            if (!playerInfos.packs.includes(tile.id)) {
+                playerInfos.packs.push(tile.id);
+            }
+            let armorName = tile.ap.replace('prt_','');
+            let armorOK = checkArmorPack(armorName,bat,batType);
+            let forBld = false;
+            if (batType.cat === 'buildings' || batType.cat === 'devices') {
+                forBld = true;
+            }
+            if (armorOK) {
+                apCost = 3;
+                apReq = 0;
+                let armor = getEquipByName(armorName);
+                let armorInfo = showFullArmorInfo(armor,forBld,false,false,true,batType);
+                $('#unitInfos').append('<button type="button" title="Enfiler les armures ('+armorName+' / '+armorInfo+')" class="boutonVert unitButtons" onclick="useArmorPack('+tile.id+',`'+armorName+'`)"><i class="ra ra-vest rpg"></i> <span class="small">'+apCost+'</span></button>');
+                lineBreak = true;
+            }
+        }
+    }
+    // EQUIPEMENT PACK
+    if (tile.ap != undefined) {
+        if (tile.ap.includes('eq_')) {
+            if (!playerInfos.packs.includes(tile.id)) {
+                playerInfos.packs.push(tile.id);
+            }
+            let equipName = tile.ap.replace('eq_','');
+            let equipackOK = checkEquipPack(equipName,bat,batType);
+            if (equipackOK) {
+                apCost = 3;
+                apReq = 0;
+                let equip = getEquipByName(equipName);
+                let oldEquip = getEquipByName(bat.eq);
+                $('#unitInfos').append('<button type="button" title="Utiliser les équipements ('+equipName+' / '+equip.info+') &mdash; Se débarasser de ('+bat.eq+' / '+oldEquip.info+')" class="boutonVert unitButtons" onclick="useEquipPack('+tile.id+',`'+equipName+'`)"><i class="fas fa-compass"></i> <span class="small">'+apCost+'</span></button>');
+                lineBreak = true;
+            }
+        }
+    }
+    // DRUG PACK
+    if (tile.ap != undefined) {
+        if (tile.ap.includes('drg_')) {
+            if (!playerInfos.packs.includes(tile.id)) {
+                playerInfos.packs.push(tile.id);
+            }
+            let drugName = tile.ap.replace('drg_','');
+            let drugOK = checkDrugPack(drugName,bat,batType);
+            if (drugOK) {
+                let drug = getEquipByName(drugName);
+                apCost = drug.apCost;
+                apReq = 0;
+                if (drugName === 'meca') {
+                    baseskillCost = calcBaseSkillCost(bat,batType,'mecano',false);
+                    apCost = calcAdjSkillCost(1,baseskillCost,batType,bat,false);
+                    apCost = Math.ceil(apCost/1.5);
+                    apReq = Math.ceil(apCost/2);
+                }
+                if (drug.units === 'veh') {
+                    let usure = 0;
+                    if (bat.soins != undefined) {
+                        usure = bat.soins;
+                    }
+                    if (drug.name != 'meca' || bat.squadsLeft < batType.squads || bat.damage >= 30 || usure >= 11) {
+                        $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert unitButtons" onclick="useDrugPack('+tile.id+',`'+drugName+'`,'+apCost+')"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                    } else {
+                        $('#unitInfos').append('<button type="button" title="('+drugName+' / '+drug.info+')" class="boutonVert unitButtons gf"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                    }
+                } else {
+                    $('#unitInfos').append('<button type="button" title="Utiliser ('+drugName+' / '+drug.info+')" class="boutonVert unitButtons" onclick="useDrugPack('+tile.id+',`'+drugName+'`,'+apCost+')"><i class="'+drug.icon+'"></i> <span class="small">'+apCost+'</span></button>');
+                }
+                lineBreak = true;
+            }
+        }
+    }
+}

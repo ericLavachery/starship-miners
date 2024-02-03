@@ -1170,7 +1170,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["bastion","gooddef","longshot","onemore","detrange","maycamo","noshow","notrash","transport","fret","routes","flash","bigflash","prefab","camocontrol","lbot"],
+        "skills":["bastion","gooddef","longshot","onemore","detrange","maycamo","noshow","notrash","transport","fret","routes","flash","bigflash","prefab","infconst","camocontrol","lbot"],
         "mecanoCost":12,
         "transMaxSize":9,
         "transUnits":250,
@@ -1221,7 +1221,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["defense","gooddef","longshot","onemore","detrange","camo","noshow","notrash","transport","fret","routes","flash","bigflash","prefab","camocontrol","lbot"],
+        "skills":["defense","gooddef","longshot","onemore","detrange","camo","noshow","notrash","transport","fret","routes","flash","bigflash","prefab","infconst","camocontrol","lbot"],
         "mecanoCost":12,
         "transMaxSize":9,
         "transUnits":250,
@@ -1302,7 +1302,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","fouille","noguet","prefab","phat","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","w3range","infrako","bigprot","wdev","fullaploss"],
+        "skills":["b_dev","fouille","noguet","prefab","infconst","phat","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","w3range","infrako","bigprot","wdev","fullaploss"],
         "mecanoCost":12,
         "fuzz":6,
         "deathFx":"explo1"
@@ -1380,7 +1380,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","fouille","noguet","prefab","phat","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","w3range","infrako","bigprot","wdev","fullaploss"],
+        "skills":["b_dev","fouille","noguet","prefab","infconst","phat","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","w3range","infrako","bigprot","wdev","fullaploss"],
         "mecanoCost":12,
         "fuzz":6,
         "deathFx":"explo1"
@@ -1439,7 +1439,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","fouille","noguet","prefab","phat","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","infrako","bigprot","wdev","fullaploss"],
+        "skills":["b_dev","fouille","noguet","prefab","infconst","phat","noshow","routes","badcrewsave","flash","recupcit","badcrewsave","recupres","maycamo","infrako","bigprot","wdev","fullaploss"],
         "mecanoCost":12,
         "fuzz":6,
         "deathFx":"explo1"
@@ -1637,7 +1637,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","fouille","prefab","phat","noshow","defense","routes","flash","badcrewsave","recupcit","badcrewsave","recupres","maycamo","bigprot","wdev"],
+        "skills":["b_dev","fouille","prefab","infconst","phat","noshow","defense","routes","flash","badcrewsave","recupcit","badcrewsave","recupres","maycamo","bigprot","wdev"],
         "mecanoCost":10,
         "fuzz":3.5,
         "deathFx":"explo1"

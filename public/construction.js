@@ -897,13 +897,22 @@ function checkUprankXP(myBat,myBatType) {
     if (myBatType.skills.includes('up0')) {
         levelNeeded = 0;
         isXPok = true;
+    } else if (myBatType.skills.includes('up3')) {
+        levelNeeded = 3;
+    } else if (myBatType.skills.includes('up25')) {
+        levelNeeded = 2.5;
     }
+    let xpLevel25 = Math.round((levelXP[3]+levelXP[2])/2);
     if (myBat.xp >= levelXP[4]) {
         if (levelNeeded <= 4) {
             isXPok = true;
         }
     } else if (myBat.xp >= levelXP[3]) {
         if (levelNeeded <= 3) {
+            isXPok = true;
+        }
+    } else if (myBat.xp >= xpLevel25) {
+        if (levelNeeded <= 2.5) {
             isXPok = true;
         }
     } else if (myBat.xp >= levelXP[2]) {
