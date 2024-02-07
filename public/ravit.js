@@ -54,7 +54,7 @@ function calcRavitVolume(bat) {
         } else if (bat.ammo2.includes('lf-') || bat.ammo2.includes('bfg') || bat.ammo2.includes('laser') || batType.weapon2.ammo.includes('plasma') || batType.weapon2.ammo.includes('cn-plasma')) {
             ammoVolume = 1*batType.weapon2.power;
         } else if (bat.ammo2.includes('missile')) {
-            ammoVolume = 4*batType.weapon2.power;
+            ammoVolume = 6*batType.weapon2.power;
             ravitVolume[2] = 'missile';
         } else if (bat.ammo2 === 'marquage-scr') {
             ammoVolume = 4*batType.weapon2.power;
@@ -92,7 +92,7 @@ function calcRavitVolume(bat) {
         } else if (bat.ammo.includes('lf-') || bat.ammo.includes('bfg') || bat.ammo.includes('laser') || batType.weapon.ammo.includes('plasma') || batType.weapon.ammo.includes('cn-plasma')) {
             ammoVolume = 1*batType.weapon.power;
         } else if (bat.ammo.includes('missile')) {
-            ammoVolume = 4*batType.weapon.power;
+            ammoVolume = 6*batType.weapon.power;
             ravitVolume[2] = 'missile';
         } else if (bat.ammo === 'marquage-scr') {
             ammoVolume = 4*batType.weapon.power;

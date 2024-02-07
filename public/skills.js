@@ -1010,7 +1010,7 @@ function goDrug(apCost,drugName) {
 
 function getDrugSound(drug,unit) {
     let drugSound = drug.sound;
-    if (drugSound === 'pourgo') {
+    if (drugSound === 'pourstart') {
         if (unit.skills.includes('robot') || unit.skills.includes('cyber') || unit.skills.includes('emoteur') || unit.skills.includes('saucer')) {
             drugSound = 'pour';
         }

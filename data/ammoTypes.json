@@ -83,6 +83,24 @@
         "sound":{"paint":"paint_kill","fragger_throw":"paint_kill"}
     },
     {
+        "name": "marquage-jello",
+        "range": 1,
+        "rof": 0.5,
+        "power": 4,
+        "powermult": 1,
+        "armors": 0.5,
+        "avar": "mat",
+        "accuracy": 1,
+        "apdamage": 0,
+        "aoe": "brochette",
+        "bldReq":["Centre de recherches"],
+        "compReq":{"det":2,"mat":2,"bal":1,"ca":4},
+        "lvlReq":{"rednecks":15,"blades":15,"bulbos":15,"drogmulojs":15,"tiradores":15,"detruas":15,"brasier":15},
+        "deploy":{"Fer":3,"Munitions":1,"Carbone":1,"Cobalt":1,"Silicium":1,"Mercure":1,"Plastanium":4,"Argon":4,"Azote":12,"Végétaux":8},
+        "batch":200,
+        "sound":{"paint":"paint_spike"}
+    },
+    {
         "name": "marquage-scr",
         "range": 1,
         "rof": 1,
@@ -4148,6 +4166,7 @@
         "accuracy": 1,
         "apdamage": 0,
         "aoe": "",
+        "bldReq":["Laboratoire"],
         "compReq":{"exo":1,"ca":4},
         "altCompReq":{"exo":3,"ca":3},
         "deploy":{"Carbone":5,"Scrap":5,"Plastanium":4,"Argon":4,"Azote":12,"Végétaux":8},

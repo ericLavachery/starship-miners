@@ -758,7 +758,7 @@
             "power":0,
             "aoe":"unit",
             "sound":"paint",
-            "ammo":["marquage","marquage-spike","marquage-stop"]
+            "ammo":["marquage","marquage-spike","marquage-stop","marquage-jello"]
         },
         "equip":["aucun","e-flash","e-camo","kit-chouf","e-ranger","e-jetpack","lunette1","chargeur1","silencieux","taserkit","camkit","e-phare","repel"],
         "log3eq":["repel"],
@@ -5932,7 +5932,7 @@
         "equip":["aucun","e-flash","g2motor","waterproof","w2-autopistol","e-mecano"],
         "log3eq":["g2motor"],
         "autoEq":["waterproof","e-mecano"],
-        "moveCost":3,
+        "moveCost":2.8,
         "maxFlood":2,
         "maxScarp":3,
         "maxVeg":3,
@@ -6453,11 +6453,11 @@
             "noise":1,
             "rof":12,
             "accuracy":25,
-            "power":2,
+            "power":1,
             "armors":0.75,
             "aoe":"unit",
             "sound":"paint",
-            "ammo":["marquage","marquage-spike","marquage-stop","marquage-kill"]
+            "ammo":["marquage","marquage-spike","marquage-stop","marquage-kill","marquage-jello"]
         },
         "weapon2":{
             "name":"Guidage laser",
@@ -7030,7 +7030,7 @@
             "armors":0.75,
             "aoe":"unit",
             "sound":"paint",
-            "ammo":["marquage","marquage-spike","marquage-stop"]
+            "ammo":["marquage","marquage-spike","marquage-stop","marquage-jello"]
         },
         "equip":["aucun","e-flash","chargeur1","silencieux","e-camo","e-medic","theeye","waterproof","repel","permakirin"],
         "log3eq":["silencieux"],

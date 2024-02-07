@@ -706,17 +706,17 @@ function attack(melee,init) {
     if (selectedWeap.isElec) {
         if (targetBatType.skills.includes('resistelec') || targetBat.tags.includes('resistelec')) {
             totalDamage = Math.round(totalDamage/2);
-            apDamage = Math.round(apDamage/8);
+            apDamage = Math.round(apDamage/5);
             if (playerInfos.comp.ca >= 2) {
                 $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
             }
             // console.log('résistance électricité!');
         }
         if (targetBatType.skills.includes('resistall') || targetBat.tags.includes('resistall')) {
-            apDamage = Math.round(apDamage/3);
+            apDamage = Math.round(apDamage/4);
         }
         if (targetBatType.skills.includes('protectall') || targetBat.tags.includes('protectall')) {
-            apDamage = Math.round(apDamage/5);
+            apDamage = Math.round(apDamage/4);
         }
     }
     // sensibilité électricité
@@ -1309,7 +1309,9 @@ function attack(melee,init) {
                 $('#report').append('<span class="report rose">Jello<br></span>');
             }
         } else {
-            targetBat.tags.push('poison');
+            if (!selectedWeap.ammo.includes('marquage')) {
+                targetBat.tags.push('poison');
+            }
             if (!targetBat.tags.includes('jello')) {
                 targetBat.tags.push('jello');
             }
@@ -1468,10 +1470,6 @@ function attack(melee,init) {
         // salves infinies
     } else {
         selectedBat.salvoLeft = selectedBat.salvoLeft-1;
-        // if (selectedWeap.ammo === 'marquage-kill' && selectedBat.salvoLeft >= 3) {
-        //     selectedBat.salvoLeft = selectedBat.salvoLeft-2;
-        // } else {
-        // }
     }
     // add xp & remove life :)
     if (targetBat.squadsLeft <= 0) {
@@ -1912,17 +1910,17 @@ function defense(melee,init) {
     if (targetWeap.isElec) {
         if (selectedBatType.skills.includes('resistelec') || selectedBat.tags.includes('resistelec')) {
             totalDamage = Math.round(totalDamage/2);
-            apDamage = Math.round(apDamage/8);
+            apDamage = Math.round(apDamage/5);
             if (playerInfos.comp.ca >= 2) {
                 $('#report').append('<span class="report rose">Résistance aux décharges 50%<br></span>');
             }
             // console.log('résistance électricité!');
         }
         if (selectedBatType.skills.includes('resistall') || selectedBat.tags.includes('resistall')) {
-            apDamage = Math.round(apDamage/3);
+            apDamage = Math.round(apDamage/4);
         }
         if (selectedBatType.skills.includes('protectall') || selectedBat.tags.includes('protectall')) {
-            apDamage = Math.round(apDamage/5);
+            apDamage = Math.round(apDamage/4);
         }
     }
     // sensibilité électricité
@@ -2347,11 +2345,13 @@ function defense(melee,init) {
                 $('#report').append('<span class="report rose">Jello<br></span>');
             }
         } else {
-            selectedBat.tags.push('poison');
-            if (!selectedBat.tags.includes('jello')) {
-                selectedBat.tags.push('jello');
+            if (!targetWeap.ammo.includes('marquage')) {
+                selectedBat.tags.push('poison');
+                if (!selectedBat.tags.includes('jello')) {
+                    selectedBat.tags.push('jello');
+                }
+                $('#report').append('<span class="report rose">Jello<br></span>');
             }
-            $('#report').append('<span class="report rose">Jello<br></span>');
         }
     }
     if (selectedBatType.skills.includes('noaploss')) {

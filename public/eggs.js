@@ -1344,6 +1344,9 @@ function eggDropTile(eggName,theArea) {
                 }
             });
         }
+        if (targetTile < 0) {
+            targetTile = rand.rand(0,3599);
+        }
         let shufZone = _.shuffle(zone);
         let distance;
         shufZone.forEach(function(tile) {

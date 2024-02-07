@@ -1037,7 +1037,11 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('leader')) {
-        maxInfo.max = Math.floor((playerInfos.gLevel-6)/3);
+        if (playerInfos.gang != 'detruas') {
+            maxInfo.max = Math.floor((playerInfos.gLevel-6)/3);
+        } else {
+            maxInfo.max = Math.floor((playerInfos.gLevel-9)/3);
+        }
         if (total.leader >= maxInfo.max) {
             maxInfo.ko = true;
             maxLeaderAtteint = true;
