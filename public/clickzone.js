@@ -221,7 +221,9 @@ function batSelect(bat,roger,keepBkp) {
     if (playerInfos.onShip) {
         playRadio('any',false);
     } else {
-        playMusic('any',false);
+        if (rand.rand(1,musicChance) === 1) {
+            playMusic('any',false);
+        }
     }
     tileUnselect();
     if (bat.tags.includes('nolist')) {

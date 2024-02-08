@@ -486,7 +486,7 @@
             "elevation":3,
             "noise":2,
             "noDef":true,
-            "rof":12,
+            "rof":36,
             "accuracy":50,
             "power":0,
             "aoe":"unit",

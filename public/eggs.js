@@ -1127,6 +1127,9 @@ function eggDropTile(eggName,theArea) {
                 }
             }
         });
+        if (targetTile < 0) {
+            targetTile = rand.rand(0,3599);
+        }
         let shufZone = _.shuffle(zone);
         shufZone.forEach(function(tile) {
             if (theTile < 0) {
@@ -1173,6 +1176,9 @@ function eggDropTile(eggName,theArea) {
                     }
                 }
             });
+            if (targetTile < 0) {
+                targetTile = rand.rand(0,3599);
+            }
             shufZone.forEach(function(tile) {
                 if (theTile < 0) {
                     let distance = calcDistance(tile.id,targetTile);
@@ -1196,6 +1202,9 @@ function eggDropTile(eggName,theArea) {
                 }
             }
         });
+        if (targetTile < 0) {
+            targetTile = rand.rand(0,3599);
+        }
         let shufZone = _.shuffle(zone);
         let distance;
         shufZone.forEach(function(tile) {
@@ -1213,6 +1222,9 @@ function eggDropTile(eggName,theArea) {
     // Près du Bastion
     if (area === 'encounter') {
         targetTile = encounterTileId;
+        if (targetTile < 0) {
+            targetTile = rand.rand(0,3599);
+        }
         let shufZone = _.shuffle(zone);
         let distance;
         shufZone.forEach(function(tile) {
@@ -1240,6 +1252,9 @@ function eggDropTile(eggName,theArea) {
                 }
             }
         });
+        if (targetTile < 0) {
+            targetTile = rand.rand(0,3599);
+        }
         let shufZone = _.shuffle(zone);
         let distance;
         shufZone.forEach(function(tile) {
@@ -1279,6 +1294,9 @@ function eggDropTile(eggName,theArea) {
                     }
                 }
             });
+        }
+        if (targetTile < 0) {
+            targetTile = rand.rand(0,3599);
         }
         let shufZone = _.shuffle(zone);
         let distance;

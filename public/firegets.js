@@ -795,7 +795,7 @@ function batDeath(bat,count,gain,isWiped,quiet) {
                     }
                     unveilAliens(bat);
                 }
-                playMusic('eggKill',false);
+                playMusic('wave2',false);
             }
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
             if (gain) {
@@ -1396,8 +1396,10 @@ function applyShield(shots) {
             }
             if (selectedWeap.noShield) {
                 shieldValue = shieldValue/6;
+                if (shieldValue > 2) {shieldValue = 2;}
             } else if (selectedWeap.minShield) {
-                shieldValue = shieldValue/3;
+                shieldValue = shieldValue/3.5;
+                if (shieldValue > 3.4) {shieldValue = 3.4;}
             } else if (selectedWeap.lowShield) {
                 shieldValue = shieldValue/1.75;
             }

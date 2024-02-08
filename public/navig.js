@@ -404,7 +404,7 @@ function gangNavig() {
             } else {
                 $('#gangInfos').append('<button type="button" title="Charger une mission" class="boutonCiel iconButtons" onclick="loadMission()"><i class="ra ra-scroll-unfurled rpg"></i></button>');
                 $('#gangInfos').append('<button type="button" title="Ajouter les unités de base pour une mission" class="boutonCiel iconButtons" onclick="missionTest()"><i class="ra ra-double-team rpg"></i></button>');
-                // $('#gangInfos').append('<button type="button" title="Grande fenêtre" class="boutonBleu iconButtons" onclick="autoMapSize()"><i class="fas fa-expand-arrows-alt"></i></button>');
+                // $('#gangInfos').append('<button type="button" title="Ammo refund test" class="boutonBleu iconButtons" onclick="ammoRefundTest()"><i class="fas fa-expand-arrows-alt"></i></button>');
             }
             $('#gangInfos').append('<br>');
             if (playerInfos.pseudo === 'Mapedit') {

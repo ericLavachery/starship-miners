@@ -615,7 +615,8 @@ function playRoom(piste,interrupt,onloop) {
         track = piste;
     }
     if (track != 'soute' && track != 'station') {
-        track = 'control';
+        // track = 'control';
+        track = 'droneloop';
     }
     let myVol = checkMyVol(playerInfos.volAmb-0.1,'volAmb');
     if (!theRoom.playing() || interrupt) {

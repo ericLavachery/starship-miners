@@ -293,6 +293,10 @@ function combat(melee) {
 function attack(melee,init) {
     // console.log('Attaque ->');
     // console.log(selectedWeap);
+    let wTag = 't'+selectedWeap.num;
+    if (!selectedBat.tags.includes(wTag)) {
+        selectedBat.tags.push(wTag);
+    }
     let selectedBatName = nomVisible(selectedBat);
     let targetBatName = nomVisible(targetBat);
     minesExploded = 0;
@@ -1584,6 +1588,10 @@ function attack(melee,init) {
 function defense(melee,init) {
     // console.log('Défense ->');
     // console.log(targetWeap);
+    let wTag = 't'+targetWeap.num;
+    if (!targetBat.tags.includes(wTag)) {
+        targetBat.tags.push(wTag);
+    }
     let selectedBatName = nomVisible(selectedBat);
     let targetBatName = nomVisible(targetBat);
     let xpFactor = Math.round(12/selectedBatType.maxSalvo/10);

@@ -318,10 +318,13 @@ let eggPauseMin = 7; // 1 chance sur 12: fin de pause (+compte des oeufs)
 let eggPauseMax = 20;
 let eggDropCount = 0;
 // SOUNDS
-let musicChance = 2;
-let musicTracks = ['amb_ambiant1','parallel_dimensions','amb_ambiant3','amb_trucsympa','amb_ambiant2','biosphere','amb_ambiant4','it_is_raped'];
+// let musicChance = 2;
+// let musicTracks = ['amb_ambiant1','parallel_dimensions','amb_ambiant3','amb_trucsympa','amb_ambiant2','biosphere','amb_ambiant4','it_is_raped'];
+// let trackNum = rand.rand(0,3)*2;
+let musicChance = 12;
+let musicTracks = ['wave1','wave2','wave3','wave4','wave5','wave6','wave7'];
+let trackNum = rand.rand(0,6);
 let stationTracks = ['lh_twodogs','lh_oblivion','lh_bobdub','lh_whengone','lh_hanap'];
-let trackNum = rand.rand(0,3)*2;
 if (playerInfos.onShip) {
     trackNum = rand.rand(0,4);
 }

@@ -477,6 +477,8 @@ function healEverything() {
             }
             loadBat(bat.id,souteId,bat.locId);
         }
+        // AMMOS NOT USED ---------------------------------------
+        ammoRefund(bat,batType);
         // tags permanents
         if (bat.tags.includes('zombie')) {
             gearTags.push('zombie');
@@ -623,6 +625,36 @@ function healEverything() {
         bat.oldapLeft = bat.ap;
         bat.salvoLeft = batType.maxSalvo;
     });
+};
+
+function ammoRefundTest() {
+    ammoRefund(selectedBat,selectedBatType);
+}
+
+function ammoRefund(bat,batType) {
+    console.log('AMMO REFUND ------------------------------------------------------');
+    if (!bat.tags.includes('t1')) {
+        console.log('w1 not used');
+        let hasW1 = checkHasWeapon(1,batType,bat.eq);
+        if (hasW1) {
+            console.log('w1 exists');
+            let ammo = getAmmoByName(bat.ammo);
+            let ammoDeployCosts = getDeployCosts(batType,ammo,1,'ammo');
+            console.log(ammoDeployCosts);
+            addCost(ammoDeployCosts,1);
+        }
+    }
+    if (!bat.tags.includes('t2')) {
+        console.log('w2 not used');
+        let hasW2 = checkHasWeapon(2,batType,bat.eq);
+        if (hasW2) {
+            console.log('w2 exists');
+            let ammo = getAmmoByName(bat.ammo2);
+            let ammoDeployCosts = getDeployCosts(batType,ammo,2,'ammo');
+            console.log(ammoDeployCosts);
+            addCost(ammoDeployCosts,1);
+        }
+    }
 };
 
 function resToLander(transBat) {

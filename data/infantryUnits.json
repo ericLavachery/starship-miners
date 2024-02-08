@@ -6468,7 +6468,7 @@
             "noDef":true,
             "noBis":true,
             "vision":true,
-            "rof":4,
+            "rof":8,
             "accuracy":50,
             "power":0,
             "aoe":"unit",
