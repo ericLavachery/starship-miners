@@ -1869,7 +1869,9 @@ function anyAlienInRange(myBat,weapon) {
             if (isInRange(myBat,bat.tileId,weapon,bat) || guidageOK) {
                 batType = getBatType(bat);
                 // console.log(batType.name);
-                if (weapon.ammo === 'marquage' && bat.tags.includes('fluo')) {
+                if (weapon.ammo === 'guidage' && bat.tags.includes('guide')) {
+                    // Déjà marqué
+                } else if (weapon.ammo === 'marquage' && bat.tags.includes('fluo')) {
                     // Déjà marqué
                 } else {
                     let realmOK = checkFlyTarget(weapon,bat,batType);
@@ -2011,7 +2013,7 @@ function fireInfos(bat) {
                     guideTarget = checkGuidage(selectedWeap,alien);
                     let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,alien,alienType,guideTarget);
                     if (hiddenOK) {
-                        if (!alien.tags.includes('fluo') || selectedWeap.ammo != 'marquage') {
+                        if ((!alien.tags.includes('fluo') || selectedWeap.ammo != 'marquage') && (!alien.tags.includes('guide') || selectedWeap.ammo != 'guidage')) {
                             if (!zone[0].dark || (zone[0].dark && (undarkNow.includes(tile.id) || alien.tags.includes('fluo')))) {
                                 cursorSwitch('#',tile.id,'fire');
                                 $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget'+crossTarget(alien)+'.png"></div>');
@@ -2032,7 +2034,7 @@ function fireInfos(bat) {
                     alienType = getBatType(alien);
                     let hiddenOK = checkInvisibleTarget(selectedBat,selectedWeap,alien,alienType,guideTarget);
                     if (checkFlyTarget(selectedWeap,alien,alienType) && hiddenOK) {
-                        if (!alien.tags.includes('fluo') || selectedWeap.ammo != 'marquage') {
+                        if ((!alien.tags.includes('fluo') || selectedWeap.ammo != 'marquage') && (!alien.tags.includes('guide') || selectedWeap.ammo != 'guidage')) {
                             if (!zone[0].dark || (zone[0].dark && (undarkNow.includes(tile.id) || alien.tags.includes('fluo')))) {
                                 cursorSwitch('#',tile.id,'fire');
                                 $('#b'+tile.id).append('<div class="targ"><img src="/static/img/crosstarget'+crossTarget(alien)+'.png"></div>');

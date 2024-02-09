@@ -548,14 +548,22 @@ function healEverything() {
             bat.damage = 0;
         } else {
             let healCost = 0;
-            if (bat.damage > 0) {
-                healCost = 1;
+            if (batType.cat === 'infantry') {
+                // MEDIC
+                if (bat.damage > 0) {
+                    healCost = 1;
+                }
+                healCost = healCost+batType.squads-bat.squadsLeft;
+                if (batType.skills.includes('lowmed')) {
+                    healCost = healCost*3;
+                }
+            } else {
+                // MECANO
+                let mecaHP = getMecaHP(batType,{},false);
+                let totalDmg = ((batType.squads-bat.squadsLeft)*batType.hp*batType.squadSize)+bat.damage;
+                healCost = healCost+(totalDmg/mecaHP*2);
             }
             bat.damage = 0;
-            healCost = healCost+batType.squads-bat.squadsLeft;
-            if (batType.skills.includes('lowmed')) {
-                healCost = healCost*3;
-            }
             bat.squadsLeft = batType.squads;
             if (healCost >= 1) {
                 if (bat.soins != undefined) {
@@ -632,7 +640,7 @@ function ammoRefundTest() {
 }
 
 function ammoRefund(bat,batType) {
-    console.log('AMMO REFUND ------------------------------------------------------');
+    console.log('AMMO REFUND '+batType.name+' ------------------------------------------------------');
     if (!bat.tags.includes('t1')) {
         console.log('w1 not used');
         let hasW1 = checkHasWeapon(1,batType,bat.eq);

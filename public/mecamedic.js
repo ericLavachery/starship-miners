@@ -565,14 +565,19 @@ function numMedicTargets(myBat,cat,around,deep,inBat) {
     return numTargets;
 };
 
-function getMecaHP(batType,mecaBatType) {
+function getMecaHP(batType,mecaBatType,roborepair) {
     let regen = mecanoHP;
+    if (Object.keys(mecaBatType).length >= 1) {
+        if (mecaBatType.skills.includes('roborepair')) {
+            roborepair = true;
+        }
+    }
     if (batType.skills.includes('transorbital')) {
         regen = Math.round(mecanoHP*5*(playerInfos.comp.vsp+3)/5);
     } else if (batType.cat === 'buildings') {
         regen = Math.round(mecanoHP*2*(playerInfos.comp.const+3)/5);
     } else if (batType.skills.includes('robot')) {
-        if (mecaBatType.skills.includes('roborepair')) {
+        if (roborepair) {
             regen = Math.round(mecanoHP/2*(playerInfos.comp.det+3)/5);
         } else {
             regen = Math.round(mecanoHP/6*(playerInfos.comp.det+3)/5);

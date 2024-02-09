@@ -6218,7 +6218,7 @@
             "power":20,
             "aoe":"squad",
             "sound":"bomb_mini_x3",
-            "ammo":["obus-scrap","obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
             "maxAmmo":18,
             "ravitBld":"Poudrière"
         },
@@ -6236,7 +6236,7 @@
             "power":20,
             "aoe":"squad",
             "sound":"bomb_mini_x3",
-            "ammo":["obus-scrap","obus","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-uridium","obus-nanite","obus-plastanium"],
+            "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
             "maxAmmo":18,
             "ravitBld":"Poudrière"
         },
