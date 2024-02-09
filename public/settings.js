@@ -324,6 +324,10 @@ let eggDropCount = 0;
 let musicChance = 12;
 let musicTracks = ['wave1','wave2','wave3','wave4','wave5','wave6','wave7'];
 let trackNum = rand.rand(0,6);
+let radioTracks = 16;
+let radioChance = 3;
+let radioNum = rand.rand(1,radioTracks);
+// let trackNum = 0;
 let stationTracks = ['lh_twodogs','lh_oblivion','lh_bobdub','lh_whengone','lh_hanap'];
 if (playerInfos.onShip) {
     trackNum = rand.rand(0,4);

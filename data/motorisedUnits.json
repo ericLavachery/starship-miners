@@ -2209,7 +2209,7 @@
         "weapon2":{
             "name":"Obusier",
             "cost":5,
-            "range":6,
+            "range":5,
             "noise":4,
             "noFly":true,
             "noMelee":true,

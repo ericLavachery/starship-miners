@@ -795,7 +795,7 @@ function batDeath(bat,count,gain,isWiped,quiet) {
                     }
                     unveilAliens(bat);
                 }
-                playMusic('wave2',false);
+                playMusic('eggKill',false);
             }
             playerInfos.aliensKilled = playerInfos.aliensKilled+1;
             if (gain) {

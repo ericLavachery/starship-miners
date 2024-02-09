@@ -527,9 +527,7 @@ function playMusic(piste,interrupt) {
         let myVol = playerInfos.volMu;
         if (!theMusic.playing() || interrupt) {
             let track = 'amb_trucsympa';
-            if (trackNum > musicTracks.length-1) {
-                trackNum = 0;
-            }
+            if (trackNum > musicTracks.length-1) {trackNum = 0;}
             track = musicTracks[trackNum];
             if (aliens.length < 100) {
                 if (track === 'amb_ambiant3') {
@@ -546,12 +544,18 @@ function playMusic(piste,interrupt) {
                     track = 'amb_ambiant4';
                 }
             }
-            trackNum = trackNum+1;
-            if (trackNum > musicTracks.length-1) {
-                trackNum = 0;
-            }
             if (piste != 'any') {
                 track = piste;
+            } else {
+                if (rand.rand(1,radioChance) === 1) {
+                    if (radioNum > radioTracks) {radioNum = 1;}
+                    track = 'radio'+radioNum;
+                    radioNum++;
+                    if (radioNum > radioTracks) {radioNum = 1;}
+                } else {
+                    trackNum = trackNum+1;
+                    if (trackNum > musicTracks.length-1) {trackNum = 0;}
+                }
             }
             theMusic.fade(myVol,0.0,3000);
             theMusic = new Howl({
