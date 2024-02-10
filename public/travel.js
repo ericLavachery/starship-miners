@@ -478,7 +478,9 @@ function healEverything() {
             loadBat(bat.id,souteId,bat.locId);
         }
         // AMMOS NOT USED ---------------------------------------
-        ammoRefund(bat,batType);
+        if (bat.tags.includes('return')) {
+            ammoRefund(bat,batType);
+        }
         // tags permanents
         if (bat.tags.includes('zombie')) {
             gearTags.push('zombie');
