@@ -40,7 +40,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     let batType;
     let totalAPCost = 0;
     let xpGain = 0.1;
-    let patientAPCost = Math.ceil(mecaPatientAP*5/(playerInfos.comp.med+3));
+    let patientMedAPCost = Math.ceil(mecaPatientAP*5/(playerInfos.comp.med+3));
     let apCost = cost;
     if (!inBld) {
         apCost = calcAdjSkillCost(1,apCost,selectedBatType,selectedBat,isMed);
@@ -132,7 +132,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         if (bat.loc === "zone") {
                                             showBataillon(bat);
                                         }
-                                        bat.apLeft = bat.apLeft-patientAPCost;
+                                        bat.apLeft = bat.apLeft-patientMedAPCost;
                                         addHealFlag(bat,2);
                                         doneAction(bat);
                                     } else if (bat.tags.includes('venin') && (deep || playerInfos.comp.med >= 2)) {
@@ -145,7 +145,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         if (bat.loc === "zone") {
                                             showBataillon(bat);
                                         }
-                                        bat.apLeft = bat.apLeft-patientAPCost;
+                                        bat.apLeft = bat.apLeft-patientMedAPCost;
                                         addHealFlag(bat,3);
                                         doneAction(bat);
                                     } else if (bat.damage > 0 && !fullBat) {
@@ -158,7 +158,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         if (bat.loc === "zone") {
                                             showBataillon(bat);
                                         }
-                                        bat.apLeft = bat.apLeft-patientAPCost;
+                                        bat.apLeft = bat.apLeft-patientMedAPCost;
                                         let healCost = Math.round(bat.damage/(batType.hp*batType.squadSize)*2);
                                         addHealFlag(bat,healCost);
                                         doneAction(bat);
@@ -174,7 +174,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         if (bat.loc === "zone") {
                                             showBataillon(bat);
                                         }
-                                        bat.apLeft = bat.apLeft-patientAPCost;
+                                        bat.apLeft = bat.apLeft-patientMedAPCost;
                                         addHealFlag(bat,2);
                                         doneAction(bat);
                                     } else if (bat.squadsLeft < batType.squads && deep && !fullBat) {
@@ -188,7 +188,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         if (bat.loc === "zone") {
                                             showBataillon(bat);
                                         }
-                                        bat.apLeft = bat.apLeft-patientAPCost;
+                                        bat.apLeft = bat.apLeft-patientMedAPCost;
                                         addHealFlag(bat,2);
                                         doneAction(bat);
                                     } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && bat.tags.includes('parasite') && deep) {
@@ -198,7 +198,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         console.log('totalAPCost '+totalAPCost);
                                         xpGain = xpGain+1;
                                         $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">parasite tué<br></span>');
-                                        bat.apLeft = bat.apLeft-patientAPCost;
+                                        bat.apLeft = bat.apLeft-patientMedAPCost;
                                         addHealFlag(bat,4);
                                         doneAction(bat);
                                     } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && (bat.tags.includes('maladie') || bat.tags.includes('vomi') || bat.tags.includes('vomissure')) && deep && real) {
@@ -216,7 +216,7 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         console.log('maladie');
                                         console.log('totalAPCost '+totalAPCost);
                                         xpGain = xpGain+0.35;
-                                        bat.apLeft = bat.apLeft-patientAPCost;
+                                        bat.apLeft = bat.apLeft-patientMedAPCost;
                                         addHealFlag(bat,2);
                                         doneAction(bat);
                                     }
@@ -244,7 +244,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         if (bat.loc === "zone") {
                                             showBataillon(bat);
                                         }
-                                        bat.apLeft = bat.apLeft-mecaPatientAP;
+                                        if (batType.cat != 'buildings') {
+                                            bat.apLeft = bat.apLeft-mecaPatientAP;
+                                        }
                                         if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
                                             bat.apLeft = bat.apLeft-mecaPatientAP;
                                         }
@@ -275,7 +277,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         if (bat.loc === "zone") {
                                             showBataillon(bat);
                                         }
-                                        bat.apLeft = bat.apLeft-mecaPatientAP;
+                                        if (batType.cat != 'buildings') {
+                                            bat.apLeft = bat.apLeft-mecaPatientAP;
+                                        }
                                         if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
                                             bat.apLeft = bat.apLeft-mecaPatientAP;
                                         }
@@ -288,7 +292,9 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         console.log('totalAPCost '+totalAPCost);
                                         xpGain = xpGain+0.35;
                                         $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">trous bouchés<br></span>');
-                                        bat.apLeft = bat.apLeft-mecaPatientAP;
+                                        if (batType.cat != 'buildings') {
+                                            bat.apLeft = bat.apLeft-mecaPatientAP;
+                                        }
                                         if (batType.skills.includes('fly') && batType.cat === 'vehicles') {
                                             bat.apLeft = bat.apLeft-mecaPatientAP;
                                         }

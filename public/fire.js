@@ -295,7 +295,9 @@ function attack(melee,init) {
     // console.log(selectedWeap);
     let wTag = 't'+selectedWeap.num;
     if (!selectedBat.tags.includes(wTag)) {
-        selectedBat.tags.push(wTag);
+        if (rand.rand(1,3) === 1) {
+            selectedBat.tags.push(wTag);
+        }
     }
     let selectedBatName = nomVisible(selectedBat);
     let targetBatName = nomVisible(targetBat);
@@ -1590,7 +1592,9 @@ function defense(melee,init) {
     // console.log(targetWeap);
     let wTag = 't'+targetWeap.num;
     if (!targetBat.tags.includes(wTag)) {
-        targetBat.tags.push(wTag);
+        if (rand.rand(1,3) === 1) {
+            targetBat.tags.push(wTag);
+        }
     }
     let selectedBatName = nomVisible(selectedBat);
     let targetBatName = nomVisible(targetBat);

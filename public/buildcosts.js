@@ -610,6 +610,11 @@ function getDeployCosts(unit,ammo,weapNum,type) {
         // AMMOs
         if (weapNum === 1) {
             let pauer = unit.weapon.power;
+            if (unit.weapon.aoe === 'squad' || unit.weapon.aoe === 'bat') {
+                if (unit.weapon.power >= 14) {
+                    pauer = pauer*deployTuning.obus/10;
+                }
+            }
             if (pauer < 2) {pauer = 2;}
             deployFactor = Math.ceil(unit.squads*unit.weapon.rof*pauer/5*deploySalvos);
             let weapRange = unit.weapon.range+(unit.weapon.elevation/2);
@@ -627,11 +632,17 @@ function getDeployCosts(unit,ammo,weapNum,type) {
                     }
                 }
             }
+            // moissoneuse
             if (ammo.name.includes('lame') && (unit.weapon.aoe === 'squad' || unit.weapon.aoe === 'bat')) {
-                deployFactor = deployFactor*6;
+                deployFactor = deployFactor*9;
             }
         } else {
             let pauer = unit.weapon2.power;
+            if (unit.weapon2.aoe === 'squad' || unit.weapon2.aoe === 'bat') {
+                if (unit.weapon2.power >= 14) {
+                    pauer = pauer*deployTuning.obus/10;
+                }
+            }
             if (pauer < 2) {pauer = 2;}
             deployFactor = Math.ceil(unit.squads*unit.weapon2.rof*pauer/5*deploySalvos);
             let weapRange = unit.weapon2.range+(unit.weapon2.elevation/2);
@@ -651,10 +662,12 @@ function getDeployCosts(unit,ammo,weapNum,type) {
                     }
                 }
             }
+            // moissoneuse
             if (ammo.name.includes('lame') && (unit.weapon2.aoe === 'squad' || unit.weapon2.aoe === 'bat')) {
                 deployFactor = deployFactor*9;
             }
         }
+        deployFactor = deployFactor*deployTuning.ammo/10;
         if (ammo.deploy != undefined) {
             if (Object.keys(ammo.deploy).length >= 1) {
                 deployCosts = JSON.parse(JSON.stringify(ammo.deploy));
@@ -677,7 +690,7 @@ function getDeployCosts(unit,ammo,weapNum,type) {
         // UNIT
         if (unit.deploy != undefined) {
             deployFactor = 1;
-            // deployFactor = deployFactor*deployTuning/7;
+            deployFactor = deployFactor*deployTuning.units/10;
             if (Object.keys(unit.deploy).length >= 1) {
                 deployCosts = JSON.parse(JSON.stringify(unit.deploy));
                 Object.entries(unit.deploy).map(entry => {
@@ -727,7 +740,7 @@ function getDeployCosts(unit,ammo,weapNum,type) {
     } else if (type === 'equip') {
         let equip = ammo;
         deployFactor = getEquipDeployFactor(unit,equip);
-        // deployFactor = deployFactor*deployTuning/7;
+        deployFactor = deployFactor*deployTuning.eq/10;
         if (equip.deploy != undefined) {
             if (Object.keys(equip.deploy).length >= 1) {
                 deployCosts = JSON.parse(JSON.stringify(equip.deploy));

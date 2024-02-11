@@ -182,6 +182,15 @@ function bfconst(cat,triche,upgrade,retour) {
             if ((playerInfos.bldList.includes(unit.bldReq[0]) || unit.bldReq[0] === undefined) && (playerInfos.bldList.includes(unit.bldReq[1]) || unit.bldReq[1] === undefined) && (playerInfos.bldList.includes(unit.bldReq[2]) || unit.bldReq[2] === undefined)) {
                 bldOK = true;
             }
+            if (unit.skills.includes('clicput')) {
+                if ((playerInfos.bldVM.includes(unit.bldReq[0]) || unit.bldReq[0] === undefined) && (playerInfos.bldVM.includes(unit.bldReq[1]) || unit.bldReq[1] === undefined) && (playerInfos.bldVM.includes(unit.bldReq[2]) || unit.bldReq[2] === undefined)) {
+                    if (unit.bldReq[0] === 'Générateur' || unit.bldReq[0] === 'Centrale SMR' || unit.bldReq[1] === 'Générateur' || unit.bldReq[1] === 'Centrale SMR' || unit.bldReq[2] === 'Générateur' || unit.bldReq[2] === 'Centrale SMR') {
+                        // nope
+                    } else {
+                        bldOK = true;
+                    }
+                }
+            }
             let maxInfo = maxUnits(unit);
             if (maxInfo.ko) {
                 uMaxOK = false;

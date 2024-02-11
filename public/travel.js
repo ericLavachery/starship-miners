@@ -477,7 +477,7 @@ function healEverything() {
             }
             loadBat(bat.id,souteId,bat.locId);
         }
-        // AMMOS NOT USED ---------------------------------------
+        // AMMO REFUND ---------------------------------------
         if (bat.tags.includes('return')) {
             ammoRefund(bat,batType);
         }

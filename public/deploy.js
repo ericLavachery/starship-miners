@@ -906,6 +906,7 @@ function getBatGearTags(armorName,equipName,batType) {
 };
 
 function verifBldReq(unit,bldReq) {
+    // ammo, eq, armor ONLY
     let bldReqOK = false;
     // console.log('VERIF BLDREQ');
     // console.log(unit);
