@@ -470,6 +470,7 @@ function rechercheSci(bat,time) {
     if (bat.sciRech === undefined) {
         bat.sciRech = playerInfos.sciRech+rand.rand(0,300);
     }
+    updateSciencePoints(bat);
     if (bat.eq.includes('sci-')) {
         let rechGang = getGangRechAdj();
         console.log('RECHERCHE');
@@ -514,6 +515,24 @@ function rechercheSci(bat,time) {
         }
     } else {
         warning('<span class="hrouge">RECHERCHE: Chercheurs sans matériel!</span>','<span class="gfbleu">Vous devez leur acheter du matériel (équipement) pour qu\'ils puissent travailler.</span><br>',true);
+    }
+};
+
+function updateSciencePoints(myBat) {
+    if (myBat.type === 'Chercheurs') {
+        bataillons.forEach(function(bat) {
+            if (bat.type === 'Chercheurs' && bat.id != myBat.id) {
+                if (bat.eq === myBat.eq) {
+                    if (bat.sciRech > myBat.sciRech) {
+                        bat.sciRech = bat.sciRech+myBat.sciRech;
+                        myBat.sciRech = 0;
+                    } else {
+                        myBat.sciRech = myBat.sciRech+bat.sciRech;
+                        bat.sciRech = 0;
+                    }
+                }
+            }
+        });
     }
 };
 

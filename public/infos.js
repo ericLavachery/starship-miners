@@ -82,6 +82,7 @@ function batInfos(bat,batType,pop) {
         bat.tdc = [];
     }
     updateBatProperties(bat,batType);
+    updateSciencePoints(bat);
     if (batType.skills.includes('trailer')) {
         bat.apLeft = bat.ap;
     }
