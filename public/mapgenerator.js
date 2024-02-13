@@ -1166,12 +1166,6 @@ function addRes(zone) {
                 res.adjBatch = 1;
             }
         }
-        if (res.cat.includes('blue')) {
-            blueSum = blueSum+resRarity;
-        }
-        if (res.cat.includes('sky')) {
-            skySum = skySum+resRarity;
-        }
         if (playerInfos.pseudo != 'Mapedit') {
             if (playerInfos.sondeRes.includes(res.name)) {
                 let minimumRarity = Math.ceil(res.rarity*(playerInfos.comp.ext+8)/8);
@@ -1182,13 +1176,24 @@ function addRes(zone) {
                 if (res.adjBatch < res.batch) {
                     res.adjBatch = res.batch;
                 }
-                if (res.name === 'Magma' || res.name === 'Huile' || res.name === 'Fruits') {
-                    res.adjRarity = Math.ceil(res.adjRarity*(playerInfos.comp.ext+5)/5);
+                if (res.name === 'Magma' || res.cat.includes('sky') || res.cat.includes('blue')) {
+                    res.adjRarity = Math.ceil(res.adjRarity*(playerInfos.comp.ext+5)/5*10);
+                } else if (res.name === 'Huile' || res.name === 'Fruits') {
+                    res.adjRarity = Math.ceil(res.adjRarity*(playerInfos.comp.ext+5)/5*2);
+                } else {
+                    res.adjRarity = Math.ceil(res.adjRarity);
                 }
             }
         }
+        if (res.cat.includes('blue')) {
+            blueSum = blueSum+res.adjRarity;
+        }
+        if (res.cat.includes('sky')) {
+            skySum = skySum+res.adjRarity;
+        }
     });
-    console.log('scrapRarity: '+scrapRarity);
+    // console.log('blueSum: '+blueSum);
+    // console.log('skySum: '+skySum);
     // check RUINS
     let ruinChance = Math.floor(((scrapRarity*ruinRarity/10)+ruinRarity)/3);
     let resScrap = getResByName('Scrap');

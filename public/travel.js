@@ -885,25 +885,41 @@ function sondeResChoice(arNum) {
     console.log(planetName);
     let sortedResTypes = _.sortBy(resTypes,'name');
     sortedResTypes.forEach(function(res) {
-        if (res.cat != 'zero' && res.cat != 'transfo' && res.cat != 'alien' && !res.cat.includes('blue') && !res.cat.includes('sky')) {
-            if (res.name != 'Scrap') {
-                let planetOK = true;
-                if (res.planets != undefined) {
-                    if (res.planets[planetName] <= 0) {
-                        planetOK = false;
-                    }
+        let resOK = true;
+        let isRare = false;
+        if (res.cat.includes('blue') || res.cat.includes('sky')) {
+            isRare = true;
+            if (res.planets != undefined) {
+                if (res.planets[planetName] < 1) {
+                    resOK = false;
                 }
-                if (planetOK) {
-                    let checkRes = '';
-                    if (playerInfos.resFlags.includes(res.name)) {
-                        checkRes = ' &nbsp;&#9989;';
-                    }
-                    if (playerInfos.sondeRes[arNum] === res.name) {
-                        $('#'+idName).append('<option value="'+res.name+'" selected>'+res.name+checkRes+'</option>');
-                    } else {
-                        $('#'+idName).append('<option value="'+res.name+'">'+res.name+checkRes+'</option>');
-                    }
+            }
+        } else {
+            if (res.planets != undefined) {
+                if (res.planets[planetName] <= 0) {
+                    resOK = false;
                 }
+            }
+        }
+        if (res.cat != 'zero' && res.cat != 'transfo' && res.cat != 'alien' && res.name != 'Scrap') {
+            let checkRes = '';
+            if (playerInfos.resFlags.includes(res.name)) {
+                checkRes = ' &nbsp;&#9989;';
+            }
+            let resIcon = getResIcon(res);
+            resIcon = '&nbsp'+resIcon;
+            let resCircle = '&#9711; ';
+            if (isRare) {
+                resCircle = '&#11093; ';
+            }
+            if (resOK) {
+                if (playerInfos.sondeRes[arNum] === res.name) {
+                    $('#'+idName).append('<option value="'+res.name+'" selected>'+resCircle+res.name+resIcon+checkRes+'</option>');
+                } else {
+                    $('#'+idName).append('<option value="'+res.name+'">'+resCircle+res.name+resIcon+checkRes+'</option>');
+                }
+            } else {
+                $('#'+idName).append('<option value="'+res.name+'" disabled>'+resCircle+res.name+resIcon+checkRes+'</option>');
             }
         }
     });

@@ -233,8 +233,8 @@ let gangsBonus = false;
 let gangFacts = getGangFactors();
 let sondeCount = 'gff';
 let homeCount = 'cy';
-let apoCount = 400; // 435
-let apoModeVar = 50; // 500,450,400,350
+let apoCount = 375; // 435 / plus grand = plus facile
+let apoModeVar = 45; // 500,450,400,350 / plus grand = plus de différence entre les modes (facile, normal etc...)
 let gameOver = false;
 let stressLevels = [5,15,35,100]; // stress,freeze,fear,terror
 let teleCost = {};

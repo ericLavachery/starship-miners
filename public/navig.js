@@ -80,7 +80,7 @@ function commandes() {
                             $('#commandz').append('<button type="button" title="Reconstituer les armées telles que vous les avez sauvegardées" class="boutonRouge iconButtons" onclick="loadArmies()" onmousedown="clicSound(7)"><i class="fas fa-upload"></i></button>');
                         }
                         $('#commandz').append('<br>');
-                    } else if (souteFilter === 'prefabs' || !inSoute) {
+                    } else if (souteFilter === 'prefabs' && inSoute) {
                         $('#commandz').append('<button type="button" title="Lancer la production pour tous les bâtiments" class="boutonVert iconButtons" onclick="allBatProd(true)" onmousedown="clicSound(0)"><i class="fas fa-industry"></i></button>');
                         $('#commandz').append('<button type="button" title="Arrêter la production pour tous les bâtiments" class="boutonJaune iconButtons" onclick="allBatProd(false)" onmousedown="clicSound(0)"><i class="fas fa-industry"></i></button>');
                         $('#commandz').append('<br>');
@@ -229,7 +229,7 @@ function commandes() {
                             }
                         }
                     } else {
-                        $('#commandz').append('<hr>');
+                        // $('#commandz').append('<hr>');
                         if (zoneFiles.length >= 2) {
                             $('#commandz').append('<button type="button" title="Choisir une zone pour la prochaine mission" class="boutonNoir iconButtons" onclick="pickZone()" onmousedown="clicSound(5)"><i class="fas fa-map"></i></button>');
                             if (playerInfos.missionZone >= 1) {
@@ -301,6 +301,13 @@ function commandes() {
     // $('#commandz').append('<button type="button" title="Tout soigner (comme au retour de mission)" class="boutonCiel iconButtons" onclick="healEverything()"><i class="fas fa-briefcase-medical"></i></button>');
     if (isAdmin.low) {
         gangNavig();
+    } else {
+        $("#gangInfos").css("display","none");
+    }
+    if (playerInfos.onShip) {
+        $("#report").css("display","none");
+    } else {
+        $("#report").css("display","block");
     }
     showResBar();
 };
@@ -349,11 +356,7 @@ function viewPop() {
             $('#batloop').append('Pénibilité: <span class="'+penibColour+'">'+crimeRate.penib+'</span>%<br>');
             $('#batloop').append('Forces de l\'ordre: <span class="neutre">'+crimeRate.fo+'</span><br>');
             $('#batloop').append('Criminalité: <span class="'+crimColour+'">'+crimeRate.total+'</span>%<br>');
-            if (playerInfos.deadBats.length >= 2) {
-                $('#batloop').append('Morts <span class="or" title="'+toNiceString(playerInfos.deadBats)+'">'+playerInfos.unitsLost+'</span> <span class="neutre" title="Morts en mission: &dagger; '+toNiceString(playerInfos.deadBats)+'">('+playerInfos.deadBats[0]+'...)</span><br>');
-            } else if (playerInfos.deadBats.length === 1) {
-                $('#batloop').append('Morts <span class="or" title="'+toNiceString(playerInfos.deadBats)+'">'+playerInfos.unitsLost+'</span> <span class="neutre"Morts en mission: &dagger; '+toNiceString(playerInfos.deadBats)+'">('+playerInfos.deadBats[0]+')</span><br>');
-            }
+            $('#batloop').append('Morts <span class="or" title="'+toNiceString(playerInfos.deadBats)+'">'+playerInfos.unitsLost+'</span><br>');
             $('#batloop').append('<span class="jaune">Doomclock: '+doomsday+'</span><br>');
             if (!inSoute && !modeSonde) {
                 $('#batloop').append('<button type="button" title="Simuler 3 semaines (1 mission)" class="boutonVert iconButtons" onclick="events(false,65,true,false)"><i class="fas fa-calendar-alt"></i></button>');
@@ -370,6 +373,7 @@ function viewPop() {
 };
 
 function gangNavig() {
+    $("#gangInfos").css("display","block");
     $('#gangInfos').empty();
     if (allowCheat || isAdmin.deep) {
         allowCheat = true;

@@ -306,6 +306,9 @@ function targetBatArrayUpdate() {
 
 function getDoom(floor) {
     let doom = ((playerInfos.allTurns)/(apoCount+(apoModeVar*2)-(playerInfos.gMode*apoModeVar)))+1;
+    if (playerInfos.gMode === 1) {
+        doom = doom-0.5;
+    }
     if (doom < 1) {
         doom = 1;
     }
