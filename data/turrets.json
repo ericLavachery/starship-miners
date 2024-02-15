@@ -2235,7 +2235,7 @@
     },
     {
         "id":43,
-        "name":"Champ de mines",
+        "name":"Mines claymore",
         "pic":"minechamp",
         "cat":"devices",
         "kind":"zero-defense",

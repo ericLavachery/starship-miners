@@ -137,7 +137,7 @@ function getRoboTiles() {
             controlRange = 12;
         } else if (playerInfos.bldList.includes('Centre de com')) {
             controlRange = 9;
-        } else if (playerInfos.bldList.includes('Poste radio')) {
+        } else if (playerInfos.bldList.includes('Station radio')) {
             controlRange = 6;
         }
         bataillons.forEach(function(bat) {

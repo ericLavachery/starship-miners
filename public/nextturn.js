@@ -809,7 +809,7 @@ function turnInfo(first) {
         playerInfos.vue = playerInfos.vue-1;
     }
     if (!playerInfos.bldList.includes('Centre de com')) {
-        if (!playerInfos.bldList.includes('Poste radio')) {
+        if (!playerInfos.bldList.includes('Station radio')) {
             if (playerInfos.vue > 1) {
                 playerInfos.vue = 1;
             }
@@ -899,7 +899,7 @@ function turnInfo(first) {
     let controlRange = 3;
     if (playerInfos.bldList.includes('Centre de com')) {
         controlRange = 12;
-    } else if (playerInfos.bldList.includes('Poste radio')) {
+    } else if (playerInfos.bldList.includes('Station radio')) {
         controlRange = 6;
     }
     hasScraptruck = false;
@@ -2079,6 +2079,12 @@ function tagDeleteX(bat,tag,delNum,notAll) {
 };
 
 function updateBatProperties(bat,batType) {
+    if (bat.type === 'Poste radio') {
+        bat.type === 'Station radio';
+    }
+    if (bat.type === 'Champ de mines') {
+        bat.type === 'Mines claymore';
+    }
     if (bat.logeq === undefined) {
         bat.logeq = '';
     }

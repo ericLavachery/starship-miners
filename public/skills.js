@@ -103,7 +103,7 @@ function checkCommand(myBat) {
             let distOK = false;
             let thisEffect = 0;
             if (batType.skills.includes('leader')) {
-                if (playerInfos.bldList.includes('Poste radio')) {
+                if (playerInfos.bldList.includes('Station radio')) {
                     distOK = true;
                     thisEffect = 100+bat.apLeft;
                 } else {
@@ -1257,7 +1257,7 @@ function dropStuff(apCost,mineType) {
     let unitIndex;
     let skillUsed = true;
     if (mineType === 'champ') {
-        unitIndex = unitTypes.findIndex((obj => obj.name === 'Champ de mines'));
+        unitIndex = unitTypes.findIndex((obj => obj.name === 'Mines claymore'));
     } else if (mineType === 'wipe') {
         unitIndex = unitTypes.findIndex((obj => obj.name === 'Mines wipeout'));
     } else if (mineType === 'bay') {

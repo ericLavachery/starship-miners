@@ -2047,7 +2047,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
         // POSE CHAMP DE MINES
         if (batType.skills.includes('landmine') && playerInfos.comp.explo >= 1) {
-            trapType = getBatTypeByName('Champ de mines');
+            trapType = getBatTypeByName('Mines claymore');
             freeConsTile = checkFreeConsTile(bat,trapType);
             if (freeConsTile) {
                 let minesLeft = calcRavit(bat);

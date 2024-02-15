@@ -359,6 +359,19 @@ socket.on('playerInfos-Load', function(pi) {
         $('body').css('background-image','url(/static/img/metroBG.jpg)');
         $('body').css('background-position','left top');
     }
+    // REMPLACER UNITES qui ont changé de nom.
+    if (playerInfos.bldList.includes('Poste radio')) {
+        let index = playerInfos.bldList.indexOf('Poste radio');
+        if (index !== -1) {
+            playerInfos.bldList[index] = 'Station radio';
+        }
+    }
+    if (playerInfos.bldVM.includes('Poste radio')) {
+        let index = playerInfos.bldVM.indexOf('Poste radio');
+        if (index !== -1) {
+            playerInfos.bldVM[index] = 'Station radio';
+        }
+    }
 });
 // Terrains
 socket.on('mapFilters-Load', function(mf) {

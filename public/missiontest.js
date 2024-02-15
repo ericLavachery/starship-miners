@@ -165,7 +165,7 @@ function putFullBldVM() {
     playerInfos.bldVM.push('Usine d\'armement');
     playerInfos.bldVM.push('Infirmerie');
     playerInfos.bldVM.push('Hôpital');
-    playerInfos.bldVM.push('Poste radio');
+    playerInfos.bldVM.push('Station radio');
     playerInfos.bldVM.push('Centre de com');
     playerInfos.bldVM.push('QG');
     playerInfos.bldVM.push('Décharge');

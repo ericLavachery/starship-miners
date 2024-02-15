@@ -749,7 +749,7 @@ function nearWhat(myBat,myBatType) {
             }
         }
         if (batType.skills.includes('leader') && !bat.tags.includes('command')) {
-            if (playerInfos.bldList.includes('Poste radio')) {
+            if (playerInfos.bldList.includes('Station radio')) {
                 near.schef = true;
             }
         }
@@ -1007,7 +1007,7 @@ function maxUnits(unit) {
                 maxOf.hbot = maxOf.hbot+3;
                 maxOf.lbot = maxOf.lbot+3;
             }
-            if (batType.name === 'Poste radio') {
+            if (batType.name === 'Station radio') {
                 maxOf.lbot = maxOf.lbot+3;
             }
             if (batType.name === 'Garage') {

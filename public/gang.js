@@ -153,7 +153,7 @@ function gangUnitsList(gangName) {
         if (unitName.includes('Navette')) {
             unitName = 'Navette';
         }
-        if (unitName.includes('Champ de mines')) {
+        if (unitName.includes('Mines claymore')) {
             unitName = 'Mines';
         }
         $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+reqString+'" onclick="unitDetail('+unit.id+')">'+unitName+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue" title="Niveau">'+lvlNeed+'</span> <span class="paramValue" title="Compétences">'+compNeed+'</span> <span class="paramValue" title="Bâtiments">'+bldNeed+'</span><br>');

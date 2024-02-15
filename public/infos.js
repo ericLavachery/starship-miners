@@ -1118,7 +1118,7 @@ function getInfoAdd(batType) {
     if (batType.skills.includes('nofear')) {
         infoAdd = infoAdd+'Ce bataillon est immunisé à la peur.<br>';
     }
-    if (batType.name === 'Poste radio') {
+    if (batType.name === 'Station radio') {
         infoAdd = infoAdd+'Grâce aux renseignement donnés sur la position des ennemis, ce bâtiment augmente la furtivité de vos bataillons.<br>';
     }
     if (batType.name === 'Centre de com' || batType.name === 'QG') {
@@ -1129,7 +1129,7 @@ function getInfoAdd(batType) {
         infoAdd = infoAdd+'Permet à la plupart de vos robots de fouiller les ruines.<br>';
         infoAdd = infoAdd+'Indispensable pour pouvoir atterrir sur la planète Horst.<br>';
     }
-    if (batType.name === 'Poste radio' || batType.name === 'Centre de com' || batType.name === 'QG') {
+    if (batType.name === 'Station radio' || batType.name === 'Centre de com' || batType.name === 'QG') {
         infoAdd = infoAdd+'Indispensable pour pouvoir atterrir sur la planète Sarak.<br>';
         infoAdd = infoAdd+'Permet à vos bataillons de recevoir l\'ordre d\'un chef dans toute la zone (habilité |commande|).<br>';
     }

@@ -30,19 +30,19 @@
         "gangs":["blades"]
     },
     {
-        "unit":"Poste radio",
+        "unit":"Station radio",
         "gear":["titanium","xxx","bulk","garage"],
         "missions":["resist","trolley","necro","science"],
         "gangs":["bulbos"]
     },
     {
-        "unit":"Poste radio",
+        "unit":"Station radio",
         "gear":["titanium","xxx","bulk","e-radar"],
         "missions":["spider","sky"],
         "gangs":["bulbos"]
     },
     {
-        "unit":"Poste radio",
+        "unit":"Station radio",
         "gear":["salite","xxx","bulk","garage"],
         "missions":["dragon"],
         "gangs":["bulbos","tiradores","detruas"]

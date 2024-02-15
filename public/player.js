@@ -1079,7 +1079,7 @@ function playerSkillsUTChanges() {
                 unit.weapon2.range = 2;
             }
         }
-        if (unit.name === 'Champ de mines') {
+        if (unit.name === 'Mines claymore') {
             if (playerInfos.comp.explo >= 2) {
                 unit.levels[playerInfos.gang] = unit.levels[playerInfos.gang]-((playerInfos.comp.explo-1)*2);
                 if (unit.levels[playerInfos.gang] < 1) {
