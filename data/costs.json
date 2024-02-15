@@ -1256,7 +1256,7 @@
     {
         "id":1,
         "name":"Scouts",
-        "levels":{"rednecks":99,"blades":99,"bulbos":12,"drogmulojs":13,"tiradores":99,"detruas":9,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":12,"drogmulojs":13,"tiradores":99,"detruas":12,"brasier":99},
         "bldReq":["Armurerie","Garage"],
         "compReq":{"tank":1,"explo":1,"bal":2},
         "costs":{"Fer":220,"Scrap":215,"Carbone":75,"Aluminium":150,"Moteurs":60,"Tungstène":90,"Cuivre":15,"Batteries":25,"Compo2":60,"Cobalt":30,"Hélium":60,"Explosifs":10,"Fuel":40},
@@ -1526,7 +1526,7 @@
     {
         "id":307,
         "name":"Minitanks",
-        "levels":{"rednecks":12,"blades":99,"bulbos":14,"drogmulojs":99,"tiradores":99,"detruas":11,"brasier":99},
+        "levels":{"rednecks":12,"blades":99,"bulbos":14,"drogmulojs":99,"tiradores":99,"detruas":9,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "compReq":{"energ":2},
         "compPass":["detruas","rednecks"],
@@ -1805,9 +1805,10 @@
     {
         "id":161,
         "name":"Konvoys",
-        "levels":{"rednecks":17,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":17,"brasier":99},
+        "levels":{"rednecks":15,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":14,"brasier":99},
         "bldReq":["Arsenal","Usine"],
-        "compReq":{"tank":1,"trans":1},
+        "compReq":{"tank":1,"trans":2},
+        "altCompReq":{"tank":2,"trans":1},
         "costs":{"Fer":256,"Scrap":520,"Carbone":368,"Moteurs":300,"Titane":16,"Tungstène":272,"Cuivre":32,"Electros":8,"Batteries":24,"Compo2":504,"Compo3":432,"Huile":10,"Eau":192,"Zinc":24},
         "deploy":{"Fuel":255},
         "fabTime":135
@@ -1909,7 +1910,7 @@
     {
         "id":119,
         "name":"Drilltrucks",
-        "levels":{"rednecks":10,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":12,"brasier":11},
+        "levels":{"rednecks":10,"blades":11,"bulbos":11,"drogmulojs":11,"tiradores":11,"detruas":11,"brasier":11},
         "bldReq":["Usine","Laboratoire"],
         "compReq":{"ext":1},
         "costs":{"Fer":96,"Scrap":176,"Carbone":68,"Aluminium":12,"Moteurs":120,"Cuivre":48,"Electros":48,"Batteries":32,"Compo2":108,"Huile":10,"Eau":416,"Silicium":56,"Zinc":24},
@@ -1920,7 +1921,7 @@
     {
         "id":118,
         "name":"Stakhanov",
-        "levels":{"rednecks":15,"blades":16,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":17,"brasier":17},
+        "levels":{"rednecks":15,"blades":16,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":15,"brasier":17},
         "bldReq":["Centre de recherches","Usine"],
         "compReq":{"ext":3},
         "compPass":["rednecks"],
@@ -1931,6 +1932,16 @@
         "inRuin":1
     },
     {
+        "id":327,
+        "name":"Badgers",
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":17,"brasier":99},
+        "bldReq":["Centre de recherches","Usine"],
+        "compReq":{"robo":1,"ext":1},
+        "costs":{"Fer":180,"Scrap":120,"Carbone":90,"Aluminium":90,"Moteurs":120,"Compo2":120,"Rhodium":90,"Silicium":104,"Cuivre":90,"Electros":120,"Batteries":180,"Huile":10,"Eau":160},
+        "deploy":{"Energie":300,"Eau":160,"Silicium":20},
+        "fabTime":80
+    },
+    {
         "id":134,
         "name":"Taupes",
         "levels":{"rednecks":17,"blades":16,"bulbos":13,"drogmulojs":16,"tiradores":16,"detruas":99,"brasier":17},
@@ -1938,7 +1949,7 @@
         "compReq":{"robo":1},
         "compPass":["blades","brasier","drogmulojs","rednecks"],
         "compHardReq":{"ext":1},
-        "costs":{"Fer":72,"Scrap":90,"Carbone":72,"Moteurs":108,"Titane":228,"Rhodium":72,"Silicium":48,"Cuivre":96,"Electros":120,"Batteries":198,"Huile":10,"Eau":120,"Silicium":30,"Spins":1},
+        "costs":{"Fer":72,"Scrap":90,"Carbone":72,"Moteurs":108,"Titane":228,"Rhodium":72,"Silicium":78,"Cuivre":96,"Electros":120,"Batteries":198,"Huile":10,"Eau":120,"Spins":1},
         "deploy":{"Energie":280,"Eau":120,"Silicium":15},
         "fabTime":90,
         "inRuin":2

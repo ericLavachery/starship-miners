@@ -595,7 +595,7 @@ function eggsDrop() {
                 }
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
             } else if (eggTypeDice <= coqPerc+invisibleChance) {
-                dropEgg('Oeuf voilé','any');
+                dropEgg('Oeuf voilé','nedge');
                 playerInfos.droppedEggs = playerInfos.droppedEggs+1;
                 if (playerInfos.vue >= 5 && (playerInfos.knownAliens.includes('Oeuf voilé') || playerInfos.comp.ca >= 5)) {
                     warning('Oeuf voilé','Un Oeuf voilé est tombé!');
@@ -681,6 +681,22 @@ function getCoquePlace() {
     return coqPlace;
 };
 
+function checkStonyEgg(alienUnit,theArea) {
+    let stony = false;
+    let stonyChance = Math.ceil(Math.floor((zone[0].mapDiff+1)/3)*10*(playerInfos.mapTurn-10)/(aliens.length+10));
+    let diceRoll = rand.rand(1,100);
+    if (diceRoll <= stonyChance) {
+        if (alienUnit === 'Coque') {
+            if (theArea != 'center' && theArea != 'center2x') {
+                stony = true;
+            }
+        } else if (alienUnit === 'Oeuf') {
+            stony = true;
+        }
+    }
+    return stony;
+};
+
 function dropEgg(alienUnit,theArea) {
     console.log('dropping egg...');
     let alienType = getBatTypeByName(alienUnit);
@@ -689,6 +705,7 @@ function dropEgg(alienUnit,theArea) {
     conselAmmos = ['xxx','xxx','xxx','xxx'];
     alienOccupiedTileList();
     playerOccupiedTileList();
+    let stony = checkStonyEgg(alienUnit,theArea);
     let dropTile = eggDropTile(alienUnit,theArea);
     if (dropTile >= 0) {
         let eggSquadsLeft = 6;
@@ -729,9 +746,9 @@ function dropEgg(alienUnit,theArea) {
                 putEgg(dropTile,0,0,'bmorph');
             } else if (alienUnit === 'Cocon' && theArea === 'edge') {
                 putEgg(dropTile,0,0,'crys');
-            } else if (alienUnit === 'Coque' && rand.rand(2,101) <= zone[0].mapDiff) {
+            } else if (alienUnit === 'Coque' && stony) {
                 putEgg(dropTile,0,0,'permashield');
-            } else if (alienUnit === 'Oeuf' && rand.rand(2,101) <= zone[0].mapDiff) {
+            } else if (alienUnit === 'Oeuf' && stony) {
                 putEgg(dropTile,0,0,'permashield');
             } else {
                 putEgg(dropTile,0,0);
