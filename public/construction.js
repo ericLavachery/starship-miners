@@ -771,12 +771,6 @@ function checkUnitCompReq(unit,forGangList) {
             }
         }
     }
-    // Taupes/Blades
-    if (unit.name === 'Taupes' && gangFacts.taupe) {
-        if (playerInfos.comp.aero < 1 || playerInfos.comp.cyber < 1) {
-            compReqOK = false;
-        }
-    }
     return compReqOK;
 };
 

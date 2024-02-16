@@ -1043,7 +1043,7 @@
     {
         "id":116,
         "name":"Cyclopes",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":15,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":16,"brasier":99},
         "bldReq":["Camp d'entraînement","Armurerie"],
         "compReq":{"det":2,"mat":1,"bal":1,"explo":2},
         "costs":{"Fer":128,"Scrap":64,"Carbone":128,"Silicium":32,"Electros":64,"Batteries":32,"Végétaux":136,"Blendium":64,"Soufre":64,"Plomb":64,"Chlore":20,"Zinc":20,"Tissus":10},
@@ -1307,7 +1307,7 @@
     {
         "id":132,
         "name":"Raves",
-        "levels":{"rednecks":99,"blades":99,"bulbos":17,"drogmulojs":99,"tiradores":99,"detruas":16,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":17,"drogmulojs":99,"tiradores":99,"detruas":15,"brasier":99},
         "bldReq":["Arsenal","QG","Chaîne de montage"],
         "compReq":{"arti":1,"bal":2},
         "altCompReq":{"arti":2},
@@ -1422,7 +1422,7 @@
     {
         "id":107,
         "name":"Flaktanks",
-        "levels":{"rednecks":17,"blades":99,"bulbos":16,"drogmulojs":16,"tiradores":17,"detruas":15,"brasier":16},
+        "levels":{"rednecks":17,"blades":99,"bulbos":16,"drogmulojs":16,"tiradores":17,"detruas":16,"brasier":16},
         "bldReq":["Arsenal","Chaîne de montage","Station radio"],
         "compReq":{"tank":2,"bal":2},
         "altCompReq":{"tank":1,"arti":2},
@@ -1622,7 +1622,7 @@
         "name":"Avalanches",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":16,"brasier":99},
         "bldReq":["Usine d'armement","Chaîne de montage","Centre de com"],
-        "compHardReq":{"arti":1,"explo":1,"bal":1},
+        "compReq":{"arti":1,"explo":3,"bal":1},
         "costs":{"Fer":324,"Carbone":144,"Aluminium":279,"Moteurs":108,"Titane":72,"Tungstène":216,"Rhodium":72,"Silicium":18,"Cuivre":30,"Electros":45,"Batteries":55,"Nickel":45,"Compo2":180,"Compo3":108,"Huile":10,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":100},
         "fabTime":140
@@ -1946,9 +1946,8 @@
         "name":"Taupes",
         "levels":{"rednecks":17,"blades":16,"bulbos":13,"drogmulojs":16,"tiradores":16,"detruas":99,"brasier":17},
         "bldReq":["Centre de recherches","Usine"],
-        "compReq":{"robo":1},
-        "compPass":["blades","brasier","drogmulojs","rednecks"],
-        "compHardReq":{"ext":1},
+        "compReq":{"robo":1,"ext":1},
+        "altCompReq":{"aero":1,"cyber":1,"ext":1},
         "costs":{"Fer":72,"Scrap":90,"Carbone":72,"Moteurs":108,"Titane":228,"Rhodium":72,"Silicium":78,"Cuivre":96,"Electros":120,"Batteries":198,"Huile":10,"Eau":120,"Spins":1},
         "deploy":{"Energie":280,"Eau":120,"Silicium":15},
         "fabTime":90,

@@ -39,7 +39,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["b_none","fortif","fret","fweight","varsquad","nodeathcount","nochef","recupcorps","iscit","nogen","nofight"],
+        "skills":["b_none","fouille","fortif","fret","fweight","varsquad","nodeathcount","nochef","recupcorps","iscit","nogen","nofight"],
         "transRes":72,
         "fuzz":1,
         "deathFx":"13797__sweetneo85__wilhelm"
@@ -6224,7 +6224,7 @@
         },
         "weapon2":{
             "name":"Flak canon (sol)",
-            "cost":5,
+            "cost":6,
             "range":2,
             "elevation":1,
             "noise":4,
@@ -6247,7 +6247,7 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_heavy","fortif","maycamo","hardmove","machine","tracked","unemun","recupcit","herosalvo"],
+        "skills":["a_heavy","fortif","maycamo","hardmove","machine","onemore","tracked","unemun","recupcit","herosalvo"],
         "fuzz":3,
         "deathFx":"195954__minian89__death-blood-splatter"
     },

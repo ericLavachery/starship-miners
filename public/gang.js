@@ -102,11 +102,6 @@ function gangUnitsList(gangName) {
                         }
                     }
                 }
-                // Taupes/Blades
-                if (unit.name === 'Taupes' && gangFacts.taupe) {
-                    newCompReq['aero'] = 1;
-                    newCompReq['cyber'] = 1;
-                }
                 newUnit.compReq = newCompReq;
                 newUnit.altCompReq = newAltCompReq;
                 gangUnits.push(newUnit);

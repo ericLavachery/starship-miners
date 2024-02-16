@@ -2434,6 +2434,12 @@ function weaponAdj(weapon,bat,wn) {
     }
     // Equipements qui changent l'arme
     thisWeapon = weaponEqChange(thisWeapon,wn,bat,batType);
+    // radar vision
+    if (hasEquip(bat,['e-radar'])) {
+        if (batType.skills.includes('radarshot')) {
+            thisWeapon.vision = true;
+        }
+    }
     // tuning
     if (batType.cat != 'aliens' && thisWeapon.isMelee) {
         thisWeapon.rof = thisWeapon.rof*meleeROF;

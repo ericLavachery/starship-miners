@@ -1508,12 +1508,21 @@ function attack(melee,init) {
             }
         }
         if (selectedBatType.skills.includes('onemore')) {
-            if (!sbk && !selectedBat.tags.includes('tornade') && !selectedBat.tags.includes('more')) {
-                if (selectedBatType.skills.includes('elite') || selectedBat.vet >= 3) {
-                    if (selectedBat.salvoLeft < 1) {
-                        selectedBat.salvoLeft = 1;
-                        selectedBat.tags.push('more');
+            if (!sbk && !selectedBat.tags.includes('tornade') && !selectedWeap.free && !selectedBat.tags.includes('more')) {
+                if (selectedBatType.skills.includes('elite') || selectedBat.vet >= 3 || selectedBatType.name === 'Flaktanks' || selectedBatType.name === 'Spritz') {
+                    selectedBat.salvoLeft = selectedBat.salvoLeft+1;
+                    if (selectedWeap.num === 1) {
+                        if (selectedBat.tags.includes('noBis1')) {
+                            tagDelete(selectedBat,'noBis1');
+                        }
+                    } else {
+                        if (selectedBat.tags.includes('noBis2')) {
+                            tagDelete(selectedBat,'noBis2');
+                        }
                     }
+                    selectedBat.tags.push('more');
+                    // if (selectedBat.salvoLeft < 1) {
+                    // }
                 }
             }
         }

@@ -1218,14 +1218,14 @@ function batFullInfos(bat,batType) {
         allSkills = allSkills+'<span class="paramValue" title="Si ce bataillon recoit une commande lorsqu\'il est sous l\'effet du Starka et du Sila: Salves infinies">Berserk</span>'+sepa;
     }
     if (batType.skills.includes('onemore')) {
-        if (batType.skills.includes('elite')) {
-            allSkills = allSkills+'<span class="paramValue" title="Ce bataillon gagne une attaque supplémentaire si il a terminé un bataillon alien avec sa dernière attaque">One more</span>'+sepa;
+        if (batType.skills.includes('elite') || batType.name === 'Flaktanks' || batType.name === 'Spritz') {
+            allSkills = allSkills+'<span class="paramValue" title="Ce bataillon gagne une attaque supplémentaire si il a terminé un bataillon alien dans le tour">One more</span>'+sepa;
         } else {
-            allSkills = allSkills+'<span class="paramValue" title="Lorsqu\'il est niveau 3 ou plus, ce bataillon gagne une attaque supplémentaire si il a terminé un bataillon alien avec sa dernière attaque">One more</span>'+sepa;
+            allSkills = allSkills+'<span class="paramValue" title="Lorsqu\'il est niveau 3 ou plus, ce bataillon gagne une attaque supplémentaire si il a terminé un bataillon alien dans le tour">One more</span>'+sepa;
         }
     }
     if (batType.skills.includes('undead')) {
-        allSkills = allSkills+'<span class="paramValue" title="Les escouades blessées peuvent continuer à attaquer (la cadence de tir ne diminue pas)">Undead</span>'+sepa;
+        allSkills = allSkills+'<span class="paramValue" title="Les escouades blessées peuvent continuer à attaquer (la cadence de tir ne diminue pas)">Dernier carré</span>'+sepa;
     }
     if (batType.skills.includes('embuscade')) {
         allSkills = allSkills+'<span class="paramValue" title="Cadence de tir doublée. Possible seulement en mode furtif. L\'unité doit bouger pour pouvoir en bénéficier à nouveau.">Embuscade</span>'+sepa;
