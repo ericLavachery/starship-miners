@@ -3087,6 +3087,25 @@ function replaceAlien(oldAlien) {
             }
         }
     }
+    // Only one class S
+    if (oldAlien.class === 'S') {
+        let alienBoss = checkAlienBoss(oldAlien.kind);
+        if (alienBoss) {
+            replaceAlienBoss(oldAlien);
+        }
+    }
+};
+
+function replaceAlienBoss(oldAlien) {
+    if (oldAlien.kind === 'bug') {
+        conselUnit = getAlienTypeByName('Dragons');
+    } else if (oldAlien.kind === 'larve') {
+        conselUnit = getAlienTypeByName('Megagrubz');
+    } else if (oldAlien.kind === 'spider') {
+        conselUnit = getAlienTypeByName('Glaireuses');
+    } else if (oldAlien.kind === 'swarm') {
+        conselUnit = getAlienTypeByName('Androks');
+    }
 };
 
 function replaceAlienName(oldAlienName) {

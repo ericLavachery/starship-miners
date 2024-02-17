@@ -505,17 +505,22 @@ function alienCanon() {
     // CANON WEB
     let cprov = 'canon';
     let cblob = 0;
+    let freqWeb = 5;
+    if (playerInfos.objectifs.spider === 'actif') {
+        freqWeb = freqWeb-1;
+    }
     if (hasAlien('Uberspinne')) {
         cprov = 'uber';
+        freqWeb = freqWeb-2;
     }
     if (hasAlien('Spiderblob')) {
         cprov = 'uber';
+        freqWeb = freqWeb-2;
         cblob = 1;
     }
+    if (freqWeb < 2) {freqWeb = 2;}
     if ((playerInfos.objectifs.spider === 'actif' && !domeProtect) || cprov === 'uber') {
-        let freq = 7-Math.ceil(zone[0].mapDiff/2)-cblob-cblob;
-        if (freq < 2) {freq = 2;}
-        if (playerInfos.mapTurn % freq === 0 && playerInfos.mapTurn >= 2) {
+        if (playerInfos.mapTurn % freqWeb === 0 && playerInfos.mapTurn >= 2) {
             let canonTiles = getWebCanonTiles(cprov,cblob);
             webCanon(canonTiles);
             showMap(zone,true);
@@ -549,11 +554,11 @@ function alienCanon() {
     }
     // CANON ECTO
     if (playerInfos.objectifs.larve === 'actif' && !domeProtect) {
-        let freq = 4;
+        let freqEcto = 4;
         if (hasAlien('Skygrub')) {
-            freq = 2;
+            freqEcto = 2;
         }
-        if (playerInfos.mapTurn % freq === 0 && playerInfos.mapTurn >= 1) {
+        if (playerInfos.mapTurn % freqEcto === 0 && playerInfos.mapTurn >= 1) {
             let canonTiles = getEctoCanonTiles();
             ectoCanon(canonTiles);
             showMap(zone,true);
@@ -837,19 +842,48 @@ function webCanon(canonTiles) {
     });
 };
 
-function trueWeb() {
-    if (!targetBat.tags.includes('mud')) {
-        targetBat.tags.push('mud');
+function trueWeb(defense) {
+    if (defense) {
+        if (!selectedBat.tags.includes('mud')) {
+            selectedBat.tags.push('mud');
+        }
+        if (!selectedBat.tags.includes('web')) {
+            selectedBat.tags.push('web');
+        }
+        if (selectedBatType.cat === 'infantry') {
+            selectedBat.tags.push('poison');
+            selectedBat.tags.push('poison');
+        }
+        if (selectedBat.prt != 'soap' && selectedBat.prt != 'swing' && selectedBat.prt != 'silk') {
+            if (selectedBat.apLeft > 0) {
+                selectedBat.apLeft = Math.floor(selectedBat.apLeft/3)-4;
+            } else {
+                selectedBat.apLeft = selectedBat.apLeft-4;
+            }
+        }
+        let tile = getTile(selectedBat);
+        tile.web = true;
+    } else {
+        if (!targetBat.tags.includes('mud')) {
+            targetBat.tags.push('mud');
+        }
+        if (!targetBat.tags.includes('web')) {
+            targetBat.tags.push('web');
+        }
+        if (targetBatType.cat === 'infantry') {
+            targetBat.tags.push('poison');
+            targetBat.tags.push('poison');
+        }
+        if (targetBat.prt != 'soap' && targetBat.prt != 'swing' && targetBat.prt != 'silk') {
+            if (targetBat.apLeft > 0) {
+                targetBat.apLeft = Math.floor(targetBat.apLeft/3)-4;
+            } else {
+                targetBat.apLeft = targetBat.apLeft-4;
+            }
+        }
+        let tile = getTile(targetBat);
+        tile.web = true;
     }
-    if (!targetBat.tags.includes('web')) {
-        targetBat.tags.push('web');
-    }
-    if (targetBatType.cat === 'infantry') {
-        targetBat.tags.push('poison');
-        targetBat.tags.push('poison');
-    }
-    let tile = getTile(targetBat);
-    tile.web = true;
 };
 
 function getWebCanonTiles(cprov,cblob) {

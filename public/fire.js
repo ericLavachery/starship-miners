@@ -1362,7 +1362,7 @@ function attack(melee,init) {
         realNoiseAlert(selectedWeap,selectedBatType,selectedBat.tileId);
     }
     if (selectedWeap.ammo === 'web-true' && targetBatType.team === 'player') {
-        trueWeb();
+        trueWeb(false);
     }
     if (selectedWeap.ammo === 'storm-true' && targetBatType.team === 'player') {
         blobStormThis(selectedBat.squadsLeft);
@@ -2403,6 +2403,9 @@ function defense(melee,init) {
     let squadsOut = Math.floor(allDamage/squadHP);
     selectedBat.squadsLeft = selectedBat.squadsLeft-squadsOut;
     selectedBat.damage = allDamage-(squadsOut*squadHP);
+    if (targetWeap.ammo === 'web-true' && selectedBatType.team === 'player') {
+        trueWeb(true);
+    }
     // survivor
     // console.log('Squads left: '+selectedBat.squadsLeft);
     if (selectedBat.squadsLeft <= 0) {

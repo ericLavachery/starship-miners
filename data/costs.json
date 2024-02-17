@@ -1043,7 +1043,7 @@
     {
         "id":116,
         "name":"Cyclopes",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":16,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":17,"brasier":99},
         "bldReq":["Camp d'entraînement","Armurerie"],
         "compReq":{"det":2,"mat":1,"bal":1,"explo":2},
         "costs":{"Fer":128,"Scrap":64,"Carbone":128,"Silicium":32,"Electros":64,"Batteries":32,"Végétaux":136,"Blendium":64,"Soufre":64,"Plomb":64,"Chlore":20,"Zinc":20,"Tissus":10},
@@ -1921,7 +1921,7 @@
     {
         "id":118,
         "name":"Stakhanov",
-        "levels":{"rednecks":15,"blades":16,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":15,"brasier":17},
+        "levels":{"rednecks":15,"blades":16,"bulbos":16,"drogmulojs":17,"tiradores":17,"detruas":16,"brasier":17},
         "bldReq":["Centre de recherches","Usine"],
         "compReq":{"ext":3},
         "compPass":["rednecks"],
@@ -1934,7 +1934,7 @@
     {
         "id":327,
         "name":"Badgers",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":17,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":15,"brasier":99},
         "bldReq":["Centre de recherches","Usine"],
         "compReq":{"robo":1,"ext":1},
         "costs":{"Fer":180,"Scrap":120,"Carbone":90,"Aluminium":90,"Moteurs":120,"Compo2":120,"Rhodium":90,"Silicium":104,"Cuivre":90,"Electros":120,"Batteries":180,"Huile":10,"Eau":160},

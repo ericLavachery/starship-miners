@@ -1,3 +1,17 @@
+"weapon2":{
+    "name":"Jet de poison",
+    "cost":5,
+    "range":2,
+    "elevation":2,
+    "noFly":false,
+    "isMelee":false,
+    "rof":9,
+    "accuracy":20,
+    "power":8,
+    "aoe":"unit",
+    "sound":"squish8",
+    "ammo":["toxine"]
+},
 .aUnits {
     background-color: rgba(251, 250, 148, 0.3);
     border-style: solid;
