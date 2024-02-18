@@ -2849,7 +2849,7 @@
             "subTypes":["Derrick","Comptoir","Pompe"]
         },
         "transRes":54,
-        "maxSkill":2,
+        "maxPut":2,
         "fuzz":1.5,
         "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
@@ -2917,7 +2917,7 @@
             "subTypes":["Derrick","Pompe"]
         },
         "transRes":54,
-        "maxSkill":2,
+        "maxPut":2,
         "fuzz":1,
         "deathFx":"516766__gentlemanwalrus__death-rattle"
     },
@@ -3044,7 +3044,7 @@
         "skills":["a_mid","fouille","fortif","pal","datt","maycamo","landmine","gasmine","barda","herorof"],
         "mediCost":10,
         "mecanoCost":15,
-        "maxSkill":4,
+        "maxPut":4,
         "fuzz":1,
         "deathFx":"human3"
     },
@@ -4922,7 +4922,7 @@
         "maxVeg":3,
         "skills":["a_cyb","fouille","fortif","datt","mecano","repair","constructeur","cleaning","landmine","gasmine","routes","infraz","infast","cyber","fret","noblub","resistall","dumper","kzin","reeq","nochef","hveh"],
         "mecanoCost":7,
-        "maxSkill":6,
+        "maxPut":6,
         "transRes":180,
         "fuzz":1.5,
         "deathFx":"robodeath2",

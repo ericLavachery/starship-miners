@@ -3456,7 +3456,7 @@
     },
     {
         "name": "obus-cluster",
-        "range": 1,
+        "range": 0.9,
         "rof": 1,
         "power": 0,
         "powermult": 0.75,
@@ -3562,7 +3562,7 @@
     },
     {
         "name": "missile-cluster",
-        "range": 1,
+        "range": 0.9,
         "rof": 1,
         "power": 0,
         "powermult": 1,

@@ -130,6 +130,73 @@ function calcRavit(bat) {
     return ravitLeft;
 };
 
+function calcPutLeft(bat) {
+    let batType = getBatType(bat);
+    let putLeft = 0;
+    putLeft = batType.maxPut;
+    if (bat.tags.includes('genstrong')) {
+        putLeft = Math.round(putLeft*1.5);
+    }
+    if (bat.tags.includes('pU')) {
+        let allTags = _.countBy(bat.tags);
+        putLeft = putLeft-allTags.pU;
+    }
+    return putLeft;
+};
+
+function checkLastRavit(myBat) {
+    let lastRavit = {};
+    lastRavit.ok = true;
+    lastRavit.exists = false;
+    let maxRavit = 36;
+    let myBatType = getBatType(myBat);
+    let bldReq = '';
+    if (myBatType.weapon.ravitBld != undefined) {
+        bldReq = myBatType.weapon.ravitBld;
+        maxRavit = myBatType.weapon.maxAmmo;
+    }
+    if (myBatType.weapon2.ravitBld != undefined) {
+        bldReq = myBatType.weapon2.ravitBld;
+        maxRavit = myBatType.weapon2.maxAmmo;
+    }
+    let gangBonus = 0;
+    if (playerInfos.gang === 'detruas') {
+        gangBonus = 1;
+    }
+    if (myBatType.cat === 'buildings') {
+        maxRavit = maxRavit*(4+gangBonus);
+    } else if (myBatType.cat === 'devices') {
+        maxRavit = maxRavit*(4+gangBonus);
+    } else {
+        maxRavit = maxRavit*(2+gangBonus);
+    }
+    if (maxRavit > 36) {
+        maxRavit = 36;
+    }
+    let bldRav = bldReq;
+    if (bldReq === 'Poudrière') {
+        bldRav = 'Armurerie';
+    }
+    if (isStartZone) {
+        bldReq = '';
+    }
+    if (bldReq === 'Arsenal') {
+        if (myBat.rvt === undefined) {
+            myBat.rvt = 0;
+        }
+        if (myBat.rvt >= maxRavit) {
+            lastRavit.ok = false;
+        }
+        lastRavit.exists = true;
+    } else {
+        maxRavit = 36;
+        lastRavit.ok = true;
+        lastRavit.exists = false;
+    }
+    lastRavit.max = maxRavit;
+    return lastRavit;
+};
+
 function checkRavit(myBat) {
     // vérifie si il y a un ravitaillement possible à côté de l'unité
     let anyRavit = false;
@@ -258,7 +325,14 @@ function goRavit(apCost) {
                 i++;
             }
             let numRav = Math.round(numAmmo*singleAmmoVolume);
-            selectedBat.apLeft = selectedBat.apLeft-apCost;
+            // console.log(bldReq);
+            if (bldReq === 'Arsenal') {
+                selectedBat.apLeft = selectedBat.apLeft-apCost;
+                if (selectedBat.rvt === undefined) {
+                    selectedBat.rvt = 0;
+                }
+                selectedBat.rvt = selectedBat.rvt+numAmmo;
+            }
             if (playerInfos.comp.log < 3) {
                 selectedBat.salvoLeft = 0;
             }
@@ -385,7 +459,7 @@ function checkStock(myBat) {
 };
 
 function goStock(apCost) {
-    if (selectedBat.tags.includes('sU')) {
+    if (selectedBat.tags.includes('sU') || selectedBat.tags.includes('pU')) {
         let batType;
         let stockBat = {};
         let stockOK = false;
@@ -411,10 +485,15 @@ function goStock(apCost) {
             }
             let i = 1;
             while (i <= 50) {
+                if (selectedBat.tags.includes('pU')) {
+                    tagIndex = selectedBat.tags.indexOf('pU');
+                    selectedBat.tags.splice(tagIndex,1);
+                }
                 if (selectedBat.tags.includes('sU')) {
                     tagIndex = selectedBat.tags.indexOf('sU');
                     selectedBat.tags.splice(tagIndex,1);
-                } else {
+                }
+                if (!selectedBat.tags.includes('sU') && !selectedBat.tags.includes('pU')) {
                     break;
                 }
                 if (i > 50) {break;}

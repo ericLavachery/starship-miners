@@ -624,6 +624,9 @@ function healEverything() {
                 bat.autoLoad = [];
             }
         }
+        if (bat.rvt != undefined) {
+            bat.rvt = 0;
+        }
         // MINING -------------------------------------------
         if (bat.extracted != undefined) {
             if (bat.extracted.length >= 1) {

@@ -790,15 +790,15 @@ function batInfos(bat,batType,pop) {
         $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Drogues</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxDrug+'</span><br>');
     }
     if (batType.skills.includes('landmine') || batType.skills.includes('gasmine') || batType.skills.includes('dynamite') || batType.skills.includes('trapap') || batType.skills.includes('trapdard') || batType.skills.includes('trapfosse') || bat.eq === 'kit-sentinelle') {
-        let ravitNum = calcRavit(bat);
+        let putLeft = calcPutLeft(bat);
         let trapName = getTrapName(bat,batType);
-        if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
-        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">'+trapName+'</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
+        if (putLeft < 1) {tagColor = 'or';} else {tagColor = 'cy';}
+        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">'+trapName+'</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+putLeft+'/'+batType.maxPut+'</span><br>');
     }
     if (batType.skills.includes('barbs')) {
-        let ravitNum = calcRavit(bat);
-        if (ravitNum < 1) {tagColor = 'or';} else {tagColor = 'cy';}
-        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Barbelés</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+ravitNum+'/'+batType.maxSkill+'</span><br>');
+        let putLeft = calcPutLeft(bat);
+        if (putLeft < 1) {tagColor = 'or';} else {tagColor = 'cy';}
+        $('#'+bodyPlace).append('<span class="paramName '+tagColor+'">Barbelés</span><span class="paramIcon"></span><span class="paramValue '+tagColor+'">'+putLeft+'/'+batType.maxPut+'</span><br>');
     }
     // Armure, équipements, habiletés
     let batprt = bat.prt;

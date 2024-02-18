@@ -56,6 +56,7 @@
     "mediCost":99,
     "mecanoCost":99,
     "maxSkill": 999,
+    "maxPut": 999,
     "maxDrug": 999,
     "fabTime":25,
     "bldReq":[],

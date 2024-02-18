@@ -1001,7 +1001,6 @@ function newAlienKilled(batType,tileId,onTurnEnd) {
 };
 
 function saveCrew(deadBatType,deadId,tileId,isNoPrefab) {
-    console.log('SAVE CREW --------------------------------------------------------');
     alienOccupiedTileList();
     playerOccupiedTileList();
     let salvableCits = 0;
@@ -1017,6 +1016,7 @@ function saveCrew(deadBatType,deadId,tileId,isNoPrefab) {
         salvableCits = Math.round(deadBatType.squads*deadBatType.squadSize*deadBatType.crew/12*rand.rand(0,5+playerInfos.comp.train));
     }
     if (salvableCits >= 1) {
+        console.log('SAVE CREW --------------------------------------------------------');
         if (isNoPrefab) {
             salvableCits = Math.ceil(salvableCits/2);
         }
@@ -1051,6 +1051,7 @@ function transDestroy(tileId,deadId,isFlying) {
     crashBats.forEach(function(bat) {
         crashEscapeTile = getCrashEscapeTile(tileId);
         if (crashEscapeTile >= 0) {
+            console.log('CrashEscape !!!');
             bat.loc = 'zone';
             bat.tileId = crashEscapeTile;
             bat.oldTileId = crashEscapeTile;

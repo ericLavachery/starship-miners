@@ -298,13 +298,13 @@ function checkCharged(myBat,where) {
 };
 
 function checkTrailerInfo(myBat) {
-    console.log('REMORQUE');
+    // console.log('REMORQUE');
     let remBatType = getBatTypeByName('Remorques');
     let myTrailer = {};
     myTrailer.ok = false;
     myTrailer.fret = false;
     myTrailer.space = remBatType.transRes;
-    console.log(myTrailer.space);
+    // console.log(myTrailer.space);
     bataillons.forEach(function(bat) {
         if (bat.type === 'Remorques') {
             if (bat.loc === 'trans' && bat.locId == myBat.id) {

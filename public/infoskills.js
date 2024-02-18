@@ -2664,7 +2664,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     // RAVITAILLEMENT DROGUES
     let anyRavit = checkRavitDrug(bat);
     if (anyRavit && bat.tags.includes('dU') && batType.skills.includes('dealer') && !playerInfos.onShip && !zeroCrew) {
-        let apCost = Math.round(batType.ap/3*7/(playerInfos.comp.log+5));
+        apCost = Math.round(batType.ap/3*7/(playerInfos.comp.log+5));
         if (bat.apLeft >= 2) {
             $('#unitInfos').append('<button type="button" title="Faire le plein de drogues" class="boutonVert unitButtons" onclick="goRavitDrug('+apCost+')"><i class="fas fa-prescription-bottle"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
@@ -2676,8 +2676,17 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     }
     // RAVITAILLEMENT
     anyRavit = checkRavit(bat);
+    let lastRavit = checkLastRavit(bat);
+    let ravitInfo = '';
+    if (lastRavit.exists) {
+        ravitInfo = ' '+bat.rvt+'/'+lastRavit.max;
+    }
     // console.log('RAVIT: '+anyRavit);
-    if (anyRavit && bat.tags.includes('aU') && !playerInfos.onShip && !zeroCrew) {
+    if (!lastRavit.ok) {
+        skillMessage = "Maximum de ravitaillements atteint";
+        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey unitButtons gf"><i class="ra ra-ammo-bag rpg"></i> <span class="small">0</span></button>');
+        lineBreak = true;
+    } else if (anyRavit && bat.tags.includes('aU') && !playerInfos.onShip && !zeroCrew) {
         let ravitVolume = calcRavitVolume(bat);
         let ravitFactor = 3;
         if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
@@ -2689,20 +2698,30 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         if (playerInfos.comp.log >= 3) {
             ravitFactor = ravitFactor*2;
         }
-        let apCost = Math.round(Math.sqrt(ravitVolume[1])*batType.ap/ravitFactor*7/(playerInfos.comp.log+5));
+        apCost = Math.round(Math.sqrt(ravitVolume[1])*batType.ap/ravitFactor*7/(playerInfos.comp.log+5));
         if (bat.apLeft >= 4) {
-            $('#unitInfos').append('<button type="button" title="Faire le plein de munitions" class="boutonCaca unitButtons" onclick="goRavit('+apCost+')"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>');
+            $('#unitInfos').append('<button type="button" title="Faire le plein de munitions'+ravitInfo+'" class="boutonCaca unitButtons" onclick="goRavit('+apCost+')"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
         } else {
             skillMessage = "Ravitaillement: Pas assez de PA";
-            $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey unitButtons gf"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>');
+            $('#unitInfos').append('<button type="button" title="'+skillMessage+ravitInfo+'" class="boutonGrey unitButtons gf"><i class="ra ra-ammo-bag rpg"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
         }
+    } else if (lastRavit.exists) {
+        if (!bat.tags.includes('aU')) {
+            skillMessage = "Pas besoin de ravitaillement";
+        } else if (!anyRavit) {
+            skillMessage = "Pas de ravitaillement disponible";
+        } else {
+            skillMessage = "Ravitaillement impossible";
+        }
+        $('#unitInfos').append('<button type="button" title="'+skillMessage+ravitInfo+'" class="boutonGrey unitButtons gf"><i class="ra ra-ammo-bag rpg"></i> <span class="small">0</span></button>');
+        lineBreak = true;
     }
-    // STOCKS
+    // STOCKS: RAVIT
     let anyStock = checkStock(bat);
-    if (anyStock && bat.tags.includes('sU') && !playerInfos.onShip && !zeroCrew) {
-        let apCost = Math.round(batType.ap*1.5*5/(playerInfos.comp.log+5));
+    if (anyStock && (bat.tags.includes('sU') || bat.tags.includes('pU')) && !playerInfos.onShip && !zeroCrew) {
+        apCost = Math.round(batType.ap*1.5*5/(playerInfos.comp.log+5));
         if (bat.apLeft >= 4) {
             $('#unitInfos').append('<button type="button" title="Faire le plein de ravitaillements" class="boutonCaca unitButtons" onclick="goStock('+apCost+')"><i class="fas fa-cubes"></i> <span class="small">'+apCost+'</span></button>');
             lineBreak = true;
@@ -2931,7 +2950,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                             let prefabSizeOK = checkPrefabSize(bat,batType,landerBat);
                             if (prefabSizeOK) {
                                 decButHere = true;
-                                let apCost = Math.round(6*batType.fabTime/30);
+                                apCost = Math.round(6*batType.fabTime/30);
                                 $('#unitInfos').append('<hr>');
                                 $('#unitInfos').append('<button type="button" title="Déconstruire (mettre dans le lander)" class="boutonRouge unitButtons" onclick="autoDeconstruction('+bat.id+')"><i class="fas fa-shapes"></i> <span class="small">'+apCost+'&nbsp; Déconstruction</span></button>');
                             }

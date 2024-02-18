@@ -1084,6 +1084,9 @@ function batDeploy(batId) {
     if (enoughRes) {
         payCost(deployCosts);
         bat.apLeft = bat.ap;
+        if (bat.rvt != undefined) {
+            bat.rvt = 0;
+        }
         loadBat(bat.id,slId,souteId);
     } else {
         console.log('not enough res');
