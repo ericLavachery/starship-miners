@@ -4250,10 +4250,10 @@
         "mecanoCost":6,
         "mining":{
             "level":4,
-            "rate":24,
+            "rate":27,
             "multi":true,
-            "types":["Mine","Derrick","Comptoir","Scrap","Pompe"],
-            "subTypes":[]
+            "types":["Mine","Derrick","Comptoir","Pompe"],
+            "subTypes":["Scrap"]
         },
         "transRes":1200,
         "fuzz":3,
@@ -4326,8 +4326,8 @@
             "level":4,
             "rate":32,
             "multi":true,
-            "types":["Mine","Derrick","Pompe","Comptoir","Scrap"],
-            "subTypes":[]
+            "types":["Mine","Derrick","Comptoir","Pompe"],
+            "subTypes":["Scrap"]
         },
         "transRes":2000,
         "fuzz":3.5,
@@ -4351,13 +4351,13 @@
         "stealth":10,
         "speed":1,
         "ap":24,
-        "maxSalvo":1,
+        "maxSalvo":2,
         "weapon":{
             "name":"Tromblon",
             "cost":3,
             "range":1,
-            "elevation":1,
             "noise":2,
+            "noBis":true,
             "rof":8,
             "accuracy":10,
             "power":13,
@@ -4374,6 +4374,7 @@
             "isShort":true,
             "noShield":true,
             "noGrip":true,
+            "noBis":true,
             "rof":12,
             "accuracy":12,
             "power":30,
@@ -4390,15 +4391,15 @@
         "maxFlood":1,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["b_mid","fortif","ranger","emoteur","extraction","selfmecano","cleaning","landmine","gasmine","fret","robot","decay","light","conscont","aicamo","recupres","aifouille","autotrans","hbot"],
+        "skills":["b_mid","fortif","ranger","emoteur","extraction","selfmecano","cleaning","landmine","fret","robot","decay","light","conscont","aicamo","recupres","aifouille","autotrans","hbot"],
         "mecanoCost":8,
         "maxPut":3,
         "mining":{
             "level":3,
             "rate":22,
             "multi":false,
-            "types":["Mine","Derrick","Comptoir","Scrap"],
-            "subTypes":["Pompe"]
+            "types":["Mine","Derrick","Comptoir"],
+            "subTypes":["Scrap","Pompe"]
         },
         "transRes":750,
         "fuzz":1.5,

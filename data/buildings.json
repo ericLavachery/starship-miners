@@ -612,7 +612,7 @@
             "level":3,
             "rate":20,
             "multi":true,
-            "types":["Mine","Scrap","Comptoir"],
+            "types":["Mine","Comptoir","Scrap"],
             "subTypes":["Derrick","Pompe"]
         },
         "transMaxSize":9,
@@ -878,7 +878,7 @@
             "rate":30,
             "multi":true,
             "types":["Derrick","Pompe"],
-            "subTypes":["Scrap","Mine","Comptoir"]
+            "subTypes":["Mine","Scrap","Comptoir"]
         },
         "transMaxSize":9,
         "transUnits":275,

@@ -239,6 +239,11 @@ function showAmmoInfo(ammoName,withReqs,withCosts) {
     if (ammo.name.includes('-necro')) {
         ammoInfo = ammoInfo+'&#9889; Anti-régénération (nécrotoxine) ';
     }
+    if (ammo.name.includes('missile') || ammo.name.includes('-deluge') || ammo.name.includes('-cluster')) {
+        if (!ammo.name.includes('autodes') && !ammo.name.includes('suicide')) {
+            ammoInfo = ammoInfo+'&#9889; Ravitaillements limités ';
+        }
+    }
     if (ammo.aoe != '') {
         if (ammo.aoe == 'unit') {
             ammoInfo = ammoInfo+'&#9889; AOE Unité ';

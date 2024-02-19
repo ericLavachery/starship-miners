@@ -1596,6 +1596,21 @@ function batFullInfos(bat,batType) {
     if (batType.skills.includes('extraction')) {
         $('#popbody').append('<div class="shSpace"></div>');
         $('#popbody').append('<span class="blockTitle"><h4>Extraction de ressources</h4></span><br>');
+        let maxMinedRes = 2;
+        if (batType.cat != 'infantry' && !batType.skills.includes('robot')) {
+            maxMinedRes++;
+        }
+        if (playerInfos.comp.ext >= 2) {
+            maxMinedRes = maxMinedRes+playerInfos.comp.ext-1;
+        }
+        if (batType.mining.multi) {
+            if (batType.mining.level === 4) {
+                maxMinedRes = '20+';
+            } else {
+                maxMinedRes = '8+';
+            }
+        }
+        $('#popbody').append('<span class="paramValue"><span class="mauve">Maximum de ressources minées:</span> <span class="jaune">'+maxMinedRes+'</span>  &#128310;</span><br>');
         if (isBat) {
             let allMiningRates = getAllMiningRates(bat,batType);
             $('#popbody').append('<span class="paramValue">'+toCoolString(allMiningRates,true,true)+'</span>');

@@ -38,7 +38,7 @@ function calcRavitVolume(bat) {
                 }
             }
             if (hasEquip(bat,['hangard'])) {
-                w2maxAmmo = Math.floor(w2maxAmmo*2.5);
+                w2maxAmmo = Math.floor(w2maxAmmo*2);
             }
             if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
                 w2maxAmmo = Math.floor(w2maxAmmo*1.25);
@@ -76,7 +76,7 @@ function calcRavitVolume(bat) {
                 }
             }
             if (hasEquip(bat,['hangard'])) {
-                w1maxAmmo = Math.floor(w1maxAmmo*2.5);
+                w1maxAmmo = Math.floor(w1maxAmmo*2);
             }
             if (hasEquip(bat,['carrousel','carrousel1','carrousel2'])) {
                 w1maxAmmo = Math.floor(w1maxAmmo*1.25);
@@ -148,16 +148,25 @@ function checkLastRavit(myBat) {
     let lastRavit = {};
     lastRavit.ok = true;
     lastRavit.exists = false;
-    let maxRavit = 36;
+    let isDeluge = false;
+    let maxRavit = 30;
     let myBatType = getBatType(myBat);
     let bldReq = '';
     if (myBatType.weapon.ravitBld != undefined) {
         bldReq = myBatType.weapon.ravitBld;
         maxRavit = myBatType.weapon.maxAmmo;
+        if (myBat.ammo.includes('-deluge') || myBat.ammo.includes('-cluster')) {
+            lastRavit.exists = true;
+            isDeluge = true;
+        }
     }
     if (myBatType.weapon2.ravitBld != undefined) {
         bldReq = myBatType.weapon2.ravitBld;
         maxRavit = myBatType.weapon2.maxAmmo;
+        if (myBat.ammo2.includes('-deluge') || myBat.ammo2.includes('-cluster')) {
+            lastRavit.exists = true;
+            isDeluge = true;
+        }
     }
     let gangBonus = 0;
     if (playerInfos.gang === 'detruas') {
@@ -170,8 +179,9 @@ function checkLastRavit(myBat) {
     } else {
         maxRavit = maxRavit*(2+gangBonus);
     }
-    if (maxRavit > 36) {
-        maxRavit = 36;
+    maxRavit = Math.ceil(Math.sqrt(maxRavit))*4;
+    if (maxRavit > 30) {
+        maxRavit = 30;
     }
     let bldRav = bldReq;
     if (bldReq === 'Poudrière') {
@@ -180,7 +190,7 @@ function checkLastRavit(myBat) {
     if (isStartZone) {
         bldReq = '';
     }
-    if (bldReq === 'Arsenal') {
+    if (bldReq === 'Arsenal' || isDeluge) {
         if (myBat.rvt === undefined) {
             myBat.rvt = 0;
         }
@@ -256,12 +266,19 @@ function goRavit(apCost) {
         let ravitBat = {};
         let ravitLeft = 0;
         let biggestRavit = 0;
+        let isDeluge = false;
         let bldReq = '';
         if (selectedBatType.weapon.ravitBld != undefined) {
             bldReq = selectedBatType.weapon.ravitBld;
+            if (selectedBat.ammo.includes('-deluge') || selectedBat.ammo.includes('-cluster')) {
+                isDeluge = true;
+            }
         }
         if (selectedBatType.weapon2.ravitBld != undefined) {
             bldReq = selectedBatType.weapon2.ravitBld;
+            if (selectedBat.ammo2.includes('-deluge') || selectedBat.ammo2.includes('-cluster')) {
+                isDeluge = true;
+            }
         }
         if (bldReq === 'Poudrière') {
             bldReq = 'Armurerie';
@@ -326,7 +343,7 @@ function goRavit(apCost) {
             }
             let numRav = Math.round(numAmmo*singleAmmoVolume);
             // console.log(bldReq);
-            if (bldReq === 'Arsenal') {
+            if (bldReq === 'Arsenal' || isDeluge) {
                 selectedBat.apLeft = selectedBat.apLeft-apCost;
                 if (selectedBat.rvt === undefined) {
                     selectedBat.rvt = 0;

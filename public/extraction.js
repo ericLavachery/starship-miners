@@ -793,6 +793,11 @@ function getResMiningRate(bat,res,value,fullRate,forInfos) {
             resRate = Math.ceil(resRate/2);
         }
     }
+    if (batType.cat === 'buildings') {
+        if (res.name === 'Scrap') {
+            resRate = Math.ceil(resRate/2);
+        }
+    }
     if (value <= 0) {
         resRate = 0;
     }
@@ -896,7 +901,7 @@ function resSelect(resId) {
         }
     } else {
         let singleNum = 1;
-        if (selectedBatType.cat != 'infantry') {
+        if (selectedBatType.cat != 'infantry' && !selectedBatType.skills.includes('robot')) {
             singleNum++;
         }
         if (playerInfos.comp.ext >= 2) {

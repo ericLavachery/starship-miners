@@ -689,6 +689,25 @@ function playerSkillsUTChanges() {
                 unit.weapon2bis = {};
             }
         }
+        // TAUPES
+        if (unit.name === 'Taupes') {
+            if (playerInfos.gang === 'blades') {
+                unit.mining.types = ['Mine','Comptoir'];
+                unit.mining.subTypes = ['Scrap','Derrick','Pompe'];
+            }
+            if (playerInfos.gang === 'brasier') {
+                unit.mining.types = ['Derrick'];
+                unit.mining.subTypes = ['Mine','Comptoir','Scrap','Pompe'];
+                unit.mining.rate = 22;
+            }
+        }
+        if (unit.name === 'Badgers') {
+            if (playerInfos.gang === 'drogmulojs') {
+                unit.mining.types = ['Scrap','Mine','Comptoir'];
+                unit.mining.subTypes = ['Derrick','Pompe'];
+                unit.mining.rate = 20;
+            }
+        }
         // BLINDAGES / ARMURES
         unit.protection = allowedArmors(unit);
         // BLD HP & TRANS

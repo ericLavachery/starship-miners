@@ -1260,7 +1260,7 @@
             "aoe":"squad",
             "sound":"miss",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-incendiaire","missile-napalm","missile-gaz","missile-jello","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
-            "maxAmmo":6,
+            "maxAmmo":8,
             "ravitBld":"Arsenal"
         },
         "weapon2":{
@@ -1279,7 +1279,7 @@
             "aoe":"bat",
             "sound":"miss",
             "ammo":["missile-vanguard","missile-deluge"],
-            "maxAmmo":6,
+            "maxAmmo":8,
             "ravitBld":"Arsenal"
         },
         "weapon3":{
@@ -1338,7 +1338,7 @@
             "aoe":"squad",
             "sound":"miss",
             "ammo":["missile-wildfire","missile-hellfire","missile-deluge"],
-            "maxAmmo":6,
+            "maxAmmo":8,
             "ravitBld":"Arsenal"
         },
         "weapon2":{
@@ -1357,7 +1357,7 @@
             "aoe":"squad",
             "sound":"miss",
             "ammo":["missile","missile-tungsten","missile-heat","missile-fleche","missile-gaz","missile-jello","missile-heatseeker","missile-homing","missile-uridium","missile-nanite","missile-plastanium"],
-            "maxAmmo":6,
+            "maxAmmo":8,
             "ravitBld":"Arsenal"
         },
         "weapon3":{
@@ -1429,7 +1429,7 @@
             "aoe":"squad",
             "sound":"miss",
             "ammo":["missile-gaz","missile-jello","missile-gaz-flit"],
-            "maxAmmo":6,
+            "maxAmmo":8,
             "ravitBld":"Arsenal"
         },
         "protection":[],
@@ -1475,7 +1475,7 @@
             "aoe":"squad",
             "sound":"catapult2",
             "ammo":["boulet","boulet-mitraille","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
-            "maxAmmo":15,
+            "maxAmmo":12,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -1493,7 +1493,7 @@
             "aoe":"squad",
             "sound":"catapult3",
             "ammo":["boulet","boulet-mitraille","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite"],
-            "maxAmmo":15,
+            "maxAmmo":12,
             "ravitBld":"Poudrière"
         },
         "weapon3":{
@@ -1569,7 +1569,7 @@
             "aoe":"squad",
             "sound":"catapult2",
             "ammo":["boulet","boulet-mitraille","boulet-explosif","boulet-incendiaire","boulet-slime","boulet-pyratol","boulet-nanite","boulet-cluster"],
-            "maxAmmo":15,
+            "maxAmmo":12,
             "ravitBld":"Poudrière"
         },
         "protection":[],
@@ -1615,7 +1615,7 @@
             "aoe":"squad",
             "sound":"obusier",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-gaz","obus-jello","obus-heatseeker","obus-uridium","obus-nanite","obus-plastanium","obus-deluge"],
-            "maxAmmo":15,
+            "maxAmmo":10,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
