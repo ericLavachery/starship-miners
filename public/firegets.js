@@ -3972,3 +3972,61 @@ function realNoiseAlert(weap,batType,tileId) {
         }
     }
 };
+
+function checkFireControl(myBat,myBatType) {
+    let fireControl = true;
+    if (myBat.tags.includes('nomove')) {
+        if (myBatType.skills.includes('mustcontrol')) {
+            fireControl = false;
+        } else if (myBat.fuzz <= -2) {
+            console.log('myBat est furtif');
+            fireControl = false;
+            let nearbyVisibleFriends = false;
+            let nearbyVisibleAliens = false;
+            let nearby = nearbyAliens(myBat);
+            if (nearby.twoTiles) {
+                if (!myBatType.skills.includes('camocontrol')) {
+                    nearbyVisibleAliens = true;
+                }
+                console.log('aliens: oui');
+            }
+            if (!nearbyVisibleAliens) {
+                console.log('aliens: non');
+                bataillons.forEach(function(bat) {
+                    if (bat.tags.includes('nomove') && !bat.tags.includes('nopilots') && bat.id != myBat.id) {
+                        if (bat.fuzz >= -1) {
+                            console.log('copain visible');
+                            let distance = calcDistance(myBat.tileId,bat.tileId);
+                            if (distance <= 3) {
+                                console.log('copain proche');
+                                nearbyVisibleFriends = true;
+                                let nearbyFriend = nearbyAliens(bat);
+                                if (nearbyFriend.twoTiles) {
+                                    nearbyVisibleAliens = true;
+                                    console.log('aliens chez copain: oui');
+                                }
+                            }
+                        } else {
+                            if (!myBatType.skills.includes('camocontrol')) {
+                                console.log('copain invisible');
+                                let distance = calcDistance(myBat.tileId,bat.tileId);
+                                if (distance <= 3) {
+                                    console.log('copain proche');
+                                    let nearbyFriend = nearbyAliens(bat);
+                                    if (nearbyFriend.twoTiles) {
+                                        nearbyVisibleAliens = true;
+                                        console.log('aliens chez copain: oui');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            if (nearbyVisibleFriends || nearbyVisibleAliens) {
+                fireControl = true;
+            }
+        }
+    }
+    return fireControl;
+};

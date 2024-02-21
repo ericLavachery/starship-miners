@@ -1442,7 +1442,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","barda","autokitmolo","mecano","repair","repbad","recupcit","uprank","maycamo","dealer","nitro","sudu","nochef"],
+        "skills":["a_light","fouille","fortif","barda","autokitmolo","mecano","repair","repbad","cleaning","recupcit","uprank","maycamo","dealer","nitro","sudu","nochef"],
         "mecanoCost":5,
         "maxDrug":12,
         "fuzz":1,

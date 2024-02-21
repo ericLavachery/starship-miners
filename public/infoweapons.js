@@ -117,15 +117,9 @@ function weapDisplay(bat,batType,weapNum,inMelee,onInfra,defCol,guetCol,pop,body
                 }
             }
         }
-        let hasControl = true;
-        if (batType.skills.includes('mustcontrol') && bat.tags.includes('nomove')) {
-            hasControl = false;
-        }
-        if (batType.skills.includes('camocontrol') && bat.tags.includes('nomove') && bat.fuzz <= -2) {
-            hasControl = false;
-        }
+        let fireControl = checkFireControl(bat,batType);
         let tirOK = true;
-        if (bat.salvoLeft >= 1 && apOK && ammoLeft >= 1 && anyTarget && noBisOK && !noFireMelee && hasControl && !thisWeapon.noAtt && weapNum != 3) {
+        if (bat.salvoLeft >= 1 && apOK && ammoLeft >= 1 && anyTarget && noBisOK && !noFireMelee && fireControl && !thisWeapon.noAtt && weapNum != 3) {
             // assez d'ap et de salve
             if (cheapWeapCost > thisWeapon.cost) {
                 cheapWeapCost = thisWeapon.cost;
@@ -144,7 +138,7 @@ function weapDisplay(bat,batType,weapNum,inMelee,onInfra,defCol,guetCol,pop,body
             tirOK = false;
             if (thisWeapon.noAtt || weapNum === 3) {
                 wKOmessage = 'Pas d\'attaque avec cette arme';
-            } else if (!hasControl) {
+            } else if (!fireControl) {
                 wKOmessage = 'Bataillon non contrôlé';
             } else if (ammoLeft < 1) {
                 wKOmessage = 'Munitions épuisées';

@@ -1481,6 +1481,13 @@ function removeWeb(apCost) {
                 if (hereBat.apLeft < 0) {
                     hereBat.apLeft = Math.round(hereBat.apLeft/2);
                 }
+                if (selectedBatType.skills.includes('repair')) {
+                    let hereBatType = getBatType(hereBat);
+                    if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
+                        hereBat.apLeft = hereBat.apLeft+8;
+                        if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
+                    }
+                }
             }
         }
         if (thisTile.ecto) {delete thisTile.ecto;}
@@ -1498,6 +1505,13 @@ function removeWeb(apCost) {
                 tagDelete(hereBat,'mud');
                 if (hereBat.apLeft < 0) {
                     hereBat.apLeft = Math.round(hereBat.apLeft/2);
+                }
+                if (selectedBatType.skills.includes('repair')) {
+                    let hereBatType = getBatType(hereBat);
+                    if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
+                        hereBat.apLeft = hereBat.apLeft+8;
+                        if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
+                    }
                 }
             }
         }
@@ -1517,6 +1531,13 @@ function removeWeb(apCost) {
                 if (hereBat.apLeft < 0) {
                     hereBat.apLeft = Math.round(hereBat.apLeft/2);
                 }
+                if (selectedBatType.skills.includes('repair')) {
+                    let hereBatType = getBatType(hereBat);
+                    if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
+                        hereBat.apLeft = hereBat.apLeft+8;
+                        if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
+                    }
+                }
             }
         }
         if (thisTile.ecto) {delete thisTile.ecto;}
@@ -1534,6 +1555,13 @@ function removeWeb(apCost) {
                 tagDelete(hereBat,'mud');
                 if (hereBat.apLeft < 0) {
                     hereBat.apLeft = Math.round(hereBat.apLeft/2);
+                }
+                if (selectedBatType.skills.includes('repair')) {
+                    let hereBatType = getBatType(hereBat);
+                    if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
+                        hereBat.apLeft = hereBat.apLeft+8;
+                        if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
+                    }
                 }
             }
         }
@@ -1555,6 +1583,13 @@ function removeWeb(apCost) {
                     if (hereBat.apLeft < 0) {
                         hereBat.apLeft = Math.round(hereBat.apLeft/2);
                     }
+                    if (selectedBatType.skills.includes('repair')) {
+                        let hereBatType = getBatType(hereBat);
+                        if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
+                            hereBat.apLeft = hereBat.apLeft+8;
+                            if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
+                        }
+                    }
                 }
             }
             if (thisTile.ecto) {delete thisTile.ecto;}
@@ -1571,6 +1606,13 @@ function removeWeb(apCost) {
                     tagDelete(hereBat,'mud');
                     if (hereBat.apLeft < 0) {
                         hereBat.apLeft = Math.round(hereBat.apLeft/2);
+                    }
+                    if (selectedBatType.skills.includes('repair')) {
+                        let hereBatType = getBatType(hereBat);
+                        if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
+                            hereBat.apLeft = hereBat.apLeft+8;
+                            if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
+                        }
                     }
                 }
             }
@@ -1589,6 +1631,13 @@ function removeWeb(apCost) {
                     if (hereBat.apLeft < 0) {
                         hereBat.apLeft = Math.round(hereBat.apLeft/2);
                     }
+                    if (selectedBatType.skills.includes('repair')) {
+                        let hereBatType = getBatType(hereBat);
+                        if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
+                            hereBat.apLeft = hereBat.apLeft+8;
+                            if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
+                        }
+                    }
                 }
             }
             if (thisTile.ecto) {delete thisTile.ecto;}
@@ -1605,6 +1654,13 @@ function removeWeb(apCost) {
                     tagDelete(hereBat,'mud');
                     if (hereBat.apLeft < 0) {
                         hereBat.apLeft = Math.round(hereBat.apLeft/2);
+                    }
+                    if (selectedBatType.skills.includes('repair')) {
+                        let hereBatType = getBatType(hereBat);
+                        if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
+                            hereBat.apLeft = hereBat.apLeft+8;
+                            if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
+                        }
                     }
                 }
             }
