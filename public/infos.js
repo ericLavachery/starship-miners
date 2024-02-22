@@ -1719,7 +1719,7 @@ function displayWeaponAmmos(batType,thisWeapon) {
     let ammoString = '';
     ammoTypes.forEach(function(stuff) {
         if (batType[weapName].ammo.includes(stuff.name)) {
-            let ammoInfo = showAmmoInfo(stuff.name,true,false);
+            let ammoInfo = showAmmoInfo(stuff.name,true,false,batType[weapName].name);
             ammoString = ammoString+sepa+'<span title="'+ammoInfo+'">'+stuff.name+'</span>';
         }
     });

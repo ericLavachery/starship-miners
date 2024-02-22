@@ -189,7 +189,7 @@ function reEquip(batId,noRefresh) {
                             prodSign = '';
                         }
                         if ((bldReqOK && costsOK) || conselTriche) {
-                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo,false,false)+' '+displayCosts(deployCosts)+'" onclick="deployAmmo(`'+ammo+'`,`w1`,`'+myBat.id+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo,false,false,myBatType.weapon.name)+' '+displayCosts(deployCosts)+'" onclick="deployAmmo(`'+ammo+'`,`w1`,`'+myBat.id+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
                         } else {
                             $('#conAmmoList').append('<span class="constName gff" title="'+toBldString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
                         }
@@ -225,7 +225,7 @@ function reEquip(batId,noRefresh) {
                             prodSign = '';
                         }
                         if ((bldReqOK && costsOK) || conselTriche) {
-                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo,false,false)+' '+displayCosts(deployCosts)+'" onclick="deployAmmo(`'+ammo+'`,`w2`,`'+myBat.id+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
+                            $('#conAmmoList').append('<span class="constName klik" title="'+showAmmoInfo(ammo,false,false,myBatType.weapon2.name)+' '+displayCosts(deployCosts)+'" onclick="deployAmmo(`'+ammo+'`,`w2`,`'+myBat.id+'`)">'+showAmmo(ammo)+prodSign+'</span><br>');
                         } else {
                             $('#conAmmoList').append('<span class="constName gff" title="'+toBldString(batAmmo.bldReq)+' '+displayCosts(deployCosts)+'">'+showAmmo(ammo)+prodSign+'</span><br>');
                         }
@@ -262,6 +262,12 @@ function showEquip(batType,batEquip,bat) {
     }
     if (batEquip.name === 'gang-lore') {
         if (playerInfos.xpf < gangXPFactor) {
+            showEq = false;
+        }
+    }
+    if (batEquip.name === 'camkit' || batEquip.name === 'taserkit') {
+        let tooMuchGuards = enoughGuards(playerInfos.citz.real);
+        if (tooMuchGuards) {
             showEq = false;
         }
     }

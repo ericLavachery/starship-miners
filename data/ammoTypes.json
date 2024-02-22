@@ -3822,6 +3822,7 @@
         "aoe": "squad",
         "bldReq":["Usine d'armement","Centre de recherches"],
         "compReq":{"bal":2,"mat":3,"explo":2,"det":4,"arti":1},
+        "altCompReq":{"bal":2,"mat":2,"explo":2,"det":3,"arti":2},
         "deploy":{"Fer":1,"Aluminium":3,"Titane":1,"Nickel":1,"Hélium":1,"Explosifs":3,"Fuel":1,"Electros":5,"Batteries":1},
         "batch":100
     },

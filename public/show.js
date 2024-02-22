@@ -161,7 +161,10 @@ function showDrugInfo(stuff,withReqs,withCosts) {
 
 };
 
-function showAmmoInfo(ammoName,withReqs,withCosts) {
+function showAmmoInfo(ammoName,withReqs,withCosts,weapName) {
+    if (weapName === undefined) {
+        weapName = 'None';
+    }
     let ammoIndex = ammoTypes.findIndex((obj => obj.name == ammoName));
     let ammo = ammoTypes[ammoIndex];
     let ammoInfo = '';
@@ -231,13 +234,29 @@ function showAmmoInfo(ammoName,withReqs,withCosts) {
     }
     if (ammo.name.includes('-cluster')) {
         ammoInfo = ammoInfo+'&#9889; Sous-munitions ';
-        ammoInfo = ammoInfo+'&#9889; Max 1 salve ';
+        // ammoInfo = ammoInfo+'&#9889; Max 1 salve ';
     }
     if (ammo.name.includes('-bio')) {
         ammoInfo = ammoInfo+'&#9889; Génocide ';
     }
     if (ammo.name.includes('-necro')) {
         ammoInfo = ammoInfo+'&#9889; Anti-régénération (nécrotoxine) ';
+    }
+    if (weapName != 'None') {
+        let guideTarget = false;
+        if (ammo.name.includes('missile')) {
+            if (!weapName.includes('Comet') && !weapName.includes('Thunder') && !weapName.includes('Sunburst') && !weapName.includes('Flit')) {
+                guideTarget = true;
+            }
+            if (ammo.name === 'missile-homing') {
+                guideTarget = true;
+            }
+        }
+        if (guideTarget) {
+            ammoInfo = ammoInfo+'&#9889; Guidage possible ';
+        } else if (ammo.name.includes('missile')) {
+            ammoInfo = ammoInfo+'&#9889; Guidage impossible ';
+        }
     }
     if (ammo.name.includes('missile') || ammo.name.includes('-deluge') || ammo.name.includes('-cluster')) {
         if (!ammo.name.includes('autodes') && !ammo.name.includes('suicide')) {

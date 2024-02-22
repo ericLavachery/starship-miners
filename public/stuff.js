@@ -837,6 +837,11 @@ function washThisWarning(warnNumber) {
 };
 
 function warning(title,body,noHand,tileId,closeAll) {
+    if (modeSonde) {
+        $('#warnings').css("max-height","550px");
+    } else {
+        $('#warnings').css("max-height","375px");
+    }
     let warnNumber = nextWarn;
     nextWarn++;
     $('#warnings').append('<span class="warnings" id="warn'+warnNumber+'"><span class="or">'+title+'<br></span> '+body+'<br></span>');
@@ -932,6 +937,7 @@ function checkNumUnits(unitName) {
 function maxUnits(unit) {
     let maxOf = {};
     maxOf.tank = 0;
+    maxOf.artank = 0;
     maxOf.hbot = 0;
     maxOf.lbot = 0;
     maxOf.hveh = 0;
@@ -981,7 +987,7 @@ function maxUnits(unit) {
             maxInfo.text = 'Vous ne pouvez pas faire des chercheurs hors de la station';
         }
     }
-    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('wdev') || unit.skills.includes('wsi') || unit.skills.includes('wguet') || unit.skills.includes('mdev') || unit.skills.includes('hveh') || unit.skills.includes('lveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxexo') || unit.skills.includes('maxdet') || unit.skills.includes('maxfog') || unit.skills.includes('maxind') || unit.skills.includes('maxgang') || unit.skills.includes('maxlevel')) {
+    if (unit.skills.includes('leader') || unit.skills.includes('tank') || unit.skills.includes('elite') || unit.skills.includes('wbld') || unit.skills.includes('ardev') || unit.skills.includes('artank') || unit.skills.includes('wsi') || unit.skills.includes('wguet') || unit.skills.includes('mdev') || unit.skills.includes('hveh') || unit.skills.includes('lveh') || unit.skills.includes('lbot') || unit.skills.includes('hbot') || unit.skills.includes('saucer') || unit.skills.includes('dog') || unit.skills.includes('max1') || unit.skills.includes('max2') || unit.skills.includes('max3') || unit.skills.includes('maxordre') || unit.skills.includes('maxaero') || unit.skills.includes('maxexo') || unit.skills.includes('maxdet') || unit.skills.includes('maxfog') || unit.skills.includes('maxind') || unit.skills.includes('maxgang') || unit.skills.includes('maxlevel')) {
         if (playerInfos.bldList.includes('Camp d\'entraînement')) {
             maxOf.elite = maxOf.elite+playerInfos.comp.train;
             if (maxOf.elite < 1) {
@@ -995,6 +1001,7 @@ function maxUnits(unit) {
             }
             if (batType.name === 'Usine d\'armement') {
                 maxOf.tank = maxOf.tank+3;
+                maxOf.artank = maxOf.artank+1;
             }
             if (batType.name === 'Chaîne de montage' || batType.name === 'Usine') {
                 maxOf.hveh = maxOf.hveh+4;
@@ -1036,6 +1043,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('leader')) {
+        // chefs
         if (playerInfos.gang != 'detruas') {
             maxInfo.max = Math.floor((playerInfos.gLevel-6)/3);
         } else {
@@ -1052,6 +1060,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('elite') || (unit.skills.includes('leader') && !maxLeaderAtteint)) {
+        // unités d'élite (de chaque type)
         maxInfo.max = maxOf.elite;
         if (numOf[unit.name] >= maxInfo.max && numOf[unit.name] >= 1) {
             maxInfo.ko = true;
@@ -1063,6 +1072,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('dog')) {
+        // chiens (total)
         maxInfo.max = maxOf.dog;
         maxInfo.maxText = 'chiens';
         maxInfo.num = total.dog;
@@ -1072,6 +1082,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('lveh')) {
+        // véhicules légers (total)
         if (unit.skills.includes('2slots')) {
             maxOf.lveh = Math.ceil(maxOf.lveh/2);
         }
@@ -1084,6 +1095,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('saucer')) {
+        // aéronefs (total)
         maxInfo.max = maxOf.saucer;
         maxInfo.maxText = 'aéronefs';
         maxInfo.num = total.saucer;
@@ -1101,6 +1113,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('mdev')) {
+        // mines et missiles wipeout (de chaque type)
         maxInfo.max = (playerInfos.comp.def*15)+(playerInfos.comp.explo*5);
         if (numOf[unit.name] >= maxInfo.max) {
             maxInfo.ko = true;
@@ -1108,6 +1121,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('hbot')) {
+        // heavy bots
         if (unit.skills.includes('2slots')) {
             maxOf.hbot = Math.ceil(maxOf.hbot/2);
         }
@@ -1119,6 +1133,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('lbot')) {
+        // light bots
         maxInfo.max = maxOf.lbot;
         if (numOf[unit.name] >= maxInfo.max && numOf[unit.name] >= 3) {
             maxInfo.ko = true;
@@ -1126,6 +1141,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('tank')) {
+        // blindés (de chaque type)
         if (unit.skills.includes('2slots')) {
             maxOf.tank = Math.ceil(maxOf.tank/2);
         }
@@ -1135,7 +1151,21 @@ function maxUnits(unit) {
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire une usine d\'armement supplémentaire';
         }
     }
+    if (unit.skills.includes('artank')) {
+        // artillerie montée (de chaque type)
+        maxInfo.max = maxOf.artank;
+        maxInfo.max = maxInfo.max+playerInfos.comp.arti;
+        if (numOf[unit.name] >= maxInfo.max && numOf[unit.name] >= 1) {
+            maxInfo.ko = true;
+            if (playerInfos.comp.arti === 2) {
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire une usine d\'armement supplémentaire';
+            } else {
+                maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de d\'artillerie ou construire une usine d\'armement supplémentaire';
+            }
+        }
+    }
     if (unit.skills.includes('hveh')) {
+        // véhicules lours (de chaque type)
         if (unit.skills.includes('2slots')) {
             maxOf.hveh = Math.ceil(maxOf.hveh/2);
         }
@@ -1146,6 +1176,7 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('wbld')) {
+        // bâtiments militaires (de chaque type)
         maxInfo.max = playerInfos.comp.def+2;
         let gLevLimit = getUnitLevelLimit(unit);
         if (gLevLimit < maxInfo.max && maxInfo.max > 1) {
@@ -1161,8 +1192,12 @@ function maxUnits(unit) {
             }
         }
     }
-    if (unit.skills.includes('wdev')) {
-        maxInfo.max = playerInfos.comp.def+playerInfos.comp.arti;
+    if (unit.skills.includes('ardev')) {
+        // artillerie (de chaque type)
+        maxInfo.max = playerInfos.comp.def+playerInfos.comp.arti-1;
+        if (maxInfo.max < 1) {
+            maxInfo.max = 1;
+        }
         let gLevLimit = getUnitLevelLimit(unit);
         if (gLevLimit < maxInfo.max && maxInfo.max > 1) {
             maxInfo.max = gLevLimit;
@@ -1178,13 +1213,18 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('wsi')) {
-        maxInfo.max = playerInfos.comp.def+2;
+        // engins de siège (de chaque type)
+        maxInfo.max = playerInfos.comp.def+1;
+        if (playerInfos.comp.def >= 2) {
+            maxInfo.max++;
+        }
         if (numOf[unit.name] >= maxInfo.max) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de défense';
         }
     }
     if (unit.skills.includes('wguet')) {
+        // tours de guet
         maxInfo.max = playerInfos.comp.def+3;
         if (playerInfos.comp.def >= 3) {
             maxInfo.max++;

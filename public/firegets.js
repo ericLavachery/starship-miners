@@ -2053,7 +2053,7 @@ function checkGuidage(weapon,alien) {
     let guideTarget = false;
     if (alien.tags.includes('guide')) {
         if (weapon.ammo.includes('missile')) {
-            if (!weapon.name.includes('Comet') && !weapon.name.includes('Thunder') && !weapon.name.includes('Flit')) {
+            if (!weapon.name.includes('Comet') && !weapon.name.includes('Thunder') && !weapon.name.includes('Sunburst') && !weapon.name.includes('Flit')) {
                 guideTarget = true;
             }
             if (weapon.ammo === 'missile-homing') {
@@ -2439,8 +2439,6 @@ function weaponAdj(weapon,bat,wn) {
     // radar vision
     if (hasEquip(bat,['e-radar'])) {
         thisWeapon.vision = true;
-        // if (batType.skills.includes('radarshot')) {
-        // }
     }
     // tuning
     if (batType.cat != 'aliens' && thisWeapon.isMelee) {

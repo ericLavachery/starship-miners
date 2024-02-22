@@ -1076,8 +1076,6 @@ function playerSkillsUTChanges() {
                     if (unit.weapon.isArt) {
                         if (unit.weapon.name.includes('Missile')) {
                             unit.weapon.range = Math.ceil(unit.weapon.range*rangeMult);
-                        } else {
-                            unit.weapon.range = Math.ceil(unit.weapon.range*rangeMult/1.07);
                         }
                     }
                 }
@@ -1085,8 +1083,6 @@ function playerSkillsUTChanges() {
                     if (unit.weapon2.isArt) {
                         if (unit.weapon2.name.includes('Missile')) {
                             unit.weapon2.range = Math.ceil(unit.weapon2.range*rangeMult);
-                        } else {
-                            unit.weapon2.range = Math.ceil(unit.weapon2.range*rangeMult/1.07);
                         }
                     }
                 }

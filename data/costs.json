@@ -1637,7 +1637,8 @@
         "costs":{"Fer":330,"Carbone":477,"Moteurs":320,"Titane":90,"Tungstène":114,"Silicium":30,"Cuivre":30,"Electros":60,"Batteries":70,"Compo2":752,"Compo3":189,"Huile":10,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":160},
         "fabTime":165,
-        "inRuin":1
+        "inRuin":1,
+        "slots":1
     },
     {
         "id":5,
@@ -1649,7 +1650,8 @@
         "costs":{"Fer":216,"Carbone":356,"Aluminium":144,"Moteurs":256,"Titane":144,"Tungstène":24,"Rhodium":144,"Silicium":18,"Nickel":120,"Cuivre":60,"Electros":90,"Batteries":90,"Compo2":568,"Compo3":96,"Huile":10,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":155},
         "fabTime":200,
-        "inRuin":1
+        "inRuin":1,
+        "slots":1
     },
     {
         "id":34,
@@ -1659,7 +1661,8 @@
         "compReq":{"tank":1,"const":2},
         "costs":{"Fer":220,"Scrap":2712,"Carbone":852,"Aluminium":102,"Moteurs":816,"Titane":72,"Tungstène":16,"Silicium":15,"Cuivre":68,"Batteries":78,"Compo2":1080,"Compo3":810,"Huile":58,"Chlore":26,"Zinc":26,"Cobalt":30,"Hélium":60,"Tissus":13},
         "deploy":{"Fuel":365,"Huile":27,"Drogues":20,"Chlore":10,"Zinc":10,"Tissus":10},
-        "fabTime":215
+        "fabTime":215,
+        "slots":1
     },
     {
         "id":64,
@@ -2063,7 +2066,8 @@
         "compReq":{"aero":1,"trans":3},
         "costs":{"Carbone":1200,"Aluminium":1200,"Moteurs":320,"Plastanium":160,"Titane":2400,"Tungstène":160,"Rhodium":240,"Silicium":80,"Cuivre":200,"Electros":400,"Batteries":480,"Nickel":40,"Cobalt":30,"Hélium":60,"Drogues":12,"Chlore":12,"Zinc":12,"Tissus":12,"Spins":15},
         "deploy":{"Plutonium":100,"Plastanium":40,"Chlore":5,"Zinc":5,"Tissus":5,"Huile":10},
-        "fabTime":300
+        "fabTime":300,
+        "slots":1
     },
     {
         "id":111,
@@ -2125,7 +2129,8 @@
         "compHardReq":{"pyro":2,"bal":1,"explo":1},
         "costs":{"Tissus":600,"Hydrogène":2700,"Scrap":600,"Carbone":480,"Aluminium":90,"Moteurs":180,"Titane":594,"Rhodium":72,"Cuivre":180,"Batteries":156,"Nickel":120,"Huile":48,"Mendium":120,"Azote":240,"Cobalt":30,"Hélium":60},
         "deploy":{"Fuel":500,"Energie":90,"Huile":25},
-        "fabTime":360
+        "fabTime":360,
+        "slots":2
     },
     {
         "id":247,

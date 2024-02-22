@@ -811,9 +811,34 @@ function calcCrimeRate(mesCitoyens) {
     return crimeRate;
 };
 
+function getMaxGuards(population) {
+    let maxGuards = Math.floor(Math.sqrt(population)/16);
+    return maxGuards;
+};
+
+function enoughGuards(population) {
+    let maxGuards = getMaxGuards(population);
+    let numGuards = 0;
+    bataillons.forEach(function(bat) {
+        if (numGuards < maxGuards) {
+            let batType = getBatType(bat);
+            if (batType.skills.includes('garde')) {
+                if (bat.eq === 'taserkit' || bat.eq === 'camkit') {
+                    numGuards++;
+                }
+            }
+        }
+    });
+    if (numGuards < maxGuards) {
+        return false;
+    } else {
+        return true;
+    }
+};
+
 function calcGuards(population) {
     let guardsFO = 0;
-    let maxGuards = Math.floor(Math.sqrt(population)/16);
+    let maxGuards = getMaxGuards(population);
     let numGuards = 0;
     if (playerInfos.bldList.includes('Salle de contrôle')) {
         guardsFO = guardsFO-1;
