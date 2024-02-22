@@ -1468,204 +1468,124 @@ function removeWeb(apCost) {
     if (thisTile.moist) {delete thisTile.moist;}
     if (!workDone) {
         thisTile = getTileById(selectedBat.tileId-1);
-        if (thisTile.web || thisTile.ecto || thisTile.moist) {
-            // delete thisTile.web;
-            workDone = true;
-            apFullCost = apFullCost+apCost;
-        }
-        if (thisTile.web) {
-            delete thisTile.web;
-            let hereBat = getZoneBatByTileId(thisTile.id);
-            if (Object.keys(hereBat).length >= 1) {
-                tagDelete(hereBat,'mud');
-                if (hereBat.apLeft < 0) {
-                    hereBat.apLeft = Math.round(hereBat.apLeft/2);
-                }
-                if (selectedBatType.skills.includes('repair')) {
-                    let hereBatType = getBatType(hereBat);
-                    if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
-                        hereBat.apLeft = hereBat.apLeft+8;
-                        if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
-                    }
-                }
+        if (Object.keys(thisTile).length >= 1) {
+            if (thisTile.web || thisTile.ecto || thisTile.moist) {
+                // delete thisTile.web;
+                workDone = true;
+                apFullCost = apFullCost+apCost;
             }
+            if (thisTile.web) {
+                delete thisTile.web;
+                let hereBat = getZoneBatByTileId(thisTile.id);
+                batDemud(hereBat);
+            }
+            if (thisTile.ecto) {delete thisTile.ecto;}
+            if (thisTile.moist) {delete thisTile.moist;}
         }
-        if (thisTile.ecto) {delete thisTile.ecto;}
-        if (thisTile.moist) {delete thisTile.moist;}
         thisTile = getTileById(selectedBat.tileId+1);
-        if (thisTile.web || thisTile.ecto || thisTile.moist) {
-            // delete thisTile.web;
-            workDone = true;
-            apFullCost = apFullCost+apCost;
-        }
-        if (thisTile.web) {
-            delete thisTile.web;
-            let hereBat = getZoneBatByTileId(thisTile.id);
-            if (Object.keys(hereBat).length >= 1) {
-                tagDelete(hereBat,'mud');
-                if (hereBat.apLeft < 0) {
-                    hereBat.apLeft = Math.round(hereBat.apLeft/2);
-                }
-                if (selectedBatType.skills.includes('repair')) {
-                    let hereBatType = getBatType(hereBat);
-                    if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
-                        hereBat.apLeft = hereBat.apLeft+8;
-                        if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
-                    }
-                }
+        if (Object.keys(thisTile).length >= 1) {
+            if (thisTile.web || thisTile.ecto || thisTile.moist) {
+                // delete thisTile.web;
+                workDone = true;
+                apFullCost = apFullCost+apCost;
             }
+            if (thisTile.web) {
+                delete thisTile.web;
+                let hereBat = getZoneBatByTileId(thisTile.id);
+                batDemud(hereBat);
+            }
+            if (thisTile.ecto) {delete thisTile.ecto;}
+            if (thisTile.moist) {delete thisTile.moist;}
         }
-        if (thisTile.ecto) {delete thisTile.ecto;}
-        if (thisTile.moist) {delete thisTile.moist;}
         thisTile = getTileById(selectedBat.tileId+mapSize);
-        if (thisTile.web || thisTile.ecto || thisTile.moist) {
-            // delete thisTile.web;
-            workDone = true;
-            apFullCost = apFullCost+apCost;
-        }
-        if (thisTile.web) {
-            delete thisTile.web;
-            let hereBat = getZoneBatByTileId(thisTile.id);
-            if (Object.keys(hereBat).length >= 1) {
-                tagDelete(hereBat,'mud');
-                if (hereBat.apLeft < 0) {
-                    hereBat.apLeft = Math.round(hereBat.apLeft/2);
-                }
-                if (selectedBatType.skills.includes('repair')) {
-                    let hereBatType = getBatType(hereBat);
-                    if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
-                        hereBat.apLeft = hereBat.apLeft+8;
-                        if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
-                    }
-                }
+        if (Object.keys(thisTile).length >= 1) {
+            if (thisTile.web || thisTile.ecto || thisTile.moist) {
+                // delete thisTile.web;
+                workDone = true;
+                apFullCost = apFullCost+apCost;
             }
+            if (thisTile.web) {
+                delete thisTile.web;
+                let hereBat = getZoneBatByTileId(thisTile.id);
+                batDemud(hereBat);
+            }
+            if (thisTile.ecto) {delete thisTile.ecto;}
+            if (thisTile.moist) {delete thisTile.moist;}
         }
-        if (thisTile.ecto) {delete thisTile.ecto;}
-        if (thisTile.moist) {delete thisTile.moist;}
         thisTile = getTileById(selectedBat.tileId-mapSize);
-        if (thisTile.web || thisTile.ecto || thisTile.moist) {
-            // delete thisTile.web;
-            workDone = true;
-            apFullCost = apFullCost+apCost;
-        }
-        if (thisTile.web) {
-            delete thisTile.web;
-            let hereBat = getZoneBatByTileId(thisTile.id);
-            if (Object.keys(hereBat).length >= 1) {
-                tagDelete(hereBat,'mud');
-                if (hereBat.apLeft < 0) {
-                    hereBat.apLeft = Math.round(hereBat.apLeft/2);
-                }
-                if (selectedBatType.skills.includes('repair')) {
-                    let hereBatType = getBatType(hereBat);
-                    if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
-                        hereBat.apLeft = hereBat.apLeft+8;
-                        if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
-                    }
-                }
+        if (Object.keys(thisTile).length >= 1) {
+            if (thisTile.web || thisTile.ecto || thisTile.moist) {
+                // delete thisTile.web;
+                workDone = true;
+                apFullCost = apFullCost+apCost;
             }
+            if (thisTile.web) {
+                delete thisTile.web;
+                let hereBat = getZoneBatByTileId(thisTile.id);
+                batDemud(hereBat);
+            }
+            if (thisTile.ecto) {delete thisTile.ecto;}
+            if (thisTile.moist) {delete thisTile.moist;}
         }
-        if (thisTile.ecto) {delete thisTile.ecto;}
-        if (thisTile.moist) {delete thisTile.moist;}
     }
     if (selectedBatType.cat === 'buildings' || selectedBatType.skills.includes('transorbital')) {
         if (!workDone) {
             thisTile = getTileById(selectedBat.tileId-mapSize-1);
-            if (thisTile.web || thisTile.ecto || thisTile.moist) {
-                // delete thisTile.web;
-                apFullCost = apFullCost+apCost;
-            }
-            if (thisTile.web) {
-                delete thisTile.web;
-                let hereBat = getZoneBatByTileId(thisTile.id);
-                if (Object.keys(hereBat).length >= 1) {
-                    tagDelete(hereBat,'mud');
-                    if (hereBat.apLeft < 0) {
-                        hereBat.apLeft = Math.round(hereBat.apLeft/2);
-                    }
-                    if (selectedBatType.skills.includes('repair')) {
-                        let hereBatType = getBatType(hereBat);
-                        if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
-                            hereBat.apLeft = hereBat.apLeft+8;
-                            if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
-                        }
-                    }
+            if (Object.keys(thisTile).length >= 1) {
+                if (thisTile.web || thisTile.ecto || thisTile.moist) {
+                    // delete thisTile.web;
+                    apFullCost = apFullCost+apCost;
                 }
+                if (thisTile.web) {
+                    delete thisTile.web;
+                    let hereBat = getZoneBatByTileId(thisTile.id);
+                    batDemud(hereBat);
+                }
+                if (thisTile.ecto) {delete thisTile.ecto;}
+                if (thisTile.moist) {delete thisTile.moist;}
             }
-            if (thisTile.ecto) {delete thisTile.ecto;}
-            if (thisTile.moist) {delete thisTile.moist;}
             thisTile = getTileById(selectedBat.tileId-mapSize+1);
-            if (thisTile.web || thisTile.ecto || thisTile.moist) {
-                // delete thisTile.web;
-                apFullCost = apFullCost+apCost;
-            }
-            if (thisTile.web) {
-                delete thisTile.web;
-                let hereBat = getZoneBatByTileId(thisTile.id);
-                if (Object.keys(hereBat).length >= 1) {
-                    tagDelete(hereBat,'mud');
-                    if (hereBat.apLeft < 0) {
-                        hereBat.apLeft = Math.round(hereBat.apLeft/2);
-                    }
-                    if (selectedBatType.skills.includes('repair')) {
-                        let hereBatType = getBatType(hereBat);
-                        if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
-                            hereBat.apLeft = hereBat.apLeft+8;
-                            if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
-                        }
-                    }
+            if (Object.keys(thisTile).length >= 1) {
+                if (thisTile.web || thisTile.ecto || thisTile.moist) {
+                    // delete thisTile.web;
+                    apFullCost = apFullCost+apCost;
                 }
+                if (thisTile.web) {
+                    delete thisTile.web;
+                    let hereBat = getZoneBatByTileId(thisTile.id);
+                    batDemud(hereBat);
+                }
+                if (thisTile.ecto) {delete thisTile.ecto;}
+                if (thisTile.moist) {delete thisTile.moist;}
             }
-            if (thisTile.ecto) {delete thisTile.ecto;}
-            if (thisTile.moist) {delete thisTile.moist;}
             thisTile = getTileById(selectedBat.tileId+mapSize-1);
-            if (thisTile.web || thisTile.ecto || thisTile.moist) {
-                // delete thisTile.web;
-                apFullCost = apFullCost+apCost;
-            }
-            if (thisTile.web) {
-                delete thisTile.web;
-                let hereBat = getZoneBatByTileId(thisTile.id);
-                if (Object.keys(hereBat).length >= 1) {
-                    tagDelete(hereBat,'mud');
-                    if (hereBat.apLeft < 0) {
-                        hereBat.apLeft = Math.round(hereBat.apLeft/2);
-                    }
-                    if (selectedBatType.skills.includes('repair')) {
-                        let hereBatType = getBatType(hereBat);
-                        if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
-                            hereBat.apLeft = hereBat.apLeft+8;
-                            if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
-                        }
-                    }
+            if (Object.keys(thisTile).length >= 1) {
+                if (thisTile.web || thisTile.ecto || thisTile.moist) {
+                    // delete thisTile.web;
+                    apFullCost = apFullCost+apCost;
                 }
+                if (thisTile.web) {
+                    delete thisTile.web;
+                    let hereBat = getZoneBatByTileId(thisTile.id);
+                    batDemud(hereBat);
+                }
+                if (thisTile.ecto) {delete thisTile.ecto;}
+                if (thisTile.moist) {delete thisTile.moist;}
             }
-            if (thisTile.ecto) {delete thisTile.ecto;}
-            if (thisTile.moist) {delete thisTile.moist;}
             thisTile = getTileById(selectedBat.tileId+mapSize+1);
-            if (thisTile.web || thisTile.ecto || thisTile.moist) {
-                // delete thisTile.web;
-                apFullCost = apFullCost+apCost;
-            }
-            if (thisTile.web) {
-                delete thisTile.web;
-                let hereBat = getZoneBatByTileId(thisTile.id);
-                if (Object.keys(hereBat).length >= 1) {
-                    tagDelete(hereBat,'mud');
-                    if (hereBat.apLeft < 0) {
-                        hereBat.apLeft = Math.round(hereBat.apLeft/2);
-                    }
-                    if (selectedBatType.skills.includes('repair')) {
-                        let hereBatType = getBatType(hereBat);
-                        if (hereBatType.cat === 'buildings' || hereBatType.cat === 'devices') {
-                            hereBat.apLeft = hereBat.apLeft+8;
-                            if (hereBat.apLeft > hereBat.ap-2) {hereBat.apLeft = hereBat.ap-2;}
-                        }
-                    }
+            if (Object.keys(thisTile).length >= 1) {
+                if (thisTile.web || thisTile.ecto || thisTile.moist) {
+                    // delete thisTile.web;
+                    apFullCost = apFullCost+apCost;
                 }
+                if (thisTile.web) {
+                    delete thisTile.web;
+                    let hereBat = getZoneBatByTileId(thisTile.id);
+                    batDemud(hereBat);
+                }
+                if (thisTile.ecto) {delete thisTile.ecto;}
+                if (thisTile.moist) {delete thisTile.moist;}
             }
-            if (thisTile.ecto) {delete thisTile.ecto;}
-            if (thisTile.moist) {delete thisTile.moist;}
         }
     }
     selectedBat.apLeft = selectedBat.apLeft-apFullCost;
@@ -1675,6 +1595,22 @@ function removeWeb(apCost) {
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
     showMap(zone,true);
+};
+
+function batDemud(bat) {
+    if (Object.keys(bat).length >= 1) {
+        tagDelete(bat,'mud');
+        if (bat.apLeft < 0) {
+            bat.apLeft = Math.round(bat.apLeft/2);
+        }
+        if (selectedBatType.skills.includes('repair')) {
+            let batType = getBatType(bat);
+            if (batType.cat === 'buildings' || batType.cat === 'devices') {
+                bat.apLeft = bat.apLeft+8;
+                if (bat.apLeft > bat.ap-4) {bat.apLeft = bat.ap-4;}
+            }
+        }
+    }
 };
 
 function ammoConv(myAmmos) {

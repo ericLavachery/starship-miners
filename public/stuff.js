@@ -1671,8 +1671,11 @@ function getTile(bat) {
 };
 
 function getTileById(tileId) {
+    let tile = {};
     let tileIndex = zone.findIndex((obj => obj.id == tileId));
-    let tile = zone[tileIndex];
+    if (tileIndex > -1) {
+        tile = zone[tileIndex];
+    }
     return tile;
 };
 

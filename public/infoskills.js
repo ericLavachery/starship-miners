@@ -395,6 +395,8 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 $('#unitInfos').append('<button type="button" title="Sortir du mode furtif" class="boutonGrisBis unitButtons" onclick="camoOut()"><i class="fas fa-shoe-prints"></i> <span class="small">'+apCost+'</span></button>');
                 lineBreak = true;
             }
+        } else if (bat.fuzz <= -2 && batType.fuzz > -2) {
+            $('#unitInfos').append('<button type="button" title="Sortir du mode furtif" class="boutonOK unitButtons cy" onclick="camoOut()"><i class="ra ra-grass rpg"></i> <span class="small">'+apCost+'</span></button>');
         }
     }
     // PASSAGE SECRET

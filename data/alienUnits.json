@@ -2431,7 +2431,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["anycap","resistpoison","noaploss","smartrip","slowreg","stay"],
+        "skills":["anycap","noaploss","smartrip","slowreg","stay"],
         "deathFx":"death1",
         "killRes":{"Bugium":5,"Aranium":9,"Mephitis":2,"Slime":3,"Mendium":2},
         "killXP":5,

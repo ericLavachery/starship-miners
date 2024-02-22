@@ -80,6 +80,7 @@ function seveso(weap,tileId) {
                                 // missile & autodes
                                 bat.tags.push('poison');
                                 bat.tags.push('poison');
+                                bat.tags.push('poison');
                                 if (weap.seveso >= 3) {
                                     // flit
                                     if (!bat.tags.includes('shinda')) {
@@ -2437,9 +2438,9 @@ function weaponAdj(weapon,bat,wn) {
     thisWeapon = weaponEqChange(thisWeapon,wn,bat,batType);
     // radar vision
     if (hasEquip(bat,['e-radar'])) {
-        if (batType.skills.includes('radarshot')) {
-            thisWeapon.vision = true;
-        }
+        thisWeapon.vision = true;
+        // if (batType.skills.includes('radarshot')) {
+        // }
     }
     // tuning
     if (batType.cat != 'aliens' && thisWeapon.isMelee) {
