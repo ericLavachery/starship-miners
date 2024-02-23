@@ -1298,15 +1298,15 @@ function getAP(bat,batType) {
     if (hasEquip(bat,['belier'])) {
         newAP = newAP*0.9;
     }
-    if (playerInfos.bldList.includes('QG')) {
-        newAP = newAP*1.1;
+    if (playerInfos.bldList.includes('QG') && !batType.skills.includes('artank')) {
+        newAP = newAP*1.05;
     }
-    if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.skills.includes('fly')) {
+    if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && !batType.skills.includes('artank') && batType.skills.includes('fly')) {
         if (playerInfos.bldList.includes('Aérodocks')) {
             newAP = newAP*1.15;
         }
     }
-    if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && !batType.skills.includes('fly') && batType.moveCost < 90) {
+    if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && !batType.skills.includes('artank') && !batType.skills.includes('fly') && batType.moveCost < 90) {
         if (playerInfos.bldList.includes('Garage')) {
             newAP = newAP+1;
         }
@@ -1314,8 +1314,10 @@ function getAP(bat,batType) {
     if (hasEquip(bat,['g2motor'])) {
         if (batType.skills.includes('robot') && !batType.skills.includes('crange')) {
             newAP = newAP+(Math.sqrt(batType.moveCost)*4);
-        } else {
+        } else if (!batType.skills.includes('artank')) {
             newAP = newAP+(Math.sqrt(batType.moveCost)*2.65);
+        } else {
+            newAP = newAP+(Math.sqrt(batType.moveCost)*1.5);
         }
     }
     if (batType.skills.includes('heroap') && bat.tags.includes('hero')) {
@@ -1330,7 +1332,7 @@ function getAP(bat,batType) {
     if (bat.eq === 'e-lifepod') {
         newAP = newAP-1;
     }
-    if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && batType.moveCost < 90) {
+    if (playerInfos.comp.trans >= 2 && batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && !batType.skills.includes('artank') && batType.moveCost < 90) {
         newAP = newAP+((batType.moveCost+1.5)*(playerInfos.comp.trans-1.25)/2.6);
     }
     newAP = Math.round(newAP);
