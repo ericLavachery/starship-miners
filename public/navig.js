@@ -54,7 +54,7 @@ function commandes() {
             }
             $('#commandz').append('<button type="button" title="Nombre d\'aliens en vue" class="boutonGrisBis iconButtons" onclick="updateAliensNum()">'+aliensNum+'</button>');
             $('#commandz').append('<button type="button" title="Nombre d\'oeufs en vue" class="boutonGris iconButtons" onclick="findEgg()" onmousedown="clicSound(5)">'+eggsNum+'</button>');
-            $('#commandz').append('<hr>');
+            $('#commandz').append('<br>');
         }
         if (!playerInfos.onShip || modeSonde) {
             $('#commandz').append('<button type="button" title="Ressources présentes dans la zone" class="boutonGris iconButtons" onclick="resView()" onmousedown="clicSound(7)"><i class="far fa-gem"></i></button>');
@@ -162,7 +162,7 @@ function commandes() {
         $('#commandz').append('<button type="button" title="Nombre d\'oeufs en vue" class="boutonGrisBis iconButtons" onclick="findEgg()" onmousedown="clicSound(5)">'+eggsNum+'</button>');
         $('#commandz').append('<br>');
     }
-    $('#commandz').append('<hr>');
+    // $('#commandz').append('<br>');
     $('#commandz').append('<button type="button" title="Gérer les volumes" class="boutonGris iconButtons" onclick="soundCheck()"><i class="fas fa-sliders-h"></i></button>');
     // console.log('volMu =========================================================================== '+playerInfos.volMu);
     if (playerInfos.volMu > 0 || playerInfos.volAmb > 0 || playerInfos.volRadio > 0) {
@@ -172,7 +172,7 @@ function commandes() {
     }
     if (activeTurn == 'player') {
         if (zone[0].isPrev) {
-            $('#commandz').append('<hr>');
+            $('#commandz').append('<br>');
             $('#commandz').append('<button type="button" title="Revenir sur la carte de la Station" class="boutonMarine iconButtons" onclick="fullMapPreviewOut()"><i class="fas fa-chess-board"></i></button>');
         } else {
             if (playerInfos.onShip) {
@@ -181,7 +181,7 @@ function commandes() {
                         if (!inSoute) {
                             let hasSonde = hasUnit('Sonde',false);
                             let hasImpacteur = hasUnit('Impacteur',false);
-                            $('#commandz').append('<hr>');
+                            $('#commandz').append('<br>');
                             if (hasSonde || hasImpacteur) {
                                 $('#commandz').append('<button type="button" title="Régler une sonde (destination)" class="boutonBrun iconButtons" onclick="editSonde()" onmousedown="clicSound(6)"><i class="fas fa-keyboard"></i></button>');
                                 if (playerInfos.sondePlanet > 0 && playerInfos.sondeDanger > 0) {
@@ -201,7 +201,7 @@ function commandes() {
                         }
                     }
                 } else {
-                    $('#commandz').append('<hr>');
+                    $('#commandz').append('<br>');
                     $('#commandz').append('<button type="button" title="Poser la sonde" class="boutonRouge iconButtons" onclick="stopSonde()" onmousedown="clicSound(10)"><i class="fas fa-rocket"></i></button>');
                     let maxMaps = getMaxMaps(impact);
                     let nextMapNumber = playerInfos.sondeMaps+1;
@@ -224,12 +224,12 @@ function commandes() {
                         if (playerInfos.gangDef) {
                             let nextGangLevel = checkGangLevel();
                             if (nextGangLevel === -1) {
-                                $('#commandz').append('<hr>');
+                                // $('#commandz').append('<br>');
                                 $('#commandz').append('<button type="button" title="Sortir de l\'abri" class="boutonRouge iconButtons" onclick="startMission(false)"><i class="fas fa-dungeon"></i></button>');
                             }
                         }
                     } else {
-                        // $('#commandz').append('<hr>');
+                        // $('#commandz').append('<br>');
                         if (zoneFiles.length >= 2) {
                             $('#commandz').append('<button type="button" title="Choisir une zone pour la prochaine mission" class="boutonNoir iconButtons" onclick="pickZone()" onmousedown="clicSound(5)"><i class="fas fa-map"></i></button>');
                             if (playerInfos.missionZone >= 1) {
@@ -251,7 +251,7 @@ function commandes() {
                         }
                     }
                 } else {
-                    $('#commandz').append('<hr>');
+                    // $('#commandz').append('<br>');
                     if (!isStartZone && playerInfos.pseudo != 'Mapedit') {
                         $('#commandz').append('<button type="button" title="Rapport de mission (estimation)" class="boutonRose iconButtons" onclick="missionResults(false)" onmousedown="clicSound(1)"><i class="fas fa-balance-scale"></i></button>');
                     }
@@ -271,7 +271,7 @@ function commandes() {
             if (!modeSonde) {
                 if (playerInfos.onShip) {
                     if (!inSoute) {
-                        $('#commandz').append('<hr>');
+                        $('#commandz').append('<br>');
                         if (bataillons.length === 0) {
                             $('#commandz').append('<button type="button" title="Ajouter le pack de ressources" class="boutonRose iconButtons blynk" onclick="addStartPack()" onmousedown="clicSound()"><i class="fas fa-coins"></i></button>');
                         } else {
@@ -291,7 +291,7 @@ function commandes() {
                     }
                 } else {
                     if (!isReloaded && playerInfos.mapTurn === 0) {
-                        $('#commandz').append('<hr>');
+                        $('#commandz').append('<br>');
                         $('#commandz').append('<button type="button" title="Sauvegarder et actualiser (pour le bug du rapport de mission)" class="boutonRose iconButtons blynk" onclick="saveAndReload()" onmousedown="clicSound(8)"><i class="fas fa-exclamation-triangle"></i></button>');
                     }
                 }
@@ -355,7 +355,7 @@ function viewPop() {
             $('#batloop').append('Criminels: <span class="neutre">'+crimeRate.crim+'</span>%<br>');
             $('#batloop').append('Pénibilité: <span class="'+penibColour+'">'+crimeRate.penib+'</span>%<br>');
             $('#batloop').append('Forces de l\'ordre: <span class="neutre">'+crimeRate.fo+'</span><br>');
-            $('#batloop').append('Criminalité: <span class="'+crimColour+'">'+crimeRate.total+'</span>%<br>');
+            $('#batloop').append('Crimes: <span class="'+crimColour+'" title="Criminalité">'+crimeRate.total+'</span>% / <span class="neutre" title="Corruption">'+crimeRate.cor+'</span>%<br>');
             $('#batloop').append('Morts <span class="or" title="'+toNiceString(playerInfos.deadBats)+'">'+playerInfos.unitsLost+'</span><br>');
             $('#batloop').append('<span class="jaune">Doomclock: '+doomsday+'</span><br>');
             if (!inSoute && !modeSonde) {

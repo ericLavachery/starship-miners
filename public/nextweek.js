@@ -1026,23 +1026,6 @@ function calcTotalCitoyens(cryoOut) {
     return mesCitoyens;
 };
 
-function eventCrime(time,sim,quiet,afterMission) {
-    // Crimes et vols en fonction du taux de criminalité
-    let mesCitoyens = calcTotalCitoyens(false);
-    let population = mesCitoyens.crim+mesCitoyens.cit;
-    let crimeRate = calcCrimeRate(mesCitoyens);
-    if (!sim) {
-        playerInfos.crime = crimeRate.total;
-        setPenitLevel();
-    }
-    if (!quiet) {
-        warning('Population','Criminels: '+crimeRate.crim+'% <br> Pénibilité: '+crimeRate.penib+'% <br> Forces de l\'ordre: '+crimeRate.fo+'<br> Criminalité: '+crimeRate.total+'%',false,-1,true)
-    }
-    if (!sim) {
-        checkCrimes(crimeRate,time,afterMission);
-    }
-};
-
 function chenilProd(bat,batType,time,sim,quiet) {
     if (playerInfos.onShip) {
         console.log('UPKEEP');

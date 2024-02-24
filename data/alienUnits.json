@@ -3938,7 +3938,7 @@
             "cost":0,
             "range":0,
             "noDef":true,
-            "noBiss":true,
+            "noBis":true,
             "noDatt":true,
             "rof":16,
             "accuracy":8,

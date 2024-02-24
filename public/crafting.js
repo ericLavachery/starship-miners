@@ -449,7 +449,7 @@ function adjCraftFactor(craft,craftFactor) {
         noFactor = true;
     }
     if (!noFactor) {
-        craftFactor = craftFactor*(100+playerInfos.crime)/100;
+        craftFactor = craftFactor*(100+playerInfos.corruption)/100;
         let energyCrafting = false;
         if (craft.result === 'Energie') {
             energyCrafting = true;

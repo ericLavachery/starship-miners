@@ -203,6 +203,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.crime === undefined) {
         playerInfos.crime = 0;
     }
+    if (playerInfos.corruption === undefined) {
+        playerInfos.corruption = 5;
+    }
     if (playerInfos.penit === undefined) {
         playerInfos.penit = 0;
     }

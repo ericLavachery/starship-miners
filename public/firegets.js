@@ -1721,6 +1721,11 @@ function getInitiative(bat,batType,weap,opBat,opBatType,opWeap,distance,attackin
             initBonus = initBonus-999;
         }
     }
+    if (attacking) {
+        if (weap.ammo.includes('autodes')) {
+            initBonus = initBonus+999;
+        }
+    }
     initDice = Math.ceil(initDice);
     initDice = entre(initDice,3,900);
     initBonus = Math.ceil(initBonus);

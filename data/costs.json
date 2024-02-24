@@ -134,6 +134,15 @@
         "crime":-0.25
     },
     {
+        "id":328,
+        "name":"Nightwatch",
+        "levels":{"rednecks":1,"blades":1,"bulbos":1,"drogmulojs":1,"tiradores":1,"detruas":1,"brasier":1},
+        "bldReq":[],
+        "costs":{"Fer":45,"Scrap":30},
+        "fabTime":5,
+        "info":"Les Nightwatch font diminuer la criminalité, mais font augmenter la corruption."
+    },
+    {
         "id":213,
         "name":"Pompistes",
         "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":99,"brasier":1},
