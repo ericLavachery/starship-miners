@@ -487,10 +487,10 @@ function moveSelectedBat(tileId,free,jump) {
 
 function isMapViewBorder(tileId) {
     let border = false
-    let minX = xOffset+1;
-    let maxX = xOffset+numVTiles;
-    let minY = yOffset+1;
-    let maxY = yOffset+numHTiles;
+    let minX = xOffset+2;
+    let maxX = xOffset+numVTiles-1;
+    let minY = yOffset+2;
+    let maxY = yOffset+numHTiles-1;
     let tile = getTileById(tileId);
     if (tile.x <= minX || tile.x >= maxX || tile.y <= minY || tile.y >= maxY) {
         border = true;

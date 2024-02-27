@@ -939,9 +939,13 @@ function checkRuinsPack(tile) {
         ruinSize = ruinSize*3;
     }
     let thePack = '';
-    let zoneFactor = Math.ceil((zone[0].mapDiff+8)/1.5);
+    let zoneFactor = Math.ceil((zone[0].mapDiff+9)/1.5);
+    let missionFactor = 2;
+    if (zone[0].number >= 50) {
+        missionFactor = 1;
+    }
     let minAmmoLevel = 1;
-    if (zone[0].mapDiff >= 6) {
+    if (zone[0].mapDiff >= 5) {
         minAmmoLevel = 2;
     }
     let shufArmors = _.shuffle(armorTypes);
@@ -949,7 +953,7 @@ function checkRuinsPack(tile) {
         if (thePack === '') {
             if (armor.cat === 'drogue') {
                 if (armor.popIn.includes(ruinType.name)) {
-                    let chance = armor.rarity*ruinSize;
+                    let chance = armor.rarity*ruinSize*missionFactor;
                     if (armor.popIn[0] === ruinType.name) {
                         chance = chance*1.5;
                     }
@@ -967,7 +971,7 @@ function checkRuinsPack(tile) {
                 if (armor.icon != undefined) {
                     if (armor.icon >= 1) {
                         if (armor.popIn.includes(ruinType.name)) {
-                            let chance = (zoneFactor-(armor.icon*armor.icon))*ruinSize;
+                            let chance = (zoneFactor-(armor.icon*armor.icon))*ruinSize*missionFactor;
                             if (armor.popIn[0] === ruinType.name) {
                                 chance = chance*1.5;
                             }
@@ -994,7 +998,7 @@ function checkRuinsPack(tile) {
                             if (ruinType.name === 'Usine') {
                                 thisSize = 20;
                             }
-                            let chance = (zoneFactor-(armor.icon*armor.icon))*thisSize;
+                            let chance = (zoneFactor-(armor.icon*armor.icon))*thisSize*missionFactor;
                             if (armor.popIn[0] === ruinType.name) {
                                 chance = chance*1.5;
                             }
@@ -1033,7 +1037,7 @@ function checkRuinsPack(tile) {
                         ammoOK = true;
                     }
                     if (ammoOK) {
-                        let chance = (zoneFactor+2-(ammo.icon*ammo.icon))*ruinSize;
+                        let chance = (zoneFactor+2-(ammo.icon*ammo.icon))*ruinSize*missionFactor;
                         chance = Math.ceil(chance);
                         let dice = 500;
                         if (ammo.name === 'freeze') {

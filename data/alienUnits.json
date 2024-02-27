@@ -445,7 +445,7 @@
             "range":0,
             "noFly":true,
             "isMelee":true,
-            "rof":6,
+            "rof":12,
             "accuracy":16,
             "power":3,
             "aoe":"unit",

@@ -150,6 +150,7 @@ function checkLastRavit(myBat) {
     lastRavit.exists = false;
     let isDeluge = false;
     let maxRavit = 30;
+    let mrFactor = 3;
     let myBatType = getBatType(myBat);
     let bldReq = '';
     if (myBatType.weapon.ravitBld != undefined) {
@@ -158,6 +159,9 @@ function checkLastRavit(myBat) {
         if (myBat.ammo.includes('-deluge') || myBat.ammo.includes('-cluster')) {
             lastRavit.exists = true;
             isDeluge = true;
+            if (myBat.ammo.includes('missile') && myBatType.cat != 'buildings') {
+                mrFactor = 2;
+            }
         }
     }
     if (myBatType.weapon2.ravitBld != undefined) {
@@ -166,6 +170,9 @@ function checkLastRavit(myBat) {
         if (myBat.ammo2.includes('-deluge') || myBat.ammo2.includes('-cluster')) {
             lastRavit.exists = true;
             isDeluge = true;
+            if (myBat.ammo.includes('missile') && myBatType.cat != 'buildings') {
+                mrFactor = 2;
+            }
         }
     }
     let gangBonus = 0;
@@ -179,7 +186,7 @@ function checkLastRavit(myBat) {
     } else {
         maxRavit = maxRavit*(2+gangBonus);
     }
-    maxRavit = Math.ceil(Math.sqrt(maxRavit))*4;
+    maxRavit = Math.ceil(Math.sqrt(maxRavit))*mrFactor;
     if (maxRavit > 30) {
         maxRavit = 30;
     }
@@ -199,7 +206,7 @@ function checkLastRavit(myBat) {
         }
         lastRavit.exists = true;
     } else {
-        maxRavit = 36;
+        maxRavit = 30;
         lastRavit.ok = true;
         lastRavit.exists = false;
     }
