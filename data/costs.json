@@ -794,7 +794,7 @@
     {
         "id":135,
         "name":"Runners",
-        "levels":{"rednecks":11,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":9,"brasier":99},
+        "levels":{"rednecks":11,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":12,"brasier":99},
         "bldReq":["Armurerie","Centre de recherches"],
         "compReq":{"cyber":1},
         "compPass":["detruas"],
@@ -929,7 +929,7 @@
     {
         "id":297,
         "name":"Pikebots",
-        "levels":{"rednecks":99,"blades":99,"bulbos":9,"drogmulojs":99,"tiradores":99,"detruas":11,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":9,"drogmulojs":99,"tiradores":99,"detruas":10,"brasier":99},
         "bldReq":["Laboratoire","Chaîne de montage"],
         "compReq":{"robo":1},
         "costs":{"Scrap":72,"Fer":36,"Carbone":144,"Moteurs":120,"Titane":320,"Electros":72,"Batteries":108,"Cuivre":72,"Silicium":36},
@@ -1587,7 +1587,7 @@
     {
         "id":32,
         "name":"Fatass",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":12,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":11,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "compReq":{"tank":1},
         "costs":{"Fer":208,"Scrap":456,"Carbone":344,"Aluminium":32,"Moteurs":272,"Titane":48,"Tungstène":256,"Silicium":16,"Cuivre":32,"Electros":16,"Batteries":26,"Compo2":432,"Compo3":396,"Huile":10,"Cobalt":30,"Hélium":60},
@@ -1597,7 +1597,7 @@
     {
         "id":58,
         "name":"Hovercraft",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":10,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":9,"brasier":99},
         "compReq":{"tank":1},
         "bldReq":["Arsenal","Chaîne de montage"],
         "costs":{"Fer":225,"Scrap":330,"Carbone":135,"Aluminium":30,"Moteurs":100,"Titane":45,"Tungstène":90,"Silicium":15,"Cuivre":30,"Batteries":15,"Compo2":120,"Hélium":90,"Chlore":90,"Huile":10},
@@ -1727,7 +1727,7 @@
     {
         "id":131,
         "name":"Frogs",
-        "levels":{"rednecks":9,"blades":8,"bulbos":10,"drogmulojs":9,"tiradores":10,"detruas":10,"brasier":10},
+        "levels":{"rednecks":9,"blades":8,"bulbos":10,"drogmulojs":9,"tiradores":10,"detruas":9,"brasier":10},
         "bldReq":["Armurerie","Atelier"],
         "compReq":{"trans":2},
         "compPass":["detruas"],
@@ -1828,7 +1828,7 @@
     {
         "id":93,
         "name":"Taxis",
-        "levels":{"rednecks":12,"blades":99,"bulbos":12,"drogmulojs":13,"tiradores":11,"detruas":12,"brasier":13},
+        "levels":{"rednecks":12,"blades":99,"bulbos":12,"drogmulojs":13,"tiradores":11,"detruas":13,"brasier":13},
         "bldReq":["Armurerie","Chaîne de montage"],
         "compReq":{"tank":1,"trans":1},
         "costs":{"Fer":140,"Scrap":225,"Carbone":165,"Aluminium":30,"Moteurs":130,"Tungstène":200,"Cuivre":15,"Batteries":15,"Compo2":210,"Compo3":45,"Huile":10},
@@ -2287,7 +2287,7 @@
     {
         "id":125,
         "name":"Casemates",
-        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":12,"brasier":99},
+        "levels":{"rednecks":99,"blades":99,"bulbos":99,"drogmulojs":99,"tiradores":99,"detruas":11,"brasier":99},
         "bldReq":["Arsenal","Chaîne de montage"],
         "compHardReq":{"explo":1},
         "costs":{"Compo1":80,"Compo2":400,"Compo3":435,"Eau":48,"Végétaux":150,"Scrap":60,"Carbone":42,"Titane":18,"Tungstène":36,"Fer":204},
@@ -2408,7 +2408,7 @@
     {
         "id":149,
         "name":"Obusiers",
-        "levels":{"rednecks":14,"blades":99,"bulbos":99,"drogmulojs":14,"tiradores":99,"detruas":11,"brasier":99},
+        "levels":{"rednecks":14,"blades":99,"bulbos":99,"drogmulojs":14,"tiradores":99,"detruas":12,"brasier":99},
         "bldReq":["Arsenal","Station radio"],
         "compReq":{"arti":1},
         "costs":{"Fer":146,"Scrap":144,"Carbone":129,"Aluminium":72,"Titane":36,"Tungstène":36,"Silicium":12,"Cuivre":30,"Electros":15,"Batteries":9,"Compo2":128},

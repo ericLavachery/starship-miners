@@ -267,10 +267,10 @@ function toggleMark(tileId,fromBat,batId) {
 function isVisible(tileId) {
     let tileX = zone[tileId].x;
     let tileY = zone[tileId].y;
-    let minX = xOffset+1;
-    let maxX = xOffset+numVTiles;
-    let minY = yOffset+1;
-    let maxY = yOffset+numHTiles;
+    let minX = xOffset+3;
+    let maxX = xOffset+numVTiles-2;
+    let minY = yOffset+3;
+    let maxY = yOffset+numHTiles-2;
     if (tileX < minX || tileX > maxX || tileY < minY || tileY > maxY) {
         return false;
     } else {

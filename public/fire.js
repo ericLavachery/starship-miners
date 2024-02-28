@@ -633,7 +633,7 @@ function attack(melee,init) {
         }
     }
     // guidage
-    if (selectedWeap.ammo.includes('guidage') && totalHits >= 10 && !targetBat.tags.includes('guide')) {
+    if (selectedWeap.ammo.includes('guidage') && totalHits >= 10 && !targetBat.tags.includes('guide') && !targetBatType.skills.includes('nolaser')) {
         targetBat.tags.push('guide');
         $('#report').append('<span class="report rose">Guidage laser<br></span>');
     }

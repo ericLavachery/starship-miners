@@ -3356,10 +3356,6 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 18) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 20) {
-                theCompPoints = 2;
-            } else if (nextGangLevel === 22) {
-                theCompPoints = 2;
             } else {
                 theCompPoints = 1;
             }
@@ -3380,10 +3376,6 @@ function calcCompPoints(nextGangLevel) {
             } else if (nextGangLevel === 16) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 18) {
-                theCompPoints = 2;
-            } else if (nextGangLevel === 20) {
-                theCompPoints = 2;
-            } else if (nextGangLevel === 22) {
                 theCompPoints = 2;
             } else {
                 theCompPoints = 1;
@@ -3408,10 +3400,6 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 18) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 20) {
-                theCompPoints = 2;
-            } else if (nextGangLevel === 22) {
-                theCompPoints = 2;
             } else {
                 theCompPoints = 1;
             }
@@ -3435,8 +3423,6 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 19) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 22) {
-                theCompPoints = 2;
             } else {
                 theCompPoints = 1;
             }
@@ -3456,10 +3442,6 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 18) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 20) {
-                theCompPoints = 2;
-            } else if (nextGangLevel === 22) {
-                theCompPoints = 2;
             } else {
                 theCompPoints = 1;
             }
@@ -3469,19 +3451,17 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 6) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 9) {
+            } else if (nextGangLevel === 8) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 11) {
+            } else if (nextGangLevel === 10) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 13) {
+            } else if (nextGangLevel === 12) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 15) {
+            } else if (nextGangLevel === 14) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 17) {
+            } else if (nextGangLevel === 16) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 19) {
-                theCompPoints = 2;
-            } else if (nextGangLevel === 22) {
+            } else if (nextGangLevel === 18) {
                 theCompPoints = 2;
             } else {
                 theCompPoints = 1;
@@ -3503,10 +3483,6 @@ function calcCompPoints(nextGangLevel) {
             } else if (nextGangLevel === 16) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 18) {
-                theCompPoints = 2;
-            } else if (nextGangLevel === 20) {
-                theCompPoints = 2;
-            } else if (nextGangLevel === 22) {
                 theCompPoints = 2;
             } else {
                 theCompPoints = 1;

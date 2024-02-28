@@ -116,11 +116,15 @@ function nextTurn() {
             bat.oldTileId = bat.tileId;
             bat.oldapLeft = bat.apLeft;
             tagsEffect(bat,batType);
-            if (bat.tags.includes('guide') && batType.skills.includes('nolaser')) {
-                tagDelete(bat,'guide');
+            if (bat.tags.includes('guide')) {
+                if (batType.skills.includes('shortlaser') || batType.skills.includes('nolaser')) {
+                    tagDelete(bat,'guide');
+                }
             }
-            if (bat.tags.includes('fluo') && batType.skills.includes('nolaser')) {
-                tagDelete(bat,'fluo');
+            if (bat.tags.includes('fluo')) {
+                if (batType.skills.includes('shortlaser') || batType.skills.includes('nolaser')) {
+                    tagDelete(bat,'fluo');
+                }
             }
             tagDelete(bat,'rage');
             if (batType.skills.includes('permashield')) {
@@ -697,7 +701,7 @@ function nextTurnEnd() {
                 }
             }
             // fin sous-munitions
-            if (batType.name === 'Sous-munitions' && playerInfos.mapTurn > bat.creaTurn+2) {
+            if (batType.name === 'Sous-munitions' && playerInfos.mapTurn > bat.creaTurn+1) {
                 batDeathEffect(bat,true,false,'Bataillon détruit',bat.type+' expirées.');
                 bat.squadsLeft = 0;
                 checkDeath(bat,batType,false);
@@ -2081,11 +2085,8 @@ function tagDeleteX(bat,tag,delNum,notAll) {
 };
 
 function updateBatProperties(bat,batType) {
-    if (bat.type === 'Poste radio') {
-        bat.type === 'Station radio';
-    }
-    if (bat.type === 'Champ de mines') {
-        bat.type === 'Mines claymore';
+    if (batType.name != bat.type) {
+        bat.type = batType.name;
     }
     if (bat.logeq === undefined) {
         bat.logeq = '';
