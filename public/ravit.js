@@ -266,6 +266,7 @@ function checkRavit(myBat) {
 };
 
 function goRavit(apCost) {
+    console.log('ravit AP COST = '+apCost);
     if (selectedBat.tags.includes('aU')) {
         // console.log('RAVIT');
         // console.log(selectedBat);
@@ -350,8 +351,8 @@ function goRavit(apCost) {
             }
             let numRav = Math.round(numAmmo*singleAmmoVolume);
             // console.log(bldReq);
+            selectedBat.apLeft = selectedBat.apLeft-apCost;
             if (bldReq === 'Arsenal' || isDeluge) {
-                selectedBat.apLeft = selectedBat.apLeft-apCost;
                 if (selectedBat.rvt === undefined) {
                     selectedBat.rvt = 0;
                 }

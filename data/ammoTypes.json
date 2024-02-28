@@ -3419,7 +3419,7 @@
         "aoe": "squad",
         "bldReq":["Usine d'armement","Laboratoire"],
         "compReq":{"bal":2,"explo":1,"det":3},
-        "deploy":{"Fer":2,"Aluminium":2,"Titane":1,"Hélium":1,"Electros":1,"Batteries":1,"Explosifs":3},
+        "deploy":{"Fer":2,"Aluminium":2,"Titane":1,"Hélium":2,"Electros":2,"Batteries":1,"Explosifs":3},
         "batch":100
     },
     {
@@ -3787,7 +3787,7 @@
         "aoe": "squad",
         "bldReq":["Usine d'armement","Laboratoire"],
         "compReq":{"bal":2,"explo":1,"det":3,"arti":1},
-        "deploy":{"Fer":2,"Aluminium":2,"Titane":1,"Nickel":1,"Hélium":1,"Explosifs":3,"Fuel":1,"Electros":3,"Batteries":1},
+        "deploy":{"Fer":2,"Aluminium":2,"Titane":1,"Nickel":1,"Hélium":2,"Explosifs":3,"Fuel":1,"Electros":3,"Batteries":1},
         "batch":100
     },
     {
