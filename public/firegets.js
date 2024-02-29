@@ -3782,7 +3782,10 @@ function getEggProtect(eggBat,eggBatType,weap) {
             if (!domeProtect) {
                 eggProt = (eggProt*3/5)+(playerInfos.mapTurn*2);
             }
-            if (eggProt > maxProt) {eggProt = maxProt;}
+            if (eggProt > maxProt) {
+                eggProt = ((eggProt-maxProt)/4)+maxProt;
+            }
+            // if (eggProt > maxProt) {eggProt = maxProt;}
             console.log(eggProt);
             if (weap.isMelee || weap.isBelier) {
                 eggProt = eggProt*0.97;
@@ -3809,11 +3812,11 @@ function getEggProtect(eggBat,eggBatType,weap) {
         }
     }
     eggProt = Math.round(eggProt);
-    if (eggProt > maxProt) {eggProt = maxProt;}
-    if (eggProt < 0) {eggProt = 0;}
+    // if (eggProt > maxProt) {eggProt = maxProt;}
     if (domeProtect) {
         eggProt = 0;
     }
+    eggProt = entre(eggProt,0,100);
     console.log(eggProt);
     return eggProt;
 };

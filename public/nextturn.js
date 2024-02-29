@@ -302,6 +302,7 @@ function alienTurnEnd() {
 
 function nextTurnEnd() {
     alienTurnEnd();
+    ectoControl();
     alienCanon();
     checkMissionAlert(false,false);
     checkCitCaves();
