@@ -908,10 +908,20 @@ function attack(melee,init) {
             }
         }
     }
+    console.log('shotDice========================================================================'+shotDice);
+    // INTERCEPTION
+    let interception = checkIntercept(targetBat,targetBatType,selectedWeap,selectedBat,selectedBatType);
+    if (interception && shotDice > 55) {
+        totalDamage = 0;
+        apDamage =0;
+        targetBat.tags.push('chop');
+        let iCost = apIntercept(targetBat,targetBatType);
+        targetBat.apLeft = targetBat.apLeft-iCost;
+        $('#report').append('<span class="report rose">Interception<br></span>');
+    }
     // ricochet
     let rico = checkRicochet(targetBat,targetBatType,selectedWeap,init);
-    console.log('shotDice========================================================================'+shotDice);
-    if (rico && shotDice > 55) {
+    if (rico && !interception && shotDice > 55) {
         totalDamage = 0;
         apDamage =0;
         $('#report').append('<span class="report rose">Ricochet<br></span>');

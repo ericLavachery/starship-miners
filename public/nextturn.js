@@ -102,6 +102,18 @@ function nextTurn() {
                 bat.apLeft = 0-bat.ap-bat.ap;
             }
             bat.apLeft = bat.apLeft+bat.ap;
+            if (bat.tags.includes('chop')) {
+                tagDelete(bat,'chop');
+                bat.apLeft = bat.apLeft+2;
+            }
+            if (bat.tags.includes('chop')) {
+                tagDelete(bat,'chop');
+                bat.apLeft = bat.apLeft+2;
+            }
+            if (bat.tags.includes('chop')) {
+                tagDelete(bat,'chop');
+                bat.apLeft = bat.apLeft+2;
+            }
             if (bat.apLeft > bat.ap) {
                 bat.apLeft = bat.ap;
             }

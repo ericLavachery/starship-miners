@@ -1347,6 +1347,71 @@ function checkRicochet(defBat,defBatType,attWeap,init) {
     return rico;
 };
 
+function apIntercept(defBat,defBatType) {
+    let apCost = Math.ceil(defBatType.weapon.cost/2);
+    let chopRange = defBatType.weapon.range;
+    if (defBatType.w2chance >= 1 || defBatType.skills.includes('smartrip')) {
+        if (defBatType.weapon2.range > chopRange) {
+            apCost = Math.ceil(defBatType.weapon2.cost/2);
+        }
+    }
+    return apCost;
+};
+
+function checkIntercept(defBat,defBatType,attWeap,attBat,attBatType) {
+    let chop = false;
+    let isWoke = false;
+    if (defBat.apLeft >= -10) {
+        isWoke = true;
+    }
+    if (attWeap.isArt && attWeap.name != 'Missiles wipeout' && isWoke) {
+        console.log('INTERCEPTION ============================================ ');
+        let distance = calcDistance(selectedBat.tileId,targetBat.tileId);
+        if (distance > 8) {
+            distance = Math.ceil((distance-8)/4)+8;
+        }
+        let chopRange = defBatType.weapon.range;
+        let chopSpeed = (defBatType.weapon.cost+1)*(defBatType.weapon.cost+1);
+        if (defBatType.w2chance >= 1 || defBatType.skills.includes('smartrip')) {
+            let w2range = defBatType.weapon2.range;
+            if (w2range > chopRange) {
+                chopRange = w2range;
+                chopSpeed = (defBatType.weapon2.cost+1)*(defBatType.weapon2.cost+1);
+            }
+        }
+        console.log('chopSpeed='+chopSpeed);
+        let artPower = 0;
+        if (attWeap.num === 1) {
+            artPower = attBatType.weapon.power-10;
+        } else {
+            artPower = attBatType.weapon2.power-10;
+        }
+        artPower = entre(artPower,0,15);
+        if (attWeap.name.includes('Rainbow')) {
+            artPower = attPower+10;
+        }
+        artPower = artPower*5;
+        console.log('artPower='+artPower);
+        let rangeBonus = Math.ceil(distance*Math.sqrt(chopRange)*12);
+        console.log('rangeBonus='+rangeBonus);
+        let allTags = _.countBy(defBat.tags);
+        if (allTags.chop === undefined) {
+            allTags.chop = 0;
+        }
+        let apMalus = 0;
+        if (defBat.apLeft < 0) {
+            apMalus = defBat.apLeft*3;
+        }
+        console.log('apMalus='+apMalus);
+        let chopChance = Math.ceil((rangeBonus+artPower-50)/2)+apMalus-chopSpeed-(allTags.chop*chopSpeed);
+        console.log('chopChance='+chopChance);
+        if (rand.rand(1,100) <= chopChance) {
+            chop = true;
+        }
+    }
+    return chop;
+};
+
 function applyShield(shots) {
     let shieldValue = 1;
     let shieldChance = 0;

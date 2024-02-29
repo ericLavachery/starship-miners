@@ -1001,7 +1001,6 @@ function ectoControl() {
                                 turnThisBot(bat.id);
                                 control = true;
                                 deadAliensList.push(myBat.id);
-                                // console.log('TOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKIT');
                             }
                         }
                     }

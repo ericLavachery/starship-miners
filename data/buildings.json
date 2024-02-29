@@ -1646,7 +1646,6 @@
             "range":2,
             "elevation":2,
             "noise":4,
-            "isArt":true,
             "noFly":true,
             "rof":6,
             "accuracy":10,
