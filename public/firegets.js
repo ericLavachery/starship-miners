@@ -1364,7 +1364,7 @@ function checkIntercept(defBat,defBatType,attWeap,attBat,attBatType) {
     if (defBat.apLeft >= -10) {
         isWoke = true;
     }
-    if (attWeap.isArt && attWeap.name != 'Missiles wipeout' && isWoke) {
+    if (defBatType.skills.includes('intercept') && attWeap.isArt && attWeap.name != 'Missiles wipeout' && isWoke) {
         console.log('INTERCEPTION ============================================ ');
         let distance = calcDistance(selectedBat.tileId,targetBat.tileId);
         if (distance > 8) {
@@ -2770,6 +2770,11 @@ function weaponAdj(weapon,bat,wn) {
     let ammoIndex = ammoTypes.findIndex((obj => obj.name == myAmmo));
     let ammo = ammoTypes[ammoIndex];
     thisWeapon.ammo = myAmmo;
+    if (thisWeapon.maxAmmo > 1 && thisWeapon.maxAmmo < 99) {
+        if (thisWeapon.ammo.includes('-cluster')) {
+            thisWeapon.maxAmmo = Math.ceil(thisWeapon.maxAmmo/2);
+        }
+    }
     if (ammo.fly != undefined) {
         if (ammo.fly <= 0) {
             thisWeapon.noFly = true;
