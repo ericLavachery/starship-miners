@@ -274,6 +274,11 @@ function showEnemyBatInfos(bat) {
             $('#unitInfos').append('<span class="paramName">Bouclier</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
         }
     }
+    if (compCA >= 4) {
+        if (batType.skills.includes('intercept')) {
+            $('#unitInfos').append('<span class="paramName" title="Peut intercepter les obus et missiles">Interception</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
+        }
+    }
     if (batType.skills.includes('fly')) {
         $('#unitInfos').append('<span class="paramName">Volant</span><span class="paramIcon"></span><span class="paramValue">Oui</span><br>');
     }

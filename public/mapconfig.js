@@ -271,6 +271,12 @@ function isVisible(tileId) {
     let maxX = xOffset+numVTiles-2;
     let minY = yOffset+3;
     let maxY = yOffset+numHTiles-2;
+    if (playerInfos.onShip) {
+        minX = xOffset+1;
+        maxX = xOffset+numVTiles;
+        minY = yOffset+1;
+        maxY = yOffset+numHTiles;
+    }
     if (tileX < minX || tileX > maxX || tileY < minY || tileY > maxY) {
         return false;
     } else {

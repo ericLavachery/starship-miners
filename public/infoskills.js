@@ -1936,7 +1936,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             if (freeConsTile) {
                 let compReqOK = checkUnitCompReq(trapType);
                 if (compReqOK) {
-                    let minesLeft = calcRavit(bat);
+                    let minesLeft = calcPutLeft(bat);
                     balise = 'h4';
                     boutonNope = 'boutonGrey';
                     colorNope = 'gf';
@@ -1975,7 +1975,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             if (freeConsTile) {
                 let compReqOK = checkUnitCompReq(trapType);
                 if (compReqOK) {
-                    let minesLeft = calcRavit(bat);
+                    let minesLeft = calcPutLeft(bat);
                     balise = 'h4';
                     boutonNope = 'boutonGrey';
                     colorNope = 'gf';
@@ -2014,7 +2014,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             if (freeConsTile) {
                 let compReqOK = checkUnitCompReq(trapType);
                 if (compReqOK) {
-                    let minesLeft = calcRavit(bat);
+                    let minesLeft = calcPutLeft(bat);
                     balise = 'h4';
                     boutonNope = 'boutonGrey';
                     colorNope = 'gf';
@@ -2052,7 +2052,8 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             trapType = getBatTypeByName('Mines claymore');
             freeConsTile = checkFreeConsTile(bat,trapType);
             if (freeConsTile) {
-                let minesLeft = calcRavit(bat);
+                let minesLeft = calcPutLeft(bat);
+                console.log('MINES LEFT = '+minesLeft);
                 balise = 'h4';
                 boutonNope = 'boutonGrey';
                 colorNope = 'gf';
@@ -2073,7 +2074,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         uMaxOK = false;
                     }
                     if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK && uMaxOK) {
-                        $('#unitInfos').append('<button type="button" title="Déposer un champ de mines '+displayCosts(trapType.costs)+'" class="boutonGris unitButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Mines</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Déposer des Mines Claymore '+displayCosts(trapType.costs)+'" class="boutonGris unitButtons" onclick="dropStuff('+apCost+',`champ`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Mines</span></button>');
                         lineBreak = true;
                     } else {
                         if (!uMaxOK) {
@@ -2098,7 +2099,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             trapType = getBatTypeByName('Mines wipeout');
             freeConsTile = checkFreeConsTile(bat,trapType);
             if (freeConsTile) {
-                let minesLeft = calcRavit(bat);
+                let minesLeft = calcPutLeft(bat);
                 balise = 'h4';
                 boutonNope = 'boutonGrey';
                 colorNope = 'gf';
@@ -2119,7 +2120,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         uMaxOK = false;
                     }
                     if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK && uMaxOK) {
-                        $('#unitInfos').append('<button type="button" title="Déposer un champ de mines Wipeout '+displayCosts(trapType.costs)+'" class="boutonGrisBis unitButtons" onclick="dropStuff('+apCost+',`wipe`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Wipeout</span></button>');
+                        $('#unitInfos').append('<button type="button" title="Déposer des Mines Wipeout '+displayCosts(trapType.costs)+'" class="boutonGrisBis unitButtons" onclick="dropStuff('+apCost+',`wipe`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Wipeout</span></button>');
                         lineBreak = true;
                     } else {
                         if (!uMaxOK) {
@@ -2146,7 +2147,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             if (freeConsTile) {
                 let compReqOK = checkUnitCompReq(trapType);
                 if (compReqOK) {
-                    let minesLeft = calcRavit(bat);
+                    let minesLeft = calcPutLeft(bat);
                     balise = 'h4';
                     boutonNope = 'boutonGrey';
                     colorNope = 'gf';
@@ -2167,7 +2168,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                             uMaxOK = false;
                         }
                         if (minesLeft >= 1 && bat.apLeft >= apReq && !nearby.oneTile && trapCostOK && uMaxOK) {
-                            $('#unitInfos').append('<button type="button" title="Déposer un champ de mines Baygon '+displayCosts(trapType.costs)+'" class="boutonGris unitButtons" onclick="dropStuff('+apCost+',`bay`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Baygon</span></button>');
+                            $('#unitInfos').append('<button type="button" title="Déposer des Mines Baygon '+displayCosts(trapType.costs)+'" class="boutonGris unitButtons" onclick="dropStuff('+apCost+',`bay`)"><i class="fas fa-coins"></i> <span class="small">'+apCost+'&nbsp; Baygon</span></button>');
                             lineBreak = true;
                         } else {
                             if (!uMaxOK) {
@@ -2193,7 +2194,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             trapType = getBatTypeByName('Explosifs');
             freeConsTile = checkFreeConsTile(bat,trapType);
             if (freeConsTile) {
-                let minesLeft = calcRavit(bat);
+                let minesLeft = calcPutLeft(bat);
                 balise = 'h4';
                 boutonNope = 'boutonGrey';
                 colorNope = 'gf';
@@ -2261,7 +2262,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         if (batType.skills.includes('barbs')) {
             freeConsTile = checkFreeConsTile(bat,trapType,true);
             if (freeConsTile) {
-                let barbLeft = calcRavit(bat);
+                let barbLeft = calcPutLeft(bat);
                 balise = 'h4';
                 if (Object.keys(conselUnit).length >= 1) {
                     balise = 'h3';

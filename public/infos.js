@@ -1482,7 +1482,7 @@ function batFullInfos(bat,batType) {
     let vuePlus = false;
     if (!vuePlus) {
         if (batType.weapon.rof >= 1) {
-            if ((batType.weapon.spot && playerInfos.comp.det >= 2) || batType.weapon.vue) {
+            if ((batType.weapon.spot && playerInfos.comp.det >= 2) || batType.weapon.vision) {
                 vuePlus = true;
                 allSkills = allSkills+'<span class="paramValue" title="Peut voir les aliens furtifs (et les aliens invisibles lorsqu\'ils sont blessés)">Vue+</span>'+sepa;
             }
@@ -1490,7 +1490,7 @@ function batFullInfos(bat,batType) {
     }
     if (!vuePlus) {
         if (batType.weapon2.rof >= 1) {
-            if ((batType.weapon.spot && playerInfos.comp.det >= 2) || batType.weapon.vue) {
+            if ((batType.weapon.spot && playerInfos.comp.det >= 2) || batType.weapon.vision) {
                 vuePlus = true;
                 if (batType.weapon2.kit) {
                     allSkills = allSkills+'<span class="paramValue" title="Peut voir les aliens furtifs (et les aliens invisibles lorsqu\'ils sont blessés) (seulement avec le kit)">Vue+</span>'+sepa;
