@@ -1946,7 +1946,6 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         colorNope = 'cy';
                     }
                     trapCostOK = checkCost(trapType.costs);
-                    // apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
                     apCost = clicPutCost(batType,trapType,false,false);
                     apReq = Math.round(apCost/1.5);
                     if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
@@ -1985,7 +1984,6 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         colorNope = 'cy';
                     }
                     trapCostOK = checkCost(trapType.costs);
-                    // apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
                     apCost = clicPutCost(batType,trapType,false,false);
                     apReq = Math.round(apCost/1.5);
                     if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
@@ -2024,7 +2022,6 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                         colorNope = 'cy';
                     }
                     trapCostOK = checkCost(trapType.costs);
-                    // apCost = Math.round(trapType.fabTime/1.2*batType.ap/17*5/(playerInfos.comp.def+4));
                     apCost = clicPutCost(batType,trapType,false,false);
                     apReq = Math.round(apCost/1.5);
                     if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
@@ -2064,7 +2061,6 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 }
                 if (trapType.levels[playerInfos.gang] <= playerInfos.gLevel) {
                     trapCostOK = checkCost(trapType.costs);
-                    // apCost = Math.round(14*batType.mecanoCost/5*trapType.fabTime/35*5/(playerInfos.comp.explo+4));
                     apCost = clicPutCost(batType,trapType,true,false);
                     apReq = Math.round(apCost/1.5);
                     if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
@@ -2110,7 +2106,6 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 }
                 if (trapType.levels[playerInfos.gang] <= playerInfos.gLevel) {
                     trapCostOK = checkCost(trapType.costs);
-                    // apCost = Math.round(14*batType.mecanoCost/5*trapType.fabTime/35*5/(playerInfos.comp.explo+4));
                     apCost = clicPutCost(batType,trapType,true,false);
                     apReq = Math.round(apCost/1.5);
                     if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
@@ -2158,7 +2153,6 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     }
                     if (trapType.levels[playerInfos.gang] <= playerInfos.gLevel) {
                         trapCostOK = checkCost(trapType.costs);
-                        // apCost = Math.round(14*batType.mecanoCost/5*trapType.fabTime/35*5/(playerInfos.comp.explo+4));
                         apCost = clicPutCost(batType,trapType,false,true);
                         apReq = Math.round(apCost/1.5);
                         if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}
@@ -2204,7 +2198,6 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     colorNope = 'cy';
                 }
                 trapCostOK = checkCost(trapType.costs);
-                // apCost = Math.round(batType.ap*5/(playerInfos.comp.explo+4));
                 apCost = clicPutCost(batType,trapType,true);
                 apReq = Math.round(apCost/1.5);
                 if (apReq > bat.ap/1.25) {apReq = Math.round(bat.ap/1.25);}

@@ -2123,7 +2123,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","nobld","infrako","noaploss","nostation","mdev","prefab","phat","recupres","landerfab","mustcontrol"],
+        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","nobld","infrako","noaploss","mdev","prefab","phat","recupres","landerfab","mustcontrol"],
         "fuzz":6,
         "deathFx":"xplode"
     },

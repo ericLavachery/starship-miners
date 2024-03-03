@@ -1150,7 +1150,7 @@
         "name":"Espions",
         "levels":{"rednecks":17,"blades":16,"bulbos":15,"drogmulojs":16,"tiradores":17,"detruas":16,"brasier":17},
         "bldReq":["Centre de com","Camp d'entraînement"],
-        "compReq":{"det":2,"cam":1},
+        "compReq":{"det":3,"cam":1,"train":2,"ca":3},
         "unitCost":"Survivants",
         "costs":{"Fer":96,"Carbone":96,"Silicium":24,"Electros":48,"Batteries":24,"Végétaux":96,"Blendium":48,"Chlore":20,"Zinc":20,"Tissus":10},
         "deploy":{"Drogues":3,"Tissus":2},

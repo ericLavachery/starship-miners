@@ -459,7 +459,7 @@
         "hp":55,
         "armor":13,
         "size":20,
-        "stealth":12,
+        "stealth":13,
         "speed":3,
         "ap":17,
         "maxSalvo":2,
@@ -1234,7 +1234,7 @@
             "aoe":"squad",
             "sound":"bomb_mini_x3",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
-            "maxAmmo":24,
+            "maxAmmo":36,
             "ravitBld":"Poudrière"
         },
         "weapon2":{
@@ -1251,7 +1251,7 @@
             "aoe":"squad",
             "sound":"bomb_mini_x3",
             "ammo":["obus-scrap","obus","obus-heat","obus-incendiaire","obus-napalm","obus-uridium","obus-nanite","obus-heatseeker","obus-plastanium"],
-            "maxAmmo":24,
+            "maxAmmo":36,
             "ravitBld":"Poudrière"
         },
         "protection":[],
@@ -3389,7 +3389,7 @@
         "armor":7,
         "size":10,
         "volume":1,
-        "stealth":11,
+        "stealth":14,
         "ap":20,
         "maxSalvo":2,
         "weapon":{
