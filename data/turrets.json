@@ -1637,7 +1637,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_dev","fouille","prefab","infconst","phat","noshow","defense","routes","flash","badcrewsave","recupcit","badcrewsave","recupres","maycamo","bigprot","ardev"],
+        "skills":["b_dev","fouille","prefab","infconst","phat","noshow","defense","routes","flash","badcrewsave","recupcit","recupres","maycamo","bigprot","ardev"],
         "mecanoCost":10,
         "fuzz":3.5,
         "deathFx":"explo1"
@@ -2096,7 +2096,7 @@
         "sort":75,
         "squads":5,
         "squadSize":4,
-        "crew":3,
+        "crew":0,
         "hp":75,
         "armor":6,
         "size":30,
@@ -2123,7 +2123,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_none","after","nonumname","nodeathcount","notarget","halfcover","resiststorm","nobld","infrako","noaploss","mdev","prefab","phat","recupres","landerfab","mustcontrol"],
+        "skills":["b_none","after","nonumname","nodeathcount","notarget","noshow","halfcover","resiststorm","nobld","infrako","noaploss","mdev","prefab","phat","recupres","landerfab","mustcontrol"],
         "fuzz":6,
         "deathFx":"xplode"
     },
