@@ -455,6 +455,10 @@ function batInfos(bat,batType,pop) {
             }
         }
     }
+    if (pop || zone[0].dark) {
+        let lumDistance = getLumDistance(bat,batType);
+        $('#'+bodyPlace).append('<span class="paramName">Eclairage</span><span class="paramIcon"></span><span class="paramValue">'+lumDistance+'</span><br>');
+    }
     let batFuzz = calcBatAttraction(bat);
     if (pop) {
         $('#'+bodyPlace).append('<span class="paramName">Attraction</span><span class="paramIcon"></span><span class="paramValue">'+batFuzz+'</span><br>');

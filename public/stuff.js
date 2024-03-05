@@ -377,6 +377,9 @@ function getGangRechAdj() {
     if (playerInfos.gang === 'detruas') {
         rech.good.push('ind');
         rech.bad.push('med');
+        rech.bad.push('exo');
+        rech.bad.push('vsp');
+        rech.bad.push('ca');
     }
     if (playerInfos.gang === 'brasier') {
         rech.good.push('ordre');

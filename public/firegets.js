@@ -1355,6 +1355,9 @@ function apIntercept(defBat,defBatType) {
             apCost = Math.ceil(defBatType.weapon2.cost/2);
         }
     }
+    if (defBatType.name === 'Colonie') {
+        apCost = 1;
+    }
     return apCost;
 };
 
@@ -1378,6 +1381,9 @@ function checkIntercept(defBat,defBatType,attWeap,attBat,attBatType) {
                 chopRange = w2range;
                 chopSpeed = (defBatType.weapon2.cost+1)*(defBatType.weapon2.cost+1);
             }
+        }
+        if (defBatType.name === 'Colonie') {
+            chopSpeed = 30;
         }
         console.log('chopSpeed='+chopSpeed);
         let artPower = 0;

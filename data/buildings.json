@@ -1664,7 +1664,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["fouille","recupcit","crewsave","transport","routes","roadhelp","producteur","longshot","fret","dumper","ravitaillement","mecano","selfbadrepair","dealer","nitro","sudu","cible","prefab","maxaero"],
+        "skills":["fouille","recupcit","crewsave","transport","routes","roadhelp","producteur","longshot","fret","dumper","ravitaillement","mecano","selfbadrepair","dealer","nitro","sudu","cible","phare","prefab","maxaero"],
         "mecanoCost":4,
         "maxDrug":18,
         "maxSkill":36,

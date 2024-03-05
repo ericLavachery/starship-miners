@@ -1400,56 +1400,6 @@ function undarkList() {
     }
 };
 
-function calcVue(bat,batType) {
-    let hauteur = 1;
-    terrain = getTerrain(bat);
-    if (terrain.scarp >= 2) {
-        hauteur = terrain.scarp;
-    }
-    tile = getTile(bat);
-    let infra = '';
-    if (tile.infra != undefined) {
-        infra = tile.infra;
-        if (tile.infra != 'Débris' && tile.infra != 'Terriers') {
-            if (tile.infra === 'Miradors' || tile.infra === 'Murailles') {
-                hauteur = hauteur+2;
-            } else {
-                hauteur = hauteur+1;
-            }
-        }
-    }
-    if (batType.skills.includes('fly') || batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') {
-        hauteur = 5;
-    }
-    let vue = 0;
-    if (batType.crew >=1 || batType.skills.includes('robot') || batType.skills.includes('clone')) {
-        vue = 1;
-    }
-    if (batType.skills.includes('light')) {
-        if (!bat.tags.includes('camo')) {
-            vue = 2;
-        }
-    }
-    if (batType.skills.includes('flash') || hasEquip(bat,['e-flash']) || bat.eq.includes('kit-') || infra === 'Miradors' || infra === 'Murailles') {
-        if (!bat.tags.includes('camo')) {
-            if (hauteur < 2) {
-                hauteur = 2;
-            }
-            vue = 3;
-        }
-    }
-    if (batType.skills.includes('phare') || batType.skills.includes('bigflash') || hasEquip(bat,['e-phare'])) {
-        if (hauteur < 3) {
-            hauteur = 3;
-        }
-        vue = 3;
-    }
-    if (vue > hauteur) {
-        vue = hauteur;
-    }
-    return vue;
-};
-
 function checkUndark() {
     if (zone[0].dark) {
         let noBat = {};
@@ -1458,7 +1408,7 @@ function checkUndark() {
         undarkNow = [];
         bataillons.forEach(function(bat) {
             if (bat.loc === "zone") {
-                undarkAround(bat,false);
+                undarkFullAround(bat,false);
             }
         });
         aliens.forEach(function(bat) {
@@ -1501,6 +1451,17 @@ function undarkCenter() {
             if (tile.infra === 'Crystal') {
                 unDark(tile.id);
             }
+        }
+    });
+};
+
+function undarkFullAround (bat) {
+    let batType = getBatType(bat);
+    let ld = getLumDistance(bat,batType);
+    zone.forEach(function(tile) {
+        let distance = calcDistance(bat.tileId,tile.id);
+        if (distance <= ld) {
+            unDark(tile.id);
         }
     });
 };
@@ -1766,40 +1727,114 @@ function unDark(tileId) {
     }
 };
 
-function unDarkVision(bat,batType) {
-    let lumDistance = 3;
-    if (playerInfos.comp.energ >= 1) {
-        lumDistance++;
+function calcVue(bat,batType) {
+    let hauteur = 1;
+    let terrain = getTerrain(bat);
+    if (terrain.scarp >= 2) {
+        hauteur = terrain.scarp;
     }
-    let hasPhare = false;
-    if (hasEquip(bat,['e-phare'])) {
-        if (batType.cat != 'infantry') {
-            hasPhare = true;
-        } else {
-            let batTile = getTile(bat);
-            if (batTile.terrain === 'M') {
-                hasPhare = true;
+    let tile = getTile(bat);
+    let infra = '';
+    if (tile.infra != undefined) {
+        infra = tile.infra;
+        if (tile.infra != 'Débris' && tile.infra != 'Terriers') {
+            if (tile.infra === 'Miradors' || tile.infra === 'Murailles') {
+                hauteur = hauteur+2;
+            } else {
+                hauteur = hauteur+1;
             }
-            if (batTile.infra != undefined) {
-                if (batTile.infra === 'Miradors' || batTile.infra === 'Murailles') {
+        }
+    }
+    if (batType.skills.includes('fly') || batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') {
+        hauteur = 5;
+    }
+    let vue = 0;
+    if (batType.crew >=1 || batType.skills.includes('robot') || batType.skills.includes('clone')) {
+        vue = 1;
+    }
+    if (batType.skills.includes('light')) {
+        if (!bat.tags.includes('camo')) {
+            vue = 2;
+        }
+    }
+    if (batType.skills.includes('flash') || hasEquip(bat,['e-flash']) || bat.eq.includes('kit-') || infra === 'Miradors' || infra === 'Murailles') {
+        if (!bat.tags.includes('camo')) {
+            if (hauteur < 2) {
+                hauteur = 2;
+            }
+            vue = 3;
+        }
+    }
+    if (batType.skills.includes('phare') || batType.skills.includes('bigflash') || hasEquip(bat,['e-phare'])) {
+        if (hauteur < 3) {
+            hauteur = 3;
+        }
+        vue = 3;
+    }
+    if (vue > hauteur) {
+        vue = hauteur;
+    }
+    return vue;
+};
+
+function getLumDistance(bat,batType) {
+    let lumDistance = 1;
+    if (!bat.tags.includes('camo')) {
+        let scarpBonus = 0;
+        let batTile = getTile(bat);
+        if (batTile.terrain === 'M') {
+            scarpBonus = 2;
+        } else if (batTile.terrain === 'H' || batType.skills.includes('fly')) {
+            scarpBonus = 1;
+        }
+        if (batType.skills.includes('flash') || hasEquip(bat,['e-flash']) || bat.eq.includes('kit-')) {
+            lumDistance = 2+scarpBonus;
+        } else {
+            lumDistance = 1+Math.ceil(scarpBonus/2);
+        }
+        if (batType.skills.includes('phare') || batType.skills.includes('bigflash') || hasEquip(bat,['e-phare'])) {
+            lumDistance = 3+scarpBonus;
+            if (playerInfos.comp.energ >= 1) {
+                lumDistance++;
+            }
+            let hasPhare = false;
+            let onMir = false;
+            if (hasEquip(bat,['e-phare'])) {
+                if (batType.cat != 'infantry') {
                     hasPhare = true;
+                } else {
+                    if (scarpBonus >= 1) {
+                        hasPhare = true;
+                    }
+                    if (batTile.infra != undefined) {
+                        if (batTile.infra === 'Miradors' || batTile.infra === 'Murailles') {
+                            hasPhare = true;
+                            onMir = true;
+                        }
+                    }
+                }
+            }
+            if (batType.skills.includes('phare') || hasPhare) {
+                if (batType.skills.includes('phare')) {
+                    lumDistance++;
+                }
+                if (playerInfos.comp.energ >= 2 && playerInfos.comp.det >= 2) {
+                    lumDistance++;
+                }
+                if (playerInfos.comp.energ >= 3 && playerInfos.comp.det >= 4) {
+                    lumDistance++;
+                }
+                if (onMir) {
+                    lumDistance++;
                 }
             }
         }
     }
-    if (batType.skills.includes('phare') || hasPhare) {
-        lumDistance++;
-        if (playerInfos.comp.energ >= 2 && playerInfos.comp.det >= 2) {
-            lumDistance++;
-        }
-        if (playerInfos.comp.energ >= 3 && playerInfos.comp.det >= 4) {
-            lumDistance++;
-        }
-    }
-    if (bat.tags.includes('camo')) {
-        hasPhare = false;
-        lumDistance = 0;
-    }
+    return lumDistance;
+};
+
+function unDarkVision(bat,batType) {
+    let lumDistance = getLumDistance(bat,batType);
     let radarDistance = 0;
     let hasRadar = false;
     if (batType.skills.includes('radar') || hasEquip(bat,['e-radar'])) {

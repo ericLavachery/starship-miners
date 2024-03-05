@@ -702,6 +702,9 @@ hr.craft {
     border-radius: 8px;
     position: absolute;
 }
+/* .pUnitsNoPrefab,.pUnits,.pUnitsFortif,.pUnitsCamo,.pUnitsCamoFortif {
+    filter: sepia(100%) saturate(150%) hue-rotate(180deg) brightness(120%) contrast(120%);
+} */
 .pUnitsNoPrefab {
     background-color: rgba(255, 255, 255, 0.5);
     border-style: solid;

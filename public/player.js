@@ -3457,9 +3457,7 @@ function calcCompPoints(nextGangLevel) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 12) {
                 theCompPoints = 2;
-            } else if (nextGangLevel === 14) {
-                theCompPoints = 2;
-            } else if (nextGangLevel === 16) {
+            } else if (nextGangLevel === 15) {
                 theCompPoints = 2;
             } else if (nextGangLevel === 18) {
                 theCompPoints = 2;

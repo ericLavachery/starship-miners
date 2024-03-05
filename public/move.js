@@ -373,7 +373,7 @@ function moveSelectedBat(tileId,free,jump) {
     }
     camoReCheck(0);
     if (zone[0].dark && activeTurn === 'player') {
-        undarkAround(selectedBat,false);
+        undarkFullAround(selectedBat,false);
     }
     tileSelect(selectedBat);
     if (selectedBat.team != 'aliens' && zone[0].planet === 'Horst') {
