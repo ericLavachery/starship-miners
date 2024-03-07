@@ -944,9 +944,11 @@ function goDrug(apCost,drugName) {
             } else {
                 ravitBat.tags.push('dU');
                 if (rand.rand(1,2) === 1) {
-                    if (!ravitBatType.skills.includes('robot') || hasEquip(ravitBat,['g2ai'])) {
+                    if (mayXP(ravitBat,ravitBatType)) {
                         ravitBat.xp = ravitBat.xp+1;
                     }
+                    // if (!ravitBatType.skills.includes('robot') || hasEquip(ravitBat,['g2ai'])) {
+                    // }
                 }
                 // console.log('nosel');
             }

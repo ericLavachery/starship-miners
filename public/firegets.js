@@ -962,6 +962,20 @@ function addBodies(bat,batType,cits) {
     }
 };
 
+function mayXP(bat,batType) {
+    let xp = true;
+    if (bat.tags.includes('nopilots')) {
+        xp = false;
+    } else if (batType.skills.includes('robot') && noEquip(bat,['g2ai'])) {
+        xp = false;
+    } else if (batType.crew === 0) {
+        if (noEquip(bat,['w2-autopistol','w3-autopistol','w2-autoriffle','w2-autogun']) && !batType.skills.includes('roboxp')) {
+            xp = false;
+        }
+    }
+    return xp;
+};
+
 function newAlienKilled(batType,tileId,onTurnEnd) {
     if (!isStartZone) {
         if (batType.cat === 'aliens') {
@@ -975,10 +989,12 @@ function newAlienKilled(batType,tileId,onTurnEnd) {
                 if (xpBonus >= 1) {
                     if (Object.keys(selectedBat).length >= 1) {
                         if (selectedBat.team === 'player') {
-                            if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
+                            if (mayXP(selectedBat,selectedBatType)) {
                                 selectedBat.xp = selectedBat.xp+xpBonus;
                                 selectedBatArrayUpdate();
                             }
+                            // if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
+                            // }
                         }
                     }
                     bataillons.forEach(function(bat) {
@@ -986,9 +1002,13 @@ function newAlienKilled(batType,tileId,onTurnEnd) {
                             let distance = calcDistance(tileId,bat.tileId);
                             let batType = getBatType(bat);
                             if (distance <= 5) {
-                                if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
+                                if (mayXP(bat,batType)) {
                                     bat.xp = bat.xp+xpBonus;
                                 }
+                                // if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
+                                //     if (batType.crew >= 1 && !bat.tags.includes('nopilots')) {
+                                //     }
+                                // }
                             }
                         }
                     });

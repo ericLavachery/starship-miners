@@ -523,7 +523,7 @@ function nextTurnEnd() {
             }
             // CAMP ENTRAINEMENT
             if (playerInfos.bldList.includes('Camp d\'entraînement')) {
-                if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
+                if (mayXP(bat,batType)) {
                     if (bat.loc === "trans" && campIds.includes(bat.locId)) {
                         bat.xp = bat.xp+1;
                     } else {
@@ -532,6 +532,8 @@ function nextTurnEnd() {
                         }
                     }
                 }
+                // if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
+                // }
             }
             deFog(bat,batType);
             bat.apLeft = Math.ceil(bat.apLeft);
@@ -639,7 +641,7 @@ function nextTurnEnd() {
                 bat.apLeft = 1;
             }
             if (landerTileId >= 0) {
-                if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
+                if (mayXP(bat,batType)) {
                     let distFromLander = calcDistance(bat.tileId,landerTileId);
                     if (distFromLander >= 17) {
                         bat.xp = bat.xp+0.3;
@@ -652,6 +654,8 @@ function nextTurnEnd() {
                         getHuntingRes(bat,batType);
                     }
                 }
+                // if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
+                // }
             }
             if (noStuck && batType.maxSalvo <= 2) {
                 bat.salvoLeft = 0;

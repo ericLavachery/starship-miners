@@ -325,9 +325,11 @@ function goRavit(apCost) {
             // xp
             if (biggestRavit < 999) {
                 if (ravitBat.id != selectedBat.id) {
-                    if (!ravitBatType.skills.includes('robot') || hasEquip(ravitBat,['g2ai'])) {
+                    if (mayXP(ravitBat,ravitBatType)) {
                         ravitBat.xp = ravitBat.xp+1;
                     }
+                    // if (!ravitBatType.skills.includes('robot') || hasEquip(ravitBat,['g2ai'])) {
+                    // }
                 }
             }
             let numAmmo = 0;

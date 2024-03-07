@@ -457,9 +457,11 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
     // xpGain = Math.round(xpGain*100)/100;
     xpGain = xpGain.toFixedNumber(2);
     if (!inBld) {
-        if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
+        if (mayXP(selectedBat,selectedBatType)) {
             selectedBat.xp = selectedBat.xp+xpGain;
         }
+        // if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
+        // }
         selectedBat.apLeft = selectedBat.apLeft-totalAPCost;
         // tagDelete(selectedBat,'mining');
         if (selectedBatType.cat != 'buildings' && !selectedBatType.skills.includes('transorbital') && !selectedBatType.skills.includes('freeshot')) {
@@ -468,9 +470,11 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
         doneAction(selectedBat);
         selectedBatArrayUpdate();
     } else {
-        if (!medicBatType.skills.includes('robot') || hasEquip(medicBat,['g2ai'])) {
+        if (mayXP(medicBat,medicBatType)) {
             medicBat.xp = medicBat.xp+xpGain;
         }
+        // if (!medicBatType.skills.includes('robot') || hasEquip(medicBat,['g2ai'])) {
+        // }
         medicBat.apLeft = medicBat.apLeft-totalAPCost;
     }
     showBatInfos(selectedBat);

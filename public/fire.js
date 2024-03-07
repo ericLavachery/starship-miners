@@ -1564,7 +1564,7 @@ function attack(melee,init) {
         $("#unitInfos").css("display","none");
     } else {
         if (squadsOut >= 1 && activeTurn == 'player') {
-            if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
+            if (mayXP(selectedBat,selectedBatType)) {
                 selectedBat.xp = selectedBat.xp+xpFactor;
                 if (targetBatType.skills.includes('xpplus')) {
                     selectedBat.xp = selectedBat.xp+(xpFactor*1);
@@ -1576,6 +1576,8 @@ function attack(melee,init) {
                     selectedBat.xp = selectedBat.xp+(xpFactor*5);
                 }
             }
+            // if (!selectedBatType.skills.includes('robot') || hasEquip(selectedBat,['g2ai'])) {
+            // }
         }
     }
     doneAction(selectedBat);
@@ -2484,7 +2486,7 @@ function defense(melee,init) {
         targetBat.salvoLeft = targetBat.salvoLeft-1;
     }
     if (squadsOut >= 1 && activeTurn === 'aliens') {
-        if (!targetBatType.skills.includes('robot') || hasEquip(targetBat,['g2ai'])) {
+        if (mayXP(targetBat,targetBatType)) {
             targetBat.xp = targetBat.xp+xpFactor;
             if (selectedBatType.skills.includes('xpplus')) {
                 targetBat.xp = targetBat.xp+(xpFactor*1);
@@ -2496,6 +2498,8 @@ function defense(melee,init) {
                 targetBat.xp = targetBat.xp+(xpFactor*5);
             }
         }
+        // if (!targetBatType.skills.includes('robot') || hasEquip(targetBat,['g2ai'])) {
+        // }
     }
     // doneAction(targetBat);
     targetBatArrayUpdate();
