@@ -295,6 +295,23 @@ function checkMayOutInSoute(bat,batType) {
     return mayOut;
 };
 
+function planetColours() {
+    if (zone[0].planet === 'Dom') {
+
+    } else if (zone[0].planet === 'Sarak') {
+
+    } else if (zone[0].planet === 'Gehenna') {
+        console.log('GEHENNA');
+        $(".pUnits").css(
+            "filter", "hue-rotate(75deg)"
+        )
+    } else if (zone[0].planet === 'Kzin') {
+
+    } else if (zone[0].planet === 'Horst') {
+
+    }
+}
+
 function checkMissions(markDone) {
     // à l'atterrissage sur une zone!
     let mTypeHere = getMissionType(zone[0].number,true);

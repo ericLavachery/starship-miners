@@ -1640,7 +1640,7 @@ function putBat(tileId,citoyens,xp,startTag,show,fuite,isStartBat) {
                 // console.log(aliens);
                 showAlien(newBat);
             }
-            if (conselUnit.cat === 'buildings') {
+            if (conselUnit.cat === 'buildings' && tile.infra != 'Crystal') {
                 delete tile.infra;
             } else if (conselUnit.cat === 'devices' && tile.infra === 'Débris') {
                 delete tile.infra;

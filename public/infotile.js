@@ -69,6 +69,15 @@ function showTileInfos(tileId) {
                 }
             }
         }
+        if (tile.crat != undefined) {
+            if (tile.crat) {
+                if (playerInfos.comp.ca >= 4) {
+                    $('#tileInfos').append('<span class="paramName cy" title="Le canon Dragonblob ne refrappe jamais là où il y a un cratère">Cratère</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue cy">Oui</span><br>');
+                } else {
+                    $('#tileInfos').append('<span class="paramName cy">Cratère</span><span class="paramIcon"><i class="fas fa-shoe-prints"></i></span><span class="paramValue cy">Oui</span><br>');
+                }
+            }
+        }
         // Ammo packs
         if (tile.ap != undefined) {
             if (tile.ap.includes('drg_')) {

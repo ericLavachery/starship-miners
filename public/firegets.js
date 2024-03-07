@@ -985,7 +985,7 @@ function newAlienKilled(batType,tileId,onTurnEnd) {
                         if (bat.loc === "zone" || bat.loc === "trans") {
                             let distance = calcDistance(tileId,bat.tileId);
                             let batType = getBatType(bat);
-                            if (distance <= 4 || xpBonus >= 25) {
+                            if (distance <= 5) {
                                 if (!batType.skills.includes('robot') || hasEquip(bat,['g2ai'])) {
                                     bat.xp = bat.xp+xpBonus;
                                 }

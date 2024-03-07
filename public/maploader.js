@@ -369,7 +369,7 @@ function showRes(tileId) {
         mapIndicators = mapIndicators+'<div class="ruins"><img style="opacity:0.8;" src="/static/img/units/debris.png"></div>';
     }
     if (tile.infra === 'Crystal') {
-        mapIndicators = mapIndicators+'<div class="infraz"><img src="/static/img/units/crystal.png"></div>';
+        mapIndicators = mapIndicators+'<div class="cryz"><img src="/static/img/units/crystal.png"></div>';
     }
     if (view) {
         if (tile.web) {
@@ -385,7 +385,11 @@ function showRes(tileId) {
             }
             mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/ecto'+webNum+'.png"></div>';
         } else if (tile.crat) {
-            mapIndicators = mapIndicators+'<div class="ruins"><img src="/static/img/units/crater.png"></div>';
+            if (tile.terrain === 'W' || tile.terrain === 'L' || tile.terrain === 'R') {
+                mapIndicators = mapIndicators+'<div class="ruins" style="opacity:0.3;"><img src="/static/img/units/crater.png"></div>';
+            } else {
+                mapIndicators = mapIndicators+'<div class="ruins" style="opacity:0.8;"><img src="/static/img/units/crater.png"></div>';
+            }
         } else if (tile.moist) {
             let webNum = tile.seed;
             if (webNum > 6) {
@@ -544,6 +548,15 @@ function showAlien(bat) {
     let unitsLeft = bat.squadsLeft*batType.squadSize;
     $('#b'+bat.tileId).empty();
     let alienClass = 'aUnits';
+    if (zone[0].planet === 'Sarak') {
+        alienClass = 'aUnits';
+    } else if (zone[0].planet === 'Gehenna') {
+        alienClass = 'aUnitsPurple';
+    } else if (zone[0].planet === 'Kzin') {
+        alienClass = 'aUnitsYellow';
+    } else if (zone[0].planet === 'Horst') {
+        alienClass = 'aUnitsYellow';
+    }
     if (batType.kind === 'game') {
         alienClass = 'gUnits';
     }
@@ -646,7 +659,7 @@ function showAlien(bat) {
     } else if (batType.kind === 'game') {
         $('#b'+bat.tileId).append('<div class="gUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64" title="'+batShowedNum+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/gvet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="9"></div>'+resHere);
     } else {
-        $('#b'+bat.tileId).append('<div class="aUnits"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64" title="'+batShowedNum+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="9"></div>'+resHere);
+        $('#b'+bat.tileId).append('<div class="'+alienClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" width="64" title="'+batShowedNum+' '+batShowedName+tagz+'"></div><div class="aliInfos"><img src="/static/img/avet2.png" width="15"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="9"></div>'+resHere);
     }
 };
 
