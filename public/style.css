@@ -585,7 +585,7 @@ hr.craft {
     margin-left: 0px;
     margin-top: 0px;
     z-index: -9;
-    filter: sepia(100%) saturate(85%) hue-rotate(180deg) brightness(100%) contrast(100%);
+    filter: sepia(100%) saturate(100%) hue-rotate(180deg) brightness(100%) contrast(100%);
 }
 .cryz {
     position: absolute;
@@ -599,7 +599,7 @@ hr.craft {
     margin-left: 0px;
     margin-top: 0px;
     z-index: -10;
-    filter: sepia(100%) saturate(85%) hue-rotate(180deg) brightness(140%) contrast(130%);
+    filter: sepia(100%) saturate(100%) hue-rotate(180deg) brightness(140%) contrast(130%);
 }
 .hrotate {
     filter: hue-rotate(200deg);
@@ -729,7 +729,7 @@ hr.craft {
     border-color: rgb(185, 0, 0);
     border-radius: 8px;
     position: absolute;
-    filter: sepia(100%) saturate(170%) hue-rotate(310deg) brightness(120%) contrast(120%);
+    filter: sepia(100%) saturate(300%) hue-rotate(310deg) brightness(125%) contrast(120%);
 }
 .aUnitsYellow {
     background-color: rgba(255, 253, 0, 0.3);
@@ -738,7 +738,7 @@ hr.craft {
     border-color: rgb(185, 0, 0);
     border-radius: 8px;
     position: absolute;
-    filter: sepia(100%) saturate(170%) hue-rotate(10deg) brightness(120%) contrast(120%);
+    filter: sepia(100%) saturate(300%) hue-rotate(10deg) brightness(125%) contrast(120%);
 }
 .aUnitsPurple {
     background-color: rgba(255, 253, 0, 0.3);
@@ -747,7 +747,7 @@ hr.craft {
     border-color: rgb(185, 0, 0);
     border-radius: 8px;
     position: absolute;
-    filter: sepia(100%) saturate(170%) hue-rotate(270deg) brightness(120%) contrast(120%);
+    filter: sepia(100%) saturate(300%) hue-rotate(250deg) brightness(115%) contrast(120%);
 }
 .gUnits {
     background-color: rgba(89, 255, 0, 0.25);
@@ -756,10 +756,10 @@ hr.craft {
     border-color: rgba(28, 82, 0, 1);
     border-radius: 8px;
     position: absolute;
-    filter: sepia(100%) saturate(150%) hue-rotate(70deg) brightness(120%) contrast(120%);
+    filter: sepia(100%) saturate(200%) hue-rotate(70deg) brightness(110%) contrast(120%);
 }
 .pUnitsNoPrefab,.pUnits,.pUnitsFortif,.pUnitsCamo,.pUnitsCamoFortif {
-    filter: sepia(100%) saturate(150%) hue-rotate(180deg) brightness(120%) contrast(120%);
+    filter: sepia(100%) saturate(200%) hue-rotate(180deg) brightness(120%) contrast(120%);
 }
 .pUnitsNoPrefab {
     background-color: rgba(255, 255, 255, 0.5);

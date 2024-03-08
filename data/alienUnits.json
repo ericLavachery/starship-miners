@@ -1109,7 +1109,7 @@
         "size":2,
         "speed":6,
         "stealth":0,
-        "ap":11,
+        "ap":10,
         "maxSalvo":1,
         "weapon":{
             "name":"Dard",
@@ -1827,7 +1827,7 @@
         "size":2.5,
         "speed":3,
         "stealth":0,
-        "ap":8,
+        "ap":7,
         "maxSalvo":1,
         "weapon":{
             "name":"Décharge électrique",

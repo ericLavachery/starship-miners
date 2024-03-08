@@ -110,15 +110,12 @@ function combat(melee) {
     } else {
         centerMap();
     }
-    let selectedBatUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
-    let targetBatUnits = targetBat.squadsLeft*targetBatType.squadSize;
     $('#report').empty('');
-    $('#report').append('<span class="report or">'+selectedBatUnits+' '+selectedBatName+'</span> <span class="report">vs</span> <span class="report or">'+targetBatUnits+' '+targetBatName+'</span><br>');
     let distance = calcDistance(selectedBat.tileId,targetBat.tileId);
     // console.log('distance '+distance);
     weaponSelectRiposte(distance);
     // console.log(targetWeap);
-    $('#report').append('<span class="report">distance '+distance+'</span><br>');
+    // $('#report').append('<span class="report">distance '+distance+'</span><br>');
     // ammo
     let baseAmmo = 99;
     let ammoLeft = 99;
@@ -147,13 +144,15 @@ function combat(melee) {
     if (targetBat.tags.includes('hero') && targetBatType.skills.includes('herorip')) {
         negSalvo = negSalvo-3;
     }
+    let aspeed = -1;
+    let dspeed = -1;
     if ((distance <= 3 || targetBatType.skills.includes('smartrip')) && targetWeap.range >= distance && ammoLeft >= 1 && !targetWeap.noDef && (targetBat.salvoLeft > negSalvo || targetBatType.skills.includes('infrip'))) {
         let realmOK = checkRealm();
         if (realmOK) {
             riposte = true;
-            let aspeed = getInitiative(selectedBat,selectedBatType,selectedWeap,targetBat,targetBatType,targetWeap,distance,true);
-            let dspeed = getInitiative(targetBat,targetBatType,targetWeap,selectedBat,selectedBatType,selectedWeap,distance,false);
-            $('#report').append('<span class="report">initiative '+aspeed+' vs '+dspeed+'</span><br>');
+            aspeed = getInitiative(selectedBat,selectedBatType,selectedWeap,targetBat,targetBatType,targetWeap,distance,true);
+            dspeed = getInitiative(targetBat,targetBatType,targetWeap,selectedBat,selectedBatType,selectedWeap,distance,false);
+            // $('#report').append('<span class="report">initiative '+aspeed+' vs '+dspeed+'</span><br>');
             if (dspeed > aspeed) {
                 initiative = false;
             }
@@ -185,7 +184,7 @@ function combat(melee) {
                 soundBat = selectedBat;
                 shotSound(soundWeap,soundBat);
             }
-            attack(melee,true);
+            attack(melee,true,aspeed,dspeed);
             minimumFireAP = minFireAP;
             if (targetBatType.skills.includes('guerrilla')) {
                 minimumFireAP = minFireAP-7;
@@ -194,7 +193,7 @@ function combat(melee) {
                 minimumFireAP = -999;
             }
             if ((defAlive && attAlive && targetBat.apLeft > minimumFireAP) || targetWeap.ammo.includes('mine-')) {
-                defense(melee,false);
+                defense(melee,false,aspeed,dspeed);
                 if (!isFFW) {
                     soundWeap = targetWeap;
                     soundBat = targetBat;
@@ -224,7 +223,7 @@ function combat(melee) {
                 minimumFireAP = -999;
             }
             if (targetBat.apLeft > minimumFireAP) {
-                defense(melee,true);
+                defense(melee,true,aspeed,dspeed);
                 if (!isFFW) {
                     soundWeap = targetWeap;
                     soundBat = targetBat;
@@ -240,7 +239,7 @@ function combat(melee) {
                     minimumFireAP = -999;
                 }
                 if (selectedBat.apLeft > minimumFireAP) {
-                    attack(melee,false);
+                    attack(melee,false,aspeed,dspeed);
                     if (!isFFW) {
                         soundWeap = selectedWeap;
                         soundBat = selectedBat;
@@ -270,9 +269,9 @@ function combat(melee) {
             shotSound(selectedWeap,selectedBat);
         }
         if (rand.rand(1,2) === 1) {
-            attack(melee,true);
+            attack(melee,true,aspeed,dspeed);
         } else {
-            attack(melee,false);
+            attack(melee,false,aspeed,dspeed);
         }
         combatReportPics(targetBat.team);
         if (!isFFW) {
@@ -293,7 +292,7 @@ function combat(melee) {
     }, 1500);
 };
 
-function attack(melee,init) {
+function attack(melee,init,aspeed,dspeed) {
     // console.log('Attaque ->');
     // console.log(selectedWeap);
     let wTag = 't'+selectedWeap.num;
@@ -314,7 +313,9 @@ function attack(melee,init) {
         targetBat.apLeft = 3-targetBat.ap;
     }
     combatReportPics(selectedBat.team);
-    $('#report').append('<span class="report or">'+selectedBatName+' ('+selectedWeap.name+')</span><br>');
+    let selectedBatUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
+    $('#report').append('<span class="report or">'+selectedBatUnits+' '+selectedBatName+'</span><br>');
+    $('#report').append('<span class="report"><span class="vert">'+selectedWeap.name+'</span> (init '+aspeed+')</span><br>');
     let delugeTileId = targetBat.tileId;
     // Dans l'eau
     let terrain = getTerrain(targetBat);
@@ -1612,7 +1613,7 @@ function attack(melee,init) {
     }, 1500);
 };
 
-function defense(melee,init) {
+function defense(melee,init,aspeed,dspeed) {
     // console.log('Défense ->');
     // console.log(targetWeap);
     let wTag = 't'+targetWeap.num;
@@ -1629,7 +1630,9 @@ function defense(melee,init) {
         xpFactor = 0.2;
     }
     combatReportPics(targetBat.team);
-    $('#report').append('<span class="report or">'+targetBatName+' ('+targetWeap.name+')</span><br>');
+    let targetBatUnits = targetBat.squadsLeft*targetBatType.squadSize;
+    $('#report').append('<span class="report or">'+targetBatUnits+' '+targetBatName+'</span><br>');
+    $('#report').append('<span class="report"><span class="vert">'+targetWeap.name+'</span> (init '+dspeed+')</span><br>');
     let delugeTileId = selectedBat.tileId;
     // Dans l'eau
     let terrain = getTerrain(selectedBat);
