@@ -695,6 +695,33 @@ hr.craft {
     border-color: #000000;
     border-radius: 32px;
 }
+.aUnitsReport {
+    background-color: rgba(255, 253, 0, 0.3);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(185, 0, 0);
+    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+.gUnitsReport {
+    background-color: rgba(89, 255, 0, 0.25);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(235, 232, 0, 1);
+    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+.pUnitsReport {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0085ff;
+    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
 .aUnits {
     background-color: rgba(255, 253, 0, 0.3);
     border-style: solid;

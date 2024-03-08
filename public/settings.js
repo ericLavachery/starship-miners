@@ -129,7 +129,7 @@ let visibleHunts = [];
 let visibleEggs = [];
 // let prepaBld = {}; dans playerInfos.prepaLand
 let vetBonus = {
-    rof: 6,
+    rof: 8,
     initiative: 10,
     ap: 1,
     stealth: 1.4

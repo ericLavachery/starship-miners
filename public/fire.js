@@ -206,6 +206,7 @@ function combat(melee) {
                     }, 200);
                 }
             } else {
+                combatReportPics(targetBat.team);
                 if (!isFFW) {
                     setTimeout(function (){
                         if (activeTurn == 'player') {blockMe(false);}
@@ -254,6 +255,7 @@ function combat(melee) {
                     if (activeTurn == 'player') {blockMe(false);}
                 }
             } else {
+                combatReportPics(selectedBat.team);
                 if (!isFFW) {
                     setTimeout(function (){
                         if (activeTurn == 'player') {blockMe(false);}
@@ -272,6 +274,7 @@ function combat(melee) {
         } else {
             attack(melee,false);
         }
+        combatReportPics(targetBat.team);
         if (!isFFW) {
             setTimeout(function (){
                 if (activeTurn == 'player') {blockMe(false);}
@@ -310,6 +313,7 @@ function attack(melee,init) {
     if (targetBatType.cat != 'buildings' && targetBat.tags.includes('construction') && targetBat.apLeft <= 2-targetBat.ap) {
         targetBat.apLeft = 3-targetBat.ap;
     }
+    combatReportPics(selectedBat.team);
     $('#report').append('<span class="report or">'+selectedBatName+' ('+selectedWeap.name+')</span><br>');
     let delugeTileId = targetBat.tileId;
     // Dans l'eau
@@ -1624,6 +1628,7 @@ function defense(melee,init) {
     if (selectedBatType.maxSalvo >= 5) {
         xpFactor = 0.2;
     }
+    combatReportPics(targetBat.team);
     $('#report').append('<span class="report or">'+targetBatName+' ('+targetWeap.name+')</span><br>');
     let delugeTileId = selectedBat.tileId;
     // Dans l'eau

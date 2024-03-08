@@ -175,16 +175,12 @@ function checkLastRavit(myBat) {
             }
         }
     }
-    let gangBonus = 0;
-    if (playerInfos.gang === 'detruas') {
-        gangBonus = 1;
-    }
     if (myBatType.cat === 'buildings') {
-        maxRavit = maxRavit*(4+gangBonus);
+        maxRavit = maxRavit*4;
     } else if (myBatType.cat === 'devices') {
-        maxRavit = maxRavit*(4+gangBonus);
+        maxRavit = maxRavit*4;
     } else {
-        maxRavit = maxRavit*(2+gangBonus);
+        maxRavit = maxRavit*3;
     }
     maxRavit = Math.ceil(Math.sqrt(maxRavit))*mrFactor;
     if (maxRavit > 30) {

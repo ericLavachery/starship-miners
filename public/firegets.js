@@ -1077,7 +1077,7 @@ function transDestroy(tileId,deadId,isFlying) {
             bat.tileId = crashEscapeTile;
             bat.oldTileId = crashEscapeTile;
             if (isFlying) {
-                bat.squadsLeft = bat.squadsLeft-2;
+                bat.squadsLeft = bat.squadsLeft-3;
                 if (bat.squadsLeft < 1) {
                     bat.squadsLeft = 1;
                 }
@@ -4132,4 +4132,43 @@ function checkFireControl(myBat,myBatType) {
         }
     }
     return fireControl;
+};
+
+function combatReportPics(showTeam) {
+    let alienBat = targetBat;
+    let alienBatType = targetBatType;
+    let playerBat = selectedBat;
+    let playerBatType = selectedBatType;
+    if (selectedBat.team === 'aliens') {
+        alienBat = selectedBat;
+        alienBatType = selectedBatType;
+        playerBat = targetBat;
+        playerBatType = targetBatType;
+    }
+    // ALIEN
+    if (showTeam === 'aliens') {
+        let alienClass = 'aUnitsReport';
+        if (alienBatType.kind === 'game') {
+            alienClass = 'gUnitsReport';
+        }
+        let alienPic = alienBatType.pic;
+        if (playerInfos.comp.ca >= 1) {
+            if (alienBatType.name === 'Coque' || alienBatType.name === 'Oeuf voilé' || alienBatType.name === 'Oeuf' || alienBatType.name === 'Vomissure') {
+                if (alienBat.tags.includes('morph')) {
+                    alienPic = alienPic+'trans';
+                }
+            }
+        }
+        if (alienBatType.name === 'Coque' || alienBatType.name === 'Oeuf') {
+            if (alienBat.tags.includes('permashield')) {
+                alienPic = alienPic+'-hard';
+            }
+        }
+        $('#report').append('<img class="'+alienClass+'" src="/static/img/units/aliens/'+alienPic+'.png" width="64">');
+    }
+    if (showTeam === 'player') {
+        let playerPic = getBatPic(playerBat,playerBatType);
+        $('#report').append('<img class="pUnitsReport" src="/static/img/units/'+playerBatType.cat+'/'+playerPic+'.png" width="64">');
+    }
+    $('#report').append('<br>');
 };

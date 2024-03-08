@@ -1007,23 +1007,23 @@ function playerSkillsUTChanges() {
             unit.armor = unit.armor+playerInfos.comp.def-1;
             if (playerInfos.comp.def >= 3) {
                 if (Object.keys(unit.weapon).length >= 3) {
-                    unit.weapon.rof = Math.ceil(unit.weapon.rof*1.5);
+                    unit.weapon.rof = Math.ceil(unit.weapon.rof*1.25);
                 }
                 if (Object.keys(unit.weapon2).length >= 3) {
-                    unit.weapon2.rof = Math.ceil(unit.weapon2.rof*1.5);
+                    unit.weapon2.rof = Math.ceil(unit.weapon2.rof*1.25);
                 }
             }
         }
         if (playerInfos.comp.def >= 2 && (unit.cat === 'buildings' || unit.cat === 'devices')) {
             if (Object.keys(unit.weapon).length >= 3) {
-                unit.weapon.rof = Math.ceil(unit.weapon.rof*(defComp+7)/7);
+                unit.weapon.rof = Math.ceil(unit.weapon.rof*(defComp+10)/10);
             }
             if (Object.keys(unit.weapon2).length >= 3) {
-                unit.weapon2.rof = Math.ceil(unit.weapon2.rof*(defComp+7)/7);
+                unit.weapon2.rof = Math.ceil(unit.weapon2.rof*(defComp+10)/10);
             }
             if (unit.weapon3 != undefined) {
                 if (Object.keys(unit.weapon3).length >= 3) {
-                    unit.weapon3.rof = Math.ceil(unit.weapon3.rof*(defComp+7)/7);
+                    unit.weapon3.rof = Math.ceil(unit.weapon3.rof*(defComp+10)/10);
                 }
             }
         }

@@ -2034,18 +2034,21 @@ function checkDeath(bat,batType,gain) {
     if (bat.squadsLeft <= 0) {
         let deadId = bat.id;
         let tileId = bat.tileId;
+        let isFlying = false;
+        if (batType.skills.includes('fly')) {
+            isFlying = true;
+        }
         let isNoPrefab = false;
         if (bat.tags.includes('noprefab')) {
             isNoPrefab = true;
         }
-        let batType = getBatType(bat);
         if (bat.team == 'player') {
             if (!batType.skills.includes('nodeathcount') && !bat.tags.includes('nopilots')) {
                 playerInfos.unitsLost = playerInfos.unitsLost+1;
                 playerInfos.deadBats.push(batType.name);
                 playMusic('rip',true);
             }
-            transDestroy(deadId,tileId);
+            transDestroy(deadId,tileId,isFlying);
             if (!bat.tags.includes('nopilots')) {
                 saveCrew(batType,deadId,tileId,isNoPrefab);
             }
