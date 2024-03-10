@@ -3099,12 +3099,12 @@
         "id":226,
         "name":"Camp de rééducation",
         "pName":"C. rééducation",
-        "bldReq":["Soute","Salle de sport"],
-        "compReq":{"ordre":2},
+        "bldReq":["Soute","Salle de sport","Hôpital"],
+        "compReq":{"ordre":2,"med":1},
         "costs":{"Compo1":240,"Compo2":90,"Eau":100,"Drogues":400,"Scrap":300,"Calcium":50,"Or":200,"Zinc":200,"Bore":200,"Chlore":50},
         "fabTime":200,
         "slots":3,
-        "info":"Ce bâtiment transforme des criminels en citoyens."
+        "info":"Ce bâtiment réhabilite vos criminels."
     },
     {
         "id":227,

@@ -4134,6 +4134,14 @@ function checkFireControl(myBat,myBatType) {
     return fireControl;
 };
 
+function isStunAmmo(ammoName) {
+    let stun = false;
+    if (ammoName.includes('poraz') || ammoName.includes('disco') || ammoName.includes('flash') || ammoName.includes('psionics') || ammoName === 'gaz-pluto' || ammoName === 'gaz-uridium' || ammoName === 'autodes-gaz' || ammoName.includes('freeze') || ammoName.includes('dunium')) {
+        stun = true;
+    }
+    return stun;
+};
+
 function combatReportPics(showTeam) {
     let alienBat = targetBat;
     let alienBatType = targetBatType;

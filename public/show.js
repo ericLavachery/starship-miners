@@ -223,6 +223,9 @@ function showAmmoInfo(ammoName,withReqs,withCosts,weapName) {
     } else if (ammo.apweb) {
         ammoInfo = ammoInfo+'&#9889; Entrave ';
     }
+    if (isStunAmmo(ammo.name)) {
+        ammoInfo = ammoInfo+'&#9889; Etourdissement ';
+    }
     if (ammo.name.includes('plastanium')) {
         ammoInfo = ammoInfo+'&#9889; Dégâts x2 dans l\'eau ';
     }

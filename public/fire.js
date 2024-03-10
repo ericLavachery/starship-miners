@@ -433,6 +433,11 @@ function attack(melee,init,aspeed,dspeed) {
             // console.log('bonus ROF embuscade');
         }
     }
+    // stun
+    if (selectedBat.tags.includes('stun')) {
+        shots = Math.ceil(shots*0.75);
+        attFactor = Math.ceil(attFactor*0.75);
+    }
     // tirailleur
     if (selectedBatType.skills.includes('tirailleur') && selectedBat.oldTileId != selectedBat.tileId && !selectedBat.tags.includes('datt') && !selectedWeap.isArt) {
         let guerBonus = calcTiraBonus(selectedBatType);
@@ -1308,12 +1313,10 @@ function attack(melee,init,aspeed,dspeed) {
     }
     // Stun
     if (!targetBat.tags.includes('stun')) {
-        if (!selectedWeap.ammo.includes('jello')) {
-            if (selectedWeap.ammo.includes('poraz') || selectedWeap.ammo.includes('disco') || selectedWeap.ammo.includes('psionics') || selectedWeap.ammo === 'gaz' || selectedWeap.ammo === 'autodes-gaz' || selectedWeap.ammo.includes('gaz-') || selectedWeap.ammo.includes('freeze')) {
-                if (totalDamage >= 10 || selectedWeap.ammo.includes('disco') || selectedWeap.ammo.includes('psionics')) {
-                    targetBat.tags.push('stun');
-                    $('#report').append('<span class="report rose">Stun<br></span>');
-                }
+        if (isStunAmmo(selectedWeap.ammo)) {
+            if (totalDamage >= 10 || selectedWeap.ammo.includes('disco') || selectedWeap.ammo.includes('psionics') || selectedWeap.ammo.includes('flash') || selectedWeap.ammo === 'dunium' || selectedWeap.ammo === 'ac-dunium') {
+                targetBat.tags.push('stun');
+                $('#report').append('<span class="report rose">Stun<br></span>');
             }
         }
     }
@@ -1687,6 +1690,11 @@ function defense(melee,init,aspeed,dspeed) {
     if (selectedWeap.noGrip && targetWeap.range === 0 && targetBatType.size >= 3) {
         shots = Math.ceil(shots/1.25);
         defFactor = Math.round(defFactor/1.25);
+    }
+    // stun
+    if (targetBat.tags.includes('stun')) {
+        shots = Math.ceil(shots*0.75);
+        defFactor = Math.ceil(defFactor*0.75);
     }
     // porcupine armor
     if ((selectedBat.prt === 'porcupine' || selectedBat.prt === 'blowfish') && targetWeap.range === 0) {
@@ -2364,12 +2372,10 @@ function defense(melee,init,aspeed,dspeed) {
     }
     // Stun
     if (!selectedBat.tags.includes('stun')) {
-        if (!targetWeap.ammo.includes('jello')) {
-            if (targetWeap.ammo.includes('poraz') || targetWeap.ammo.includes('disco') || targetWeap.ammo.includes('psionics') || targetWeap.ammo === 'gaz' || targetWeap.ammo === 'autodes-gaz' || targetWeap.ammo.includes('gaz-') || targetWeap.ammo.includes('freeze')) {
-                if (totalDamage >= 10 || targetWeap.ammo.includes('disco') || targetWeap.ammo.includes('psionics')) {
-                    selectedBat.tags.push('stun');
-                    $('#report').append('<span class="report rose">Stun<br></span>');
-                }
+        if (isStunAmmo(targetWeap.ammo)) {
+            if (totalDamage >= 10 || targetWeap.ammo.includes('disco') || targetWeap.ammo.includes('psionics') || targetWeap.ammo.includes('flash') || targetWeap.ammo === 'dunium' || targetWeap.ammo === 'ac-dunium') {
+                selectedBat.tags.push('stun');
+                $('#report').append('<span class="report rose">Stun<br></span>');
             }
         }
     }

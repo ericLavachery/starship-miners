@@ -1393,6 +1393,11 @@ function checkPlaceLander(myBat,myBatType,landerId) {
             deployInfo[1] = true;
         }
     }
+    if (myBatType.skills.includes('landerfab')) {
+        if (myLanderType.skills.includes('rescue')) {
+            deployInfo[1] = false;
+        }
+    }
     let batVolume = calcVolume(myBat,myBatType);
     let placeLeft = calcTransUnitsLeft(myLander,myLanderType);
     if (placeLeft+25 >= batVolume) {
