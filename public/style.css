@@ -758,6 +758,15 @@ hr.craft {
     position: absolute;
     filter: sepia(100%) saturate(200%) hue-rotate(70deg) brightness(110%) contrast(120%);
 }
+.pUnitsShow {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+    border-radius: 32px;
+    position: absolute;
+    filter: sepia(100%) saturate(200%) hue-rotate(120deg) brightness(120%) contrast(120%);
+}
 .pUnitsNoPrefab,.pUnits,.pUnitsFortif,.pUnitsCamo,.pUnitsCamoFortif {
     filter: sepia(100%) saturate(200%) hue-rotate(180deg) brightness(120%) contrast(120%);
 }

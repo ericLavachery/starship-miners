@@ -850,7 +850,7 @@ function warning(title,body,noHand,tileId,closeAll) {
     $('#warnings').append('<span class="warnings" id="warn'+warnNumber+'"><span class="or">'+title+'<br></span> '+body+'<br></span>');
     if (tileId != undefined) {
         if (tileId > -1) {
-            $('#warn'+warnNumber).append('<span class="warnings"><i class="fas fa-eye eyeLink klik" onclick="warnLink('+tileId+')"></i></span>');
+            $('#warn'+warnNumber).append('<span class="warnings"><i class="fas fa-eye eyeLink klik" onclick="warnLink('+tileId+',false)"></i></span>');
         }
     }
     if (!noHand) {
@@ -870,7 +870,16 @@ function warning(title,body,noHand,tileId,closeAll) {
     lastAlert = title;
 };
 
-function warnLink(tileId) {
+function showcaseThis(batTypeId) {
+    let batType = getBatTypeById(batTypeId);
+    showcaseBatType = batType.name;
+    showMap(zone,true);
+}
+
+function warnLink(tileId,showcase,batTypeId) {
+    if (showcase) {
+        showcaseThis(batTypeId);
+    }
     let linkBatId = -1;
     let linkBat = {};
     if (activeTurn === 'player') {

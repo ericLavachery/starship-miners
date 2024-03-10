@@ -465,12 +465,17 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     // MARQUEUR
     if (!playerInfos.onShip) {
         if (playerInfos.showedTiles.includes(tile.id)) {
-            $('#unitInfos').append('<button type="button" title="Effacer le marqueur" class="boutonGrisBis unitButtonsSmall" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-eraser"></i></button>');
+            $('#unitInfos').append('<button type="button" title="Effacer le marqueur de la carte" class="boutonGrisBis unitButtonsSmall" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-eraser"></i></button>');
             lineBreak = true;
         } else {
-            $('#unitInfos').append('<button type="button" title="Mettre un marqueur" class="boutonGrisBis unitButtonsSmall" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-map-pin"></i></button>');
+            $('#unitInfos').append('<button type="button" title="Mettre un marqueur sur la carte" class="boutonGrisBis unitButtonsSmall" onclick="toggleMark('+tile.id+',true,'+bat.id+')"><i class="fas fa-map-pin"></i></button>');
             lineBreak = true;
         }
+    }
+    // SHOWCASE
+    if (bat.type != showcaseBatType) {
+        $('#unitInfos').append('<button type="button" title="Mettre en valeur tous le bataillons de ce type" class="boutonGrisBis unitButtonsSmall ncy" onclick="showcaseThis('+batType.id+')"><i class="fas fa-lightbulb"></i></button>');
+        lineBreak = true;
     }
     // LIGNE 2 -----------------------------------------------------------------------------------------------------------------------------------
     if (lineBreak) {

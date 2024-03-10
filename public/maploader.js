@@ -663,6 +663,25 @@ function showAlien(bat) {
     }
 };
 
+function isShowcased(bat,batType) {
+    let showcase = false;
+    if (showcaseBatType.length >= 1) {
+        if (batType.name === showcaseBatType) {
+            showcase = true;
+        } else if (batType.skills.includes('transport')) {
+            if (bat.transIds.length >= 1) {
+                bat.transIds.forEach(function(inBatId) {
+                    let inBat = getBatById(inBatId);
+                    if (inBat.type === showcaseBatType) {
+                        showcase = true;
+                    }
+                });
+            }
+        }
+    }
+    return showcase;
+};
+
 function showBataillon(bat) {
     let batType = getBatType(bat);
     let nomComplet = bat.type;
@@ -719,6 +738,10 @@ function showBataillon(bat) {
                 uClass = 'pUnitsFortif';
             }
         }
+    }
+    let showcased = isShowcased(bat,batType);
+    if (showcased) {
+        uClass = 'pUnitsShow';
     }
     let tagz = ' ';
     if (mode === 'edit' || playerInfos.pseudo === 'Mapedit') {

@@ -1083,6 +1083,16 @@ function drugInstantBonus(drug,fromPack) {
     }
     // nitro instant bonus
     if (drug.name === 'nitro') {
+        if (selectedBatType.maxSalvo >= selectedBat.salvoLeft && selectedBatType.maxSalvo >= 3) {
+            // pas d'attaques en plus pour Dronistos & Drakos
+            let zeroAP = 3;
+            if (selectedBatType.skills.includes('guerrilla')) {
+                zeroAP = -4;
+            }
+            if (selectedBat.apLeft <= zeroAP) {
+                selectedBat.salvoLeft = 0;
+            }
+        }
         if (fromPack) {
             selectedBat.apLeft = Math.ceil(selectedBat.apLeft/3)+Math.ceil(selectedBat.ap*1.5);
         } else {

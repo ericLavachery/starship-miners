@@ -229,6 +229,8 @@ function combat(melee) {
                     soundBat = targetBat;
                     shotSound(soundWeap,soundBat);
                 }
+            } else {
+                combatReportPics(targetBat.team);
             }
             if (attAlive && defAlive) {
                 minimumFireAP = minFireAP;
@@ -251,6 +253,7 @@ function combat(melee) {
                         }, 200);
                     }
                 } else {
+                    combatReportPics(selectedBat.team);
                     if (activeTurn == 'player') {blockMe(false);}
                 }
             } else {

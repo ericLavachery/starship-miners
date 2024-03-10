@@ -1010,6 +1010,7 @@ function diagRepair(repairBatId) {
     if (selectedBat.squadsLeft > selectedBatType.squads) {
         selectedBat.squadsLeft = selectedBatType.squads;
         selectedBat.damage = 0;
+        tagDelete(selectedBat,'trou');
     }
     // selectedBat.apLeft = selectedBat.apLeft-3;
     let newBatUnits = batUnits+selectedBatType.squadSize;
@@ -1020,6 +1021,7 @@ function diagRepair(repairBatId) {
     } else {
         $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">dégâts réparés<br></span>');
     }
+    playSound('repair',-0.2);
     showBataillon(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);

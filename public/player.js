@@ -28,7 +28,7 @@ function voirBataillons() {
                     $('#conUnitList').append('<span class="ListRes hrouge">>>></span>&nbsp;');
                 }
             }
-            $('#conUnitList').append('<span class="ListRes '+batColor+' klik" onclick="warnLink('+bat.tileId+')">'+bat.type+'</span>&nbsp;&nbsp;');
+            $('#conUnitList').append('<span class="ListRes '+batColor+' klik" onclick="warnLink('+bat.tileId+',true,'+batType.id+')">'+bat.type+'</span>&nbsp;&nbsp;');
             if (bat.army >= 1) {
                 $('#conUnitList').append('<span class="ListRes gff" title="Armée">('+bat.army+')</span>&nbsp;&nbsp;');
             }
@@ -80,7 +80,7 @@ function voirBataillons() {
                 }
                 let nv = nomVisible(bat);
                 if (isVisible) {
-                    $('#conUnitList').append('<span class="ListRes '+batColor+' klik" onclick="warnLink('+bat.tileId+')">'+nv+'</span>&nbsp;&nbsp;');
+                    $('#conUnitList').append('<span class="ListRes '+batColor+' klik" onclick="warnLink('+bat.tileId+',false)">'+nv+'</span>&nbsp;&nbsp;');
                     if (bat.damage >= 1 || bat.squadsLeft < batType.squads) {
                         $('#conUnitList').append('<span class="ListRes" title="Blessé"><i class="ra ra-bleeding-hearts"></i></span>&nbsp;&nbsp;');
                     }
