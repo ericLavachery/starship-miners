@@ -19,7 +19,7 @@ function goSoute() {
         $('body').css('background-image','url(/static/img/dockBGnew.jpg)');
         $('body').css('background-position','left top');
         $("#menu_lander").css("display","block");
-        $("#list_lander").css("height","757px");
+        $("#list_lander").css("max-height","757px");
         $("#list_lander").css("display","block");
         souteList();
         landerList();

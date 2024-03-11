@@ -73,7 +73,7 @@ body {
 .woodBlock {
     /* background-color: black; */
     /* background-color: rgba(0, 0, 0, 0.4); */
-    background-color: #303943;
+    /* background-color: #303943; */
     font-size: 13px;
     color: #d5cabd;
     padding: 6px 6px;
@@ -767,7 +767,7 @@ hr.craft {
     position: absolute;
     filter: sepia(100%) saturate(200%) hue-rotate(120deg) brightness(120%) contrast(120%);
 }
-.pUnitsNoPrefab,.pUnits,.pUnitsFortif,.pUnitsCamo,.pUnitsCamoFortif {
+.pUnits,.pUnitsFortif,.pUnitsCamo,.pUnitsCamoFortif {
     filter: sepia(100%) saturate(200%) hue-rotate(180deg) brightness(120%) contrast(120%);
 }
 .pUnitsNoPrefab {
@@ -776,6 +776,14 @@ hr.craft {
     border-width: 1px;
     border-color: #000000;
     border-radius: 8px;
+    position: absolute;
+}
+.pUnitsPrefab {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+    border-radius: 32px;
     position: absolute;
 }
 .pUnits {
@@ -1241,37 +1249,33 @@ td {
     /* min-height: 1950px; */
 }
 #menu_soute {
-    /* background-image: url(/static/img/plate-dork-mid.jpg); */
     background-image: url(/static/img/souteList.jpg);
     background-position: 0% 50%;
     height: 50px;
     width: 455px;
 }
 #list_soute {
-    /* background-image: url(/static/img/plate-dork-mid.jpg); */
     background-image: url(/static/img/souteList.jpg);
     background-position: -10px 0px;
     scroll-behavior: auto;
     scrollbar-color: #000000 #212828;
     overflow-y: scroll;
-    height: 757px;
+    max-height: 757px;
     width: 455px;
 }
 #menu_lander {
-    /* background-image: url(/static/img/plate-dork-mid.jpg); */
     background-image: url(/static/img/souteList.jpg);
     background-position: 0% 50%;
     height: 50px;
     width: 455px;
 }
 #list_lander {
-    /* background-image: url(/static/img/plate-dork-mid.jpg); */
     background-image: url(/static/img/souteList.jpg);
     background-position: -10px 0px;
     scroll-behavior: auto;
     scrollbar-color: #000000 #212828;
     overflow-y: scroll;
-    height: 757px;
+    max-height: 757px;
     width: 455px;
 }
 .mapedBut {

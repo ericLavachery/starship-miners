@@ -1819,11 +1819,19 @@ function tagsEffect(bat,batType) {
     }
     // NECRO
     if (bat.tags.includes('necro')) {
-        if (bat.tags.includes('octiron') && playerInfos.comp.med >= 3) {
-            if (rand.rand(1,10) === 1) {
-                tagDelete(bat,'necro');
-                if (!bat.tags.includes('necro')) {
-                    warning('Octiron',bat.type+' a éliminé la nécrotoxine.',false,bat.tileId);
+        if (bat.tags.includes('octiron')) {
+            if (playerInfos.comp.med >= 3) {
+                if (rand.rand(1,10) === 1) {
+                    tagDelete(bat,'necro');
+                    if (!bat.tags.includes('necro')) {
+                        warning('Octiron',bat.type+' a éliminé la nécrotoxine.',false,bat.tileId);
+                    }
+                }
+            }
+            if (rand.rand(0,10) > playerInfos.comp.med*3) {
+                tagDelete(bat,'octiron');
+                if (!bat.tags.includes('octiron')) {
+                    warning('Nécrotoxine',bat.type+' n\'est plus sous l\'effet de l\'octiron.',false,bat.tileId);
                 }
             }
         }
@@ -1862,9 +1870,6 @@ function tagsEffect(bat,batType) {
         // PARASITE
         if (bat.tags.includes('parasite') && bat.squadsLeft >= 1) {
             let parasiteDeg = Math.round(rand.rand((Math.round(parasiteDamage/3)),parasiteDamage)*batType.squads*batType.squadSize/60);
-            if (bat.tags.includes('octiron')) {
-                parasiteDeg = Math.round(parasiteDeg/10);
-            }
             if (playerInfos.comp.med >= 3) {
                 parasiteDeg = Math.round(parasiteDeg/2);
             }
@@ -1971,6 +1976,9 @@ function tagsEffect(bat,batType) {
             }
         }
         // POISON
+        if (bat.tags.includes('necro') && bat.team === 'player') {
+            bat.tags.push('poison');
+        }
         if (bat.tags.includes('poison') && !batType.skills.includes('resistpoison') && !bat.tags.includes('resistpoison') && !bat.tags.includes('octiron') && !bat.tags.includes('zombie') && bat.squadsLeft >= 1) {
             let poisonPower = allTags.poison*poisonDamage;
             if (bat.tags.includes('genweak')) {

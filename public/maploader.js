@@ -712,30 +712,38 @@ function showBataillon(bat) {
     let activityBar = getActivityBar(bat,batType);
     let transBar = getTransBar(bat,batType);
     let uClass = 'pUnits';
-    if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
+    if (playerInfos.onShip) {
         if (batType.name === 'Soute') {
             uClass = 'pUnitsNoPrefab';
-        } else if (playerInfos.onShip && !batType.skills.includes('prefab') && !batType.skills.includes('transorbital')) {
-            uClass = 'pUnitsNoPrefab';
+        } else if (batType.cat === 'buildings') {
+            if (!batType.skills.includes('prefab')) {
+                uClass = 'pUnitsNoPrefab';
+            } else {
+                uClass = 'pUnitsPrefab';
+            }
         } else {
+            uClass = 'pUnitsPrefab';
+        }
+    } else {
+        if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
             if (bat.fuzz <= -2 && bat.type != 'Fosses') {
                 uClass = 'pUnitsCamoFortif';
             } else {
                 uClass = 'pUnitsFortif';
             }
-        }
-    } else {
-        if (batType.name.includes('Barbelés') && !bat.prt.includes('aucun')) {
-            uClass = 'pUnitsCamoFortif';
-        } else if (bat.fuzz <= -2 && bat.type != 'Fosses') {
-            if (bat.tags.includes('fortif')) {
-                uClass = 'pUnitsCamoFortif';
-            } else {
-                uClass = 'pUnitsCamo';
-            }
         } else {
-            if (bat.tags.includes('fortif')) {
-                uClass = 'pUnitsFortif';
+            if (batType.name.includes('Barbelés') && !bat.prt.includes('aucun')) {
+                uClass = 'pUnitsCamoFortif';
+            } else if (bat.fuzz <= -2 && bat.type != 'Fosses') {
+                if (bat.tags.includes('fortif')) {
+                    uClass = 'pUnitsCamoFortif';
+                } else {
+                    uClass = 'pUnitsCamo';
+                }
+            } else {
+                if (bat.tags.includes('fortif')) {
+                    uClass = 'pUnitsFortif';
+                }
             }
         }
     }
@@ -954,26 +962,26 @@ function showPrefab(bat) {
     let resHere = showRes(bat.vmt);
     let degNum = getDamageBar(bat);
     let activityBar = getActivityBar(bat,batType);
-    let uClass = 'pUnits';
-    if (batType.cat === 'buildings') {
-        if (bat.fuzz <= -2) {
-            uClass = 'pUnitsCamoFortif';
-        } else {
-            uClass = 'pUnitsFortif';
-        }
-    } else {
-        if (bat.fuzz <= -2) {
-            if (bat.tags.includes('fortif')) {
-                uClass = 'pUnitsCamoFortif';
-            } else {
-                uClass = 'pUnitsCamo';
-            }
-        } else {
-            if (bat.tags.includes('fortif')) {
-                uClass = 'pUnitsFortif';
-            }
-        }
-    }
+    let uClass = 'pUnitsPrefab';
+    // if (batType.cat === 'buildings') {
+    //     if (bat.fuzz <= -2) {
+    //         uClass = 'pUnitsCamoFortif';
+    //     } else {
+    //         uClass = 'pUnitsFortif';
+    //     }
+    // } else {
+    //     if (bat.fuzz <= -2) {
+    //         if (bat.tags.includes('fortif')) {
+    //             uClass = 'pUnitsCamoFortif';
+    //         } else {
+    //             uClass = 'pUnitsCamo';
+    //         }
+    //     } else {
+    //         if (bat.tags.includes('fortif')) {
+    //             uClass = 'pUnitsFortif';
+    //         }
+    //     }
+    // }
     if (!modeSonde) {
         $('#b'+bat.vmt).append('<div class="'+uClass+'"><img src="/static/img/units/'+batCat+'/'+batPic+'.png" title="'+unitsLeft+' '+nomComplet+'"></div><div class="degInfos"><img src="/static/img/damage'+degNum+'b.png" width="9"><img src="/static/img/'+activityBar+'.png" width="9"></div><div class="batInfos"><img src="/static/img/vet'+bat.vet+'.png" width="15"></div>'+resHere);
     } else {

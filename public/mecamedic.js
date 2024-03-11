@@ -192,12 +192,16 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                                         addHealFlag(bat,2);
                                         doneAction(bat);
                                     } else if (((bat.squadsLeft === batType.squads && bat.damage === 0) || fullBat) && bat.tags.includes('parasite') && deep) {
-                                        tagDelete(bat,'parasite');
                                         totalAPCost = totalAPCost+apCost;
                                         console.log('parasite');
                                         console.log('totalAPCost '+totalAPCost);
-                                        xpGain = xpGain+1;
-                                        $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">parasite tué<br></span>');
+                                        if (rand.rand(0,5) < playerInfos.comp.med) {
+                                            tagDelete(bat,'parasite');
+                                            xpGain = xpGain+1;
+                                            $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">parasites tués<br></span>');
+                                        } else {
+                                            $('#report').append('<span class="report cy">'+batUnits+' '+bat.type+'<br></span><span class="report">parasites inaffectés<br></span>');
+                                        }
                                         bat.apLeft = bat.apLeft-patientMedAPCost;
                                         addHealFlag(bat,4);
                                         doneAction(bat);
@@ -377,10 +381,14 @@ function medic(cat,cost,around,deep,inBld,medicBatId) {
                     addHealFlag(selectedBat,2);
                     showBataillon(selectedBat);
                 } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && selectedBat.tags.includes('parasite') && deep) {
-                    tagDelete(selectedBat,'parasite');
+                    if (rand.rand(0,5) < playerInfos.comp.med) {
+                        tagDelete(selectedBat,'parasite');
+                        $('#report').append('<span class="report">parasites tués<br></span>');
+                    } else {
+                        $('#report').append('<span class="report">parasites inaffectés<br></span>');
+                    }
                     totalAPCost = totalAPCost+apCost;
                     addHealFlag(selectedBat,4);
-                    $('#report').append('<span class="report">parasite tué<br></span>');
                 } else if (selectedBat.squadsLeft === selectedBatType.squads && selectedBat.damage === 0 && (selectedBat.tags.includes('maladie') || selectedBat.tags.includes('vomi') || selectedBat.tags.includes('vomissure')) && deep && real) {
                     if (selectedBat.tags.includes('vomi') || selectedBat.tags.includes('vomissure')) {
                         tagDelete(selectedBat,'vomi');
@@ -1239,15 +1247,16 @@ function getAvMaintCosts(batType) {
     return maintCosts;
 };
 
-function getPillsCosts() {
+function getPillsCosts(bat,batType) {
     let drug = getDrugByName('pills');
+    let dose = batType.crew*batType.squads*batType.squadSize*batType.size/3*bat.emo/10;
     let pillsCosts = {};
     Object.entries(drug.costs).map(entry => {
         let key = entry[0];
         let value = entry[1];
         let thatCost = value;
         if (thatCost >= 1) {
-            pillsCosts[key] = Math.ceil(thatCost*4/(playerInfos.comp.med+3));
+            pillsCosts[key] = Math.ceil(thatCost*4/(playerInfos.comp.med+3)*dose/48);
         }
     });
     return pillsCosts;
@@ -1255,7 +1264,7 @@ function getPillsCosts() {
 
 function pills() {
     let drug = getDrugByName('pills');
-    let pillsCosts = getPillsCosts();
+    let pillsCosts = getPillsCosts(selectedBat,selectedBatType);
     let pillsOK = checkCost(pillsCosts);
     if (pillsOK) {
         payCost(pillsCosts);

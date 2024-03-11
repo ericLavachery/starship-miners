@@ -969,7 +969,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     if (playerInfos.onShip && !zeroCrew) {
         if (bat.emo >= 5) {
             let drug = getDrugByName('pills');
-            let pillsCosts = getPillsCosts();
+            let pillsCosts = getPillsCosts(bat,batType);
             let pillsOK = checkCost(pillsCosts);
             if (pillsOK && !bat.tags.includes('pills')) {
                 $('#unitInfos').append('<button type="button" title="'+drug.info+' '+displayCosts(pillsCosts)+'" class="boutonVert unitButtons" onclick="pills()"><i class="'+drug.icon+'"></i> <span class="small">0</span></button>');

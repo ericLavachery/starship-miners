@@ -1016,7 +1016,7 @@ function maxUnits(unit) {
                 maxOf.artank = maxOf.artank+1;
             }
             if (batType.name === 'Chaîne de montage' || batType.name === 'Usine') {
-                maxOf.hveh = maxOf.hveh+4;
+                maxOf.hveh = maxOf.hveh+3;
             }
             if (batType.name === 'Centre de com' || batType.name === 'QG') {
                 maxOf.hbot = maxOf.hbot+3;
@@ -1052,6 +1052,9 @@ function maxUnits(unit) {
         });
         if (!playerInfos.bldList.includes('Camp d\'entraînement')) {
             maxOf.elite = 1;
+        }
+        if (playerInfos.bldList.includes('Chaîne de montage')) {
+            maxOf.hveh = maxOf.hveh+1;
         }
     }
     if (unit.skills.includes('leader')) {
@@ -1149,13 +1152,16 @@ function maxUnits(unit) {
         maxInfo.max = maxOf.lbot;
         if (numOf[unit.name] >= maxInfo.max && numOf[unit.name] >= 3) {
             maxInfo.ko = true;
-            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire un poste radio supplémentaire';
+            maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez construire une station radio supplémentaire';
         }
     }
     if (unit.skills.includes('tank')) {
         // blindés (de chaque type)
         if (unit.skills.includes('2slots')) {
             maxOf.tank = Math.ceil(maxOf.tank/2);
+        }
+        if (playerInfos.gang === 'tiradores' || playerInfos.gang === 'brasier') {
+            maxOf.tank++;
         }
         maxInfo.max = maxOf.tank;
         if (numOf[unit.name] >= maxInfo.max && numOf[unit.name] >= 2) {
@@ -1177,9 +1183,9 @@ function maxUnits(unit) {
         }
     }
     if (unit.skills.includes('hveh')) {
-        // véhicules lours (de chaque type)
+        // véhicules lourds (de chaque type)
         if (unit.skills.includes('2slots')) {
-            maxOf.hveh = Math.ceil(maxOf.hveh/2);
+            maxOf.hveh = Math.floor(maxOf.hveh/2);
         }
         maxInfo.max = maxOf.hveh;
         if (numOf[unit.name] >= maxInfo.max && numOf[unit.name] >= 2) {
