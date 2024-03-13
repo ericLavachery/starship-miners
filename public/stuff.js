@@ -1138,6 +1138,7 @@ function maxUnits(unit) {
     if (unit.skills.includes('hbot')) {
         // heavy bots
         if (unit.skills.includes('2slots')) {
+            maxOf.hbot = maxOf.hbot+2;
             maxOf.hbot = Math.ceil(maxOf.hbot/2);
         }
         let maxThis = maxOf.hbot;

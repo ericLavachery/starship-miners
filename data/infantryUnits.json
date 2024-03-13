@@ -592,7 +592,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_elga","fouille","fortif","maycamo","datt","fastguet","resistelec","resistall","bigblub","gooddef","noaploss","fo","kzin","herorip","lowstress","detrange","nogen","elite"],
+        "skills":["a_elga","fouille","fortif","maycamo","datt","fastguet","resistelec","resistall","bigblub","gooddef","nofreew2","noaploss","fo","kzin","herorip","lowstress","detrange","nogen","elite"],
         "fuzz":1,
         "deathFx":"162157__mediapaja2009__agony"
     },

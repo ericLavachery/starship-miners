@@ -295,23 +295,6 @@ function checkMayOutInSoute(bat,batType) {
     return mayOut;
 };
 
-function planetColours() {
-    if (zone[0].planet === 'Dom') {
-
-    } else if (zone[0].planet === 'Sarak') {
-
-    } else if (zone[0].planet === 'Gehenna') {
-        console.log('GEHENNA');
-        $(".pUnits").css(
-            "filter", "hue-rotate(75deg)"
-        )
-    } else if (zone[0].planet === 'Kzin') {
-
-    } else if (zone[0].planet === 'Horst') {
-
-    }
-}
-
 function checkMissions(markDone) {
     // à l'atterrissage sur une zone!
     let mTypeHere = getMissionType(zone[0].number,true);
@@ -789,7 +772,9 @@ function meteorImpact(tile) {
         let batType = getBatType(bat);
         stormDamage(bat,batType,true,false,true);
         if (batType.cat === 'buildings' || batType.skills.includes('transorbital')) {
-            delete tile.crat;
+            if (typeof bat != "undefined") {
+                delete tile.crat;
+            }
         }
     }
 };
@@ -1263,6 +1248,9 @@ function stormDamage(bat,batType,storm,inMov,canon,power) {
         }
         if (batType.cat === 'infantry' && canon) {
             stormDmg = stormDmg/3;
+        }
+        if (batType.cat === 'devices' && canon) {
+            stormDmg = stormDmg/2;
         }
         if (stormDmg > 0) {
             stormDmg = stormProtection(stormDmg,bat,batType,canon);

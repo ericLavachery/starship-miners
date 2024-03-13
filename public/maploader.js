@@ -363,7 +363,7 @@ function showRes(tileId) {
         mapIndicators = mapIndicators+'<div class="infraz"><img src="/static/img/units/muraille.png"></div>';
     }
     if (tile.infra === 'Terriers' && view) {
-        mapIndicators = mapIndicators+'<div class="infraz"><img src="/static/img/units/terrier.png"></div>';
+        mapIndicators = mapIndicators+'<div class="ruins" style="opacity:0.5;"><img src="/static/img/units/terrier.png"></div>';
     }
     if (tile.infra === 'Débris' && view) {
         mapIndicators = mapIndicators+'<div class="ruins"><img style="opacity:0.8;" src="/static/img/units/debris.png"></div>';

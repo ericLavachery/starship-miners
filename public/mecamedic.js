@@ -1029,7 +1029,7 @@ function diagRepair(repairBatId) {
     } else {
         $('#report').append('<span class="report cy">'+batUnits+' '+selectedBat.type+'<br></span><span class="report">dégâts réparés<br></span>');
     }
-    playSound('repair',-0.2);
+    playSound('repair',-0.2,false);
     showBataillon(selectedBat);
     selectedBatArrayUpdate();
     showBatInfos(selectedBat);
@@ -1249,7 +1249,7 @@ function getAvMaintCosts(batType) {
 
 function getPillsCosts(bat,batType) {
     let drug = getDrugByName('pills');
-    let dose = batType.crew*batType.squads*batType.squadSize*batType.size/3*bat.emo/10;
+    let dose = batType.crew*batType.squads*batType.squadSize*bat.emo/10;
     let pillsCosts = {};
     Object.entries(drug.costs).map(entry => {
         let key = entry[0];

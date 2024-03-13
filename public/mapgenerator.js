@@ -2868,6 +2868,9 @@ function checkZoneType() {
         zoneInfos.ieggs = true;
         zoneInfos.ieggsBonus = zoneInfos.ieggsBonus+6;
     }
+    if (zone[0].planet === 'Horst') {
+        zoneInfos.ieggs = false;
+    }
     // swamp map
     let swampMap = false;
     if (zone[0].ps+zone[0].pw >= 60) {
@@ -2946,7 +2949,7 @@ function checkZoneARep() {
         toDo = false;
     }
     if (toDo) {
-        if (rand.rand(1,3) === 1) {
+        if (rand.rand(1,4) === 1) {
             zone[0].rc = ["Yapa","Bugs"];
         } else {
             let domAlien = getZoneDomAlien();

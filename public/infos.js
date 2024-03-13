@@ -165,7 +165,7 @@ function batInfos(bat,batType,pop) {
         vetIcon = '<img src="/static/img/vet'+bat.vet+'.png" width="15">';
     }
     if (pop) {
-        $('#'+headPlace).append('<img class="batInfoPic" style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" onclick="unitDetail('+batType.id+')" title="Voir le détail du type d\'unité">&nbsp;');
+        $('#'+headPlace).append('<img class="batPopPic" style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" onclick="unitDetail('+batType.id+')" title="Voir le détail du type d\'unité">&nbsp;');
         $('#'+headPlace).append('<span class="blockTitle"><h6>'+unitsLeft+' '+batType.name+'</h6></span>');
     } else {
         $('#'+headPlace).append('<span class="blockTitle"><h3><img class="batInfoPic" style="vertical-align:-12px;" src="/static/img/units/'+batType.cat+'/'+batPic+'.png" width="48" class="tunit" onclick="batDetail('+bat.id+')">'+unitsLeft+' '+unitPrintName+'</h3> '+vetIcon+infraImg+'</span>');

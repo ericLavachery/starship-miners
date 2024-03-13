@@ -1046,7 +1046,7 @@ function playerSkillsUTChanges() {
                             w2CostBonus = unit.weapon2.cost-2;
                         }
                         unit.weapon2.cost = unit.weapon2.cost-w2CostBonus;
-                        if (playerInfos.comp.def >= 3) {
+                        if (playerInfos.comp.def >= 3 && !unit.skills.includes('nofreew2')) {
                             unit.weapon2.kit = false;
                         }
                     }

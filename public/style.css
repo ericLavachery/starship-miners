@@ -689,11 +689,25 @@ hr.craft {
     /* margin: 1px 1px 1px 1px; */
 }
 .batInfoPic {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.35);
+    border-style: ridge;
+    border-width: 2px;
+    border-color: #000000;
+    border-radius: 8px;
+    padding-left: 2px;
+    padding-right: 3px;
+    margin-right: 4px;
+}
+.batPopPic {
+    background-color: rgba(255, 255, 255, 0.25);
     border-style: solid;
     border-width: 1px;
     border-color: #000000;
-    border-radius: 32px;
+    border-radius: 8px;
+    /* padding: 3px; */
+    padding-left: 2px;
+    padding-right: 3px;
+    /* margin-right: 4px; */
 }
 .aUnitsReport {
     background-color: rgba(255, 253, 0, 0.3);
