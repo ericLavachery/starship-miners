@@ -457,7 +457,7 @@ function getScrapResList(batName) {
                 resFactor = resFactor/10;
             }
             if (res.bld === 'Derrick') {
-                resFactor = resFactor*(playerInfos.comp.pyro+3)/3;
+                resFactor = resFactor*(playerInfos.comp.pyro+3)/3.5;
             }
         }
         if (resFactor >= 1) {
@@ -536,7 +536,7 @@ function triProd(bat,batType,time,sim,quiet) {
                     resFactor = resFactor/10;
                 }
                 if (res.bld === 'Derrick') {
-                    resFactor = resFactor*(playerInfos.comp.pyro+3)/3;
+                    resFactor = resFactor*(playerInfos.comp.pyro+3)/3.5;
                 }
             }
             let luckyRes = false;

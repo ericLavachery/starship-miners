@@ -167,14 +167,12 @@ function cluster(weap,tileId,small) {
     console.log('CLUSTER');
     console.log(weap.ammo);
     if (playerInfos.comp.explo >= 3) {
-        maxBomb = maxBomb+1; // 4
+        maxBomb = maxBomb+playerInfos.comp.explo-2; // 4
     }
     if (small) {
         maxBomb = maxBomb-1;
-    } else if (playerInfos.gang === 'detruas') {
-        maxBomb = maxBomb+1;
     } else if (playerInfos.gang === 'blades') {
-        maxBomb = (playerInfos.comp.explo*2)+rand.rand(0,1)-1; // 5
+        maxBomb = Math.ceil(playerInfos.comp.explo*1.5)+rand.rand(0,1)-1; // 5
     }
     let numBomb = 0;
     let clusterUnit = getBatTypeByName('Sous-munitions');
@@ -2836,7 +2834,7 @@ function weaponAdj(weapon,bat,wn) {
             thisWeapon.elevation = thisWeapon.elevation+ammo.elevation;
         }
     }
-    if (playerInfos.comp.pyro === 3) {
+    if (playerInfos.comp.pyro === 4) {
         if (thisWeapon.ammo.includes('feu') || thisWeapon.ammo.includes('incendiaire') || thisWeapon.ammo.includes('napalm') || thisWeapon.ammo.includes('fire') || thisWeapon.ammo.includes('pyratol') || thisWeapon.ammo.includes('lf-') || thisWeapon.ammo.includes('lt-') || thisWeapon.ammo.includes('molotov')) {
             thisWeapon.armors = thisWeapon.armors*0.8;
         }
@@ -3259,7 +3257,7 @@ function getTGuetRange() {
     }
     if (playerInfos.comp.bal === 2) {
         tgr.elev = 1;
-    } else if (playerInfos.comp.bal === 3) {
+    } else if (playerInfos.comp.bal >= 3) {
         tgr.elev = 2;
     }
     return tgr;

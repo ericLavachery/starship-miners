@@ -689,7 +689,7 @@ function cramPower(res,neededRes) {
         neededRes = Math.round(neededRes/(energyComp+5)*10);
     }
     if (res.name === 'Huile' || res.name === 'Soufre' || res.name === 'Pyrus' || res.name === 'Pyratol' || res.name === 'Phosphore') {
-        neededRes = Math.round(neededRes/(playerInfos.comp.pyro+7)*7);
+        neededRes = Math.round(neededRes/(playerInfos.comp.pyro+6)*7);
     } else if (res.name === 'Uranium' || res.name === 'Plutonium' || res.name === 'Timonium' || res.name === 'Uridium') {
         neededRes = Math.round(neededRes/(energyComp+20)*23);
     } else if (res.name === 'Scrap') {

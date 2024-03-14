@@ -804,7 +804,7 @@
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"log":2,"ind":1,"mat":1},
         "altCompReq":{"bal":2,"log":1,"ind":1,"mat":2},
-        "autoComp":["bal",3],
+        "autoComp":["bal",4],
         "factor":"crew",
         "costs":{"Carbone":6,"Titane":12}
     },
@@ -927,7 +927,7 @@
         "info":"Portée+ / Elévation+",
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"log":1,"explo":2},
-        "autoComp":["explo",3],
+        "autoComp":["explo",4],
         "factor":"crew",
         "costs":{"Scrap":12,"Fer":12,"Aluminium":24}
     },
@@ -938,7 +938,7 @@
         "info":"Portée+ / Elévation+",
         "bldReq":["Arsenal"],
         "compReq":{"bal":2,"log":1,"pyro":2},
-        "autoComp":["pyro",3],
+        "autoComp":["pyro",4],
         "factor":"crew",
         "costs":{"Scrap":12,"Fer":12,"Aluminium":24}
     },
@@ -1571,7 +1571,7 @@
         "skills":[],
         "info":"Ceinture d'explosifs",
         "bldReq":["Armurerie"],
-        "compReq":{"arti":1,"explo":1},
+        "compReq":{"arti":1,"explo":2},
         "autoComp":[],
         "factor":"one",
         "costs":{"Explosifs":30,"Fer":12,"Plomb":4,"Titane":4,"Azote":6,"Cuivre":6,"Electros":1}
@@ -1681,8 +1681,8 @@
         "skills":[],
         "info":"Portée++",
         "bldReq":["Usine d'armement","QG"],
-        "compReq":{"det":3,"bal":3,"arti":2},
-        "altCompReq":{"det":4,"bal":2,"explo":3,"arti":2},
+        "compReq":{"det":4,"bal":3,"arti":2},
+        "altCompReq":{"det":3,"bal":3,"explo":4,"arti":2},
         "autoComp":["det",5],
         "factor":"one",
         "costs":{"Carbone":150,"Titane":50,"Rhodium":50,"Silicium":50,"Cuivre":25,"Electros":50,"Batteries":25,"Nickel":25},

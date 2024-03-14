@@ -1700,6 +1700,14 @@ function batFullInfos(bat,batType) {
                 $('#popbody').append('<br>');
             }
             $('#popbody').append('<span class="paramValue"><span class="mauve">Ressources:</span> '+costString+'</span><br>');
+            if (batType.name === 'Dôme') {
+                let fullCost = calcFullDomeCost();
+                fullCostString = displayCosts(fullCost);
+                fullCostString = fullCostString.replace('{','');
+                fullCostString = fullCostString.replace('}','');
+                $('#popbody').append('<div class="shSpace"></div>');
+                $('#popbody').append('<span class="paramValue"><span class="mauve">Ressources: (y compris le prix des Pilônes)</span> '+fullCostString+'</span><br>');
+            }
         }
         if (playerInfos.onShip) {
             if (costString.includes('&#128683;')) {

@@ -251,7 +251,7 @@ function reconstruction(debId,apCost) {
 function clicPutCost(pusherType,mineType,isExplo,isGas) {
     let apCost = prefabCost(pusherType,mineType,true);
     if (isExplo) {
-        apCost = apCost*5/(playerInfos.comp.explo+4);
+        apCost = apCost*5/(playerInfos.comp.explo+3.5);
         if (pusherType.kind === 'detruas') {
             apCost = apCost/1.7;
         }

@@ -1059,16 +1059,16 @@ function playerSkillsUTChanges() {
                 unit.weapon2.kit = false;
             }
         }
-        if (playerInfos.comp.bal === 3 || playerInfos.comp.arti === 2) {
+        if (playerInfos.comp.bal === 4 || playerInfos.comp.arti === 2) {
             if (playerInfos.comp.arti >= 1) {
                 let rangeMult = 1;
                 if (playerInfos.comp.arti === 2) {
                     rangeMult = rangeMult+0.25;
-                    if (playerInfos.comp.bal === 3) {
+                    if (playerInfos.comp.bal === 4) {
                         rangeMult = rangeMult+0.1;
                     }
                 } else {
-                    if (playerInfos.comp.bal === 3) {
+                    if (playerInfos.comp.bal === 4) {
                         rangeMult = rangeMult+0.15;
                     }
                 }
@@ -1105,11 +1105,13 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.explo >= 2) {
             let penBonus = 0.9;
             if (playerInfos.comp.explo === 3) {
+                penBonus = 0.86;
+            } else if (playerInfos.comp.explo === 4) {
                 penBonus = 0.83;
             }
             if (Object.keys(unit.weapon).length >= 3) {
                 if (unit.weapon.ammo.includes('obus') || unit.weapon.ammo.includes('missile') || unit.weapon.ammo.includes('missile-sunburst') || unit.weapon.ammo.includes('missile-vanguard') || unit.weapon.ammo.includes('dynamite') || unit.weapon.ammo.includes('grenade') || unit.weapon.ammo.includes('boulet')) {
-                    if (playerInfos.comp.explo === 3) {
+                    if (playerInfos.comp.explo === 4) {
                         if (unit.weapon.power < 10) {
                             unit.weapon.power = unit.weapon.power+1;
                         } else {
@@ -1126,7 +1128,7 @@ function playerSkillsUTChanges() {
             }
             if (Object.keys(unit.weapon2).length >= 3) {
                 if (unit.weapon2.ammo.includes('obus') || unit.weapon2.ammo.includes('missile') || unit.weapon2.ammo.includes('missile-sunburst') || unit.weapon2.ammo.includes('missile-vanguard') || unit.weapon2.ammo.includes('missile-wildfire') || unit.weapon2.ammo.includes('dynamite') || unit.weapon2.ammo.includes('grenade') || unit.weapon2.ammo.includes('boulet')) {
-                    if (playerInfos.comp.explo === 3) {
+                    if (playerInfos.comp.explo === 4) {
                         if (unit.weapon2.power < 10) {
                             unit.weapon2.power = unit.weapon2.power+1;
                         } else {

@@ -1129,7 +1129,7 @@ function maxUnits(unit) {
     }
     if (unit.skills.includes('mdev')) {
         // mines et missiles wipeout (de chaque type)
-        maxInfo.max = (playerInfos.comp.def*15)+(playerInfos.comp.explo*5);
+        maxInfo.max = (playerInfos.comp.def*15)+(playerInfos.comp.explo*4);
         if (numOf[unit.name] >= maxInfo.max) {
             maxInfo.ko = true;
             maxInfo.text = 'Pour pouvoir construire plus de '+unit.name+' vous devez augmenter votre compétence de défense';

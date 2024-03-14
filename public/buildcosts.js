@@ -265,8 +265,12 @@ function tagRes(resId) {
 
 function tagAllMissingRes(unitId) {
     let batType = getBatTypeById(unitId);
-    if (batType.costs != undefined) {
-        Object.entries(batType.costs).map(entry => {
+    let fullCost = batType.costs;
+    if (batType.name === 'Dôme') {
+        fullCost = calcFullDomeCost();
+    }
+    if (fullCost != undefined) {
+        Object.entries(fullCost).map(entry => {
             let key = entry[0];
             let value = entry[1];
             let dispoRes = getDispoRes(key);
@@ -277,6 +281,22 @@ function tagAllMissingRes(unitId) {
             }
         });
     }
+};
+
+function calcFullDomeCost() {
+    let domeBatType = getBatTypeByName('Dôme');
+    let piloneBatType = getBatTypeByName('Pilône');
+    let fullCost = domeBatType.costs;
+    Object.entries(piloneBatType.costs).map(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        if (fullCost[key] === undefined) {
+            fullCost[key] = value*4;
+        } else {
+            fullCost[key] = fullCost[key]+(value*4);
+        }
+    });
+    return fullCost;
 };
 
 function checkReserve() {
