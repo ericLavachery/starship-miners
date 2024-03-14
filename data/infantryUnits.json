@@ -6267,7 +6267,7 @@
         },
         "weapon2":{
             "name":"Flak canon (sol)",
-            "cost":6,
+            "cost":5,
             "range":2,
             "elevation":1,
             "noise":4,
