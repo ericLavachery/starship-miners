@@ -1125,8 +1125,8 @@
         "skills":["bastion","gooddef","longshot","radarshot","roboxp","maycamo","noshow","notrash","transport","fret","routes","flash","bigflash","prefab","camocontrol","hbot","2slots"],
         "mecanoCost":12,
         "transMaxSize":9,
-        "transUnits":400,
-        "transRes":250,
+        "transUnits":750,
+        "transRes":600,
         "fuzz":5,
         "deathFx":"explo1"
     },

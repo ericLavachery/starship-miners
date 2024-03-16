@@ -924,17 +924,20 @@ function attack(melee,init,aspeed,dspeed) {
     console.log('shotDice========================================================================'+shotDice);
     // INTERCEPTION
     let interception = checkIntercept(targetBat,targetBatType,selectedWeap,selectedBat,selectedBatType);
-    if (interception && shotDice > 55) {
-        totalDamage = 0;
-        apDamage =0;
-        targetBat.tags.push('chop');
-        let iCost = apIntercept(targetBat,targetBatType);
-        targetBat.apLeft = targetBat.apLeft-iCost;
-        $('#report').append('<span class="report rose">Interception<br></span>');
+    if (interception.chance >= 1) {
+        $('#report').append('<span class="report">Interception '+interception.chance+'%<br></span>');
+        if (interception.ok && shotDice > 55) {
+            totalDamage = 0;
+            apDamage =0;
+            targetBat.tags.push('chop');
+            let iCost = apIntercept(targetBat,targetBatType);
+            targetBat.apLeft = targetBat.apLeft-iCost;
+            $('#report').append('<span class="report rose">Interception réussie<br></span>');
+        }
     }
     // ricochet
     let rico = checkRicochet(targetBat,targetBatType,selectedWeap,init);
-    if (rico && !interception && shotDice > 55) {
+    if (rico && !interception.ok && shotDice > 55) {
         totalDamage = 0;
         apDamage =0;
         $('#report').append('<span class="report rose">Ricochet<br></span>');

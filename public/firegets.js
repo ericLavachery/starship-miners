@@ -1380,7 +1380,9 @@ function apIntercept(defBat,defBatType) {
 };
 
 function checkIntercept(defBat,defBatType,attWeap,attBat,attBatType) {
-    let chop = false;
+    let chop = {};
+    chop.ok = false;
+    chop.chance = 0;
     let isWoke = false;
     if (defBat.apLeft >= -10) {
         isWoke = true;
@@ -1428,9 +1430,16 @@ function checkIntercept(defBat,defBatType,attWeap,attBat,attBatType) {
         }
         console.log('apMalus='+apMalus);
         let chopChance = Math.ceil((rangeBonus+artPower-50)/2)+apMalus-chopSpeed-(allTags.chop*chopSpeed);
+        let chopMin = defBatType.ap-8;
+        let chopMax = 100;
+        if (allTags.chop >= 1) {
+            chopMax = 75+chopMin;
+        }
+        chopChance = entre(chopChance,chopMin,chopMax);
+        chop.chance = chopChance;
         console.log('chopChance='+chopChance);
         if (rand.rand(1,100) <= chopChance) {
-            chop = true;
+            chop.ok = true;
         }
     }
     return chop;
@@ -1475,7 +1484,7 @@ function applyShield(shots) {
     console.log(selectedWeap.ammo);
     if (activeTurn === 'player' && (shieldChance >= 1 || targetBatType.skills.includes('slowshield')) && selectedWeap.ammo != 'marquage' && !selectedWeap.ammo.includes('flashbang')) {
         if (!targetBat.tags.includes('shield')) {
-            $('#report').append('<span class="report rose">Bouclier '+shieldChance+'%<br></span>');
+            $('#report').append('<span class="report">Bouclier '+shieldChance+'%<br></span>');
         }
         if (rand.rand(1,100) <= shieldChance && !targetBat.tags.includes('shield')) {
             targetBat.tags.push('shield');

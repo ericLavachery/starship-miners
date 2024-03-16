@@ -166,6 +166,14 @@ function calcCrimeRate(mesCitoyens) {
     console.log('crimeRate.cor='+crimeRate.cor);
     // console.log('crimeRate.fo='+crimeRate.fo);
     crimeRate.fo = Math.round(crimeRate.fo);
+    // DOME OK
+    if (playerInfos.gLevel >= 19) {
+        let domeCosts = calcFullDomeCost();
+        let costsOK = checkCost(domeCosts);
+        if (costsOK) {
+            crimeRate.total = 0;
+        }
+    }
     // console.log('crimeRate.total='+crimeRate.total);
     return crimeRate;
 };
