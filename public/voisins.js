@@ -54,16 +54,18 @@ function neiTest() {
 function checkNeiTurn() {
     if (playerInfos.vz === 0 && !playerInfos.onShip) {
         let maxCheck = 67;
+        let minCheck = 14;
         if (playerInfos.cNeed >= 1) {
             maxCheck = 97-Math.round(playerInfos.cNeed*30);
+            minCheck = Math.floor(14/playerInfos.cNeed);
         }
         let check = rand.rand(5,maxCheck);
-        if (check < 15) {
-            check = check+15;
+        if (check < minCheck) {
+            check = check+minCheck;
         }
         let reCheck = rand.rand(5,maxCheck);
-        if (reCheck < 15) {
-            reCheck = reCheck+15;
+        if (reCheck < minCheck) {
+            reCheck = reCheck+minCheck;
         }
         let theCheck = check;
         if (reCheck > check) {

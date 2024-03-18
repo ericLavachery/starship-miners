@@ -1505,7 +1505,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
         }
         if (batType.cat != 'infantry' || batType.skills.includes('oknitro')) {
             // NITRO
-            if (!bat.tags.includes('construction') && batType.moveCost < 90) {
+            if (!bat.tags.includes('construction') && batType.moveCost < 90 && !batType.skills.includes('nonitro')) {
                 if (batType.cat === 'vehicles' || batType.skills.includes('oknitro')) {
                     if (allDrugs.includes('nitro') || bat.tags.includes('nitro')) {
                         drug = getDrugByName('nitro');
@@ -2013,7 +2013,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                 }
             }
         }
-        if (batType.skills.includes('trapdard')) {
+        if (batType.skills.includes('trapdard') && playerInfos.comp.exo >= 3 && playerInfos.comp.ca >= 3) {
             trapType = getBatTypeByName('Dardières');
             freeConsTile = checkFreeConsTile(bat,trapType);
             if (freeConsTile) {

@@ -251,9 +251,9 @@ h6 {
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #000000;
 }
-#miniMapCol {
+/* #miniMapCol {
     display: none;
-}
+} */
 .army {
     font-family: 'Roboto Condensed', 'Arial', sans-serif;
     font-weight: bold;
@@ -1069,7 +1069,7 @@ hr.craft {
 }
 td {
     vertical-align: top;
-    padding-right: 3px;
+    padding-right: 2px;
 }
 .klim {
     margin: 10px 0 0 3px;
@@ -1333,7 +1333,7 @@ td {
     padding: 0 7px 0 7px;
 }
 #sidebarInfos {
-    width: 305px;
+    width: 313px;
 }
 #sidebarCommand {
     width: 146px;
