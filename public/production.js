@@ -108,6 +108,12 @@ function geoProd(bat,batType) {
         let energyProd = Math.ceil(magmaHere/2*3)+(tileHeat*10);
         energyProd = energyCreation(energyProd);
         energyProd = prodDrop(bat,batType,energyProd,false);
+        if (hasEquip(bat,['prodboost'])) {
+            energyProd = energyProd*3;
+        }
+        if (playerInfos.mapTurn >= 1) {
+            energyProd = energyProd*(playerInfos.mapTurn+5)/15;
+        }
         energyProd = Math.ceil(energyProd/geoProdDiv); // before: 10
         resAddToBld('Energie',energyProd,bat,batType,false);
         if (!playerInfos.onShip) {

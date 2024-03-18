@@ -1436,6 +1436,7 @@ function checkIntercept(defBat,defBatType,attWeap,attBat,attBatType) {
             chopMax = 75+chopMin;
         }
         chopChance = entre(chopChance,chopMin,chopMax);
+        chopChance = Math.ceil(chopChance);
         chop.chance = chopChance;
         console.log('chopChance='+chopChance);
         if (rand.rand(1,100) <= chopChance) {

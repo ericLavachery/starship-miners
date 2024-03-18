@@ -734,7 +734,7 @@
             "ammo":["standard"]
         },
         "protection":[],
-        "equip":["aucun","w1-gun","w2-explo","w2-ggun","w2-treb","w2-autopistol","psol","isophon","respod","garage","e-infra","bld-camo"],
+        "equip":["aucun","w1-gun","w2-explo","w2-ggun","w2-treb","w2-autopistol","psol","isophon","prodboost","respod","garage","e-infra","bld-camo"],
         "log3eq":["psol"],
         "autoEq":["garage","e-infra","isophon"],
         "moveCost":99,
@@ -3147,7 +3147,7 @@
             "ammo":["standard","scrap","hollow","perfo","teflon","tungsten","uranium","explosive","incendiaire","dragon","timonium","salite","adamantium","bugshells","dunium","freeze","necro"]
         },
         "protection":[],
-        "equip":["aucun","w1-gun","w2-ggun","psol","isophon","respod","garage","e-infra","bld-camo"],
+        "equip":["aucun","w1-gun","w2-ggun","psol","isophon","prodboost","respod","garage","e-infra","bld-camo"],
         "log3eq":["e-infra"],
         "autoEq":["garage","psol","isophon"],
         "moveCost":99,

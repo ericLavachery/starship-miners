@@ -629,6 +629,8 @@ function getMiningRate(bat,fullRate,noMining) {
     } else {
         if (hasEquip(bat,['autoextract'])) {
             miningAdj = 1.7;
+        } else if (hasEquip(bat,['prodboost'])) {
+            miningAdj = 2;
         }
     }
     if (bat.tags.includes('camo')) {

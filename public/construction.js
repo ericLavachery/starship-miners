@@ -1150,8 +1150,11 @@ function clickConstruct(tileId,free) {
                 camoOut();
                 selectedBatArrayUpdate();
             }
-            if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices' && !conselUnit.skills.includes('clicput') && !conselTriche) {
-                constructSound();
+            // if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices' && !conselUnit.skills.includes('clicput') && !conselTriche) {
+            //     constructSound();
+            // }
+            if (!conselUnit.skills.includes('clicput')) {
+                newUnitSound();
             }
             putBat(tileId,0,0);
             if (conselTriche) {
@@ -2610,6 +2613,16 @@ function constructSound() {
         playSound('construct-sap',-0.1);
     } else {
         playSound('construct-push',-0.1);
+    }
+};
+
+function newUnitSound() {
+    if (conselUnit.cat === 'infantry') {
+        playSound('marching',0);
+    } else if (conselUnit.cat === 'vehicles') {
+        playSound('repair',0);
+    } else {
+        playSound('construct-push',0);
     }
 };
 
