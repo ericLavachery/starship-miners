@@ -1379,15 +1379,51 @@ function apIntercept(defBat,defBatType) {
     return apCost;
 };
 
+function nearestVolc(tileId) {
+    let volcBatId = -1;
+    let shortestDistance = 999;
+    aliens.forEach(function(bat) {
+        if (bat.loc === "zone") {
+            if (bat.type === 'Volcan') {
+                let distance = calcDistance(tileId,bat.tileId);
+                if (distance < shortestDistance && distance <= volcChopDist) {
+                    volcBatId = bat.id;
+                }
+            }
+        }
+    });
+    return volcBatId;
+};
+
 function checkIntercept(defBat,defBatType,attWeap,attBat,attBatType) {
     let chop = {};
     chop.ok = false;
     chop.chance = 0;
-    let isWoke = false;
-    if (defBat.apLeft >= -10) {
-        isWoke = true;
+    chop.alien = defBatType.name;
+    chop.sound = 'volcan';
+    let okChop = false;
+    if (attWeap.isArt && attWeap.name != 'Missiles wipeout') {
+        if (defBatType.skills.includes('intercept') && defBat.apLeft >= -10) {
+            okChop = true;
+        } else if (defBatType.class === 'A' || defBatType.class === 'S' || defBatType.class === 'X') {
+            if (defBatType.kind != 'egg3') {
+                if (hasAlien('Volcan')) {
+                    let volcBatId = nearestVolc(defBat.tileId);
+                    if (volcBatId >= 0) {
+                        console.log('VOLC CHOP ==================================== ');
+                        okChop = true;
+                        chop.alien = 'Volcan';
+                        defBat = getAlienById(volcBatId);
+                        defBatType = getBatType(defBat);
+                        console.log(volcBatId);
+                        console.log(defBat);
+                        console.log(defBatType);
+                    }
+                }
+            }
+        }
     }
-    if (defBatType.skills.includes('intercept') && attWeap.isArt && attWeap.name != 'Missiles wipeout' && isWoke) {
+    if (okChop) {
         console.log('INTERCEPTION ============================================ ');
         let distance = calcDistance(selectedBat.tileId,targetBat.tileId);
         if (distance > 8) {
@@ -1395,11 +1431,13 @@ function checkIntercept(defBat,defBatType,attWeap,attBat,attBatType) {
         }
         let chopRange = defBatType.weapon.range;
         let chopSpeed = (defBatType.weapon.cost+1)*(defBatType.weapon.cost+1);
+        chop.sound = defBatType.weapon.sound;
         if (defBatType.w2chance >= 1 || defBatType.skills.includes('smartrip')) {
             let w2range = defBatType.weapon2.range;
             if (w2range > chopRange) {
                 chopRange = w2range;
                 chopSpeed = (defBatType.weapon2.cost+1)*(defBatType.weapon2.cost+1);
+                chop.sound = defBatType.weapon2.sound;
             }
         }
         if (defBatType.name === 'Colonie') {

@@ -556,6 +556,7 @@ function nextTurnEnd() {
     // console.log(medicalTransports);
     // console.log('Boosted Teams');
     // console.log(boostedTeams);
+    stormSoundDone = false;
     bataillons.forEach(function(bat) {
         if (bat.loc === "zone" || bat.loc === "trans") {
             batType = getBatType(bat);

@@ -1150,6 +1150,7 @@ function stormDamage(bat,batType,storm,inMov,canon,power) {
         deathCause = 'Canon Dragonblob';
         deathType = ' anéantis.';
     }
+    let stormAlert = false;
     if (!storm) {
         // BOURASQUE
         deathCause = 'Bourasque';
@@ -1197,6 +1198,7 @@ function stormDamage(bat,batType,storm,inMov,canon,power) {
                 } else {
                     checkDeath(bat,batType,false);
                 }
+                stormAlert = true;
             } else if (stormDmg >= 1) {
                 if (batType.cat === 'infantry') {
                     warning(deathCause,bat.type+' blessés. (dégâts: '+stormDmg+')',false,bat.tileId);
@@ -1205,6 +1207,7 @@ function stormDamage(bat,batType,storm,inMov,canon,power) {
                 } else {
                     warning(deathCause,bat.type+' endommagés. (dégâts: '+stormDmg+')',false,bat.tileId);
                 }
+                stormAlert = true;
             }
         }
     } else {
@@ -1279,6 +1282,7 @@ function stormDamage(bat,batType,storm,inMov,canon,power) {
             } else {
                 checkDeath(bat,batType,false);
             }
+            stormAlert = true;
         } else if (stormDmg >= 1) {
             if (batType.cat === 'infantry') {
                 warning(deathCause,bat.type+' blessés. (dégâts: '+stormDmg+')',false,bat.tileId);
@@ -1287,6 +1291,13 @@ function stormDamage(bat,batType,storm,inMov,canon,power) {
             } else {
                 warning(deathCause,bat.type+' endommagés. (dégâts: '+stormDmg+')',false,bat.tileId);
             }
+            stormAlert = true;
+        }
+    }
+    if (!canon) {
+        if (stormAlert && !stormSoundDone) {
+            playSound('storm',0);
+            stormSoundDone = true;
         }
     }
     if (inMov) {

@@ -373,7 +373,9 @@ function goRavit(apCost) {
                 }
             }
             doneAction(ravitBat);
-            tagDelete(selectedBat,'guet');
+            if (selectedBatType.cat != 'buildings') {
+                tagDelete(selectedBat,'guet');
+            }
             doneAction(selectedBat);
             selectedBatArrayUpdate();
             showBatInfos(selectedBat);
@@ -452,7 +454,9 @@ function goRavitDrug(apCost) {
             }
             selectedBat.tags = selectedBat.tags.filter(a => a !== 'dU');
             doneAction(ravitBat);
-            tagDelete(selectedBat,'guet');
+            if (selectedBatType.cat != 'buildings') {
+                tagDelete(selectedBat,'guet');
+            }
             doneAction(selectedBat);
             selectedBatArrayUpdate();
             showBatInfos(selectedBat);
@@ -523,7 +527,9 @@ function goStock(apCost) {
                 i++
             }
             doneAction(stockBat);
-            tagDelete(selectedBat,'guet');
+            if (selectedBatType.cat != 'buildings') {
+                tagDelete(selectedBat,'guet');
+            }
             doneAction(selectedBat);
             selectedBatArrayUpdate();
             showBatInfos(selectedBat);

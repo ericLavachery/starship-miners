@@ -342,6 +342,15 @@ function shotSound(weapon,bat) {
     }
 };
 
+function chopSound(soundName) {
+    let myVol = checkMyVol(playerInfos.volFx-0.1,'volFx');
+    var chopSample = new Howl({
+        src: ['/static/sounds/aliens/'+soundName+'.mp3'],
+        volume: myVol,
+    });
+    chopSample.play();
+};
+
 function reloadSound(weap,noFire) {
     if (weap.sound.includes('antichar')) {
         playSound('sniperload',0,true);

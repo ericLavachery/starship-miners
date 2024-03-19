@@ -1153,7 +1153,7 @@ function clickConstruct(tileId,free) {
             // if (conselUnit.cat === 'buildings' || conselUnit.cat === 'devices' && !conselUnit.skills.includes('clicput') && !conselTriche) {
             //     constructSound();
             // }
-            if (!conselUnit.skills.includes('clicput')) {
+            if (!conselUnit.skills.includes('clicput') && conselUnit.cat != 'aliens') {
                 newUnitSound();
             }
             putBat(tileId,0,0);
