@@ -530,20 +530,8 @@ function getBatPic(bat,batType) {
 function showAlien(bat) {
     let batType = getBatType(bat);
     let batShowedName = nomVisible(bat);
-    let batPic = batType.pic;
+    let batPic = getAlienPic(bat,batType);
     bat.apLeft = bat.apLeft.toFixedNumber(1);
-    if (playerInfos.comp.ca >= 1) {
-        if (batType.name === 'Coque' || batType.name === 'Oeuf voilé' || batType.name === 'Oeuf' || batType.name === 'Vomissure') {
-            if (bat.tags.includes('morph')) {
-                batPic = batPic+'trans';
-            }
-        }
-    }
-    if (batType.name === 'Coque' || batType.name === 'Oeuf') {
-        if (bat.tags.includes('permashield')) {
-            batPic = batPic+'-hard';
-        }
-    }
     let batCat = batType.cat;
     let unitsLeft = bat.squadsLeft*batType.squadSize;
     $('#b'+bat.tileId).empty();
@@ -665,14 +653,14 @@ function showAlien(bat) {
 
 function isShowcased(bat,batType) {
     let showcase = false;
-    if (showcaseBatType.length >= 1) {
-        if (batType.name === showcaseBatType) {
+    if (playerInfos.showcaseBT.length >= 1) {
+        if (batType.name === playerInfos.showcaseBT) {
             showcase = true;
         } else if (batType.skills.includes('transport')) {
             if (bat.transIds.length >= 1) {
                 bat.transIds.forEach(function(inBatId) {
                     let inBat = getBatById(inBatId);
-                    if (inBat.type === showcaseBatType) {
+                    if (inBat.type === playerInfos.showcaseBT) {
                         showcase = true;
                     }
                 });

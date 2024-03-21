@@ -629,7 +629,11 @@ function playRoom(piste,interrupt,onloop) {
     }
     if (track != 'soute' && track != 'station') {
         // track = 'control';
-        track = 'droneloop';
+        if (zone[0].planet === 'Horst') {
+            track = 'droneloop-red';
+        } else {
+            track = 'droneloop';
+        }
     }
     let myVol = checkMyVol(playerInfos.volAmb-0.1,'volAmb');
     if (!theRoom.playing() || interrupt) {
@@ -690,9 +694,9 @@ function playMove(play,tile) {
                     loop: isLoop
                 });
                 theMove.play();
-                console.log('MOVE: '+track);
+                // console.log('MOVE: '+track);
             } else {
-                console.log('ALREADY MOVING');
+                // console.log('ALREADY MOVING');
             }
         }
     }

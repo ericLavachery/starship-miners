@@ -61,6 +61,23 @@ function getSilSize(alien) {
     return silSize;
 };
 
+function getAlienPic(bat,batType) {
+    let batPic = batType.pic;
+    if (playerInfos.comp.ca >= 1) {
+        if (batType.name === 'Coque' || batType.name === 'Oeuf voilé' || batType.name === 'Oeuf' || batType.name === 'Vomissure') {
+            if (bat.tags.includes('morph')) {
+                batPic = batPic+'trans';
+            }
+        }
+    }
+    if (batType.name === 'Coque' || batType.name === 'Oeuf') {
+        if (bat.tags.includes('permashield')) {
+            batPic = batPic+'-hard';
+        }
+    }
+    return batPic;
+};
+
 function showEnemyBatInfos(bat) {
     $("#unitInfos").css("display","block");
     $('#unitInfos').empty();
@@ -107,12 +124,7 @@ function showEnemyBatInfos(bat) {
         if (batType.size >= 40) {
             silPic = 'siloub';
         }
-        let batPic = batType.pic;
-        if (batType.name === 'Coque' || batType.name === 'Oeuf') {
-            if (bat.tags.includes('permashield')) {
-                batPic = batPic+'-hard';
-            }
-        }
+        let batPic = getAlienPic(bat,batType);
         if (showSilh) {
             $('#unitInfos').append('<div class="detailUnits" id="apic" onclick="toggleAlienPicSize('+bat.id+',false)"><img class="'+silclass+'" src="/static/img/'+silPic+'.png" height="'+silSize+'"><img class="imgAlien" src="/static/img/units/aliens/'+batPic+'.png" width="283"></div>');
         } else {

@@ -872,7 +872,7 @@ function warning(title,body,noHand,tileId,closeAll) {
 
 function showcaseThis(batTypeId) {
     let batType = getBatTypeById(batTypeId);
-    showcaseBatType = batType.name;
+    playerInfos.showcaseBT = batType.name;
     showMap(zone,true);
 }
 

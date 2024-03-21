@@ -129,7 +129,6 @@ let visibleHunts = [];
 let visibleEggs = [];
 let volcChopDist = 5;
 let stormSoundDone = false;
-let showcaseBatType = '';
 // let prepaBld = {}; dans playerInfos.prepaLand
 let vetBonus = {
     rof: 8,

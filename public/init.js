@@ -128,6 +128,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.deadBats === undefined) {
         playerInfos.deadBats = [];
     }
+    if (playerInfos.showcaseBT === undefined) {
+        playerInfos.showcaseBT = 'Pushers';
+    }
     if (playerInfos.pauseSeed === undefined) {
         playerInfos.pauseSeed = rand.rand(1,8);
     }

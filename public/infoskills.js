@@ -474,7 +474,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     }
     // SHOWCASE
     if (!playerInfos.onShip) {
-        if (bat.type != showcaseBatType) {
+        if (bat.type != playerInfos.showcaseBT) {
             $('#unitInfos').append('<button type="button" title="Mettre en valeur tous le bataillons de ce type" class="boutonGrisBis unitButtonsSmall ncy" onclick="showcaseThis('+batType.id+')"><i class="fas fa-lightbulb"></i></button>');
             lineBreak = true;
         }

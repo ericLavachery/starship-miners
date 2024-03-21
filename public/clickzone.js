@@ -210,7 +210,6 @@ function isAlienHere(tileId) {
 function batSelect(bat,roger,keepBkp) {
     // stop move sound
     playMove(false);
-    // showcaseBatType = bat.type;
     // remove selection on old selected unit
     if (!keepBkp) {
         justReloaded = false;
