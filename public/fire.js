@@ -318,7 +318,11 @@ function attack(melee,init,aspeed,dspeed) {
     combatReportPics(selectedBat.team);
     let selectedBatUnits = selectedBat.squadsLeft*selectedBatType.squadSize;
     $('#report').append('<span class="report or">'+selectedBatUnits+' '+selectedBatName+'</span><br>');
-    $('#report').append('<span class="report"><span class="vert">'+selectedWeap.name+'</span> (init '+aspeed+')</span><br>');
+    let showInit = '';
+    if (aspeed >= 0) {
+        showInit = ' (init '+aspeed+')';
+    }
+    $('#report').append('<span class="report"><span class="vert">'+selectedWeap.name+'</span>'+showInit+'</span><br>');
     let delugeTileId = targetBat.tileId;
     // Dans l'eau
     let terrain = getTerrain(targetBat);
@@ -1642,7 +1646,11 @@ function defense(melee,init,aspeed,dspeed) {
     combatReportPics(targetBat.team);
     let targetBatUnits = targetBat.squadsLeft*targetBatType.squadSize;
     $('#report').append('<span class="report or">'+targetBatUnits+' '+targetBatName+'</span><br>');
-    $('#report').append('<span class="report"><span class="vert">'+targetWeap.name+'</span> (init '+dspeed+')</span><br>');
+    let showInit = '';
+    if (aspeed >= 0) {
+        showInit = ' (init '+dspeed+')';
+    }
+    $('#report').append('<span class="report"><span class="vert">'+targetWeap.name+'</span>'+showInit+'</span><br>');
     let delugeTileId = selectedBat.tileId;
     // Dans l'eau
     let terrain = getTerrain(selectedBat);

@@ -266,17 +266,6 @@ function deluge(weap,tileId,onlyAround) {
                     inDeluge = true;
                 }
             }
-            // let batType = getBatType(bat);
-            // if (batType.skills.includes('fly') && !batType.skills.includes('jetpack')) {
-            //     if (bat.apLeft > -5) {
-            //         inDeluge = false;
-            //     }
-            // }
-            // if (batType.skills.includes('jetpack') || bat.eq === 'e-jetpack') {
-            //     if (bat.apLeft > 0) {
-            //         inDeluge = false;
-            //     }
-            // }
             if (inDeluge) {
                 let batType = getBatType(bat);
                 delugeDamage(weap,bat,batType);
@@ -335,6 +324,13 @@ function delugeDamage(weap,bat,batType) {
         stormDmg = stormDmg/1.25;
     } else if (batType.skills.includes('reactblast') || bat.tags.includes('reactblast')) {
         stormDmg = stormDmg*2;
+    }
+    if (batType.skills.includes('permashield') || bat.tags.includes('permashield')) {
+        stormDmg = stormDmg/3;
+    } else if (bat.tags.includes('shield')) {
+        stormDmg = stormDmg/2;
+    } else if (batType.skills.includes('slowshield') || batType.skills.includes('shield')) {
+        stormDmg = stormDmg/1.5;
     }
     if (bat.team === 'aliens') {
         if (batType.skills.includes('fly') && bat.apLeft > -5) {

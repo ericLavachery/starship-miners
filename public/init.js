@@ -129,7 +129,7 @@ socket.on('playerInfos-Load', function(pi) {
         playerInfos.deadBats = [];
     }
     if (playerInfos.showcaseBT === undefined) {
-        playerInfos.showcaseBT = 'Pushers';
+        playerInfos.showcaseBT = 'PRFB';
     }
     if (playerInfos.pauseSeed === undefined) {
         playerInfos.pauseSeed = rand.rand(1,8);

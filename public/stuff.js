@@ -876,6 +876,11 @@ function showcaseThis(batTypeId) {
     showMap(zone,true);
 }
 
+function showcasePrefab() {
+    playerInfos.showcaseBT = 'PRFB';
+    showMap(zone,true);
+}
+
 function warnLink(tileId,showcase,batTypeId) {
     if (showcase) {
         showcaseThis(batTypeId);

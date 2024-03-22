@@ -1940,6 +1940,13 @@ function spawns() {
             let batTurn = playerInfos.mapTurn-bat.creaTurn+1;
             if ((bat.type.includes('Oeuf') || bat.type === 'Coque') && aliens.length < maxAliens) {
                 batType = getBatType(bat);
+                if ((bat.type === 'Coque' || bat.type === 'Oeuf') && bat.tags.includes('permashield') && (!coconStats.volc || rand.rand(1,6) === 1)) {
+                    let distance = calcDistance(1830,bat.tileId);
+                    if (distance >= 12) {
+                        alienSpawn(bat,'Volcan');
+                        coconStats.volc = true;
+                    }
+                }
                 eggTurn = playerInfos.mapTurn-bat.creaTurn+1;
                 eggModTurn = eggTurn+(zone[0].mapDiff*2)-12;
                 if (bat.type === 'Coque') {

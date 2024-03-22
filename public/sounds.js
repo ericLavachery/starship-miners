@@ -629,7 +629,9 @@ function playRoom(piste,interrupt,onloop) {
     }
     if (track != 'soute' && track != 'station') {
         // track = 'control';
-        if (zone[0].planet === 'Horst') {
+        if (zone[0].planet === 'Sarak') {
+            track = 'droneloop-black';
+        } else if (zone[0].planet === 'Horst') {
             track = 'droneloop-red';
         } else {
             track = 'droneloop';

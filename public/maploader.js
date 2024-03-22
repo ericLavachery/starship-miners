@@ -654,16 +654,24 @@ function showAlien(bat) {
 function isShowcased(bat,batType) {
     let showcase = false;
     if (playerInfos.showcaseBT.length >= 1) {
-        if (batType.name === playerInfos.showcaseBT) {
-            showcase = true;
-        } else if (batType.skills.includes('transport')) {
-            if (bat.transIds.length >= 1) {
-                bat.transIds.forEach(function(inBatId) {
-                    let inBat = getBatById(inBatId);
-                    if (inBat.type === playerInfos.showcaseBT) {
-                        showcase = true;
-                    }
-                });
+        if (playerInfos.showcaseBT === 'PRFB') {
+            if (batType.skills.includes('prefab') || batType.skills.includes('constructeur')) {
+                if (!batType.skills.includes('transorbital')) {
+                    showcase = true;
+                }
+            }
+        } else {
+            if (batType.name === playerInfos.showcaseBT) {
+                showcase = true;
+            } else if (batType.skills.includes('transport')) {
+                if (bat.transIds.length >= 1) {
+                    bat.transIds.forEach(function(inBatId) {
+                        let inBat = getBatById(inBatId);
+                        if (inBat.type === playerInfos.showcaseBT) {
+                            showcase = true;
+                        }
+                    });
+                }
             }
         }
     }

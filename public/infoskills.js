@@ -475,7 +475,11 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     // SHOWCASE
     if (!playerInfos.onShip) {
         if (bat.type != playerInfos.showcaseBT) {
-            $('#unitInfos').append('<button type="button" title="Mettre en valeur tous le bataillons de ce type" class="boutonGrisBis unitButtonsSmall ncy" onclick="showcaseThis('+batType.id+')"><i class="fas fa-lightbulb"></i></button>');
+            $('#unitInfos').append('<button type="button" title="Mettre en valeur tous les bataillons de ce type ('+bat.type+')" class="boutonGrisBis unitButtonsSmall ncy" onclick="showcaseThis('+batType.id+')"><i class="fas fa-lightbulb"></i></button>');
+            lineBreak = true;
+        }
+        if (batType.skills.includes('worker') && playerInfos.showcaseBT != 'PRFB') {
+            $('#unitInfos').append('<button type="button" title="Mettre en valeur tous les bâtiments préfabriqués" class="boutonGrisBis unitButtonsSmall ncy" onclick="showcasePrefab()"><i class="fas fa-building"></i></button>');
             lineBreak = true;
         }
     }
