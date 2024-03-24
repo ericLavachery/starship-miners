@@ -633,7 +633,10 @@ function nextTurnEnd() {
                 }
                 console.log('camoAP '+bat.camoAP);
             }
-            bat.apLeft = bat.apLeft+ap;
+            let okAP = chercheursDansBat(bat,batType,false);
+            if (okAP) {
+                bat.apLeft = bat.apLeft+ap;
+            }
             if (bat.apLeft > oldAP) {
                 bat.apLeft = oldAP;
             }
@@ -808,6 +811,31 @@ function nextTurnEnd() {
     nextTurnOK = false;
     commandes();
     // testConnect(pseudo);
+};
+
+function chercheursDansBat(bat,batType,quiet) {
+    let okAP = true;
+    if (batType.name === 'Dôme') {
+        okAP = false;
+        let haveSci = false;
+        if (bat.transIds.length >= 1) {
+            bat.transIds.forEach(function(transId) {
+                let inBat = getBatById(transId);
+                let inBatType = getBatType(inBat);
+                if (inBatType.name === 'Chercheurs') {
+                    haveSci = true;
+                }
+            });
+        }
+        if (haveSci) {
+            okAP = true;
+        } else {
+            if (!quiet) {
+                warning('<span class="rq3">Dôme</span>','<span class="vio">Vous devez avoir des Chercheurs dans le Dôme pour terminer sa construction.</span>',false,bat.tileId,false);
+            }
+        }
+    }
+    return okAP;
 };
 
 function turnInfo(first) {
@@ -991,7 +1019,7 @@ function turnInfo(first) {
             if (bat.type === 'Necrotrucks') {
                 zombifiersTiles.push(bat.tileId);
             }
-            if (batType.skills.includes('pilone') && !bat.tags.includes('construction')) {
+            if (batType.skills.includes('pilone') || batType.skills.includes('dome')) {
                 piloneTileIds.push(bat.tileId);
             }
             if (bat.type === 'Scraptrucks') {

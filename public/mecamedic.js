@@ -1282,6 +1282,74 @@ function pills() {
     }
 };
 
+function pillsGalore(minEmo) {
+    let drug = getDrugByName('pills');
+    let pillsCosts = getPillsCosts(selectedBat,selectedBatType);
+    let pillsOK = checkCost(pillsCosts);
+    if (pillsOK) {
+        payCost(pillsCosts);
+        selectedBat.tags.push('pills');
+        if (selectedBat.emo != undefined) {
+            if (selectedBat.emo >= 1) {
+                selectedBat.emo = Math.floor(selectedBat.emo/1.25);
+            }
+        }
+        let drugSound = getDrugSound(drug,selectedBatType);
+        playSound(drugSound,0);
+        selectedBatArrayUpdate();
+    }
+    let resOK = true;
+    let sortedBats = bataillons.slice();
+    sortedBats = _.sortBy(_.sortBy(sortedBats,'soins'),'emo');
+    sortedBats = sortedBats.reverse();
+    sortedBats.forEach(function(bat) {
+        if (resOK) {
+            if (!bat.tags.includes('pills')) {
+                let batType = getBatType(bat);
+                showMe = false;
+                if (bat.emo != undefined) {
+                    if (bat.emo >= minEmo) {
+                        showMe = true;
+                    }
+                }
+                // if (batType.skills.includes('transorbital')) {
+                //     showMe = false;
+                // }
+                if (batType.id === 126 || batType.id === 225) {
+                    showMe = false;
+                }
+                if (bat.id === selectedBat.id) {
+                    showMe = false;
+                }
+                if (showMe) {
+                    pillsCosts = getPillsCosts(bat,batType);
+                    pillsOK = checkSafeCost(pillsCosts,10);
+                    if (pillsOK) {
+                        payCost(pillsCosts);
+                        pillsHim(bat);
+                    } else {
+                        resOK = false;
+                    }
+                }
+            }
+        }
+    });
+    if (!resOK) {
+        warning('<span class="rq3">Anti-dépressifs</span>','<span class="vio">Ressources trop basses.</span> Tous les bataillons sélectionnés n\'ont pas été traités.');
+    }
+    goSoute();
+    showBatInfos(selectedBat);
+};
+
+function pillsHim(bat) {
+    bat.tags.push('pills');
+    if (bat.emo != undefined) {
+        if (bat.emo >= 1) {
+            bat.emo = Math.floor(bat.emo/1.25);
+        }
+    }
+};
+
 function getMaintenanceCosts(bat,batType) {
     let maintCosts = {};
     let state = (bat.soins*2)-7;

@@ -394,6 +394,22 @@ function checkCost(costs) {
     return enoughRes;
 };
 
+function checkSafeCost(costs,gaugeDiv) {
+    let enoughRes = true;
+    if (costs != undefined) {
+        Object.entries(costs).map(entry => {
+            let key = entry[0];
+            let value = entry[1];
+            let res = getResByName(key);
+            let dispoRes = getDispoRes(key);
+            if (dispoRes < value+(res.gauge/gaugeDiv)) {
+                enoughRes = false;
+            }
+        });
+    }
+    return enoughRes;
+};
+
 function checkMultiCost(costs,number) {
     let enoughRes = true;
     if (costs != undefined) {

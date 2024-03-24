@@ -383,7 +383,7 @@ function catColor(unit) {
         if (unit.skills.includes('transorbital') && unit.name != 'Soute') {
             unitCol = 'bleu';
         }
-        if (unit.name === "Dôme" || unit.name === "Soute") {
+        if (unit.name === "Dôme" || unit.name === "Pilône" || unit.name === "Soute") {
             unitCol = 'hjaune';
         }
     }
@@ -1813,11 +1813,11 @@ function putRuinsOfDestroyedBld(name,tileId) {
 
 function checkDismantle(myBat,myBatType) {
     let okDis = true;
-    if (myBatType.skills.includes('nodelete')) {
+    if (myBatType.skills.includes('nodelete') && (playerInfos.gLevel < 19 || myBatType.crew === 0)) {
         okDis = false;
     } else if (myBat.tags.includes('nomove')) {
         okDis = false;
-    } else if (myBat.tags.includes('nopilots')) {
+    } else if (myBat.tags.includes('nopilots') && !playerInfos.onShip) {
         okDis = false;
         bataillons.forEach(function(bat) {
             if (!bat.tags.includes('nopilots') && !bat.tags.includes('nomove')) {
@@ -1836,7 +1836,7 @@ function dismantle(batId,fuite) {
     selectMode();
     let bat = getBatById(batId);
     let batType = getBatType(bat);
-    if (!batType.skills.includes('nodelete')) {
+    if (!batType.skills.includes('nodelete') || (playerInfos.gLevel >= 19 && batType.crew >= 1)) {
         // récup de ressources !!!!!!
         let isCharged = checkCharged(bat,'trans');
         let isLoaded = checkCharged(bat,'load');

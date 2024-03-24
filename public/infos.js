@@ -501,7 +501,11 @@ function batInfos(bat,batType,pop) {
             if (bat.type === 'Champ de force') {
                 $('#'+bodyPlace).append('<span class="paramName jaune">Dôme</span><span class="paramIcon"></span><span class="paramValue jaune">En construction</span><br>');
             } else if (bat.type === 'Dôme') {
-                $('#'+bodyPlace).append('<span class="paramName jaune">Dôme</span><span class="paramIcon"></span><span class="paramValue jaune">En construction</span><br>');
+                if (chercheursDansBat(bat,batType,true)) {
+                    $('#'+bodyPlace).append('<span class="paramName jaune">Dôme</span><span class="paramIcon"></span><span class="paramValue jaune">En construction</span><br>');
+                } else {
+                    $('#'+bodyPlace).append('<span class="paramName or">Dôme</span><span class="paramIcon"></span><span class="paramValue or" title="Vous devez avoir des Chercheurs dans le Dôme pour terminer sa construction.">Chercheurs absents</span><br>');
+                }
             }
         }
     }
@@ -1004,6 +1008,9 @@ function batInfos(bat,batType,pop) {
 
 function getInfoAdd(batType) {
     let infoAdd = '';
+    if (batType.name === 'Pilône') {
+        infoAdd = infoAdd+'Un Pilône offre une protection limitée contre la chute des oeufs alien. Aucun oeuf ne peut tomber à '+piloRange+' cases ou moins d\'un Pilône. Vous ne pouvez pas construire plusieurs Pilônes à moins de 25 cases les uns des autres.<br>';
+    }
     if (batType.name === 'Camp d\'entraînement') {
         infoAdd = infoAdd+'Le Camp d\'entraînement fait gagner des points d\'expérience à vos bataillons lorsqu\'ils sont au repos, en zone et dans la station spatiale. En zone, ils gagnent encore plus d\'expérience si ils sont à l\'intérieur du camp.<br>';
         infoAdd = infoAdd+'La plupart des habilités de combat de vos bataillons gagnent en efficacité (bullseye, embuscade, guet...).<br>';
@@ -1138,7 +1145,14 @@ function getInfoAdd(batType) {
         infoAdd = infoAdd+'Permet à vos bataillons de recevoir l\'ordre d\'un chef dans toute la zone (habilité |commande|).<br>';
     }
     if (batType.name === 'QG') {
-        infoAdd = infoAdd+'Tous vos bataillons augmentent leurs PA par tour de 10%.<br>';
+        infoAdd = infoAdd+'Augmente les PA de tous vos bataillons.<br>';
+    }
+    if (batType.skills.includes('nodelete')) {
+        if (batType.crew >= 1) {
+            infoAdd = infoAdd+'Ce bâtiment ne peut pas être démantelé avant votre dernière mission.<br>';
+        } else {
+            infoAdd = infoAdd+'Ce bâtiment ne peut pas être démantelé.<br>';
+        }
     }
     return infoAdd;
 };
@@ -1460,9 +1474,6 @@ function batFullInfos(bat,batType) {
         } else {
             allSkills = allSkills+'<span class="paramValue" title="Récupèrent un peu de Gibier en forêt lorsqu\'ils sont inactifs et éloignés du Lander">Chasse</span>'+sepa;
         }
-    }
-    if (batType.skills.includes('xxxxx')) {
-        allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;
     }
     if (batType.skills.includes('xxxxx')) {
         allSkills = allSkills+'<span class="paramValue" title="zzzzzzzzz">Yyyyyy</span>'+sepa;

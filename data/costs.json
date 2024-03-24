@@ -3016,8 +3016,8 @@
         "costs":{"Compo1":210,"Compo2":540,"Compo3":360,"Eau":60,"Energie":20000,"Carbone":2000,"Titane":600,"Potassium":5000,"Rhodium":3000,"Cuivre":1000,"Platine":1200,"Mercure":1500,"Bore":3000,"Plutonium":2000,"Uranium":1000,"Uridium":300,"Oxygène":1000,"Azote":3000,"Electros":500,"Batteries":1000},
         "fabTime":100,
         "slots":0,
-        "info":"Ce bâtiment empêche la chutte des oeufs des aliens. Pour le construire vous devez avoir sur place 4 Pilônes. Chacun des 5 bâtiments doivent se trouver à 25 cases minimum les uns des autres.",
-        "redInfo":"Si vous parvenez à construire un Dôme sur la planète Dom et que vous tuez tous les aliens dans la zone, vous avez gagné la partie"
+        "info":"Ce bâtiment empêche la chutte des oeufs aliens. Pour le construire vous devez avoir sur place 4 Pilônes. Chacun des 5 bâtiments doivent se trouver à 25 cases minimum les uns des autres. Vous devez avoir un groupe de Chercheurs dans le Dôme pour terminer sa construction.",
+        "redInfo":"Si vous parvenez à construire un Dôme sur la planète Dom et que vous tuez tous les aliens dans la zone, vous avez gagné la partie."
     },
     {
         "id":200,
@@ -3185,8 +3185,8 @@
         "costs":{},
         "fabTime":200,
         "slots":42,
-        "info":"La Soute ne peut pas être démantelée.",
-        "redInfo":"Elle vous permet de produire tous vos nouveaux bataillons.<br>N'oubliez pas de transférer dans la Soute les ressources que vous avez ramenées dans votre Lander après une mission."
+        "info":"Soute / Docks de la station spatiale.",
+        "redInfo":"La Soute vous permet de produire tous vos nouveaux bataillons.<br>N'oubliez pas de transférer dans la Soute les ressources que vous avez ramenées dans votre Lander après une mission."
     },
     {
         "id":290,
@@ -3194,7 +3194,8 @@
         "bldReq":["Station"],
         "costs":{},
         "fabTime":200,
-        "slots":0
+        "slots":0,
+        "info":"Ce bâtiment abrite les techniciens de la station spatiale. Ils pourront devenir l'équipage du Dôme et des Pilônes qui vous permettront de créer une colonie sur la planête Dom."
     },
     {
         "id":228,

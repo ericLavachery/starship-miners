@@ -971,22 +971,27 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
     }
     // DEPRESSION
     if (playerInfos.onShip && !zeroCrew) {
-        if (bat.emo >= 5) {
-            let drug = getDrugByName('pills');
-            let pillsCosts = getPillsCosts(bat,batType);
-            let pillsOK = checkCost(pillsCosts);
-            if (pillsOK && !bat.tags.includes('pills')) {
-                $('#unitInfos').append('<button type="button" title="'+drug.info+' '+displayCosts(pillsCosts)+'" class="boutonVert unitButtons" onclick="pills()"><i class="'+drug.icon+'"></i> <span class="small">0</span></button>');
-                lineBreak = true;
-            } else {
-                if (bat.tags.includes('pills')) {
-                    skillMessage = 'Déjà sous anti-dépresseurs';
-                    $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonOK unitButtons cy"><i class="'+drug.icon+'"></i> <span class="small">0</span></button>');
+        if (souteTab === 'hop') {
+            if (bat.emo >= 5) {
+                let drug = getDrugByName('pills');
+                let pillsCosts = getPillsCosts(bat,batType);
+                let pillsOK = checkCost(pillsCosts);
+                if (pillsOK && !bat.tags.includes('pills')) {
+                    $('#unitInfos').append('<button type="button" title="'+drug.info+' '+displayCosts(pillsCosts)+'" class="boutonVert unitButtons" onclick="pills()"><i class="'+drug.icon+'"></i></button>');
+                    if (souteTab === 'hop') {
+                        $('#unitInfos').append('<button type="button" title="Anti-dépressifs: Traiter tous les bataillons qui ont au moins '+bat.emo+' en stress. &#10071;Attention à vos ressources." class="boutonVert unitButtons" onclick="pillsGalore('+bat.emo+')"><i class="'+drug.icon+'"></i>&nbsp;<span class="small">Stress '+bat.emo+'+</span></button>');
+                    }
                     lineBreak = true;
                 } else {
-                    skillMessage = 'Traitement: Ressources insuffisantes '+displayCosts(pillsCosts);
-                    $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey unitButtons gf"><i class="'+drug.icon+'"></i> <span class="small">0</span></button>');
-                    lineBreak = true;
+                    if (bat.tags.includes('pills')) {
+                        skillMessage = 'Déjà sous anti-dépresseurs';
+                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonOK unitButtons cy"><i class="'+drug.icon+'"></i> <span class="small">0</span></button>');
+                        lineBreak = true;
+                    } else {
+                        skillMessage = 'Traitement: Ressources insuffisantes '+displayCosts(pillsCosts);
+                        $('#unitInfos').append('<button type="button" title="'+skillMessage+'" class="boutonGrey unitButtons gf"><i class="'+drug.icon+'"></i> <span class="small">0</span></button>');
+                        lineBreak = true;
+                    }
                 }
             }
         }

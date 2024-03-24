@@ -1609,7 +1609,7 @@
     {
         "id":124,
         "result":"Energons",
-        "cost":{"Energie":11},
+        "cost":{"Energie":10},
         "compReq":{},
         "bldReq":["Centrale SMR"],
         "deg":true,
