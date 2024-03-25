@@ -929,15 +929,9 @@ function sondeResChoice(arNum) {
 };
 
 function pushSonde(mapNum,mapMax) {
-    let vspComp = playerInfos.comp.vsp+1;
-    if (playerInfos.comp.vsp >= 2) {
-        vspComp++;
-    }
-    if (playerInfos.comp.vsp === 4) {
-        vspComp++;
-    }
+    let vspComp = (playerInfos.comp.vsp*playerInfos.comp.vsp);
     let crashChance = Math.round((mapNum-mapMax)*60/vspComp);
-    // console.log('crash = '+crashChance+'%');
+    console.log('crash = '+crashChance+'%');
     if (rand.rand(1,100) > crashChance) {
         generateNewMap(false);
     } else {
@@ -969,13 +963,27 @@ function stopSonde() {
     planetThumb();
 };
 
+function getMaxMaps(impact) {
+    let vspComp = Math.ceil(playerInfos.comp.vsp*playerInfos.comp.vsp/3);
+    // console.log(vspComp);
+    let maxMaps = ((vspComp+1)*maxMapsParDet);
+    if (impact) {
+        maxMaps = Math.floor((vspComp)*(maxMapsParDet+0.5))-1;
+        if (maxMaps < 2) {
+            maxMaps = 2;
+        }
+    }
+    return maxMaps;
+};
+
 function goSonde(impacteur) {
+    let vspComp = (playerInfos.comp.vsp*playerInfos.comp.vsp);
     if (impacteur) {
         impact = true;
-        playerInfos.allTurns = playerInfos.allTurns+Math.floor(10/(playerInfos.comp.vsp+2)*3);
+        playerInfos.allTurns = playerInfos.allTurns+20-vspComp;
     } else {
         impact = false;
-        playerInfos.allTurns = playerInfos.allTurns+Math.floor(8/(playerInfos.comp.vsp+4)*5);
+        playerInfos.allTurns = playerInfos.allTurns+18-vspComp;
     }
     conOut(true);
     batUnselect();
@@ -998,6 +1006,12 @@ function goSonde(impacteur) {
     commandes();
     viewPop();
     ruinsView();
+};
+
+function regionChange() {
+    playerInfos.sondeMaps = playerInfos.sondeMaps+2;
+    playerInfos.allTurns = playerInfos.allTurns+3;
+    generateNewMap(true);
 };
 
 function removeSonde(impacteur) {

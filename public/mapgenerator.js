@@ -103,12 +103,6 @@ function changeStationMap() {
     }
 }
 
-function regionChange() {
-    playerInfos.sondeMaps = playerInfos.sondeMaps+3;
-    playerInfos.allTurns = playerInfos.allTurns+5;
-    generateNewMap(true);
-};
-
 function regionChoice(regionName) {
     let region = getRegionByName(regionName);
     filterBase = region;

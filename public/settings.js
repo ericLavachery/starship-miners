@@ -25,7 +25,7 @@ let theBatRes = {};
 let theTilePacks = 'tungsten';
 let theTileRuins = 'Habitations';
 let modeSonde = false;
-let maxMapsParDet = 5;
+let maxMapsParDet = 4;
 let impact = false;
 let zoneFiles = [];
 let terSeed = 12; // def 12 +grand = +grandes forêts etc...

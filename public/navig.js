@@ -207,7 +207,7 @@ function commandes() {
                     let nextMapNumber = playerInfos.sondeMaps+1;
                     if (playerInfos.sondeMaps < maxMaps) {
                         $('#commandz').append('<button type="button" title="Voir une autre zone ('+nextMapNumber+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-map" onclick="generateNewMap(false)" onmousedown="clicSound(19)"></i></button>');
-                        if (playerInfos.comp.vsp >= 4 && playerInfos.sondeMaps+3 < maxMaps && !impact) {
+                        if (playerInfos.comp.vsp >= 4 && playerInfos.sondeMaps+2 < maxMaps) {
                             let mapNumberAfterChange = nextMapNumber+3;
                             $('#commandz').append('<button type="button" title="Changer de région ('+mapNumberAfterChange+'/'+maxMaps+')" class="boutonBrun iconButtons"><i class="fas fa-globe" onclick="regionChange()" onmousedown="clicSound(9)"></i></button>');
                         }
@@ -310,17 +310,6 @@ function commandes() {
         $("#report").css("display","block");
     }
     showResBar();
-};
-
-function getMaxMaps(impact) {
-    let maxMaps = ((playerInfos.comp.vsp+1)*maxMapsParDet)+2;
-    if (impact) {
-        maxMaps = Math.ceil((playerInfos.comp.vsp)*(maxMapsParDet+0.5))+1;
-        if (maxMaps < 3) {
-            maxMaps = 3;
-        }
-    }
-    return maxMaps;
 };
 
 function viewPop() {
