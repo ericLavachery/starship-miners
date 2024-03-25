@@ -1892,10 +1892,10 @@
         "skills":[],
         "info":"Augmente le fret",
         "bldReq":["Soute"],
-        "compReq":{"log":1,"trans":1,"vsp":2},
-        "autoComp":[],
+        "compReq":{"log":2,"trans":1,"vsp":2},
+        "autoComp":["vsp",3],
         "factor":"thp",
-        "costs":{"Carbone":0.8,"Scrap":0.8,"Aluminium":0.8}
+        "costs":{"Carbone":1,"Scrap":1,"Aluminium":1}
     },
     {
         "name":"megatrans",
@@ -1903,10 +1903,11 @@
         "skills":[],
         "info":"Augmente la capacité des cabines",
         "bldReq":["Soute"],
-        "compReq":{"log":1,"trans":1,"vsp":2},
-        "autoComp":["trans",3],
+        "compReq":{"log":1,"mat":2,"trans":1,"vsp":2},
+        "altCompReq":{"log":1,"mat":1,"trans":2,"vsp":2},
+        "autoComp":["vsp",3],
         "factor":"thp",
-        "costs":{"Scrap":0.7,"Tissus":0.3,"Fer":0.6,"Bois":0.1,"Batteries":0.1}
+        "costs":{"Carbone":0.8,"Scrap":0.8,"Titane":2.2,"Tissus":1.5,"Batteries":0.1}
     },
     {
         "name":"siland",

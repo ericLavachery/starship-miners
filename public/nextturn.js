@@ -603,14 +603,16 @@ function nextTurnEnd() {
             // AP
             ap = getAP(bat,batType);
             if (!batType.skills.includes('domeconst')) {
-                if (boostedTeams.includes(batType.kind)) {
-                    ap = ap+1;
-                }
                 if (prayedTeams.includes(batType.kind)) {
                     ap = ap+1;
                 }
             }
             oldAP = ap;
+            if (!batType.skills.includes('domeconst')) {
+                if (boostedTeams.includes(batType.kind)) {
+                    ap = ap+1;
+                }
+            }
             // camoAP
             camoEnCours = false;
             if (bat.camoAP >= 1) {
@@ -1349,16 +1351,16 @@ function getAP(bat,batType) {
         newAP = newAP*0.9;
     }
     if (playerInfos.bldList.includes('QG') && !batType.skills.includes('artank')) {
-        newAP = newAP*1.05;
+        newAP = newAP*apQG/100;
     }
     if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && !batType.skills.includes('artank') && batType.skills.includes('fly')) {
         if (playerInfos.bldList.includes('Aérodocks')) {
-            newAP = newAP*1.15;
+            newAP = newAP*apAero/100;
         }
     }
     if (batType.cat === 'vehicles' && !batType.skills.includes('robot') && !batType.skills.includes('cyber') && !batType.skills.includes('artank') && !batType.skills.includes('fly') && batType.moveCost < 90) {
-        if (playerInfos.bldList.includes('Garage')) {
-            newAP = newAP+1;
+        if (!playerInfos.bldList.includes('Garage')) {
+            newAP = newAP-apGarage;
         }
     }
     if (hasEquip(bat,['g2motor'])) {

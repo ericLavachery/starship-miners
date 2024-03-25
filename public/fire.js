@@ -307,11 +307,7 @@ function attack(melee,init,aspeed,dspeed) {
     let selectedBatName = nomVisible(selectedBat);
     let targetBatName = nomVisible(targetBat);
     minesExploded = 0;
-    let xpFactor = Math.round(12/selectedBatType.maxSalvo/10);
-    xpFactor = xpFactor.toFixedNumber(2);
-    if (selectedBatType.maxSalvo >= 5) {
-        xpFactor = 0.2;
-    }
+    let xpFactor = calcXPFactor(selectedBatType);
     if (targetBatType.cat != 'buildings' && targetBat.tags.includes('construction') && targetBat.apLeft <= 2-targetBat.ap) {
         targetBat.apLeft = 3-targetBat.ap;
     }
@@ -1471,6 +1467,9 @@ function attack(melee,init,aspeed,dspeed) {
                 targetBat.damage = 0;
                 targetBat.xp = 150;
                 targetBat.tags.push('zombie');
+                tagDelete(targetBat,'schef');
+                tagDelete(targetBat,'hero');
+                tagDelete(targetBat,'vet');
                 $('#report').append('<span class="report rose">Zombifié!<br></span>');
             }
         }
@@ -1638,11 +1637,7 @@ function defense(melee,init,aspeed,dspeed) {
     }
     let selectedBatName = nomVisible(selectedBat);
     let targetBatName = nomVisible(targetBat);
-    let xpFactor = Math.round(12/selectedBatType.maxSalvo/10);
-    xpFactor = xpFactor.toFixedNumber(2);
-    if (selectedBatType.maxSalvo >= 5) {
-        xpFactor = 0.2;
-    }
+    let xpFactor = calcXPFactor(targetBatType);
     combatReportPics(targetBat.team);
     let targetBatUnits = targetBat.squadsLeft*targetBatType.squadSize;
     $('#report').append('<span class="report or">'+targetBatUnits+' '+targetBatName+'</span><br>');
@@ -2466,6 +2461,9 @@ function defense(melee,init,aspeed,dspeed) {
                 selectedBat.damage = 0;
                 selectedBat.xp = 150;
                 selectedBat.tags.push('zombie');
+                tagDelete(selectedBat,'schef');
+                tagDelete(selectedBat,'hero');
+                tagDelete(selectedBat,'vet');
                 $('#report').append('<span class="report rose">Zombifié!<br></span>');
             }
         }

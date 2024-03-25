@@ -3625,7 +3625,7 @@
         "equip":["aucun","lunette1","chargeur1","wstabkit","moisso","g2motor","snorkel","e-flash","chenilles","e-mecano","e-lifepod"],
         "log3eq":["chenilles"],
         "autoEq":["wstabkit","lunette1","snorkel"],
-        "moveCost":2,
+        "moveCost":2.3,
         "maxFlood":1,
         "maxScarp":2,
         "maxVeg":3,

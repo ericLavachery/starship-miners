@@ -4222,3 +4222,19 @@ function combatReportPics(showTeam) {
     }
     $('#report').append('<br>');
 };
+
+function calcXPFactor(batType) {
+    let xpFactor = Math.round(12/batType.maxSalvo/10);
+    if (batType.maxSalvo >= 3) {
+        xpFactor = 0.4;
+    }
+    let batGangLevel = batType.levels[playerInfos.gang];
+    if (batGangLevel >= 15) {
+        xpFactor = xpFactor*batGangLevel/14;
+    }
+    if (batGangLevel >= 17) {
+        xpFactor = xpFactor*batGangLevel/16;
+    }
+    xpFactor = xpFactor.toFixedNumber(2);
+    return xpFactor;
+};

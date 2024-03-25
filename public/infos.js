@@ -1033,10 +1033,11 @@ function getInfoAdd(batType) {
     }
     if (batType.name === 'Garage') {
         infoAdd = infoAdd+'La présence d\'un Garage réduit légèrement les coûts en PA des habilités de réparation de véhicules de tous les bataillons.<br>';
-        infoAdd = infoAdd+'Tous vos véhicules non volants gagnent 1 PA par tour.<br>';
+        infoAdd = infoAdd+'Tous vos véhicules non volants gagnent '+apGarage+' PA par tour.<br>';
     }
     if (batType.name === 'Aérodocks') {
-        infoAdd = infoAdd+'Tous vos véhicules volants augmentent leurs PA par tour de 15%.<br>';
+        let aeroBonus = apAero-100;
+        infoAdd = infoAdd+'Tous vos véhicules volants augmentent leurs PA par tour de '+aeroBonus+'%.<br>';
     }
     if (batType.name === 'Hôpital') {
         infoAdd = infoAdd+'La présence d\'un Hôpital réduit grandement les coûts en PA des habilités de soins de tous les bataillons.<br>';
@@ -1145,7 +1146,8 @@ function getInfoAdd(batType) {
         infoAdd = infoAdd+'Permet à vos bataillons de recevoir l\'ordre d\'un chef dans toute la zone (habilité |commande|).<br>';
     }
     if (batType.name === 'QG') {
-        infoAdd = infoAdd+'Augmente les PA de tous vos bataillons.<br>';
+        let qgBonus = apQG-100;
+        infoAdd = infoAdd+'Augmente de '+qgBonus+'% les PA de tous vos bataillons.<br>';
     }
     if (batType.skills.includes('nodelete')) {
         if (batType.crew >= 1) {
