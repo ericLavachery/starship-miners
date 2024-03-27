@@ -1034,7 +1034,7 @@ function batListElement(bat,batType,idOfLander,noEmb) {
             mayDeploy = false;
         }
         if (batType.skills.includes('nodeploy')) {
-            if (batType.name != 'Chercheurs' || playerInfos.gLevel < 19) {
+            if (playerInfos.gLevel < 19) {
                 mayDeploy = false;
             }
         }

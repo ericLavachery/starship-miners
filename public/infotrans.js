@@ -601,6 +601,9 @@ function calcRamasseCost(bat,batType,transBatType) {
     if (ramasseCost < 0) {
         ramasseCost = 0;
     }
+    if (batType.skills.includes('barda')) {
+        ramasseCost = ramasseCost+1;
+    }
     return ramasseCost;
 }
 
@@ -631,6 +634,9 @@ function calcEmbarqCost(batType,transBatType) {
         embarqCost[0] = embarqCost[0]-2;
         if (embarqCost[0] < 1) {
             embarqCost[0] = 1;
+        }
+        if (batType.skills.includes('barda')) {
+            embarqCost[0] = embarqCost[0]+1;
         }
     }
     return embarqCost;

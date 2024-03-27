@@ -376,11 +376,12 @@ function checkAutoEqCompReq(stuff) {
 function getAutoEqList(bat,batType,isStartBat) {
     // console.log("CHECK AUTO EQs LIST !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     let autoEqList = [];
+    let vetNeed = 5-playerInfos.comp.log;
     if (batType.skills.includes('penitbat')) {
         if (bat.tdc != undefined) {
             autoEqList = bat.tdc;
         }
-    } else if (bat.vet >= 3 || batType.cat === 'buildings' || batType.skills.includes('leader') || batType.skills.includes('cleric') || batType.skills.includes('souschef')) {
+    } else if (bat.vet >= vetNeed || playerInfos.comp.log === 3 || batType.cat === 'buildings' || batType.skills.includes('leader') || batType.skills.includes('cleric') || bat.tags.includes('schef') || bat.tags.includes('hero')) {
         if (batType.autoEq != undefined) {
             // console.log(batType.autoEq);
             if (batType.autoEq.length >= 1) {

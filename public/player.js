@@ -1264,7 +1264,7 @@ function playerSkillsUTChanges() {
         if (playerInfos.comp.log >= 2) {
             if (unit.skills.includes('moto') || unit.skills.includes('machine')) {
                 if (playerInfos.comp.log >= 3) {
-                    unit.volume = unit.volume/1.5;
+                    unit.volume = unit.volume/1.35;
                 } else {
                     unit.volume = unit.volume/1.12;
                 }
@@ -1272,11 +1272,15 @@ function playerSkillsUTChanges() {
             }
             if (unit.skills.includes('barda')) {
                 if (playerInfos.comp.log >= 3) {
-                    unit.volume = (unit.volume+3)/4;
+                    unit.volume = (unit.volume+3)/4.15;
                 } else {
                     unit.volume = (unit.volume+1)/2;
                 }
                 unit.volume = unit.volume.toFixedNumber(2);
+            } else if (unit.cat === 'infantry' && unit.volume > 1) {
+                if (playerInfos.comp.log >= 3) {
+                    unit.volume = 1;
+                }
             }
         }
         if (playerInfos.comp.log >= 1) {

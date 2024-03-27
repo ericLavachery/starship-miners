@@ -60,7 +60,7 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
                     }
                 }
             }
-            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.eq != 'taserkit' && bat.type != 'Chercheurs' && !bat.tags.includes('dying') && deployOK) {
+            if (enoughRes && deployInfo[0] && deployInfo[1] && deployInfo[2] && bat.eq != 'camkit' && bat.eq != 'taserkit' && !bat.tags.includes('dying') && !batType.skills.includes('nodeploy') && deployOK) {
                 $('#unitInfos').append('<span class="blockTitle"><h4><button type="button" title="Charger le bataillon dans le lander" class="boutonMarine bigButtons" onclick="batDeploy('+bat.id+')"><i class="fas fa-sign-in-alt"></i></button>&nbsp; Déployer</h4></span>');
             } else {
                 if (bat.eq === 'camkit' || bat.eq === 'taserkit') {
