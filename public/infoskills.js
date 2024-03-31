@@ -1018,14 +1018,14 @@ function skillsInfos(bat,batType,near,nearby,selfMove) {
             }
         }
     }
-    if (!playerInfos.onShip && !zeroCrew) {
+    if (!playerInfos.onShip && !zeroCrew && playerInfos.gLevel >= 19) {
         if (bat.soins >= 11 && bat.damage === 0 && bat.squadsLeft >= batType.squads && bat.apLeft > 0) {
             if (batType.cat === 'vehicles' || batType.cat === 'buildings' || batType.cat === 'devices') {
                 if (checkNearConstructor(bat)) {
                     let apLoss = checkVehiclesAPSoins(bat,batType);
                     let maintCosts = getMaintenanceCosts(bat,batType);
                     let maintOK = checkCost(maintCosts);
-                    apCost = bat.ap*2;
+                    apCost = Math.ceil(bat.ap*bat.soins/6);
                     if (maintOK) {
                         $('#unitInfos').append('<button type="button" title="Entretien '+displayCosts(maintCosts)+'" class="boutonOrange unitButtons" onclick="maintenanceInZone()"><i class="fa fa-wrench"></i> <span class="small">'+apCost+'</span></button>');
                         lineBreak = true;

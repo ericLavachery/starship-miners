@@ -1362,9 +1362,10 @@ function getMaintenanceCosts(bat,batType) {
         let thatCost = Math.floor(value*state/100);
         if (key === 'Moteurs') {
             thatCost = Math.ceil(thatCost*2);
-        }
-        if (key === 'Plastanium') {
+        } else if (key === 'Plastanium') {
             thatCost = Math.ceil(thatCost*3);
+        } else if (batType.skills.includes('transorbital')) {
+            thatCost = Math.ceil(thatCost/3);
         }
         if (thatCost >= 1 && key != 'Spins') {
             maintCosts[key] = thatCost;
@@ -1404,8 +1405,8 @@ function maintenanceInZone() {
     let maintOK = checkCost(maintCosts);
     if (maintOK) {
         payCost(maintCosts);
+        selectedBat.apLeft = selectedBat.apLeft-Math.ceil(selectedBat.ap*selectedBat.soins/6);
         selectedBat.soins = 0;
-        selectedBat.apLeft = selectedBat.apLeft-(selectedBat.ap*2);
         if (!selectedBat.tags.includes('construction')) {
             selectedBat.tags.push('construction');
         }

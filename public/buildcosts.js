@@ -286,7 +286,7 @@ function tagAllMissingRes(unitId) {
 function calcFullDomeCost() {
     let domeBatType = getBatTypeByName('Dôme');
     let piloneBatType = getBatTypeByName('Pilône');
-    let fullCost = domeBatType.costs;
+    let fullCost = JSON.parse(JSON.stringify(domeBatType.costs));
     Object.entries(piloneBatType.costs).map(entry => {
         let key = entry[0];
         let value = entry[1];
