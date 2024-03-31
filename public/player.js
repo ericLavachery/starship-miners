@@ -3087,6 +3087,7 @@ function gangLevelView() {
         let compCost = comp.lvlCosts[nextComp];
         let colour = 'neutre';
         let costColour = 'gff';
+        let gangIcon = getCompGangIcon(comp);
         if (compCost >= 2) {
             costColour = 'gf';
         }
@@ -3095,7 +3096,7 @@ function gangLevelView() {
             colour = 'cy';
             costColour = 'noir';
         }
-        $('#conUnitList').append('<span class="paramName '+colour+' klik" title="'+comp.desc+'" onclick="compDetail('+comp.id+')">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût">('+compCost+')</span><span class="paramCompValue cy" title="Niveau actuel">'+nowComp+'<span class="gff">/'+comp.maxLevel+'</span></span>');
+        $('#conUnitList').append('<span class="paramName '+colour+' klik" title="'+comp.desc+'" onclick="compDetail('+comp.id+')">'+comp.fullName+' '+gangIcon+'</span><span class="paramIcon '+costColour+'" title="Coût">('+compCost+')</span><span class="paramCompValue cy" title="Niveau actuel">'+nowComp+'<span class="gff">/'+comp.maxLevel+'</span></span>');
     });
     $('#conUnitList').append('<br>');
     $('#conUnitList').append('<span class="ListRes"></span><br>');
@@ -3116,6 +3117,16 @@ function checkListedItem(stuff,comp) {
         }
     }
     return listMe;
+};
+
+function getCompGangIcon(comp) {
+    let gangIcon = '&#129003;';
+    if (comp.essential.includes(playerInfos.gang)) {
+        gangIcon = '&#128998;';
+    } else if (comp.good.includes(playerInfos.gang)) {
+        gangIcon = '&#129000;';
+    }
+    return gangIcon;
 };
 
 function compDetail(compId) {

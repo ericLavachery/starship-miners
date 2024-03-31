@@ -8,7 +8,9 @@
         "lvlCosts":[0,2,1],
         "rechCost":2,
         "triPass":10,
-        "desc":"Artillerie"
+        "desc":"Artillerie",
+        "essential":["detruas"],
+        "good":["rednecks","bulbos","drogmulojs","brasier"]
     },
     {
         "id":2,
@@ -19,7 +21,9 @@
         "lvlCosts":[0,1,1],
         "rechCost":2,
         "triPass":10,
-        "desc":"Véhicules blindés"
+        "desc":"Véhicules blindés",
+        "essential":[],
+        "good":["rednecks","bulbos","drogmulojs","tiradores","detruas","brasier"]
     },
     {
         "id":3,
@@ -30,7 +34,9 @@
         "lvlCosts":[0,2,1],
         "rechCost":2,
         "triPass":10,
-        "desc":"Aéronautique"
+        "desc":"Aéronautique",
+        "essential":[],
+        "good":["rednecks","blades","bulbos","drogmulojs","tiradores","brasier"]
     },
     {
         "id":4,
@@ -41,7 +47,9 @@
         "lvlCosts":[0,1,1],
         "rechCost":2,
         "triPass":10,
-        "desc":"Génétique (mutants, clones...)"
+        "desc":"Génétique (mutants, clones...)",
+        "essential":["drogmulojs"],
+        "good":["blades","bulbos"]
     },
     {
         "id":5,
@@ -52,7 +60,9 @@
         "lvlCosts":[0,1,1],
         "rechCost":2,
         "triPass":10,
-        "desc":"Cybernétique"
+        "desc":"Cybernétique",
+        "essential":["bulbos"],
+        "good":["rednecks","blades","drogmulojs","tiradores","brasier"]
     },
     {
         "id":6,
@@ -63,7 +73,9 @@
         "lvlCosts":[0,2,1],
         "rechCost":2,
         "triPass":10,
-        "desc":"Robotique"
+        "desc":"Robotique",
+        "essential":["bulbos","tiradores","detruas"],
+        "good":[]
     },
     {
         "id":7,
@@ -75,7 +87,9 @@
         "rechFirst":true,
         "rechCost":1.5,
         "triPass":10,
-        "desc":"Téléportation (ressources, unités)"
+        "desc":"Téléportation (ressources, unités)",
+        "essential":[],
+        "good":[]
     },
     {
         "id":8,
@@ -86,7 +100,9 @@
         "lvlCosts":[0,1,1,1,1],
         "rechCost":0.7,
         "triPass":10,
-        "desc":"Vols spaciaux (Landers, navettes de secours, sondes...)"
+        "desc":"Vols spaciaux (Landers, navettes de secours, sondes...)",
+        "essential":[],
+        "good":[]
     },
     {
         "id":9,
@@ -97,7 +113,9 @@
         "lvlCosts":[0,1,1,1],
         "rechCost":0.5,
         "triPass":3,
-        "desc":"Scaphandres (accès aux différentes planêtes)"
+        "desc":"Scaphandres (accès aux différentes planêtes)",
+        "essential":[],
+        "good":[]
     },
     {
         "id":10,
@@ -108,7 +126,9 @@
         "lvlCosts":[0,1,1,1,1,2],
         "rechCost":0.85,
         "triPass":2,
-        "desc":"Technologies de l'information"
+        "desc":"Technologies de l'information",
+        "essential":[],
+        "good":["bulbos"]
     },
     {
         "id":11,
@@ -121,7 +141,9 @@
         "rechPass":["bulbos"],
         "rechCost":1,
         "triPass":3,
-        "desc":"Médecine"
+        "desc":"Médecine",
+        "essential":[],
+        "good":[]
     },
     {
         "id":12,
@@ -132,7 +154,9 @@
         "lvlCosts":[0,1,1,1],
         "rechCost":0.85,
         "triPass":10,
-        "desc":"Leadership, maintien de l'ordre"
+        "desc":"Leadership, maintien de l'ordre",
+        "essential":[],
+        "good":[]
     },
     {
         "id":13,
@@ -143,7 +167,9 @@
         "lvlCosts":[0,1,1,2],
         "rechCost":1.25,
         "triPass":3,
-        "desc":"Entraînement"
+        "desc":"Entraînement",
+        "essential":[],
+        "good":["blades"]
     },
     {
         "id":14,
@@ -154,7 +180,9 @@
         "lvlCosts":[0,1,2,1],
         "rechCost":1,
         "triPass":3,
-        "desc":"Camouflage (infanteries, véhicules, bâtiments...)"
+        "desc":"Camouflage (infanteries, véhicules, bâtiments...)",
+        "essential":[],
+        "good":[]
     },
     {
         "id":15,
@@ -165,7 +193,9 @@
         "lvlCosts":[0,1,1,1,1],
         "rechCost":1,
         "triPass":10,
-        "desc":"Recyclage"
+        "desc":"Recyclage",
+        "essential":[],
+        "good":[]
     },
     {
         "id":16,
@@ -176,7 +206,9 @@
         "lvlCosts":[0,1,1,2],
         "rechCost":1.25,
         "triPass":4,
-        "desc":"Industrie (craftings...)"
+        "desc":"Industrie (craftings...)",
+        "essential":[],
+        "good":["bulbos","detruas"]
     },
     {
         "id":17,
@@ -187,7 +219,9 @@
         "lvlCosts":[0,1,1,1],
         "rechCost":1.25,
         "triPass":2,
-        "desc":"Construction (bâtiments, infrastructures...)"
+        "desc":"Construction (bâtiments, infrastructures...)",
+        "essential":[],
+        "good":[]
     },
     {
         "id":18,
@@ -198,7 +232,9 @@
         "lvlCosts":[0,1,1,2],
         "rechCost":1,
         "triPass":3,
-        "desc":"Energie (efficacité des centrales, lasers, munitions plasma...)"
+        "desc":"Energie (efficacité des centrales, lasers, munitions plasma...)",
+        "essential":[],
+        "good":["bulbos"]
     },
     {
         "id":19,
@@ -209,7 +245,9 @@
         "lvlCosts":[0,1,1,2],
         "rechCost":1,
         "triPass":3,
-        "desc":"Extraction (efficacité des mines, mineurs, derricks, pompes...)"
+        "desc":"Extraction (efficacité des mines, mineurs, derricks, pompes...)",
+        "essential":[],
+        "good":["detruas","bulbos"]
     },
     {
         "id":20,
@@ -220,7 +258,9 @@
         "lvlCosts":[0,1,1,2],
         "rechCost":0.85,
         "triPass":2,
-        "desc":"Transports (transport de ressources et unités, véhicules de transport, mécanique...)"
+        "desc":"Transports (transport de ressources et unités, véhicules de transport, mécanique...)",
+        "essential":[],
+        "good":[]
     },
     {
         "id":21,
@@ -231,7 +271,9 @@
         "lvlCosts":[0,1,1,2],
         "rechCost":1,
         "triPass":3,
-        "desc":"Logistique (équipements...)"
+        "desc":"Logistique (équipements...)",
+        "essential":[],
+        "good":[]
     },
     {
         "id":22,
@@ -244,7 +286,9 @@
         "rechPass":["tiradores"],
         "rechCost":1,
         "triPass":3,
-        "desc":"Balistique (munitions...)"
+        "desc":"Balistique (munitions...)",
+        "essential":["tiradores"],
+        "good":["rednecks","bulbos","drogmulojs"]
     },
     {
         "id":23,
@@ -257,7 +301,9 @@
         "rechPass":["detruas"],
         "rechCost":1,
         "triPass":10,
-        "desc":"Explosifs"
+        "desc":"Explosifs",
+        "essential":["detruas","rednecks"],
+        "good":["bulbos","brasier"]
     },
     {
         "id":24,
@@ -270,7 +316,9 @@
         "rechPass":["brasier"],
         "rechCost":1,
         "triPass":3,
-        "desc":"Pyrotechnie (Lances-flammes, cocktails molotovs, munitions incendiaires, armures anti-feu...)"
+        "desc":"Pyrotechnie (Lances-flammes, cocktails molotovs, munitions incendiaires, armures anti-feu...)",
+        "essential":["brasier"],
+        "good":["detruas"]
     },
     {
         "id":25,
@@ -282,7 +330,9 @@
         "rechLast":true,
         "rechCost":0.85,
         "triPass":1.3,
-        "desc":"Connaissance alien"
+        "desc":"Connaissance alien",
+        "essential":["blades","drogmulojs"],
+        "good":["bulbos"]
     },
     {
         "id":26,
@@ -295,7 +345,9 @@
         "rechPass":["blades","drogmulojs"],
         "rechCost":0.85,
         "triPass":10,
-        "desc":"Exochimie (drogues, poisons...)"
+        "desc":"Exochimie (drogues, poisons...)",
+        "essential":["blades","drogmulojs"],
+        "good":[]
     },
     {
         "id":27,
@@ -308,7 +360,9 @@
         "rechPass":["blades"],
         "rechCost":1.25,
         "triPass":4,
-        "desc":"Matériaux (armures, munitions, équipements...)"
+        "desc":"Matériaux (armures, munitions, équipements...)",
+        "essential":[],
+        "good":[]
     },
     {
         "id":28,
@@ -319,6 +373,8 @@
         "lvlCosts":[0,1,1,2],
         "rechCost":1.25,
         "triPass":10,
-        "desc":"Défenses (armes des bâtiments...)"
+        "desc":"Défenses (armes des bâtiments...)",
+        "essential":[],
+        "good":[]
     }
 ]
