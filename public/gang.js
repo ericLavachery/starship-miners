@@ -42,7 +42,7 @@ function gangUnitsList(gangName) {
     $("#tileInfos").css("display","none");
     $('#conUnitList').empty();
     $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
-    $('#conUnitList').append('<span class="constName or">'+gangName.toUpperCase()+'</span><br>');
+    $('#conUnitList').append('<span class="constName or">UNITES '+gangName.toUpperCase()+'</span><br>');
     $('#conUnitList').append('<span class="constName">'+playerInfos.gangXP+' / '+getNextLevelPop()+'</span><br>');
     $('#conUnitList').append('<br>');
     let gangUnits = [];
@@ -51,6 +51,7 @@ function gangUnitsList(gangName) {
             if ((unit.cat != 'buildings' && unit.cat != 'devices') || unit.levels[gangName] > 2) {
                 let newUnit = {};
                 newUnit.name = unit.name;
+                newUnit.pName = unit.pName;
                 newUnit.id = unit.id;
                 newUnit.level = unit.levels[gangName];
                 newUnit.hp = unit.hp;
@@ -88,7 +89,13 @@ function gangUnitsList(gangName) {
                             Object.entries(unit.compReq).map(entry => {
                                 let key = entry[0];
                                 let value = entry[1];
-                                newCompReq[key] = value;
+                                if (newCompReq[key] === undefined) {
+                                    newCompReq[key] = value;
+                                } else {
+                                    if (value > newCompReq[key]) {
+                                        newCompReq[key] = value;
+                                    }
+                                }
                             });
                         }
                     }
@@ -97,13 +104,25 @@ function gangUnitsList(gangName) {
                             Object.entries(unit.altCompReq).map(entry => {
                                 let key = entry[0];
                                 let value = entry[1];
-                                newAltCompReq[key] = value;
+                                if (newAltCompReq[key] === undefined) {
+                                    newAltCompReq[key] = value;
+                                } else {
+                                    if (value > newAltCompReq[key]) {
+                                        newAltCompReq[key] = value;
+                                    }
+                                }
                             });
+                        } else {
+                            newAltCompReq = {};
                         }
+                    } else {
+                        newAltCompReq = {};
                     }
                 }
                 newUnit.compReq = newCompReq;
-                newUnit.altCompReq = newAltCompReq;
+                if (Object.keys(newAltCompReq).length >= 1) {
+                    newUnit.altCompReq = newAltCompReq;
+                }
                 gangUnits.push(newUnit);
             }
         }
@@ -141,18 +160,100 @@ function gangUnitsList(gangName) {
             }
         }
         let reqString = displayUnitReqs(fullUnit,false);
+        reqString = unit.name+' '+reqString;
         let unitName = unit.name;
-        if (unitName.includes('Caserne')) {
-            unitName = 'Caserne';
+        if (unit.pName != undefined) {
+            unitName = unit.pName;
         }
-        if (unitName.includes('Navette')) {
-            unitName = 'Navette';
+        let missingComps = getMissingComps(unit);
+        let compReqString = toCoolString(missingComps,true,false);
+        if (Object.keys(missingComps).length > 2) {
+            // compReqString = toCoolString(Object.keys(missingComps)[0],true,false);
+            compReqString = Object.keys(missingComps)[0]+"="+Object.values(missingComps)[0];
+            compReqString = compReqString+' <span class="gf">& autres</span>';
         }
-        if (unitName.includes('Mines claymore')) {
-            unitName = 'Mines';
+        if (compReqString === 'Rien') {
+            compReqString = '';
+        } else {
+            compReqString = '<span title="Compétences manquantes"> &#128161; '+compReqString+'</span>';
         }
-        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+reqString+'" onclick="unitDetail('+unit.id+')">'+unitName+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue" title="Niveau">'+lvlNeed+'</span> <span class="paramValue" title="Compétences">'+compNeed+'</span> <span class="paramValue" title="Bâtiments">'+bldNeed+'</span><br>');
+        $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+reqString+'" onclick="unitDetail('+unit.id+')">'+unitName+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue" title="Niveau">'+lvlNeed+'</span> <span class="paramValue" title="Compétences">'+compNeed+'</span> <span class="paramValue" title="Bâtiments">'+bldNeed+'</span> <span class="gff">'+compReqString+'</span><br>');
     });
     $('#conUnitList').append('<br><br>');
     $("#conUnitList").animate({scrollTop:0},"fast");
+};
+
+function getMissingComps(unit) {
+    let missingComps = {};
+    let missingAltComps = {};
+    let compReqOK = true;
+    if (unit.name === 'Nimbus') {
+        console.log('NIMBUS');
+        console.log(unit.compReq);
+        console.log(unit.altCompReq);
+    }
+    // compReq
+    if (unit.compReq != undefined) {
+        if (Object.keys(unit.compReq).length >= 1) {
+            Object.entries(unit.compReq).map(entry => {
+                let key = entry[0];
+                let value = entry[1];
+                if (playerInfos.comp[key] < value) {
+                    compReqOK = false;
+                }
+            });
+        }
+    }
+    // altCompReq
+    if (!compReqOK) {
+        if (unit.altCompReq != undefined) {
+            if (Object.keys(unit.altCompReq).length >= 1) {
+                compReqOK = true;
+                Object.entries(unit.altCompReq).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (playerInfos.comp[key] < value) {
+                        compReqOK = false;
+                    }
+                });
+            }
+        }
+    }
+    if (!compReqOK) {
+        // compReq
+        if (unit.compReq != undefined) {
+            if (Object.keys(unit.compReq).length >= 1) {
+                Object.entries(unit.compReq).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (playerInfos.comp[key] < value) {
+                        missingComps[key] = value;
+                    }
+                });
+            }
+        }
+        // altCompReq
+        if (unit.altCompReq != undefined) {
+            if (Object.keys(unit.altCompReq).length >= 1) {
+                Object.entries(unit.altCompReq).map(entry => {
+                    let key = entry[0];
+                    let value = entry[1];
+                    if (playerInfos.comp[key] < value) {
+                        missingAltComps[key] = value;
+                    }
+                });
+            }
+        }
+        if (unit.name === 'Nimbus') {
+            console.log(missingComps);
+            console.log(missingAltComps);
+        }
+        if (Object.keys(missingComps).length > Object.keys(missingAltComps).length && Object.keys(missingAltComps).length >= 1) {
+            missingComps = missingAltComps;
+        }
+        if (unit.name === 'Nimbus') {
+            console.log(missingComps);
+        }
+    }
+    return missingComps;
 };

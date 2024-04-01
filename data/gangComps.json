@@ -22,8 +22,8 @@
         "rechCost":2,
         "triPass":10,
         "desc":"Véhicules blindés",
-        "essential":[],
-        "good":["rednecks","bulbos","drogmulojs","tiradores","detruas","brasier"]
+        "essential":["rednecks"],
+        "good":["bulbos","drogmulojs","tiradores","detruas","brasier"]
     },
     {
         "id":3,
@@ -288,7 +288,7 @@
         "triPass":3,
         "desc":"Balistique (munitions...)",
         "essential":["tiradores"],
-        "good":["rednecks","bulbos","drogmulojs"]
+        "good":["rednecks","bulbos","drogmulojs","brasier"]
     },
     {
         "id":23,
