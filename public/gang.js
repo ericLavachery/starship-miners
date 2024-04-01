@@ -167,6 +167,8 @@ function gangUnitsList(gangName) {
         }
         let missingComps = getMissingComps(unit);
         let compReqString = toCoolString(missingComps,true,false);
+        let compReqFullString = toCoolString(missingComps,true,false);
+        compReqFullString = replaceCompNamesByFullNames(compReqFullString);
         if (Object.keys(missingComps).length > 2) {
             // compReqString = toCoolString(Object.keys(missingComps)[0],true,false);
             compReqString = Object.keys(missingComps)[0]+"="+Object.values(missingComps)[0];
@@ -175,7 +177,7 @@ function gangUnitsList(gangName) {
         if (compReqString === 'Rien') {
             compReqString = '';
         } else {
-            compReqString = '<span title="Compétences manquantes"> &#128161; '+compReqString+'</span>';
+            compReqString = '<span title="Compétences manquantes: '+compReqFullString+'"> &#128161; '+compReqString+'</span>';
         }
         $('#conUnitList').append('<span class="paramUnitName '+color+' klik" title="'+reqString+'" onclick="unitDetail('+unit.id+')">'+unitName+'</span><span class="paramLevelValue '+lvlcol+'">'+unit.level+'</span><span class="paramValue" title="Niveau">'+lvlNeed+'</span> <span class="paramValue" title="Compétences">'+compNeed+'</span> <span class="paramValue" title="Bâtiments">'+bldNeed+'</span> <span class="gff">'+compReqString+'</span><br>');
     });
