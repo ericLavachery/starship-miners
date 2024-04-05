@@ -462,7 +462,7 @@ function levelUp(bat,batType) {
             }
         }
         if (bat.chief === undefined) {
-            if (bat.vet >= 4 || bat.tags.includes('schef') || bat.tags.includes('hero') || bat.tags.includes('vet') || batType.skills.includes('leader') || batType.skills.includes('prayer')) {
+            if ((bat.vet >= 4 && !batType.skills.includes('nochef')) || bat.tags.includes('schef') || bat.tags.includes('hero') || bat.tags.includes('vet') || batType.skills.includes('leader') || batType.skills.includes('prayer') || batType.name === 'Chercheurs') {
                 randomNameChief(bat.id,false);
             }
         }

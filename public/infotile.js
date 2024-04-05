@@ -234,6 +234,14 @@ function renameTile(tileId) {
     }
 };
 
+function okToName(bat,batType) {
+    let ok = true;
+    if (batType.skills.includes('dog') || batType.skills.includes('robot') || batType.skills.includes('garde') || batType.skills.includes('iscit') || batType.crew === 0 || bat.tags.includes('nopilots')) {
+        ok = false;
+    }
+    return ok;
+};
+
 function renameChief(batId) {
     let bat = getBatById(batId);
     playOK(bat);
@@ -255,12 +263,13 @@ function renameChief(batId) {
 };
 
 function randomNameChief(batId,show) {
-    let autoNaming = true;
+    let bat = getBatById(batId);
+    let batType = getBatType(bat);
+    let autoNaming = okToName(bat,batType);
     if (playerInfos.gang === 'blades') {
         autoNaming = false;
     }
     if (autoNaming) {
-        let bat = getBatById(batId);
         playOK(bat);
         let newName = '';
         let batSex = 'm';
@@ -275,9 +284,17 @@ function randomNameChief(batId,show) {
                 }
             }
         });
-        console.log(allNames);
-        newName = _.sample(allNames);
-        console.log(newName);
+        let uniqueNames = allNames;
+        bataillons.forEach(function(thisBat) {
+            if (thisBat.chief != undefined) {
+                uniqueNames = removeName(uniqueNames,thisBat.chief);
+            }
+        });
+        if (uniqueNames.length >= 1) {
+            newName = _.sample(uniqueNames);
+        } else {
+            newName = _.sample(allNames);
+        }
         if (newName.length >= 2) {
             bat.chief = newName;
             if (show) {
@@ -289,6 +306,14 @@ function randomNameChief(batId,show) {
             }
         }
     }
+};
+
+function removeName(uniqueNames,nameToRemove) {
+    const index = uniqueNames.indexOf(nameToRemove);
+    if (index > -1) {
+        uniqueNames.splice(index,1);
+    }
+    return uniqueNames;
 };
 
 function defCenter(tileId) {
