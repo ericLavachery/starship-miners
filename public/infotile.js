@@ -254,6 +254,43 @@ function renameChief(batId) {
     }, 1000); // How long do you want the delay to be (in milliseconds)?
 };
 
+function randomNameChief(batId,show) {
+    let autoNaming = true;
+    if (playerInfos.gang === 'blades') {
+        autoNaming = false;
+    }
+    if (autoNaming) {
+        let bat = getBatById(batId);
+        playOK(bat);
+        let newName = '';
+        let batSex = 'm';
+        if (bat.ok === 'ok4' || bat.ok === 'ok5' || bat.ok === 'ok6' || bat.ok === 'ok8' || bat.ok === 'ok14' || bat.ok === 'ok16' || bat.ok === 'ok21' || bat.ok === 'ok23') {
+            batSex = 'f';
+        }
+        let allNames;
+        armorTypes.forEach(function(gng) {
+            if (gng.cat === 'names') {
+                if (gng.g === playerInfos.gang) {
+                    allNames = gng[batSex];
+                }
+            }
+        });
+        console.log(allNames);
+        newName = _.sample(allNames);
+        console.log(newName);
+        if (newName.length >= 2) {
+            bat.chief = newName;
+            if (show) {
+                showBataillon(bat);
+                if (inSoute) {
+                    goSoute();
+                }
+                showBatInfos(bat);
+            }
+        }
+    }
+};
+
 function defCenter(tileId) {
     playerInfos.myCenter = tileId;
     $('html,body').scrollTop(0);

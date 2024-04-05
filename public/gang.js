@@ -187,13 +187,10 @@ function gangUnitsList(gangName) {
 
 function getMissingComps(unit) {
     let missingComps = {};
+    let numMiss = 0;
     let missingAltComps = {};
+    let numAltMiss = 0;
     let compReqOK = true;
-    if (unit.name === 'Nimbus') {
-        console.log('NIMBUS');
-        console.log(unit.compReq);
-        console.log(unit.altCompReq);
-    }
     // compReq
     if (unit.compReq != undefined) {
         if (Object.keys(unit.compReq).length >= 1) {
@@ -230,6 +227,7 @@ function getMissingComps(unit) {
                     let value = entry[1];
                     if (playerInfos.comp[key] < value) {
                         missingComps[key] = value;
+                        numMiss = numMiss+getMissingCompPoints(key,value);
                     }
                 });
             }
@@ -242,20 +240,63 @@ function getMissingComps(unit) {
                     let value = entry[1];
                     if (playerInfos.comp[key] < value) {
                         missingAltComps[key] = value;
+                        numAltMiss = numAltMiss+getMissingCompPoints(key,value);
                     }
                 });
             }
         }
-        if (unit.name === 'Nimbus') {
-            console.log(missingComps);
-            console.log(missingAltComps);
-        }
-        if (Object.keys(missingComps).length > Object.keys(missingAltComps).length && Object.keys(missingAltComps).length >= 1) {
+        if (numMiss > numAltMiss && Object.keys(missingAltComps).length >= 1) {
             missingComps = missingAltComps;
-        }
-        if (unit.name === 'Nimbus') {
-            console.log(missingComps);
         }
     }
     return missingComps;
+};
+
+function getMissingCompPoints(key,value) {
+    let points = 0;
+    let comp = getCompByName(key);
+    let nextLevel = playerInfos.comp[key]+1;
+    let nextCost = comp.lvlCosts[nextLevel];
+    if (nextCost === 2) {
+        points = points+3;
+    } else {
+        points = points+1;
+    }
+    if (nextLevel < value && nextLevel < comp.maxLevel) {
+        nextLevel = nextLevel+1;
+        nextCost = comp.lvlCosts[nextLevel];
+        if (nextCost === 2) {
+            points = points+3;
+        } else {
+            points = points+1;
+        }
+    }
+    if (nextLevel < value && nextLevel < comp.maxLevel) {
+        nextLevel = nextLevel+1;
+        nextCost = comp.lvlCosts[nextLevel];
+        if (nextCost === 2) {
+            points = points+3;
+        } else {
+            points = points+1;
+        }
+    }
+    if (nextLevel < value && nextLevel < comp.maxLevel) {
+        nextLevel = nextLevel+1;
+        nextCost = comp.lvlCosts[nextLevel];
+        if (nextCost === 2) {
+            points = points+3;
+        } else {
+            points = points+1;
+        }
+    }
+    if (nextLevel < value && nextLevel < comp.maxLevel) {
+        nextLevel = nextLevel+1;
+        nextCost = comp.lvlCosts[nextLevel];
+        if (nextCost === 2) {
+            points = points+3;
+        } else {
+            points = points+1;
+        }
+    }
+    return points;
 };

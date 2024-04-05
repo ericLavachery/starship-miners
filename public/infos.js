@@ -876,7 +876,10 @@ function batInfos(bat,batType,pop) {
             if (army >= 20) {break;}
             army++
         }
-        $('#'+bodyPlace).append('<button type="button" title="Nommer le commandant de ce bataillon" class="boutonGrisBis skillButtons" onclick="renameChief('+bat.id+')"><i class="fas fa-user-alt"></i></button>');
+        $('#'+bodyPlace).append('<button type="button" title="Choisir un prénom pour le commandant de ce bataillon" class="boutonGrisBis skillButtons" onclick="renameChief('+bat.id+')"><i class="fas fa-user-alt"></i></button>');
+        // if (bat.vet >= 4 || bat.tags.includes('schef') || bat.tags.includes('hero') || bat.tags.includes('vet') || batType.skills.includes('leader') || batType.skills.includes('prayer')) {
+        //     $('#'+bodyPlace).append('<button type="button" title="Montrer le prénom du commandant de ce bataillon" class="boutonGrisBis skillButtons" onclick="randomNameChief('+bat.id+',true)"><i class="fas fa-user-alt"></i></button>');
+        // }
     }
     // RESSOURCES transportées
     // console.log('HERE');
