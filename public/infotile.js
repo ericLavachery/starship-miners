@@ -266,9 +266,6 @@ function randomNameChief(batId,show) {
     let bat = getBatById(batId);
     let batType = getBatType(bat);
     let autoNaming = okToName(bat,batType);
-    if (playerInfos.gang === 'blades') {
-        autoNaming = false;
-    }
     if (autoNaming) {
         playOK(bat);
         let newName = '';
@@ -276,10 +273,11 @@ function randomNameChief(batId,show) {
         if (bat.ok === 'ok4' || bat.ok === 'ok5' || bat.ok === 'ok6' || bat.ok === 'ok8' || bat.ok === 'ok14' || bat.ok === 'ok16' || bat.ok === 'ok21' || bat.ok === 'ok23') {
             batSex = 'f';
         }
+        let fromGang = getNameOrigin(bat,batType);
         let allNames;
         armorTypes.forEach(function(gng) {
             if (gng.cat === 'names') {
-                if (gng.g === playerInfos.gang) {
+                if (gng.g === fromGang) {
                     allNames = gng[batSex];
                 }
             }
@@ -306,6 +304,29 @@ function randomNameChief(batId,show) {
             }
         }
     }
+};
+
+function getNameOrigin(bat,batType) {
+    let fromGang = playerInfos.gang;
+    if (rand.rand(1,10) === 1 || bat.tags.includes('outsider') || batType.kind === 'zero-resistance' || batType.kind === 'zero-reguliers') {
+        let gangNum = rand.rand(1,7);
+        if (gangNum === 1) {
+            fromGang = 'rednecks';
+        } else if (gangNum === 2) {
+            fromGang = 'blades';
+        } else if (gangNum === 3) {
+            fromGang = 'bulbos';
+        } else if (gangNum === 4) {
+            fromGang = 'drogmulojs';
+        } else if (gangNum === 5) {
+            fromGang = 'tiradores';
+        } else if (gangNum === 6) {
+            fromGang = 'detruas';
+        } else {
+            fromGang = 'brasier';
+        }
+    }
+    return fromGang;
 };
 
 function removeName(uniqueNames,nameToRemove) {

@@ -1808,7 +1808,7 @@
         "squadSize":6,
         "crew":0,
         "hp":12,
-        "armor":2,
+        "armor":4,
         "size":12,
         "stealth":0,
         "speed":-20,
@@ -1879,7 +1879,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_barb","noguet","nodeathcount","notarget","noblub","nolist","neverlist","norepair","resiststorm","clicput","infrako","bigprot","noaploss","nostation","okdel","oninfra"],
+        "skills":["b_barb","noguet","nodeathcount","notarget","noblub","nolist","neverlist","norepair","resiststorm","resistelec","resistfeu","resistall","clicput","infrako","bigprot","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
         "deathFx":"none"
     },
@@ -1922,7 +1922,7 @@
         "maxFlood":-1,
         "maxScarp":-1,
         "maxVeg":-1,
-        "skills":["b_barb","noguet","nodeathcount","notarget","bigblub","nolist","neverlist","norepair","resiststorm","clicput","bigprot","infrako","noaploss","nostation","okdel","oninfra"],
+        "skills":["b_barb","noguet","nodeathcount","notarget","bigblub","nolist","neverlist","norepair","resiststorm","resistelec","resistfeu","resistall","clicput","bigprot","infrako","noaploss","nostation","okdel","oninfra"],
         "fuzz":-2,
         "deathFx":"none"
     },
