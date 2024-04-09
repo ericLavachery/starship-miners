@@ -2234,6 +2234,11 @@ function addStartBat(tileId,unitName,xp,schef) {
     } else {
         putBat(tileId,0,xp);
     }
+    let bat = getLastBatCreated();
+    let batType = getBatType(bat);
+    if (!batType.skills.includes('nochef') || !batType.skills.includes('recupcit') || bat.tags.includes('schef') || bat.tags.includes('hero') || bat.tags.includes('vet') || batType.skills.includes('leader') || batType.skills.includes('prayer') || batType.name === 'Chercheurs') {
+        randomNameChief(bat.id,false);
+    }
 }
 
 function getStartBatList() {

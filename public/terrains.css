@@ -47,6 +47,8 @@
 }
 #zone_metro {
     display: none;
+    padding-left: 10px;
+    padding-top: 7px;
     margin-left: -6px;
     margin-top: -6px;
 }

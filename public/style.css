@@ -1101,6 +1101,7 @@ td {
 #intro {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */
     /* background-position: 0% 0%; */
+    background-image: url(/static/img/windowBG.jpg);
     scroll-behavior: auto;
     scrollbar-color: #000000 #212828;
     overflow-y: scroll;

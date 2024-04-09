@@ -4,10 +4,12 @@ function commandes() {
         $("#tour").css("display","none");
         $("#mode").css("display","none");
         if (playerInfos.onStart) {
-            // $("#cadreMap").css("display","none");
             $("#zone_map").css("display","none");
             $("#zone_soute").css("display","none");
             $("#zone_metro").css("display","block");
+            $("#modesInfos").css("display","none");
+            $("#cadreMap").css("display","none");
+            $("#glitches_effect").css("display","none");
         } else {
             // $("#cadreMap").css("display","block");
             if (inSoute) {
