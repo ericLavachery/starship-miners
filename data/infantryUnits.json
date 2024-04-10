@@ -3020,7 +3020,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_light","fouille","fortif","datt","extraction","helpex","selfbadmedic","camo","ranger","fret","fweight","barda","conscont","constructeur","cleaning","infraz","routes","repair","nochef"],
+        "skills":["a_light","fouille","fortif","datt","extraction","helpex","selfbadmedic","camo","ranger","fret","fweight","barda","conscont","constructeur","cleaning","infraz","routes","repair","herorof","heroap"],
         "mediCost":9,
         "mecanoCost":11,
         "mining":{
@@ -7469,7 +7469,7 @@
         "maxFlood":3,
         "maxScarp":3,
         "maxVeg":3,
-        "skills":["a_mid","fouille","fortif","datt","maycamo","brigands","recupcit","nocrime","nochef"],
+        "skills":["a_mid","fouille","fortif","datt","maycamo","brigands","recupcit","nocrime","herorip"],
         "fuzz":1.5,
         "deathFx":"human1"
     },

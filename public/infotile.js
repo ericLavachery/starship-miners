@@ -308,7 +308,7 @@ function randomNameChief(batId,show) {
 
 function getNameOrigin(bat,batType) {
     let fromGang = playerInfos.gang;
-    if (rand.rand(1,10) === 1 || bat.tags.includes('outsider') || batType.kind === 'zero-resistance' || batType.kind === 'zero-reguliers') {
+    if (rand.rand(1,10) === 1 || (bat.tags.includes('outsider') && batType.kind != playerInfos.gang) || batType.kind === 'zero-resistance' || batType.kind === 'zero-reguliers') {
         let gangNum = rand.rand(1,7);
         if (gangNum === 1) {
             fromGang = 'rednecks';
