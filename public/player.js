@@ -218,6 +218,122 @@ function changeBarbs(stop) {
     gangEdit();
 };
 
+function gangChoiceOK() {
+    playerInfos.gangDef = true;
+    if (playerInfos.gang === undefined) {
+        playerInfos.gang = 'rednecks';
+    }
+    if (playerInfos.gMode === undefined) {
+        playerInfos.gMode = 2;
+    } else {
+        if (playerInfos.gMode < 1 || playerInfos.gMode > 4) {
+            playerInfos.gMode = 2;
+        }
+    }
+    if (playerInfos.missionZone === undefined) {
+        playerInfos.missionZone = 99;
+        playerInfos.missionPlanet = 1;
+    } else {
+        if (playerInfos.missionZone < 90) {
+            playerInfos.missionZone = 99;
+            playerInfos.missionPlanet = 1;
+        }
+    }
+    if (playerInfos.gang === 'rednecks' && playerInfos.comp.ext === 0) {
+        playerInfos.comp.ext = 1;
+    }
+    if (playerInfos.gang === 'drogmulojs' && playerInfos.comp.tri === 0) {
+        playerInfos.comp.tri = 1;
+    }
+    if (playerInfos.gang === 'bulbos' && playerInfos.comp.det === 0) {
+        playerInfos.comp.det = 1;
+    }
+    if (playerInfos.gang === 'detruas' && playerInfos.comp.explo === 0) {
+        playerInfos.comp.explo = 1;
+    }
+    if (playerInfos.gang === 'brasier' && playerInfos.comp.pyro === 0) {
+        playerInfos.comp.pyro = 1;
+    }
+    if (playerInfos.gang === 'tiradores' && playerInfos.comp.bal === 0) {
+        playerInfos.comp.bal = 1;
+    }
+    if (playerInfos.gang === 'blades' && playerInfos.comp.cam === 0) {
+        playerInfos.comp.cam = 1;
+    }
+    moveMissionZone(playerInfos.missionZone);
+    conOut(true);
+    commandes();
+};
+
+function showGangInfo(gangName) {
+    let gang = getGangByName(gangName);
+    $('#intro').empty();
+    $('#intro').append('<img src="/static/img/gangs/'+gang.pic+'2.jpg" id="gangImg"><br><br>');
+    $('#intro').append('<span class="basicText">'+gang.info+'</span><br>');
+    $('#intro').append('<br>');
+};
+
+function gangChoice() {
+    selectMode();
+    $("#conUnitList").css("display","block");
+    $('#conUnitList').css("height","300px");
+    $("#conAmmoList").css("display","none");
+    $('#unitInfos').empty();
+    $("#unitInfos").css("display","none");
+    $('#tileInfos').empty();
+    $("#tileInfos").css("display","none");
+    $('#conUnitList').empty();
+    // $('#conUnitList').append('<span class="ListRes">Choisir dans cet ordre</span><br>');
+    // $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<h3>NOUVELLE CAMPAGNE</h3><br>');
+    $('#conUnitList').append('<br>');
+    // GANG
+    $('#conUnitList').append('<h4>Choisir un Gang</h4><br>');
+    $('#conUnitList').append('<select class="boutonGris" id="theGangs" onchange="changePlayerInfo(`theGangs`,`gang`,`gangChoice`)"></select>');
+    $('#theGangs').empty().append('<option value="rednecks">Gang</option>');
+    $('#theGangs').append('<option value="rednecks">Rednecks</option>');
+    $('#theGangs').append('<option value="blades">Blades</option>');
+    $('#theGangs').append('<option value="bulbos">Bulbos Kapos</option>');
+    $('#theGangs').append('<option value="drogmulojs">Drogmulojs</option>');
+    $('#theGangs').append('<option value="tiradores">Tiradores</option>');
+    $('#theGangs').append('<option value="detruas">Detruas</option>');
+    $('#theGangs').append('<option value="brasier">Le Brasier</option>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="butSpace"></span>');
+    $('#conUnitList').append('<br>');
+    // DIFFICULTE
+    $('#conUnitList').append('<h4>Choisir le niveau de difficulté</h4><br>');
+    $('#conUnitList').append('<select class="boutonGrisBis" id="theDiffMode" onchange="changePlayerInfo(`theDiffMode`,`gMode`,`gangChoice`)"></select>');
+    $('#theDiffMode').empty().append('<option value="2">Niveau</option>');
+    $('#theDiffMode').append('<option value="1">J\'ai peur des bourdons</option>');
+    $('#theDiffMode').append('<option value="2">Normal</option>');
+    $('#theDiffMode').append('<option value="3">Les fourmis c\'est trop mignon</option>');
+    $('#theDiffMode').append('<option value="4">La guêpe pepsis ça chatouille</option>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="butSpace"></span>');
+    $('#conUnitList').append('<br>');
+    // MAP DE DEPART
+    $('#conUnitList').append('<h4>Choisir la zone de départ</h4><br>');
+    $('#conUnitList').append('<select class="boutonGris" id="theStartZone" onchange="changePlayerInfo(`theStartZone`,`missionZone`,`gangChoice`)"></select>');
+    $('#theStartZone').empty().append('<option value="97">Zone</option>');
+    let i = 90;
+    while (i <= 99) {
+        let mType = getMissionType(i,true);
+        if (playerInfos.misDB.includes(i)) {
+            $('#theStartZone').append('<option value="'+i+'">'+i+' - '+mType.name+' ('+mType.title+')</option>');
+        } else {
+            $('#theStartZone').append('<option value="'+i+'" disabled>'+i+' - '+mType.name+' ('+mType.title+')</option>');
+        }
+        if (i > 99) {break;}
+        i++
+    }
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="butSpace"></span>');
+    $('#conUnitList').append('<br>');
+    $('#conUnitList').append('<span class="blockTitle"><h4><button type="button" title="Accepter" class="boutonRose bigButtons" onclick="gangChoiceOK()"><i class="far fa-thumbs-up"></i></button>&nbsp; Accepter</h4></span>');
+};
+
 function changePlayerInfo(dropMenuId,infoName,from) {
     console.log(dropMenuId);
     console.log(infoName);
@@ -256,50 +372,51 @@ function changePlayerInfo(dropMenuId,infoName,from) {
     console.log(from);
     if (from === 'gangChoice') {
         if (infoName === 'gang') {
-            playerInfos.gangDef = true;
-            if (playerInfos.gang === undefined) {
-                playerInfos.gang = 'rednecks';
-            }
-            if (playerInfos.gMode === undefined) {
-                playerInfos.gMode = 2;
-            } else {
-                if (playerInfos.gMode < 1 || playerInfos.gMode > 4) {
-                    playerInfos.gMode = 2;
-                }
-            }
-            if (playerInfos.missionZone === undefined) {
-                playerInfos.missionZone = 99;
-                playerInfos.missionPlanet = 1;
-            } else {
-                if (playerInfos.missionZone < 90) {
-                    playerInfos.missionZone = 99;
-                    playerInfos.missionPlanet = 1;
-                }
-            }
-            if (playerInfos.gang === 'rednecks' && playerInfos.comp.ext === 0) {
-                playerInfos.comp.ext = 1;
-            }
-            if (playerInfos.gang === 'drogmulojs' && playerInfos.comp.tri === 0) {
-                playerInfos.comp.tri = 1;
-            }
-            if (playerInfos.gang === 'bulbos' && playerInfos.comp.det === 0) {
-                playerInfos.comp.det = 1;
-            }
-            if (playerInfos.gang === 'detruas' && playerInfos.comp.explo === 0) {
-                playerInfos.comp.explo = 1;
-            }
-            if (playerInfos.gang === 'brasier' && playerInfos.comp.pyro === 0) {
-                playerInfos.comp.pyro = 1;
-            }
-            if (playerInfos.gang === 'tiradores' && playerInfos.comp.bal === 0) {
-                playerInfos.comp.bal = 1;
-            }
-            if (playerInfos.gang === 'blades' && playerInfos.comp.cam === 0) {
-                playerInfos.comp.cam = 1;
-            }
-            moveMissionZone(playerInfos.missionZone);
-            conOut(true);
-            commandes();
+            showGangInfo(playerInfos.gang);
+            // playerInfos.gangDef = true;
+            // if (playerInfos.gang === undefined) {
+            //     playerInfos.gang = 'rednecks';
+            // }
+            // if (playerInfos.gMode === undefined) {
+            //     playerInfos.gMode = 2;
+            // } else {
+            //     if (playerInfos.gMode < 1 || playerInfos.gMode > 4) {
+            //         playerInfos.gMode = 2;
+            //     }
+            // }
+            // if (playerInfos.missionZone === undefined) {
+            //     playerInfos.missionZone = 99;
+            //     playerInfos.missionPlanet = 1;
+            // } else {
+            //     if (playerInfos.missionZone < 90) {
+            //         playerInfos.missionZone = 99;
+            //         playerInfos.missionPlanet = 1;
+            //     }
+            // }
+            // if (playerInfos.gang === 'rednecks' && playerInfos.comp.ext === 0) {
+            //     playerInfos.comp.ext = 1;
+            // }
+            // if (playerInfos.gang === 'drogmulojs' && playerInfos.comp.tri === 0) {
+            //     playerInfos.comp.tri = 1;
+            // }
+            // if (playerInfos.gang === 'bulbos' && playerInfos.comp.det === 0) {
+            //     playerInfos.comp.det = 1;
+            // }
+            // if (playerInfos.gang === 'detruas' && playerInfos.comp.explo === 0) {
+            //     playerInfos.comp.explo = 1;
+            // }
+            // if (playerInfos.gang === 'brasier' && playerInfos.comp.pyro === 0) {
+            //     playerInfos.comp.pyro = 1;
+            // }
+            // if (playerInfos.gang === 'tiradores' && playerInfos.comp.bal === 0) {
+            //     playerInfos.comp.bal = 1;
+            // }
+            // if (playerInfos.gang === 'blades' && playerInfos.comp.cam === 0) {
+            //     playerInfos.comp.cam = 1;
+            // }
+            // moveMissionZone(playerInfos.missionZone);
+            // conOut(true);
+            // commandes();
         }
     } else if (from === 'sonde') {
         editSonde();
@@ -2931,66 +3048,6 @@ function getNextLevelPop() {
     return nextLevelPop;
 };
 
-function gangChoice() {
-    selectMode();
-    $("#conUnitList").css("display","block");
-    $('#conUnitList').css("height","300px");
-    $("#conAmmoList").css("display","none");
-    $('#unitInfos').empty();
-    $("#unitInfos").css("display","none");
-    $('#tileInfos').empty();
-    $("#tileInfos").css("display","none");
-    $('#conUnitList').empty();
-    $('#conUnitList').append('<span class="ListRes">Choisir dans cet ordre</span><br>');
-    $('#conUnitList').append('<br>');
-    // MAP DE DEPART
-    $('#conUnitList').append('<span class="ListRes or">CHOISIR LA ZONE DE DEPART</span><br>');
-    $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<select class="boutonGris" id="theStartZone" onchange="changePlayerInfo(`theStartZone`,`missionZone`,`gangChoice`)"></select>');
-    $('#theStartZone').empty().append('<option value="97">Zone</option>');
-    let i = 90;
-    while (i <= 99) {
-        let mType = getMissionType(i,true);
-        if (playerInfos.misDB.includes(i)) {
-            $('#theStartZone').append('<option value="'+i+'">'+i+' - '+mType.name+' ('+mType.title+')</option>');
-        } else {
-            $('#theStartZone').append('<option value="'+i+'" disabled>'+i+' - '+mType.name+' ('+mType.title+')</option>');
-        }
-        if (i > 99) {break;}
-        i++
-    }
-    $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="butSpace"></span>');
-    $('#conUnitList').append('<br>');
-    // DIFFICULTE
-    $('#conUnitList').append('<span class="ListRes or">CHOISIR LE NIVEAU DE DIFFICULTE</span><br>');
-    $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<select class="boutonGrisBis" id="theDiffMode" onchange="changePlayerInfo(`theDiffMode`,`gMode`,`gangChoice`)"></select>');
-    $('#theDiffMode').empty().append('<option value="2">Niveau</option>');
-    $('#theDiffMode').append('<option value="1">J\'ai peur des bourdons</option>');
-    $('#theDiffMode').append('<option value="2">Normal</option>');
-    $('#theDiffMode').append('<option value="3">Les fourmis c\'est trop mignon</option>');
-    $('#theDiffMode').append('<option value="4">La guêpe pepsis ça chatouille</option>');
-    $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="butSpace"></span>');
-    $('#conUnitList').append('<br>');
-    // GANG
-    $('#conUnitList').append('<span class="ListRes or">CHOISIR UN GANG</span><br>');
-    $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<select class="boutonGris" id="theGangs" onchange="changePlayerInfo(`theGangs`,`gang`,`gangChoice`)"></select>');
-    $('#theGangs').empty().append('<option value="rednecks">Gang</option>');
-    $('#theGangs').append('<option value="rednecks">Rednecks</option>');
-    $('#theGangs').append('<option value="blades">Blades</option>');
-    $('#theGangs').append('<option value="bulbos">Bulbos Kapos</option>');
-    $('#theGangs').append('<option value="drogmulojs">Drogmulojs</option>');
-    $('#theGangs').append('<option value="tiradores">Tiradores</option>');
-    $('#theGangs').append('<option value="detruas">Detruas</option>');
-    $('#theGangs').append('<option value="brasier">Le Brasier</option>');
-    $('#conUnitList').append('<br>');
-    $('#conUnitList').append('<span class="butSpace"></span>');
-
-};
-
 function gangLevelUp(retour) {
     selectMode();
     let nextGangLevel = playerInfos.gLevel+1;
@@ -3007,11 +3064,11 @@ function gangLevelUp(retour) {
     $('#conUnitList').empty();
     if (myCompPoints <= 0 && retour) {
         $('#conUnitList').append('<span class="closeIcon klik cy" onclick="conOut(true)"><i class="fas fa-times-circle"></i></span>');
-        $('#conUnitList').append('<h3>VOUS AVEZ DEPENSE TOUS VOS POINTS</h3><br>');
+        $('#conUnitList').append('<h1>Vous avez dépensé tous vos points</h1><br>');
         playerInfos.gLevel++;
         commandes();
     } else {
-        $('#conUnitList').append('<h1>CHOISIR UNE COMPETENCE</h1><br>');
+        $('#conUnitList').append('<h3>Augmentez vos compétences</h3><br>');
     }
     $('#conUnitList').append('<span class="ListRes">Niveau de gang: '+nextGangLevel+'</span><br>');
     $('#conUnitList').append('<span class="ListRes">Points à dépenser: '+myCompPoints+'</span><br>');
@@ -3022,6 +3079,7 @@ function gangLevelUp(retour) {
         let compCost = comp.lvlCosts[nextComp];
         let colour = 'neutre';
         let lvlColour = 'gff';
+        let gangIcon = getCompGangIcon(comp);
         if (nowComp >= 1) {
             lvlColour = 'cy';
         }
@@ -3055,7 +3113,7 @@ function gangLevelUp(retour) {
                 }
             }
         }
-        $('#conUnitList').append('<span class="paramName '+colour+' klik" title="'+comp.desc+'" onclick="compDetail('+comp.id+')">'+comp.fullName+'</span><span class="paramIcon '+costColour+'" title="Coût: '+compCost+'">('+compCost+')</span><span class="paramCompValue '+lvlColour+'" title="Niveau actuel">'+nowComp+'<span class="gff" title="Niveau maximum">/'+comp.maxLevel+'</span></span>');
+        $('#conUnitList').append('<span class="paramName '+colour+' klik" title="'+comp.desc+'" onclick="compDetail('+comp.id+')">'+comp.fullName+' '+gangIcon+'</span><span class="paramIcon '+costColour+'" title="Coût: '+compCost+'">('+compCost+')</span><span class="paramCompValue '+lvlColour+'" title="Niveau actuel">'+nowComp+'<span class="gff" title="Niveau maximum">/'+comp.maxLevel+'</span></span>');
         if (comp.levels[playerInfos.gang] <= nextGangLevel && comp.maxLevel >= nextComp) {
             if (compCost === 1 || (myCompPoints >= 2 && nextGangLevel >= 1)) {
                 if (myCompPoints >= compCost && !rechOnly) {

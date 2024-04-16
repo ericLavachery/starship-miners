@@ -1,5 +1,47 @@
 [
     {
+        "name":"rednecks",
+        "pic":"rednecks",
+        "cat":"gang",
+        "info":"Les Rednecks ils sont vachement super géniaux."
+    },
+    {
+        "name":"blades",
+        "pic":"blades",
+        "cat":"gang",
+        "info":"Les Blades ils sont vachement super géniaux."
+    },
+    {
+        "name":"bulbos",
+        "pic":"bulbos",
+        "cat":"gang",
+        "info":"Les Bulbo Kapos ils sont vachement super géniaux."
+    },
+    {
+        "name":"drogmulojs",
+        "pic":"drogmulojs",
+        "cat":"gang",
+        "info":"Les Drogmulojs ils sont vachement super géniaux."
+    },
+    {
+        "name":"tiradores",
+        "pic":"tiradores",
+        "cat":"gang",
+        "info":"Les Tiradores ils sont vachement super géniaux."
+    },
+    {
+        "name":"detruas",
+        "pic":"detruas",
+        "cat":"gang",
+        "info":"Les Detruas ils sont vachement super géniaux."
+    },
+    {
+        "name":"brasier",
+        "pic":"brasier",
+        "cat":"gang",
+        "info":"Le Brasier ils sont vachement super géniaux."
+    },
+    {
         "name":"Palissades",
         "pic":"palissade",
         "cat":"infra",

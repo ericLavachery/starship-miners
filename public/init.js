@@ -86,6 +86,9 @@ socket.on('playerInfos-Load', function(pi) {
     if (playerInfos.sondeDanger === undefined) {
         playerInfos.sondeDanger = -1;
     }
+    if (playerInfos.sondeReal === undefined) {
+        playerInfos.sondeReal = true;
+    }
     if (playerInfos.sondeRes === undefined) {
         playerInfos.sondeRes = [];
     }

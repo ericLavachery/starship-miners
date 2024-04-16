@@ -980,15 +980,17 @@ function goSonde(impacteur) {
     let vspComp = (playerInfos.comp.vsp*playerInfos.comp.vsp);
     if (impacteur) {
         impact = true;
-        playerInfos.allTurns = playerInfos.allTurns+20-vspComp;
+        playerInfos.allTurns = playerInfos.allTurns+22-vspComp;
+        playerInfos.sondeReal = false;
     } else {
         impact = false;
-        playerInfos.allTurns = playerInfos.allTurns+18-vspComp;
+        playerInfos.allTurns = playerInfos.allTurns+20-vspComp;
+        playerInfos.sondeReal = true;
     }
     conOut(true);
     batUnselect();
     playerInfos.undarkOnce = [];
-    removeSonde(impacteur);
+    removeSonde();
     saveCurrentZoneAs(0);
     modeSonde = true;
     playerInfos.sondeMaps = 0;
@@ -1014,10 +1016,10 @@ function regionChange() {
     generateNewMap(true);
 };
 
-function removeSonde(impacteur) {
+function removeSonde() {
     let sondeOut = false;
     deadBatsList = [];
-    if (impacteur) {
+    if (!playerInfos.sondeReal) {
         bataillons.forEach(function(bat) {
             if (bat.type === 'Impacteur' && !sondeOut) {
                 sondeOut = true;

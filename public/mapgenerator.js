@@ -112,7 +112,7 @@ function regionChoice(regionName) {
 function generateNewMap(filterCheck,louche) {
     zone = [];
     playerInfos.sondeMaps = playerInfos.sondeMaps+1;
-    let fastChance = Math.round(playerInfos.comp.vsp*playerInfos.comp.vsp*6);
+    let fastChance = Math.round(playerInfos.comp.vsp*playerInfos.comp.vsp*5);
     if (rand.rand(1,100) > fastChance) {
         playerInfos.allTurns = playerInfos.allTurns+1;
     }

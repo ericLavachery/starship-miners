@@ -361,7 +361,10 @@ function newGame() {
     generateVM();
     showMap(zone,false);
     miniOut();
+    conOut(true);
     commandes();
+    addStartPack();
+    gangChoice();
 };
 
 function saveDeployRes() {

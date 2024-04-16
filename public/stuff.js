@@ -462,7 +462,11 @@ function levelUp(bat,batType) {
             }
         }
         if (bat.chief === undefined) {
-            if ((bat.vet >= 4 && !batType.skills.includes('nochef')) || bat.tags.includes('schef') || bat.tags.includes('hero') || bat.tags.includes('vet') || batType.skills.includes('leader') || batType.skills.includes('prayer') || batType.name === 'Chercheurs') {
+            let batMinVet = 4;
+            if (playerInfos.gLevel < 8) {
+                batMinVet = 0+playerInfos.gLevel-4;
+            }
+            if ((bat.vet >= batMinVet && !batType.skills.includes('nochef')) || bat.tags.includes('schef') || bat.tags.includes('hero') || bat.tags.includes('vet') || batType.skills.includes('leader') || batType.skills.includes('prayer') || batType.name === 'Chercheurs') {
                 randomNameChief(bat.id,false);
             }
         }
@@ -1441,6 +1445,15 @@ function getInfraByName(infraName) {
         infra = armorTypes[index];
     }
     return infra;
+};
+
+function getGangByName(gangName) {
+    let gang = {};
+    let index = armorTypes.findIndex((obj => obj.name == gangName));
+    if (index > -1) {
+        gang = armorTypes[index];
+    }
+    return gang;
 };
 
 function getDrugByName(drugName) {

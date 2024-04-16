@@ -1106,7 +1106,10 @@ td {
     scrollbar-color: #000000 #212828;
     overflow-y: scroll;
     /* display: none; */
-    max-width: 550px;
+    width: 553px;
+}
+#gangImg {
+    border-radius: 12px;
 }
 #conUnitList,#conAmmoList {
     /* background-image: url(/static/img/plate-vdork-small.jpg); */

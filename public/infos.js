@@ -877,8 +877,8 @@ function batInfos(bat,batType,pop) {
             army++
         }
         if (okToName(bat,batType)) {
-            $('#'+bodyPlace).append('<button type="button" title="Choisir un prénom pour le commandant de ce bataillon" class="boutonGrisBis skillButtons" onclick="renameChief('+bat.id+')"><i class="fas fa-user-alt"></i></button>');
-            $('#'+bodyPlace).append('<button type="button" title="Choisir un prénom au hasard pour le commandant de ce bataillon" class="boutonGrisBis skillButtons" onclick="randomNameChief('+bat.id+',true)"><i class="fas fa-user-alt"></i></button>');
+            $('#'+bodyPlace).append('<button type="button" title="Définir un prénom pour le commandant de ce bataillon" class="boutonGrisBis skillButtons" onclick="renameChief('+bat.id+')"><i class="fas fa-address-card"></i></button>');
+            $('#'+bodyPlace).append('<button type="button" title="Choisir un prénom au hasard pour le commandant de ce bataillon" class="boutonGrisBis skillButtons" onclick="randomNameChief('+bat.id+',true)"><i class="fas fa-address-card"></i></button>');
         }
     }
     // RESSOURCES transportées
